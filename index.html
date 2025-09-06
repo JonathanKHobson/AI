@@ -1,0 +1,462 @@
+"<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Prompting Glossary</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#121821;
+      --card:#0f151d;
+      --muted:#9db0c3;
+      --text:#e7eff7;
+      --accent:#4ea1ff;
+      --chip:#1b2533;
+      --border:#1b2838;
+      --green:#2ecc71;
+      --yellow:#f1c40f;
+      --red:#e74c3c;
+      --header-h:64px;
+      --sidebar-w:320px;
+      --radius:12px;
+      --gap:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background:linear-gradient(180deg,#0b0f14,#0a0d12);
+      font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .app{display:grid;grid-template-rows:var(--header-h) 1fr;height:100%}
+    header{
+      display:flex;align-items:center;gap:12px;
+      padding:0 16px;background:rgba(18,24,33,.8);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+      position:sticky;top:0;z-index:5;
+    }
+    header h1{font-size:18px;margin:0 4px 0 0;font-weight:600;letter-spacing:.2px}
+    .search{
+      flex:1;
+      display:flex;gap:10px;align-items:center
+    }
+    .search input[type="search"]{
+      width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--border);
+      background:#0d131b;color:var(--text);outline:none;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:var(--sidebar-w) 1fr;
+      gap:0;
+      height:calc(100vh - var(--header-h));
+    }
+    .sidebar{
+      border-right:1px solid var(--border);
+      background:var(--panel);
+      padding:14px;
+      position:relative;
+      overflow:auto;
+    }
+    .main{overflow:auto;position:relative}
+    .section-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:10px 0 8px}
+    .alpha-grid{
+      display:grid;
+      grid-template-columns:repeat(8,1fr);
+      gap:8px;
+    }
+    .alpha-btn{
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--text);
+      padding:6px 0;border-radius:10px;
+      text-align:center;cursor:pointer;font-size:12px;
+      user-select:none;
+    }
+    .alpha-btn[aria-pressed="true"]{outline:2px solid var(--accent)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;background:var(--chip);
+      border:1px solid var(--border);font-size:12px;color:var(--text);
+      cursor:pointer;user-select:none
+    }
+    .chip .count{color:var(--muted)}
+    .chip[aria-pressed="true"]{outline:2px solid var(--accent)}
+    .status-row{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip);font-size:12px;cursor:pointer}
+    .pill[data-val="verified"]{color:var(--green)}
+    .pill[data-val="draft"]{color:var(--yellow)}
+    .pill[data-val="deprecated"]{color:var(--red)}
+    .toolbar{
+      display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+      padding:12px;border-bottom:1px solid var(--border);
+      position:sticky;top:0;background:linear-gradient(180deg,#101722,#0f151d);z-index:2;
+    }
+    .results-header{padding:10px 12px;color:var(--muted);font-size:13px;border-bottom:1px solid var(--border)}
+    .cards{padding:16px;display:grid;gap:12px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:14px;
+    }
+    .card h3{margin:0 0 4px;font-size:16px}
+    .card .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .mini{font-size:11px;color:var(--muted)}
+    .btn{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:8px;color:var(--text);cursor:pointer}
+    dialog{border:none;border-radius:14px;background:#0c1117;color:var(--text);width:min(760px,92vw);}
+    dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+    .flex-spacer{flex:1}
+    .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:#0d131b;color:var(--text);margin-bottom:8px}
+    .facet-group{margin-bottom:18px}
+    .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>AI Prompting Glossary</h1>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search… (try: tag:topic:prompting, category:conversational design)" />
+      <select id="sort">
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+      </select>
+    </div>
+    <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="facet-group">
+        <div class="section-title">A–Z</div>
+        <div id="alpha" class="alpha-grid"></div>
+      </div>
+      <div class="facet-group">
+        <div class="section-title">Status</div>
+        <div class="status-row" id="statusRow">
+          <button class="pill" data-val="all" aria-pressed="true">All</button>
+          <button class="pill" data-val="verified">Verified</button>
+          <button class="pill" data-val="draft">Draft</button>
+          <button class="pill" data-val="deprecated">Deprecated</button>
+        </div>
+      </div>
+      <div class="facet-group">
+        <div class="section-title">Categories</div>
+        <input class="facet-search" id="catFilter" placeholder="Filter categories…" />
+        <div id="cats" class="chips"></div>
+      </div>
+      <div class="facet-group">
+        <div class="section-title">Tags</div>
+        <input class="facet-search" id="tagFilter" placeholder="Filter tags…" />
+        <div id="tags" class="chips"></div>
+      </div>
+      <div class="footer-note">Click chips on cards to filter by that category/tag.</div>
+    </aside>
+    <main class="main">
+      <div class="toolbar">
+        <div id="activeFilters" class="chips"></div>
+        <span class="flex-spacer"></span>
+        <button id="clear" class="btn">Clear filters</button>
+      </div>
+      <div class="results-header" id="resultInfo">Loading…</div>
+      <div class="cards" id="cards"></div>
+    </main>
+  </div>
+</div>
+
+<dialog id="detail">
+  <article style="padding:16px 18px;">
+    <header style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <h2 id="dTitle" style="margin:0;font-size:20px;"></h2>
+      <span id="dStatus" class="pill"></span>
+      <span class="flex-spacer"></span>
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </header>
+    <div id="dAliases" class="mini"></div>
+    <div id="dBody" style="margin-top:10px"></div>
+    <div id="dChips" class="meta"></div>
+    <div id="dSources" style="margin-top:12px"></div>
+  </article>
+</dialog>
+
+<script src="glossary.data.js"></script>
+<script>
+(function(){
+  const G = (globalThis.GLOSSARY && Array.isArray(GLOSSARY)) ? GLOSSARY : (globalThis.GlossaryAPI?.all?.() ?? []);
+
+  // --- helpers ---
+  const norm = s => (s||'').toString().trim().toLowerCase();
+  const title = s => s.replace(/\b\w/g, m => m.toUpperCase());
+  const first = a => a && a[0];
+  const by = (k,dir=1) => (a,b)=> (a[k]||'').localeCompare(b[k]||'')*dir;
+
+  // build canonical stores
+  const catLabelByKey = new Map();
+  const tagLabelByKey = new Map();
+  const catCount = new Map();
+  const tagCount = new Map();
+
+  for (const it of G){
+    const cats = Array.isArray(it.categories)? it.categories : [];
+    for (const c of cats){
+      const key = norm(c);
+      catLabelByKey.set(key, catLabelByKey.get(key) || c);
+      catCount.set(key, (catCount.get(key)||0)+1);
+    }
+    const tags = Array.isArray(it.tags)? it.tags:[];
+    for (const t of tags){
+      const key = norm(t);
+      // Pretty label: keep prefix coloring later
+      tagLabelByKey.set(key, tagLabelByKey.get(key) || t);
+      tagCount.set(key, (tagCount.get(key)||0)+1);
+    }
+  }
+
+  // --- state ---
+  const state = {
+    q: '',
+    sort: 'az',
+    alpha: '',           // 'a' | '#' | ''
+    status: 'all',       // all | verified | draft | deprecated
+    cats: new Set(),     // canonical keys (lowercase)
+    tags: new Set(),     // canonical keys (lowercase, includes prefixes like "topic:xyz")
+  };
+
+  // --- DOM ---
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => [...document.querySelectorAll(sel)];
+  const cardsEl = $('#cards');
+  const resultInfo = $('#resultInfo');
+  const detail = $('#detail');
+  const d = {
+    title: $('#dTitle'),
+    status: $('#dStatus'),
+    aliases: $('#dAliases'),
+    body: $('#dBody'),
+    chips: $('#dChips'),
+    sources: $('#dSources')
+  };
+
+  // build A–Z
+  const alphaEl = $('#alpha');
+  const letters = ['#',...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+  for (const L of letters){
+    const b = document.createElement('button');
+    b.className='alpha-btn';
+    b.textContent=L;
+    b.dataset.val=L;
+    b.addEventListener('click',()=>{
+      const v = L === state.alpha ? '' : L;
+      state.alpha = v;
+      $$('[data-alpha]').forEach(x=>x.setAttribute('aria-pressed', x.dataset.alpha===v ? 'true':'false'));
+      b.setAttribute('aria-pressed', state.alpha? 'true':'false');
+      render();
+    });
+    b.dataset.alpha=L;
+    b.setAttribute('aria-pressed','false');
+    alphaEl.appendChild(b);
+  }
+
+  // status
+  $('#statusRow').addEventListener('click', e=>{
+    const btn = e.target.closest('.pill'); if(!btn) return;
+    state.status = btn.dataset.val;
+    $$('#statusRow .pill').forEach(x=>x.setAttribute('aria-pressed', x===btn ? 'true':'false'));
+    render();
+  });
+
+  // category chips
+  function renderFacetChips(container, itemsMap, selectedSet, filterText='', isTag=false){
+    container.innerHTML='';
+    const entries = [...itemsMap.entries()]
+      .filter(([k])=>!filterText || itemsMap.get(k).toLowerCase().includes(filterText.toLowerCase()))
+      .sort((a,b)=> itemsMap.get(a[0]).localeCompare(itemsMap.get(b[0])));
+    for (const [key,label] of entries){
+      const count = (isTag? tagCount : catCount).get(key) || 0;
+      const el = document.createElement('button');
+      el.className='chip';
+      el.setAttribute('aria-pressed', selectedSet.has(key) ? 'true':'false');
+      el.innerHTML = `<span>${label}</span><span class="count">(${count})</span>`;
+      el.addEventListener('click',()=>{
+        if (selectedSet.has(key)) selectedSet.delete(key); else selectedSet.add(key);
+        renderFacets(); render();
+      });
+      container.appendChild(el);
+    }
+  }
+
+  function renderFacets(){
+    renderFacetChips($('#cats'), catLabelByKey, state.cats, $('#catFilter').value, false);
+    renderFacetChips($('#tags'), tagLabelByKey, state.tags, $('#tagFilter').value, true);
+    // active filters row
+    const wrap = $('#activeFilters'); wrap.innerHTML='';
+    const addActive = (kind,key,label)=>{
+      const b=document.createElement('span'); b.className='chip';
+      b.innerHTML=`${label} <span class="count mini">${kind}</span>`;
+      b.title=`Remove ${label}`;
+      b.addEventListener('click',()=>{
+        (kind==='category'? state.cats: state.tags).delete(key); renderFacets(); render();
+      });
+      wrap.appendChild(b);
+    };
+    for(const k of state.cats) addActive('category',k,catLabelByKey.get(k) || k);
+    for(const k of state.tags) addActive('tag',k,tagLabelByKey.get(k) || k);
+    if(!state.cats.size && !state.tags.size && !state.alpha && state.status==='all' && !state.q) {
+      const span=document.createElement('span'); span.className='mini'; span.textContent='No filters active';
+      wrap.appendChild(span);
+    }
+  }
+
+  $('#catFilter').addEventListener('input', ()=>renderFacets());
+  $('#tagFilter').addEventListener('input', ()=>renderFacets());
+  $('#clear').addEventListener('click', ()=>{
+    state.q=''; $('#q').value='';
+    state.alpha=''; $$('#alpha .alpha-btn').forEach(b=>b.setAttribute('aria-pressed','false'));
+    state.status='all'; $$('#statusRow .pill').forEach((b,i)=>b.setAttribute('aria-pressed', i===0?'true':'false'));
+    state.cats.clear(); state.tags.clear();
+    renderFacets(); render();
+  });
+
+  // search & sort
+  $('#q').addEventListener('input', e=>{ state.q = e.target.value; render(); });
+  $('#sort').addEventListener('change', e=>{ state.sort = e.target.value; render(); });
+
+  // core filtering
+  function passesFilters(it){
+    // status
+    if(state.status!=='all' && norm(it.status)!==state.status) return false;
+    // alpha
+    if(state.alpha){
+      const ch = it.term?.[0] || '';
+      if(state.alpha==='#'){
+        if(/[A-Za-z]/.test(ch)) return false;
+      }else{
+        if (norm(ch)!==norm(state.alpha)) return false;
+      }
+    }
+    // categories (OR)
+    if(state.cats.size){
+      const keys = (it.categories||[]).map(norm);
+      if (!keys.some(k=>state.cats.has(k))) return false;
+    }
+    // tags (OR) — tags are already canonical like "topic:xyz"
+    if(state.tags.size){
+      const keys = (it.tags||[]).map(norm);
+      if (!keys.some(k=>state.tags.has(k))) return false;
+    }
+    // query
+    if(state.q){
+      const q = state.q.trim();
+      // fielded filters in q (e.g., category:"conversational design" tag:"topic:prompting")
+      const fieldRegex = /\b(category|tag|status):"([^"]+)"|\b(category|tag|status):([^ \t]+)\b/gi;
+      let m, localOk=true;
+      const reqCats=new Set(), reqTags=new Set(); let reqStatus=null;
+      while((m = fieldRegex.exec(q))){
+        const key=(m[1]||m[3])?.toLowerCase(); const val=norm(m[2]||m[4]||'');
+        if(key==='category') reqCats.add(val);
+        else if(key==='tag') reqTags.add(val);
+        else if(key==='status') reqStatus = val;
+      }
+      if(reqStatus && norm(it.status)!==reqStatus) localOk=false;
+      if(reqCats.size){
+        const keys=(it.categories||[]).map(norm);
+        if(![...reqCats].some(k=>keys.includes(k))) localOk=false;
+      }
+      if(reqTags.size){
+        const keys=(it.tags||[]).map(norm);
+        if(![...reqTags].some(k=>keys.includes(k))) localOk=false;
+      }
+      // keyword part (remove fielded portions)
+      const plain = q.replace(fieldRegex,' ').trim().toLowerCase();
+      if(plain){
+        const hay=[it.term,it.definition,(it.aliases||[]).join(' '),(it.categories||[]).join(' '),(it.tags||[]).join(' ')].join(' ').toLowerCase();
+        if(!hay.includes(plain)) localOk=false;
+      }
+      if(!localOk) return false;
+    }
+    return true;
+  }
+
+  function render(){
+    // sort baseline results by A/Z
+    const dir = state.sort==='az' ? 1 : -1;
+    const results = G.slice().sort(by('term',dir)).filter(passesFilters);
+
+    // update result info
+    resultInfo.textContent = `${results.length} result${results.length===1?'':'s'}`;
+
+    cardsEl.innerHTML='';
+    // incremental render
+    const batch = 40;
+    let i=0;
+    function paint(){
+      const end = Math.min(i+batch, results.length);
+      for(; i<end; i++){
+        const it = results[i];
+        const card = document.createElement('div');
+        card.className='card';
+        const statusColor = it.status==='draft'?'var(--yellow)':it.status==='deprecated'?'var(--red)':'var(--green)';
+        card.innerHTML = `
+          <h3><a href="#" data-slug="${it.slug}" class="open">${it.term}</a></h3>
+          <div class="mini">Status: <span style="color:${statusColor}">${it.status||'—'}</span>${it.aliases?.length?` • aka: ${it.aliases.join(', ')}`:''}</div>
+          <p class="mini" style="margin:8px 0 6px">${(it.definition||'').slice(0,220)}${(it.definition||'').length>220?'…':''}</p>
+          <div class="meta">
+            ${(it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')}
+            ${(it.tags||[]).map(t=>`<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${t}</button>`).join('')}
+          </div>
+        `;
+        cardsEl.appendChild(card);
+      }
+      if(i<results.length) requestIdleCallback(paint,{timeout:50});
+    }
+    paint();
+  }
+
+  // open detail
+  cardsEl.addEventListener('click', e=>{
+    const a = e.target.closest('a.open');
+    if(a){
+      e.preventDefault();
+      const slug = a.dataset.slug;
+      const it = G.find(x=>x.slug===slug);
+      if(!it) return;
+      d.title.textContent = it.term;
+      d.status.textContent = (it.status||'').toUpperCase();
+      d.status.dataset.val = norm(it.status);
+      d.aliases.textContent = it.aliases?.length ? `Also known as: ${it.aliases.join(', ')}` : '';
+      d.body.innerHTML = it.definition || '';
+      d.chips.innerHTML = ''
+        + (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')
+        + (it.tags||[]).map(t=>`<button class="chip card-tag" data-key="${norm(t)}">${t}</button>`).join('');
+      d.sources.innerHTML = it.sources?.length ?
+        ('<div class="section-title">Sources</div><ul>'
+          + it.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${s.title || s.url}</a></li>`).join('')
+          + '</ul>')
+        : '';
+      if(!detail.open) detail.showModal();
+    }
+  });
+
+  // clicking chips on cards -> add filter
+  function addFilter(kind,key){
+    if(kind==='category') state.cats.add(key); else state.tags.add(key);
+    renderFacets(); render();
+  }
+  document.addEventListener('click', e=>{
+    const c1 = e.target.closest('.card-cat'); if(c1){ addFilter('category', c1.dataset.key); }
+    const c2 = e.target.closest('.card-tag'); if(c2){ addFilter('tag', c2.dataset.key); }
+  });
+
+  // initialize facets and UI
+  renderFacets();
+  render();
+})();
+</script>
+</html>
+

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Glossary Term</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#101621;
+      --panel-2:#0f1520;
+      --muted:#cbd5e1;
+      --text:#e5ecf6;
+      --brand:#60a5fa;
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --chip:#1f2937;
+      --border:#1f2937;
+      --input:#0c111b;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#0a0f17 60%, #0c1524);
+      color:var(--text);
+      font:14px/1.35 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    a{color:var(--brand); text-decoration:none}
+    header{
+      position:sticky; top:0; z-index:3;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:linear-gradient(180deg, rgba(15,22,33,.95), rgba(15,22,33,.75));
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    .container{max-width:1100px; margin:0 auto; padding:16px}
+    .row{display:grid; grid-template-columns: 1fr 320px; gap:24px}
+    h1{font-size:22px; margin:0 0 6px 0}
+    .subtitle{color:var(--muted); margin-bottom:10px}
+    .card{
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+    .card-header{padding:14px 16px; border-bottom:1px solid var(--border); font-weight:600}
+    .card-body{padding:16px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px}
+    label{display:block; font-weight:600; margin-bottom:6px}
+    .help{color:var(--muted); font-size:12px}
+    input[type="text"], input[type="url"], textarea, select{
+      width:100%; background:var(--input); color:var(--text);
+      border:1px solid var(--border); border-radius:10px;
+      padding:10px 12px; outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    .chips{display:flex; flex-wrap:wrap; gap:6px}
+    .chip{
+      background:var(--chip); border:1px solid var(--border);
+      border-radius:999px; padding:6px 10px; display:inline-flex; gap:8px; align-items:center;
+    }
+    .chip button{background:none; border:none; color:var(--muted); cursor:pointer}
+    .btn{
+      background:var(--brand); border:none; color:white; padding:10px 14px;
+      border-radius:10px; font-weight:600; cursor:pointer;
+    }
+    .btn.secondary{background:#172036; color:var(--text); border:1px solid var(--border)}
+    .btn.ghost{background:transparent; border:1px dashed var(--border); color:var(--muted)}
+    .btn.warn{background:var(--warn); color:#0b0f14}
+    .btn.ok{background:var(--ok); color:#03140a}
+    .flex{display:flex; gap:10px; align-items:center}
+    .between{display:flex; justify-content:space-between; align-items:center}
+    .pill{display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:#0e1522; font-size:12px}
+    .pill.warn{border-color:#4b2c0a; background:#201409; color:#f8cf88}
+    .pill.ok{border-color:#0d3320; background:#062014; color:#a5f3c6}
+    .list{display:flex; flex-direction:column; gap:10px}
+    .source-row{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px}
+    .toast{position:fixed; right:18px; bottom:18px; background:#0d1a2b; border:1px solid var(--border); padding:10px 12px; border-radius:10px; display:none}
+    .warning{border-left:3px solid var(--warn); padding:8px 10px; background:#19130a; border-radius:8px; color:#f6e6c5}
+    footer{padding:24px 0; color:var(--muted)}
+    .muted{color:var(--muted)}
+    .note{font-size:12px; color:var(--muted)}
+    .section-title{margin:8px 0 4px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#9fb2ca}
+    .right{ text-align:right }
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container between">
+      <div>
+        <h1>Add Glossary Term</h1>
+        <div class="subtitle">Create a new entry. Submissions default to <span class="pill warn">draft</span> or become a <span class="pill">duplicate candidate</span> if similar entries are detected.</div>
+      </div>
+      <div class="flex">
+        <a class="btn secondary" href="./index.html">← Back to Glossary</a>
+        <button id="btnLoadLS" class="btn ghost">Load saved draft</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container row">
+    <section class="card">
+      <div class="card-header">Term details</div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div>
+            <label for="term">Term *</label>
+            <input id="term" type="text" placeholder="e.g., Prompt Architecture" required />
+            <div class="help">Primary display name.</div>
+          </div>
+          <div>
+            <label for="aliases">Aliases</label>
+            <input id="aliases" type="text" placeholder="comma-separated, e.g., Virtual Brain, V-Brain" />
+            <div class="help">Optional. Synonyms seen in the wild.</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div>
+            <label for="definition">Definition *</label>
+            <textarea id="definition" placeholder="Clear, concise description with key context." required></textarea>
+          </div>
+          <div>
+            <label for="notes">Notes</label>
+            <textarea id="notes" placeholder="Extra information, caveats, editorial notes."></textarea>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div>
+            <label for="categories">Categories *</label>
+            <input id="categories" list="categoryOptions" type="text" placeholder="Add one or more; press Enter" />
+            <datalist id="categoryOptions"></datalist>
+            <div id="categoryChips" class="chips" style="margin-top:8px;"></div>
+            <div class="help">Type to see existing categories; press Enter to add. Use concise, lowercase names.</div>
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input id="tags" list="tagOptions" type="text" placeholder="e.g., type:framework, topic:prompting; press Enter" />
+            <datalist id="tagOptions"></datalist>
+            <div id="tagChips" class="chips" style="margin-top:8px;"></div>
+            <div class="help">Use key:value (e.g., <span class="mono">type:principle</span>, <span class="mono">topic:reasoning</span>, <span class="mono">phase:prompting</span>).</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="between">
+            <label>Sources</label>
+            <button id="btnAddSource" class="btn ghost" type="button">+ Add source</button>
+          </div>
+          <div id="sources" class="list" style="margin-top:8px;"></div>
+          <div class="help">Each source row is (Title, URL). Optional.</div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <label for="related">Related terms</label>
+          <input id="related" list="termOptions" type="text" placeholder="Start typing to search existing terms; press Enter to add" />
+          <datalist id="termOptions"></datalist>
+          <div id="relatedChips" class="chips" style="margin-top:8px;"></div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="section-title">Status (auto)</div>
+          <div class="flex">
+            <span id="statusPill" class="pill warn">draft</span>
+            <span id="dupNote" class="note hidden">Potential duplicate detected; status will be <b>duplicate-candidate</b>.</span>
+          </div>
+        </div>
+
+        <div id="dupWarning" class="warning hidden" style="margin-top:12px;"></div>
+
+        <div class="between" style="margin-top:16px;">
+          <div class="flex">
+            <button id="btnSave" class="btn ok" type="button">Save term</button>
+            <button id="btnCopySnippet" class="btn secondary" type="button">Copy JS snippet</button>
+            <button id="btnDownloadJSON" class="btn secondary" type="button">Download JSON</button>
+          </div>
+          <div class="right">
+            <div class="note">Progress autosaves to your browser every few seconds.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <div class="card-header">Helper</div>
+      <div class="card-body">
+        <div class="section-title">Tips</div>
+        <ul class="note">
+          <li>Keep definitions concise, neutral, and referential.</li>
+          <li>Prefer existing categories; add new sparingly.</li>
+          <li>Use tags in <span class="mono">key:value</span> form to keep filters powerful.</li>
+        </ul>
+        <div class="section-title">Preview (read-only)</div>
+        <pre id="preview" class="mono" style="white-space:pre-wrap; background:#0d1422; border:1px solid var(--border); border-radius:10px; padding:10px; max-height:360px; overflow:auto;">Fill fields to see preview…</pre>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container">
+    <div class="muted">This page appends your entry to <span class="mono">GLOSSARY</span> in-memory for preview and exports a ready-to-paste
+      <span class="mono">GLOSSARY.push({...})</span> snippet. Server persistence & moderation flows will come next.</div>
+  </footer>
+
+  <div id="toast" class="toast mono"></div>
+
+  <script src="./glossary.data.js"></script>
+  <script>
+    // ---------- Utilities (kept local to this page) ----------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    const norm = (s) => (s||'').toString().trim().toLowerCase()
+      .normalize('NFKD').replace(/[\\u0300-\\u036f]/g,''); // strip accents
+
+    const slugify = (s) => norm(s)
+      .replace(/&/g,' and ')
+      .replace(/[^a-z0-9\\s-]/g,'')
+      .replace(/\\s+/g,'-')
+      .replace(/-+/g,'-')
+      .replace(/^-|-$/g,'');
+
+    const uniq = (arr) => Array.from(new Set(arr.filter(Boolean)));
+
+    // Simple similarity for duplicate detection (Jaro-Winkler-lite)
+    function similarity(a,b){
+      a = norm(a); b = norm(b);
+      if(!a || !b) return 0;
+      if(a === b) return 1;
+      const len = Math.max(a.length, b.length);
+      let matches = 0;
+      for(let i=0;i<Math.min(a.length,b.length);i++){
+        if(a[i]===b[i]) matches++;
+      }
+      return matches/len * 0.6 + (a.includes(b)||b.includes(a) ? 0.4 : 0);
+    }
+
+    // ---------- Data bootstrap ----------
+    window.GLOSSARY = window.GLOSSARY || [];
+    const existingTerms = () => window.GLOSSARY.map(t => ({slug:t.slug, term:t.term, aliases:t.aliases||[]}));
+
+    function collectCategories(){
+      const set = new Set();
+      for(const t of window.GLOSSARY){
+        (t.categories||[]).forEach(c => set.add(norm(c)));
+      }
+      return Array.from(set).sort();
+    }
+    function collectTags(){
+      const set = new Set();
+      for(const t of window.GLOSSARY){
+        (t.tags||[]).forEach(tag => set.add(norm(tag)));
+      }
+      return Array.from(set).sort();
+    }
+
+    // Populate datalists
+    function hydrateDatalists(){
+      const catDs = $("#categoryOptions"); catDs.innerHTML = "";
+      for(const c of collectCategories()){
+        const opt = document.createElement('option'); opt.value = c; catDs.appendChild(opt);
+      }
+      const tagDs = $("#tagOptions"); tagDs.innerHTML = "";
+      for(const t of collectTags()){
+        const opt = document.createElement('option'); opt.value = t; tagDs.appendChild(opt);
+      }
+      const termDs = $("#termOptions"); termDs.innerHTML = "";
+      for(const t of existingTerms()){
+        const opt = document.createElement('option'); opt.value = t.term; termDs.appendChild(opt);
+      }
+    }
+
+    // ---------- Token inputs (categories, tags, related) ----------
+    function attachTokenInput(inputSel, chipsSel, validator){
+      const input = $(inputSel);
+      const chips = $(chipsSel);
+      const state = [];
+
+      function addToken(v){
+        v = validator ? validator(v) : v;
+        if(!v) return;
+        if(state.includes(v)) return;
+        state.push(v);
+        render();
+        input.value = "";
+        autosave();
+        updatePreview();
+      }
+      function removeToken(v){
+        const i = state.indexOf(v);
+        if(i>=0){ state.splice(i,1); render(); autosave(); updatePreview(); }
+      }
+      function render(){
+        chips.innerHTML = "";
+        for(const v of state){
+          const el = document.createElement('span');
+          el.className = "chip";
+          el.innerHTML = \`\${v} <button title="Remove" aria-label="Remove">✕</button>\`;
+          el.querySelector('button').addEventListener('click', () => removeToken(v));
+          chips.appendChild(el);
+        }
+      }
+      input.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){
+          e.preventDefault();
+          addToken(input.value);
+        } else if(e.key === 'Backspace' && !input.value && state.length){
+          removeToken(state[state.length-1]);
+        }
+      });
+      input.addEventListener('change', () => addToken(input.value));
+      return { get: () => [...state], add: addToken, remove: removeToken, clear: () => {state.splice(0); render();} };
+    }
+
+    const catTokens = attachTokenInput("#categories","#categoryChips", v => norm(v));
+    const tagTokens = attachTokenInput("#tags","#tagChips", v => {
+      v = norm(v);
+      if(!v.includes(":")) return null;
+      return v;
+    });
+    const relTokens = attachTokenInput("#related","#relatedChips", v => {
+      const byTerm = existingTerms().find(x => norm(x.term) === norm(v));
+      if(byTerm) return byTerm.slug;
+      // allow raw slug entry
+      return slugify(v);
+    });
+
+    // ---------- Sources repeater ----------
+    function addSourceRow(title="", url=""){
+      const row = document.createElement('div');
+      row.className = "source-row";
+      row.innerHTML = \`
+        <div><label class="note">Title</label><input type="text" class="src-title" placeholder="e.g., ACM paper" value="\${title.replace(/"/g,'&quot;')}" /></div>
+        <div><label class="note">URL</label><input type="url" class="src-url" placeholder="https://…" value="\${url.replace(/"/g,'&quot;')}" /></div>
+        <div class="right"><button class="btn ghost" type="button">Remove</button></div>
+      \`;
+      row.querySelector('button').addEventListener('click', () => { row.remove(); autosave(); updatePreview(); });
+      $("#sources").appendChild(row);
+    }
+    $("#btnAddSource").addEventListener('click', () => addSourceRow());
+
+    function readSources(){
+      const out = [];
+      $$("#sources .source-row").forEach(row => {
+        const t = row.querySelector('.src-title').value.trim();
+        const u = row.querySelector('.src-url').value.trim();
+        if(t || u){
+          out.push({ title: t || (u ? new URL(u).hostname : ""), url: u });
+        }
+      });
+      return out;
+    }
+
+    // ---------- Duplicate detection ----------
+    function detectDuplicate(term, aliases){
+      const slug = slugify(term);
+      const alset = new Set(aliases.map(norm));
+      let best = null;
+      for(const t of window.GLOSSARY){
+        const score = Math.max(
+          similarity(term, t.term),
+          ...t.aliases?.map(a => similarity(term, a)) || [0]
+        );
+        const aliasHit = (t.aliases||[]).some(a => alset.has(norm(a)));
+        if(slug === t.slug || aliasHit || score >= 0.9){
+          best = t; break;
+        }
+      }
+      return best;
+    }
+
+    // ---------- Build object & preview ----------
+    function buildObject(){
+      const term = $("#term").value.trim();
+      const aliases = $("#aliases").value.split(",").map(s => s.trim()).filter(Boolean);
+      const definition = $("#definition").value.trim();
+      const notes = $("#notes").value.trim();
+      const categories = uniq(catTokens.get().map(norm));
+      const tags = uniq(tagTokens.get().map(norm));
+      const related = uniq(relTokens.get().map(norm));
+      let status = "draft";
+      const dup = detectDuplicate(term, aliases);
+      const slug = slugify(term);
+      if(dup){
+        status = "duplicate-candidate";
+        $("#dupWarning").classList.remove("hidden");
+        $("#dupWarning").innerHTML = \`Possible duplicate of <b>\${dup.term}</b> (<span class="mono">\${dup.slug}</span>). Your submission will be marked as <b>duplicate-candidate</b>.\`;
+        $("#dupNote").classList.remove("hidden");
+      }else{
+        $("#dupWarning").classList.add("hidden");
+        $("#dupNote").classList.add("hidden");
+      }
+      $("#statusPill").textContent = status;
+      $("#statusPill").className = "pill " + (status==="draft" ? "warn" : "");
+
+      const sources = readSources();
+
+      const obj = {
+        slug,
+        term,
+        aliases,
+        definition,
+        sources,
+        categories,
+        tags,
+        related,
+        status,
+        notes
+      };
+      return obj;
+    }
+
+    function updatePreview(){
+      const obj = buildObject();
+      const snippet = "GLOSSARY.push(\\n  " + JSON.stringify(obj, null, 2).replace(/^/gm, "  ").trim() + "\\n);";
+      $("#preview").textContent = snippet;
+      autosave();
+    }
+
+    $$("#term, #aliases, #definition, #notes, #categories, #tags, #related").forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    // ---------- Save / Copy / Download ----------
+    function toast(msg){
+      const t = $("#toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      setTimeout(()=> t.style.display = "none", 1800);
+    }
+
+    $("#btnCopySnippet").addEventListener('click', async () => {
+      const obj = buildObject();
+      const snippet = "GLOSSARY.push(\\n  " + JSON.stringify(obj, null, 2).replace(/^/gm, "  ").trim() + "\\n);";
+      await navigator.clipboard.writeText(snippet);
+      toast("Copied snippet to clipboard");
+    });
+
+    $("#btnDownloadJSON").addEventListener('click', () => {
+      const obj = buildObject();
+      const blob = new Blob([JSON.stringify(obj,null,2)], {type:"application/json"});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${obj.slug||'glossary-term'}.json`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    $("#btnSave").addEventListener('click', () => {
+      const obj = buildObject();
+      if(!obj.term || !obj.definition || !obj.categories.length){
+        toast("Please fill Term, Definition, and at least one Category.");
+        return;
+      }
+      window.GLOSSARY.push(obj);
+      updatePreview();
+      toast("Appended to in-memory GLOSSARY (not persisted). Export with buttons.");
+    });
+
+    // ---------- Autosave to localStorage ----------
+    const LS_KEY = "addGlossaryTermDraft";
+    function autosave(){
+      const obj = buildObject();
+      localStorage.setItem(LS_KEY, JSON.stringify(obj));
+    }
+    function loadDraft(){
+      const s = localStorage.getItem(LS_KEY);
+      if(!s) return false;
+      try{
+        const d = JSON.parse(s);
+        $("#term").value = d.term || "";
+        $("#aliases").value = (d.aliases||[]).join(", ");
+        $("#definition").value = d.definition || "";
+        $("#notes").value = d.notes || "";
+        catTokens.clear(); (d.categories||[]).forEach(v => catTokens.add(v));
+        tagTokens.clear(); (d.tags||[]).forEach(v => tagTokens.add(v));
+        relTokens.clear(); (d.related||[]).forEach(v => relTokens.add(v));
+        $("#sources").innerHTML = "";
+        (d.sources||[]).forEach(s => addSourceRow(s.title||"", s.url||""));
+        updatePreview();
+        return true;
+      }catch(e){ return false; }
+    }
+    $("#btnLoadLS").addEventListener('click', () => {
+      if(loadDraft()) toast("Loaded saved draft"); else toast("No saved draft found");
+    });
+
+    // ---------- Init ----------
+    hydrateDatalists();
+    addSourceRow(); // start with one empty row
+    updatePreview();
+    setInterval(autosave, 5000);
+  </script>
+</body>
+</html>
+
