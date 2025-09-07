@@ -182,10 +182,14 @@
   </article>
 </dialog>
 
+<script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
 <script src="glossary.data.js"></script>
+  
 <script>
 (function(){
-  const G = (globalThis.GLOSSARY && Array.isArray(GLOSSARY)) ? GLOSSARY : (globalThis.GlossaryAPI?.all?.() ?? []);
+const G = Array.isArray(globalThis.GLOSSARY)
+  ? globalThis.GLOSSARY
+  : (globalThis.GlossaryAPI?.all?.() ?? []);
 
   // helpers
   const norm = s => (s||'').toString().trim().toLowerCase();
