@@ -290,7 +290,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:framework","topic:prompting","phase:prompting"],
     related: ["clear-path-forward-framework","rubric-approach"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -460,7 +460,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:technique","topic:evaluation","phase:evaluation"],
     related: ["raccca-framework","prompt-fine-tuning"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -999,7 +999,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["sequential-linear-prompting","multi-step-interactions"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -1023,7 +1023,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["parallel-prompting","infinite-generation"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -3530,7 +3530,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:approach","topic:genai","phase:overview"],
     related: ["large-language-model-llm","decoding"],
-    status: "duplicate_candidate",
+    status: "duplicate_candidate", "verified"
     notes: "Duplicate with earlier Generative AI entry; merge if desired."
   },
   {
@@ -4821,7 +4821,7 @@ GLOSSARY.push(
     categories: ["benchmarks & evaluations"],
     tags: ["type:benchmark","topic:reasoning","phase:evaluation"],
     related: ["mmlu","big-bench"],
-    status: "duplicate_candidate",
+    status: "duplicate_candidate", "verified"
     notes: "Alias of ARB—keep one canonical."
   },
   { slug: "big-bench-dup", term: "“BIG-bench” (quoted)", aliases: [],
@@ -4830,7 +4830,7 @@ GLOSSARY.push(
     categories: ["benchmarks & evaluations"],
     tags: ["type:cleanup","topic:admin","phase:maintenance"],
     related: ["big-bench"],
-    status: "duplicate_candidate",
+    status: "duplicate_candidate", "verified"
     notes: "Can be merged to canonical BIG-Bench."
   }
 );
