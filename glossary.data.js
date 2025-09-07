@@ -3037,7 +3037,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:concept","topic:ai","phase:overview"],
     related: ["machine-learning-ml","natural-language-processing-nlp","large-language-model-llm"],
-    status: "duplicate_candidate",
+    status: "duplicate_candidate", "verified",
     notes: "Duplicate of existing AI entry; merge slugs if desired."
   },
   {
@@ -3062,7 +3062,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:concept","topic:ml","phase:overview"],
     related: ["deep-learning","optimization","overfitting"],
-    status: "duplicate_candidate",
+    status: "duplicate_candidate", "verified",
     notes: "Duplicate of earlier ML entry if present."
   },
   {
