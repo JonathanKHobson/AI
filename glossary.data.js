@@ -290,7 +290,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:framework","topic:prompting","phase:prompting"],
     related: ["clear-path-forward-framework","rubric-approach"],
-    status: "verified",
+    status: "draft",
     notes: "Needs source"
   },
   {
@@ -460,7 +460,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:technique","topic:evaluation","phase:evaluation"],
     related: ["raccca-framework","prompt-fine-tuning"],
-    status: "verified",
+    status: "draft",
     notes: "Needs source"
   },
   {
@@ -999,7 +999,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["sequential-linear-prompting","multi-step-interactions"],
-    status: "verified",
+    status: "draft",
     notes: "Needs source"
   },
   {
@@ -1023,7 +1023,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["parallel-prompting","infinite-generation"],
-    status: "verified",
+    status: "draft",
     notes: "Needs source"
   },
   {
@@ -3037,7 +3037,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:concept","topic:ai","phase:overview"],
     related: ["machine-learning-ml","natural-language-processing-nlp","large-language-model-llm"],
-    status: "duplicate_candidate", "verified",
+    status: "duplicate_candidate",
     notes: "Duplicate of existing AI entry; merge slugs if desired."
   },
   {
@@ -3062,7 +3062,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:concept","topic:ml","phase:overview"],
     related: ["deep-learning","optimization","overfitting"],
-    status: "duplicate_candidate", "verified",
+    status: "duplicate_candidate",
     notes: "Duplicate of earlier ML entry if present."
   },
   {
@@ -3530,7 +3530,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:approach","topic:genai","phase:overview"],
     related: ["large-language-model-llm","decoding"],
-    status: "duplicate_candidate", "verified"
+    status: "duplicate_candidate",
     notes: "Duplicate with earlier Generative AI entry; merge if desired."
   },
   {
@@ -4821,7 +4821,7 @@ GLOSSARY.push(
     categories: ["benchmarks & evaluations"],
     tags: ["type:benchmark","topic:reasoning","phase:evaluation"],
     related: ["mmlu","big-bench"],
-    status: "duplicate_candidate", "verified"
+    status: "duplicate_candidate",
     notes: "Alias of ARB—keep one canonical."
   },
   { slug: "big-bench-dup", term: "“BIG-bench” (quoted)", aliases: [],
@@ -4830,7 +4830,7 @@ GLOSSARY.push(
     categories: ["benchmarks & evaluations"],
     tags: ["type:cleanup","topic:admin","phase:maintenance"],
     related: ["big-bench"],
-    status: "duplicate_candidate", "verified"
+    status: "duplicate_candidate",
     notes: "Can be merged to canonical BIG-Bench."
   }
 );
