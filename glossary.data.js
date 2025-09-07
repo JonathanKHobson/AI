@@ -1,11 +1,7 @@
 
 
-/* ---------------------------------------------
-   Vibe Glossary – Data Preamble / Runtime Core
-   ---------------------------------------------
-   Paste this block at the TOP of glossary.data.js
-   before any GLOSSARY.push(...) calls.
-*/
+(function(g){ g.GLOSSARY = Array.isArray(g.GLOSSARY) ? g.GLOSSARY : []; })(globalThis);
+
 
 (function initGlossaryRuntime(global) {
   // Allow multiple loads safely
