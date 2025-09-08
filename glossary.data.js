@@ -7560,6 +7560,264 @@ GLOSSARY.push(
   }
 );
 
+GLOSSARY.push(
+  // --- Community‑driven prompt engineering techniques ---
+  {
+    slug: "recursive-self-improvement-prompting-rsip",
+    term: "Recursive Self‑Improvement Prompting (RSIP)",
+    aliases: ["rsip", "recursive self improvement prompting"],
+    definition: `A meta‑prompting technique in which the model iteratively generates an answer, critiques its own output for specific weaknesses and then produces an improved version.  The process repeats multiple times with each loop focusing on different aspects for improvement, culminating in a final, refined result【744132232082781†L52-L72】【744132232082781†L81-L84】.  This self‑critique loop is especially effective for creative writing, documentation and argument development because it leverages the model’s ability to identify and address its own shortcomings.`,
+    sources: [
+      { title: "Reddit post: Advanced Prompt Engineering Techniques for 2025", url: "https://www.reddit.com/r/PromptEngineering/comments/1k7jrt7/advanced_prompt_engineering_techniques_for_2025/" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:technique", "topic:iterative-refinement", "topic:self-improvement", "phase:prompting"],
+    related: ["context-aware-decomposition-cad", "self-refine-prompting", "iterative-refinement"],
+    status: "draft",
+    notes: "Emerging from community practice; emphasises iterative self‑critique to improve output quality."
+  },
+  {
+    slug: "context-aware-decomposition-cad",
+    term: "Context‑Aware Decomposition (CAD)",
+    aliases: ["cad", "context aware decomposition"],
+    definition: `A strategy for tackling complex, multi‑part tasks.  The prompt instructs the model to identify core components of the problem, explain why each component matters, determine what information or approach is needed for it, solve each part in isolation, then synthesize these partial solutions into a holistic answer—all while maintaining a “thinking journal” that records reasoning【744132232082781†L88-L115】.  By preserving the overall context during decomposition, CAD mitigates tunnel vision and produces more comprehensive solutions.`,
+    sources: [
+      { title: "Reddit post: Advanced Prompt Engineering Techniques for 2025", url: "https://www.reddit.com/r/PromptEngineering/comments/1k7jrt7/advanced_prompt_engineering_techniques_for_2025/" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:technique", "topic:decomposition", "topic:reasoning", "phase:prompting"],
+    related: ["recursive-self-improvement-prompting-rsip", "plan-and-solve-p-s", "least-to-most-ltm"],
+    status: "draft",
+    notes: "Encourages breaking problems into parts without losing sight of the overall objective."
+  },
+  {
+    slug: "controlled-hallucination-for-ideation-chi",
+    term: "Controlled Hallucination for Ideation (CHI)",
+    aliases: ["chi", "controlled hallucination prompting"],
+    definition: `A creative ideation pattern that deliberately harnesses a model’s tendency to hallucinate.  Users ask the model to generate several speculative innovations or approaches that might not exist yet, provide detailed descriptions and theoretical principles, identify what would be required to implement them, clearly label them as speculative, and then critically analyse which ideas might be feasible【744132232082781†L127-L161】.  By explicitly embracing speculative outputs while separating them from factual content, CHI can inspire novel directions in product design, research and brainstorming sessions.`,
+    sources: [
+      { title: "Reddit post: Advanced Prompt Engineering Techniques for 2025", url: "https://www.reddit.com/r/PromptEngineering/comments/1k7jrt7/advanced_prompt_engineering_techniques_for_2025/" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:technique", "topic:creativity", "topic:ideation", "phase:prompting"],
+    related: ["controlled-hallucination", "brainstorming", "multi-perspective-simulation-mps"],
+    status: "draft",
+    notes: "Useful for generating speculative ideas while maintaining clarity about their uncertain status."
+  },
+  {
+    slug: "multi-perspective-simulation-mps",
+    term: "Multi‑Perspective Simulation (MPS)",
+    aliases: ["mps", "multi perspective simulation"],
+    definition: `A prompting technique that instructs the model to analyse an issue by generating multiple sophisticated perspectives, articulating each perspective’s assumptions, arguments and potential blind spots, simulating a constructive dialogue between them, and concluding with an integrated analysis【744132232082781†L166-L199】.  MPS produces nuanced, balanced answers and is particularly valuable for policy analysis, ethical discussions and complex decision making where different viewpoints coexist.`,
+    sources: [
+      { title: "Reddit post: Advanced Prompt Engineering Techniques for 2025", url: "https://www.reddit.com/r/PromptEngineering/comments/1k7jrt7/advanced_prompt_engineering_techniques_for_2025/" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:technique", "topic:analysis", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-thought-cot", "graph-of-thought-got", "algorithm-of-thought-aot"],
+    status: "draft",
+    notes: "Encourages critical thinking by simulating dialogue among diverse viewpoints."
+  },
+  {
+    slug: "calibrated-confidence-prompting-ccp",
+    term: "Calibrated Confidence Prompting (CCP)",
+    aliases: ["ccp", "confidence-calibrated prompting"],
+    definition: `A technique that asks the model to assign an explicit confidence level to each claim (e.g., virtually certain >95%, highly confident 80–95%, moderately confident 60–80%, speculative 40–60%, unknown) and to justify high‑confidence statements while noting what additional information would increase confidence for lower‑confidence ones【744132232082781†L201-L236】.  This approach helps users weigh AI‑generated information appropriately and reduces over‑confident misstatements, making it valuable for research, due diligence and technical problem solving.`,
+    sources: [
+      { title: "Reddit post: Advanced Prompt Engineering Techniques for 2025", url: "https://www.reddit.com/r/PromptEngineering/comments/1k7jrt7/advanced_prompt_engineering_techniques_for_2025/" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:technique", "topic:confidence-calibration", "topic:reasoning", "phase:prompting"],
+    related: ["recursive-self-improvement-prompting-rsip", "chain-of-natural-language-inference-nli", "chain-of-verification"],
+    status: "draft",
+    notes: "Encourages transparency about uncertainty in generated answers."
+  },
+  // --- Emerging reasoning frameworks and thought structures ---
+  {
+    slug: "graph-of-thought-got",
+    term: "Graph of Thoughts (GoT)",
+    aliases: ["got", "graph-of-thought"],
+    definition: `A reasoning model that represents knowledge and intermediate reasoning steps as a network of interconnected nodes rather than a linear chain or simple tree.  This structure mirrors neural connections in the brain and is well suited for collaborative tasks, brainstorming and capturing multidirectional reasoning【48464194070942†L105-L111】.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:structure", "topic:reasoning", "phase:prompting"],
+    related: ["tree-of-thought-tot", "algorithm-of-thought-aot", "skeleton-of-thought-sot"],
+    status: "draft",
+    notes: "Extends chain‑ and tree‑based reasoning into a more flexible graph structure."
+  },
+  {
+    slug: "algorithm-of-thought-aot",
+    term: "Algorithm of Thoughts (AoT)",
+    aliases: ["aot", "algorithm-of-thought"],
+    definition: `A framework that directs the model to break complex problems down using explicit algorithms during inference.  AoT treats reasoning as executing an algorithmic procedure, offering a structured path to solutions at the cost of higher computational effort【48464194070942†L121-L127】.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:structure", "topic:reasoning", "topic:algorithm", "phase:prompting"],
+    related: ["chain-of-thought-cot", "tree-of-thought-tot", "graph-of-thought-got"],
+    status: "draft",
+    notes: "Useful for tasks requiring formal logic or procedural reasoning."
+  },
+  {
+    slug: "skeleton-of-thought-sot",
+    term: "Skeleton of Thoughts (SoT)",
+    aliases: ["sot", "skeleton-of-thought"],
+    definition: `A two‑stage prompting structure where the model first generates an outline (the “skeleton”) of the solution and then fills in details in parallel【48464194070942†L129-L135】.  This parallel development boosts efficiency and supports multi‑answer or multitask settings by allowing multiple threads of thought to unfold simultaneously.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:structure", "topic:reasoning", "topic:parallelism", "phase:prompting"],
+    related: ["algorithm-of-thought-aot", "graph-of-thought-got", "rephrase-and-respond-rar"],
+    status: "draft",
+    notes: "Encourages outline‑first reasoning followed by parallel detail expansion."
+  },
+  {
+    slug: "rephrase-and-respond-rar",
+    term: "Rephrase and Respond (RaR)",
+    aliases: ["rar", "rephrase and respond"],
+    definition: `A simple yet effective prompting pattern where the model first rephrases an ambiguous or poorly structured question before answering it.  The rephrasing can occur in one or two steps and increases clarity; when combined with chain‑of‑thought reasoning it enhances both precision and depth in the final answer【48464194070942†L137-L143】.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:clarification", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-thought-cot", "self-refine-prompting", "recursive-self-improvement-prompting-rsip"],
+    status: "draft",
+    notes: "Helps models handle ambiguous questions by restating them before answering."
+  },
+  {
+    slug: "self-refine-prompting",
+    term: "Self‑Refine Prompting",
+    aliases: ["self refine", "self-refine"],
+    definition: `A prompting pattern where the model evaluates its own output and refines it iteratively without external feedback.  This reduces hallucinations and errors and is valuable for autonomous systems and self‑improving agents【48464194070942†L145-L159】.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:iterative-refinement", "topic:reasoning", "phase:prompting"],
+    related: ["recursive-self-improvement-prompting-rsip", "rephrase-and-respond-rar"],
+    status: "draft",
+    notes: "Encourages models to self‑critique and improve outputs without human intervention."
+  },
+  {
+    slug: "chain-of-natural-language-inference-nli",
+    term: "Chain of Natural Language Inference (NLI)",
+    aliases: ["nli", "chain of nli", "chain-of-nli"],
+    definition: `A hierarchical framework that detects hallucinations in model outputs and then uses natural‑language inference to correct them【48464194070942†L160-L166】.  It is particularly important in high‑integrity applications such as law or medicine where accuracy and verifiable reasoning are critical.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:structure", "topic:safety", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-verification", "calibrated-confidence-prompting-ccp", "chain-of-explanation"],
+    status: "draft",
+    notes: "Adds an explicit hallucination‑detection and correction step to reasoning chains."
+  },
+  {
+    slug: "chain-of-verification",
+    term: "Chain of Verification",
+    aliases: ["verification chain", "self-check prompting", "chain-of-check"],
+    definition: `A self‑check mechanism where the model generates validation questions about its own answer and uses these to refine and verify its response【48464194070942†L168-L174】.  This promotes critical thinking and improves reliability by prompting the model to interrogate its own reasoning.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:verification", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-natural-language-inference-nli", "recursive-self-improvement-prompting-rsip", "calibrated-confidence-prompting-ccp"],
+    status: "draft",
+    notes: "Encourages the model to ask and answer its own validation questions."
+  },
+  {
+    slug: "chain-of-density-cod",
+    term: "Chain of Density (CoD)",
+    aliases: ["cod", "chain of density", "chain-of-density"],
+    definition: `A summarization framework that iteratively condenses a broad summary while adding key information.  The process starts with a broad statement, repeatedly rewrites it with selected key points, incorporates missing details and reduces length at each iteration to produce a concise, information‑rich summary【77292443032943†L178-L193】【77292443032943†L200-L206】.  CoD yields layered summaries with high information density and minimal loss of meaning【48464194070942†L178-L182】.`,
+    sources: [
+      { title: "Analytics Vidhya: Chain of Density in Prompt Engineering", url: "https://www.analyticsvidhya.com/blog/2024/07/chain-of-density-in-prompt-engineering/" },
+      { title: "Medium: Thought Structures in Prompt Engineering", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:summarization", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-dictionary", "chain-of-explanation", "chain-of-knowledge"],
+    status: "draft",
+    notes: "Provides iterative summarization that increases information density while shortening text."
+  },
+  {
+    slug: "chain-of-dictionary",
+    term: "Chain of Dictionary",
+    aliases: ["codict", "chain of dictionary"],
+    definition: `A prompt structure that translates text step by step by referencing multilingual dictionaries; it links word equivalents across languages to support translation in low‑resource scenarios【48464194070942†L184-L190】.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:translation", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-symbol", "chain-of-knowledge", "chain-of-density-cod"],
+    status: "draft",
+    notes: "Helps models translate languages by linking word equivalents across dictionaries."
+  },
+  {
+    slug: "chain-of-symbol",
+    term: "Chain of Symbol",
+    aliases: ["cos", "chain of symbol"],
+    definition: `A reasoning technique that replaces lengthy natural language descriptions with symbolic representations to simplify reasoning and planning【48464194070942†L192-L197】.  This symbolic abstraction reduces cognitive load and is useful for tasks such as planning, coding and logic‑based problem solving.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:reasoning", "topic:symbolic", "phase:prompting"],
+    related: ["chain-of-dictionary", "chain-of-density-cod", "algorithm-of-thought-aot"],
+    status: "draft",
+    notes: "Helps break down complex instructions into symbolic steps for easier processing."
+  },
+  {
+    slug: "chain-of-explanation",
+    term: "Chain of Explanation",
+    aliases: ["coe", "chain of explanation"],
+    definition: `A safety‑oriented prompt structure that identifies trigger words and targets in harmful or manipulative text and explains their significance【48464194070942†L199-L205】.  It helps moderators and safety systems detect malicious content and understand harmful intent in online conversations.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures", "security & safety"],
+    tags: ["type:technique", "topic:safety", "topic:moderation", "phase:prompting"],
+    related: ["chain-of-verification", "chain-of-natural-language-inference-nli", "calibrated-confidence-prompting-ccp"],
+    status: "draft",
+    notes: "Useful in content moderation and AI safety contexts."
+  },
+  {
+    slug: "chain-of-knowledge",
+    term: "Chain of Knowledge",
+    aliases: ["cok", "chain of knowledge"],
+    definition: `A prompt structure that gathers preliminary answers from multiple knowledge sources, assesses and ranks these knowledge blocks for relevance and quality, and then compiles an integrated answer【48464194070942†L207-L213】.  This method improves accuracy and completeness when retrieving information from diverse sources.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:technique", "topic:retrieval", "topic:reasoning", "phase:prompting"],
+    related: ["chain-of-density-cod", "context-aware-decomposition-cad", "graph-of-thought-got"],
+    status: "draft",
+    notes: "Helps aggregate and prioritize information from multiple sources."
+  },
+  {
+    slug: "chain-of-emotion",
+    term: "Chain of Emotion",
+    aliases: ["coe", "chain of emotion"],
+    definition: `A prompt technique that analyses language to detect and simulate emotions in the response【48464194070942†L215-L220】.  It supports empathetic AI applications such as virtual therapy assistants and social chatbots by enabling the model to respond with appropriate emotional understanding.`,
+    sources: [
+      { title: "Medium: Thought Structures in Prompt Engineering (Apr 7 2025)", url: "https://medium.com/gen-ai-adventures/thought-structures-in-prompt-engineering-making-llms-think-better-3b057b298ae3" }
+    ],
+    categories: ["reasoning models or structures", "emotional thinking frameworks"],
+    tags: ["type:technique", "topic:emotion", "topic:empathy", "phase:prompting"],
+    related: ["chain-of-explanation", "chain-of-knowledge", "graph-of-thought-got"],
+    status: "draft",
+    notes: "Facilitates emotionally intelligent interactions by focusing on emotional cues."
+  }
+);
+
 
 /* --------------------------------------------------
    Vibe Glossary – Indexers, Search, & UI Adapters
