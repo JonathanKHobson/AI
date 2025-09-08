@@ -17,7 +17,7 @@
       --green:#2ecc71;
       --yellow:#f1c40f;
       --red:#e74c3c;
-      --purple:#a78bfa;           /* for duplicate_candidate */
+      --purple:#a78bfa; /* duplicate_candidate */
       --header-h:64px;
       --sidebar-w:320px;
       --radius:12px;
@@ -26,8 +26,7 @@
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      color:var(--text);
+      margin:0;color:var(--text);
       background:linear-gradient(180deg,#0b0f14,#0a0d12);
       font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
     }
@@ -36,10 +35,9 @@
 
     .app{display:grid;grid-template-rows:var(--header-h) 1fr;height:100%}
     header{
-      display:flex;align-items:center;gap:12px;
-      padding:0 16px;background:rgba(18,24,33,.8);backdrop-filter:blur(8px);
-      border-bottom:1px solid var(--border);
-      position:sticky;top:0;z-index:5;
+      display:flex;align-items:center;gap:12px;padding:0 16px;
+      background:rgba(18,24,33,.8);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;
     }
     header h1{font-size:18px;margin:0 4px 0 0;font-weight:600;letter-spacing:.2px}
     .search{flex:1;display:flex;gap:10px;align-items:center}
@@ -53,6 +51,7 @@
     .main{overflow:auto;position:relative}
 
     .section-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:10px 0 8px}
+    .group-title{font-size:12px;color:var(--muted);margin:10px 0 6px}
 
     .alpha-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
     .alpha-btn{
@@ -148,7 +147,7 @@
       <div class="facet-group">
         <div class="section-title">Tags</div>
         <input class="facet-search" id="tagFilter" placeholder="Filter tags…" />
-        <div id="tags" class="chips"></div>
+        <div id="tags"></div>
       </div>
 
       <div class="footer-note">Click chips on cards to filter by that category/tag.</div>
@@ -182,25 +181,45 @@
   </article>
 </dialog>
 
+<!-- Ensure the global exists before loading data -->
 <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
 <script src="glossary.data.js"></script>
-  
 <script>
 (function(){
-const G = Array.isArray(globalThis.GLOSSARY)
-  ? globalThis.GLOSSARY
-  : (globalThis.GlossaryAPI?.all?.() ?? []);
+  // safer global read
+  const G = Array.isArray(globalThis.GLOSSARY)
+    ? globalThis.GLOSSARY
+    : (globalThis.GlossaryAPI?.all?.() ?? []);
 
   // helpers
   const norm = s => (s||'').toString().trim().toLowerCase();
   const by = (k,dir=1) => (a,b)=> (a[k]||'').localeCompare(b[k]||'')*dir;
+  const titleCase = s => s ? s.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase()) : s;
 
-  // canonical label + counts
+  // tag prefix parsing
+  function splitTag(tag){
+    const raw = String(tag||'');
+    const i = raw.indexOf(':');
+    if(i===-1) return {prefix:'other', value:raw, displayValue:titleCase(raw), raw};
+    const prefix = raw.slice(0,i) || 'other';
+    const value = raw.slice(i+1) || '';
+    return {prefix:prefix.toLowerCase(), value, displayValue:titleCase(value), raw};
+  }
+
+  // canonical label + counts (categories unchanged)
   const catLabelByKey = new Map(), tagLabelByKey = new Map();
   const catCount = new Map(),       tagCount = new Map();
   for (const it of G){
-    for (const c of (it.categories||[])){ const key = norm(c); catLabelByKey.set(key, catLabelByKey.get(key)||c); catCount.set(key,(catCount.get(key)||0)+1); }
-    for (const t of (it.tags||[])){ const key = norm(t); tagLabelByKey.set(key, tagLabelByKey.get(key)||t); tagCount.set(key,(tagCount.get(key)||0)+1); }
+    for (const c of (it.categories||[])){
+      const key = norm(c);
+      catLabelByKey.set(key, catLabelByKey.get(key)||c);
+      catCount.set(key,(catCount.get(key)||0)+1);
+    }
+    for (const t of (it.tags||[])){
+      const key = norm(t);
+      tagLabelByKey.set(key, tagLabelByKey.get(key)||t);
+      tagCount.set(key,(tagCount.get(key)||0)+1);
+    }
   }
 
   // state
@@ -223,7 +242,7 @@ const G = Array.isArray(globalThis.GLOSSARY)
     alphaEl.appendChild(b);
   });
 
-  // Status (now includes duplicate_candidate)
+  // Status
   $('#statusRow').addEventListener('click', e=>{
     const btn=e.target.closest('.pill'); if(!btn) return;
     state.status = btn.dataset.val;
@@ -231,14 +250,14 @@ const G = Array.isArray(globalThis.GLOSSARY)
     render();
   });
 
-  // facet rendering
-  function renderFacetChips(container, itemsMap, selectedSet, filterText='', isTag=false){
+  // Categories facet (unchanged)
+  function renderFacetChips(container, itemsMap, selectedSet, filterText=''){
     container.innerHTML='';
     const entries=[...itemsMap.entries()]
       .filter(([k])=>!filterText || itemsMap.get(k).toLowerCase().includes(filterText.toLowerCase()))
       .sort((a,b)=> itemsMap.get(a[0]).localeCompare(itemsMap.get(b[0])));
     for (const [key,label] of entries){
-      const count=(isTag?tagCount:catCount).get(key)||0;
+      const count=catCount.get(key)||0;
       const el=document.createElement('button'); el.className='chip';
       el.setAttribute('aria-pressed', selectedSet.has(key)?'true':'false');
       el.innerHTML=`<span>${label}</span><span class="count">(${count})</span>`;
@@ -246,13 +265,68 @@ const G = Array.isArray(globalThis.GLOSSARY)
       container.appendChild(el);
     }
   }
+
+  // NEW: Tags grouped by prefix with header and stripped display
+  const TAG_GROUP_ORDER = ['phase','topic','status','other']; // preferred order
+  function renderTagGroups(){
+    const wrap = $('#tags');
+    const filterText = ($('#tagFilter').value||'').toLowerCase();
+    wrap.innerHTML='';
+    // build groups
+    const groups = new Map(); // prefix -> [{key, display, count}]
+    for(const [key, rawLabel] of tagLabelByKey.entries()){
+      const {prefix, displayValue} = splitTag(rawLabel);
+      if(filterText && !displayValue.toLowerCase().includes(filterText) && !prefix.includes(filterText)) continue;
+      const arr = groups.get(prefix) || [];
+      arr.push({ key, display: displayValue, count: tagCount.get(key)||0 });
+      groups.set(prefix, arr);
+    }
+    // sort groups by preferred order then alphabetic
+    const sortedPrefixes = [...groups.keys()].sort((a,b)=>{
+      const ia = TAG_GROUP_ORDER.indexOf(a); const ib = TAG_GROUP_ORDER.indexOf(b);
+      return (ia===-1?999:ia) - (ib===-1?999:ib) || a.localeCompare(b);
+    });
+
+    for(const prefix of sortedPrefixes){
+      const items = groups.get(prefix).sort((a,b)=> a.display.localeCompare(b.display));
+      const title = document.createElement('div');
+      title.className='group-title';
+      title.textContent = titleCase(prefix);
+      wrap.appendChild(title);
+
+      const row = document.createElement('div');
+      row.className='chips';
+      for(const {key,display,count} of items){
+        const el=document.createElement('button'); el.className='chip';
+        el.setAttribute('aria-pressed', state.tags.has(key)?'true':'false');
+        el.title = tagLabelByKey.get(key) || display; // tooltip shows full tag (e.g., "phase:analysis")
+        el.dataset.key = key;
+        el.innerHTML = `<span>${display}</span><span class="count">(${count})</span>`;
+        el.addEventListener('click',()=>{
+          if(state.tags.has(key)) state.tags.delete(key); else state.tags.add(key);
+          renderFacets(); render();
+        });
+        row.appendChild(el);
+      }
+      wrap.appendChild(row);
+    }
+  }
+
   function renderFacets(){
-    renderFacetChips($('#cats'), catLabelByKey, state.cats, $('#catFilter').value, false);
-    renderFacetChips($('#tags'), tagLabelByKey, state.tags, $('#tagFilter').value, true);
+    renderFacetChips($('#cats'), catLabelByKey, state.cats, $('#catFilter').value);
+    renderTagGroups();
+
     const wrap=$('#activeFilters'); wrap.innerHTML='';
     const add=(kind,key,label)=>{ const b=document.createElement('span'); b.className='chip'; b.innerHTML=`${label} <span class="count mini">${kind}</span>`; b.title=`Remove ${label}`; b.addEventListener('click',()=>{ (kind==='category'?state.cats:state.tags).delete(key); renderFacets(); render(); }); wrap.appendChild(b); };
+
     for(const k of state.cats) add('category',k,catLabelByKey.get(k)||k);
-    for(const k of state.tags) add('tag',k,tagLabelByKey.get(k)||k);
+    // tags: show friendly "Prefix: Value"
+    for(const k of state.tags){
+      const raw = tagLabelByKey.get(k) || k;
+      const {prefix, displayValue} = splitTag(raw);
+      add(titleCase(prefix), k, `${titleCase(prefix)}: ${displayValue}`);
+    }
+
     if(!state.cats.size && !state.tags.size && !state.alpha && state.status==='all' && !state.q){
       const span=document.createElement('span'); span.className='mini'; span.textContent='No filters active'; wrap.appendChild(span);
     }
@@ -286,7 +360,7 @@ const G = Array.isArray(globalThis.GLOSSARY)
       if(!keys.some(k=>state.cats.has(k))) return false;
     }
     if(state.tags.size){
-      const keys=(it.tags||[]).map(norm);
+      const keys=(it.tags||[]).map(norm); // still uses full normalized tags
       if(!keys.some(k=>state.tags.has(k))) return false;
     }
     if(state.q){
@@ -326,6 +400,14 @@ const G = Array.isArray(globalThis.GLOSSARY)
           it.status==='deprecated'?'var(--red)':
           it.status==='duplicate_candidate'?'var(--purple)':
           'var(--green)';
+
+        // display-friendly tags on cards (strip prefix), but keep full key in data-key
+        const catChips = (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('');
+        const tagChips = (it.tags||[]).map(t=>{
+          const {displayValue} = splitTag(t);
+          return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
+        }).join('');
+
         const card=document.createElement('div');
         card.className='card';
         card.innerHTML = `
@@ -340,8 +422,8 @@ const G = Array.isArray(globalThis.GLOSSARY)
           </div>
           <p class="mini" style="margin:8px 0 6px">${(it.definition||'').slice(0,220)}${(it.definition||'').length>220?'…':''}</p>
           <div class="meta">
-            ${(it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')}
-            ${(it.tags||[]).map(t=>`<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${t}</button>`).join('')}
+            ${catChips}
+            ${tagChips}
           </div>
         `;
         cardsEl.appendChild(card);
@@ -366,7 +448,7 @@ const G = Array.isArray(globalThis.GLOSSARY)
     d.body.innerHTML = it.definition || '';
     d.chips.innerHTML = ''
       + (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')
-      + (it.tags||[]).map(t=>`<button class="chip card-tag" data-key="${norm(t)}">${t}</button>`).join('');
+      + (it.tags||[]).map(t=>{ const {displayValue}=splitTag(t); return `<button class="chip card-tag" data-key="${norm(t)}" title="${t}">${displayValue}</button>`; }).join('');
     d.sources.innerHTML = it.sources?.length
       ? ('<div class="section-title">Sources</div><ul>'
         + it.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${s.title || s.url}</a></li>`).join('')
