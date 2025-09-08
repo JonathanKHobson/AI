@@ -103,19 +103,22 @@
     .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:#0d131b;color:var(--text);margin-bottom:8px}
     .facet-group{margin-bottom:18px}
     .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
-      .menu{ position:relative }
-  .menu .btn{ background:#1b2533; border:1px solid #1b2838; color:#e7eff7 }
-  .menu-pop{
-    position:absolute; right:0; top:calc(100% + 6px);
-    display:flex; flex-direction:column; gap:0;
-    background:#0d131b; border:1px solid #1b2838; border-radius:12px;
-    min-width:220px; padding:6px; box-shadow:0 16px 48px rgba(0,0,0,.35); z-index:50;
-  }
-  .menu-item{
-    text-align:left; background:#0f151d; color:#e7eff7; border:1px solid transparent;
-    padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
-  }
-  .menu-item:hover{ background:#13202e; border-color:#1b2838 }
+    .menu{ position:relative }
+    .menu .btn{ background:#1b2533; border:1px solid #1b2838; color:#e7eff7 }
+    .menu-pop{
+      position:absolute; right:0; top:calc(100% + 6px);
+      display:flex; flex-direction:column; gap:0;
+      background:#0d131b; border:1px solid #1b2838; border-radius:12px;
+      min-width:220px; padding:6px; box-shadow:0 16px 48px rgba(0,0,0,.35); z-index:50;
+    }
+    .menu-item{
+      text-align:left; background:#0f151d; color:#e7eff7; border:1px solid transparent;
+      padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
+    }
+    .menu-item:hover{ background:#13202e; border-color:#1b2838 }
+
+    /* <- THIS ensures the dropdown really hides on all browsers */
+    .menu-pop[hidden]{ display:none !important; }
   </style>
 </head>
 <body>
@@ -130,18 +133,18 @@
       </select>
     </div>
     <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
-    <!-- Download menu -->
-<div class="menu">
-  <button id="downloadBtn" class="btn">Download ▾</button>
-  <div id="downloadMenu" class="menu-pop" hidden>
-    <button class="menu-item" data-format="json">Download JSON</button>
-    <button class="menu-item" data-format="js">Download JS</button>
-    <button class="menu-item" data-format="csv">Download CSV</button>
-    <button class="menu-item" data-format="md">Download Markdown</button>
-    <button class="menu-item" data-format="txt">Download Text</button>
-  </div>
-</div>
 
+    <!-- Download menu -->
+    <div class="menu" id="downloadMenuWrap">
+      <button id="downloadBtn" class="btn" aria-haspopup="true" aria-expanded="false">Download ▾</button>
+      <div id="downloadMenu" class="menu-pop" hidden>
+        <button class="menu-item" data-format="json">Download JSON</button>
+        <button class="menu-item" data-format="js">Download JS</button>
+        <button class="menu-item" data-format="csv">Download CSV</button>
+        <button class="menu-item" data-format="md">Download Markdown</button>
+        <button class="menu-item" data-format="txt">Download Text</button>
+      </div>
+    </div>
   </header>
 
   <div class="layout">
@@ -209,6 +212,7 @@
 <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
 <script src="glossary.data.js"></script>
 <script>
+/* ============= MAIN APP (unchanged) ============= */
 (function(){
   // safer global read
   const G = Array.isArray(globalThis.GLOSSARY)
@@ -492,24 +496,11 @@
   renderFacets();
   render();
 })();
-  </script>
-<script>
-(function(){
-  // --- MENU TOGGLE ---
-  const menuBtn = document.getElementById('downloadBtn');
-  const menu = document.getElementById('downloadMenu');
-  if(menuBtn && menu){
-    const close = (e)=>{ if(!menu.contains(e.target) && e.target!==menuBtn){ menu.hidden = true; document.removeEventListener('click', close); } };
-    menuBtn.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      menu.hidden = !menu.hidden;
-      if(!menu.hidden){ setTimeout(()=>document.addEventListener('click', close),0); }
-    });
-    menu.querySelectorAll('.menu-item').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ exportGlossary(btn.dataset.format); menu.hidden = true; });
-    });
-  }
+</script>
 
+<script>
+/* ============= DOWNLOAD MENU + EXPORTERS (menu fixed) ============= */
+(function(){
   // --- DATA SOURCE (supports either global array or your GlossaryAPI facade) ---
   function allEntries(){
     if (Array.isArray(window.GLOSSARY)) return window.GLOSSARY;
@@ -530,7 +521,6 @@
     const s = (v==null?'':String(v));
     return `"${s.replace(/"/g,'""')}"`;
   };
-  const arrJoin = (xs, sep=' | ') => (xs||[]).join(sep);
   const escJS = (s)=>String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
   const escBT = (s)=>String(s||'').replace(/`/g,'\\`');
 
@@ -551,9 +541,7 @@
   }
 
   // --- EXPORTERS ---
-  function asJSON(list){
-    return JSON.stringify(list, null, 2);
-  }
+  function asJSON(list){ return JSON.stringify(list, null, 2); }
   function asJS(list){
     // Produces a single JS file you can load: window.GLOSSARY_EXPORT = [ ... ];
     const blocks = list.map(t => {
@@ -622,7 +610,7 @@ ${blocks}
     return blocks.join('\n\n-----\n\n');
   }
 
-  // Entrypoint
+  // Entrypoint (kept exactly as your working version)
   function exportGlossary(fmt){
     const data = allEntries();
     if(!data.length){ alert('No glossary data found to export.'); return; }
@@ -636,10 +624,45 @@ ${blocks}
       case 'txt':  return download(`glossary-${stamp}.txt`,  'text/plain;charset=utf-8', asText(data));
     }
   }
+  window.__exportGlossary = exportGlossary; // optional debug hook
 
-  // Expose for debugging if needed
-  window.__exportGlossary = exportGlossary;
+  /* ---- MENU TOGGLE (fixed) ---- */
+  const wrap = document.getElementById('downloadMenuWrap');
+  const btn  = document.getElementById('downloadBtn');
+  const pop  = document.getElementById('downloadMenu');
+
+  if (wrap && btn && pop){
+    let hoverTimer = null;
+
+    const open  = ()=>{ pop.hidden = false; btn.setAttribute('aria-expanded','true'); };
+    const close = ()=>{ pop.hidden = true;  btn.setAttribute('aria-expanded','false'); };
+    const scheduleClose = ()=>{ clearTimeout(hoverTimer); hoverTimer = setTimeout(close, 120); };
+
+    // Toggle on button click
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      pop.hidden ? open() : close();
+    });
+
+    // Keep open while hovering; close shortly after leaving
+    wrap.addEventListener('mouseenter', ()=> clearTimeout(hoverTimer));
+    wrap.addEventListener('mouseleave', scheduleClose);
+
+    // Close on outside click / ESC / scroll / resize
+    document.addEventListener('click', (e)=>{ if(!wrap.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    window.addEventListener('scroll', close, { passive:true });
+    window.addEventListener('resize', close);
+
+    // Wire items and close after export
+    pop.querySelectorAll('.menu-item').forEach(item=>{
+      item.addEventListener('click', ()=>{
+        exportGlossary(item.dataset.format);
+        close();
+      });
+    });
+  }
 })();
-
 </script>
+</body>
 </html>
