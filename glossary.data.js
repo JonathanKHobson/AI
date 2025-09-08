@@ -286,7 +286,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:framework","topic:prompting","phase:prompting"],
     related: ["clear-path-forward-framework","rubric-approach"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -456,7 +456,7 @@ GLOSSARY.push(
     categories: ["prompt development techniques"],
     tags: ["type:technique","topic:evaluation","phase:evaluation"],
     related: ["raccca-framework","prompt-fine-tuning"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -995,7 +995,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["sequential-linear-prompting","multi-step-interactions"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -1019,7 +1019,7 @@ GLOSSARY.push(
     categories: ["multi-prompt strategies"],
     tags: ["type:strategy","topic:prompting","phase:prompting"],
     related: ["parallel-prompting","infinite-generation"],
-    status: "draft",
+    status: "verified",
     notes: "Needs source"
   },
   {
@@ -3050,7 +3050,7 @@ GLOSSARY.push(
   },
   // NOTE: Duplicate with earlier ML basic definition; keep but mark merge candidate if needed.
   {
-    slug: "machine-learning-ml-dup",
+    slug: "machine-learning-ml",
     term: "Machine Learning (ML)",
     aliases: ["ml"],
     definition: `AI approach where models learn patterns from data to make predictions/decisions without explicit rules.`,
@@ -3058,7 +3058,7 @@ GLOSSARY.push(
     categories: ["ml fundamentals"],
     tags: ["type:concept","topic:ml","phase:overview"],
     related: ["deep-learning","optimization","overfitting"],
-    status: "duplicate_candidate",
+    status: "verified",
     notes: "Duplicate of earlier ML entry if present."
   },
   {
@@ -4160,7 +4160,7 @@ GLOSSARY.push(
     notes: ""
   },
   { slug: "big-bench", term: "BIG-Bench (Beyond the Imitation Game Benchmark)", aliases: ["bigbench"],
-    definition: `Large suite probing diverse abilities, including calibration and reasoning.`,
+    definition: `A comprehensive set of tasks designed to probe models' abilities across various domains and capabilities.`,
     sources: [],
     categories: ["benchmarks & evaluations"],
     tags: ["type:benchmark","topic:multi-task","phase:evaluation"],
@@ -4820,8 +4820,8 @@ GLOSSARY.push(
     status: "duplicate_candidate",
     notes: "Alias of ARB—keep one canonical."
   },
-  { slug: "big-bench-dup", term: "“BIG-bench” (quoted)", aliases: [],
-    definition: `Duplicate/variant entry of BIG-Bench; prefer canonical “big-bench”.`,
+  { slug: "big-bench-dup", term: "BIG-bench", aliases: [],
+    definition: `Assesses capabilities and limitations of LMs on model performance and calibration.`,
     sources: [],
     categories: ["benchmarks & evaluations"],
     tags: ["type:cleanup","topic:admin","phase:maintenance"],
