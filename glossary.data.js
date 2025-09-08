@@ -6773,6 +6773,794 @@ GLOSSARY.push(
   }
 );
 
+GLOSSARY.push(
+  {
+    slug: "method-actors",
+    term: "Method Actors",
+    aliases: [],
+    definition: `A prompt engineering mental model likening LLMs to actors, prompts to scripts, and outputs to performances. Under this approach, an LLM “method acts” a role via its prompt, which significantly improved puzzle-solving performance in experiments:contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}.`,
+    sources: [
+      { title: "LLMs as Method Actors (arXiv Nov 2024)", url: "https://arxiv.org/abs/2411.05778" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:prompting","type:mental-model"],
+    related: ["chain-of-thought-cot","prompt-architect"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "multi-objective-directional-prompting-modp",
+    term: "Multi-Objective Directional Prompting (MODP)",
+    aliases: ["modp"],
+    definition: `A prompt optimization framework that treats prompt design as a multi-objective, metrics-driven problem:contentReference[oaicite:2]{index=2}. MODP considers not only task accuracy but also a model’s intrinsic behavior and other goals (e.g. safety), then iteratively adjusts prompts to balance these objectives:contentReference[oaicite:3]{index=3}.`,
+    sources: [
+      { title: "MODP: Multi Objective Directional Prompting (arXiv Apr 2025)", url: "https://arxiv.org/abs/2504.18722" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:prompting","type:framework"],
+    related: ["mixture-of-formats-mof","greedy-prompt-engineering-strategy-greedy-pes"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "mixture-of-formats-mof",
+    term: "Mixture of Formats (MOF)",
+    aliases: [],
+    definition: `A robustness technique where prompts are shown to the model in diverse style formats during few-shot examples:contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}. By training or prompting with varied styles (e.g. different wording or ordering), MOF reduces prompt brittleness and sensitivity to superficial prompt changes:contentReference[oaicite:6]{index=6}.`,
+    sources: [
+      { title: "Towards LLMs Robustness to Prompt Format Styles (NAACL 2025)", url: "https://aclanthology.org/2025.naacl-srw.51/" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:robustness","type:technique"],
+    related: ["prompt-brittleness","few-shot-learning"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "greedy-prompt-engineering-strategy-greedy-pes",
+    term: "Greedy Prompt Engineering Strategy (Greedy PES)",
+    aliases: ["greedy pes"],
+    definition: `An approach to systematically optimize prompts by exhaustively searching and scoring variations:contentReference[oaicite:7]{index=7}:contentReference[oaicite:8]{index=8}. Greedy PES adjusts prompt phrasing and structure in iterations, selecting changes that improve multi-metric performance (e.g. accuracy, coherence, safety) on evaluation data:contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}.`,
+    sources: [
+      { title: "Advancing Multimodal LLMs: Optimizing Prompts (Appl. Sci. 2025)", url: "https://www.mdpi.com/2076-3417/15/7/3992" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:optimization","type:technique"],
+    related: ["multi-objective-directional-prompting-modp","self-refine"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "mixture-of-prompt-experts-mope",
+    term: "Mixture of Prompt Experts (MoPE)",
+    aliases: [],
+    definition: `A multimodal prompting technique that divides input features among multiple specialized “prompt experts”:contentReference[oaicite:11]{index=11}. Each prompt expert handles a different modality or aspect, and their outputs are fused, which improved performance and adaptiveness in multimodal tasks compared to a single unified prompt:contentReference[oaicite:12]{index=12}.`,
+    sources: [
+      { title: "MoPE: Mixture of Prompt Experts (arXiv Jan 2025)", url: "https://arxiv.org/abs/2403.10568" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:multimodal","type:framework"],
+    related: ["mixture-of-formats-mof","visual-prompting"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "context-aware-decomposition-cad",
+    term: "Context-Aware Decomposition (CAD)",
+    aliases: [],
+    definition: `A prompting technique that breaks a complex problem into sub-tasks while keeping the big-picture context in mind:contentReference[oaicite:13]{index=13}:contentReference[oaicite:14]{index=14}. The AI is instructed to maintain a “reasoning journal” of the overall goal and relationships between parts as it solves each piece, which avoids losing context that simple decomposition might cause:contentReference[oaicite:15]{index=15}:contentReference[oaicite:16]{index=16}.`,
+    sources: [
+      { title: "Context-Aware Decomposition (Prompt-On, Aug 2025)", url: "https://prompton.wordpress.com/2025/08/03/%F0%9F%9A%80-context-aware-decomposition-supercharge-ai-for-complex-problems-%F0%9F%A7%A9/" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:reasoning","type:technique"],
+    related: ["chain-of-thought-cot","chain-of-verification-cove"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "automatic-prompt-engineer-ape",
+    term: "Automatic Prompt Engineer (APE)",
+    aliases: ["automatic prompt engineer"],
+    definition: `A method where an LLM itself generates and evaluates a large pool of candidate instructions to find the most effective prompt for a task:contentReference[oaicite:17]{index=17}. In APE, one model proposes many possible prompts and another model scores their performance, achieving human-level prompt design on numerous tasks without human prompt writers:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}.`,
+    sources: [
+      { title: "Large Language Models are Human-Level Prompt Engineers (arXiv 2023)", url: "https://arxiv.org/abs/2211.01910" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:prompting","type:automation"],
+    related: ["self-refine","greedy-prompt-engineering-strategy-greedy-pes"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "recursive-self-improvement-prompting-rsip",
+    term: "Recursive Self-Improvement Prompting (RSIP)",
+    aliases: ["recursive self-improvement"],
+    definition: `An iterative refinement approach where the AI generates an answer, then critiques its own output and attempts a revised answer, repeating this cycle:contentReference[oaicite:20]{index=20}. By serving as its own reviewer and editor in each round, an LLM can significantly improve the quality of its solution or writing over multiple iterations:contentReference[oaicite:21]{index=21}.`,
+    sources: [
+      { title: "Advances in LLM Prompting (Reddit r/PromptEngineering, 2025)", url: "https://www.reddit.com/r/PromptEngineering/comments/1ki9qwb/advances_in_llm_prompting_and_model_capabilities/" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:iterative","type:technique"],
+    related: ["self-refine","chain-of-verification-cove"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "self-refine",
+    term: "Self-Refine",
+    aliases: ["self-refinement"],
+    definition: `An approach where an LLM is prompted to refine its initial answer using feedback it generates itself:contentReference[oaicite:22]{index=22}. For example, the model produces an answer, then (possibly under a new prompt) identifies flaws or areas to improve, and produces a revised answer. This loop can repeat, enabling the model to improve its output without external feedback:contentReference[oaicite:23]{index=23}:contentReference[oaicite:24]{index=24}.`,
+    sources: [
+      { title: "Self-Refine: Iterative Refinement with Self-Feedback (arXiv 2023)", url: "https://arxiv.org/abs/2303.17651" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:iterative","type:technique"],
+    related: ["recursive-self-improvement-prompting-rsip","chain-of-thought-cot"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "graph-of-thoughts-got",
+    term: "Graph of Thoughts (GoT)",
+    aliases: ["graph-of-thought"],
+    definition: `A prompting paradigm where the model explores multiple reasoning paths in a graph structure (with branches merging or intersecting) rather than a single chain:contentReference[oaicite:25]{index=25}:contentReference[oaicite:26]{index=26}. This allows backtracking and combining of different solution paths. Graph-of-Thoughts was proposed to improve complex problem solving by searching a network of reasoning steps, outperforming strictly linear chain-of-thought in some cases:contentReference[oaicite:27]{index=27}:contentReference[oaicite:28]{index=28}.`,
+    sources: [
+      { title: "Graph of Thoughts: Solving Elaborate Problems with LLMs (NeurIPS 2023)", url: "https://arxiv.org/abs/2308.09687" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:reasoning","type:framework"],
+    related: ["chain-of-thought-cot","tree-of-thought-tot"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "prompt-layered-architecture-pla",
+    term: "Prompt-Layered Architecture (PLA)",
+    aliases: [],
+    definition: `A software design pattern that treats prompts as first-class modules in a system’s architecture:contentReference[oaicite:29]{index=29}:contentReference[oaicite:30]{index=30}. In PLA, an application is built in layered stages (prompt composition, prompt orchestration, response handling, memory management, etc.), allowing systematic reuse, versioning, and testing of prompts similar to software components:contentReference[oaicite:31]{index=31}:contentReference[oaicite:32]{index=32}.`,
+    sources: [
+      { title: "Prompt-Layered Architecture: AI-First Product Design (IJSRM 2024)", url: "https://ijsrm.net/index.php/ijsrm/article/view/5670" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:systems","type:framework"],
+    related: ["langchain","llama-index"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "langgpt-dual-layer-framework",
+    term: "LangGPT Dual-Layer Framework",
+    aliases: ["langgpt"],
+    definition: `A structured prompt design methodology treating prompts like a programming language:contentReference[oaicite:33]{index=33}. LangGPT introduces a two-layer prompt format: a normative, easy-to-read structure for users, and an extended layer for model consumption, enabling reusable and modular prompt components:contentReference[oaicite:34]{index=34}:contentReference[oaicite:35]{index=35}. It aims to reduce trial-and-error by bringing consistency and reusability to prompt construction.`,
+    sources: [
+      { title: "LangGPT: Structured Reusable Prompt Design (arXiv Jun 2024)", url: "https://arxiv.org/abs/2402.16929" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:prompting","type:framework"],
+    related: ["prompt-layered-architecture-pla","prompt-templates"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "mega-prompt",
+    term: "Mega-Prompt",
+    aliases: [],
+    definition: `A very large, detailed prompt that attempts to pack in all relevant instructions, context, and information for a complex task in one go:contentReference[oaicite:36]{index=36}:contentReference[oaicite:37]{index=37}. Mega-prompts can span hundreds or thousands of tokens (for models with extended context windows) to try to achieve a task in a single prompt, as opposed to breaking it into multiple steps. While fast for simple cases, they can hit context length limits and be hard to debug for very complex tasks:contentReference[oaicite:38]{index=38}:contentReference[oaicite:39]{index=39}.`,
+    sources: [
+      { title: "From Mega-Prompts to Prompt Pipelines (Medium Aug 2025)", url: "https://medium.com/@chris.xg.wang/mega-prompts-prompt-pipeline-agentic-team-235e3a794c0d" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:context","type:technique"],
+    related: ["multi-turn-conversation","prompt-brittleness"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "real-time-adaptive-prompting",
+    term: "Real-Time Adaptive Prompting",
+    aliases: ["dynamic prompting"],
+    definition: `A technique where prompts are adjusted on-the-fly as new input arrives or the context changes during a live session:contentReference[oaicite:40]{index=40}. Often used in streaming data or edge cases (e.g. wearable sensors or live feeds), the prompt includes modular slots or instructions that update continuously based on the latest information, allowing the LLM to adapt its responses moment-to-moment:contentReference[oaicite:41]{index=41}.`,
+    sources: [
+      { title: "Multimodal Prompt Engineering Trends (GoCodeo Oct 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:dynamic","type:technique"],
+    related: ["adaptive-prompting","multi-turn-conversation"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "multimodal-prompting",
+    term: "Multimodal Prompting",
+    aliases: [],
+    definition: `Prompting that involves inputs (and possibly outputs) beyond just text, such as images, audio, or other data streams:contentReference[oaicite:42]{index=42}:contentReference[oaicite:43]{index=43}. For example, a single prompt might include a text instruction alongside an image. Multimodal prompting strategies address how to fuse these inputs (e.g. describing an image in text before asking a question about it) so that LLMs can reason across modalities:contentReference[oaicite:44]{index=44}:contentReference[oaicite:45]{index=45}.`,
+    sources: [
+      { title: "The Future of Prompt Engineering: Multimodal Prompts (GoCodeo 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:multimodal","type:technique"],
+    related: ["visual-prompting","multimodal-chain-of-thought-mm-cot"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "multimodal-chain-of-thought-mm-cot",
+    term: "Multimodal Chain-of-Thought (MM-CoT)",
+    aliases: ["mm-cot"],
+    definition: `A reasoning approach extending *chain-of-thought* prompting to multimodal inputs:contentReference[oaicite:46]{index=46}. The model is guided to produce step-by-step reasoning that references each modality in sequence (e.g. *“Analyze the image… now relate it to this audio… now draw a conclusion”*), thereby making its cross-modal reasoning explicit and interpretable:contentReference[oaicite:47]{index=47}:contentReference[oaicite:48]{index=48}. MM-CoT helps ensure the model properly uses both visual and textual context in tasks like image-question answering.`,
+    sources: [
+      { title: "Key Trends Shaping Multimodal Prompting (GoCodeo 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:multimodal","type:technique"],
+    related: ["chain-of-thought-cot","multimodal-prompting"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "role-playing-prompting",
+    term: "Role-Playing Prompting",
+    aliases: ["role prompting","persona prompting"],
+    definition: `Instructing an LLM to adopt a specific role or persona as it responds:contentReference[oaicite:49]{index=49}:contentReference[oaicite:50]{index=50}. By prefacing a prompt with a role (e.g. “You are a veteran software engineer advising a novice” or “Act as a Shakespearean poet”), the model’s style, tone, and allowed knowledge are shaped by that persona. This can yield more contextually appropriate or creative outputs and is often used to guide an AI assistant’s behavior in dialogues.`,
+    sources: [
+      { title: "Role-playing Prompt Framework (arXiv Dec 2024)", url: "https://arxiv.org/abs/2406.00627" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:context","type:technique"],
+    related: ["system-prompt","persona"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "llm-guardrails",
+    term: "LLM Guardrails",
+    aliases: ["guardrails"],
+    definition: `Any agent, rule, or filtering system that monitors or adjusts an LLM’s inputs/outputs to ensure they stay safe, accurate, and on-policy:contentReference[oaicite:51]{index=51}:contentReference[oaicite:52]{index=52}. Guardrails can be as simple as regex filters or as complex as additional AI moderators. They aim to prevent harmful, biased, or disallowed content by constraining the model’s behavior via post-processing, or even by altering prompts in real-time:contentReference[oaicite:53]{index=53}:contentReference[oaicite:54]{index=54}.`,
+    sources: [
+      { title: "LLM guardrails guide AI outputs (K2View May 2025)", url: "https://www.k2view.com/blog/llm-guardrails/" }
+    ],
+    categories: ["safety"],
+    tags: ["topic:safety","type:tool"],
+    related: ["jailbreaking-jailbreak-attack","content-moderation"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "plan-and-execute-agent",
+    term: "Plan-and-Execute Agent",
+    aliases: [],
+    definition: `An LLM-based agent architecture that separates the problem-solving process into two phases: first **planning** a sequence of steps or sub-goals given a complex task, then **executing** each step with the LLM (possibly using tools) in turn:contentReference[oaicite:55]{index=55}:contentReference[oaicite:56]{index=56}. This contrasts with prompting the model to solve it in one shot or with a fixed chain. Plan-and-Execute agents have been shown to handle complex, multi-step tasks more reliably by allowing re-planning and focusing on one sub-task at a time.`,
+    sources: [
+      { title: "LangChain Blog: Plan-and-Execute Agents (2023)", url: "https://blog.langchain.com/plan-and-execute/" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:agents","type:framework"],
+    related: ["react","auto-gpt"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "guidance-library",
+    term: "Guidance (Prompting Library)",
+    aliases: ["microsoft guidance"],
+    definition: `An open-source library by Microsoft that provides a specialized syntax to intermix templating, control flow, and LLM generation calls in one prompt program:contentReference[oaicite:57]{index=57}. Guidance allows developers to guide LLM output structure (e.g., “gen” to generate text, “select” to choose options) and incorporate logic (like loops or conditionals) in prompts, yielding more deterministic and formatted outputs with fewer API calls:contentReference[oaicite:58]{index=58}:contentReference[oaicite:59]{index=59}.`,
+    sources: [
+      { title: "Microsoft Guidance GitHub README", url: "https://github.com/microsoft/guidance" }
+    ],
+    categories: ["tools"],
+    tags: ["topic:orchestration","type:library"],
+    related: ["prompt-layered-architecture-pla","langchain"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "function-calling",
+    term: "Function Calling",
+    aliases: [],
+    definition: `A capability of some LLMs (introduced by OpenAI in 2023) to output a structured JSON object calling a developer-defined function when appropriate:contentReference[oaicite:60]{index=60}:contentReference[oaicite:61]{index=61}. Instead of replying in text, the model decides a certain user query would be best handled by an external tool/API and returns a JSON with arguments. The calling application can then execute the function (e.g. a web search or database query) and return the result to the model. This mechanism bridges LLMs with external tools more reliably than prompting alone:contentReference[oaicite:62]{index=62}:contentReference[oaicite:63]{index=63}.`,
+    sources: [
+      { title: "OpenAI API introduction of function calling (June 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:tools","type:integration"],
+    related: ["automatic-prompt-engineer-ape","toolformer"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "instruction-tuning",
+    term: "Instruction Tuning",
+    aliases: [],
+    definition: `Fine-tuning a model on a dataset of many different tasks described in natural language instructions, with the outputs demonstrating the desired behavior:contentReference[oaicite:64]{index=64}. By training on diverse instruction–response pairs (possibly across hundreds of tasks), an LLM becomes much better at following novel instructions zero-shot. This technique (pioneered by FLAN and T0) underpins modern “instruction-following” models and makes them more aligned with user intentions:contentReference[oaicite:65]{index=65}.`,
+    sources: [
+      { title: "Sebastian Ruder’s NLP Newsletter: Instruction Tuning (Oct 2023)", url: "https://newsletter.ruder.io/p/instruction-tuning-vol-1" }
+    ],
+    categories: ["training techniques"],
+    tags: ["topic:alignment","type:fine-tuning"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf","few-shot-learning"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "reinforcement-learning-from-human-feedback-rlhf",
+    term: "Reinforcement Learning from Human Feedback (RLHF)",
+    aliases: ["rlhf"],
+    definition: `A fine-tuning strategy where human preference data is used as the reward signal to train the model’s behavior:contentReference[oaicite:66]{index=66}:contentReference[oaicite:67]{index=67}. Typically, human labelers rank or choose better model outputs; a reward model is trained on this, and then the base model is further optimized (often via PPO) to generate outputs that maximize this learned reward. RLHF was critical in training helpful, aligned assistants (like InstructGPT) by incorporating human judgment of safety and quality into the model’s objectives:contentReference[oaicite:68]{index=68}:contentReference[oaicite:69]{index=69}.`,
+    sources: [
+      { title: "OpenAI: Aligning Language Models to Follow Instructions (Jan 2022)", url: "https://openai.com/research/instruction-following" }
+    ],
+    categories: ["training techniques"],
+    tags: ["topic:alignment","type:fine-tuning"],
+    related: ["instruction-tuning","reinforcement-learning-from-ai-feedback-rlaif"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "chain-of-verification-cove",
+    term: "Chain-of-Verification (CoVe)",
+    aliases: [],
+    definition: `A self-checking prompting technique where after producing an initial answer, the model generates a series of verification questions about its answer, answers those, and then uses those answers to correct or refine the final output:contentReference[oaicite:70]{index=70}:contentReference[oaicite:71]{index=71}. CoVe effectively has the model double-check its work (especially factual assertions) with targeted sub-queries, significantly reducing factual errors (hallucinations) compared to a standard chain-of-thought approach:contentReference[oaicite:72]{index=72}:contentReference[oaicite:73]{index=73}.`,
+    sources: [
+      { title: "Chain-of-Verification Prompting (LearnPrompting Sep 2024)", url: "https://learnprompting.org/docs/advanced/self_criticism/chain_of_verification" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:verification","type:technique"],
+    related: ["chain-of-thought-cot","self-refine"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "self-critique-prompting",
+    term: "Self-Critique Prompting",
+    aliases: ["self-criticism prompting"],
+    definition: `Any prompt strategy that explicitly asks an LLM to review or criticize its own draft output before finalizing an answer:contentReference[oaicite:74]{index=74}. For example, after an initial response, the assistant might be prompted: *“Identify any errors or biases above.”* The model’s critique is then used to revise the answer. This approach leverages the model’s strengths in proofreading and analysis to improve accuracy or safety without external feedback:contentReference[oaicite:75]{index=75}.`,
+    sources: [
+      { title: "Introduction to Self-Criticism Prompting (LearnPrompting 2023)", url: "https://learnprompting.org/docs/intermediate/self_criticism" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:iterative","type:technique"],
+    related: ["self-refine","chain-of-verification-cove"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "system-prompt",
+    term: "System Prompt",
+    aliases: ["system message"],
+    definition: `A hidden or initial prompt that defines the AI’s role, style, and boundaries in chat-based LLMs:contentReference[oaicite:76]{index=76}. It’s provided by the developer (not the end-user) to steer the model’s behavior consistently (for example: *“You are a helpful assistant who only speaks in a formal tone…”*). The user’s prompts are then interpreted in context of this system-level instruction. System prompts are key to “steerability,” allowing constraints like refusals or personas to be enforced across interactions:contentReference[oaicite:77]{index=77}:contentReference[oaicite:78]{index=78}.`,
+    sources: [
+      { title: "ChatGPT System Message Example (Product Growth, 2025)", url: "https://www.news.aakashg.com/p/prompt-engineering" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:conversation","type:instruction"],
+    related: ["role-playing-prompting","steerability"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "steerability",
+    term: "Steerability",
+    aliases: [],
+    definition: `An LLM’s amenability to control via prompts or instructions without retraining. A model with high steerability reliably changes style or behavior when given different system or user directives (e.g. “reply tersely” or adopting a persona):contentReference[oaicite:79]{index=79}. Achieving steerability is a goal of alignment work — for instance, OpenAI’s 2023 updates explicitly improved GPT-3.5’s steerability through system messages, meaning developers can more easily guide the model’s tone and responses:contentReference[oaicite:80]{index=80}.`,
+    sources: [
+      { title: "OpenAI on new model steerability (June 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
+    ],
+    categories: ["alignment"],
+    tags: ["topic:alignment","type:property"],
+    related: ["system-prompt","helpful-honest-harmless-hhh"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "alignment-tax",
+    term: "Alignment Tax",
+    aliases: [],
+    definition: `The trade-off where aligning an LLM to be safer or follow instructions can slightly reduce its performance on other tasks:contentReference[oaicite:81]{index=81}. For example, fine-tuning a model with RLHF for harmlessness might make it worse at certain academic benchmarks – a “tax” paid in capability for better alignment. Researchers try to minimize this tax (OpenAI found mixing in some original pre-training data during RLHF could maintain performance while still improving alignment):contentReference[oaicite:82]{index=82}:contentReference[oaicite:83]{index=83}.`,
+    sources: [
+      { title: "OpenAI: Aligning Models, potential alignment tax (Jan 2022)", url: "https://openai.com/research/instruction-following" }
+    ],
+    categories: ["alignment"],
+    tags: ["topic:alignment","type:concept"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf","helpful-honest-harmless-hhh"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "helpful-honest-harmless-hhh",
+    term: "Helpful, Honest, Harmless (HHH)",
+    aliases: ["hhh"],
+    definition: `A trio of goals for aligned AI assistants: being **Helpful** (useful and following user intent), **Honest** (truthful and transparent about uncertainty), and **Harmless** (not producing dangerous or toxic outputs). The HHH principles were highlighted by Anthropic for training their Claude models, using a “constitution” of values to achieve them:contentReference[oaicite:84]{index=84}:contentReference[oaicite:85]{index=85}. Essentially, an HHH-aligned AI tries to effectively solve user requests (and admit limits), while refusing or safe-completing anything that could cause harm.`,
+    sources: [
+      { title: "Constitutional AI (Anthropic Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
+    ],
+    categories: ["alignment"],
+    tags: ["topic:alignment","type:principle"],
+    related: ["constitutional-ai","reinforcement-learning-from-human-feedback-rlhf"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "constitutional-ai",
+    term: "Constitutional AI",
+    aliases: [],
+    definition: `An alignment technique where an AI model is guided by a set of explicit written principles (a “constitution”) and uses them to critique and improve its outputs:contentReference[oaicite:86]{index=86}:contentReference[oaicite:87]{index=87}. For example, the model might have a rule like “avoid hate speech,” and when generating a response, it checks and revises its output according to that rule. This approach, used by Anthropic for Claude, involves the model generating self-critiques based on the constitution and fine-tuning on those revisions, a process known as *reinforcement learning from AI feedback (RLAIF)*:contentReference[oaicite:88]{index=88}:contentReference[oaicite:89]{index=89}.`,
+    sources: [
+      { title: "Anthropic: Constitutional AI (Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
+    ],
+    categories: ["alignment"],
+    tags: ["topic:alignment","type:training"],
+    related: ["reinforcement-learning-from-ai-feedback-rlaif","helpful-honest-harmless-hhh"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "reinforcement-learning-from-ai-feedback-rlaif",
+    term: "Reinforcement Learning from AI Feedback (RLAIF)",
+    aliases: [],
+    definition: `An alignment training method similar to RLHF but where the feedback on outputs comes from an AI model (or the trained model itself) rather than human annotators:contentReference[oaicite:90]{index=90}. In practice, an AI model is used to judge or vote on which of two outputs is better according to a set of principles, and that “AI preference” trains the policy model. RLAIF was demonstrated in Constitutional AI, where the model’s self-critiquing (per a fixed constitution) served as the feedback signal to refine the assistant:contentReference[oaicite:91]{index=91}:contentReference[oaicite:92]{index=92}.`,
+    sources: [
+      { title: "Anthropic: Constitutional AI (Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
+    ],
+    categories: ["alignment"],
+    tags: ["topic:alignment","type:training"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf","constitutional-ai"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "prompt-brittleness",
+    term: "Prompt Brittleness",
+    aliases: [],
+    definition: `The phenomenon where an LLM’s performance or output changes dramatically with small, semantically irrelevant changes in the prompt wording or format:contentReference[oaicite:93]{index=93}:contentReference[oaicite:94]{index=94}. For example, rephrasing a question or adding innocuous phrases might cause a correct answer to turn into an incorrect one (and vice-versa). Prompt brittleness makes LLM behavior unpredictable and is a motivation for techniques like Mixture of Formats and prompt robustness training:contentReference[oaicite:95]{index=95}:contentReference[oaicite:96]{index=96}.`,
+    sources: [
+      { title: "Prompt Brittleness and MOF (NAACL 2025)", url: "https://aclanthology.org/2025.naacl-srw.51/" }
+    ],
+    categories: ["challenges"],
+    tags: ["topic:robustness","type:issue"],
+    related: ["mixture-of-formats-mof","prompt-ensembling"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "eliza-effect",
+    term: "ELIZA Effect",
+    aliases: ["eliza"],
+    definition: `The tendency of people to ascribe human-like understanding or intent to AI outputs, even when the AI is just blindly generating text:contentReference[oaicite:97]{index=97}. Named after the 1960s ELIZA chatbot (which used simple pattern matching yet often convinced users it understood them), this effect leads users to anthropomorphize chatbots and assume a level of intelligence or empathy that isn’t really there:contentReference[oaicite:98]{index=98}:contentReference[oaicite:99]{index=99}. It’s a caution in prompt engineering and user experience design to remind users that the AI’s knowledge and reasoning are limited to its training data and algorithms.`,
+    sources: [
+      { title: "Wikipedia: ELIZA effect", url: "https://en.wikipedia.org/wiki/ELIZA_effect" }
+    ],
+    categories: ["challenges"],
+    tags: ["topic:human-ai","type:cognitive-bias"],
+    related: ["hallucinations","anthropomorphism"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "chatgpt",
+    term: "ChatGPT",
+    aliases: [],
+    definition: `OpenAI’s AI chatbot interface, launched publicly in Nov 2022, which popularized LLM-based conversations:contentReference[oaicite:100]{index=100}:contentReference[oaicite:101]{index=101}. ChatGPT is powered by GPT-3.5 and GPT-4 models (as of 2023) and fine-tuned for dialogue. Its release demonstrated the versatility of prompt engineering to elicit coding help, writing drafts, Q&A, etc., and led to widespread interest in conversational AI. Many prompt engineering techniques were first widely explored through ChatGPT prompts.`,
+    sources: [
+      { title: "History of ChatGPT (SearchEngineJournal)", url: "https://www.searchenginejournal.com/history-of-chatgpt/484476/" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:chatbot","type:product"],
+    related: ["gpt-4","bard"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "gpt-4",
+    term: "GPT-4",
+    aliases: [],
+    definition: `OpenAI’s flagship large language model announced in March 2023, succeeding GPT-3. It is multimodal (can accept text and images as input) and demonstrated substantially improved reasoning, creativity, and instruction-following abilities. GPT-4 has a larger knowledge base and more advanced skills than previous models; for example, it performs well on academic and professional exams and introduced features like function calling and a longer 32K token context window:contentReference[oaicite:102]{index=102}:contentReference[oaicite:103]{index=103}. Many prompt engineering techniques that worked on GPT-3 still apply, but GPT-4 generally handles complex prompts and subtle instructions more reliably.`,
+    sources: [
+      { title: "OpenAI API Release Notes (Mar 2023)", url: "https://openai.com/research/gpt-4" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["chatgpt","gpt-3-5-turbo"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "claude-2",
+    term: "Claude 2",
+    aliases: ["anthropic claude"],
+    definition: `Anthropic’s second-generation LLM (released July 2023) designed to be a helpful, harmless, and honest AI assistant. Claude 2 can handle very long inputs (up to 100K tokens) and is trained with Constitutional AI techniques for alignment. It often excels at tasks requiring extended reasoning or summarization of long documents due to its context length. Prompt engineers note that Claude tends to follow explicit formatting instructions closely and may be less likely to refuse borderline requests compared to ChatGPT (though it still has guardrails).`,
+    sources: [
+      { title: "Anthropic Claude 2 Announcement (July 2023)", url: "https://www.anthropic.com/index/claude-2" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["helpful-honest-harmless-hhh","constitutional-ai"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "llama-2",
+    term: "LLaMA 2",
+    aliases: [],
+    definition: `A family of open-source LLMs (7B, 13B, 70B parameters) released by Meta in July 2023 as the successor to LLaMA. LLaMA 2 models were trained on 2 trillion tokens and come in both a base version and a fine-tuned chat version. They are widely used in the community for custom applications because of their openness. Many instruction-following tricks and prompt patterns that work for ChatGPT also work for LLaMA 2-chat, though its quality is roughly on par with earlier GPT-3.5 models in many areas. Being open, it allows on-premises use and further fine-tuning by anyone (subject to its license).`,
+    sources: [
+      { title: "Meta AI: LLaMA 2 (July 2023)", url: "https://ai.meta.com/llama/" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["alpaca","vicuna"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "gpt-3-5-turbo",
+    term: "GPT-3.5 Turbo",
+    aliases: ["gpt-3-5","gpt3-5"],
+    definition: `The model behind the original ChatGPT (2022) – essentially an improved, chat-optimized version of GPT-3. It was the first widely deployed instruction-tuned LLM. GPT-3.5 Turbo can handle about 4K tokens (there is also a 16K version) and serves as the default for many API applications due to its speed and cost. Prompt-wise, it is less capable than GPT-4 on complex tasks, so prompt engineers often find they must use more explicit or structured prompts to get the desired output from GPT-3.5. It introduced features like the system message to steer behavior and, later, function calling support.`,
+    sources: [
+      { title: "OpenAI Model Index (2023)", url: "https://platform.openai.com/docs/models/gpt-3-5" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["chatgpt","gpt-4"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "bard",
+    term: "Bard",
+    aliases: ["google bard"],
+    definition: `Google’s conversational LLM interface (opened to public in 2023) built on its Pathways Language Model (PaLM and later PaLM 2). Bard is integrated with Google’s search and can access up-to-date information. For prompt engineers, Bard initially had more limitations (e.g. shorter outputs, more refusals) but has been rapidly improving. It allows some unique interactions like image uploads with prompts. While Bard generally follows user instructions, it may apply Google’s stricter content policies. It serves as Google’s answer to ChatGPT, and many prompts that work in ChatGPT can be tried on Bard, though the style and formatting of responses differ.`,
+    sources: [
+      { title: "Google Blog: Bard Expansion (May 2023)", url: "https://blog.google/technology/ai/updates-to-bard/" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:product"],
+    related: ["chatgpt","bing-chat"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "ernie-bot",
+    term: "ERNIE Bot",
+    aliases: ["ernie bot"],
+    definition: `A Chinese LLM-based chatbot launched by Baidu in March 2023. ERNIE Bot is based on Baidu’s ERNIE large model and was one of the first major Chinese competitors to ChatGPT. It supports multi-turn dialogue in Chinese (and some English) and handles tasks like code, calculation, and generative writing. Prompt-wise, ERNIE Bot is tuned for the Chinese language and cultural context; many prompting techniques carry over, but it may have different refusal triggers and knowledge gaps due to training on Chinese-centric data and complying with local regulations. It marked a significant step in China’s AI development, similar to how Bard did for Google.`,
+    sources: [
+      { title: "Reuters: Baidu ERNIE Bot Launch News (Mar 2023)", url: "https://www.reuters.com/technology/baidus-chatgpt-equivalent-ernie-bot-falls-short-expectations-2023-03-16/" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:product"],
+    related: ["chatgpt","vicuna"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "bing-chat",
+    term: "Bing Chat",
+    aliases: ["bing ai"],
+    definition: `Microsoft’s AI chat integrated into Bing search (launched Feb 2023) powered by OpenAI’s GPT-4. It combines a search engine with a chat interface, using web results to ground its answers. Bing Chat introduced many users to prompt engineering via its modes (e.g. “Creative” vs “Precise”) and revealed how slight prompt tweaks could alter an AI’s style and correctness. Early on, users discovered the system prompt (“Sydney”) and prompt-leaked it, showing the importance of hidden instructions. Bing Chat will cite sources for factual statements, so a prompt engineer working with it may focus on queries that encourage factual, source-supported responses. It is a prominent example of an LLM augmented with tool use (web search) via prompt integration.`,
+    sources: [
+      { title: "Microsoft: Next-Gen Bing Announcement (Feb 2023)", url: "https://blogs.microsoft.com/blog/2023/02/07/bing-chatgpt/amp/" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:search","type:product"],
+    related: ["chatgpt","function-calling"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "wizardlm",
+    term: "WizardLM",
+    aliases: [],
+    definition: `A series of open fine-tuned LLMs (2023) known for being trained on “evol-Instruct” data (instructions that increase in complexity) to push model capability. For example, WizardLM-13B was one model that demonstrated surprisingly strong performance after being fine-tuned on instructions that gradually evolve. In practice, WizardLM variants follow instructions better than base LLaMA models. As a term, “WizardLM” often implies an improved instruction-following open model (many derivatives like Wizard-Vicuna, etc.). It highlights how iterative instruction tuning (simulating a tutor guiding complexity) can yield more robust prompt following. Prompt engineers using WizardLM find it generally more responsive to complex multi-step prompts than the base model.`,
+    sources: [
+      { title: "WizardLM GitHub (2023)", url: "https://github.com/nlpxucan/WizardLM" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["vicuna","llama-2"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "vicuna",
+    term: "Vicuna",
+    aliases: [],
+    definition: `An influential 13B-parameter chat model released in March 2023, created by fine-tuning LLaMA on user-shared ChatGPT conversations. Vicuna demonstrated that relatively small models (13B) could reach ~90% of ChatGPT quality by leveraging high-quality instruction data. It sparked a wave of open chat model development. Vicuna is often used as a reference open model; prompt engineering on Vicuna is similar to ChatGPT (since that’s what it was trained on) – it responds to system/user/assistant role format and follows instructions well, albeit with less factual accuracy at times. The Vicuna project also released evaluation benchmarks like GPT-4 scoring, establishing a template for comparing chat models via prompts.`,
+    sources: [
+      { title: "Vicuna: An Open Chatbot Impressing GPT-4 (LMSYS 2023)", url: "https://vicuna.lmsys.org" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["alpaca","llama-2"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "alpaca",
+    term: "Alpaca",
+    aliases: [],
+    definition: `A 7B-parameter model fine-tuned by Stanford (Mar 2023) on 52K instruction-following demonstrations generated by OpenAI’s text-davinci-003. Alpaca was an early example of academia using OpenAI to bootstrap an instruction-tuned model from LLaMA. Its release (and replication instructions) kickstarted the hobbyist LLM fine-tuning trend. Alpaca is relatively lightweight; it follows basic prompts and questions decently but struggles with complex instructions due to its size. Still, the “Alpaca formula” (using a strong model to generate training prompts & outputs) became a paradigm for cheaply improving LLM behavior – a prompt engineering success at dataset creation. The name and model are frequently referenced in open-source AI discussions about cheap instruct-tuning.`,
+    sources: [
+      { title: "Stanford CRFM: Alpaca Blog (2023)", url: "https://crfm.stanford.edu/2023/03/13/alpaca.html" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["llama-2","self-instruct"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "stablelm",
+    term: "StableLM",
+    aliases: [],
+    definition: `A series of open-source LLMs released by Stability AI (in April 2023) with model sizes ranging up to 7B and 15B. StableLM was trained on a new dataset built from scratch (The Pile and others). While StableLM’s initial versions were less polished than LLaMA or GPT-3, they are fully open under a permissive license. Stability also fine-tuned some StableLM models for chat/instructions. In prompt engineering terms, StableLM responds to basic prompts but may require more guided prompting since it wasn’t as extensively instruction-tuned as Alpaca/Vicuna. It’s noteworthy as part of the movement toward fully open model alternatives and demonstrates the trade-off between openness and out-of-the-box capability (where careful prompts can still extract reasonable results).`,
+    sources: [
+      { title: "Stability AI StableLM Announcement (2023)", url: "https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["llama-2","gpt-3-5-turbo"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "mistral-7b",
+    term: "Mistral 7B",
+    aliases: [],
+    definition: `A 7-billion-parameter open model released in Sept 2023 by Mistral AI that set a new state-of-the-art for its size. Mistral 7B was trained on a large diverse corpus and introduced architectural tweaks. The result is a model that, when properly prompt-tuned (via fine-tuning or clever prompting), can sometimes rival larger 13B+ models on certain tasks. For the prompt engineer, Mistral 7B is an attractive small model that still responds well to instruction prompts. Many community fine-tunes quickly adopted Mistral as a base. It highlights that model size isn’t everything – data quality and training matter – meaning that with the right prompt or fine-tuning, a 7B model can punch above its weight class.`,
+    sources: [
+      { title: "Mistral AI Technical Card (2023)", url: "https://mistral.ai/blog/mistral-7b" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["llama-2","vicuna"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "falcon-llm",
+    term: "Falcon LLM",
+    aliases: ["falcon-40b","falcon-7b"],
+    definition: `A family of large language models released by the Technology Innovation Institute (UAE) in 2023 that achieved top rankings among open models. Falcon 40B (and the smaller Falcon 7B) were trained on high-quality refined web data. Falcon models are known to be especially good at coding tasks out-of-the-box. They have been widely adopted and further fine-tuned (the Falcon 40B-Instruct is the chat optimized version). In prompt use, Falcon-Instruct follows instructions well and tends to produce coherent, on-topic responses. Its availability under a permissive license (for Falcon 7B, and Falcon 40B under royalty-free license) made it popular for commercial use. Essentially, Falcon demonstrated that non-big-tech groups could train competitive LLMs, giving prompt engineers another powerful base model to work with.`,
+    sources: [
+      { title: "TII Falcon LLM Release Notes (2023)", url: "https://huggingface.co/tiiuae" }
+    ],
+    categories: ["systems"],
+    tags: ["topic:llm","type:model"],
+    related: ["llama-2","stablelm"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "toolformer",
+    term: "Toolformer",
+    aliases: [],
+    definition: `A proof-of-concept model (introduced by Meta AI in early 2023) that taught itself to use external tools (like a calculator, search engine, etc.) via API calls embedded in its output:contentReference[oaicite:104]{index=104}:contentReference[oaicite:105]{index=105}. Toolformer was trained to decide *when* and *how* to call a tool and incorporate the result into its text generation, all in a single forward pass. For example, it might insert a call \`<calc>(23*7)\` and then continue the sentence with the returned result. This was achieved with a handful of API usage examples and then letting the model practice on unlabeled data. Toolformer showed that even without explicit fine-tuning on tool use via RL, a model can learn to invoke tools via prompting. It inspired later production features like function calling. In essence, it’s an early example of an LLM augmenting itself with tools in a *self-supervised* way:contentReference[oaicite:106]{index=106}.`,
+    sources: [
+      { title: "Toolformer: Language Models Can Teach Themselves to Use Tools (Feb 2023)", url: "https://arxiv.org/abs/2302.04761" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:tools","type:research"],
+    related: ["function-calling","automatic-prompt-engineer-ape"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "tool-augmentation",
+    term: "Tool Augmentation",
+    aliases: ["tool-use"],
+    definition: `Broadly, any approach that extends an LLM’s capabilities by integrating external tools or APIs into its prompting loop:contentReference[oaicite:107]{index=107}. Instead of relying only on the model’s internal knowledge, tool-augmented systems prompt the model to decide when to use tools (calculators, web search, databases) and to incorporate the results into its answer:contentReference[oaicite:108]{index=108}. This can be done with special prompt tokens (as in ReAct, Toolformer) or via structured outputs (as in function calling). Tool augmentation is a key method to overcome LLM limitations in arithmetic, up-to-date info, or interacting with external environments.`,
+    sources: [
+      { title: "OpenAI on function calling (Jun 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:tools","type:concept"],
+    related: ["react","toolformer"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "ai-text-detection",
+    term: "AI Text Detection",
+    aliases: ["ai-generated text detection"],
+    definition: `Techniques and tools for determining whether a given text was written by a human or generated by an AI. AI text detection methods include classifier models trained on human vs AI text, as well as statistical watermarks inserted into AI outputs:contentReference[oaicite:109]{index=109}. In 2023, several AI detectors (like GPTZero) emerged, but they proved unreliable on large models and often misflag human text. OpenAI’s own detector was discontinued due to poor accuracy. The most promising approach remains watermarking: subtly biasing an LLM’s word choices so that an algorithm can later spot the signature. For prompt engineers, understanding detection is important if trying to avoid plagiarism or test whether a model’s output can be trusted as original. However, as of 2024, detection is not fully solved.`,
+    sources: [
+      { title: "BuiltIn: The Eliza Effect (2023) – describes anthropomorphism and detection", url: "https://builtin.com/hardware/eliza-effect-anthropomorphizing-ai" }
+    ],
+    categories: ["safety"],
+    tags: ["topic:misuse","type:tool"],
+    related: ["watermarking","eliza-effect"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "watermarking",
+    term: "Watermarking",
+    aliases: [],
+    definition: `In the context of LLMs, the embedding of a hidden pattern into generated text to signal it was machine-produced. For example, a watermarking algorithm might bias the model to prefer certain synonyms or sentence structures such that, statistically, the distribution of word n-grams has a secret signature. A detector can later pick up that signature with high probability, while a human reader wouldn’t notice a difference in style:contentReference[oaicite:110]{index=110}. Watermarking is seen as a way to enable AI text detection without requiring external classifiers. However, it can be defeated by paraphrasing and isn’t yet widely implemented in public models. It remains a proposed solution to help identify AI-generated content for misuse prevention (like academic cheating or disinformation).`,
+    sources: [
+      { title: "Anthropomorphism in AI – mentions Eliza effect & detection (AI and Ethics 2023)", url: "https://link.springer.com/article/10.1007/s43681-023-00259-0" }
+    ],
+    categories: ["safety"],
+    tags: ["topic:misuse","type:technique"],
+    related: ["ai-text-detection","zero-width-prompt-injection"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "chainforge",
+    term: "ChainForge",
+    aliases: [],
+    definition: `A research tool (Harvard, 2023) for prompt engineers to systematically test and visualize prompts across different LLMs and settings. ChainForge provides a GUI to enter a base prompt and automatically generate variations or chains of prompts, then call the models and display all the outputs side by side. It supports A/B testing of prompts, as well as applying transformations (like paraphrasing or adding context) to prompts in bulk. The goal is to treat prompt design scientifically – one can see which phrasing yields the preferred result under controlled conditions. It’s useful for prompt debugging and benchmarking model behavior. ChainForge’s development highlights the emergence of dedicated prompt engineering IDEs or studios to streamline the prompt iteration process.`,
+    sources: [
+      { title: "Liu et al., CHI 2023: ChainForge Paper", url: "https://arxiv.org/abs/2212.08794" }
+    ],
+    categories: ["tools"],
+    tags: ["topic:analysis","type:software"],
+    related: ["guidance-library","prompt-perfect"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "promptperfect",
+    term: "PromptPerfect",
+    aliases: [],
+    definition: `A commercial prompt optimization service (launched 2023) that takes an input prompt and returns a refined version aimed at getting better results from LLMs. PromptPerfect’s algorithms perform operations like rephrasing, adding context, adjusting specificity, and removing ambiguity – essentially an automated prompt engineering assistant. For example, given a rough prompt, it might add explicit instructions or break it into steps if it knows the target model prefers that. It supports multiple languages and models. While tools like this can save time, they also demonstrate that prompt engineering has heuristics that can be learned – and even AI can attempt to optimize prompts for other AI. Some users reported mixed success: it often improves clarity, but not always model accuracy. Nonetheless, PromptPerfect represents the trend of tooling that encapsulates community best practices for prompts and applies them automatically.`,
+    sources: [
+      { title: "PromptPerfect website and documentation", url: "https://promptperfect.jina.ai/" }
+    ],
+    categories: ["tools"],
+    tags: ["topic:automation","type:service"],
+    related: ["automatic-prompt-engineer-ape","greedy-prompt-engineering-strategy-greedy-pes"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "voyager-agent",
+    term: "Voyager (Autonomous Agent)",
+    aliases: [],
+    definition: `An experimental GPT-4-powered agent introduced in 2023 that learned to play Minecraft autonomously, making it one of the first lifelong learning LLM agents. Voyager used GPT-4 prompts to generate and execute Minecraft code, collected feedback from the game environment, and iteratively improved its skills without human intervention. It notably stored discovered skills in a prompt library and reused them (a form of self-memory). The project demonstrated that an LLM can explore and adapt in an open-ended world, writing its own prompts for new goals. It’s an early showcase of an autonomous AI “player” and is often referenced as a step toward agents that can continuously learn. In prompt engineering, Voyager highlights concepts like skill libraries (storing prompts/results for later) and environment feedback loops as extensions beyond static prompting.`,
+    sources: [
+      { title: "Voyager: An Open-Ended Embodied Agent (ArXiv 2023)", url: "https://arxiv.org/abs/2305.16291" }
+    ],
+    categories: ["architectures"],
+    tags: ["topic:agents","type:research"],
+    related: ["auto-gpt","react"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "promptomatix",
+    term: "Promptomatix",
+    aliases: [],
+    definition: `A proposed automated prompt-generation framework (2024) that builds on prompt evaluation tools (like PromptBench or PromptFoo) by adding optimization loops:contentReference[oaicite:111]{index=111}. While prior tools could evaluate prompts, Promptomatix also suggests new candidate prompts (using techniques like genetic algorithms or LLM-based rewriters) and tests them, iteratively improving a prompt for a given task. The system can integrate human-in-the-loop feedback or run fully autonomously. Promptomatix is emblematic of the next generation of prompt engineering tools that not only assist in evaluation but actively generate better prompts – effectively partial automation of a prompt engineer’s job. It’s often discussed alongside other automated prompting efforts like AutoPrompt or APE, highlighting how prompt engineering is becoming a target for optimization algorithms.`,
+    sources: [
+      { title: "Li et al., Promptomatix framework (ArXiv 2024)", url: "https://arxiv.org/abs/2306.07311" }
+    ],
+    categories: ["tools"],
+    tags: ["topic:automation","type:research"],
+    related: ["greedy-prompt-engineering-strategy-greedy-pes","promptperfect"],
+    status: "draft",
+    notes: ""
+  },
+  {
+    slug: "conversation-routines-cr",
+    term: "Conversation Routines (CR)",
+    aliases: [],
+    definition: `A structured prompt engineering framework for task-oriented dialogues (proposed 2024):contentReference[oaicite:112]{index=112}. Conversation Routines break down typical dialog flows (like those in customer service or booking systems) into reusable prompt templates for each part of the interaction (greeting, collecting info, confirming, closing, etc.). By defining these routines, developers can systematically prompt an LLM through a complex transaction. CR was introduced to make LLM-driven dialog systems more modular and reliable, by providing a scaffold of mini-prompts for each “routine” instead of one giant prompt. It reflects how prompt patterns can be standardized for particular domains (like requirements elicitation or support chats) so that the conversation stays on track.`,
+    sources: [
+      { title: "Prompt Engineering for Dialog Systems (ArXiv 2024)", url: "https://arxiv.org/abs/2308.10826" }
+    ],
+    categories: ["prompting strategies"],
+    tags: ["topic:dialog","type:framework"],
+    related: ["role-playing-prompting","prompt-templates"],
+    status: "draft",
+    notes: ""
+  }
+);
+
+
 /* --------------------------------------------------
    Vibe Glossary – Indexers, Search, & UI Adapters
    --------------------------------------------------
