@@ -6567,6 +6567,212 @@ GLOSSARY.push(
   }
 );
 
+GLOSSARY.push(
+  // --- RAG & Agentic Reasoning (new since 2024) ---
+  {
+    slug: "agentic-rag",
+    term: "Agentic RAG",
+    aliases: ["agent-based rag", "reasoning agentic rag"],
+    definition: `RAG pipelines that add autonomous agents to plan, decide when/what to retrieve, reflect, and iterate—moving beyond static fetch-then-generate. Typical patterns include planning, tool use, reflection/verification, and memory.`,
+    sources: [
+      { title: "Agentic RAG survey (2025)", url: "https://arxiv.org/html/2506.10408v1" },
+      { title: "What is Agentic RAG? (Weaviate)", url: "https://weaviate.io/blog/what-is-agentic-rag" }
+    ],
+    categories: ["meta-prompt strategies"],
+    tags: ["type:framework", "topic:rag", "topic:reasoning", "phase:prompting"],
+    related: ["rat-retrieval-augmented-thoughts", "reflection-or-reasoning-prompting", "graph-rag"],
+    status: "verified",
+    notes: "Term gained traction in late 2024–2025; emphasizes orchestrated agent loops over fixed RAG."
+  },
+  {
+    slug: "graph-rag",
+    term: "GraphRAG",
+    aliases: ["graph rag", "graph-based rag"],
+    definition: `RAG that constructs and queries a knowledge graph over the corpus, enabling local/global summarization and scalable QA over large private datasets.`,
+    sources: [
+      { title: "Microsoft Research blog (Feb 13, 2024)", url: "https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/" },
+      { title: "GraphRAG paper page (Apr 2024)", url: "https://www.microsoft.com/en-us/research/publication/from-local-to-global-a-graph-rag-approach-to-query-focused-summarization/" }
+    ],
+    categories: ["meta-prompt strategies"],
+    tags: ["type:technique", "topic:rag", "topic:retrieval", "phase:prompting"],
+    related: ["agentic-rag", "contextual-cues", "domain-priming"],
+    status: "verified",
+    notes: ""
+  },
+  // --- Multi-agent prompting / ensembling ---
+  {
+    slug: "mixture-of-agents-moa",
+    term: "Mixture-of-Agents (MoA)",
+    aliases: ["moa", "mixture of agents"],
+    definition: `An orchestration pattern where multiple LLM agents (often layered) read each other’s outputs and iteratively refine a final response—an alternative to single-model prompting.`,
+    sources: [
+      { title: "MoA paper (Jun 7, 2024)", url: "https://arxiv.org/abs/2406.04692" },
+      { title: "MoA (OpenReview)", url: "https://openreview.net/forum?id=h0ZfDIrj7T" }
+    ],
+    categories: ["multi-prompt strategies"],
+    tags: ["type:strategy", "topic:prompting", "topic:ensembling", "phase:prompting"],
+    related: ["prompt-ensembling", "shotgun-generation", "parallel-prompting"],
+    status: "verified",
+    notes: "Empirically strong on AlpacaEval/MT-Bench; not the same as Mixture-of-Experts (MoE)."
+  },
+  // --- New alignment / training notions that affect prompting interfaces ---
+  {
+    slug: "self-rewarding-language-models-srlm",
+    term: "Self-Rewarding Language Models (SRLM)",
+    aliases: ["self-rewarding lm", "llm-as-a-judge self-reward"],
+    definition: `Models that generate their own preference signals (via LLM-as-a-judge prompts) during iterative alignment, reducing reliance on human preference labeling.`,
+    sources: [
+      { title: "Self-Rewarding Language Models (2024–2025)", url: "https://arxiv.org/abs/2401.10020" },
+      { title: "SRLM PDF (v3, Mar 28, 2025)", url: "https://arxiv.org/pdf/2401.10020" }
+    ],
+    categories: ["benchmarks and evaluations"],
+    tags: ["type:method", "topic:alignment", "topic:preference", "phase:training"],
+    related: ["dpo", "rlaif", "orpo"],
+    status: "verified",
+    notes: ""
+  },
+  {
+    slug: "orpo-odds-ratio-preference-optimization",
+    term: "ORPO (Odds-Ratio Preference Optimization)",
+    aliases: ["orpo"],
+    definition: `A reference-free preference-optimization algorithm that folds alignment into SFT by penalizing disfavored styles with an odds-ratio objective—simplifying pipelines versus DPO.`,
+    sources: [
+      { title: "ORPO (arXiv)", url: "https://arxiv.org/abs/2403.07691" },
+      { title: "EMNLP 2024 PDF", url: "https://aclanthology.org/2024.emnlp-main.626.pdf" }
+    ],
+    categories: ["benchmarks and evaluations"],
+    tags: ["type:method", "topic:alignment", "phase:training"],
+    related: ["dpo", "simpo", "sft"],
+    status: "verified",
+    notes: ""
+  },
+  // --- Structured output controls (API-level prompting affordances) ---
+  {
+    slug: "structured-outputs-json-schema",
+    term: "Structured Outputs (JSON Schema)",
+    aliases: ["schema-constrained outputs", "strict function calling"],
+    definition: `A mode where model outputs are constrained to a developer-supplied JSON Schema (often via tools/function calling), guaranteeing shape-correct structured responses.`,
+    sources: [
+      { title: "OpenAI: Introducing Structured Outputs (Aug 6, 2024)", url: "https://openai.com/index/introducing-structured-outputs-in-the-api/" },
+      { title: "Azure OpenAI: Structured Outputs", url: "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/structured-outputs" }
+    ],
+    categories: ["prompt development techniques"],
+    tags: ["type:parameter", "topic:format", "topic:tools", "phase:prompting"],
+    related: ["desired-format", "function-calling", "json-mode"],
+    status: "verified",
+    notes: ""
+  },
+  // --- Safety: jailbreak trends impacting prompt design ---
+  {
+    slug: "many-shot-jailbreaking",
+    term: "Many-Shot Jailbreaking",
+    aliases: ["msj", "long-context jailbreaking"],
+    definition: `A long-context attack that supplies hundreds of in-context demonstrations of harmful behavior to steer models into complying with disallowed requests.`,
+    sources: [
+      { title: "Anthropic research post (Apr 2, 2024)", url: "https://www.anthropic.com/research/many-shot-jailbreaking" },
+      { title: "NeurIPS 2024 proceedings entry", url: "https://proceedings.neurips.cc/paper_files/paper/2024/hash/ea456e232efb72d261715e33ce25f208-Abstract-Conference.html" }
+    ],
+    categories: ["safety and security"],
+    tags: ["type:attack", "topic:safety", "topic:robustness", "phase:prompting"],
+    related: ["prompt-leakage", "jailbreak-attacks", "refusal-bypass"],
+    status: "verified",
+    notes: "Highlights risks introduced by very large contexts; informs safer prompt routing/filters."
+  },
+  // --- Prompt / knowledge distillation (new flavors) ---
+  {
+    slug: "prompt-distillation",
+    term: "Prompt Distillation",
+    aliases: ["knowledge injection via prompt distillation"],
+    definition: `Distilling knowledge that is present only in prompts (teacher receives extra context) into a student model’s weights—closing the gap between RAG and fine-tuning for new facts.`,
+    sources: [
+      { title: "Knowledge Injection via Prompt Distillation (Dec 19, 2024)", url: "https://arxiv.org/abs/2412.14964" },
+      { title: "HTML version", url: "https://arxiv.org/html/2412.14964v1" }
+    ],
+    categories: ["meta-prompt strategies"],
+    tags: ["type:method", "topic:distillation", "phase:training"],
+    related: ["few-shot-code-example-generation", "domain-specific-language-creation", "self-discover-framework"],
+    status: "verified",
+    notes: ""
+  },
+  {
+    slug: "personalized-prompt-distillation-peapod",
+    term: "Personalized Prompt Distillation (PeaPOD)",
+    aliases: ["peapod"],
+    definition: `A personalization technique that learns user-specific soft prompts by composing shared prompt components with dynamic weights reflecting user interests.`,
+    sources: [
+      { title: "PeaPOD (Jul 2024)", url: "https://arxiv.org/abs/2407.05033" },
+      { title: "PeaPOD HTML (Feb 2025)", url: "https://arxiv.org/html/2407.05033v2" }
+    ],
+    categories: ["meta-prompt strategies"],
+    tags: ["type:technique", "topic:personalization", "phase:training"],
+    related: ["personalization-and-adaptation", "contextual-cues"],
+    status: "verified",
+    notes: ""
+  },
+  // --- Reasoning & alignment patterns tied to new “o-series” style models ---
+  {
+    slug: "deliberative-alignment",
+    term: "Deliberative Alignment",
+    aliases: ["deliberate alignment", "spec-based alignment"],
+    definition: `Training procedure for reasoning models that explicitly reads safety specifications and reasons about them *before* answering—aimed at safer, policy-aware outputs.`,
+    sources: [
+      { title: "OpenAI: Deliberative alignment (Dec 20, 2024)", url: "https://openai.com/index/deliberative-alignment/" }
+    ],
+    categories: ["safety and security"],
+    tags: ["type:method", "topic:alignment", "topic:reasoning", "phase:training"],
+    related: ["reflection-or-reasoning-prompting", "fact-check-prompting", "bias-mitigation"],
+    status: "verified",
+    notes: ""
+  },
+  {
+    slug: "reasoning-tokens-o1-style",
+    term: "Reasoning Tokens (o1-style)",
+    aliases: ["private thoughts", "deliberate tokens"],
+    definition: `Hidden intermediate “thinking” steps (token budget reserved for reasoning) that enable more deliberate problem solving; they count against context but are not surfaced to users.`,
+    sources: [
+      { title: "Explainer on o1 reasoning tokens (Oct 8, 2024)", url: "https://leehanchung.github.io/blogs/2024/10/08/reasoning-understanding-o1/" },
+      { title: "Press/analysis coverage (Dec 2024)", url: "https://www.theatlantic.com/technology/archive/2024/12/openai-o1-reasoning-models/680906/" }
+    ],
+    categories: ["reasoning models or structures"],
+    tags: ["type:component", "topic:reasoning", "phase:inference"],
+    related: ["tree-of-thought-tot", "plan-and-solve-p-s", "scratchpad-reasoning"],
+    status: "verified",
+    notes: "User-hidden chain-of-thought; influences prompt budgeting and eval."
+  },
+  // --- RAG robustness pattern that wasn’t in your file ---
+  {
+    slug: "corrective-rag-crag",
+    term: "Corrective RAG (CRAG)",
+    aliases: ["corrective retrieval augmented generation"],
+    definition: `A RAG variant that evaluates retrieval quality and conditionally triggers alternate actions (e.g., web search, re-query, decompose-recompose) to reduce hallucinations.`,
+    sources: [
+      { title: "CRAG (Jan 29, 2024)", url: "https://arxiv.org/abs/2401.15884" },
+      { title: "CRAG HTML (updated Oct 2024)", url: "https://arxiv.org/html/2401.15884v3" }
+    ],
+    categories: ["meta-prompt strategies"],
+    tags: ["type:technique", "topic:rag", "topic:robustness", "phase:prompting"],
+    related: ["agentic-rag", "fact-check-prompting", "system-query"],
+    status: "verified",
+    notes: ""
+  },
+  // --- Watermarking (text output provenance moved fast in late 2024) ---
+  {
+    slug: "text-watermarking-synthid-text",
+    term: "Text Watermarking (SynthID-Text)",
+    aliases: ["synthid text", "output watermarking"],
+    definition: `A production-oriented watermarking scheme that modifies sampling to embed detectable signals in generated text—supporting provenance checks with limited latency hit.`,
+    sources: [
+      { title: "Nature paper (2024): SynthID-Text", url: "https://www.nature.com/articles/s41586-024-08025-4" },
+      { title: "CMU ML blog: watermarking trade-offs (Sep 27, 2024)", url: "https://blog.ml.cmu.edu/2024/09/27/no-free-lunch-in-llm-watermarking-trade-offs-in-watermarking-design-choices/" }
+    ],
+    categories: ["safety and security"],
+    tags: ["type:technique", "topic:provenance", "topic:safety", "phase:inference"],
+    related: ["prompt-leakage", "content-authentication", "safety-alignment"],
+    status: "verified",
+    notes: ""
+  }
+);
+
 /* --------------------------------------------------
    Vibe Glossary – Indexers, Search, & UI Adapters
    --------------------------------------------------
