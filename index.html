@@ -103,6 +103,19 @@
     .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:#0d131b;color:var(--text);margin-bottom:8px}
     .facet-group{margin-bottom:18px}
     .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
+      .menu{ position:relative }
+  .menu .btn{ background:#1b2533; border:1px solid #1b2838; color:#e7eff7 }
+  .menu-pop{
+    position:absolute; right:0; top:calc(100% + 6px);
+    display:flex; flex-direction:column; gap:0;
+    background:#0d131b; border:1px solid #1b2838; border-radius:12px;
+    min-width:220px; padding:6px; box-shadow:0 16px 48px rgba(0,0,0,.35); z-index:50;
+  }
+  .menu-item{
+    text-align:left; background:#0f151d; color:#e7eff7; border:1px solid transparent;
+    padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
+  }
+  .menu-item:hover{ background:#13202e; border-color:#1b2838 }
   </style>
 </head>
 <body>
@@ -117,7 +130,18 @@
       </select>
     </div>
     <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
-    <a class="btn" href="./admin.html">Admin</a>
+    <!-- Download menu -->
+<div class="menu">
+  <button id="downloadBtn" class="btn">Download ▾</button>
+  <div id="downloadMenu" class="menu-pop" hidden>
+    <button class="menu-item" data-format="json">Download JSON</button>
+    <button class="menu-item" data-format="js">Download JS</button>
+    <button class="menu-item" data-format="csv">Download CSV</button>
+    <button class="menu-item" data-format="md">Download Markdown</button>
+    <button class="menu-item" data-format="txt">Download Text</button>
+  </div>
+</div>
+
   </header>
 
   <div class="layout">
@@ -468,5 +492,154 @@
   renderFacets();
   render();
 })();
+  </script>
+<script>
+(function(){
+  // --- MENU TOGGLE ---
+  const menuBtn = document.getElementById('downloadBtn');
+  const menu = document.getElementById('downloadMenu');
+  if(menuBtn && menu){
+    const close = (e)=>{ if(!menu.contains(e.target) && e.target!==menuBtn){ menu.hidden = true; document.removeEventListener('click', close); } };
+    menuBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      menu.hidden = !menu.hidden;
+      if(!menu.hidden){ setTimeout(()=>document.addEventListener('click', close),0); }
+    });
+    menu.querySelectorAll('.menu-item').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ exportGlossary(btn.dataset.format); menu.hidden = true; });
+    });
+  }
+
+  // --- DATA SOURCE (supports either global array or your GlossaryAPI facade) ---
+  function allEntries(){
+    if (Array.isArray(window.GLOSSARY)) return window.GLOSSARY;
+    if (window.GlossaryAPI && typeof GlossaryAPI.all === 'function') return GlossaryAPI.all();
+    console.warn('Glossary data not found.'); return [];
+  }
+
+  // --- HELPERS ---
+  function download(filename, mime, data){
+    const blob = new Blob([data], {type: mime});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  }
+  const escCSV = (v)=>{
+    const s = (v==null?'':String(v));
+    return `"${s.replace(/"/g,'""')}"`;
+  };
+  const arrJoin = (xs, sep=' | ') => (xs||[]).join(sep);
+  const escJS = (s)=>String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+  const escBT = (s)=>String(s||'').replace(/`/g,'\\`');
+
+  // Map entry -> plain row object for CSV/TXT
+  function flatRow(t){
+    return {
+      slug: t.slug || '',
+      term: t.term || '',
+      aliases: (t.aliases||[]).join(' | '),
+      definition: t.definition || '',
+      sources: (t.sources||[]).map(s=> (s.title?`${s.title}`:'') + (s.url?` <${s.url}>`: '')).join(' || '),
+      categories: (t.categories||[]).join(' | '),
+      tags: (t.tags||[]).join(' | '),
+      related: (t.related||[]).join(' | '),
+      status: t.status || '',
+      notes: t.notes || ''
+    };
+  }
+
+  // --- EXPORTERS ---
+  function asJSON(list){
+    return JSON.stringify(list, null, 2);
+  }
+  function asJS(list){
+    // Produces a single JS file you can load: window.GLOSSARY_EXPORT = [ ... ];
+    const blocks = list.map(t => {
+      const srcs = (t.sources||[]).map(s=>`{ title: "${escJS(s.title||'')}", url: "${escJS(s.url||'')}" }`).join(', ');
+      const arr = xs => (xs||[]).map(x=>`"${escJS(x)}"`).join(', ');
+      return `  {
+    slug: "${escJS(t.slug||'')}",
+    term: "${escJS(t.term||'')}",
+    aliases: [${arr(t.aliases)}],
+    definition: \`${escBT(t.definition||'')}\`,
+    sources: [${srcs}],
+    categories: [${arr(t.categories)}],
+    tags: [${arr(t.tags)}],
+    related: [${arr(t.related)}],
+    status: "${escJS(t.status||'')}",
+    notes: "${escJS(t.notes||'')}"
+  }`;
+    }).join(',\n');
+    return `/* Generated from the live glossary */
+window.GLOSSARY_EXPORT = [
+${blocks}
+];`;
+  }
+  function asCSV(list){
+    const headers = ['slug','term','aliases','definition','sources','categories','tags','related','status','notes'];
+    const rows = list.map(t => {
+      const r = flatRow(t);
+      return headers.map(h=>escCSV(r[h])).join(',');
+    });
+    return headers.join(',') + '\n' + rows.join('\n');
+  }
+  function asMarkdown(list){
+    const lines = [];
+    list.forEach(t=>{
+      lines.push(`### ${t.term || '(untitled)'}  \`status: ${t.status||''}\``);
+      if(t.definition) lines.push('', t.definition);
+      if((t.sources||[]).length){
+        lines.push('', '**Sources**');
+        t.sources.forEach(s=>lines.push(`- ${s.title?`**${s.title}**`:''}${s.url?` (${s.url})`:''}`));
+      }
+      const meta = [];
+      if((t.categories||[]).length) meta.push(`**Categories:** ${t.categories.join(', ')}`);
+      if((t.tags||[]).length)       meta.push(`**Tags:** ${t.tags.join(', ')}`);
+      if((t.related||[]).length)    meta.push(`**Related:** ${t.related.join(', ')}`);
+      if(meta.length) lines.push('', meta.join('  \n'));
+      if(t.notes) lines.push('', `> ${t.notes}`);
+      lines.push('', '---', '');
+    });
+    return lines.join('\n');
+  }
+  function asText(list){
+    const blocks = list.map(t=>{
+      const r = flatRow(t);
+      return [
+        `TERM: ${r.term}`,
+        `SLUG: ${r.slug}`,
+        r.definition ? `DEF: ${r.definition}` : '',
+        r.sources ? `SRC: ${r.sources}` : '',
+        r.categories ? `CATS: ${r.categories}` : '',
+        r.tags ? `TAGS: ${r.tags}` : '',
+        r.related ? `RELATED: ${r.related}` : '',
+        r.status ? `STATUS: ${r.status}` : '',
+        r.notes ? `NOTES: ${r.notes}` : '',
+      ].filter(Boolean).join('\n');
+    });
+    return blocks.join('\n\n-----\n\n');
+  }
+
+  // Entrypoint
+  function exportGlossary(fmt){
+    const data = allEntries();
+    if(!data.length){ alert('No glossary data found to export.'); return; }
+    const stamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+
+    switch(fmt){
+      case 'json': return download(`glossary-${stamp}.json`, 'application/json;charset=utf-8', asJSON(data));
+      case 'js':   return download(`glossary-${stamp}.js`,   'application/javascript;charset=utf-8', asJS(data));
+      case 'csv':  return download(`glossary-${stamp}.csv`,  'text/csv;charset=utf-8', asCSV(data));
+      case 'md':   return download(`glossary-${stamp}.md`,   'text/markdown;charset=utf-8', asMarkdown(data));
+      case 'txt':  return download(`glossary-${stamp}.txt`,  'text/plain;charset=utf-8', asText(data));
+    }
+  }
+
+  // Expose for debugging if needed
+  window.__exportGlossary = exportGlossary;
+})();
+
 </script>
 </html>
