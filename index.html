@@ -4,14 +4,14 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AI Prompting Glossary</title>
-  <style>
-  /* ===== THEME TOKENS ===== */
+<style>
+  /* THEME TOKENS */
   :root{
-    /* Dark (default) */
+    /* Dark theme (default) */
     --bg:#0b0f14;
     --panel:#121821;
     --card:#0f151d;
-    --muted:#6f879e;          /* nudged a bit darker for light-mode parity later */
+    --muted:#9db0c3;
     --text:#e7eff7;
     --accent:#4ea1ff;
     --chip:#1b2533;
@@ -19,40 +19,58 @@
     --green:#2ecc71;
     --yellow:#f1c40f;
     --red:#e74c3c;
-    --purple:#a78bfa;         /* duplicate_candidate */
+    --purple:#a78bfa; /* duplicate_candidate */
     --header-h:64px;
     --sidebar-w:320px;
     --radius:12px;
     --gap:14px;
-    --focus: 0 0 0 2px color-mix(in srgb, var(--accent) 60%, transparent);
+
+    /* shared ui */
+    --control-bg:#0d131b;
+    --control-text:var(--text);
+    --control-border:var(--border);
+    --control-focus:var(--accent);
+
+    /* menu/dialog */
+    --menu-bg:#0d131b;
+    --menu-item-bg:#0f151d;
+    --menu-item-hover:#13202e;
+    --dialog-bg:#0c1117;
   }
 
-  /* Light theme overrides (activated by [data-theme="light"]) */
+  /* Light theme overrides */
   :root[data-theme="light"]{
-    --bg:#f6f8fb;
+    --bg:#f7fafc;
     --panel:#ffffff;
     --card:#ffffff;
-    --muted:#5b6a79;
-    --text:#0d1320;
-    --accent:#1769ff;         /* slightly deeper for light bg */
-    --chip:#f0f4f8;
-    --border:#dde6ee;
-  }
+    --muted:#5a6b7b;
+    --text:#121621;
+    --accent:#2563eb; /* brighter link */
+    --chip:#f1f5f9;
+    --border:#d8e0ea;
 
-  /* Respect OS preference on first paint (JS will lock the choice afterwards) */
-  @media (prefers-color-scheme: light){
-    :root:not([data-theme="dark"]) {
-      /* apply light tokens by default unless user explicitly chose dark */
-      --bg:#f6f8fb; --panel:#ffffff; --card:#ffffff; --muted:#5b6a79; --text:#0d1320;
-      --accent:#1769ff; --chip:#f0f4f8; --border:#dde6ee;
-    }
+    --control-bg:#ffffff;
+    --control-text:#121621;
+    --control-border:#cfd8e3;
+    --control-focus:#2563eb;
+
+    --menu-bg:#ffffff;
+    --menu-item-bg:#f8fafc;
+    --menu-item-hover:#eef2f7;
+    --dialog-bg:#ffffff;
+
+    /* make status colors slightly darker so they stand out on light bg */
+    --green:#1e8e3e;
+    --yellow:#b38600;
+    --red:#c0392b;
+    --purple:#6c5ce7;
   }
 
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0;color:var(--text);
-    background:linear-gradient(180deg,var(--bg),color-mix(in srgb, var(--bg) 85%, #0000));
+    background:linear-gradient(180deg,var(--bg),var(--bg));
     font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
   }
   a{color:var(--accent);text-decoration:none}
@@ -61,16 +79,33 @@
   .app{display:grid;grid-template-rows:var(--header-h) 1fr;height:100%}
   header{
     display:flex;align-items:center;gap:12px;padding:0 16px;
-    background:color-mix(in srgb, var(--panel) 92%, transparent);
+    background:color-mix(in srgb, var(--panel) 90%, transparent);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;
   }
   header h1{font-size:18px;margin:0 4px 0 0;font-weight:600;letter-spacing:.2px}
+
   .search{flex:1;display:flex;gap:10px;align-items:center}
   .search input[type="search"]{
-    width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--border);
-    background:color-mix(in srgb, var(--card) 85%, transparent);color:var(--text);outline:none;
+    width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--control-border);
+    background:var(--control-bg);color:var(--control-text);outline:none;
   }
+  .search input[type="search"]:focus{border-color:var(--control-focus); box-shadow:0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent)}
+
+  /* SELECT (Sort) — now styled */
+  .select{
+    -webkit-appearance:none; appearance:none;
+    padding:10px 36px 10px 12px;
+    border-radius:10px;
+    border:1px solid var(--control-border);
+    background:var(--control-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="%23a0aec0" d="M7 10 0 0h14z"/></svg>') no-repeat right 10px center / 12px 12px;
+    color:var(--control-text);
+    font:inherit; cursor:pointer;
+  }
+  :root[data-theme="light"] .select{
+    background:var(--control-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="%232963eb" d="M7 10 0 0h14z"/></svg>') no-repeat right 10px center / 12px 12px;
+  }
+  .select:focus{border-color:var(--control-focus); box-shadow:0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent)}
 
   .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;gap:0;height:calc(100vh - var(--header-h))}
   .sidebar{border-right:1px solid var(--border);background:var(--panel);padding:14px;position:relative;overflow:auto}
@@ -84,7 +119,7 @@
     border:1px solid var(--border);background:var(--chip);color:var(--text);
     padding:6px 0;border-radius:10px;text-align:center;cursor:pointer;font-size:12px;user-select:none;
   }
-  .alpha-btn[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 12%, var(--chip))}
+  .alpha-btn[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 14%, transparent)}
 
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{
@@ -92,7 +127,6 @@
     padding:6px 10px;border-radius:999px;background:var(--chip);
     border:1px solid var(--border);font-size:12px;color:var(--text);cursor:pointer;user-select:none
   }
-  .chip:focus-visible{outline:var(--focus)}
   .chip .count{color:var(--muted)}
   .chip[aria-pressed="true"]{outline:2px solid var(--accent)}
 
@@ -101,8 +135,7 @@
     padding:6px 10px;border-radius:999px;border:1px solid var(--border);
     background:var(--chip);font-size:12px;color:var(--text);cursor:pointer
   }
-  .pill:focus-visible{outline:var(--focus)}
-  .pill[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 12%, var(--chip))}
+  .pill[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 14%, transparent)}
   .pill[data-val="verified"]{color:var(--green)}
   .pill[data-val="draft"]{color:var(--yellow)}
   .pill[data-val="deprecated"]{color:var(--red)}
@@ -111,7 +144,7 @@
   .toolbar{
     display:flex;flex-wrap:wrap;align-items:center;gap:10px;
     padding:12px;border-bottom:1px solid var(--border);
-    position:sticky;top:0;background:linear-gradient(180deg,var(--panel),color-mix(in srgb, var(--panel) 90%, transparent));z-index:2;
+    position:sticky;top:0;background:linear-gradient(180deg,var(--panel),var(--card));z-index:2;
   }
   .results-header{padding:10px 12px;color:var(--muted);font-size:13px;border-bottom:1px solid var(--border)}
 
@@ -124,15 +157,12 @@
   .mini{font-size:11px;color:var(--muted)}
   .btn{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:8px;color:var(--text);cursor:pointer}
   .btn-sm{padding:4px 8px;font-size:12px;border-radius:6px}
-  .btn.primary{background:var(--accent);border-color:transparent;color:#061422}
 
-  dialog{
-    border:none;border-radius:14px;background:var(--panel);color:var(--text);
-    width:min(760px,92vw);
-  }
+  /* dialogs */
+  dialog{border:none;border-radius:14px;background:var(--dialog-bg);color:var(--text);width:min(760px,92vw);}
   dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
   .flex-spacer{flex:1}
-  .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:color-mix(in srgb, var(--card) 85%, transparent);color:var(--text);margin-bottom:8px}
+  .facet-search{width:100%;padding:8px 9px;border:1px solid var(--control-border);border-radius:8px;background:var(--control-bg);color:var(--control-text);margin-bottom:8px}
   .facet-group{margin-bottom:18px}
   .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
 
@@ -142,33 +172,34 @@
   .menu-pop{
     position:absolute; right:0; top:calc(100% + 6px);
     display:flex; flex-direction:column; gap:0;
-    background:var(--panel); border:1px solid var(--border); border-radius:12px;
+    background:var(--menu-bg); border:1px solid var(--border); border-radius:12px;
     min-width:220px; padding:6px; box-shadow:0 16px 48px rgba(0,0,0,.15); z-index:50;
   }
   .menu-item{
-    text-align:left; background:var(--card); color:var(--text); border:1px solid transparent;
+    text-align:left; background:var(--menu-item-bg); color:var(--text); border:1px solid transparent;
     padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
   }
-  .menu-item:hover{ background:color-mix(in srgb, var(--accent) 10%, var(--card)); border-color:var(--border) }
+  .menu-item:hover{ background:var(--menu-item-hover); border-color:var(--border) }
   .menu-pop[hidden]{ display:none !important } /* ensure hiding works everywhere */
 
-  /* Theme toggle button (header) */
+  /* Buttons */
+  .btn.primary{background:var(--accent);border-color:transparent;color:#061422}
+  .btn.primary:disabled{opacity:.6;cursor:not-allowed}
+
+  /* THEME TOGGLE */
   .theme-toggle{
-    display:inline-flex; align-items:center; gap:8px;
+    display:inline-flex; align-items:center; gap:8px; margin-left:6px;
     border:1px solid var(--border); background:var(--chip); color:var(--text);
     padding:6px 10px; border-radius:999px; cursor:pointer;
   }
   .theme-toggle .dot{
-    width:18px;height:18px;border-radius:50%;
-    background: radial-gradient(circle at 30% 30%, #ffd166 0 45%, #0000 46%),
-                conic-gradient(from 0deg, #2d3440 0 360deg);
-    box-shadow: inset 0 0 0 1px var(--border);
+    width:16px;height:16px;border-radius:50%;
+    background:linear-gradient(180deg,#fdd835,#fbc02d);
+    box-shadow:inset 0 -3px 6px rgba(0,0,0,.25);
   }
-  :root[data-theme="light"] .theme-toggle .dot{
-    background: radial-gradient(circle at 30% 30%, #2d3440 0 45%, #0000 46%),
-                conic-gradient(from 0deg, #ffd166 0 360deg);
-  }
+  :root[data-theme="light"] .theme-toggle .dot{ background:linear-gradient(180deg,#121621,#394554) }
 </style>
+
 
 </head>
 <body>
@@ -177,17 +208,24 @@
     <h1>AI Prompting Glossary</h1>
     <div class="search">
       <input id="q" type="search" placeholder='Search… (try: tag:topic:prompting, category:"conversational design")'/>
-      <select id="sort">
-        <option value="az">A → Z</option>
-        <option value="za">Z → A</option>
-      </select>
-    </div>
-    <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
+  <select id="sort" class="select" aria-label="Sort results">
+  <option value="az">Term (A → Z)</option>
+  <option value="za">Term (Z → A)</option>
+  <option value="status">Status → Term</option>
+  <option value="category">First category → Term</option>
+  <option value="slug">Slug (A → Z)</option>
+</select>
 
-    <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-pressed="false">
+    </div>
+    
+        <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-pressed="false">
   <span class="dot" aria-hidden="true"></span>
   <span class="label">Light</span>
 </button>
+    
+    <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
+
+
 
 
     <!-- Download menu -->
@@ -520,57 +558,92 @@
     return true;
   }
 
-  function render(){
-    const dir = state.sort==='az'?1:-1;
-    const results = G.slice().sort(by('term',dir)).filter(passesFilters);
-    lastResults = results;
-    window.lastResults = results; // expose to export dialog
-    resultInfo.textContent = `${results.length} result${results.length===1?'':'s'}`;
-
-    cardsEl.innerHTML='';
-    const batch=40; let i=0;
-    function paint(){
-      const end=Math.min(i+batch,results.length);
-      for(; i<end; i++){
-        const it=results[i];
-        const statusColor =
-          it.status==='draft'?'var(--yellow)':
-          it.status==='deprecated'?'var(--red)':
-          it.status==='duplicate_candidate'?'var(--purple)':
-          'var(--green)';
-
-        const catChips = (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('');
-        const tagChips = (it.tags||[]).map(t=>{
-          const {displayValue} = splitTag(t);
-          return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
-        }).join('');
-
-        const card=document.createElement('div');
-        card.className='card';
-        card.innerHTML = `
-          <div class="title-row">
-            <h3 style="margin:0;"><a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a></h3>
-            <span class="spacer"></span>
-            <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
-          </div>
-          <div class="mini">Status:
-            <span style="color:${statusColor}">${it.status||'—'}</span>
-            ${it.aliases?.length?` • aka: ${it.aliases.join(', ')}`:''}
-          </div>
-          <p class="mini" style="margin:8px 0 6px">${(it.definition||'').slice(0,220)}${(it.definition||'').length>220?'…':''}</p>
-          <div class="meta">
-            ${catChips}
-            ${tagChips}
-          </div>
-        `;
-        cardsEl.appendChild(card);
-      }
-      if(i<results.length){
-        (window.requestIdleCallback || window.requestAnimationFrame)(paint);
-      }
-    }
-    paint();
+// --- sorting helpers (drop these directly above render) ---
+function safeStr(x){ return (x==null ? '' : String(x)); }
+function firstCategory(x){
+  return (Array.isArray(x?.categories) && x.categories.length) ? x.categories[0] : '';
+}
+function sortResults(list, mode){
+  switch(mode){
+    case 'az':       return list.sort((a,b)=> safeStr(a.term).localeCompare(safeStr(b.term)));
+    case 'za':       return list.sort((a,b)=> safeStr(b.term).localeCompare(safeStr(a.term)));
+    case 'slug':     return list.sort((a,b)=> safeStr(a.slug).localeCompare(safeStr(b.slug)));
+    case 'status':   return list.sort((a,b)=>{
+                       const s = safeStr(a.status).localeCompare(safeStr(b.status));
+                       return s!==0 ? s : safeStr(a.term).localeCompare(safeStr(b.term));
+                     });
+    case 'category': return list.sort((a,b)=>{
+                       const c = safeStr(firstCategory(a)).localeCompare(safeStr(firstCategory(b)));
+                       return c!==0 ? c : safeStr(a.term).localeCompare(safeStr(b.term));
+                     });
+    default:         return list;
   }
+}
+
+// --- NEW render (drop-in replacement) ---
+function render(){
+  // 1) filter first, then sort by current mode
+  const filtered = G.filter(passesFilters);
+  const results  = sortResults(filtered, state.sort);
+
+  // 2) expose results (for export dialog, etc.)
+  lastResults = results;
+  window.lastResults = results;
+
+  // 3) update header info
+  resultInfo.textContent = `${results.length} result${results.length===1?'':'s'}`;
+
+  // 4) (re)paint cards in batches for perf
+  cardsEl.innerHTML='';
+  const batch=40; let i=0;
+
+  function paint(){
+    const end=Math.min(i+batch,results.length);
+    for(; i<end; i++){
+      const it=results[i];
+      const statusColor =
+        it.status==='draft'?'var(--yellow)':
+        it.status==='deprecated'?'var(--red)':
+        it.status==='duplicate_candidate'?'var(--purple)':
+        'var(--green)';
+
+      const catChips = (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('');
+      const tagChips = (it.tags||[]).map(t=>{
+        const {displayValue} = splitTag(t);
+        return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
+      }).join('');
+
+      const card=document.createElement('div');
+      card.className='card';
+      card.innerHTML = `
+        <div class="title-row">
+          <h3 style="margin:0;">
+            <a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a>
+          </h3>
+          <span class="spacer"></span>
+          <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
+        </div>
+        <div class="mini">Status:
+          <span style="color:${statusColor}">${it.status||'—'}</span>
+          ${it.aliases?.length?` • aka: ${it.aliases.join(', ')}`:''}
+        </div>
+        <p class="mini" style="margin:8px 0 6px">
+          ${(it.definition||'').slice(0,220)}${(it.definition||'').length>220?'…':''}
+        </p>
+        <div class="meta">
+          ${catChips}
+          ${tagChips}
+        </div>
+      `;
+      cardsEl.appendChild(card);
+    }
+    if(i<results.length){
+      (window.requestIdleCallback || window.requestAnimationFrame)(paint);
+    }
+  }
+  paint();
+}
+
 
   // open detail only when clicking the term title
   cardsEl.addEventListener('click', e=>{
