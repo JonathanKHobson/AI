@@ -96,7 +96,12 @@
     .mini{font-size:11px;color:var(--muted)}
     .btn{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:8px;color:var(--text);cursor:pointer}
     .btn-sm{padding:4px 8px;font-size:12px;border-radius:6px}
-
+        dialog{border:none;border-radius:14px;background:#0c1117;color:var(--text);width:min(760px,92vw);}
+    dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+    .flex-spacer{flex:1}
+    .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:#0d131b;color:var(--text);margin-bottom:8px}
+    .facet-group{margin-bottom:18px}
+    .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
     /* Download menu */
     .menu{ position:relative }
     .menu .btn{ background:#1b2533; border:1px solid #1b2838; color:#e7eff7 }
