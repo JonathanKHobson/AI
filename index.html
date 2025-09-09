@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AI Prompting Glossary</title>
   <style>
     :root{
@@ -97,12 +97,7 @@
     .btn{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:8px;color:var(--text);cursor:pointer}
     .btn-sm{padding:4px 8px;font-size:12px;border-radius:6px}
 
-    dialog{border:none;border-radius:14px;background:#0c1117;color:var(--text);width:min(760px,92vw);}
-    dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
-    .flex-spacer{flex:1}
-    .facet-search{width:100%;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:#0d131b;color:var(--text);margin-bottom:8px}
-    .facet-group{margin-bottom:18px}
-    .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
+    /* Download menu */
     .menu{ position:relative }
     .menu .btn{ background:#1b2533; border:1px solid #1b2838; color:#e7eff7 }
     .menu-pop{
@@ -116,9 +111,12 @@
       padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
     }
     .menu-item:hover{ background:#13202e; border-color:#1b2838 }
+    .menu-pop[hidden]{ display:none !important } /* ensure hiding works everywhere */
 
-    /* <- THIS ensures the dropdown really hides on all browsers */
-    .menu-pop[hidden]{ display:none !important; }
+    /* Export dialog */
+    dialog{border:none;border-radius:14px;background:#0c1117;color:#e7eff7}
+    dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+    .btn.primary{background:var(--accent);border-color:transparent;color:#061422}
   </style>
 </head>
 <body>
@@ -126,7 +124,7 @@
   <header>
     <h1>AI Prompting Glossary</h1>
     <div class="search">
-      <input id="q" type="search" placeholder='Search… (try: tag:topic:prompting, category:"conversational design")' />
+      <input id="q" type="search" placeholder='Search… (try: tag:topic:prompting, category:"conversational design")'/>
       <select id="sort">
         <option value="az">A → Z</option>
         <option value="za">Z → A</option>
@@ -145,6 +143,48 @@
         <button class="menu-item" data-format="txt">Download Text</button>
       </div>
     </div>
+
+    <!-- Export options dialog -->
+    <dialog id="exportDlg">
+      <form method="dialog" id="exportForm" style="margin:0;min-width:min(92vw,560px)">
+        <header style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #1b2838">
+          <h3 style="margin:0;font-size:18px">Download options</h3>
+          <span style="flex:1"></span>
+          <button class="btn" value="cancel">Cancel</button>
+        </header>
+
+        <section style="padding:16px;display:grid;gap:14px">
+          <div>
+            <div class="section-title">Scope</div>
+            <label style="display:flex;gap:8px;align-items:center;margin:.35rem 0">
+              <input type="radio" name="scope" value="current" checked>
+              <span>Current results (respect active filters/search)</span>
+            </label>
+            <label style="display:flex;gap:8px;align-items:center;margin:.35rem 0">
+              <input type="radio" name="scope" value="all">
+              <span>Entire glossary (ignore filters)</span>
+            </label>
+          </div>
+
+          <div>
+            <div class="section-title">Sort by</div>
+            <select id="sortMode" class="btn" style="width:100%">
+              <option value="term_az">Term (A → Z)</option>
+              <option value="term_za">Term (Z → A)</option>
+              <option value="status_term">Status → Term</option>
+              <option value="category_term">First category → Term</option>
+              <option value="slug">Slug</option>
+            </select>
+            <div class="mini" style="margin-top:6px;color:#9db0c3">Sorting applies to the downloaded file only; on-screen order is unchanged.</div>
+          </div>
+        </section>
+
+        <footer style="display:flex;gap:10px;justify-content:flex-end;padding:14px 16px;border-top:1px solid #1b2838">
+          <button class="btn" value="cancel">Cancel</button>
+          <button id="dlgExportBtn" class="btn primary" value="ok">Export</button>
+        </footer>
+      </form>
+    </dialog>
   </header>
 
   <div class="layout">
@@ -167,13 +207,13 @@
 
       <div class="facet-group">
         <div class="section-title">Categories</div>
-        <input class="facet-search" id="catFilter" placeholder="Filter categories…" />
+        <input class="facet-search" id="catFilter" placeholder="Filter categories…"/>
         <div id="cats" class="chips"></div>
       </div>
 
       <div class="facet-group">
         <div class="section-title">Tags</div>
-        <input class="facet-search" id="tagFilter" placeholder="Filter tags…" />
+        <input class="facet-search" id="tagFilter" placeholder="Filter tags…"/>
         <div id="tags"></div>
       </div>
 
@@ -193,6 +233,7 @@
   </div>
 </div>
 
+<!-- Detail modal -->
 <dialog id="detail">
   <article style="padding:16px 18px;">
     <header style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
@@ -211,10 +252,10 @@
 <!-- Ensure the global exists before loading data -->
 <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
 <script src="glossary.data.js"></script>
+
 <script>
-/* ============= MAIN APP (unchanged) ============= */
+/* ============= MAIN APP ============= */
 (function(){
-  // safer global read
   const G = Array.isArray(globalThis.GLOSSARY)
     ? globalThis.GLOSSARY
     : (globalThis.GlossaryAPI?.all?.() ?? []);
@@ -224,7 +265,7 @@
   const by = (k,dir=1) => (a,b)=> (a[k]||'').localeCompare(b[k]||'')*dir;
   const titleCase = s => s ? s.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase()) : s;
 
-  // tag prefix parsing
+  // parse tag "prefix:value" -> friendly display
   function splitTag(tag){
     const raw = String(tag||'');
     const i = raw.indexOf(':');
@@ -234,7 +275,7 @@
     return {prefix:prefix.toLowerCase(), value, displayValue:titleCase(value), raw};
   }
 
-  // canonical label + counts (categories unchanged)
+  // label + counts
   const catLabelByKey = new Map(), tagLabelByKey = new Map();
   const catCount = new Map(),       tagCount = new Map();
   for (const it of G){
@@ -251,26 +292,26 @@
   }
 
   // state
-  const state = {
-    q:'', sort:'az', alpha:'',
-    status:'all', // all | verified | draft | deprecated | duplicate_candidate
-    cats:new Set(), tags:new Set()
-  };
+  const state = { q:'', sort:'az', alpha:'', status:'all', cats:new Set(), tags:new Set() };
 
   // dom
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const cardsEl=$('#cards'), resultInfo=$('#resultInfo'), detail=$('#detail');
   const d={ title:$('#dTitle'), status:$('#dStatus'), aliases:$('#dAliases'), body:$('#dBody'), chips:$('#dChips'), sources:$('#dSources') };
 
-  // A–Z
+  // A–Z buttons
   const alphaEl = $('#alpha'); ['#',...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].forEach(L=>{
     const b=document.createElement('button');
     b.className='alpha-btn'; b.textContent=L; b.dataset.alpha=L; b.setAttribute('aria-pressed','false');
-    b.addEventListener('click',()=>{ state.alpha = (state.alpha===L?'':L); $$('#alpha .alpha-btn').forEach(x=>x.setAttribute('aria-pressed', x.dataset.alpha===state.alpha?'true':'false')); render(); });
+    b.addEventListener('click',()=>{
+      state.alpha = (state.alpha===L?'':L);
+      $$('#alpha .alpha-btn').forEach(x=>x.setAttribute('aria-pressed', x.dataset.alpha===state.alpha?'true':'false'));
+      render();
+    });
     alphaEl.appendChild(b);
   });
 
-  // Status
+  // Status filter
   $('#statusRow').addEventListener('click', e=>{
     const btn=e.target.closest('.pill'); if(!btn) return;
     state.status = btn.dataset.val;
@@ -278,7 +319,7 @@
     render();
   });
 
-  // Categories facet (unchanged)
+  // Category & Tag facets
   function renderFacetChips(container, itemsMap, selectedSet, filterText=''){
     container.innerHTML='';
     const entries=[...itemsMap.entries()]
@@ -289,19 +330,20 @@
       const el=document.createElement('button'); el.className='chip';
       el.setAttribute('aria-pressed', selectedSet.has(key)?'true':'false');
       el.innerHTML=`<span>${label}</span><span class="count">(${count})</span>`;
-      el.addEventListener('click',()=>{ if(selectedSet.has(key)) selectedSet.delete(key); else selectedSet.add(key); renderFacets(); render(); });
+      el.addEventListener('click',()=>{
+        if(selectedSet.has(key)) selectedSet.delete(key); else selectedSet.add(key);
+        renderFacets(); render();
+      });
       container.appendChild(el);
     }
   }
 
-  // NEW: Tags grouped by prefix with header and stripped display
-  const TAG_GROUP_ORDER = ['phase','topic','status','other']; // preferred order
+  const TAG_GROUP_ORDER = ['phase','topic','status','other'];
   function renderTagGroups(){
     const wrap = $('#tags');
     const filterText = ($('#tagFilter').value||'').toLowerCase();
     wrap.innerHTML='';
-    // build groups
-    const groups = new Map(); // prefix -> [{key, display, count}]
+    const groups = new Map();
     for(const [key, rawLabel] of tagLabelByKey.entries()){
       const {prefix, displayValue} = splitTag(rawLabel);
       if(filterText && !displayValue.toLowerCase().includes(filterText) && !prefix.includes(filterText)) continue;
@@ -309,25 +351,21 @@
       arr.push({ key, display: displayValue, count: tagCount.get(key)||0 });
       groups.set(prefix, arr);
     }
-    // sort groups by preferred order then alphabetic
     const sortedPrefixes = [...groups.keys()].sort((a,b)=>{
       const ia = TAG_GROUP_ORDER.indexOf(a); const ib = TAG_GROUP_ORDER.indexOf(b);
       return (ia===-1?999:ia) - (ib===-1?999:ib) || a.localeCompare(b);
     });
-
     for(const prefix of sortedPrefixes){
       const items = groups.get(prefix).sort((a,b)=> a.display.localeCompare(b.display));
       const title = document.createElement('div');
       title.className='group-title';
       title.textContent = titleCase(prefix);
       wrap.appendChild(title);
-
-      const row = document.createElement('div');
-      row.className='chips';
+      const row = document.createElement('div'); row.className='chips';
       for(const {key,display,count} of items){
         const el=document.createElement('button'); el.className='chip';
         el.setAttribute('aria-pressed', state.tags.has(key)?'true':'false');
-        el.title = tagLabelByKey.get(key) || display; // tooltip shows full tag (e.g., "phase:analysis")
+        el.title = tagLabelByKey.get(key) || display;
         el.dataset.key = key;
         el.innerHTML = `<span>${display}</span><span class="count">(${count})</span>`;
         el.addEventListener('click',()=>{
@@ -345,10 +383,18 @@
     renderTagGroups();
 
     const wrap=$('#activeFilters'); wrap.innerHTML='';
-    const add=(kind,key,label)=>{ const b=document.createElement('span'); b.className='chip'; b.innerHTML=`${label} <span class="count mini">${kind}</span>`; b.title=`Remove ${label}`; b.addEventListener('click',()=>{ (kind==='category'?state.cats:state.tags).delete(key); renderFacets(); render(); }); wrap.appendChild(b); };
+    const add=(kind,key,label)=>{
+      const b=document.createElement('span'); b.className='chip';
+      b.innerHTML=`${label} <span class="count mini">${kind}</span>`;
+      b.title=`Remove ${label}`;
+      b.addEventListener('click',()=>{
+        (kind==='category'?state.cats:state.tags).delete(key);
+        renderFacets(); render();
+      });
+      wrap.appendChild(b);
+    };
 
     for(const k of state.cats) add('category',k,catLabelByKey.get(k)||k);
-    // tags: show friendly "Prefix: Value"
     for(const k of state.tags){
       const raw = tagLabelByKey.get(k) || k;
       const {prefix, displayValue} = splitTag(raw);
@@ -356,11 +402,12 @@
     }
 
     if(!state.cats.size && !state.tags.size && !state.alpha && state.status==='all' && !state.q){
-      const span=document.createElement('span'); span.className='mini'; span.textContent='No filters active'; wrap.appendChild(span);
+      const span=document.createElement('span'); span.className='mini'; span.textContent='No filters active';
+      wrap.appendChild(span);
     }
   }
 
-  // Clear all
+  // Clear all filters
   $('#catFilter').addEventListener('input', ()=>renderFacets());
   $('#tagFilter').addEventListener('input', ()=>renderFacets());
   $('#clear').addEventListener('click', ()=>{
@@ -375,6 +422,9 @@
   $('#q').addEventListener('input', e=>{ state.q=e.target.value; render(); });
   $('#sort').addEventListener('change', e=>{ state.sort=e.target.value; render(); });
 
+  // state & cached results
+  let lastResults = [];
+
   // filtering
   function passesFilters(it){
     if(state.status!=='all' && norm(it.status)!==state.status) return false;
@@ -388,7 +438,7 @@
       if(!keys.some(k=>state.cats.has(k))) return false;
     }
     if(state.tags.size){
-      const keys=(it.tags||[]).map(norm); // still uses full normalized tags
+      const keys=(it.tags||[]).map(norm);
       if(!keys.some(k=>state.tags.has(k))) return false;
     }
     if(state.q){
@@ -415,6 +465,8 @@
   function render(){
     const dir = state.sort==='az'?1:-1;
     const results = G.slice().sort(by('term',dir)).filter(passesFilters);
+    lastResults = results;
+    window.lastResults = results; // expose to export dialog
     resultInfo.textContent = `${results.length} result${results.length===1?'':'s'}`;
 
     cardsEl.innerHTML='';
@@ -429,7 +481,6 @@
           it.status==='duplicate_candidate'?'var(--purple)':
           'var(--green)';
 
-        // display-friendly tags on cards (strip prefix), but keep full key in data-key
         const catChips = (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('');
         const tagChips = (it.tags||[]).map(t=>{
           const {displayValue} = splitTag(t);
@@ -440,9 +491,9 @@
         card.className='card';
         card.innerHTML = `
           <div class="title-row">
-            <h3 style="margin:0;"><a href="#" data-slug="${it.slug}" class="open">${it.term}</a></h3>
+            <h3 style="margin:0;"><a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a></h3>
             <span class="spacer"></span>
-            <a class="btn btn-sm" href="EditSuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
+            <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
           </div>
           <div class="mini">Status:
             <span style="color:${statusColor}">${it.status||'—'}</span>
@@ -456,7 +507,9 @@
         `;
         cardsEl.appendChild(card);
       }
-      if(i<results.length) requestIdleCallback(paint,{timeout:50});
+      if(i<results.length){
+        (window.requestIdleCallback || window.requestAnimationFrame)(paint);
+      }
     }
     paint();
   }
@@ -499,16 +552,32 @@
 </script>
 
 <script>
-/* ============= DOWNLOAD MENU + EXPORTERS (menu fixed) ============= */
+/* ============= DOWNLOADERS & EXPORT DIALOG ============= */
 (function(){
-  // --- DATA SOURCE (supports either global array or your GlossaryAPI facade) ---
-  function allEntries(){
-    if (Array.isArray(window.GLOSSARY)) return window.GLOSSARY;
-    if (window.GlossaryAPI && typeof GlossaryAPI.all === 'function') return GlossaryAPI.all();
-    console.warn('Glossary data not found.'); return [];
+  // --- sorting helpers for export dialog ---
+  const STATUS_ORDER = { verified:0, draft:1, duplicate_candidate:2, deprecated:3 };
+  function sortList(list, mode){
+    const safe = (s)=> (s||'').toString().toLowerCase();
+    const byTerm = (a,b)=> safe(a.term).localeCompare(safe(b.term));
+    switch(mode){
+      case 'term_az':       return list.slice().sort(byTerm);
+      case 'term_za':       return list.slice().sort((a,b)=> byTerm(b,a));
+      case 'status_term':   return list.slice().sort((a,b)=>{
+        const sa = STATUS_ORDER[safe(a.status)] ?? 9;
+        const sb = STATUS_ORDER[safe(b.status)] ?? 9;
+        return (sa - sb) || byTerm(a,b);
+      });
+      case 'category_term': return list.slice().sort((a,b)=>{
+        const ca = safe((a.categories||[])[0]);
+        const cb = safe((b.categories||[])[0]);
+        return ca.localeCompare(cb) || byTerm(a,b);
+      });
+      case 'slug':          return list.slice().sort((a,b)=> safe(a.slug).localeCompare(safe(b.slug)));
+      default:              return list.slice();
+    }
   }
 
-  // --- HELPERS ---
+  // --- helpers ---
   function download(filename, mime, data){
     const blob = new Blob([data], {type: mime});
     const a = document.createElement('a');
@@ -517,14 +586,10 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
   }
-  const escCSV = (v)=>{
-    const s = (v==null?'':String(v));
-    return `"${s.replace(/"/g,'""')}"`;
-  };
-  const escJS = (s)=>String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
-  const escBT = (s)=>String(s||'').replace(/`/g,'\\`');
+  const escCSV = (v)=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
+  const escJS  = (s)=>String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+  const escBT  = (s)=>String(s||'').replace(/`/g,'\\`');
 
-  // Map entry -> plain row object for CSV/TXT
   function flatRow(t){
     return {
       slug: t.slug || '',
@@ -540,10 +605,9 @@
     };
   }
 
-  // --- EXPORTERS ---
+  // exporters
   function asJSON(list){ return JSON.stringify(list, null, 2); }
   function asJS(list){
-    // Produces a single JS file you can load: window.GLOSSARY_EXPORT = [ ... ];
     const blocks = list.map(t => {
       const srcs = (t.sources||[]).map(s=>`{ title: "${escJS(s.title||'')}", url: "${escJS(s.url||'')}" }`).join(', ');
       const arr = xs => (xs||[]).map(x=>`"${escJS(x)}"`).join(', ');
@@ -610,12 +674,13 @@ ${blocks}
     return blocks.join('\n\n-----\n\n');
   }
 
-  // Entrypoint (kept exactly as your working version)
-  function exportGlossary(fmt){
-    const data = allEntries();
+  // unified export entry (accepts optional {list})
+  function exportGlossary(fmt, opts = {}){
+    const data = (opts.list && Array.isArray(opts.list)) ? opts.list
+               : (Array.isArray(window.GLOSSARY) ? window.GLOSSARY
+                 : (window.GlossaryAPI?.all?.() ?? []));
     if(!data.length){ alert('No glossary data found to export.'); return; }
     const stamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
-
     switch(fmt){
       case 'json': return download(`glossary-${stamp}.json`, 'application/json;charset=utf-8', asJSON(data));
       case 'js':   return download(`glossary-${stamp}.js`,   'application/javascript;charset=utf-8', asJS(data));
@@ -624,44 +689,50 @@ ${blocks}
       case 'txt':  return download(`glossary-${stamp}.txt`,  'text/plain;charset=utf-8', asText(data));
     }
   }
-  window.__exportGlossary = exportGlossary; // optional debug hook
+  window.__exportGlossary = exportGlossary; // optional debug
 
-  /* ---- MENU TOGGLE (fixed) ---- */
-  const wrap = document.getElementById('downloadMenuWrap');
-  const btn  = document.getElementById('downloadBtn');
-  const pop  = document.getElementById('downloadMenu');
-
-  if (wrap && btn && pop){
-    let hoverTimer = null;
-
-    const open  = ()=>{ pop.hidden = false; btn.setAttribute('aria-expanded','true'); };
-    const close = ()=>{ pop.hidden = true;  btn.setAttribute('aria-expanded','false'); };
-    const scheduleClose = ()=>{ clearTimeout(hoverTimer); hoverTimer = setTimeout(close, 120); };
-
-    // Toggle on button click
-    btn.addEventListener('click', (e)=>{
+  // menu toggle
+  const menuBtn = document.getElementById('downloadBtn');
+  const menu = document.getElementById('downloadMenu');
+  if(menuBtn && menu){
+    const close = (e)=>{ if(!menu.contains(e.target) && e.target!==menuBtn){ menu.hidden = true; document.removeEventListener('click', close); } };
+    menuBtn.addEventListener('click', (e)=>{
       e.stopPropagation();
-      pop.hidden ? open() : close();
-    });
-
-    // Keep open while hovering; close shortly after leaving
-    wrap.addEventListener('mouseenter', ()=> clearTimeout(hoverTimer));
-    wrap.addEventListener('mouseleave', scheduleClose);
-
-    // Close on outside click / ESC / scroll / resize
-    document.addEventListener('click', (e)=>{ if(!wrap.contains(e.target)) close(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
-    window.addEventListener('scroll', close, { passive:true });
-    window.addEventListener('resize', close);
-
-    // Wire items and close after export
-    pop.querySelectorAll('.menu-item').forEach(item=>{
-      item.addEventListener('click', ()=>{
-        exportGlossary(item.dataset.format);
-        close();
-      });
+      menu.hidden = !menu.hidden;
+      if(!menu.hidden){ setTimeout(()=>document.addEventListener('click', close),0); }
     });
   }
+
+  // dialog wiring
+  const dlg = document.getElementById('exportDlg');
+  const form = document.getElementById('exportForm');
+  const sortSel = document.getElementById('sortMode');
+  const dlgExportBtn = document.getElementById('dlgExportBtn');
+  let pendingFmt = null;
+
+  document.querySelectorAll('#downloadMenu .menu-item').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      pendingFmt = btn.dataset.format;           // json | js | csv | md | txt
+      if(typeof dlg.showModal === 'function'){ dlg.showModal(); }
+      else { dlg.setAttribute('open',''); }
+      if(menu) menu.hidden = true;
+    });
+  });
+
+  dlgExportBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const scope = (new FormData(form)).get('scope') || 'current';
+    const mode  = sortSel.value || 'term_az';
+
+    // choose list based on scope
+    const list = (scope === 'current' && Array.isArray(window.lastResults) && window.lastResults.length)
+      ? window.lastResults
+      : (Array.isArray(window.GLOSSARY) ? window.GLOSSARY : (window.GlossaryAPI?.all?.() ?? []));
+
+    const sorted = sortList(list, mode);
+    exportGlossary(pendingFmt, { list: sorted });
+    if(dlg.open) dlg.close();
+  });
 })();
 </script>
 </body>
