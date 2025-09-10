@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Glossary Term • AI Prompting Glossary</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#121821; --card:#0f151d; --chip:#1b2533; --border:#1b2838;
+      --text:#e7eff7; --muted:#9db0c3; --accent:#4ea1ff; --green:#2ecc71; --yellow:#f1c40f; --red:#e74c3c;
+      --header-h:64px; --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      background:linear-gradient(180deg,#0b0f14,#0a0d12);
+      font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      position:sticky; top:0; z-index:5;
+      height:var(--header-h); display:flex; align-items:center; gap:12px;
+      padding:0 16px; background:rgba(18,24,33,.8); backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+    header h1{font-size:18px;margin:0;font-weight:600}
+    .btn{
+      border:1px solid var(--border); background:var(--chip); color:var(--text);
+      padding:8px 12px; border-radius:10px; cursor:pointer;
+    }
+    .btn.primary{background:#18324a; border-color:#264b6b}
+    .btn:disabled{opacity:.6; cursor:not-allowed}
+    main{max-width:980px;margin:20px auto;padding:0 16px 40px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .field{margin:12px 0}
+    label{font-size:13px; color:var(--muted); display:block; margin-bottom:6px}
+    input[type="text"], input[type="url"], textarea, select{
+      width:100%; padding:10px 11px; border-radius:10px; border:1px solid var(--border);
+      background:#0d131b; color:var(--text); outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{display:inline-flex; align-items:center; gap:6px; font-size:12px;
+      padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--border); cursor:pointer}
+    .chip .x{opacity:.8; cursor:pointer}
+    .hint{font-size:12px; color:var(--muted)}
+    .meta{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .section-title{margin:18px 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+    .sources{display:grid; gap:10px}
+    .src-row{display:grid; grid-template-columns: 1fr 1fr auto; gap:8px}
+    .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip);font-size:12px}
+    .pill[data-val="draft"]{color:var(--yellow)}
+    /* Tag suggestion chips (fix contrast) */
+    #tagSuggestions .chip{ background:#1e2a3b; border-color:#2a3d54; color:#e7eff7; }
+    #tagSuggestions .chip:hover{ filter:brightness(1.1) }
+    /* Centered success modal */
+    .modal-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.55);
+      display:none; align-items:center; justify-content:center; z-index:1000;
+    }
+    .modal{
+      width:min(680px,90vw);
+      background:#0d131b; color:#e7eff7;
+      border:1px solid #1b2838; border-radius:12px; padding:18px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+    .modal h3{ margin:0 0 6px 0; font-size:18px }
+    .modal p{ margin:0 0 12px 0; color:#9db0c3 }
+    .modal .actions{ display:flex; gap:8px; justify-content:flex-end }
+    .modal .btn{ padding:8px 12px; border-radius:10px; border:1px solid #1b2838; background:#1b2533; color:#e7eff7; cursor:pointer }
+    .modal .btn.primary{ background:#4ea1ff; border-color:#4ea1ff; color:#061422 }
+    .toast{position:fixed; right:16px; bottom:16px; background:#0c1117; border:1px solid var(--border); border-radius:10px; padding:10px 12px; color:var(--text)}
+    .footer-note{color:var(--muted); font-size:12px; margin-top:12px}
+    .right{margin-left:auto}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Add Glossary Term</h1>
+    <span class="pill" data-val="draft" title="New terms submit as draft">New entries submit as <strong>draft</strong></span>
+    <span class="right"></span>
+    <a class="btn" href="./index.html">← Back to Glossary</a>
+  </header>
+
+  <main>
+    <section class="card">
+      <form id="f">
+        <div class="field">
+          <label for="term">Term</label>
+          <input id="term" name="term" type="text" placeholder="e.g., Prompt Architecture" required />
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="aliases">Aliases (comma-separated)</label>
+            <input id="aliases" name="aliases" type="text" placeholder="virtual brain, hard prompts" />
+          </div>
+          <div class="field">
+            <label for="related">Related slugs (comma-separated)</label>
+            <input id="related" name="related" type="text" placeholder="prompt-engineering-and-development, architecture" />
+            <div class="hint">Use slugs from the glossary when possible.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="definition">Definition</label>
+          <textarea id="definition" name="definition" placeholder="Concise, clear definition…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Caveats, TODOs, disambiguation…"></textarea>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Categories</label>
+            <div class="meta">
+              <select id="categorySelect"></select>
+              <input id="categoryNew" type="text" placeholder="Add new category…" />
+              <button class="btn" type="button" id="addCat">Add</button>
+            </div>
+            <div id="catChips" class="chips" aria-live="polite"></div>
+            <div class="hint">Pick one or more categories (or add your own).</div>
+          </div>
+
+          <div class="field">
+            <label>Tags</label>
+            <div class="meta">
+              <input id="tagInput" type="text" placeholder="Add tag… (type:*, topic:*, phase:*)" />
+              <button class="btn" type="button" id="addTag">Add</button>
+            </div>
+            <div id="tagSuggestions" class="chips" style="margin-top:6px"></div>
+            <div id="tagChips" class="chips" aria-live="polite"></div>
+            <div class="hint">Suggestions appear below as you type; click to add.</div>
+          </div>
+        </div>
+
+        <div class="section-title">Sources</div>
+        <div class="sources" id="sources"></div>
+        <div class="meta" style="margin-top:8px">
+          <button class="btn" type="button" id="addSource">+ Add source</button>
+          <span class="hint">Title + URL (optional)</span>
+        </div>
+
+        <div class="field" style="margin-top:14px">
+          <label for="message">Justification / message to maintainer</label>
+          <textarea id="message" name="message" placeholder="Why should this be added? What problem does it solve? Any context to review?"></textarea>
+        </div>
+
+        <div class="meta" style="margin-top:16px">
+          <button class="btn primary" type="submit" id="sendBtn">Email term to maintainer</button>
+          <button class="btn" type="button" id="previewBtn">Preview Snippet</button>
+          <span class="hint">Submits via EmailJS; falls back to your mail app if needed.</span>
+        </div>
+
+        <div id="preview" class="card" style="margin-top:14px; display:none">
+          <div class="section-title">Preview Snippet</div>
+          <pre id="json" style="white-space:pre-wrap; word-break:break-word; margin:0"></pre>
+        </div>
+
+        <div class="footer-note">
+          If the term title matches an existing entry, it will be marked as <code>duplicate_candidate</code> for triage.
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="modal">
+      <h3 id="successTitle">Submission sent ✉️</h3>
+      <p id="successText">Thanks! Your suggestion was emailed to the maintainer.</p>
+      <div class="actions">
+        <button class="btn" id="successStay">Stay on page</button>
+        <a class="btn primary" href="./index.html">Back to Glossary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EmailJS (configured with your IDs) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("DpN9hLocoU__4dYVX"); // Public Key
+      window.EMAILJS = {
+        service: "service_9wx16fe",
+        template: "template_hjbmxbn"
+      };
+    })();
+  </script>
+
+  <!-- Load glossary data for suggestions -->
+  <script src="glossary.data.js"></script>
+
+  <script>
+  (function(){
+    const MAINTAINER = "JonathanKyleHobson@gmail.com";
+
+    // Pull glossary data for suggestions / duplicate hinting
+    const G = (globalThis.GLOSSARY && Array.isArray(GLOSSARY)) ? GLOSSARY : (globalThis.GlossaryAPI?.all?.() ?? []);
+
+    // --- DOM helpers
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const norm = s => (s||'').toString().normalize('NFKD').replace(/[^\w\s-]/g,'').replace(/\s+/g,' ').trim().toLowerCase();
+    const slugify = s => (s||'').toString()
+      .normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-zA-Z0-9]+/g,'-').replace(/(^-|-$)/g,'').toLowerCase();
+
+    // --- Build suggestion stores
+    const catSet = new Set();
+    const tagSet = new Set();
+    const tagFreq = new Map();
+    for(const it of G){
+      (it.categories||[]).forEach(c=>catSet.add(c));
+      (it.tags||[]).forEach(t=>{
+        tagSet.add(t);
+        tagFreq.set(t, (tagFreq.get(t)||0)+1);
+      });
+    }
+    const cats = [...catSet].sort((a,b)=>a.localeCompare(b));
+    const tags = [...tagSet].sort((a,b)=>(tagFreq.get(b)-tagFreq.get(a)) || a.localeCompare(b));
+
+    // --- Populate category select
+    const sel = $('#categorySelect');
+    sel.innerHTML = '';
+    cats.forEach(c=>{
+      const o = document.createElement('option'); o.value = o.textContent = c; sel.appendChild(o);
+    });
+
+    // --- Chip managers
+    const catChips = new Set();
+    const tagChips = new Set();
+
+    function renderChips(container, set, removable=true){
+      container.innerHTML = '';
+      for(const v of set){
+        const el = document.createElement('span');
+        el.className = 'chip'; el.textContent = v;
+        if(removable){
+          const x = document.createElement('span'); x.className='x'; x.textContent=' ✕';
+          x.title='Remove'; x.addEventListener('click', (e)=>{ e.stopPropagation(); set.delete(v); renderChips(container,set,removable); });
+          el.appendChild(x);
+        }
+        container.appendChild(el);
+      }
+    }
+
+    $('#addCat').addEventListener('click', ()=>{
+      const v = $('#categoryNew').value.trim() || sel.value;
+      if(!v) return;
+      catChips.add(v);
+      $('#categoryNew').value='';
+      renderChips($('#catChips'), catChips);
+    });
+
+    // Tag suggestions while typing
+    const tagInput = $('#tagInput');
+    const tagSug = $('#tagSuggestions');
+    function refreshTagSuggestions(){
+      const q = norm(tagInput.value);
+      tagSug.innerHTML = '';
+      if(!q){ return; }
+      const sugg = tags.filter(t=> norm(t).includes(q)).slice(0,12);
+      for(const t of sugg){
+        const chip = document.createElement('button');
+        chip.type='button'; chip.className='chip'; chip.textContent=t;
+        chip.addEventListener('click', ()=> { tagChips.add(t); renderChips($('#tagChips'), tagChips); });
+        tagSug.appendChild(chip);
+      }
+    }
+    tagInput.addEventListener('input', refreshTagSuggestions);
+    $('#addTag').addEventListener('click', ()=>{
+      const v = tagInput.value.trim(); if(!v) return;
+      tagChips.add(v); tagInput.value=''; tagSug.innerHTML='';
+      renderChips($('#tagChips'), tagChips);
+    });
+
+    // Sources UI
+    const sourcesEl = $('#sources');
+    function addSourceRow(title='', url=''){
+      const row = document.createElement('div');
+      row.className='src-row';
+      row.innerHTML = `
+        <input type="text" placeholder="Source title" value="${title.replaceAll('"','&quot;')}">
+        <input type="url" placeholder="https://…" value="${url.replaceAll('"','&quot;')}">
+        <button class="btn" type="button">Remove</button>`;
+      row.querySelector('button').addEventListener('click', ()=>row.remove());
+      sourcesEl.appendChild(row);
+    }
+    $('#addSource').addEventListener('click', ()=>addSourceRow());
+
+    // Preview snippet
+    $('#previewBtn').addEventListener('click', ()=>{
+      const obj = buildObject();
+      $('#json').textContent = buildJsObjectBlock(obj);
+      $('#preview').style.display = 'block';
+    });
+
+    // Build object matching glossary schema
+    function buildObject(){
+      const term = $('#term').value.trim();
+      const aliases = ($('#aliases').value||'').split(',').map(s=>s.trim()).filter(Boolean);
+      const related = ($('#related').value||'').split(',').map(s=>s.trim()).filter(Boolean);
+      const definition = $('#definition').value.trim();
+      const notes = $('#notes').value.trim();
+      const categories = [...catChips];
+      const tags = [...tagChips];
+      const sources = [...sourcesEl.querySelectorAll('.src-row')].map(r=>{
+        const [t,u] = r.querySelectorAll('input');
+        if(!t.value && !u.value) return null;
+        return { title: t.value.trim(), url: u.value.trim() };
+      }).filter(Boolean);
+
+      // Duplicate hint: simple title equality
+      const nTerm = norm(term);
+      const hit = G.find(it => norm(it.term) === nTerm);
+      const status = hit ? "duplicate_candidate" : "draft";
+
+      return {
+        slug: slugify(term),
+        term,
+        aliases,
+        definition,
+        sources,
+        categories,
+        tags,
+        related,
+        status,
+        notes
+      };
+    }
+
+    // Build the JS-style block used in the email (not JSON)
+    function buildJsObjectBlock(payload){
+      const esc = s => (s||"").replace(/\\/g,"\\\\").replace(/"/g,'\\"');
+      const escBT = s => (s||"").replace(/`/g,"\\`");
+      const arr = (xs) => xs.map(x => `"${esc(x)}"`).join(", ");
+      const srcs = (payload.sources||[])
+        .map(s => `{ title: "${esc(s.title||"")}", url: "${esc(s.url||"")}" }`)
+        .join(", ");
+      return ` {
+    slug: "${esc(payload.slug)}",
+    term: "${esc(payload.term)}",
+    aliases: [${arr(payload.aliases||[])}],
+    definition: \`${escBT(payload.definition)}\`,
+    sources: [${srcs}],
+    categories: [${arr(payload.categories||[])}],
+    tags: [${arr(payload.tags||[])}],
+    related: [${arr(payload.related||[])}],
+    status: "${esc(payload.status)}",
+    notes: "${esc(payload.notes||"")}"
+  }`;
+    }
+
+    // Email sending: EmailJS (if configured) → otherwise mailto:
+    async function sendEmail(payload){
+      const maintMsg = $("#message").value.trim() || "(none provided)";
+
+      const objBlock = buildJsObjectBlock(payload);
+      const body =
+`Message to maintainer:
+${maintMsg}
+
+Paste into glossary.data.js as a new GLOSSARY.push(...) entry:
+${objBlock}
+`;
+
+      const subjPrefix = (payload.status === "duplicate_candidate") ? "[possible duplicate] " : "";
+      const title = "Add Term";                // Add page fixed title
+      const name = payload.term;
+
+      if(window.emailjs && window.EMAILJS){
+        try{
+          $('#sendBtn').disabled = true;
+          await emailjs.send(
+            window.EMAILJS.service,
+            window.EMAILJS.template,
+            { title, name, message: body }
+          );
+          showSuccessModal();
+          return;
+        }catch(err){
+          console.error(err);
+          toast("Email service failed; falling back to your mail app…");
+        }finally{
+          $('#sendBtn').disabled = false;
+        }
+      }
+
+      // mailto fallback
+      const subject = `${subjPrefix}${title}: ${payload.term}`;
+      const mailto = `mailto:${encodeURIComponent(MAINTAINER)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    }
+
+    function showSuccessModal(){
+      const m = $('#successModal');
+      m.style.display = 'flex';
+      $('#successStay').onclick = () => { m.style.display = 'none'; };
+    }
+
+    function toast(msg){
+      const t = document.createElement('div');
+      t.className='toast'; t.textContent = msg; document.body.appendChild(t);
+      setTimeout(()=>t.remove(), 3500);
+    }
+
+    // Submit handler
+    $('#f').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!$('#term').value.trim() || !$('#definition').value.trim()){
+        toast("Please fill the required fields (Term, Definition)."); return;
+      }
+      const obj = buildObject();
+      $('#json').textContent = buildJsObjectBlock(obj);
+      $('#preview').style.display = 'block';
+      sendEmail(obj);
+    });
+
+    // Warm start: one empty source row
+    addSourceRow();
+  })();
+  </script>
+</body>
+</html>
