@@ -198,6 +198,116 @@
     box-shadow:inset 0 -3px 6px rgba(0,0,0,.25);
   }
   :root[data-theme="light"] .theme-toggle .dot{ background:linear-gradient(180deg,#121621,#394554) }
+  
+/* Desktop default: hide the mobile-only toolbar */
+.mobile-topbar { display: none; }
+
+  
+  /* ======== MOBILE-ONLY LAYOUT (<= 768px) ======== */
+@media (max-width: 768px){
+  :root{
+    /* mobile top bar height; desktop --header-h remains for desktop */
+    --topbar-h: 56px;
+  }
+
+  /* Full-viewport behavior on mobile (fix iOS bottom gap) */
+  html, body { min-height: 100dvh; }
+  .app { min-height: 100dvh; display: flex; flex-direction: column; }
+
+  /* Make header a two-part sticky region: topbar (always), search row (toggle) */
+  header{
+    position: sticky; top: 0; z-index: 60;
+    background: var(--panel); border-bottom: 1px solid var(--border);
+  }
+  /* Hide desktop title and keep space clean on mobile */
+  header > h1{ display: none; }
+
+/* MOBILE TOP BAR */
+  #mobileTopBar,
+  .mobile-topbar{
+    display: flex !important; align-items: center; gap: 8px;
+    height: var(--topbar-h); padding: 0 8px;
+  }
+  .mobile-topbar .spacer{ flex: 1; }
+  .icon-btn{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--chip); color: var(--text);
+    border: 1px solid var(--border); cursor: pointer;
+  }
+  .icon-btn:focus{ outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent); }
+  .icon-btn .icon{ font-size: 18px; line-height: 1; }
+
+  /* SEARCH ROW: reuse existing .search container, but default hidden on mobile */
+  header .search{
+    display: none; /* closed by default */
+    padding: 8px; gap: 8px;
+    border-top: 1px solid var(--border);
+  }
+  /* When search is open (we toggle data-search on <html>) */
+  :root[data-search="open"] header .search{ display: flex; }
+  /* Sort stays inline if room; will wrap under 360px */
+  header .search .select{ min-width: 140px; }
+
+  /* Hide “Add term” on mobile (desktop only) */
+  header a[href="./add-glossaryterm.html"]{ display: none !important; }
+
+  /* Download menu: hide the text button; keep wrapper to anchor the popover near the top bar */
+  #downloadMenuWrap{ position: fixed; right: 8px; top: calc(var(--topbar-h) - 4px); z-index: 70; }
+  #downloadBtn{ display: none; } /* icon triggers the same menu */
+
+  /* LAYOUT: collapse to 1 column; content fills remaining viewport */
+  .layout{
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: calc(100dvh - var(--topbar-h));
+    flex: 1; /* allow the layout to grow and fill under the sticky header */
+  }
+  .main{ overflow: auto; position: relative; }
+
+  /* SIDEBAR becomes an off-canvas drawer */
+  .sidebar{
+    position: fixed; inset: 0 auto 0 0; /* top:0; left:0; height:100% */
+    width: min(86vw, 360px);
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    z-index: 80;
+    box-shadow: 0 16px 48px rgba(0,0,0,.35);
+  }
+  :root[data-drawer="open"] .sidebar{ transform: translateX(0); }
+
+  /* Overlay to close the drawer */
+  .overlay{
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 75;
+    display: none;
+  }
+  :root[data-drawer="open"] .overlay{ display: block; }
+
+  /* Prevent background scroll when drawer is open */
+  body.no-scroll{ overflow: hidden; }
+
+  /* A–Z grid: compact two rows (approximate 13+14 split) */
+  .alpha-grid{
+    display: grid;
+    grid-template-columns: repeat(13, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .alpha-btn{ padding: 10px 0; }
+
+  /* Facets vertical already; ensure chips wrap comfortably */
+  .chips{ gap: 8px; }
+
+  /* Hide the desktop theme toggle button (we use an icon on mobile) */
+  #themeToggle{ display: none; }
+
+  /* Results header spacing tweaks (if present) */
+  #activeFilters{ padding: 8px; }
+}
+
+  }
 </style>
 
 
@@ -205,6 +315,32 @@
 <body>
 <div class="app">
   <header>
+  
+      <!-- MOBILE TOP BAR (icons only, mobile-only via CSS) -->
+    <div id="mobileTopBar" class="mobile-topbar" role="toolbar" aria-label="Mobile actions">
+      <!-- Left: Hamburger to open filters drawer -->
+      <button id="hamburgerBtn" class="icon-btn" aria-label="Open filters" aria-controls="sidebar" aria-expanded="false">
+        <!-- simple hamburger icon -->
+        <span class="icon" aria-hidden="true">☰</span>
+      </button>
+
+      <div class="spacer" aria-hidden="true"></div>
+
+      <!-- Center/Right: theme, search, download -->
+      <button id="themeIconBtn" class="icon-btn" aria-label="Toggle theme">
+        <span class="icon" aria-hidden="true">◐</span>
+      </button>
+
+      <button id="searchIconBtn" class="icon-btn" aria-label="Search">
+        <span class="icon" aria-hidden="true">🔍</span>
+      </button>
+
+      <button id="downloadIconBtn" class="icon-btn" aria-label="Download">
+        <span class="icon" aria-hidden="true">⬇</span>
+      </button>
+    </div>
+    <!-- /MOBILE TOP BAR -->
+
     <h1>AI Prompting Glossary</h1>
     <div class="search">
       <input id="q" type="search" placeholder='Search… (try: tag:topic:prompting, category:"conversational design")'/>
@@ -282,6 +418,10 @@
       </form>
     </dialog>
   </header>
+  
+    <!-- Drawer overlay (click to close), mobile-only via CSS -->
+  <div id="drawerOverlay" class="overlay" hidden></div>
+
 
   <div class="layout">
     <aside class="sidebar" id="sidebar">
@@ -1011,6 +1151,143 @@ ${blocks}
     function setLabel(s){ const L = btn?.querySelector('.label'); if(L) L.textContent = s; }
   })();
 </script>
+
+<script>
+/* ======== Mobile UI helpers (desktop unaffected) ======== */
+(function(){
+  const root = document.documentElement;
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('drawerOverlay');
+
+  const btnHamburger = document.getElementById('hamburgerBtn');
+  const btnSearch    = document.getElementById('searchIconBtn');
+  const btnDownload  = document.getElementById('downloadIconBtn');
+  const btnThemeIcon = document.getElementById('themeIconBtn');
+
+  const searchInput  = document.getElementById('q');
+  const downloadBtn  = document.getElementById('downloadBtn');
+  const downloadMenu = document.getElementById('downloadMenu');
+
+  const mql = window.matchMedia('(max-width: 768px)');
+  let prevFocus = null;
+  let trapHandler = null;
+
+  // Ensure default state
+  if(!root.hasAttribute('data-drawer')) root.setAttribute('data-drawer','closed');
+  if(!root.hasAttribute('data-search')) root.setAttribute('data-search','closed');
+
+  function isMobile(){ return mql.matches; }
+
+  /* Drawer open/close + focus trap */
+  function openDrawer(){
+    if(!isMobile()) return;
+    prevFocus = document.activeElement;
+    root.setAttribute('data-drawer','open');
+    btnHamburger?.setAttribute('aria-expanded','true');
+    document.body.classList.add('no-scroll');
+    overlay.hidden = false;
+
+    // Accessibility roles; no markup edits required
+    sidebar.setAttribute('role','dialog');
+    sidebar.setAttribute('aria-modal','true');
+    sidebar.setAttribute('tabindex','-1');
+
+    // Focus first focusable element
+    const focusables = sidebar.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    const first = focusables[0] || sidebar;
+    first.focus({preventScroll:true});
+
+    // Focus trap
+    trapHandler = (e)=>{
+      if(e.key !== 'Tab') return;
+      const els = Array.from(sidebar.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.disabled && el.offsetParent!==null);
+      if(els.length===0) return;
+      const firstEl = els[0], lastEl = els[els.length-1];
+      if(e.shiftKey && document.activeElement === firstEl){ e.preventDefault(); lastEl.focus(); }
+      else if(!e.shiftKey && document.activeElement === lastEl){ e.preventDefault(); firstEl.focus(); }
+    };
+    document.addEventListener('keydown', trapHandler);
+  }
+  function closeDrawer(){
+    root.setAttribute('data-drawer','closed');
+    btnHamburger?.setAttribute('aria-expanded','false');
+    document.body.classList.remove('no-scroll');
+    overlay.hidden = true;
+    if(trapHandler){ document.removeEventListener('keydown', trapHandler); trapHandler = null; }
+    if(prevFocus && typeof prevFocus.focus === 'function'){ prevFocus.focus({preventScroll:true}); }
+  }
+
+  // Overlay click closes
+  overlay?.addEventListener('click', closeDrawer);
+
+  // Esc closes drawer or search
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+      if(root.getAttribute('data-drawer')==='open'){ closeDrawer(); return; }
+      if(root.getAttribute('data-search')==='open'){ toggleSearch(false); return; }
+    }
+  });
+
+  // Hamburger
+  btnHamburger?.addEventListener('click', ()=>{
+    if(root.getAttribute('data-drawer')==='open') closeDrawer(); else openDrawer();
+  });
+
+  // Search: toggles the row; focuses the input
+  function toggleSearch(forceOpen){
+    if(!isMobile()) return;
+    const willOpen = typeof forceOpen === 'boolean'
+      ? forceOpen
+      : root.getAttribute('data-search') !== 'open';
+    root.setAttribute('data-search', willOpen ? 'open' : 'closed');
+    if(willOpen){
+      // small delay to ensure row rendered before focusing
+      setTimeout(()=> searchInput?.focus({preventScroll:true}), 0);
+    }else{
+      // optional: clear query? We keep it.
+    }
+  }
+  btnSearch?.addEventListener('click', ()=> toggleSearch());
+
+  // Download: reuse existing menu
+  btnDownload?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    if(!downloadMenu || !downloadBtn) return;
+    // Toggle the menu the same way the desktop button does
+    downloadMenu.hidden = !downloadMenu.hidden;
+    if(!downloadMenu.hidden){
+      // click outside to close
+      const close = (evt)=>{
+        if(!downloadMenu.contains(evt.target)) { downloadMenu.hidden = true; document.removeEventListener('click', close); }
+      };
+      setTimeout(()=>document.addEventListener('click', close),0);
+    }
+  });
+
+  // Theme: forward to existing theme toggle (keeps logic unified)
+  btnThemeIcon?.addEventListener('click', ()=>{
+    const desktopBtn = document.getElementById('themeToggle');
+    if(desktopBtn){ desktopBtn.click(); }
+    else{
+      // fallback: simple flip on :root
+      const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', t);
+    }
+  });
+
+  // On resize up to desktop, ensure mobile states are closed
+  mql.addEventListener?.('change', ()=>{
+    if(!isMobile()){
+      root.setAttribute('data-drawer','closed');
+      root.setAttribute('data-search','closed');
+      document.body.classList.remove('no-scroll');
+      overlay.hidden = true;
+      if(trapHandler){ document.removeEventListener('keydown', trapHandler); trapHandler = null; }
+    }
+  });
+})();
+</script>
+
 
 </body>
 </html>
