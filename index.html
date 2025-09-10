@@ -345,6 +345,23 @@
   </article>
 </dialog>
 
+<!-- Ask-ChatGPT helper modal -->
+<dialog id="gptHelp">
+  <form method="dialog" style="margin:0">
+    <h3 style="margin:0 0 8px;">Prompt copied ✓</h3>
+    <p style="margin:0 0 10px; color:var(--muted)">
+      A new tab opened with <strong>Prompt Engineering Educator</strong>. If the message isn’t prefilled there,
+      just <strong>paste</strong> (Ctrl/⌘+V) into the chat box.
+    </p>
+    <textarea id="gptHelpText" style="width:100%;height:140px;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:10px" readonly></textarea>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+      <button type="button" class="btn" id="copyAgain">Copy again</button>
+      <button class="btn primary">Got it</button>
+    </div>
+  </form>
+</dialog>
+
+
 <!-- Ensure the global exists before loading data -->
 <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
 <script src="glossary.data.js"></script>
@@ -615,26 +632,41 @@ function render(){
 
       const card=document.createElement('div');
       card.className='card';
-      card.innerHTML = `
-        <div class="title-row">
-          <h3 style="margin:0;">
-            <a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a>
-          </h3>
-          <span class="spacer"></span>
-          <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
-        </div>
-        <div class="mini">Status:
-          <span style="color:${statusColor}">${it.status||'—'}</span>
-          ${it.aliases?.length?` • aka: ${it.aliases.join(', ')}`:''}
-        </div>
-        <p class="mini" style="margin:8px 0 6px">
-          ${(it.definition||'').slice(0,220)}${(it.definition||'').length>220?'…':''}
-        </p>
-        <div class="meta">
-          ${catChips}
-          ${tagChips}
-        </div>
-      `;
+  card.innerHTML = `
+  <div class="title-row">
+    <h3 style="margin:0;">
+      <a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a>
+    </h3>
+    <span class="spacer"></span>
+    <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
+  </div>
+
+  <div class="mini">Status:
+    <span class="status-chip" data-status="${it.status||'verified'}">${it.status||'—'}</span>
+    ${it.aliases?.length ? ` • aka: ${it.aliases.join(', ')}` : ''}
+  </div>
+
+  <p class="mini" style="margin:8px 0 6px">
+    ${(it.definition||'').slice(0,220)}${(it.definition||'').length>220 ? '…' : ''}
+  </p>
+
+  <div class="meta">
+    ${(it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')}
+    ${(it.tags||[]).map(t=>{
+      const {displayValue} = splitTag(t);
+      return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
+    }).join('')}
+  </div>
+
+  <!-- NEW: Ask ChatGPT row -->
+  <div class="title-row" style="margin-top:10px">
+    <span class="spacer"></span>
+    <button class="btn btn-sm ask-chatgpt" data-slug="${it.slug}" title="Open ChatGPT preloaded with this term">
+      💬 Ask ChatGPT
+    </button>
+  </div>
+`;
+
       cardsEl.appendChild(card);
     }
     if(i<results.length){
@@ -680,6 +712,86 @@ function render(){
   renderFacets();
   render();
 })();
+</script>
+
+<script>
+
+// ---- Ask ChatGPT integration ----
+// Use your educator GPT link
+const EDUCATOR_GPT_URL = 'https://chatgpt.com/g/g-mW4xxm2uL-prompt-engineering-educator';
+const DEFAULT_CHATGPT_MODEL = 'gpt-4o'; // change later via a settings dialog if you like
+const MAX_URL_Q_LEN = 1800;             // keep URL safe; full prompt still copied to clipboard
+
+function buildAskPrompt(entry){
+  const lines = [];
+  lines.push(`You are an expert AI tutor. The user is viewing a glossary entry and wants more depth, examples, and comparisons.`);
+  lines.push('');
+  lines.push(`TERM: ${entry.term}`);
+  if(entry.aliases?.length)   lines.push(`ALIASES: ${entry.aliases.join(', ')}`);
+  if(entry.definition)        lines.push(`DEFINITION: ${entry.definition.replace(/\s+/g,' ').trim()}`);
+  if(entry.categories?.length)lines.push(`CATEGORIES: ${entry.categories.join(', ')}`);
+  if(entry.tags?.length)      lines.push(`TAGS: ${entry.tags.join(', ')}`);
+  if(entry.related?.length)   lines.push(`RELATED: ${entry.related.join(', ')}`);
+  if(entry.sources?.length){
+    const srcs = entry.sources.map(s=> s.url ? `${s.title||''} <${s.url}>` : (s.title||'')).filter(Boolean);
+    if(srcs.length) lines.push(`SOURCES: ${srcs.join(' | ')}`);
+  }
+  lines.push('');
+  lines.push(`Please:`);
+  lines.push(`1) Explain the term at a practitioner level with 1–2 concrete examples.`);
+  lines.push(`2) Contrast it with closely related terms (if any) and note common confusions.`);
+  lines.push(`3) Offer pitfalls, best practices, and a short checklist.`);
+  lines.push(`4) Suggest 3 reputable resources for deeper reading (link if possible).`);
+  return lines.join('\n');
+}
+
+async function openChatGPTWith(entry){
+  const prompt = buildAskPrompt(entry);
+
+  // Always copy the full prompt, so the user can paste if prefill doesn’t appear
+  try { await navigator.clipboard.writeText(prompt); toast('Opened ChatGPT • Prompt copied'); } catch {}
+
+  // Build short, URL-safe prefill
+  const q = encodeURIComponent(prompt.slice(0, MAX_URL_Q_LEN));
+
+  // Preferred: custom GPT deep link with prefilled query
+  // Note: if the user isn’t logged in, they'll see the login screen; after login, behavior may vary.
+  const educatorUrl = `${EDUCATOR_GPT_URL}?q=${q}`;
+
+  // Fallback: generic ChatGPT entry (keeps your previous behavior intact)
+  const fallbackUrl = `https://chatgpt.com/?model=${encodeURIComponent(DEFAULT_CHATGPT_MODEL)}&q=${q}`;
+
+  // Try educator GPT first; if the window fails to open (popup blockers), try the generic URL.
+  let win = window.open(educatorUrl, '_blank', 'noopener');
+  if (!win) { window.open(fallbackUrl, '_blank', 'noopener'); }
+// Show a small helper modal with the copied prompt + "Copy again" & instructions
+  const dlg = document.getElementById('gptHelp');
+  const ta  = document.getElementById('gptHelpText');
+  const copyBtn = document.getElementById('copyAgain');
+  if (dlg && ta) {
+    ta.value = prompt;
+    copyBtn?.addEventListener('click', async ()=> {
+      try { await navigator.clipboard.writeText(prompt); } catch {}
+    }, { once:true });
+    dlg.showModal();
+  } else {
+    toast('Opened Educator GPT — prompt copied. Paste into the chat if it’s blank.');
+  }
+}
+
+
+// Click handling for all Ask ChatGPT buttons
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.ask-chatgpt');
+  if(!btn) return;
+  e.preventDefault();
+  const slug = btn.dataset.slug;
+  const entry = (lastResults || []).find(x=> x.slug === slug) 
+             || (Array.isArray(window.GLOSSARY)? window.GLOSSARY.find(x=>x.slug===slug) : null);
+  if(!entry){ toast('Unable to load this term.'); return; }
+  openChatGPTWith(entry);
+});
+
 </script>
 
 <script>
