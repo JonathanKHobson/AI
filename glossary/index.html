@@ -753,6 +753,37 @@ function render(){
   // 4) (re)paint cards in batches for perf
   cardsEl.innerHTML='';
   const batch=40; let i=0;
+  
+  
+    let hashHandledOnce = false;
+
+function getHashSlug(){
+  return (location.hash || '').replace(/^#/, '').trim();
+}
+
+function maybeOpenFromHash(){
+  const slug = getHashSlug();
+  if (!slug) return;
+
+  const el = document.getElementById(slug);
+  if (!el) return; // not painted yet; render() will call us again when done
+
+  if (hashHandledOnce) return;
+  hashHandledOnce = true;
+
+  // Scroll the card into view
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Open the detail drawer the same way clicking the title would
+  const a = el.querySelector('a.open');
+  if (a) a.click();
+}
+
+// If the hash changes (e.g., user pastes a link), try again
+window.addEventListener('hashchange', ()=>{
+  hashHandledOnce = false;
+  maybeOpenFromHash();
+});
 
   function paint(){
     const end=Math.min(i+batch,results.length);
@@ -772,6 +803,7 @@ function render(){
 
       const card=document.createElement('div');
       card.className='card';
+      card.id = it.slug;                  // <-- anchor target!
   card.innerHTML = `
   <div class="title-row">
     <h3 style="margin:0;">
@@ -809,9 +841,12 @@ function render(){
 
       cardsEl.appendChild(card);
     }
-    if(i<results.length){
-      (window.requestIdleCallback || window.requestAnimationFrame)(paint);
-    }
+if (i < results.length){
+  (window.requestIdleCallback || window.requestAnimationFrame)(paint);
+} else {
+  // all cards are in the DOM; try to honor the URL hash
+  maybeOpenFromHash();
+}
   }
   paint();
 }
@@ -839,6 +874,10 @@ function render(){
         + '</ul>')
       : '';
     if(!detail.open) detail.showModal();
+    
+    // reflect selection in URL without adding a new history entry
+history.replaceState(null, '', '#' + slug);
+
   });
 
   // clicking chips on cards -> add filter
