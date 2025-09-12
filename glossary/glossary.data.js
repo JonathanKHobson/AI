@@ -272,7 +272,7 @@ GLOSSARY.push(
       { title: "ScienceDirect (Computers & Education)", url: "https://www.sciencedirect.com/science/article/abs/pii/S0099133323000599" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:ideation"],
+    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
     related: ["raccca-framework","rubric-approach"],
     status: "verified",
     notes: ""
@@ -284,7 +284,7 @@ GLOSSARY.push(
     definition: `A prompting checklist: **Clarity**, **Length**, **Empathy**, **Actionability**, **Relevance**—to improve instruction quality and fit.`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:prompting"],
+    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
     related: ["clear-path-forward-framework","rubric-approach"],
     status: "verified",
     notes: "Needs source"
@@ -298,7 +298,7 @@ GLOSSARY.push(
       { title: "LinkedIn article", url: "https://www.linkedin.com/pulse/demystifying-prompt-engineering-unveiling-art-behind-effective" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:ideation"],
+    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
     related: ["par-method","star-technique","aida-model","swot-analysis"],
     status: "verified",
     notes: ""
@@ -312,7 +312,7 @@ GLOSSARY.push(
       { title: "MindTools SWOT overview", url: "https://www.mindtools.com/amtbj63/swot-analysis" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:ideation"],
+    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
     related: ["aida-model","par-method","star-technique","clear-framework"],
     status: "verified",
     notes: ""
@@ -326,7 +326,7 @@ GLOSSARY.push(
       { title: "Indeed: PAR Method", url: "https://www.indeed.com/career-advice/interviewing/par-method" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:prompting"],
+    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
     related: ["star-technique","clear-framework"],
     status: "verified",
     notes: ""
@@ -340,7 +340,7 @@ GLOSSARY.push(
       { title: "Siege Media: AIDA", url: "https://www.siegemedia.com/creation/aida-model" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:ideation"],
+    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
     related: ["swot-analysis","par-method"],
     status: "verified",
     notes: ""
@@ -354,7 +354,7 @@ GLOSSARY.push(
       { title: "The Muse: STAR method", url: "https://www.themuse.com/advice/star-interview-method" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:prompting"],
+    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
     related: ["par-method","clear-framework"],
     status: "verified",
     notes: ""
@@ -368,7 +368,7 @@ GLOSSARY.push(
       { title: "Analytics Vidhya: PEAS", url: "https://www.analyticsvidhya.com/blog/2022/08/simplifying-ai-models-with-the-peas-representation-system" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:llm","phase:ideation"],
+    tags: ["type:framework","type:template","topic:llm","phase:ideation"],
     related: ["alignment","architecture"],
     status: "verified",
     notes: ""
@@ -380,7 +380,7 @@ GLOSSARY.push(
     definition: `Prompt pattern: **Role** (who the model is), **Task** (what to do), **Format** (how to respond). A general-purpose scaffold for most requests.`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:prompting"],
+    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
     related: ["risen-framework","ratio-framework","rodes-framework","costar-framework"],
     status: "verified",
     notes: ""
@@ -392,7 +392,7 @@ GLOSSARY.push(
     definition: `Prompt scaffold for complex tasks: **Role**, **Instructions**, **Steps**, **End goal**, **Narrowing** (focus).`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:prompting"],
+    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
     related: ["rtf-framework","costar-framework","rodes-framework","ratio-framework"],
     status: "verified",
     notes: ""
@@ -404,7 +404,7 @@ GLOSSARY.push(
     definition: `Prompt elements: **ROLE**, **AUDIENCE**, **TASK**, **INSTRUCTIONS**, **OUTPUT**—centers audience and deliverable shape.`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:prompting"],
+    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
     related: ["rtf-framework","risen-framework","rodes-framework"],
     status: "verified",
     notes: ""
@@ -416,7 +416,7 @@ GLOSSARY.push(
     definition: `Prompt elements: **Role**, **Objective**, **Details**, **Examples**, **Sense Check**—useful when you have good exemplars.`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:prompting"],
+    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
     related: ["ratio-framework","rtf-framework","costar-framework"],
     status: "verified",
     notes: ""
@@ -428,7 +428,7 @@ GLOSSARY.push(
     definition: `Prompt fields: **Context**, **Objective**, **Style**, **Tone**, **Audience**, **Response** (format). Guides the model to target content and structure.`,
     sources: [],
     categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:prompting"],
+    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
     related: ["rtf-framework","risen-framework","ratio-framework","rodes-framework"],
     status: "verified",
     notes: ""
@@ -442,7 +442,7 @@ GLOSSARY.push(
       { title: "Business Model Ideas", url: "https://www.businessmodelideas.com/blog/why-how-what-the-golden-circle-as-a-leadership-tool" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:ideation"],
+    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
     related: ["aida-model","swot-analysis"],
     status: "verified",
     notes: ""
@@ -510,7 +510,7 @@ GLOSSARY.push(
       { title: "Andrew Maynard: Intro to Prompt Engineering", url: "https://andrewmaynard.net/an-introduction-to-basic-prompt-engineering-with-chatgpt/" }
     ],
     categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:evaluation","phase:evaluation"],
+    tags: ["type:framework","type:template","topic:evaluation","phase:evaluation"],
     related: ["rubric-approach","clear-path-forward-framework"],
     status: "verified",
     notes: ""
@@ -7903,6 +7903,8 @@ GLOSSARY.push(
     }
     // Map common pluralization: if tag like "aliases" contains variants, they’re already covered
   }
+
+
 
   // ---------- Cross-link helpers ----------
   function resolveSlug(maybeSlugOrTerm) {
