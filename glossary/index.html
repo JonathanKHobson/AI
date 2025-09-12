@@ -361,6 +361,7 @@
     
     <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
 
+<a class="btn" href="./prompt-builder.html" title="Open Prompt Builder">Prompt Builder</a>
 
 
 
@@ -527,6 +528,19 @@
     const value = raw.slice(i+1) || '';
     return {prefix:prefix.toLowerCase(), value, displayValue:titleCase(value), raw};
   }
+  
+  // treat tags like "Template", "template", or "anything:template" as a template
+function hasTemplateTag(tags){
+  return (tags||[]).some(t=>{
+    const s = norm(t);
+    if (s === 'template') return true;
+    if (s.endsWith(':template')) return true; // supports key:value style tags
+    // fall back: "Template" as the value after the colon
+    const { value } = splitTag(t);
+    return norm(value) === 'template';
+  });
+}
+
 
   // label + counts
   const catLabelByKey = new Map(), tagLabelByKey = new Map();
@@ -810,6 +824,11 @@ window.addEventListener('hashchange', ()=>{
       <a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a>
     </h3>
     <span class="spacer"></span>
+    
+        ${hasTemplateTag(it.tags)
+      ? `<a class="btn btn-sm" href="prompt-builder.html?slug=${encodeURIComponent(it.slug)}" title="Open this template in Prompt Builder">Prompt Builder</a>`
+      : ``}
+    
     <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
   </div>
 
