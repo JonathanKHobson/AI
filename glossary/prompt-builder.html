@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prompt Framework Builder (beta)</title>
+  <title>Prompt Template Builder (beta)</title>
   <style>
     :root{
       --bg:#0b0f14; --panel:#121821; --card:#0f151d; --muted:#9db0c3; --text:#e7eff7;
@@ -35,7 +35,17 @@
 :root[data-theme="light"] .btn.primary{ color:#ffffff; }
 
     .btn.sm{padding:6px 10px;font-size:14px;border-radius:8px}
-    .toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:999px}
+   .toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border);background:var(--chip);
+  padding:6px 10px;border-radius:999px;
+  color: var(--text); /* force readable text in both themes */
+}
+.toggle:hover, .toggle:focus-visible{
+  box-shadow: 0 0 0 2px rgba(78,161,255,.25);
+  outline: none;
+}
+
     .dot{width:16px;height:16px;border-radius:50%;background:linear-gradient(180deg,#fdd835,#fbc02d);box-shadow:inset 0 -3px 6px rgba(0,0,0,.25)}
     :root[data-theme="light"] .dot{background:linear-gradient(180deg,#121621,#394554)}
 
@@ -83,6 +93,27 @@
   background: var(--accent);
   box-shadow: 0 0 0 2px rgba(78,161,255,.25);
 }
+
+.finder{ margin-bottom:8px; }
+.finder input{ width:100%; }
+
+
+.finder{ position:relative; margin-bottom:8px; }
+.finder input{ width:100%; padding-right:64px; }
+.finder .btn.tiny{
+  position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  padding:4px 8px; font-size:12px; border-radius:999px;
+}
+
+
+
+/* Not Using */
+.useChips{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 8px; }
+.useChips .chip{ cursor:pointer; user-select:none; }
+.useChips .chip.active{ outline:2px solid var(--accent); }
+
+.suggestions{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 12px; }
+.suggestions .suggest{ cursor:pointer; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:var(--chip); font-size:12px; }
 
 
 /* Nice vertical rhythm between fields */
@@ -228,7 +259,14 @@
   <div class="panel" id="configPanel">
       <h2>Configure</h2>
       <section>
-        <label for="frameworkSel">Framework</label>
+        <label for="frameworkSel">Templates</label>
+        
+ <div id="finderBar" class="finder">
+  <input id="fwSearch" type="text" placeholder="Find a template by name, tag, or use case… (Ctrl/Cmd+K)">
+  <button id="fwAll" type="button" class="btn tiny" title="Show full list">All</button>
+</div>
+
+
         <select id="frameworkSel"></select>
         <div id="fwHelp" class="help" aria-live="polite"></div>
       </section>
@@ -258,7 +296,7 @@
       </section>
 
       <section>
-        <h3 style="margin:0 0 6px;font-size:14px">Framework fields</h3>
+        <h3 style="margin:0 0 6px;font-size:14px">Template fields</h3>
         <div id="fields"></div>
         <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
       </section>
@@ -900,28 +938,83 @@ boosters: [
   }
 ];
 
+const searchEl = document.getElementById('fwSearch');
+const allBtn   = document.getElementById('fwAll');
+
+const norm = s => (s||'').toLowerCase();
+function tokenize(s){ return norm(s).split(/[^a-z0-9]+/).filter(Boolean); }
+
+function matchScore(fw, query){
+  const q = (query||'').trim();
+  if(!q) return 0;
+
+  const qTokens = tokenize(q);
+  if(!qTokens.length) return 0;
+
+  const hayPieces = [
+    fw.label, fw.slug, fw.definition, fw.help,
+    ...(fw.categories||[]), ...(fw.tags||[]),
+    ...(fw.use_cases||[]), ...(fw.boosters||[]),
+    ...((fw.fields||[]).flatMap(f=>[f.label, f.desc, f.ph]))
+  ].filter(Boolean);
+
+  const hay = hayPieces.join(' ').toLowerCase();
+  const hayTokens = tokenize(hay);
+
+  let score = 0;
+  qTokens.forEach(t=>{
+    // strong boost for label prefix match
+    if (norm(fw.label).startsWith(t)) score += 8;
+    // general token presence in tags/use_cases/desc/etc.
+    if (hayTokens.includes(t)) score += 3;
+  });
+  return score;
+}
+
+
+
 
 // UI bootstrap
 const sel = $('#frameworkSel');
 let state = { id: null, common:{}, fields:{} }; // use let so we can set the id after we build options
 
-function buildFrameworkOptions(){
-  const sorted = FRAMEWORKS.slice()
-    .sort((a,b)=> a.label.localeCompare(b.label, 'en', {sensitivity:'base'}));
+function buildFrameworkOptions(filterText=''){
+  const base = FRAMEWORKS.slice()
+    .sort((a,b)=> a.label.localeCompare(b.label,'en',{sensitivity:'base'}));
+
+  let list = base;
+
+  // If there’s a query, score + filter; else show all A→Z
+  const q = (filterText||'').trim();
+  if (q){
+    list = base
+      .map(f=>({f, s: matchScore(f, q)}))
+      .filter(x=> x.s > 0)
+      .sort((a,b)=> b.s - a.s || a.f.label.localeCompare(b.f.label,'en',{sensitivity:'base'}))
+      .map(x=> x.f);
+    if (!list.length) list = base; // graceful fallback
+  }
+
+  // rebuild <select>
   sel.innerHTML = '';
-  sorted.forEach(f=>{
+  list.forEach(f=>{
     const o = document.createElement('option');
     o.value = f.id;
     o.textContent = f.label;
     sel.appendChild(o);
   });
-  // preserve selection or default to the first option
-  if (!state.id) state.id = sorted[0]?.id || null;
+
+  // preserve or set selection
+  if (!state.id || !list.find(x=>x.id===state.id)) state.id = list[0]?.id || null;
   sel.value = state.id || '';
 }
 
+
+
 // build options now (call again later if you ever modify FRAMEWORKS at runtime)
 buildFrameworkOptions();
+
+buildFrameworkOptions(''); // ensure suggestions render
 
 
     function fieldInput(el, on){ el.addEventListener('input', on); el.addEventListener('change', on); }
@@ -937,6 +1030,43 @@ function enrichFromGlossary(fw){
     categories: Array.from(new Set([...(fw.categories||[]), ...(hit.categories||[])])),
     sources: hit.sources || fw.sources
   };
+}
+
+if (searchEl){
+  searchEl.addEventListener('input', ()=>{
+    buildFrameworkOptions(searchEl.value);
+  });
+
+  // Enter: immediately pick the first visible option
+  searchEl.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter'){
+      const first = sel.options[0];
+      if (first){
+        sel.value = first.value;
+        state.id = first.value;
+        state.fields = {};
+        renderFields(); emit();
+      }
+    }
+  });
+
+  // Ctrl/Cmd+K to focus the search bar
+  document.addEventListener('keydown', (e)=>{
+    const k = e.key.toLowerCase();
+    if ((k === 'k') && (e.ctrlKey || e.metaKey)){
+      e.preventDefault();
+      searchEl.focus();
+      searchEl.select();
+    }
+  });
+}
+
+if (allBtn){
+  allBtn.addEventListener('click', ()=>{
+    searchEl.value = '';
+    buildFrameworkOptions('');
+    sel.focus(); // user can open the native dropdown
+  });
 }
 
 
