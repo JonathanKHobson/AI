@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt Framework Builder (beta)</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#121821; --card:#0f151d; --muted:#9db0c3; --text:#e7eff7;
+      --accent:#4ea1ff; --chip:#1b2533; --border:#1b2838; --radius:14px; --gap:14px;
+      --green:#2ecc71; --yellow:#f1c40f; --red:#e74c3c; --purple:#a78bfa;
+    }
+    :root[data-theme="light"]{
+      --bg:#f7fafc; --panel:#ffffff; --card:#ffffff; --muted:#5a6b7b; --text:#121621;
+      --accent:#2563eb; --chip:#f1f5f9; --border:#d8e0ea;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    header{
+      display:flex;align-items:center;gap:12px;padding:12px 16px;position:sticky;top:0;z-index:10;
+      background:linear-gradient(180deg,var(--panel),rgba(0,0,0,0));border-bottom:1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    header .spacer{flex:1}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--chip);color:var(--text);padding:8px 12px;border-radius:10px}
+    .btn.primary{background:var(--accent);color:#061422;border:none}
+    /* default (dark theme): keep dark text on light accent */
+.btn.primary{ color:#061422; }
+
+/* light theme: white text on darker accent for AA contrast */
+:root[data-theme="light"] .btn.primary{ color:#ffffff; }
+
+    .btn.sm{padding:6px 10px;font-size:14px;border-radius:8px}
+    .toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:999px}
+    .dot{width:16px;height:16px;border-radius:50%;background:linear-gradient(180deg,#fdd835,#fbc02d);box-shadow:inset 0 -3px 6px rgba(0,0,0,.25)}
+    :root[data-theme="light"] .dot{background:linear-gradient(180deg,#121621,#394554)}
+
+    .wrap{
+  display:grid;
+  grid-template-columns: var(--leftW, 360px) 6px 1fr; /* left | resizer | right */
+  gap:16px;
+  padding:16px;
+}
+
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius)}
+    .panel h2{margin:0;padding:12px 14px;border-bottom:1px solid var(--border);font-size:18px}
+    .panel section{padding:14px}
+
+    label{display:block;margin:10px 0 6px;color:var(--muted);font-size:16px; font-weight:600;}
+    
+.resizer{
+  width:6px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+}
+.resizer::after{
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, transparent 0, transparent 20%, var(--border) 20%, var(--border) 80%, transparent 80%, transparent 100%);
+  opacity:.6;
+}
+.resizer:hover::after{ opacity:1; }
+
+/* Clearer grab handle inside the 6px resizer */
+.resizer::before{
+  content:'';
+  position:absolute;
+  top:12px; bottom:12px;
+  left:50%; transform:translateX(-50%);
+  width:2px; border-radius:2px;
+  background: rgba(255,255,255,.30);        /* dark mode default */
+}
+:root[data-theme="light"] .resizer::before{
+  background: rgba(0,0,0,.28);              /* light mode default */
+}
+.resizer:hover::before,
+.resizer:focus-visible::before{
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(78,161,255,.25);
+}
+
+
+/* Nice vertical rhythm between fields */
+.field + .field{ margin-top:12px; }
+
+    input[type="text"], textarea, select{
+      width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);
+      background:var(--card);color:var(--text);outline:none;
+    }
+    
+    input.filled, textarea.filled{
+  box-shadow: 0 0 0 2px var(--accent) inset;
+  background: rgba(78,161,255,.08);
+}
+:root[data-theme="light"] input.filled,
+:root[data-theme="light"] textarea.filled{
+  background: rgba(37,99,235,.06);
+}
+
+    textarea{min-height:100px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  
+    .help{
+  color:var(--muted);
+  font-size:12px;          /* smaller than label (13px) */
+  line-height:1.35;
+  margin-top:6px;            /* space from input */
+  opacity:0.9;               /* lighter than labels */
+}
+
+.desc{
+  color:var(--muted);
+  font-size:13px;       /* smaller than label */
+  line-height:1.35;
+  margin-top:6px;
+  opacity:0.8;            /* a bit stronger than .help so it reads clearly */
+}
+
+/* Meta block under the Glossary button */
+.metaSection{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.metaGroup{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin-top:6px;
+}
+
+.tinyLabel{
+  font-size:11px;
+  color:var(--muted);
+  opacity:.85;
+  padding:2px 8px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--chip);
+}
+
+/* Dedicated meta box */
+#metaChips{
+  display:block !important;                 /* stop flex from .chips */
+}
+.metaBox{
+  margin-top:12px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.metaRow{ margin-top:8px; }
+.metaSectionTitle{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.metaPills{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;
+}
+.metaLink{
+  display:inline-flex; margin-bottom:4px;
+}
+.tinyLabel{
+  font-size:11px; color:var(--muted); opacity:.85;
+  padding:2px 8px; border:1px solid var(--border); border-radius:999px; background:var(--chip);
+}
+
+
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px}
+
+    pre{margin:0;padding:14px;background:var(--card);border-top:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:auto;white-space:pre-wrap}
+
+    .pill{padding:4px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px}
+    .pill[data-val="framework"]{color:var(--green)}
+    .pill[data-val="pattern"]{color:var(--yellow)}
+    
+   /* Additional instructions box spacing */
+#extra{
+  min-height: 72px;
+  resize: vertical;
+}
+ 
+    
+    
+    /* Independent scroll for the left panel */
+#configPanel{
+  position: sticky;
+  top: 60px; /* sits under the sticky header */
+  max-height: calc(100vh - 60px - 16px); /* header + grid padding */
+  overflow: auto; /* vertical & horizontal if needed */
+}
+
+
+    @media (max-width: 960px){
+      .wrap{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="btn sm" href="../glossary/index.html">← Back to Glossary</a>
+    <strong>Prompt Framework Builder</strong>
+    <span class="pill" data-val="framework" title="Frameworks & Patterns">frameworks + patterns</span>
+    <span class="spacer"></span>
+    <button id="copyBtn" class="btn sm">Copy prompt</button>
+    <button id="openBtn" class="btn primary sm">Open in ChatGPT</button>
+    <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
+  </header>
+
+  <div class="wrap">
+  <div class="panel" id="configPanel">
+      <h2>Configure</h2>
+      <section>
+        <label for="frameworkSel">Framework</label>
+        <select id="frameworkSel"></select>
+        <div id="fwHelp" class="help" aria-live="polite"></div>
+      </section>
+
+      <section>
+        <h3 style="margin:0 0 6px;font-size:14px">Common context (optional)</h3>
+        <div class="row">
+          <div>
+            <label for="usecase">Use‑case / scenario</label>
+            <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
+          </div>
+          <div>
+            <label for="audience">Audience</label>
+            <input id="audience" type="text" placeholder="e.g., Busy SMB owners" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="style">Style</label>
+            <input id="style" type="text" placeholder="e.g., Practical, plain language" />
+          </div>
+          <div>
+            <label for="tone">Tone</label>
+            <input id="tone" type="text" placeholder="e.g., Friendly, confident" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 style="margin:0 0 6px;font-size:14px">Framework fields</h3>
+        <div id="fields"></div>
+        <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
+      </section>
+
+      <section>
+        <div class="chips" id="metaChips"></div>
+      </section>
+    </div>
+<div id="resizer" class="resizer" role="separator" aria-orientation="vertical" aria-valuemin="280" aria-valuemax="900" tabindex="0"></div>
+    <div class="panel">
+      <h2>Generated prompt</h2>
+      <pre id="out"></pre>
+    </div>
+  </div>
+
+  <dialog id="msg"><form method="dialog" style="margin:0">
+    <section id="msgText" style="padding:16px">
+    
+    Prompt copied to clipboard. A new tab opened; if it didn’t prefill, paste with Cmd/Ctrl+V.
+    
+    </section>
+    
+    
+    <footer style="display:flex;justify-content:flex-end;gap:8px;padding:12px;border-top:1px solid var(--border)">
+    
+    <button class="btn" type="button" id="dlgClose">Close</button>
+
+  </form></dialog>
+
+  <!-- Load the glossary if available. Adjust the path to match your repo layout. -->
+  <script>
+    // If this file lives at /AI/tools/framework-template-builder.html,
+    // the glossary may be at /AI/glossary/glossary.data.js. We try to load it dynamically.
+    (function tryLoadGlossary(){
+      const s = document.createElement('script');
+      s.src = '../glossary/glossary.data.js';
+      s.onerror = ()=>console.info('Glossary not found at ../glossary/glossary.data.js — continuing without it.');
+      document.head.appendChild(s);
+    })();
+  </script>
+
+  <script>
+  (function(){
+    const $ = s=>document.querySelector(s);
+    const out = $('#out');
+    const fieldsWrap = $('#fields');
+    const help = $('#fwHelp');
+    const chips = $('#metaChips');
+    
+
+
+
+const FRAMEWORKS = [
+  {
+    id:'aida',
+    slug:'aida-model',
+    label:'AIDA — Attention · Interest · Desire · Action',
+    kind:'framework',
+    categories:['messaging frameworks','prompt development techniques'],
+    tags:[
+  'type:framework','topic:messaging','phase:apply','level:beginner',
+  'use:ad-copy','use:landing-page','use:email-campaign','use:social-post'
+],
+use_cases: [
+  'ad copy',
+  'landing page messaging',
+  'email campaign copy',
+  'social post copy',
+  'ad headlines & CTAs',
+  'video script teaser',
+  'push notification blurb'
+],
+boosters: [
+  "Return 3 headline/CTA variants; rank them and state the top-1 reason in one short line."
+],
+    definition:'A classic four-stage persuasion model that moves an audience from attention to action.',
+    help:'Classic marketing flow for persuasive outputs.',
+    fields:[
+      {key:'product',     label:'Product/offer',            type:'text',     desc:'What you are promoting.',           ph:'e.g., Email warmup tool'},
+      {key:'key_benefit', label:'Key benefit',              type:'text',     desc:'Primary value to highlight.',      ph:'e.g., Better deliverability in 2 weeks'},
+      {key:'cta',         label:'Primary call-to-action',   type:'text',     desc:'The action to take.',              ph:'e.g., Start free trial'},
+      {key:'constraints', label:'Constraints',              type:'textarea', desc:'Rules/limits to follow.',          ph:'e.g., <=120 words; no jargon'}
+    ],
+    template:({product,key_benefit,cta,constraints,ctx,audience,style,tone})=>[
+      `Use AIDA to craft a persuasive message.`,
+      ctx&&`Context: ${ctx}`,
+      product&&`Offer: ${product}`,
+      audience&&`Audience: ${audience}`,
+      key_benefit&&`Key benefit/value: ${key_benefit}`,
+      style&&`Style: ${style}`,
+      tone&&`Tone: ${tone}`,
+      constraints&&`Constraints: ${constraints}`,
+      cta&&`End with this CTA: ${cta}`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'clear',
+    slug:'clear-framework',
+    label:'CLEAR — Challenge · Limitation · Effect · Action · Result',
+    kind:'framework',
+    categories:['analysis frameworks','prompt development techniques'],
+    tags:[
+  'type:framework','topic:analysis','phase:apply','level:beginner',
+  'use:problem-framing','use:retrospective','use:decision-record'
+],
+use_cases: [
+  'problem framing',
+  'decision record',
+  'risk assessment',
+  'root-cause write-up',
+  'retrospective summary',
+  'proposal justification',
+  'change request rationale'
+],
+boosters: [
+  "End with a one-paragraph “Decision record” that links Action→Effect→Result explicitly."
+],
+    definition:'A problem-framing flow that surfaces constraints and outcomes.',
+    help:'Problem-framing flow to surface constraints and outcomes.',
+    fields:[
+      {key:'challenge',  label:'Challenge',  type:'textarea', desc:'Problem context.',      ph:'e.g., Low onboarding completion'},
+      {key:'limitation', label:'Limitation', type:'textarea', desc:'Constraints/risks.',    ph:'e.g., No in-app messaging yet'},
+      {key:'effect',     label:'Effect',     type:'textarea', desc:'Observed impact.',      ph:'e.g., High drop-off at step 2'},
+      {key:'action',     label:'Action',     type:'textarea', desc:'Intervention/plan.',    ph:'e.g., Add email nudge + tooltip'},
+      {key:'result',     label:'Result',     type:'textarea', desc:'Outcome/measure.',      ph:'e.g., Onboarding completion +15%'}
+    ],
+    template:({challenge,limitation,effect,action,result,ctx})=>[
+      ctx&&`Context: ${ctx}`,
+      `Use the CLEAR framing to structure the answer.`,
+      challenge&&`Challenge: ${challenge}`,
+      limitation&&`Limitation: ${limitation}`,
+      effect&&`Effect: ${effect}`,
+      action&&`Action: ${action}`,
+      result&&`Result: ${result}`
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+  id:'clear_path',
+  slug:'clear-path-forward-framework',
+  label:'CLEAR Path Forward — Concise · Logical · Explicit · Adaptive · Reflective',
+  kind:'framework',
+  categories:['prompt development techniques','prompt literacy'],
+  tags:[
+    'type:framework','topic:prompting','phase:apply','level:beginner',
+    'use:prompt-optimization','use:prompt-iteration','use:clarifying-questions','use:next-step'
+  ],
+  use_cases: [
+    'prompt optimization','clarifying prompts','next-step planning',
+    'teaching prompt literacy','debugging failed prompts'
+  ],
+  definition:'An AI prompt literacy framework that shapes a next best prompt via concise goals, logical steps, explicit constraints, adaptive context, and reflective checks.',
+  help:'Use to tighten a messy prompt and identify the next concrete step.',
+  fields:[
+    {key:'concise',   label:'Concise (goal in one line)',       type:'text',     desc:'Single-sentence objective.',         ph:'e.g., Summarize the paper for a lay audience'},
+    {key:'logical',   label:'Logical (steps/structure)',        type:'textarea', desc:'Outline reasoning or steps.',         ph:'e.g., Read → Extract key claims → Simplify → Check terms'},
+    {key:'explicit',  label:'Explicit (rules/format/defs)',     type:'textarea', desc:'Constraints, definitions, formats.',  ph:'e.g., 120–150 words; define “overfitting”; Markdown'},
+    {key:'adaptive',  label:'Adaptive (audience/context)',      type:'textarea', desc:'Who/where this applies; edge cases.', ph:'e.g., For non-technical policy analysts; US context'},
+    {key:'reflective',label:'Reflective (checks/criteria)',     type:'textarea', desc:'Quality checks or acceptance tests.', ph:'e.g., No jargon; 2 factual references; no policy claims'}
+  ],
+  boosters:[
+    'Propose an improved next prompt (≤3 lines) and one concrete next action.'
+  ],
+  template:({concise,logical,explicit,adaptive,reflective,ctx})=>[
+    `Apply the CLEAR Path Forward framework to optimize the prompt and next action.`,
+    ctx&&`Context: ${ctx}`,
+    concise&&`Concise goal: ${concise}`,
+    logical&&`Logical plan: ${logical}`,
+    explicit&&`Explicit constraints/format: ${explicit}`,
+    adaptive&&`Adaptive context: ${adaptive}`,
+    reflective&&`Reflective checks: ${reflective}`
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'clear_pm',
+  slug:'clear-prompting-method',
+  label:'CLEAR Prompting Method — Clarity · Length · Empathy · Actionability · Relevance',
+  kind:'framework',
+  categories:['prompt development techniques'],
+  tags:[
+    'type:framework','topic:prompting','phase:apply','level:beginner',
+    'use:prompt-hygiene','use:length-control','use:audience-empathy','use:scope-management'
+  ],
+  use_cases: [
+    'prompt hygiene','length control','audience fit',
+    'scope management','instruction cleanup'
+  ],
+  definition:'A prompting checklist to improve clarity, respect length, empathize with the reader, ensure actionability, and maintain relevance.',
+  help:'Use to “clean up” instructions before sending to a model.',
+  fields:[
+    {key:'clarity',       label:'Clarity (must-include info)', type:'textarea', desc:'Remove ambiguity; define terms.',      ph:'e.g., Define “qualified lead”; include timeframe'},
+    {key:'length',        label:'Length (limit)',               type:'text',     desc:'Word/token/section limits.',          ph:'e.g., ≤150 words'},
+    {key:'empathy',       label:'Empathy (audience needs)',     type:'textarea', desc:'Reader persona/concerns.',            ph:'e.g., Busy execs; prefer bullet points'},
+    {key:'actionability', label:'Actionability (doable steps)', type:'textarea', desc:'What the model should do/produce.',   ph:'e.g., Provide 3 options + 1 pick with rationale'},
+    {key:'relevance',     label:'Relevance (in/out of scope)',  type:'textarea', desc:'Focus and exclusions.',               ph:'e.g., Focus on onboarding; exclude pricing'}
+  ],
+  boosters:[
+    'Return an edited, tightened prompt honoring the length; list any removed ambiguity in one line.'
+  ],
+  template:({clarity,length,empathy,actionability,relevance,ctx})=>[
+    `Apply the CLEAR Prompting Method to refine the instructions.`,
+    ctx&&`Context: ${ctx}`,
+    clarity&&`Clarity requirements: ${clarity}`,
+    length&&`Length limit: ${length}`,
+    empathy&&`Audience empathy: ${empathy}`,
+    actionability&&`Actionability: ${actionability}`,
+    relevance&&`Relevance (scope): ${relevance}`
+  ].filter(Boolean).join('\n')
+},
+
+  
+  {
+    id:'costar',
+    slug:'costar-framework',
+    label:'COSTAR — Context · Objective · Style · Tone · Audience · Response',
+    kind:'pattern',
+    categories:['prompt development techniques','messaging frameworks'],
+    tags:[
+  'type:pattern','topic:prompting','phase:apply','level:beginner',
+  'use:creative-brief','use:message-brief','use:content-brief'
+],
+use_cases: [
+  'creative brief',
+  'message brief',
+  'content brief',
+  'campaign brief',
+  'UX copy brief',
+  'press/news announcement brief'
+],
+boosters: [
+  "Verify each COSTAR element is addressed; then output the final message under “Final response:”"
+],
+    definition:'A context-first messaging recipe encoding context, objective, style, tone, audience, and response format.',
+    help:'Popular structure that bakes in style/tone and output format.',
+    fields:[
+      {key:'context',  label:'Context',  type:'textarea', desc:'Background, problem, scenario.',           ph:'e.g., Announcing a new feature to free users'},
+      {key:'objective',label:'Objective',type:'text',     desc:'What the message must achieve.',           ph:'e.g., Drive upgrades to Pro'},
+      {key:'style',    label:'Style (overrides common)', type:'text',  desc:'Writing style.',               ph:'e.g., Practical, plain language'},
+      {key:'tone',     label:'Tone (overrides common)',  type:'text',  desc:'Emotional flavor.',            ph:'e.g., Friendly, confident'},
+      {key:'audience', label:'Audience (overrides common)', type:'text', desc:'Who this is for.',           ph:'e.g., Busy SMB owners'},
+      {key:'response', label:'Response format', type:'text', desc:'Desired output structure.',             ph:'e.g., Markdown outline with H2s'}
+    ],
+    template:({context,objective,style,tone,audience,response,ctx})=>[
+      (ctx||context)&&`Context: ${ctx?ctx:context}`,
+      objective&&`Objective: ${objective}`,
+      (style)&&`Style: ${style}`,
+      (tone)&&`Tone: ${tone}`,
+      audience&&`Audience: ${audience}`,
+      response&&`Response format: ${response}`,
+      `Follow COSTAR. Ask clarifying Qs only if blocking.`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'golden',
+    slug:'golden-circle-framework',
+    label:'Golden Circle — Why · How · What',
+    kind:'framework',
+    categories:['messaging frameworks','prompt development techniques'],
+    tags:[
+  'type:framework','topic:messaging','phase:overview','level:beginner',
+  'use:brand-messaging','use:mission-vision','use:pitch-deck'
+],
+use_cases: [
+  'brand messaging',
+  'mission/vision alignment',
+  'about page narrative',
+  'investor pitch framing',
+  'employer brand messaging',
+  'product purpose statement'
+],
+boosters: [
+  "Lead with “Why”; keep each section 2–3 sentences; end with a one-line “Because…” summary."
+],
+    definition:'A purpose-first communication model that moves from belief (why) to methods (how) to concrete offerings (what).',
+    help:'Purpose-first messaging scaffold.',
+    fields:[
+      {key:'why', label:'Why (purpose/belief)',         type:'textarea', desc:'Belief/purpose.',     ph:'e.g., Everyone deserves privacy by default'},
+      {key:'how', label:'How (principles/approach)',    type:'textarea', desc:'Methods/approach.',   ph:'e.g., Strong encryption; zero-knowledge design'},
+      {key:'what',label:'What (products/services/actions)', type:'textarea', desc:'Offerings/actions.', ph:'e.g., Encrypted email; secure file share'}
+    ],
+    template:({why,how,what,ctx})=>[
+      ctx&&`Context: ${ctx}`,
+      `Craft a message using the Golden Circle.`,
+      why&&`Why: ${why}`,
+      how&&`How: ${how}`,
+      what&&`What: ${what}`
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+  id:'peas',
+  slug:'peas-framework',
+  label:'PEAS — Performance measure · Environment · Actuators · Sensors',
+  kind:'framework',
+  categories:['AI systems design','analysis frameworks'],
+  tags:[
+    'type:framework','topic:ai-systems','phase:design','level:intermediate',
+    'use:agent-spec','use:task-modeling','use:benchmarking','use:requirements-doc'
+  ],
+  use_cases: [
+    'agent specification','requirements doc','benchmark design',
+    'task environment mapping','simulation setup'
+  ],
+  definition:'A canonical way to specify intelligent agents by defining success metrics, the environment, possible actions, and percepts.',
+  help:'Use to design/evaluate agents or tools before building.',
+  fields:[
+    {key:'performance', label:'Performance measure', type:'textarea', desc:'Metrics, goals, constraints.',  ph:'e.g., Success@K, latency < 500ms, ≤2% hallucination rate'},
+    {key:'environment', label:'Environment',        type:'textarea', desc:'World, resources, interfaces.', ph:'e.g., Web browser + internal docs + API with rate-limits'},
+    {key:'actuators',   label:'Actuators',          type:'textarea', desc:'Actions the agent can take.',   ph:'e.g., Click, type, call API, write file'},
+    {key:'sensors',     label:'Sensors',            type:'textarea', desc:'Observations/inputs.',          ph:'e.g., DOM snapshot, API responses, tool outputs'},
+    {key:'assumptions', label:'Assumptions (opt.)', type:'textarea', desc:'Assumptions/risks/trust model.',ph:'e.g., Auth tokens valid; pages stable; tool outputs reliable'}
+  ],
+  boosters:[
+    'Summarize as a PEAS tuple and include two evaluation scenarios with success/failure traces.'
+  ],
+  template:({performance,environment,actuators,sensors,assumptions,ctx})=>[
+    `Define the agent using the PEAS framework.`,
+    ctx&&`Context: ${ctx}`,
+    performance&&`Performance measure: ${performance}`,
+    environment&&`Environment: ${environment}`,
+    actuators&&`Actuators: ${actuators}`,
+    sensors&&`Sensors: ${sensors}`,
+    assumptions&&`Assumptions/risks: ${assumptions}`
+  ].filter(Boolean).join('\n')
+},
+
+  
+  {
+    id:'par',
+    slug:'par-method',
+    label:'PAR — Problem · Action · Result',
+    kind:'framework',
+    categories:['storytelling frameworks','prompt development techniques'],
+    tags:[
+  'type:framework','topic:storytelling','phase:apply','level:beginner',
+  'use:resume-bullet','use:case-study','use:status-update'
+],
+use_cases: [
+  'resume bullet',
+  'performance review note',
+  'status update',
+  'case study snapshot',
+  'incident summary',
+  'customer story outline'
+],
+boosters: [
+  "Quantify results where possible (%, Δ, time); if no metrics given, propose proxy metrics."
+],
+    definition:'A compressed alternative to STAR that focuses on the core: problem, action, and result.',
+    help:'Concise alternative to STAR.',
+    fields:[
+      {key:'problem', label:'Problem', type:'textarea', desc:'The obstacle or issue.', ph:'e.g., High churn after trial'},
+      {key:'action',  label:'Action',  type:'textarea', desc:'What you did.',         ph:'e.g., Onboarding emails + in-app tips'},
+      {key:'result',  label:'Result',  type:'textarea', desc:'Outcome/impact.',       ph:'e.g., Churn reduced from 14%→8%'}
+    ],
+    template:({problem,action,result,ctx})=>[
+      ctx&&`Context: ${ctx}`,
+      problem&&`Problem: ${problem}`,
+      action&&`Action: ${action}`,
+      result&&`Result: ${result}`,
+      `Format the response as short bullets.`
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+  id:'raccca',
+  slug:'raccca-framework',
+  label:'RACCCA — Relevance · Accuracy · Completeness · Clarity · Coherence · Appropriateness',
+  kind:'framework',
+  categories:['evaluation frameworks','prompt development techniques'],
+  tags:[
+    'type:framework','topic:evaluation','phase:evaluate','level:beginner',
+    'use:output-evaluation','use:rubric-scoring','use:quality-review','use:model-comparison'
+  ],
+  use_cases: [
+    'quality review','rubric evaluation','model comparison',
+    'content audit','risk screening'
+  ],
+  definition:'A rubric to evaluate generative outputs across six dimensions: relevance, accuracy, completeness, clarity, coherence, and appropriateness.',
+  help:'Use to score or compare outputs and identify concrete fixes.',
+  fields:[
+    {key:'artifact',        label:'Artifact to evaluate', type:'textarea', desc:'Paste or describe the output.',      ph:'e.g., The draft blog intro…'},
+    {key:'scale',           label:'Scale',                type:'text',     desc:'Scoring scale.',                    ph:'e.g., 1–5'},
+    {key:'weights',         label:'Weights (opt.)',       type:'text',     desc:'Criterion weights.',                ph:'e.g., R:1,A:2,C:2,Cl:1,Co:1,Ap:1'},
+    {key:'context',         label:'Context/requirements', type:'textarea', desc:'Intended use and constraints.',     ph:'e.g., Audience: Dev managers; tone: practical'},
+    {key:'improvement_goal',label:'Improvement goal',     type:'textarea', desc:'Desired fix or target quality.',    ph:'e.g., Make it accurate and concise'}
+  ],
+  boosters:[
+    'Return a table with RACCCA scores (on your scale) + 1-line justifications, a weighted overall score, and top-3 fixes. If suitable, include a revised draft.'
+  ],
+  template:({artifact,scale,weights,context,improvement_goal,ctx})=>[
+    `Evaluate using the RACCCA framework.`,
+    ctx&&`Context: ${ctx}`,
+    artifact&&`Artifact: ${artifact}`,
+    scale&&`Scale: ${scale}`,
+    weights&&`Weights: ${weights}`,
+    context&&`Requirements: ${context}`,
+    improvement_goal&&`Improvement goal: ${improvement_goal}`
+  ].filter(Boolean).join('\n')
+},
+  
+  {
+    id:'ratio',
+    slug:'ratio-framework',
+    label:'RATIO — Role · Audience · Task · Instructions · Output',
+    kind:'pattern',
+    categories:['prompt development techniques'],
+   tags:[
+  'type:pattern','topic:prompting','phase:apply','level:beginner',
+  'use:prompt-spec','use:instructional-prompt','use:task-brief'
+],
+use_cases: [
+  'prompt specification',
+  'instructional prompt',
+  'task brief',
+  'agent/system prompt',
+  'handoff brief',
+  'template for graded output'
+],
+boosters: [
+  "Validate format exactly (schema first, then fill); if schema can’t be met, output a minimal valid stub and list missing fields."
+],
+    definition:'An audience-centered prompt that captures role, target audience, the task, guiding instructions, and the required output shape.',
+    help:'Audience-centered prompt with explicit output spec.',
+    fields:[
+      {key:'role',         label:'Role',         type:'text',     desc:'Who the model should emulate.', ph:'e.g., Product marketer'},
+      {key:'audience',     label:'Audience',     type:'text',     desc:'Who this is for.',              ph:'e.g., New parents'},
+      {key:'task',         label:'Task',         type:'textarea', desc:'What should be produced.',      ph:'e.g., Write a landing-page headline and 3 benefit bullets.'},
+      {key:'instructions', label:'Instructions', type:'textarea', desc:'Constraints/steps to follow.',  ph:'e.g., Avoid jargon; use active voice; 120 words max.'},
+      {key:'output',       label:'Output',       type:'text',     desc:'Exact deliverable shape.',      ph:'e.g., 1 headline + 3 bullets + CTA'}
+    ],
+    template:({role,audience,task,instructions,output,ctx})=>[
+      role&&`You are ${role}.`,
+      ctx&&`Context: ${ctx}`,
+      audience&&`Target audience: ${audience}`,
+      task&&`Task: ${task}`,
+      instructions&&`Instructions: ${instructions}`,
+      output&&`Output: ${output}`,
+      `Use the RATIO pattern. Validate assumptions briefly before final output.`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'risen',
+    slug:'risen-framework',
+    label:'RISEN — Role · Instructions · Steps · End goal · Narrowing',
+    kind:'pattern',
+    categories:['prompt development techniques'],
+    tags:[
+  'type:pattern','topic:prompting','phase:plan','level:intermediate',
+  'use:project-plan','use:workflow-design','use:research-plan'
+],
+use_cases: [
+  'project plan',
+  'research plan',
+  'workflow design',
+  'content production plan',
+  'experiment plan',
+  'learning plan'
+],
+boosters: [
+  "State the 1–2 biggest tradeoffs; confirm the narrowed scope."
+],
+    definition:'A plan-then-focus scaffold: set role and instructions, outline steps, state the end goal, then narrow scope and priorities.',
+    help:'Good for complex tasks with stepwise planning then focus.',
+    fields:[
+      {key:'role',        label:'Role',        type:'text',     desc:'Who the model should be.',          ph:'e.g., Program manager'},
+      {key:'instructions',label:'Instructions',type:'textarea', desc:'Rules/constraints to honor.',       ph:'e.g., Prioritize clarity; reference internal style guide.'},
+      {key:'steps',       label:'Steps',       type:'textarea', desc:'High-level plan or checklist.',     ph:'e.g., Research → Outline → Draft → Review → Finalize'},
+      {key:'end_goal',    label:'End goal',    type:'text',     desc:'Definition of success.',            ph:'e.g., Publishable first draft by Friday EOD'},
+      {key:'narrowing',   label:'Narrowing',   type:'textarea', desc:'Prioritization/scope cuts.',        ph:'e.g., Focus on onboarding, skip billing edge cases'}
+    ],
+    template:({role,instructions,steps,end_goal,narrowing,ctx})=>[
+      role&&`You are ${role}.`,
+      ctx&&`Context: ${ctx}`,
+      instructions&&`Instructions: ${instructions}`,
+      steps&&`Proposed steps: ${steps}`,
+      end_goal&&`End goal: ${end_goal}`,
+      narrowing&&`Focus/narrowing: ${narrowing}`,
+      `Follow RISEN. Reflect on tradeoffs before final.`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'rodes',
+    slug:'rodes-framework',
+    label:'RODES — Role · Objective · Details · Examples · Sense check',
+    kind:'pattern',
+    categories:['prompt development techniques'],
+    tags:[
+  'type:pattern','topic:prompting','phase:apply','level:intermediate',
+  'use:example-guided-writing','use:ux-microcopy','use:quality-check'
+],
+use_cases: [
+  'example-guided rewriting',
+  'UX microcopy',
+  'tone/style adaptation',
+  'product messaging variants',
+  'quality check against criteria',
+  'rubric-guided output'
+],
+boosters: [
+  "Run the sense-check as a bullet list tied to the acceptance criteria, then deliver Final."
+],
+    definition:'Evidence-guided production: set role and objective, supply details and examples, then perform a brief sense-check before delivery.',
+    help:'When you have exemplars and want a final self-check.',
+    fields:[
+      {key:'role',        label:'Role',        type:'text',     desc:'Who the model should be.',            ph:'e.g., UX writer'},
+      {key:'objective',   label:'Objective',   type:'text',     desc:'Primary goal of the output.',         ph:'e.g., Improve sign-up microcopy'},
+      {key:'details',     label:'Details',     type:'textarea', desc:'Key facts, constraints, resources.',  ph:'e.g., Product is mobile-only; support link must appear once.'},
+      {key:'examples',    label:'Examples',    type:'textarea', desc:'Short exemplars to imitate.',         ph:'e.g., “Welcome aboard!” → concise, friendly tone'},
+      {key:'sense_check', label:'Sense check', type:'textarea', desc:'Acceptance criteria/guardrails.',      ph:'e.g., At most 25 words; no slang; include link text'}
+    ],
+    template:({role,objective,details,examples,sense_check,ctx})=>[
+      role&&`You are ${role}.`,
+      ctx&&`Context: ${ctx}`,
+      objective&&`Objective: ${objective}`,
+      details&&`Details: ${details}`,
+      examples&&`Examples: ${examples}`,
+      sense_check&&`Sense-check before final: ${sense_check}`,
+      `Apply RODES. Show brief reasoning if uncertain.`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'rtf',
+    slug:'rtf-framework',
+    label:'RTF — Role · Task · Format',
+    kind:'pattern',
+    categories:['prompt development techniques'],
+    tags:[
+  'type:pattern','topic:prompting','phase:apply','level:beginner',
+  'use:general-purpose','use:format-enforcement','use:starter-prompt'
+],
+use_cases: [
+  'general-purpose prompting',
+  'format enforcement',
+  'role simulation',
+  'structured data output',
+  'template scaffold',
+  'API-doc-style response',
+  'quickstarter prompt'
+],
+boosters: [
+  "Validate format exactly (schema first, then fill); if schema can’t be met, output a minimal valid stub and list missing fields."
+],
+    definition:'A general-purpose scaffold that specifies who the model is, what to do, and how to format the answer.',
+    help:'General-purpose scaffold: define who the model is, what to do, and the response shape.',
+    fields:[
+      {key:'role',   label:'Role',   type:'text',     desc:'Who the model should act as.', ph:'e.g., Senior technical writer'},
+      {key:'task',   label:'Task',   type:'textarea', desc:'Describe the work to be done.', ph:'e.g., Draft a user guide section explaining 2FA setup.'},
+      {key:'format', label:'Format', type:'text',     desc:'The structure/shape of the output.', ph:'e.g., Markdown with H2s and code blocks'}
+    ],
+    template:({role,task,format,ctx})=>[
+      role&&`You are ${role}.`,
+      ctx&&`Context: ${ctx}`,
+      task&&`Task: ${task}`,
+      format&&`Respond in this format: ${format}`,
+      `Follow the RTF pattern. Ask concise clarifying questions if needed.`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'star',
+    slug:'star-technique',
+    label:'STAR — Situation · Task · Action · Result',
+    kind:'framework',
+    categories:['storytelling frameworks','prompt development techniques'],
+   tags:[
+  'type:framework','topic:storytelling','phase:apply','level:beginner',
+  'use:behavioral-interview','use:resume-bullet','use:case-study'
+],
+use_cases: [
+  'behavioral interview answer',
+  'resume bullet',
+  'case study write-up',
+  'performance self-review',
+  'success story for stakeholders',
+  'incident/postmortem story'
+],
+boosters: [
+  "Quantify results where possible (%, Δ, time); if no metrics given, propose proxy metrics."
+],
+    definition:'A structured storytelling method for accomplishments and case studies.',
+    help:'Great for case studies, resumes, performance stories.',
+    fields:[
+      {key:'situation', label:'Situation', type:'textarea', desc:'Context and constraints.', ph:'e.g., Missed quarterly target; low trial conversions'},
+      {key:'task',      label:'Task',      type:'textarea', desc:'Goal or responsibility.',   ph:'e.g., Improve conversion rate by 20%'},
+      {key:'action',    label:'Action',    type:'textarea', desc:'What you did.',            ph:'e.g., Ran pricing test; rewrote trial emails'},
+      {key:'result',    label:'Result',    type:'textarea', desc:'Outcome/impact.',          ph:'e.g., +24% conversions; +18% MRR'}
+    ],
+    template:({situation,task,action,result,ctx,audience})=>[
+      ctx&&`Context: ${ctx}`,
+      audience&&`Target reader: ${audience}`,
+      `Narrative using STAR:`,
+      situation&&`• Situation: ${situation}`,
+      task&&`• Task: ${task}`,
+      action&&`• Action: ${action}`,
+      result&&`• Result: ${result}`
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id:'swot',
+    slug:'swot-analysis',
+    label:'SWOT — Strengths · Weaknesses · Opportunities · Threats',
+    kind:'framework',
+    categories:['analysis frameworks','prompt development techniques'],
+    tags:[
+  'type:framework','topic:analysis','phase:overview','level:beginner',
+  'use:competitive-analysis','use:market-analysis','use:product-strategy'
+],
+use_cases: [
+  'competitive analysis',
+  'market scan',
+  'product strategy snapshot',
+  'business strategy review',
+  'go-to-market assessment',
+  'campaign planning snapshot'
+],
+boosters: [
+  "Sort each list most-specific → least; avoid duplicates; flag any misclassified items (internal vs external)."
+],
+    definition:'A 2×2 strategic scan that separates internal factors (S/W) from external forces (O/T).',
+    help:'Strategic scan of an idea, product, or org.',
+    fields:[
+      {key:'subject',      label:'Subject',            type:'text',     desc:'What we are analyzing.', ph:'e.g., New B2B email tool'},
+      {key:'strengths',    label:'Known strengths',    type:'textarea', desc:'Optional seed inputs.',   ph:'e.g., Easy setup; strong analytics'},
+      {key:'weaknesses',   label:'Known weaknesses',   type:'textarea', desc:'Optional seed inputs.',   ph:'e.g., Limited integrations'},
+      {key:'opportunities',label:'Known opportunities',type:'textarea', desc:'Optional seed inputs.',   ph:'e.g., Growing SMB market'},
+      {key:'threats',      label:'Known threats',      type:'textarea', desc:'Optional seed inputs.',   ph:'e.g., Mailbox policy changes'}
+    ],
+    template:({subject,strengths,weaknesses,opportunities,threats,ctx})=>[
+      `Conduct a SWOT analysis${subject?` of ${subject}`:''}.`,
+      ctx&&`Context: ${ctx}`,
+      (strengths||weaknesses||opportunities||threats)?`Seed facts to consider:`:null,
+      strengths&&`• Strengths (given): ${strengths}`,
+      weaknesses&&`• Weaknesses (given): ${weaknesses}`,
+      opportunities&&`• Opportunities (given): ${opportunities}`,
+      threats&&`• Threats (given): ${threats}`,
+      `Return as four labeled lists with 3–6 bullets each, most specific first.`
+    ].filter(Boolean).join('\n')
+  }
+];
+
+
+// UI bootstrap
+const sel = $('#frameworkSel');
+let state = { id: null, common:{}, fields:{} }; // use let so we can set the id after we build options
+
+function buildFrameworkOptions(){
+  const sorted = FRAMEWORKS.slice()
+    .sort((a,b)=> a.label.localeCompare(b.label, 'en', {sensitivity:'base'}));
+  sel.innerHTML = '';
+  sorted.forEach(f=>{
+    const o = document.createElement('option');
+    o.value = f.id;
+    o.textContent = f.label;
+    sel.appendChild(o);
+  });
+  // preserve selection or default to the first option
+  if (!state.id) state.id = sorted[0]?.id || null;
+  sel.value = state.id || '';
+}
+
+// build options now (call again later if you ever modify FRAMEWORKS at runtime)
+buildFrameworkOptions();
+
+
+    function fieldInput(el, on){ el.addEventListener('input', on); el.addEventListener('change', on); }
+
+function enrichFromGlossary(fw){
+  const hit = (window.GLOSSARY || []).find(x => x.slug === fw.slug);
+  if (!hit) return fw; // no change if not found
+  return {
+    ...fw,
+    label: hit.term || fw.label,             // prefer glossary term as label
+    status: hit.status || fw.status,
+    tags: Array.from(new Set([...(fw.tags||[]), ...(hit.tags||[])])),
+    categories: Array.from(new Set([...(fw.categories||[]), ...(hit.categories||[])])),
+    sources: hit.sources || fw.sources
+  };
+}
+
+
+
+    function renderFields(){
+      const fw = FRAMEWORKS.find(f=>f.id===state.id);
+      help.textContent = fw.help;
+      fieldsWrap.innerHTML='';
+      fw.fields.forEach(f=>{
+        const wrap=document.createElement('div');
+        const lab=document.createElement('label'); lab.textContent=f.label; lab.htmlFor = `${f.id||f.key}`;
+        wrap.appendChild(lab);
+        let input;
+        if(f.type==='textarea'){ input=document.createElement('textarea'); }
+        else { input=document.createElement('input'); input.type='text'; }
+        input.placeholder = f.ph||''; input.id=f.key; input.value = state.fields[f.key]||'';
+        fieldInput(input, ()=>{ state.fields[f.key]=input.value; emit(); });
+
+wrap.appendChild(input);
+if (f.desc){
+  const d=document.createElement('div');
+  d.className='desc';
+  d.textContent=f.desc;
+  wrap.appendChild(d);
+}
+fieldsWrap.appendChild(wrap);
+
+
+      });
+      
+      // --- Additional instructions box (prefilled from per-framework boosters) ---
+const extraWrap = document.createElement('div');
+extraWrap.className = 'field';
+
+const extraLabel = document.createElement('label');
+extraLabel.textContent = 'Additional instructions';
+extraWrap.appendChild(extraLabel);
+
+const extra = document.createElement('textarea');
+extra.id = 'extra';
+extra.placeholder = 'Optional: add constraints, success criteria, or override the micro-booster…';
+
+// Prefill logic: if user has edited for this framework, keep it; else use the boosters.
+const curFw = FRAMEWORKS.find(f => f.id === state.id) || {};
+const savedExtraById = (state.extra || {})[state.id];
+const boosterText = (curFw.boosters || []).join(' ');
+extra.value = (savedExtraById !== undefined) ? savedExtraById : boosterText;
+
+// Persist per-framework and re-emit
+extra.addEventListener('input', ()=>{
+  (state.extra || (state.extra = {}))[state.id] = extra.value;
+  emit();
+});
+
+extraWrap.appendChild(extra);
+fieldsWrap.appendChild(extraWrap);
+// --- end Additional instructions box ---
+
+// meta box (enriched from glossary when available)
+chips.innerHTML = '';
+const meta = enrichFromGlossary(fw);
+
+// Build a boxed section so everything stacks nicely
+const box = document.createElement('div');
+box.className = 'metaBox';
+chips.appendChild(box);
+
+// Row 1: Open in Glossary (its own line)
+if (meta?.slug){
+  const row = document.createElement('div');
+  row.className = 'metaRow';
+  const a = document.createElement('a');
+  a.className = 'chip metaLink';
+  a.href = `../glossary/index.html#${meta.slug}`;
+  a.textContent = 'Open in Glossary';
+  a.title = meta.label;
+  row.appendChild(a);
+  box.appendChild(row);
+}
+
+// Optional status (still small, under its own row)
+if (meta?.status){
+  const row = document.createElement('div');
+  row.className = 'metaRow';
+  const st = document.createElement('span');
+  st.className = 'chip';
+  st.textContent = `Status: ${meta.status}`;
+  row.appendChild(st);
+  box.appendChild(row);
+}
+
+// Helper to group tags by key
+function groupTags(list){
+  const groups = {};
+  (list || []).forEach(t=>{
+    const [k, v] = String(t).split(':');
+    if (!k || v === undefined) return;
+    (groups[k] ||= []).push(v);
+  });
+  return groups;
+}
+
+// Row 2: CATEGORIES (title line + its own pill row)
+if (meta?.categories?.length){
+  const title = document.createElement('div');
+  title.className = 'metaSectionTitle';
+  title.textContent = 'Categories';
+  box.appendChild(title);
+
+  const row = document.createElement('div');
+  row.className = 'metaPills';
+  meta.categories.forEach(cat=>{
+    const s = document.createElement('span');
+    s.className = 'chip';
+    s.textContent = cat;
+    row.appendChild(s);
+  });
+  box.appendChild(row);
+}
+
+// Row 3: TAGS grouped by key (type/topic/phase/level/…)
+const tagGroups = groupTags(meta?.tags);
+const keys = Object.keys(tagGroups);
+if (keys.length){
+  const title = document.createElement('div');
+  title.className = 'metaSectionTitle';
+  title.textContent = 'Tags';
+  box.appendChild(title);
+
+  keys.sort().forEach(key=>{
+    const row = document.createElement('div');
+    row.className = 'metaPills';
+
+    const k = document.createElement('span');
+    k.className = 'tinyLabel';
+    k.textContent = key;
+    row.appendChild(k);
+
+    tagGroups[key].forEach(val=>{
+      const s = document.createElement('span');
+      s.className = 'chip';
+      s.textContent = val;
+      row.appendChild(s);
+    });
+
+    box.appendChild(row);
+  });
+}
+
+
+    }
+
+    function ctxString(){
+      const u = $('#usecase').value.trim();
+      const a = $('#audience').value.trim();
+      const s = $('#style').value.trim();
+      const t = $('#tone').value.trim();
+      const bits=[];
+      if(u) bits.push(`Use‑case: ${u}`);
+      if(a) bits.push(`Audience: ${a}`);
+      if(s) bits.push(`Style: ${s}`);
+      if(t) bits.push(`Tone: ${t}`);
+      return bits.join(' | ');
+    }
+
+function emit(){
+  const base = FRAMEWORKS.find(f=>f.id===state.id);   // keep template from local
+  const meta = enrichFromGlossary(base);              // prefer glossary label if present
+  const ctx = ctxString();
+  const merged = { ctx, audience:$('#audience').value, style:$('#style').value, tone:$('#tone').value, ...state.fields };
+  const body = base.template(merged);
+// additional instructions: take the live textarea value (if present)
+  const extraEl = document.getElementById('extra');
+  const extraText = extraEl && extraEl.value.trim() ? `Additional instructions: ${extraEl.value.trim()}` : '';
+  const header = meta.definition
+    ? `Using ${meta.label}: ${meta.definition}`
+    : `Using ${meta.label}.`;
+
+
+  // stitch it together (header → body → extra)
+  const txt = [header, body, extraText]
+    .filter(Boolean)
+    .join('\n')
+    .replace(/\n{3,}/g,'\n\n')
+    .trim();
+
+  out.textContent = txt;
+}
+
+
+    sel.addEventListener('change', ()=>{ state.id = sel.value; state.fields={}; renderFields(); emit(); });
+    ['usecase','audience','style','tone'].forEach(id=>{
+      const el = document.getElementById(id); fieldInput(el, emit);
+    });
+    
+    // Persist common fields + visual filled state
+const COMMON_IDS = ['usecase','audience','style','tone'];
+function toggleFilled(el){ el.classList.toggle('filled', !!el.value.trim()); }
+COMMON_IDS.forEach(id=>{
+  const el = document.getElementById(id);
+  const saved = localStorage.getItem('fw_'+id);
+  if (saved !== null) el.value = saved;
+  toggleFilled(el);
+  el.addEventListener('input', ()=>{
+    localStorage.setItem('fw_'+id, el.value);
+    toggleFilled(el);
+    emit();
+  });
+});
+
+
+    // Actions
+    $('#copyBtn').addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(out.textContent||''); }catch(e){ console.warn('Copy failed', e); }
+      const dlg = $('#msg'); dlg.showModal();
+    });
+
+    $('#openBtn').addEventListener('click', async ()=>{
+      const txt = out.textContent || '';
+      const dlg = $('#msg');
+
+      // 1) Copy to clipboard (primary guarantee)
+      let copied = false;
+      try { await navigator.clipboard.writeText(txt); copied = true; }
+      catch(e){ console.warn('Clipboard write failed:', e); }
+
+      // 2) Attempt to open ChatGPT with a prefilled query param (best-effort)
+      function buildChatURL(prompt){
+        const base = localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/';
+        try{
+          const u = new URL(base);
+          // Try multiple param names — ChatGPT may ignore them, but harmless.
+          u.searchParams.set('q', prompt);
+          u.searchParams.set('prompt', prompt);
+          u.searchParams.set('input', prompt);
+          return u.toString();
+        }catch(err){
+          console.warn('Bad chat target URL; falling back.', err);
+          return 'https://chatgpt.com/';
+        }
+      }
+      const url = buildChatURL(txt);
+      window.open(url, '_blank', 'noopener');
+
+      // 3) User feedback
+      const msg = copied
+        ? 'Prompt copied to clipboard. A ChatGPT tab opened. If the prompt did not auto-appear, paste with Cmd/Ctrl+V.'
+        : 'Opened ChatGPT. Could not auto-copy the prompt (browser denied). Please select the text in the preview and copy it manually.';
+      const msgEl = document.getElementById('msgText');
+      if(msgEl) msgEl.textContent = msg; else console.info(msg);
+      dlg.showModal();
+    });
+
+    // Theme
+    const themeBtn = $('#theme');
+    themeBtn.addEventListener('click', ()=>{
+      const light = document.documentElement.getAttribute('data-theme')==='light';
+      document.documentElement.setAttribute('data-theme', light?'' : 'light');
+      themeBtn.setAttribute('aria-pressed', light? 'false':'true');
+      themeBtn.querySelector('span:last-child').textContent = light? 'Light':'Dark';
+    });
+    
+    // --- Dialog: make it closable via button and backdrop ---
+const dlg = document.getElementById('msg');
+const dlgClose = document.getElementById('dlgClose');
+
+// Close when clicking the "Close" button
+if (dlgClose) dlgClose.addEventListener('click', () => dlg.close());
+
+// Close when clicking the backdrop (outside the dialog content)
+dlg.addEventListener('click', (e) => {
+  // If the click target is the <dialog> itself, it's the backdrop
+  if (e.target === dlg) dlg.close();
+});
+
+// Optional: ensure Esc always closes (most browsers do this by default)
+dlg.addEventListener('cancel', () => {
+  // no-op; letting the default behavior close the dialog
+});
+
+// --- Draggable vertical resizer for the left panel ---
+(function(){
+  const resizer = document.getElementById('resizer');
+  const root = document.documentElement;
+  const MIN = 280, MAX = 900;
+
+  // restore saved width if present
+  const saved = parseInt(localStorage.getItem('fw_leftW') || '', 10);
+  if (!isNaN(saved)) root.style.setProperty('--leftW', saved + 'px');
+
+  function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
+
+  let dragging = false;
+
+  function onMove(clientX){
+    const wrapRect = document.querySelector('.wrap').getBoundingClientRect();
+    const x = clientX - wrapRect.left;           // position inside the grid
+    const newW = clamp(x, MIN, MAX);             // left column width
+    root.style.setProperty('--leftW', newW + 'px');
+    localStorage.setItem('fw_leftW', String(newW));
+  }
+
+  resizer.addEventListener('mousedown', (e)=>{
+    dragging = true; e.preventDefault();
+    document.body.style.userSelect = 'none';
+  });
+  window.addEventListener('mousemove', (e)=>{ if(dragging) onMove(e.clientX); });
+  window.addEventListener('mouseup', ()=>{
+    if(dragging){ dragging=false; document.body.style.userSelect=''; }
+  });
+
+  // Touch support
+  resizer.addEventListener('touchstart', (e)=>{
+    dragging = true; document.body.style.userSelect='none';
+  }, {passive:true});
+  window.addEventListener('touchmove', (e)=>{
+    if(!dragging) return;
+    const t = e.touches[0]; if(t) onMove(t.clientX);
+  }, {passive:true});
+  window.addEventListener('touchend', ()=>{
+    if(dragging){ dragging=false; document.body.style.userSelect=''; }
+  });
+
+  // Keyboard resizing for accessibility
+  resizer.addEventListener('keydown', (e)=>{
+    const step = (e.shiftKey ? 40 : 20);
+    const cur = parseInt(getComputedStyle(root).getPropertyValue('--leftW') || '360', 10);
+    if (e.key === 'ArrowLeft'){ const w = clamp(cur - step, MIN, MAX); root.style.setProperty('--leftW', w + 'px'); localStorage.setItem('fw_leftW', String(w)); }
+    if (e.key === 'ArrowRight'){ const w = clamp(cur + step, MIN, MAX); root.style.setProperty('--leftW', w + 'px'); localStorage.setItem('fw_leftW', String(w)); }
+  });
+})();
+
+    // init
+    renderFields(); emit();
+  })();
+  </script>
+</body>
+</html>
