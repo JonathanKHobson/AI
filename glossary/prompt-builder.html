@@ -412,6 +412,24 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   box-shadow: 0 0 0 2px rgba(78,161,255,.45);
 }
 
+/* === Typeahead (persona picker) === */
+.taWrap{ position:relative; }
+.taList{
+  position:absolute; left:0; right:0; top:100%;
+  margin-top:6px; z-index:50;
+  background:var(--card); border:1px solid var(--border); border-radius:10px;
+  max-height:220px; overflow:auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+.taList[hidden]{ display:none; }
+.taItem{
+  padding:8px 10px; cursor:pointer; border-bottom:1px solid var(--border);
+  font-size:13px; display:flex; flex-direction:column; gap:2px;
+}
+.taItem:last-child{ border-bottom:none; }
+.taItem .name{ color:var(--text); font-weight:600; }
+.taItem .sub{ color:var(--muted); font-size:12px; }
+.taItem.active{ outline:2px solid var(--accent); outline-offset:-2px; }
 
 
     @media (max-width: 960px){
@@ -532,10 +550,68 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       document.head.appendChild(s);
     })();
   </script>
+  
+  <script>
+  // Personas DB (window.PERSONAS) — safe to load even if absent
+  (function tryLoadPersonas(){
+    const s = document.createElement('script');
+    s.src = './persona.data.js';
+    s.onerror = ()=>console.info('Persona data not found at ./persona.data.js — typeahead will still allow free text.');
+    document.head.appendChild(s);
+  })();
+</script>
+
 
   <script>
   (function(){
     const $ = s=>document.querySelector(s);
+    
+    /* ===== Persona helpers ===== */
+function personaIndex(){
+  // Returns an array; empty if the data hasn't loaded yet.
+  return Array.isArray(window.PERSONAS) ? window.PERSONAS : [];
+}
+
+function personaFilter(query, max=20){
+  const q = (query||'').trim().toLowerCase();
+  if (!q) return [];
+  const toks = q.split(/\s+/).filter(Boolean);
+  const src = personaIndex();
+
+  // Score by token coverage + prefix boost on name/id
+  const scored = src.map(p=>{
+    const hay = (p.meta?.search_text || `${p.name||''} ${p.profession||''} ${(p.tags||[]).join(' ')}`).toLowerCase();
+    let s = 0;
+    for (const t of toks){
+      if (hay.includes(t)) s += 2;
+      if (String(p.name||'').toLowerCase().startsWith(t)) s += 4;
+      if (String(p.id||'').toLowerCase().startsWith(t)) s += 3;
+    }
+    return {p, s};
+  }).filter(x=>x.s>0)
+    .sort((a,b)=> b.s - a.s || String(a.p.name).localeCompare(String(b.p.name)));
+
+  return scored.slice(0,max).map(x=>x.p);
+}
+
+function applyPersonaToTab(tab, persona){
+  if (!tab || !persona) return;
+  // Do NOT touch 'end' (user-supplied goal)
+  tab.fields = {
+    ...(tab.fields||{}),
+    persona_name: persona.name || '',
+    profession:   persona.profession || '',
+    summary:      persona.summary || '',
+    description:  persona.description || '',
+    core_tasks:   (persona.core_tasks||[]).join('\n'),
+    skills:       (persona.skills||[]).join(', '),
+    vocabulary:   (persona.vocabulary||[]).join(', '),
+    goals:        (persona.goals||[]).join('\n'),
+    pain_points:  (persona.pain_points||[]).join('\n'),
+    tools:        (persona.tools||[]).join(', ')
+  };
+}
+
     
     
     // --- helper: default booster for a framework id
@@ -1040,6 +1116,64 @@ boosters: [
   },
   
   {
+  id:'hmw_statements',
+  slug:'how-might-we-statements-hmw',
+  label:'How Might We Statements (HMW)',
+  kind:'pattern',
+  categories:['design thinking','ideation'],
+  tags:[
+    'type:pattern','topic:problem-framing','topic:ideation','phase:explore','level:beginner',
+    'use:brainstorm','use:problem-statement','use:workshop'
+  ],
+  use_cases:[
+    'frame challenges as opportunities', 
+    'product design', 'ux', 'problem solving',
+    'generate multiple solution directions',
+    'align teams around a crisp, positive prompt'
+  ],
+  definition:'A guiding question that reframes a need into an opportunity: “How might we [action] for [who] so that [outcome]?”',
+  help:'Provide a concise need/challenge, who is affected, and the positive outcome you want.',
+  boosters:[
+    'Offer 3–5 phrasing variants that change the verb or scope.',
+    'Keep each statement ≤20 words.',
+    'Avoid embedded solutions—stay problem-oriented.'
+  ],
+  fields:[
+    { key:'need',   label:'Need / challenge',        type:'textarea',
+      desc:'What problem or opportunity are we framing?',
+      ph:'Low onboarding completion for new users…' },
+    { key:'action', label:'Action to explore',       type:'text',
+      desc:'Open-ended action (no baked-in solution).',
+      ph:'improve onboarding clarity' },
+    { key:'who',    label:'Who is affected?',        type:'text',
+      desc:'Audience or segment.',
+      ph:'new SaaS signups' },
+    { key:'outcome',label:'Positive outcome',        type:'text',
+      desc:'Intended impact.',
+      ph:'reach value in the first session' },
+    { key:'dos',    label:"Do's (must do)",          type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Make variants; keep neutral tone.' },
+    { key:'donts',  label:"Don\'ts / constraints",   type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No solutioning; avoid jargon.' }
+  ],
+  template: ({ need, action, who, outcome, dos, donts, ctx, audience, style, tone }) => [
+    'Create a clear, positive How-Might-We statement and a few concise variants.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    need && `Need/challenge: ${need}`,
+    (action || who || outcome) && `HMW: How might we ${action||'[action]'} for ${who||'[who]'} so that ${outcome||'[outcome]'}?`,
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Provide 3–5 short variant phrasings with different verbs/scope.'
+  ].filter(Boolean).join('\n')
+},
+
+  
+  {
   id:'kwy_vector',
   slug:'keywords-why-tasks-vector',
   label:'Keywords + Why + Tasks — Vector Priming',
@@ -1105,6 +1239,61 @@ boosters: [
     'Execute the tasks, honoring keywords and avoid lists; if conflicts appear, state them briefly before proceeding.'
   ].filter(Boolean).join('\n')
 },
+
+{
+  id:'least_to_most',
+  slug:'least-to-most-ltm',
+  label:'Least to Most (LtM)',
+  kind:'pattern',
+  categories:['reasoning','planning'],
+  tags:[
+    'type:pattern','topic:progressive-complexity','topic:reasoning','phase:solve','level:intermediate',
+    'use:scaffolding','use:math','use:algorithms','use:teaching'
+  ],
+  use_cases:[
+    'tackle problems by escalating from simple to complex',
+    'derive a general method from trivial and small cases',
+    'surface edge cases after building intuition'
+  ],
+  definition:'Solve by starting with the simplest instances, generalizing patterns, and stepping up complexity until the full problem is solved.',
+  help:'Enter the problem, optionally outline a “complexity ladder” (one per line) from simplest to hardest, and add guardrails.',
+  boosters:[
+    'Keep each rung to one or two sentences.',
+    'State the rule learned at each rung before moving up.',
+    'End with a single, general solution and a quick edge-case check.'
+  ],
+  fields:[
+    { key:'problem', label:'Problem / goal', type:'textarea',
+      desc:'What should be solved or decided?',
+      ph:'e.g., Explain and implement a function to validate parentheses.' },
+    { key:'ladder',  label:'Complexity ladder (one per line, optional)', type:'textarea',
+      desc:'From simplest to most complex cases.',
+      ph:'Trivial case…\nSmall inputs…\nGeneral case…\nEdge cases…' },
+    { key:'dos',     label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Show the rule discovered at each rung; keep total under 300 words.' },
+    { key:'donts',   label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No lengthy proofs; avoid unexplained jumps.' }
+  ],
+  template: ({ problem, ladder, dos, donts, ctx, audience, style, tone }) => [
+    'Use Least-to-Most reasoning: start with simple instances, extract a rule, scale up, then solve the full problem.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    ladder && (
+      'Complexity ladder:\n' + String(ladder)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((r,i)=> `${i+1}. ${r}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output format:\n1) Rungs (least→most) with the rule learned at each\n2) General solution\n3) Quick edge-case check'
+  ].filter(Boolean).join('\n')
+},
+
 
   {
     id:'par',
@@ -1178,6 +1367,121 @@ boosters: [
     actuators&&`Actuators: ${actuators}`,
     sensors&&`Sensors: ${sensors}`,
     assumptions&&`Assumptions/risks: ${assumptions}`
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'persona',
+  slug:'persona-actas',
+  label:'Persona — ActAs / Simulate',
+  kind:'pattern',
+  categories:['prompt development techniques','persona prompting'],
+  tags:[
+    'type:pattern','topic:persona','phase:apply','level:beginner',
+    'use:act-as','use:simulation','use:roleplay','use:agent-spec'
+  ],
+  boosters:[
+    "Stay in-character. Prefer precise, domain-correct terminology. Cite trade-offs briefly before final answer."
+  ],
+  definition:'Simulate a specific persona (role) with domain skills, vocabulary, and constraints; then apply it to the user’s end goal.',
+  help:'Type to search a persona. Picking one autofills the rest; or type your own persona free-form.',
+  fields:[
+    { key:'end',           label:'End goal / Task to Complete', type:'text',     ph:'e.g., Draft a 5-step onboarding plan' },
+
+    // The special typeahead field (wired in renderFields)
+    { key:'persona_name',  label:'Persona (who the AI will be)', type:'typeahead', ph:'e.g., UX designer, Data scientist, PM' },
+
+    // Autofilled when a suggestion is chosen (editable)
+    { key:'profession',    label:'Profession',   type:'text',     ph:'e.g., Designer' },
+    { key:'summary',       label:'Summary',      type:'textarea', ph:'1–2 lines that define this persona' },
+    { key:'description',   label:'Additional Description (optional)', type:'textarea', ph:'Longer narrative if available' },
+    { key:'core_tasks',    label:'Core tasks (one per line)', type:'textarea', ph:'Plan tests\nWireframe flows\nSynthesize insights' },
+    { key:'skills',        label:'Skills (comma or one per line)', type:'textarea', ph:'Wireframing, Prototyping, IA' },
+    { key:'vocabulary',    label:'Vocabulary (comma or one per line)', type:'textarea', ph:'affordance, heuristic, persona' },
+    { key:'goals',         label:'Goals (one per line)', type:'textarea', ph:'Improve task success\nReduce friction' },
+    { key:'pain_points',   label:'Pain points (one per line)', type:'textarea', ph:'Stakeholder misalignment\nLegacy systems' },
+    { key:'tools',         label:'Tools (comma or one per line)', type:'textarea', ph:'Figma, Lookback, Maze' }
+  ],
+  template:({ end, persona_name, profession, summary, description, core_tasks, skills, vocabulary, goals, pain_points, tools, ctx })=>{
+    const asList = s => String(s||'').split(/[\n,]+/).map(v=>v.trim()).filter(Boolean);
+    const asCSV  = s => asList(s).join(', ');
+    const asBul  = s => asList(s).map(x=>'• ' + x).join('\n');
+
+    return [
+      ctx && `Context: ${ctx}`,
+      (persona_name || profession) && `You are ${persona_name || 'the requested persona'}${profession ? `, a ${profession}` : ''}.`,
+      summary && `Persona Summary: ${summary}`,
+      description && `Persona Description: ${description}`,
+      core_tasks && `You commonly do:\n${asBul(core_tasks)}`,
+      skills && `Core skills: ${asCSV(skills)}`,
+      vocabulary && `Vocabulary keywords: ${asCSV(vocabulary)}`,
+      goals && `Common goals:\n${asBul(goals)}`,
+      pain_points && `Common pain points:\n${asBul(pain_points)}`,
+      tools && `Tools: ${asCSV(tools)}`,
+      end && `\nUnderstanding your persona, complete this end goal objective: ${end}`
+    ].filter(Boolean).join('\n');
+  }
+},
+
+{
+  id:'plan_solve',
+  slug:'plan-and-solve-ps',
+  label:'Plan and Solve (P&S)',
+  kind:'pattern',
+  categories:['reasoning','planning'],
+  tags:[
+    'type:pattern','topic:plan-first','topic:execution','topic:verification','phase:solve','level:intermediate',
+    'use:math','use:coding','use:ops-procedures'
+  ],
+  use_cases:[
+    'create a short plan before executing a solution',
+    'separate planning from working to reduce errors',
+    'verify results against explicit checks'
+  ],
+  definition:'Draft a minimal plan, execute it, and verify the result against stated checks.',
+  help:'Enter the problem. Optionally provide a plan (one per line) and verification checks (one per line). The model will plan → solve → verify.',
+  boosters:[
+    'Keep the plan to 2–5 concise steps.',
+    'Separate planning text from solution text.',
+    'Verify against explicit checks; note any discrepancies.'
+  ],
+  fields:[
+    { key:'problem', label:'Problem / question', type:'textarea',
+      desc:'What needs to be solved?',
+      ph:'e.g., Given an array, return indices of two numbers that add up to target.' },
+    { key:'plan',    label:'Plan (one per line, optional)', type:'textarea',
+      desc:'High-level steps before solving.',
+      ph:'Understand inputs…\nOutline approach…\nExecute steps…\nValidate…' },
+    { key:'checks',  label:'Verification checks (one per line, optional)', type:'textarea',
+      desc:'Tests or criteria to validate the result.',
+      ph:'Test with empty input…\nCheck off-by-one…\nTime complexity ≤ O(n log n)…' },
+    { key:'dos',     label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'State assumptions; keep total under 300 words.' },
+    { key:'donts',   label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No hidden reasoning; avoid unnecessary jargon.' }
+  ],
+  template: ({ problem, plan, checks, dos, donts, ctx, audience, style, tone }) => [
+    'Use Plan-and-Solve: draft a minimal plan, execute it, then verify the result.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    plan && (
+      'Plan:\n' + String(plan)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((p,i)=> `${i+1}. ${p}`).join('\n')
+    ),
+    checks && (
+      'Verification checks:\n' + String(checks)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((c,i)=> `${i+1}. ${c}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output format:\n1) Plan\n2) Solution/working\n3) Verification (reference the checks)'
   ].filter(Boolean).join('\n')
 },
 
@@ -1398,6 +1702,62 @@ boosters: [
       `Apply RODES. Show brief reasoning if uncertain.`
     ].filter(Boolean).join('\n')
   },
+  
+  {
+  id:'root_cause',
+  slug:'root-cause-analysis',
+  label:'Root Cause Analysis',
+  kind:'pattern',
+  categories:['quality','operations','reasoning'],
+  tags:[
+    'type:pattern','topic:5-whys','topic:causality','phase:diagnose','level:beginner',
+    'use:incident-review','use:bug-analysis','use:process-improvement'
+  ],
+  use_cases:[
+    'identify primary causes vs symptoms',
+    'propose targeted countermeasures',
+    'document verification steps'
+  ],
+  definition:'Identify the underlying cause of a problem (e.g., via 5 Whys), then propose countermeasures and checks.',
+  help:'State the problem, list observed symptoms/evidence, and any guardrails.',
+  boosters:[
+    'Run at least 3–5 “Why?” steps until causes stop being actionable.',
+    'Tie each countermeasure to a specific cause.',
+    'Include verification and owner for each action.'
+  ],
+  fields:[
+    { key:'problem',   label:'Problem statement', type:'textarea',
+      desc:'What went wrong or what is undesired?',
+      ph:'App crash rate spiked after v1.2…' },
+    { key:'symptoms',  label:'Symptoms / evidence (one per line)', type:'textarea',
+      desc:'Observed facts supporting the problem.',
+      ph:'Crash logs show null ptr at …\nSpike at 10:42 UTC…' },
+    { key:'dos',       label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Quantify impact; assign owners.' },
+    { key:'donts',     label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No blame; ≤400 words.' }
+  ],
+  template: ({ problem, symptoms, dos, donts, ctx, audience, style, tone }) => [
+    'Perform Root Cause Analysis using the 5 Whys and propose targeted countermeasures.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    symptoms && (
+      'Symptoms / evidence:\n' + String(symptoms)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((s,i)=> `${i+1}. ${s}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output:\n1) 5 Whys chain\n2) Root cause(s)\n3) Countermeasures (owner, due, verification)\n4) Residual risks'
+  ].filter(Boolean).join('\n')
+},
+
+  
   {
     id:'rtf',
     slug:'rtf-framework',
@@ -1435,6 +1795,210 @@ boosters: [
       `Follow the RTF pattern. Ask concise clarifying questions if needed.`
     ].filter(Boolean).join('\n')
   },
+  
+  {
+  id:'six_hats',
+  slug:'six-thinking-hats',
+  label:'Six Thinking Hats',
+  kind:'pattern',
+  categories:['decision-making','ideation'],
+  tags:[
+    'type:pattern','topic:perspective-taking','topic:facilitation','phase:explore','level:beginner',
+    'use:workshops','use:brainstorm','use:alignment'
+  ],
+  use_cases:[
+    'explore multiple perspectives on a topic',
+    'structure a discussion or solo reasoning',
+    'surface risks, data, feelings, creativity, control'
+  ],
+  definition:'A role-play model (White, Red, Black, Yellow, Green, Blue) to examine a topic from six perspectives.',
+  help:'Provide the topic and (optionally) the hat order (one per line).',
+  boosters:[
+    'Keep each hat’s notes to 2–3 bullets.',
+    'End with a Blue hat summary decision.',
+    'If no order is given, use White→Red→Black→Yellow→Green→Blue.'
+  ],
+  fields:[
+    { key:'topic', label:'Topic / decision', type:'textarea',
+      desc:'What are we evaluating or deciding?',
+      ph:'Should we sunset Feature X?' },
+    { key:'order', label:'Hat order (one per line, optional)', type:'textarea',
+      desc:'Any subset/order of: White, Red, Black, Yellow, Green, Blue.',
+      ph:'White\nRed\nBlack\nYellow\nGreen\nBlue' },
+    { key:'dos',   label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'2–3 bullets per hat; be concrete.' },
+    { key:'donts', label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No digressions; ≤350 words total.' }
+  ],
+  template: ({ topic, order, dos, donts, ctx, audience, style, tone }) => [
+    'Use Six Thinking Hats to examine the topic from multiple perspectives, then conclude.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    topic && `Topic: ${topic}`,
+    order && (
+      'Hat order:\n' + String(order)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((h,i)=> `${i+1}. ${h}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output each hat with 2–3 bullets, then a Blue-hat summary decision.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'soar',
+  slug:'soar-analysis',
+  label:'SOAR Analysis',
+  kind:'pattern',
+  categories:['strategy','planning'],
+  tags:[
+    'type:pattern','topic:strategy','topic:positive-deviance','phase:plan','level:beginner',
+    'use:offsites','use:visioning','use:roadmapping'
+  ],
+  use_cases:[
+    'forward-looking strategic discussion',
+    'align aspirations with measurable results',
+    'find opportunity in strengths'
+  ],
+  definition:'Strengths, Opportunities, Aspirations, Results—an appreciative, forward-looking alternative to SWOT.',
+  help:'Provide context (optional) and list SOAR elements (one per line each).',
+  boosters:[
+    'Tie each Aspiration to at least one Strength and Opportunity.',
+    'Make Results measurable (metric, target, date).',
+    'End with next steps.'
+  ],
+  fields:[
+    { key:'context',       label:'Context (optional)', type:'textarea',
+      desc:'Brief background or scope.',
+      ph:'Q4 planning for self-serve growth…' },
+    { key:'strengths',     label:'Strengths (one per line)', type:'textarea',
+      desc:'What we already do well.',
+      ph:'Fast release cadence…\nHighly engaged community…' },
+    { key:'opportunities', label:'Opportunities (one per line)', type:'textarea',
+      desc:'External possibilities to leverage.',
+      ph:'Partnership with …\nUntapped EDU market…' },
+    { key:'aspirations',   label:'Aspirations (one per line)', type:'textarea',
+      desc:'Where we want to go.',
+      ph:'Be the default for …\nNPS ≥ 50…' },
+    { key:'results',       label:'Results (one per line)', type:'textarea',
+      desc:'Measurable outcomes (metric & target).',
+      ph:'ARR $5M by Q4; DAU 50k…' },
+    { key:'dos',           label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Be specific and measurable.' },
+    { key:'donts',         label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'Avoid vague aspirations.' }
+  ],
+  template: ({ context, strengths, opportunities, aspirations, results, dos, donts, ctx, audience, style, tone }) => [
+    'Run a SOAR analysis (forward-looking strategy).',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    context && `Scope/context: ${context}`,
+    strengths && (
+      'Strengths:\n' + String(strengths)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    opportunities && (
+      'Opportunities:\n' + String(opportunities)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    aspirations && (
+      'Aspirations:\n' + String(aspirations)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    results && (
+      'Results (measurable):\n' + String(results)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Close with 3 next steps linked to the SOAR items.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'socratic',
+  slug:'socratic-questioning',
+  label:'Socratic Questioning',
+  kind:'pattern',
+  categories:['reasoning','critical thinking'],
+  tags:[
+    'type:pattern','topic:socratic','topic:assumptions','phase:explore','level:beginner',
+    'use:analysis','use:teaching','use:debiasing'
+  ],
+  use_cases:[
+    'interrogate claims and assumptions',
+    'separate knowledge from belief',
+    'surface implications and alternatives'
+  ],
+  definition:'A disciplined questioning method to clarify, probe assumptions, test evidence, explore viewpoints, and examine implications.',
+  help:'Provide a claim/topic, plus any assumptions, evidence, or alternatives (one per line).',
+  boosters:[
+    'Keep questions sharp and answerable.',
+    'Avoid leading or loaded wording.',
+    'End with a synthesis and next inquiry.'
+  ],
+  fields:[
+    { key:'claim',       label:'Claim / topic', type:'textarea',
+      desc:'What are we questioning?',
+      ph:'“We must pivot to enterprise immediately.”' },
+    { key:'assumptions', label:'Assumptions (one per line, optional)', type:'textarea',
+      desc:'Suspected premises.',
+      ph:'SMB cannot pay…\nSales cycle is too long…' },
+    { key:'evidence',    label:'Evidence (one per line, optional)', type:'textarea',
+      desc:'Facts or data offered.',
+      ph:'Churn 12%…\n2/5 enterprise pilots failed…' },
+    { key:'alternatives',label:'Alternatives (one per line, optional)', type:'textarea',
+      desc:'Other viewpoints/paths.',
+      ph:'PLG focus…\nMid-market first…' },
+    { key:'dos',         label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Neutral tone; concrete questions.' },
+    { key:'donts',       label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No ad hominem; ≤300 words.' }
+  ],
+  template: ({ claim, assumptions, evidence, alternatives, dos, donts, ctx, audience, style, tone }) => [
+    'Apply Socratic questioning to probe the topic and synthesize a position.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    claim && `Topic: ${claim}`,
+    assumptions && (
+      'Assumptions:\n' + String(assumptions)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    evidence && (
+      'Evidence:\n' + String(evidence)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    alternatives && (
+      'Alternatives:\n' + String(alternatives)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((x,i)=> `${i+1}. ${x}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output:\n1) Clarification questions\n2) Probe assumptions\n3) Test evidence\n4) Explore viewpoints\n5) Implications\n6) Synthesis & next inquiry'
+  ].filter(Boolean).join('\n')
+},
+
+  
   {
     id:'star',
     slug:'star-technique',
@@ -1576,6 +2140,188 @@ boosters: [
     dos && `Do:\n${dos}`,
     donts && `Don’t:\n${donts}`,
     'First show the numbered plan, then execute it to produce the final output. Keep reasoning concise (procedural, verifiable).'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'tot_brainstorm',
+  slug:'tree-of-thought-brainstorm',
+  label:'Tree of Thought — Brainstorm & Evaluate',
+  kind:'pattern',
+  categories:['reasoning','planning'],
+  tags:[
+    'type:pattern','topic:reasoning','topic:branching','phase:explore','level:intermediate',
+    'use:brainstorm','use:compare-alternatives','use:decision'
+  ],
+  use_cases:[
+    'generate multiple solution paths before deciding',
+    'compare tradeoffs across ideas',
+    'pick a best path with brief justification'
+  ],
+  definition:'Explore several reasoning branches (a small tree), score them against criteria, and choose a path.',
+  help:'Describe the problem, list evaluation criteria (one per line), and add guardrails. The model will branch briefly and then decide.',
+  boosters:[
+    'Limit depth to 2–3 and 2–3 branches per node.',
+    'Keep justifications to one sentence per branch (avoid long hidden reasoning).',
+    'Summarize why the chosen path wins in ≤2 sentences.'
+  ],
+  fields:[
+    { key:'problem',  label:'Problem / goal', type:'textarea',
+      desc:'What needs solving or deciding?',
+      ph:'e.g., Choose a pricing model for a new SaaS.' },
+    { key:'criteria', label:'Evaluation criteria (one per line)', type:'textarea',
+      desc:'How to judge branches.',
+      ph:'Revenue predictability…\nAdoption friction…\nEase of experimentation…' },
+    { key:'dos',      label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Provide scores 1–5; include a quick pro/con per branch.' },
+    { key:'donts',    label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'No long essays; ≤250 words total.' }
+  ],
+  template: ({ problem, criteria, dos, donts, ctx, audience, style, tone }) => [
+    'Use Tree-of-Thought (branching brainstorm): propose alternatives, score them briefly, then choose one.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    criteria && (
+      'Evaluation criteria:\n' + String(criteria)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((c,i)=> `${i+1}. ${c}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output format:\n1) Branching brainstorm (depth 2–3; 2–3 branches per node). Use labels like 1, 1.1, 1.2.\n2) Brief scores per branch (1 sentence each).\n3) Chosen path with a 1–2 sentence rationale.\n4) Final recommendation or answer.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'tot_decompose',
+  slug:'tree-of-thought-decomposition',
+  label:'Tree of Thought — Decomposition',
+  kind:'pattern',
+  categories:['reasoning','planning'],
+  tags:[
+    'type:pattern','topic:decomposition','topic:branching','phase:plan','level:intermediate',
+    'use:breakdown','use:alternatives','use:execution-plan'
+  ],
+  use_cases:[
+    'break a complex goal into a branching plan',
+    'surface alternative sub-steps at key nodes',
+    'pick a minimal viable path to execute next'
+  ],
+  definition:'Decompose a complex goal into a branching hierarchy of sub-tasks with alternatives and select a minimal path.',
+  help:'Provide the complex goal and (optionally) focal areas and risks. The model will build a small tree and select a path.',
+  boosters:[
+    'Show a numbered hierarchy (1, 1.1, 1.1.1).',
+    'Offer 2–3 alternative sub-steps at ambiguous nodes.',
+    'End with a smallest-next-action checklist.'
+  ],
+  fields:[
+    { key:'goal',     label:'Goal / complex task', type:'textarea',
+      desc:'What should be decomposed?',
+      ph:'e.g., Launch a developer portal in 6 weeks.' },
+    { key:'facets',   label:'Focus areas (one per line, optional)', type:'textarea',
+      desc:'Dimensions to branch on (e.g., people, process, tooling).',
+      ph:'Docs…\nAuth…\nDX metrics…\nContent strategy…' },
+    { key:'risks',    label:'Risks & assumptions (one per line, optional)', type:'textarea',
+      desc:'Things that could change the plan.',
+      ph:'Limited writer bandwidth…\nPending legal review…' },
+    { key:'dos',      label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Identify dependencies; label critical path.' },
+    { key:'donts',    label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'Keep to ≤400 words; avoid tool lock-in.' }
+  ],
+  template: ({ goal, facets, risks, dos, donts, ctx, audience, style, tone }) => [
+    'Use Tree-of-Thought decomposition to create a branching plan, then select a minimal viable path.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    goal && `Goal: ${goal}`,
+    facets && (
+      'Focus areas:\n' + String(facets)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((f,i)=> `${i+1}. ${f}`).join('\n')
+    ),
+    risks && (
+      'Risks & assumptions:\n' + String(risks)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((r,i)=> `${i+1}. ${r}`).join('\n')
+    ),
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output format:\n1) Branching decomposition (numbered tree; show 2–3 alternatives where useful)\n2) Critical path (the minimal set of nodes)\n3) Dependencies & checkpoints\n4) Next actions (checklist)'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'triz',
+  slug:'triz-inventive-problem-solving',
+  label:'TRIZ (Theory of Inventive Problem Solving)',
+  kind:'pattern',
+  categories:['innovation','engineering','reasoning'],
+  tags:[
+    'type:pattern','topic:contradictions','topic:ideality','phase:invent','level:intermediate',
+    'use:product-ideas','use:process-innovation','use:technical-problems'
+  ],
+  use_cases:[
+    'resolve contradictions without trade-offs',
+    'generate inventive principles to explore',
+    'aim toward an Ideal Final Result (IFR)'
+  ],
+  definition:'A method that analyzes contradictions and patterns of invention to propose principle-driven solutions toward an ideal outcome.',
+  help:'State the problem, list contradictions and available resources, and describe the Ideal Final Result (IFR).',
+  boosters:[
+    'Map each contradiction to candidate inventive principles.',
+    'Offer at least 3 distinct concepts referencing principles.',
+    'Briefly test each concept against constraints/resources.'
+  ],
+  fields:[
+    { key:'problem',        label:'Problem statement', type:'textarea',
+      desc:'What needs an inventive solution?',
+      ph:'We need high throughput without increasing cost…' },
+    { key:'contradictions', label:'Contradictions (one per line)', type:'textarea',
+      desc:'Conflicts like speed vs quality.',
+      ph:'Increase speed vs maintain accuracy…\nReduce cost vs keep reliability…' },
+    { key:'resources',      label:'Available resources (one per line)', type:'textarea',
+      desc:'Internal/external resources, fields, effects.',
+      ph:'Idle CPU cycles…\nUser-generated data…\nCapacitors…' },
+    { key:'ifr',            label:'Ideal Final Result (IFR)', type:'textarea',
+      desc:'Describe the near-perfect outcome.',
+      ph:'Zero defects at current cost and time…' },
+    { key:'dos',            label:"Do's (must do)", type:'textarea',
+      desc:'Positive guardrails.',
+      ph:'Reference named principles; give 3+ concepts.' },
+    { key:'donts',          label:"Don\'ts / constraints", type:'textarea',
+      desc:'Limits to respect.',
+      ph:'Avoid vague “be more efficient”.' }
+  ],
+  template: ({ problem, contradictions, resources, ifr, dos, donts, ctx, audience, style, tone }) => [
+    'Apply TRIZ: analyze contradictions, aim for the Ideal Final Result, propose principle-based concepts.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    contradictions && (
+      'Contradictions:\n' + String(contradictions)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((c,i)=> `${i+1}. ${c}`).join('\n')
+    ),
+    resources && (
+      'Resources:\n' + String(resources)
+        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
+        .map((r,i)=> `${i+1}. ${r}`).join('\n')
+    ),
+    ifr && `Ideal Final Result (IFR): ${ifr}`,
+    dos && `Do:\n${dos}`,
+    donts && `Don\'t:\n${donts}`,
+    'Output:\n1) Map contradictions → candidate inventive principles\n2) 3–5 concepts referencing principles\n3) Quick feasibility/impact check'
   ].filter(Boolean).join('\n')
 }
 
@@ -2233,22 +2979,99 @@ fw.fields.forEach(f=>{
   // DEFAULT single input/textarea branch
   const holder = document.createElement('div');
   holder.className = 'fieldHolder';
-  let input;
-  if (f.type === 'textarea'){ input = document.createElement('textarea'); }
-  else { input = document.createElement('input'); input.type = 'text'; }
+let input;
+if (f.type === 'textarea'){
+  input = document.createElement('textarea');
+} else {
+  input = document.createElement('input');
+  input.type = 'text';
+}
 
+input.placeholder = f.ph || '';
+input.id = f.key;
+input.value = (t.fields && t.fields[f.key]) || '';
 
-  input.placeholder = f.ph || '';
-  input.id = f.key;
-  input.value = (t.fields && t.fields[f.key]) || '';
+/* -- Special case: persona typeahead -- */
+if (f.type === 'typeahead' && f.key === 'persona_name'){
+  holder.classList.add('taWrap');
+  const list = document.createElement('div');
+  list.className = 'taList';
+  list.hidden = true;
   holder.appendChild(input);
-  wrap.appendChild(holder);
+  holder.appendChild(list);
 
-  // Save + preview updates (existing behavior preserved)
-  fieldInput(input, ()=>{
+  let activeIndex = -1;
+  function renderSuggestions(q){
+    const hits = personaFilter(q, 30);
+    list.innerHTML = '';
+    activeIndex = -1;
+    if (!hits.length){ list.hidden = true; return; }
+    hits.forEach((p, idx)=>{
+      const item = document.createElement('div');
+      item.className = 'taItem';
+      item.innerHTML = `<span class="name">${p.name}</span>
+                        <span class="sub">${p.profession||''}${p.tags?.length?` • ${p.tags.join(', ')}`:''}</span>`;
+item.addEventListener('click', (e)=>{
+  // Keep UI and state in sync BEFORE re-render to beat any pending input events
+  input.value = p.name || '';
+  (t.fields || (t.fields = {})).persona_name = input.value;
+
+  applyPersonaToTab(t, p);
+  t.fields.end = (t.fields.end || '');
+
+  // Hide suggestions and re-render fields
+  list.hidden = true;
+  renderFields(); 
+  emit();
+
+  // Optional: jump cursor to End goal next
+  const endInput = document.querySelector('#end');
+  if (endInput) endInput.focus();
+});
+
+      list.appendChild(item);
+    });
+    list.hidden = false;
+  }
+
+  input.addEventListener('input', ()=>{
     (t.fields || (t.fields = {}))[f.key] = input.value;
-    emit(); // will call emitAll() + totals in Stage 5
+    if (input.value.trim().length === 0){ list.hidden = true; emit(); return; }
+    renderSuggestions(input.value);
+    emit();
   });
+
+  input.addEventListener('keydown', (e)=>{
+    const items = Array.from(list.children);
+    if (list.hidden || !items.length) return;
+
+    if (e.key === 'ArrowDown'){ e.preventDefault(); activeIndex = Math.min(items.length-1, activeIndex+1); }
+    if (e.key === 'ArrowUp'){   e.preventDefault(); activeIndex = Math.max(0, activeIndex-1); }
+    if (e.key === 'Escape'){ list.hidden = true; return; }
+
+if (e.key === 'Enter' && activeIndex >= 0){
+  e.preventDefault();
+  items[activeIndex].dispatchEvent(new Event('click', {bubbles:true}));
+  return;
+}
+
+    items.forEach((n,i)=> n.classList.toggle('active', i===activeIndex));
+  });
+
+  // Hide on blur (delay so clicks register)
+  input.addEventListener('blur', ()=> setTimeout(()=> list.hidden = true, 120));
+} else {
+  // Normal field (text/textarea)
+  holder.appendChild(input);
+}
+
+// Save + preview updates (works for both normal and typeahead)
+wrap.appendChild(holder);
+fieldInput(input, ()=>{
+  (t.fields || (t.fields = {}))[f.key] = input.value;
+  emit(); // will call emitAll() + totals
+});
+
 
   // Inline counter (Stage 1)
   setupCounter(input);
