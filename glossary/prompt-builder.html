@@ -3426,7 +3426,7 @@ boosters: [
       'evaluate if a goal is well-defined or needs adjustment'
     ],
     boosters: [
-      'If any SMART element is missing (e.g., no timeframe), the model will propose one to complete the goal definition.',
+      'If any SMART element is missing (e.g., no timeframe), you will propose one to complete the goal definition.',
       'Present the output as 5 brief points (S, M, A, R, T) to clearly delineate each aspect.'
     ],
     definition: 'A goal-setting checklist ensuring an objective is Specific, Measurable, Achievable, Relevant, and Time-bound.',
@@ -3434,17 +3434,52 @@ boosters: [
     fields: [
       { key: 'goal', label: 'General goal', type: 'textarea',
         desc: 'A short description of what you want to accomplish.',
-        ph: 'e.g., Grow the mailing list for our newsletter.' }
+        ph: 'e.g., Grow the mailing list for our newsletter.' },
+      { key: 'specific', label: 'Specific (Optional)', type: 'textarea',
+  desc: 'What exactly will be accomplished, by whom, and where it happens.',
+  ph: 'e.g., Add a newsletter signup form to the site header and blog posts, and publish one monthly issue managed by the marketing team.' },
+      { key: 'measurable', label: 'Measurable (Optional)', type: 'textarea',
+  desc: 'How you will quantify success or track progress.',
+  ph: 'e.g., Grow subscribers from 1,200 to 2,000 and reach a 5% signup rate on blog traffic.' },
+{ key: 'achievable', label: 'Achievable (Optional)', type: 'textarea',
+  desc: 'Why the target is realistic given resources, constraints, and past performance.',
+  ph: 'e.g., Based on ~150 new subs per month from past campaigns, we can hit 2,000 by adding a lead magnet and two partner cross promotions.' },
+{ key: 'relevant', label: 'Relevant (Optional)', type: 'textarea',
+  desc: 'How this goal supports broader objectives or user needs.',
+  ph: 'e.g., Email is our highest converting channel; a larger list supports the Q4 revenue OKR and product launch pipeline.' },
+{ key: 'time_bound', label: 'Time-bound (Optional)', type: 'textarea',
+  desc: 'The deadline and interim milestones or check-ins.',
+  ph: 'e.g., Reach 2,000 subscribers by December 31, 2025; launch lead magnet by October 1 and review metrics every Monday.' }
     ],
-    template: ({ goal, ctx, audience, style, tone }) => [
-      'Convert the goal into a SMART format.',
-      ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      goal && `Goal: ${goal}`,
-      'Output each SMART element with details:\n- Specific: <what exactly will be done?>\n- Measurable: <quantify or measure success>\n- Achievable: <is it realistic/how to attain?>\n- Relevant: <why it matters/aligns>\n- Time-bound: <deadline or timeframe>'
-    ].filter(Boolean).join('\n')
+template: ({ goal, ctx, audience, style, tone, specific, measurable, achievable, relevant, time_bound }) => [
+  'Convert the goal into a SMART format.',
+  ctx && `Context: ${ctx}`,
+  audience && `Audience: ${audience}`,
+  style && `Style: ${style}`,
+  tone && `Tone: ${tone}`,
+  goal && `Goal: ${goal}`,
+  specific && ('Specific input:\n' + specific),
+  measurable && ('Measurable input:\n' + measurable),
+  achievable && ('Achievable input:\n' + achievable),
+  relevant && ('Relevant input:\n' + relevant),
+  time_bound && ('Time-bound input:\n' + time_bound),
+  
+    'Output each SMART element with details:',
+  '- Specific: <what exactly will be done, by whom, and where>',
+  '- Measurable: <how success will be quantified or tracked>',
+  '- Achievable: <why it is realistic given resources and constraints>',
+  '- Relevant: <how it supports broader objectives or user needs>',
+  '- Time-bound: <deadline and interim checkpoints>',
+
+  'Examples:',
+  '- Specific eg: Add a newsletter signup form to the site header and blog posts, and publish one monthly issue managed by the marketing team.',
+  '- Measurable eg: Grow subscribers from 1,200 to 2,000 and reach a 5% signup rate on blog traffic.',
+  '- Achievable eg: Based on ~150 new subs per month from past campaigns, we can hit 2,000 by adding a lead magnet and two partner cross promotions.',
+  '- Relevant eg: Email is our highest converting channel; a larger list supports the Q4 revenue OKR and product launch pipeline.',
+  '- Time-bound eg: Reach 2,000 subscribers by December 31, 2025; launch lead magnet by October 1 and review metrics every Monday.',
+
+  'Return:\n1) One sentence SMART goal\n2) KPI list with baselines and targets\n3) Milestone timeline with owners'
+].filter(Boolean).join('\n')
   },
 
 {
@@ -4269,7 +4304,596 @@ boosters: [
     plan && ('Plan (if obstacle, then I will…):\n' + plan),
     'Output:\n1) Wish\n2) Outcome\n3) Obstacle\n4) If–then plan\n5) First checkpoint'
   ].filter(Boolean).join('\n')
-}
+},
+
+{
+    id: 'fukatsu',
+    slug: 'fukatsu-resurrection-prompt',
+    label: 'Fukatsu Method · Instruction · Constraints · Input · Output',
+    kind: 'framework',
+    categories: ['prompt-engineering', 'structure'],
+    tags: [
+      'type:framework','origin:japan','topic:prompt-formatting','level:intermediate',
+      'use:clear-spec','use:reduce-ambiguity','use:one-shot'
+    ],
+    use_cases: [
+      'craft highly explicit prompts with clear sections',
+      'reduce back-and-forth by frontloading constraints',
+      'standardize team prompts for reproducibility'
+    ],
+    boosters: [
+      'Keep sections explicitly labeled and ordered: Instruction, Constraints, Input, Output.',
+      'Make Constraints concrete: tone, length, audience, citation rules, forbidden content.',
+      'Define Output as a shape (headings, bullets, JSON schema) to guide formatting.'
+    ],
+    definition: 'A Japanese prompting format that separates the ask into four explicit sections (Instruction, Constraints, Input, Output) to minimize ambiguity and drive consistent results.',
+    help: 'Fill in each section crisply. Treat Output like a contract for structure and scope.',
+    fields: [
+      { key: 'instruction', label: 'Instruction / Command', type: 'textarea', desc: 'What should the AI do or be?', ph: 'e.g., You are a technical editor. Improve clarity without changing meaning.' },
+      { key: 'constraints', label: 'Constraints', type: 'textarea', desc: 'Rules, tone, length, style, do/don’t.', ph: 'e.g., 300 words max; friendly but precise; no marketing claims.' },
+      { key: 'input', label: 'Input', type: 'textarea', desc: 'Source material or data.', ph: 'Paste text, bullets, transcript excerpt, etc.' },
+      { key: 'output', label: 'Output Format', type: 'textarea', desc: 'Exact structure required.', ph: 'e.g., 1) Summary (3 bullets) 2) Edits (diff-style) 3) Next steps (2 items)' }
+    ],
+    template: ({ instruction, constraints, input, output, ctx, audience, style, tone }) => [
+      'Follow this structured prompt.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      instruction && ('Instruction:\n' + instruction),
+      constraints && ('Constraints:\n' + constraints),
+      input && ('Input:\n' + input),
+      output && ('Output:\n' + output)
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'hansei',
+    slug: 'hansei-structured-reflection',
+    label: 'Hansei · Structured Reflection and Continuous Learning',
+    kind: 'framework',
+    categories: ['learning', 'retrospective'],
+    tags: [
+      'type:framework','origin:japan','topic:continuous-improvement','level:beginner',
+      'use:retro','use:postmortem','use:skill-building'
+    ],
+    use_cases: [
+      'run a quick retrospective after tasks or releases',
+      'identify concrete learning commitments',
+      'build a culture of humble, ongoing improvement'
+    ],
+    boosters: [
+      'Balance what went well with what can improve; avoid blame.',
+      'Convert each insight into a specific next-step or experiment with an owner.',
+      'Schedule a follow-up to check whether changes took root.'
+    ],
+    definition: 'A Japanese practice of candid self-reflection that turns missteps and successes into concrete learning and next actions.',
+    help: 'Capture a situation, what worked, what did not, and the next experiments to try.',
+    fields: [
+      { key: 'situation', label: 'Situation', type: 'textarea', desc: 'What event or work are you reflecting on?', ph: 'e.g., Sprint 14 release' },
+      { key: 'worked', label: 'What worked', type: 'textarea', desc: 'Strengths and wins.', ph: 'e.g., Early stakeholder demos reduced surprises.' },
+      { key: 'improve', label: 'What to improve', type: 'textarea', desc: 'Gaps, mistakes, risks.', ph: 'e.g., Late QA handoff created bottlenecks.' },
+      { key: 'experiments', label: 'Experiments / Next steps', type: 'textarea', desc: 'Concrete changes to try with owners and dates.', ph: 'e.g., Add QA pairing in week 1 (Owner: Sam, by 5/10).' }
+    ],
+    template: ({ situation, worked, improve, experiments, ctx, tone }) => [
+      'Run a Hansei reflection.',
+      ctx && `Context: ${ctx}`,
+      tone && `Tone: ${tone}`,
+      situation && ('Situation:\n' + situation),
+      worked && ('What worked:\n' + worked),
+      improve && ('What to improve:\n' + improve),
+      experiments && ('Experiments / Next steps:\n' + experiments),
+      'End with one sentence on how we will verify improvement.'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'ikigai',
+    slug: 'ikigai-purpose-matrix',
+    label: 'Ikigai · Love · Good at · World needs · Paid for',
+    kind: 'framework',
+    categories: ['self-strategy', 'career'],
+    tags: [
+      'type:framework','origin:japan','topic:purpose','level:beginner',
+      'use:career-fit','use:project-alignment','use:value-mapping'
+    ],
+    use_cases: [
+      'align projects with motivation and sustainability',
+      'evaluate product ideas for meaning and viability',
+      'craft personal development plans'
+    ],
+    boosters: [
+      'Probe conflicts between quadrants and propose trade-offs.',
+      'If one quadrant is weak, generate options to strengthen it.',
+      'Offer a short narrative that ties all four quadrants together.'
+    ],
+    definition: 'A Japanese lens for purpose that considers what you love, what you are good at, what the world needs, and what can be paid for.',
+    help: 'Fill each quadrant honestly; then connect them into one or two coherent directions.',
+    fields: [
+      { key: 'love', label: 'What you love', type: 'textarea', desc: 'Energizing activities or topics.', ph: 'e.g., Teaching, writing, data storytelling' },
+      { key: 'good_at', label: 'What you are good at', type: 'textarea', desc: 'Strengths and skills.', ph: 'e.g., Interviewing, synthesis, prototyping' },
+      { key: 'world_needs', label: 'What the world needs', type: 'textarea', desc: 'Problems worth solving.', ph: 'e.g., Ethical AI literacy for non-technical teams' },
+      { key: 'paid_for', label: 'What you can be paid for', type: 'textarea', desc: 'Market demand and roles.', ph: 'e.g., UX research lead, AI educator' }
+    ],
+    template: ({ love, good_at, world_needs, paid_for, ctx, audience }) => [
+      'Construct an Ikigai alignment.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      love && ('Love:\n' + love),
+      good_at && ('Good at:\n' + good_at),
+      world_needs && ('World needs:\n' + world_needs),
+      paid_for && ('Paid for:\n' + paid_for),
+      'Output:\n1) Overlaps (2–3)\n2) Two concrete directions (with first steps)\n3) Risks and how to test quickly'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'jugaad',
+    slug: 'jugaad-frugal-innovation',
+    label: 'Jugaad · Frugal, Flexible, Resourceful Innovation',
+    kind: 'framework',
+    categories: ['innovation', 'creativity'],
+    tags: [
+      'type:framework','origin:india','topic:constraint-driven','level:intermediate',
+      'use:prototype-fast','use:workarounds','use:lean-solution'
+    ],
+    use_cases: [
+      'find creative workarounds under tight constraints',
+      'prototype “good enough” solutions rapidly',
+      'adapt processes for low-resource environments'
+    ],
+    boosters: [
+      'Start with constraint listing; treat each as a creative springboard.',
+      'Prefer local, readily available resources first.',
+      'Plan a quick test loop to validate usefulness before refinement.'
+    ],
+    definition: 'An Indian practice of improvisational problem-solving that embraces constraints to produce simple, effective, low-cost solutions.',
+    help: 'Declare your objective, list constraints and available resources, then outline a scrappy path to value.',
+    fields: [
+      { key: 'objective', label: 'Objective', type: 'text', desc: 'Outcome you need to achieve.', ph: 'e.g., Collect field feedback without paid tools' },
+      { key: 'constraints', label: 'Constraints', type: 'textarea', desc: 'Limits that shape the approach.', ph: 'e.g., No budget; offline; 1 week; non-technical users' },
+      { key: 'resources', label: 'Available resources', type: 'textarea', desc: 'What you already have.', ph: 'e.g., WhatsApp, paper forms, one laptop' },
+      { key: 'quick_test', label: 'Quick test', type: 'textarea', desc: 'How to validate fast.', ph: 'e.g., Pilot with 10 users in 48 hours' }
+    ],
+    template: ({ objective, constraints, resources, quick_test, ctx, tone }) => [
+      'Apply a Jugaad plan.',
+      ctx && `Context: ${ctx}`,
+      tone && `Tone: ${tone}`,
+      objective && `Objective: ${objective}`,
+      constraints && ('Constraints:\n' + constraints),
+      resources && ('Available resources:\n' + resources),
+      quick_test && ('Quick test:\n' + quick_test),
+      'Return:\n1) Scrappy plan (3–5 steps)\n2) Risk points & mitigations\n3) Upgrade path if the pilot succeeds'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'kishotenketsu',
+    slug: 'kishotenketsu-four-act',
+    label: 'Kishōtenketsu · Introduction · Development · Twist · Conclusion',
+    kind: 'framework',
+    categories: ['storytelling', 'structure'],
+    tags: [
+      'type:framework','origin:east-asia','topic:narrative','level:intermediate',
+      'use:story-design','use:lesson-flow','use:surprise-without-conflict'
+    ],
+    use_cases: [
+      'outline stories or lessons that pivot via contrast rather than conflict',
+      'design explainer flows with a revealing twist',
+      'prototype non-confrontational narratives'
+    ],
+    boosters: [
+      'Make the Twist a perspective shift or unexpected connection, not a forced conflict.',
+      'Ensure the Conclusion integrates the twist and recontextualizes the setup.',
+      'Try alternates: visual twist, data twist, role twist.'
+    ],
+    definition: 'A four-part East Asian narrative structure that builds context, elaborates, introduces a twist, and then resolves without centering conflict.',
+    help: 'Describe the topic, audience, and a twist seed. The model will outline all four acts.',
+    fields: [
+      { key: 'topic', label: 'Topic / Theme', type: 'text', desc: 'What is this about?', ph: 'e.g., Why bees matter' },
+      { key: 'audience', label: 'Audience', type: 'text', desc: 'For whom is this story or lesson?', ph: 'e.g., Middle school science class' },
+      { key: 'twist', label: 'Twist seed', type: 'textarea', desc: 'The contrast or reframe to reveal.', ph: 'e.g., Bees are livestock with passports in some countries' }
+    ],
+    template: ({ topic, audience, twist, ctx, style, tone }) => [
+      'Use Kishōtenketsu to design a 4-act outline.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      topic && `Topic: ${topic}`,
+      audience && `Audience: ${audience}`,
+      twist && `Twist seed: ${twist}`,
+      'Output:\n1) Introduction (set the ordinary)\n2) Development (deepen context)\n3) Twist (reveal contrast)\n4) Conclusion (integrate the twist)'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'lotus_blossom',
+    slug: 'lotus-blossom-ideation',
+    label: 'Lotus Blossom · 8-way Idea Expansion',
+    kind: 'pattern',
+    categories: ['creativity', 'ideation'],
+    tags: [
+      'type:pattern','origin:japan','topic:divergent-thinking','level:beginner',
+      'use:brainstorm','use:subtopic-expansion','use:systematize-ideas'
+    ],
+    use_cases: [
+      'systematically generate sub-ideas from a central theme',
+      'expand a problem space to uncover hidden angles',
+      'seed content pillars and sub-pillars'
+    ],
+    boosters: [
+      'Force-fill all 8 petals to avoid early fixation.',
+      'Turn each petal into a new center and repeat once for depth.',
+      'Name clusters to reveal emergent themes.'
+    ],
+    definition: 'A Japanese ideation grid that places a core theme in the center, then expands to eight petals, each of which can blossom into further eight ideas.',
+    help: 'Provide a central theme and optional seed petals. The model returns an 8× expansion with labels.',
+    fields: [
+      { key: 'theme', label: 'Central theme', type: 'text', desc: 'The core idea to blossom.', ph: 'e.g., Community onboarding' },
+      { key: 'seed_petals', label: 'Seed petals (optional, 1 per line)', type: 'textarea', desc: 'Initial sub-ideas if you have them.', ph: 'e.g., Welcome ritual\nMentor matching\nMicro-tasks' }
+    ],
+    template: ({ theme, seed_petals, ctx }) => [
+      `Run Lotus Blossom on${theme ? ` ${theme}` : ''}.`,
+      ctx && `Context: ${ctx}`,
+      seed_petals && ('Seed petals:\n' + seed_petals),
+      'Output:\n- Petals (8 labeled sub-ideas)\n- For each petal: 8 expansions\n- 3 clusters with short labels'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'medicine_wheel',
+    slug: 'medicine-wheel-holistic',
+    label: 'Medicine Wheel · Physical · Mental · Emotional · Spiritual',
+    kind: 'framework',
+    categories: ['holistic-thinking', 'wellbeing'],
+    tags: [
+      'type:framework','origin:indigenous-north-america','topic:balance','level:beginner',
+      'use:holistic-analysis','use:care-plans','use:ethical-check'
+    ],
+    use_cases: [
+      'analyze a decision or plan through four human dimensions',
+      'design interventions that balance practical and relational needs',
+      'audit proposals for value alignment and community impact'
+    ],
+    boosters: [
+      'Give at least one concrete observation per quadrant.',
+      'Highlight imbalances and propose rebalancing steps.',
+      'Name trade-offs explicitly where quadrants conflict.'
+    ],
+    definition: 'An Indigenous North American framework that examines situations through physical, mental, emotional, and spiritual lenses to seek balance.',
+    help: 'State the problem and any existing considerations. The model will respond across the four quadrants.',
+    fields: [
+      { key: 'problem', label: 'Problem / Decision', type: 'textarea', desc: 'The situation to examine.', ph: 'e.g., Rolling out a new community policy' },
+      { key: 'notes', label: 'Known considerations (optional)', type: 'textarea', desc: 'Any context you already have.', ph: 'e.g., Budget constraints; volunteer burnout' }
+    ],
+    template: ({ problem, notes, ctx }) => [
+      'Apply the Medicine Wheel.',
+      ctx && `Context: ${ctx}`,
+      problem && `Problem: ${problem}`,
+      notes && ('Notes:\n' + notes),
+      'Output:\n- Physical (resources, logistics)\n- Mental (knowledge, clarity)\n- Emotional (relationships, feelings)\n- Spiritual/Values (ethics, meaning)\n- Imbalances and rebalancing steps'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'nemawashi',
+    slug: 'nemawashi-consensus-building',
+    label: 'Nemawashi · Quiet Pre-alignment for Consensus',
+    kind: 'framework',
+    categories: ['decision-making', 'stakeholders'],
+    tags: [
+      'type:framework','origin:japan','topic:consensus','level:intermediate',
+      'use:change-management','use:proposal-socialization','use:political-risk-reduction'
+    ],
+    use_cases: [
+      'socialize proposals in advance to reduce late-stage pushback',
+      'identify concerns privately and adapt proposals before formal review',
+      'accelerate official approvals by doing groundwork'
+    ],
+    boosters: [
+      'Map stakeholders by influence and interest; plan 1:1s in logical order.',
+      'Carry a one-page brief; ask for objections and co-author mitigations.',
+      'Document pre-commitments and summarize shared edits before the meeting.'
+    ],
+    definition: 'A Japanese practice of building consensus informally by consulting stakeholders individually before formal decisions.',
+    help: 'List the decision, stakeholders, and early risks. The model drafts a pre-alignment plan.',
+    fields: [
+      { key: 'decision', label: 'Decision / Proposal', type: 'textarea', desc: 'What you seek to approve.', ph: 'e.g., Switch analytics vendor this quarter' },
+      { key: 'stakeholders', label: 'Stakeholders (one per line)', type: 'textarea', desc: 'People or groups to consult.', ph: 'e.g., Eng lead\nFinance partner\nSupport manager' },
+      { key: 'risks', label: 'Known risks/concerns', type: 'textarea', desc: 'Anticipated objections.', ph: 'e.g., Cost, migration effort, data retention' }
+    ],
+    template: ({ decision, stakeholders, risks, ctx }) => [
+      'Create a Nemawashi plan.',
+      ctx && `Context: ${ctx}`,
+      decision && ('Decision:\n' + decision),
+      stakeholders && ('Stakeholders:\n' + stakeholders),
+      risks && ('Known risks:\n' + risks),
+      'Output:\n1) 1:1 sequence and objectives\n2) Objection log with mitigations\n3) Pre-commit summary for formal review'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'palaver',
+    slug: 'palaver-talking-circle',
+    label: 'Palaver Tree · Inclusive Talking Circle',
+    kind: 'structure',
+    categories: ['facilitation', 'conflict-resolution'],
+    tags: [
+      'type:structure','origin:africa','topic:consensus','level:beginner',
+      'use:dialogue','use:community-decisions','use:roundtable'
+    ],
+    use_cases: [
+      'facilitate inclusive dialogue with equal voice',
+      'synthesize multi-perspective input into consensus',
+      'resolve conflicts through patient discussion'
+    ],
+    boosters: [
+      'Adopt turn-taking rules; timebox rounds, not people.',
+      'Surface minority positions and ensure they are summarized accurately.',
+      'Close with a consensus statement and action owners.'
+    ],
+    definition: 'An African community circle practice where issues are discussed openly until a shared understanding or consensus emerges.',
+    help: 'Define the question and who is in the circle. The model proposes a round structure and synthesis method.',
+    fields: [
+      { key: 'question', label: 'Framing question', type: 'text', desc: 'What will the circle address?', ph: 'e.g., How should we prioritize next quarter’s projects?' },
+      { key: 'participants', label: 'Participants (roles or names)', type: 'textarea', desc: 'Who gets a voice in the circle.', ph: 'e.g., Customer success, sales, eng, design, ops' },
+      { key: 'protocol', label: 'Protocol notes (optional)', type: 'textarea', desc: 'Rules or rituals for speaking and listening.', ph: 'e.g., Talking stick; no interruptions; reflective listening' }
+    ],
+    template: ({ question, participants, protocol, ctx }) => [
+      'Plan a Palaver-style talking circle.',
+      ctx && `Context: ${ctx}`,
+      question && `Question: ${question}`,
+      participants && ('Participants:\n' + participants),
+      protocol && ('Protocol:\n' + protocol),
+      'Output:\n1) Round plan (opening to closing)\n2) Synthesis map of viewpoints\n3) Consensus statement and action list'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'sankofa',
+    slug: 'sankofa-learn-from-past',
+    label: 'Sankofa · Retrieve the Past to Guide the Future',
+    kind: 'framework',
+    categories: ['strategy', 'learning'],
+    tags: [
+      'type:framework','origin:ghana','topic:historical-insight','level:beginner',
+      'use:pre-mortem','use:pattern-extraction','use:knowledge-transfer'
+    ],
+    use_cases: [
+      'review precedents before launching a new initiative',
+      'convert lessons learned into design constraints',
+      'avoid repeat mistakes via explicit historical mapping'
+    ],
+    boosters: [
+      'Pair each lesson with a design guardrail or decision rule.',
+      'Balance caution with opportunity by listing positive precedents too.',
+      'Close with 2 tests to verify we absorbed the lesson.'
+    ],
+    definition: 'An Akan concept that urges returning to the past to bring forward wisdom for present and future decisions.',
+    help: 'Describe the future goal and any relevant history. The model will extract and apply lessons.',
+    fields: [
+      { key: 'goal', label: 'Future goal', type: 'text', desc: 'What you aim to achieve.', ph: 'e.g., Launch a community grants program' },
+      { key: 'past_lessons', label: 'Past lessons (one per line)', type: 'textarea', desc: 'Experiences, case studies, or precedents.', ph: 'e.g., Low transparency eroded trust\nQuick feedback loops boosted adoption' }
+    ],
+    template: ({ goal, past_lessons, ctx }) => [
+      'Apply Sankofa to guide the plan.',
+      ctx && `Context: ${ctx}`,
+      goal && `Goal: ${goal}`,
+      past_lessons && ('Past lessons:\n' + past_lessons),
+      'Output:\n1) Extracted principles\n2) Guardrails and decision rules\n3) Two validation checks in the first month'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'shoshin_koan',
+    slug: 'shoshin-and-koan-inquiry',
+    label: 'Shoshin + Koan · Beginner’s Mind and Paradox Inquiry',
+    kind: 'pattern',
+    categories: ['creativity', 'critical-thinking'],
+    tags: [
+      'type:pattern','origin:japan','topic:insight','level:advanced',
+      'use:break-fixation','use:novel-angles','use:assumption-busting'
+    ],
+    use_cases: [
+      'dislodge stale assumptions and reveal new frames',
+      'generate creative prompts through paradox or metaphor',
+      'teach a concept using simple, curiosity-first language'
+    ],
+    boosters: [
+      'Rewrite the premise in child-friendly terms first.',
+      'Pose one paradoxical question that cannot be answered by routine logic.',
+      'End with a practical insight or small experiment inspired by the koan.'
+    ],
+    definition: 'A Zen approach that combines open beginner’s mind with a paradoxical prompt to interrupt habitual reasoning and surface fresh insight.',
+    help: 'Provide the concept and any preconceptions to park. Optionally add a koan seed.',
+    fields: [
+      { key: 'concept', label: 'Concept', type: 'text', desc: 'Topic to explore.', ph: 'e.g., Productivity' },
+      { key: 'preconceptions', label: 'Preconceptions (optional)', type: 'textarea', desc: 'Beliefs to set aside temporarily.', ph: 'e.g., Productivity means doing more tasks per hour' },
+      { key: 'koan_seed', label: 'Koan seed (optional)', type: 'text', desc: 'A paradoxical question or image.', ph: 'e.g., What is the shape of a pause?' }
+    ],
+    template: ({ concept, preconceptions, koan_seed, ctx }) => [
+      'Use Shoshin and a Koan to explore anew.',
+      ctx && `Context: ${ctx}`,
+      concept && `Concept: ${concept}`,
+      preconceptions && ('Preconceptions to set aside:\n' + preconceptions),
+      koan_seed && `Koan seed: ${koan_seed}`,
+      'Output:\n1) ELI5 explanation\n2) Koan-style question\n3) Fresh insight and one small experiment'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'shu_ha_ri',
+    slug: 'shu-ha-ri-mastery',
+    label: 'Shu · Ha · Ri · Stages of Mastery',
+    kind: 'framework',
+    categories: ['learning', 'craft'],
+    tags: [
+      'type:framework','origin:japan','topic:skill-progression','level:beginner',
+      'use:training-path','use:prompt-mastery','use:curriculum'
+    ],
+    use_cases: [
+      'design a learning path from templates to innovation',
+      'evaluate when to deviate from rules responsibly',
+      'coach teams through levels of autonomy'
+    ],
+    boosters: [
+      'Define “done” for each stage to prevent premature jumping.',
+      'Document deviations at Ha and their rationale.',
+      'At Ri, codify your style so others can learn from it.'
+    ],
+    definition: 'A Japanese model of learning: first follow the form (Shu), then adapt (Ha), then transcend and create your own approach (Ri).',
+    help: 'Describe the skill and current stage. The model suggests focused practices and milestones.',
+    fields: [
+      { key: 'skill', label: 'Skill / Domain', type: 'text', desc: 'What are you mastering?', ph: 'e.g., Prompt engineering for chat models' },
+      { key: 'stage', label: 'Current stage (Shu/Ha/Ri)', type: 'text', desc: 'Where are you now?', ph: 'e.g., Shu' },
+      { key: 'shu_rules', label: 'Forms/rules (if Shu)', type: 'textarea', desc: 'Rules to follow exactly.', ph: 'e.g., Use role, task, constraints, examples' },
+      { key: 'ha_variations', label: 'Variations (if Ha)', type: 'textarea', desc: 'Targeted experiments.', ph: 'e.g., Swap few-shot examples per audience' },
+      { key: 'ri_signature', label: 'Signature (if Ri)', type: 'textarea', desc: 'Your style patterns.', ph: 'e.g., 3-pass critique loop + rubric' }
+    ],
+    template: ({ skill, stage, shu_rules, ha_variations, ri_signature, ctx }) => [
+      'Plan by Shu–Ha–Ri.',
+      ctx && `Context: ${ctx}`,
+      skill && `Skill: ${skill}`,
+      stage && `Stage: ${stage}`,
+      shu_rules && ('Shu rules:\n' + shu_rules),
+      ha_variations && ('Ha variations:\n' + ha_variations),
+      ri_signature && ('Ri signature:\n' + ri_signature),
+      'Output: milestones, exercises, and exit-criteria for the next stage.'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'shura',
+    slug: 'shura-consultative-decision',
+    label: 'Shura · Consultative Decision-Making',
+    kind: 'framework',
+    categories: ['governance', 'decision-making'],
+    tags: [
+      'type:framework','origin:islamic','topic:consultation','level:intermediate',
+      'use:multi-stakeholder','use:consensus-seeking','use:deliberation'
+    ],
+    use_cases: [
+      'structure multi-party decisions with inclusive input',
+      'turn debate into constructive, principled dialogue',
+      'document rationale for legitimacy and buy-in'
+    ],
+    boosters: [
+      'Define decision criteria up front and share them.',
+      'Invite dissenting views and capture them verbatim.',
+      'End with a clear decision, owners, and a review date.'
+    ],
+    definition: 'An Islamic principle of inclusive consultation that gathers diverse perspectives to reach a legitimized decision.',
+    help: 'State the decision and stakeholders. The model outputs a consultative plan and synthesis.',
+    fields: [
+      { key: 'decision', label: 'Decision to make', type: 'text', desc: 'The central choice.', ph: 'e.g., Choose a data retention policy' },
+      { key: 'stakeholders', label: 'Stakeholders (one per line)', type: 'textarea', desc: 'Participants and impacted groups.', ph: 'e.g., Legal\nSecurity\nData science\nCustomer council' },
+      { key: 'principles', label: 'Guiding principles', type: 'textarea', desc: 'Values or rules to honor.', ph: 'e.g., Privacy by default; proportionality; transparency' }
+    ],
+    template: ({ decision, stakeholders, principles, ctx }) => [
+      'Run a Shura-style consultation.',
+      ctx && `Context: ${ctx}`,
+      decision && `Decision: ${decision}`,
+      stakeholders && ('Stakeholders:\n' + stakeholders),
+      principles && ('Principles:\n' + principles),
+      'Output:\n1) Rounds of input (agenda)\n2) Synthesis with options and trade-offs\n3) Final decision, rationale, owners, review date'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'triz',
+    slug: 'triz-inventive-problem-solving',
+    label: 'TRIZ · Inventive Principles and Contradictions',
+    kind: 'framework',
+    categories: ['innovation', 'engineering'],
+    tags: [
+      'type:framework','origin:russia','topic:systematic-creativity','level:advanced',
+      'use:resolve-conflicts','use:design-space','use:pattern-reuse'
+    ],
+    use_cases: [
+      'resolve design contradictions systematically',
+      'apply known inventive principles to new problems',
+      'expand solution space beyond obvious variants'
+    ],
+    boosters: [
+      'Phrase the core issue as a contradiction: improving X worsens Y.',
+      'Try 3–5 different inventive principles before choosing.',
+      'Translate each principle into 1–2 concrete solution sketches.'
+    ],
+    definition: 'A Russian-origin method that analyzes patterns of invention to resolve contradictions using reusable principles.',
+    help: 'State the problem and the key contradiction. Optionally name principles to try.',
+    fields: [
+      { key: 'problem', label: 'Problem', type: 'textarea', desc: 'Core challenge to solve.', ph: 'e.g., Increase speed without reducing accuracy' },
+      { key: 'contradiction', label: 'Contradiction', type: 'text', desc: 'X improves while Y worsens.', ph: 'e.g., Latency vs. model quality' },
+      { key: 'principles', label: 'Principles to explore (optional)', type: 'textarea', desc: 'Inventive principles to test.', ph: 'e.g., Segmentation\nInversion\nUniversality' }
+    ],
+    template: ({ problem, contradiction, principles, ctx }) => [
+      'Apply TRIZ to the problem.',
+      ctx && `Context: ${ctx}`,
+      problem && ('Problem:\n' + problem),
+      contradiction && (`Contradiction: ${contradiction}`),
+      principles && ('Principles to explore:\n' + principles),
+      'Output:\n1) 3–5 candidate solutions (each mapped to a principle)\n2) Trade-offs and risks\n3) Pick one to prototype next'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'ubuntu',
+    slug: 'ubuntu-collective-wisdom',
+    label: 'Ubuntu · I Am Because We Are',
+    kind: 'framework',
+    categories: ['ethics', 'community'],
+    tags: [
+      'type:framework','origin:sub-saharan-africa','topic:interdependence','level:beginner',
+      'use:ethical-lens','use:policy-design','use:stakeholder-empathy'
+    ],
+    use_cases: [
+      'design solutions that enhance collective well-being',
+      'evaluate impacts across communities and relationships',
+      'resolve conflicts by restoring trust and connection'
+    ],
+    boosters: [
+      'Map who benefits, who bears cost, and how reciprocity is maintained.',
+      'Prefer options that strengthen relationships long term.',
+      'Include a restoration plan if harms occurred.'
+    ],
+    definition: 'A Sub-Saharan philosophy centering human interdependence and communal flourishing as criteria for good action.',
+    help: 'Describe the situation and affected groups. The model weighs options through an Ubuntu lens.',
+    fields: [
+      { key: 'situation', label: 'Situation', type: 'textarea', desc: 'What decision or design is under review?', ph: 'e.g., Moderation policy change' },
+      { key: 'groups', label: 'Affected groups (one per line)', type: 'textarea', desc: 'Communities or stakeholders.', ph: 'e.g., Creators\nNew users\nModerators\nAdvertisers' },
+      { key: 'harms', label: 'Potential harms or past harms', type: 'textarea', desc: 'Risks, inequities, trust issues.', ph: 'e.g., Disproportionate takedowns for certain dialects' }
+    ],
+    template: ({ situation, groups, harms, ctx }) => [
+      'Evaluate with Ubuntu.',
+      ctx && `Context: ${ctx}`,
+      situation && ('Situation:\n' + situation),
+      groups && ('Affected groups:\n' + groups),
+      harms && ('Harms:\n' + harms),
+      'Output:\n1) Options that maximize collective benefit\n2) Trade-offs and mitigations\n3) Restoration or reciprocity steps'
+    ].filter(Boolean).join('\n')
+  },
+  {
+    id: 'yin_yang',
+    slug: 'yin-yang-complementarity',
+    label: 'Yin · Yang · Dynamic Complementarity',
+    kind: 'framework',
+    categories: ['systems-thinking', 'paradox'],
+    tags: [
+      'type:framework','origin:china','topic:both-and','level:advanced',
+      'use:balance-tradeoffs','use:paradox-design','use:context-shifts'
+    ],
+    use_cases: [
+      'frame trade-offs as complementary rather than binary',
+      'design strategies that harmonize opposing forces',
+      'analyze how shifts in one pole affect the other'
+    ],
+    boosters: [
+      'Name the two poles and the shared purpose that links them.',
+      'List actions that strengthen one pole without starving the other.',
+      'Identify rhythms or cycles where emphasis should shift over time.'
+    ],
+    definition: 'A Chinese lens for holding apparent opposites in a dynamic, interdependent balance to achieve harmony in changing contexts.',
+    help: 'Define the polarity (two tensions) and the shared aim. The model proposes harmonizing moves.',
+    fields: [
+      { key: 'polarity_a', label: 'Pole A', type: 'text', desc: 'First side of the tension.', ph: 'e.g., Speed' },
+      { key: 'polarity_b', label: 'Pole B', type: 'text', desc: 'Second side of the tension.', ph: 'e.g., Thoroughness' },
+      { key: 'shared_aim', label: 'Shared aim', type: 'text', desc: 'Why both matter.', ph: 'e.g., Deliver quality quickly and reliably' }
+    ],
+    template: ({ polarity_a, polarity_b, shared_aim, ctx }) => [
+      'Use Yin–Yang complementarity.',
+      ctx && `Context: ${ctx}`,
+      polarity_a && `Pole A: ${polarity_a}`,
+      polarity_b && `Pole B: ${polarity_b}`,
+      shared_aim && `Shared aim: ${shared_aim}`,
+      'Output:\n1) Harmonic strategies (serve both poles)\n2) Cycle or cadence of emphasis\n3) Watchouts when one pole dominates'
+    ].filter(Boolean).join('\n')
+  }
 
 ];
 
