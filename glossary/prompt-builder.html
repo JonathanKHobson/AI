@@ -694,6 +694,97 @@ boosters: [
       cta&&`End with this CTA: ${cta}`
     ].filter(Boolean).join('\n')
   },
+  
+    {
+    id: 'abcde',
+    slug: 'abcde-cbt-framework',
+    label: 'ABCDE — Activating event · Belief · Consequence · Dispute · Effect',
+    kind: 'framework',
+    categories: ['psychology', 'self-reflection'],
+    tags: [
+      'type:framework','topic:cbt','topic:reframing','level:intermediate',
+      'use:cognitive-bias','use:personal-coaching','use:thought-challenge'
+    ],
+    use_cases: [
+      'reframe negative thoughts or assumptions',
+      'self-coaching through emotional situations',
+      'cognitive bias or stress analysis'
+    ],
+    boosters: [
+      'Keep a calm, supportive tone when disputing the belief.',
+      'Cite evidence or alternative viewpoints that challenge the negative belief.'
+    ],
+    definition: 'A cognitive restructuring tool to challenge a belief by examining an event, the belief, its consequence, disputing the belief, and envisioning a positive effect.',
+    help: 'Describe the triggering event, your belief about it, and the outcome. The model will help dispute the belief and suggest a healthier outcome.',
+    fields: [
+      { key: 'event', label: 'Activating event', type: 'textarea',
+        desc: 'What happened? The trigger or situation.',
+        ph: 'e.g., My manager criticized my report in the team meeting.' },
+      { key: 'belief', label: 'Belief or thought', type: 'textarea',
+        desc: 'Your interpretation or assumption about the event.',
+        ph: 'e.g., "I must be bad at my job."' },
+      { key: 'consequence', label: 'Consequence (feelings/behavior)', type: 'textarea',
+        desc: 'Emotions or actions that resulted from that belief.',
+        ph: 'e.g., I felt anxious and avoided taking on new projects.' }
+    ],
+    template: ({ event, belief, consequence, ctx, audience, style, tone }) => [
+      'Apply the ABCDE framework to reframe the situation.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      event && ('Activating event:\n' + event),
+      belief && ('Belief:\n' + belief),
+      consequence && ('Consequence:\n' + consequence),
+      'Dispute: Identify evidence against the belief or an alternative perspective.',
+      'Effect: Describe a healthier outcome or feeling once the belief is adjusted.'
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'addie',
+    slug: 'addie-instructional-design',
+    label: 'ADDIE — Analyze · Design · Develop · Implement · Evaluate',
+    kind: 'framework',
+    categories: ['education', 'planning'],
+    tags: [
+      'type:framework','topic:instructional-design','phase:plan','level:beginner',
+      'use:course-development','use:lesson-planning','use:training-strategy'
+    ],
+    use_cases: [
+      'plan and structure an educational course or program',
+      'develop training materials systematically',
+      'review and improve learning content'
+    ],
+    boosters: [
+      'In Analyze, identify learner needs and constraints; in Evaluate, include metrics or feedback methods.',
+      'Ensure each development step ties back to the learning objectives.'
+    ],
+    definition: 'An instructional design model outlining five phases for creating effective learning experiences.',
+    help: 'Provide the training topic and audience. The model will walk through Analyze, Design, Develop, Implement, and Evaluate steps for a structured learning plan.',
+    fields: [
+      { key: 'topic', label: 'Training topic', type: 'text',
+        desc: 'Subject matter or skill to be taught.',
+        ph: 'e.g., Basics of Data Science' },
+      { key: 'audience', label: 'Learner audience', type: 'text',
+        desc: 'Who the learners are (age, role, prior knowledge).',
+        ph: 'e.g., Junior marketing analysts with no coding background' },
+      { key: 'objectives', label: 'Learning objectives (optional)', type: 'textarea',
+        desc: 'Specific goals or outcomes for the learning (if already defined).',
+        ph: 'e.g., Understand key Python libraries; build a simple regression model.' }
+    ],
+    template: ({ topic, audience, objectives, ctx, style, tone }) => [
+      'Use the ADDIE model to design a learning experience.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      topic && `Topic: ${topic}`,
+      audience && `Audience: ${audience}`,
+      objectives && ('Objectives:\n' + objectives),
+      'Output:\n1) Analyze: needs & constraints\n2) Design: outline format & strategy\n3) Develop: materials & activities\n4) Implement: delivery plan\n5) Evaluate: assessment & feedback method'
+    ].filter(Boolean).join('\n')
+  },
+  
   {
     id:'aida',
     slug:'aida-model',
@@ -781,6 +872,51 @@ boosters: [
     'C) Revision: refined thesis if warranted.'
   ].filter(Boolean).join('\n')
 },
+
+{
+    id: 'bab',
+    slug: 'before-after-bridge-formula',
+    label: 'Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)',
+    kind: 'framework',
+    categories: ['messaging frameworks', 'marketing'],
+    tags: [
+      'type:framework','topic:copywriting','phase:compose','level:beginner',
+      'use:value-proposition','use:ad-copy','use:pitch'
+    ],
+    use_cases: [
+      'highlight a product’s impact by contrasting life before vs. after its use',
+      'craft persuasive marketing copy or landing page sections',
+      'explain change by showing the transformation a solution provides'
+    ],
+    boosters: [
+      'Make the "Before" scenario relatable and painful; make the "After" state clearly desirable.',
+      'Present the solution (Bridge) as the unique link that makes the positive after-state possible.'
+    ],
+    definition: 'A persuasion formula that contrasts the audience’s world before and after a solution, then positions the solution as the bridge to get from before to after.',
+    help: 'Describe the target audience’s current situation (Before) and the ideal future (After), and specify your solution. The model will craft a message that amplifies the pain of the before state, the appeal of the after state, and shows the solution as the bridge.',
+    fields: [
+      { key: 'before', label: 'Before — current pain point', type: 'textarea',
+        desc: 'The problem state or situation the audience is facing now.',
+        ph: 'e.g., Small business owners manually track invoices, causing errors and late payments.' },
+      { key: 'after', label: 'After — desired outcome', type: 'textarea',
+        desc: 'The improved state or benefit once the problem is solved.',
+        ph: 'e.g., They have an automated system, so all invoices are tracked and paid on time with no effort.' },
+      { key: 'product', label: 'Bridge — solution/offering', type: 'text',
+        desc: 'The product or service that bridges the gap (your offering).',
+        ph: 'e.g., PayEasy automated invoicing software' }
+    ],
+    template: ({ before, after, product, ctx, audience, style, tone }) => [
+      'Use the Before-After-Bridge formula to craft a persuasive message.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      before && ('Before:\n' + before),
+      after && ('After:\n' + after),
+      product && (`Bridge (solution): ${product}`),
+      'Output:\n1) Paint the “before” scenario (pain)\n2) Describe the “after” scenario (gain)\n3) Introduce the solution as the bridge between them'
+    ].filter(Boolean).join('\n')
+  },
 
 {
   id:'bias_interrupters',
@@ -1299,6 +1435,90 @@ boosters: [
     ].filter(Boolean).join('\n')
   },
   
+   {
+    id: 'eisenhower_matrix',
+    slug: 'eisenhower-priority-matrix',
+    label: 'Eisenhower Matrix — Urgent/Important Prioritization',
+    kind: 'framework',
+    categories: ['productivity', 'prioritization'],
+    tags: [
+      'type:framework','topic:time-management','phase:plan','level:beginner',
+      'use:task-prioritization','use:time-management','use:workflow'
+    ],
+    use_cases: [
+      'categorize tasks by urgency and importance',
+      'decide what to do now, schedule for later, delegate, or drop',
+      'improve personal productivity or team task management'
+    ],
+    boosters: [
+      'Include a brief justification for why each task falls into its category.',
+      'If multiple tasks land in one category, rank them or suggest which to tackle first.'
+    ],
+    definition: 'A time-management framework that sorts tasks into four categories: Do (urgent & important), Schedule (important but not urgent), Delegate (urgent but not important), and Eliminate (neither).',
+    help: 'List your tasks. Optionally provide context like deadlines or importance. The model will assign each task to one of four categories (Do now, Schedule, Delegate, Eliminate) using the Eisenhower urgency/importance matrix.',
+    fields: [
+      { key: 'tasks', label: 'Tasks (one per line)', type: 'textarea',
+        desc: 'A list of tasks or to-dos to be prioritized.',
+        ph: 'Task 1…\nTask 2…\nTask 3…' },
+      { key: 'context', label: 'Context (optional)', type: 'textarea',
+        desc: 'Deadlines, importance cues, or other info for the tasks (if any).',
+        ph: 'e.g., Task 1 due tomorrow; Task 2 is optional cleanup; Task 3 critical for client meeting.' }
+    ],
+    template: ({ tasks, context, ctx, style, tone }) => [
+      'Apply the Eisenhower Matrix to categorize the tasks by urgency and importance.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      context && ('Additional context:\n' + context),
+      tasks && (
+        'Tasks:\n' + String(tasks).split(/\n+/).map(s => s.trim()).filter(Boolean).map((t,i) => `${i+1}. ${t}`).join('\n')
+      ),
+      'Return tasks grouped into 4 categories (with labels): Do (Urgent & Important), Schedule (Important but Not Urgent), Delegate (Urgent but Not Important), Eliminate (Neither).'
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'fab',
+    slug: 'feature-advantage-benefit',
+    label: 'FAB — Feature · Advantage · Benefit',
+    kind: 'framework',
+    categories: ['messaging frameworks', 'marketing'],
+    tags: [
+      'type:framework','topic:copywriting','phase:apply','level:beginner',
+      'use:product-marketing','use:sales-copy','use:value-messaging'
+    ],
+    use_cases: [
+      'turn product features into user-focused benefits for marketing copy',
+      'train a model to articulate why a feature matters to customers',
+      'create sales bullets or product descriptions emphasizing value'
+    ],
+    boosters: [
+      'Translate technical features into plain advantages and user benefits.',
+      'Ensure the benefit addresses a specific customer need or pain point.'
+    ],
+    definition: 'A classic product messaging formula that starts with a Feature of a product, explains the Advantage (what it does), and concludes with the Benefit (why it matters to the user).',
+    help: 'Provide a key product feature. The model will respond with the feature, its advantage, and the benefit to the customer, helping make your messaging more customer-centric.',
+    fields: [
+      { key: 'feature', label: 'Product feature', type: 'text',
+        desc: 'A specific feature or attribute of your product/offer.',
+        ph: 'e.g., Real-time analytics dashboard' },
+      { key: 'constraints', label: 'Constraints (optional)', type: 'text',
+        desc: 'Any format or length constraints.',
+        ph: 'e.g., 1 sentence per item; use bullet points.' }
+    ],
+    template: ({ feature, constraints, ctx, audience, style, tone }) => [
+      'Use the FAB framework to highlight the feature, what it does, and why it matters.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      feature && `Feature: ${feature}`,
+      'Advantage: <the model will explain what the feature does or how it\'s better>',
+      'Benefit: <the model will explain why that advantage is valuable to the user>',
+      constraints && `Constraints: ${constraints}`
+    ].filter(Boolean).join('\n')
+  },
+  
     {
     id:'facts_primer',
     slug:'facts-expertise-primer',
@@ -1361,6 +1581,42 @@ boosters: [
         task && `Initial task:\n${task}`
       ].filter(Boolean).join('\n');
     }
+  },
+  
+  {
+    id: 'feynman',
+    slug: 'feynman-technique',
+    label: 'Feynman Technique — Explain Like I’m 5',
+    kind: 'pattern',
+    categories: ['education', 'learning'],
+    tags: [
+      'type:pattern','topic:simplification','topic:teaching','level:beginner',
+      'use:explanation','use:knowledge-check','use:debug-understanding'
+    ],
+    use_cases: [
+      'simplify complex concepts for a broader audience',
+      'identify gaps in understanding by attempting a simple explanation',
+      'learn or teach a new topic by breaking it down'
+    ],
+    boosters: [
+      'Use analogies a child would understand to explain difficult concepts.',
+      'Identify any technical terms in the explanation and immediately clarify them in simpler words.'
+    ],
+    definition: 'A learning strategy where you try to explain a concept in simple terms (as if to a child), revealing gaps in understanding to address.',
+    help: 'Provide a topic or concept. The model will give a simple explanation (ELI5 style) and clarify any parts that might still be confusing, following the Feynman Technique.',
+    fields: [
+      { key: 'concept', label: 'Concept or topic', type: 'textarea',
+        desc: 'The subject you want explained simply.',
+        ph: 'e.g., Quantum entanglement' }
+    ],
+    template: ({ concept, ctx, style, tone }) => [
+      'Explain the concept as if teaching a 5-year-old, then clarify any tricky parts.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      concept && `Concept: ${concept}`,
+      'Output:\n1) Simple Explanation\n2) Clarifications for any complex terms or ideas'
+    ].filter(Boolean).join('\n')
   },
   
   {
@@ -1456,6 +1712,48 @@ boosters: [
     selfreg_checks && `6) Self-regulation (bias/quality checks applied): ${selfreg_checks}`
   ].filter(Boolean).join('\n')
 },
+
+{
+    id: 'first_principles',
+    slug: 'first-principles-analysis',
+    label: 'First Principles — Question assumptions & reason from basics',
+    kind: 'framework',
+    categories: ['reasoning', 'innovation'],
+    tags: [
+      'type:framework','topic:problem-solving','topic:assumptions','level:intermediate',
+      'use:strategy','use:research','use:inventive-thinking'
+    ],
+    use_cases: [
+      'solve complex problems by breaking them down to fundamental truths',
+      'challenge default assumptions to find innovative solutions',
+      'analyze feasibility by building up from basic principles'
+    ],
+    boosters: [
+      'Explicitly list core facts or principles that are undeniably true in this context.',
+      'For each assumption, ask “Why must this be true?” and explore what happens if it’s not.'
+    ],
+    definition: 'A problem-solving approach that strips a problem down to fundamental truths and builds solutions from the ground up, rather than relying on assumptions or analogies.',
+    help: 'State the problem and any assumptions. The model will break the problem into basics, challenge assumptions, and propose a solution derived from first principles thinking.',
+    fields: [
+      { key: 'problem', label: 'Problem or question', type: 'textarea',
+        desc: 'The issue to solve or question to answer, as specifically stated as possible.',
+        ph: 'e.g., How can we create a low-cost, sustainable water filter for remote areas?' },
+      { key: 'assumptions', label: 'Assumptions (optional, one per line)', type: 'textarea',
+        desc: 'Any existing assumptions or constraints you have in mind.',
+        ph: 'Water must be boiled to purify...\nWe can only use local materials...' }
+    ],
+    template: ({ problem, assumptions, ctx, style, tone }) => [
+      'Solve using first principles reasoning.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      problem && `Problem: ${problem}`,
+      assumptions && (
+        'Assumptions:\n' + String(assumptions).split(/\n+/).map(s => s.trim()).filter(Boolean).map((a,i) => `${i+1}. ${a}`).join('\n')
+      ),
+      'Output:\n1) Fundamental truths (list core facts)\n2) Assumption challenges (what if each assumption is false?)\n3) Solution idea built from the fundamental truths'
+    ].filter(Boolean).join('\n')
+  },
 
 {
   id:'goal_breakdown',
@@ -1648,6 +1946,104 @@ boosters: [
       why&&`Why: ${why}`,
       how&&`How: ${how}`,
       what&&`What: ${what}`
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'grow',
+    slug: 'grow-coaching-model',
+    label: 'GROW — Goal · Reality · Options · Way Forward',
+    kind: 'framework',
+    categories: ['coaching', 'planning'],
+    tags: [
+      'type:framework','topic:goal-setting','topic:coaching','level:beginner',
+      'use:personal-development','use:mentoring','use:problem-solving'
+    ],
+    use_cases: [
+      'structure a coaching conversation or self-reflection',
+      'set and plan personal or team goals with clear next steps',
+      'evaluate options to overcome a challenge and commit to an action'
+    ],
+    boosters: [
+      'Offer at least 3 distinct Options, even unconventional ones, before recommending a way forward.',
+      'Encourage a specific, time-bound commitment in the Way Forward step (who, what, when).'
+    ],
+    definition: 'A coaching framework for goal-oriented conversations, progressing through defining a Goal, assessing the current Reality, brainstorming Options, and deciding the Way Forward (action plan).',
+    help: 'Fill in the goal and current reality; the model will suggest options and a concrete plan. You can optionally provide any options you’ve considered or a tentative plan, and the model will build on it.',
+    fields: [
+      { key: 'goal', label: 'Goal', type: 'textarea',
+        desc: 'The goal or outcome to achieve.',
+        ph: 'e.g., Improve my public speaking confidence for work presentations.' },
+      { key: 'reality', label: 'Reality (current situation)', type: 'textarea',
+        desc: 'Current facts, obstacles, and context regarding the goal.',
+        ph: 'e.g., I get very nervous, my last presentation had pacing issues and I avoided eye contact.' },
+      { key: 'options', label: 'Options (optional, one per line)', type: 'textarea',
+        desc: 'Any ideas or strategies already thought of to achieve the goal.',
+        ph: 'Join a public speaking group...\nPractice with a friend...\nWatch online tutorials...' },
+      { key: 'will', label: 'Way Forward (if decided, optional)', type: 'textarea',
+        desc: 'A chosen action or commitment (if you already have one in mind).',
+        ph: 'e.g., I will enroll in a Toastmasters club and practice weekly.' }
+    ],
+    template: ({ goal, reality, options, will, ctx, style, tone }) => [
+      'Use the GROW model to structure the plan.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      goal && `Goal: ${goal}`,
+      reality && (`Reality:\n` + reality),
+      options && (
+        'Options:\n' + String(options).split(/\n+/).map(s => s.trim()).filter(Boolean).map((opt,i) => `${i+1}. ${opt}`).join('\n')
+      ),
+      will && (`Way Forward (given):\n` + will),
+      'Output:\n1) Goal\n2) Reality factors\n3) Options analysis\n4) Way Forward (specific next steps)'
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'heros_journey',
+    slug: 'heros-journey-narrative',
+    label: 'Hero’s Journey — Departure · Initiation · Return',
+    kind: 'framework',
+    categories: ['storytelling frameworks', 'creative writing'],
+    tags: [
+      'type:framework','topic:storytelling','phase:compose','level:intermediate',
+      'use:plot-outline','use:mythic-narrative','use:character-development'
+    ],
+    use_cases: [
+      'generate a mythic or epic story outline following a hero’s journey structure',
+      'develop a character’s transformative arc in creative writing',
+      'brainstorm plot points for novels, games, or scenarios with a hero protagonist'
+    ],
+    boosters: [
+      'Ensure the hero undergoes a meaningful transformation by the end of the journey.',
+      'Include classic stages like Call to Adventure, Mentor/Helper, Trials, Crisis, Reward, and Return with the Elixir.'
+    ],
+    definition: 'A 12-stage narrative framework (Monomyth) where a hero leaves their ordinary world, faces trials and transformation, and returns home with newfound wisdom or power.',
+    help: 'Provide details about the hero, their goal, and the world or antagonist. The model will outline a story following Hero’s Journey stages, covering departure, initiation, and return.',
+    fields: [
+      { key: 'hero', label: 'Hero / Protagonist', type: 'text',
+        desc: 'Main character (name, role, traits).',
+        ph: 'e.g., Aria, a cautious village girl with secret magic powers' },
+      { key: 'quest', label: 'Quest / Goal', type: 'textarea',
+        desc: 'The mission, challenge, or adventure the hero must undertake.',
+        ph: 'e.g., Save her village from a spreading curse by finding the ancient healing stone.' },
+      { key: 'nemesis', label: 'Antagonist or main challenge (optional)', type: 'text',
+        desc: 'The villain or obstacle that opposes the hero.',
+        ph: 'e.g., An evil sorcerer who thrives on the curse' },
+      { key: 'setting', label: 'Setting (optional)', type: 'text',
+        desc: 'The world or context where the story takes place.',
+        ph: 'e.g., A medieval land where magic is feared and rare' }
+    ],
+    template: ({ hero, quest, nemesis, setting, ctx, style, tone }) => [
+      'Craft a Hero’s Journey narrative outline.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      hero && `Hero: ${hero}`,
+      quest && `Goal/Quest: ${quest}`,
+      nemesis && `Antagonist/Challenge: ${nemesis}`,
+      setting && `Setting: ${setting}`,
+      'Output:\n1) Departure (ordinary world, call to adventure, mentor, crossing threshold)\n2) Initiation (trials, allies, crisis, victory)\n3) Return (road back, transformation, return home with reward)'
     ].filter(Boolean).join('\n')
   },
   
@@ -1950,6 +2346,56 @@ boosters: [
 },
 
 {
+    id: 'monroe_sequence',
+    slug: 'monroes-motivated-sequence',
+    label: 'Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action',
+    kind: 'framework',
+    categories: ['messaging frameworks', 'persuasion'],
+    tags: [
+      'type:framework','topic:persuasion','phase:compose','level:intermediate',
+      'use:speechwriting','use:advocacy','use:public-speaking'
+    ],
+    use_cases: [
+      'structure persuasive speeches or pitches for maximum impact',
+      'guide the audience from feeling a need to taking an action',
+      'formulate outreach messages (e.g., campaign appeals, motivational talks)'
+    ],
+    boosters: [
+      'Open with a compelling hook (story or statistic) to grab Attention in the first step.',
+      'In the Visualization step, paint a vivid picture of the future where the need is resolved (positive or negative outcomes).'
+    ],
+    definition: 'A five-step persuasive framework that grabs attention, establishes a need, presents a satisfying solution, helps the audience visualize the outcome, and ends with a call to action.',
+    help: 'Provide the audience’s problem/need and your proposed solution. Optionally include an attention-grabber or desired call-to-action. The model will generate a structured persuasive message through all five steps of Monroe’s sequence.',
+    fields: [
+      { key: 'attention', label: 'Attention (hook, optional)', type: 'textarea',
+        desc: 'An opening hook (question, anecdote, startling fact) to get attention.',
+        ph: 'e.g., "Did you know nearly 40% of food gets thrown away while millions go hungry?"' },
+      { key: 'audience_need', label: 'Need (audience problem)', type: 'textarea',
+        desc: 'The problem or need affecting the audience that must be addressed.',
+        ph: 'e.g., Working parents struggle to find time to cook healthy meals.' },
+      { key: 'solution', label: 'Satisfaction (solution)', type: 'text',
+        desc: 'Your solution or idea that will satisfy the need.',
+        ph: 'e.g., A meal prep delivery service that provides ready-to-eat healthy dinners.' },
+      { key: 'cta', label: 'Action (call-to-action, optional)', type: 'text',
+        desc: 'The specific action you want the audience to take at the end.',
+        ph: 'e.g., Sign up for a free week of our service today.' }
+    ],
+    template: ({ attention, audience_need, solution, cta, ctx, audience, style, tone }) => [
+      'Use Monroe’s Motivated Sequence to structure a persuasive message.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      attention && ('Attention:\n' + attention),
+      audience_need && ('Need:\n' + audience_need),
+      solution && (`Satisfaction (Solution): ${solution}`),
+      'Visualization: <the model will describe outcomes with the solution vs. without it>',
+      cta && (`Action: ${cta}`),
+      'Output:\n1) Attention\n2) Need\n3) Solution\n4) Visualization\n5) Action'
+    ].filter(Boolean).join('\n')
+  },
+
+{
   id:'ooda_loop',
   slug:'ooda-loop',
   label:'OODA Loop (Observe–Orient–Decide–Act)',
@@ -1986,6 +2432,49 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
 
+{
+    id: 'okr',
+    slug: 'okr-goal-setting',
+    label: 'OKR — Objective & Key Results',
+    kind: 'framework',
+    categories: ['strategy', 'planning'],
+    tags: [
+      'type:framework','topic:goals','topic:metrics','level:beginner',
+      'use:strategic-planning','use:team-goals','use:performance-management'
+    ],
+    use_cases: [
+      'define clear organizational or personal goals with measurable outcomes',
+      'break down a vision into concrete targets',
+      'evaluate progress by looking at quantifiable results tied to objectives'
+    ],
+    boosters: [
+      'Make each Key Result specific, with a clear metric, target value, and timeframe.',
+      'Ensure Key Results are outcomes (what is achieved), not tasks (what is done).'
+    ],
+    definition: 'A goal-setting framework pairing a qualitative Objective (what you want to achieve) with a set of quantitative Key Results (how you measure achievement).',
+    help: 'Enter a high-level objective and optionally some initial key result ideas. The model will generate/refine a set of Key Results that make the objective specific and measurable.',
+    fields: [
+      { key: 'objective', label: 'Objective (qualitative goal)', type: 'textarea',
+        desc: 'The significant goal to achieve (concise and inspirational).',
+        ph: 'e.g., Become the market leader in customer satisfaction.' },
+      { key: 'key_results', label: 'Key Results (optional, one per line)', type: 'textarea',
+        desc: 'Draft key results (metrics/targets) if you have any, one per line.',
+        ph: 'e.g., NPS score ≥ 60 by Q4\nRepeat purchase rate 30% higher by year-end' }
+    ],
+    template: ({ objective, key_results, ctx, audience, style, tone }) => [
+      'Develop an OKR with a strong Objective and 2–5 measurable Key Results.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      objective && `Objective: ${objective}`,
+      key_results && (
+        'Given Key Result ideas:\n' + String(key_results).split(/\n+/).map(s => s.trim()).filter(Boolean).map((kr,i) => `${i+1}. ${kr}`).join('\n')
+      ),
+      'Output:\n1) Objective (qualitative)\n2) 2–5 Key Results (with metrics & targets)'
+    ].filter(Boolean).join('\n')
+  },
+
 
   {
     id:'par',
@@ -2021,6 +2510,120 @@ boosters: [
       action&&`Action: ${action}`,
       result&&`Result: ${result}`,
       `Format the response as short bullets.`
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'pas',
+    slug: 'pas-copywriting',
+    label: 'PAS — Problem · Agitate · Solution',
+    kind: 'framework',
+    categories: ['messaging frameworks', 'marketing'],
+    tags: [
+      'type:framework','topic:copywriting','phase:compose','level:beginner',
+      'use:ad-copy','use:email-copy','use:landing-page'
+    ],
+    use_cases: [
+      'write persuasive copy by addressing the reader’s pain and offering relief',
+      'structure marketing messages or support tickets by focusing on problem then solution',
+      'craft introductions for pitches or blogs that hook with a problem and promise a solution'
+    ],
+    boosters: [
+      'In the Agitate step, delve into emotional or practical consequences of the problem to make it feel urgent.',
+      'Keep the Solution clear and directly tied to resolving the specific problem that was agitated.'
+    ],
+    definition: 'A copywriting formula that presents a Problem, amplifies it (Agitate), then provides a Solution to resolve the discomfort.',
+    help: 'Provide the audience’s problem and your solution. The model will emphasize the pain of the problem (agitation) and then introduce the solution as the remedy.',
+    fields: [
+      { key: 'problem', label: 'Problem', type: 'textarea',
+        desc: 'The core problem or pain point your audience faces.',
+        ph: 'e.g., Project managers struggle to get timely updates from team members.' },
+      { key: 'agitate', label: 'Agitate (pain details, optional)', type: 'textarea',
+        desc: 'Details that exacerbate the problem or the feelings it causes.',
+        ph: 'e.g., They spend hours chasing updates and feel constant stress as deadlines approach.' },
+      { key: 'solution', label: 'Solution', type: 'text',
+        desc: 'Your product or idea that solves the problem.',
+        ph: 'e.g., SyncMaster auto-updates project status in real-time.' }
+    ],
+    template: ({ problem, agitate, solution, ctx, audience, style, tone }) => [
+      'Use the PAS formula to write a persuasive message.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      problem && ('Problem:\n' + problem),
+      agitate && ('Agitate:\n' + agitate),
+      solution && (`Solution: ${solution}`),
+      'Output:\n1) State the problem\n2) Agitate with vivid detail\n3) Present the solution and its relief'
+    ].filter(Boolean).join('\n')
+  },
+  
+  {
+    id: 'pestle',
+    slug: 'pestle-analysis',
+    label: 'PESTLE — Political · Economic · Social · Technological · Legal · Environmental',
+    kind: 'framework',
+    categories: ['analysis frameworks', 'strategy'],
+    tags: [
+      'type:framework','topic:environment-scan','phase:overview','level:intermediate',
+      'use:market-analysis','use:risk-analysis','use:strategic-planning'
+    ],
+    use_cases: [
+      'analyze external factors affecting a business or project',
+      'scan the macro-environment before launching an initiative',
+      'identify opportunities and threats in the broader context'
+    ],
+    boosters: [
+      'For each category, include at least one specific factor and its potential impact on the subject.',
+      'Differentiate clearly between internal issues (not included here) and these external factors.'
+    ],
+    definition: 'A strategic analysis framework examining six external factors — Political, Economic, Social, Technological, Legal, and Environmental — that can impact an organization or initiative.',
+    help: 'Specify the subject (project, company, strategy, etc.) and, if desired, any known factors under each PESTLE category. The model will produce an analysis touching on each category.',
+    fields: [
+      { key: 'subject', label: 'Subject of analysis', type: 'text',
+        desc: 'The project, company, or scenario being analyzed.',
+        ph: 'e.g., Expansion of ACME Corp into Asian markets' },
+      { key: 'political', label: 'Political factors (optional, one per line)', type: 'textarea',
+        desc: 'Government, policy, or regulatory factors to consider.',
+        ph: 'Trade regulations...\nStability of local governments...' },
+      { key: 'economic', label: 'Economic factors (optional, one per line)', type: 'textarea',
+        desc: 'Market or financial conditions to consider.',
+        ph: 'Currency exchange rate volatility...\nLocal labor cost trends...' },
+      { key: 'social', label: 'Social factors (optional, one per line)', type: 'textarea',
+        desc: 'Cultural, demographic, or consumer trends to consider.',
+        ph: 'Population’s tech-savviness...\nShifts in consumer preferences...' },
+      { key: 'technological', label: 'Technological factors (optional, one per line)', type: 'textarea',
+        desc: 'Relevant technology trends or barriers.',
+        ph: 'Internet infrastructure quality...\nAdoption of smartphones...' },
+      { key: 'legal', label: 'Legal factors (optional, one per line)', type: 'textarea',
+        desc: 'Laws, regulations, or legal risks to consider.',
+        ph: 'Data protection laws...\nPatent or licensing issues...' },
+      { key: 'environmental', label: 'Environmental factors (optional, one per line)', type: 'textarea',
+        desc: 'Ecological or environmental considerations.',
+        ph: 'Climate-related risks...\nLocal environmental regulations...' }
+    ],
+    template: ({ subject, political, economic, social, technological, legal, environmental, ctx }) => [
+      `Conduct a PESTLE analysis${subject ? ` of ${subject}` : ''}.`,
+      ctx && `Context: ${ctx}`,
+      political && (
+        'Political:\n' + String(political).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      economic && (
+        'Economic:\n' + String(economic).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      social && (
+        'Social:\n' + String(social).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      technological && (
+        'Technological:\n' + String(technological).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      legal && (
+        'Legal:\n' + String(legal).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      environmental && (
+        'Environmental:\n' + String(environmental).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i) => `${i+1}. ${x}`).join('\n')
+      ),
+      'Output:\nProvide insights under each PESTLE category, noting key opportunities or threats in each.'
     ].filter(Boolean).join('\n')
   },
   
@@ -2808,6 +3411,43 @@ boosters: [
 },
 
 {
+    id: 'smart',
+    slug: 'smart-goals',
+    label: 'SMART Goals — Specific · Measurable · Achievable · Relevant · Time-bound',
+    kind: 'framework',
+    categories: ['planning', 'productivity'],
+    tags: [
+      'type:framework','topic:goal-setting','phase:plan','level:beginner',
+      'use:personal-goals','use:project-planning','use:performance-goals'
+    ],
+    use_cases: [
+      'refine vague goals into actionable statements',
+      'ensure project objectives have clear success criteria and timelines',
+      'evaluate if a goal is well-defined or needs adjustment'
+    ],
+    boosters: [
+      'If any SMART element is missing (e.g., no timeframe), the model will propose one to complete the goal definition.',
+      'Present the output as 5 brief points (S, M, A, R, T) to clearly delineate each aspect.'
+    ],
+    definition: 'A goal-setting checklist ensuring an objective is Specific, Measurable, Achievable, Relevant, and Time-bound.',
+    help: 'Enter a general goal. The model will break it down into the five SMART components, helping to make the goal clear and trackable.',
+    fields: [
+      { key: 'goal', label: 'General goal', type: 'textarea',
+        desc: 'A short description of what you want to accomplish.',
+        ph: 'e.g., Grow the mailing list for our newsletter.' }
+    ],
+    template: ({ goal, ctx, audience, style, tone }) => [
+      'Convert the goal into a SMART format.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      goal && `Goal: ${goal}`,
+      'Output each SMART element with details:\n- Specific: <what exactly will be done?>\n- Measurable: <quantify or measure success>\n- Achievable: <is it realistic/how to attain?>\n- Relevant: <why it matters/aligns>\n- Time-bound: <deadline or timeframe>'
+    ].filter(Boolean).join('\n')
+  },
+
+{
   id:'soar',
   slug:'soar-analysis',
   label:'SOAR Analysis',
@@ -3007,6 +3647,7 @@ boosters: [
 ],
 use_cases: [
   'competitive analysis',
+  'compare',
   'market scan',
   'product strategy snapshot',
   'business strategy review',
