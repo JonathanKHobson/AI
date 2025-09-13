@@ -1221,7 +1221,41 @@ boosters: [
       ].filter(Boolean).join('\n');
     }
   },
-
+  
+  {
+  id:'constraint_flip',
+  slug:'constraint-flip',
+  label:'Constraint Flip (play with edges)',
+  kind:'pattern',
+  categories:['creativity','strategy'],
+  tags:['type:pattern','topic:constraints','use:ideation','level:beginner'],
+  use_cases:[
+    'turn constraints into generators of ideas',
+    'explore exaggerated and removed constraint states'
+  ],
+  definition:'Treat a constraint as a lever: exaggerate it to find new ideas; remove it to find alternatives.',
+  help:'Name a real blocker; brainstorm both exaggerated and removed scenarios.',
+  boosters:[
+    'Write at least 3 ideas in each direction.',
+    'Pick one idea to prototype this week.'
+  ],
+  fields:[
+    { key:'limiting',   label:'What’s limiting me right now?', type:'textarea' },
+    { key:'exaggerate', label:'If I exaggerated that constraint, what new idea emerges?', type:'textarea' },
+    { key:'remove',     label:'If I removed it entirely, what could I try?', type:'textarea' }
+  ],
+  template: ({ limiting, exaggerate, remove, ctx, audience, style, tone }) => [
+    'Flip the constraint to generate options.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    limiting && ('Constraint:\n' + limiting),
+    exaggerate && ('Exaggerated constraint → ideas:\n' + exaggerate),
+    remove && ('Removed constraint → ideas:\n' + remove),
+    'Output:\n1) Constraint summary\n2) Ideas (exaggerate)\n3) Ideas (remove)\n4) One prototype to run'
+  ].filter(Boolean).join('\n')
+},
   
   {
     id:'costar',
@@ -1717,6 +1751,43 @@ boosters: [
 },
 
 {
+  id:'implementation_intentions',
+  slug:'if-then-planning',
+  label:'Implementation Intentions (If–Then)',
+  kind:'pattern',
+  categories:['behavior','productivity'],
+  tags:['type:pattern','topic:if-then','use:habit','level:beginner'],
+  use_cases:[
+    'bind a trigger to a specific action to reduce choice friction',
+    'translate goals into cues'
+  ],
+  definition:'If [trigger/situation], then I will [specific action].',
+  help:'Name a reliable trigger and a crisp then-action. Optional: add 1–2 backup plans.',
+  boosters:[
+    'Make the trigger observable and frequent.',
+    'Write the action so “half-asleep you” could do it.'
+  ],
+  fields:[
+    { key:'trigger', label:'If [trigger/situation]…', type:'textarea', ph:'e.g., When I open my laptop…' },
+    { key:'action',  label:'…then I will [specific action]', type:'textarea', ph:'Open draft doc instead of email.' },
+    { key:'backups', label:'Backup plans (optional, one per line)', type:'textarea' }
+  ],
+  template: ({ trigger, action, backups, ctx, audience, style, tone }) => [
+    'Create an If–Then implementation intention.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    trigger && ('If ' + trigger),
+    action && ('Then I will ' + action),
+    backups && (
+      'Backups:\n' + String(backups).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    'Output:\n1) Trigger\n2) Specific action\n3) Backup(s)\n4) First check-in time'
+  ].filter(Boolean).join('\n')
+},
+
+{
   id:'inclusive_design',
   slug:'inclusive-design-framework',
   label:'Inclusive Design (edge personas)',
@@ -1875,6 +1946,43 @@ boosters: [
     dos && `Do:\n${dos}`,
     donts && `Don\'t:\n${donts}`,
     'Output format:\n1) Rungs (least→most) with the rule learned at each\n2) General solution\n3) Quick edge-case check'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'ooda_loop',
+  slug:'ooda-loop',
+  label:'OODA Loop (Observe–Orient–Decide–Act)',
+  kind:'pattern',
+  categories:['decision','strategy','ops'],
+  tags:['type:pattern','topic:ooda','use:decision','level:beginner'],
+  use_cases:[
+    'cut through indecision with a tight OODA pass',
+    'establish a clear next action under uncertainty'
+  ],
+  definition:'A rapid decision cadence: Observe → Orient → Decide → Act.',
+  help:'Keep each stage concise; bias toward action with feedback.',
+  boosters:[
+    'Add a quick feedback note: how you’ll check results after acting.',
+    'Limit Observe/Orient to facts relevant to the next step.'
+  ],
+  fields:[
+    { key:'observe', label:'Observe — What’s the situation / facts?', type:'textarea', ph:'Crisp, decision-relevant facts only.' },
+    { key:'orient',  label:'Orient — What matters most right now?', type:'textarea', ph:'Priorities, constraints, values.' },
+    { key:'decide',  label:'Decide — What’s the next best step?', type:'textarea', ph:'One sentence.' },
+    { key:'act',     label:'Act — What will I actually do now?', type:'textarea', ph:'Concrete action and owner.' }
+  ],
+  template: ({ observe, orient, decide, act, ctx, audience, style, tone }) => [
+    'Run an OODA pass to unblock a decision.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    observe && ('Observe (facts):\n' + observe),
+    orient && ('Orient (what matters):\n' + orient),
+    decide && ('Decide (next best step):\n' + decide),
+    act && ('Act (now):\n' + act),
+    'Output:\n1) Key facts\n2) Priority frame\n3) Decision\n4) Immediate action + feedback check'
   ].filter(Boolean).join('\n')
 },
 
@@ -2119,6 +2227,82 @@ boosters: [
     dos && `Do:\n${dos}`,
     donts && `Don\'t:\n${donts}`,
     'Output format:\n1) Plan\n2) Solution/working\n3) Verification (reference the checks)'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'pomodoro',
+  slug:'pomodoro-scaffold',
+  label:'Pomodoro Scaffold',
+  kind:'pattern',
+  categories:['productivity','focus'],
+  tags:['type:pattern','topic:pomodoro','use:focus','level:beginner'],
+  use_cases:[
+    'frame a single 25-minute focus sprint',
+    'pair a micro-goal with a reward and next step'
+  ],
+  definition:'25-minute focused work block with short breaks.',
+  help:'Pick one task and a tiny goal for this block; name your break reward; plan the next block.',
+  boosters:[
+    'Hide distractions: list top 3 and how you’ll block them.',
+    'Write an “opening move” you’ll do in the first 60 seconds.'
+  ],
+  fields:[
+    { key:'task',      label:'Task to tackle', type:'textarea' },
+    { key:'micro',     label:'One 25-min micro-goal', type:'textarea' },
+    { key:'reward',    label:'Break reward', type:'textarea' },
+    { key:'next_step', label:'Next Pomodoro step', type:'textarea' }
+  ],
+  template: ({ task, micro, reward, next_step, ctx, audience, style, tone }) => [
+    'Plan a Pomodoro to get moving.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    task && ('Task:\n' + task),
+    micro && ('Micro-goal (25 min):\n' + micro),
+    reward && ('Break reward:\n' + reward),
+    next_step && ('Next Pomodoro step:\n' + next_step),
+    'Output:\n1) Task + micro-goal\n2) First 60-sec move\n3) Reward\n4) Next block'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'premortem',
+  slug:'pre-mortem-scaffold',
+  label:'Pre-Mortem Scaffold',
+  kind:'pattern',
+  categories:['risk','planning','decision'],
+  tags:['type:pattern','topic:premortem','use:planning','level:beginner'],
+  use_cases:[
+    'surface failure modes before committing',
+    'turn risks into preventive steps and immediate actions'
+  ],
+  definition:'Imagine the project failed and ask why, so you can prevent it.',
+  help:'Name the decision/project, list plausible failure causes, define prevention, then pick one immediate move.',
+  boosters:[
+    'Force at least 3 realistic failure causes.',
+    'Assign owners and a check date for each preventive step.'
+  ],
+  fields:[
+    { key:'decision',  label:'Decision / project at hand', type:'textarea', ph:'Name + scope.' },
+    { key:'failed',    label:'Imagine it failed — what went wrong? (one per line)', type:'textarea', ph:'3–5 failure causes.' },
+    { key:'prevent',   label:'Preventive step(s)', type:'textarea', ph:'Countermeasures mapped to causes.' },
+    { key:'immediate', label:'Immediate action', type:'textarea', ph:'What starts today.' }
+  ],
+  template: ({ decision, failed, prevent, immediate, ctx, audience, style, tone }) => [
+    'Run a pre-mortem to convert risks into action.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    decision && ('Decision / project:\n' + decision),
+    failed && (
+      'Failure causes (envisioned):\n' + String(failed).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    prevent && ('Preventive steps:\n' + prevent),
+    immediate && ('Immediate action:\n' + immediate),
+    'Output:\n1) Top risks\n2) Mapped preventions\n3) Today’s move\n4) Owners + dates'
   ].filter(Boolean).join('\n')
 },
 
@@ -2484,6 +2668,51 @@ boosters: [
       `Follow the RTF pattern. Ask concise clarifying questions if needed.`
     ].filter(Boolean).join('\n')
   },
+  
+  {
+  id:'scamper',
+  slug:'scamper-framework',
+  label:'SCAMPER (idea expansion)',
+  kind:'pattern',
+  categories:['creativity','ideation'],
+  tags:['type:pattern','topic:scamper','use:ideas','level:beginner'],
+  use_cases:[
+    'systematically generate variants of an idea',
+    'unstick creative exploration'
+  ],
+  definition:'Seven moves to push an idea: Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse.',
+  help:'Start with a current idea; write brief prompts for each SCAMPER move.',
+  boosters:[
+    'Demand at least 2 candidates per move (bullet them).',
+    'End with one “crazy but testable” option.'
+  ],
+  fields:[
+    { key:'current', label:'Current idea', type:'textarea', ph:'Describe the starting point.' },
+    { key:'sub',     label:'Substitute — what element could you replace?', type:'textarea' },
+    { key:'comb',    label:'Combine — what can be merged?', type:'textarea' },
+    { key:'adapt',   label:'Adapt — what can be borrowed?', type:'textarea' },
+    { key:'mod',     label:'Modify — exaggerated/minimized?', type:'textarea' },
+    { key:'use',     label:'Put to other use — where else could it apply?', type:'textarea' },
+    { key:'elim',    label:'Eliminate — what can you cut?', type:'textarea' },
+    { key:'rev',     label:'Reverse — what if you flipped it?', type:'textarea' }
+  ],
+  template: ({ current, sub, comb, adapt, mod, use, elim, rev, ctx, audience, style, tone }) => [
+    'Run SCAMPER to expand the idea space.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    current && ('Current idea:\n' + current),
+    sub && ('Substitute:\n' + sub),
+    comb && ('Combine:\n' + comb),
+    adapt && ('Adapt:\n' + adapt),
+    mod && ('Modify:\n' + mod),
+    use && ('Put to other use:\n' + use),
+    elim && ('Eliminate:\n' + elim),
+    rev && ('Reverse:\n' + rev),
+    'Output:\n1) 7 move list\n2) Top 3 candidates\n3) One testable “wild” option'
+  ].filter(Boolean).join('\n')
+},
   
    {
     id:'scenario_deliberative',
@@ -3184,6 +3413,41 @@ boosters: [
 },
 
 {
+  id:'two_min_rule',
+  slug:'two-minute-rule',
+  label:'2-Minute Rule (David Allen)',
+  kind:'pattern',
+  categories:['productivity','behavior'],
+  tags:['type:pattern','topic:two-minute','use:starter','level:beginner'],
+  use_cases:[
+    'reduce friction by doing a tiny version now',
+    'convert avoidance into a first motion'
+  ],
+  definition:'If it takes ≤2 minutes, do it now. Otherwise, define a 2-minute starter.',
+  help:'Name the task; answer Yes/No; either do it now or write a 2-minute starter step.',
+  boosters:[
+    'If “No,” schedule the starter step on your calendar.',
+    'Write the starter so it’s purely mechanical.'
+  ],
+  fields:[
+    { key:'task',           label:'Task — what am I avoiding?', type:'textarea' },
+    { key:'two_min_possible',label:'Can I do a 2-minute version? (Yes/No)', type:'text', ph:'Yes / No' },
+    { key:'starter',        label:'If No → 2-minute starter step', type:'textarea', ph:'Open doc and write title; create folder…' }
+  ],
+  template: ({ task, two_min_possible, starter, ctx, audience, style, tone }) => [
+    'Apply the 2-Minute Rule to force a start.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    task && ('Task:\n' + task),
+    typeof two_min_possible==='string' && two_min_possible && `Can do ≤2 min now? ${two_min_possible}`,
+    (two_min_possible||'').toLowerCase().startsWith('y') ? 'Action: Do it now.' : (starter && ('Starter step:\n' + starter)),
+    'Output:\n1) Task\n2) Immediate action or starter\n3) Timebox (≤2 min) + tiny reward'
+  ].filter(Boolean).join('\n')
+},
+
+{
   id:'vars_delims',
   slug:'variables-and-delimiters',
   label:'Variables & Delimiters — Define once, reuse cleanly',
@@ -3263,6 +3527,107 @@ boosters: [
       format && `Format: ${format}`
     ].filter(Boolean).join('\n');
   }
+},
+
+{
+  id:'weighted_mini_matrix',
+  slug:'weighted-mini-matrix',
+  label:'Weighted Mini-Matrix (quick score)',
+  kind:'pattern',
+  categories:['decision','prioritization'],
+  tags:['type:pattern','topic:matrix','use:prioritize','level:intermediate'],
+  use_cases:[
+    'compare up to 3 options against 2–3 criteria',
+    'force a transparent, quick pick'
+  ],
+  definition:'Tiny decision matrix: options × criteria with 1–5 ratings; totals pick the frontrunner.',
+  help:'Enter options (one per line) and criteria (one per line). In “Quick ratings,” add one line per option like “Option Name: 4, 3, 5” matching criteria order.',
+  boosters:[
+    'If a criterion matters more, duplicate it (acts as a simple weight).',
+    'Break ties with a 5-minute spike test you’ll define at the end.'
+  ],
+  fields:[
+    { key:'options',   label:'Options (≤3, one per line)', type:'textarea', ph:'Option A\nOption B\nOption C' },
+    { key:'criteria',  label:'Criteria (2–3, one per line)', type:'textarea', ph:'Impact\nEffort\nRisk' },
+    { key:'ratings',   label:'Quick ratings (1–5) — one line per option', type:'textarea', ph:'Option A: 5,2,4\nOption B: 4,3,5' }
+  ],
+  template: ({ options, criteria, ratings, ctx, audience, style, tone }) => {
+    const opts = String(options||'').split(/\n+/).map(s=>s.trim()).filter(Boolean).slice(0,3);
+    const crit = String(criteria||'').split(/\n+/).map(s=>s.trim()).filter(Boolean).slice(0,3);
+    const rateLines = String(ratings||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+    const scoreMap = {};
+    rateLines.forEach(line=>{
+      const parts = line.split(':');
+      const name = (parts[0]||'').trim();
+      const nums = (parts[1]||'').split(/[, \t]+/).map(n=>parseFloat(n)).filter(n=>!isNaN(n)).slice(0,crit.length);
+      if(name) scoreMap[name]=nums;
+    });
+    const totals = opts.map(name=>{
+      const arr = (scoreMap[name]||[]);
+      const total = arr.reduce((a,b)=>a+b,0);
+      return { name, arr, total };
+    });
+    const best = totals.reduce((a,b)=> (b.total>(a?.total??-Infinity)?b:a), null);
+
+    const header = [
+      'Run a quick weighted mini-matrix.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      opts.length && ('Options:\n' + opts.map((o,i)=>`${i+1}. ${o}`).join('\n')),
+      crit.length && ('Criteria (order = rating order):\n' + crit.map((c,i)=>`${i+1}. ${c}`).join('\n'))
+    ].filter(Boolean).join('\n');
+
+    const table = totals.length ? [
+      'Ratings & totals:',
+      ...totals.map(t => {
+        const cells = t.arr.map((n,i)=>`${crit[i]??`C${i+1}`}=${n}`).join(', ');
+        return `- ${t.name}: ${cells} | Total=${t.total||0}`;
+      })
+    ].join('\n') : '';
+
+    const pick = best ? `Highest score → Next action: ${best.name}` : 'Highest score → Next action: (insufficient ratings)';
+
+    return [header, table, pick, 'Output:\n1) Matrix summary\n2) Pick + one 5-min spike to validate'].filter(Boolean).join('\n');
+  }
+},
+
+{
+  id:'woop',
+  slug:'woop-wish-outcome-obstacle-plan',
+  label:'WOOP (Wish–Outcome–Obstacle–Plan)',
+  kind:'pattern',
+  categories:['behavior','motivation'],
+  tags:['type:pattern','topic:woop','use:motivation','level:beginner'],
+  use_cases:[
+    'contrast desired outcome with the main obstacle',
+    'bind an if–then plan to the obstacle'
+  ],
+  definition:'Wish → Outcome → Obstacle → Plan (if obstacle, then I will X).',
+  help:'Write a short, specific wish; name the tangible best outcome; identify the likely obstacle; define the if–then plan.',
+  boosters:[
+    'Phrase the wish so it’s completable in ≤2 weeks.',
+    'Make the obstacle internal (habit/thought) when possible.'
+  ],
+  fields:[
+    { key:'wish',     label:'Wish — what do I want to complete?', type:'textarea' },
+    { key:'outcome',  label:'Outcome — benefit if I succeed?', type:'textarea' },
+    { key:'obstacle', label:'Obstacle — what usually gets in the way?', type:'textarea' },
+    { key:'plan',     label:'Plan — if obstacle, then I will…', type:'textarea' }
+  ],
+  template: ({ wish, outcome, obstacle, plan, ctx, audience, style, tone }) => [
+    'Use WOOP to turn motivation into a plan.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    wish && ('Wish:\n' + wish),
+    outcome && ('Outcome:\n' + outcome),
+    obstacle && ('Obstacle:\n' + obstacle),
+    plan && ('Plan (if obstacle, then I will…):\n' + plan),
+    'Output:\n1) Wish\n2) Outcome\n3) Obstacle\n4) If–then plan\n5) First checkpoint'
+  ].filter(Boolean).join('\n')
 }
 
 ];
