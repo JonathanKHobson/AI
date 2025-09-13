@@ -375,8 +375,6 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   padding-right: var(--coachPad, 160px) !important;
 }
 
-
-
 #out.hasCounter{
   padding-top:28px;
   /* NEW: reserve horizontal space for the corner counter */
@@ -451,6 +449,15 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 .taItem .sub{ color:var(--muted); font-size:12px; }
 .taItem.active{ outline:2px solid var(--accent); outline-offset:-2px; }
 
+.panel select{
+  width:100%;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  outline:none;
+}
 
     @media (max-width: 960px){
       .wrap{grid-template-columns:1fr}
@@ -729,6 +736,185 @@ boosters: [
       cta&&`End with this CTA: ${cta}`
     ].filter(Boolean).join('\n')
   },
+  
+    {
+  id:'argument-map',
+  slug:'argument-mapping',
+  label:'Argument Mapping — Claim · Premises · Objections · Rejoinders',
+  kind:'framework',
+  categories:['reasoning patterns'],
+  tags:[
+    'type:framework','topic:argumentation','phase:structure','level:beginner'
+  ],
+  use_cases:[
+    'Debate prep','Design trade-offs','Policy briefs','Litigation memos'
+  ],
+  definition:'Lay out claims, supporting premises, objections, and rebuttals as a clear tree.',
+  help:'Give a thesis, premises, likely objections, and evidence. You’ll get an ASCII map and a short strength assessment.',
+  fields:[
+    {key:'thesis',      label:'Thesis / main claim', type:'text',     ph:'e.g., We should adopt Option B.'},
+    {key:'premises',    label:'Premises (one per line)', type:'textarea', ph:'e.g., Lower cost\\nHigher reliability\\nFaster to ship'},
+    {key:'evidence',    label:'Key evidence',        type:'textarea', ph:'Studies, metrics, sources'},
+    {key:'objections',  label:'Objections (one per line)',type:'textarea', ph:'e.g., Vendor risk\\nMigration cost'},
+    {key:'rejoinders',  label:'Rejoinders (one per line)',type:'textarea', ph:'e.g., Multi-vendor strategy\\nStaged rollout'},
+    {key:'standard',    label:'Standard of proof',   type:'text',     ph:'preponderance | clear & convincing | beyond reasonable doubt'}
+  ],
+  boosters:[
+    'Return a 1–5 confidence score and the top missing premise or evidence that would improve it most.'
+  ],
+  template:({thesis,premises,evidence,objections,rejoinders,standard,ctx})=>[
+    'Construct an argument map.',
+    ctx && `Context: ${ctx}`,
+    thesis && `Thesis: ${thesis}`,
+    evidence && `Evidence: ${evidence}`,
+    standard && `Standard of proof: ${standard}`,
+    'Output:',
+    'A) ASCII tree:',
+    'Claim',
+    '├─ Premises',
+    premises && String(premises).split(/\\n+/).filter(Boolean).map((p,i)=>`│  ├─ P${i+1}: ${p}`).join('\\n'),
+    '├─ Objections',
+    objections && String(objections).split(/\\n+/).filter(Boolean).map((o,i)=>`│  ├─ O${i+1}: ${o}`).join('\\n'),
+    '└─ Rejoinders',
+    rejoinders && String(rejoinders).split(/\\n+/).filter(Boolean).map((r,i)=>`   ├─ R${i+1}: ${r}`).join('\\n'),
+    'B) Assessment: note strongest premise, strongest objection, and net strength.',
+    'C) Revision: refined thesis if warranted.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'bias_interrupters',
+  slug:'bias-interrupters',
+  label:'Bias Interrupters (process checks)',
+  kind:'pattern',
+  categories:['people','ethics','operations'],
+  tags:[
+    'type:pattern','topic:bias-interrupters','topic:rubrics','level:intermediate',
+    'use:hiring','use:evaluation','use:promotion'
+  ],
+  use_cases:[
+    'add measurable process tweaks to interrupt bias',
+    'operationalize fair evaluation',
+    'track change over time'
+  ],
+  definition:'System-level checks to interrupt bias in hiring, evaluation, and promotion using measurable tweaks.',
+  help:'Choose a process step, name bias risks, add an interrupter strategy, pick a metric, and plan iteration.',
+  boosters:[
+    'Force a named owner per metric.',
+    'Define success and a review cadence (e.g., quarterly).'
+  ],
+  fields:[
+    { key:'process_step', label:'Process step', type:'text', ph:'Hiring / Evaluation / Promotion / Review' },
+    { key:'bias_risk',    label:'Bias risk(s)', type:'textarea', ph:'Gut-feel; halo effect; similarity bias…' },
+    { key:'strategy',     label:'Interrupter strategy', type:'textarea', ph:'Structured interviews; rubrics; anonymization…' },
+    { key:'metric',       label:'Metric to track', type:'textarea', ph:'e.g., Score variance by rubric item; pass-through by group…' },
+    { key:'iteration',    label:'Iteration plan', type:'textarea', ph:'What to refine next cycle and when.' }
+  ],
+  template: ({ process_step, bias_risk, strategy, metric, iteration, ctx, audience, style, tone }) => [
+    'Design a bias-interrupter for a people process with clear metrics.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    process_step && `Process step: ${process_step}`,
+    bias_risk && ('Bias risks:\n' + bias_risk),
+    strategy && ('Interrupter strategy:\n' + strategy),
+    metric && ('Metric(s) to track:\n' + metric),
+    iteration && ('Iteration plan:\n' + iteration),
+    'Output:\n1) Interrupter spec\n2) Owner + start date\n3) Metric w/ target\n4) Review cadence\n5) Risks & mitigations'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'bias_impact_assessment',
+  slug:'bias-impact-assessment',
+  label:'Bias Impact Assessment (AI/tech)',
+  kind:'pattern',
+  categories:['ai','ethics','risk'],
+  tags:[
+    'type:pattern','topic:impact-assessment','topic:transparency','level:advanced',
+    'use:pre-launch','use:model-review','use:policy'
+  ],
+  use_cases:[
+    'assess bias risks for systems before launch',
+    'define mitigations and transparency steps',
+    'plan follow-up monitoring'
+  ],
+  definition:'Pre-launch assessment modeled on impact reports to surface stakeholders, risks, mitigations, and monitoring.',
+  help:'Name the system and purpose, list stakeholders, map bias risks, define mitigations & transparency, add monitoring.',
+  boosters:[
+    'Include an explainability note (e.g., model cards/datasheets).',
+    'Propose a drift/impact monitoring threshold and response path.'
+  ],
+  fields:[
+    { key:'system',       label:'System / algorithm / product name', type:'text', ph:'Name/version' },
+    { key:'purpose',      label:'Intended purpose', type:'textarea', ph:'Primary task and success measures.' },
+    { key:'stakeholders', label:'Stakeholders affected (one per line)', type:'textarea', ph:'Groups/roles.' },
+    { key:'risks',        label:'Bias risks identified', type:'textarea', ph:'Inputs, labels, sampling, shift, proxy variables…' },
+    { key:'mitigation',   label:'Mitigation steps', type:'textarea', ph:'Data/process/model changes; human-in-the-loop…' },
+    { key:'transparency', label:'Transparency / explainability measures', type:'textarea', ph:'Docs, disclosures, appeal paths…' },
+    { key:'monitoring',   label:'Follow-up monitoring plan', type:'textarea', ph:'Metrics, thresholds, cadence, owner.' }
+  ],
+  template: ({ system, purpose, stakeholders, risks, mitigation, transparency, monitoring, ctx, audience, style, tone }) => [
+    'Create a Bias Impact Assessment for an AI/tech system.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    system && `System: ${system}`,
+    purpose && ('Intended purpose:\n' + purpose),
+    stakeholders && (
+      'Stakeholders:\n' + String(stakeholders).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    risks && ('Bias risks:\n' + risks),
+    mitigation && ('Mitigation steps:\n' + mitigation),
+    transparency && ('Transparency / explainability:\n' + transparency),
+    monitoring && ('Monitoring plan:\n' + monitoring),
+    'Output:\n1) System + purpose\n2) Stakeholders\n3) Risks\n4) Mitigations\n5) Transparency plan\n6) Monitoring plan (metric + threshold + owner)'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'blooms',
+  slug:'blooms-taxonomy',
+  label:'Bloom’s — Remember · Understand · Apply · Analyze · Evaluate · Create',
+  kind:'framework',
+  categories:['education','critical thinking frameworks'],
+  tags:[
+    'type:framework','topic:learning','phase:design','level:beginner',
+    'use:learning-objectives','use:quiz-items','use:lesson-plans'
+  ],
+  use_cases:[
+    'Write learning objectives','Create quiz/homework items','Plan lessons/projects'
+  ],
+  definition:'Generate objectives or questions aligned to a chosen Bloom level.',
+  help:'Pick the level and topic; get measurable verbs and aligned tasks.',
+  fields:[
+    {key:'topic',    label:'Topic',     type:'text',     ph:'e.g., Binary search trees'},
+    {key:'level',    label:'Bloom level',type:'text',    ph:'remember | understand | apply | analyze | evaluate | create'},
+    {key:'n',        label:'# of items', type:'text',    ph:'e.g., 3'},
+    {key:'constraints',label:'Constraints',type:'text',  ph:'e.g., measurable verbs; ≤120 words each'}
+  ],
+  boosters:[
+    'Use measurable verbs; include success criteria; scaffold from easier to harder.'
+  ],
+  template:({topic,level,n,constraints,ctx,audience,style,tone})=>{
+    const N = Number.parseInt(n||'3',10) || 3;
+    return [
+      'Create Bloom-aligned outputs.',
+      ctx && `Context: ${ctx}`,
+      topic && `Topic: ${topic}`,
+      level && `Level: ${level}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      constraints && `Constraints: ${constraints}`,
+      `Output: ${N} ${level||'level'} learning ${level && level.match(/create|analy|evalu/i)?'tasks':'objectives/questions'} with:`,
+      '- Measurable verb; prompt; expected answer traits; success criteria.'
+    ].filter(Boolean).join('\n')
+  }
+},
+  
   {
     id:'clear',
     slug:'clear-framework',
@@ -845,6 +1031,197 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
 
+{
+  id:'cognitive_debiasing',
+  slug:'cognitive-debiasing',
+  label:'Cognitive Debiasing',
+  kind:'pattern',
+  categories:['ethics','bias','critical thinking'],
+  tags:[
+    'type:pattern','topic:debiasing','topic:consider-the-opposite','level:beginner',
+    'use:analysis','use:strategy','use:review'
+  ],
+  use_cases:[
+    'document a current assumption and actively seek disconfirming evidence',
+    'run a quick pre-mortem on a plan',
+    'decide next adjustment with rationale'
+  ],
+  definition:'A light-weight scaffold combining “consider the opposite,” disconfirming evidence, and pre-mortem moves.',
+  help:'Name the bias risk, state the assumption, generate an opposite scenario, list disconfirming evidence, choose a next step.',
+  boosters:[
+    'Cite at least 2 credible, independent sources that challenge your assumption.',
+    'Add a one-line pre-mortem: “If this failed in 6 weeks, it would be because…”'
+  ],
+  fields:[
+    { key:'bias',        label:'Bias in question', type:'text', ph:'Anchoring / Confirmation / Availability / Other' },
+    { key:'initial',     label:'My initial assumption', type:'textarea', ph:'Write it down plainly.' },
+    { key:'opposite',    label:'Opposite scenario — What if the opposite is true?', type:'textarea', ph:'Spell the plausible opposite.' },
+    { key:'disconfirm',  label:'Disconfirming evidence (≥2, one per line)', type:'textarea', ph:'Source, fact, or datapoint per line.' },
+    { key:'premortem',   label:'Pre-mortem (optional) — If this failed, why?', type:'textarea', ph:'Top 1–3 failure reasons.' },
+    { key:'decision',    label:'Next step decision — What will I adjust?', type:'textarea', ph:'Change of plan, metric, gate, or experiment.' }
+  ],
+  template: ({ bias, initial, opposite, disconfirm, premortem, decision, ctx, audience, style, tone }) => [
+    'Apply a cognitive debiasing pass.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    bias && `Bias in question: ${bias}`,
+    initial && ('Initial assumption:\n' + initial),
+    opposite && ('Opposite scenario:\n' + opposite),
+    disconfirm && (
+      'Disconfirming evidence:\n' + String(disconfirm).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    premortem && ('Pre-mortem:\n' + premortem),
+    decision && ('Next step decision:\n' + decision),
+    'Output:\n1) Assumption vs. opposite\n2) Disconfirming evidence (≥2)\n3) Decision & rationale\n4) Follow-up check in 2–4 weeks'
+  ].filter(Boolean).join('\n')
+},
+
+
+{
+    id:'comparative_analysis',
+    slug:'comparative-analysis',
+    label:'Comparative Analysis — rank • pros/cons • matrix',
+    kind:'framework',
+    categories:['analysis frameworks','decision support'],
+    tags:[
+      'type:framework','topic:comparison','topic:evaluation','phase:apply','level:intermediate'
+    ],
+    use_cases:[
+      'choose between options','competitive analysis','tool selection','feature trade-offs'
+    ],
+    definition:'Compare multiple options using a selected comparison style (ranking, pros/cons, table, weighted matrix, etc.).',
+    help:'Pick a comparison style, list the options (one per line), and optionally add criteria (weights with "name:weight").',
+    boosters:[
+      'End with a concise recommendation and next steps.',
+      'Surface key trade-offs in one short line per option.',
+      'If criteria are provided with weights, show the score math simply (no long reasoning).'
+    ],
+    fields:[
+      { key:'topic',   label:'Topic / decision context', type:'text',
+        ph:'e.g., Choose a JavaScript charting library for dashboards' },
+
+      { key:'compare_style', label:'Comparison style', type:'select',
+        desc:'The prompt adapts to your choice.',
+        options:[
+          { value:'pros-cons', label:'Pros & Cons' },
+          { value:'for-against', label:'For & Against' },
+          { value:'benefits-risks', label:'Benefits vs. Risks' },
+          { value:'strengths-weaknesses', label:'Strengths & Weaknesses' },
+          { value:'similarities-differences', label:'Similarities & Differences' },
+          { value:'chart', label:'Chart' },
+          { value:'venn', label:'Venn' },
+          { value:'decision-tree', label:'Decision Tree' },
+          { value:'heatmap', label:'Heat Map' },
+          { value:'rank',      label:'Ranked List' },
+          { value:'rating',    label:'Rating Scale' },
+          { value:'weighted-matrix', label:'Weighted Criteria Matrix' },
+          { value:'tiering',   label:'Tiering (S/A/B...)' },
+          { value:'table',     label:'Side-by-Side Table' },
+          { value:'point-by-point', label:'Point-by-Point' },
+          { value:'block',     label:'Block Comparison' },
+          { value:'benchmarking', label:'Benchmarking (vs gold standard)' },
+          { value:'case-studies', label:'Case Studies' },
+          { value:'analogies', label:'Analogies & Metaphors' },
+          { value:'before-after', label:'Before vs After' },
+          { value:'scenario',  label:'Scenario-Based' }
+        ]
+      },
+
+      { key:'items',   label:'Options to compare (one per line)', type:'textarea',
+        ph:'Option A\nOption B\nOption C' },
+
+      { key:'criteria',label:'Criteria (one per line, optional weights)', type:'textarea',
+        desc:'Optionally add weights like "cost:30", "ease of use:20". Unweighted criteria default to equal weight.',
+        ph:'cost:30\necosystem:20\nperformance:25\nlearning curve:25' },
+
+      { key:'scale_max',label:'Rating scale max (only for Rating Scale)', type:'text',
+        ph:'10' },
+
+      { key:'rules',  label:'Output rules / format preferences (optional)', type:'textarea',
+        ph:'e.g., Markdown table; keep each pro/con ≤12 words; include tie-break rules.' }
+    ],
+    template:({topic,compare_style,items,criteria,scale_max='10',rules,ctx,audience,style,tone})=>{
+      const list = String(items||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      const critList = String(criteria||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      const parsed = critList.map(c=>{
+        const m = c.match(/^(.+?):\s*([0-9]+(?:\.[0-9]+)?)\s*$/i);
+        return m ? {name:m[1].trim(), weight:parseFloat(m[2])} : {name:c, weight:null};
+      });
+      const hasWeights = parsed.some(c=>c.weight!==null);
+      const simpleCriteria = parsed.map(c=>c.name).join(', ');
+      const weightedLine = hasWeights
+        ? parsed.map(c=>`${c.name} (${c.weight}%)`).join(', ')
+        : simpleCriteria;
+
+      const styleLine = (()=>{
+        switch(compare_style){
+          case 'for-against':
+            return 'Lay out arguments "for" and "against" each option, then weigh balance of evidence.';
+           case 'benefits-risks':
+            return 'Lay out the benefits and risks for each option, then weigh and compare the benefits vs. the risks.';
+          case 'strengths-weaknesses':
+            return 'List strengths and weaknesses per option with one-line explanations.';
+          case 'similarities-differences':
+            return 'Make a two-column list: similarities on the left, differences on the right.';
+          case 'rank':
+            return 'Produce a ranked list (best → worst) with one-line justification per item.';
+          case 'rating':
+            return `Rate each item on a 1–${scale_max} scale for each criterion, show subtotals and a final average; break ties with a brief rationale.`;
+          case 'weighted-matrix':
+            return `Build a weighted criteria matrix. Criteria${hasWeights? ' (with weights)':''}: ${weightedLine}. Show per-criterion scores and a weighted total.`;
+          case 'tiering':
+            return 'Assign each item to tiers (S/A/B...) with one-line reason per assignment.';
+          case 'table':
+            return 'Create a side-by-side Markdown table: rows = criteria/features, columns = options. Keep cells concise.';
+          case 'point-by-point':
+            return 'Compare point-by-point across criteria: list each criterion and discuss how each option fares.';
+          case 'block':
+            return 'Write compact blocks: Option A summary, Option B summary, Option C summary; end with synthesis.';
+          case 'benchmarking':
+            return 'Benchmark each item against a named gold standard; call out gaps and advantages.';
+          case 'case-studies':
+            return 'Use short case snippets to illustrate differences; cite realistic scenarios.';
+          case 'analogies':
+            return 'Use clear analogies/metaphors to contrast items; keep analogies concrete.';
+          case 'before-after':
+            return 'Show before/after outcomes per option for the same scenario.';
+          case 'scenario':
+            return 'Test each option in the same hypothetical scenario; report outcomes and risks.';
+          case 'chart':
+            return 'Render comparison as a chart (bar, radar, scatter, etc.); include axis/legend labels.';
+            case 'venn':
+    return 'Draw a Venn diagram: overlapping area = shared traits, outer zones = unique traits.';
+    case 'decision-tree':
+    return 'Map a decision tree: branches show which option applies under which condition.';
+    case 'heatmap':
+    return 'Build a heatmap grid of items × criteria; color intensity signals performance.';
+          default:
+            return 'List pros & cons per option in bullet form, then synthesize trade-offs.';
+        }
+      })();
+
+      const itemsBlock = list.length ? ('Options:\n' + list.map((t,i)=>`${i+1}. ${t}`).join('\n')) : '';
+      const critBlock  = parsed.length ? (`Criteria:${hasWeights? ' (weights in %)':''}\n` + parsed.map(c=>`- ${c.name}${c.weight!==null?`: ${c.weight}%`:''}`).join('\n')) : '';
+
+      return [
+        'Perform a comparative analysis.',
+        topic && `Topic/decision: ${topic}`,
+        ctx && `Context: ${ctx}`,
+        audience && `Audience: ${audience}`,
+        style && `Style: ${style}`,
+        tone && `Tone: ${tone}`,
+        itemsBlock,
+        critBlock,
+        `Comparison mode: ${compare_style || 'pros-cons'}`,
+        styleLine,
+        rules && `Output rules: ${rules}`,
+        'End with: (1) succinct recommendation, (2) key trade-offs in one line, (3) next steps or what could change the decision.'
+      ].filter(Boolean).join('\n');
+    }
+  },
+
   
   {
     id:'costar',
@@ -886,6 +1263,70 @@ boosters: [
       response&&`Response format: ${response}`,
       `Follow COSTAR. Ask clarifying Qs only if blocking.`
     ].filter(Boolean).join('\n')
+  },
+  
+    {
+    id:'facts_primer',
+    slug:'facts-expertise-primer',
+    label:'Facts & Expertise Primer',
+    kind:'framework',
+    categories:['prompt development techniques','quality scaffolds'],
+    tags:[
+      'type:framework','topic:priming','topic:fact-checking','phase:setup','level:beginner'
+    ],
+    use_cases:[
+      'prime a conversation with domain facts',
+      'reduce hallucinations',
+      'scope an expert role before a task'
+    ],
+    definition:'Prime the model with verified facts, role, and scope constraints before asking for an output.',
+    help:'List facts one-per-line (or use the add-row control). The prompt will ground itself in those facts and mark unknowns.',
+    boosters:[
+      'Explicitly mark unknowns and ask up to 3 clarifying questions if needed.',
+      'Prefer verifiable facts over speculation.',
+      'Keep rationales to one short sentence unless asked to elaborate.'
+    ],
+    fields:[
+      { key:'role',    label:'Role to embody (optional)', type:'text',
+        ph:'e.g., Senior epidemiologist focused on respiratory viruses' },
+      { key:'domain',  label:'Domain / scope', type:'text',
+        ph:'e.g., US healthcare billing (2023–2025) • EU privacy law • K-12 math' },
+      { key:'facts',   label:'Facts / known truths (one per line)', type:'textarea',
+        desc:'One fact per line. Commas are OK; they will be split. Add short notes with ":" if useful.',
+        ph:'e.g., HIPAA applies to covered entities\nGDPR requires lawful basis for processing' },
+      { key:'pitfalls',label:'Known pitfalls / myths to avoid', type:'textarea',
+        ph:'e.g., “Vitamin C cures colds” is a myth; do not claim it.' },
+      { key:'task',    label:'Initial task or question', type:'textarea',
+        ph:'e.g., Draft a one-page overview of consent requirements for telehealth.' },
+      { key:'rigor',   label:'Rigor / citation expectations (optional)', type:'text',
+        ph:'e.g., Cite authoritative sources; avoid fabricated citations.' }
+    ],
+    template:({role,domain,facts,pitfalls,task,rigor,ctx,audience,style,tone})=>{
+      const factLines = String(facts||'')
+        .split(/\n+|,/)
+        .map(s=>s.trim())
+        .filter(Boolean)
+        .map((t,i)=>`${i+1}. ${t}`)
+        .join('\n');
+
+      return [
+        'You are being primed with facts and scope before performing a task.',
+        role   && `Adopt role: ${role}`,
+        domain && `Domain/scope: ${domain}`,
+        ctx    && `Context: ${ctx}`,
+        audience && `Audience: ${audience}`,
+        style  && `Style: ${style}`,
+        tone   && `Tone: ${tone}`,
+        factLines && `Facts (treat as ground truth):\n${factLines}`,
+        pitfalls && `Avoid known pitfalls/myths:\n${pitfalls}`,
+        rigor && `Rigor expectations: ${rigor}`,
+        'Behavioral rules:',
+        '- Prefer verifiable facts; do not invent sources.',
+        '- If information is missing or ambiguous, explicitly list unknowns and ask up to 3 clarifying questions.',
+        '- Keep rationales concise; do not reveal hidden chain-of-thought.',
+        task && `Initial task:\n${task}`
+      ].filter(Boolean).join('\n');
+    }
   },
   
   {
@@ -940,6 +1381,45 @@ boosters: [
     dos && `Do:\n${dos}`,
     donts && `Don't:\n${donts}`,
     'First restate the intended format in one line, then produce the output consistent with the examples.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id:'facione-core',
+  slug:'facione-core-skills',
+  label:'Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate',
+  kind:'framework',
+  categories:['critical thinking frameworks'],
+  tags:[
+    'type:framework','topic:critical-thinking','phase:analyze','level:intermediate'
+  ],
+  use_cases:[
+    'Evidence appraisal','Research summaries','Root cause analysis','Design/ethics reviews'
+  ],
+  definition:'Operationalize the six core skills of critical thinking on a target claim/problem.',
+  help:'Run the six-skill loop briefly and finish with a self-check.',
+  fields:[
+    {key:'topic',         label:'Topic/claim/problem', type:'text',     ph:'e.g., “Feature X reduces churn by 10%.”'},
+    {key:'evidence',      label:'Evidence for',        type:'textarea', ph:'Key supporting evidence'},
+    {key:'counter',       label:'Evidence against',    type:'textarea', ph:'Counterevidence / disconfirming data'},
+    {key:'alt_hypotheses',label:'Alternative hypotheses',type:'textarea', ph:'Other explanations/causes'},
+    {key:'explain_aud',   label:'Explanation audience',type:'text',     ph:'e.g., exec team, students, customers'},
+    {key:'selfreg_checks',label:'Self-regulation checks',type:'text',   ph:'e.g., seek disconfirming data; avoid anchoring'}
+  ],
+  boosters:[
+    'Finish with a 2-line “Because-Therefore” justification and 1 actionable next test.'
+  ],
+  template:({topic,evidence,counter,alt_hypotheses,explain_aud,selfreg_checks,ctx})=>[
+    'Use Facione’s six skills on the target.',
+    ctx && `Context: ${ctx}`,
+    topic && `Target: ${topic}`,
+    'Output:',
+    '1) Interpretation (what the information means).',
+    evidence && `2) Analysis (structures/relations in the evidence): ${evidence}`,
+    counter && `3) Evaluation (credibility and strength of pro vs con): ${counter}`,
+    alt_hypotheses && `4) Inference (best-supported conclusion + uncertainty; consider alternatives): ${alt_hypotheses}`,
+    explain_aud && `5) Explanation (concise, audience-appropriate): audience=${explain_aud}`,
+    selfreg_checks && `6) Self-regulation (bias/quality checks applied): ${selfreg_checks}`
   ].filter(Boolean).join('\n')
 },
 
@@ -1138,6 +1618,48 @@ boosters: [
   },
   
   {
+  id:'debiasing-checklist',
+  slug:'heuristics-biases',
+  label:'Heuristics & Biases — Debiasing Pre-flight',
+  kind:'framework',
+  categories:['critical thinking frameworks','quality checks'],
+  tags:[
+    'type:framework','topic:debiasing','phase:review','level:intermediate',
+    'use:decisions','use:forecasts','use:research-summaries'
+  ],
+  use_cases:[
+    'Review a draft answer/decision','Forecasting sanity check','Risk review'
+  ],
+  definition:'Run a short checklist to catch common cognitive biases and revise.',
+  help:'Describe the decision/draft, stakes, time pressure, and known risks; get a bias scan and a revision.',
+  fields:[
+    {key:'decision',     label:'Decision/draft to check', type:'textarea', ph:'Paste the answer/decision you want to sanity-check'},
+    {key:'stakes',       label:'Stakes/impact',           type:'text',     ph:'e.g., medium; reputational + cost'},
+    {key:'time_pressure',label:'Time pressure',           type:'text',     ph:'e.g., high / moderate / low'},
+    {key:'known_biases', label:'Known risks',             type:'text',     ph:'e.g., anchoring, confirmation, sunk cost'},
+    {key:'tactics',      label:'Debiasing tactics',       type:'text',     ph:'base rates; outside view; premortem; reference class; “what would change my mind?”'}
+  ],
+  boosters:[
+    'End with a one-line “If wrong, it’s because…” and a quick red-team question.'
+  ],
+  template:({decision,stakes,time_pressure,known_biases,tactics,ctx})=>[
+    'Run a cognitive bias pre-flight check.',
+    ctx && `Context: ${ctx}`,
+    stakes && `Stakes: ${stakes}`,
+    time_pressure && `Time pressure: ${time_pressure}`,
+    known_biases && `Known risks: ${known_biases}`,
+    tactics && `Preferred tactics: ${tactics}`,
+    decision && `Draft under review:\n${decision}`,
+    'Output:',
+    '1) Bias scan (anchoring, availability, confirmation, sunk cost, overconfidence, base-rate neglect, scope insensitivity).',
+    '2) Evidence/assumption spot-check; note priors/base rates.',
+    '3) Revised answer/decision with explicit uncertainties.',
+    '4) Premortem: top failure mode + mitigation.',
+    '5) Decide: go / iterate / stop, with reason.'
+  ].filter(Boolean).join('\n')
+},
+  
+  {
   id:'hmw_statements',
   slug:'how-might-we-statements-hmw',
   label:'How Might We Statements (HMW)',
@@ -1194,6 +1716,46 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
 
+{
+  id:'inclusive_design',
+  slug:'inclusive-design-framework',
+  label:'Inclusive Design (edge personas)',
+  kind:'pattern',
+  categories:['design','ethics','accessibility'],
+  tags:[
+    'type:pattern','topic:inclusive-design','topic:edge-cases','level:beginner',
+    'use:product','use:content','use:service-design'
+  ],
+  use_cases:[
+    'identify edge personas and barriers',
+    'design adaptations that reduce exclusion',
+    'articulate benefits to all users'
+  ],
+  definition:'Design for “edge cases” to reduce exclusion, following Microsoft’s Inclusive Design principles.',
+  help:'Pick an edge persona, name the barrier, propose an adaptation, and explain the universal benefit.',
+  boosters:[
+    'Name concrete assistive tech or environmental constraints where relevant.',
+    'Suggest a quick hallway/usability test to validate the adaptation.'
+  ],
+  fields:[
+    { key:'edge_persona', label:'Persona at the edge — who might struggle most?', type:'textarea', ph:'e.g., Low-vision user; one-handed; low bandwidth…' },
+    { key:'barrier',      label:'Barrier — what prevents full use?', type:'textarea', ph:'Perception, cognition, motor, language, network…' },
+    { key:'adaptation',   label:'Adaptation — design change to reduce exclusion', type:'textarea', ph:'Concrete UI/content/process change.' },
+    { key:'benefit',      label:'Benefit to all — how does this help beyond the edge user?', type:'textarea', ph:'Explicit generalization.' }
+  ],
+  template: ({ edge_persona, barrier, adaptation, benefit, ctx, audience, style, tone }) => [
+    'Apply Inclusive Design to reduce exclusion.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    edge_persona && ('Edge persona:\n' + edge_persona),
+    barrier && ('Barrier:\n' + barrier),
+    adaptation && ('Adaptation:\n' + adaptation),
+    benefit && ('Benefit to all:\n' + benefit),
+    'Output:\n1) Edge case summary\n2) Barrier(s)\n3) Adaptation(s)\n4) Validation step\n5) Expected universal benefit'
+  ].filter(Boolean).join('\n')
+},
   
   {
   id:'kwy_vector',
@@ -1353,8 +1915,61 @@ boosters: [
       `Format the response as short bullets.`
     ].filter(Boolean).join('\n')
   },
-
   
+  {
+  id:'paul-elder',
+  slug:'paul-elder',
+  label:'Paul–Elder — Elements of Thought + Standards',
+  kind:'framework',
+  categories:['critical thinking frameworks','prompt development techniques'],
+  tags:[
+    'type:framework','topic:critical-thinking','phase:analyze','level:intermediate',
+    'use:argument-critique','use:decision-memo','use:policy-analysis'
+  ],
+  use_cases:[
+    'Argument/brief critique','Decision memos','Policy/position analysis','Lesson planning checks'
+  ],
+  definition:'Structure reasoning via the Elements of Thought (purpose, question, info, concepts, assumptions, implications, point of view, inference) and judge it with Intellectual Standards (clarity, accuracy, precision, relevance, depth, breadth, logic, significance, fairness).',
+  help:'Fill what you know for each element; pick standards to apply; get a structured critique and improvement.',
+  fields:[
+    {key:'purpose',       label:'Purpose',        type:'textarea', desc:'Goal/why this reasoning?', ph:'e.g., Decide if we should ship feature X this quarter'},
+    {key:'key_question',  label:'Central question',type:'text',    desc:'Main question being answered', ph:'e.g., Should we ship feature X in Q4?'},
+    {key:'information',   label:'Information',    type:'textarea', desc:'Key facts/data/sources',      ph:'e.g., user studies, cost estimates, incident data'},
+    {key:'concepts',      label:'Concepts',       type:'textarea', desc:'Theories/principles/models',  ph:'e.g., opportunity cost, risk tolerance, SLA/SLO'},
+    {key:'assumptions',   label:'Assumptions',    type:'textarea', desc:'What is taken for granted',   ph:'e.g., adoption rate, partner readiness'},
+    {key:'pov',           label:'Point(s) of view',type:'textarea',desc:'Perspectives considered',     ph:'e.g., users, SRE, legal, finance'},
+    {key:'inferences',    label:'Inferences',     type:'textarea', desc:'Conclusions drawn',           ph:'e.g., delaying reduces churn risk'},
+    {key:'implications',  label:'Implications',   type:'textarea', desc:'Consequences of conclusions', ph:'e.g., revenue impact, reliability'},
+    {key:'alternatives',  label:'Alternatives',   type:'textarea', desc:'Options/competing claims',    ph:'e.g., partial rollout, behind flag'},
+    {key:'standards',     label:'Standards to apply', type:'text', desc:'Comma-sep list of standards', ph:'clarity, accuracy, precision, relevance, depth, breadth, logic, significance, fairness'}
+  ],
+  boosters:[
+    'Give a 3-sentence synthesis and 2 sharper follow-up questions that would most improve the reasoning.'
+  ],
+  template:({purpose,key_question,information,concepts,assumptions,pov,inferences,implications,alternatives,standards,ctx,audience,style,tone})=>[
+    'Apply the Paul–Elder framework to analyze reasoning.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    purpose && `Purpose: ${purpose}`,
+    key_question && `Question: ${key_question}`,
+    information && `Information: ${information}`,
+    concepts && `Concepts: ${concepts}`,
+    assumptions && `Assumptions: ${assumptions}`,
+    pov && `Points of view: ${pov}`,
+    inferences && `Inferences: ${inferences}`,
+    implications && `Implications: ${implications}`,
+    alternatives && `Alternatives: ${alternatives}`,
+    standards && `Intellectual standards to apply: ${standards}`,
+    'Output:',
+    '1) Brief map of the eight elements (1–2 lines each).',
+    '2) Critique using the listed standards (name the standard → note → fix).',
+    '3) Revised conclusion with rationale.',
+    '4) Evidence or info that would most change the answer.'
+  ].filter(Boolean).join('\n')
+},
+
   {
   id:'peas',
   slug:'peas-framework',
@@ -1644,6 +2259,58 @@ boosters: [
       `Use the RATIO pattern. Validate assumptions briefly before final output.`
     ].filter(Boolean).join('\n')
   },
+  
+  {
+  id:'reflect_bias',
+  slug:'reflect-bias-scaffold',
+  label:'REFLECT (bias reflection)',
+  kind:'pattern',
+  categories:['ethics','bias','critical thinking'],
+  tags:[
+    'type:pattern','topic:bias','topic:reflection','level:beginner',
+    'use:interviews','use:analysis','use:synthesis'
+  ],
+  use_cases:[
+    'spot potential bias during interviews, analysis, or synthesis',
+    'reframe a problem from multiple perspectives',
+    'turn reflection into concrete next steps'
+  ],
+  definition:'A structured reflection scaffold to identify, check, and transform bias in your approach.',
+  help:'Move through Recognize → Evaluate → Frame → Listen → Empathize → Check → Transform.',
+  boosters:[
+    'Keep tone neutral and specific; avoid moralizing.',
+    'Return a bulleted summary + 3 concrete changes and 1 monitoring check.'
+  ],
+  fields:[
+    { key:'recognize',  label:'Recognize — What bias might be at play?', type:'textarea', ph:'e.g., Confirmation bias; availability bias…' },
+    { key:'evaluate',   label:'Evaluate — How does it influence my thinking?', type:'textarea', ph:'e.g., Overweighting a single user quote…' },
+    { key:'frame',      label:'Frame — Restate the problem from a different perspective', type:'textarea', ph:'e.g., From a low-vision user; from operations…' },
+    { key:'listen',     label:'Listen — Whose voices are missing?', type:'textarea', ph:'e.g., Non-English speakers; caregivers…' },
+    { key:'empathize',  label:'Empathize — How would it feel in that missing perspective?', type:'textarea', ph:'Short, concrete description.' },
+    { key:'check',      label:'Check — What assumption should I test?', type:'textarea', ph:'List 1–3 assumptions with test ideas.' },
+    { key:'transform',  label:'Transform — How will I change my approach?', type:'textarea', ph:'e.g., Add recruitment quotas; change success metric…' }
+  ],
+  template: ({ recognize, evaluate, frame, listen, empathize, check, transform, ctx, audience, style, tone }) => [
+    'Use the REFLECT scaffold to surface and mitigate bias.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    recognize && ('Recognize:\n' + recognize),
+    evaluate && ('Evaluate:\n' + evaluate),
+    frame && ('Frame (alt perspective):\n' + frame),
+    listen && (
+      'Listen (missing voices):\n' + String(listen).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    empathize && ('Empathize (experience sketch):\n' + empathize),
+    check && (
+      'Check (assumptions + tests):\n' + String(check).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    transform && ('Transform (changes to approach):\n' + transform),
+    'Output:\n1) Key bias risks\n2) Reframed problem\n3) Missing voices to include\n4) 3 action changes + 1 monitoring check'
+  ].filter(Boolean).join('\n')
+},
+  
   {
     id:'risen',
     slug:'risen-framework',
@@ -1815,6 +2482,45 @@ boosters: [
       task&&`Task: ${task}`,
       format&&`Respond in this format: ${format}`,
       `Follow the RTF pattern. Ask concise clarifying questions if needed.`
+    ].filter(Boolean).join('\n')
+  },
+  
+   {
+    id:'scenario_deliberative',
+    slug:'scenario-based-deliberative',
+    label:'Scenario-based Prompting — Deliberative reasoning',
+    kind:'framework',
+    categories:['prompt development techniques','reasoning'],
+    tags:[
+      'type:framework','topic:prompting','phase:compose','level:intermediate',
+      'use:scenario','use:empathy','use:deliberation','use:edge-cases'
+    ],
+    use_cases:[
+      'coaching & advice','policy-sensitive responses','support empathy','edge-case analysis'
+    ],
+    definition:'Grounds the model in a concrete situation and explicitly asks it to reason deliberately before answering.',
+    help:'Set a vivid scenario and desired outcome. The framework slows the model down and separates thinking from the final recommendation.',
+    fields:[
+      {key:'role',        label:'Role (optional)',                    type:'text',     desc:'Perspective to adopt.',                         ph:'e.g., Emergency operations lead'},
+      {key:'scenario',    label:'Scenario (specific, even extreme)',  type:'textarea', desc:'Describe actors, stakes, and context.',         ph:'e.g., ICU power outage during a heatwave; backups at 60 minutes…'},
+      {key:'goal',        label:'Outcome goal',                       type:'text',     desc:'What success looks like.',                      ph:'e.g., Keep all patients safe until mains power returns'},
+      {key:'constraints', label:'Constraints',                        type:'textarea', desc:'Non-negotiables, policies, risks.',             ph:'e.g., No transport; limited staff; HIPAA-safe comms only'},
+      {key:'format',      label:'Response format (optional)',         type:'textarea', desc:'Headings/checklists to structure the output.',  ph:'e.g., 1) Immediate actions 2) Comms plan 3) Risks & mitigations'}
+    ],
+    boosters:[
+      'Take a deep breath. Think step by step. First list assumptions and unknowns; then reason in numbered steps; then propose actions; end with a short checklist.',
+      'Separate “Reasoning” from “Recommendation” using clear headings. Flag trade-offs and edge cases.'
+    ],
+    template:({role,scenario,goal,constraints,format,ctx})=>[
+      'Engage in deliberate reasoning before answering.',
+      ctx&&`Context: ${ctx}`,
+      role&&`Role: ${role}`,
+      scenario&&`Scenario: ${scenario}`,
+      goal&&`Primary goal: ${goal}`,
+      constraints&&`Constraints: ${constraints}`,
+      'Deliberate: Take a deep breath; think step by step; state assumptions and unknowns; evaluate trade-offs.',
+      format&&`Format: ${format}`,
+      'Return:\n1) Reasoning\n2) Recommendation\n3) Checklist'
     ].filter(Boolean).join('\n')
   },
   
@@ -2172,52 +2878,92 @@ boosters: [
   kind:'pattern',
   categories:['reasoning','planning'],
   tags:[
-    'type:pattern','topic:reasoning','topic:branching','phase:explore','level:intermediate',
+    'type:pattern','topic:reasoning','topic:branching','phase:explore','level:advanced',
     'use:brainstorm','use:compare-alternatives','use:decision'
   ],
   use_cases:[
     'generate multiple solution paths before deciding',
-    'compare tradeoffs across ideas',
-    'pick a best path with brief justification'
+    'compare tradeoffs across ideas using a scoring rubric',
+    'pick a best path with justification and a reflect pass'
   ],
-  definition:'Explore several reasoning branches (a small tree), score them against criteria, and choose a path.',
-  help:'Describe the problem, list evaluation criteria (one per line), and add guardrails. The model will branch briefly and then decide.',
+  definition:'Explore three distinct reasoning branches (fast/minimal; thorough/future-proof; creative alternative), score them with a rubric, select/synthesize, deliver, then reflect.',
+  help:'Describe the task, constraints, and what “good” looks like. Optionally paste custom evaluation criteria (one per line). Guardrails include arithmetic checks, terminology clarity, source-of-truth checks for time-varying info, and bias/inclusion calls.',
   boosters:[
-    'Limit depth to 2–3 and 2–3 branches per node.',
-    'Keep justifications to one sentence per branch (avoid long hidden reasoning).',
-    'Summarize why the chosen path wins in ≤2 sentences.'
+    'Keep branches shallow (depth 2–3) to avoid overthinking.',
+    'Use explicit labels: Branch A, A1, A2… Branch B… Branch C…',
+    'Score on 1–5 with one-line justifications per criterion.',
+    'Run a quick reflect pass: math/terms/bias/constraints.',
+    'If the user supplied criteria, use them; otherwise use the default rubric included below.'
   ],
   fields:[
-    { key:'problem',  label:'Problem / goal', type:'textarea',
-      desc:'What needs solving or deciding?',
+    { key:'problem',  label:'Task / problem', type:'textarea',
+      desc:'What should be solved or decided?',
       ph:'e.g., Choose a pricing model for a new SaaS.' },
-    { key:'criteria', label:'Evaluation criteria (one per line)', type:'textarea',
-      desc:'How to judge branches.',
-      ph:'Revenue predictability…\nAdoption friction…\nEase of experimentation…' },
-    { key:'dos',      label:"Do's (must do)", type:'textarea',
-      desc:'Positive guardrails.',
-      ph:'Provide scores 1–5; include a quick pro/con per branch.' },
-    { key:'donts',    label:"Don\'ts / constraints", type:'textarea',
-      desc:'Limits to respect.',
-      ph:'No long essays; ≤250 words total.' }
+    { key:'constraints', label:'Constraints (time/tools/tone/privacy)', type:'textarea',
+      desc:'Limits to respect; hard requirements.',
+      ph:'e.g., Launch in 2 weeks; no paid ads; tone: friendly/expert.' },
+    { key:'success', label:'Success criteria (what “good” looks like)', type:'textarea',
+      desc:'How the output will be judged.',
+      ph:'e.g., Clear pricing tiers, easy to A/B test, predictable revenue.' },
+    { key:'criteria', label:'Evaluation criteria (optional, one per line)', type:'textarea',
+      desc:'If empty, a default rubric will be used.',
+      ph:'Plausibility…\nEvidence…\nConstraint fit…\nRisk profile…\nInclusivity…\nSimplicity…\nNovelty…' }
   ],
-  template: ({ problem, criteria, dos, donts, ctx, audience, style, tone }) => [
-    'Use Tree-of-Thought (branching brainstorm): propose alternatives, score them briefly, then choose one.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    problem && `Problem: ${problem}`,
-    criteria && (
-      'Evaluation criteria:\n' + String(criteria)
-        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
-        .map((c,i)=> `${i+1}. ${c}`).join('\n')
-    ),
-    dos && `Do:\n${dos}`,
-    donts && `Don\'t:\n${donts}`,
-    'Output format:\n1) Branching brainstorm (depth 2–3; 2–3 branches per node). Use labels like 1, 1.1, 1.2.\n2) Brief scores per branch (1 sentence each).\n3) Chosen path with a 1–2 sentence rationale.\n4) Final recommendation or answer.'
-  ].filter(Boolean).join('\n')
+  template: ({ problem, constraints, success, criteria, ctx, audience, style, tone }) => {
+    const rubricLines = String(criteria||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+    const rubric = rubricLines.length
+      ? 'Evaluation criteria:\n' + rubricLines.map((c,i)=>`${i+1}. ${c}`).join('\n')
+      : [
+          'Default scoring rubric (1–5 each):',
+          '1) Plausibility — internally coherent and realistic.',
+          '2) Evidence — verifiable facts; cite when needed.',
+          '3) Constraint fit — matches time, tools, and tone.',
+          '4) Risk profile — failure modes, ambiguity, hidden costs.',
+          '5) Inclusivity — avoid Western-centric defaults; note lenses.',
+          '6) Simplicity — minimum moving parts.',
+          '7) Novelty — useful creativity without hand-waving.'
+        ].join('\n');
+
+    return [
+      'You are in Tree-of-Thought mode.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      problem && `Task: ${problem}`,
+      constraints && `Constraints: ${constraints}`,
+      success && `Success criteria: ${success}`,
+      rubric,
+      'Procedure:',
+      '1) Generate 3 branches with different assumptions:',
+      '   • Branch A: fast/minimal solution',
+      '   • Branch B: thorough/future-proof solution',
+      '   • Branch C: creative alternative',
+      '   For each branch, list: assumptions, 3–5 steps, facts needed, risks, brief cost/benefit.',
+      '2) Expand only the 2 most promising steps per branch to avoid overthinking.',
+      '3) Score each branch on the rubric (1–5) with one-line justifications.',
+      '4) Select the winning branch or synthesize a blend (2–4 lines on why).',
+      '5) Produce the final deliverable.',
+      '6) Reflect pass: check math (digit-by-digit if any), clarify terminology on first use, verify time-varying info against a source of truth, call out potential bias/assumptions, and list trade-offs in 3 bullets.',
+      'Output format:',
+      'Root',
+      '├─ Branch A',
+      '│  ├─ A1 …',
+      '│  ├─ A2 …',
+      '│  └─ …',
+      '├─ Branch B',
+      '│  ├─ B1 …',
+      '│  ├─ B2 …',
+      '│  └─ …',
+      '└─ Branch C',
+      '   ├─ C1 …',
+      '   ├─ C2 …',
+      '   └─ …',
+      '→ Scores table → Selected path/synthesis → Final answer → Reflect pass.'
+    ].filter(Boolean).join('\n');
+  }
 },
+
 
 {
   id:'tot_decompose',
@@ -2226,58 +2972,148 @@ boosters: [
   kind:'pattern',
   categories:['reasoning','planning'],
   tags:[
-    'type:pattern','topic:decomposition','topic:branching','phase:plan','level:intermediate',
+    'type:pattern','topic:decomposition','topic:branching','phase:plan','level:advanced',
     'use:breakdown','use:alternatives','use:execution-plan'
   ],
   use_cases:[
-    'break a complex goal into a branching plan',
-    'surface alternative sub-steps at key nodes',
-    'pick a minimal viable path to execute next'
+    'break a complex goal into a branching plan with alternatives',
+    'surface trade-offs at ambiguous nodes with scoring',
+    'select a minimal viable critical path with checkpoints'
   ],
-  definition:'Decompose a complex goal into a branching hierarchy of sub-tasks with alternatives and select a minimal path.',
-  help:'Provide the complex goal and (optionally) focal areas and risks. The model will build a small tree and select a path.',
+  definition:'Decompose a complex goal into a branching hierarchy with alternative sub-steps, score branch strategies, select a critical path, then reflect.',
+  help:'Provide the goal, constraints, and any focus areas or risks. The model will build a numbered tree, compare strategies, choose a minimal viable path, and list next actions.',
   boosters:[
     'Show a numbered hierarchy (1, 1.1, 1.1.1).',
     'Offer 2–3 alternative sub-steps at ambiguous nodes.',
-    'End with a smallest-next-action checklist.'
+    'Label dependencies and the critical path.',
+    'End with a smallest-next-action checklist and a reflect pass.'
   ],
   fields:[
-    { key:'goal',     label:'Goal / complex task', type:'textarea',
+    { key:'goal',  label:'Goal / complex task', type:'textarea',
       desc:'What should be decomposed?',
       ph:'e.g., Launch a developer portal in 6 weeks.' },
+    { key:'constraints', label:'Constraints (time/tools/tone/privacy)', type:'textarea',
+      desc:'Limits to respect; hard requirements.',
+      ph:'e.g., 2 engineers, budget $5k, HIPAA data.' },
+    { key:'success', label:'Success criteria (what “good” looks like)', type:'textarea',
+      desc:'How the outcome will be judged.',
+      ph:'e.g., Docs coverage ≥80%, SSO, <200ms P95.' },
     { key:'facets',   label:'Focus areas (one per line, optional)', type:'textarea',
       desc:'Dimensions to branch on (e.g., people, process, tooling).',
       ph:'Docs…\nAuth…\nDX metrics…\nContent strategy…' },
-    { key:'risks',    label:'Risks & assumptions (one per line, optional)', type:'textarea',
+    { key:'risks',    label:'Known risks & assumptions (one per line, optional)', type:'textarea',
       desc:'Things that could change the plan.',
       ph:'Limited writer bandwidth…\nPending legal review…' },
-    { key:'dos',      label:"Do's (must do)", type:'textarea',
-      desc:'Positive guardrails.',
-      ph:'Identify dependencies; label critical path.' },
-    { key:'donts',    label:"Don\'ts / constraints", type:'textarea',
-      desc:'Limits to respect.',
-      ph:'Keep to ≤400 words; avoid tool lock-in.' }
+    { key:'criteria', label:'Evaluation criteria (optional, one per line)', type:'textarea',
+      desc:'If empty, a default rubric will be used.',
+      ph:'Plausibility…\nEvidence…\nConstraint fit…\nRisk profile…\nInclusivity…\nSimplicity…\nNovelty…' }
   ],
-  template: ({ goal, facets, risks, dos, donts, ctx, audience, style, tone }) => [
-    'Use Tree-of-Thought decomposition to create a branching plan, then select a minimal viable path.',
+  template: ({ goal, constraints, success, facets, risks, criteria, ctx, audience, style, tone }) => {
+    const rubricLines = String(criteria||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+    const rubric = rubricLines.length
+      ? 'Evaluation criteria:\n' + rubricLines.map((c,i)=>`${i+1}. ${c}`).join('\n')
+      : [
+          'Default scoring rubric (1–5 each):',
+          '1) Plausibility — internally coherent and realistic.',
+          '2) Evidence — verifiable facts; cite when needed.',
+          '3) Constraint fit — matches time, tools, and tone.',
+          '4) Risk profile — failure modes, ambiguity, hidden costs.',
+          '5) Inclusivity — avoid Western-centric defaults; note lenses.',
+          '6) Simplicity — minimum moving parts.',
+          '7) Novelty — useful creativity without hand-waving.'
+        ].join('\n');
+
+    const facetsBlock = String(facets||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+    const risksBlock = String(risks||'').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+
+    return [
+      'You are in Tree-of-Thought mode.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      goal && `Goal: ${goal}`,
+      constraints && `Constraints: ${constraints}`,
+      success && `Success criteria: ${success}`,
+      facetsBlock.length && ('Focus areas:\n' + facetsBlock.map((f,i)=>`${i+1}. ${f}`).join('\n')),
+      risksBlock.length && ('Known risks & assumptions:\n' + risksBlock.map((r,i)=>`${i+1}. ${r}`).join('\n')),
+      rubric,
+      'Procedure:',
+      '1) Build a branching decomposition as a numbered tree (depth 2–3). Where a node is ambiguous, show 2–3 alternative sub-steps with brief pros/cons.',
+      '2) Propose 3 branch strategies at the top level:',
+      '   • Branch A: fast/minimal deliverable',
+      '   • Branch B: thorough/future-proof deliverable',
+      '   • Branch C: creative or non-obvious approach',
+      '   For each, list assumptions, 3–5 major steps, key dependencies, and risks.',
+      '3) Score the 3 branches on the rubric (1–5) with one-line justifications and a short cost/benefit.',
+      '4) Select the critical path (minimal viable plan) and label it in the tree. Include dependencies and 2–4 checkpoints.',
+      '5) Next actions: a checklist of 5–8 smallest steps to start in the next 1–2 days.',
+      '6) Reflect pass: check math (digit-by-digit if any), clarify terminology on first use, verify time-varying info against a source of truth, call out potential bias/assumptions, and list any trade-offs in 3 bullets.',
+      'Output format:',
+      '1) Numbered tree (1, 1.1, 1.1.1) with alternatives annotated',
+      '2) Branch A/B/C summaries',
+      '3) Scores table',
+      '4) Selected critical path with dependencies + checkpoints',
+      '5) Next-actions checklist',
+      '6) Reflect pass notes'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+{
+  id:'triangulation',
+  slug:'triangulation-methods',
+  label:'Triangulation Methods',
+  kind:'pattern',
+  categories:['research','ethics','bias'],
+  tags:[
+    'type:pattern','topic:triangulation','topic:validation','level:intermediate',
+    'use:ux-research','use:analytics','use:mixed-methods'
+  ],
+  use_cases:[
+    'reduce single-method bias by cross-checking findings',
+    'document alignment/divergence across methods',
+    'decide where to deepen research'
+  ],
+  definition:'Use multiple methods/sources to converge on more reliable findings and reduce researcher bias.',
+  help:'Capture A/B (and optional C) methods + findings; then cross-check alignment and note dominance risks.',
+  boosters:[
+    'Label each method with its sampling limits.',
+    'End with a “What we’ll do next” line for resolving divergences.'
+  ],
+  fields:[
+    { key:'question',  label:'Question being investigated', type:'textarea', ph:'Research focus / decision at stake.' },
+    { key:'method_a',  label:'Method A', type:'text', ph:'Survey / Interview / Analytics…' },
+    { key:'findings_a',label:'Findings from A', type:'textarea', ph:'Bullets; one per line.' },
+    { key:'method_b',  label:'Method B', type:'text', ph:'Different lens' },
+    { key:'findings_b',label:'Findings from B', type:'textarea', ph:'Bullets; one per line.' },
+    { key:'method_c',  label:'Method C (optional)', type:'text', ph:'Third lens' },
+    { key:'findings_c',label:'Findings from C (optional)', type:'textarea', ph:'Bullets; one per line.' },
+    { key:'cross',     label:'Cross-check — where do findings align/diverge?', type:'textarea', ph:'Note convergences and tensions.' },
+    { key:'bias_risk', label:'Bias risk — which perspective dominates?', type:'textarea', ph:'Recruitment, sampling, analyst bias…' }
+  ],
+  template: ({ question, method_a, findings_a, method_b, findings_b, method_c, findings_c, cross, bias_risk, ctx, audience, style, tone }) => [
+    'Run a triangulation summary to reduce single-method bias.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
-    goal && `Goal: ${goal}`,
-    facets && (
-      'Focus areas:\n' + String(facets)
-        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
-        .map((f,i)=> `${i+1}. ${f}`).join('\n')
-    ),
-    risks && (
-      'Risks & assumptions:\n' + String(risks)
-        .split(/\n+/).map(s=>s.trim()).filter(Boolean)
-        .map((r,i)=> `${i+1}. ${r}`).join('\n')
-    ),
-    dos && `Do:\n${dos}`,
-    donts && `Don\'t:\n${donts}`,
-    'Output format:\n1) Branching decomposition (numbered tree; show 2–3 alternatives where useful)\n2) Critical path (the minimal set of nodes)\n3) Dependencies & checkpoints\n4) Next actions (checklist)'
+    question && ('Question:\n' + question),
+    (method_a || findings_a) && [
+      `Method A: ${method_a||''}`,
+      findings_a && ('Findings A:\n' + String(findings_a).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`- ${x}`).join('\n'))
+    ].filter(Boolean).join('\n'),
+    (method_b || findings_b) && [
+      `Method B: ${method_b||''}`,
+      findings_b && ('Findings B:\n' + String(findings_b).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`- ${x}`).join('\n'))
+    ].filter(Boolean).join('\n'),
+    (method_c || findings_c) && [
+      `Method C: ${method_c||''}`,
+      findings_c && ('Findings C:\n' + String(findings_c).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`- ${x}`).join('\n'))
+    ].filter(Boolean).join('\n'),
+    cross && ('Cross-check:\n' + cross),
+    bias_risk && ('Bias risk:\n' + bias_risk),
+    'Output:\n1) Convergences\n2) Divergences\n3) Dominance risks\n4) Next research step'
   ].filter(Boolean).join('\n')
 },
 
@@ -2345,6 +3181,88 @@ boosters: [
     donts && `Don\'t:\n${donts}`,
     'Output:\n1) Map contradictions → candidate inventive principles\n2) 3–5 concepts referencing principles\n3) Quick feasibility/impact check'
   ].filter(Boolean).join('\n')
+},
+
+{
+  id:'vars_delims',
+  slug:'variables-and-delimiters',
+  label:'Variables & Delimiters — Define once, reuse cleanly',
+  kind:'framework',
+  categories:['prompt development techniques','structuring'],
+  tags:[
+    'type:framework','topic:prompting','phase:compose','level:beginner',
+    'use:variables','use:delimiters','use:glossary','use:spec'
+  ],
+  use_cases:[
+    'long prompts with reusable terms','glossaries & specs','persona/role libraries','data field definitions'
+  ],
+  definition:'Declare variables once (names + definitions aligned by line). We auto-fence a VARIABLES block so the model resolves {NAME} unambiguously.',
+  help:'In “Variables”, list names one per line (e.g., USER_ROLE). In “Definitions”, list matching definitions one per line (e.g., Senior data analyst…). Lines are zipped by index. Reference variables later as {USER_ROLE}.',
+  fields:[
+    { key:'variables',   label:'Variables (one per line)',      type:'textarea',
+      desc:'Each line is a variable NAME. Uppercase is recommended (e.g., USER_ROLE).',
+      ph:'USER_ROLE\nDATASET\nSUCCESS_CRITERIA' },
+
+    { key:'definitions', label:'Definitions (one per line)',    type:'textarea',
+      desc:'Each line defines the variable at the same line-number.',
+      ph:'Senior data analyst reporting to the VP of Growth\nCSV with columns date, clicks, cost, conversions\nClear, testable outcomes within 30 days' },
+
+    { key:'task',        label:'Primary task',                  type:'textarea',
+      desc:'What you want done using the variables.',
+      ph:'Write a 150–200 word onboarding email that references {USER_ROLE} and {SUCCESS_CRITERIA} and uses data from {DATASET}.' },
+
+    { key:'constraints', label:'Constraints (optional)',        type:'textarea',
+      desc:'Rules, limits, must-haves.',
+      ph:'Plain language; cite {DATASET} column names exactly; avoid jargon.' },
+
+    { key:'format',      label:'Response format (optional)',    type:'textarea',
+      desc:'Headings/structure for output.',
+      ph:'Markdown: Summary, Steps, Checklist' }
+  ],
+  boosters:[
+    'Treat each {NAME} as canonical. If any mapping is missing, ask one concise clarifying question, then proceed.',
+    'Keep variables verbatim (case-sensitive) when referencing, e.g., {USER_ROLE}.'
+  ],
+  template:({variables,definitions,task,constraints,format,ctx})=>{
+    const toLines = s => (s||'').split('\n').map(x=>x.trim()).filter(x=>x.length>0);
+    const names = toLines(variables);
+    const defs  = toLines(definitions);
+
+    const max = Math.max(names.length, defs.length);
+    const pairs = [];
+    for (let i=0;i<max;i++){
+      const name = (names[i]||'').trim();
+      const def  = (defs[i] || '(define)').trim();
+      // skip fully empty lines
+      if (!name && !def) continue;
+      // provide a fallback name if definition appears without a name
+      pairs.push([ name || `VAR_${i+1}`, def ]);
+    }
+
+    const mapped = pairs.map(([n,d])=>`${n} = ${d}`).join('\n');
+
+    const issues = [];
+    if (names.length !== defs.length){
+      issues.push(`Note: ${names.length} variable(s) and ${defs.length} definition(s).`);
+    }
+    const bad = names.filter(n => n && !/^[A-Z][A-Z0-9_]*$/.test(n));
+    if (bad.length){
+      issues.push(`Suggestion: Normalize to UPPER_SNAKE_CASE → ${bad.join(', ')}`);
+    }
+
+    return [
+      'Use the following variable definitions. Treat them as canonical.',
+      '```VARIABLES',
+      mapped,
+      '```',
+      ctx && `Context: ${ctx}`,
+      task && `Task: ${task}`,
+      constraints && `Constraints: ${constraints}`,
+      issues.length ? `Validator: ${issues.join(' ')}` : null,
+      'Rules: Always resolve placeholders like {NAME} from the VARIABLES block above. If any value is "(define)", ask one concise question, then proceed.',
+      format && `Format: ${format}`
+    ].filter(Boolean).join('\n');
+  }
 }
 
 ];
@@ -3032,6 +3950,52 @@ fw.fields.forEach(f=>{
     fieldsWrap.appendChild(wrap);
     return; // important: skip the default single-input branch
   }
+  
+    // SELECT (dropdown) branch
+  if (f.type === 'select'){
+    const holder = document.createElement('div');
+    holder.className = 'fieldHolder';
+
+    const sel = document.createElement('select');
+    sel.id = f.key;
+
+    // Accept either [{value,label}, ...] or ["value", ...]
+    (f.options || []).forEach(opt => {
+      const o = document.createElement('option');
+      if (typeof opt === 'string'){
+        o.value = opt; o.textContent = opt;
+      } else {
+        o.value = opt.value;
+        o.textContent = opt.label || opt.value;
+      }
+      sel.appendChild(o);
+    });
+
+    // Initialize & wire state
+    const current = (t.fields && t.fields[f.key]) || sel.options[0]?.value || '';
+    sel.value = current;
+    (t.fields || (t.fields = {}))[f.key] = sel.value;
+
+    sel.addEventListener('change', ()=>{
+      (t.fields || (t.fields = {}))[f.key] = sel.value;
+      emit();
+    });
+
+    holder.appendChild(sel);
+    wrap.appendChild(holder);
+
+    // Optional helper text
+    if (f.desc){
+      const d = document.createElement('div');
+      d.className = 'desc';
+      d.textContent = f.desc;
+      wrap.appendChild(d);
+    }
+
+    fieldsWrap.appendChild(wrap);
+    return; // skip default branch
+  }
+
 
   // DEFAULT single input/textarea branch
   const holder = document.createElement('div');
