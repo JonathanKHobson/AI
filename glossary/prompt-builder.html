@@ -110,6 +110,18 @@
   padding:4px 8px; font-size:12px; border-radius:999px;
 }
 
+/* Hint: shows "Showing N/M" when filtered */
+.finder .hint{
+  position:absolute;
+  right:56px;              /* sits just to the left of the All button */
+  top:50%; transform:translateY(-50%);
+  font-size:12px;
+  color:var(--muted);
+  opacity:.9;
+  pointer-events:none;     /* don't steal clicks from the input */
+}
+
+
 
 
 /* Not Using */
@@ -357,12 +369,20 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 #out .outCoach[data-state="high"]    .pill{ border-left:4px solid var(--red); }
 
 /* Make room at the top of the preview when coach is visible */
-#out.hasCoach{ padding-top:52px; } /* overrides any hasCounter top padding */
+#out.hasCoach{
+  padding-top:52px;
+  /* NEW: reserve horizontal space for the coach pill */
+  padding-right: var(--coachPad, 160px) !important;
+}
 
 
-#out.hasCounter{ padding-top:28px; } /* gives breathing room below the counter */
- 
-    
+
+#out.hasCounter{
+  padding-top:28px;
+  /* NEW: reserve horizontal space for the corner counter */
+  padding-right: var(--counterPad, 72px);
+}
+   
     /* Independent scroll for the left panel */
 #configPanel{
   position: sticky;
@@ -457,10 +477,12 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       <section>
         <label for="frameworkSel">Templates</label>
         
- <div id="finderBar" class="finder">
+<div id="finderBar" class="finder">
   <input id="fwSearch" type="text" placeholder="Find a template by name, tag, or use case… (Ctrl/Cmd+K)">
+  <span id="fwHint" class="hint" aria-live="polite" hidden></span>
   <button id="fwAll" type="button" class="btn tiny" title="Show full list">All</button>
 </div>
+
 
 
         <select id="frameworkSel"></select>
@@ -2409,9 +2431,9 @@ function buildFrameworkOptions(filterText=''){
   const base = FRAMEWORKS.slice()
     .sort((a,b)=> a.label.localeCompare(b.label,'en',{sensitivity:'base'}));
 
+  const total = base.length;
   let list = base;
 
-  // If there’s a query, score + filter; else show all A→Z
   const q = (filterText||'').trim();
   if (q){
     list = base
@@ -2422,7 +2444,7 @@ function buildFrameworkOptions(filterText=''){
     if (!list.length) list = base; // graceful fallback
   }
 
-  // rebuild <select>
+  // Rebuild <select> to reflect the filtered ordering
   sel.innerHTML = '';
   list.forEach(f=>{
     const o = document.createElement('option');
@@ -2431,10 +2453,30 @@ function buildFrameworkOptions(filterText=''){
     sel.appendChild(o);
   });
 
-const t = activeTab();
-  // preserve or set selection
-  if (!t.id || !list.find(x=>x.id===t.id)) t.id = list[0]?.id || null;
-  sel.value = t.id || '';
+  // Update the little "Showing N/M" hint
+  const fwHint = document.getElementById('fwHint');
+  if (fwHint){
+    if (q){
+      // If we fell back to base because there were 0 hits, treat it as "all"
+      const isFallback = !base.some(b => (norm(b.label).includes(norm(q))));
+      const count = isFallback ? total : list.length;
+      fwHint.textContent = `Showing ${count}/${total} — Hit Enter`;
+      fwHint.hidden = false;
+    } else {
+      fwHint.textContent = '';
+      fwHint.hidden = true;
+    }
+  }
+
+  // Preserve current tab's selection if it's in the filtered list; otherwise
+  // at least show the *first* filtered option in the dropdown so users see the filter working.
+  const t = activeTab();
+  const keep = t.id && list.find(x=>x.id===t.id);
+  if (keep){
+    sel.value = t.id;
+  } else {
+    sel.selectedIndex = 0;  // visually show the top match
+  }
 }
 
 
@@ -2669,25 +2711,39 @@ function enrichFromGlossary(fw){
 }
 
 if (searchEl){
+  // Live filter as you type
   searchEl.addEventListener('input', ()=>{
     buildFrameworkOptions(searchEl.value);
   });
 
-  // Enter: immediately pick the first visible option
+  // Keyboard niceties on the search box
   searchEl.addEventListener('keydown', (e)=>{
+    // Ctrl/Cmd+K handled globally elsewhere — keep it
     if (e.key === 'Enter'){
+      // Rebuild once more to be 100% in-sync with what's visible
+      buildFrameworkOptions(searchEl.value);
       const first = sel.options[0];
       if (first){
-const t = activeTab();
-sel.value = first.value;
-t.id = first.value;
-t.fields = {};
-renderFields(); emitAll();
+        const t = activeTab();
+        sel.value = first.value;   // mirror visually
+        t.id = first.value;        // commit selection
+        t.fields = {};
+        renderFields(); emitAll(); nudgeFieldsSwap();
       }
+    } else if (e.key === 'ArrowDown'){
+      // Move focus into the result list so arrow keys can pick an item
+      e.preventDefault();
+      sel.focus();
+    } else if (e.key === 'Escape'){
+      // Clear filter and show all
+      searchEl.value = '';
+      buildFrameworkOptions('');
+      const hint = document.getElementById('fwHint'); if (hint){ hint.hidden = true; hint.textContent = ''; }
+      sel.focus();
     }
   });
 
-  // Ctrl/Cmd+K to focus the search bar
+  // Global: Ctrl/Cmd+K focuses the search bar
   document.addEventListener('keydown', (e)=>{
     const k = e.key.toLowerCase();
     if ((k === 'k') && (e.ctrlKey || e.metaKey)){
@@ -2697,6 +2753,7 @@ renderFields(); emitAll();
     }
   });
 }
+
 
 if (allBtn){
   allBtn.addEventListener('click', ()=>{
@@ -3252,6 +3309,25 @@ function emit(){
   if (!t.extra || !t.extra.trim()) delete t.extra; // NEW: allow booster prefill for new template
    renderTabs(); renderFields(); emitAll(); nudgeFieldsSwap();
 });
+
+// New: one-click commit of the top search hit when a filter is active.
+// This avoids the awkward "pick something else, then come back" dance.
+sel.addEventListener('mousedown', () => {
+  const q = (document.getElementById('fwSearch')?.value || '').trim();
+  if (!q) return; // only intervene when filtering
+  const first = sel.options[0];
+  if (!first) return;
+  const t = activeTab();
+  if (t.id !== first.value) {
+    // Mirror UI and commit selection
+    sel.value = first.value;
+    t.id = first.value;
+    t.fields = {};
+    if (!t.extra || !t.extra.trim()) delete t.extra; // allow booster prefill on new template
+    renderTabs(); renderFields(); emitAll(); nudgeFieldsSwap();
+  }
+});
+
 
     ['usecase','audience','style','tone'].forEach(id=>{
       const el = document.getElementById(id); fieldInput(el, emit);
