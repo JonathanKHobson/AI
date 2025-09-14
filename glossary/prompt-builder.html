@@ -998,7 +998,7 @@ function TASKS(){ return Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMP
 function withNone(list){
   return list.some(f=>f && f.id === 'none')
     ? list
-    : [{ id:'none', label:'— Select a template —' }, ...list];
+    : [{ id:'none', label:'— Template Picker —' }, ...list];
 }
 
 // Cross-dataset lookup by id (works for Patterns or Tasks, independent of current chip)
@@ -1648,6 +1648,7 @@ function clearOrCloseTab(idx){
   }
 
   // Single tab: reset this tab to the default "— Select a template —"
+  
 state.tabs[0] = {
   id: 'none',
   fields: {},
@@ -1722,8 +1723,10 @@ x.title = 'Remove this template';
       
 
 function makePromptForTab(t){
-  const fw = FIND(t.id);
-  if (!fw || fw.id === 'none') return '';
+const fw = FIND(t.id);
+const hasRealFields = fw && Array.isArray(fw.fields) && fw.fields.length > 0;
+if (!fw || (fw.id === 'none' && !hasRealFields)) return '';
+
   const meta = enrichFromGlossary ? enrichFromGlossary(fw) : fw; // safe if enrichment not present
 const c = (t.common || {});
 const merged = {
@@ -1798,8 +1801,12 @@ actions.appendChild(x);
       const t = activeTab();
 const fw = FIND(t?.id);
 fieldsWrap.innerHTML = '';
-if (!fw || fw.id === 'none'){
+const hasRealFields = fw && Array.isArray(fw.fields) && fw.fields.length > 0;
+if (!fw || (fw.id === 'none' && !hasRealFields)){
   help.textContent = 'Pick a template above to get started.';
+
+
+
   // Show a little context chip even when empty
   const ctx = document.createElement('div');
   ctx.id = 'tabContext';
