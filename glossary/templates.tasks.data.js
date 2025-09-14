@@ -1,6 +1,6 @@
-// Minimal starter; expand later.
-// Must be on window.* so our loader can find it.
-window.TASK_TEMPLATES = [
+;(function(root){
+  root.TASK_TEMPLATES = [
+
   {
   id: 'none',
   slug: 'none',
@@ -135,9 +135,14 @@ window.TASK_TEMPLATES = [
       },
 
       /* Persona-powered typeahead: draws from persona.data.js (free text allowed) */
-      { key:'style_persona',   label:'Style persona (optional)',    type: 'typeahead', autofill: 'persona->textarea',
-        ph:'e.g., “Seasoned PM”, “Warm mentor”, “Analytical consultant”',
-        desc:'Type to search your persona library.'
+      { key:'style_persona',
+  label:'Style persona (optional)',
+  type:'repeater',
+  itemType:'typeahead',
+  itemLabel:'persona',
+  autofill:'persona->inline',
+  ph:'e.g., “Seasoned PM”, “Warm mentor”, “Analytical consultant”',
+  desc:'Type to search your persona library.'
       },
 
       /* Dual-tone selector (second is optional) */
@@ -278,8 +283,13 @@ window.TASK_TEMPLATES = [
     { key:'relationship', label:'Relationship', type:'select',
       options:['cold','warm (light prior touch)','known colleague','friend/peer','internal teammate']
     },
-    { key:'style_persona', label:'Style persona (optional)', type:'typeahead',
-      ph:'e.g., “Helpful PM”, “Curious analyst”'
+    { key:'style_persona', label:'Style persona (optional)',   
+    type:'repeater',
+  itemType:'typeahead',
+  itemLabel:'persona',
+  autofill:'persona->inline',
+ph:'e.g., “Helpful PM”, “Curious analyst”',
+    desc:'Type to search your persona library.'
     },
     { key:'tone_primary',  label:'Tone', type:'select',
       options:['professional','friendly','polite','confident','humble','direct','concise','warm','empathetic','authoritative','casual','inquisitive','urgent','no-nonsense']
@@ -364,6 +374,15 @@ window.TASK_TEMPLATES = [
     { key:'title',      label:'Working title', type:'text', ph:'Reduce churn in Q4' },
     { key:'audience',   label:'Audience', type:'select',
       options:['team','leadership','all-hands','cross-functional','customers'] },
+          { key:'style_persona', label:'Style persona (optional)',   
+    type:'repeater',
+  itemType:'typeahead',
+  itemLabel:'persona',
+  autofill:'persona->inline',
+ph:'e.g., “Helpful PM”, “Curious analyst”',
+    desc:'Type to search your persona library.'
+
+    },
     { key:'purpose',    label:'Purpose', type:'select',
       options:['inform','propose decision','request resources','share update'] },
     { key:'tone_primary', label:'Tone', type:'select',
@@ -420,6 +439,7 @@ window.TASK_TEMPLATES = [
       'Draft an internal memo.',
       f.title&&`Title: ${f.title}`,
       f.audience&&`Audience: ${f.audience}`,
+      f.style_persona&&`Write in the voice of: ${f.style_persona}.`,
       f.purpose&&`Purpose: ${f.purpose}`,
       (tones||f.tone)&&`Tone: ${tones||f.tone}`,
       `Length: ${lenStr}`,
@@ -452,7 +472,13 @@ window.TASK_TEMPLATES = [
     { key:'letter_type',   label:'Letter type', type:'select',
       options:['cover','recommendation','complaint','appreciation','apology','request','general'] },
     { key:'subject_hint',  label:'Subject (optional)', type:'text' },
-    { key:'style_persona', label:'Style persona (optional)', type:'typeahead' },
+    { key:'style_persona', label:'Style persona (optional)',   type:'repeater', 
+    itemType:'typeahead', 
+    itemLabel:'persona',
+    autofill:'persona->inline', 
+ph:'e.g., “Helpful PM”, “Curious analyst”',
+    desc:'Type to search your persona library.'
+ },
     { key:'tone_primary',  label:'Tone', type:'select',
       options:['formal','professional','warm','respectful','concise','empathetic','apologetic'] },
     { key:'tone_secondary',label:'Tone (2nd, optional)', type:'select',
@@ -530,6 +556,13 @@ window.TASK_TEMPLATES = [
     { key:'channel',    label:'Channel', type:'select',
       options:['email','Slack/Teams','intranet','blog/website','meeting script'] },
     { key:'audience',   label:'Audience', type:'text', ph:'All customers · Engineering · APAC' },
+        { key:'style_persona', label:'Style persona (optional)',   type:'repeater', 
+    itemType:'typeahead', 
+    itemLabel:'persona',
+    autofill:'persona->inline', 
+ph:'e.g., “Helpful PM”, “Curious analyst”',
+    desc:'Type to search your persona library.'
+},
     { key:'headline',   label:'Headline (optional)', type:'text' },
     { key:'effective',  label:'Effective date/time', type:'text', ph:'Oct 12, 10:00 PT' },
     { key:'tone_primary', label:'Tone', type:'select',
@@ -575,6 +608,7 @@ window.TASK_TEMPLATES = [
       'Draft an announcement.',
       f.channel&&`Channel: ${f.channel}`,
       f.audience&&`Audience: ${f.audience}`,
+      f.style_persona&&`Write in the voice of: ${f.style_persona}.`,
       f.headline&&`Headline preference: ${f.headline}`,
       (tones||f.tone)&&`Tone: ${tones||f.tone}`,
       `Length: ${lenStr}`,
@@ -604,6 +638,13 @@ window.TASK_TEMPLATES = [
   definition: 'Standard AP-style press release with headline, subhead, dateline, body, quotes, boilerplate, and media contact.',
   fields: [
     { key:'org',        label:'Organization', type:'text', ph:'Acme, Inc.' },
+        { key:'style_persona', label:'Style persona (optional)',   type:'repeater', 
+    itemType:'typeahead', 
+    itemLabel:'persona',
+    autofill:'persona->inline', 
+ph:'e.g., “Helpful PM”, “Curious analyst”',
+    desc:'Type to search your persona library.'
+ },
     { key:'headline',   label:'Headline', type:'text' },
     { key:'subhead',    label:'Subhead (optional)', type:'text' },
     { key:'dateline_city', label:'Dateline city', type:'text', ph:'SAN FRANCISCO' },
@@ -638,8 +679,9 @@ window.TASK_TEMPLATES = [
     const constraints=f.constraints?`Constraints: ${f.constraints}`:'';
 
     return [
-      'Draft a press release in AP style.',
+      'Finalize a written press release in AP style.',
       f.org&&`Organization: ${f.org}`,
+      f.style_persona&&`Write in the voice of: ${f.style_persona}.`,
       f.headline&&`Headline: ${f.headline}`,
       f.subhead&&`Subhead: ${f.subhead}`,
       (f.dateline_city||f.dateline_date)&&`Dateline: ${[f.dateline_city,f.dateline_date].filter(Boolean).join(', ')}`,
@@ -667,4 +709,28 @@ window.TASK_TEMPLATES = [
     ].filter(Boolean).join('\n');
   }
 }
-];
+  ];
+
+  // === Lightweight search hooks (optional, but makes search/snippets fast) ===
+  // Mirrors how the app scores matches (label/slug/defs/tags/categories/use_cases/boosters/fields)
+  for (const t of TASK_TEMPLATES){
+    t.meta = t.meta || {};
+    const bits = [
+      t.label, t.slug, t.definition, t.help,
+      ...(t.tags || []),
+      ...(t.categories || []),
+      ...(t.use_cases || []),
+      ...(t.boosters || []),
+      ...(Array.isArray(t.fields) ? t.fields.map(f => f?.label || f?.key || '') : [])
+    ].filter(Boolean).join(' ').toLowerCase();
+    t.meta.search_text = bits;
+  }
+
+  // Export under both names (just like TEMPLATES/FRAMEWORKS) to avoid caller drift
+  root.TASK_TEMPLATES = TASK_TEMPLATES;
+  root.TASKS          = TASK_TEMPLATES;
+
+  // Node/CommonJS convenience (harmless in browser)
+  if (typeof module !== 'undefined') module.exports = TASK_TEMPLATES;
+})(typeof window !== 'undefined' ? window : globalThis);
+
