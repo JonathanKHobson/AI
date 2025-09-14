@@ -1129,7 +1129,7 @@ GLOSSARY.push(
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
     categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
+    tags: ["type:technique","type:template","topic:prompting","phase:prompting"],
     related: ["prompt-decomposition"],
     status: "verified",
     notes: ""
@@ -1143,7 +1143,7 @@ GLOSSARY.push(
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
     categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
+    tags: ["type:technique","type:template","topic:prompting","phase:prompting"],
     related: ["prompt-composition","scaffolding"],
     status: "verified",
     notes: ""
@@ -1179,7 +1179,7 @@ GLOSSARY.push(
     definition: `Applying strategies to reduce or highlight biases in outputs to promote fairness and inclusivity.`,
     sources: [],
     categories: ["meta-prompt strategies"],
-    tags: ["type:strategy","topic:safety","phase:evaluation"],
+    tags: ["type:strategy","type:template","topic:safety","phase:evaluation"],
     related: ["addressing-biases-and-ethical-concerns"],
     status: "verified",
     notes: ""
@@ -7815,7 +7815,2594 @@ GLOSSARY.push(
     related: ["chain-of-explanation", "chain-of-knowledge", "graph-of-thought-got"],
     status: "draft",
     notes: "Facilitates emotionally intelligent interactions by focusing on emotional cues."
+  },
+  
+  
+  {
+    slug: "two-minute-rule",
+    term: "2-Minute Rule",
+    aliases: [
+      "2-Minute Rule (David Allen)",
+      "2-Minute Rule",
+      "MR",
+      "2-minute rule"
+  ],
+    definition: `If it takes ≤2 minutes, do it now. Otherwise, define a 2-minute starter.`,
+    sources: [],
+    categories: [
+      "productivity",
+      "behavior"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:two-minute",
+      "use:starter",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:task — what am i avoiding?",
+      "field:can i do a 2-minute version? (yes/no)",
+      "field:if no → 2-minute starter step"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: reduce friction by doing a tiny version now • convert avoidance into a first motion
+  Boosters: If “No,” schedule the starter step on your calendar. Write the starter so it’s purely mechanical.`
+  },
+  {
+    slug: "abcde-cbt-framework",
+    term: "ABCDE",
+    aliases: [
+      "ABCDE — Activating event · Belief · Consequence · Dispute · Effect",
+      "ABCDE",
+      "abcde"
+  ],
+    definition: `A cognitive restructuring tool to challenge a belief by examining an event, the belief, its consequence, disputing the belief, and envisioning a positive effect.`,
+    sources: [],
+    categories: [
+      "psychology",
+      "self-reflection"
+  ],
+    tags: [
+      "type:framework",
+      "topic:cbt",
+      "topic:reframing",
+      "level:intermediate",
+      "use:cognitive-bias",
+      "use:personal-coaching",
+      "use:thought-challenge",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:activating event",
+      "field:belief or thought",
+      "field:consequence (feelings/behavior)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: reframe negative thoughts or assumptions • self-coaching through emotional situations • cognitive bias or stress analysis
+  Boosters: Keep a calm, supportive tone when disputing the belief. Cite evidence or alternative viewpoints that challenge the negative belief.`
+  },
+  {
+    slug: "addie-instructional-design",
+    term: "ADDIE",
+    aliases: [
+      "ADDIE — Analyze · Design · Develop · Implement · Evaluate",
+      "ADDIE",
+      "addie"
+  ],
+    definition: `An instructional design model outlining five phases for creating effective learning experiences.`,
+    sources: [],
+    categories: [
+      "education",
+      "planning"
+  ],
+    tags: [
+      "type:framework",
+      "topic:instructional-design",
+      "phase:plan",
+      "level:beginner",
+      "use:course-development",
+      "use:lesson-planning",
+      "use:training-strategy",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:training topic",
+      "field:learner audience",
+      "field:learning objectives (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: plan and structure an educational course or program • develop training materials systematically • review and improve learning content
+  Boosters: In Analyze, identify learner needs and constraints; in Evaluate, include metrics or feedback methods. Ensure each development step ties back to the learning objectives.`
+  },
+  {
+    slug: "before-after-bridge-formula",
+    term: "Before-After-Bridge (BAB)",
+    aliases: [
+      "Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)",
+      "Before-After-Bridge (BAB)",
+      "BABBAB",
+      "before-after-bridge (bab)"
+  ],
+    definition: `A persuasion formula that contrasts the audience’s world before and after a solution, then positions the solution as the bridge to get from before to after.`,
+    sources: [],
+    categories: [
+      "messaging frameworks",
+      "marketing"
+  ],
+    tags: [
+      "type:framework",
+      "topic:copywriting",
+      "phase:compose",
+      "level:beginner",
+      "use:value-proposition",
+      "use:ad-copy",
+      "use:pitch",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:before — current pain point",
+      "field:after — desired outcome",
+      "field:bridge — solution/offering"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: highlight a product’s impact by contrasting life before vs. after its use • craft persuasive marketing copy or landing page sections • explain change by showing the transformation a solution provides
+  Boosters: Make the "Before" scenario relatable and painful; make the "After" state clearly desirable. Present the solution (Bridge) as the unique link that makes the positive after-state possible.`
+  },
+  {
+    slug: "bias-impact-assessment",
+    term: "Bias Impact Assessment",
+    aliases: [
+      "Bias Impact Assessment (AI/tech)",
+      "Bias Impact Assessment",
+      "BIA",
+      "bias impact assessment"
+  ],
+    definition: `Pre-launch assessment modeled on impact reports to surface stakeholders, risks, mitigations, and monitoring.`,
+    sources: [],
+    categories: [
+      "ai",
+      "ethics",
+      "risk"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:impact-assessment",
+      "topic:transparency",
+      "level:advanced",
+      "use:pre-launch",
+      "use:model-review",
+      "use:policy",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:system / algorithm / product name",
+      "field:intended purpose",
+      "field:stakeholders affected (one per line)",
+      "field:bias risks identified",
+      "field:mitigation steps",
+      "field:transparency / explainability measures",
+      "field:follow-up monitoring plan"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: assess bias risks for systems before launch • define mitigations and transparency steps • plan follow-up monitoring
+  Boosters: Include an explainability note (e.g., model cards/datasheets). Propose a drift/impact monitoring threshold and response path.`
+  },
+  {
+    slug: "bias-interrupters",
+    term: "Bias Interrupters",
+    aliases: [
+      "Bias Interrupters (process checks)",
+      "Bias Interrupters",
+      "BI",
+      "bias interrupters"
+  ],
+    definition: `System-level checks to interrupt bias in hiring, evaluation, and promotion using measurable tweaks.`,
+    sources: [],
+    categories: [
+      "people",
+      "ethics",
+      "operations"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:bias-interrupters",
+      "topic:rubrics",
+      "level:intermediate",
+      "use:hiring",
+      "use:evaluation",
+      "use:promotion",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:process step",
+      "field:bias risk(s)",
+      "field:interrupter strategy",
+      "field:metric to track",
+      "field:iteration plan"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: add measurable process tweaks to interrupt bias • operationalize fair evaluation • track change over time
+  Boosters: Force a named owner per metric. Define success and a review cadence (e.g., quarterly).`
+  },
+  {
+    slug: "cognitive-debiasing",
+    term: "Cognitive Debiasing",
+    aliases: [
+      "Cognitive Debiasing",
+      "CD",
+      "cognitive debiasing"
+  ],
+    definition: `A light-weight scaffold combining “consider the opposite,” disconfirming evidence, and pre-mortem moves.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "bias",
+      "critical thinking"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:debiasing",
+      "topic:consider-the-opposite",
+      "level:beginner",
+      "use:analysis",
+      "use:strategy",
+      "use:review",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:bias in question",
+      "field:my initial assumption",
+      "field:opposite scenario — what if the opposite is true?",
+      "field:disconfirming evidence (≥2, one per line)",
+      "field:pre-mortem (optional) — if this failed, why?",
+      "field:next step decision — what will i adjust?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: document a current assumption and actively seek disconfirming evidence • run a quick pre-mortem on a plan • decide next adjustment with rationale
+  Boosters: Cite at least 2 credible, independent sources that challenge your assumption. Add a one-line pre-mortem: “If this failed in 6 weeks, it would be because…”`
+  },
+  {
+    slug: "comparative-analysis",
+    term: "Comparative Analysis",
+    aliases: [
+      "Comparative Analysis — rank • pros/cons • matrix",
+      "Comparative Analysis",
+      "CA",
+      "comparative analysis"
+  ],
+    definition: `Compare multiple options using a selected comparison style (ranking, pros/cons, table, weighted matrix, etc.).`,
+    sources: [],
+    categories: [
+      "analysis frameworks",
+      "decision support"
+  ],
+    tags: [
+      "type:framework",
+      "topic:comparison",
+      "topic:evaluation",
+      "phase:apply",
+      "level:intermediate",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:topic / decision context",
+      "field:comparison style",
+      "field:options to compare (one per line)",
+      "field:criteria (one per line, optional weights)",
+      "field:rating scale max (only for rating scale)",
+      "field:output rules / format preferences (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: choose between options • competitive analysis • tool selection • feature trade-offs
+  Boosters: End with a concise recommendation and next steps. Surface key trade-offs in one short line per option. If criteria are provided with weights, show the score math simply (no long reasoning).`
+  },
+  {
+    slug: "constraint-flip",
+    term: "Constraint Flip",
+    aliases: [
+      "Constraint Flip (play with edges)",
+      "Constraint Flip",
+      "CF",
+      "constraint flip"
+  ],
+    definition: `Treat a constraint as a lever: exaggerate it to find new ideas; remove it to find alternatives.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "strategy"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:constraints",
+      "use:ideation",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:what’s limiting me right now?",
+      "field:if i exaggerated that constraint, what new idea emerges?",
+      "field:if i removed it entirely, what could i try?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: turn constraints into generators of ideas • explore exaggerated and removed constraint states
+  Boosters: Write at least 3 ideas in each direction. Pick one idea to prototype this week.`
+  },
+  {
+    slug: "eisenhower-priority-matrix",
+    term: "Eisenhower Matrix",
+    aliases: [
+      "Eisenhower Matrix — Urgent/Important Prioritization",
+      "Eisenhower Matrix",
+      "EM",
+      "eisenhower matrix"
+  ],
+    definition: `A time-management framework that sorts tasks into four categories: Do (urgent & important), Schedule (important but not urgent), Delegate (urgent but not important), and Eliminate (neither).`,
+    sources: [],
+    categories: [
+      "productivity",
+      "prioritization"
+  ],
+    tags: [
+      "type:framework",
+      "topic:time-management",
+      "phase:plan",
+      "level:beginner",
+      "use:task-prioritization",
+      "use:time-management",
+      "use:workflow",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:tasks (one per line)",
+      "field:context (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: categorize tasks by urgency and importance • decide what to do now, schedule for later, delegate, or drop • improve personal productivity or team task management
+  Boosters: Include a brief justification for why each task falls into its category. If multiple tasks land in one category, rank them or suggest which to tackle first.`
+  },
+  {
+    slug: "few-shot-examples",
+    term: "Examples / Few-Shot Prompting",
+    aliases: [
+      "Examples / Few-Shot Prompting",
+      "EFSP",
+      "examples / few-shot prompting"
+  ],
+    definition: `Guide the model by supplying one or more example outputs (“shots”) to anchor format and tone.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "prompt literacy"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:examples",
+      "topic:few-shot",
+      "phase:apply",
+      "level:beginner",
+      "use:format-guidance",
+      "use:style-transfer",
+      "use:output-shaping",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:main brief / goal",
+      "field:examples / shots (one per line)",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: show ideal output format with 1+ shots • demonstrate style/voice to imitate • constrain outputs to examples
+  Boosters: Begin with a short description of the desired format before listing examples. Number the examples and refer back to them explicitly. Prefer short, high-signal examples over long rambles.`
+  },
+  {
+    slug: "feature-advantage-benefit",
+    term: "FAB",
+    aliases: [
+      "FAB — Feature · Advantage · Benefit",
+      "FAB",
+      "fab"
+  ],
+    definition: `A classic product messaging formula that starts with a Feature of a product, explains the Advantage (what it does), and concludes with the Benefit (why it matters to the user).`,
+    sources: [],
+    categories: [
+      "messaging frameworks",
+      "marketing"
+  ],
+    tags: [
+      "type:framework",
+      "topic:copywriting",
+      "phase:apply",
+      "level:beginner",
+      "use:product-marketing",
+      "use:sales-copy",
+      "use:value-messaging",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:product feature",
+      "field:constraints (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: turn product features into user-focused benefits for marketing copy • train a model to articulate why a feature matters to customers • create sales bullets or product descriptions emphasizing value
+  Boosters: Translate technical features into plain advantages and user benefits. Ensure the benefit addresses a specific customer need or pain point.`
+  },
+  {
+    slug: "facione-core-skills",
+    term: "Facione",
+    aliases: [
+      "Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate",
+      "Facione",
+      "facione"
+  ],
+    definition: `Operationalize the six core skills of critical thinking on a target claim/problem.`,
+    sources: [],
+    categories: [
+      "critical thinking frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:critical-thinking",
+      "phase:analyze",
+      "level:intermediate",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:topic/claim/problem",
+      "field:evidence for",
+      "field:evidence against",
+      "field:alternative hypotheses",
+      "field:explanation audience",
+      "field:self-regulation checks"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: Evidence appraisal • Research summaries • Root cause analysis • Design/ethics reviews
+  Boosters: Finish with a 2-line “Because-Therefore” justification and 1 actionable next test.`
+  },
+  {
+    slug: "facts-expertise-primer",
+    term: "Facts & Expertise Primer",
+    aliases: [
+      "Facts & Expertise Primer",
+      "FEP",
+      "facts & expertise primer"
+  ],
+    definition: `Prime the model with verified facts, role, and scope constraints before asking for an output.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "quality scaffolds"
+  ],
+    tags: [
+      "type:framework",
+      "topic:priming",
+      "topic:fact-checking",
+      "phase:setup",
+      "level:beginner",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:role to embody (optional)",
+      "field:domain / scope",
+      "field:facts / known truths (one per line)",
+      "field:known pitfalls / myths to avoid",
+      "field:initial task or question",
+      "field:rigor / citation expectations (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: prime a conversation with domain facts • reduce hallucinations • scope an expert role before a task
+  Boosters: Explicitly mark unknowns and ask up to 3 clarifying questions if needed. Prefer verifiable facts over speculation. Keep rationales to one short sentence unless asked to elaborate.`
+  },
+  {
+    slug: "feynman-technique",
+    term: "Feynman Technique",
+    aliases: [
+      "Feynman Technique — Explain Like I’m 5",
+      "Feynman Technique",
+      "FT",
+      "feynman technique"
+  ],
+    definition: `A learning strategy where you try to explain a concept in simple terms (as if to a child), revealing gaps in understanding to address.`,
+    sources: [],
+    categories: [
+      "education",
+      "learning"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:simplification",
+      "topic:teaching",
+      "level:beginner",
+      "use:explanation",
+      "use:knowledge-check",
+      "use:debug-understanding",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:concept or topic"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: simplify complex concepts for a broader audience • identify gaps in understanding by attempting a simple explanation • learn or teach a new topic by breaking it down
+  Boosters: Use analogies a child would understand to explain difficult concepts. Identify any technical terms in the explanation and immediately clarify them in simpler words.`
+  },
+  {
+    slug: "first-principles-analysis",
+    term: "First Principles",
+    aliases: [
+      "First Principles — Question assumptions & reason from basics",
+      "First Principles",
+      "FP",
+      "first principles"
+  ],
+    definition: `A problem-solving approach that strips a problem down to fundamental truths and builds solutions from the ground up, rather than relying on assumptions or analogies.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "innovation"
+  ],
+    tags: [
+      "type:framework",
+      "topic:problem-solving",
+      "topic:assumptions",
+      "level:intermediate",
+      "use:strategy",
+      "use:research",
+      "use:inventive-thinking",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:problem or question",
+      "field:assumptions (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: solve complex problems by breaking them down to fundamental truths • challenge default assumptions to find innovative solutions • analyze feasibility by building up from basic principles
+  Boosters: Explicitly list core facts or principles that are undeniably true in this context. For each assumption, ask “Why must this be true?” and explore what happens if it’s not.`
+  },
+  {
+    slug: "goal-breakdown-decomposition",
+    term: "Goal Breakdown",
+    aliases: [
+      "Goal Breakdown (Prompt/Question Decomposition)",
+      "Goal Breakdown",
+      "GB",
+      "goal breakdown"
+  ],
+    definition: `Break a complex goal/prompt into smaller, verifiable sub-tasks and sub-questions before doing the work.`,
+    sources: [],
+    categories: [
+      "planning",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:decomposition",
+      "topic:questions",
+      "phase:plan",
+      "level:beginner",
+      "use:breakdown",
+      "use:micro-tasks",
+      "use:research-questions",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:goal / complex task",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: break a complex goal into micro-tasks • turn a vague prompt into concrete sub-questions • plan-first before execution
+  Boosters: Show a numbered hierarchy (1, 1.1, 1.1.1…) before any deliverable. Flag assumptions and unknowns as explicit sub-questions. Suggest the smallest next action at the end.`
+  },
+  {
+    slug: "goal-composition",
+    term: "Goal Composition",
+    aliases: [
+      "Goal Composition (Prompt/Question Composition)",
+      "Goal Composition",
+      "GC",
+      "goal composition"
+  ],
+    definition: `Synthesize a broader objective from a list of sub-prompts/actions, then propose a coherent plan.`,
+    sources: [],
+    categories: [
+      "planning",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:composition",
+      "topic:goals",
+      "phase:plan",
+      "level:beginner",
+      "use:synthesis",
+      "use:roadmap",
+      "use:prioritization",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:intended direction (optional)",
+      "field:sub-prompts / actions (one per line)",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: compose a broader goal from many sub-prompts/actions • derive an objective and plan from granular tasks • summarize scattered asks into one coherent brief
+  Boosters: Cluster similar actions before composing. State explicit success criteria for the composed goal. End with one “north-star” metric.`
+  },
+  {
+    slug: "goal-prompting",
+    term: "Goal Prompting",
+    aliases: [
+      "Goal Prompting",
+      "GP",
+      "goal prompting"
+  ],
+    definition: `Center the request on a primary goal, with optional supporting goals listed separately.`,
+    sources: [],
+    categories: [
+      "planning",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:goals",
+      "phase:plan",
+      "level:beginner",
+      "use:brainstorm",
+      "use:roadmap",
+      "use:prioritize",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:primary goal (brief)",
+      "field:additional goals (one per line)",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: state a primary goal and supporting goals • ask the model to prioritize or plan • structure outputs around explicit objectives
+  Boosters: Ask for a numbered plan tied to each goal. Request a brief risk or dependency note per goal. End with a next-action recommendation.`
+  },
+  {
+    slug: "grow-coaching-model",
+    term: "GROW",
+    aliases: [
+      "GROW — Goal · Reality · Options · Way Forward",
+      "GROW",
+      "grow"
+  ],
+    definition: `A coaching framework for goal-oriented conversations, progressing through defining a Goal, assessing the current Reality, brainstorming Options, and deciding the Way Forward (action plan).`,
+    sources: [],
+    categories: [
+      "coaching",
+      "planning"
+  ],
+    tags: [
+      "type:framework",
+      "topic:goal-setting",
+      "topic:coaching",
+      "level:beginner",
+      "use:personal-development",
+      "use:mentoring",
+      "use:problem-solving",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:goal",
+      "field:reality (current situation)",
+      "field:options (optional, one per line)",
+      "field:way forward (if decided, optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure a coaching conversation or self-reflection • set and plan personal or team goals with clear next steps • evaluate options to overcome a challenge and commit to an action
+  Boosters: Offer at least 3 distinct Options, even unconventional ones, before recommending a way forward. Encourage a specific, time-bound commitment in the Way Forward step (who, what, when).`
+  },
+  {
+    slug: "heros-journey-narrative",
+    term: "Hero’s Journey",
+    aliases: [
+      "Hero’s Journey — Departure · Initiation · Return",
+      "Hero’s Journey",
+      "HJ",
+      "hero’s journey"
+  ],
+    definition: `A 12-stage narrative framework (Monomyth) where a hero leaves their ordinary world, faces trials and transformation, and returns home with newfound wisdom or power.`,
+    sources: [],
+    categories: [
+      "storytelling frameworks",
+      "creative writing"
+  ],
+    tags: [
+      "type:framework",
+      "topic:storytelling",
+      "phase:compose",
+      "level:intermediate",
+      "use:plot-outline",
+      "use:mythic-narrative",
+      "use:character-development",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:hero / protagonist",
+      "field:quest / goal",
+      "field:antagonist or main challenge (optional)",
+      "field:setting (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: generate a mythic or epic story outline following a hero’s journey structure • develop a character’s transformative arc in creative writing • brainstorm plot points for novels, games, or scenarios with a hero protagonist
+  Boosters: Ensure the hero undergoes a meaningful transformation by the end of the journey. Include classic stages like Call to Adventure, Mentor/Helper, Trials, Crisis, Reward, and Return with the Elixir.`
+  },
+  {
+    slug: "heuristics-biases",
+    term: "Heuristics & Biases",
+    aliases: [
+      "Heuristics & Biases — Debiasing Pre-flight",
+      "Heuristics & Biases",
+      "HB",
+      "heuristics & biases"
+  ],
+    definition: `Run a short checklist to catch common cognitive biases and revise.`,
+    sources: [],
+    categories: [
+      "critical thinking frameworks",
+      "quality checks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:debiasing",
+      "phase:review",
+      "level:intermediate",
+      "use:decisions",
+      "use:forecasts",
+      "use:research-summaries",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:decision/draft to check",
+      "field:stakes/impact",
+      "field:time pressure",
+      "field:known risks",
+      "field:debiasing tactics"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: Review a draft answer/decision • Forecasting sanity check • Risk review
+  Boosters: End with a one-line “If wrong, it’s because…” and a quick red-team question.`
+  },
+  {
+    slug: "how-might-we-statements-hmw",
+    term: "How Might We Statements",
+    aliases: [
+      "How Might We Statements (HMW)",
+      "How Might We Statements",
+      "HMWS",
+      "how might we statements"
+  ],
+    definition: `A guiding question that reframes a need into an opportunity: “How might we [action] for [who] so that [outcome]?”`,
+    sources: [],
+    categories: [
+      "design thinking",
+      "ideation"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:problem-framing",
+      "topic:ideation",
+      "phase:explore",
+      "level:beginner",
+      "use:brainstorm",
+      "use:problem-statement",
+      "use:workshop",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:need / challenge",
+      "field:action to explore",
+      "field:who is affected?",
+      "field:positive outcome",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: frame challenges as opportunities • product design • ux • problem solving • generate multiple solution directions • align teams around a crisp, positive prompt
+  Boosters: Offer 3–5 phrasing variants that change the verb or scope. Keep each statement ≤20 words. Avoid embedded solutions—stay problem-oriented.`
+  },
+  {
+    slug: "if-then-planning",
+    term: "Implementation Intentions",
+    aliases: [
+      "Implementation Intentions (If–Then)",
+      "Implementation Intentions",
+      "II",
+      "implementation intentions"
+  ],
+    definition: `If [trigger/situation], then I will [specific action].`,
+    sources: [],
+    categories: [
+      "behavior",
+      "productivity"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:if-then",
+      "use:habit",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:if [trigger/situation]…",
+      "field:…then i will [specific action]",
+      "field:backup plans (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: bind a trigger to a specific action to reduce choice friction • translate goals into cues
+  Boosters: Make the trigger observable and frequent. Write the action so “half-asleep you” could do it.`
+  },
+  {
+    slug: "inclusive-design-framework",
+    term: "Inclusive Design",
+    aliases: [
+      "Inclusive Design (edge personas)",
+      "Inclusive Design",
+      "ID",
+      "inclusive design"
+  ],
+    definition: `Design for “edge cases” to reduce exclusion, following Microsoft’s Inclusive Design principles.`,
+    sources: [],
+    categories: [
+      "design",
+      "ethics",
+      "accessibility"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:inclusive-design",
+      "topic:edge-cases",
+      "level:beginner",
+      "use:product",
+      "use:content",
+      "use:service-design",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:persona at the edge — who might struggle most?",
+      "field:barrier — what prevents full use?",
+      "field:adaptation — design change to reduce exclusion",
+      "field:benefit to all — how does this help beyond the edge user?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: identify edge personas and barriers • design adaptations that reduce exclusion • articulate benefits to all users
+  Boosters: Name concrete assistive tech or environmental constraints where relevant. Suggest a quick hallway/usability test to validate the adaptation.`
+  },
+  {
+    slug: "keywords-why-tasks-vector",
+    term: "Keywords + Why + Tasks",
+    aliases: [
+      "Keywords + Why + Tasks — Vector Priming",
+      "Keywords + Why + Tasks",
+      "KWT",
+      "keywords + why + tasks"
+  ],
+    definition: `Prime with keywords (vector hinting) and a clear “why,” list tasks, and name what to avoid.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "planning"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:keywords",
+      "topic:why",
+      "topic:tasking",
+      "phase:plan",
+      "level:intermediate",
+      "use:vector-priming",
+      "use:context-packing",
+      "use:negative-avoidance",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:goal / request",
+      "field:why / context",
+      "field:keywords (comma-separated)",
+      "field:tasks (one per line)",
+      "field:avoid (comma-separated negatives)",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: prime the model with topical vectors via keywords • explain situational “why” for better alignment • list actionable tasks and explicit negatives to avoid
+  Boosters: Normalize keywords to canonical forms (singulars, lowercase) before using them. Tie each task to at least one keyword. Call out conflicts between “why” and constraints in one line.`
+  },
+  {
+    slug: "monroes-motivated-sequence",
+    term: "Monroe’s Motivated Sequence",
+    aliases: [
+      "Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action",
+      "Monroe’s Motivated Sequence",
+      "MMS",
+      "monroe’s motivated sequence"
+  ],
+    definition: `A five-step persuasive framework that grabs attention, establishes a need, presents a satisfying solution, helps the audience visualize the outcome, and ends with a call to action.`,
+    sources: [],
+    categories: [
+      "messaging frameworks",
+      "persuasion"
+  ],
+    tags: [
+      "type:framework",
+      "topic:persuasion",
+      "phase:compose",
+      "level:intermediate",
+      "use:speechwriting",
+      "use:advocacy",
+      "use:public-speaking",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:attention (hook, optional)",
+      "field:need (audience problem)",
+      "field:satisfaction (solution)",
+      "field:action (call-to-action, optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure persuasive speeches or pitches for maximum impact • guide the audience from feeling a need to taking an action • formulate outreach messages (e.g., campaign appeals, motivational talks)
+  Boosters: Open with a compelling hook (story or statistic) to grab Attention in the first step. In the Visualization step, paint a vivid picture of the future where the need is resolved (positive or negative outcomes).`
+  },
+  {
+    slug: "okr-goal-setting",
+    term: "OKR",
+    aliases: [
+      "OKR — Objective & Key Results",
+      "OKR",
+      "okr"
+  ],
+    definition: `A goal-setting framework pairing a qualitative Objective (what you want to achieve) with a set of quantitative Key Results (how you measure achievement).`,
+    sources: [],
+    categories: [
+      "strategy",
+      "planning"
+  ],
+    tags: [
+      "type:framework",
+      "topic:goals",
+      "topic:metrics",
+      "level:beginner",
+      "use:strategic-planning",
+      "use:team-goals",
+      "use:performance-management",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:objective (qualitative goal)",
+      "field:key results (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: define clear organizational or personal goals with measurable outcomes • break down a vision into concrete targets • evaluate progress by looking at quantifiable results tied to objectives
+  Boosters: Make each Key Result specific, with a clear metric, target value, and timeframe. Ensure Key Results are outcomes (what is achieved), not tasks (what is done).`
+  },
+  {
+    slug: "ooda-loop",
+    term: "OODA Loop",
+    aliases: [
+      "OODA Loop (Observe–Orient–Decide–Act)",
+      "OODA Loop",
+      "OODAL",
+      "ooda loop"
+  ],
+    definition: `A rapid decision cadence: Observe → Orient → Decide → Act.`,
+    sources: [],
+    categories: [
+      "decision",
+      "strategy",
+      "ops"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:ooda",
+      "use:decision",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:observe — what’s the situation / facts?",
+      "field:orient — what matters most right now?",
+      "field:decide — what’s the next best step?",
+      "field:act — what will i actually do now?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: cut through indecision with a tight OODA pass • establish a clear next action under uncertainty
+  Boosters: Add a quick feedback note: how you’ll check results after acting. Limit Observe/Orient to facts relevant to the next step.`
+  },
+  {
+    slug: "pas-copywriting",
+    term: "PAS",
+    aliases: [
+      "PAS — Problem · Agitate · Solution",
+      "PAS",
+      "pas"
+  ],
+    definition: `A copywriting formula that presents a Problem, amplifies it (Agitate), then provides a Solution to resolve the discomfort.`,
+    sources: [],
+    categories: [
+      "messaging frameworks",
+      "marketing"
+  ],
+    tags: [
+      "type:framework",
+      "topic:copywriting",
+      "phase:compose",
+      "level:beginner",
+      "use:ad-copy",
+      "use:email-copy",
+      "use:landing-page",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:problem",
+      "field:agitate (pain details, optional)",
+      "field:solution"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: write persuasive copy by addressing the reader’s pain and offering relief • structure marketing messages or support tickets by focusing on problem then solution • craft introductions for pitches or blogs that hook with a problem and promise a solution
+  Boosters: In the Agitate step, delve into emotional or practical consequences of the problem to make it feel urgent. Keep the Solution clear and directly tied to resolving the specific problem that was agitated.`
+  },
+  {
+    slug: "paul-elder",
+    term: "Paul",
+    aliases: [
+      "Paul–Elder — Elements of Thought + Standards",
+      "Paul",
+      "paul"
+  ],
+    definition: `Structure reasoning via the Elements of Thought (purpose, question, info, concepts, assumptions, implications, point of view, inference) and judge it with Intellectual Standards (clarity, accuracy, precision, relevance, depth, breadth, logic, significance, fairness).`,
+    sources: [],
+    categories: [
+      "critical thinking frameworks",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:framework",
+      "topic:critical-thinking",
+      "phase:analyze",
+      "level:intermediate",
+      "use:argument-critique",
+      "use:decision-memo",
+      "use:policy-analysis",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:purpose",
+      "field:central question",
+      "field:information",
+      "field:concepts",
+      "field:assumptions",
+      "field:point(s) of view",
+      "field:inferences",
+      "field:implications",
+      "field:alternatives",
+      "field:standards to apply"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: Argument/brief critique • Decision memos • Policy/position analysis • Lesson planning checks
+  Boosters: Give a 3-sentence synthesis and 2 sharper follow-up questions that would most improve the reasoning.`
+  },
+  {
+    slug: "persona-actas",
+    term: "Persona",
+    aliases: [
+      "Persona — ActAs / Simulate",
+      "Persona",
+      "persona"
+  ],
+    definition: `Simulate a specific persona (role) with domain skills, vocabulary, and constraints; then apply it to the user’s end goal.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "persona prompting"
+  ],
+    tags: [
+      "type:pattern",
+      "type:template",
+      "topic:persona",
+      "phase:apply",
+      "level:beginner",
+      "use:act-as",
+      "use:simulation",
+      "use:roleplay",
+      "use:agent-spec",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:end goal / task to complete",
+      "field:persona (who the ai will be)",
+      "field:profession",
+      "field:summary",
+      "field:additional description (optional)",
+      "field:core tasks (one per line)",
+      "field:skills (comma or one per line)",
+      "field:vocabulary (comma or one per line)",
+      "field:goals (one per line)",
+      "field:pain points (one per line)",
+      "field:tools (comma or one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Boosters: Stay in-character. Prefer precise, domain-correct terminology. Cite trade-offs briefly before final answer.`
+  },
+  {
+    slug: "pestle-analysis",
+    term: "PESTLE",
+    aliases: [
+      "PESTLE — Political · Economic · Social · Technological · Legal · Environmental",
+      "PESTLE",
+      "pestle"
+  ],
+    definition: `A strategic analysis framework examining six external factors — Political, Economic, Social, Technological, Legal, and Environmental — that can impact an organization or initiative.`,
+    sources: [],
+    categories: [
+      "analysis frameworks",
+      "strategy"
+  ],
+    tags: [
+      "type:framework",
+      "topic:environment-scan",
+      "phase:overview",
+      "level:intermediate",
+      "use:market-analysis",
+      "use:risk-analysis",
+      "use:strategic-planning",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:subject of analysis",
+      "field:political factors (optional, one per line)",
+      "field:economic factors (optional, one per line)",
+      "field:social factors (optional, one per line)",
+      "field:technological factors (optional, one per line)",
+      "field:legal factors (optional, one per line)",
+      "field:environmental factors (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: analyze external factors affecting a business or project • scan the macro-environment before launching an initiative • identify opportunities and threats in the broader context
+  Boosters: For each category, include at least one specific factor and its potential impact on the subject. Differentiate clearly between internal issues (not included here) and these external factors.`
+  },
+  {
+    slug: "pomodoro-scaffold",
+    term: "Pomodoro Scaffold",
+    aliases: [
+      "Pomodoro Scaffold",
+      "PS",
+      "pomodoro scaffold"
+  ],
+    definition: `25-minute focused work block with short breaks.`,
+    sources: [],
+    categories: [
+      "productivity",
+      "focus"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:pomodoro",
+      "use:focus",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:task to tackle",
+      "field:one 25-min micro-goal",
+      "field:break reward",
+      "field:next pomodoro step"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: frame a single 25-minute focus sprint • pair a micro-goal with a reward and next step
+  Boosters: Hide distractions: list top 3 and how you’ll block them. Write an “opening move” you’ll do in the first 60 seconds.`
+  },
+  {
+    slug: "pre-mortem-scaffold",
+    term: "Pre-Mortem Scaffold",
+    aliases: [
+      "Pre-Mortem Scaffold",
+      "PMS",
+      "pre-mortem scaffold"
+  ],
+    definition: `Imagine the project failed and ask why, so you can prevent it.`,
+    sources: [],
+    categories: [
+      "risk",
+      "planning",
+      "decision"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:premortem",
+      "use:planning",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:decision / project at hand",
+      "field:imagine it failed — what went wrong? (one per line)",
+      "field:preventive step(s)",
+      "field:immediate action"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: surface failure modes before committing • turn risks into preventive steps and immediate actions
+  Boosters: Force at least 3 realistic failure causes. Assign owners and a check date for each preventive step.`
+  },
+  {
+    slug: "reflect-bias-scaffold",
+    term: "REFLECT",
+    aliases: [
+      "REFLECT (bias reflection)",
+      "REFLECT",
+      "reflect"
+  ],
+    definition: `A structured reflection scaffold to identify, check, and transform bias in your approach.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "bias",
+      "critical thinking"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:bias",
+      "topic:reflection",
+      "level:beginner",
+      "use:interviews",
+      "use:analysis",
+      "use:synthesis",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:recognize — what bias might be at play?",
+      "field:evaluate — how does it influence my thinking?",
+      "field:frame — restate the problem from a different perspective",
+      "field:listen — whose voices are missing?",
+      "field:empathize — how would it feel in that missing perspective?",
+      "field:check — what assumption should i test?",
+      "field:transform — how will i change my approach?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: spot potential bias during interviews, analysis, or synthesis • reframe a problem from multiple perspectives • turn reflection into concrete next steps
+  Boosters: Keep tone neutral and specific; avoid moralizing. Return a bulleted summary + 3 concrete changes and 1 monitoring check.`
+  },
+  {
+    slug: "scamper-framework",
+    term: "SCAMPER",
+    aliases: [
+      "SCAMPER (idea expansion)",
+      "SCAMPER",
+      "scamper"
+  ],
+    definition: `Seven moves to push an idea: Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:scamper",
+      "use:ideas",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:current idea",
+      "field:substitute — what element could you replace?",
+      "field:combine — what can be merged?",
+      "field:adapt — what can be borrowed?",
+      "field:modify — exaggerated/minimized?",
+      "field:put to other use — where else could it apply?",
+      "field:eliminate — what can you cut?",
+      "field:reverse — what if you flipped it?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: systematically generate variants of an idea • unstick creative exploration
+  Boosters: Demand at least 2 candidates per move (bullet them). End with one “crazy but testable” option.`
+  },
+  {
+    slug: "scenario-based-deliberative",
+    term: "Scenario-based Prompting",
+    aliases: [
+      "Scenario-based Prompting — Deliberative reasoning",
+      "Scenario-based Prompting",
+      "SP",
+      "scenario-based prompting"
+  ],
+    definition: `Grounds the model in a concrete situation and explicitly asks it to reason deliberately before answering.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "reasoning"
+  ],
+    tags: [
+      "type:framework",
+      "topic:prompting",
+      "phase:compose",
+      "level:intermediate",
+      "use:scenario",
+      "use:empathy",
+      "use:deliberation",
+      "use:edge-cases",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:role (optional)",
+      "field:scenario (specific, even extreme)",
+      "field:outcome goal",
+      "field:constraints",
+      "field:response format (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: coaching & advice • policy-sensitive responses • support empathy • edge-case analysis
+  Boosters: Take a deep breath. Think step by step. First list assumptions and unknowns; then reason in numbered steps; then propose actions; end with a short checklist. Separate “Reasoning” from “Recommendation” using clear headings. Flag trade-offs and edge cases.`
+  },
+  {
+    slug: "smart-goals",
+    term: "SMART Goals",
+    aliases: [
+      "SMART Goals — Specific · Measurable · Achievable · Relevant · Time-bound",
+      "SMART Goals",
+      "SMARTG",
+      "smart goals"
+  ],
+    definition: `A goal-setting checklist ensuring an objective is Specific, Measurable, Achievable, Relevant, and Time-bound.`,
+    sources: [],
+    categories: [
+      "planning",
+      "productivity"
+  ],
+    tags: [
+      "type:framework",
+      "topic:goal-setting",
+      "phase:plan",
+      "level:beginner",
+      "use:personal-goals",
+      "use:project-planning",
+      "use:performance-goals",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:general goal"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: refine vague goals into actionable statements • ensure project objectives have clear success criteria and timelines • evaluate if a goal is well-defined or needs adjustment
+  Boosters: If any SMART element is missing (e.g., no timeframe), the model will propose one to complete the goal definition. Present the output as 5 brief points (S, M, A, R, T) to clearly delineate each aspect.`
+  },
+  {
+    slug: "task-recipe-cot",
+    term: "Task Prompt Breakdown",
+    aliases: [
+      "Task Prompt Breakdown — Task/Recipe + Do/Don’t (CoT)",
+      "Task Prompt Breakdown",
+      "TPB",
+      "task prompt breakdown"
+  ],
+    definition: `Decompose a goal into explicit steps (tasks), with optional Do/Don’t constraints, then produce the deliverable.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "planning"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:tasking",
+      "topic:reasoning",
+      "phase:plan",
+      "level:beginner",
+      "use:project-steps",
+      "use:recipe",
+      "use:breakdown",
+      "use:delegation",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:main brief / goal",
+      "field:tasks (one per line)",
+      "field:do’s (must do)",
+      "field:don’ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: break a goal into concrete steps • write a procedural recipe • handoff a task with crisp Do/Don’t guardrails • guide short “explain-your-steps” reasoning
+  Boosters: Show the step plan as a numbered list before the final deliverable. Keep reasoning concise and procedural (no hidden chain-of-thought). List assumptions in one line if any are required.`
+  },
+  {
+    slug: "tree-of-thought-brainstorm",
+    term: "Tree of Thought",
+    aliases: [
+      "Tree of Thought — Brainstorm & Evaluate",
+      "Tree of Thought",
+      "TT",
+      "tree of thought"
+  ],
+    definition: `Explore three distinct reasoning branches (fast/minimal; thorough/future-proof; creative alternative), score them with a rubric, select/synthesize, deliver, then reflect.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "planning"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:reasoning",
+      "topic:branching",
+      "phase:explore",
+      "level:advanced",
+      "use:brainstorm",
+      "use:compare-alternatives",
+      "use:decision",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:task / problem",
+      "field:constraints (time/tools/tone/privacy)",
+      "field:success criteria (what “good” looks like)",
+      "field:evaluation criteria (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: generate multiple solution paths before deciding • compare tradeoffs across ideas using a scoring rubric • pick a best path with justification and a reflect pass
+  Boosters: Keep branches shallow (depth 2–3) to avoid overthinking. Use explicit labels: Branch A, A1, A2… Branch B… Branch C… Score on 1–5 with one-line justifications per criterion. Run a quick reflect pass: math/terms/bias/constraints. If the user supplied criteria, use them; otherwise use the default rubric included below.`
+  },
+  {
+    slug: "triangulation-methods",
+    term: "Triangulation Methods",
+    aliases: [
+      "Triangulation Methods",
+      "TM",
+      "triangulation methods"
+  ],
+    definition: `Use multiple methods/sources to converge on more reliable findings and reduce researcher bias.`,
+    sources: [],
+    categories: [
+      "research",
+      "ethics",
+      "bias"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:triangulation",
+      "topic:validation",
+      "level:intermediate",
+      "use:ux-research",
+      "use:analytics",
+      "use:mixed-methods",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:question being investigated",
+      "field:method a",
+      "field:findings from a",
+      "field:method b",
+      "field:findings from b",
+      "field:method c (optional)",
+      "field:findings from c (optional)",
+      "field:cross-check — where do findings align/diverge?",
+      "field:bias risk — which perspective dominates?"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: reduce single-method bias by cross-checking findings • document alignment/divergence across methods • decide where to deepen research
+  Boosters: Label each method with its sampling limits. End with a “What we’ll do next” line for resolving divergences.`
+  },
+  {
+    slug: "variables-and-delimiters",
+    term: "Variables & Delimiters",
+    aliases: [
+      "Variables & Delimiters — Define once, reuse cleanly",
+      "Variables & Delimiters",
+      "VD",
+      "variables & delimiters"
+  ],
+    definition: `Declare variables once (names + definitions aligned by line). We auto-fence a VARIABLES block so the model resolves {NAME} unambiguously.`,
+    sources: [],
+    categories: [
+      "prompt development techniques",
+      "structuring"
+  ],
+    tags: [
+      "type:framework",
+      "topic:prompting",
+      "phase:compose",
+      "level:beginner",
+      "use:variables",
+      "use:delimiters",
+      "use:glossary",
+      "use:spec",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:variables (one per line)",
+      "field:definitions (one per line)",
+      "field:primary task",
+      "field:constraints (optional)",
+      "field:response format (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: long prompts with reusable terms • glossaries & specs • persona/role libraries • data field definitions
+  Boosters: Treat each {NAME} as canonical. If any mapping is missing, ask one concise clarifying question, then proceed. Keep variables verbatim (case-sensitive) when referencing, e.g., {USER_ROLE}.`
+  },
+  {
+    slug: "weighted-mini-matrix",
+    term: "Weighted Mini-Matrix",
+    aliases: [
+      "Weighted Mini-Matrix (quick score)",
+      "Weighted Mini-Matrix",
+      "WMM",
+      "weighted mini-matrix"
+  ],
+    definition: `Tiny decision matrix: options × criteria with 1–5 ratings; totals pick the frontrunner.`,
+    sources: [],
+    categories: [
+      "decision",
+      "prioritization"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:matrix",
+      "use:prioritize",
+      "level:intermediate",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:options (≤3, one per line)",
+      "field:criteria (2–3, one per line)",
+      "field:quick ratings (1–5) — one line per option"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: compare up to 3 options against 2–3 criteria • force a transparent, quick pick
+  Boosters: If a criterion matters more, duplicate it (acts as a simple weight). Break ties with a 5-minute spike test you’ll define at the end.`
+  },
+  {
+    slug: "woop-wish-outcome-obstacle-plan",
+    term: "WOOP",
+    aliases: [
+      "WOOP (Wish–Outcome–Obstacle–Plan)",
+      "WOOP",
+      "woop"
+  ],
+    definition: `Wish → Outcome → Obstacle → Plan (if obstacle, then I will X).`,
+    sources: [],
+    categories: [
+      "behavior",
+      "motivation"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:woop",
+      "use:motivation",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:wish — what do i want to complete?",
+      "field:outcome — benefit if i succeed?",
+      "field:obstacle — what usually gets in the way?",
+      "field:plan — if obstacle, then i will…"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: contrast desired outcome with the main obstacle • bind an if–then plan to the obstacle
+  Boosters: Phrase the wish so it’s completable in ≤2 weeks. Make the obstacle internal (habit/thought) when possible.`
+  },
+  
+  // Auto-generated — 2025-09-13T21:37:32.556Z
+
+  {
+    slug: "five-w-one-h-kipling",
+    term: "5W1H",
+    aliases: [
+      "5W1H — Who · What · Where · When · Why · How",
+      "5W1H",
+      "WH",
+      "5w1h"
+  ],
+    definition: `A universal clarifying scaffold that forces six essential answers before action.`,
+    sources: [],
+    categories: [
+      "analysis frameworks",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:framework",
+      "topic:clarification",
+      "phase:compose",
+      "level:beginner",
+      "use:requirements",
+      "use:prompt-scoping",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:who",
+      "field:what",
+      "field:where",
+      "field:when",
+      "field:why",
+      "field:how",
+      "field:not in scope (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: clarify task requirements • scope a prompt before execution • capture acceptance criteria
+  Boosters: Answer each element with one crisp, testable line. Add a “not-in-scope” line after How.`
+  },
+  {
+    slug: "a3-problem-solving-toyota",
+    term: "A3 Problem Solving",
+    aliases: [
+      "A3 Problem Solving (Toyota)",
+      "A3 Problem Solving",
+      "APS",
+      "a3 problem solving"
+  ],
+    definition: `A visual one-page flow to frame background, analyze causes, plan countermeasures, and follow through.`,
+    sources: [],
+    categories: [
+      "quality",
+      "operations",
+      "reasoning",
+      "prompt development techniques"
+  ],
+    tags: [
+      "type:framework",
+      "topic:problem-solving",
+      "topic:lean",
+      "phase:plan",
+      "level:intermediate",
+      "use:root-cause",
+      "use:countermeasures",
+      "use:one-page-brief",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:background (why this matters)",
+      "field:current condition (facts/metrics)",
+      "field:target condition (measurable)",
+      "field:root-cause analysis",
+      "field:countermeasures",
+      "field:implementation plan",
+      "field:follow-up / learnings"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure a one-page problem brief • analyze current vs. target condition • design countermeasures and follow-up
+  Boosters: Keep it one “page”: terse bullets per section. Tie each countermeasure to a specific cause and owner.`
+  },
+  {
+    slug: "anekantavada-syadvada-jain",
+    term: "Anekāntavāda & Syādvāda",
+    aliases: [
+      "Anekāntavāda & Syādvāda (Jain Many-Sided Logic)",
+      "Anekāntavāda & Syādvāda",
+      "AS",
+      "anekāntavāda & syādvāda"
+  ],
+    definition: `Reasoning that treats claims as conditionally true from different standpoints; includes sevenfold predication (syād-asti… etc.).`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "philosophy",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:dialectic",
+      "topic:many-sidedness",
+      "phase:explore",
+      "level:advanced",
+      "use:ambiguity-management",
+      "use:policy",
+      "use:ethical-tradeoffs",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:issue/claim under analysis",
+      "field:standpoints (naya), one per line",
+      "field:key evidence by standpoint",
+      "field:qualified statements (syād-…)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: frame a contentious issue via multiple partial truths • generate sevenfold qualified statements • surface context-conditional claims
+  Boosters: Force at least 3 distinct standpoints before synthesis. Use “in some respect…” qualifiers to avoid overclaiming.`
+  },
+  {
+    slug: "buddhist-eightfold-path-adapted",
+    term: "Buddhist Eightfold Path",
+    aliases: [
+      "Buddhist Eightfold Path (Adapted for Action)",
+      "Buddhist Eightfold Path",
+      "BEP",
+      "buddhist eightfold path"
+  ],
+    definition: `Use the eight factors (View, Intention, Speech, Action, Livelihood, Effort, Mindfulness, Concentration) as a practical checklist.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "reasoning",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:mindfulness",
+      "topic:ethics",
+      "phase:plan",
+      "level:intermediate",
+      "use:policy-guardrails",
+      "use:communication",
+      "use:self-management",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:right view (assumptions/realities)",
+      "field:right intention (aims)",
+      "field:right speech (communication)",
+      "field:right action (conduct)",
+      "field:right livelihood (means)",
+      "field:right effort (discipline)",
+      "field:right mindfulness (attention)",
+      "field:right concentration (focus)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: design ethical guardrails • structure mindful decision steps • review impacts on others
+  Boosters: Translate each factor into a concrete check for the task. State one “harm minimization” change before final.`
+  },
+  {
+    slug: "daoist-wu-wei-strategy",
+    term: "Daoist Wu-Wei Strategy",
+    aliases: [
+      "Daoist Wu-Wei Strategy (Effortless Action)",
+      "Daoist Wu-Wei Strategy",
+      "DWWS",
+      "daoist wu-wei strategy"
+  ],
+    definition: `Plan by aligning with natural flows; act sparingly at points of leverage; reduce friction and over-control.`,
+    sources: [],
+    categories: [
+      "strategy",
+      "ethics",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:wu-wei",
+      "topic:minimal-intervention",
+      "phase:plan",
+      "level:intermediate",
+      "use:governance",
+      "use:ops-simplification",
+      "use:change-management",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:goal/outcome",
+      "field:existing flows (where energy already moves)",
+      "field:friction points",
+      "field:leverage points",
+      "field:non-actions (deliberate restraint)",
+      "field:minimal enabling actions"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: design minimal-intervention strategies • align with existing flows instead of forcing change • choose points of least-effort leverage
+  Boosters: Prefer removing steps over adding steps. Name non-actions explicitly (what you will not do).`
+  },
+  {
+    slug: "dmaic-six-sigma",
+    term: "DMAIC",
+    aliases: [
+      "DMAIC — Define · Measure · Analyze · Improve · Control",
+      "DMAIC",
+      "dmaic"
+  ],
+    definition: `A five-phase improvement method that moves from definition and measurement to analysis, improvement, and sustained control.`,
+    sources: [],
+    categories: [
+      "quality",
+      "operations",
+      "decision"
+  ],
+    tags: [
+      "type:framework",
+      "topic:six-sigma",
+      "phase:execute",
+      "level:intermediate",
+      "use:process-improvement",
+      "use:experiment-design",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:define",
+      "field:measure",
+      "field:analyze",
+      "field:improve",
+      "field:control"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure a data-driven improvement • turn metrics into countermeasures • plan control/monitoring
+  Boosters: Tie each Improve action to a measured root cause. Specify Control metrics, thresholds, and owners.`
+  },
+  {
+    slug: "east-behavioral-nudge",
+    term: "EAST",
+    aliases: [
+      "EAST — Easy · Attractive · Social · Timely",
+      "EAST",
+      "east"
+  ],
+    definition: `A behavioral design checklist to make the desired behavior easy, attractive, social, and timely.`,
+    sources: [],
+    categories: [
+      "behavior",
+      "design",
+      "strategy"
+  ],
+    tags: [
+      "type:framework",
+      "topic:nudge",
+      "phase:design",
+      "level:beginner",
+      "use:behavior-change",
+      "use:ux",
+      "use:policy",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:target behavior",
+      "field:audience/segment",
+      "field:easy (reduce effort)",
+      "field:attractive (salience/incentive)",
+      "field:social (norms/reciprocity)",
+      "field:timely (moment/trigger)",
+      "field:success metric"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: design nudges for adoption • reduce friction in flows • translate insights into micro-interventions
+  Boosters: Pair each tactic with a measurable behavior and metric. Add a tiny “if–then” plan for the riskiest barrier.`
+  },
+  {
+    slug: "ganma-knowledge-confluence",
+    term: "Ganma",
+    aliases: [
+      "Ganma — Knowledge Confluence (Yolŋu)",
+      "Ganma",
+      "ganma"
+  ],
+    definition: `A metaphor of mixing “freshwater” and “saltwater” knowledge streams to create a productive confluence.`,
+    sources: [],
+    categories: [
+      "research",
+      "cultural frameworks",
+      "strategy"
+  ],
+    tags: [
+      "type:framework",
+      "topic:knowledge-pluralism",
+      "topic:integration",
+      "phase:explore",
+      "level:advanced",
+      "use:interdisciplinary-synthesis",
+      "use:policy",
+      "use:design-research",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:knowledge stream a",
+      "field:knowledge stream b",
+      "field:overlaps (shared truths)",
+      "field:tensions (incommensurables)",
+      "field:confluence (new practice/insight)",
+      "field:safeguards / protocols"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: braid two knowledge systems without erasing differences • document tensions and synthesis • design shared next steps
+  Boosters: Make tensions explicit; do not collapse differences. Name shared safeguards for continued collaboration.`
+  },
+  {
+    slug: "kaitiakitanga-guardianship",
+    term: "Kaitiakitanga",
+    aliases: [
+      "Kaitiakitanga — Guardianship & Stewardship (Māori)",
+      "Kaitiakitanga",
+      "kaitiakitanga"
+  ],
+    definition: `A stewardship lens that emphasizes protection of valued things (taonga), obligations to community, and long-term balance.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "governance",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:stewardship",
+      "topic:intergenerational",
+      "phase:plan",
+      "level:intermediate",
+      "use:ai-governance",
+      "use:impact-assessment",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:what are we safeguarding (taonga)?",
+      "field:affected people/places (one per line)",
+      "field:potential impacts (near/long term)",
+      "field:guardianship principles/policies",
+      "field:actions & accountability"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: assess long-term impacts and duties of care • plan safeguards for taonga (valued things) • design community accountability
+  Boosters: Add an intergenerational horizon (e.g., 25–50 years). Name kaitiaki roles and escalation paths.`
+  },
+  {
+    slug: "kansei-engineering",
+    term: "Kansei Engineering",
+    aliases: [
+      "Kansei Engineering (Emotion→Design Mapping)",
+      "Kansei Engineering",
+      "KE",
+      "kansei engineering"
+  ],
+    definition: `A method to connect desired emotional responses with concrete design attributes.`,
+    sources: [],
+    categories: [
+      "design",
+      "research",
+      "analysis frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:emotion-design",
+      "phase:design",
+      "level:intermediate",
+      "use:feature-mapping",
+      "use:experience-goals",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:target emotion words (one per line)",
+      "field:design stimuli/features (one per line)",
+      "field:emotion→feature hypotheses",
+      "field:validation plan"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: translate target feelings into design parameters • build a testable emotion→stimulus map • prioritize features by affective impact
+  Boosters: Pick ≤5 emotion words and operationalize each with observable cues. Plan a small test to validate the mapping.`
+  },
+  {
+    slug: "kepner-tregoe-psdm",
+    term: "Kepner",
+    aliases: [
+      "Kepner–Tregoe (Situation–Problem–Decision–Potential Problem)",
+      "Kepner",
+      "kepner"
+  ],
+    definition: `A structured sequence for situation appraisal, problem analysis, decision analysis, and potential-problem analysis.`,
+    sources: [],
+    categories: [
+      "decision",
+      "quality",
+      "operations"
+  ],
+    tags: [
+      "type:framework",
+      "topic:psdm",
+      "phase:plan",
+      "level:intermediate",
+      "use:option-selection",
+      "use:risk-management",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:situation appraisal",
+      "field:problem analysis (is/is not, specs)",
+      "field:decision analysis (criteria, options)",
+      "field:potential-problem analysis (risks)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: separate problem analysis from decision analysis • pick criteria and evaluate alternatives • anticipate downstream risks
+  Boosters: Weight criteria explicitly; show score math simply. List preventive and contingent actions for top risks.`
+  },
+  {
+    slug: "maslaha-public-interest-reasoning",
+    term: "Maṣlaḥa",
+    aliases: [
+      "Maṣlaḥa — Public Interest Reasoning (Islamic Ethics)",
+      "Maṣlaḥa",
+      "maṣlaḥa"
+  ],
+    definition: `A normative lens that prioritizes public benefit and harm minimization with transparent justification.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "governance",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:public-interest",
+      "topic:harm-benefit",
+      "phase:plan",
+      "level:advanced",
+      "use:policy",
+      "use:governance",
+      "use:risk-balancing",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:issue/decision",
+      "field:stakeholders (one per line)",
+      "field:harms/risks",
+      "field:benefits",
+      "field:precedents/principles",
+      "field:proportional ruling/decision"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: weigh harms and benefits to the public • craft proportionate, transparent justifications • design exceptions and safeguards
+  Boosters: Show explicit harm/benefit tradeoffs and the least-harm alternative. Document conditions/limits and a review cadence.`
+  },
+  {
+    slug: "musyawarah-mufakat-indonesia",
+    term: "Musyawarah & Mufakat",
+    aliases: [
+      "Musyawarah & Mufakat — Deliberation to Consensus (Indonesia)",
+      "Musyawarah & Mufakat",
+      "MM",
+      "musyawarah & mufakat"
+  ],
+    definition: `A culturally grounded process emphasizing inclusive deliberation (musyawarah) culminating in consensus (mufakat).`,
+    sources: [],
+    categories: [
+      "decision",
+      "facilitation",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:consensus",
+      "topic:deliberation",
+      "phase:decide",
+      "level:intermediate",
+      "use:group-decisions",
+      "use:policy",
+      "use:community",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:issue/decision",
+      "field:participants (one per line)",
+      "field:options (one per line)",
+      "field:concerns/objections (one per line)",
+      "field:consensus statement (draft)",
+      "field:follow-up actions & owners"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: facilitate inclusive deliberation • surface objections and modify options • craft a consensus statement
+  Boosters: Require an objection-handling pass before closing. Record the consensus statement and follow-up tasks.`
+  },
+  {
+    slug: "naive-dialecticism-east-asia",
+    term: "Naïve Dialecticism",
+    aliases: [
+      "Naïve Dialecticism (East Asian Holistic Reasoning)",
+      "Naïve Dialecticism",
+      "ND",
+      "naïve dialecticism"
+  ],
+    definition: `A belief system that expects change, tolerates contradiction, and reasons holistically across context.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "philosophy",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:both-and",
+      "topic:contradiction",
+      "phase:explore",
+      "level:advanced",
+      "use:paradox-framing",
+      "use:change-over-time",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:opposed poles (a vs. b)",
+      "field:context factors (one per line)",
+      "field:areas of tension",
+      "field:harmony-seeking moves",
+      "field:both-and statement"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: embrace change and contradiction in planning • craft both/and integrations • generate harmony-seeking adjustments
+  Boosters: Write an explicit “both can be true” statement for the core tension. Propose a small harmonizing step that reduces conflict.`
+  },
+  {
+    slug: "nyaya-five-member-syllogism",
+    term: "Nyāya",
+    aliases: [
+      "Nyāya — Five-Member Syllogism",
+      "Nyāya",
+      "nyāya"
+  ],
+    definition: `Classical Indian argument form: Proposition, Reason, Example, Application, Conclusion.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "philosophy",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:logic",
+      "phase:structure",
+      "level:intermediate",
+      "use:argumentation",
+      "use:explain-like-i'm-5",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:proposition (pratijñā)",
+      "field:reason (hetu)",
+      "field:example (udāharaṇa)",
+      "field:application (upanaya)",
+      "field:conclusion (nigamana)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure explanations with example and application • justify conclusions with explicit inference steps
+  Boosters: Keep each member one line. Choose a vivid, relevant example.`
+  },
+  {
+    slug: "pdca-deming-cycle",
+    term: "PDCA",
+    aliases: [
+      "PDCA — Plan · Do · Check · Act",
+      "PDCA",
+      "pdca"
+  ],
+    definition: `A continuous improvement loop for planning, executing, checking outcomes, and acting on learnings.`,
+    sources: [],
+    categories: [
+      "quality",
+      "operations",
+      "education"
+  ],
+    tags: [
+      "type:framework",
+      "topic:iteration",
+      "phase:iterate",
+      "level:beginner",
+      "use:continuous-improvement",
+      "use:lesson-planning",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:plan",
+      "field:do",
+      "field:check",
+      "field:act"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: design small learning or improvement loops • close the feedback loop on changes
+  Boosters: Timebox each loop and define a “check” metric. Always propose the next PDCA cycle.`
+  },
+  {
+    slug: "pramana-means-of-knowledge",
+    term: "Pramāṇa",
+    aliases: [
+      "Pramāṇa — Means of Knowledge",
+      "Pramāṇa",
+      "pramāṇa"
+  ],
+    definition: `Classical Indian epistemology enumerating means of knowledge (e.g., perception, inference, analogy, testimony, postulation, non-apprehension).`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "research",
+      "philosophy"
+  ],
+    tags: [
+      "type:framework",
+      "topic:evidence",
+      "phase:validate",
+      "level:advanced",
+      "use:source-triangulation",
+      "use:epistemic-audit",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:claim under review",
+      "field:applicable pramāṇas (one per line)",
+      "field:evidence summary",
+      "field:gaps/uncertainties"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: audit evidence types supporting a claim • decide what new evidence would change the answer
+  Boosters: Name the weakest link and how to strengthen it. Add a “what would falsify this?” line.`
+  },
+  {
+    slug: "qiyas-analogical-reasoning",
+    term: "Qiyās",
+    aliases: [
+      "Qiyās — Analogical Reasoning (Islamic Jurisprudence)",
+      "Qiyās",
+      "qiyās"
+  ],
+    definition: `Infer a ruling for a new case by analogy to a known case that shares the effective cause.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "philosophy",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:analogy",
+      "phase:apply",
+      "level:advanced",
+      "use:policy-analogy",
+      "use:case-based-reasoning",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:original case (aṣl)",
+      "field:new case (far‘)",
+      "field:effective cause (ʿillah)",
+      "field:ruling to extend (ḥukm)",
+      "field:relevant differences/limits"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: extend rulings by identifying effective cause • structure analogies between known and novel cases
+  Boosters: Make the effective cause explicit and test for relevant differences. State conditions that would break the analogy.`
+  },
+  {
+    slug: "rapid-decision-rights",
+    term: "RAPID",
+    aliases: [
+      "RAPID — Recommend · Agree · Perform · Input · Decide",
+      "RAPID",
+      "rapid"
+  ],
+    definition: `A roles framework that assigns decision rights and contributions to avoid bottlenecks.`,
+    sources: [],
+    categories: [
+      "decision",
+      "operations",
+      "governance"
+  ],
+    tags: [
+      "type:framework",
+      "topic:decision-rights",
+      "phase:plan",
+      "level:beginner",
+      "use:roles-responsibility",
+      "use:decision-record",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:recommend (r)",
+      "field:agree (a)",
+      "field:perform (p)",
+      "field:input (i)",
+      "field:decide (d)",
+      "field:timeline & checkpoints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: clarify who does what in a decision • speed up approvals by defining roles
+  Boosters: Name individuals by role; include dates and escalation path. Add “disagree and commit” rule where needed.`
+  },
+  {
+    slug: "scientific-method",
+    term: "Scientific Method",
+    aliases: [
+      "Scientific Method — Question · Hypothesis · Method · Data · Analysis · Conclusion",
+      "Scientific Method",
+      "SM",
+      "scientific method"
+  ],
+    definition: `A structured cycle for investigating questions via testable hypotheses and evidence.`,
+    sources: [],
+    categories: [
+      "research",
+      "education",
+      "reasoning"
+  ],
+    tags: [
+      "type:framework",
+      "topic:experiment",
+      "phase:test",
+      "level:beginner",
+      "use:ab-testing",
+      "use:literature-replication",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:research question",
+      "field:hypothesis (falsifiable)",
+      "field:method / protocol",
+      "field:data to collect",
+      "field:analysis plan",
+      "field:expected interpretation / decision rule"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: design an experiment or A/B test • replicate a result with clear hypotheses
+  Boosters: Include falsifiable predictions and a pre-commit metric. Plan replication or follow-up.`
+  },
+  {
+    slug: "scqa-situation-complication-question-answer",
+    term: "SCQA",
+    aliases: [
+      "SCQA — Situation · Complication · Question · Answer",
+      "SCQA",
+      "scqa"
+  ],
+    definition: `A narrative logic that sets context, introduces the tension, asks the key question, and delivers the answer.`,
+    sources: [],
+    categories: [
+      "storytelling frameworks",
+      "analysis frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:structure",
+      "phase:compose",
+      "level:beginner",
+      "use:briefs",
+      "use:memos",
+      "use:presentations",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:situation",
+      "field:complication",
+      "field:key question",
+      "field:answer"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: structure memos or executive summaries • turn research into a compelling arc
+  Boosters: Keep each section to 1–3 sentences. End with one explicit decision or ask.`
+  },
+  {
+    slug: "sentipensar-thinking-feeling",
+    term: "Sentipensar",
+    aliases: [
+      "Sentipensar — Thinking-Feeling Integration (Latin America)",
+      "Sentipensar",
+      "sentipensar"
+  ],
+    definition: `A method to braid rational analysis with lived experience and emotion for wiser action.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "design",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:affect-cognition",
+      "phase:plan",
+      "level:intermediate",
+      "use:research-synthesis",
+      "use:ethics",
+      "use:co-design",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:rational analysis (facts/metrics)",
+      "field:felt sense (stories/experiences)",
+      "field:where they diverge",
+      "field:how to converge responsibly"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: integrate analytic and experiential knowledge • design with empathy and evidence side-by-side
+  Boosters: Document divergences between data and felt sense. End with a decision that honors both.`
+  },
+  {
+    slug: "talanoa-dialogue",
+    term: "Talanoa Dialogue",
+    aliases: [
+      "Talanoa Dialogue (Pacific)",
+      "Talanoa Dialogue",
+      "TD",
+      "talanoa dialogue"
+  ],
+    definition: `An inclusive, story-led dialogue method emphasizing empathy, relationship, and consensus building.`,
+    sources: [],
+    categories: [
+      "facilitation",
+      "cultural frameworks",
+      "decision"
+  ],
+    tags: [
+      "type:framework",
+      "topic:story-sharing",
+      "topic:trust",
+      "phase:explore",
+      "level:beginner",
+      "use:conflict-resolution",
+      "use:policy-dialogue",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:stories (what matters, in participants’ words)",
+      "field:shared issues (one per line)",
+      "field:co-created solutions",
+      "field:commitments & owners"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: build empathy and trust before negotiating • surface shared issues via story-first dialogue
+  Boosters: Open with story; only then move to issues and solutions. End with clear commitments and owners.`
+  },
+  {
+    slug: "tote-test-operate-test-exit",
+    term: "TOTE",
+    aliases: [
+      "TOTE — Test · Operate · Test · Exit",
+      "TOTE",
+      "tote"
+  ],
+    definition: `A simple cybernetic loop: test the state, operate to change it, test again, then exit when criteria are met.`,
+    sources: [],
+    categories: [
+      "planning",
+      "cognitive models"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:control-loop",
+      "phase:iterate",
+      "level:beginner",
+      "use:rapid-iteration",
+      "use:prompt-tuning",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:initial test (state/criteria)",
+      "field:operate (action)",
+      "field:re-test (check)",
+      "field:exit criteria"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: build a minimal control loop for a task • decide when to stop iterating
+  Boosters: Define exit criteria upfront (avoid endless loops). Log each test quickly with pass/fail.`
+  },
+  {
+    slug: "vroom-yetton-jago-decision",
+    term: "Vroom",
+    aliases: [
+      "Vroom–Yetton–Jago Decision Model",
+      "Vroom",
+      "vroom"
+  ],
+    definition: `A diagnostic tree to select the appropriate decision style given quality, expertise, commitment, and time constraints.`,
+    sources: [],
+    categories: [
+      "decision",
+      "leadership",
+      "operations"
+  ],
+    tags: [
+      "type:framework",
+      "topic:leadership",
+      "topic:participation",
+      "phase:plan",
+      "level:intermediate",
+      "use:meeting-design",
+      "use:time-critical-decisions",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:problem/decision",
+      "field:importance of decision quality",
+      "field:leader expertise on this problem",
+      "field:need for team commitment",
+      "field:time constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: choose an autocratic, consultative, or group style • balance decision quality vs. speed and commitment
+  Boosters: Answer each diagnostic question explicitly; show the path to the style. Note risks if a faster/slower style is chosen.`
+  },
+  {
+    slug: "zhongyong-doctrine-of-the-mean",
+    term: "Zhongyong",
+    aliases: [
+      "Zhongyong — Doctrine of the Mean (Confucian Moderation)",
+      "Zhongyong",
+      "zhongyong"
+  ],
+    definition: `A practical method for finding a context-appropriate middle path between harmful extremes.`,
+    sources: [],
+    categories: [
+      "ethics",
+      "reasoning",
+      "cultural frameworks"
+  ],
+    tags: [
+      "type:framework",
+      "topic:moderation",
+      "topic:context",
+      "phase:plan",
+      "level:intermediate",
+      "use:policy-guardrails",
+      "use:communication",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:harmful extremes (a and b)",
+      "field:principles for the mean",
+      "field:adjustment steps",
+      "field:acceptance criteria"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: avoid extremes by calibrating to context • craft proportionate responses and tone
+  Boosters: Name the two extremes explicitly, then the principled middle. Set acceptance criteria for “balanced enough”.`
   }
+
 );
 
 
