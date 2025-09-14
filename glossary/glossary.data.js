@@ -10401,6 +10401,1028 @@ GLOSSARY.push(
     status: "draft",
     notes: `Use-cases: avoid extremes by calibrating to context • craft proportionate responses and tone
   Boosters: Name the two extremes explicitly, then the principled middle. Set acceptance criteria for “balanced enough”.`
+  },
+  
+  
+  {
+    slug: "disney-dreamer-realist-critic",
+    term: "Disney Strategy",
+    aliases: [
+      "Disney Strategy — Dreamer · Realist · Critic",
+      "Disney Strategy",
+      "DS",
+      "disney strategy"
+  ],
+    definition: `A structured creative process (attributed to Walt Disney, modeled by Robert Dilts) that cycles through three distinct thinking styles:contentReference[oaicite:20]{index=20}. First, the *Dreamer* freely imagines ideas without limits:contentReference[oaicite:21]{index=21}. Next, the *Realist* figures out how to implement those ideas practically:contentReference[oaicite:22]{index=22}. Finally, the *Critic* rigorously scrutinizes the plan, identifying flaws and risks:contentReference[oaicite:23]{index=23}. This method helps turn imaginative ideas into feasible plans while still allowing critical refinement.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "evaluation"
+  ],
+    tags: [
+      "type:framework",
+      "topic:perspective-taking",
+      "use:develop-idea",
+      "level:intermediate",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:idea or project description"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: develop an idea from wild concept to practical plan • balance imaginative thinking with realism and critical review
+  Boosters: Separate the three modes clearly: don’t allow the Critic to interrupt the Dreamer phase:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}. Embrace the Dreamer’s outrageous ideas fully before switching to Realist mode to figure out execution steps.`
+  },
+  {
+    slug: "empty-chair-technique",
+    term: "Empty Chair Dialogue",
+    aliases: [
+      "Empty Chair Dialogue (Gestalt)",
+      "Empty Chair Dialogue",
+      "ECD",
+      "empty chair dialogue"
+  ],
+    definition: `A Gestalt therapy exercise where you imagine someone (or a part of yourself) in an empty chair and have a candid dialogue to express unresolved feelings or internal conflicts.`,
+    sources: [],
+    categories: [
+      "psychology",
+      "self-reflection"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:gestalt",
+      "topic:empty-chair",
+      "level:intermediate",
+      "use:resolve-feelings",
+      "use:closure",
+      "use:internal-conflict",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:your identity or role",
+      "field:other person or part in the chair",
+      "field:topic or emotion to explore"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: express thoughts and feelings to someone (or a part of yourself) as if they were present • gain closure or clarity by role-playing both sides of a difficult conversation • integrate conflicting feelings by voicing each side in turn
+  Boosters: Be honest and unfiltered when voicing each side—let emotions flow. Switch perspective after each statement: fully embody the other person or part when responding.`
+  },
+  {
+    slug: "spoon-theory-energy-planner",
+    term: "Energy Budget Planner",
+    aliases: [
+      "Energy Budget Planner (Spoon Theory)",
+      "Energy Budget Planner",
+      "EBP",
+      "energy budget planner"
+  ],
+    definition: `A planning method that treats your energy or focus as a limited budget (“spoons”) to spend on tasks, helping you prioritize and balance activities with rest.`,
+    sources: [],
+    categories: [
+      "productivity",
+      "self-care"
+  ],
+    tags: [
+      "type:framework",
+      "topic:spoon-theory",
+      "topic:energy-management",
+      "level:beginner",
+      "use:daily-planning",
+      "use:adhd",
+      "use:chronic-illness",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:available spoons (energy for the day)",
+      "field:tasks (one per line, with optional spoon cost)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: plan your day according to limited energy or focus (“spoons”) • prioritize tasks when you’re fatigued or dealing with chronic illness • avoid burnout by allocating time for rest and recovery in your schedule
+  Boosters: Estimate a spoon cost for each task (e.g., 1 = easy, 5 = very demanding). Plan a small reward or break whenever you use a large portion of your spoons to recharge.`
+  },
+  {
+    slug: "epic-quest-tasking",
+    term: "Epic Quest Tasking",
+    aliases: [
+      "Epic Quest Tasking — Gamify the Chore",
+      "Epic Quest Tasking",
+      "EQT",
+      "epic quest tasking"
+  ],
+    definition: `A motivational technique that reframes a mundane task as an epic adventure or game quest. By becoming a hero on a mission (with challenges and rewards), the task feels more engaging and doable.`,
+    sources: [],
+    categories: [
+      "productivity",
+      "creativity"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:gamification",
+      "topic:play",
+      "level:beginner",
+      "use:motivation",
+      "use:adhd",
+      "use:routine",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:task or chore to gamify",
+      "field:hero persona or theme (optional)",
+      "field:reward for completion (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: turn a boring chore or task into an exciting mission narrative to spark motivation • help neurodivergent individuals get started on tasks by reframing them as game quests • make goal-setting fun by introducing heroes, villains, and rewards into everyday tasks
+  Boosters: Set a time limit or “countdown” in the story to create urgency (e.g., “complete the quest before the sun sets in 25 minutes”). Include a small celebratory moment or reward in the narrative when the task (quest) is completed, to give a sense of accomplishment.`
+  },
+  {
+    slug: "freewriting-zero-draft",
+    term: "Freewriting",
+    aliases: [
+      "Freewriting — Unfiltered stream of thought (Zero Draft)",
+      "Freewriting",
+      "freewriting"
+  ],
+    definition: `A technique where you write continuously about a topic without worrying about structure or correctness, often used to bypass creative blocks:contentReference[oaicite:13]{index=13}. This "zero draft" approach lets thoughts flow freely, producing raw material that can later be refined or used to guide further work (it’s especially useful for writers with writer’s block).`,
+    sources: [],
+    categories: [
+      "creativity",
+      "writing"
+  ],
+    tags: [
+      "type:technique",
+      "topic:writing",
+      "use:brainstorm",
+      "level:beginner",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:topic or question"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: overcome writer’s block or creative block • discover latent ideas by writing without stopping
+  Boosters: Do not stop or edit mid-flow; even nonsense is okay in the draft. After the freewrite, highlight any surprising ideas or patterns that emerged.`
+  },
+  {
+    slug: "head-heart-gut-decision",
+    term: "Head-Heart-Gut",
+    aliases: [
+      "Head-Heart-Gut — Rational · Emotional · Instinctual check",
+      "Head-Heart-Gut",
+      "HHG",
+      "head-heart-gut"
+  ],
+    definition: `A decision-making technique that ensures you consider three facets of knowing: the Head (intellect and logic), the Heart (emotions and values), and the Gut (intuition and instinct):contentReference[oaicite:39]{index=39}. Each of these "three brains" provides essential information – the Head analyzes data and facts, the Heart weighs what matters to you emotionally, and the Gut offers instinctive insights:contentReference[oaicite:40]{index=40}. Checking in with all three leads to choices that are more balanced and authentic:contentReference[oaicite:41]{index=41}.`,
+    sources: [],
+    categories: [
+      "decision-making",
+      "self-reflection"
+  ],
+    tags: [
+      "type:framework",
+      "topic:embodied-cognition",
+      "use:decision-support",
+      "level:intermediate",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:decision or question"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: make well-rounded decisions considering logic, feelings, and intuition • resolve internal conflict by aligning thoughts, values, and instincts
+  Boosters: Acknowledge differences: it’s normal if Head, Heart, and Gut say different things:contentReference[oaicite:37]{index=37}. If one perspective (e.g., Gut) flags a concern the others don’t, take it seriously and investigate that aspect further:contentReference[oaicite:38]{index=38}.`
+  },
+  {
+    slug: "ice-scoring",
+    term: "ICE",
+    aliases: [
+      "ICE — Impact × Confidence × Ease",
+      "ICE",
+      "ice"
+  ],
+    definition: `ICE is a lightweight scoring model: Impact × Confidence × Ease.`,
+    sources: [],
+    categories: [
+      "prioritization",
+      "growth",
+      "experimentation"
+  ],
+    tags: [
+      "type:framework",
+      "topic:scoring",
+      "use:backlog-grooming",
+      "use:experiments",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:idea / experiment",
+      "field:impact (1–10)",
+      "field:confidence (1–10)",
+      "field:ease (1–10)",
+      "field:notes (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: fast triage of ideas • growth experiments • ops improvements
+  Boosters: Keep scales consistent (e.g., 1–10).`
+  },
+  {
+    slug: "imaginary-mentor-council",
+    term: "Imaginary Council",
+    aliases: [
+      "Imaginary Council — Multiple Mentors, One Question",
+      "Imaginary Council",
+      "IC",
+      "imaginary council"
+  ],
+    definition: `A brainstorming method where you pose a question to an imaginary panel of mentors or characters. Each “advisor” gives their perspective or solution, helping you see the issue from many angles.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "strategy"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:roleplay",
+      "topic:perspective-shift",
+      "level:intermediate",
+      "use:brainstorming",
+      "use:decision-support",
+      "use:ideation",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:council members",
+      "field:problem or question for the council"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: get advice on a problem by imagining a panel of diverse mentors or characters • break out of one-track thinking by considering how different personalities would tackle your issue • indulge in a creative self-coaching exercise by channeling wisdom from fictional or real figures
+  Boosters: Choose a mix of “advisors” with wildly different viewpoints or expertise (e.g., a scientist, an artist, a child, a rebel). Include at least one fun or unexpected persona (like your pet or a favorite fictional character) for creative insight.`
+  },
+  {
+    slug: "internal-weather-report",
+    term: "Internal Weather Report",
+    aliases: [
+      "Internal Weather Report — Storm · Calm · Forecast",
+      "Internal Weather Report",
+      "IWR",
+      "internal weather report"
+  ],
+    definition: `A reflective journaling exercise that describes one’s mood and feelings as a weather report, complete with current conditions, any changes on the horizon, and a short-term forecast for emotional climate.`,
+    sources: [],
+    categories: [
+      "self-reflection",
+      "creativity"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:emotions",
+      "topic:metaphor",
+      "level:beginner",
+      "use:journal",
+      "use:emotional-awareness",
+      "use:stress-relief",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:current mood or feeling"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: articulate your current mood or emotional state using weather metaphors • gain perspective on emotional ups and downs by “forecasting” possible changes • playfully externalize feelings to reduce their intensity and understand them
+  Boosters: Don’t shy away from dramatic weather—intense storm imagery can help validate strong feelings (just include a shift toward resolution). End the report with a gentle forecast or hope (e.g., “skies clearing later”) to remind yourself that emotions change.`
+  },
+  {
+    slug: "kano-model",
+    term: "Kano Model",
+    aliases: [
+      "Kano Model — Must-be, Performance, Delighters",
+      "Kano Model",
+      "KM",
+      "kano model"
+  ],
+    definition: `Kano groups features by how they affect user satisfaction: Must-be, Performance, Delighters, and Indifferent/Reverse.`,
+    sources: [],
+    categories: [
+      "prioritization",
+      "product management",
+      "ux"
+  ],
+    tags: [
+      "type:framework",
+      "topic:prioritization",
+      "topic:user-satisfaction",
+      "use:backlog-refinement",
+      "use:research-synthesis",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:must-be (expected basics)",
+      "field:performance (more is better)",
+      "field:delighters (unexpected extras)",
+      "field:indifferent / reverse",
+      "field:notes (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: separate basics from delighters • decide what prevents complaints vs. what creates delight • facilitate feature trade-offs in workshops
+  Boosters: Add 1–2 sentence rationale per item. Note any risks or assumptions after each list.`
+  },
+  {
+    slug: "morning-pages-journaling",
+    term: "Morning Pages",
+    aliases: [
+      "Morning Pages — Daily stream-of-consciousness journal",
+      "Morning Pages",
+      "MP",
+      "morning pages"
+  ],
+    definition: `A daily writing practice popularized by Julia Cameron’s *The Artist’s Way* to unblock creativity:contentReference[oaicite:34]{index=34}. Every morning, you write three pages of longhand, uncensored stream-of-consciousness thoughts. Morning Pages help "clear out the sludge," reconnecting you with your true feelings and ideas and often leading to unexpected insights or clarity about your desires:contentReference[oaicite:35]{index=35}:contentReference[oaicite:36]{index=36}.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "self-reflection"
+  ],
+    tags: [
+      "type:exercise",
+      "topic:journal",
+      "use:creative-block",
+      "level:beginner",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:current feeling or focus (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: unlock creativity through routine journaling • clear mental clutter at the start of the day
+  Boosters: Write by hand if possible, as it can enhance reflection and mind-body connection:contentReference[oaicite:32]{index=32}. Do not share or even reread your Morning Pages immediately; their power comes from absolute freedom and privacy:contentReference[oaicite:33]{index=33}.`
+  },
+  {
+    slug: "moscow-prioritization",
+    term: "MoSCoW",
+    aliases: [
+      "MoSCoW — Must · Should · Could · Won’t",
+      "MoSCoW",
+      "MSCW",
+      "moscow"
+  ],
+    definition: `A prioritization method that groups requirements into Must have, Should have, Could have, and Won’t have for a project or release.`,
+    sources: [],
+    categories: [
+      "prioritization",
+      "planning",
+      "product management"
+  ],
+    tags: [
+      "type:framework",
+      "topic:prioritization",
+      "topic:requirements",
+      "level:beginner",
+      "use:project-planning",
+      "use:backlog-refinement",
+      "use:scope-management",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:must have (critical)",
+      "field:should have (important but not critical)",
+      "field:could have (nice-to-have)",
+      "field:won’t have (this time)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: prioritize product features or requirements • ux research • clarify scope during project planning • communicate priorities to stakeholders
+  Boosters: Keep each category concise (1–2 sentences per item). Explicitly state why each item is in its category to prevent scope creep.`
+  },
+  {
+    slug: "oblique-strategies-cards",
+    term: "Oblique Strategies",
+    aliases: [
+      "Oblique Strategies — Lateral thinking prompt cards",
+      "Oblique Strategies",
+      "OS",
+      "oblique strategies"
+  ],
+    definition: `A card-based method invented by musician Brian Eno and artist Peter Schmidt to overcome creative blocks:contentReference[oaicite:15]{index=15}. Each Oblique Strategies card presents a cryptic instruction or dilemma (e.g., "Remove specifics and convert to ambiguities") designed to break down artistic barriers and spark creative insight:contentReference[oaicite:16]{index=16}. Following these prompts encourages lateral thinking. Similarly, some creators use random oracle systems (like the I Ching, as John Cage did) for the same purpose of injecting randomness to spur innovation:contentReference[oaicite:17]{index=17}.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:cards",
+      "use:creative-block",
+      "level:intermediate",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:creative situation or block",
+      "field:number of cards to draw (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: break out of a creative rut with random prompts • find new approaches when stuck on an artistic problem
+  Boosters: Interpret the card prompts loosely; any personal meaning you derive is valid:contentReference[oaicite:14]{index=14}. If a prompt seems cryptic or disruptive, embrace it — use it as an opportunity to change your approach entirely.`
+  },
+  {
+    slug: "parts-work-dialogue",
+    term: "Parts Work Dialogue",
+    aliases: [
+      "Parts Work Dialogue (IFS therapy)",
+      "Parts Work Dialogue",
+      "PWD",
+      "parts work dialogue"
+  ],
+    definition: `An internal dialogue technique (from Internal Family Systems therapy) where you personify and converse with different parts of yourself to unearth and harmonize conflicting inner voices.`,
+    sources: [],
+    categories: [
+      "psychology",
+      "self-reflection"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:parts-work",
+      "topic:IFS",
+      "level:intermediate",
+      "use:internal-conflict",
+      "use:self-discovery",
+      "use:trauma-processing",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:part a (name/role)",
+      "field:part b (name/role)",
+      "field:conflict or concern between them"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: resolve internal conflicts by giving each part a voice • understand the needs and fears of your inner “family” members • foster self-compassion by mediating between your inner voices
+  Boosters: Clearly define each part’s role (e.g., Inner Critic vs. Vulnerable Child). Allow each part to speak without judgment, then have your core Self respond with empathy.`
+  },
+  {
+    slug: "random-association",
+    term: "Random Association",
+    aliases: [
+      "Random Association — Combine unrelated ideas",
+      "Random Association",
+      "RA",
+      "random association"
+  ],
+    definition: `A method to introduce two random, unrelated items or concepts and force a connection between them, spurring innovative thinking by linking disparate ideas:contentReference[oaicite:0]{index=0}.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:random",
+      "use:brainstorm",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:problem or topic",
+      "field:random element 1 (optional)",
+      "field:random element 2 (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: break creative block with random prompts • discover unconventional ideas by forced connections
+  Boosters: Pick truly unrelated elements for bigger creativity leaps. Encourage humorous or absurd connections; even silly ideas can contain a seed of insight.`
+  },
+  {
+    slug: "rapid-ideation",
+    term: "Rapid Ideation",
+    aliases: [
+      "Rapid Ideation — Timed idea sprint",
+      "Rapid Ideation",
+      "RI",
+      "rapid ideation"
+  ],
+    definition: `A brainstorming approach focusing on quantity over quality: set a short time limit and produce as many ideas as possible without filtering:contentReference[oaicite:8]{index=8}. The goal is to bypass your inner critic and get a broad list of thoughts, which can later be reviewed for viable options or refined ideas.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:brainstorm",
+      "use:quantity-over-quality",
+      "level:beginner",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:problem or question",
+      "field:time/quantity constraint (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: generate lots of ideas under time pressure • overcome creative block by not overthinking
+  Boosters: Suspend judgment during the idea sprint – no idea is too silly initially:contentReference[oaicite:7]{index=7}. Set a clear timer or target idea count; the constraint can boost focus and output.`
+  },
+  {
+    slug: "rice-scoring",
+    term: "RICE",
+    aliases: [
+      "RICE — Reach × Impact × Confidence ÷ Effort",
+      "RICE",
+      "rice"
+  ],
+    definition: `RICE prioritizes by Reach, Impact, Confidence, and Effort. Score = (R × I × C) / E.`,
+    sources: [],
+    categories: [
+      "prioritization",
+      "product management"
+  ],
+    tags: [
+      "type:framework",
+      "topic:scoring",
+      "use:backlog-prioritization",
+      "use:roadmap",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:feature / item name",
+      "field:reach (users / period)",
+      "field:impact (e.g., 0.25/0.5/1/2/3)",
+      "field:confidence (0–1)",
+      "field:effort (person-months)",
+      "field:notes (assumptions, caveats)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: rank features quantitatively • allocate scarce resources
+  Boosters: Show the formula and numbers; round to 2 decimals.`
+  },
+  {
+    slug: "role-storming",
+    term: "Role Storming",
+    aliases: [
+      "Role Storming — Ideation as different personas",
+      "Role Storming",
+      "RS",
+      "role storming"
+  ],
+    definition: `A brainstorming variation where you imagine yourself (or your team) in a different role or persona and generate ideas from that perspective:contentReference[oaicite:1]{index=1}. By role-playing as someone else (e.g., a customer, a famous innovator), you can gain new insights and break habitual thinking.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:role-play",
+      "use:brainstorm",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:problem or goal",
+      "field:roles or personas (one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: get fresh ideas by changing perspective • uncover insights via imaginary roles
+  Boosters: Adopt extreme or unusual personas to push boundaries of thinking. Stay in character for each role to fully explore its viewpoint before switching.`
+  },
+  {
+    slug: "rubber-duck-debugging",
+    term: "Rubber Duck Debugging",
+    aliases: [
+      "Rubber Duck Debugging — Explain to Understand",
+      "Rubber Duck Debugging",
+      "RDD",
+      "rubber duck debugging"
+  ],
+    definition: `A problem-solving technique where you explain your issue or question aloud in simple terms (often to an inanimate object or imaginary friend). The act of explaining reveals gaps in understanding and often leads to the solution.`,
+    sources: [],
+    categories: [
+      "analysis",
+      "productivity"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:explaining",
+      "topic:debugging",
+      "level:beginner",
+      "use:problem-solving",
+      "use:learning",
+      "use:clarification",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:problem or question to explain"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: work through a tricky problem by explaining it step-by-step as if to a complete novice (or a rubber duck) • clarify your understanding of a bug or question by articulating every detail and assumption • discover gaps in logic or missing pieces by teaching the problem to an imaginary listener
+  Boosters: Imagine the “duck” is totally new to the subject – define even basic terms as you explain. Have the duck ask simple clarification questions if something isn’t clear, and then answer them.`
+  },
+  {
+    slug: "shadow-work-dialogue",
+    term: "Shadow Work Dialogue",
+    aliases: [
+      "Shadow Work Dialogue — Conscious Self · Shadow Self",
+      "Shadow Work Dialogue",
+      "SWD",
+      "shadow work dialogue"
+  ],
+    definition: `A Jungian-inspired exercise where you have a written conversation between your everyday conscious self and your “Shadow” (the hidden, negative, or feared aspects of you) to acknowledge and integrate these aspects.`,
+    sources: [],
+    categories: [
+      "psychology",
+      "self-reflection"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:shadow",
+      "topic:unconscious",
+      "level:advanced",
+      "use:inner-demons",
+      "use:self-acceptance",
+      "use:emotional-healing",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:shadow trait or feeling",
+      "field:triggering scenario (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: confront a “shadow” side of yourself (traits or emotions you’ve repressed) by personifying it • gain insight into negative patterns by dialoguing with the part of you that acts them out • integrate and heal shame or anger by compassionately engaging with your darker side
+  Boosters: Approach the shadow with curiosity, not hostility – it often protects a hurt part of you in a misguided way. Let the Shadow Self speak bluntly. Have your Conscious Self acknowledge its points before gently offering an alternative perspective.`
+  },
+  {
+    slug: "socratic-method",
+    term: "Socratic Questioning Method",
+    aliases: [
+      "Socratic Questioning Method",
+      "SQM",
+      "socratic questioning method"
+  ],
+    definition: `A disciplined questioning method to clarify, probe assumptions, test evidence, explore viewpoints, and examine implications.`,
+    sources: [],
+    categories: [
+      "reasoning",
+      "critical thinking"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:socratic",
+      "topic:assumptions",
+      "phase:explore",
+      "level:beginner",
+      "use:analysis",
+      "use:teaching",
+      "use:debiasing",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:claim / topic",
+      "field:assumptions (one per line, optional)",
+      "field:evidence (one per line, optional)",
+      "field:alternatives (one per line, optional)",
+      "field:do's (must do)",
+      "field:don'ts / constraints"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: interrogate claims and assumptions • separate knowledge from belief • surface implications and alternatives
+  Boosters: Keep questions sharp and answerable. Avoid leading or loaded wording. End with a synthesis and next inquiry.`
+  },
+  {
+    slug: "somatic-focusing-felt-sense",
+    term: "Somatic Focusing",
+    aliases: [
+      "Somatic Focusing — Feel · Ask · Listen",
+      "Somatic Focusing",
+      "SF",
+      "somatic focusing"
+  ],
+    definition: `A mindfulness-based introspection where you focus on a physical feeling (“felt sense”), describe it, and then dialogue with it to reveal insights or relief.`,
+    sources: [],
+    categories: [
+      "psychology",
+      "self-reflection"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:somatic",
+      "topic:felt-sense",
+      "level:intermediate",
+      "use:anxiety-management",
+      "use:inner-wisdom",
+      "use:emotional-processing",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:bodily sensation (location & quality)",
+      "field:context or emotion (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: tune into a bodily sensation to discover the message or emotion it holds • reduce overwhelm by patiently listening to what your body is telling you • clarify vague feelings by describing them and “asking” them questions
+  Boosters: Describe the sensation with metaphor (e.g., “a knot of fire in my belly”) to capture its quality. After describing, gently ask the sensation what it wants or needs, and wait for an intuitive answer.`
+  },
+  {
+    slug: "synectics-analogies",
+    term: "Synectics",
+    aliases: [
+      "Synectics — Analogies & Problem Transfer",
+      "Synectics",
+      "synectics"
+  ],
+    definition: `A creative problem-solving approach that "joins together different and apparently irrelevant elements" by using analogies:contentReference[oaicite:26]{index=26}. In Synectics, you reframe the problem into an analogous situation in a distant or unrelated context (using direct, personal, symbolic, or fantasy analogies):contentReference[oaicite:27]{index=27}, brainstorm solutions for that analogy, and then translate those solutions back to the original problem:contentReference[oaicite:28]{index=28}. This leverages the mind’s ability to find connections and can yield truly novel solutions.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "problem-solving"
+  ],
+    tags: [
+      "type:framework",
+      "topic:analogies",
+      "use:innovate",
+      "level:advanced",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:original problem",
+      "field:analogy scenario (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: find solutions by drawing analogies from unrelated domains • unstick a problem by reframing it in a different context
+  Boosters: Encourage wild analogies – even if the link is tenuous, it may spark a novel idea:contentReference[oaicite:24]{index=24}. After solving the analogy problem, carefully map the insights back to the original problem to ensure relevance:contentReference[oaicite:25]{index=25}.`
+  },
+  {
+    slug: "synesthetic-brainstorm",
+    term: "Synesthetic Brainstorm",
+    aliases: [
+      "Synesthetic Brainstorm — Color · Sound · Texture",
+      "Synesthetic Brainstorm",
+      "SB",
+      "synesthetic brainstorm"
+  ],
+    definition: `A creative thinking exercise that treats an idea or problem through multiple sensory lenses (color, sound, texture, etc.), using synesthesia-like metaphors to spark new insights.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:metaphor",
+      "topic:sensory",
+      "level:beginner",
+      "use:idea-generation",
+      "use:perspective-shift",
+      "use:creative-block",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:problem or concept to explore"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: generate fresh ideas by translating an abstract problem into sensory metaphors • unlock intuition about a concept by describing its color, sound, texture, or taste • use cross-sensory analogies to discover surprising angles on a design or story challenge
+  Boosters: Include at least three senses (e.g., sight, sound, touch) in your exploration; the more variety, the more insights. After listing sensory metaphors, reflect on why each metaphor might resonate and what new ideas it suggests.`
+  },
+  {
+    slug: "tarot-spread-reflection",
+    term: "Tarot Spread Reflection",
+    aliases: [
+      "Tarot Spread Reflection — Past · Present · Future",
+      "Tarot Spread Reflection",
+      "TSR",
+      "tarot spread reflection"
+  ],
+    definition: `A three-card spread (often Past-Present-Future) used as a reflective tool. Each card’s meaning is applied metaphorically to the user’s question or situation, providing narrative insight and guidance.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "self-reflection"
+  ],
+    tags: [
+      "type:framework",
+      "topic:tarot",
+      "topic:storytelling",
+      "level:intermediate",
+      "use:personal-insight",
+      "use:creative-inspiration",
+      "use:journal",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:question or situation for guidance",
+      "field:drawn cards (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: gain personal insight by interpreting a situation through symbolic cards • use archetypal imagery to brainstorm solutions or perspectives on a problem • practice creative storytelling or introspection using a 3-card tarot format
+  Boosters: Even if you don’t know tarot meanings, focus on the imagery or themes each card suggests and how it might relate to your life. If a card interpretation feels negative, include an empowering reframe or advice to balance it.`
+  },
+  {
+    slug: "time-machine-perspectives",
+    term: "Time Machine Advice",
+    aliases: [
+      "Time Machine Advice — Past Self & Future Self",
+      "Time Machine Advice",
+      "TMA",
+      "time machine advice"
+  ],
+    definition: `A reflective exercise where you imagine your past self and future self giving their perspectives on your current situation. The past self offers a reminder of where you came from, and the future self gives guidance looking back with wisdom.`,
+    sources: [],
+    categories: [
+      "self-reflection",
+      "planning"
+  ],
+    tags: [
+      "type:pattern",
+      "topic:future-self",
+      "topic:reflection",
+      "level:beginner",
+      "use:life-choices",
+      "use:personal-growth",
+      "use:perspective",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:past self (age or year, optional)",
+      "field:current situation or problem"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: gain wisdom on a current challenge by imagining advice from your younger and older self • practice self-compassion by viewing your situation through the eyes of a past you and a future you • clarify your next steps by hearing what your hopeful future self would tell you to do
+  Boosters: Visualize your past self vividly (age, surroundings, mindset) to ground their voice. Do the same for your future self at, say, 20 years from now. Have the future self focus on encouragement and long-term perspective, while the past self might offer innocence or fundamental values you had.`
+  },
+  {
+    slug: "trigger-storming",
+    term: "Trigger Storming",
+    aliases: [
+      "Trigger Storming — Prompt-based brainstorming",
+      "Trigger Storming",
+      "TS",
+      "trigger storming"
+  ],
+    definition: `A brainstorming method where you use specific prompts or "triggers" – such as open-ended sentences or abstract statements – to inspire new thoughts:contentReference[oaicite:10]{index=10}. The triggers are designed to provoke or challenge assumptions, helping the group or individual break out of conventional ideas.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:prompts",
+      "use:brainstorm",
+      "level:intermediate",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:problem or topic",
+      "field:custom triggers (optional, one per line)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: spark discussion with provocative prompts • generate ideas from abstract or incomplete statements
+  Boosters: Use unusual or even provocative triggers to jolt thinking in new directions:contentReference[oaicite:9]{index=9}. Build on whatever associations the trigger evokes, no matter how tangential or odd they seem.`
+  },
+  {
+    slug: "value-effort-matrix",
+    term: "Value vs. Effort",
+    aliases: [
+      "Value vs. Effort — 2×2 Quick Wins Matrix",
+      "Value vs. Effort",
+      "VE",
+      "value vs. effort"
+  ],
+    definition: `Plot backlog items on High/Low Value vs. High/Low Effort. Prioritize Quick Wins.`,
+    sources: [],
+    categories: [
+      "prioritization",
+      "workshops",
+      "product management"
+  ],
+    tags: [
+      "type:framework",
+      "topic:matrix",
+      "use:stakeholder-workshop",
+      "use:portfolio-triage",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:items (one per line)",
+      "field:scale hint (optional)",
+      "field:notes (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: visualize trade-offs • identify quick wins • kill time sinks
+  Boosters: Sort final list by “Quick Wins” first.`
+  },
+  {
+    slug: "what-if-scenarios",
+    term: "What If",
+    aliases: [
+      "What If — Scenario reframing questions",
+      "What If",
+      "WI",
+      "what if"
+  ],
+    definition: `A technique of reframing problems by asking "What if...?" questions that introduce new scenarios or constraints:contentReference[oaicite:12]{index=12}. By imagining how the issue would look under different circumstances (e.g., different people, times, or rules), you gain fresh perspectives that can lead to innovative solutions.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:reframing",
+      "use:brainstorm",
+      "level:beginner",
+      "type:template",
+      "kind:technique",
+      "has:boosters",
+      "field:problem or topic",
+      "field:what-if scenario (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: reframe a problem by changing context or constraints • explore alternative outcomes or perspectives
+  Boosters: Pose wild "what if" questions beyond realistic bounds to expand thinking:contentReference[oaicite:11]{index=11}. After exploring an imagined scenario, extract any ideas that could be applied (even partially) to the real situation.`
+  },
+  {
+    slug: "wishing-technique",
+    term: "Wishing",
+    aliases: [
+      "Wishing — Imagine ideal solutions",
+      "Wishing",
+      "wishing"
+  ],
+    definition: `An ideation method where you freely wish for the perfect or even impossible solutions to a problem:contentReference[oaicite:5]{index=5}. By articulating “magic wand” wishes without restraint, you can then work backward to figure out how to incorporate aspects of those ideal solutions into practical reality:contentReference[oaicite:6]{index=6}.`,
+    sources: [],
+    categories: [
+      "creativity",
+      "ideation"
+  ],
+    tags: [
+      "type:technique",
+      "topic:ideation",
+      "use:brainstorm",
+      "level:beginner",
+      "type:template",
+      "kind:pattern",
+      "has:boosters",
+      "field:problem or goal"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: think beyond realistic constraints • identify features of an ideal outcome
+  Boosters: Encourage even absurd or impossible wishes; they can spark real ideas:contentReference[oaicite:4]{index=4}. After listing wishes, examine each to find elements you *can* actually implement.`
+  },
+  {
+    slug: "wsjf-weighted-shortest-job-first",
+    term: "WSJF",
+    aliases: [
+      "WSJF — (Business Value + Time Criticality + Risk Reduction) ÷ Job Size",
+      "WSJF",
+      "wsjf"
+  ],
+    definition: `WSJF prioritizes by Cost of Delay over Job Size. CoD ≈ Business Value + Time Criticality + Risk Reduction.`,
+    sources: [],
+    categories: [
+      "agile",
+      "prioritization",
+      "safe"
+  ],
+    tags: [
+      "type:framework",
+      "topic:wsjf",
+      "use:program-increment",
+      "use:flow-optimization",
+      "type:template",
+      "kind:framework",
+      "has:boosters",
+      "field:job / feature",
+      "field:business value",
+      "field:time criticality",
+      "field:risk reduction / opportunity enablement",
+      "field:job size",
+      "field:notes (optional)"
+  ],
+    related: [],
+    status: "draft",
+    notes: `Use-cases: maximize economic throughput • PI planning in SAFe
+  Boosters: Call out assumptions; avoid gaming Job Size.`
   }
 
 );
