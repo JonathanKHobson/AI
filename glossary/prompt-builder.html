@@ -307,15 +307,50 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   color: var(--muted);
 }
 
-
     .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px}
+   .chip{
+  background:var(--chip);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  line-height:1;
+  color:var(--text);           /* ← fixes black-on-black in dark mode */
+  cursor:pointer;              /* nicer affordance */
+  transition:background .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease;
+}
+
+/* Extra guards for common dark-theme toggles */
+[data-theme="dark"] .chip{ color:var(--text); }
+.theme-dark .chip{ color:var(--text); }
+.dark .chip{ color:var(--text); }
+
+/* Subtle hover/focus to aid discoverability without hurting contrast */
+.chip:hover{ border-color:var(--accent); }
+.chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+/* Space chips away from the search bar */
+#datasetChips{ margin:8px 0 12px; }  /* top 8px, bottom 12px */
+
+
+.chip[aria-pressed="true"]{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(78,161,255,.2) inset;
+  color: var(--text);
+}
+
+.chip[aria-pressed="false"]{ opacity:.92; }   /* still fully readable */
+.chip[aria-pressed="true"]{ opacity:1; font-weight:600; }
+
 
     pre{margin:0;padding:14px;background:var(--card);border-top:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:auto;white-space:pre-wrap}
 
     .pill{padding:4px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px}
     .pill[data-val="framework"]{color:var(--green)}
     .pill[data-val="pattern"]{color:var(--yellow)}
+    
+    .pill[data-val="tasks"]{color:var(--accent)}
+
     
    /* Additional instructions box spacing */
 #extra{
@@ -473,7 +508,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <header>
     <a class="btn sm" href="../glossary/index.html">← Back to Glossary</a>
     <strong>Prompt Framework Builder</strong>
-    <span class="pill" data-val="framework" title="Frameworks & Patterns">frameworks + patterns</span>
+    <span class="pill" data-val="framework" title="Thinking Structures & Patterns">thinking structures + patterns</span>
     <span class="spacer"></span>
     <button id="copyBtn" class="btn sm">Copy All Prompts</button>
     <button id="openBtn" class="btn primary sm">Open in ChatGPT</button>
@@ -488,6 +523,12 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       
       <section>
         <label for="frameworkSel">Templates</label>
+        
+        <div id="datasetChips" class="chips" role="toolbar" aria-label="Template sets">
+  <button class="chip" id="chipPatterns" aria-pressed="true"  type="button" title="Frameworks & patterns">Patterns</button>
+<button class="chip" id="chipTasks"    aria-pressed="false" type="button" title="Task-specific templates (preview)">Tasks</button>
+
+</div>
         
 <div id="finderBar" class="finder">
   <input id="fwSearch" type="text" placeholder="Find a template by name, tag, or use case… (Ctrl/Cmd+K)">
@@ -608,8 +649,17 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   })();
 </script>
 
-
-
+<script>
+// S4 — Lazy loader for tasks dataset (window.TASK_TEMPLATES)
+function ensureTasksLoaded(onready){
+  if (Array.isArray(window.TASK_TEMPLATES)) { onready && onready(); return; }
+  const s = document.createElement('script');
+  s.src = './templates.tasks.data.js';
+  s.onload  = ()=> onready && onready();
+  s.onerror = ()=> { console.info('Tasks dataset not found at ./templates.tasks.data.js'); onready && onready(); };
+  document.head.appendChild(s);
+}
+</script>
 
   <script>
   (function(){
@@ -774,9 +824,98 @@ function defaultBooster(id){
 // Prefer TEMPLATES, fall back to FRAMEWORKS for older files.
 const FRAMEWORKS = (window.TEMPLATES || window.FRAMEWORKS || []);
 
+// S4 — dataset accessors
+const PATTERNS = FRAMEWORKS;
+function TASKS(){ return Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES : []; }
+
+// Ensure the "— Select a template —" option exists at index 0
+function withNone(list){
+  return list.some(f=>f && f.id === 'none')
+    ? list
+    : [{ id:'none', label:'— Select a template —' }, ...list];
+}
+
+// S3 — dataset helpers (no behavior change yet)
+// Keep existing S2 helpers if you already added them; these only fill gaps.
+window.currentDataset = window.currentDataset || (()=>{
+  try { return localStorage.getItem('fw_dataset') || 'patterns'; }
+  catch(e){ return 'patterns'; }
+});
+
+window.setDataset = window.setDataset || ((ds)=>{
+  try { localStorage.setItem('fw_dataset', ds); } catch(e){}
+  // Note: S2 may also update chip visuals + pill; that’s fine to live elsewhere.
+});
+
+// For now, PICKER() = FRAMEWORKS (no behavior change).
+// In S4 we’ll redefine this to return TASKS or PATTERNS based on currentDataset().
+// S4 — PICKER now reflects currentDataset()
+const PICKER = function(){
+  const ds = (typeof currentDataset === 'function') ? currentDataset() : 'patterns';
+  return ds === 'tasks' ? withNone(TASKS()) : withNone(PATTERNS);
+};
+
+
+
 
 const searchEl = document.getElementById('fwSearch');
 const allBtn   = document.getElementById('fwAll');
+
+// S2 — cosmetic dataset chips (no data swap yet)
+const chipPatterns = document.getElementById('chipPatterns');
+const chipTasks    = document.getElementById('chipTasks');
+const modePill     = document.querySelector('span.pill');
+
+// Helpers: persist + reflect pressed state
+function currentDataset(){
+  return localStorage.getItem('fw_dataset') || 'patterns';
+}
+
+// Update the header pill to match dataset mode
+function updatePill(ds){
+  if (!modePill) return;
+  if (ds === 'tasks'){
+    // Title & text for Tasks mode
+    modePill.dataset.val = 'tasks';                 // safe new value; see optional CSS below
+    modePill.title       = 'Specific Tasks';
+    modePill.textContent = 'specific tasks';
+  } else {
+    // Title & text for Patterns/Thinking Structures mode
+    modePill.dataset.val = 'framework';             // keep existing styling compatibility
+    modePill.title       = 'Thinking Structures & Patterns';
+    modePill.textContent = 'thinking structures + patterns';
+  }
+}
+
+function setDataset(ds){
+  localStorage.setItem('fw_dataset', ds);
+  chipPatterns?.setAttribute('aria-pressed', String(ds === 'patterns'));
+  chipTasks?.setAttribute('aria-pressed',    String(ds === 'tasks'));
+  updatePill(ds); // ← NEW: keep the pill in sync
+}
+
+// Initialize pressed visuals + pill from storage (defaults to "patterns")
+setDataset(currentDataset());
+
+// Clicks flip visuals + persist choice (still purely cosmetic)
+// S4 — actually switch the dataset used by the picker/search
+chipPatterns?.addEventListener('click', ()=>{
+  setDataset('patterns');
+  buildFrameworkOptions(document.getElementById('fwSearch')?.value || '');
+  // optional: re-render fields if your UI depends on active list
+  // renderFields(); emit();
+});
+
+chipTasks?.addEventListener('click', ()=>{
+  ensureTasksLoaded(()=>{
+    setDataset('tasks');
+    buildFrameworkOptions(document.getElementById('fwSearch')?.value || '');
+    // optional: re-render fields if your UI depends on active list
+    // renderFields(); emit();
+  });
+});
+
+
 
 const norm = s => (s||'').toLowerCase();
 function tokenize(s){ return norm(s).split(/[^a-z0-9]+/).filter(Boolean); }
@@ -880,13 +1019,12 @@ delete state.fields;
 }; // use let so we can set the id after we build options
 
 function buildFrameworkOptions(filterText=''){
-  const base = FRAMEWORKS.slice()
+  const base = PICKER().slice()
     .sort((a,b)=> a.label.localeCompare(b.label,'en',{sensitivity:'base'}));
 
   const total = base.length;
   let list = base;
   let usedFallback = false;
-
 
   const q = (filterText||'').trim();
   if (q){
@@ -1597,46 +1735,58 @@ input.placeholder = f.ph || '';
 input.id = f.key;
 input.value = (t.fields && t.fields[f.key]) || '';
 
-/* -- Special case: persona typeahead -- */
-if (f.type === 'typeahead' && f.key === 'persona_name'){
+/* -- Typeahead (persona-backed) -- */
+if (f.type === 'typeahead'){
   holder.classList.add('taWrap');
+
   const list = document.createElement('div');
   list.className = 'taList';
   list.hidden = true;
+
   holder.appendChild(input);
   holder.appendChild(list);
 
+  const isPersona = (f.key === 'persona_name'); // only Persona template should autofill extra fields
+
   let activeIndex = -1;
+
   function renderSuggestions(q){
-    const hits = personaFilter(q, 30);
+    const hits = personaFilter(q, 30); // uses window.PERSONAS if present
     list.innerHTML = '';
     activeIndex = -1;
     if (!hits.length){ list.hidden = true; return; }
+
     hits.forEach((p, idx)=>{
       const item = document.createElement('div');
       item.className = 'taItem';
-      item.innerHTML = `<span class="name">${p.name}</span>
-                        <span class="sub">${p.profession||''}${p.tags?.length?` • ${p.tags.join(', ')}`:''}</span>`;
-item.addEventListener('click', (e)=>{
-  // Keep UI and state in sync BEFORE re-render to beat any pending input events
-  input.value = p.name || '';
-  (t.fields || (t.fields = {})).persona_name = input.value;
+      item.innerHTML = `
+        <span class="name">${p.name}</span>
+        <span class="sub">${p.profession || ''}${(p.tags && p.tags.length) ? (' • ' + p.tags.join(', ')) : ''}</span>
+      `.trim();
 
-  applyPersonaToTab(t, p);
-  t.fields.end = (t.fields.end || '');
+      item.addEventListener('click', ()=>{
+        input.value = p.name || '';
+        (t.fields || (t.fields = {}))[f.key] = input.value;
 
-  // Hide suggestions and re-render fields
-  list.hidden = true;
-  renderFields(); 
-  emit();
-
-  // Optional: jump cursor to End goal next
-  const endInput = document.querySelector('#end');
-  if (endInput) endInput.focus();
-});
+        if (isPersona){
+          // keep existing Persona template autofill
+          applyPersonaToTab(t, p);
+          t.fields.end = (t.fields.end || '');
+          list.hidden = true;
+          renderFields();
+          emit();
+          const endInput = document.querySelector('#end');
+          if (endInput) endInput.focus();
+        } else {
+          // for 'you' and 'other' (and any other typeahead fields), just set the text
+          list.hidden = true;
+          emit();
+        }
+      });
 
       list.appendChild(item);
     });
+
     list.hidden = false;
   }
 
@@ -1655,11 +1805,11 @@ item.addEventListener('click', (e)=>{
     if (e.key === 'ArrowUp'){   e.preventDefault(); activeIndex = Math.max(0, activeIndex-1); }
     if (e.key === 'Escape'){ list.hidden = true; return; }
 
-if (e.key === 'Enter' && activeIndex >= 0){
-  e.preventDefault();
-  items[activeIndex].dispatchEvent(new Event('click', {bubbles:true}));
-  return;
-}
+    if (e.key === 'Enter' && activeIndex >= 0){
+      e.preventDefault();
+      items[activeIndex].dispatchEvent(new Event('click', {bubbles:true}));
+      return;
+    }
 
     items.forEach((n,i)=> n.classList.toggle('active', i===activeIndex));
   });
