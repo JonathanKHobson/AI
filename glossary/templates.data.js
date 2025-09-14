@@ -4983,7 +4983,1000 @@ boosters: [
     notes && ('Notes:\n' + notes),
     'Output:\n1) Table with Item | Importance | Satisfaction | Gap (Imp–Sat)\n2) Top 5 opportunities with rationale\n3) Suggested next step per opportunity (experiment or design task)'
   ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'random_assoc',
+  slug: 'random-association',
+  label: 'Random Association — Combine unrelated ideas',
+  kind: 'pattern',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:random', 'use:brainstorm', 'level:beginner'],
+  use_cases: [
+    'break creative block with random prompts',
+    'discover unconventional ideas by forced connections'
+  ],
+  boosters: [
+    'Pick truly unrelated elements for bigger creativity leaps.',
+    'Encourage humorous or absurd connections; even silly ideas can contain a seed of insight.'
+  ],
+  definition: 'A method to introduce two random, unrelated items or concepts and force a connection between them, spurring innovative thinking by linking disparate ideas:contentReference[oaicite:0]{index=0}.',
+  help: 'Provide a short description of your problem or topic. Optionally, suggest two random elements (objects, concepts) to connect. The model will find creative ways to link these with your problem, generating novel ideas.',
+  fields: [
+    { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Improving public transportation' },
+    { key: 'random1', label: 'Random element 1 (optional)', type: 'text', ph: 'e.g., Coffee mug' },
+    { key: 'random2', label: 'Random element 2 (optional)', type: 'text', ph: 'e.g., Jellyfish' }
+  ],
+  template: ({ problem, random1, random2, ctx }) => [
+    'Apply Random Association to spur new ideas.',
+    ctx && `Context: ${ctx}`,
+    problem && `Problem: ${problem}`,
+    random1 && `Random element 1: ${random1}`,
+    random2 && `Random element 2: ${random2}`,
+    !random1 && !random2 && 'Pick two unrelated concepts and connect them to the problem.',
+    'List creative ideas combining these elements with the problem context.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'role_storming',
+  slug: 'role-storming',
+  label: 'Role Storming — Ideation as different personas',
+  kind: 'pattern',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:role-play', 'use:brainstorm', 'level:beginner'],
+  use_cases: [
+    'get fresh ideas by changing perspective',
+    'uncover insights via imaginary roles'
+  ],
+  boosters: [
+    'Adopt extreme or unusual personas to push boundaries of thinking.',
+    'Stay in character for each role to fully explore its viewpoint before switching.'
+  ],
+  definition: 'A brainstorming variation where you imagine yourself (or your team) in a different role or persona and generate ideas from that perspective:contentReference[oaicite:1]{index=1}. By role-playing as someone else (e.g., a customer, a famous innovator), you can gain new insights and break habitual thinking.',
+  help: 'Describe your problem or goal. Optionally list specific roles to adopt (one per line). The model will generate ideas from the perspective of each role in turn.',
+  fields: [
+    { key: 'problem', label: 'Problem or goal', type: 'textarea', ph: 'e.g., Increase recycling participation' },
+    { key: 'roles', label: 'Roles or personas (one per line)', type: 'textarea', ph: 'e.g., Environmental activist\nCity mayor\nElementary school student' }
+  ],
+  template: ({ problem, roles, ctx }) => [
+    'Apply Role Storming to generate ideas from different perspectives.',
+    ctx && `Context: ${ctx}`,
+    problem && `Problem: ${problem}`,
+    roles
+      ? 'Roles:\n' + String(roles).split(/\n+/).map(r => `- ${r}`).join('\n')
+      : 'Role: (the assistant will assume an imaginative persona if none provided)',
+    'For each role, imagine how that persona would approach the problem and list their ideas or solutions.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'mind_map',
+  slug: 'mind-mapping',
+  label: 'Mind Mapping — Visual cluster of ideas',
+  kind: 'pattern',
+  categories: ['creativity', 'organization'],
+  tags: ['type:technique', 'topic:mind-map', 'use:ideas', 'level:beginner'],
+  use_cases: [
+    'brainstorm non-linearly around a central idea',
+    'see connections among subtopics'
+  ],
+  boosters: [
+    'Allow partial or fragmented thoughts; organize them later into branches.',
+    'Use indentation or bullet nesting to mimic the structure of a mind map.'
+  ],
+  definition: 'A visual brainstorming technique where you write a central concept and branch out with associated ideas in an organic, non-linear manner:contentReference[oaicite:2]{index=2}. Mind mapping leverages associative thinking by connecting related ideas in clusters around the main topic, which can stimulate holistic and imaginative thought:contentReference[oaicite:3]{index=3}.',
+  help: 'State the central topic. Optionally list some initial subtopics or first-level branches (one per line). The model will expand on each branch with sub-ideas and show connections between them in an outline form.',
+  fields: [
+    { key: 'topic', label: 'Central topic', type: 'text', ph: 'e.g., Renewable Energy' },
+    { key: 'branches', label: 'Primary branches (optional, one per line)', type: 'textarea', ph: 'e.g., Solar\nWind\nHydro\nGeothermal' }
+  ],
+  template: ({ topic, branches, ctx }) => [
+    'Create a Mind Map of ideas.',
+    ctx && `Context: ${ctx}`,
+    topic && `Central Topic: ${topic}`,
+    branches
+      ? 'Primary Branches:\n' + String(branches).split(/\n+/).map(b => `- ${b}`).join('\n')
+      : 'Think of major subtopics branching out from the central topic.',
+    'Expand each branch with sub-ideas, using indented bullet points to show connections.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'wishing',
+  slug: 'wishing-technique',
+  label: 'Wishing — Imagine ideal solutions',
+  kind: 'pattern',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:ideation', 'use:brainstorm', 'level:beginner'],
+  use_cases: [
+    'think beyond realistic constraints',
+    'identify features of an ideal outcome'
+  ],
+  boosters: [
+    'Encourage even absurd or impossible wishes; they can spark real ideas:contentReference[oaicite:4]{index=4}.',
+    'After listing wishes, examine each to find elements you *can* actually implement.'
+  ],
+  definition: 'An ideation method where you freely wish for the perfect or even impossible solutions to a problem:contentReference[oaicite:5]{index=5}. By articulating “magic wand” wishes without restraint, you can then work backward to figure out how to incorporate aspects of those ideal solutions into practical reality:contentReference[oaicite:6]{index=6}.',
+  help: 'Describe your problem or goal. The model will generate a list of "I wish..." statements – ideal, unconstrained solutions – and then suggest ways to adapt elements of those wishes into feasible ideas or actions.',
+  fields: [
+    { key: 'problem', label: 'Problem or goal', type: 'textarea', ph: 'e.g., Traffic congestion in city center' }
+  ],
+  template: ({ problem, ctx }) => [
+    'Use the Wishing technique to generate ideal solutions.',
+    ctx && `Context: ${ctx}`,
+    problem && `Problem: ${problem}`,
+    'First, list several "I wish..." statements describing perfect-world solutions, even if they are impractical.',
+    'Then, for each wish, suggest how a part of it could be adapted into a realistic solution or plan.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'rapid_ideation',
+  slug: 'rapid-ideation',
+  label: 'Rapid Ideation — Timed idea sprint',
+  kind: 'technique',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:brainstorm', 'use:quantity-over-quality', 'level:beginner'],
+  use_cases: [
+    'generate lots of ideas under time pressure',
+    'overcome creative block by not overthinking'
+  ],
+  boosters: [
+    'Suspend judgment during the idea sprint – no idea is too silly initially:contentReference[oaicite:7]{index=7}.',
+    'Set a clear timer or target idea count; the constraint can boost focus and output.'
+  ],
+  definition: 'A brainstorming approach focusing on quantity over quality: set a short time limit and produce as many ideas as possible without filtering:contentReference[oaicite:8]{index=8}. The goal is to bypass your inner critic and get a broad list of thoughts, which can later be reviewed for viable options or refined ideas.',
+  help: 'State the problem or question. Optionally specify a time limit or target number of ideas. The model will simulate a rapid ideation session, listing a high number of quick ideas, then help highlight the most promising ones for further exploration.',
+  fields: [
+    { key: 'problem', label: 'Problem or question', type: 'textarea', ph: 'e.g., New app features to engage users' },
+    { key: 'time', label: 'Time/quantity constraint (optional)', type: 'text', ph: 'e.g., 5 minutes or 20 ideas' }
+  ],
+  template: ({ problem, time, ctx }) => [
+    'Conduct Rapid Ideation to generate many ideas quickly.',
+    ctx && `Context: ${ctx}`,
+    problem && `Focus: ${problem}`,
+    time && `Constraint: ${time}`,
+    'Brainstorm as many ideas as possible without self-censorship or evaluation.',
+    'Afterwards, review the list and highlight a few of the most promising or intriguing ideas for development.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'trigger_storming',
+  slug: 'trigger-storming',
+  label: 'Trigger Storming — Prompt-based brainstorming',
+  kind: 'technique',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:prompts', 'use:brainstorm', 'level:intermediate'],
+  use_cases: [
+    'spark discussion with provocative prompts',
+    'generate ideas from abstract or incomplete statements'
+  ],
+  boosters: [
+    'Use unusual or even provocative triggers to jolt thinking in new directions:contentReference[oaicite:9]{index=9}.',
+    'Build on whatever associations the trigger evokes, no matter how tangential or odd they seem.'
+  ],
+  definition: 'A brainstorming method where you use specific prompts or "triggers" – such as open-ended sentences or abstract statements – to inspire new thoughts:contentReference[oaicite:10]{index=10}. The triggers are designed to provoke or challenge assumptions, helping the group or individual break out of conventional ideas.',
+  help: 'Provide your problem or topic. Optionally include some trigger prompts (one per line). The model will either use your triggers or generate its own, then explore ideas that arise from responding to each trigger.',
+  fields: [
+    { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Low participation in community events' },
+    { key: 'triggers', label: 'Custom triggers (optional, one per line)', type: 'textarea', ph: 'e.g., "What if nobody had cars?"\n"Imagine this problem 50 years in the future..."' }
+  ],
+  template: ({ problem, triggers, ctx }) => [
+    'Apply Trigger Storming with prompts to spur ideas.',
+    ctx && `Context: ${ctx}`,
+    problem && `Problem: ${problem}`,
+    triggers
+      ? 'Triggers:\n' + String(triggers).split(/\n+/).map(t => `- ${t}`).join('\n')
+      : 'Trigger: (the assistant will provide provocative prompts related to the topic)',
+    'For each trigger, respond with ideas or insights it inspires. Finally, compile the most useful ideas from these responses.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'what_if',
+  slug: 'what-if-scenarios',
+  label: 'What If — Scenario reframing questions',
+  kind: 'technique',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:reframing', 'use:brainstorm', 'level:beginner'],
+  use_cases: [
+    'reframe a problem by changing context or constraints',
+    'explore alternative outcomes or perspectives'
+  ],
+  boosters: [
+    'Pose wild "what if" questions beyond realistic bounds to expand thinking:contentReference[oaicite:11]{index=11}.',
+    'After exploring an imagined scenario, extract any ideas that could be applied (even partially) to the real situation.'
+  ],
+  definition: 'A technique of reframing problems by asking "What if...?" questions that introduce new scenarios or constraints:contentReference[oaicite:12]{index=12}. By imagining how the issue would look under different circumstances (e.g., different people, times, or rules), you gain fresh perspectives that can lead to innovative solutions.',
+  help: 'Describe your problem. Optionally provide a specific "What if" scenario to explore. The model will propose its own additional "What if" questions, examine each hypothetical scenario, and then connect insights back to your actual problem.',
+  fields: [
+    { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Difficulty in remote team collaboration' },
+    { key: 'scenario', label: 'What-if scenario (optional)', type: 'text', ph: 'e.g., All communication had to be asynchronous' }
+  ],
+  template: ({ problem, scenario, ctx }) => [
+    'Use the "What If" method to rethink the problem via alternate scenarios.',
+    ctx && `Context: ${ctx}`,
+    problem && `Problem: ${problem}`,
+    scenario && `Scenario to explore: What if ${scenario}?`,
+    'Propose a few other "What if...?" questions that dramatically change some aspect of the problem.',
+    'For each hypothetical question, explore how the situation and solutions might differ.',
+    'Finally, identify any useful insights from these scenarios that could inform real-world solutions.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'freewrite',
+  slug: 'freewriting-zero-draft',
+  label: 'Freewriting — Unfiltered stream of thought (Zero Draft)',
+  kind: 'technique',
+  categories: ['creativity', 'writing'],
+  tags: ['type:technique', 'topic:writing', 'use:brainstorm', 'level:beginner'],
+  use_cases: [
+    'overcome writer’s block or creative block',
+    'discover latent ideas by writing without stopping'
+  ],
+  boosters: [
+    'Do not stop or edit mid-flow; even nonsense is okay in the draft.',
+    'After the freewrite, highlight any surprising ideas or patterns that emerged.'
+  ],
+  definition: 'A technique where you write continuously about a topic without worrying about structure or correctness, often used to bypass creative blocks:contentReference[oaicite:13]{index=13}. This "zero draft" approach lets thoughts flow freely, producing raw material that can later be refined or used to guide further work (it’s especially useful for writers with writer’s block).',
+  help: 'Provide a general topic or question you want to explore (it can be broad or vague). The model will produce a stream-of-consciousness style draft, capturing thoughts as they come without filtering. Afterward, it can help summarize or point out interesting ideas from the draft.',
+  fields: [
+    { key: 'topic', label: 'Topic or question', type: 'textarea', ph: 'e.g., Reflections on technology in education' }
+  ],
+  template: ({ topic, ctx }) => [
+    'Begin a Freewriting session (Zero Draft) to explore thoughts unfiltered.',
+    ctx && `Context: ${ctx}`,
+    topic && `Topic: ${topic}`,
+    'Write continuously whatever comes to mind for a short period (without stopping or editing).',
+    '... (free-form stream of thoughts) ...',
+    'After finishing, review the writing to identify any key ideas or surprising insights that emerged.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'oblique_strategies',
+  slug: 'oblique-strategies-cards',
+  label: 'Oblique Strategies — Lateral thinking prompt cards',
+  kind: 'technique',
+  categories: ['creativity', 'ideation'],
+  tags: ['type:technique', 'topic:cards', 'use:creative-block', 'level:intermediate'],
+  use_cases: [
+    'break out of a creative rut with random prompts',
+    'find new approaches when stuck on an artistic problem'
+  ],
+  boosters: [
+    'Interpret the card prompts loosely; any personal meaning you derive is valid:contentReference[oaicite:14]{index=14}.',
+    'If a prompt seems cryptic or disruptive, embrace it — use it as an opportunity to change your approach entirely.'
+  ],
+  definition: 'A card-based method invented by musician Brian Eno and artist Peter Schmidt to overcome creative blocks:contentReference[oaicite:15]{index=15}. Each Oblique Strategies card presents a cryptic instruction or dilemma (e.g., "Remove specifics and convert to ambiguities") designed to break down artistic barriers and spark creative insight:contentReference[oaicite:16]{index=16}. Following these prompts encourages lateral thinking. Similarly, some creators use random oracle systems (like the I Ching, as John Cage did) for the same purpose of injecting randomness to spur innovation:contentReference[oaicite:17]{index=17}.',
+  help: 'Describe your situation or creative project where you feel stuck. The model will draw an "Oblique Strategy" card (a random abstract prompt) and present it. Then it will help you interpret that prompt in the context of your situation and suggest ways it could inspire a next step or solution.',
+  fields: [
+    { key: 'situation', label: 'Creative situation or block', type: 'textarea', ph: 'e.g., Stuck on the melody for a song' },
+    { key: 'draws', label: 'Number of cards to draw (optional)', type: 'text', ph: 'e.g., 1 or 2' }
+  ],
+  template: ({ situation, draws, ctx }) => [
+    'Use Oblique Strategies to generate lateral thinking prompts.',
+    ctx && `Context: ${ctx}`,
+    situation && `Situation: ${situation}`,
+    `Draw ${draws || 1} prompt card(s) and apply the instruction(s) to the situation.`,
+    'For each drawn prompt, consider its meaning and brainstorm how to apply it to your work or problem.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'disney_creative',
+  slug: 'disney-dreamer-realist-critic',
+  label: 'Disney Strategy — Dreamer · Realist · Critic',
+  kind: 'framework',
+  categories: ['creativity', 'evaluation'],
+  tags: ['type:framework', 'topic:perspective-taking', 'use:develop-idea', 'level:intermediate'],
+  use_cases: [
+    'develop an idea from wild concept to practical plan',
+    'balance imaginative thinking with realism and critical review'
+  ],
+  boosters: [
+    'Separate the three modes clearly: don’t allow the Critic to interrupt the Dreamer phase:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}.',
+    'Embrace the Dreamer’s outrageous ideas fully before switching to Realist mode to figure out execution steps.'
+  ],
+  definition: 'A structured creative process (attributed to Walt Disney, modeled by Robert Dilts) that cycles through three distinct thinking styles:contentReference[oaicite:20]{index=20}. First, the *Dreamer* freely imagines ideas without limits:contentReference[oaicite:21]{index=21}. Next, the *Realist* figures out how to implement those ideas practically:contentReference[oaicite:22]{index=22}. Finally, the *Critic* rigorously scrutinizes the plan, identifying flaws and risks:contentReference[oaicite:23]{index=23}. This method helps turn imaginative ideas into feasible plans while still allowing critical refinement.',
+  help: 'Provide an idea or project to develop. The model will apply the Disney Creative Strategy by taking on the Dreamer role (brainstorm bold, imaginative ideas), then the Realist role (formulate a practical plan), and then the Critic role (find weaknesses and improve the plan).',
+  fields: [
+    { key: 'idea', label: 'Idea or project description', type: 'textarea', ph: 'e.g., A device that translates animal thoughts into human language' }
+  ],
+  template: ({ idea, ctx }) => [
+    'Apply the Disney Creative Strategy in three stages.',
+    ctx && `Context: ${ctx}`,
+    idea && `Idea: ${idea}`,
+    'Dreamer: Describe an ideal, unconstrained vision of this idea (all possibilities, no criticism).',
+    'Realist: Develop a practical plan to implement the idea, considering resources and steps needed.',
+    'Critic: Point out weaknesses or risks in the plan and propose improvements or safeguards.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'synectics',
+  slug: 'synectics-analogies',
+  label: 'Synectics — Analogies & Problem Transfer',
+  kind: 'framework',
+  categories: ['creativity', 'problem-solving'],
+  tags: ['type:framework', 'topic:analogies', 'use:innovate', 'level:advanced'],
+  use_cases: [
+    'find solutions by drawing analogies from unrelated domains',
+    'unstick a problem by reframing it in a different context'
+  ],
+  boosters: [
+    'Encourage wild analogies – even if the link is tenuous, it may spark a novel idea:contentReference[oaicite:24]{index=24}.',
+    'After solving the analogy problem, carefully map the insights back to the original problem to ensure relevance:contentReference[oaicite:25]{index=25}.'
+  ],
+  definition: 'A creative problem-solving approach that "joins together different and apparently irrelevant elements" by using analogies:contentReference[oaicite:26]{index=26}. In Synectics, you reframe the problem into an analogous situation in a distant or unrelated context (using direct, personal, symbolic, or fantasy analogies):contentReference[oaicite:27]{index=27}, brainstorm solutions for that analogy, and then translate those solutions back to the original problem:contentReference[oaicite:28]{index=28}. This leverages the mind’s ability to find connections and can yield truly novel solutions.',
+  help: 'Describe your problem. Optionally suggest a domain or scenario to use as an analogy. The model will rephrase your problem as an analogy in another context, solve that analogous problem, and then map the insights back to your original situation.',
+  fields: [
+    { key: 'problem', label: 'Original problem', type: 'textarea', ph: 'e.g., Improving team communication' },
+    { key: 'analogy', label: 'Analogy scenario (optional)', type: 'text', ph: 'e.g., An ant colony coordinating tasks' }
+  ],
+  template: ({ problem, analogy, ctx }) => [
+    'Use Synectics to solve the problem via analogies.',
+    ctx && `Context: ${ctx}`,
+    problem && `Original Problem: ${problem}`,
+    analogy
+      ? `Analogy: Imagine the problem in a different context — ${analogy}.`
+      : 'Analogy: Transform the problem into a different context (choose an unrelated scenario with a similar core issue).',
+    'In that analogy scenario, brainstorm solutions to the analogous problem.',
+    'Now translate those solutions back to the original context and suggest how they can apply to the original problem.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'active_imagination',
+  slug: 'active-imagination-dialogue',
+  label: 'Active Imagination — Dialogue with inner voices',
+  kind: 'technique',
+  categories: ['psychology', 'creativity'],
+  tags: ['type:technique', 'topic:Jungian', 'use:self-reflection', 'level:advanced'],
+  use_cases: [
+    'gain insight by conversing with parts of yourself or imagined characters',
+    'resolve internal conflicts or explore unconscious feelings through dialogue'
+  ],
+  boosters: [
+    'Suspend judgment and let the unconscious part "speak" freely during the dialogue:contentReference[oaicite:29]{index=29}.',
+    'If a new image or character emerges mid-dialogue, follow it—these unexpected turns can reveal valuable insights.'
+  ],
+  definition: 'A Jungian technique of engaging in a written or imagined dialogue with different aspects of your psyche or with imagined figures:contentReference[oaicite:30]{index=30}. By personifying parts of the unconscious (e.g., an inner child, a shadow figure) and having a conversation, one can surface hidden thoughts, feelings, and creative insights. This process seeks to bridge conscious and unconscious, moving the individual toward greater self-awareness and wholeness:contentReference[oaicite:31]{index=31}.',
+  help: 'Briefly describe an issue or question you want to explore. Optionally name an inner voice or imaginary figure to dialogue with (it could be a persona like "Inner Critic" or an archetype). The model will then simulate a back-and-forth dialogue: you pose questions or statements, and the inner voice responds, helping reveal new perspectives or solutions.',
+  fields: [
+    { key: 'issue', label: 'Issue or topic to explore', type: 'textarea', ph: 'e.g., Feeling unmotivated about my project' },
+    { key: 'entity', label: 'Inner figure/voice to dialogue with (optional)', type: 'text', ph: 'e.g., My inner critic' }
+  ],
+  template: ({ issue, entity, ctx }) => [
+    'Begin an Active Imagination dialogue between Self (you) and an inner figure.',
+    ctx && `Context: ${ctx}`,
+    issue && `Issue: ${issue}`,
+    entity
+      ? `Imagined counterpart: ${entity}`
+      : 'Imagined counterpart: (the assistant will introduce a relevant inner voice or figure)',
+    'You: (Start by greeting or questioning this inner voice.)',
+    `${entity || 'Inner Voice'}: (The inner voice responds honestly, perhaps in symbolic language.)`,
+    '... (Continue the exchange, with You and the Inner Voice speaking in turn, until a new insight or resolution is reached) ...'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'morning_pages',
+  slug: 'morning-pages-journaling',
+  label: 'Morning Pages — Daily stream-of-consciousness journal',
+  kind: 'technique',
+  categories: ['creativity', 'self-reflection'],
+  tags: ['type:exercise', 'topic:journal', 'use:creative-block', 'level:beginner'],
+  use_cases: [
+    'unlock creativity through routine journaling',
+    'clear mental clutter at the start of the day'
+  ],
+  boosters: [
+    'Write by hand if possible, as it can enhance reflection and mind-body connection:contentReference[oaicite:32]{index=32}.',
+    'Do not share or even reread your Morning Pages immediately; their power comes from absolute freedom and privacy:contentReference[oaicite:33]{index=33}.'
+  ],
+  definition: 'A daily writing practice popularized by Julia Cameron’s *The Artist’s Way* to unblock creativity:contentReference[oaicite:34]{index=34}. Every morning, you write three pages of longhand, uncensored stream-of-consciousness thoughts. Morning Pages help "clear out the sludge," reconnecting you with your true feelings and ideas and often leading to unexpected insights or clarity about your desires:contentReference[oaicite:35]{index=35}:contentReference[oaicite:36]{index=36}.',
+  help: 'Optionally, provide a few words about what’s on your mind as you begin. The model will then emulate a session of Morning Pages: a few paragraphs of raw, unfiltered writing. (In reality, you would write about three longhand pages.) After the free write, the model can help summarize any prominent themes or insights.',
+  fields: [
+    { key: 'focus', label: 'Current feeling or focus (optional)', type: 'text', ph: 'e.g., Nervous about upcoming presentation' }
+  ],
+  template: ({ focus, ctx }) => [
+    'Write Morning Pages: a stream-of-consciousness journal entry.',
+    ctx && `Context: ${ctx}`,
+    focus && `Starting thought: ${focus}`,
+    '(Begin writing without stopping or editing, just whatever comes to mind, roughly three pages of text.)',
+    '... (unfiltered thoughts, feelings, observations flowing onto the page) ...',
+    '(Once finished, reflect on any patterns or surprising points that emerged.)'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'head_heart_gut',
+  slug: 'head-heart-gut-decision',
+  label: 'Head-Heart-Gut — Rational · Emotional · Instinctual check',
+  kind: 'framework',
+  categories: ['decision-making', 'self-reflection'],
+  tags: ['type:framework', 'topic:embodied-cognition', 'use:decision-support', 'level:intermediate'],
+  use_cases: [
+    'make well-rounded decisions considering logic, feelings, and intuition',
+    'resolve internal conflict by aligning thoughts, values, and instincts'
+  ],
+  boosters: [
+    'Acknowledge differences: it’s normal if Head, Heart, and Gut say different things:contentReference[oaicite:37]{index=37}.',
+    'If one perspective (e.g., Gut) flags a concern the others don’t, take it seriously and investigate that aspect further:contentReference[oaicite:38]{index=38}.'
+  ],
+  definition: 'A decision-making technique that ensures you consider three facets of knowing: the Head (intellect and logic), the Heart (emotions and values), and the Gut (intuition and instinct):contentReference[oaicite:39]{index=39}. Each of these "three brains" provides essential information – the Head analyzes data and facts, the Heart weighs what matters to you emotionally, and the Gut offers instinctive insights:contentReference[oaicite:40]{index=40}. Checking in with all three leads to choices that are more balanced and authentic:contentReference[oaicite:41]{index=41}.',
+  help: 'State the decision or dilemma you are facing. The model will articulate three perspectives on it: what your Head thinks (rational analysis), what your Heart feels (emotional standpoint), and what your Gut says (instinctual response). It will then help integrate these perspectives into a final recommendation.',
+  fields: [
+    { key: 'decision', label: 'Decision or question', type: 'textarea', ph: 'e.g., Whether to accept a new job offer in another city' }
+  ],
+  template: ({ decision, ctx }) => [
+    'Perform a Head-Heart-Gut decision analysis.',
+    ctx && `Context: ${ctx}`,
+    decision && `Decision: ${decision}`,
+    'Head (Logical Perspective): ...',
+    'Heart (Emotional Perspective): ...',
+    'Gut (Instinctual Perspective): ...',
+    'Conclusion: Synthesize the reasoning, feelings, and intuition into one decision or actionable plan.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'hypnagogic_spark',
+  slug: 'hypnagogic-spark-creativity',
+  label: 'Hypnagogic Spark — Semi-sleep insight technique',
+  kind: 'technique',
+  categories: ['creativity', 'brainstorming'],
+  tags: ['type:technique', 'topic:consciousness', 'use:creative-block', 'level:advanced'],
+  use_cases: [
+    'find novel ideas by tapping the twilight state between waking and sleeping',
+    'generate creative solutions through relaxed, dreamlike thinking'
+  ],
+  boosters: [
+    'If doing this in real life, hold an object (like Dalí’s spoon or a set of keys) so it drops when you doze off, waking you up to capture ideas:contentReference[oaicite:42]{index=42}.',
+    'In the simulation, allow thoughts to become slightly surreal or illogical – this mimics the hypnagogic state where unique connections form:contentReference[oaicite:43]{index=43}:contentReference[oaicite:44]{index=44}.'
+  ],
+  definition: 'A creativity technique famously used by inventor Thomas Edison and artist Salvador Dalí, involving the brief moments of semi-sleep (the hypnagogic state) to capture imaginative insights:contentReference[oaicite:45]{index=45}. The person lets their mind drift toward sleep and then interrupts it (for example, by a falling object that wakes them) to recall the fleeting, dreamlike ideas that surface:contentReference[oaicite:46]{index=46}. This early sleep stage (N1) lasts only a few minutes but is considered an "ideal cocktail for creativity" where reality blurs with imagination:contentReference[oaicite:47]{index=47}.',
+  help: 'Describe the problem or topic you want to get new ideas about. The model will mimic a hypnagogic brainstorming session: first producing a series of dreamy, free-associative thoughts related to the topic (as if half-asleep), and then "waking up" to interpret those strange ideas and highlight any useful insights.',
+  fields: [
+    { key: 'problem', label: 'Problem or topic to drift on', type: 'textarea', ph: 'e.g., Designing a new kind of umbrella' }
+  ],
+  template: ({ problem, ctx }) => [
+    'Use the Hypnagogic Spark technique for fresh insights.',
+    ctx && `Context: ${ctx}`,
+    problem && `Focus problem: ${problem}`,
+    '...(Imagine drifting into a light semi-dream state while thinking about the problem)...',
+    'Hypnagogic impressions: (List a few whimsical or surreal thoughts/ideas that come to mind in this drowsy state)',
+    '...(Now imagine "waking up")...',
+    'Review these odd ideas and interpret how one or more of them could inspire a real solution or creative direction for the problem.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'parts_work',
+  slug: 'parts-work-dialogue',
+  label: 'Parts Work Dialogue (IFS therapy)',
+  kind: 'pattern',
+  categories: ['psychology', 'self-reflection'],
+  tags: [
+    'type:pattern','topic:parts-work','topic:IFS','level:intermediate',
+    'use:internal-conflict','use:self-discovery','use:trauma-processing'
+  ],
+  use_cases: [
+    'resolve internal conflicts by giving each part a voice',
+    'understand the needs and fears of your inner “family” members',
+    'foster self-compassion by mediating between your inner voices'
+  ],
+  boosters: [
+    'Clearly define each part’s role (e.g., Inner Critic vs. Vulnerable Child).',
+    'Allow each part to speak without judgment, then have your core Self respond with empathy.'
+  ],
+  definition: 'An internal dialogue technique (from Internal Family Systems therapy) where you personify and converse with different parts of yourself to unearth and harmonize conflicting inner voices.',
+  help: 'Name two parts of you in tension (e.g., a protective part and a wounded part), plus any context about their conflict. The model will script a dialogue between them, facilitated by your core Self.',
+  fields: [
+    { key: 'part_a', label: 'Part A (name/role)', type: 'text', ph: 'e.g., Inner Critic' },
+    { key: 'part_b', label: 'Part B (name/role)', type: 'text', ph: 'e.g., Inner Child' },
+    { key: 'issue',  label: 'Conflict or concern between them', type: 'textarea', ph: 'Briefly describe what they disagree on or feel.' }
+  ],
+  template: ({ part_a, part_b, issue, ctx, audience, style, tone }) => [
+    'Facilitate a Parts Work dialogue between two inner parts.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    part_a && `Part A: ${part_a}`,
+    part_b && `Part B: ${part_b}`,
+    issue && `Issue:\n${issue}`,
+    'Output:\n1) Dialogue script where Part A and Part B each express their perspective and needs\n2) Interventions or reassurance from the core Self to mediate and move toward understanding'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'empty_chair',
+  slug: 'empty-chair-technique',
+  label: 'Empty Chair Dialogue (Gestalt)',
+  kind: 'pattern',
+  categories: ['psychology', 'self-reflection'],
+  tags: [
+    'type:pattern','topic:gestalt','topic:empty-chair','level:intermediate',
+    'use:resolve-feelings','use:closure','use:internal-conflict'
+  ],
+  use_cases: [
+    'express thoughts and feelings to someone (or a part of yourself) as if they were present',
+    'gain closure or clarity by role-playing both sides of a difficult conversation',
+    'integrate conflicting feelings by voicing each side in turn'
+  ],
+  boosters: [
+    'Be honest and unfiltered when voicing each side—let emotions flow.',
+    'Switch perspective after each statement: fully embody the other person or part when responding.'
+  ],
+  definition: 'A Gestalt therapy exercise where you imagine someone (or a part of yourself) in an empty chair and have a candid dialogue to express unresolved feelings or internal conflicts.',
+  help: 'Start typing to search common identities/roles. Pick who you are (or a part of you) and who is “in the chair,” then describe the topic. The model will alternate voices and end with a brief reflection.',
+  fields: [
+    { key: 'you',   label: 'Your identity or role',              type: 'typeahead', ph: 'e.g., Myself (as the hurt friend)' },
+    { key: 'other', label: 'Other person or part in the chair',  type: 'typeahead', ph: 'e.g., My friend who upset me OR My impulsive side' },
+    { key: 'topic', label: 'Topic or emotion to explore',        type: 'textarea',  ph: 'Briefly describe the issue, conflict, or feeling you want to address.' }
+  ],
+  template: ({ you, other, topic, ctx, audience, style, tone }) => [
+    'Use the Empty Chair technique to dialogue between two perspectives.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    you && `You: (${you})`,
+    other && `Other: (${other})`,
+    topic && `Topic:\n${topic}`,
+    'Output:\n1) Scripted dialogue alternating between You and the Other, each expressing their thoughts/feelings\n2) A concluding reflection or resolution after several exchanges'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'somatic_focusing',
+  slug: 'somatic-focusing-felt-sense',
+  label: 'Somatic Focusing — Feel · Ask · Listen',
+  kind: 'pattern',
+  categories: ['psychology', 'self-reflection'],
+  tags: [
+    'type:pattern','topic:somatic','topic:felt-sense','level:intermediate',
+    'use:anxiety-management','use:inner-wisdom','use:emotional-processing'
+  ],
+  use_cases: [
+    'tune into a bodily sensation to discover the message or emotion it holds',
+    'reduce overwhelm by patiently listening to what your body is telling you',
+    'clarify vague feelings by describing them and “asking” them questions'
+  ],
+  boosters: [
+    'Describe the sensation with metaphor (e.g., “a knot of fire in my belly”) to capture its quality.',
+    'After describing, gently ask the sensation what it wants or needs, and wait for an intuitive answer.'
+  ],
+  definition: 'A mindfulness-based introspection where you focus on a physical feeling (“felt sense”), describe it, and then dialogue with it to reveal insights or relief.',
+  help: 'Note what you feel in your body (location, quality of sensation) and any context for your feelings. The model will guide you through noticing the sensation, describing it vividly, and intuitively questioning it for understanding.',
+  fields: [
+    { key: 'sensation', label: 'Bodily sensation (location & quality)', type: 'textarea', ph: 'e.g., A heavy tightness in my chest.' },
+    { key: 'context',   label: 'Context or emotion (optional)', type: 'textarea', ph: 'What’s happening or what emotion might be tied to this sensation?' }
+  ],
+  template: ({ sensation, context, ctx, audience, style, tone }) => [
+    'Engage in somatic focusing to interpret a bodily felt sense.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    sensation && `Felt sensation:\n${sensation}`,
+    context && `Context:\n${context}`,
+    'Output:\n1) Guided description of the sensation (size, shape, color, mood, etc.)\n2) An inquiry where you “ask” the sensation what it signifies or needs\n3) A reflective answer that arises, providing insight or easing the feeling'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'spoon_planner',
+  slug: 'spoon-theory-energy-planner',
+  label: 'Energy Budget Planner (Spoon Theory)',
+  kind: 'framework',
+  categories: ['productivity', 'self-care'],
+  tags: [
+    'type:framework','topic:spoon-theory','topic:energy-management','level:beginner',
+    'use:daily-planning','use:adhd','use:chronic-illness'
+  ],
+  use_cases: [
+    'plan your day according to limited energy or focus (“spoons”)',
+    'prioritize tasks when you’re fatigued or dealing with chronic illness',
+    'avoid burnout by allocating time for rest and recovery in your schedule'
+  ],
+  boosters: [
+    'Estimate a spoon cost for each task (e.g., 1 = easy, 5 = very demanding).',
+    'Plan a small reward or break whenever you use a large portion of your spoons to recharge.'
+  ],
+  definition: 'A planning method that treats your energy or focus as a limited budget (“spoons”) to spend on tasks, helping you prioritize and balance activities with rest.',
+  help: 'Input how many “spoons” (energy units) you have and a list of tasks (with estimated spoon costs). The model will suggest an optimized plan: which tasks to tackle within your budget and where to rest.',
+  fields: [
+    { key: 'spoons', label: 'Available spoons (energy for the day)', type: 'text', ph: 'e.g., 10' },
+    { key: 'tasks',  label: 'Tasks (one per line, with optional spoon cost)', type: 'textarea', ph: 'e.g., Do laundry - 2\nFinish report - 4\nCall a friend - 1\nMake dinner - 3' }
+  ],
+  template: ({ spoons, tasks, ctx, audience, style, tone }) => [
+    'Plan the day using Spoon Theory (energy budgeting).',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    spoons && `Spoons available: ${spoons}`,
+    tasks && (
+      'Tasks:\n' + String(tasks)
+        .split(/\n+/)
+        .map(s => s.trim())
+        .filter(Boolean)
+        .map((t,i) => `${i+1}. ${t}`)
+        .join('\n')
+    ),
+    'Output:\n1) Which tasks to do within the available spoons (with rationale)\n2) Which tasks to postpone or simplify\n3) A schedule including rest breaks or recovery time'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'internal_weather',
+  slug: 'internal-weather-report',
+  label: 'Internal Weather Report — Storm · Calm · Forecast',
+  kind: 'pattern',
+  categories: ['self-reflection', 'creativity'],
+  tags: [
+    'type:pattern','topic:emotions','topic:metaphor','level:beginner',
+    'use:journal','use:emotional-awareness','use:stress-relief'
+  ],
+  use_cases: [
+    'articulate your current mood or emotional state using weather metaphors',
+    'gain perspective on emotional ups and downs by “forecasting” possible changes',
+    'playfully externalize feelings to reduce their intensity and understand them'
+  ],
+  boosters: [
+    'Don’t shy away from dramatic weather—intense storm imagery can help validate strong feelings (just include a shift toward resolution).',
+    'End the report with a gentle forecast or hope (e.g., “skies clearing later”) to remind yourself that emotions change.'
+  ],
+  definition: 'A reflective journaling exercise that describes one’s mood and feelings as a weather report, complete with current conditions, any changes on the horizon, and a short-term forecast for emotional climate.',
+  help: 'Describe how you feel right now in plain terms (e.g., anxious, relieved, etc.). The model will turn it into a creative “weather report” of your inner world, mentioning the current weather (emotional state), any transitions, and an outlook for the near future.',
+  fields: [
+    { key: 'mood', label: 'Current mood or feeling', type: 'textarea', ph: 'e.g., I feel nervous but also a bit hopeful about my new job.' }
+  ],
+  template: ({ mood, ctx, audience, style, tone }) => [
+    'Draft an internal weather report for the current emotional state.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    mood && `Mood description:\n${mood}`,
+    'Output:\n1) “Current conditions” describing the emotion as weather (e.g., thunderstorms of anxiety, or a sunny calm)\n2) Any “shifts” or changes happening (e.g., storm passing, clouds gathering)\n3) A short “forecast” for the near future mood (e.g., clearing skies, a chance of lightheartedness)'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'synesthetic_brainstorm',
+  slug: 'synesthetic-brainstorm',
+  label: 'Synesthetic Brainstorm — Color · Sound · Texture',
+  kind: 'pattern',
+  categories: ['creativity', 'ideation'],
+  tags: [
+    'type:pattern','topic:metaphor','topic:sensory','level:beginner',
+    'use:idea-generation','use:perspective-shift','use:creative-block'
+  ],
+  use_cases: [
+    'generate fresh ideas by translating an abstract problem into sensory metaphors',
+    'unlock intuition about a concept by describing its color, sound, texture, or taste',
+    'use cross-sensory analogies to discover surprising angles on a design or story challenge'
+  ],
+  boosters: [
+    'Include at least three senses (e.g., sight, sound, touch) in your exploration; the more variety, the more insights.',
+    'After listing sensory metaphors, reflect on why each metaphor might resonate and what new ideas it suggests.'
+  ],
+  definition: 'A creative thinking exercise that treats an idea or problem through multiple sensory lenses (color, sound, texture, etc.), using synesthesia-like metaphors to spark new insights.',
+  help: 'Provide a problem, idea, or theme. The model will assign it a color, a sound, a texture, etc., explaining each choice, to help you think about the concept in new ways.',
+  fields: [
+    { key: 'concept', label: 'Problem or concept to explore', type: 'text', ph: 'e.g., “Time management” or “My novel’s hero”.' }
+  ],
+  template: ({ concept, ctx, audience, style, tone }) => [
+    'Use a synesthetic brainstorm to explore the concept through different senses.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    concept && `Concept: ${concept}`,
+    'Output:\n1) Color – What color best represents the concept, and why?\n2) Sound – If it had a sound or music, what would it be?\n3) Texture – Describe its texture or physical feel metaphorically\n(Optionally include taste or smell if relevant)\n4) Brief insight: how these metaphors shed new light on the concept'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'tarot_spread',
+  slug: 'tarot-spread-reflection',
+  label: 'Tarot Spread Reflection — Past · Present · Future',
+  kind: 'framework',
+  categories: ['creativity', 'self-reflection'],
+  tags: [
+    'type:framework','topic:tarot','topic:storytelling','level:intermediate',
+    'use:personal-insight','use:creative-inspiration','use:journal'
+  ],
+  use_cases: [
+    'gain personal insight by interpreting a situation through symbolic cards',
+    'use archetypal imagery to brainstorm solutions or perspectives on a problem',
+    'practice creative storytelling or introspection using a 3-card tarot format'
+  ],
+  boosters: [
+    'Even if you don’t know tarot meanings, focus on the imagery or themes each card suggests and how it might relate to your life.',
+    'If a card interpretation feels negative, include an empowering reframe or advice to balance it.'
+  ],
+  definition: 'A three-card spread (often Past-Present-Future) used as a reflective tool. Each card’s meaning is applied metaphorically to the user’s question or situation, providing narrative insight and guidance.',
+  help: 'Provide a question or topic you’d like insight on. Optionally, list three tarot cards you drew (or let the model pick symbolic ones). The model will interpret each card in relation to your question, covering past influences, present situation, and future guidance.',
+  fields: [
+    { key: 'question', label: 'Question or situation for guidance', type: 'textarea', ph: 'e.g., “What should I focus on in my career right now?”' },
+    { key: 'cards',    label: 'Drawn cards (optional, one per line)', type: 'textarea', ph: 'e.g., Past: The Tower\nPresent: Two of Cups\nFuture: The Star' }
+  ],
+  template: ({ question, cards, ctx, audience, style, tone }) => [
+    'Perform a 3-card tarot-style reflection for guidance.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    question && `Question:\n${question}`,
+    cards && ('Cards:\n' + cards),
+    'Output:\n1) Past card – interpretation and how past events or influences relate to the question\n2) Present card – what it says about the current situation\n3) Future card – guidance or probable outcome\n(Each explained in a few sentences tying back to the question.)'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'head_heart_gut',
+  slug: 'head-heart-gut-check',
+  label: 'Head-Heart-Gut — Logic · Emotion · Instinct',
+  kind: 'framework',
+  categories: ['decision', 'psychology'],
+  tags: [
+    'type:framework','topic:decision-making','topic:emotional-intelligence','level:beginner',
+    'use:personal-decisions','use:values-check','use:intuition'
+  ],
+  use_cases: [
+    'weigh a difficult decision by examining it from rational, emotional, and instinctual angles',
+    'resolve indecision when your “head” and “heart” disagree by explicitly hearing both out',
+    'ensure a choice aligns with logic, feelings, and gut intuition before committing'
+  ],
+  boosters: [
+    'Phrase each perspective in the first person (e.g., “My head says...”).',
+    'If one perspective dominates, consciously give voice to the quieter one (e.g., ask “Heart, what do you feel about this?”).'
+  ],
+  definition: 'A self-alignment check where you consider what your Head (logical mind), Heart (emotions/values), and Gut (intuition) each say about a decision or situation, to reach a balanced conclusion.',
+  help: 'State the decision or dilemma you’re facing. The model will articulate the viewpoint of your head (logic), your heart (feelings/values), and your gut (instinct), then help synthesize them.',
+  fields: [
+    { key: 'decision', label: 'Decision or dilemma to consider', type: 'textarea', ph: 'e.g., Accepting a new job in a different city.' }
+  ],
+  template: ({ decision, ctx, audience, style, tone }) => [
+    'Do a Head-Heart-Gut check on the decision, exploring each perspective.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    decision && `Decision:\n${decision}`,
+    'Output:\n1) Head – Rational thoughts (pros, cons, facts, logic)\n2) Heart – Emotional response and values (hopes, fears, desires)\n3) Gut – Instincts or intuitive hunches\n4) A brief reconciliation or advice that considers all three'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'imaginary_council',
+  slug: 'imaginary-mentor-council',
+  label: 'Imaginary Council — Multiple Mentors, One Question',
+  kind: 'pattern',
+  categories: ['creativity', 'strategy'],
+  tags: [
+    'type:pattern','topic:roleplay','topic:perspective-shift','level:intermediate',
+    'use:brainstorming','use:decision-support','use:ideation'
+  ],
+  use_cases: [
+    'get advice on a problem by imagining a panel of diverse mentors or characters',
+    'break out of one-track thinking by considering how different personalities would tackle your issue',
+    'indulge in a creative self-coaching exercise by channeling wisdom from fictional or real figures'
+  ],
+  boosters: [
+    'Choose a mix of “advisors” with wildly different viewpoints or expertise (e.g., a scientist, an artist, a child, a rebel).',
+    'Include at least one fun or unexpected persona (like your pet or a favorite fictional character) for creative insight.'
+  ],
+  definition: 'A brainstorming method where you pose a question to an imaginary panel of mentors or characters. Each “advisor” gives their perspective or solution, helping you see the issue from many angles.',
+  help: 'List 2-5 imaginary council members (could be famous people, fictional characters, or archetypes) and state your question or problem. The model will present advice or answers from each member in turn.',
+  fields: [
+    { key: 'advisors', label: 'Council members (one per line)', type: 'textarea', ph: 'e.g., Marie Curie (scientist)\nTony Stark (inventor)\nYour Future Self\nA Wise Grandparent' },
+    { key: 'question', label: 'Problem or question for the council', type: 'textarea', ph: 'Describe what you want advice or ideas about.' }
+  ],
+  template: ({ advisors, question, ctx, audience, style, tone }) => [
+    'Consult an imaginary mentor council for advice.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    advisors && (
+      'Council Members:\n' + String(advisors)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((x,i) => `${i+1}. ${x}`)
+        .join('\n')
+    ),
+    question && `Question:\n${question}`,
+    'Output:\nEach listed member provides their advice or answer in character, labeled with their name. Conclude with a synthesis or your own reflection on their perspectives.'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'rubber_duck',
+  slug: 'rubber-duck-debugging',
+  label: 'Rubber Duck Debugging — Explain to Understand',
+  kind: 'pattern',
+  categories: ['analysis', 'productivity'],
+  tags: [
+    'type:pattern','topic:explaining','topic:debugging','level:beginner',
+    'use:problem-solving','use:learning','use:clarification'
+  ],
+  use_cases: [
+    'work through a tricky problem by explaining it step-by-step as if to a complete novice (or a rubber duck)',
+    'clarify your understanding of a bug or question by articulating every detail and assumption',
+    'discover gaps in logic or missing pieces by teaching the problem to an imaginary listener'
+  ],
+  boosters: [
+    'Imagine the “duck” is totally new to the subject – define even basic terms as you explain.',
+    'Have the duck ask simple clarification questions if something isn’t clear, and then answer them.'
+  ],
+  definition: 'A problem-solving technique where you explain your issue or question aloud in simple terms (often to an inanimate object or imaginary friend). The act of explaining reveals gaps in understanding and often leads to the solution.',
+  help: 'Describe the problem you’re trying to solve, including relevant details. The model will have you explain it clearly (as if to a rubber duck), possibly ask a couple of clarifying questions, and then guide you toward a solution or next step.',
+  fields: [
+    { key: 'problem', label: 'Problem or question to explain', type: 'textarea', ph: 'Describe the issue in detail as if teaching someone with no background.' }
+  ],
+  template: ({ problem, ctx, audience, style, tone }) => [
+    'Employ Rubber Duck Debugging on the described problem.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem:\n${problem}`,
+    'Output:\n1) A simple, step-by-step rephrasing of the problem (as if explaining to a novice)\n2) Identification of any unclear or problematic steps/assumptions (the “duck” asks questions, and you answer)\n3) A potential solution or next action based on the newfound understanding'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'shadow_work',
+  slug: 'shadow-work-dialogue',
+  label: 'Shadow Work Dialogue — Conscious Self · Shadow Self',
+  kind: 'pattern',
+  categories: ['psychology', 'self-reflection'],
+  tags: [
+    'type:pattern','topic:shadow','topic:unconscious','level:advanced',
+    'use:inner-demons','use:self-acceptance','use:emotional-healing'
+  ],
+  use_cases: [
+    'confront a “shadow” side of yourself (traits or emotions you’ve repressed) by personifying it',
+    'gain insight into negative patterns by dialoguing with the part of you that acts them out',
+    'integrate and heal shame or anger by compassionately engaging with your darker side'
+  ],
+  boosters: [
+    'Approach the shadow with curiosity, not hostility – it often protects a hurt part of you in a misguided way.',
+    'Let the Shadow Self speak bluntly. Have your Conscious Self acknowledge its points before gently offering an alternative perspective.'
+  ],
+  definition: 'A Jungian-inspired exercise where you have a written conversation between your everyday conscious self and your “Shadow” (the hidden, negative, or feared aspects of you) to acknowledge and integrate these aspects.',
+  help: 'Name a trait or emotion in yourself that you typically reject or hide (your “shadow”). Optionally describe a situation where it comes out. The model will script a dialogue between you and this Shadow Self, uncovering its motives and working toward understanding.',
+  fields: [
+    { key: 'trait',    label: 'Shadow trait or feeling', type: 'text', ph: 'e.g., jealousy, rage, self-sabotage' },
+    { key: 'scenario', label: 'Triggering scenario (optional)', type: 'textarea', ph: 'When or why does this shadow usually appear?' }
+  ],
+  template: ({ trait, scenario, ctx, audience, style, tone }) => [
+    'Initiate a Shadow Work dialogue between the conscious self and the shadow self.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    trait && `Shadow trait: ${trait}`,
+    scenario && `Trigger:\n${scenario}`,
+    'Output:\n1) Dialogue exchange where “You” (Conscious Self) and “Shadow” (the personification of the trait) each speak\n2) The Shadow explains its perspective/need; You respond with empathy but firmness\n3) A final reflection or agreement indicating some healing or integration'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'epic_quest',
+  slug: 'epic-quest-tasking',
+  label: 'Epic Quest Tasking — Gamify the Chore',
+  kind: 'pattern',
+  categories: ['productivity', 'creativity'],
+  tags: [
+    'type:pattern','topic:gamification','topic:play','level:beginner',
+    'use:motivation','use:adhd','use:routine'
+  ],
+  use_cases: [
+    'turn a boring chore or task into an exciting mission narrative to spark motivation',
+    'help neurodivergent individuals get started on tasks by reframing them as game quests',
+    'make goal-setting fun by introducing heroes, villains, and rewards into everyday tasks'
+  ],
+  boosters: [
+    'Set a time limit or “countdown” in the story to create urgency (e.g., “complete the quest before the sun sets in 25 minutes”).',
+    'Include a small celebratory moment or reward in the narrative when the task (quest) is completed, to give a sense of accomplishment.'
+  ],
+  definition: 'A motivational technique that reframes a mundane task as an epic adventure or game quest. By becoming a hero on a mission (with challenges and rewards), the task feels more engaging and doable.',
+  help: 'Enter a task you want to gamify. Optionally specify a theme or hero persona (e.g., space explorer, detective) and a reward. The model will generate a short story where you (the hero) undertake the task as an epic quest, including a triumphant reward at the end.',
+  fields: [
+    { key: 'task',    label: 'Task or chore to gamify', type: 'textarea', ph: 'e.g., cleaning my room' },
+    { key: 'persona', label: 'Hero persona or theme (optional)', type: 'text', ph: 'e.g., a pirate captain, a wizard, a secret agent' },
+    { key: 'reward',  label: 'Reward for completion (optional)', type: 'text', ph: 'e.g., 15 minutes of video game time, a snack' }
+  ],
+  template: ({ task, persona, reward, ctx, audience, style, tone }) => [
+    'Turn the task into an epic quest storyline to make it fun.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    task && `Task: ${task}`,
+    persona && `Hero persona: ${persona}`,
+    reward && `Reward for success: ${reward}`,
+    'Output:\n1) An adventurous setup: the hero’s mission (the task) and why it matters\n2) Challenges or villains to overcome (difficult parts of the task) described excitingly\n3) The heroic completion and obtaining the reward, with a celebratory ending'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'time_machine',
+  slug: 'time-machine-perspectives',
+  label: 'Time Machine Advice — Past Self & Future Self',
+  kind: 'pattern',
+  categories: ['self-reflection', 'planning'],
+  tags: [
+    'type:pattern','topic:future-self','topic:reflection','level:beginner',
+    'use:life-choices','use:personal-growth','use:perspective'
+  ],
+  use_cases: [
+    'gain wisdom on a current challenge by imagining advice from your younger and older self',
+    'practice self-compassion by viewing your situation through the eyes of a past you and a future you',
+    'clarify your next steps by hearing what your hopeful future self would tell you to do'
+  ],
+  boosters: [
+    'Visualize your past self vividly (age, surroundings, mindset) to ground their voice. Do the same for your future self at, say, 20 years from now.',
+    'Have the future self focus on encouragement and long-term perspective, while the past self might offer innocence or fundamental values you had.'
+  ],
+  definition: 'A reflective exercise where you imagine your past self and future self giving their perspectives on your current situation. The past self offers a reminder of where you came from, and the future self gives guidance looking back with wisdom.',
+  help: 'Optionally specify an age or time for your past self, and describe your current challenge. The model will produce two voices: one from your past self (reacting to the present you) and one from your future self (offering advice), helping you see your situation in a new light.',
+  fields: [
+    { key: 'past',      label: 'Past self (age or year, optional)', type: 'text', ph: 'e.g., 15 or “college senior year”' },
+    { key: 'situation', label: 'Current situation or problem', type: 'textarea', ph: 'Describe what you are dealing with now.' }
+  ],
+  template: ({ past, situation, ctx, audience, style, tone }) => [
+    'Seek guidance by imagining perspectives from your past and future selves.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    past && `Past self timeframe: ${past}`,
+    situation && `Current situation:\n${situation}`,
+    'Output:\n1) Past Self – a message or reaction from your younger self upon seeing your current situation\n2) Future Self – advice or reassurance from an older, wiser you to your present self\n(Each in a distinct voice, followed by a brief reflection on the guidance.)'
+  ].filter(Boolean).join('\n')
+},
+{
+  id: 'mind_map',
+  slug: 'mind-map-outline',
+  label: 'Mind Map — Central Idea with Branches',
+  kind: 'framework',
+  categories: ['creativity', 'analysis'],
+  tags: [
+    'type:framework','topic:mind-mapping','topic:nonlinear','level:beginner',
+    'use:brainstorm','use:note-taking','use:idea-organization'
+  ],
+  use_cases: [
+    'quickly brainstorm and organize ideas around a central topic in a visual hierarchy (textually represented)',
+    'generate an outline of subtopics and details for a broad subject',
+    'assist ADHD or visual thinkers in structuring thoughts without strict linear order'
+  ],
+  boosters: [
+    'Keep each node label short (1-3 words) as in a real mind map, for clarity and focus.',
+    'Allow some branches to be unconventional or playful – creative tangents can lead to useful insights.'
+  ],
+  definition: 'A visual thinking tool that starts with one central idea, then branches into related subtopics, which further expand into details. Here, the mind map will be presented as an indented text outline.',
+  help: 'Enter a central topic. Optionally list some main branches. The model will produce a mind map-style outline: the central idea, major branches (first-level nodes), and a few sub-points for each branch.',
+  fields: [
+    { key: 'topic',    label: 'Central topic', type: 'text', ph: 'e.g., Climate Change' },
+    { key: 'branches', label: 'Main branches (optional, one per line)', type: 'textarea', ph: 'e.g., Causes\nImpacts\nSolutions' }
+  ],
+  template: ({ topic, branches, ctx, audience, style, tone }) => [
+    'Create a mind map outline for the given topic.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    topic && `Central Topic: ${topic}`,
+    branches && (
+      'Main Branches:\n' + String(branches)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((b,i) => `${i+1}. ${b}`)
+        .join('\n')
+    ),
+    'Output:\n- [Central Topic]\n  - [Branch 1]\n    - Sub-point 1\n    - Sub-point 2\n  - [Branch 2]\n    - Sub-point...\n(etc., an indented list representing the mind map)'
+  ].filter(Boolean).join('\n')
 }
+
+
 
 
   ];
