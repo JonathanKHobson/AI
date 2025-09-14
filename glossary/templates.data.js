@@ -5513,23 +5513,28 @@ boosters: [
     'Switch perspective after each statement: fully embody the other person or part when responding.'
   ],
   definition: 'A Gestalt therapy exercise where you imagine someone (or a part of yourself) in an empty chair and have a candid dialogue to express unresolved feelings or internal conflicts.',
-  help: 'Start typing to search common identities/roles. Pick who you are (or a part of you) and who is “in the chair,” then describe the topic. The model will alternate voices and end with a brief reflection.',
-  fields: [
-    { key: 'you',   label: 'Your identity or role',              type: 'typeahead', ph: 'e.g., Myself (as the hurt friend)' },
-    { key: 'other', label: 'Other person or part in the chair',  type: 'typeahead', ph: 'e.g., My friend who upset me OR My impulsive side' },
-    { key: 'topic', label: 'Topic or emotion to explore',        type: 'textarea',  ph: 'Briefly describe the issue, conflict, or feeling you want to address.' }
-  ],
+  help: 'Pick who you are (or a part of you) and who is “in the chair,” then describe the topic. The model will alternate voices and end with a brief reflection.',
+fields: [
+  { key: 'you',   label: 'Your identity or role',             type: 'typeahead_textarea', autofill: 'persona->textarea',
+    ph: 'Start typing to pick a persona/part (e.g., Inner Critic, Younger Self, Therapist)…' },
+  { key: 'other', label: 'Other person or part in the chair', type: 'typeahead_textarea', autofill: 'persona->textarea',
+    ph: 'Start typing to pick a persona/part (e.g., My Manager, Future Self)…' },
+  { key: 'topic', label: 'Topic or emotion to explore',       type: 'textarea',
+    ph: 'Briefly describe the issue, conflict, or feeling you want to address.' }
+],
+
   template: ({ you, other, topic, ctx, audience, style, tone }) => [
-    'Use the Empty Chair technique to dialogue between two perspectives.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    you && `You: (${you})`,
-    other && `Other: (${other})`,
-    topic && `Topic:\n${topic}`,
-    'Output:\n1) Scripted dialogue alternating between You and the Other, each expressing their thoughts/feelings\n2) A concluding reflection or resolution after several exchanges'
-  ].filter(Boolean).join('\n')
+  'Use the Empty Chair technique to dialogue between two perspectives.',
+  ctx && `Context: ${ctx}`,
+  audience && `Audience: ${audience}`,
+  style && `Style: ${style}`,
+  tone && `Tone: ${tone}`,
+  you && `You profile:\n${you}`,
+  other && `Other profile:\n${other}`,
+  topic && `Topic:\n${topic}`,
+  'Output:\n1) Scripted dialogue alternating between You and the Other, each expressing their thoughts/feelings\n2) A concluding reflection or resolution after several exchanges'
+].filter(Boolean).join('\n')
+
 },
 
 {
@@ -5770,10 +5775,20 @@ boosters: [
   ],
   definition: 'A brainstorming method where you pose a question to an imaginary panel of mentors or characters. Each “advisor” gives their perspective or solution, helping you see the issue from many angles.',
   help: 'List 2-5 imaginary council members (could be famous people, fictional characters, or archetypes) and state your question or problem. The model will present advice or answers from each member in turn.',
-  fields: [
-    { key: 'advisors', label: 'Council members (one per line)', type: 'textarea', ph: 'e.g., Marie Curie (scientist)\nTony Stark (inventor)\nYour Future Self\nA Wise Grandparent' },
-    { key: 'question', label: 'Problem or question for the council', type: 'textarea', ph: 'Describe what you want advice or ideas about.' }
-  ],
+fields: [
+  {
+    key: 'advisors',
+    label: 'Council members',
+    type: 'repeater',
+    itemType: 'typeahead',   // each item is a persona-backed textarea
+    autofill: 'persona->textarea',    // on pick, dump full profile via personaText()
+    itemLabel: 'member',              // label for the + Add button
+    min: 2,
+    max: 10,
+    ph: 'Start typing to pick a persona (e.g., Marie Curie, Tony Stark, Future Self)…'
+  },
+  { key: 'question', label: 'Problem or question for the council', type: 'textarea', ph: 'Describe what you want advice or ideas about.' }
+],
   template: ({ advisors, question, ctx, audience, style, tone }) => [
     'Consult an imaginary mentor council for advice.',
     ctx && `Context: ${ctx}`,
