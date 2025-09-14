@@ -5859,22 +5859,251 @@ fields: [
     'Let the Shadow Self speak bluntly. Have your Conscious Self acknowledge its points before gently offering an alternative perspective.'
   ],
   definition: 'A Jungian-inspired exercise where you have a written conversation between your everyday conscious self and your “Shadow” (the hidden, negative, or feared aspects of you) to acknowledge and integrate these aspects.',
-  help: 'Name a trait or emotion in yourself that you typically reject or hide (your “shadow”). Optionally describe a situation where it comes out. The model will script a dialogue between you and this Shadow Self, uncovering its motives and working toward understanding.',
+  help: 'Pick a shadow feeling from the list or type your own. Optionally attach personas to both your Shadow Self and your Conscious Self (these use the same typeahead+autofill you already have). The model will script a dialogue, then summarize insights.',
   fields: [
-    { key: 'trait',    label: 'Shadow trait or feeling', type: 'text', ph: 'e.g., jealousy, rage, self-sabotage' },
-    { key: 'scenario', label: 'Triggering scenario (optional)', type: 'textarea', ph: 'When or why does this shadow usually appear?' }
+    // --- Shadow feeling (universal, no new UI code) ---
+    { key: 'shadow_feeling', label: 'Shadow feeling (common list)', type: 'select',
+      options: [
+        { value:'', label:'— Select feeling —' },
+                  // Shadow / difficult feelings
+  'anger','anxiety','apathy','avoidance','bitterness','burnout','conflict-seeking',
+  'confusion','control-fixation','defensiveness','despair','disgust','distrust',
+  'envy','fear','frustration','guilt','hopelessness','imposter feelings',
+  'inadequacy','insecurity','jealousy','judgment','loneliness','melancholy',
+  'numbness','perfectionism','procrastination','rage','regret','resentment',
+  'self-criticism','self-loathing','shame','spite','stress','withdrawal',
+
+  // Expansive / positive feelings
+  'acceptance','affection','awe','calm','caring','compassion','confidence',
+  'contentment','curiosity','empathy','enthusiasm','excitement','forgiveness',
+  'freedom','friendliness','fun','generosity','gratitude','happiness',
+  'hope','inspiration','joy','kindness','laughter','love','motivation',
+  'optimism','peace','playfulness','pride','relief','relaxation','satisfaction',
+  'security','serenity','trust','wonder','zest'
+      ]
+    },
+    { key: 'shadow_trait', label: 'Shadow traits/feelings', type: 'textarea',
+      ph: 'e.g., jealousy, rage, self-sabotage', desc:'Type to search your persona library.',  desc: 'Write freely. It’s safe to name whatever surfaces — clarity grows when you give the shadow a voice.' },
+
+    // --- Optional: attach Shadow persona (uses existing typeahead + autofill to companion _text) ---
+    { key: 'shadow_name', label: 'Name your Shadow', type: 'text',
+      ph: 'e.g., The Saboteur, The Critic, Trickster, UX designer, Stoic philosopher', desc: 'Trust what comes up — no right or wrong answers.' },
+      
+      { key: 'shadow_persona', label: 'Shadow persona (type to search personas)', type:'repeater',
+  itemType:'typeahead',
+  itemLabel:'persona',
+  autofill:'persona->inline',
+      ph: 'e.g., The Saboteur, The Critic, Trickster, UX designer, Stoic philosopher', desc: 'Type to search personas' },    
+      
+      
+    { key: 'shadow_text', label: 'Shadow persona details (optional)', type: 'textarea',
+      ph: 'Optionally add more persona details', desc: 'Write freely. It’s safe to name whatever surfaces — clarity grows when you give the shadow a voice.' },
+
+    // --- Optional: attach Conscious Self persona (same pairing) ---
+        { key: 'you_feeling', label: 'Opposite feeling (common list)', type: 'select',
+      options: [
+        { value:'', label:'— Select feeling —' },
+          // Shadow / difficult feelings
+  'anger','anxiety','apathy','avoidance','bitterness','burnout','conflict-seeking',
+  'confusion','control-fixation','defensiveness','despair','disgust','distrust',
+  'envy','fear','frustration','guilt','hopelessness','imposter feelings',
+  'inadequacy','insecurity','jealousy','judgment','loneliness','melancholy',
+  'numbness','perfectionism','procrastination','rage','regret','resentment',
+  'self-criticism','self-loathing','shame','spite','stress','withdrawal',
+
+  // Expansive / positive feelings
+  'acceptance','affection','awe','calm','caring','compassion','confidence',
+  'contentment','curiosity','empathy','enthusiasm','excitement','forgiveness',
+  'freedom','friendliness','fun','generosity','gratitude','happiness',
+  'hope','inspiration','joy','kindness','laughter','love','motivation',
+  'optimism','peace','playfulness','pride','relief','relaxation','satisfaction',
+  'security','serenity','trust','wonder','zest'
+      ]
+    },
+    
+     { key: 'you_trait', label: 'Conscious Self traits/feelings', type: 'textarea',
+      ph: 'e.g., supportive, happy, content', desc:'Type to search your persona library.',  desc: 'Write freely. It’s safe to name whatever surfaces — clarity grows when you give the Conscious Self a voice.' },
+    
+    
+    { key: 'you_name', label: 'Name your Conscious Self', type: 'text',
+      ph: 'e.g., Compassionate Coach, Pragmatic PM, Therapist, Mentor', desc: 'Trust what comes up — no right or wrong answers.' },
+          { key: 'you_persona', label: 'Conscious Self persona (type to search personas)', type:'repeater',
+  itemType:'typeahead',
+  itemLabel:'persona',
+  autofill:'persona->inline',
+      ph: 'e.g., Compassionate Coach, Pragmatic PM, Therapist, Mentor', desc: 'Type to search personas' },
+    { key: 'you_text', label: 'Conscious persona details (optional)', type: 'textarea',
+      ph: 'Optionally add more persona details',  desc: 'Write freely. It’s safe to name whatever surfaces — clarity grows when you give the Conscious Self a voice.' },
+
+    // --- Scenario/context remains optional ---
+    { key: 'scenario', label: 'Triggering scenario (optional)', type: 'textarea',
+      ph: 'When or why does this shadow usually appear?', desc: 'Trust what comes up — no right or wrong answers.' }
   ],
-  template: ({ trait, scenario, ctx, audience, style, tone }) => [
+
+template: ({
+  shadow_feeling, shadow_trait, shadow_name, shadow_persona, shadow_text,
+  you_feeling, you_trait, you_name, you_persona, you_text,
+  scenario, ctx, audience, style, tone
+}) => {
+  const clean = v => (v && String(v).trim()) || '';
+  const oneLine = s => String(s||'').replace(/\s*\n+\s*/g,' ').replace(/\s{2,}/g,' ').trim();
+
+  // Gather feelings/traits (never overridden by persona details)
+  const shadowFeelings = [clean(shadow_feeling), clean(shadow_trait)].filter(Boolean).join(', ');
+  const youFeelings    = [clean(you_feeling), clean(you_trait)].filter(Boolean).join(', ');
+
+  // Gather persona info
+  const shadowBlock = [
+    shadow_name && `Shadow persona: ${clean(shadow_name)}`,
+    shadow_persona && `Additional persona(s): ${Array.isArray(shadow_persona) ? shadow_persona.join(', ') : clean(shadow_persona)}`,
+    shadow_text && `Details: ${oneLine(shadow_text)}`
+  ].filter(Boolean).join('\n');
+
+  const youBlock = [
+    you_name && `Conscious persona: ${clean(you_name)}`,
+    you_persona && `Additional persona(s): ${Array.isArray(you_persona) ? you_persona.join(', ') : clean(you_persona)}`,
+    you_text && `Details: ${oneLine(you_text)}`
+  ].filter(Boolean).join('\n');
+
+  return [
     'Initiate a Shadow Work dialogue between the conscious self and the shadow self.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
-    trait && `Shadow trait: ${trait}`,
+    shadowFeelings && `Shadow feelings/traits: ${shadowFeelings}`,
+    youFeelings && `Conscious feelings/traits: ${youFeelings}`,
     scenario && `Trigger:\n${scenario}`,
-    'Output:\n1) Dialogue exchange where “You” (Conscious Self) and “Shadow” (the personification of the trait) each speak\n2) The Shadow explains its perspective/need; You respond with empathy but firmness\n3) A final reflection or agreement indicating some healing or integration'
-  ].filter(Boolean).join('\n')
+    shadowBlock && shadowBlock,
+    youBlock && youBlock,
+    'Output:\n1) Dialogue exchange where “You” (Conscious Self) and “Shadow” each speak\n' +
+    '2) The Shadow explains its perspective/need; You respond with empathy but firmness\n' +
+    '3) A final reflection or agreement indicating some healing or integration'
+  ].filter(Boolean).join('\n');
+}
 },
+
+{
+  id: 'inner_child',
+  slug: 'inner-child-dialogue',
+  label: 'Inner Child Work — Conscious Self · Inner Child',
+  kind: 'pattern',
+  categories: ['psychology', 'self-reflection'],
+  tags: [
+    'type:pattern','topic:inner-child','topic:wounded-self','level:intermediate',
+    'use:healing','use:re-parenting','use:emotional-integration'
+  ],
+  use_cases: [
+    'connect with and comfort your “inner child” (wounded or vulnerable parts of yourself)',
+    'practice re-parenting: respond with the compassion and guidance you needed then',
+    'explore childhood experiences that shape your current patterns and emotions'
+  ],
+  boosters: [
+    'Approach the inner child gently — think of how you would speak to a child you love.',
+    'Let the Inner Child voice fears or needs freely. Respond with validation and steady care.'
+  ],
+  definition: 'A popular therapeutic exercise (John Bradshaw, Homecoming) where you dialogue between your adult conscious self and your “inner child” — the vulnerable, wounded, or playful child-part inside you — to re-parent, validate, and integrate them.',
+  help: 'Pick a feeling from the list or type your own. Optionally attach personas to both your Inner Child and your Conscious Self (uses the same typeahead+autofill you already have). The model will script a dialogue, then summarize insights.',
+  fields: [
+    // --- Inner Child feelings ---
+    { key: 'child_feeling', label: 'Inner Child feeling (common list)', type: 'select',
+      options: [
+        { value:'', label:'— Select feeling —' },
+        // Shadow / difficult
+        'anger','anxiety','apathy','avoidance','bitterness','burnout','confusion','defensiveness',
+        'despair','distrust','envy','fear','frustration','guilt','hopelessness','insecurity',
+        'jealousy','loneliness','melancholy','numbness','perfectionism','procrastination','rage',
+        'regret','resentment','self-criticism','self-loathing','shame','stress','withdrawal',
+        // Positive / expansive
+        'acceptance','affection','awe','calm','caring','compassion','confidence','contentment',
+        'curiosity','empathy','enthusiasm','excitement','forgiveness','freedom','friendliness',
+        'fun','generosity','gratitude','happiness','hope','inspiration','joy','kindness',
+        'laughter','love','motivation','optimism','peace','playfulness','pride','relief',
+        'relaxation','satisfaction','security','serenity','trust','wonder','zest'
+      ]
+    },
+    { key: 'child_trait', label: 'Inner Child traits/feelings', type: 'textarea',
+      ph: 'e.g., scared, playful, abandoned, joyful',
+      desc: 'Write freely. It’s safe to name whatever surfaces — clarity grows when you give the child a voice.' },
+
+    // --- Inner Child persona ---
+    { key: 'child_name', label: 'Name your Inner Child', type: 'text',
+      ph: 'e.g., Little Me, Scared Kid, Playful One',
+      desc: 'Trust what comes up — no right or wrong answers.' },
+    { key: 'child_persona', label: 'Inner Child persona (type to search personas)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph: 'e.g., Little Me at 7, Lonely Teenager, Curious Explorer',
+      desc: 'Type to search personas' },
+    { key: 'child_text', label: 'Inner Child persona details (optional)', type: 'textarea',
+      ph: 'Optionally add more persona details',
+      desc: 'Write freely. It’s safe to name whatever surfaces.' },
+
+    // --- Conscious Self persona (unchanged) ---
+    { key: 'you_feeling', label: 'Conscious Self feeling (common list)', type: 'select',
+      options: [ /* same combined feelings list as above */ ]
+    },
+    { key: 'you_trait', label: 'Conscious Self traits/feelings', type: 'textarea',
+      ph: 'e.g., supportive, calm, wise',
+      desc: 'Give words to the qualities of your adult self you want to bring here.' },
+
+    { key: 'you_name', label: 'Name your Conscious Self', type: 'text',
+      ph: 'e.g., Compassionate Parent, Wise Mentor',
+      desc: 'Trust what comes up — no right or wrong answers.' },
+    { key: 'you_persona', label: 'Conscious Self persona (type to search personas)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph: 'e.g., Compassionate Parent, Pragmatic Coach',
+      desc: 'Type to search personas' },
+    { key: 'you_text', label: 'Conscious persona details (optional)', type: 'textarea',
+      ph: 'Optionally add more persona details',
+      desc: 'Write freely. It’s safe to name whatever surfaces.' },
+
+    { key: 'scenario', label: 'Triggering scenario (optional)', type: 'textarea',
+      ph: 'When or why does this child usually appear?',
+      desc: 'Briefly describe what brings your Inner Child up.' }
+  ],
+
+  template: ({
+    child_feeling, child_trait, child_name, child_persona, child_text,
+    you_feeling, you_trait, you_name, you_persona, you_text,
+    scenario, ctx, audience, style, tone
+  }) => {
+    const clean = v => (v && String(v).trim()) || '';
+    const oneLine = s => String(s||'').replace(/\s*\n+\s*/g,' ').replace(/\s{2,}/g,' ').trim();
+
+    const childFeelings = [clean(child_feeling), clean(child_trait)].filter(Boolean).join(', ');
+    const youFeelings   = [clean(you_feeling), clean(you_trait)].filter(Boolean).join(', ');
+
+    const childBlock = [
+      child_name && `Inner Child persona: ${clean(child_name)}`,
+      child_persona && `Additional persona(s): ${Array.isArray(child_persona) ? child_persona.join(', ') : clean(child_persona)}`,
+      child_text && `Details: ${oneLine(child_text)}`
+    ].filter(Boolean).join('\n');
+
+    const youBlock = [
+      you_name && `Conscious persona: ${clean(you_name)}`,
+      you_persona && `Additional persona(s): ${Array.isArray(you_persona) ? you_persona.join(', ') : clean(you_persona)}`,
+      you_text && `Details: ${oneLine(you_text)}`
+    ].filter(Boolean).join('\n');
+
+    return [
+      'Initiate an Inner Child dialogue between the conscious self and the inner child.',
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      childFeelings && `Inner Child feelings/traits: ${childFeelings}`,
+      youFeelings && `Conscious feelings/traits: ${youFeelings}`,
+      scenario && `Trigger:\n${scenario}`,
+      childBlock && childBlock,
+      youBlock && youBlock,
+      'Output:\n1) Dialogue exchange where “You” (Conscious Self) and “Inner Child” each speak\n' +
+      '2) The Inner Child shares its needs or fears; You respond with empathy, validation, and re-parenting care\n' +
+      '3) A final reflection or practice to nurture integration'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+
 {
   id: 'epic_quest',
   slug: 'epic-quest-tasking',
