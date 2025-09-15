@@ -739,8 +739,12 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
           </div>
           <div>
 <label for="audience">Audience</label>
-<input id="audience" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" data-typeahead="persona" />
-<!-- simple dropdown container; stays hidden until suggestions appear -->
+<div id="audienceChipsWrap" class="chipsInput">
+  <div id="audienceChips" class="chips"></div>
+  <input id="audience" type="text"
+         placeholder="e.g., Busy SMB owners"
+         autocomplete="off" data-typeahead="persona" />
+</div>
 <div id="audienceSuggestions" class="ta-menu" hidden></div>
 
           </div>
@@ -1176,9 +1180,13 @@ function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
     const q = inputEl.value.trim();
     items = searchPersonas(q);
     if (!items.length){ close(); return; }
-    menuEl.innerHTML = items.map((r,idx)=>(
-      `<div class="ta-item${idx===0?' ta-active':''}" data-idx="${idx}">${r.name}</div>`
-    )).join('');
+menuEl.innerHTML = items.map((r,idx)=>{
+  const sum = (r.p && (r.p.summary || r.p.definition || '') || '').toString().trim();
+  return `<div class="ta-item${idx===0?' ta-active':''}" data-idx="${idx}">
+    <div class="name"><strong>${r.name}</strong></div>
+    ${sum ? `<div class="sub">${sum}</div>` : ''}
+  </div>`;
+}).join('');
     active = 0;
     // position the menu under input
     const rect = inputEl.getBoundingClientRect();
@@ -1190,7 +1198,7 @@ function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
     if (menuEl.hidden) return;
     if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, items.length-1); highlight(); }
     else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(active-1, 0); highlight(); }
-    else if (e.key === 'Enter'){ e.preventDefault(); pick(active); }
+    else if (e.key === 'Enter' || e.key === ','){ e.preventDefault(); pick(active); }
     else if (e.key === 'Escape'){ close(); }
   });
 
@@ -1202,144 +1210,45 @@ function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
   function highlight(){
     [...menuEl.querySelectorAll('.ta-item')].forEach((n,i)=> n.classList.toggle('ta-active', i===active));
   }
-  function pick(i){
-    const r = items[i]; if (!r) return;
-    close();
-    // show only the name in the input field
-    inputEl.value = r.name;
+function pick(i){
+  const r = items[i]; if (!r) return;
+  close();
 
-    // persist to the active tab's common context
-    const tab = getActiveTab && getActiveTab();
-    if (tab){
-      tab.common = tab.common || {};
-      tab.common.audience = r.name;                    // visible text
-      tab.common.audience_persona = r.p;               // full object for prompt enrichment
-      if (onChange) onChange(tab);                     // save/rerender hook
-    }
+  // Persist to the active tab (as before)
+  const tab = getActiveTab && getActiveTab();
+  let names = [];
+  if (tab){
+    tab.common = tab.common || {};
+    const arr = Array.isArray(tab.common.audience_personas) ? tab.common.audience_personas : [];
+
+    // De-dupe by id or name
+    const exists = arr.some(p =>
+      String(p.id||p.name).toLowerCase() === String(r.p.id||r.p.name).toLowerCase()
+    );
+    if (!exists) arr.push(r.p);
+
+    tab.common.audience_personas = arr;
+    tab.common.audience_persona  = arr[0]; // back-compat single
+    names = arr.map(p => p.name).filter(Boolean);
+
+    // What the user sees in the field (just the names, comma-sep)
+    tab.common.audience = names.join(', ');
+    if (onChange) onChange(tab);
   }
+
+  // Replace the partial token with the normalized CSV
+  inputEl.value = names.length ? names.join(', ') : (r.name || '');
+  inputEl.classList.toggle('filled', !!inputEl.value);
+  inputEl.focus();
+}
+
+
 
   // Click-away to close
   document.addEventListener('click', (ev)=>{
     if (ev.target!==inputEl && !menuEl.contains(ev.target)) close();
   });
 }
-
-// === Safe Audience Multi-Select Enhancer (CSV-based; no HTML changes) ===
-// Uses the existing #audience input and your existing persona typeahead.
-// It never throws (guarded), so other bindings like buttons remain intact.
-(function upgradeAudienceMultiCSV(){
-  try {
-    const aud = document.getElementById('audience');
-    const menu = document.getElementById('audienceSuggestions'); // your existing dropdown
-    if (!aud) return; // quietly exit if field isn't present
-
-    // Build fast lookup by name (case-insensitive)
-    function personaByName(name){
-      const n = String(name||'').trim().toLowerCase();
-      if (!n) return null;
-      // exact name match first
-      const hits = (typeof personaFilter === 'function') ? personaFilter(n, 50) : [];
-      let best = hits.find(p => String(p.name||'').toLowerCase() === n);
-      if (!best && hits.length) best = hits[0];
-      if (best) return best;
-      // allow custom audience when not found
-      return { id: 'custom:'+name, name: name, summary:'', profession:'' };
-    }
-
-    // Parse CSV -> array of trimmed unique names (preserving order)
-    function parseNames(v){
-      const raw = String(v||'').split(/[,;\n]/).map(s=>s.trim()).filter(Boolean);
-      const seen = new Set();
-      const out = [];
-      for (const r of raw){ const k = r.toLowerCase(); if (!seen.has(k)){ seen.add(k); out.push(r); } }
-      return out;
-    }
-
-    // Sync parsed names into tab.common: audience (CSV) + audience_personas (objects)
-    function syncToTab(){
-      const t = (typeof activeTab === 'function') ? activeTab() : null;
-      if (!t) return;
-      t.common = t.common || {};
-      const names = parseNames(aud.value);
-      const objs  = names.map(personaByName).filter(Boolean);
-
-      // Store for prompt composition
-      t.common.audience            = names.join(', '); // keeps your context line behavior
-      t.common.audience_names      = t.common.audience;
-      t.common.audience_ids        = objs.map(o=> o.id || o.name);
-      t.common.audience_personas   = objs;
-
-      // Back-compat for legacy single-audience consumers
-      t.common.audience_persona    = objs[0] || null;
-
-      if (typeof emitAll === 'function') emitAll();
-      if (typeof scheduleSave === 'function') scheduleSave();
-    }
-
-    // When user selects from your existing typeahead, it will set aud.value to that name.
-    // We gently help users keep adding more by appending a comma if they hit Enter while menu is open.
-    function menuOpen(){
-      // reuse your existing dropdown visibility if available
-      if (!menu) return false;
-      return !menu.hidden && menu.childElementCount > 0;
-    }
-
-    // Input events
-    aud.addEventListener('input', ()=>{
-      try { syncToTab(); } catch(e){}
-    });
-
-    // Keyboard: Enter or comma when menu is open commits selection, then we add a trailing comma for quick multi-add
-    aud.addEventListener('keydown', (e)=>{
-      try {
-        if ((e.key === 'Enter' || e.key === ',') && menuOpen()){
-          // Let your existing picker handle selection first; then on next tick sync & add comma
-          setTimeout(()=>{
-            syncToTab();
-            // ensure trailing comma+space to invite next entry
-            if (!/[,;\s]$/.test(aud.value)) aud.value = aud.value.replace(/\s+$/,'') + ', ';
-            syncToTab();
-          }, 0);
-          return; // don't preventDefault — keep existing behavior intact
-        }
-
-        // Convenience: Backspace at ", " trims nicely
-        if (e.key === 'Backspace'){
-          // if cursor is at end and value ends with ", " -> remove the trailing space too
-          const { selectionStart, selectionEnd, value } = aud;
-          if (selectionStart === selectionEnd && selectionEnd === value.length && /,\s$/.test(value)){
-            aud.value = value.replace(/,\s$/, ',');
-            setTimeout(syncToTab, 0);
-          }
-        }
-      } catch(e){}
-    });
-
-    // On blur, normalize spacing and re-sync
-    aud.addEventListener('blur', ()=>{
-      try {
-        aud.value = parseNames(aud.value).join(', ');
-        syncToTab();
-      } catch(e){}
-    });
-
-    // Hydrate from tab on load and on tab switch
-    function hydrate(){
-      const t = (typeof activeTab === 'function') ? activeTab() : null;
-      if (!t) return;
-      const csv = String(t?.common?.audience || '').trim();
-      if (csv && aud.value.trim() !== csv) aud.value = csv;
-      syncToTab();
-    }
-    hydrate();
-    document.addEventListener('tab-switched', hydrate);
-
-  } catch (err) {
-    // Never throw — keep the rest of the app alive (buttons/theme/etc.)
-    console.warn('Audience multi-select enhancer skipped:', err);
-  }
-})();
-
 
 /* ===== Bias helpers ===== */
 // Minimal, persona-parallel utilities. Won’t touch existing persona flows.
@@ -2430,10 +2339,19 @@ if (!fw || (fw.id === 'none' && !hasRealFields)) return '';
 const c = (t.common || {});
 let ctxPlus = ctxStringFromTab(t);
 
-if (c.audience_persona){
-  const personaBlock = formatPersonaForPrompt(c.audience_persona); // already defined above
-  ctxPlus = [ctxPlus, personaBlock].filter(Boolean).join('\n\n');
+// Multi-select aware: include all selected persona blocks; fallback to legacy single
+const persons = Array.isArray(c.audience_personas) && c.audience_personas.length
+  ? c.audience_personas
+  : (c.audience_persona ? [c.audience_persona] : []);
+
+if (persons.length){
+  const blocks = persons
+    .map(p => formatPersonaForPrompt(p))
+    .filter(Boolean)
+    .join('\n\n');
+  ctxPlus = [ctxPlus, blocks].filter(Boolean).join('\n\n');
 }
+
 
 const merged = {
   ctx: ctxPlus,
@@ -3424,14 +3342,16 @@ switchFramework(first.value);
     t.common[key] = el.value || '';
 
     // Only clear persona if the Audience text diverges from the bound persona's name.
-    if (id === 'audience') {
-      const boundName = t.common?.audience_persona?.name || null;
-      const current   = (el.value || '').trim();
-      // If there is no bound persona OR the text no longer matches the persona name → clear it.
-      if (!boundName || current !== boundName) {
-        t.common.audience_persona = null;
-      }
-    }
+   if (id === 'audience') {
+  const current = (el.value || '').trim();
+  if (!current) {
+    // Only clear bindings if the field is actually blank
+    t.common.audience_persona  = null;
+    t.common.audience_personas = [];
+  }
+  // Otherwise keep whatever was selected via the typeahead
+}
+
 
     el.classList.toggle('filled', !!el.value);
     emitAll();
@@ -3442,19 +3362,134 @@ switchFramework(first.value);
 });
 
 
-// === Audience → persona typeahead binding ===
+// (removed) Audience single-input typeahead — superseded by chips multi-select
+
+// === Audience multi-select (chips + persona typeahead) ===
 (function(){
-  const audEl   = document.getElementById('audience');
-  const audMenu = document.getElementById('audienceSuggestions');
-  if (audEl && audMenu && typeof attachPersonaTypeahead === 'function'){
-    attachPersonaTypeahead(
-      audEl,
-      audMenu,
-      activeTab,
-      ()=>{ emitAll(); if (typeof scheduleSave === 'function') scheduleSave(); }
-    );
+  const input = document.getElementById('audience');               // same id as before
+  const wrap  = document.getElementById('audienceChipsWrap');
+  const chips = document.getElementById('audienceChips');
+  const menu  = document.getElementById('audienceSuggestions');
+  if (!input || !chips || !menu) return;
+
+  let items = [];      // current search hits from personas
+  let active = -1;     // highlighted index in menu
+  let picks  = [];     // [{ id, name, p }], where p = full persona object
+
+  function close(){ menu.hidden = true; menu.innerHTML=''; active=-1; }
+
+  function renderChips(){
+    chips.innerHTML = '';
+    for (const it of picks){
+      const el = document.createElement('span');
+      el.className = 'chip';
+      el.setAttribute('data-id', it.id);
+      el.innerHTML = `<span class="nm">${it.name}</span><button class="x" title="Remove">×</button>`;
+      el.querySelector('.x').addEventListener('click', ()=>{ removePick(it.id); });
+      chips.appendChild(el);
+    }
   }
+
+  function syncCommon(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    if (!t) return;
+    t.common = t.common || {};
+    // authoritative: full persona objects
+    t.common.audience_personas = picks.map(p=>p.p);
+    // legacy back-compat: first selection
+    t.common.audience_persona  = picks[0]?.p || null;
+    // inline context chip (CSV of names)
+    t.common.audience          = picks.map(p=>p.name).join(', ');
+    if (typeof emitAll === 'function') emitAll();
+    if (typeof scheduleSave === 'function') scheduleSave();
+    // mirror filled state on the input
+    input.classList.toggle('filled', !!t.common.audience);
+  }
+
+  function hasId(id){ return picks.some(p=>String(p.id).toLowerCase() === String(id).toLowerCase()); }
+  function addPick(res){
+    const p = res?.p || null;
+    if (!p) return;
+    const id   = String(p.id || p.name || '').trim() || Math.random().toString(36).slice(2);
+    const name = String(p.name || p.label || p.persona_name || id).trim();
+    if (hasId(id)) return;
+    picks.push({ id, name, p });
+    input.value = '';  // clear token after add
+    renderChips(); syncCommon(); close(); input.focus();
+  }
+  function removePick(id){
+    picks = picks.filter(p=>p.id !== id);
+    renderChips(); syncCommon();
+  }
+
+  function highlight(){
+    [...menu.querySelectorAll('.ta-item')].forEach((n,i)=> n.classList.toggle('ta-active', i===active));
+  }
+
+  function renderMenu(q){
+    items = (typeof searchPersonas === 'function') ? searchPersonas(q) : [];
+    if (!items.length){ close(); return; }
+    menu.innerHTML = items.map((r,idx)=>{
+      const sum = (r.p && (r.p.summary || r.p.definition || '') || '').toString().trim();
+      return `<div class="ta-item${idx===0?' ta-active':''}" data-idx="${idx}">
+        <div class="name"><strong>${r.name}</strong></div>
+        ${sum ? `<div class="sub">${sum}</div>` : ''}
+      </div>`;
+    }).join('');
+    active = 0;
+    const rect = input.getBoundingClientRect();
+    menu.style.minWidth = rect.width + 'px';
+    menu.hidden = false;
+  }
+
+  input.addEventListener('input', ()=>{
+    const q = input.value.trim();
+    if (!q){ close(); return; }
+    renderMenu(q);
+  });
+
+  input.addEventListener('keydown', (e)=>{
+    // Backspace to pop last chip when menu is closed and input is empty
+    if (menu.hidden){
+      if (e.key === 'Backspace' && !input.value && picks.length){
+        e.preventDefault(); removePick(picks[picks.length-1].id); return;
+      }
+      // not navigating a menu
+      return;
+    }
+    if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, items.length-1); highlight(); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(active-1, 0);           highlight(); }
+    else if (e.key === 'Enter' || e.key === ','){ e.preventDefault(); addPick(items[Math.max(0,active)]); }
+    else if (e.key === 'Escape'){ e.preventDefault(); close(); }
+  });
+
+  menu.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.ta-item'); if (!el) return;
+    const idx = parseInt(el.dataset.idx,10) || 0;
+    addPick(items[idx]);
+  });
+
+  document.addEventListener('click', (ev)=>{
+    if (ev.target!==input && !menu.contains(ev.target)) close();
+  });
+
+  // Rehydrate chips on tab switch
+  function refreshFromTab(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    const arr = Array.isArray(t?.common?.audience_personas) ? t.common.audience_personas : [];
+    if (arr.length){
+      picks = arr.map(p=>({ id: String(p.id || p.name || '').trim() || Math.random().toString(36).slice(2),
+                            name: String(p.name || p.label || p.persona_name || 'Persona'),
+                            p }));
+    } else {
+      picks = []; // no fallback to arbitrary CSV; we want dataset-backed personas
+    }
+    renderChips(); syncCommon();
+  }
+  refreshFromTab();
+  document.addEventListener('tab-switched', refreshFromTab);
 })();
+
 
 // === Bias multi-select (chips + typeahead) ===
 (function(){
@@ -3515,10 +3550,12 @@ switchFramework(first.value);
     menu.innerHTML = items.map((b,i)=>{
       const sub = (b.category || b.kind || '');
       const dot = kindDot(b.kind);
-      return `<div class="ta-item${i===0?' ta-active':''}" data-idx="${i}">
-        <span class="name"><span class="dot ${dot}"></span> ${b.name}</span>
-        <span class="sub">${sub}</span>
-      </div>`;
+const sum = (b.summary || b.definition || '').toString().trim();
+return `<div class="ta-item${i===0?' ta-active':''}" data-idx="${i}">
+  <div class="name"><span class="dot ${dot}"></span> <strong>${b.name}</strong></div>
+  ${sum ? `<div class="sub">${sum}</div>` : ''}
+</div>`;
+
     }).join('');
     active = 0;
     const rect = input.getBoundingClientRect();
@@ -3780,14 +3817,7 @@ btn.addEventListener('click', (e)=>{
 })();
 
 
-    // Theme
-    const themeBtn = $('#theme');
-    themeBtn.addEventListener('click', ()=>{
-      const light = document.documentElement.getAttribute('data-theme')==='light';
-      document.documentElement.setAttribute('data-theme', light?'' : 'light');
-      themeBtn.setAttribute('aria-pressed', light? 'false':'true');
-      themeBtn.querySelector('span:last-child').textContent = light? 'Light':'Dark';
-    });
+
     
     // --- Dialog: make it closable via button and backdrop ---
 const dlg = document.getElementById('msg');
