@@ -708,7 +708,301 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
       ].join('\n')
     ].filter(Boolean).join('\n');
   }
+},
+
+/* ---------------------------------------------------------
+   TASK: Resume — Tailor / Rewrite / Feedback
+--------------------------------------------------------- */
+{
+  id: 'resume',
+  slug: 'resume-tailor-rewrite-feedback',
+  label: 'Resume — Tailor / Rewrite / Feedback',
+  kind: 'task',
+  categories: ['career','personal-admin'],
+  tags: [
+    'type:task','topic:resume','use:job-application',
+    'use:ats','use:editing','use:feedback'
+  ],
+
+  use_cases: [
+    'tailor an existing resume to a specific job description',
+    'rewrite a resume from raw notes or outdated draft',
+    'receive critique with section scores and example fixes',
+    'generate ATS-safe and recruiter-friendly variants',
+    'draft an optional cover letter alongside resume'
+  ],
+
+  definition: 'Create, tailor, or critique a resume for a specific job — ATS-friendly, concise, and outcome-led using RAP (Result → Action → Problem) bullets.',
+
+  help: 'Paste the job description and resume info. Choose Tailor, Rewrite, Feedback, or Hybrid mode. Fields are grouped by Job Target, Applicant Basics, Content Inputs, and Preferences. Leave blanks if not needed; boosters auto-kick in.',
+
+  fields: [
+    // MODE
+    { key:'mode', label:'What do you want?', type:'select',
+      options:[
+        {value:'tailor',  label:'Tailor my resume to this job'},
+        {value:'rewrite', label:'Rewrite from scratch using my info'},
+        {value:'feedback',label:'Critique + line edits only'},
+        {value:'hybrid',  label:'Light tailoring + feedback (no full rewrite)'}
+      ]
+    },
+
+    // JOB TARGET
+{ 
+  key:'target_role', 
+  label:'Target role/title', 
+  type:'text',  
+  desc:'The exact job title as written in the job description. ATS systems match this literally — use “Product Manager” not “Product Mgmt.”',
+  ph:'e.g., Senior UX Researcher'
+},
+{ 
+  key:'company', 
+  label:'Company', 
+  type:'text',
+  desc:'The company you’re applying to. Helps tailor values, mission, and impact language.',
+  ph:'e.g., OpenAI'
+},
+{ 
+  key:'company_values', 
+  label:'Company values / notes', 
+  type:'textarea',
+  desc:'Cultural or strategic signals you’ve researched — from the careers page, blog, Glassdoor, or news. This guides tone and alignment.',
+  ph:'e.g., Emphasizes ethical AI, inclusivity, and fast iteration'
+},
+  { 
+  key:'job_description', 
+  label:'Job description (paste full text)', 
+  type:'textarea',
+  desc:'Paste the full job description from the posting. This lets the AI mirror keywords and tailor your resume for ATS and recruiters.',
+  ph:'Copy the entire job listing here, including responsibilities and qualifications.'
+},
+
+    // REGION / LOCALIZATION
+    { key:'region',          label:'Region / Country', type:'text',
+      desc:'Ensures proper spelling, section order, and format for ATS in your region.',
+      ph:'e.g., United States' },
+
+    // APPLICANT BASICS
+{ 
+  key:'full_name', 
+  label:'Your name', 
+  type:'text',
+  desc:'Enter your full legal or professional name as you’d like it to appear at the top of your resume. This forms the resume header.',
+  ph:'e.g., Jonathan Kyle Hobson'
+},
+{ 
+  key:'contact_block', 
+  label:'Header contact', 
+  type:'textarea',
+  desc:'Standard header info (ATS prefers plain text, no icons). Include at least email + phone. Optional: LinkedIn, portfolio, GitHub.',
+  ph:'Email: name@email.com\nPhone: 123-456-7890\nCity: Austin, TX\nLinkedIn: linkedin.com/in/you'
+},
+    { key:'career',          label:'Career/discipline', type:'text', ph:'e.g., Product Management' },
+    { key:'career_persona',  label:'Career persona (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph:'Search your persona library (e.g., UX Researcher, AI Strategist)',
+      desc:'Adds domain-specific voice to resume output.' },
+
+    // SUMMARY & KEYWORDS
+{ 
+  key:'summary_pref', 
+  label:'Professional summary (optional)', 
+  type:'textarea',
+  desc:'A 3–5 sentence overview of your career focus, skills, and value. Optional—AI can generate one, but your input ensures authenticity and voice.',
+  ph:'e.g., UX Researcher with 5+ years of experience turning insights into design strategy. Skilled in AI-driven prototyping, stakeholder workshops, and accessibility audits.'
+},
+{ 
+  key:'keywords', 
+  label:'Keywords to include (ATS)', 
+  type:'textarea',
+  desc:'Critical ATS step. Copy keywords directly from the JD (tools, methods, titles). AI will weave them naturally.',
+  ph:'User research, Journey mapping, SQL, Agile, Stakeholder management'
+},
+
+    // EXPERIENCE
+{ 
+  key:'work_history', 
+  label:'Work history (raw)', 
+  type:'textarea',
+  desc:'Paste full text or rough notes. AI restructures it into ATS-friendly format. Include job title, company, dates, and location.',
+  ph:'Product Manager, Acme Corp — 2018–2021\nNotes: launched 2 SaaS products, led 5 engineers, cut churn by 20%'
+},
+{ 
+  key:'work_bullets', 
+  label:'Existing bullet points', 
+  type:'textarea',
+  desc:'Paste your resume bullets for rewriting. Short and simple is fine — AI will reformat into RAP structure.',
+  ph:'Managed cross-team initiative for onboarding\nReduced churn\nPresented to executives'
+},
+{ 
+  key:'rap_notes', 
+  label:'RAP notes (Result → Action → Problem)', 
+  type:'textarea',
+  desc:'Optional advanced input: break each bullet into R/A/P blocks. Makes quantifiable, impact-first bullets.',
+  ph:'R: Increased activation 32%\nA: Built lifecycle triggers in Braze\nP: Low onboarding completion blocked conversion'
+},
+
+    // OTHER SECTIONS
+{ 
+  key:'achievements', 
+  label:'Major achievements', 
+  type:'textarea',
+  desc:'Highlight 3–5 standout career or personal achievements. Use metrics (%, $, time saved, users reached) where possible. Think: awards, promotions, recognition, or breakthrough projects.',
+  ph:'e.g., Won “Top Innovator Award” at Acme Corp for leading a product launch that grew ARR by 25%.'
+},
+
+{ 
+  key:'projects', 
+  label:'Projects', 
+  type:'textarea',
+  desc:'Relevant professional, academic, or personal projects that showcase your skills. Include scope, tools, and impact. Especially useful if you’re changing careers or lack formal work experience.',
+  ph:'e.g., Designed and launched a mobile app MVP in 6 weeks with 500+ beta users.'
+},
+
+{ 
+  key:'education', 
+  label:'Education', 
+  type:'textarea',
+  desc:'List degrees, certifications-in-progress, or relevant coursework. Format: Degree · Institution · Year. Can also include honors or key coursework for early-career resumes.',
+  ph:'M.S. User Experience Design — Arizona State University, 2024\nB.A. Technical Communication — ASU, 2020'
+},
+
+{ 
+  key:'certs', 
+  label:'Certifications', 
+  type:'textarea',
+  desc:'Professional certifications, licenses, or ongoing training. Use exact credential names (helps ATS). Include date or “in progress” if applicable.',
+  ph:'Certified Scrum Master (CSM), 2022\nGoogle UX Design Certificate, in progress'
+},
+
+{ 
+  key:'volunteer', 
+  label:'Volunteer / community', 
+  type:'textarea',
+  desc:'Show leadership, service, or community impact. Great for early-career resumes or roles that value social responsibility. Format as Role · Organization · Impact.',
+  ph:'Volunteer Researcher, Local Nonprofit — Conducted 50+ user interviews to inform accessibility initiatives'
+},
+{ 
+  key:'skills', 
+  label:'Skills', 
+  type:'textarea',
+  desc:'Hard and soft skills. Use comma- or line-separated lists. AI groups and formats them ATS-friendly.',
+  ph:'Figma, R, Python, User testing, Survey design, Communication'
+},
+
+    // PREFERENCES
+    { key:'tone_primary',    label:'Primary tone', type:'select',
+      options:['professional','impactful','concise','technical','friendly','executive'] },
+    { key:'tone_secondary',  label:'Secondary tone (optional)', type:'select',
+      options:['— none —','professional','impactful','concise','technical','friendly','executive'] },
+    { key:'length_pref',     label:'Resume length', type:'select',
+      options:[
+        {value:'one', label:'One page'},
+        {value:'two', label:'Two pages'},
+        {value:'flex',label:'Flexible (1–2 pages)'}
+      ]
+    },
+{ 
+  key:'format_policy', 
+  label:'Formatting', 
+  type:'select',
+  desc:'Choose format style: ATS-safe (plain), Recruiter-friendly (bold headings, whitespace), or Plain text (for uploads). Avoid tables/columns in ATS mode.',
+  options:['ATS-safe','Recruiter-friendly (bold headings)','Plain text only']
+},
+{ 
+  key:'output_style', 
+  label:'Output style', 
+  type:'select',
+  desc:'Decide the final packaging: ATS-only, ATS + recruiter readability, or ATS + cover letter narrative.',
+  options:['ATS-only','ATS + Recruiter readability','ATS + Cover letter narrative']
+},
+    // CONSTRAINTS
+    { key:'constraints',     label:'Constraints', type:'textarea',
+      ph:'No fabrications; keep dates; follow US spelling; exclude sensitive info' }
+  ],
+
+  boosters: [
+    'Do not invent or inflate; use placeholders [MISSING INFO] if needed.',
+    'Lead bullets with measurable Result → Action → Problem (RAP).',
+    'Always quantify impact (%, $, time, users) if provided or infer safe proxies.',
+    'Mirror high-signal JD keywords naturally for ATS; avoid stuffing.',
+    'Trim irrelevant content aggressively in Tailor mode.',
+    'Keep it skimmable: verbs first, ≤2 lines per bullet, no tables/columns.',
+    'Provide 2–3 alternate RAP rewrites for weakest bullets.',
+    'Offer ATS readiness, clarity, and impact scores (0–10) in Feedback mode.',
+    'Generate local formatting aligned with region (dates, spelling, ATS norms).'
+  ],
+
+  template: (f) => {
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '— none —') ? f.tone_secondary : ''
+    );
+
+    const lengthMap = { one:'1 page', two:'2 pages', flex:'Flexible (1–2 pages)' };
+    const lengthStr = lengthMap[f.length_pref] || 'Flexible (1–2 pages)';
+
+    const isFeedback = f.mode === 'feedback';
+    const isRewrite  = f.mode === 'rewrite';
+    const isHybrid   = f.mode === 'hybrid';
+    const isTailor   = !isFeedback && !isRewrite && !isHybrid;
+
+    const outRules = isFeedback ? [
+      'Output format:',
+      '- Section scores (ATS readiness, clarity, impact)',
+      '- Overall critique (structure, clarity, alignment)',
+      '- Section-by-section notes (Header, Summary, Skills, Experience, Education, etc.)',
+      '- Top 10 prioritized fixes with rationale',
+      '- Example rewrites of weakest 3 bullets (Before → After, RAP format)'
+    ] : [
+      'Output format:',
+      '- Resume header (Name | contact line)',
+      '- Professional Summary (3–5 lines, tailored to JD)',
+      '- Skills (grouped, ATS-safe)',
+      '- Experience (role — company — location — dates; 3–6 RAP bullets each)',
+      '- Education; Certifications; Volunteer; Projects (if provided)',
+      '- RAP bullet bank (2–5 extra variants for most important role)',
+      '- Keyword alignment: list top JD keywords included',
+      '- Change log: 5–8 bullets summarizing edits',
+    ];
+
+    return [
+      'Help me produce a high-quality, ATS-aware resume.',
+      `Mode: ${f.mode || 'tailor'}`,
+      f.target_role && `Target role: ${f.target_role}`,
+      f.company && `Company: ${f.company}`,
+      f.job_description && `Job description:\n<<<\n${f.job_description}\n>>>`,
+      f.company_values && `Company values:\n${f.company_values}`,
+      f.region && `Region: ${f.region}`,
+      tones && `Tone: ${tones}`,
+      `Length: ${lengthStr}`,
+      `Formatting: ${f.format_policy || 'ATS-safe'} (${f.output_style || 'ATS-only'})`,
+      f.full_name && `Name: ${f.full_name}`,
+      f.contact_block && `Contact:\n${f.contact_block}`,
+      f.career && `Career: ${f.career}`,
+      f.summary_pref && `Preferred summary:\n${f.summary_pref}`,
+      f.keywords && `Keywords:\n${f.keywords}`,
+      f.work_history && `Work history:\n${f.work_history}`,
+      f.work_bullets && `Bullets:\n${f.work_bullets}`,
+      f.rap_notes && `RAP notes:\n${f.rap_notes}`,
+      f.achievements && `Achievements:\n${f.achievements}`,
+      f.projects && `Projects:\n${f.projects}`,
+      f.education && `Education:\n${f.education}`,
+      f.certs && `Certifications:\n${f.certs}`,
+      f.volunteer && `Volunteer:\n${f.volunteer}`,
+      f.skills && `Skills:\n${f.skills}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+      isTailor && 'Tailor policy: Preserve strong phrasing; prune irrelevant items; emphasize JD-aligned outcomes.',
+      isRewrite && 'Rewrite policy: Reorganize freely, unify tone, RAP bullets required, no inventions.',
+      isHybrid && 'Hybrid policy: Provide critique with example fixes and light tailoring, no full rewrite.',
+      isFeedback && 'Feedback policy: No full rewrite, only critique, scores, and example RAP rewrites.',
+      outRules.join('\n')
+    ].filter(Boolean).join('\n');
+  }
 }
+
+
   ];
 
   // === Lightweight search hooks (optional, but makes search/snippets fast) ===
