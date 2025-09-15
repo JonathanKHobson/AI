@@ -738,13 +738,10 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
             <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
           </div>
           <div>
-<label for="audienceInput">Audience</label>
-<div id="audienceChipsWrap" class="chipsInput">
-  <div id="audienceChips" class="chips"></div>
-  <input id="audienceInput" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" />
-</div>
+<label for="audience">Audience</label>
+<input id="audience" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" data-typeahead="persona" />
+<!-- simple dropdown container; stays hidden until suggestions appear -->
 <div id="audienceSuggestions" class="ta-menu" hidden></div>
-<div class="help"></div>
 
           </div>
         </div>
@@ -761,7 +758,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
         
                 <div class="row">
           <div style="grid-column:1/-1">
-
+          <div id="biasCtx" class="field">
             <label for="biasInput">Bias awareness &amp; mitigation (multi-select)</label>
             <div id="biasChipsWrap" class="chipsInput">
               <div id="biasChips" class="chips"></div>
@@ -769,7 +766,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
             </div>
             <div id="biasSuggestions" class="ta-menu" hidden></div>
             <div class="help">Add biases to avoid, mitigation tactics to apply, or ethical dilemmas to consider. We’ll adapt the prompt accordingly.</div>
-  
+          </div>
           </div>
         </div>
 
@@ -808,9 +805,10 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 <!-- New: add-template button under the preview/deck -->
 <div class="outActions" style="margin-top:8px">
   <button id="addPromptBtn" class="btn primary" title="Add another template to this session">+ Add template</button>
-      <button id="copyBtn" class="btn sm">Copy all Prompts</button>
-    <button id="openBtn" class="btn primary sm">Open all ChatGPT</button>
+  <button id="copyAllBtnFooter" class="btn sm" data-action="copy-all">Copy all Prompts</button>
+  <button id="openAllBtnFooter" class="btn primary sm" data-action="open-all">Open all ChatGPT</button>
 </div>
+
 
     </div>
 
@@ -1225,6 +1223,123 @@ function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
     if (ev.target!==inputEl && !menuEl.contains(ev.target)) close();
   });
 }
+
+// === Safe Audience Multi-Select Enhancer (CSV-based; no HTML changes) ===
+// Uses the existing #audience input and your existing persona typeahead.
+// It never throws (guarded), so other bindings like buttons remain intact.
+(function upgradeAudienceMultiCSV(){
+  try {
+    const aud = document.getElementById('audience');
+    const menu = document.getElementById('audienceSuggestions'); // your existing dropdown
+    if (!aud) return; // quietly exit if field isn't present
+
+    // Build fast lookup by name (case-insensitive)
+    function personaByName(name){
+      const n = String(name||'').trim().toLowerCase();
+      if (!n) return null;
+      // exact name match first
+      const hits = (typeof personaFilter === 'function') ? personaFilter(n, 50) : [];
+      let best = hits.find(p => String(p.name||'').toLowerCase() === n);
+      if (!best && hits.length) best = hits[0];
+      if (best) return best;
+      // allow custom audience when not found
+      return { id: 'custom:'+name, name: name, summary:'', profession:'' };
+    }
+
+    // Parse CSV -> array of trimmed unique names (preserving order)
+    function parseNames(v){
+      const raw = String(v||'').split(/[,;\n]/).map(s=>s.trim()).filter(Boolean);
+      const seen = new Set();
+      const out = [];
+      for (const r of raw){ const k = r.toLowerCase(); if (!seen.has(k)){ seen.add(k); out.push(r); } }
+      return out;
+    }
+
+    // Sync parsed names into tab.common: audience (CSV) + audience_personas (objects)
+    function syncToTab(){
+      const t = (typeof activeTab === 'function') ? activeTab() : null;
+      if (!t) return;
+      t.common = t.common || {};
+      const names = parseNames(aud.value);
+      const objs  = names.map(personaByName).filter(Boolean);
+
+      // Store for prompt composition
+      t.common.audience            = names.join(', '); // keeps your context line behavior
+      t.common.audience_names      = t.common.audience;
+      t.common.audience_ids        = objs.map(o=> o.id || o.name);
+      t.common.audience_personas   = objs;
+
+      // Back-compat for legacy single-audience consumers
+      t.common.audience_persona    = objs[0] || null;
+
+      if (typeof emitAll === 'function') emitAll();
+      if (typeof scheduleSave === 'function') scheduleSave();
+    }
+
+    // When user selects from your existing typeahead, it will set aud.value to that name.
+    // We gently help users keep adding more by appending a comma if they hit Enter while menu is open.
+    function menuOpen(){
+      // reuse your existing dropdown visibility if available
+      if (!menu) return false;
+      return !menu.hidden && menu.childElementCount > 0;
+    }
+
+    // Input events
+    aud.addEventListener('input', ()=>{
+      try { syncToTab(); } catch(e){}
+    });
+
+    // Keyboard: Enter or comma when menu is open commits selection, then we add a trailing comma for quick multi-add
+    aud.addEventListener('keydown', (e)=>{
+      try {
+        if ((e.key === 'Enter' || e.key === ',') && menuOpen()){
+          // Let your existing picker handle selection first; then on next tick sync & add comma
+          setTimeout(()=>{
+            syncToTab();
+            // ensure trailing comma+space to invite next entry
+            if (!/[,;\s]$/.test(aud.value)) aud.value = aud.value.replace(/\s+$/,'') + ', ';
+            syncToTab();
+          }, 0);
+          return; // don't preventDefault — keep existing behavior intact
+        }
+
+        // Convenience: Backspace at ", " trims nicely
+        if (e.key === 'Backspace'){
+          // if cursor is at end and value ends with ", " -> remove the trailing space too
+          const { selectionStart, selectionEnd, value } = aud;
+          if (selectionStart === selectionEnd && selectionEnd === value.length && /,\s$/.test(value)){
+            aud.value = value.replace(/,\s$/, ',');
+            setTimeout(syncToTab, 0);
+          }
+        }
+      } catch(e){}
+    });
+
+    // On blur, normalize spacing and re-sync
+    aud.addEventListener('blur', ()=>{
+      try {
+        aud.value = parseNames(aud.value).join(', ');
+        syncToTab();
+      } catch(e){}
+    });
+
+    // Hydrate from tab on load and on tab switch
+    function hydrate(){
+      const t = (typeof activeTab === 'function') ? activeTab() : null;
+      if (!t) return;
+      const csv = String(t?.common?.audience || '').trim();
+      if (csv && aud.value.trim() !== csv) aud.value = csv;
+      syncToTab();
+    }
+    hydrate();
+    document.addEventListener('tab-switched', hydrate);
+
+  } catch (err) {
+    // Never throw — keep the rest of the app alive (buttons/theme/etc.)
+    console.warn('Audience multi-select enhancer skipped:', err);
+  }
+})();
+
 
 /* ===== Bias helpers ===== */
 // Minimal, persona-parallel utilities. Won’t touch existing persona flows.
@@ -2315,14 +2430,10 @@ if (!fw || (fw.id === 'none' && !hasRealFields)) return '';
 const c = (t.common || {});
 let ctxPlus = ctxStringFromTab(t);
 
-// support 1 or many personas
-const _audArr = Array.isArray(c.audience_personas) ? c.audience_personas
-                : (c.audience_persona ? [c.audience_persona] : []);
-if (_audArr.length){
-  const block = _audArr.map(p => formatPersonaForPrompt(p)).join('\n\n');
-  ctxPlus = [ctxPlus, block].filter(Boolean).join('\n\n');
+if (c.audience_persona){
+  const personaBlock = formatPersonaForPrompt(c.audience_persona); // already defined above
+  ctxPlus = [ctxPlus, personaBlock].filter(Boolean).join('\n\n');
 }
-
 
 const merged = {
   ctx: ctxPlus,
@@ -2347,15 +2458,12 @@ const body = fw.template(merged);
 // Persona profile fallback — if the template does NOT render ctx,
 // we still inject a neat persona section right after the header.
 let personaSection = '';
-{
-  const _audArr = Array.isArray(c.audience_personas) ? c.audience_personas
-                  : (c.audience_persona ? [c.audience_persona] : []);
-  if (_audArr.length && !body.includes('Audience profile —')) {
-    const block = _audArr.map(p => formatPersonaForPrompt(p)).join('\n\n');
+if (c.audience_persona) {
+  const block = formatPersonaForPrompt(c.audience_persona);
+  if (block && !body.includes('Audience profile —')) {
     personaSection = block;
   }
 }
-
 
 // If the user hasn't typed anything, fall back to the framework's boosters
 const boosterFallback = Array.isArray(fw.boosters) ? fw.boosters.join(' ') : '';
@@ -3334,6 +3442,20 @@ switchFramework(first.value);
 });
 
 
+// === Audience → persona typeahead binding ===
+(function(){
+  const audEl   = document.getElementById('audience');
+  const audMenu = document.getElementById('audienceSuggestions');
+  if (audEl && audMenu && typeof attachPersonaTypeahead === 'function'){
+    attachPersonaTypeahead(
+      audEl,
+      audMenu,
+      activeTab,
+      ()=>{ emitAll(); if (typeof scheduleSave === 'function') scheduleSave(); }
+    );
+  }
+})();
+
 // === Bias multi-select (chips + typeahead) ===
 (function(){
   const input = document.getElementById('biasInput');
@@ -3473,141 +3595,6 @@ document.addEventListener('biases-loaded', ()=>{
 
 
   // listen for our custom event (slice 5 adds it)
-  document.addEventListener('tab-switched', refreshFromTab);
-})();
-
-// === Audience multi-select (chips + persona typeahead) ===
-(function(){
-  const input = document.getElementById('audienceInput');
-  const chips = document.getElementById('audienceChips');
-  const menu  = document.getElementById('audienceSuggestions');
-  if (!input || !chips || !menu) return;
-
-  let items = [];        // current search hits (personas)
-  let active = -1;       // index in items
-  let picks  = [];       // [{id,name,p}]  p = full persona object
-
-  function close(){ menu.hidden = true; menu.innerHTML=''; active=-1; }
-  function hasId(id){ return picks.some(p=>String(p.id).toLowerCase() === String(id).toLowerCase()); }
-
-  function syncCommon(){
-    const t = (typeof activeTab === 'function') ? activeTab() : null;
-    if (!t) return;
-    t.common = t.common || {};
-    // CSV for the context line; array of personas for enrichment
-    t.common.audience         = picks.map(p=>p.name).join(', ');
-    t.common.audience_personas= picks.map(p=>p.p);
-    // Back-compat (some older templates read these names/ids):
-    t.common.audience_names   = t.common.audience;
-    t.common.audience_ids     = picks.map(p=>p.id);
-    if (typeof emitAll === 'function') emitAll();
-    if (typeof scheduleSave === 'function') scheduleSave();
-  }
-
-  function renderChips(){
-    chips.innerHTML = '';
-    for (const pick of picks){
-      const el = document.createElement('span');
-      el.className = 'chip';
-      el.setAttribute('data-id', pick.id);
-      el.innerHTML = `<span class="nm">${pick.name}</span><button class="x" title="Remove">×</button>`;
-      el.querySelector('.x').addEventListener('click', ()=>{
-        picks = picks.filter(p=>p.id !== pick.id);
-        renderChips(); syncCommon();
-      });
-      chips.appendChild(el);
-    }
-  }
-
-  function addPick(p){
-    const id   = String(p.id || p.name || '').trim();
-    const name = String(p.name || p.label || p.id || '').trim() || 'Persona';
-    if (!id || hasId(id)) return;
-    picks.push({ id, name, p });
-    renderChips(); syncCommon();
-  }
-
-  function renderMenu(q){
-    const hits = (typeof personaFilter === 'function') ? personaFilter(q, 30) : [];
-    items = hits;
-    if ((!items || !items.length) && q.trim()){
-      // allow custom ad-hoc audience when no dataset hit
-      items = [{ id:'custom:'+q.trim(), name:q.trim(), profession:'', summary:'' }];
-    }
-    if (!items.length){ close(); return; }
-
-    menu.innerHTML = items.map((obj,i)=>{
-      const sub = [obj.profession, (obj.tags||[]).slice(0,3).join(', ')].filter(Boolean).join(' • ');
-      return `<div class="ta-item${i===0?' ta-active':''}" data-idx="${i}">
-        <span class="name">${obj.name}</span>
-        <span class="sub">${sub}</span>
-      </div>`;
-    }).join('');
-    active = 0;
-    menu.style.minWidth = input.getBoundingClientRect().width + 'px';
-    menu.hidden = false;
-  }
-
-  function pick(i){
-    const sel = items[i]; if (!sel) return;
-    if (String(sel.id||'').startsWith('custom:')){
-      addPick({ id: sel.id, name: sel.name, p:{ name: sel.name, summary:'' } });
-    } else {
-      addPick({ id: sel.id || sel.name, name: sel.name, p: sel });
-    }
-    input.value = '';
-    close();
-    input.focus();
-  }
-
-  // Input typing → show suggestions
-  input.addEventListener('input', ()=>{
-    const q = input.value.trim();
-    if (!q){ close(); return; }
-    renderMenu(q);
-  });
-
-  // Keyboard nav + commit
-  input.addEventListener('keydown', (e)=>{
-    if (menu.hidden){
-      if (e.key === 'Backspace' && !input.value && picks.length){
-        // remove last chip on backspace at empty
-        picks.pop(); renderChips(); syncCommon();
-        e.preventDefault();
-      }
-      return;
-    }
-    const els = Array.from(menu.children);
-    if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, els.length-1); }
-    else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(0, active-1); }
-    else if (e.key === 'Enter' || e.key === ','){ e.preventDefault(); pick(active>=0?active:0); }
-    else if (e.key === 'Escape'){ e.preventDefault(); close(); return; }
-    els.forEach((n,i)=> n.classList.toggle('ta-active', i===active));
-  });
-
-  menu.addEventListener('mousedown', (e)=>{
-    const el = e.target.closest('.ta-item'); if (!el) return;
-    pick(parseInt(el.dataset.idx,10)||0);
-  });
-
-  document.addEventListener('click', (ev)=>{
-    if (ev.target!==input && !menu.contains(ev.target)) close();
-  });
-
-  // Rehydrate chips when switching tabs
-  function refreshFromTab(){
-    const t = (typeof activeTab === 'function') ? activeTab() : null;
-    const arr = Array.isArray(t?.common?.audience_personas) ? t.common.audience_personas : [];
-    // prefer objects from state; fallback to CSV names if any
-    if (arr.length){
-      picks = arr.map(p=>({ id: p.id || p.name, name: p.name || 'Persona', p }));
-    } else {
-      const csv = String(t?.common?.audience || '').split(/[,;]\s*|[\n]+/).map(s=>s.trim()).filter(Boolean);
-      picks = csv.map(n=>({ id: 'custom:'+n, name:n, p:{ name:n } }));
-    }
-    renderChips(); syncCommon(); // ensures t.common.audience is consistent
-  }
-  refreshFromTab();
   document.addEventListener('tab-switched', refreshFromTab);
 })();
 
@@ -3946,6 +3933,90 @@ dlg.addEventListener('cancel', () => {
   });
 })();
 
+// === Core button re-bind (safe even if called multiple times) ===
+(function wireCoreButtons(){
+  const $ = s => document.querySelector(s);
+
+  // Header buttons (original)
+  const copyHeader = $('#copyBtn');
+  const openHeader = $('#openBtn');
+  const addHeader  = $('#addPromptBtn');
+  const themeBtn   = $('#theme');
+
+  // Footer mirrors we just renamed
+  const copyFooter = $('#copyAllBtnFooter');
+  const openFooter = $('#openAllBtnFooter');
+
+  // Reuse existing app handlers if present; otherwise fall back gracefully
+  const doCopyAll = (window.copyAllPrompts || window.copyDeck || window.copyAll || function(){
+    // Fallback: copy whatever is visible (deck or single preview)
+    const deck = document.getElementById('outDeck');
+    const solo = document.getElementById('out');
+    let text = '';
+    if (deck && !deck.hidden) {
+      text = Array.from(deck.querySelectorAll('.outCard .outBody, .outCard pre'))
+        .map(n => n.textContent || '')
+        .filter(Boolean)
+        .join('\n\n');
+    } else if (solo) {
+      text = solo.textContent || '';
+    }
+    text = text.trim();
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(()=> showMsg('Prompt copied to clipboard.'));
+  });
+
+  const doOpenAll = (window.openAllInChatGPT || window.openDeck || function(){
+    // Fallback: open current preview in ChatGPT
+    const solo = document.getElementById('out');
+    const text = (solo ? solo.textContent : '').trim();
+    if (!text) return;
+    const url = 'https://chat.openai.com/?q=' + encodeURIComponent(text.slice(0, 7000));
+    window.open(url, '_blank', 'noopener');
+    showMsg('Opened ChatGPT. If it didn’t prefill, paste with Cmd/Ctrl+V.');
+  });
+
+  const doAddTemplate = (window.addTemplate || window.addPrompt || function(){
+    // Fallback: focus the template picker
+    document.getElementById('frameworkSel')?.focus();
+  });
+
+  function showMsg(s){
+    const dlg = document.getElementById('msg');
+    const txt = document.getElementById('msgText');
+    if (dlg && txt){ txt.textContent = s; dlg.showModal(); }
+  }
+  function bind(btn, fn){
+    if (btn && fn) btn.addEventListener('click', e=>{ e.preventDefault(); fn(); });
+  }
+
+  // Bind header
+  bind(copyHeader, doCopyAll);
+  bind(openHeader, doOpenAll);
+  bind(addHeader,  doAddTemplate);
+
+  // Bind footer mirrors
+  bind(copyFooter, doCopyAll);
+  bind(openFooter, doOpenAll);
+
+  // Theme toggle — keep label + aria in sync, persist to localStorage
+  if (themeBtn){
+    themeBtn.addEventListener('click', ()=>{
+      const root = document.documentElement;
+      const cur  = root.getAttribute('data-theme') || 'dark';
+      const next = cur === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      themeBtn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+      const label = themeBtn.querySelector('span:last-child');
+      if (label) label.textContent = next === 'light' ? 'Dark' : 'Light';
+      try{
+        const ui = JSON.parse(localStorage.getItem('pb.v1.ui') || '{}');
+        ui.theme = next;
+        localStorage.setItem('pb.v1.ui', JSON.stringify(ui));
+      }catch(e){}
+    });
+  }
+})();
 
 
   })();
