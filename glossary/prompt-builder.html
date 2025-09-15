@@ -155,6 +155,14 @@
   pointer-events:none;     /* don't steal clicks from the input */
 }
 
+.ta-menu {
+  position: absolute; z-index: 50; margin-top: 4px; max-height: 240px; overflow:auto;
+  border: 1px solid var(--border-color, #ddd); border-radius: 8px; background: var(--bg, #fff);
+  box-shadow: 0 6px 24px rgba(0,0,0,.08); min-width: 260px;
+}
+.ta-menu .ta-item { padding: 8px 10px; cursor: pointer; }
+.ta-menu .ta-item:hover, .ta-menu .ta-item.ta-active { background: rgba(0,0,0,.06); }
+
 
 
 
@@ -693,8 +701,11 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
             <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
           </div>
           <div>
-            <label for="audience">Audience</label>
-            <input id="audience" type="text" placeholder="e.g., Busy SMB owners" />
+<label for="audience">Audience</label>
+<input id="audience" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" data-typeahead="persona" />
+<!-- simple dropdown container; stays hidden until suggestions appear -->
+<div id="audienceSuggestions" class="ta-menu" hidden></div>
+
           </div>
         </div>
         <div class="row">
@@ -970,6 +981,155 @@ function applyPersonaToTab(tab, persona){
   };
 }
 
+
+// --- Persona string helpers (global) ---
+// Build a compact inline string (defaults to Name/Profession/Summary with labels)
+function personaInlineFlexible(p, opts = {}){
+  const include = Array.isArray(opts.include) && opts.include.length
+    ? opts.include : ['name','profession','summary'];
+  const labels = opts.labels !== false;
+  const sep = typeof opts.sep === 'string' ? opts.sep : ' · ';
+  const labelMap = {
+    name: labels ? 'Name: ' : '',
+    profession: labels ? 'Profession: ' : '',
+    role: labels ? 'Role: ' : '',
+    title: labels ? 'Title: ' : '',
+    summary: labels ? 'Summary: ' : '',
+    bio: labels ? 'Bio: ' : '',
+    expertise: labels ? 'Expertise: ' : ''
+  };
+  return include
+    .map(k => ((p?.[k] ?? '').toString().trim() ? labelMap[k] + p[k] : ''))
+    .filter(Boolean)
+    .join(sep);
+}
+
+// Lightweight “just the name”
+function personaInline(p){ return p?.name || ''; }
+
+// Template fill utility (e.g., "Hello {name}")
+function personaFillTemplate(tpl, p){
+  return String(tpl||'').replace(/\{(\w+)\}/g, (_,k)=> (p?.[k] ?? ''));
+}
+
+
+// --- Persona datasource (expects window.PERSONAS or similar) ---
+function getAllPersonas(){
+  const raw = (window.PERSONAS || window.personas || window.PERSONA_LIBRARY || []);
+  return Array.isArray(raw) ? raw : [];
+}
+
+function personaKeyFields(p){
+  return [
+    p.name || p.label || p.persona_name || '',
+    p.profession || '',
+    p.summary || '',
+    (p.tags||[]).join(' '),
+    (p.skills||''),
+    (p.vocabulary||''),
+    (p.goals||''),
+    (p.pain_points||'')
+  ].join(' ').toLowerCase();
+}
+
+// Tiny in-memory index
+let __PERSONA_IDX = null;
+function buildPersonaIndex(){
+  const list = getAllPersonas();
+  __PERSONA_IDX = list.map((p,i)=>({
+    i, name: String(p.name || p.label || 'Unknown').trim(),
+    hay: personaKeyFields(p), p
+  }));
+  return __PERSONA_IDX;
+}
+function searchPersonas(q){
+  if (!__PERSONA_IDX) buildPersonaIndex();
+  const toks = String(q||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  if (!toks.length) return __PERSONA_IDX.slice(0,8);
+  return __PERSONA_IDX
+    .map(r=>{
+      let s = 0; for (const t of toks){ if (r.hay.includes(t)) s++; }
+      return { ...r, s };
+    })
+    .filter(r => r.s > 0)
+    .sort((a,b)=> b.s - a.s || a.name.localeCompare(b.name))
+    .slice(0,8);
+}
+
+// Render a compact block for prompts (NOT the Audience field)
+function formatPersonaForPrompt(p){
+  const list = s => String(s||'').split(/[\n,]+/).map(x=>x.trim()).filter(Boolean);
+  const bullets = (arr, label) => arr.length ? `${label}:\n` + arr.map(x=>`- ${x}`).join('\n') : '';
+  return [
+    `Audience profile — ${p.name || p.label || 'Selected Persona'}`,
+    p.summary && `Summary: ${p.summary}`,
+    bullets(list(p.core_tasks),'Core tasks'),
+    bullets(list(p.skills),'Skills'),
+    bullets(list(p.goals),'Goals'),
+    bullets(list(p.pain_points),'Pain points'),
+    bullets(list(p.vocabulary),'Vocabulary'),
+    bullets(list(p.tools),'Tools')
+  ].filter(Boolean).join('\n');
+}
+
+// Attach lightweight typeahead to the Audience input
+function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
+  function close(){ menuEl.hidden = true; menuEl.innerHTML = ''; active = -1; }
+  let items = [], active = -1;
+
+  inputEl.addEventListener('input', ()=>{
+    const q = inputEl.value.trim();
+    items = searchPersonas(q);
+    if (!items.length){ close(); return; }
+    menuEl.innerHTML = items.map((r,idx)=>(
+      `<div class="ta-item${idx===0?' ta-active':''}" data-idx="${idx}">${r.name}</div>`
+    )).join('');
+    active = 0;
+    // position the menu under input
+    const rect = inputEl.getBoundingClientRect();
+    menuEl.style.minWidth = rect.width + 'px';
+    menuEl.hidden = false;
+  });
+
+  inputEl.addEventListener('keydown', (e)=>{
+    if (menuEl.hidden) return;
+    if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, items.length-1); highlight(); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(active-1, 0); highlight(); }
+    else if (e.key === 'Enter'){ e.preventDefault(); pick(active); }
+    else if (e.key === 'Escape'){ close(); }
+  });
+
+  menuEl.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.ta-item'); if (!el) return;
+    pick(parseInt(el.dataset.idx,10)||0);
+  });
+
+  function highlight(){
+    [...menuEl.querySelectorAll('.ta-item')].forEach((n,i)=> n.classList.toggle('ta-active', i===active));
+  }
+  function pick(i){
+    const r = items[i]; if (!r) return;
+    close();
+    // show only the name in the input field
+    inputEl.value = r.name;
+
+    // persist to the active tab's common context
+    const tab = getActiveTab && getActiveTab();
+    if (tab){
+      tab.common = tab.common || {};
+      tab.common.audience = r.name;                    // visible text
+      tab.common.audience_persona = r.p;               // full object for prompt enrichment
+      if (onChange) onChange(tab);                     // save/rerender hook
+    }
+  }
+
+  // Click-away to close
+  document.addEventListener('click', (ev)=>{
+    if (ev.target!==inputEl && !menuEl.contains(ev.target)) close();
+  });
+}
+
+
     
     // --- helper: default booster for a framework id
 function defaultBooster(id){
@@ -1143,6 +1303,23 @@ function matchScore(fw, query){
 // UI bootstrap
 const sel = $('#frameworkSel');
 
+// Live helper preview for the picker (uses def > help > first use_case)
+function updatePickerPreview() {
+  const el = document.getElementById('fwHelp');
+  if (!el) return;
+  const fw = typeof FIND === 'function' ? FIND(sel.value) : null;
+  if (!fw) { el.textContent = ''; return; }
+
+  const useCase = Array.isArray(fw.use_cases) && fw.use_cases.length ? `Use-case: ${fw.use_cases[0]}` : '';
+  const text = (fw.definition || fw.help || useCase || '').toString().trim();
+  el.textContent = text;
+}
+
+// Update the helper when the selection moves (keyboard or click)
+sel.addEventListener('input',  updatePickerPreview);  // fires while the list is open in many browsers
+sel.addEventListener('change', updatePickerPreview);  // always fires on commit
+
+
 // Persist what users typed per-framework within the same tab.
 function switchFramework(newId){
   const t = activeTab();
@@ -1258,12 +1435,17 @@ function buildFrameworkOptions(filterText=''){
 
   // Rebuild <select> to reflect the filtered ordering
   sel.innerHTML = '';
-  list.forEach(f=>{
+  list.forEach(f => {
     const o = document.createElement('option');
     o.value = f.id;
     o.textContent = f.label;
+
+    // Tooltip fallback (works in many browsers when hovering the closed select or list entries)
+    o.title = (f.definition || f.help || (Array.isArray(f.use_cases) && f.use_cases[0]) || '').toString();
+
     sel.appendChild(o);
   });
+
 
   // Update the little "Showing N/M" hint
   const fwHint = document.getElementById('fwHint');
@@ -1289,6 +1471,9 @@ fwHint.textContent = `Showing ${count}/${total} — Hit Enter`;
   } else {
     sel.selectedIndex = 0;  // visually show the top match
   }
+    // Keep helper preview in sync with whatever is visually selected
+  if (typeof updatePickerPreview === 'function') updatePickerPreview();
+
 }
 
 
@@ -1747,20 +1932,45 @@ if (!fw || (fw.id === 'none' && !hasRealFields)) return '';
 
   const meta = enrichFromGlossary ? enrichFromGlossary(fw) : fw; // safe if enrichment not present
 const c = (t.common || {});
+let ctxPlus = ctxStringFromTab(t);
+
+if (c.audience_persona){
+  const personaBlock = formatPersonaForPrompt(c.audience_persona); // already defined above
+  ctxPlus = [ctxPlus, personaBlock].filter(Boolean).join('\n\n');
+}
+
 const merged = {
-  ctx: ctxStringFromTab(t),   // already includes audience/style/tone inline
+  ctx: ctxPlus,                 // ctxPlus already includes persona when present
   ...(t.fields || {})
 };
 
+const body = fw.template(merged);
 
-  const body = fw.template(merged);
-  // If the user hasn't typed anything, fall back to the framework's boosters
+// Persona profile fallback — if the template does NOT render ctx,
+// we still inject a neat persona section right after the header.
+let personaSection = '';
+if (c.audience_persona) {
+  const block = formatPersonaForPrompt(c.audience_persona);
+  if (block && !body.includes('Audience profile —')) {
+    personaSection = block;
+  }
+}
+
+// If the user hasn't typed anything, fall back to the framework's boosters
 const boosterFallback = Array.isArray(fw.boosters) ? fw.boosters.join(' ') : '';
 const rawExtra = (t.extra ?? '').trim();
 const extra = rawExtra.length ? rawExtra : boosterFallback;
 const extraText = extra ? `Additional instructions: ${extra}` : '';
-  const header = meta.definition ? `Using ${meta.label}: ${meta.definition}` : `Using ${meta.label}.`;
-  return [header, body, extraText].filter(Boolean).join('\n').replace(/\n{3,}/g,'\n\n').trim();
+
+const header = meta.definition ? `Using ${meta.label}: ${meta.definition}` : `Using ${meta.label}.`;
+
+// Assemble: Header → (optional persona section) → Body → Extra
+return [header, personaSection, body, extraText]
+  .filter(Boolean)
+  .join('\n')
+  .replace(/\n{3,}/g,'\n\n')
+  .trim();
+
 }
 
 function emitAll(){
@@ -2579,10 +2789,11 @@ function emit(){
   updateOutPreviewCounter();
 }
 
-   sel.addEventListener('change', ()=>{
+sel.addEventListener('change', () => {
   switchFramework(sel.value);
-
+  if (typeof updatePickerPreview === 'function') updatePickerPreview();
 });
+
 
 // New: one-click commit of the top search hit when a filter is active.
 // This avoids the awkward "pick something else, then come back" dance.
@@ -2611,6 +2822,17 @@ switchFramework(first.value);
     if (!t) return;
     t.common = t.common || { ctx:'', audience:'', style:'', tone:'' };
     t.common[key] = el.value || '';
+
+    // Only clear persona if the Audience text diverges from the bound persona's name.
+    if (id === 'audience') {
+      const boundName = t.common?.audience_persona?.name || null;
+      const current   = (el.value || '').trim();
+      // If there is no bound persona OR the text no longer matches the persona name → clear it.
+      if (!boundName || current !== boundName) {
+        t.common.audience_persona = null;
+      }
+    }
+
     el.classList.toggle('filled', !!el.value);
     emitAll();
   };
@@ -2618,6 +2840,22 @@ switchFramework(first.value);
   el.addEventListener('input', on);
   el.addEventListener('change', on);
 });
+
+
+// === Audience → persona typeahead binding ===
+(function(){
+  const audEl   = document.getElementById('audience');
+  const audMenu = document.getElementById('audienceSuggestions');
+  if (audEl && audMenu && typeof attachPersonaTypeahead === 'function'){
+    attachPersonaTypeahead(
+      audEl,
+      audMenu,
+      activeTab,
+      ()=>{ emitAll(); if (typeof scheduleSave === 'function') scheduleSave(); }
+    );
+  }
+})();
+
 
     
     // Persist common fields + visual filled state
