@@ -27,7 +27,7 @@
     
     { key:'goal',        label:'Goal / outcome', type:'textarea', ph:'What do you want to achieve?' },
     { key:'stage',       label:'Where are you in the process?', type:'select',
-      options:['explore','define','ideate','plan','analyze','compare/decide','prioritize','evaluate/review','troubleshoot/debug','problom solve','motivate','other']
+      options:['explore','define','ideate','plan','analyze','compare/decide','prioritize','evaluate/review','troubleshoot/debug','problem solve','motivate','other']
     },
     { key:'deliverable', label:'Desired deliverable', type:'text', ph:'e.g., one-pager, plan, checklist' },
     { key:'constraints', label:'Constraints', type:'textarea', ph:'Deadlines, tone, tools, privacy…' },
@@ -89,7 +89,7 @@
       deliverable && `Desired deliverable: ${deliverable}`,
       constraints && `Constraints: ${constraints}`,
       'Task for the assistant:',
-      'Your job is to choose the best listed tool (e.g., framework, method, techique, scaffold, etc...) for helping the user achieve their desired goal/outcome or problem based on their situation',
+      'Your job is to choose the best listed tool (e.g., framework, method, technique, scaffold, etc...) for helping the user achieve their desired goal/outcome or problem based on their situation',
       '1) Ask up to 3 clarifying questions if needed.',
       '2) Recommend the top 3 tools (from the list below) with one-paragraph rationale each.',
       '3) Pick one and produce a ready-to-copy prompt on using that tool, tailored to the Goal, Context, and Constraints.',
@@ -99,95 +99,161 @@
 },
 
   
-    {
-    id: 'abcde',
-    slug: 'abcde-cbt-framework',
-    label: 'ABCDE — Activating event · Belief · Consequence · Dispute · Effect',
-    kind: 'framework',
-    categories: ['psychology', 'self-reflection'],
-    tags: [
-      'type:framework','topic:cbt','topic:reframing','level:intermediate',
-      'use:cognitive-bias','use:personal-coaching','use:thought-challenge'
-    ],
-    use_cases: [
-      'reframe negative thoughts or assumptions',
-      'self-coaching through emotional situations',
-      'cognitive bias or stress analysis'
-    ],
-    boosters: [
-      'Keep a calm, supportive tone when disputing the belief.',
-      'Cite evidence or alternative viewpoints that challenge the negative belief.'
-    ],
-    definition: 'A cognitive restructuring tool to challenge a belief by examining an event, the belief, its consequence, disputing the belief, and envisioning a positive effect.',
-    help: 'Describe the triggering event, your belief about it, and the outcome. The model will help dispute the belief and suggest a healthier outcome.',
-    fields: [
-      { key: 'event', label: 'Activating event', type: 'textarea',
-        desc: 'What happened? The trigger or situation.',
-        ph: 'e.g., My manager criticized my report in the team meeting.' },
-      { key: 'belief', label: 'Belief or thought', type: 'textarea',
-        desc: 'Your interpretation or assumption about the event.',
-        ph: 'e.g., "I must be bad at my job."' },
-      { key: 'consequence', label: 'Consequence (feelings/behavior)', type: 'textarea',
-        desc: 'Emotions or actions that resulted from that belief.',
-        ph: 'e.g., I felt anxious and avoided taking on new projects.' }
-    ],
-    template: ({ event, belief, consequence, ctx, audience, style, tone }) => [
-      'Apply the ABCDE framework to reframe the situation.',
-      ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      event && ('Activating event:\n' + event),
-      belief && ('Belief:\n' + belief),
-      consequence && ('Consequence:\n' + consequence),
-      'Dispute: Identify evidence against the belief or an alternative perspective.',
-      'Effect: Describe a healthier outcome or feeling once the belief is adjusted.'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'abcde',
+  slug: 'abcde-cbt-framework',
+  label: 'ABCDE — Activating event · Belief · Consequence · Dispute · Effect',
+  kind: 'framework',
+  categories: ['psychology','self-reflection','coaching','resilience'],
+  tags: [
+    'type:framework','topic:cbt','topic:rebt','topic:reframing',
+    'use:cognitive-bias','use:thought-challenge','use:emotional-regulation',
+    'level:intermediate','method:structured-questioning'
+  ],
+  use_cases: [
+    'reframe negative thoughts or assumptions',
+    'self-coaching through emotional situations',
+    'journaling for stress or anxiety',
+    'cognitive bias analysis',
+    'coaching or mentoring dialogue'
+  ],
+  boosters: [
+    'Maintain a calm, validating tone when presenting the dispute.',
+    'Always ground the dispute in logic or evidence rather than platitudes.',
+    'Offer at least one alternative, balanced belief to replace the negative one.',
+    'Ensure the Effect links back to reduced distress or constructive behavior.',
+    'Encourage iteration: note that disputing may need to be repeated over time.',
+    'Suggest rating emotion intensity before vs. after (0–100%) to measure shift.',
+    'Use multiple disputing angles: evidence, logic, perspective, pragmatism.'
+  ],
+  definition: 'A structured cognitive restructuring tool from REBT/CBT that traces the chain from an Activating event → Belief → Consequence, then challenges the belief (Dispute) and envisions a healthier Effect. Used for self-coaching, journaling, and therapy.',
+  help: 'Fill in each step A–E with concise statements (1–3 sentences). Use Dispute to logically test the belief. Add an Alternative belief to reinforce constructive thinking. Rate emotions before/after to see the effect. Revisit the exercise as beliefs recur.',
+  fields: [
+    { key: 'event', label: 'Activating event', type: 'textarea',
+      desc: 'Trigger or situation that set off the reaction.',
+      ph: 'e.g., My manager criticized my report in the team meeting.' },
+    { key: 'belief', label: 'Belief or thought', type: 'textarea',
+      desc: 'Your interpretation, assumption, or judgment.',
+      ph: 'e.g., "I must be bad at my job."' },
+    { key: 'consequence', label: 'Consequence (feelings/behavior)', type: 'textarea',
+      desc: 'The emotional and behavioral outcome of that belief.',
+      ph: 'e.g., I felt anxious and avoided new projects.' },
+    { key: 'dispute', label: 'Dispute (challenge the belief)', type: 'textarea',
+      desc: 'Evidence, logic, or perspective that challenges the belief.',
+      ph: 'e.g., Feedback helps me grow; one report doesn’t define me.' },
+    { key: 'alt_belief', label: 'Alternative belief (optional)', type: 'textarea',
+      desc: 'Balanced replacement thought that is true and helpful.',
+      ph: 'e.g., I can learn from mistakes and still be competent.' },
+    { key: 'effect', label: 'Effect (new outcome)', type: 'textarea',
+      desc: 'Healthier emotions, thoughts, or behaviors after disputing.',
+      ph: 'e.g., I feel motivated to improve and more confident about my skills.' },
+    { key: 'coach_notes', label: 'Coach/Guide notes (optional)', type: 'textarea',
+      desc: 'Extra reflections or guidance if working with a coach or mentor.',
+      ph: 'Coach suggests practicing self-compassion statements.' }
+  ],
+  template: ({ event, belief, consequence, dispute, alt_belief, effect, coach_notes, ctx, audience, style, tone }) => [
+    'Apply the ABCDE cognitive restructuring flow.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    event && ('A — Activating event:\n' + event),
+    belief && ('B — Belief:\n' + belief),
+    consequence && ('C — Consequence:\n' + consequence),
+    dispute && ('D — Dispute:\n' + dispute),
+    alt_belief && ('Alternative belief:\n' + alt_belief),
+    effect && ('E — Effect:\n' + effect),
+    coach_notes && ('Coach/Guide notes:\n' + coach_notes),
+    'Output:\n1) Clear chain A→B→C\n2) Disputed belief with logical alternative\n3) Healthier effect or outlook\n\nChecklist:\n- [ ] All steps A–E filled\n- [ ] Dispute grounded in evidence/logic\n- [ ] Alternative belief stated\n- [ ] Effect shows reduced distress or constructive behavior'
+  ].filter(Boolean).join('\n')
+},
   
-  {
-    id: 'addie',
-    slug: 'addie-instructional-design',
-    label: 'ADDIE — Analyze · Design · Develop · Implement · Evaluate',
-    kind: 'framework',
-    categories: ['education', 'planning'],
-    tags: [
-      'type:framework','topic:instructional-design','phase:plan','level:beginner',
-      'use:course-development','use:lesson-planning','use:training-strategy'
-    ],
-    use_cases: [
-      'plan and structure an educational course or program',
-      'develop training materials systematically',
-      'review and improve learning content'
-    ],
-    boosters: [
-      'In Analyze, identify learner needs and constraints; in Evaluate, include metrics or feedback methods.',
-      'Ensure each development step ties back to the learning objectives.'
-    ],
-    definition: 'An instructional design model outlining five phases for creating effective learning experiences.',
-    help: 'Provide the training topic and audience. The model will walk through Analyze, Design, Develop, Implement, and Evaluate steps for a structured learning plan.',
-    fields: [
-      { key: 'topic', label: 'Training topic', type: 'text',
-        desc: 'Subject matter or skill to be taught.',
-        ph: 'e.g., Basics of Data Science' },
-      { key: 'audience', label: 'Learner audience', type: 'text',
-        desc: 'Who the learners are (age, role, prior knowledge).',
-        ph: 'e.g., Junior marketing analysts with no coding background' },
-      { key: 'objectives', label: 'Learning objectives (optional)', type: 'textarea',
-        desc: 'Specific goals or outcomes for the learning (if already defined).',
-        ph: 'e.g., Understand key Python libraries; build a simple regression model.' }
-    ],
-    template: ({ topic, audience, objectives, ctx, style, tone }) => [
-      'Use the ADDIE model to design a learning experience.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      topic && `Topic: ${topic}`,
-      audience && `Audience: ${audience}`,
-      objectives && ('Objectives:\n' + objectives),
-      'Output:\n1) Analyze: needs & constraints\n2) Design: outline format & strategy\n3) Develop: materials & activities\n4) Implement: delivery plan\n5) Evaluate: assessment & feedback method'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'addie',
+  slug: 'addie-instructional-design',
+  label: 'ADDIE — Analyze · Design · Develop · Implement · Evaluate',
+  kind: 'framework',
+  categories: [
+    'education','planning','training','curriculum-design','evaluation'
+  ],
+  tags: [
+    'type:framework','topic:instructional-design','topic:learning-design',
+    'phase:plan','phase:develop','phase:evaluate',
+    'level:beginner','use:course-development','use:lesson-planning',
+    'use:training-strategy','use:e-learning','method:addie'
+  ],
+  use_cases: [
+    'plan and structure an educational course or program',
+    'develop training or e-learning materials systematically',
+    'design corporate or professional development training',
+    'align learning outcomes with assessments',
+    'review, evaluate, and improve instructional content'
+  ],
+  boosters: [
+    'In Analyze, prompt for learner profile, prior knowledge, and constraints before moving on.',
+    'In Design, enforce alignment between objectives, strategies, and assessments.',
+    'In Develop, ensure deliverables are concrete (slides, exercises, quizzes).',
+    'In Implement, specify delivery method (online, in-person, blended) and timeline.',
+    'In Evaluate, include both formative (ongoing) and summative (end) evaluation methods.',
+    'Check alignment: every objective should map to a strategy, activity, and assessment.',
+    'Encourage iteration: capture improvements after pilot delivery.'
+  ],
+  definition: 'An instructional design framework with five phases—Analyze, Design, Develop, Implement, Evaluate—for creating and improving learning experiences. ADDIE is iterative and cyclical: insights from evaluation feed into future cycles of analysis and design.',
+  help: 'Provide the training topic, learner personas, objectives, and delivery context. The model will expand these through each ADDIE phase to produce a structured instructional design plan. Remember: each phase informs the next, and evaluation loops back to improve the whole design.',
+  fields: [
+    { key: 'topic', label: 'Training topic', type: 'text',
+      desc: 'The subject matter or skill to be taught.',
+      ph: 'e.g., Basics of Data Science' },
+    {
+      key: 'audience',
+      label: 'Learner audience',
+      type: 'repeater',
+      itemType: 'typeahead',
+      autofill: 'persona->inline',
+      itemLabel: 'learner',
+      min: 1,
+      max: 10,
+      desc: 'Who the learners are, including role, age, or prior knowledge.',
+      ph: 'e.g., Junior marketing analysts with no coding background, Nurse Trainee, Sales Manager, New Hire'
+    },
+    { key: 'objectives', label: 'Learning objectives (optional)', type: 'textarea',
+      desc: 'Specific goals or outcomes for the learning.',
+      ph: 'e.g., Understand key Python libraries; build a simple regression model.' },
+    { key: 'assessment', label: 'Assessment methods (optional)', type: 'textarea',
+      desc: 'How learning will be measured.',
+      ph: 'e.g., Quizzes, project work, peer review, certification exam' },
+    { key: 'delivery', label: 'Delivery mode/timeline (optional)', type: 'textarea',
+      desc: 'How and when training will be delivered.',
+      ph: 'e.g., 4-week blended course with weekly online sessions + in-person workshop' },
+    { key: 'resources', label: 'Resources or constraints (optional)', type: 'textarea',
+      desc: 'Budget, tools, platforms, or limits that affect design.',
+      ph: 'e.g., LMS required; budget capped at $10k' }
+  ],
+  template: ({ topic, audience, objectives, assessment, delivery, resources, ctx, style, tone }) => [
+    'Apply the ADDIE instructional design framework.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    topic && `Topic: ${topic}`,
+    audience && (
+      'Learner audience:\n' + String(audience)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((x,i) => `${i+1}. ${x}`)
+        .join('\n')
+    ),
+    objectives && ('Objectives:\n' + objectives),
+    assessment && ('Assessment methods:\n' + assessment),
+    delivery && ('Delivery mode/timeline:\n' + delivery),
+    resources && ('Resources/constraints:\n' + resources),
+    'Output (five phases):',
+    '1) Analyze: learner needs, gaps, constraints, and context.',
+    '2) Design: learning objectives, strategies, assessments, sequencing, and alignment.',
+    '3) Develop: concrete materials and activities tied to design.',
+    '4) Implement: delivery plan (who, when, where, how).',
+    '5) Evaluate: formative and summative evaluation methods linked to objectives.',
+    'Checklist:\n- [ ] Objectives measurable\n- [ ] Assessments aligned\n- [ ] Delivery plan realistic\n- [ ] Evaluation cycle clear'
+  ].filter(Boolean).join('\n')
+},
   
   {
     id:'aida',
@@ -232,95 +298,175 @@ boosters: [
     ].filter(Boolean).join('\n')
   },
   
-    {
-  id:'argument-map',
-  slug:'argument-mapping',
-  label:'Argument Mapping — Claim · Premises · Objections · Rejoinders',
-  kind:'framework',
-  categories:['reasoning patterns'],
-  tags:[
-    'type:framework','topic:argumentation','phase:structure','level:beginner'
+   {
+  id: 'argument-map',
+  slug: 'argument-mapping',
+  label: 'Argument Mapping — Claim · Premises · Objections · Rejoinders',
+  kind: 'framework',
+  categories: [
+    'reasoning patterns','critical thinking','debate','philosophy','rhetoric'
   ],
-  use_cases:[
-    'Debate prep','Design trade-offs','Policy briefs','Litigation memos'
+  tags: [
+    'type:framework','topic:argumentation','topic:toulmin',
+    'phase:structure','phase:analyze',
+    'level:beginner','use:debate-prep','use:analysis','use:policy-brief',
+    'use:fallacy-detection','use:critical-writing'
   ],
-  definition:'Lay out claims, supporting premises, objections, and rebuttals as a clear tree.',
-  help:'Give a thesis, premises, likely objections, and evidence. You’ll get an ASCII map and a short strength assessment.',
-  fields:[
-    {key:'thesis',      label:'Thesis / main claim', type:'text',     ph:'e.g., We should adopt Option B.'},
-    {key:'premises',    label:'Premises (one per line)', type:'textarea', ph:'e.g., Lower cost\\nHigher reliability\\nFaster to ship'},
-    {key:'evidence',    label:'Key evidence',        type:'textarea', ph:'Studies, metrics, sources'},
-    {key:'objections',  label:'Objections (one per line)',type:'textarea', ph:'e.g., Vendor risk\\nMigration cost'},
-    {key:'rejoinders',  label:'Rejoinders (one per line)',type:'textarea', ph:'e.g., Multi-vendor strategy\\nStaged rollout'},
-    {key:'standard',    label:'Standard of proof',   type:'text',     ph:'preponderance | clear & convincing | beyond reasonable doubt'}
+  use_cases: [
+    'debate preparation and rebuttal planning',
+    'design trade-offs and product decisions',
+    'policy briefs and litigation memos',
+    'essay planning and thesis testing',
+    'negotiation strategy',
+    'ethical reasoning and value debates',
+    'teaching logic and critical thinking',
+    'debiasing reasoning by mapping assumptions'
   ],
-  boosters:[
-    'Return a 1–5 confidence score and the top missing premise or evidence that would improve it most.'
+  definition: 'Argument mapping lays out claims, supporting premises, objections, and rebuttals as a tree. It surfaces hidden assumptions, clarifies logical structure, and reveals weaknesses. Toulmin elements (grounds, warrant, backing, qualifier, rebuttal) can be layered in for depth.',
+  help: 'Provide a thesis, premises, objections, and rejoinders. Optionally add warrants, backing, qualifiers, and a counter-thesis. The output includes a structured ASCII tree, an assessment of strengths/weaknesses, and suggestions for refinement.',
+  fields: [
+    { key:'thesis',   label:'Thesis / main claim', type:'text',
+      ph:'e.g., We should adopt Option B.' },
+    { key:'premises', label:'Premises (one per line)', type:'textarea',
+      ph:'e.g., Lower cost\\nHigher reliability\\nFaster to ship' },
+    { key:'evidence', label:'Evidence / grounds', type:'textarea',
+      ph:'Studies, metrics, citations' },
+    { key:'warrant',  label:'Warrant (optional)', type:'textarea',
+      desc:'The reasoning principle that links premises to claim.',
+      ph:'e.g., Lower costs usually improve sustainability.' },
+    { key:'backing',  label:'Backing (optional)', type:'textarea',
+      desc:'Further support for the warrant (laws, principles, expert opinion).',
+      ph:'Industry reports; legal precedents' },
+    { key:'qualifier',label:'Qualifier (optional)', type:'text',
+      desc:'How strongly the claim is asserted.',
+      ph:'e.g., probably, almost certainly' },
+    { key:'counter',  label:'Counter-thesis (optional)', type:'textarea',
+      desc:'The strongest opposing claim.',
+      ph:'e.g., We should adopt Option A.' },
+    { key:'objections',label:'Objections (one per line)', type:'textarea',
+      ph:'e.g., Vendor risk\\nMigration cost' },
+    { key:'rejoinders',label:'Rejoinders (one per line)', type:'textarea',
+      ph:'e.g., Multi-vendor strategy\\nStaged rollout' },
+    { key:'implications',label:'Implications (optional)', type:'textarea',
+      desc:'Consequences if thesis is accepted or rejected.',
+      ph:'If adopted: cost savings; If rejected: lost market share' },
+    { key:'standard', label:'Standard of proof', type:'text',
+      ph:'preponderance | clear & convincing | beyond reasonable doubt' }
   ],
-  template:({thesis,premises,evidence,objections,rejoinders,standard,ctx})=>[
-    'Construct an argument map.',
+  boosters: [
+    'Always generate at least one objection, even if the input is one-sided.',
+    'Map each rejoinder directly to its objection for clarity.',
+    'Highlight the warrant if provided; if missing, suggest one.',
+    'Return a 1–5 confidence score and note which missing element would strengthen the argument most.',
+    'Flag if the claim relies heavily on assumptions rather than evidence.',
+    'Include both empirical (fact-based) and normative (value-based) premises if possible.',
+    'Identify any logical fallacies that weaken the argument.'
+  ],
+  template: ({ thesis, premises, evidence, warrant, backing, qualifier, counter, objections, rejoinders, implications, standard, ctx }) => [
+    'Construct an argument map with Toulmin elements where possible.',
     ctx && `Context: ${ctx}`,
     thesis && `Thesis: ${thesis}`,
+    counter && `Counter-thesis: ${counter}`,
     evidence && `Evidence: ${evidence}`,
+    warrant && `Warrant: ${warrant}`,
+    backing && `Backing: ${backing}`,
+    qualifier && `Qualifier: ${qualifier}`,
     standard && `Standard of proof: ${standard}`,
     'Output:',
     'A) ASCII tree:',
     'Claim',
     '├─ Premises',
     premises && String(premises).split(/\\n+/).filter(Boolean).map((p,i)=>`│  ├─ P${i+1}: ${p}`).join('\\n'),
+    warrant && `├─ Warrant: ${warrant}`,
+    backing && `├─ Backing: ${backing}`,
+    qualifier && `├─ Qualifier: ${qualifier}`,
     '├─ Objections',
     objections && String(objections).split(/\\n+/).filter(Boolean).map((o,i)=>`│  ├─ O${i+1}: ${o}`).join('\\n'),
     '└─ Rejoinders',
     rejoinders && String(rejoinders).split(/\\n+/).filter(Boolean).map((r,i)=>`   ├─ R${i+1}: ${r}`).join('\\n'),
-    'B) Assessment: note strongest premise, strongest objection, and net strength.',
-    'C) Revision: refined thesis if warranted.'
+    implications && `Implications:\n${implications}`,
+    'B) Assessment:',
+    '- Strongest premise and strongest objection.',
+    '- Confidence score (1–5).',
+    '- Note missing premise, warrant, or evidence.',
+    '- Flag any logical fallacies if present.',
+    'C) Revision:',
+    '- Suggest a refined thesis or structure if warranted.',
+    '- Propose additional evidence or counter-arguments.'
   ].filter(Boolean).join('\n')
 },
 
 {
-    id: 'bab',
-    slug: 'before-after-bridge-formula',
-    label: 'Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)',
-    kind: 'framework',
-    categories: ['messaging frameworks', 'marketing'],
-    tags: [
-      'type:framework','topic:copywriting','phase:compose','level:beginner',
-      'use:value-proposition','use:ad-copy','use:pitch'
-    ],
-    use_cases: [
-      'highlight a product’s impact by contrasting life before vs. after its use',
-      'craft persuasive marketing copy or landing page sections',
-      'explain change by showing the transformation a solution provides'
-    ],
-    boosters: [
-      'Make the "Before" scenario relatable and painful; make the "After" state clearly desirable.',
-      'Present the solution (Bridge) as the unique link that makes the positive after-state possible.'
-    ],
-    definition: 'A persuasion formula that contrasts the audience’s world before and after a solution, then positions the solution as the bridge to get from before to after.',
-    help: 'Describe the target audience’s current situation (Before) and the ideal future (After), and specify your solution. The model will craft a message that amplifies the pain of the before state, the appeal of the after state, and shows the solution as the bridge.',
-    fields: [
-      { key: 'before', label: 'Before — current pain point', type: 'textarea',
-        desc: 'The problem state or situation the audience is facing now.',
-        ph: 'e.g., Small business owners manually track invoices, causing errors and late payments.' },
-      { key: 'after', label: 'After — desired outcome', type: 'textarea',
-        desc: 'The improved state or benefit once the problem is solved.',
-        ph: 'e.g., They have an automated system, so all invoices are tracked and paid on time with no effort.' },
-      { key: 'product', label: 'Bridge — solution/offering', type: 'text',
-        desc: 'The product or service that bridges the gap (your offering).',
-        ph: 'e.g., PayEasy automated invoicing software' }
-    ],
-    template: ({ before, after, product, ctx, audience, style, tone }) => [
-      'Use the Before-After-Bridge formula to craft a persuasive message.',
-      ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      before && ('Before:\n' + before),
-      after && ('After:\n' + after),
-      product && (`Bridge (solution): ${product}`),
-      'Output:\n1) Paint the “before” scenario (pain)\n2) Describe the “after” scenario (gain)\n3) Introduce the solution as the bridge between them'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'bab',
+  slug: 'before-after-bridge-formula',
+  label: 'Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)',
+  kind: 'framework',
+  categories: ['messaging frameworks','marketing','storytelling','persuasion'],
+  tags: [
+    'type:framework','topic:copywriting','topic:storytelling',
+    'phase:compose','level:beginner',
+    'use:value-proposition','use:ad-copy','use:pitch','use:onboarding',
+    'use:fundraising','use:branding','use:sales-email'
+  ],
+  use_cases: [
+    'highlight a product’s impact by contrasting life before vs. after its use',
+    'craft persuasive marketing copy, landing page sections, or fundraising appeals',
+    'design pitch deck slides or investor messaging',
+    'frame user onboarding as a transformation journey',
+    'write social media hooks or cold outreach emails'
+  ],
+  boosters: [
+    'Exaggerate the pain of the Before with vivid, relatable detail drawn from the audience’s world.',
+    'Make the After state aspirational but credible—avoid unrealistic hype.',
+    'Present the Bridge as the natural, indispensable connector between the two states.',
+    'If available, add proof (e.g., stats, testimonials) to make the Bridge more trustworthy.',
+    'Anchor the After state with a sensory image (what they see, hear, feel).',
+    'If an Objection is provided, weave a reassuring response into the Bridge.',
+    'Keep language emotionally engaging—focus on how it feels, not just what it is.'
+  ],
+  definition: 'A persuasion formula that contrasts the audience’s current state (Before) with their desired future (After), positioning the offering as the Bridge that enables the transformation. It frames the gap as a story of change.',
+  help: 'Fill in the current pain point (Before), the desired outcome (After), and your solution (Bridge). Add audience, emotional words, objections, or proof if available. Write in the second person for resonance. The model will create a narrative showing transformation and end with a tagline.',
+  fields: [
+    { key: 'before', label: 'Before — current pain point', type: 'textarea',
+      desc: 'The problem state or frustration your audience faces.',
+      ph: 'e.g., Small business owners manually track invoices, causing errors and late payments.' },
+    { key: 'after', label: 'After — desired outcome', type: 'textarea',
+      desc: 'The improved state or benefit once the problem is solved.',
+      ph: 'e.g., Invoices are tracked automatically, paid on time, and stress-free.' },
+    { key: 'product', label: 'Bridge — solution/offering', type: 'text',
+      desc: 'The product, service, or idea that connects Before to After.',
+      ph: 'e.g., PayEasy automated invoicing software' },
+    { key: 'audience', label: 'Audience/Persona (optional)', type: 'typeahead',
+      autofill: 'persona->inline',
+      desc: 'Define who this is for to tailor tone and imagery.',
+      ph: 'e.g., Busy small business owners' },
+    { key: 'emotions', label: 'Emotion words (optional)', type: 'textarea',
+      desc: 'Key feelings in the Before and After states.',
+      ph: 'Before: stressed, overwhelmed\nAfter: confident, relieved' },
+    { key: 'objection', label: 'Likely objection/hesitation (optional)', type: 'textarea',
+      desc: 'What resistance the audience might raise.',
+      ph: 'e.g., Too expensive; Hard to learn' },
+    { key: 'proof', label: 'Proof/Credibility (optional)', type: 'textarea',
+      desc: 'Evidence that makes the Bridge trustworthy (stats, testimonials, authority).',
+      ph: 'e.g., Used by 10,000+ businesses; saves an average of 8 hours/week' }
+  ],
+  template: ({ before, after, product, audience, emotions, objection, proof, ctx, style, tone }) => [
+    'Apply the Before-After-Bridge formula to craft a persuasive narrative.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    audience && `Audience: ${audience}`,
+    before && `Before (pain): ${before}`,
+    emotions && emotions.includes('Before:') && emotions.split('\n').find(e => e.startsWith('Before:')),
+    after && `After (desired): ${after}`,
+    emotions && emotions.includes('After:') && emotions.split('\n').find(e => e.startsWith('After:')),
+    product && `Bridge (solution): ${product}`,
+    objection && `Objection/hesitation: ${objection}\nResponse: (weave reassurance here)`,
+    proof && `Proof: ${proof}`,
+    'Output:\n1) Paint the BEFORE (painful present).\n2) Imagine the AFTER (desirable future).\n3) Position the BRIDGE (solution) as the connector.\n4) Reinforce with proof if provided.\n5) Address objections if present.\n6) Conclude with a one-line tagline blending After + Bridge.',
+    'Checklist:\n- [ ] Before vivid\n- [ ] After aspirational but credible\n- [ ] Bridge clear and indispensable\n- [ ] Proof provided if possible\n- [ ] Objection addressed'
+  ].filter(Boolean).join('\n')
+},
 
 {
   id:'bias_interrupters',
@@ -415,43 +561,82 @@ boosters: [
 },
 
 {
-  id:'blooms',
-  slug:'blooms-taxonomy',
-  label:'Bloom’s — Remember · Understand · Apply · Analyze · Evaluate · Create',
-  kind:'framework',
-  categories:['education','critical thinking frameworks'],
-  tags:[
-    'type:framework','topic:learning','phase:design','level:beginner',
-    'use:learning-objectives','use:quiz-items','use:lesson-plans'
+  id: 'blooms',
+  slug: 'blooms-taxonomy',
+  label: 'Bloom’s — Remember · Understand · Apply · Analyze · Evaluate · Create',
+  kind: 'framework',
+  categories: ['education','critical thinking frameworks','assessment','curriculum design'],
+  tags: [
+    'type:framework','topic:learning','topic:assessment',
+    'phase:design','phase:evaluate','level:beginner',
+    'use:learning-objectives','use:quiz-items','use:lesson-plans','use:tutoring',
+    'use:rubric-design','use:competency-framework'
   ],
-  use_cases:[
-    'Write learning objectives','Create quiz/homework items','Plan lessons/projects'
+  use_cases: [
+    'write measurable learning objectives',
+    'design quiz, homework, or exam items',
+    'plan lessons and projects across difficulty levels',
+    'generate competency checklists for training or self-study',
+    'design rubrics and performance assessments'
   ],
-  definition:'Generate objectives or questions aligned to a chosen Bloom level.',
-  help:'Pick the level and topic; get measurable verbs and aligned tasks.',
-  fields:[
-    {key:'topic',    label:'Topic',     type:'text',     ph:'e.g., Binary search trees'},
-    {key:'level',    label:'Bloom level',type:'text',    ph:'remember | understand | apply | analyze | evaluate | create'},
-    {key:'n',        label:'# of items', type:'text',    ph:'e.g., 3'},
-    {key:'constraints',label:'Constraints',type:'text',  ph:'e.g., measurable verbs; ≤120 words each'}
+  definition: 'A taxonomy of cognitive skills arranged in six levels: Remember, Understand, Apply, Analyze, Evaluate, Create. It helps structure objectives, questions, and assessments so they move from recall to higher-order thinking. Though often shown hierarchically, learners can move flexibly across levels.',
+  help: 'Choose a Bloom’s level or enable progression. Provide topic, number of items, and optional verbs, assessment methods, or constraints. The model generates objectives/questions with measurable verbs, success criteria, and suggested assessment formats.',
+  fields: [
+    { key: 'topic', label: 'Topic', type: 'text',
+      ph: 'e.g., Binary search trees' },
+    { key: 'level', label: 'Bloom level', type: 'select',
+      options: [
+        { value:'remember', label:'Remember' },
+        { value:'understand', label:'Understand' },
+        { value:'apply', label:'Apply' },
+        { value:'analyze', label:'Analyze' },
+        { value:'evaluate', label:'Evaluate' },
+        { value:'create', label:'Create' }
+      ],
+      ph: 'Pick one Bloom level' },
+    { key: 'n', label: '# of items', type: 'text',
+      ph: 'e.g., 3' },
+    { key: 'progression', label: 'Progression across levels (true/false)', type: 'text',
+      ph: 'true' },
+    { key: 'verbs', label: 'Custom verbs (optional)', type: 'textarea',
+      ph: 'e.g., List, Compare, Design' },
+    { key: 'assessment', label: 'Assessment method (optional)', type: 'text',
+      ph: 'e.g., Quiz, coding project, oral exam' },
+    { key: 'criteria', label: 'Success criteria (optional)', type: 'textarea',
+      ph: 'e.g., At least 80% test accuracy; working prototype; coherent argument' },
+    { key: 'constraints', label: 'Constraints', type: 'text',
+      ph: 'e.g., ≤120 words each; measurable verbs only' }
   ],
-  boosters:[
-    'Use measurable verbs; include success criteria; scaffold from easier to harder.'
+  boosters: [
+    'Always select verbs aligned to the specified Bloom level; if level is missing, scaffold from Remember → Create.',
+    'If progression is true, generate one task per ascending level.',
+    'Include success criteria or observable outcomes for each objective.',
+    'Suggest assessment methods aligned to the task type (quiz, project, discussion).',
+    'Avoid vague verbs like “learn” or “understand” without measurable criteria.',
+    'Where relevant, combine cognitive with affective/creative verbs for richer objectives.'
   ],
-  template:({topic,level,n,constraints,ctx,audience,style,tone})=>{
-    const N = Number.parseInt(n||'3',10) || 3;
+  template: ({ topic, level, n, progression, verbs, assessment, criteria, constraints, ctx, audience, style, tone }) => {
+    const N = Number.parseInt(n || '3', 10) || 3;
     return [
-      'Create Bloom-aligned outputs.',
+      'Generate Bloom-aligned learning objectives or tasks.',
       ctx && `Context: ${ctx}`,
-      topic && `Topic: ${topic}`,
-      level && `Level: ${level}`,
       audience && `Audience: ${audience}`,
       style && `Style: ${style}`,
       tone && `Tone: ${tone}`,
+      topic && `Topic: ${topic}`,
+      level && `Level: ${level}`,
+      progression && `Progression: ${progression}`,
+      verbs && `Custom verbs: ${verbs}`,
+      assessment && `Preferred assessment method: ${assessment}`,
+      criteria && `Custom success criteria: ${criteria}`,
       constraints && `Constraints: ${constraints}`,
-      `Output: ${N} ${level||'level'} learning ${level && level.match(/create|analy|evalu/i)?'tasks':'objectives/questions'} with:`,
-      '- Measurable verb; prompt; expected answer traits; success criteria.'
-    ].filter(Boolean).join('\n')
+      `Output: ${N} ${progression === 'true' ? 'progressive tasks across levels' : `${level || 'Bloom'}-level tasks`} including:`,
+      '- Verb aligned to Bloom’s level',
+      '- Objective phrased for the topic',
+      '- Success criteria or assessment notes',
+      '- Suggested assessment method',
+      'Checklist:\n- [ ] Verb measurable\n- [ ] Objective clear\n- [ ] Criteria observable\n- [ ] Assessment aligned'
+    ].filter(Boolean).join('\n');
   }
 },
   
@@ -572,49 +757,81 @@ boosters: [
 },
 
 {
-  id:'cognitive_debiasing',
-  slug:'cognitive-debiasing',
-  label:'Cognitive Debiasing',
-  kind:'pattern',
-  categories:['ethics','bias','critical thinking'],
-  tags:[
-    'type:pattern','topic:debiasing','topic:consider-the-opposite','level:beginner',
-    'use:analysis','use:strategy','use:review'
+  id: 'cognitive_debiasing',
+  slug: 'cognitive-debiasing',
+  label: 'Cognitive Debiasing',
+  kind: 'pattern',
+  categories: ['ethics','bias','critical thinking'],
+  tags: [
+    'type:pattern','topic:debiasing','topic:consider-the-opposite',
+    'level:beginner','use:analysis','use:strategy','use:review',
+    'use:decision-audit','use:risk-assessment'
   ],
-  use_cases:[
+  use_cases: [
     'document a current assumption and actively seek disconfirming evidence',
     'run a quick pre-mortem on a plan',
-    'decide next adjustment with rationale'
+    'decide next adjustment with rationale',
+    'audit reasoning in board reviews or strategic planning',
+    'perform sanity checks on research or forecasts'
   ],
-  definition:'A light-weight scaffold combining “consider the opposite,” disconfirming evidence, and pre-mortem moves.',
-  help:'Name the bias risk, state the assumption, generate an opposite scenario, list disconfirming evidence, choose a next step.',
-  boosters:[
-    'Cite at least 2 credible, independent sources that challenge your assumption.',
-    'Add a one-line pre-mortem: “If this failed in 6 weeks, it would be because…”'
+  definition: 'A meta-cognitive scaffold that surfaces assumptions, tests them with opposites and alternatives, and documents disconfirming evidence, missing data, and follow-up. It cannot remove bias, but it structures accountability against common reasoning errors.',
+  help: 'State the bias risk and your assumption. Generate an opposite scenario and an alternative hypothesis. Gather at least two pieces of disconfirming evidence (and note any missing). Run a pre-mortem on failure, adjust the plan, and set a follow-up checkpoint. Optionally invite another persona to argue the opposite.',
+  boosters: [
+    'Cite at least 2 credible, independent sources that challenge the assumption.',
+    'Include one perspective outside your immediate cultural or disciplinary bubble.',
+    'Rank disconfirming evidence by strength/credibility.',
+    'Add a one-line pre-mortem: “If this failed in [chosen timeframe], it would be because…”',
+    'Log a missing piece of evidence you expected but did not find.',
+    'Have another persona (or the model) argue the opposite side for you.',
+    'Note any secondary biases (anchoring + confirmation + sunk cost) influencing the reasoning.'
   ],
-  fields:[
-    { key:'bias',        label:'Bias in question', type:'text', ph:'Anchoring / Confirmation / Availability / Other' },
-    { key:'initial',     label:'My initial assumption', type:'textarea', ph:'Write it down plainly.' },
-    { key:'opposite',    label:'Opposite scenario — What if the opposite is true?', type:'textarea', ph:'Spell the plausible opposite.' },
-    { key:'disconfirm',  label:'Disconfirming evidence (≥2, one per line)', type:'textarea', ph:'Source, fact, or datapoint per line.' },
-    { key:'premortem',   label:'Pre-mortem (optional) — If this failed, why?', type:'textarea', ph:'Top 1–3 failure reasons.' },
-    { key:'decision',    label:'Next step decision — What will I adjust?', type:'textarea', ph:'Change of plan, metric, gate, or experiment.' }
+  fields: [
+    { key: 'bias', label: 'Bias in question', type: 'text',
+      ph: 'Anchoring / Confirmation / Availability / Other' },
+    { key: 'stake', label: 'Stake / Impact if wrong', type: 'textarea',
+      ph: 'What’s at risk if this assumption fails?' },
+    { key: 'initial', label: 'My initial assumption', type: 'textarea',
+      ph: 'Write it down plainly.' },
+    { key: 'opposite', label: 'Opposite scenario — What if the opposite is true?', type: 'textarea',
+      ph: 'Spell the plausible opposite.' },
+    { key: 'alt_hypothesis', label: 'Alternative hypothesis (not strict opposite)', type: 'textarea',
+      ph: 'Another plausible framing of reality.' },
+    { key: 'disconfirm', label: 'Disconfirming evidence (≥2, one per line)', type: 'textarea',
+      ph: 'Source, fact, or datapoint per line.' },
+    { key: 'missing', label: 'Missing evidence (expected but absent)', type: 'textarea',
+      ph: 'What did you expect to find that you could not?' },
+    { key: 'premortem', label: 'Pre-mortem — If this failed, why?', type: 'textarea',
+      ph: 'Top 1–3 failure reasons. Specify timeframe.' },
+    { key: 'decision', label: 'Next step decision — What will I adjust?', type: 'textarea',
+      ph: 'Change of plan, metric, gate, or experiment.' },
+    { key: 'persona', label: 'Persona check (optional)', type: 'typeahead',
+      autofill: 'persona->inline',
+      ph: 'Pick a persona to argue the opposite (e.g., Skeptical Analyst, External Critic)' },
+    { key: 'followup', label: 'Follow-up checkpoint', type: 'text',
+      ph: 'When/how will I revisit this assumption?' }
   ],
-  template: ({ bias, initial, opposite, disconfirm, premortem, decision, ctx, audience, style, tone }) => [
+  template: ({ bias, stake, initial, opposite, alt_hypothesis, disconfirm, missing, premortem, decision, persona, followup, ctx, audience, style, tone }) => [
     'Apply a cognitive debiasing pass.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
     bias && `Bias in question: ${bias}`,
+    stake && `Stake / Impact if wrong:\n${stake}`,
     initial && ('Initial assumption:\n' + initial),
     opposite && ('Opposite scenario:\n' + opposite),
+    alt_hypothesis && ('Alternative hypothesis:\n' + alt_hypothesis),
     disconfirm && (
-      'Disconfirming evidence:\n' + String(disconfirm).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+      'Disconfirming evidence:\n' +
+      String(disconfirm).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
     ),
+    missing && ('Missing evidence:\n' + missing),
     premortem && ('Pre-mortem:\n' + premortem),
     decision && ('Next step decision:\n' + decision),
-    'Output:\n1) Assumption vs. opposite\n2) Disconfirming evidence (≥2)\n3) Decision & rationale\n4) Follow-up check in 2–4 weeks'
+    persona && (`Persona check — Opposing voice:\n${persona}`),
+    followup && ('Follow-up checkpoint:\n' + followup),
+    'Output:\n1) Bias summary\n2) Assumption vs. opposite vs. alternative\n3) Disconfirming evidence (≥2, ranked)\n4) Missing evidence noted\n5) Pre-mortem failure modes\n6) Decision & rationale\n7) Follow-up accountability',
+    'Checklist:\n- [ ] ≥2 disconfirming sources\n- [ ] One external perspective included\n- [ ] Missing evidence logged\n- [ ] Pre-mortem stated\n- [ ] Decision adjusted\n- [ ] Follow-up scheduled'
   ].filter(Boolean).join('\n')
 },
 
@@ -763,29 +980,52 @@ boosters: [
   },
   
   {
-  id:'constraint_flip',
-  slug:'constraint-flip',
-  label:'Constraint Flip (play with edges)',
-  kind:'pattern',
-  categories:['creativity','strategy'],
-  tags:['type:pattern','topic:constraints','use:ideation','level:beginner'],
-  use_cases:[
-    'turn constraints into generators of ideas',
-    'explore exaggerated and removed constraint states'
+  id: 'constraint_flip',
+  slug: 'constraint-flip',
+  label: 'Constraint Flip (play with edges)',
+  kind: 'pattern',
+  categories: ['creativity','strategy','cultural frameworks'],
+  tags: [
+    'type:pattern','topic:constraints','topic:inversion',
+    'use:ideation','use:innovation-workshop','use:design-sprint','level:beginner'
   ],
-  definition:'Treat a constraint as a lever: exaggerate it to find new ideas; remove it to find alternatives.',
-  help:'Name a real blocker; brainstorm both exaggerated and removed scenarios.',
-  boosters:[
-    'Write at least 3 ideas in each direction.',
-    'Pick one idea to prototype this week.'
+  use_cases: [
+    'turn blockers into creative triggers',
+    'explore exaggerated, inverted, or removed constraints',
+    'design for edge cases or paradoxes',
+    'run innovation workshops or design sprints under tight limits',
+    'brainstorm alternatives when resources are scarce'
   ],
-  fields:[
-    { key:'limiting',   label:'What’s limiting me right now?', type:'textarea' },
-    { key:'exaggerate', label:'If I exaggerated that constraint, what new idea emerges?', type:'textarea' },
-    { key:'remove',     label:'If I removed it entirely, what could I try?', type:'textarea' }
+  definition: 'A creativity scaffold that flips limits into design prompts: exaggerate, remove, invert, or design for edge cases. By reframing constraints, hidden opportunities emerge and can be prototyped.',
+  help: 'Identify a real constraint. Explore it exaggerated, removed, inverted, and at its edge. Generate ≥3 ideas per flip. Add a cultural or artistic analogy. End with a synthesis and a prototype step to test feasibility.',
+  boosters: [
+    'Generate ≥3 ideas per flip direction (exaggerate, remove, invert, edge-case).',
+    'Include at least one non-Western or artistic example of constraint-play.',
+    'Link at least one flipped idea to a concrete user need.',
+    'Compare feasibility vs. originality across flips.',
+    'End with a synthesis sentence: what hidden possibility emerged?',
+    'Close with a feasible prototype step.'
   ],
-  template: ({ limiting, exaggerate, remove, ctx, audience, style, tone }) => [
-    'Flip the constraint to generate options.',
+  fields: [
+    { key: 'limiting', label: 'What’s limiting me right now?', type: 'textarea',
+      ph: 'e.g., Budget cap; only 2 engineers; limited space' },
+    { key: 'exaggerate', label: 'If I exaggerated that constraint, what new ideas emerge?', type: 'textarea',
+      ph: 'e.g., If budget were $0, how would we still deliver value?' },
+    { key: 'remove', label: 'If I removed it entirely, what could I try?', type: 'textarea',
+      ph: 'e.g., If time were unlimited, what would I build?' },
+    { key: 'invert', label: 'If I turned it into a mandatory rule, what happens?', type: 'textarea',
+      ph: 'e.g., If delays were required, what experience would we design?' },
+    { key: 'edge', label: 'What if I designed only for edge/worst-case users?', type: 'textarea',
+      ph: 'e.g., For people with no internet access; for extreme climates' },
+    { key: 'analogy', label: 'Cultural/artistic analogy (optional)', type: 'textarea',
+      ph: 'e.g., Japanese wabi-sabi approach; jazz improvisation; African fractal design' },
+    { key: 'prototype', label: 'Prototype step', type: 'textarea',
+      ph: 'What’s one small, testable experiment to try now?' },
+    { key: 'synthesis', label: 'Synthesis insight', type: 'textarea',
+      ph: 'What hidden possibility or new direction did this reveal?' }
+  ],
+  template: ({ limiting, exaggerate, remove, invert, edge, analogy, prototype, synthesis, ctx, audience, style, tone }) => [
+    'Run a Constraint Flip session (play with edges).',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
@@ -793,7 +1033,13 @@ boosters: [
     limiting && ('Constraint:\n' + limiting),
     exaggerate && ('Exaggerated constraint → ideas:\n' + exaggerate),
     remove && ('Removed constraint → ideas:\n' + remove),
-    'Output:\n1) Constraint summary\n2) Ideas (exaggerate)\n3) Ideas (remove)\n4) One prototype to run'
+    invert && ('Inverted constraint (make it a rule) → ideas:\n' + invert),
+    edge && ('Edge-case design → ideas:\n' + edge),
+    analogy && ('Cultural/artistic analogy:\n' + analogy),
+    prototype && ('Prototype step:\n' + prototype),
+    synthesis && ('Synthesis insight:\n' + synthesis),
+    'Output:\n1) Constraint summary\n2) Divergent ideas (all flips)\n3) Cultural/artistic analogies\n4) Prototype step\n5) Synthesis insight',
+    'Checklist:\n- [ ] ≥3 ideas per flip\n- [ ] Analogy included\n- [ ] Prototype feasible\n- [ ] Insight captured'
   ].filter(Boolean).join('\n')
 },
   
@@ -839,89 +1085,170 @@ boosters: [
     ].filter(Boolean).join('\n')
   },
   
-   {
-    id: 'eisenhower_matrix',
-    slug: 'eisenhower-priority-matrix',
-    label: 'Eisenhower Matrix — Urgent/Important Prioritization',
-    kind: 'framework',
-    categories: ['productivity', 'prioritization'],
-    tags: [
-      'type:framework','topic:time-management','phase:plan','level:beginner',
-      'use:task-prioritization','use:time-management','use:workflow'
-    ],
-    use_cases: [
-      'categorize tasks by urgency and importance',
-      'decide what to do now, schedule for later, delegate, or drop',
-      'improve personal productivity or team task management'
-    ],
-    boosters: [
-      'Include a brief justification for why each task falls into its category.',
-      'If multiple tasks land in one category, rank them or suggest which to tackle first.'
-    ],
-    definition: 'A time-management framework that sorts tasks into four categories: Do (urgent & important), Schedule (important but not urgent), Delegate (urgent but not important), and Eliminate (neither).',
-    help: 'List your tasks. Optionally provide context like deadlines or importance. The model will assign each task to one of four categories (Do now, Schedule, Delegate, Eliminate) using the Eisenhower urgency/importance matrix.',
-    fields: [
-      { key: 'tasks', label: 'Tasks (one per line)', type: 'textarea',
-        desc: 'A list of tasks or to-dos to be prioritized.',
-        ph: 'Task 1…\nTask 2…\nTask 3…' },
-      { key: 'context', label: 'Context (optional)', type: 'textarea',
-        desc: 'Deadlines, importance cues, or other info for the tasks (if any).',
-        ph: 'e.g., Task 1 due tomorrow; Task 2 is optional cleanup; Task 3 critical for client meeting.' }
-    ],
-    template: ({ tasks, context, ctx, style, tone }) => [
-      'Apply the Eisenhower Matrix to categorize the tasks by urgency and importance.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      context && ('Additional context:\n' + context),
-      tasks && (
-        'Tasks:\n' + String(tasks).split(/\n+/).map(s => s.trim()).filter(Boolean).map((t,i) => `${i+1}. ${t}`).join('\n')
-      ),
-      'Return tasks grouped into 4 categories (with labels): Do (Urgent & Important), Schedule (Important but Not Urgent), Delegate (Urgent but Not Important), Eliminate (Neither).'
-    ].filter(Boolean).join('\n')
-  },
-  
   {
-    id: 'fab',
-    slug: 'feature-advantage-benefit',
-    label: 'FAB — Feature · Advantage · Benefit',
-    kind: 'framework',
-    categories: ['messaging frameworks', 'marketing'],
-    tags: [
-      'type:framework','topic:copywriting','phase:apply','level:beginner',
-      'use:product-marketing','use:sales-copy','use:value-messaging'
-    ],
-    use_cases: [
-      'turn product features into user-focused benefits for marketing copy',
-      'train a model to articulate why a feature matters to customers',
-      'create sales bullets or product descriptions emphasizing value'
-    ],
-    boosters: [
-      'Translate technical features into plain advantages and user benefits.',
-      'Ensure the benefit addresses a specific customer need or pain point.'
-    ],
-    definition: 'A classic product messaging formula that starts with a Feature of a product, explains the Advantage (what it does), and concludes with the Benefit (why it matters to the user).',
-    help: 'Provide a key product feature. The model will respond with the feature, its advantage, and the benefit to the customer, helping make your messaging more customer-centric.',
-    fields: [
-      { key: 'feature', label: 'Product feature', type: 'text',
-        desc: 'A specific feature or attribute of your product/offer.',
-        ph: 'e.g., Real-time analytics dashboard' },
-      { key: 'constraints', label: 'Constraints (optional)', type: 'text',
-        desc: 'Any format or length constraints.',
-        ph: 'e.g., 1 sentence per item; use bullet points.' }
-    ],
-    template: ({ feature, constraints, ctx, audience, style, tone }) => [
-      'Use the FAB framework to highlight the feature, what it does, and why it matters.',
-      ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      feature && `Feature: ${feature}`,
-      'Advantage: <the model will explain what the feature does or how it\'s better>',
-      'Benefit: <the model will explain why that advantage is valuable to the user>',
-      constraints && `Constraints: ${constraints}`
-    ].filter(Boolean).join('\n')
-  },
+  id: 'eisenhower_matrix',
+  slug: 'eisenhower-priority-matrix',
+  label: 'Eisenhower Matrix — Urgent/Important Prioritization',
+  kind: 'framework',
+  categories: ['productivity','prioritization','psychology','decision-making'],
+  tags: [
+    'type:framework','topic:time-management','topic:decision-making',
+    'phase:plan','level:beginner','level:intermediate',
+    'use:task-prioritization','use:workflow','use:team-alignment',
+    'use:strategic-planning','use:stress-reduction','use:leadership-retreat'
+  ],
+  use_cases: [
+    'categorize tasks by urgency and importance',
+    'decide what to do now, schedule for later, delegate, or drop',
+    'facilitate team sprint or project prioritization',
+    'improve personal productivity and reduce stress',
+    'ensure proactive time is spent on long-term strategic goals',
+    'prevent burnout by identifying tasks to eliminate or delegate',
+    'use in leadership workshops to realign on priorities'
+  ],
+  definition: 'The Eisenhower Matrix is a time-management and decision-making tool that classifies tasks by urgency and importance. It divides work into four quadrants: Do (urgent & important), Schedule (important but not urgent), Delegate (urgent but not important), and Eliminate (neither). It helps reduce stress, improve focus, and rebalance effort toward long-term goals.',
+  help: 'List tasks one per line, adding deadlines, importance cues, or stakeholders in context. The model will assign tasks to quadrants, provide justifications, and highlight workload imbalances. Use delegation and elimination proactively to free time for strategic (Schedule) work.',
+  boosters: [
+    'Write a one-sentence justification for why each task falls into its category.',
+    'If multiple tasks land in one category, rank them or suggest which to tackle first.',
+    'Identify at least one “Schedule” (Quadrant II) task to put on the calendar this week.',
+    'Notice overload in “Do now” (Quadrant I) — consider prevention strategies.',
+    'Highlight if one quadrant dominates and suggest rebalancing.',
+    'Ensure at least one low-value task is dropped (Eliminate).',
+    'Flag delegation friction: what prevents handing tasks off?'
+  ],
+  fields: [
+    { key: 'tasks', label: 'Tasks (one per line)', type: 'textarea',
+      desc: 'List tasks you want to prioritize. Be specific: include verbs, deadlines, and owners if known.',
+      ph: 'Write report (due tomorrow)\nWeekly 1:1 with team member\nScroll social media\nPrep strategy deck for client' },
+    { key: 'context', label: 'Context (optional)', type: 'textarea',
+      desc: 'Extra info: deadlines, importance signals, stakeholders, constraints.',
+      ph: 'Task 1 due tomorrow; Task 2 optional cleanup; Task 3 critical for client meeting.' },
+    { key: 'delegation', label: 'Delegation options (optional)', type: 'textarea',
+      desc: 'List people, teams, or tools that could take tasks off your plate.',
+      ph: 'Virtual assistant, teammate, automation bot' },
+    { key: 'deadline_sensitivity', label: 'Deadline sensitivity (optional)', type: 'textarea',
+      desc: 'Flag tasks that are time-critical vs. flexible.',
+      ph: 'Report due in 24h = high sensitivity; backlog grooming = low sensitivity.' },
+    { key: 'strategic_goals', label: 'Strategic goals alignment (optional)', type: 'textarea',
+      desc: 'Link tasks to long-term objectives or KPIs.',
+      ph: 'Client growth, team retention, Q2 OKRs' }
+  ],
+  template: ({ tasks, context, delegation, deadline_sensitivity, strategic_goals, ctx, style, tone }) => [
+    'Apply the Eisenhower Matrix to categorize tasks by urgency and importance.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    tasks && (
+      'Tasks:\n' + String(tasks).split(/\n+/).map(s => s.trim()).filter(Boolean).map((t,i) => `${i+1}. ${t}`).join('\n')
+    ),
+    context && ('Context:\n' + context),
+    delegation && ('Delegation options:\n' + delegation),
+    deadline_sensitivity && ('Deadline sensitivity:\n' + deadline_sensitivity),
+    strategic_goals && ('Strategic goals:\n' + strategic_goals),
+    '---',
+    'Return:',
+    '1) Tasks grouped into 4 quadrants:',
+    '   - Do (Urgent & Important)',
+    '   - Schedule (Important but Not Urgent)',
+    '   - Delegate (Urgent but Not Important)',
+    '   - Eliminate (Neither)',
+    '2) One-sentence justification for each placement',
+    '3) Ranking within quadrants (if >1 item)',
+    '4) Highlight workload imbalances (quadrants overloaded or empty)',
+    '5) Recommend 1 “Schedule” task to calendar this week',
+    '6) Optional: show ASCII matrix with tasks in each quadrant',
+    'Checklist:\n- [ ] Do quadrant manageable\n- [ ] ≥1 Schedule task prioritized\n- [ ] Delegation attempted\n- [ ] At least 1 Eliminate task identified'
+  ].filter(Boolean).join('\n')
+},
+  
+{
+  id: 'fab',
+  slug: 'feature-advantage-benefit',
+  label: 'FAB — Feature · Advantage · Benefit',
+  kind: 'framework',
+  categories: ['messaging frameworks','marketing','sales','copywriting','communication'],
+  tags: [
+    'type:framework','topic:copywriting','topic:value-prop','topic:sales-enablement',
+    'topic:persuasion','topic:resume-optimization',
+    'phase:craft','phase:apply',
+    'level:beginner','level:intermediate',
+    'use:product-marketing','use:sales-copy','use:value-messaging','use:resume-writing',
+    'use:ad-copy','use:pitch-decks'
+  ],
+  use_cases: [
+    'Turn product features into user-focused benefits for marketing copy.',
+    'Train a model to articulate why a feature matters to customers.',
+    'Create sales bullets or product descriptions emphasizing value.',
+    'Reframe technical jargon into plain language for non-technical audiences.',
+    'Craft resume or LinkedIn bullets by translating responsibilities into achievements.',
+    'Translate engineering specs into customer-facing copy.',
+    'Reframe B2B SaaS features into executive-level benefits.',
+    'Build persuasive pitch decks for investors.',
+    'Highlight transferable skills in job applications.'
+  ],
+  boosters: [
+    'Translate technical features into plain advantages and user benefits.',
+    'Ensure the benefit addresses a specific customer need or pain point.',
+    'Include at least one emotional or human-centered benefit, not just functional.',
+    'Pair each benefit with a potential customer persona (“For busy professionals…”).',
+    'Offer an alternate phrasing that works as a sales bullet or ad headline.',
+    'Force-test each benefit with “So what?” until it resonates at a human level.',
+    'Provide one micro-FAB version (short-form for ads, resumes, or social posts).',
+    'Tailor at least one FAB to a secondary persona for versatility testing.'
+  ],
+  definition: 'A classic product messaging formula that starts with a Feature of a product, explains the Advantage (what it does or why it’s better), and concludes with the Benefit (why it matters to the user). It is widely used in marketing, sales, resumes, and persuasion writing.',
+  help: 'Provide a key product feature. Optionally add target audience and customer pain point. The model will respond with a clear FAB breakdown: feature, advantage, and benefit — plus variations for different messaging contexts and lengths.',
+  fields: [
+    { key: 'feature', label: 'Product feature(s)', type: 'textarea',
+      desc: 'Enter one or more product features, one per line.',
+      ph: 'Real-time analytics dashboard\nAutomated reporting engine' },
+    {
+      key: 'aud_target',
+      label: 'Target audience (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who the message should be tailored for.',
+      ph: 'Marketing managers, busy parents, enterprise buyers'
+    },
+    { key: 'painpoint', label: 'Customer need/pain point (optional)', type: 'textarea',
+      desc: 'The underlying problem this feature helps solve.',
+      ph: 'Teams waste hours compiling reports manually.' },
+    { key: 'advantage_override', label: 'Advantage (optional, pre-written)', type: 'textarea',
+      desc: 'Seed your own draft of how the feature helps. If blank, the model will generate it.',
+      ph: 'Gives managers real-time visibility into campaign ROI.' },
+    { key: 'benefit_override', label: 'Benefit (optional, pre-written)', type: 'textarea',
+      desc: 'Seed your own draft of why it matters to the user. If blank, the model will generate it.',
+      ph: 'Saves hours each week and reduces stress for the team.' },
+    { key: 'format', label: 'Output format (optional)', type: 'text',
+      desc: 'Preferred output style.',
+      ph: 'Bullets, headline, paragraph, LinkedIn bullet' },
+    { key: 'constraints', label: 'Constraints (optional)', type: 'text',
+      desc: 'Any format or length constraints.',
+      ph: '1 sentence per item; ≤20 words each.' }
+  ],
+  template: ({ feature, aud_target, painpoint, advantage_override, benefit_override, format, constraints, ctx, audience, style, tone }) => [
+    'Use the FAB framework to highlight the feature, what it does, and why it matters.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    feature && (
+      'Feature(s):\n' + String(feature).split(/\n+/).map((f,i)=>`${i+1}. ${f}`).join('\n')
+    ),
+    painpoint && `Customer pain point:\n${painpoint}`,
+    aud_target && (
+      'Target audience:\n' + String(aud_target).split(/\n+/).map((a,i)=>`${i+1}. ${a}`).join('\n')
+    ),
+    advantage_override && `Advantage (pre-provided): ${advantage_override}`,
+    benefit_override && `Benefit (pre-provided): ${benefit_override}`,
+    format && `Preferred format: ${format}`,
+    constraints && `Constraints: ${constraints}`,
+    'Output:\n1) Full FAB breakdown (Feature → Advantage → Benefit)\n2) Emotional + functional benefit covered\n3) Persona-tailored version\n4) Micro-FAB (short-form version)\n5) Alternate phrasing for ads/resumes\n\nChecklist:\n- [ ] Feature stated clearly\n- [ ] Advantage explained in plain terms\n- [ ] Benefit tied to audience need/pain\n- [ ] Includes emotional + functional benefit\n- [ ] One short-form version provided'
+  ].filter(Boolean).join('\n')
+},
   
     {
     id:'facts_primer',
@@ -987,41 +1314,90 @@ boosters: [
     }
   },
   
-  {
-    id: 'feynman',
-    slug: 'feynman-technique',
-    label: 'Feynman Technique — Explain Like I’m 5',
-    kind: 'pattern',
-    categories: ['education', 'learning'],
-    tags: [
-      'type:pattern','topic:simplification','topic:teaching','level:beginner',
-      'use:explanation','use:knowledge-check','use:debug-understanding'
-    ],
-    use_cases: [
-      'simplify complex concepts for a broader audience',
-      'identify gaps in understanding by attempting a simple explanation',
-      'learn or teach a new topic by breaking it down'
-    ],
-    boosters: [
-      'Use analogies a child would understand to explain difficult concepts.',
-      'Identify any technical terms in the explanation and immediately clarify them in simpler words.'
-    ],
-    definition: 'A learning strategy where you try to explain a concept in simple terms (as if to a child), revealing gaps in understanding to address.',
-    help: 'Provide a topic or concept. The model will give a simple explanation (ELI5 style) and clarify any parts that might still be confusing, following the Feynman Technique.',
-    fields: [
-      { key: 'concept', label: 'Concept or topic', type: 'textarea',
-        desc: 'The subject you want explained simply.',
-        ph: 'e.g., Quantum entanglement' }
-    ],
-    template: ({ concept, ctx, style, tone }) => [
-      'Explain the concept as if teaching a 5-year-old, then clarify any tricky parts.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      concept && `Concept: ${concept}`,
-      'Output:\n1) Simple Explanation\n2) Clarifications for any complex terms or ideas'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'feynman',
+  slug: 'feynman-technique',
+  label: 'Feynman Technique — Explain Like I’m 5',
+  kind: 'pattern',
+  categories: ['education','learning','critical thinking','communication','pedagogy'],
+  tags: [
+    'type:pattern','topic:simplification','topic:teaching','topic:critical-thinking',
+    'topic:pedagogy','topic:learning-strategies',
+    'level:beginner','use:explanation','use:study','use:teaching','use:debug-understanding',
+    'use:simplification','use:executive-briefs','use:teaching-kids'
+  ],
+  use_cases: [
+    'Simplify complex concepts for learners or non-experts.',
+    'Debug your own understanding by explaining simply.',
+    'Teach difficult topics with analogies and stories.',
+    'Prepare clear communication for executives or children.',
+    'Break down technical terms into everyday language.',
+    'Pitch complex research to non-specialists.',
+    'Design tiered learning materials (kids → teens → peers → experts).',
+    'Identify and fix gaps in understanding during onboarding or training.'
+  ],
+  boosters: [
+    'Draft the explanation in plain words, then refine it until no jargon remains.',
+    'Offer at least one analogy or real-world example matched to the audience.',
+    'Create layered explanations: ELI5 → teen → peer → expert.',
+    'End with a short “Because… Therefore…” justification to show reasoning is intact.',
+    'Match tone and examples to the selected audience level or persona.',
+    'Provide a progression ladder if requested (stepwise across levels).'
+  ],
+  definition: 'A learning strategy (from Richard Feynman) that reveals true understanding by forcing you to explain a concept in simple, jargon-free terms, tailored to the audience’s level of age or expertise.',
+  help: 'Provide a concept or topic, select an audience level from the drop-down, and optionally add personas or examples. The model will generate a clear, step-by-step explanation, simplify jargon, use analogies, and include a self-check line.',
+  fields: [
+    { key: 'concept', label: 'Concept or topic', type: 'textarea',
+      desc: 'The subject you want explained in simple, audience-appropriate terms.',
+      ph: 'e.g., Quantum entanglement' },
+{ 
+  key: 'audience_level', 
+  label: 'Audience level', 
+  type: 'select',
+  options: [
+    { value: 'Explain as if to a 5-year-old child: use very simple language, short sentences, playful analogies (toys, games, animals), and avoid abstractions.', label: 'Child (around 5 years old)' },
+    { value: 'Explain as if to a 10–12 year-old: simple but not babyish, use concrete examples from school or hobbies, allow light abstraction but anchor in stories or visuals.', label: 'Child (10–12 years old)' },
+    { value: 'Explain as if to a teenager (13–17): balance simplicity with nuance, connect to school, social life, hobbies, identity, introduce moderate abstraction and cause-effect reasoning.', label: 'Teenager (13–17)' },
+    { value: 'Explain as if to a non-expert adult: avoid jargon, use workplace or everyday analogies, emphasize clarity over technical precision, highlight practical takeaways.', label: 'Adult — non-expert' },
+    { value: 'Explain as if to a peer/executive adult: clear, concise, professional tone, mix plain language with light domain-specific terms, focus on decision relevance and high-level reasoning.', label: 'Adult — peer/executive' },
+    { value: 'Explain as if to an expert audience: rigorous and precise, keep technical vocabulary, assume shared background, focus on clarity of logic and highlighting subtleties.', label: 'Expert audience' }
+  ],
+  desc: 'Select the age or expertise level. The choice adjusts tone, vocabulary, examples, and level of abstraction in the explanation.',
+  ph: 'Choose an age/expertise group'
+},
+    {
+      key: 'audience_persona',
+      label: 'Audience persona(s) (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Add persona details to further tailor the explanation (e.g., Busy parent, Software engineer, 10-year-old gamer).',
+      ph: 'Start typing to pick or add personas'
+    },
+    { key: 'examples', label: 'Examples or analogies (optional)', type: 'textarea',
+      desc: 'Optional real-world examples or analogies you want the model to include.',
+      ph: 'e.g., magnets, playground swings, Legos' },
+    { key: 'constraints', label: 'Constraints (optional)', type: 'text',
+      desc: 'Formatting or length requirements.',
+      ph: 'e.g., 1 paragraph max; bullet points only; ≤100 words' }
+  ],
+  template: ({ concept, audience_level, audience_persona, examples, constraints, ctx, style, tone }) => [
+    'Apply the Feynman Technique: explain simply, refine, clarify.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    concept && `Concept: ${concept}`,
+    audience_level && `Audience level selected: ${audience_level}`,
+    audience_persona && (
+      'Audience persona(s):\n' +
+      String(audience_persona).split(/\n+/).map((p,i)=>`${i+1}. ${p}`).join('\n')
+    ),
+    examples && `Examples/analogies to include: ${examples}`,
+    constraints && `Constraints: ${constraints}`,
+    'Output:\n1) Explanation tailored to the chosen audience level\n2) Simplify or expand detail depending on age/expertise\n3) At least one analogy or example matched to audience or persona\n4) Clarify tricky terms in simpler words\n5) End with a “Because… Therefore…” justification line\n\nChecklist:\n- [ ] Explanation fits audience level\n- [ ] Persona context used if provided\n- [ ] Analogy/example included\n- [ ] Reasoning intact and clear'
+  ].filter(Boolean).join('\n')
+},
   
   {
   id:'few_shot',
@@ -1079,85 +1455,159 @@ boosters: [
 },
 
 {
-  id:'facione-core',
-  slug:'facione-core-skills',
-  label:'Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate',
-  kind:'framework',
-  categories:['critical thinking frameworks'],
-  tags:[
-    'type:framework','topic:critical-thinking','phase:analyze','level:intermediate'
+  id: 'facione-core',
+  slug: 'facione-core-skills',
+  label: 'Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate',
+  kind: 'framework',
+  categories: ['critical thinking frameworks','education','reasoning','decision-making'],
+  tags: [
+    'type:framework','topic:critical-thinking','topic:argumentation',
+    'topic:bias-checking','topic:decision-quality','topic:evidence-based-reasoning',
+    'phase:analyze','phase:evaluate',
+    'level:intermediate','level:advanced'
   ],
-  use_cases:[
-    'Evidence appraisal','Research summaries','Root cause analysis','Design/ethics reviews'
+  use_cases: [
+    'Appraise evidence for and against a claim.',
+    'Write critical research summaries or peer reviews.',
+    'Conduct root cause analysis in complex problems.',
+    'Run ethics or policy evaluations with balance.',
+    'Teach or practice structured critical thinking.',
+    'Prepare debate arguments and rebuttals.',
+    'Evaluate scientific or academic work during peer review.',
+    'Develop policy whitepapers with rigorous reasoning.',
+    'Practice bias-awareness training exercises.'
   ],
-  definition:'Operationalize the six core skills of critical thinking on a target claim/problem.',
-  help:'Run the six-skill loop briefly and finish with a self-check.',
-  fields:[
-    {key:'topic',         label:'Topic/claim/problem', type:'text',     ph:'e.g., “Feature X reduces churn by 10%.”'},
-    {key:'evidence',      label:'Evidence for',        type:'textarea', ph:'Key supporting evidence'},
-    {key:'counter',       label:'Evidence against',    type:'textarea', ph:'Counterevidence / disconfirming data'},
-    {key:'alt_hypotheses',label:'Alternative hypotheses',type:'textarea', ph:'Other explanations/causes'},
-    {key:'explain_aud',   label:'Explanation audience',type:'text',     ph:'e.g., exec team, students, customers'},
-    {key:'selfreg_checks',label:'Self-regulation checks',type:'text',   ph:'e.g., seek disconfirming data; avoid anchoring'}
+  definition: 'A six-skill model of critical thinking (Facione, Delphi Report) that operationalizes interpretation, analysis, evaluation, inference, explanation, and self-regulation. It is widely used in education, policy, debate, and scientific reasoning to structure balanced, evidence-based thinking.',
+  help: 'Provide a topic/claim/problem and supporting/opposing evidence. Optionally add stakeholders, alternative explanations, and criteria. The model will step through all six skills, surface counterarguments, flag bias, and finish with a concise justification, confidence rating, and next step.',
+  fields: [
+    { key:'topic', label:'Topic / claim / problem', type:'text',
+      desc:'The statement or issue under consideration.', 
+      ph:'e.g., “Feature X reduces churn by 10%.”' },
+    { key:'evidence', label:'Evidence supporting', type:'textarea',
+      desc:'Main supporting data, arguments, or reasoning.',
+      ph:'Key studies, metrics, examples…' },
+    { key:'counter', label:'Evidence opposing', type:'textarea',
+      desc:'Counterevidence or disconfirming data.',
+      ph:'Limitations, critiques, contrary findings…' },
+    { key:'alt_explanations', label:'Alternative explanations / hypotheses', type:'textarea',
+      desc:'Other plausible causes or interpretations.',
+      ph:'Market seasonality, user bias, sampling issues…' },
+    { key:'criteria', label:'Evaluation criteria (optional)', type:'textarea',
+      desc:'Standards for judging evidence or claims.',
+      ph:'Validity, reliability, fairness, impact' },
+    { key:'stakeholders', label:'Stakeholders (optional)', type:'textarea',
+      desc:'Who is affected by the conclusion or decision.',
+      ph:'Executives, customers, regulators, peers' },
+    {
+      key:'explain_aud',
+      label:'Explanation audience',
+      type:'repeater',
+      itemType:'typeahead',
+      itemLabel:'persona',
+      autofill:'persona->inline',
+      desc:'Who the reasoning will be explained to.',
+      ph:'Executives, peers, students, customers…'
+    },
+    { key:'selfreg_checks', label:'Bias / self-regulation notes', type:'text',
+      desc:'Bias checks, personal reflection, or quality controls.',
+      ph:'Seek disconfirming data; avoid anchoring; confidence rating…' }
   ],
-  boosters:[
-    'Finish with a 2-line “Because-Therefore” justification and 1 actionable next test.'
+  boosters: [
+    'Always state your confidence level (low/medium/high) and uncertainty range.',
+    'Test each conclusion against at least one counterexample.',
+    'Strengthen at least one opposing argument before rebutting.',
+    'Make bias explicit and propose a mitigation strategy.',
+    'Connect inference to real-world implications or decisions.',
+    'Finish with a 2-line “Because–Therefore” justification and 1 actionable next step.'
   ],
-  template:({topic,evidence,counter,alt_hypotheses,explain_aud,selfreg_checks,ctx})=>[
-    'Use Facione’s six skills on the target.',
+  template: ({ topic, evidence, counter, alt_explanations, criteria, stakeholders, explain_aud, selfreg_checks, ctx }) => [
+    'Apply Facione’s six core critical thinking skills.',
     ctx && `Context: ${ctx}`,
-    topic && `Target: ${topic}`,
+    topic && `Target issue: ${topic}`,
     'Output:',
-    '1) Interpretation (what the information means).',
-    evidence && `2) Analysis (structures/relations in the evidence): ${evidence}`,
-    counter && `3) Evaluation (credibility and strength of pro vs con): ${counter}`,
-    alt_hypotheses && `4) Inference (best-supported conclusion + uncertainty; consider alternatives): ${alt_hypotheses}`,
-    explain_aud && `5) Explanation (concise, audience-appropriate): audience=${explain_aud}`,
-    selfreg_checks && `6) Self-regulation (bias/quality checks applied): ${selfreg_checks}`
+    '1) Interpretation — Clarify what the issue and evidence mean in plain terms.',
+    evidence && `2) Analysis — Identify key structures, relations, or assumptions in the evidence:\n${evidence}`,
+    counter && `3) Evaluation — Weigh credibility and logical strength of supporting vs. opposing evidence:\n${counter}`,
+    alt_explanations && `4) Inference — Draw a conclusion, with uncertainty and alternatives:\n${alt_explanations}`,
+    criteria && `Criteria — Standards applied for evaluation:\n${criteria}`,
+    stakeholders && `Stakeholders — Who is impacted:\n${stakeholders}`,
+    explain_aud && (
+      '5) Explanation — Frame the conclusion in terms suitable for the audience(s):\n' +
+      String(explain_aud).split(/\n+/).map((a,i)=>`${i+1}. ${a}`).join('\n')
+    ),
+    selfreg_checks && `6) Self-regulation — Bias/quality checks applied:\n${selfreg_checks}`,
+    'Close with:\n- Because–Therefore justification\n- Confidence level & uncertainty range\n- One next step (experiment, check, or action)\n\nChecklist:\n- [ ] All six skills addressed\n- [ ] At least one counterargument strengthened\n- [ ] Bias check included\n- [ ] Confidence level stated\n- [ ] Actionable next step proposed'
   ].filter(Boolean).join('\n')
 },
-
 {
-    id: 'first_principles',
-    slug: 'first-principles-analysis',
-    label: 'First Principles — Question assumptions & reason from basics',
-    kind: 'framework',
-    categories: ['reasoning', 'innovation'],
-    tags: [
-      'type:framework','topic:problem-solving','topic:assumptions','level:intermediate',
-      'use:strategy','use:research','use:inventive-thinking'
-    ],
-    use_cases: [
-      'solve complex problems by breaking them down to fundamental truths',
-      'challenge default assumptions to find innovative solutions',
-      'analyze feasibility by building up from basic principles'
-    ],
-    boosters: [
-      'Explicitly list core facts or principles that are undeniably true in this context.',
-      'For each assumption, ask “Why must this be true?” and explore what happens if it’s not.'
-    ],
-    definition: 'A problem-solving approach that strips a problem down to fundamental truths and builds solutions from the ground up, rather than relying on assumptions or analogies.',
-    help: 'State the problem and any assumptions. The model will break the problem into basics, challenge assumptions, and propose a solution derived from first principles thinking.',
-    fields: [
-      { key: 'problem', label: 'Problem or question', type: 'textarea',
-        desc: 'The issue to solve or question to answer, as specifically stated as possible.',
-        ph: 'e.g., How can we create a low-cost, sustainable water filter for remote areas?' },
-      { key: 'assumptions', label: 'Assumptions (optional, one per line)', type: 'textarea',
-        desc: 'Any existing assumptions or constraints you have in mind.',
-        ph: 'Water must be boiled to purify...\nWe can only use local materials...' }
-    ],
-    template: ({ problem, assumptions, ctx, style, tone }) => [
-      'Solve using first principles reasoning.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      problem && `Problem: ${problem}`,
-      assumptions && (
-        'Assumptions:\n' + String(assumptions).split(/\n+/).map(s => s.trim()).filter(Boolean).map((a,i) => `${i+1}. ${a}`).join('\n')
-      ),
-      'Output:\n1) Fundamental truths (list core facts)\n2) Assumption challenges (what if each assumption is false?)\n3) Solution idea built from the fundamental truths'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'first_principles',
+  slug: 'first-principles-analysis',
+  label: 'First Principles — Question assumptions & reason from basics',
+  kind: 'framework',
+  categories: ['reasoning','innovation','analysis','creativity','philosophy','science','entrepreneurship'],
+  tags: [
+    'type:framework','topic:problem-solving','topic:assumptions','topic:critical-thinking','topic:innovation',
+    'topic:reductionism','topic:scientific-method','level:intermediate',
+    'use:strategy','use:research','use:inventive-thinking','use:decision-making',
+    'use:validation','use:product-design','use:teaching'
+  ],
+  use_cases: [
+    'Solve complex problems by breaking them down to fundamental truths.',
+    'Challenge default assumptions to find innovative or unexpected solutions.',
+    'Reverse-engineer a claim or idea by testing its foundational basis.',
+    'Analyze feasibility by building up from basic principles.',
+    'Make personal or strategic decisions with clarity about true constraints.',
+    'De-bias reasoning by stripping analogies and defaults.',
+    'Develop radically new product designs where conventional wisdom blocks progress.',
+    'Teach critical thinking and structured problem decomposition.'
+  ],
+  boosters: [
+    'Explicitly list core facts or principles that are undeniably true in this context.',
+    'For each assumption, ask “Why must this be true?” and explore what happens if it’s not.',
+    'Translate truths into measurable criteria or physical/economic limits when possible.',
+    'Force at least 3 rounds of “Why?” questioning for each assumption.',
+    'If a fact is missing, flag it as an unknown needing research.',
+    'Propose at least 2 alternative solutions rebuilt from the same truths.',
+    'End with a short “Because–Therefore” reasoning chain that ties facts to the conclusion.'
+  ],
+  definition: 'A problem-solving approach that strips an issue down to fundamental truths and rebuilds solutions from the ground up. It challenges assumptions and analogies to unlock novel thinking, drawing from philosophy, science, and entrepreneurship.',
+  help: 'State the problem, list assumptions, known truths, unknowns, and optionally a desired outcome. The model will reduce the issue to basics, test assumptions, highlight gaps, and rebuild reasoning from first principles.',
+  fields: [
+    { key: 'problem', label: 'Problem or question', type: 'textarea',
+      desc: 'The issue to solve or question to answer, stated as clearly and concretely as possible.',
+      ph: 'e.g., How can we create a low-cost, sustainable water filter for remote areas?' },
+    { key: 'assumptions', label: 'Assumptions (optional, one per line)', type: 'textarea',
+      desc: 'Assumptions or constraints you think apply. These will be tested and possibly challenged.',
+      ph: 'Water must be boiled to purify...\nWe can only use local materials...' },
+    { key: 'facts', label: 'Known truths/evidence (optional)', type: 'textarea',
+      desc: 'List what you know for sure: scientific laws, validated data, or observable facts.',
+      ph: 'Clean water requires removing microbes and particulates.\nGravity filtration works without power.' },
+    { key: 'unknowns', label: 'Unknowns / gaps in knowledge (optional)', type: 'textarea',
+      desc: 'What information is missing or uncertain and needs to be researched further.',
+      ph: 'Exact cost of local materials\nLifespan of ceramic filters' },
+    { key: 'goal', label: 'Desired outcome (optional)', type: 'text',
+      desc: 'The ultimate goal or success state you want to achieve.',
+      ph: 'Affordable filter accessible to rural households' }
+  ],
+  template: ({ problem, assumptions, facts, unknowns, goal, ctx, style, tone }) => [
+    'Apply first principles reasoning.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    assumptions && (
+      'Assumptions:\n' + String(assumptions).split(/\n+/).map(s => s.trim()).filter(Boolean).map((a,i) => `${i+1}. ${a}`).join('\n')
+    ),
+    facts && (
+      'Known truths:\n' + String(facts).split(/\n+/).map(s => s.trim()).filter(Boolean).map((f,i) => `${i+1}. ${f}`).join('\n')
+    ),
+    unknowns && (
+      'Unknowns / gaps:\n' + String(unknowns).split(/\n+/).map(s => s.trim()).filter(Boolean).map((u,i) => `${i+1}. ${u}`).join('\n')
+    ),
+    goal && `Desired outcome: ${goal}`,
+    'Output:\n1) Reduced fundamentals (core truths)\n2) Challenges to assumptions (what if false?)\n3) Alternative reconstructions from truths\n4) Because–Therefore justification\n5) Research agenda: what unknowns must be resolved to proceed'
+  ].filter(Boolean).join('\n')
+},
 
 {
   id:'goal_breakdown',
@@ -1316,93 +1766,182 @@ boosters: [
 },
 
   
-  {
-    id:'golden',
-    slug:'golden-circle-framework',
-    label:'Golden Circle — Why · How · What',
-    kind:'framework',
-    categories:['messaging frameworks','prompt development techniques'],
-    tags:[
-  'type:framework','topic:messaging','phase:overview','level:beginner',
-  'use:brand-messaging','use:mission-vision','use:pitch-deck'
-],
-use_cases: [
-  'brand messaging',
-  'mission/vision alignment',
-  'about page narrative',
-  'investor pitch framing',
-  'employer brand messaging',
-  'product purpose statement'
-],
-boosters: [
-  "Lead with “Why”; keep each section 2–3 sentences; end with a one-line “Because…” summary."
-],
-    definition:'A purpose-first communication model that moves from belief (why) to methods (how) to concrete offerings (what).',
-    help:'Purpose-first messaging scaffold.',
-    fields:[
-      {key:'why', label:'Why (purpose/belief)',         type:'textarea', desc:'Belief/purpose.',     ph:'e.g., Everyone deserves privacy by default'},
-      {key:'how', label:'How (principles/approach)',    type:'textarea', desc:'Methods/approach.',   ph:'e.g., Strong encryption; zero-knowledge design'},
-      {key:'what',label:'What (products/services/actions)', type:'textarea', desc:'Offerings/actions.', ph:'e.g., Encrypted email; secure file share'}
-    ],
-    template:({why,how,what,ctx})=>[
-      ctx&&`Context: ${ctx}`,
-      `Craft a message using the Golden Circle.`,
-      why&&`Why: ${why}`,
-      how&&`How: ${how}`,
-      what&&`What: ${what}`
-    ].filter(Boolean).join('\n')
-  },
+ {
+  id: 'golden',
+  slug: 'golden-circle-framework',
+  label: 'Golden Circle — Why · How · What · Mission',
+  kind: 'framework',
+  categories: ['messaging frameworks','cultural frameworks','strategy','leadership','personal-development','branding'],
+  tags: [
+    'type:framework','topic:purpose','topic:messaging','topic:mission','topic:vision','topic:values',
+    'phase:overview','level:beginner',
+    'use:brand-messaging','use:mission-vision','use:pitch-deck',
+    'use:community-engagement','use:personal-purpose','use:leadership-alignment','use:storytelling'
+  ],
+  use_cases: [
+    'Craft an authentic brand or organizational purpose statement.',
+    'Align team or community around shared mission and values.',
+    'Shape a nonprofit’s narrative for funders and community members.',
+    'Frame an individual’s life or career direction with clarity.',
+    'Design communication that respects cultural diversity and shared well-being.',
+    'Craft leadership speeches or keynotes that inspire through purpose.',
+    'Develop culture documents or onboarding material for new employees.',
+    'Shape personal mission statements or life purpose frameworks.'
+  ],
+  boosters: [
+    "Lead with *Why* — begin with belief or cause, not with the product.",
+    "Keep each section clear, 2–3 sentences max; avoid jargon.",
+    "Mission should emphasize contribution to others, not just self-gain.",
+    "End with a one-line *Because…* or *So that…* summary linking back to well-being.",
+    "Check coherence: the *What* must clearly express the *How*, and both must embody the *Why*.",
+    "Test resonance with the intended audience — would they feel inspired and aligned?",
+    "Use culturally respectful and inclusive language; avoid centering only profit or self-interest."
+  ],
+  definition: 'A purpose-first communication model (popularized by Simon Sinek) that moves from belief (Why) to methods (How) to concrete offerings (What). This adaptation adds Mission — a clear, outward-facing purpose or cause that ties personal or organizational actions to broader well-being.',
+  help: 'Use this scaffold to clarify and communicate purpose. Begin with Mission and Why (belief), then How (principles), then What (offerings). The output includes a coherence check and an inspiring summary line.',
+  fields: [
+    { key:'mission', label:'Mission (guiding purpose/goal)', type:'textarea',
+      desc:'A clear purpose or larger cause that directs action and emphasizes well-being beyond the self.',
+      ph:'e.g., To ensure every child has access to clean drinking water.' },
+    { key:'why', label:'Why (belief/purpose)', type:'textarea',
+      desc:'The underlying belief or cause driving your work.',
+      ph:'e.g., Everyone deserves privacy by default.' },
+    { key:'how', label:'How (principles/approach)', type:'textarea',
+      desc:'The unique values, methods, or approach that bring the purpose to life.',
+      ph:'e.g., Strong encryption and zero-knowledge design.' },
+    { key:'what', label:'What (offerings/actions)', type:'textarea',
+      desc:'The tangible actions, services, or products that express the Why and Mission.',
+      ph:'e.g., Encrypted email; secure file sharing; advocacy workshops.' },
+    { key:'aud_beneficiaries', label:'Audience / Beneficiaries (optional)', type:'textarea',
+      desc:'Who this mission and message is meant to serve or inspire.',
+      ph:'e.g., Rural communities, students, nonprofit partners.' },
+    { key:'impact', label:'Impact / Outcomes (optional)', type:'textarea',
+      desc:'What positive change or effect should result if the mission succeeds.',
+      ph:'e.g., Reduced child mortality; stronger community trust.' }
+  ],
+  template: ({ mission, why, how, what, aud_beneficiaries, impact, ctx, audience, style, tone }) => [
+    'Craft a message using the Golden Circle (adapted with Mission).',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    mission && `Mission: ${mission}`,
+    why && `Why: ${why}`,
+    how && `How: ${how}`,
+    what && `What: ${what}`,
+    aud_beneficiaries && `Beneficiaries: ${aud_beneficiaries}`,
+    impact && `Impact/Outcomes: ${impact}`,
+    '---',
+    'Output:',
+    '1) Golden Circle narrative (Why → How → What → Mission).',
+    '2) Coherence check: Do all layers align and reinforce each other?',
+    '3) Audience/beneficiary resonance check.',
+    '4) One-line summary linking back to broader contribution (“Because/So that…”).',
+    '5) Vision impact statement describing the change this mission creates.'
+  ].filter(Boolean).join('\n')
+},
   
-  {
-    id: 'grow',
-    slug: 'grow-coaching-model',
-    label: 'GROW — Goal · Reality · Options · Way Forward',
-    kind: 'framework',
-    categories: ['coaching', 'planning'],
-    tags: [
-      'type:framework','topic:goal-setting','topic:coaching','level:beginner',
-      'use:personal-development','use:mentoring','use:problem-solving'
-    ],
-    use_cases: [
-      'structure a coaching conversation or self-reflection',
-      'set and plan personal or team goals with clear next steps',
-      'evaluate options to overcome a challenge and commit to an action'
-    ],
-    boosters: [
-      'Offer at least 3 distinct Options, even unconventional ones, before recommending a way forward.',
-      'Encourage a specific, time-bound commitment in the Way Forward step (who, what, when).'
-    ],
-    definition: 'A coaching framework for goal-oriented conversations, progressing through defining a Goal, assessing the current Reality, brainstorming Options, and deciding the Way Forward (action plan).',
-    help: 'Fill in the goal and current reality; the model will suggest options and a concrete plan. You can optionally provide any options you’ve considered or a tentative plan, and the model will build on it.',
-    fields: [
-      { key: 'goal', label: 'Goal', type: 'textarea',
-        desc: 'The goal or outcome to achieve.',
-        ph: 'e.g., Improve my public speaking confidence for work presentations.' },
-      { key: 'reality', label: 'Reality (current situation)', type: 'textarea',
-        desc: 'Current facts, obstacles, and context regarding the goal.',
-        ph: 'e.g., I get very nervous, my last presentation had pacing issues and I avoided eye contact.' },
-      { key: 'options', label: 'Options (optional, one per line)', type: 'textarea',
-        desc: 'Any ideas or strategies already thought of to achieve the goal.',
-        ph: 'Join a public speaking group...\nPractice with a friend...\nWatch online tutorials...' },
-      { key: 'will', label: 'Way Forward (if decided, optional)', type: 'textarea',
-        desc: 'A chosen action or commitment (if you already have one in mind).',
-        ph: 'e.g., I will enroll in a Toastmasters club and practice weekly.' }
-    ],
-    template: ({ goal, reality, options, will, ctx, style, tone }) => [
-      'Use the GROW model to structure the plan.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      goal && `Goal: ${goal}`,
-      reality && (`Reality:\n` + reality),
-      options && (
-        'Options:\n' + String(options).split(/\n+/).map(s => s.trim()).filter(Boolean).map((opt,i) => `${i+1}. ${opt}`).join('\n')
-      ),
-      will && (`Way Forward (given):\n` + will),
-      'Output:\n1) Goal\n2) Reality factors\n3) Options analysis\n4) Way Forward (specific next steps)'
-    ].filter(Boolean).join('\n')
-  },
-  
+{
+  id: 'grow',
+  slug: 'grow-coaching-model',
+  label: 'GROW — Goal · Reality · Options · Way Forward',
+  kind: 'framework',
+  categories: ['coaching','planning','reflection','leadership','therapy','teamwork'],
+  tags: [
+    'type:framework','topic:goal-setting','topic:coaching','topic:decision-making',
+    'topic:reflection','phase:plan','level:beginner',
+    'use:personal-development','use:mentoring','use:problem-solving',
+    'use:team-alignment','use:career-development','use:therapy-coaching','use:leadership-alignment'
+  ],
+  use_cases: [
+    'Structure a coaching or mentoring conversation with clarity.',
+    'Set personal or team goals with grounded reality-checks and next steps.',
+    'Explore different paths forward by weighing multiple options.',
+    'Support reflective practice, journaling, or therapy-style goal work.',
+    'Facilitate group planning sessions where alignment is needed.',
+    'Use in career coaching and performance reviews.',
+    'Guide conflict resolution or mediation conversations.',
+    'Provide structure for group coaching or community workshops.'
+  ],
+  boosters: [
+    'Offer at least 3 distinct Options, including unconventional or stretch ones, before narrowing down.',
+    'Encourage a specific, time-bound commitment in the Way Forward step (who, what, when).',
+    'If relevant, include collective or community goals, not just individual ones (to reduce Western individualism bias).',
+    'Highlight potential barriers and how the plan accounts for them.',
+    'Use scaling questions (1–10) to assess motivation or readiness.',
+    'Encourage users to set accountability partners (peer, mentor, community).'
+  ],
+  definition: 'A coaching and decision-making framework that guides reflection and action by moving through Goal (what you want), Reality (where you are now), Options (what you could do), and Way Forward (what you will do).',
+  help: 'Provide the goal and current reality. You can also suggest options, barriers, motivation, or tentative actions if you have them. The model will expand with realistic strategies, diverse possibilities, and clear commitments.',
+  fields: [
+    { 
+      key: 'goal', 
+      label: 'Goal', 
+      type: 'textarea',
+      desc: 'The outcome or aspiration to achieve. Can be short-term (session), medium-term (project), or long-term (life/career).',
+      ph: 'e.g., Improve my public speaking confidence for work presentations.' 
+    },
+    { 
+      key: 'reality', 
+      label: 'Reality (current situation)', 
+      type: 'textarea',
+      desc: 'Facts, context, strengths, obstacles, and constraints related to the goal.',
+      ph: 'e.g., I get nervous, my last presentation had pacing issues and I avoided eye contact.' 
+    },
+    { 
+      key: 'motivation', 
+      label: 'Motivation (optional)', 
+      type: 'textarea',
+      desc: 'Why this goal matters to you. Optionally include a 1–10 readiness rating.',
+      ph: 'e.g., This would help me grow at work and feel more confident. Readiness: 7/10.' 
+    },
+    { 
+      key: 'options', 
+      label: 'Options (ideas, one per line)', 
+      type: 'textarea',
+      desc: 'Possible strategies to reach the goal. Brainstorm freely (no judgment, even “wild” ideas welcome).',
+      ph: 'Join a public speaking group...\nPractice with a friend...\nWatch online tutorials...' 
+    },
+    { 
+      key: 'barriers', 
+      label: 'Barriers (optional)', 
+      type: 'textarea',
+      desc: 'Anticipated challenges or risks, and potential strategies to handle them.',
+      ph: 'e.g., Lack of time → schedule shorter daily practices.' 
+    },
+    { 
+      key: 'will', 
+      label: 'Way Forward (commitment & accountability)', 
+      type: 'textarea',
+      desc: 'The chosen step(s) you commit to taking, with timeline and accountability structures.',
+      ph: 'e.g., I will enroll in a Toastmasters club and ask my colleague to check in monthly.' 
+    }
+  ],
+  template: ({ goal, reality, motivation, options, barriers, will, ctx, style, tone, audience }) => [
+    'Apply the GROW coaching model to structure reflection and action.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    goal && `Goal: ${goal}`,
+    reality && (`Reality:\n${reality}`),
+    motivation && (`Motivation:\n${motivation}`),
+    options && (
+      'Options:\n' + String(options).split(/\n+/).map(s => s.trim()).filter(Boolean).map((opt,i) => `${i+1}. ${opt}`).join('\n')
+    ),
+    barriers && (`Barriers:\n${barriers}`),
+    will && (`Way Forward (commitment & accountability):\n${will}`),
+    '---',
+    'Output:',
+    '1) Restate the Goal clearly.',
+    '2) Summarize Reality factors (context, strengths, challenges).',
+    '3) Expand on Options (≥3, diverse, including stretch ideas).',
+    '4) Note Motivation/readiness (if given).',
+    '5) Anticipate and address Barriers (if given).',
+    '6) Define Way Forward with commitments, timelines, and accountability structures.',
+    '7) Reflection question: What support or next check-in will help sustain progress?'
+  ].filter(Boolean).join('\n')
+},
   {
     id: 'heros_journey',
     slug: 'heros-journey-narrative',
@@ -3457,120 +3996,67 @@ boosters: [
 },
 
 {
-  id:'two_min_rule',
-  slug:'two-minute-rule',
-  label:'2-Minute Rule (David Allen)',
-  kind:'pattern',
-  categories:['productivity','behavior'],
-  tags:['type:pattern','topic:two-minute','use:starter','level:beginner'],
-  use_cases:[
+  id: 'two_min_rule',
+  slug: 'two-minute-rule',
+  label: '2-Minute Rule (David Allen)',
+  kind: 'pattern',
+  categories: ['productivity','behavior','workflow','time-management'],
+  tags: [
+    'type:pattern','topic:two-minute','topic:getting-things-done',
+    'use:starter','use:micro-task','use:anti-procrastination',
+    'level:beginner','method:gtd','principle:action-first'
+  ],
+  use_cases: [
     'reduce friction by doing a tiny version now',
-    'convert avoidance into a first motion'
+    'convert avoidance into a first motion',
+    'empty inboxes quickly',
+    'chip away at procrastination',
+    'prime focus for deeper work'
   ],
-  definition:'If it takes ≤2 minutes, do it now. Otherwise, define a 2-minute starter.',
-  help:'Name the task; answer Yes/No; either do it now or write a 2-minute starter step.',
-  boosters:[
-    'If “No,” schedule the starter step on your calendar.',
-    'Write the starter so it’s purely mechanical.'
+  definition: 'If a task takes ≤2 minutes, finish it immediately. If not, break it down into a concrete 2-minute “starter” step you can schedule, lowering resistance and priming momentum.',
+  help: '1) Write the task clearly. 2) Decide Yes/No — can it be done in under 2 minutes? 3) If Yes, do it immediately. 4) If No, define a frictionless starter step (≤2 minutes) and schedule it. 5) Optionally add a small reward.',
+  boosters: [
+    'If “Yes,” push the user to complete the task right now—logging it wastes more time than finishing.',
+    'If “No,” guide the user to schedule a concrete 2-minute starter step in their calendar or task manager.',
+    'Ensure any starter step is purely mechanical and frictionless (e.g., “open doc and type title”).',
+    'Encourage momentum stacking: celebrate 3 small wins in sequence to build flow.',
+    'Suggest pairing the 2-Minute Rule with Pomodoro cycles to bridge from micro-tasks into deep work.',
+    'Prompt reflection: if resistance remains even at ≤2 minutes, what hidden friction is at play?'
   ],
-  fields:[
-    { key:'task',           label:'Task — what am I avoiding?', type:'textarea' },
-    { key:'two_min_possible',label:'Can I do a 2-minute version? (Yes/No)', type:'text', ph:'Yes / No' },
-    { key:'starter',        label:'If No → 2-minute starter step', type:'textarea', ph:'Open doc and write title; create folder…' }
+  fields: [
+    { key:'task', label:'Task — what am I avoiding?', type:'textarea',
+      desc:'State the exact action, not the project.', ph:'Reply to client email' },
+
+    { key:'two_min_possible', label:'Can I do a 2-minute version? (Yes/No)',
+      type:'text', ph:'Yes / No', desc:'Gut check—under 2 minutes of real effort?' },
+
+    { key:'starter', label:'If No → 2-minute starter step',
+      type:'textarea', ph:'Open doc and write title; create folder…',
+      desc:'Write the smallest visible action that lowers resistance.' },
+
+    { key:'reward', label:'Tiny reward (optional)',
+      type:'text', ph:'Stretch, sip coffee, mark ✔️',
+      desc:'Acknowledge progress to reinforce habit.' },
+
+    { key:'timebox', label:'Timebox (auto ≤2 min)',
+      type:'text', ph:'2 min max',
+      desc:'Keeps scope small and safe from creep.' }
   ],
-  template: ({ task, two_min_possible, starter, ctx, audience, style, tone }) => [
+  template: ({ task, two_min_possible, starter, reward, timebox, ctx, audience, style, tone }) => [
     'Apply the 2-Minute Rule to force a start.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
     task && ('Task:\n' + task),
-    typeof two_min_possible==='string' && two_min_possible && `Can do ≤2 min now? ${two_min_possible}`,
-    (two_min_possible||'').toLowerCase().startsWith('y') ? 'Action: Do it now.' : (starter && ('Starter step:\n' + starter)),
-    'Output:\n1) Task\n2) Immediate action or starter\n3) Timebox (≤2 min) + tiny reward'
+    typeof two_min_possible === 'string' && two_min_possible && `Can do ≤2 min now? ${two_min_possible}`,
+    (two_min_possible||'').toLowerCase().startsWith('y') 
+      ? 'Action: Do it now.' 
+      : (starter && ('Starter step:\n' + starter)),
+    `Timebox: ${timebox || '≤2 minutes'}`,
+    reward && `Reward: ${reward}`,
+    'Output:\n1) Task\n2) Immediate action or starter\n3) Timebox (≤2 min)\n4) Optional tiny reward'
   ].filter(Boolean).join('\n')
-},
-
-{
-  id:'vars_delims',
-  slug:'variables-and-delimiters',
-  label:'Variables & Delimiters — Define once, reuse cleanly',
-  kind:'framework',
-  categories:['prompt development techniques','structuring'],
-  tags:[
-    'type:framework','topic:prompting','phase:compose','level:beginner',
-    'use:variables','use:delimiters','use:glossary','use:spec'
-  ],
-  use_cases:[
-    'long prompts with reusable terms','glossaries & specs','persona/role libraries','data field definitions'
-  ],
-  definition:'Declare variables once (names + definitions aligned by line). We auto-fence a VARIABLES block so the model resolves {NAME} unambiguously.',
-  help:'In “Variables”, list names one per line (e.g., USER_ROLE). In “Definitions”, list matching definitions one per line (e.g., Senior data analyst…). Lines are zipped by index. Reference variables later as {USER_ROLE}.',
-  fields:[
-    { key:'variables',   label:'Variables (one per line)',      type:'textarea',
-      desc:'Each line is a variable NAME. Uppercase is recommended (e.g., USER_ROLE).',
-      ph:'USER_ROLE\nDATASET\nSUCCESS_CRITERIA' },
-
-    { key:'definitions', label:'Definitions (one per line)',    type:'textarea',
-      desc:'Each line defines the variable at the same line-number.',
-      ph:'Senior data analyst reporting to the VP of Growth\nCSV with columns date, clicks, cost, conversions\nClear, testable outcomes within 30 days' },
-
-    { key:'task',        label:'Primary task',                  type:'textarea',
-      desc:'What you want done using the variables.',
-      ph:'Write a 150–200 word onboarding email that references {USER_ROLE} and {SUCCESS_CRITERIA} and uses data from {DATASET}.' },
-
-    { key:'constraints', label:'Constraints (optional)',        type:'textarea',
-      desc:'Rules, limits, must-haves.',
-      ph:'Plain language; cite {DATASET} column names exactly; avoid jargon.' },
-
-    { key:'format',      label:'Response format (optional)',    type:'textarea',
-      desc:'Headings/structure for output.',
-      ph:'Markdown: Summary, Steps, Checklist' }
-  ],
-  boosters:[
-    'Treat each {NAME} as canonical. If any mapping is missing, ask one concise clarifying question, then proceed.',
-    'Keep variables verbatim (case-sensitive) when referencing, e.g., {USER_ROLE}.'
-  ],
-  template:({variables,definitions,task,constraints,format,ctx})=>{
-    const toLines = s => (s||'').split('\n').map(x=>x.trim()).filter(x=>x.length>0);
-    const names = toLines(variables);
-    const defs  = toLines(definitions);
-
-    const max = Math.max(names.length, defs.length);
-    const pairs = [];
-    for (let i=0;i<max;i++){
-      const name = (names[i]||'').trim();
-      const def  = (defs[i] || '(define)').trim();
-      // skip fully empty lines
-      if (!name && !def) continue;
-      // provide a fallback name if definition appears without a name
-      pairs.push([ name || `VAR_${i+1}`, def ]);
-    }
-
-    const mapped = pairs.map(([n,d])=>`${n} = ${d}`).join('\n');
-
-    const issues = [];
-    if (names.length !== defs.length){
-      issues.push(`Note: ${names.length} variable(s) and ${defs.length} definition(s).`);
-    }
-    const bad = names.filter(n => n && !/^[A-Z][A-Z0-9_]*$/.test(n));
-    if (bad.length){
-      issues.push(`Suggestion: Normalize to UPPER_SNAKE_CASE → ${bad.join(', ')}`);
-    }
-
-    return [
-      'Use the following variable definitions. Treat them as canonical.',
-      '```VARIABLES',
-      mapped,
-      '```',
-      ctx && `Context: ${ctx}`,
-      task && `Task: ${task}`,
-      constraints && `Constraints: ${constraints}`,
-      issues.length ? `Validator: ${issues.join(' ')}` : null,
-      'Rules: Always resolve placeholders like {NAME} from the VARIABLES block above. If any value is "(define)", ask one concise question, then proceed.',
-      format && `Format: ${format}`
-    ].filter(Boolean).join('\n');
-  }
 },
 
 {
@@ -3675,302 +4161,560 @@ boosters: [
 },
 
   {
-    id:'a3_ps',
-    slug:'a3-problem-solving-toyota',
-    label:'A3 Problem Solving (Toyota)',
-    kind:'framework',
-    categories:['quality','operations','reasoning','prompt development techniques'],
-    tags:[
-      'type:framework','topic:problem-solving','topic:lean','phase:plan','level:intermediate',
-      'use:root-cause','use:countermeasures','use:one-page-brief'
-    ],
-    use_cases:[
-      'structure a one-page problem brief',
-      'analyze current vs. target condition',
-      'design countermeasures and follow-up'
-    ],
-    boosters:[
-      'Keep it one “page”: terse bullets per section.',
-      'Tie each countermeasure to a specific cause and owner.'
-    ],
-    definition:'A visual one-page flow to frame background, analyze causes, plan countermeasures, and follow through.',
-    help:'Fill the sections succinctly; prefer facts and direct measures.',
-    fields:[
-      { key:'background', label:'Background (why this matters)', type:'textarea', ph:'Context and business impact.' },
-      { key:'current',    label:'Current condition (facts/metrics)', type:'textarea', ph:'Where we are now.' },
-      { key:'target',     label:'Target condition (measurable)', type:'textarea', ph:'Where we need to be by when.' },
-      { key:'analysis',   label:'Root-cause analysis', type:'textarea', ph:'Causal chain; key drivers.' },
-      { key:'countermeasures', label:'Countermeasures', type:'textarea', ph:'Proposed fixes mapped to causes.' },
-      { key:'plan',       label:'Implementation plan', type:'textarea', ph:'Owners, dates, checkpoints.' },
-      { key:'follow_up',  label:'Follow-up / learnings', type:'textarea', ph:'How we’ll verify and iterate.' }
-    ],
-    template:({background,current,target,analysis,countermeasures,plan,follow_up,ctx,audience,style,tone})=>[
-      'Use the A3 problem-solving flow.',
-      ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      background && `Background:\n${background}`,
-      current && `Current condition:\n${current}`,
-      target && `Target condition (measurable):\n${target}`,
-      analysis && `Root-cause analysis:\n${analysis}`,
-      countermeasures && `Countermeasures:\n${countermeasures}`,
-      plan && `Implementation plan:\n${plan}`,
-      follow_up && `Follow-up / learnings:\n${follow_up}`,
-      'Output:\n1) Problem brief\n2) Causes→Countermeasures map\n3) Plan with owners/dates\n4) Follow-up checks'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'a3_ps',
+  slug: 'a3-problem-solving-toyota',
+  label: 'A3 Problem Solving (Toyota)',
+  kind: 'framework',
+  categories: [
+    'quality','operations','reasoning','prompt development techniques',
+    'lean','continuous improvement','pdca'
+  ],
+  tags: [
+    'type:framework','topic:problem-solving','topic:lean',
+    'topic:root-cause','phase:plan','phase:analyze','phase:improve',
+    'level:intermediate','use:countermeasures','use:one-page-brief'
+  ],
+  use_cases: [
+    'structure a one-page problem brief',
+    'analyze current vs. target condition',
+    'design countermeasures and follow-up',
+    'facilitate PDCA cycles',
+    'align teams on root cause and actions',
+    'summarize post-mortem or retrospective findings'
+  ],
+  boosters: [
+    'Ensure each section is concise: bullet points or ≤3 lines.',
+    'Always connect each countermeasure directly to a specific root cause and owner.',
+    'Validate that the target condition is measurable and time-bound.',
+    'Prompt for evidence and data in the “current condition” before moving forward.',
+    'Close the loop: include explicit follow-up metrics tied back to goals.',
+    'Add a simple cause ↔ countermeasure mapping (table or bullets).',
+    'Highlight priority countermeasures (high impact, low effort) if applicable.',
+    'Ensure the A3 tells a coherent story from Background → Target → Follow-up.'
+  ],
+  definition: 'A structured, one-page problem-solving method from Toyota that frames background, problem, current vs. target condition, root cause analysis, countermeasures, and follow-up. It standardizes PDCA (Plan–Do–Check–Act) thinking in a concise, visual format.',
+  help: 'Fill sections in order. Use objective data in Current, measurable outcomes in Target, then map every Countermeasure to a cause and owner. Treat the page as both a planning tool and a communication tool.',
+  fields: [
+    { key:'background', label:'Background (why this matters)', type:'textarea',
+      desc:'Context and importance; why solving this matters.', ph:'Business impact, urgency, relevance' },
+    { key:'problem', label:'Problem statement', type:'textarea',
+      desc:'The specific issue to solve (one sentence).', ph:'Overtime rates increasing despite stable demand' },
+    { key:'current', label:'Current condition (facts/metrics)', type:'textarea',
+      desc:'Baseline data, observable facts, and pain points.', ph:'Error rate 12%; 25% overtime' },
+    { key:'target', label:'Target condition (measurable)', type:'textarea',
+      desc:'Define clear, numeric, or time-based goals.', ph:'Reduce overtime to <10% by Q4' },
+    { key:'analysis', label:'Root-cause analysis', type:'textarea',
+      desc:'Causal chain using 5 Whys, fishbone, etc.', ph:'Defective supplier parts → excess rework' },
+    { key:'countermeasures', label:'Countermeasures', type:'textarea',
+      desc:'Actions mapped 1:1 to causes with owners.', ph:'Add incoming inspection; assign QA lead' },
+    { key:'plan', label:'Implementation plan', type:'textarea',
+      desc:'Owners, dates, checkpoints, and milestones.', ph:'QA team, start 10/1, review weekly' },
+    { key:'follow_up', label:'Follow-up / learnings', type:'textarea',
+      desc:'Metrics, validation, and captured lessons.', ph:'Check KPI weekly; adjust if >5% scrap' },
+    { key:'owner', label:'Owner / Team (optional)', type:'text',
+      desc:'Person or team responsible for overall A3.', ph:'Ops manager; QA team' }
+  ],
+  template: ({ background, problem, current, target, analysis, countermeasures, plan, follow_up, owner, ctx, audience, style, tone }) => [
+    'Apply the A3 problem-solving structure.',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    background && `Background:\n${background}`,
+    problem && `Problem statement:\n${problem}`,
+    current && `Current condition:\n${current}`,
+    target && `Target condition:\n${target}`,
+    analysis && `Root-cause analysis:\n${analysis}`,
+    countermeasures && `Countermeasures (linked to causes):\n${countermeasures}`,
+    plan && `Implementation plan (owners + dates):\n${plan}`,
+    follow_up && `Follow-up / learnings:\n${follow_up}`,
+    owner && `Owner / Team: ${owner}`,
+    'Output:\n1) One-page problem brief\n2) Cause ↔ Countermeasure map\n3) Implementation timeline\n4) Follow-up checks linked to target condition\n\nChecklist:\n- [ ] Problem clearly stated\n- [ ] Target measurable & time-bound\n- [ ] Each cause linked to countermeasure\n- [ ] Follow-up defined'
+  ].filter(Boolean).join('\n')
+},
 
   {
-    id:'anekantavada_syadvada',
-    slug:'anekantavada-syadvada-jain',
-    label:'Anekāntavāda & Syādvāda (Jain Many-Sided Logic)',
-    kind:'framework',
-    categories:['reasoning','philosophy','cultural frameworks'],
-    tags:[
-      'type:framework','topic:dialectic','topic:many-sidedness','phase:explore','level:advanced',
-      'use:ambiguity-management','use:policy','use:ethical-tradeoffs'
-    ],
-    use_cases:[
-      'frame a contentious issue via multiple partial truths',
-      'generate sevenfold qualified statements',
-      'surface context-conditional claims'
-    ],
-    boosters:[
-      'Force at least 3 distinct standpoints before synthesis.',
-      'Use “in some respect…” qualifiers to avoid overclaiming.'
-    ],
-    definition:'Reasoning that treats claims as conditionally true from different standpoints; includes sevenfold predication (syād-asti… etc.).',
-    help:'List standpoints, then produce qualified statements and a synthesis.',
-    fields:[
-      { key:'issue',       label:'Issue/claim under analysis', type:'textarea', ph:'Describe the claim.' },
-      { key:'standpoints', label:'Standpoints (naya), one per line', type:'textarea', ph:'Economic…\nEcological…\nLegal…' },
-      { key:'evidence',    label:'Key evidence by standpoint', type:'textarea', ph:'Map data to each standpoint.' },
-      { key:'predications',label:'Qualified statements (syād-…)', type:'textarea', ph:'In some respect it is…\nIn some respect it is not…' }
-    ],
-    template:({issue,standpoints,evidence,predications,ctx})=>[
-      'Apply Anekāntavāda / Syādvāda (many-sided qualified reasoning).',
-      ctx && `Context: ${ctx}`,
-      issue && `Issue:\n${issue}`,
-      standpoints && ('Standpoints:\n' + String(standpoints).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      evidence && `Evidence (by standpoint):\n${evidence}`,
-      predications && `Qualified statements:\n${predications}`,
-      'End with a synthesis that preserves conditionality and states limits.'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'anekantavada_syadvada',
+  slug: 'anekantavada-syadvada-jain',
+  label: 'Anekāntavāda & Syādvāda (Jain Many-Sided Logic)',
+  kind: 'framework',
+  categories: [
+    'reasoning','philosophy','cultural frameworks','ethics','pluralism'
+  ],
+  tags: [
+    'type:framework','topic:dialectic','topic:many-sidedness','topic:jainism','topic:pluralism',
+    'phase:explore','phase:analyze','level:advanced',
+    'use:ambiguity-management','use:policy','use:ethical-tradeoffs',
+    'use:bias-mitigation','use:cross-cultural-dialogue','use:conflict-resolution',
+    'principle:pluralism'
+  ],
+  use_cases: [
+    'frame a contentious issue via multiple partial truths',
+    'generate sevenfold qualified statements (syādvāda)',
+    'surface context-conditional claims',
+    'analyze bias in reasoning by surfacing missing standpoints',
+    'design inclusive policies or ethical frameworks with pluralist grounding',
+    'support cross-cultural dialogue and conflict resolution'
+  ],
+  boosters: [
+    'Always present at least 3 distinct standpoints drawn from different cultural or disciplinary perspectives.',
+    'Use “in some respect…” qualifiers to avoid absolutist claims.',
+    'Explicitly acknowledge Jain origins of the framework to prevent cultural erasure.',
+    'Encourage recognition of whose voices are absent or marginalized in the standpoints.',
+    'Preserve conditionality—never collapse perspectives into a single universal truth.',
+    'Map out the sevenfold Syādvāda forms where possible: it is; it is not; it is and it is not; it is indescribable; it is and is indescribable; it is not and is indescribable; it is, it is not, and is indescribable.'
+  ],
+  definition: 'A Jain philosophical method: Anekāntavāda (many-sidedness) affirms that truth is always partial, while Syādvāda formalizes this via sevenfold conditional predication. Together, they model pluralism, humility, and inclusivity in reasoning and decision-making.',
+  help: 'List the issue or claim. Provide multiple standpoints, including marginalized perspectives. Generate syādvāda-style qualified statements (“in some respect it is…”). Then synthesize by highlighting limits, contradictions, and coexisting truths, while noting cultural origins.',
+  fields: [
+    { key: 'issue', label: 'Issue/claim under analysis', type: 'textarea',
+      ph: 'Describe the claim or debate.' },
+    { key: 'standpoints', label: 'Standpoints (naya)', type: 'textarea',
+      desc: 'List viewpoints from disciplines, cultures, or contexts.',
+      ph: 'Economic…\nEcological…\nLegal…' },
+    { key: 'cultural', label: 'Cultural/marginalized perspectives', type: 'textarea',
+      desc: 'Perspectives often excluded from dominant narratives.',
+      ph: 'Indigenous view…\nDalit perspective…\nNon-Western epistemology…' },
+    { key: 'evidence', label: 'Key evidence by standpoint', type: 'textarea',
+      ph: 'Map data or reasoning to each standpoint.' },
+    { key: 'bias', label: 'Bias/absence check', type: 'textarea',
+      desc: 'Who is missing or stereotyped? How might bias distort the framing?',
+      ph: 'Women’s voices missing; overemphasis on economic lens.' },
+    { key: 'predications', label: 'Qualified statements (syād-…)', type: 'textarea',
+      ph: 'In some respect it is…\nIn some respect it is not…' },
+    { key: 'sevenfold', label: 'Sevenfold Syādvāda mapping (optional)', type: 'textarea',
+      desc: 'Explicitly write each of the 7 forms to discipline reasoning.',
+      ph: '1. In some respect it is...\n2. In some respect it is not...\n...' },
+    { key: 'application', label: 'Application/implication (optional)', type: 'textarea',
+      desc: 'How plural reasoning could inform action, design, or policy.',
+      ph: 'e.g., Inclusive policy design; mediation strategy.' }
+  ],
+  template: ({ issue, standpoints, cultural, evidence, bias, predications, sevenfold, application, ctx }) => [
+    'Apply Anekāntavāda / Syādvāda (many-sided conditional reasoning).',
+    ctx && `Context: ${ctx}`,
+    issue && `Issue:\n${issue}`,
+    standpoints && ('Standpoints:\n' + String(standpoints).split(/\n+/).map((x,i)=>`${i+1}. ${x}`).join('\n')),
+    cultural && ('Cultural/marginalized perspectives:\n' + cultural),
+    evidence && `Evidence (by standpoint):\n${evidence}`,
+    bias && `Bias/absence check:\n${bias}`,
+    predications && `Qualified statements (syādvāda style):\n${predications}`,
+    sevenfold && `Sevenfold mapping:\n${sevenfold}`,
+    application && `Application/implication:\n${application}`,
+    'Synthesis:\n1) Summarize conditional truths.\n2) Highlight the limits and contradictions of each perspective.\n3) Acknowledge missing voices.\n4) Note the Jain origins of the framework.\n5) Suggest applications in pluralist reasoning or inclusive policy.'
+  ].filter(Boolean).join('\n')
+},
 
   {
-    id:'dao_wu_wei',
-    slug:'daoist-wu-wei-strategy',
-    label:'Daoist Wu-Wei Strategy (Effortless Action)',
-    kind:'framework',
-    categories:['strategy','ethics','cultural frameworks'],
-    tags:[
-      'type:framework','topic:wu-wei','topic:minimal-intervention','phase:plan','level:intermediate',
-      'use:governance','use:ops-simplification','use:change-management'
-    ],
-    use_cases:[
-      'design minimal-intervention strategies',
-      'align with existing flows instead of forcing change',
-      'choose points of least-effort leverage'
-    ],
-    boosters:[
-      'Prefer removing steps over adding steps.',
-      'Name non-actions explicitly (what you will not do).'
-    ],
-    definition:'Plan by aligning with natural flows; act sparingly at points of leverage; reduce friction and over-control.',
-    help:'Map flows and frictions; select smallest moves that unlock progress.',
-    fields:[
-      { key:'goal',         label:'Goal/outcome', type:'text', ph:'Desired state.' },
-      { key:'flows',        label:'Existing flows (where energy already moves)', type:'textarea', ph:'User habits, market currents, team rhythms…' },
-      { key:'frictions',    label:'Friction points', type:'textarea', ph:'Bottlenecks, resistances.' },
-      { key:'leverage',     label:'Leverage points', type:'textarea', ph:'Small moves with outsized effect.' },
-      { key:'non_actions',  label:'Non-actions (deliberate restraint)', type:'textarea', ph:'What not to do.' },
-      { key:'minimal_moves',label:'Minimal enabling actions', type:'textarea', ph:'Remove, nudge, or re-sequence.' }
-    ],
-    template:({goal,flows,frictions,leverage,non_actions,minimal_moves,ctx})=>[
-      'Use Wu-Wei planning: align with flows; intervene minimally at leverage points.',
-      ctx && `Context: ${ctx}`,
-      goal && `Goal: ${goal}`,
-      flows && `Existing flows:\n${flows}`,
-      frictions && `Friction points:\n${frictions}`,
-      leverage && `Leverage points:\n${leverage}`,
-      non_actions && `Non-actions (deliberate restraint):\n${non_actions}`,
-      minimal_moves && `Minimal enabling actions:\n${minimal_moves}`,
-      'Output: small set of low-effort moves with rationale and expected downstream effects.'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'dao_wu_wei',
+  slug: 'daoist-wu-wei-strategy',
+  label: 'Daoist Wu-Wei Strategy (Effortless Action)',
+  kind: 'framework',
+  categories: ['strategy','ethics','cultural frameworks'],
+  tags: [
+    'type:framework','topic:wu-wei','topic:minimal-intervention',
+    'topic:timing','topic:yielding','phase:plan','level:intermediate',
+    'use:governance','use:ops-simplification','use:change-management',
+    'use:leadership-ethics','use:personal-practice'
+  ],
+  use_cases: [
+    'design minimal-intervention strategies',
+    'align with existing flows instead of forcing change',
+    'choose timing and points of least-effort leverage',
+    'practice yielding and redirection instead of resistance',
+    'develop sustainable strategies that prevent burnout',
+    'practice ethical leadership rooted in cultural wisdom'
+  ],
+  definition: 'Wu-wei (effortless action) is a Daoist principle of acting with the grain of natural flows rather than forcing outcomes. It emphasizes minimal, well-timed interventions, yielding over resistance, and cultivating space (emptiness) as a source of power. In strategic use, it guides leaders and teams to reduce friction, simplify operations, and harmonize with larger patterns.',
+  help: 'Observe flows and frictions. Identify timing, leverage, and minimal moves. List deliberate non-actions. Compare what forcing the issue would look like versus wu-wei. Use natural metaphors (water, bamboo, valley) as reasoning tools. Close with a next step or practice.',
+  boosters: [
+    'Prefer removing steps over adding steps, unless timing calls for a single decisive move.',
+    'Name non-actions explicitly (what you will not do).',
+    'Check if the move harmonizes with larger flows and cycles rather than forcing against them.',
+    'Add at least one yielding or redirection move (like water flowing around stone).',
+    'Contrast a forcing strategy with the wu-wei version.',
+    'Reflect on emptiness: what space is created by restraint?',
+    'Close with a Daoist metaphor or image that reflects the strategy.'
+  ],
+  fields: [
+    { key: 'goal', label: 'Goal/outcome', type: 'text',
+      ph: 'Desired state.' },
+    { key: 'flows', label: 'Existing flows (where energy already moves)', type: 'textarea',
+      ph: 'User habits, market currents, team rhythms…' },
+    { key: 'frictions', label: 'Friction points', type: 'textarea',
+      ph: 'Bottlenecks, resistances.' },
+    { key: 'leverage', label: 'Leverage points', type: 'textarea',
+      ph: 'Small moves with outsized effect.' },
+    { key: 'timing', label: 'Timing (ripe moments, natural cycles)', type: 'textarea',
+      ph: 'Seasonal, market, or team rhythms.' },
+    { key: 'yielding_moves', label: 'Yielding or redirecting moves', type: 'textarea',
+      ph: 'Flowing around resistance, reframing.' },
+    { key: 'non_actions', label: 'Non-actions (deliberate restraint)', type: 'textarea',
+      ph: 'What not to do.' },
+    { key: 'minimal_moves', label: 'Minimal enabling actions', type: 'textarea',
+      ph: 'Remove, nudge, or re-sequence.' },
+    { key: 'alignment', label: 'Alignment check', type: 'textarea',
+      ph: 'Does this harmonize with larger natural, cultural, or organizational patterns?' },
+    { key: 'tradeoffs', label: 'Trade-offs / risks (optional)', type: 'textarea',
+      ph: 'What hidden costs could minimalism create?' },
+    { key: 'imagery', label: 'Daoist metaphor or imagery', type: 'textarea',
+      ph: 'Water, valley, bamboo, empty space…' },
+    { key: 'outcome', label: 'Next step / practice (optional)', type: 'textarea',
+      ph: 'What small action or reminder will embody wu-wei here?' }
+  ],
+  template: ({ goal, flows, frictions, leverage, timing, yielding_moves, non_actions, minimal_moves, alignment, tradeoffs, imagery, outcome, ctx }) => [
+    'Apply Wu-Wei planning (effortless action).',
+    ctx && `Context: ${ctx}`,
+    goal && `Goal: ${goal}`,
+    flows && `Existing flows:\n${flows}`,
+    frictions && `Friction points:\n${frictions}`,
+    leverage && `Leverage points:\n${leverage}`,
+    timing && `Timing (ripe moments):\n${timing}`,
+    yielding_moves && `Yielding/redirecting moves:\n${yielding_moves}`,
+    non_actions && `Non-actions:\n${non_actions}`,
+    minimal_moves && `Minimal enabling actions:\n${minimal_moves}`,
+    alignment && `Alignment check:\n${alignment}`,
+    tradeoffs && `Trade-offs / risks:\n${tradeoffs}`,
+    imagery && `Daoist metaphor:\n${imagery}`,
+    outcome && `Next step / practice:\n${outcome}`,
+    'Output:\n1) Flow/energy map\n2) Minimal/yielding moves\n3) Explicit non-actions\n4) Alignment check\n5) Daoist metaphor summary\n6) Actionable next step',
+    'Checklist:\n- [ ] Non-actions recorded\n- [ ] Minimal moves only\n- [ ] Harmonizes with flows/timing\n- [ ] Metaphor included\n- [ ] Next step identified'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'dmaic',
+  slug: 'dmaic-six-sigma',
+  label: 'DMAIC — Define · Measure · Analyze · Improve · Control',
+  kind: 'framework',
+  categories: ['quality','operations','decision','critical thinking'],
+  tags: [
+    'type:framework','topic:six-sigma','topic:logic','topic:process-improvement',
+    'phase:execute','level:intermediate',
+    'use:process-improvement','use:root-cause','use:experiment-design',
+    'use:continuous-improvement','use:quality-audit'
+  ],
+  use_cases: [
+    'structure a data-driven improvement',
+    'tie logic and evidence to countermeasures',
+    'design sustainable monitoring plans',
+    'prepare Six Sigma project reports',
+    'audit processes for quality or compliance'
+  ],
+  definition: 'DMAIC is a five-phase Six Sigma method for continuous improvement. It cycles through Define, Measure, Analyze, Improve, and Control. It emphasizes evidence-based problem solving, root cause validation, and sustainable controls. It is iterative—insights from Control can restart the cycle.',
+  help: 'Work step by step: Define the problem and scope, Measure baseline metrics, Analyze causes with evidence and disconfirmation, Improve via tested interventions, and design Control mechanisms that sustain gains. At each stage, surface assumptions and validate with data.',
+  boosters: [
+    'Each root cause must link back to at least one measured metric.',
+    'Each Improve action must map to a validated cause and include a success test.',
+    'Control plan must specify metric, threshold, owner, and cadence.',
+    'Surface one assumption and one disconfirming data point in Analyze.',
+    'Use visual tools: control charts, Pareto, fishbone diagrams where possible.',
+    'Anticipate drift/slippage in Control and plan mitigation.'
+  ],
+  fields: [
+    { key: 'define', label: 'Define', type: 'textarea',
+      ph: 'Problem statement, scope, customers, assumptions.' },
+    { key: 'measure', label: 'Measure', type: 'textarea',
+      ph: 'Baseline metrics, KPIs, operational definitions.' },
+    { key: 'baseline', label: 'Baseline snapshot (optional)', type: 'text',
+      ph: 'Numeric summary of current state (e.g., defect rate = 7%)' },
+    { key: 'analyze', label: 'Analyze', type: 'textarea',
+      ph: 'Root causes, 5 Whys, evidence, disconfirmation.' },
+    { key: 'assumptions', label: 'Key assumptions (explicit)', type: 'textarea',
+      ph: 'What do we believe that must be tested?' },
+    { key: 'improve', label: 'Improve', type: 'textarea',
+      ph: 'Interventions, pilots, experiments, counterfactuals.' },
+    { key: 'risks', label: 'Risks / limits (optional)', type: 'textarea',
+      ph: 'Constraints, trade-offs, unintended effects.' },
+    { key: 'control', label: 'Control', type: 'textarea',
+      ph: 'Metrics, thresholds, owners, review cadence.' },
+    { key: 'owners', label: 'Control plan ownership (optional)', type: 'textarea',
+      ph: 'Who owns each metric or process check?' }
+  ],
+  template: ({ define, measure, baseline, analyze, assumptions, improve, risks, control, owners, ctx }) => [
+    'Run DMAIC (Define → Measure → Analyze → Improve → Control).',
+    ctx && `Context: ${ctx}`,
+    define && `Define:\n${define}`,
+    measure && `Measure:\n${measure}`,
+    baseline && `Baseline snapshot:\n${baseline}`,
+    analyze && `Analyze:\n${analyze}`,
+    assumptions && `Key assumptions:\n${assumptions}`,
+    improve && `Improve:\n${improve}`,
+    risks && `Risks / limits:\n${risks}`,
+    control && `Control:\n${control}`,
+    owners && `Control owners:\n${owners}`,
+    'Output:\n1) Problem → Data → Cause → Action → Control chain\n2) Cause-action-metric mapping\n3) Control plan with metrics, thresholds, owners\n4) Assumptions & disconfirmation noted',
+    'Checklist:\n- [ ] Root causes linked to metrics\n- [ ] Improve actions mapped to causes & tests\n- [ ] Risks acknowledged\n- [ ] Control plan sustainable\n- [ ] Owners accountable'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'east_nudge',
+  slug: 'east-behavioral-nudge',
+  label: 'EAST — Easy · Attractive · Social · Timely',
+  kind: 'framework',
+  categories: ['behavior','design','strategy'],
+  tags: [
+    'type:framework','topic:nudge','topic:behavioral-science',
+    'phase:design','level:beginner',
+    'use:behavior-change','use:ux','use:policy','use:cross-cultural',
+    'use:a-b-testing'
+  ],
+  use_cases: [
+    'design nudges for adoption',
+    'reduce friction in flows',
+    'translate insights into micro-interventions',
+    'adapt behavioral design for different cultural contexts',
+    'improve default settings in digital services',
+    'run A/B tests of behavioral interventions'
+  ],
+  definition: 'EAST is a behavioral design heuristic from the UK Behavioural Insights Team. It makes desired behaviors more likely by making them Easy, Attractive, Social, and Timely—while checking for cultural fit and ethical safeguards. It works best when paired with iterative testing.',
+  help: 'Define the target behavior and audience (persona). Identify barriers. Apply each EAST lever with concrete design changes. Add an if–then plan for risky barriers. Include a cultural/equity safeguard. Conclude with a single highest-leverage nudge and test plan.',
+  boosters: [
+    'Pair each tactic with a measurable behavior and metric.',
+    'Generate at least one low-cost nudge per EAST element.',
+    'Add a tiny “if–then” plan for the riskiest barrier.',
+    'Stress-test against cultural differences: what is attractive or social in one context may not be in another.',
+    'Check equity and inclusivity: ensure ease and salience do not unintentionally exclude vulnerable groups.',
+    'Document at least one unintended consequence to monitor.'
+  ],
+  fields: [
+    { key: 'behavior', label: 'Target behavior', type: 'text', desc: 'The action you want your audience to take, stated clearly.',
+      ph: 'What should happen?' },
+
+    // UPDATED FIELD
+    {
+      key: 'audience',
+      label: 'Audience/Personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->textarea',
+      desc: 'Pick one or more personas to represent your audience. Full persona profiles will autofill here for richer context.',
+      ph: 'Who is acting?'
+    },
+
+    { key: 'barriers', label: 'Barriers (optional)', type: 'textarea',
+      desc: 'List the main obstacles that prevent the target behavior.',
+      ph: 'What blocks the target behavior now?' },
+
+    { key: 'easy', label: 'Easy (reduce effort)', type: 'textarea',
+      desc: 'How can you reduce friction and simplify the behavior?',
+      ph: 'Defaults, autofill, fewer steps…' },
+
+    { key: 'attractive', label: 'Attractive (salience/incentive)', type: 'textarea',
+      desc: 'How will you make the behavior more appealing or rewarding?',
+      ph: 'Visual priority, rewards…' },
+
+    { key: 'social', label: 'Social (norms/reciprocity)', type: 'textarea',
+      desc: 'How can social influence, norms, or reciprocity encourage action?',
+      ph: 'Testimonials, peer stats…' },
+
+    { key: 'timely', label: 'Timely (moment/trigger)', type: 'textarea',
+      desc: 'How can you deliver the nudge at the most effective moment?',
+      ph: 'Just-in-time prompts, reminders…' },
+
+    { key: 'if_then_plan', label: 'If–Then plan (optional)', type: 'textarea',
+      desc: 'Write a contingency: “If [barrier], then [nudge].”',
+      ph: 'If [barrier], then [nudge]…' },
+
+    { key: 'metric', label: 'Success metric', type: 'text',
+      desc: 'Define how you’ll measure success.',
+      ph: 'Conversion, completion time…' },
+
+    { key: 'cultural', label: 'Cultural/contextual factors', type: 'textarea',
+      desc: 'Account for norms, accessibility, or inclusivity across contexts.',
+      ph: 'Norms, accessibility, inclusivity checks…' },
+
+    { key: 'equity_check', label: 'Equity/inclusion safeguard', type: 'textarea',
+      desc: 'Ensure the nudge does not unintentionally exclude or harm vulnerable groups.',
+      ph: 'How will this nudge avoid excluding vulnerable groups?' }
+  ],
+  template: ({ behavior, audience, barriers, easy, attractive, social, timely, if_then_plan, metric, cultural, equity_check, ctx, style, tone }) => [
+    'Apply EAST (behavioral design) with inclusivity checks.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    behavior && `Behavior: ${behavior}`,
+    audience && (
+      'Audience Personas:\n' +
+      String(audience).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    barriers && `Barriers:\n${barriers}`,
+    easy && `Easy:\n${easy}`,
+    attractive && `Attractive:\n${attractive}`,
+    social && `Social:\n${social}`,
+    timely && `Timely:\n${timely}`,
+    if_then_plan && `If–Then plan:\n${if_then_plan}`,
+    metric && `Metric:\n${metric}`,
+    cultural && `Cultural/contextual factors:\n${cultural}`,
+    equity_check && `Equity/inclusion safeguard:\n${equity_check}`,
+    'Output:\n1) EAST-mapped plan\n2) Highest-leverage nudge\n3) Quick test plan (metric + if–then)\n4) Equity/inclusion safeguard\n5) Next iteration note'
+  ].filter(Boolean).join('\n')
+},
 
   {
-    id:'dmaic',
-    slug:'dmaic-six-sigma',
-    label:'DMAIC — Define · Measure · Analyze · Improve · Control',
-    kind:'framework',
-    categories:['quality','operations','decision'],
-    tags:[
-      'type:framework','topic:six-sigma','phase:execute','level:intermediate',
-      'use:process-improvement','use:experiment-design'
-    ],
-    use_cases:[
-      'structure a data-driven improvement',
-      'turn metrics into countermeasures',
-      'plan control/monitoring'
-    ],
-    boosters:[
-      'Tie each Improve action to a measured root cause.',
-      'Specify Control metrics, thresholds, and owners.'
-    ],
-    definition:'A five-phase improvement method that moves from definition and measurement to analysis, improvement, and sustained control.',
-    help:'Good for quantitative problem solving with clear KPIs.',
-    fields:[
-      { key:'define',  label:'Define',  type:'textarea', ph:'Problem statement, scope, customer.' },
-      { key:'measure', label:'Measure', type:'textarea', ph:'Baseline metrics and data quality.' },
-      { key:'analyze', label:'Analyze', type:'textarea', ph:'Root causes; key drivers.' },
-      { key:'improve', label:'Improve', type:'textarea', ph:'Interventions and pilots.' },
-      { key:'control', label:'Control', type:'textarea', ph:'Monitoring plan; owners; thresholds.' }
-    ],
-    template:({define,measure,analyze,improve,control,ctx})=>[
-      'Run DMAIC on the problem.',
-      ctx && `Context: ${ctx}`,
-      define && `Define:\n${define}`,
-      measure && `Measure:\n${measure}`,
-      analyze && `Analyze:\n${analyze}`,
-      improve && `Improve:\n${improve}`,
-      control && `Control:\n${control}`
-    ].filter(Boolean).join('\n')
-  },
+  id: 'eightfold_path',
+  slug: 'buddhist-eightfold-path-adapted',
+  label: 'Buddhist Eightfold Path (Adapted for Action)',
+  kind: 'framework',
+  categories: ['ethics','reasoning','cultural frameworks','spiritual frameworks','critical thinking'],
+  tags: [
+    'type:framework','topic:mindfulness','topic:ethics','topic:buddhism','topic:nonwestern-philosophy',
+    'phase:plan','level:intermediate',
+    'use:policy-guardrails','use:communication','use:self-management','use:leadership',
+    'use:cross-cultural-dialogue','use:leadership-training','use:design-ethics'
+  ],
+  use_cases: [
+    'design ethical guardrails for decision-making',
+    'structure mindful decision steps in organizations',
+    'review potential impacts on others with inclusivity in mind',
+    'teach non-Western ethical frameworks in education or leadership training',
+    'support activism, policy, or design processes that emphasize non-harm and compassion',
+    'mediate cross-cultural or interfaith dialogue'
+  ],
+  definition: 'A practical adaptation of the Buddhist Eightfold Path (View, Intention, Speech, Action, Livelihood, Effort, Mindfulness, Concentration). This framework honors its Buddhist origins while making each factor actionable for decision-making, ethics, leadership, and cross-cultural contexts.',
+  help: 'Begin by naming the decision or task. Map it to each factor of the Eightfold Path. Keep language culturally respectful, actionable, and inclusive. Always acknowledge Buddhist roots, surface tensions between factors, and close with a compassionate, non-harming recommendation.',
+  boosters: [
+    'Map each factor into a concrete, actionable reflection relevant to the task.',
+    'Acknowledge Buddhist origins to avoid cultural erasure or whitewashing.',
+    'Emphasize compassion and non-harming (ahimsa) as a throughline.',
+    'Check each step for bias: surface whose voices or needs are missing.',
+    'Note tensions between factors (e.g., Livelihood vs. Action).',
+    'Adapt language to secular or organizational contexts while preserving ethical depth.'
+  ],
+  fields: [
+    { key: 'decision', label: 'Decision or task under review', type: 'textarea',
+      ph: 'e.g., Launching a new product; setting hiring policy' },
+    { key: 'view', label: 'Right View (assumptions/realities)', type: 'textarea',
+      ph: 'e.g., Are we seeing the situation clearly, or through bias?' },
+    { key: 'intention', label: 'Right Intention (aims)', type: 'textarea',
+      ph: 'e.g., Are our goals rooted in compassion and goodwill?' },
+    { key: 'speech', label: 'Right Speech (communication)', type: 'textarea',
+      ph: 'e.g., How are we communicating—truthful, kind, and purposeful?' },
+    { key: 'action', label: 'Right Action (conduct)', type: 'textarea',
+      ph: 'e.g., What behaviors align with non-harm and integrity?' },
+    { key: 'livelihood', label: 'Right Livelihood (means)', type: 'textarea',
+      ph: 'e.g., Is the work or method of earning aligned with ethics?' },
+    { key: 'effort', label: 'Right Effort (discipline)', type: 'textarea',
+      ph: 'e.g., How are we sustaining wholesome actions and avoiding harm?' },
+    { key: 'mindfulness', label: 'Right Mindfulness (attention)', type: 'textarea',
+      ph: 'e.g., Are we fully aware of context, impacts, and interdependence?' },
+    { key: 'concentration', label: 'Right Concentration (focus)', type: 'textarea',
+      ph: 'e.g., How are we cultivating clarity and deep focus?' },
+    { key: 'cultural', label: 'Cultural context / inclusivity check', type: 'textarea',
+      ph: 'e.g., Which cultural or marginalized perspectives must be included?' },
+    { key: 'compassion', label: 'Compassion / non-harm reflection', type: 'textarea',
+      ph: 'e.g., How does this reduce harm and foster well-being for all involved?' },
+    { key: 'tradeoffs', label: 'Trade-offs or risks (optional)', type: 'textarea',
+      ph: 'e.g., Profit vs. sustainability; efficiency vs. inclusivity' },
+    { key: 'outcome', label: 'Outcome / next steps (optional)', type: 'textarea',
+      ph: 'e.g., Adjust hiring plan; add inclusivity review; pause launch' }
+  ],
+  template: ({ decision, view, intention, speech, action, livelihood, effort, mindfulness, concentration, cultural, compassion, tradeoffs, outcome, ctx }) => [
+    'Eightfold Path (adapted for action) — Ethical and inclusive review:',
+    ctx && `Context: ${ctx}`,
+    decision && `Decision/Task:\n${decision}`,
+    view && `Right View:\n${view}`,
+    intention && `Right Intention:\n${intention}`,
+    speech && `Right Speech:\n${speech}`,
+    action && `Right Action:\n${action}`,
+    livelihood && `Right Livelihood:\n${livelihood}`,
+    effort && `Right Effort:\n${effort}`,
+    mindfulness && `Right Mindfulness:\n${mindfulness}`,
+    concentration && `Right Concentration:\n${concentration}`,
+    cultural && `Cultural / inclusivity check:\n${cultural}`,
+    compassion && `Compassion / non-harm reflection:\n${compassion}`,
+    tradeoffs && `Trade-offs / risks:\n${tradeoffs}`,
+    outcome && `Outcome / next steps:\n${outcome}`,
+    'Synthesis:\n1) Ethical adjustment or refinement.\n2) Inclusivity reflection.\n3) Tensions noted between factors.\n4) Explicit acknowledgment of Buddhist origins.',
+    'Checklist:\n- [ ] Cultural respect upheld\n- [ ] Compassion and non-harm prioritized\n- [ ] Bias and exclusions surfaced\n- [ ] Actionable next step recorded'
+  ].filter(Boolean).join('\n')
+},
 
-  {
-    id:'east_nudge',
-    slug:'east-behavioral-nudge',
-    label:'EAST — Easy · Attractive · Social · Timely',
-    kind:'framework',
-    categories:['behavior','design','strategy'],
-    tags:[
-      'type:framework','topic:nudge','phase:design','level:beginner',
-      'use:behavior-change','use:ux','use:policy'
-    ],
-    use_cases:[
-      'design nudges for adoption',
-      'reduce friction in flows',
-      'translate insights into micro-interventions'
-    ],
-    boosters:[
-      'Pair each tactic with a measurable behavior and metric.',
-      'Add a tiny “if–then” plan for the riskiest barrier.'
-    ],
-    definition:'A behavioral design checklist to make the desired behavior easy, attractive, social, and timely.',
-    help:'Map barriers and pick EAST levers with concrete UI/content changes.',
-    fields:[
-      { key:'behavior', label:'Target behavior', type:'text', ph:'What should happen?' },
-      { key:'audience', label:'Audience/segment', type:'text', ph:'Who is acting?' },
-      { key:'easy',     label:'Easy (reduce effort)', type:'textarea', ph:'Defaults, autofill, fewer steps…' },
-      { key:'attractive',label:'Attractive (salience/incentive)', type:'textarea', ph:'Visual priority, rewards…' },
-      { key:'social',   label:'Social (norms/reciprocity)', type:'textarea', ph:'Testimonials, peer stats…' },
-      { key:'timely',   label:'Timely (moment/trigger)', type:'textarea', ph:'Just-in-time prompts, reminders…' },
-      { key:'metric',   label:'Success metric', type:'text', ph:'Conversion, completion time…' }
-    ],
-    template:({behavior,audience,easy,attractive,social,timely,metric,ctx})=>[
-      'Apply EAST (behavioral design).',
-      ctx && `Context: ${ctx}`,
-      behavior && `Behavior: ${behavior}`,
-      audience && `Audience: ${audience}`,
-      easy && `Easy:\n${easy}`,
-      attractive && `Attractive:\n${attractive}`,
-      social && `Social:\n${social}`,
-      timely && `Timely:\n${timely}`,
-      metric && `Metric:\n${metric}`,
-      'Return: the single highest-leverage nudge with a quick test plan.'
-    ].filter(Boolean).join('\n')
-  },
-
-  {
-    id:'eightfold_path',
-    slug:'buddhist-eightfold-path-adapted',
-    label:'Buddhist Eightfold Path (Adapted for Action)',
-    kind:'framework',
-    categories:['ethics','reasoning','cultural frameworks'],
-    tags:[
-      'type:framework','topic:mindfulness','topic:ethics','phase:plan','level:intermediate',
-      'use:policy-guardrails','use:communication','use:self-management'
-    ],
-    use_cases:[
-      'design ethical guardrails',
-      'structure mindful decision steps',
-      'review impacts on others'
-    ],
-    boosters:[
-      'Translate each factor into a concrete check for the task.',
-      'State one “harm minimization” change before final.'
-    ],
-    definition:'Use the eight factors (View, Intention, Speech, Action, Livelihood, Effort, Mindfulness, Concentration) as a practical checklist.',
-    help:'Map the task to the eight factors; keep language secular and actionable.',
-    fields:[
-      { key:'view',         label:'Right View (assumptions/realities)', type:'textarea' },
-      { key:'intention',    label:'Right Intention (aims)', type:'textarea' },
-      { key:'speech',       label:'Right Speech (communication)', type:'textarea' },
-      { key:'action',       label:'Right Action (conduct)', type:'textarea' },
-      { key:'livelihood',   label:'Right Livelihood (means)', type:'textarea' },
-      { key:'effort',       label:'Right Effort (discipline)', type:'textarea' },
-      { key:'mindfulness',  label:'Right Mindfulness (attention)', type:'textarea' },
-      { key:'concentration',label:'Right Concentration (focus)', type:'textarea' }
-    ],
-    template:({view,intention,speech,action,livelihood,effort,mindfulness,concentration,ctx})=>[
-      'Run an Eightfold Path check (adapted).',
-      ctx && `Context: ${ctx}`,
-      view && `View:\n${view}`,
-      intention && `Intention:\n${intention}`,
-      speech && `Speech:\n${speech}`,
-      action && `Action:\n${action}`,
-      livelihood && `Livelihood:\n${livelihood}`,
-      effort && `Effort:\n${effort}`,
-      mindfulness && `Mindfulness:\n${mindfulness}`,
-      concentration && `Concentration:\n${concentration}`,
-      'Close with a one-line ethical adjustment and an acceptance test.'
-    ].filter(Boolean).join('\n')
-  },
-
-  {
-    id:'ganma_confluence',
-    slug:'ganma-knowledge-confluence',
-    label:'Ganma — Knowledge Confluence (Yolŋu)',
-    kind:'framework',
-    categories:['research','cultural frameworks','strategy'],
-    tags:[
-      'type:framework','topic:knowledge-pluralism','topic:integration','phase:explore','level:advanced',
-      'use:interdisciplinary-synthesis','use:policy','use:design-research'
-    ],
-    use_cases:[
-      'braid two knowledge systems without erasing differences',
-      'document tensions and synthesis',
-      'design shared next steps'
-    ],
-    boosters:[
-      'Make tensions explicit; do not collapse differences.',
-      'Name shared safeguards for continued collaboration.'
-    ],
-    definition:'A metaphor of mixing “freshwater” and “saltwater” knowledge streams to create a productive confluence.',
-    help:'Capture sources A/B, overlaps, tensions, synthesis, and safeguards.',
-    fields:[
-      { key:'stream_a',  label:'Knowledge Stream A', type:'textarea', ph:'e.g., Community practice' },
-      { key:'stream_b',  label:'Knowledge Stream B', type:'textarea', ph:'e.g., Academic research' },
-      { key:'overlaps',  label:'Overlaps (shared truths)', type:'textarea' },
-      { key:'tensions',  label:'Tensions (incommensurables)', type:'textarea' },
-      { key:'synthesis', label:'Confluence (new practice/insight)', type:'textarea' },
-      { key:'safeguards',label:'Safeguards / protocols', type:'textarea' }
-    ],
-    template:({stream_a,stream_b,overlaps,tensions,synthesis,safeguards,ctx})=>[
-      'Apply Ganma (knowledge confluence).',
-      ctx && `Context: ${ctx}`,
-      stream_a && `Stream A:\n${stream_a}`,
-      stream_b && `Stream B:\n${stream_b}`,
-      overlaps && `Overlaps:\n${overlaps}`,
-      tensions && `Tensions:\n${tensions}`,
-      synthesis && `Confluence (synthesis):\n${synthesis}`,
-      safeguards && `Safeguards:\n${safeguards}`,
-      'Return: shared next step that respects both streams.'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'ganma_confluence',
+  slug: 'ganma-knowledge-confluence',
+  label: 'Ganma — Knowledge Confluence (Yolŋu)',
+  kind: 'framework',
+  categories: [
+    'research','cultural frameworks','strategy','dialogue','education','ethics'
+  ],
+  tags: [
+    'type:framework','topic:knowledge-pluralism','topic:two-way-learning',
+    'topic:Indigenous-wisdom','topic:Indigenous-methodologies',
+    'phase:explore','phase:dialogue','level:advanced',
+    'use:interdisciplinary-synthesis','use:policy','use:design-research',
+    'use:co-creation','use:cross-cultural-dialogue','use:ethics-check'
+  ],
+  use_cases: [
+    'Explore how Indigenous and Western (or other) knowledge systems meet without collapsing differences.',
+    'Document shared insights while respecting boundaries and incommensurables.',
+    'Design confluence processes in education, ecology, health, or policy contexts.',
+    'Facilitate dialogue where multiple knowledge traditions are present.',
+    'Reflect on safeguards to prevent erasure or domination of one knowledge stream by another.',
+    'Teach knowledge plurality in classrooms and workshops.',
+    'Support co-research between Indigenous and non-Indigenous partners.',
+    'Inform policy development with cultural legitimacy and shared authority.',
+    'Guide environmental stewardship that respects both Country and science.'
+  ],
+  boosters: [
+    'Center Yolŋu framing: fresh water and salt water mixing in a lagoon; avoid reducing this to “integration” or “assimilation.”',
+    'Surface tensions as valuable knowledge rather than as obstacles.',
+    'Respect that some knowledge may be restricted, sacred, or not shareable — note boundaries clearly.',
+    'Emphasize reciprocity, responsibility, and ongoing protocols, not just outcomes.',
+    'Name who is speaking and whose voices are missing.',
+    'Include relationships to land, ancestors, and community as part of the streams.',
+    'Recognize that confluence is often slow and relational — not a single event.'
+  ],
+  definition: 'Ganma is a Yolŋu metaphor describing the meeting of fresh water and salt water, used as a way to think about knowledge confluence. Each stream keeps its identity while creating new qualities in the mixing. It is a practice of holding difference, dialogue, and shared emergence without erasing cultural integrity.',
+  help: 'Use this when exploring two or more knowledge systems or traditions. Map where they overlap, where they remain distinct, and what new insights emerge at the confluence. Always note cultural protocols, boundaries, and responsibilities.',
+  fields: [
+    { key: 'stream_a', label: 'Knowledge Stream A', type: 'textarea',
+      desc: 'One knowledge source or tradition (e.g., Yolŋu ecological knowledge, community practice, lived experience).',
+      ph: 'e.g., Yolŋu kinship laws about water; Community practice of fire management' },
+    { key: 'stream_b', label: 'Knowledge Stream B', type: 'textarea',
+      desc: 'Another knowledge source or tradition (e.g., Western science, academic research, policy knowledge).',
+      ph: 'e.g., Hydrological science data; Academic theory' },
+    { key: 'participants', label: 'Participants / voices involved (optional)', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
+      desc: 'People, communities, or roles carrying each knowledge stream.',
+      ph: 'Elder, Scientist, Policy-maker, Student' },
+    { key: 'context', label: 'Context / setting (optional)', type: 'textarea',
+      desc: 'Where the confluence happens — classroom, policy meeting, research collaboration, on Country.',
+      ph: 'e.g., Joint management meeting for a National Park' },
+    { key: 'overlaps', label: 'Shared Resonances / Overlaps', type: 'textarea',
+      desc: 'Where the streams align, resonate, or find common ground.',
+      ph: 'e.g., Both emphasize cyclical patterns in water flows' },
+    { key: 'tensions', label: 'Tensions / Incommensurables', type: 'textarea',
+      desc: 'Places where the streams do not align, cannot be translated, or should not be forced together.',
+      ph: 'e.g., Scientific demand for measurement vs. Yolŋu spiritual responsibility' },
+    { key: 'synthesis', label: 'Confluence (Emergent Insight)', type: 'textarea',
+      desc: 'What arises at the mixing point — new practice, method, or understanding that emerges when both streams meet.',
+      ph: 'e.g., A co-designed water management plan blending observation, ritual, and data' },
+    { key: 'safeguards', label: 'Safeguards / Protocols', type: 'textarea',
+      desc: 'Cultural protocols, agreements, or ethical practices to protect both streams and prevent erasure.',
+      ph: 'e.g., Yolŋu authority over sacred knowledge; data-sharing agreements' }
+  ],
+  template: ({ stream_a, stream_b, participants, context, overlaps, tensions, synthesis, safeguards, ctx, audience, style, tone }) => [
+    'Apply Ganma (knowledge confluence).',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    context && `Setting:\n${context}`,
+    participants && (
+      'Participants / voices:\n' +
+      String(participants).split(/\n+/).map((p,i)=>`${i+1}. ${p}`).join('\n')
+    ),
+    stream_a && `Stream A:\n${stream_a}`,
+    stream_b && `Stream B:\n${stream_b}`,
+    overlaps && `Shared Resonances:\n${overlaps}`,
+    tensions && `Tensions / Incommensurables:\n${tensions}`,
+    synthesis && `Confluence (emergent insight):\n${synthesis}`,
+    safeguards && `Safeguards / Protocols:\n${safeguards}`,
+    'Return: A reflective summary that respects both streams, honors differences, and proposes shared next steps without erasing cultural boundaries.\nClose with: Reciprocity and future responsibilities (who continues the dialogue, how, under what protocols).'
+  ].filter(Boolean).join('\n')
+},
 
   {
     id:'kaitiakitanga',
@@ -4088,49 +4832,83 @@ boosters: [
     ].filter(Boolean).join('\n')
   },
 
-  {
-    id:'kipling_5w1h',
-    slug:'five-w-one-h-kipling',
-    label:'5W1H — Who · What · Where · When · Why · How',
-    kind:'framework',
-    categories:['analysis frameworks','prompt development techniques'],
-    tags:[
-      'type:framework','topic:clarification','phase:compose','level:beginner',
-      'use:requirements','use:prompt-scoping'
-    ],
-    use_cases:[
-      'clarify task requirements',
-      'scope a prompt before execution',
-      'capture acceptance criteria'
-    ],
-    boosters:[
-      'Answer each element with one crisp, testable line.',
-      'Add a “not-in-scope” line after How.'
-    ],
-    definition:'A universal clarifying scaffold that forces six essential answers before action.',
-    help:'Fill each W/H succinctly; keep to one line each.',
-    fields:[
-      { key:'who',   label:'Who', type:'text', ph:'Audience/persona/owner' },
-      { key:'what',  label:'What', type:'text', ph:'Desired outcome or artifact' },
-      { key:'where', label:'Where', type:'text', ph:'Channel/place/context' },
-      { key:'when',  label:'When', type:'text', ph:'Deadline/cadence/timebox' },
-      { key:'why',   label:'Why', type:'text', ph:'Purpose/impact' },
-      { key:'how',   label:'How', type:'textarea', ph:'Approach, resources, constraints' },
-      { key:'not',   label:'Not in scope (optional)', type:'textarea', ph:'Exclusions/anti-goals' }
-    ],
-    template:({who,what,where,when,why,how,not,ctx})=>[
-      'Use 5W1H to pin down scope.',
-      ctx && `Context: ${ctx}`,
-      who && `Who: ${who}`,
-      what && `What: ${what}`,
-      where && `Where: ${where}`,
-      when && `When: ${when}`,
-      why && `Why: ${why}`,
-      how && `How:\n${how}`,
-      not && `Not in scope:\n${not}`,
-      'Return: a one-paragraph plan derived from the answers.'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'kipling_5w1h',
+  slug: 'five-w-one-h-kipling',
+  label: '5W1H — Who · What · Where · When · Why · How',
+  kind: 'framework',
+  categories: [
+    'analysis frameworks','prompt development techniques',
+    'journalism','problem-solving','research','ux-discovery'
+  ],
+  tags: [
+    'type:framework','topic:clarification','topic:analysis',
+    'phase:compose','phase:scope','level:beginner',
+    'use:requirements','use:prompt-scoping','use:root-cause',
+    'principle:holistic','method:structured-questioning',
+    'qa:requirements','qa:scope-check','journalism:interrogative'
+  ],
+  use_cases: [
+    'clarify task requirements',
+    'scope a prompt before execution',
+    'capture acceptance criteria',
+    'analyze a problem or incident',
+    'design interview or survey questions',
+    'structure a research or UX discovery plan',
+    'prep structured Jira tickets',
+    'incident postmortem structuring'
+  ],
+  boosters: [
+    'Ensure each W/H answer is one crisp, testable line; avoid vagueness.',
+    'If an element is missing, generate a clarifying question before output.',
+    'Translate answers into concrete acceptance criteria for the task.',
+    'After “How,” append a “Not in scope” section to limit scope creep.',
+    'Cross-check that Who + Why align logically (actor ↔ motivation).',
+    'Rank the W/H elements by criticality (e.g., Why > Who > What) to guide prioritization.',
+    'Highlight any inconsistencies (e.g., “Who = busy executives” but “Where = TikTok comments”).'
+  ],
+  definition: 'A universal clarifying scaffold that ensures every prompt or problem has complete coverage across six essentials: actor, deliverable, context, timing, rationale, and approach. Prevents vague tasks, scope creep, and mismatched expectations.',
+  help: 'Answer each W/H in a single crisp line; if an answer isn’t known, ask a clarifying question. Once filled, review the six together to check for coherence: Who ↔ Why, What ↔ How, When ↔ Where. Finally, add exclusions in “Not in scope” to keep boundaries clear.',
+  fields: [
+    { key:'who',   label:'Who',   type:'typeahead',
+      desc:'Stakeholders, audience, or responsible actor. Type to search personas',
+      ph:'Target user, product team, external client' },
+    { key:'what',  label:'What',  type:'text',
+      desc:'The desired outcome, deliverable, or artifact.',
+      ph:'Draft onboarding email; working prototype' },
+    { key:'where', label:'Where', type:'text',
+      desc:'Location, channel, or context where it applies.',
+      ph:'Slack channel, mobile app, user’s home' },
+    { key:'when',  label:'When',  type:'text',
+      desc:'Timeline, deadline, or cadence.',
+      ph:'Within 2 weeks; daily at 9am; Q3 2025' },
+    { key:'why',   label:'Why',   type:'text',
+      desc:'Purpose, impact, or rationale.',
+      ph:'Reduce churn; meet compliance; improve usability' },
+    { key:'how',   label:'How',   type:'textarea',
+      desc:'Approach, process, or constraints.',
+      ph:'Run usability study with 5 users; follow WCAG 2.1' },
+    { key:'not',   label:'Not in scope (optional)', type:'textarea',
+      desc:'Explicit exclusions or anti-goals.',
+      ph:'Do not cover backend architecture; exclude iOS app' },
+    { key:'priority', label:'Priority (optional)', type:'text',
+      desc:'Mark which W/H is most critical (e.g., Why > Who > What).',
+      ph:'Why, then Who' }
+  ],
+  template: ({ who, what, where, when, why, how, not, priority, ctx }) => [
+    'Use 5W1H to clarify scope and intent.',
+    ctx && `Context: ${ctx}`,
+    who   && `Who: ${who}`,
+    what  && `What: ${what}`,
+    where && `Where: ${where}`,
+    when  && `When: ${when}`,
+    why   && `Why: ${why}`,
+    how   && `How:\n${how}`,
+    not   && `Not in scope:\n${not}`,
+    priority && `Priority: ${priority}`,
+    'Synthesis:\n- Summarize the answers into a 1–2 paragraph plan.\n- Ensure completeness across all six dimensions.\n- Flag any gaps or conflicts.\n- Propose 1 clarifying question if needed.\n\nChecklist:\n- [ ] All six answered\n- [ ] Who ↔ Why consistent\n- [ ] Scope boundaries noted'
+  ].filter(Boolean).join('\n')
+},
 
   {
     id:'maslaha_public_interest',
@@ -5209,30 +5987,84 @@ boosters: [
 {
   id: 'freewrite',
   slug: 'freewriting-zero-draft',
-  label: 'Freewriting — Unfiltered stream of thought (Zero Draft)',
+  label: 'Freewriting — Unfiltered Stream of Thought (Zero Draft)',
   kind: 'technique',
-  categories: ['creativity', 'writing'],
-  tags: ['type:technique', 'topic:writing', 'use:brainstorm', 'level:beginner'],
+  categories: [
+    'creativity','writing','self-reflection',
+    'creativity techniques','mental health','productivity','coaching'
+  ],
+  tags: [
+    'type:technique','topic:writing','topic:flow-state','topic:idea-generation',
+    'topic:subconscious','topic:unblocking',
+    'use:brainstorm','use:prewriting','use:therapy-journaling',
+    'use:creative-block','use:idea-mining','level:beginner'
+  ],
   use_cases: [
-    'overcome writer’s block or creative block',
-    'discover latent ideas by writing without stopping'
+    'Overcome writer’s block or creative block.',
+    'Discover latent ideas by writing without stopping.',
+    'Generate raw content for later essays, stories, or articles.',
+    'Surface hidden emotions or subconscious associations.',
+    'Warm-up exercise before structured work or research.',
+    'Kick off group workshops or brainstorming sessions.',
+    'Explore metaphors and imagery for fiction or poetry.',
+    'Reveal subconscious patterns useful in therapy or coaching.'
   ],
   boosters: [
-    'Do not stop or edit mid-flow; even nonsense is okay in the draft.',
-    'After the freewrite, highlight any surprising ideas or patterns that emerged.'
+    'Do not stop or edit mid-flow; even nonsense is acceptable in the draft.',
+    'If stuck, keep typing the same word or phrase until new thoughts emerge.',
+    'Use looping: after finishing, pull out a phrase and restart writing from it.',
+    'Allow emotional honesty; if strong feelings surface, capture them without judgment.',
+    'After the freewrite, highlight surprising phrases, images, or insights for further use.',
+    'Experiment with sensory writing: describe sounds, smells, textures.',
+    'Switch perspective mid-way (write as a rival, child, or future self).',
+    'Apply playful constraints (no adjectives, only questions, all ocean metaphors).'
   ],
-  definition: 'A technique where you write continuously about a topic without worrying about structure or correctness, often used to bypass creative blocks:contentReference[oaicite:13]{index=13}. This "zero draft" approach lets thoughts flow freely, producing raw material that can later be refined or used to guide further work (it’s especially useful for writers with writer’s block).',
-  help: 'Provide a general topic or question you want to explore (it can be broad or vague). The model will produce a stream-of-consciousness style draft, capturing thoughts as they come without filtering. Afterward, it can help summarize or point out interesting ideas from the draft.',
+  definition: 'A technique where you write continuously about a topic without worrying about structure, grammar, or correctness. Also called a “zero draft,” it helps bypass inner censorship, overcome creative block, and produce raw material for later refinement.',
+  help: 'Provide a topic, emotion, or question to explore. Optionally add time, length, or constraints. The model will generate a continuous freewriting draft, then highlight key patterns, images, and next steps.',
   fields: [
-    { key: 'topic', label: 'Topic or question', type: 'textarea', ph: 'e.g., Reflections on technology in education' }
+    { key: 'topic', label: 'Topic, question, or emotion', type: 'textarea',
+      desc: 'What you want to explore — could be a subject, feeling, or random prompt.',
+      ph: 'e.g., Reflections on technology in education; “Why am I restless today?”' },
+    { key: 'timer', label: 'Timebox (optional)', type: 'text',
+      desc: 'How long you want to freewrite (minutes). Short = 5, Long = 20.',
+      ph: 'e.g., 10 minutes' },
+    { key: 'tone', label: 'Starting tone (optional)', type: 'text',
+      desc: 'Initial mood or style to begin with. It may shift mid-flow.',
+      ph: 'Reflective, ranting, playful, meditative' },
+    { key: 'length', label: 'Target length (optional)', type: 'text',
+      desc: 'Approximate target word count or paragraphs.',
+      ph: 'e.g., 300 words; 3 paragraphs' },
+    { key: 'constraints', label: 'Constraints (optional)', type: 'textarea',
+      desc: 'Rules or limits to spark creativity.',
+      ph: 'e.g., Only questions; all sentences start with “What if…”' },
+    { key: 'persona_voice', label: 'Persona voice (optional)', type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Write in the perspective of a persona or role (e.g., Pirate, Future Self, Therapist).',
+      ph: 'Start typing to pick a persona...' },
+    { key: 'postprocess', label: 'Post-processing focus (optional)', type: 'textarea',
+      desc: 'How you want to analyze or use the draft afterward.',
+      ph: 'Summarize key themes; extract story ideas; highlight emotions.' }
   ],
-  template: ({ topic, ctx }) => [
-    'Begin a Freewriting session (Zero Draft) to explore thoughts unfiltered.',
+  template: ({ topic, timer, tone, length, constraints, persona_voice, postprocess, ctx }) => [
+    'Begin a Freewriting (Zero Draft) session.',
     ctx && `Context: ${ctx}`,
     topic && `Topic: ${topic}`,
-    'Write continuously whatever comes to mind for a short period (without stopping or editing).',
-    '... (free-form stream of thoughts) ...',
-    'After finishing, review the writing to identify any key ideas or surprising insights that emerged.'
+    timer && `Timebox: ${timer}`,
+    tone && `Starting tone: ${tone}`,
+    length && `Target length: ${length}`,
+    constraints && `Constraints: ${constraints}`,
+    persona_voice && (
+      'Persona voice:\n' +
+      String(persona_voice).split(/\n+/).map((p,i)=>`${i+1}. ${p}`).join('\n')
+    ),
+    '---',
+    'Stream of Consciousness Draft (no edits, raw flow):',
+    '... (continuous unfiltered writing here) ...',
+    '---',
+    postprocess && `Post-process: After the draft, ${postprocess}`,
+    'Output:\n1) Raw unfiltered draft\n2) Highlighted phrases, images, or patterns\n3) One-sentence summary of surprising or useful insights\n4) Suggested next step: how to use the material'
   ].filter(Boolean).join('\n')
 },
 
@@ -5271,28 +6103,80 @@ boosters: [
   slug: 'disney-dreamer-realist-critic',
   label: 'Disney Strategy — Dreamer · Realist · Critic',
   kind: 'framework',
-  categories: ['creativity', 'evaluation'],
-  tags: ['type:framework', 'topic:perspective-taking', 'use:develop-idea', 'level:intermediate'],
+  categories: ['creativity','evaluation','storytelling'],
+  tags: [
+    'type:framework','topic:perspective-taking','topic:iteration',
+    'use:develop-idea','use:creative-randomness','use:innovation-sprints','use:team-workshops',
+    'level:intermediate'
+  ],
   use_cases: [
     'develop an idea from wild concept to practical plan',
-    'balance imaginative thinking with realism and critical review'
+    'balance imaginative thinking with realism and critical review',
+    'loop ideas through multiple creative lenses',
+    'run innovation sprints or workshops with role rotation',
+    'teach creative problem-solving through structured perspectives'
   ],
+  definition: 'A structured creative process (from Walt Disney, modeled by Robert Dilts) that cycles through Dreamer (imagination), Realist (planning), and Critic (evaluation). Iterative looping transforms wild ideas into feasible, ethical, and innovative plans while preserving imaginative richness.',
+  help: 'Provide an idea or project to develop. Begin with Dreamer ideas (suspend all judgment). Translate selected ideas into Realist steps grounded in resources and constraints. Critic evaluates risks and ethics, but must pair each flaw with a mitigation. Observer reflects on balance and suggests looping back to Dreamer. Use different voices or spaces for each role to encourage perspective shift.',
   boosters: [
-    'Separate the three modes clearly: don’t allow the Critic to interrupt the Dreamer phase:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}.',
-    'Embrace the Dreamer’s outrageous ideas fully before switching to Realist mode to figure out execution steps.'
+    'Dreamer: Generate ≥5 ideas, with ≥2 absurd or magical. Suspend judgment completely.',
+    'Realist: Translate at least 1 Dreamer idea into concrete steps, including timeline or milestones.',
+    'Critic: Each risk/weakness must propose a fix or mitigation, not just a flaw.',
+    'Critic: Explicitly check for cultural/ethical inclusivity.',
+    'Observer: Reflect on balance and propose the next loop back to Dreamer.',
+    'End with a checklist confirming all roles contributed.'
   ],
-  definition: 'A structured creative process (attributed to Walt Disney, modeled by Robert Dilts) that cycles through three distinct thinking styles:contentReference[oaicite:20]{index=20}. First, the *Dreamer* freely imagines ideas without limits:contentReference[oaicite:21]{index=21}. Next, the *Realist* figures out how to implement those ideas practically:contentReference[oaicite:22]{index=22}. Finally, the *Critic* rigorously scrutinizes the plan, identifying flaws and risks:contentReference[oaicite:23]{index=23}. This method helps turn imaginative ideas into feasible plans while still allowing critical refinement.',
-  help: 'Provide an idea or project to develop. The model will apply the Disney Creative Strategy by taking on the Dreamer role (brainstorm bold, imaginative ideas), then the Realist role (formulate a practical plan), and then the Critic role (find weaknesses and improve the plan).',
   fields: [
-    { key: 'idea', label: 'Idea or project description', type: 'textarea', ph: 'e.g., A device that translates animal thoughts into human language' }
+    { key: 'idea', label: 'Idea or project description', type: 'textarea',
+      ph: 'e.g., A device that translates animal thoughts into human language' },
+    { key: 'dreamer_seed', label: 'Dreamer seed (optional)', type: 'textarea',
+      ph: 'Image, theme, metaphor, or random word to spark ideas' },
+    { key: 'dream_triggers', label: 'Dreamer triggers (optional)', type: 'textarea',
+      ph: 'Random word, metaphor, or character to inspire dreaming' },
+
+    // NEW FIELD
+    {
+      key: 'dreamer_persona',
+      label: 'Dreamer’s Persona',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->textarea',
+      ph: 'Start typing to pick one or more personas for the Dreamer role'
+    },
+
+    { key: 'constraints', label: 'Constraints (Realist must respect)', type: 'textarea',
+      ph: 'Budget, time, tech limits' },
+    { key: 'realist_resources', label: 'Resources available (optional)', type: 'textarea',
+      ph: 'Funding, team, tools, partnerships' },
+    { key: 'critic_focus', label: 'Critic focus (optional)', type: 'textarea',
+      ph: 'Lens for critique: technical, financial, ethical, cultural' },
+    { key: 'ethics', label: 'Ethical/cultural considerations', type: 'textarea',
+      ph: 'Potential bias, sustainability, inclusivity' },
+    { key: 'observer', label: 'Observer reflection (optional)', type: 'textarea',
+      ph: 'What balance or insight emerged?' }
   ],
-  template: ({ idea, ctx }) => [
-    'Apply the Disney Creative Strategy in three stages.',
+  template: ({ idea, dreamer_seed, dream_triggers, dreamer_persona, constraints, realist_resources, critic_focus, ethics, observer, ctx }) => [
+    'Apply the Disney Creative Strategy.',
     ctx && `Context: ${ctx}`,
     idea && `Idea: ${idea}`,
-    'Dreamer: Describe an ideal, unconstrained vision of this idea (all possibilities, no criticism).',
-    'Realist: Develop a practical plan to implement the idea, considering resources and steps needed.',
-    'Critic: Point out weaknesses or risks in the plan and propose improvements or safeguards.'
+    dreamer_seed && `Dreamer seed:\n${dreamer_seed}`,
+    dream_triggers && `Dreamer triggers:\n${dream_triggers}`,
+    dreamer_persona && (
+      'Dreamer’s Persona(s):\n' +
+      String(dreamer_persona).split(/\n+/).map(s => s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+    ),
+    constraints && `Constraints:\n${constraints}`,
+    realist_resources && `Resources available:\n${realist_resources}`,
+    critic_focus && `Critic focus:\n${critic_focus}`,
+    ethics && `Ethical/cultural considerations:\n${ethics}`,
+    '---',
+    'Dreamer: Bold, playful, and unconstrained ideas (≥5, include magical/absurd). Use Dreamer’s Persona(s) to guide imagination.',
+    'Realist: Translate selected Dreamer ideas into concrete plans, with timeline and resources, respecting constraints.',
+    'Critic: Identify risks and weaknesses (technical, ethical, cultural), but pair each with mitigation.',
+    observer && ('Observer:\n' + observer),
+    'Output:\n1) Dreamer ideas\n2) Realist plan\n3) Critic risks + fixes\n4) Observer reflection',
+    'Checklist:\n- [ ] ≥5 Dreamer ideas\n- [ ] Dreamer personas included\n- [ ] Realist plan respects constraints/resources\n- [ ] Critic includes fixes & ethical checks\n- [ ] Observer reflection included'
   ].filter(Boolean).join('\n')
 },
 
@@ -5332,64 +6216,77 @@ boosters: [
 {
   id: 'active_imagination',
   slug: 'active-imagination-dialogue',
-  label: 'Active Imagination — Dialogue with inner voices',
+  label: 'Active Imagination — Dialogue with Inner Voices',
   kind: 'technique',
-  categories: ['psychology', 'creativity'],
-  tags: ['type:technique', 'topic:Jungian', 'use:self-reflection', 'level:advanced'],
+  categories: ['psychology','creativity','self-reflection','symbolic-dialogue'],
+  tags: [
+    'type:technique','topic:jungian','topic:archetypes','topic:dreamwork','topic:imagination',
+    'use:self-reflection','use:shadow-work','use:creative-insight','use:archetype-exploration',
+    'use:creative-writing','use:therapeutic-dialogue',
+    'level:advanced','method:dialogue'
+  ],
   use_cases: [
     'gain insight by conversing with parts of yourself or imagined characters',
-    'resolve internal conflicts or explore unconscious feelings through dialogue'
+    'resolve inner conflicts through symbolic dialogue',
+    'explore archetypes such as Shadow, Inner Child, or Sage',
+    'unlock creative or unconscious material for art, writing, or problem-solving',
+    'process dreams or symbolic imagery',
+    'develop characters or themes for creative writing'
   ],
   boosters: [
-    'Suspend judgment and let the unconscious part "speak" freely during the dialogue:contentReference[oaicite:29]{index=29}.',
-    'If a new image or character emerges mid-dialogue, follow it—these unexpected turns can reveal valuable insights.'
+    'Maintain a consistent voice for each inner figure; let them sound distinct from the Self.',
+    'Allow symbolic or metaphorical language if it arises; do not over-rationalize.',
+    'If new figures emerge, introduce them naturally and allow them to interact.',
+    'Ensure the Self pauses at intervals to reflect on what was revealed.',
+    'If strong emotion arises, pause to note it explicitly before continuing.',
+    'Dialogue should run at least 3–5 exchanges before synthesis.',
+    'Conclude with reflection and, if useful, an integration step (action, ritual, or affirmation).',
+    'If a voice becomes overwhelming, return to the Self and close with grounding.'
   ],
-  definition: 'A Jungian technique of engaging in a written or imagined dialogue with different aspects of your psyche or with imagined figures:contentReference[oaicite:30]{index=30}. By personifying parts of the unconscious (e.g., an inner child, a shadow figure) and having a conversation, one can surface hidden thoughts, feelings, and creative insights. This process seeks to bridge conscious and unconscious, moving the individual toward greater self-awareness and wholeness:contentReference[oaicite:31]{index=31}.',
-  help: 'Briefly describe an issue or question you want to explore. Optionally name an inner voice or imaginary figure to dialogue with (it could be a persona like "Inner Critic" or an archetype). The model will then simulate a back-and-forth dialogue: you pose questions or statements, and the inner voice responds, helping reveal new perspectives or solutions.',
+  definition: 'A Jungian method for engaging the unconscious by entering into dialogue with inner figures or voices. The process surfaces hidden thoughts, emotions, archetypes, and symbols, bridging conscious and unconscious and fostering creativity, healing, and self-awareness.',
+  help: 'Start with an intention, question, or mood. Choose one or more inner figures (e.g., Inner Critic, Shadow, Guide). The model will script a dialogue where Self and the inner figures exchange perspectives. Allow new figures or symbols to appear naturally. Conclude by synthesizing insights, themes, or imagery, and consider a closing ritual to integrate the experience.',
   fields: [
-    { key: 'issue', label: 'Issue or topic to explore', type: 'textarea', ph: 'e.g., Feeling unmotivated about my project' },
-    { key: 'entity', label: 'Inner figure/voice to dialogue with (optional)', type: 'text', ph: 'e.g., My inner critic' }
+    { key: 'intention', label: 'Intention or entry question (optional)', type: 'textarea',
+      ph: 'e.g., What is blocking my creativity? What do I need to learn?' },
+    { key: 'issue', label: 'Issue or theme to explore', type: 'textarea',
+      ph: 'e.g., Feeling blocked in my creative work' },
+    {
+      key: 'figures',
+      label: 'Inner figure(s) or voices',
+      type: 'repeater',
+      itemType: 'typeahead',
+      autofill: 'persona->inline',
+      itemLabel: 'figure',
+      min: 1,
+      max: 5,
+      ph: 'Start typing to pick or name an inner voice (e.g., Inner Critic, Wise Old Man, Future Self)…'
+    },
+    { key: 'tone', label: 'Tone/style of the voices (optional)', type: 'text',
+      ph: 'e.g., Harsh, playful, wise, cryptic' },
+    { key: 'scenario', label: 'Scenario or mood (optional)', type: 'textarea',
+      ph: 'Describe the emotional entry point, e.g., “I felt anxious before bed.”' },
+    { key: 'symbols', label: 'Symbols or imagery (optional)', type: 'textarea',
+      ph: 'Any recurring images, dream fragments, colors, animals, places…' },
+    { key: 'closing', label: 'Closing ritual or integration step (optional)', type: 'textarea',
+      ph: 'e.g., Thank the figure, visualize integration, commit to one action' }
   ],
-  template: ({ issue, entity, ctx }) => [
-    'Begin an Active Imagination dialogue between Self (you) and an inner figure.',
+  template: ({ intention, issue, figures, tone, scenario, symbols, closing, ctx }) => [
+    'Initiate an Active Imagination dialogue.',
     ctx && `Context: ${ctx}`,
+    intention && `Intention/entry question: ${intention}`,
     issue && `Issue: ${issue}`,
-    entity
-      ? `Imagined counterpart: ${entity}`
-      : 'Imagined counterpart: (the assistant will introduce a relevant inner voice or figure)',
-    'You: (Start by greeting or questioning this inner voice.)',
-    `${entity || 'Inner Voice'}: (The inner voice responds honestly, perhaps in symbolic language.)`,
-    '... (Continue the exchange, with You and the Inner Voice speaking in turn, until a new insight or resolution is reached) ...'
-  ].filter(Boolean).join('\n')
-},
-
-{
-  id: 'morning_pages',
-  slug: 'morning-pages-journaling',
-  label: 'Morning Pages — Daily stream-of-consciousness journal',
-  kind: 'technique',
-  categories: ['creativity', 'self-reflection'],
-  tags: ['type:exercise', 'topic:journal', 'use:creative-block', 'level:beginner'],
-  use_cases: [
-    'unlock creativity through routine journaling',
-    'clear mental clutter at the start of the day'
-  ],
-  boosters: [
-    'Write by hand if possible, as it can enhance reflection and mind-body connection:contentReference[oaicite:32]{index=32}.',
-    'Do not share or even reread your Morning Pages immediately; their power comes from absolute freedom and privacy:contentReference[oaicite:33]{index=33}.'
-  ],
-  definition: 'A daily writing practice popularized by Julia Cameron’s *The Artist’s Way* to unblock creativity:contentReference[oaicite:34]{index=34}. Every morning, you write three pages of longhand, uncensored stream-of-consciousness thoughts. Morning Pages help "clear out the sludge," reconnecting you with your true feelings and ideas and often leading to unexpected insights or clarity about your desires:contentReference[oaicite:35]{index=35}:contentReference[oaicite:36]{index=36}.',
-  help: 'Optionally, provide a few words about what’s on your mind as you begin. The model will then emulate a session of Morning Pages: a few paragraphs of raw, unfiltered writing. (In reality, you would write about three longhand pages.) After the free write, the model can help summarize any prominent themes or insights.',
-  fields: [
-    { key: 'focus', label: 'Current feeling or focus (optional)', type: 'text', ph: 'e.g., Nervous about upcoming presentation' }
-  ],
-  template: ({ focus, ctx }) => [
-    'Write Morning Pages: a stream-of-consciousness journal entry.',
-    ctx && `Context: ${ctx}`,
-    focus && `Starting thought: ${focus}`,
-    '(Begin writing without stopping or editing, just whatever comes to mind, roughly three pages of text.)',
-    '... (unfiltered thoughts, feelings, observations flowing onto the page) ...',
-    '(Once finished, reflect on any patterns or surprising points that emerged.)'
+    scenario && `Scenario/mood: ${scenario}`,
+    figures && (
+      'Inner figures:\n' + String(figures)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((x,i) => `${i+1}. ${x}${tone ? ` (tone: ${tone})` : ''}`)
+        .join('\n')
+    ),
+    symbols && `Symbols/imagery: ${symbols}`,
+    'Dialogue:\nSelf: (Begin by addressing the figure(s) about the issue.)\n<Each figure responds in turn, with distinct voices>\n... (Continue alternating for at least 3–5 exchanges) ...',
+    'Synthesis:\nSummarize in 2–3 sentences the main insights, archetypes, or symbols revealed.',
+    closing && `Closing ritual/integration: ${closing}`,
+    'Checklist:\n- [ ] At least one intention/question stated\n- [ ] Distinct voices for each figure\n- [ ] Dialogue runs multiple exchanges\n- [ ] Symbols noted and reflected on\n- [ ] Concluding synthesis provided\n- [ ] Optional closing ritual/integration step recorded'
   ].filter(Boolean).join('\n')
 },
 
@@ -5578,33 +6475,65 @@ fields: [
   slug: 'spoon-theory-energy-planner',
   label: 'Energy Budget Planner (Spoon Theory)',
   kind: 'framework',
-  categories: ['productivity', 'self-care'],
+  categories: ['productivity','self-care','mental health','wellbeing'],
   tags: [
-    'type:framework','topic:spoon-theory','topic:energy-management','level:beginner',
-    'use:daily-planning','use:adhd','use:chronic-illness'
+    'type:framework','topic:spoon-theory','topic:energy-management',
+    'topic:mental-health','topic:neurodiversity',
+    'level:beginner','use:daily-planning','use:adhd','use:chronic-illness',
+    'use:burnout-prevention','use:inclusion','use:disability-advocacy',
+    'use:self-advocacy','use:therapy-support'
   ],
   use_cases: [
-    'plan your day according to limited energy or focus (“spoons”)',
-    'prioritize tasks when you’re fatigued or dealing with chronic illness',
-    'avoid burnout by allocating time for rest and recovery in your schedule'
+    'Plan your day according to limited energy or focus (“spoons”).',
+    'Prioritize tasks when fatigued, neurodivergent, or living with chronic illness.',
+    'Balance high-effort tasks with restorative activities to avoid burnout.',
+    'Communicate limits and plan accommodations with colleagues, caregivers, or therapists.',
+    'Create weekly or cyclical plans aligned with fluctuating energy.',
+    'Share energy plans as a self-advocacy tool in health or workplace contexts.'
   ],
+  definition: 'Spoon Theory is a planning method from chronic illness and disability advocacy that treats energy or focus as a limited budget (“spoons”) to spend on tasks. This framework helps prioritize, schedule, and balance activities with intentional rest, delegation, and recovery. It supports sustainable productivity, wellbeing, and communication.',
+  help: 'Input how many spoons (energy units) you have and list your tasks with estimated spoon costs. Include non-negotiables and restorative activities. Optionally note timeframe, support, or energy boosters. The model will build a plan showing what to do, what to defer, and how to recharge. Review midway and adjust if your spoon levels change.',
   boosters: [
-    'Estimate a spoon cost for each task (e.g., 1 = easy, 5 = very demanding).',
-    'Plan a small reward or break whenever you use a large portion of your spoons to recharge.'
+    'Balance each high-cost task with a planned recovery break or restorative activity.',
+    'If tasks exceed the spoon budget, propose trade-offs, delegation, or simplifications.',
+    'Always include at least one low-spoon backup task to preserve momentum.',
+    'Translate spoons into an alternative metaphor (battery %, water jars, rice bowls) if inclusivity or preference suggests it.',
+    'Check: Are non-negotiables realistic given today’s spoon budget?',
+    'Balance across domains (work, health, social, personal).',
+    'Suggest pacing strategies (Pomodoro, zoning, micro-rests).'
   ],
-  definition: 'A planning method that treats your energy or focus as a limited budget (“spoons”) to spend on tasks, helping you prioritize and balance activities with rest.',
-  help: 'Input how many “spoons” (energy units) you have and a list of tasks (with estimated spoon costs). The model will suggest an optimized plan: which tasks to tackle within your budget and where to rest.',
   fields: [
-    { key: 'spoons', label: 'Available spoons (energy for the day)', type: 'text', ph: 'e.g., 10' },
-    { key: 'tasks',  label: 'Tasks (one per line, with optional spoon cost)', type: 'textarea', ph: 'e.g., Do laundry - 2\nFinish report - 4\nCall a friend - 1\nMake dinner - 3' }
+    { key: 'timeframe', label: 'Timeframe', type: 'text',
+      desc: 'State whether you are planning for today, this week, or another period.',
+      ph: 'e.g., Today / This week' },
+    { key: 'spoons', label: 'Available spoons (energy for the day)', type: 'text',
+      desc: 'Your estimated energy budget for the chosen timeframe.',
+      ph: 'e.g., 10' },
+    { key: 'tasks', label: 'Tasks (one per line, with optional spoon cost)', type: 'textarea',
+      desc: 'List activities and their estimated spoon costs (1 = easy, 5 = very demanding).',
+      ph: 'Do laundry - 2\nFinish report - 4\nCall a friend - 1\nMake dinner - 3' },
+    { key: 'nonnegotiables', label: 'Non-negotiable tasks', type: 'textarea',
+      desc: 'Tasks that must be done regardless of cost. Use this to surface essentials.',
+      ph: 'Pick up medication - 3' },
+    { key: 'restoratives', label: 'Restorative activities', type: 'textarea',
+      desc: 'Things that help recharge energy during the day.',
+      ph: 'Nap - restores 2 spoons\nMeditation - restores 1 spoon' },
+    { key: 'delegation_support', label: 'Delegation/support (optional)', type: 'textarea',
+      desc: 'Who or what could take tasks off your plate (people, tools, accommodations).',
+      ph: 'Spouse does dishes; use grocery delivery app' },
+    { key: 'energy_boosters', label: 'Energy boosters (optional)', type: 'textarea',
+      desc: 'Small, quick actions that help you recover spoons temporarily.',
+      ph: 'Snack, stretch, step outside, hydration' }
   ],
-  template: ({ spoons, tasks, ctx, audience, style, tone }) => [
-    'Plan the day using Spoon Theory (energy budgeting).',
+  template: ({ timeframe, spoons, tasks, nonnegotiables, restoratives, delegation_support, energy_boosters, ctx, audience, style, tone }) => [
+    'Plan using Spoon Theory (energy budgeting).',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
+    timeframe && `Timeframe: ${timeframe}`,
     spoons && `Spoons available: ${spoons}`,
+    nonnegotiables && `Non-negotiable tasks:\n${nonnegotiables}`,
     tasks && (
       'Tasks:\n' + String(tasks)
         .split(/\n+/)
@@ -5613,7 +6542,18 @@ fields: [
         .map((t,i) => `${i+1}. ${t}`)
         .join('\n')
     ),
-    'Output:\n1) Which tasks to do within the available spoons (with rationale)\n2) Which tasks to postpone or simplify\n3) A schedule including rest breaks or recovery time'
+    restoratives && `Restorative activities:\n${restoratives}`,
+    delegation_support && `Delegation/support:\n${delegation_support}`,
+    energy_boosters && `Energy boosters:\n${energy_boosters}`,
+    'Output:',
+    '1) Spoon budget math: total available vs. planned spend',
+    '2) Prioritized task plan with rationale',
+    '3) Scheduled rest breaks or restorative activities',
+    '4) Delegation/support suggestions',
+    '5) Backup low-spoon task(s)',
+    '6) Over-budget warning if applicable + trade-offs',
+    '7) Alternative metaphor if user prefers',
+    'Checklist:\n- [ ] Non-negotiables included\n- [ ] Restoratives balanced\n- [ ] ≥1 low-spoon task available\n- [ ] Delegation considered\n- [ ] Buffer for surprises added'
   ].filter(Boolean).join('\n')
 },
 {
@@ -6102,6 +7042,68 @@ template: ({
     ].filter(Boolean).join('\n');
   }
 },
+{
+  id:'toulmin',
+  slug:'toulmin-argument-model',
+  label:'Toulmin’s Argument Model — Claim · Grounds · Warrant · Backing · Qualifier · Rebuttal',
+  kind:'framework',
+  categories:['reasoning patterns','critical thinking','debate','philosophy','rhetoric'],
+  tags:[
+    'type:framework','topic:argumentation','topic:toulmin','phase:structure',
+    'level:intermediate','use:debate-prep','use:analysis','use:policy-brief','use:legal-writing'
+  ],
+  use_cases:[
+    'debate prep and competitive argumentation',
+    'legal briefs and litigation strategy',
+    'ux/product design debates',
+    'policy briefs and position papers',
+    'academic essays and research arguments',
+    'negotiation and conflict resolution'
+  ],
+  boosters:[
+    'State at least one explicit warrant that bridges grounds to claim.',
+    'Support the warrant with credible backing (data, authority, mechanism).',
+    'Add a realistic qualifier (scope, probability, or conditions).',
+    'Name a plausible rebuttal and address how you’d handle it.'
+  ],
+  definition:'Breaks an argument into six parts: Claim, Grounds, Warrant, Backing, Qualifier, Rebuttal. Exposes assumptions, clarifies evidence, and adds nuance.',
+  help:'Fill what helps; empty fields are omitted. The Qualifier and Rebuttal keep arguments credible and context-aware.',
+  fields:[
+    { key:'claim',     label:'Claim',                 type:'textarea',
+      desc:'Your main conclusion or thesis.',
+      ph:'e.g., We should ban single-use plastic bags.' },
+
+    { key:'grounds',   label:'Grounds (Evidence)',    type:'textarea',
+      desc:'Facts, observations, or data supporting the claim.',
+      ph:'e.g., Plastic bags contribute to ocean pollution and harm wildlife.' },
+
+    { key:'warrant',   label:'Warrant',               type:'textarea',
+      desc:'Assumption or principle that links grounds to claim.',
+      ph:'e.g., If something causes serious environmental harm, society should regulate or ban it.' },
+
+    { key:'backing',   label:'Backing',               type:'textarea',
+      desc:'Additional support for the warrant (authority, mechanism, precedent).',
+      ph:'e.g., Studies show sea turtles and seabirds ingest plastic at high rates, increasing mortality.' },
+
+    { key:'qualifier', label:'Qualifier',             type:'text',
+      desc:'Strength/conditions of the claim (probability, scope, constraints).',
+      ph:'e.g., In most cases… / Generally… / Except where biodegradable alternatives aren’t feasible.' },
+
+    { key:'rebuttal',  label:'Rebuttal / Reservations', type:'textarea',
+      desc:'Counterarguments or conditions where the claim may not hold, plus how you’d address them.',
+      ph:'e.g., Some argue bans hurt low-income communities; provide subsidies for reusables.' }
+  ],
+  template:({claim,grounds,warrant,backing,qualifier,rebuttal,ctx})=>[
+    'Structure an argument using Toulmin’s model.',
+    ctx && `Context: ${ctx}`,
+    claim     && `Claim:\n${claim}`,
+    grounds   && `Grounds (Evidence):\n${grounds}`,
+    warrant   && `Warrant:\n${warrant}`,
+    backing   && `Backing:\n${backing}`,
+    qualifier && `Qualifier:\n${qualifier}`,
+    rebuttal  && `Rebuttal / Reservations:\n${rebuttal}`
+  ].filter(Boolean).join('\n')
+},
 
 
 {
@@ -6109,37 +7111,79 @@ template: ({
   slug: 'epic-quest-tasking',
   label: 'Epic Quest Tasking — Gamify the Chore',
   kind: 'pattern',
-  categories: ['productivity', 'creativity'],
+  categories: ['productivity', 'creativity', 'storytelling', 'motivation', 'self-care'],
   tags: [
-    'type:pattern','topic:gamification','topic:play','level:beginner',
-    'use:motivation','use:adhd','use:routine'
+    'type:pattern','topic:gamification','topic:play','topic:game-theory','topic:narrative-design',
+    'method:story-scaffold',
+    'level:intermediate',
+    'use:motivation','use:adhd','use:routine','use:habit-building','use:executive-function','use:therapy'
   ],
   use_cases: [
-    'turn a boring chore or task into an exciting mission narrative to spark motivation',
-    'help neurodivergent individuals get started on tasks by reframing them as game quests',
-    'make goal-setting fun by introducing heroes, villains, and rewards into everyday tasks'
+    'Transform chores or tasks into engaging quests through narrative play.',
+    'Help neurodivergent individuals overcome task resistance by reframing them as heroic missions.',
+    'Make goal-setting fun and sustainable with characters, villains, and rewards.',
+    'Gamify self-care or wellbeing routines into “daily quests.”',
+    'Encourage children or groups to collaborate on chores as “party quests.”',
+    'Reframe routine activities into therapeutic storytelling for resilience.',
+    'Stack habits by turning recurring routines into progressive quest chains.'
   ],
   boosters: [
-    'Set a time limit or “countdown” in the story to create urgency (e.g., “complete the quest before the sun sets in 25 minutes”).',
-    'Include a small celebratory moment or reward in the narrative when the task (quest) is completed, to give a sense of accomplishment.'
+    'Always dramatize at least one obstacle or villain linked to friction in the task.',
+    'Invent a persona if none provided, themed to the task (e.g., dishes = Water Mage).',
+    'Add XP or loot-style rewards, even if the user only provides a real-world reward.',
+    'Introduce urgency with a countdown, rival, or time-sensitive stakes.',
+    'Provide at least 3 alternate quest names/titles for variety.',
+    'Tie the villain to a specific pain point or blocker in the real task.',
+    'Keep endings celebratory — frame setbacks as plot twists, not failures.',
+    'End with a sequel hook for tomorrow’s quest or next stage.'
   ],
-  definition: 'A motivational technique that reframes a mundane task as an epic adventure or game quest. By becoming a hero on a mission (with challenges and rewards), the task feels more engaging and doable.',
-  help: 'Enter a task you want to gamify. Optionally specify a theme or hero persona (e.g., space explorer, detective) and a reward. The model will generate a short story where you (the hero) undertake the task as an epic quest, including a triumphant reward at the end.',
+  definition: 'A narrative productivity pattern that reframes chores and tasks as quests in a story-driven world, using roleplay, game mechanics, and rewards to turn resistance into playful motivation. Rooted in gamification, game theory, and therapeutic storytelling. It helps individuals (including ADHD and chronic illness communities) build habits, overcome resistance, and sustain motivation.',
+  help: 'Enter a task you want to gamify. Optionally specify a hero persona, quest type, world theme, villain/obstacle, XP value, or reward. The model will generate a short quest narrative where you (the hero) undertake the task as an epic mission, with obstacles, triumph, and reward.',
   fields: [
-    { key: 'task',    label: 'Task or chore to gamify', type: 'textarea', ph: 'e.g., cleaning my room' },
-    { key: 'persona', label: 'Hero persona or theme (optional)', type: 'text', ph: 'e.g., a pirate captain, a wizard, a secret agent' },
-    { key: 'reward',  label: 'Reward for completion (optional)', type: 'text', ph: 'e.g., 15 minutes of video game time, a snack' }
+    { key: 'task', label: 'Task or chore to gamify', type: 'textarea',
+      ph: 'e.g., cleaning my room',
+      desc: 'The real-world activity you want reframed as a quest.' },
+    { key: 'persona', label: 'Hero persona or theme (optional)', type: 'text',
+      ph: 'e.g., a pirate captain, a wizard, a secret agent',
+      desc: 'Who you are in this story. If left blank, the AI will invent one.' },
+    { key: 'quest_type', label: 'Quest type (optional)', type: 'text',
+      ph: 'e.g., Main Quest, Side Quest, Daily Ritual',
+      desc: 'Helps frame priority and style of the task.' },
+    { key: 'villain', label: 'Villain or obstacle (optional)', type: 'text',
+      ph: 'e.g., the Dust Goblin, the Chaos Horde',
+      desc: 'An adversary that represents the hardest part of the task.' },
+    { key: 'lore', label: 'Lore / world theme (optional)', type: 'textarea',
+      ph: 'e.g., Arcane Library, Cosmic Empire, Pirate Seas',
+      desc: 'The setting or story world the task takes place in.' },
+    { key: 'difficulty', label: 'Difficulty level (optional)', type: 'select',
+      options: ['Easy', 'Moderate', 'Epic', 'Legendary'],
+      desc: 'How challenging this quest should feel to set tone and stakes.' },
+    { key: 'allies', label: 'Party members / allies (optional)', type: 'textarea',
+      ph: 'e.g., my sibling, my dog, a friendly robot',
+      desc: 'Who joins you on this quest — real or imagined allies.' },
+    { key: 'xp', label: 'XP or points to award (optional)', type: 'text',
+      ph: 'e.g., 50 XP, 1 skill point',
+      desc: 'Points earned for completing the quest. Can be symbolic or tracked.' },
+    { key: 'reward', label: 'Reward for completion (optional)', type: 'text',
+      ph: 'e.g., 15 minutes of video game time, a snack',
+      desc: 'Real-life or symbolic reward to celebrate quest completion.' }
   ],
-  template: ({ task, persona, reward, ctx, audience, style, tone }) => [
-    'Turn the task into an epic quest storyline to make it fun.',
+  template: ({ task, persona, reward, quest_type, villain, xp, lore, difficulty, allies, ctx, audience, style, tone }) => [
+    'Transform the task into an epic quest narrative.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
-    task && `Task: ${task}`,
+    task && `Quest (task): ${task}`,
+    quest_type && `Quest type: ${quest_type}`,
     persona && `Hero persona: ${persona}`,
+    villain && `Villain/obstacle: ${villain}`,
+    lore && `World theme:\n${lore}`,
+    difficulty && `Difficulty: ${difficulty}`,
+    allies && `Allies/party:\n${allies}`,
     reward && `Reward for success: ${reward}`,
-    'Output:\n1) An adventurous setup: the hero’s mission (the task) and why it matters\n2) Challenges or villains to overcome (difficult parts of the task) described excitingly\n3) The heroic completion and obtaining the reward, with a celebratory ending'
+    xp && `XP awarded: ${xp}`,
+    'Output:\n1) Adventurous setup: hero identity, stakes, quest title\n2) Challenges and villainous obstacles dramatized as story beats\n3) Allies or supports (if any)\n4) Heroic completion with XP, loot, and celebratory reward\n5) Sequel hook to carry narrative momentum forward\n\nChecklist:\n- [ ] Quest has name/title\n- [ ] Villain dramatized\n- [ ] Reward + XP clear\n- [ ] Ending celebratory\n- [ ] Sequel hook included'
   ].filter(Boolean).join('\n')
 },
 {
