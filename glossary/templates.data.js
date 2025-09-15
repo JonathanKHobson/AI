@@ -2576,42 +2576,109 @@ boosters: [
   },
 
 
-  {
-    id:'par',
-    slug:'par-method',
-    label:'PAR — Problem · Action · Result',
-    kind:'framework',
-    categories:['storytelling frameworks','prompt development techniques'],
-    tags:[
-  'type:framework','topic:storytelling','phase:apply','level:beginner',
-  'use:resume-bullet','use:case-study','use:status-update'
-],
-use_cases: [
-  'resume bullet',
-  'performance review note',
-  'status update',
-  'case study snapshot',
-  'incident summary',
-  'customer story outline'
-],
-boosters: [
-  "Quantify results where possible (%, Δ, time); if no metrics given, propose proxy metrics."
-],
-    definition:'A compressed alternative to STAR that focuses on the core: problem, action, and result.',
-    help:'Concise alternative to STAR.',
-    fields:[
-      {key:'problem', label:'Problem', type:'textarea', desc:'The obstacle or issue.', ph:'e.g., High churn after trial'},
-      {key:'action',  label:'Action',  type:'textarea', desc:'What you did.',         ph:'e.g., Onboarding emails + in-app tips'},
-      {key:'result',  label:'Result',  type:'textarea', desc:'Outcome/impact.',       ph:'e.g., Churn reduced from 14%→8%'}
-    ],
-    template:({problem,action,result,ctx})=>[
-      ctx&&`Context: ${ctx}`,
-      problem&&`Problem: ${problem}`,
-      action&&`Action: ${action}`,
-      result&&`Result: ${result}`,
-      `Format the response as short bullets.`
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'par',
+  slug: 'par-problem-action-result',
+  label: 'PAR — Problem · Action · Result',
+  kind: 'framework',
+  categories: ['storytelling frameworks', 'prompt development techniques'],
+  tags: [
+    'type:framework','topic:storytelling','phase:apply','level:beginner',
+    'use:resume-bullet','use:case-study','use:status-update','use:performance-review'
+  ],
+  use_cases: [
+    'summarize work experience on resumes',
+    'write concise case study or incident summaries',
+    'prepare performance review notes',
+    'give crisp updates in team reports'
+  ],
+  boosters: [
+    'Quantify results with metrics or proxies (%, $, Δ, time saved).',
+    'Make the Problem clear and show why it mattered (stakes).',
+    'Emphasize your unique role in the Action (avoid “we did” unless team impact is key).',
+    'Adapt output tone to context: factual (resume), reflective (review), persuasive (case study).'
+  ],
+  definition: 'A concise storytelling pattern that frames a challenge (Problem), the steps taken (Action), and the measurable outcome (Result). A simpler alternative to STAR.',
+  help: 'Use PAR for clear, structured summaries of your work or impact. Start with the challenge, describe what you did, and end with the result.',
+  fields: [
+    { key: 'problem', label: 'Problem (situation/stakes)', type: 'textarea',
+      desc: 'The obstacle, gap, or situation, ideally with stakes or urgency.',
+      ph: 'e.g., High churn after trial threatened renewal revenue' },
+    { key: 'action', label: 'Action (your steps)', type: 'textarea',
+      desc: 'What you did specifically to address the problem.',
+      ph: 'e.g., Designed onboarding emails and in-app tutorials' },
+    { key: 'result', label: 'Result (outcome/impact)', type: 'textarea',
+      desc: 'The measurable or observable impact of your action.',
+      ph: 'e.g., Reduced churn from 14% → 8% within 3 months' },
+    { key: 'audience', label: 'Audience (optional)', type: 'text',
+      desc: 'Who this output is for (recruiter, manager, client).',
+      ph: 'e.g., Performance review' },
+    { key: 'format', label: 'Output format (optional)', type: 'text',
+      desc: 'Preferred structure: bullet point, short paragraph, or case study snippet.',
+      ph: 'e.g., Resume bullet' }
+  ],
+  template: ({ problem, action, result, audience, format, ctx }) => [
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    problem && `Problem: ${problem}`,
+    action && `Action: ${action}`,
+    result && `Result: ${result}`,
+    format && `Format: ${format}`,
+    'Output: structured bullets or summary following Problem → Action → Result.'
+  ].filter(Boolean).join('\n')
+},
+
+{
+  id: 'rap',
+  slug: 'rap-result-action-problem',
+  label: 'RAP — Result · Action · Problem',
+  kind: 'framework',
+  categories: ['storytelling frameworks', 'prompt development techniques'],
+  tags: [
+    'type:framework','topic:storytelling','phase:apply','level:beginner',
+    'use:resume-bullet','use:sales-pitch','use:cover-letter','use:investor-pitch'
+  ],
+  use_cases: [
+    'write resume bullets that hook with impact first',
+    'open sales or investor pitches with outcomes before context',
+    'frame cover letters with results up front',
+    'craft concise, high-impact marketing copy'
+  ],
+  boosters: [
+    'Lead with a strong, quantified Result as the hook.',
+    'Keep Action phrasing tight and use power verbs.',
+    'Frame the Problem/Backdrop in one crisp line for context, not complaint.',
+    'Adapt tone for audience (resume = factual; pitch = persuasive).'
+  ],
+  definition: 'An impact-first storytelling pattern. Start with the outcome, show the action taken, and close with the problem that made it necessary. Useful when attention is scarce.',
+  help: 'Use RAP when you need brevity and impact. Start with what was achieved, then show how you did it, then give the backdrop that made it matter.',
+  fields: [
+    { key: 'result', label: 'Result (hook)', type: 'textarea',
+      desc: 'The measurable or impressive outcome (numbers if possible).',
+      ph: 'e.g., Increased revenue by $1M (12% YoY)' },
+    { key: 'action', label: 'Action (what you did)', type: 'textarea',
+      desc: 'Your role, decisions, or steps that produced the result.',
+      ph: 'e.g., Led cross-functional mid-market campaign' },
+    { key: 'problem', label: 'Backdrop / Problem', type: 'textarea',
+      desc: 'The challenge, gap, or need that drove the action.',
+      ph: 'e.g., Pipeline relied only on enterprise; mid-market gap' },
+    { key: 'audience', label: 'Audience (optional)', type: 'text',
+      desc: 'Who the output is for (recruiter, investor, manager, customer).',
+      ph: 'e.g., Hiring manager reviewing resume' },
+    { key: 'format', label: 'Output format (optional)', type: 'text',
+      desc: 'Preferred style: bullet point, short paragraph, or headline.',
+      ph: 'e.g., Resume bullet' }
+  ],
+  template: ({ result, action, problem, audience, format, ctx }) => [
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    result && `Result: ${result}`,
+    action && `Action: ${action}`,
+    problem && `Problem/Backdrop: ${problem}`,
+    format && `Format: ${format}`,
+    'Output: concise bullets or short statement starting with the Result.'
+  ].filter(Boolean).join('\n')
+},
   
   {
     id: 'pas',
