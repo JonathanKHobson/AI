@@ -382,6 +382,18 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 .chip[aria-pressed="false"]{ opacity:.92; }   /* still fully readable */
 .chip[aria-pressed="true"]{ opacity:1; font-weight:600; }
 
+/* Bias multi-select chips */
+.chipsInput{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:6px; border:1px solid var(--border); border-radius:10px; background:var(--card); min-height:36px; }
+.chipsInput input{ flex:1; min-width:140px; border:none; outline:none; background:transparent; padding:6px 8px; font-size:14px; }
+.chipsInput .chip{ display:inline-flex; align-items:center; gap:6px; }
+.chipsInput .chip .x{ margin-left:4px; border:none; background:transparent; cursor:pointer; font-size:14px; line-height:1; padding:0 4px; color:var(--muted); }
+.chipsInput .dot{ width:8px; height:8px; border-radius:999px; display:inline-block; }
+.dot.bias{ background:#d97706; }       /* amber */
+.dot.technique{ background:#059669; }  /* green */
+.dot.dilemma{ background:#7c3aed; }    /* purple */
+.dot.custom{ background:#6b7280; }     /* gray */
+
+
 
     pre{margin:0;padding:14px;background:var(--card);border-top:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:auto;white-space:pre-wrap}
 
@@ -726,10 +738,13 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
             <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
           </div>
           <div>
-<label for="audience">Audience</label>
-<input id="audience" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" data-typeahead="persona" />
-<!-- simple dropdown container; stays hidden until suggestions appear -->
+<label for="audienceInput">Audience</label>
+<div id="audienceChipsWrap" class="chipsInput">
+  <div id="audienceChips" class="chips"></div>
+  <input id="audienceInput" type="text" placeholder="e.g., Busy SMB owners" autocomplete="off" />
+</div>
 <div id="audienceSuggestions" class="ta-menu" hidden></div>
+<div class="help"></div>
 
           </div>
         </div>
@@ -743,6 +758,22 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
             <input id="tone" type="text" placeholder="e.g., Friendly, confident" />
           </div>
         </div>
+        
+                <div class="row">
+          <div style="grid-column:1/-1">
+
+            <label for="biasInput">Bias awareness &amp; mitigation (multi-select)</label>
+            <div id="biasChipsWrap" class="chipsInput">
+              <div id="biasChips" class="chips"></div>
+              <input id="biasInput" type="text" placeholder="Type to add biases, tactics, or dilemmas…" autocomplete="off" />
+            </div>
+            <div id="biasSuggestions" class="ta-menu" hidden></div>
+            <div class="help">Add biases to avoid, mitigation tactics to apply, or ethical dilemmas to consider. We’ll adapt the prompt accordingly.</div>
+  
+          </div>
+        </div>
+
+        
       </section>
 
       <section>
@@ -834,6 +865,43 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     document.head.appendChild(s);
   })();
 </script>
+
+<script>
+// Biases DB (window.BIASES) — safe to load even if absent
+(function tryLoadBiases(){
+  function inject(path, final=false){
+    const s = document.createElement('script');
+    s.src = path;
+    s.onload = ()=>{
+      try{
+        // Rebuild index if our helpers exist
+        if (typeof buildBiasIndex === 'function') {
+          window.__BIAS_IDX = null;
+          buildBiasIndex();
+        }
+        // Let listeners (chips/typeahead) re-render suggestions
+        document.dispatchEvent(new Event('biases-loaded'));
+      }catch(e){}
+    };
+    s.onerror = ()=>{
+      console.info('Bias data not found at', path);
+      // Light fallbacks for common naming/paths
+      if (!final) {
+        const next = (path === './bias.data.js')
+          ? './biases.data.js'
+          : (path === './biases.data.js')
+            ? './biased.data.js'
+            : null;
+        if (next) { inject(next); return; }
+      }
+    };
+    document.head.appendChild(s);
+  }
+  inject('./bias.data.js');
+})();
+</script>
+
+
 
 <script>
 // S4 — Lazy loader for tasks dataset (window.TASK_TEMPLATES)
@@ -1156,6 +1224,182 @@ function attachPersonaTypeahead(inputEl, menuEl, getActiveTab, onChange){
   document.addEventListener('click', (ev)=>{
     if (ev.target!==inputEl && !menuEl.contains(ev.target)) close();
   });
+}
+
+/* ===== Bias helpers ===== */
+// Minimal, persona-parallel utilities. Won’t touch existing persona flows.
+
+function biasIndex(){
+  // Prefer window.* but gracefully accept a top-level BIASES const
+  if (Array.isArray(window.BIASES))        return window.BIASES;
+  if (Array.isArray(window.biases))        return window.biases;
+  if (Array.isArray(window.BIAS_LIBRARY))  return window.BIAS_LIBRARY;
+  if (Array.isArray(window.BIAS))          return window.BIAS;
+  try { if (typeof BIASES !== 'undefined' && Array.isArray(BIASES)) return BIASES; } catch (e){}
+  return [];
+}
+
+
+function _biasAsList(v){ return Array.isArray(v) ? v : String(v||'').split(/[\n,]+/).map(s=>s.trim()).filter(Boolean); }
+function _biasBullets(arr){ return _biasAsList(arr).map(x=>'• '+x).join('\n'); }
+function _biasCSV(arr){ return _biasAsList(arr).join(', '); }
+
+function biasKeyFields(b){
+  return [
+    b.name || b.label || b.bias_name || '',
+    b.kind || '',
+    b.category || '',
+    b.summary || b.definition || b.description || '',
+    (b.tags||[]).join(' '),
+    (b.contexts||''),
+    (b.mitigations||''),
+    (b.examples||'')
+  ].join(' ').toLowerCase();
+}
+
+let __BIAS_IDX = null;
+function buildBiasIndex(){
+  const list = biasIndex();
+  __BIAS_IDX = list.map((b,i)=>({
+    i,
+    name: String(b.name || b.label || 'Unknown bias').trim(),
+    hay: biasKeyFields(b),
+    b
+  }));
+  return __BIAS_IDX;
+}
+
+function searchBiases(q, max=30){
+  // Build on first use; if we built too early (empty) but data is now present, rebuild.
+  if (!__BIAS_IDX || (__BIAS_IDX.length === 0 && Array.isArray(biasIndex()) && biasIndex().length > 0)) {
+    buildBiasIndex();
+  }
+  const toks = String(q||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  if (!toks.length) return (__BIAS_IDX || []).slice(0, Math.min(max, (__BIAS_IDX||[]).length)).map(r=>r.b);
+  return (__BIAS_IDX || [])
+    .map(r=>{
+      let s=0; for (const t of toks){ if (r.hay.includes(t)) s++; if (r.name.toLowerCase().startsWith(t)) s+=2; }
+      return { ...r, s };
+    })
+    .filter(r=> r.s>0)
+    .sort((a,b)=> b.s - a.s || a.name.localeCompare(b.name))
+    .slice(0, max)
+    .map(r=> r.b);
+}
+
+// --- Bias lookup & kind helpers (used by chips + directive composer) ---
+function getBiasById(id){
+  if (!__BIAS_IDX || !__BIAS_IDX.length) buildBiasIndex && buildBiasIndex();
+  const needle = String(id || '').toLowerCase();
+  const hit = (__BIAS_IDX || []).find(r =>
+    String(r.b.id || '').toLowerCase() === needle ||
+    String(r.b.name || '').toLowerCase() === needle
+  );
+  return hit ? hit.b : null;
+}
+function biasKindOf(b){
+  const k = String(b?.kind || '').toLowerCase();
+  const c = Array.isArray(b?.category) ? b.category.join(' ').toLowerCase()
+                                       : String(b?.category || '').toLowerCase();
+  if (/mitigation|technique/.test(k) || /mitigation/.test(c)) return 'technique';
+  if (/dilemma|ethical/.test(k)     || /dilemma|ethical/.test(c)) return 'dilemma';
+  return 'bias';
+}
+
+
+
+// Mirror personaFilter signature
+function biasFilter(query, max=20){
+  const q = (query||'').trim();
+  if (!q) return [];
+  return searchBiases(q, max);
+}
+
+// Rich text block, inline string, and templated fill
+function biasText(b){
+  return [
+    b.name && `Name: ${b.name}`,
+    b.kind && `Kind: ${b.kind}`,
+    b.category && `Category: ${b.category}`,
+    b.summary && `Summary: ${b.summary}`,
+    b.definition && `Definition: ${b.definition}`,
+    (b.contexts && _biasAsList(b.contexts).length) && `Contexts:\n${_biasBullets(b.contexts)}`,
+    (b.mitigations && _biasAsList(b.mitigations).length) && `Mitigations:\n${_biasBullets(b.mitigations)}`,
+    (b.examples && _biasAsList(b.examples).length) && `Examples:\n${_biasBullets(b.examples)}`,
+    (b.tags && _biasAsList(b.tags).length) && `Tags: ${_biasCSV(b.tags)}`
+  ].filter(Boolean).join('\n');
+}
+
+function biasInlineFlexible(b, opts = {}){
+  const include = Array.isArray(opts.include) && opts.include.length
+    ? opts.include : ['name','category','summary'];
+  const labels = opts.labels !== false;
+  const sep = typeof opts.sep === 'string' ? opts.sep : ' · ';
+  const labelMap = {
+    name: labels ? 'Name: ' : '',
+    kind: labels ? 'Kind: ' : '',
+    category: labels ? 'Category: ' : '',
+    summary: labels ? 'Summary: ' : ''
+  };
+  return include
+    .map(k => ((b?.[k] ?? '').toString().trim() ? labelMap[k] + b[k] : ''))
+    .filter(Boolean)
+    .join(sep);
+}
+
+function biasFillTemplate(tpl, b){
+  return String(tpl||'').replace(/\{(\w+)\}/g, (_,k)=> (b?.[k] ?? ''));
+}
+
+// Optional “spread into tab fields” (mirrors applyPersonaToTab)
+function applyBiasToTab(tab, bias){
+  if (!tab || !bias) return;
+  tab.fields = {
+    ...(tab.fields||{}),
+    bias_name:        bias.name || '',
+    bias_kind:        bias.kind || '',
+    bias_category:    bias.category || '',
+    bias_summary:     bias.summary || '',
+    bias_definition:  bias.definition || '',
+    bias_contexts:    _biasAsList(bias.contexts).join('\n'),
+    bias_mitigations: _biasAsList(bias.mitigations).join('\n'),
+    bias_examples:    _biasAsList(bias.examples).join('\n'),
+    bias_tags:        _biasAsList(bias.tags).join(', ')
+  };
+}
+
+/* ===== Bias directive composer ===== */
+function composeBiasDirectives(ids){
+  const list = Array.isArray(ids) ? ids : [];
+  if (!list.length) return { combined:'', awareness:'', mitigations:'', ethics:'' };
+
+  const asObj = id => getBiasById(id) || (String(id).startsWith('custom:') ? { id, name: String(id).slice(7), kind:'custom', summary:'' } : null);
+  const items = list.map(asObj).filter(Boolean);
+
+  const buckets = { awareness:[], mitigations:[], ethics:[] };
+  for (const b of items){
+    const kind = biasKindOf(b);
+    if (kind === 'technique') buckets.mitigations.push(b);
+    else if (kind === 'dilemma') buckets.ethics.push(b);
+    else buckets.awareness.push(b);
+  }
+
+  const bullet = (n,s) => s ? `• ${n}: ${String(s).trim()}` : `• ${n}`;
+
+  const aw = buckets.awareness.length
+    ? ['Awareness', ...buckets.awareness.map(b => bullet(b.name, b.summary || b.definition || 'Avoid reinforcing; balance sources; ask a neutral clarifying question if risk is detected.'))].join('\n')
+    : '';
+
+  const mi = buckets.mitigations.length
+    ? ['Mitigations', ...buckets.mitigations.map(b => bullet('Apply ' + b.name, b.summary || b.definition || 'Apply this tactic as appropriate.'))].join('\n')
+    : '';
+
+  const et = buckets.ethics.length
+    ? ['Ethical considerations', ...buckets.ethics.map(b => bullet(b.name, b.summary || b.definition || 'Surface trade-offs and seek constraints before deciding.'))].join('\n')
+    : '';
+
+  const combined = [aw, mi, et].filter(Boolean).join('\n\n');
+  return { combined: combined ? 'Bias directives —\n' + combined : '', awareness:aw, mitigations:mi, ethics:et };
 }
 
 
@@ -2009,7 +2253,10 @@ function switchTab(idx){
   state.active = idx;
   renderTabs(); buildFrameworkOptions(document.getElementById('fwSearch')?.value||'');
   renderFields(); syncCommonInputs(); emitAll(); nudgeFieldsSwap();
+  // notify auxiliary controls
+  document.dispatchEvent(new Event('tab-switched'));
 }
+
 
 function renderTabs(){
 const bar = document.getElementById('tabbar');
@@ -2068,27 +2315,47 @@ if (!fw || (fw.id === 'none' && !hasRealFields)) return '';
 const c = (t.common || {});
 let ctxPlus = ctxStringFromTab(t);
 
-if (c.audience_persona){
-  const personaBlock = formatPersonaForPrompt(c.audience_persona); // already defined above
-  ctxPlus = [ctxPlus, personaBlock].filter(Boolean).join('\n\n');
+// support 1 or many personas
+const _audArr = Array.isArray(c.audience_personas) ? c.audience_personas
+                : (c.audience_persona ? [c.audience_persona] : []);
+if (_audArr.length){
+  const block = _audArr.map(p => formatPersonaForPrompt(p)).join('\n\n');
+  ctxPlus = [ctxPlus, block].filter(Boolean).join('\n\n');
 }
 
+
 const merged = {
-  ctx: ctxPlus,                 // ctxPlus already includes persona when present
+  ctx: ctxPlus,
   ...(t.fields || {})
 };
 
+// === Bias directives (from Common Context) ===
+let biasSection = '';
+{
+  const ids = (t.common && Array.isArray(t.common.bias_ids)) ? t.common.bias_ids : [];
+  const blocks = composeBiasDirectives(ids);
+  merged.bias_awareness_block   = blocks.awareness || '';
+  merged.bias_mitigations_block = blocks.mitigations || '';
+  merged.ethics_block           = blocks.ethics || '';
+  merged.bias_directives        = blocks.combined || '';
+}
+
+// Build body AFTER merged is enriched
 const body = fw.template(merged);
+
 
 // Persona profile fallback — if the template does NOT render ctx,
 // we still inject a neat persona section right after the header.
 let personaSection = '';
-if (c.audience_persona) {
-  const block = formatPersonaForPrompt(c.audience_persona);
-  if (block && !body.includes('Audience profile —')) {
+{
+  const _audArr = Array.isArray(c.audience_personas) ? c.audience_personas
+                  : (c.audience_persona ? [c.audience_persona] : []);
+  if (_audArr.length && !body.includes('Audience profile —')) {
+    const block = _audArr.map(p => formatPersonaForPrompt(p)).join('\n\n');
     personaSection = block;
   }
 }
+
 
 // If the user hasn't typed anything, fall back to the framework's boosters
 const boosterFallback = Array.isArray(fw.boosters) ? fw.boosters.join(' ') : '';
@@ -2098,12 +2365,18 @@ const extraText = extra ? `Additional instructions: ${extra}` : '';
 
 const header = meta.definition ? `Using ${meta.label}: ${meta.definition}` : `Using ${meta.label}.`;
 
-// Assemble: Header → (optional persona section) → Body → Extra
-return [header, personaSection, body, extraText]
+// If the template didn’t render a bias block, append a compact one at the end.
+const biasAuto = merged.bias_directives || '';
+const biasTail = (biasAuto && !String(body).includes('Bias directives') && !String(extraText).includes('Bias directives'))
+  ? biasAuto : '';
+
+// Assemble: Header → (optional persona section) → Body → Extra → (optional bias tail)
+return [header, personaSection, body, extraText, biasTail]
   .filter(Boolean)
   .join('\n')
   .replace(/\n{3,}/g,'\n\n')
   .trim();
+
 
 }
 
@@ -2352,68 +2625,86 @@ del.addEventListener('click', ()=>{
     fieldInput(input, sync);
 
     // Persona-backed typeahead per row (reuses same behavior as single-field typeahead)
-    if (itType === 'typeahead' || itType === 'typeahead_textarea'){
-      holder.classList.add('taWrap');
-      const listEl = document.createElement('div');
-      listEl.className = 'taList';
-      listEl.hidden = true;
-      holder.appendChild(listEl);
+// Source-backed typeahead per row (persona or bias)
+if (itType === 'typeahead' || itType === 'typeahead_textarea'){
+  const source = (f.dataset || f.source || f.autocomplete || 'persona'); // 'persona' | 'bias'
+  holder.classList.add('taWrap');
 
-      let activeIndex = -1;
-      function renderSuggestions(q){
-        const hits = personaFilter(q, 30); // window.PERSONAS if present
-        listEl.innerHTML = '';
-        activeIndex = -1;
-        if (!hits.length){ listEl.hidden = true; return; }
+  const listEl = document.createElement('div');
+  listEl.className = 'taList';
+  listEl.hidden = true;
+  holder.appendChild(listEl);
 
-        hits.forEach((p)=>{
-          const it = document.createElement('div');
-          it.className = 'taItem';
-          it.innerHTML = `
-            <span class="name">${p.name}</span>
-            <span class="sub">${p.profession || ''}${(p.tags && p.tags.length) ? (' • ' + p.tags.join(', ')) : ''}</span>
-          `.trim();
+  let activeIndex = -1;
 
-          it.addEventListener('click', ()=>{
-            // textarea variant pastes full persona profile; otherwise paste the name
-            if (itType === 'typeahead_textarea'){
-              const txt = personaText(p);
-              input.value = txt;
-            }else{
-              input.value = personaInline(p); // compact one-liner
-            }
-            listEl.hidden = true;
-            sync();
-          });
+  function renderSuggestions(q){
+    const hits = (source === 'bias') ? biasFilter(q, 30) : personaFilter(q, 30);
+    listEl.innerHTML = '';
+    activeIndex = -1;
+    if (!hits.length){ listEl.hidden = true; return; }
 
-          listEl.appendChild(it);
-        });
+    hits.forEach((obj)=>{
+      const it = document.createElement('div');
+      it.className = 'taItem';
 
-        listEl.hidden = false;
-      }
+      // Render line 2 differently per source
+      const sub = (source === 'bias')
+        ? `${obj.category || obj.kind || ''}${(obj.tags && obj.tags.length) ? (' • ' + obj.tags.join(', ')) : ''}`
+        : `${obj.profession || ''}${(obj.tags && obj.tags.length) ? (' • ' + obj.tags.join(', ')) : ''}`;
 
-      input.addEventListener('input', ()=>{
-        if (input.value.trim().length === 0){ listEl.hidden = true; sync(); return; }
-        renderSuggestions(input.value);
+      it.innerHTML = `
+        <span class="name">${obj.name}</span>
+        <span class="sub">${sub}</span>
+      `.trim();
+
+      it.addEventListener('click', ()=>{
+        if (source === 'bias'){
+          // textarea variant pastes full bias profile; otherwise paste the name
+          if (itType === 'typeahead_textarea'){
+            input.value = biasText(obj);
+          }else{
+            input.value = obj.name || '';
+          }
+        } else {
+          if (itType === 'typeahead_textarea'){
+            input.value = personaText(obj);
+          }else{
+            input.value = (obj.name || '');
+          }
+        }
+        listEl.hidden = true;
         sync();
       });
 
-      input.addEventListener('keydown', (e)=>{
-        const items = Array.from(listEl.children);
-        if (listEl.hidden || !items.length) return;
-        if (e.key === 'ArrowDown'){ e.preventDefault(); activeIndex = Math.min(items.length-1, activeIndex+1); }
-        if (e.key === 'ArrowUp'){   e.preventDefault(); activeIndex = Math.max(0, activeIndex-1); }
-        if (e.key === 'Escape'){ listEl.hidden = true; return; }
-        if (e.key === 'Enter' && activeIndex >= 0){
-          e.preventDefault();
-          items[activeIndex].dispatchEvent(new Event('click', {bubbles:true}));
-          return;
-        }
-        items.forEach((n,i)=> n.classList.toggle('active', i===activeIndex));
-      });
+      listEl.appendChild(it);
+    });
 
-      input.addEventListener('blur', ()=> setTimeout(()=> listEl.hidden = true, 120));
+    listEl.hidden = false;
+  }
+
+  input.addEventListener('input', ()=>{
+    if (input.value.trim().length === 0){ listEl.hidden = true; sync(); return; }
+    renderSuggestions(input.value);
+    sync();
+  });
+
+  input.addEventListener('keydown', (e)=>{
+    const items = Array.from(listEl.children);
+    if (listEl.hidden || !items.length) return;
+    if (e.key === 'ArrowDown'){ e.preventDefault(); activeIndex = Math.min(items.length-1, activeIndex+1); }
+    if (e.key === 'ArrowUp'){   e.preventDefault(); activeIndex = Math.max(0, activeIndex-1); }
+    if (e.key === 'Escape'){ listEl.hidden = true; return; }
+    if (e.key === 'Enter' && activeIndex >= 0){
+      e.preventDefault();
+      items[activeIndex].dispatchEvent(new Event('click', {bubbles:true}));
+      return;
     }
+    items.forEach((n,i)=> n.classList.toggle('active', i===activeIndex));
+  });
+
+  input.addEventListener('blur', ()=> setTimeout(()=> listEl.hidden = true, 120));
+}
+
 
     list.appendChild(item);
     // Keep add button at the bottom
@@ -2509,9 +2800,10 @@ input.placeholder = f.ph || '';
 input.id = f.key;
 input.value = (t.fields && t.fields[f.key]) || '';
 
-/* -- Typeahead (persona-backed) -- */
+/* -- Typeahead (persona- or bias-backed) -- */
 if (f.type === 'typeahead' || f.type === 'typeahead_textarea'){
 
+  const source = (f.dataset || f.source || f.autocomplete || 'persona'); // 'persona' | 'bias'
   holder.classList.add('taWrap');
 
   const list = document.createElement('div');
@@ -2521,54 +2813,109 @@ if (f.type === 'typeahead' || f.type === 'typeahead_textarea'){
   holder.appendChild(input);
   holder.appendChild(list);
 
-  const isPersona = (f.key === 'persona_name'); // only Persona template should autofill extra fields
-
   let activeIndex = -1;
 
   function renderSuggestions(q){
-    const hits = personaFilter(q, 30); // uses window.PERSONAS if present
+    const hits = (source === 'bias') ? biasFilter(q, 30) : personaFilter(q, 30);
     list.innerHTML = '';
     activeIndex = -1;
     if (!hits.length){ list.hidden = true; return; }
 
-    hits.forEach((p, idx)=>{
+    hits.forEach((obj, idx)=>{
       const item = document.createElement('div');
       item.className = 'taItem';
+
+      const sub = (source === 'bias')
+        ? `${obj.category || obj.kind || ''}${(obj.tags && obj.tags.length) ? (' • ' + obj.tags.join(', ')) : ''}`
+        : `${obj.profession || ''}${(obj.tags && obj.tags.length) ? (' • ' + obj.tags.join(', ')) : ''}`;
+
       item.innerHTML = `
-        <span class="name">${p.name}</span>
-        <span class="sub">${p.profession || ''}${(p.tags && p.tags.length) ? (' • ' + p.tags.join(', ')) : ''}</span>
+        <span class="name">${obj.name}</span>
+        <span class="sub">${sub}</span>
       `.trim();
 
-item.addEventListener('click', ()=>{
-  (t.fields || (t.fields = {}));
+      item.addEventListener('click', ()=>{
+        (t.fields || (t.fields = {}));
 
-  const isPersona = (f.key === 'persona_name');
-  const wantsPersonaTextarea = (f.autofill === 'persona->textarea') || (f.type === 'typeahead_textarea');
+        if (source === 'bias'){
+          // Spread into mapped fields when requested
+          if (f.autofill === 'bias->spread' || f.key === 'bias_name'){
+            applyBiasToTab(t, obj);
+            list.hidden = true;
+            renderFields();
+            emit();
+            return;
+          }
 
-  if (isPersona){
-    // Persona template keeps its rich autofill behavior
-    applyPersonaToTab(t, p);
-    t.fields.end = (t.fields.end || '');
-    list.hidden = true;
-    renderFields();
-    emit();
-    const endInput = document.querySelector('#end'); if (endInput) endInput.focus();
-    return;
-  }
+          // Fill strategies
+          const wantsTextarea = (f.autofill === 'bias->textarea') || (f.type === 'typeahead_textarea');
+          const modeInline    = (f.autofill === 'bias->inline');
+          const modeTemplate  = (f.autofill === 'bias->template');
 
-  if (wantsPersonaTextarea){
-    const txt = personaText(p);
-    input.value = txt;
-    t.fields[f.key] = txt;
-  } else {
-    input.value = p.name || '';
-    t.fields[f.key] = input.value;
-  }
+          if (wantsTextarea){
+            const txt = biasText(obj);
+            input.value = txt;
+            t.fields[f.key] = txt;
+          } else if (modeTemplate){
+            const txt = biasFillTemplate(f.bias_template, obj);
+            input.value = txt;
+            t.fields[f.key] = txt;
+          } else if (modeInline){
+            const txt = biasInlineFlexible(obj, {
+              labels: f?.inline_labels !== false,
+              sep:    f?.separator || ' · ',
+              include: Array.isArray(f?.include) ? f.include : undefined
+            });
+            input.value = txt;
+            t.fields[f.key] = txt;
+          } else {
+            input.value = obj.name || '';
+            t.fields[f.key] = input.value;
+          }
 
-  list.hidden = true;
-  emit();
-});
+          list.hidden = true;
+          emit();
+          return;
+        }
 
+        // === persona (existing behavior preserved) ===
+        const isPersona = (f.key === 'persona_name');
+        const wantsPersonaTextarea = (f.autofill === 'persona->textarea') || (f.type === 'typeahead_textarea');
+
+        if (isPersona){
+          applyPersonaToTab(t, obj);
+          t.fields.end = (t.fields.end || '');
+          list.hidden = true;
+          renderFields();
+          emit();
+          const endInput = document.querySelector('#end'); if (endInput) endInput.focus();
+          return;
+        }
+
+        if (wantsPersonaTextarea){
+          const txt = personaText(obj);
+          input.value = txt;
+          t.fields[f.key] = txt;
+        } else if (f.autofill === 'persona->template'){
+          const txt = personaFillTemplate(f.persona_template, obj);
+          input.value = txt;
+          t.fields[f.key] = txt;
+        } else if (f.autofill === 'persona->inline'){
+          const txt = personaInlineFlexible(obj, {
+            labels: f?.inline_labels !== false,
+            sep:    f?.separator || ' · ',
+            include: Array.isArray(f?.include) ? f.include : undefined
+          });
+          input.value = txt;
+          t.fields[f.key] = txt;
+        } else {
+          input.value = obj.name || '';
+          t.fields[f.key] = input.value;
+        }
+
+        list.hidden = true;
+        emit();
+      });
 
       list.appendChild(item);
     });
@@ -2602,10 +2949,12 @@ item.addEventListener('click', ()=>{
 
   // Hide on blur (delay so clicks register)
   input.addEventListener('blur', ()=> setTimeout(()=> list.hidden = true, 120));
+
 } else {
   // Normal field (text/textarea)
   holder.appendChild(input);
 }
+
 
 // Save + preview updates (works for both normal and typeahead)
 wrap.appendChild(holder);
@@ -2985,19 +3334,283 @@ switchFramework(first.value);
 });
 
 
-// === Audience → persona typeahead binding ===
+// === Bias multi-select (chips + typeahead) ===
 (function(){
-  const audEl   = document.getElementById('audience');
-  const audMenu = document.getElementById('audienceSuggestions');
-  if (audEl && audMenu && typeof attachPersonaTypeahead === 'function'){
-    attachPersonaTypeahead(
-      audEl,
-      audMenu,
-      activeTab,
-      ()=>{ emitAll(); if (typeof scheduleSave === 'function') scheduleSave(); }
-    );
+  const input = document.getElementById('biasInput');
+  const wrap  = document.getElementById('biasChipsWrap');
+  const chips = document.getElementById('biasChips');
+  const menu  = document.getElementById('biasSuggestions');
+  if (!input || !chips || !menu) return;
+
+  let items = [];       // current search hits
+  let active = -1;      // index in items
+  let picks  = [];      // array of {id,name,kind}
+
+  function kindDot(k){ return ['bias','technique','dilemma','custom'].includes(k) ? k : 'bias'; }
+  function close(){ menu.hidden = true; menu.innerHTML=''; active=-1; }
+
+  function syncCommon(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    if (!t) return;
+    t.common = t.common || {};
+    t.common.bias_names = picks.map(p=>p.name).join(', ');
+    t.common.bias_ids   = picks.map(p=>p.id);
+    if (typeof emitAll === 'function') emitAll();
+    if (typeof scheduleSave === 'function') scheduleSave();
   }
+
+  function hasId(id){ return picks.some(p=>p.id === id); }
+  function renderChips(){
+    chips.innerHTML = '';
+    for (const p of picks){
+      const el = document.createElement('span');
+      el.className = 'chip';
+      el.setAttribute('data-id', p.id);
+      el.innerHTML = `<span class="dot ${kindDot(p.kind)}" title="${p.kind}"></span><span class="nm">${p.name}</span><button class="x" title="Remove">×</button>`;
+      el.querySelector('.x').addEventListener('click', ()=>{ removePick(p.id); });
+      chips.appendChild(el);
+    }
+  }
+  function addPick(obj){
+    const id = String(obj.id || obj.name || '').trim() || ('custom:' + Math.random().toString(36).slice(2));
+    const kind = (obj.kind ? String(obj.kind).toLowerCase() : 'bias');
+    const name = String(obj.name || obj.label || obj.id || '').trim() || 'Custom item';
+    if (hasId(id)) return;
+    picks.push({id, name, kind});
+    renderChips(); syncCommon();
+  }
+  function removePick(id){
+    picks = picks.filter(p=>p.id !== id);
+    renderChips(); syncCommon();
+  }
+
+  function renderMenu(q){
+    items = biasFilter(q, 30) || [];
+    if ((!items || !items.length) && q.trim().length){
+      items = [{ id:'custom:'+q.trim(), name:q.trim(), kind:'custom', summary:'' }];
+    }
+    if (!items.length){ close(); return; }
+    menu.innerHTML = items.map((b,i)=>{
+      const sub = (b.category || b.kind || '');
+      const dot = kindDot(b.kind);
+      return `<div class="ta-item${i===0?' ta-active':''}" data-idx="${i}">
+        <span class="name"><span class="dot ${dot}"></span> ${b.name}</span>
+        <span class="sub">${sub}</span>
+      </div>`;
+    }).join('');
+    active = 0;
+    const rect = input.getBoundingClientRect();
+    menu.style.minWidth = rect.width + 'px';
+    menu.hidden = false;
+  }
+  function pick(i){
+    const b = items[i]; if (!b) return;
+    addPick(b);
+    input.value = '';
+    close();
+    input.focus();
+  }
+
+  input.addEventListener('input', ()=>{
+    const q = input.value.trim();
+    if (!q){ close(); return; }
+    renderMenu(q);
+  });
+  input.addEventListener('keydown', (e)=>{
+    if (menu.hidden){
+      if (e.key === 'Backspace' && !input.value && picks.length){
+        removePick(picks[picks.length-1].id);
+        e.preventDefault();
+      }
+      return;
+    }
+    const els = Array.from(menu.children);
+    if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, els.length-1); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(active-1, 0); }
+    else if (e.key === 'Enter' || e.key === ','){ e.preventDefault(); pick(active>=0?active:0); }
+    else if (e.key === 'Escape'){ e.preventDefault(); close(); return; }
+    els.forEach((n,i)=> n.classList.toggle('ta-active', i===active));
+  });
+  menu.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.ta-item'); if (!el) return;
+    pick(parseInt(el.dataset.idx,10)||0);
+  });
+  document.addEventListener('click', (ev)=>{
+    if (ev.target!==input && !menu.contains(ev.target)) close();
+  });
+
+  // Refresh when tabs switch
+  function refreshFromTab(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    picks = Array.isArray(t?.common?.bias_ids)
+      ? (t.common.bias_ids.map(id=>{
+          const obj = getBiasById(id) || (String(id).startsWith('custom:') ? {id, name:String(id).slice(7), kind:'custom'} : null);
+          return obj ? { id: obj.id || id, name: obj.name || String(id), kind: biasKindOf(obj) } : null;
+        }).filter(Boolean))
+      : [];
+    renderChips();
+    if (t){ t.common.bias_names = picks.map(p=>p.name).join(', '); if (typeof emitAll==='function') emitAll(); }
+  }
+
+  // on load
+  refreshFromTab();
+  
+  // When the dataset finishes loading late, rebuild menu/chips immediately
+document.addEventListener('biases-loaded', ()=>{
+  try {
+    if (typeof buildBiasIndex === 'function') { window.__BIAS_IDX = null; buildBiasIndex(); }
+    refreshFromTab();
+    const q = input.value.trim();
+    if (q) { // if the user is already typing, show fresh suggestions
+      // Re-open menu with current query
+      (function renderMenuImmediate(){ 
+        // reuse the existing renderMenu
+        if (typeof renderMenu === 'function') renderMenu(q);
+      })();
+    }
+  } catch(e){}
+});
+
+
+  // listen for our custom event (slice 5 adds it)
+  document.addEventListener('tab-switched', refreshFromTab);
 })();
+
+// === Audience multi-select (chips + persona typeahead) ===
+(function(){
+  const input = document.getElementById('audienceInput');
+  const chips = document.getElementById('audienceChips');
+  const menu  = document.getElementById('audienceSuggestions');
+  if (!input || !chips || !menu) return;
+
+  let items = [];        // current search hits (personas)
+  let active = -1;       // index in items
+  let picks  = [];       // [{id,name,p}]  p = full persona object
+
+  function close(){ menu.hidden = true; menu.innerHTML=''; active=-1; }
+  function hasId(id){ return picks.some(p=>String(p.id).toLowerCase() === String(id).toLowerCase()); }
+
+  function syncCommon(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    if (!t) return;
+    t.common = t.common || {};
+    // CSV for the context line; array of personas for enrichment
+    t.common.audience         = picks.map(p=>p.name).join(', ');
+    t.common.audience_personas= picks.map(p=>p.p);
+    // Back-compat (some older templates read these names/ids):
+    t.common.audience_names   = t.common.audience;
+    t.common.audience_ids     = picks.map(p=>p.id);
+    if (typeof emitAll === 'function') emitAll();
+    if (typeof scheduleSave === 'function') scheduleSave();
+  }
+
+  function renderChips(){
+    chips.innerHTML = '';
+    for (const pick of picks){
+      const el = document.createElement('span');
+      el.className = 'chip';
+      el.setAttribute('data-id', pick.id);
+      el.innerHTML = `<span class="nm">${pick.name}</span><button class="x" title="Remove">×</button>`;
+      el.querySelector('.x').addEventListener('click', ()=>{
+        picks = picks.filter(p=>p.id !== pick.id);
+        renderChips(); syncCommon();
+      });
+      chips.appendChild(el);
+    }
+  }
+
+  function addPick(p){
+    const id   = String(p.id || p.name || '').trim();
+    const name = String(p.name || p.label || p.id || '').trim() || 'Persona';
+    if (!id || hasId(id)) return;
+    picks.push({ id, name, p });
+    renderChips(); syncCommon();
+  }
+
+  function renderMenu(q){
+    const hits = (typeof personaFilter === 'function') ? personaFilter(q, 30) : [];
+    items = hits;
+    if ((!items || !items.length) && q.trim()){
+      // allow custom ad-hoc audience when no dataset hit
+      items = [{ id:'custom:'+q.trim(), name:q.trim(), profession:'', summary:'' }];
+    }
+    if (!items.length){ close(); return; }
+
+    menu.innerHTML = items.map((obj,i)=>{
+      const sub = [obj.profession, (obj.tags||[]).slice(0,3).join(', ')].filter(Boolean).join(' • ');
+      return `<div class="ta-item${i===0?' ta-active':''}" data-idx="${i}">
+        <span class="name">${obj.name}</span>
+        <span class="sub">${sub}</span>
+      </div>`;
+    }).join('');
+    active = 0;
+    menu.style.minWidth = input.getBoundingClientRect().width + 'px';
+    menu.hidden = false;
+  }
+
+  function pick(i){
+    const sel = items[i]; if (!sel) return;
+    if (String(sel.id||'').startsWith('custom:')){
+      addPick({ id: sel.id, name: sel.name, p:{ name: sel.name, summary:'' } });
+    } else {
+      addPick({ id: sel.id || sel.name, name: sel.name, p: sel });
+    }
+    input.value = '';
+    close();
+    input.focus();
+  }
+
+  // Input typing → show suggestions
+  input.addEventListener('input', ()=>{
+    const q = input.value.trim();
+    if (!q){ close(); return; }
+    renderMenu(q);
+  });
+
+  // Keyboard nav + commit
+  input.addEventListener('keydown', (e)=>{
+    if (menu.hidden){
+      if (e.key === 'Backspace' && !input.value && picks.length){
+        // remove last chip on backspace at empty
+        picks.pop(); renderChips(); syncCommon();
+        e.preventDefault();
+      }
+      return;
+    }
+    const els = Array.from(menu.children);
+    if (e.key === 'ArrowDown'){ e.preventDefault(); active = Math.min(active+1, els.length-1); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); active = Math.max(0, active-1); }
+    else if (e.key === 'Enter' || e.key === ','){ e.preventDefault(); pick(active>=0?active:0); }
+    else if (e.key === 'Escape'){ e.preventDefault(); close(); return; }
+    els.forEach((n,i)=> n.classList.toggle('ta-active', i===active));
+  });
+
+  menu.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.ta-item'); if (!el) return;
+    pick(parseInt(el.dataset.idx,10)||0);
+  });
+
+  document.addEventListener('click', (ev)=>{
+    if (ev.target!==input && !menu.contains(ev.target)) close();
+  });
+
+  // Rehydrate chips when switching tabs
+  function refreshFromTab(){
+    const t = (typeof activeTab === 'function') ? activeTab() : null;
+    const arr = Array.isArray(t?.common?.audience_personas) ? t.common.audience_personas : [];
+    // prefer objects from state; fallback to CSV names if any
+    if (arr.length){
+      picks = arr.map(p=>({ id: p.id || p.name, name: p.name || 'Persona', p }));
+    } else {
+      const csv = String(t?.common?.audience || '').split(/[,;]\s*|[\n]+/).map(s=>s.trim()).filter(Boolean);
+      picks = csv.map(n=>({ id: 'custom:'+n, name:n, p:{ name:n } }));
+    }
+    renderChips(); syncCommon(); // ensures t.common.audience is consistent
+  }
+  refreshFromTab();
+  document.addEventListener('tab-switched', refreshFromTab);
+})();
+
 
 
     
