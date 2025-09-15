@@ -1943,52 +1943,209 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
   {
-    id: 'heros_journey',
-    slug: 'heros-journey-narrative',
-    label: 'Hero’s Journey — Departure · Initiation · Return',
-    kind: 'framework',
-    categories: ['storytelling frameworks', 'creative writing'],
-    tags: [
-      'type:framework','topic:storytelling','phase:compose','level:intermediate',
-      'use:plot-outline','use:mythic-narrative','use:character-development'
-    ],
-    use_cases: [
-      'generate a mythic or epic story outline following a hero’s journey structure',
-      'develop a character’s transformative arc in creative writing',
-      'brainstorm plot points for novels, games, or scenarios with a hero protagonist'
-    ],
-    boosters: [
-      'Ensure the hero undergoes a meaningful transformation by the end of the journey.',
-      'Include classic stages like Call to Adventure, Mentor/Helper, Trials, Crisis, Reward, and Return with the Elixir.'
-    ],
-    definition: 'A 12-stage narrative framework (Monomyth) where a hero leaves their ordinary world, faces trials and transformation, and returns home with newfound wisdom or power.',
-    help: 'Provide details about the hero, their goal, and the world or antagonist. The model will outline a story following Hero’s Journey stages, covering departure, initiation, and return.',
-    fields: [
-      { key: 'hero', label: 'Hero / Protagonist', type: 'text',
-        desc: 'Main character (name, role, traits).',
-        ph: 'e.g., Aria, a cautious village girl with secret magic powers' },
-      { key: 'quest', label: 'Quest / Goal', type: 'textarea',
-        desc: 'The mission, challenge, or adventure the hero must undertake.',
-        ph: 'e.g., Save her village from a spreading curse by finding the ancient healing stone.' },
-      { key: 'nemesis', label: 'Antagonist or main challenge (optional)', type: 'text',
-        desc: 'The villain or obstacle that opposes the hero.',
-        ph: 'e.g., An evil sorcerer who thrives on the curse' },
-      { key: 'setting', label: 'Setting (optional)', type: 'text',
-        desc: 'The world or context where the story takes place.',
-        ph: 'e.g., A medieval land where magic is feared and rare' }
-    ],
-    template: ({ hero, quest, nemesis, setting, ctx, style, tone }) => [
-      'Craft a Hero’s Journey narrative outline.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      hero && `Hero: ${hero}`,
-      quest && `Goal/Quest: ${quest}`,
-      nemesis && `Antagonist/Challenge: ${nemesis}`,
-      setting && `Setting: ${setting}`,
-      'Output:\n1) Departure (ordinary world, call to adventure, mentor, crossing threshold)\n2) Initiation (trials, allies, crisis, victory)\n3) Return (road back, transformation, return home with reward)'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'heros_journey',
+  slug: 'heros-journey-narrative',
+  label: 'Hero’s Journey — Departure · Initiation · Return',
+  kind: 'framework',
+  categories: ['storytelling frameworks','creative writing','myth-making','personal growth','game design'],
+  tags: [
+    'type:framework','topic:storytelling','topic:archetypes','topic:mythic-structure',
+    'phase:compose','level:intermediate',
+    'use:plot-outline','use:character-development','use:mythic-narrative',
+    'use:game-design','use:personal-growth','use:autobiographical-storytelling','use:screenwriting'
+  ],
+  use_cases: [
+    'Generate mythic or epic story outlines.',
+    'Develop a character’s transformative arc.',
+    'Design quests and NPC arcs for tabletop or video games.',
+    'Map personal life experiences as a hero’s journey.',
+    'Storyboard or create beat sheets for screenwriting or novels.',
+    'Frame customer or brand storytelling as a Hero’s Journey.'
+  ],
+  boosters: [
+    'Ensure the hero undergoes meaningful inner and outer transformation.',
+    'Adapt stages flexibly — not every story requires all 12 or 17.',
+    'Include archetypes (Mentor, Shadow, Ally, Trickster) for richness.',
+    'Frame the Return as a gift to the community, not just the self.',
+    'Tie the inner journey to the outer — growth mirrors trials.',
+    'Use symbols and motifs for thematic resonance.',
+    'Explore diverse cultural hero’s journey models, not just Campbell’s.',
+    'If any field (Hero, Quest, Nemesis, Setting, Transformation, Gift, or Theme) is missing, suggest ideas, ask guiding questions, or introduce creative constraints to spark inspiration.'
+  ],
+  definition: 'A narrative pattern (monomyth) where a hero leaves their ordinary world, faces trials and transformation, and returns with wisdom or a gift. Based on Joseph Campbell’s work but adapted across creative traditions.',
+  help: 'Provide details about the hero, their world, quest, nemesis, and optional archetypes. The model will outline a story in Departure, Initiation, and Return phases, weaving in transformation, motifs, and a community-oriented Gift.',
+  fields: [
+    { key: 'audience_persona', label: 'Target Audience Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
+      desc: 'Who this story is for. Use personas (e.g., child reader, RPG gamer, film audience).',
+      ph: 'Start typing to pick or create personas for the target audience.' },
+
+    { key: 'hero', label: 'Hero / Protagonist', type: 'textarea',
+      desc: 'The main character (name, role, traits, flaws, backstory, or hidden potential).',
+      ph: 'e.g., Aria, a cautious village girl with secret magic powers' },
+    { key: 'hero_persona', label: 'Hero Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      desc: 'Attach a persona profile to your hero (e.g., archetypal roles, personality models).',
+      ph: 'Search and attach full persona profiles' },
+
+    { key: 'quest', label: 'Quest / Goal', type: 'textarea',
+      desc: 'The external mission and internal challenge the hero must face.',
+      ph: 'e.g., Save her village (outer) and learn self-trust (inner).' },
+
+    { key: 'nemesis', label: 'Antagonist / Main Challenge', type: 'textarea',
+      desc: 'The villain, force, or inner conflict opposing the hero.',
+      ph: 'e.g., Evil sorcerer / Aria’s own fear of power' },
+    { key: 'nemesis_persona', label: 'Nemesis Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      desc: 'Attach a persona profile to your nemesis or antagonist.',
+      ph: 'Search and attach full persona profiles' },
+
+    { key: 'mentor', label: 'Mentor / Guide (optional)', type: 'textarea',
+      desc: 'Wise or flawed figure who offers guidance or tools.',
+      ph: 'e.g., An eccentric old mage who teaches her control' },
+    { key: 'mentor_persona', label: 'Mentor Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      desc: 'Attach a persona profile to your mentor or guide figure.',
+      ph: 'Search and attach full persona profiles' },
+
+    { key: 'allies', label: 'Allies / Companions (optional)', type: 'textarea',
+      desc: 'Friends, helpers, or fellow travelers who support the hero.',
+      ph: 'e.g., Loyal blacksmith, mischievous fox spirit' },
+    { key: 'allies_persona', label: 'Allies Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      desc: 'Attach persona profiles for the hero’s allies or companions.',
+      ph: 'Search and attach full persona profiles' },
+
+    { key: 'shadow', label: 'Shadow Aspect (optional)', type: 'textarea',
+      desc: 'The hero’s dark side, flaw, or an antagonist who reflects their inner struggle.',
+      ph: 'e.g., Her fear of power, mirrored in the sorcerer' },
+    { key: 'shadow_persona', label: 'Shadow Persona', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      desc: 'Attach a persona profile to represent the shadow aspect.',
+      ph: 'Search and attach full persona profiles' },
+
+    { key: 'setting1', label: 'Setting Option 1', type: 'select',
+      options: [
+        { value: '', label: '— Select common setting —' },
+        // Classic fantasy & mythic
+        'Fantasy world','Medieval kingdom','Magical school','Underworld/afterlife',
+        // Sci-fi & speculative
+        'Sci-fi future','Cyberpunk metropolis','Dystopian megacity','Post-apocalyptic Earth','Outer space','Space opera galaxy',
+        // Historical & cultural
+        'Historical empire','Ancient civilization','Colonial frontier','Mythic past','Steampunk world',
+        // Natural & survival
+        'Desert wasteland','Frozen tundra','Tropical island','Jungle ruins','Mountain stronghold','Ocean voyage',
+        // Modern & everyday
+        'Modern city','Small town','Suburban neighborhood','School campus','Corporate office','Hospital',
+        // Horror & gothic
+        'Haunted castle','Abandoned asylum','Cursed village','Endless labyrinth',
+        // Surreal & abstract
+        'Dreamscape','Parallel dimension','Virtual reality world','Multiverse crossroads',
+        // Hybrid / misc
+        'Lost island','Wild west frontier','Superhero metropolis','Political intrigue court'
+      ],
+      desc: 'Choose a quick-start setting inspiration. Common genres and worlds included.',
+      ph: 'Pick a common genre/world setting'
+    },
+    { key: 'setting2', label: 'Setting Option 2', type: 'select',
+      options: [
+        { value: '', label: '— Select common setting —' },
+        'Fantasy world','Medieval kingdom','Magical school','Underworld/afterlife',
+        'Sci-fi future','Cyberpunk metropolis','Dystopian megacity','Post-apocalyptic Earth','Outer space','Space opera galaxy',
+        'Historical empire','Ancient civilization','Colonial frontier','Mythic past','Steampunk world',
+        'Desert wasteland','Frozen tundra','Tropical island','Jungle ruins','Mountain stronghold','Ocean voyage',
+        'Modern city','Small town','Suburban neighborhood','School campus','Corporate office','Hospital',
+        'Haunted castle','Abandoned asylum','Cursed village','Endless labyrinth',
+        'Dreamscape','Parallel dimension','Virtual reality world','Multiverse crossroads',
+        'Lost island','Wild west frontier','Superhero metropolis','Political intrigue court'
+      ],
+      desc: 'Choose another setting option (same comprehensive list as Setting 1).',
+      ph: 'Pick a secondary genre/world setting'
+    },
+
+    { key: 'setting', label: 'World / Setting', type: 'textarea',
+      desc: 'Context and world rules (ordinary vs extraordinary).',
+      ph: 'e.g., A medieval land where magic is feared' },
+
+    { key: 'transformation', label: 'Transformation', type: 'text',
+      desc: 'How the hero changes through the journey.',
+      ph: 'e.g., From fearful girl to confident leader' },
+
+    { key: 'gift', label: 'Gift to the World / Community', type: 'text',
+      desc: 'What the hero brings back to benefit others.',
+      ph: 'e.g., Healing stone that lifts the curse' },
+
+    { key: 'theme1', label: 'Theme Option 1', type: 'select',
+      options: [
+        { value: '', label: '— Select common theme —' },
+        // Core literary themes
+        'Good vs. Evil','Love conquers all','Coming of age','Identity and self-discovery','Sacrifice',
+        'Freedom vs. control','Power and corruption','Justice vs. revenge','Courage and resilience',
+        'Friendship and loyalty','Family bonds','Mortality and legacy',
+        // Social & cultural
+        'Tradition vs. progress','Class struggle','Colonialism and resistance','Technology vs. humanity',
+        'Alienation and belonging','Gender and identity','Environmental survival',
+        // Psychological & philosophical
+        'Hope in despair','Chaos vs. order','The hero within','Redemption','Fate vs. free will',
+        'Illusion vs. reality','The cost of ambition','Knowledge and ignorance',
+        // Mythic & spiritual
+        'Transformation and rebirth','The trickster’s lesson','Balance and harmony','The journey home'
+      ],
+      desc: 'Choose a quick-start theme inspiration. Includes core, cultural, and mythic themes.',
+      ph: 'Pick a common theme in stories'
+    },
+    { key: 'theme2', label: 'Theme Option 2', type: 'select',
+      options: [
+        { value: '', label: '— Select common theme —' },
+        'Good vs. Evil','Love conquers all','Coming of age','Identity and self-discovery','Sacrifice',
+        'Freedom vs. control','Power and corruption','Justice vs. revenge','Courage and resilience',
+        'Friendship and loyalty','Family bonds','Mortality and legacy',
+        'Tradition vs. progress','Class struggle','Colonialism and resistance','Technology vs. humanity',
+        'Alienation and belonging','Gender and identity','Environmental survival',
+        'Hope in despair','Chaos vs. order','The hero within','Redemption','Fate vs. free will',
+        'Illusion vs. reality','The cost of ambition','Knowledge and ignorance',
+        'Transformation and rebirth','The trickster’s lesson','Balance and harmony','The journey home'
+      ],
+      desc: 'Choose another theme option (same comprehensive list as Theme 1).',
+      ph: 'Pick a secondary theme in stories'
+    },
+
+    { key: 'themes', label: 'Themes / Motifs', type: 'textarea',
+      desc: 'Underlying values, motifs, or symbols to highlight.',
+      ph: 'e.g., sacrifice, identity, freedom; recurring bird imagery' }
+  ],
+  template: ({ hero, hero_persona, quest, nemesis, nemesis_persona, mentor, mentor_persona, allies, allies_persona, shadow, shadow_persona, setting1, setting2, setting, transformation, gift, theme1, theme2, themes, ctx, audience_persona, style, tone }) => [
+    'Craft a Hero’s Journey narrative outline.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    audience_persona && `Target Audience Persona(s): ${audience_persona}`,
+    hero && `Hero: ${hero}`,
+    hero_persona && `Hero Persona(s): ${hero_persona}`,
+    quest && `Quest: ${quest}`,
+    nemesis && `Antagonist/Challenge: ${nemesis}`,
+    nemesis_persona && `Nemesis Persona(s): ${nemesis_persona}`,
+    mentor && `Mentor/Guide: ${mentor}`,
+    mentor_persona && `Mentor Persona(s): ${mentor_persona}`,
+    allies && `Allies: ${allies}`,
+    allies_persona && `Allies Persona(s): ${allies_persona}`,
+    shadow && `Shadow Aspect: ${shadow}`,
+    shadow_persona && `Shadow Persona(s): ${shadow_persona}`,
+    (setting1 || setting2) && `Setting Options: ${[setting1, setting2].filter(Boolean).join(', ')}`,
+    setting && `Setting: ${setting}`,
+    transformation && `Transformation: ${transformation}`,
+    gift && `Gift to Community: ${gift}`,
+    (theme1 || theme2) && `Theme Options: ${[theme1, theme2].filter(Boolean).join(', ')}`,
+    themes && `Themes/Motifs: ${themes}`,
+    '---',
+    'Output:',
+    '1) Departure – Ordinary world, call to adventure, mentor, threshold.',
+    '2) Initiation – Trials, allies, nemesis, crisis, transformation.',
+    '3) Return – Road back, the Gift, reintegration with community.',
+    '4) Integration – How inner change mirrors the outer journey.',
+    '5) Story Spine – One or two sentences summarizing the arc.'
+  ].filter(Boolean).join('\n')
+},
   
   {
   id:'debiasing-checklist',
@@ -6293,31 +6450,69 @@ boosters: [
 {
   id: 'head_heart_gut',
   slug: 'head-heart-gut-decision',
-  label: 'Head-Heart-Gut — Rational · Emotional · Instinctual check',
+  label: 'Head–Heart–Gut — Logic · Emotion · Instinct (Rational · Emotional · Instinctual check)',
   kind: 'framework',
-  categories: ['decision-making', 'self-reflection'],
-  tags: ['type:framework', 'topic:embodied-cognition', 'use:decision-support', 'level:intermediate'],
+  categories: ['decision-making','self-reflection','psychology','leadership','coaching','ethics'],
+  tags: [
+    'type:framework','topic:decision-making','topic:emotional-intelligence',
+    'topic:embodied-cognition','topic:values','topic:intuition-vs-logic',
+    'use:decision-support','use:values-check','use:intuition',
+    'use:coaching-conversations','use:leadership-alignment','use:self-awareness',
+    'level:intermediate'
+  ],
   use_cases: [
-    'make well-rounded decisions considering logic, feelings, and intuition',
-    'resolve internal conflict by aligning thoughts, values, and instincts'
+    'Make well-rounded decisions by considering logic, feelings, and intuition.',
+    'Resolve internal conflict by aligning thoughts, values, and instincts.',
+    'Help in coaching or mentoring conversations to surface hidden perspectives.',
+    'Evaluate leadership choices, ensuring balance of rational, ethical, and instinctual input.',
+    'Support culturally inclusive decision-making by recognizing multiple ways of knowing.',
+    'Guide journaling or therapy practices that integrate head/heart/gut awareness.',
+    'Facilitate group or organizational choices with a balanced lens.'
   ],
   boosters: [
-    'Acknowledge differences: it’s normal if Head, Heart, and Gut say different things:contentReference[oaicite:37]{index=37}.',
-    'If one perspective (e.g., Gut) flags a concern the others don’t, take it seriously and investigate that aspect further:contentReference[oaicite:38]{index=38}.'
+    'Phrase each perspective in the first person (e.g., “My Head says…”).',
+    'Acknowledge differences: it’s normal if Head, Heart, and Gut say different things.',
+    'If one perspective dominates, consciously give voice to the quieter one (e.g., ask “Heart, what do you feel about this?”).',
+    'If one perspective (e.g., Gut) flags a concern the others don’t, take it seriously and investigate that aspect further.',
+    'Use a 1–10 scale to gauge how strongly each voice feels.',
+    'Invite metaphors (e.g., Heart as a character, Gut as an animal guide) to make perspectives vivid.',
+    'Note one unresolved tension and how you’ll monitor it moving forward.',
+    'Respect cultural differences in how Head, Heart, or Gut are prioritized.'
   ],
-  definition: 'A decision-making technique that ensures you consider three facets of knowing: the Head (intellect and logic), the Heart (emotions and values), and the Gut (intuition and instinct):contentReference[oaicite:39]{index=39}. Each of these "three brains" provides essential information – the Head analyzes data and facts, the Heart weighs what matters to you emotionally, and the Gut offers instinctive insights:contentReference[oaicite:40]{index=40}. Checking in with all three leads to choices that are more balanced and authentic:contentReference[oaicite:41]{index=41}.',
-  help: 'State the decision or dilemma you are facing. The model will articulate three perspectives on it: what your Head thinks (rational analysis), what your Heart feels (emotional standpoint), and what your Gut says (instinctual response). It will then help integrate these perspectives into a final recommendation.',
+  definition: 'A decision-making technique that checks alignment across three inner intelligences: the Head (logic/reason), the Heart (emotions/values), and the Gut (instinct/intuition). Considering all three creates choices that are more balanced, authentic, and sustainable.',
+  help: 'State the decision or dilemma. Optionally add context, values, or risks. The model will articulate perspectives from your Head (rational analysis), Heart (emotional standpoint), and Gut (instinctual response), then help integrate them into a final recommendation.',
   fields: [
-    { key: 'decision', label: 'Decision or question', type: 'textarea', ph: 'e.g., Whether to accept a new job offer in another city' }
+    { key: 'decision', label: 'Decision or dilemma', type: 'textarea',
+      desc: 'The choice, challenge, or question you’re facing.',
+      ph: 'e.g., Should I accept a new job offer in another city?' },
+    { key: 'context', label: 'Context (optional)', type: 'textarea',
+      desc: 'The situation or relationships that make this decision meaningful.',
+      ph: 'e.g., Family considerations, company culture, long-term career goals.' },
+    { key: 'values', label: 'Values to honor (optional)', type: 'textarea',
+      desc: 'Personal or shared values you want to uphold.',
+      ph: 'e.g., Integrity, growth, community, balance.' },
+    { key: 'risks', label: 'Risks / concerns (optional)', type: 'textarea',
+      desc: 'Possible pitfalls or red flags you’re aware of.',
+      ph: 'e.g., Financial instability, burnout risk, strained relationships.' }
   ],
-  template: ({ decision, ctx }) => [
-    'Perform a Head-Heart-Gut decision analysis.',
+  template: ({ decision, context, values, risks, ctx, audience, style, tone }) => [
+    'Run a Head–Heart–Gut decision check.',
     ctx && `Context: ${ctx}`,
-    decision && `Decision: ${decision}`,
-    'Head (Logical Perspective): ...',
-    'Heart (Emotional Perspective): ...',
-    'Gut (Instinctual Perspective): ...',
-    'Conclusion: Synthesize the reasoning, feelings, and intuition into one decision or actionable plan.'
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    decision && `Decision:\n${decision}`,
+    context && `Context:\n${context}`,
+    values && `Values:\n${values}`,
+    risks && `Risks/Concerns:\n${risks}`,
+    '---',
+    'Output:',
+    '1) Head – Rational thoughts (facts, pros/cons, logical analysis).',
+    '2) Heart – Emotional response and values (hopes, fears, desires, ethical concerns).',
+    '3) Gut – Instincts or intuitive hunches (body sense, unease/yes-feel, pattern recognition).',
+    '4) Integration – Reconcile the three, highlight alignments and tensions, and propose a balanced next step.',
+    '5) Alignment check: Are Head, Heart, and Gut reasonably in harmony? If not, what needs more attention?',
+    '6) Commitment: Define one immediate action or decision informed by the integration.'
   ].filter(Boolean).join('\n')
 },
 
@@ -6660,40 +6855,7 @@ fields: [
     'Output:\n1) Past card – interpretation and how past events or influences relate to the question\n2) Present card – what it says about the current situation\n3) Future card – guidance or probable outcome\n(Each explained in a few sentences tying back to the question.)'
   ].filter(Boolean).join('\n')
 },
-{
-  id: 'head_heart_gut',
-  slug: 'head-heart-gut-check',
-  label: 'Head-Heart-Gut — Logic · Emotion · Instinct',
-  kind: 'framework',
-  categories: ['decision', 'psychology'],
-  tags: [
-    'type:framework','topic:decision-making','topic:emotional-intelligence','level:beginner',
-    'use:personal-decisions','use:values-check','use:intuition'
-  ],
-  use_cases: [
-    'weigh a difficult decision by examining it from rational, emotional, and instinctual angles',
-    'resolve indecision when your “head” and “heart” disagree by explicitly hearing both out',
-    'ensure a choice aligns with logic, feelings, and gut intuition before committing'
-  ],
-  boosters: [
-    'Phrase each perspective in the first person (e.g., “My head says...”).',
-    'If one perspective dominates, consciously give voice to the quieter one (e.g., ask “Heart, what do you feel about this?”).'
-  ],
-  definition: 'A self-alignment check where you consider what your Head (logical mind), Heart (emotions/values), and Gut (intuition) each say about a decision or situation, to reach a balanced conclusion.',
-  help: 'State the decision or dilemma you’re facing. The model will articulate the viewpoint of your head (logic), your heart (feelings/values), and your gut (instinct), then help synthesize them.',
-  fields: [
-    { key: 'decision', label: 'Decision or dilemma to consider', type: 'textarea', ph: 'e.g., Accepting a new job in a different city.' }
-  ],
-  template: ({ decision, ctx, audience, style, tone }) => [
-    'Do a Head-Heart-Gut check on the decision, exploring each perspective.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    decision && `Decision:\n${decision}`,
-    'Output:\n1) Head – Rational thoughts (pros, cons, facts, logic)\n2) Heart – Emotional response and values (hopes, fears, desires)\n3) Gut – Instincts or intuitive hunches\n4) A brief reconciliation or advice that considers all three'
-  ].filter(Boolean).join('\n')
-},
+
 {
   id: 'imaginary_council',
   slug: 'imaginary-mentor-council',
