@@ -471,77 +471,145 @@ boosters: [
 {
   id:'bias_interrupters',
   slug:'bias-interrupters',
-  label:'Bias Interrupters (process checks)',
+  label:'Bias Interrupters — diagnose risk · insert guardrail · measure effect',
   kind:'pattern',
   categories:['people','ethics','operations'],
   tags:[
     'type:pattern','topic:bias-interrupters','topic:rubrics','level:intermediate',
-    'use:hiring','use:evaluation','use:promotion'
+    'use:hiring','use:evaluation','use:promotion','use:peer-review','use:calibration'
   ],
+
   use_cases:[
-    'add measurable process tweaks to interrupt bias',
-    'operationalize fair evaluation',
-    'track change over time'
+    'hiring loops (sourcing → screening → interview → debrief)',
+    'performance calibration and promo committees',
+    'code/content/peer reviews and rubric scoring',
+    'vendor selection and grant/program intake'
   ],
-  definition:'System-level checks to interrupt bias in hiring, evaluation, and promotion using measurable tweaks.',
-  help:'Choose a process step, name bias risks, add an interrupter strategy, pick a metric, and plan iteration.',
+
+  definition:'A lightweight, repeatable change (“interrupter”) applied to a specific process step to reduce bias and increase fairness. Each interrupter is observable (a metric), owned by someone, and reviewed on a cadence to improve over time.',
+  help:'Pick a concrete process step, list likely bias risks (gut-feel patterns are valid), then add a small guardrail (anonymization, rubrics, structured prompts, second-reader, rotation, etc.). Attach a metric with a target and an owner. Close by scheduling a review and naming risks of the change itself.',
   boosters:[
-    'Force a named owner per metric.',
-    'Define success and a review cadence (e.g., quarterly).'
+    'Baseline first: compute the metric on last cycle before changing the process.',
+    'Name a single accountable owner and a review cadence (monthly/quarterly).',
+    'Prefer “small + sticky” changes over big, fragile ones.',
+    'Record trade-offs: cost, time-to-decision, stakeholder experience.',
+    'Pilot on one team for 2–4 weeks; only then standardize.'
   ],
+
   fields:[
-    { key:'process_step', label:'Process step', type:'text', ph:'Hiring / Evaluation / Promotion / Review' },
-    { key:'bias_risk',    label:'Bias risk(s)', type:'textarea', ph:'Gut-feel; halo effect; similarity bias…' },
-    { key:'strategy',     label:'Interrupter strategy', type:'textarea', ph:'Structured interviews; rubrics; anonymization…' },
-    { key:'metric',       label:'Metric to track', type:'textarea', ph:'e.g., Score variance by rubric item; pass-through by group…' },
-    { key:'iteration',    label:'Iteration plan', type:'textarea', ph:'What to refine next cycle and when.' }
+    { key:'process_step', label:'Process step', type:'text',
+      ph:'Hiring / Evaluation / Promotion / Review',
+      desc:'Scope narrowly so you can observe the change.' },
+
+    // — Bias risks (free text) + library picks
+    { key:'bias_risk',    label:'Bias risk(s) you expect', type:'textarea',
+      ph:'Gut-feel; halo effect; similarity bias…',
+      desc:'Write anything you see or suspect (patterns, anecdotes, “vibes”).' },
+    { key:'bias_picks',   label:'Biases (from library)', type:'repeater',
+    itemType:'typeahead', dataset:'bias', unit:'bias', autofill:'bias->inline',
+      ph:'Start typing to search the bias library…',
+      desc:'Optional: attach named biases for clarity & shared language.' },
+
+    // — Strategy (free text) + library techniques
+    { key:'strategy',     label:'Interrupter strategy (your guardrail)', type:'textarea',
+      ph:'Structured interviews; rubrics; anonymization…',
+      desc:'Describe the small change you will actually try.' },
+    { key:'technique_picks', label:'Mitigation technique(s) (from library)', type:'repeater',
+    itemType:'typeahead', dataset:'bias', unit:'technique', autofill:'bias->inline',
+      ph:'Search the library for mitigation patterns…',
+      desc:'Prefer items whose kind/category indicates “mitigation/technique”.' },
+
+    { key:'metric',       label:'Metric to track', type:'textarea',
+      ph:'e.g., Score variance by rubric item; pass-through by group…',
+      desc:'One observable, comparable number. Add a target if known.' },
+    { key:'iteration',    label:'Iteration plan', type:'textarea',
+      ph:'What to refine next cycle and when.',
+      desc:'Name an owner + date. Note trade-offs or new risks.' }
   ],
-  template: ({ process_step, bias_risk, strategy, metric, iteration, ctx, audience, style, tone }) => [
-    'Design a bias-interrupter for a people process with clear metrics.',
+
+  template: ({ process_step, bias_risk, bias_picks, strategy, technique_picks, metric, iteration, ctx, audience, style, tone }) => [
+    'Design a bias-interrupter for a people/ops process with clear metrics.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
     process_step && `Process step: ${process_step}`,
-    bias_risk && ('Bias risks:\n' + bias_risk),
-    strategy && ('Interrupter strategy:\n' + strategy),
+
+    bias_picks && (
+      'Biases (selected from library):\n' +
+      String(bias_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+
+    bias_risk && ('Bias risks (free text):\n' + bias_risk),
+
+    technique_picks && (
+      'Mitigation technique(s) (from library):\n' +
+      String(technique_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+
+    strategy && ('Interrupter strategy (free text):\n' + strategy),
     metric && ('Metric(s) to track:\n' + metric),
     iteration && ('Iteration plan:\n' + iteration),
-    'Output:\n1) Interrupter spec\n2) Owner + start date\n3) Metric w/ target\n4) Review cadence\n5) Risks & mitigations'
+
+    'Output:\n1) Interrupter spec\n2) Owner + start date\n3) Metric w/ target + baseline\n4) Review cadence\n5) Risks & mitigations'
   ].filter(Boolean).join('\n')
 },
 
 {
   id:'bias_impact_assessment',
   slug:'bias-impact-assessment',
-  label:'Bias Impact Assessment (AI/tech)',
+  label:'Bias Impact Assessment (AI/tech pre-launch)',
   kind:'pattern',
   categories:['ai','ethics','risk'],
   tags:[
     'type:pattern','topic:impact-assessment','topic:transparency','level:advanced',
-    'use:pre-launch','use:model-review','use:policy'
+    'use:pre-launch','use:model-review','use:policy','use:governance'
   ],
+
   use_cases:[
-    'assess bias risks for systems before launch',
-    'define mitigations and transparency steps',
-    'plan follow-up monitoring'
+    'pre-deployment review for ML models or decision systems',
+    'dataset/label pipeline changes and retrains',
+    'feature launches that alter ranking/recommendation or access',
+    'vendor assessments and compliance sign-offs'
   ],
-  definition:'Pre-launch assessment modeled on impact reports to surface stakeholders, risks, mitigations, and monitoring.',
-  help:'Name the system and purpose, list stakeholders, map bias risks, define mitigations & transparency, add monitoring.',
+
+  definition:'A structured pre-launch review to surface stakeholders, plausible bias mechanisms, mitigations, transparency duties, and a monitoring plan with thresholds and owners. Aligns with model cards/datasheets, fairness evaluations, and incident response readiness.',
+  help:'Name the system & purpose; list affected stakeholders (by role and demographic where appropriate); select likely bias risks (sampling, labels, shift, proxies, interaction effects); define mitigations (data/process/model/UX); add transparency measures (docs, appeals); and finish with monitoring (metric, threshold, cadence, owner).',
   boosters:[
-    'Include an explainability note (e.g., model cards/datasheets).',
-    'Propose a drift/impact monitoring threshold and response path.'
+    'Measure by slice: report metrics across salient groups (not just averages).',
+    'Define thresholds & actions (degrade/rollback/human-in-the-loop).',
+    'Note uncertainty and evaluation limits; propose follow-ups.',
+    'Include impacted communities in stakeholder mapping.',
+    'Cite explainability artifacts (model cards, datasheets).'
   ],
+
   fields:[
     { key:'system',       label:'System / algorithm / product name', type:'text', ph:'Name/version' },
     { key:'purpose',      label:'Intended purpose', type:'textarea', ph:'Primary task and success measures.' },
     { key:'stakeholders', label:'Stakeholders affected (one per line)', type:'textarea', ph:'Groups/roles.' },
-    { key:'risks',        label:'Bias risks identified', type:'textarea', ph:'Inputs, labels, sampling, shift, proxy variables…' },
-    { key:'mitigation',   label:'Mitigation steps', type:'textarea', ph:'Data/process/model changes; human-in-the-loop…' },
-    { key:'transparency', label:'Transparency / explainability measures', type:'textarea', ph:'Docs, disclosures, appeal paths…' },
-    { key:'monitoring',   label:'Follow-up monitoring plan', type:'textarea', ph:'Metrics, thresholds, cadence, owner.' }
+
+    // — Risks (free text) + library picks
+    { key:'risks',        label:'Bias risks identified (free text)', type:'textarea',
+      ph:'Inputs, labels, sampling, shift, proxy variables, UX copy…' },
+    { key:'risks_picks',  label:'Biases (from library)', type:'repeater',
+    itemType:'typeahead', dataset:'bias', unit:'bias', autofill:'bias->inline',
+      ph:'Start typing to search the bias library…',
+      desc:'Optional: attach named biases that match the plausible mechanisms.' },
+
+    // — Mitigations (free text) + library techniques
+    { key:'mitigation',   label:'Mitigation steps (free text)', type:'textarea',
+      ph:'Data/process/model changes; human-in-the-loop…' },
+    { key:'mitigation_picks', label:'Mitigation technique(s) (from library)',     itemType:'typeahead', dataset:'bias', unit:'technique', autofill:'bias->inline',
+      ph:'Search for mitigation patterns…',
+      desc:'Prefer items whose kind/category indicates “mitigation/technique”.' },
+
+    { key:'transparency', label:'Transparency / explainability measures', type:'textarea',
+      ph:'Docs, disclosures, appeal paths…' },
+    { key:'monitoring',   label:'Follow-up monitoring plan', type:'textarea',
+      ph:'Metric(s), threshold(s), cadence, owner.' }
   ],
-  template: ({ system, purpose, stakeholders, risks, mitigation, transparency, monitoring, ctx, audience, style, tone }) => [
+
+  template: ({ system, purpose, stakeholders, risks, risks_picks, mitigation, mitigation_picks, transparency, monitoring, ctx, audience, style, tone }) => [
     'Create a Bias Impact Assessment for an AI/tech system.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
@@ -549,14 +617,27 @@ boosters: [
     tone && `Tone: ${tone}`,
     system && `System: ${system}`,
     purpose && ('Intended purpose:\n' + purpose),
+
     stakeholders && (
       'Stakeholders:\n' + String(stakeholders).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
     ),
-    risks && ('Bias risks:\n' + risks),
-    mitigation && ('Mitigation steps:\n' + mitigation),
+
+    risks_picks && (
+      'Biases (selected from library):\n' +
+      String(risks_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+    risks && ('Bias risks (free text):\n' + risks),
+
+    mitigation_picks && (
+      'Mitigation technique(s) (from library):\n' +
+      String(mitigation_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+    mitigation && ('Mitigation steps (free text):\n' + mitigation),
+
     transparency && ('Transparency / explainability:\n' + transparency),
     monitoring && ('Monitoring plan:\n' + monitoring),
-    'Output:\n1) System + purpose\n2) Stakeholders\n3) Risks\n4) Mitigations\n5) Transparency plan\n6) Monitoring plan (metric + threshold + owner)'
+
+    'Output:\n1) System + purpose\n2) Stakeholders\n3) Risks (library + free text)\n4) Mitigations (library + free text)\n5) Transparency plan\n6) Monitoring plan (metric + threshold + owner)'
   ].filter(Boolean).join('\n')
 },
 
@@ -759,79 +840,132 @@ boosters: [
 {
   id: 'cognitive_debiasing',
   slug: 'cognitive-debiasing',
-  label: 'Cognitive Debiasing',
+  label: 'Cognitive Debiasing — state assumption · seek disconfirming evidence · adjust',
   kind: 'pattern',
   categories: ['ethics','bias','critical thinking'],
   tags: [
     'type:pattern','topic:debiasing','topic:consider-the-opposite',
     'level:beginner','use:analysis','use:strategy','use:review',
-    'use:decision-audit','use:risk-assessment'
+    'use:decision-audit','use:risk-assessment','use:post-mortem','use:scenario-planning'
   ],
   use_cases: [
     'document a current assumption and actively seek disconfirming evidence',
-    'run a quick pre-mortem on a plan',
-    'decide next adjustment with rationale',
+    'run a quick pre-mortem on a plan or forecast',
+    'decide next adjustment with rationale and follow-up',
     'audit reasoning in board reviews or strategic planning',
-    'perform sanity checks on research or forecasts'
+    'sanity-check research, PRDs, or investment theses'
   ],
-  definition: 'A meta-cognitive scaffold that surfaces assumptions, tests them with opposites and alternatives, and documents disconfirming evidence, missing data, and follow-up. It cannot remove bias, but it structures accountability against common reasoning errors.',
-  help: 'State the bias risk and your assumption. Generate an opposite scenario and an alternative hypothesis. Gather at least two pieces of disconfirming evidence (and note any missing). Run a pre-mortem on failure, adjust the plan, and set a follow-up checkpoint. Optionally invite another persona to argue the opposite.',
+  definition: 'A meta-cognitive scaffold that surfaces assumptions, tests them with opposites and alternatives, and documents disconfirming evidence, missing data, mitigations, and follow-up. It cannot remove bias, but it structures accountability against common reasoning errors.',
+  help: '1) Name the bias risk and write your assumption plainly. 2) Generate an opposite scenario and a plausible alternative. 3) Gather ≥2 pieces of disconfirming evidence (and log missing). 4) Run a one-line pre-mortem. 5) Decide a concrete adjustment and add mitigations. 6) Set a follow-up checkpoint. Optionally invite a persona to argue the opposite.',
   boosters: [
-    'Cite at least 2 credible, independent sources that challenge the assumption.',
-    'Include one perspective outside your immediate cultural or disciplinary bubble.',
+    'Cite ≥2 credible, independent sources that challenge the assumption.',
+    'Include one perspective outside your immediate cultural/disciplinary bubble.',
     'Rank disconfirming evidence by strength/credibility.',
-    'Add a one-line pre-mortem: “If this failed in [chosen timeframe], it would be because…”',
-    'Log a missing piece of evidence you expected but did not find.',
-    'Have another persona (or the model) argue the opposite side for you.',
-    'Note any secondary biases (anchoring + confirmation + sunk cost) influencing the reasoning.'
+    'Pre-mortem: “If this failed in [timeframe], the most likely reason would be…”',
+    'Log at least one expected-but-missing datapoint.',
+    'Have another persona (or the model) argue the opposite side.',
+    'Name secondary biases (anchoring, confirmation, sunk cost) influencing the reasoning.',
+    'Add at least one concrete mitigation tied to the failure mode.'
   ],
   fields: [
+    // — Bias: free text + library picker (single-line inline)
     { key: 'bias', label: 'Bias in question', type: 'text',
-      ph: 'Anchoring / Confirmation / Availability / Other' },
+      ph: 'Anchoring / Confirmation / Availability / Other',
+      desc: 'Name the most likely bias influencing your reasoning.' },
+    { key: 'bias_picks', label: 'Biases (from library)', type: 'repeater',
+      itemType: 'typeahead', dataset: 'bias', unit: 'bias', autofill: 'bias->inline',
+      ph: 'Start typing to add named biases…',
+      desc: 'Optional: attach named biases for clarity & shared language.' },
+
     { key: 'stake', label: 'Stake / Impact if wrong', type: 'textarea',
-      ph: 'What’s at risk if this assumption fails?' },
+      ph: 'What’s at risk if this assumption fails?',
+      desc: 'Spell out cost, reputational risk, time lost, or user impact.' },
+
     { key: 'initial', label: 'My initial assumption', type: 'textarea',
-      ph: 'Write it down plainly.' },
+      ph: 'Write it down plainly.',
+      desc: 'Keep it short and falsifiable.' },
+
     { key: 'opposite', label: 'Opposite scenario — What if the opposite is true?', type: 'textarea',
-      ph: 'Spell the plausible opposite.' },
+      ph: 'Spell a plausible opposite.',
+      desc: 'Steelman the opposite; do not strawman.' },
+
     { key: 'alt_hypothesis', label: 'Alternative hypothesis (not strict opposite)', type: 'textarea',
-      ph: 'Another plausible framing of reality.' },
+      ph: 'Another plausible framing of reality.',
+      desc: 'Different causal path, segmentation, or mechanism.' },
+
     { key: 'disconfirm', label: 'Disconfirming evidence (≥2, one per line)', type: 'textarea',
-      ph: 'Source, fact, or datapoint per line.' },
+      ph: 'Source, fact, or datapoint per line.',
+      desc: 'Independent sources preferred. Rank strongest → weakest in your notes.' },
+
     { key: 'missing', label: 'Missing evidence (expected but absent)', type: 'textarea',
-      ph: 'What did you expect to find that you could not?' },
+      ph: 'What did you expect to find that you could not?',
+      desc: 'Absence can be informative; note gaps & access constraints.' },
+
     { key: 'premortem', label: 'Pre-mortem — If this failed, why?', type: 'textarea',
-      ph: 'Top 1–3 failure reasons. Specify timeframe.' },
+      ph: 'Top 1–3 failure reasons. Specify timeframe.',
+      desc: 'Name concrete failure modes and when they would show up.' },
+
+    // — Mitigations: free text + library picker (single-line inline)
+    { key: 'mitigation', label: 'Mitigation steps', type: 'textarea',
+      ph: 'Procedures, gates, prompts, second-reader, measurement, rollback criteria…',
+      desc: 'Concrete guardrails you will add now to reduce risk.' },
+    { key: 'mitigation_picks', label: 'Mitigation technique(s) (from library)', type: 'repeater',
+      itemType: 'typeahead', dataset: 'bias', unit: 'technique', autofill: 'bias->inline',
+      ph: 'Search library for mitigation patterns…',
+      desc: 'Prefer named techniques that match your bias risks.' },
+
     { key: 'decision', label: 'Next step decision — What will I adjust?', type: 'textarea',
-      ph: 'Change of plan, metric, gate, or experiment.' },
+      ph: 'Change of plan, metric, gate, or experiment.',
+      desc: 'Small, testable adjustments beat big, fragile changes.' },
+
     { key: 'persona', label: 'Persona check (optional)', type: 'typeahead',
       autofill: 'persona->inline',
-      ph: 'Pick a persona to argue the opposite (e.g., Skeptical Analyst, External Critic)' },
+      ph: 'Pick a persona to argue the opposite (e.g., Skeptical Analyst, External Critic)',
+      desc: 'Invite a challenging voice to stress-test reasoning.' },
+
     { key: 'followup', label: 'Follow-up checkpoint', type: 'text',
-      ph: 'When/how will I revisit this assumption?' }
+      ph: 'When/how will I revisit this assumption?',
+      desc: 'Name date/trigger and who is accountable.' }
   ],
-  template: ({ bias, stake, initial, opposite, alt_hypothesis, disconfirm, missing, premortem, decision, persona, followup, ctx, audience, style, tone }) => [
+  template: ({ bias, bias_picks, stake, initial, opposite, alt_hypothesis, disconfirm, missing, premortem, mitigation, mitigation_picks, decision, persona, followup, ctx, audience, style, tone }) => [
     'Apply a cognitive debiasing pass.',
     ctx && `Context: ${ctx}`,
     audience && `Audience: ${audience}`,
     style && `Style: ${style}`,
     tone && `Tone: ${tone}`,
+
+    // Bias (free text + picker list)
     bias && `Bias in question: ${bias}`,
+    bias_picks && (
+      'Biases (selected from library):\n' +
+      String(bias_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+
     stake && `Stake / Impact if wrong:\n${stake}`,
     initial && ('Initial assumption:\n' + initial),
     opposite && ('Opposite scenario:\n' + opposite),
     alt_hypothesis && ('Alternative hypothesis:\n' + alt_hypothesis),
+
     disconfirm && (
       'Disconfirming evidence:\n' +
       String(disconfirm).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
     ),
     missing && ('Missing evidence:\n' + missing),
     premortem && ('Pre-mortem:\n' + premortem),
+
+    // Mitigations (free text + picker list)
+    mitigation && ('Mitigation steps (free text):\n' + mitigation),
+    mitigation_picks && (
+      'Mitigation technique(s) (from library):\n' +
+      String(mitigation_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+
     decision && ('Next step decision:\n' + decision),
     persona && (`Persona check — Opposing voice:\n${persona}`),
     followup && ('Follow-up checkpoint:\n' + followup),
-    'Output:\n1) Bias summary\n2) Assumption vs. opposite vs. alternative\n3) Disconfirming evidence (≥2, ranked)\n4) Missing evidence noted\n5) Pre-mortem failure modes\n6) Decision & rationale\n7) Follow-up accountability',
-    'Checklist:\n- [ ] ≥2 disconfirming sources\n- [ ] One external perspective included\n- [ ] Missing evidence logged\n- [ ] Pre-mortem stated\n- [ ] Decision adjusted\n- [ ] Follow-up scheduled'
+
+    'Output:\n1) Bias summary (free text + named biases)\n2) Assumption vs. opposite vs. alternative\n3) Disconfirming evidence (≥2, ranked)\n4) Missing evidence noted\n5) Pre-mortem failure modes\n6) Mitigations\n7) Decision & rationale\n8) Follow-up accountability',
+    'Checklist:\n- [ ] ≥2 disconfirming sources\n- [ ] One external perspective included\n- [ ] Missing evidence logged\n- [ ] Pre-mortem stated\n- [ ] Mitigations added\n- [ ] Decision adjusted\n- [ ] Follow-up scheduled'
   ].filter(Boolean).join('\n')
 },
 
@@ -1463,7 +1597,7 @@ boosters: [
   tags: [
     'type:framework','topic:critical-thinking','topic:argumentation',
     'topic:bias-checking','topic:decision-quality','topic:evidence-based-reasoning',
-    'phase:analyze','phase:evaluate',
+    'phase:interpret','phase:analyze','phase:evaluate','phase:infer','phase:explain','phase:self-regulate',
     'level:intermediate','level:advanced'
   ],
   use_cases: [
@@ -1475,29 +1609,36 @@ boosters: [
     'Prepare debate arguments and rebuttals.',
     'Evaluate scientific or academic work during peer review.',
     'Develop policy whitepapers with rigorous reasoning.',
-    'Practice bias-awareness training exercises.'
+    'Practice bias-awareness training exercises.',
+    'Pre-read sanity checks before exec or board decisions.'
   ],
-  definition: 'A six-skill model of critical thinking (Facione, Delphi Report) that operationalizes interpretation, analysis, evaluation, inference, explanation, and self-regulation. It is widely used in education, policy, debate, and scientific reasoning to structure balanced, evidence-based thinking.',
-  help: 'Provide a topic/claim/problem and supporting/opposing evidence. Optionally add stakeholders, alternative explanations, and criteria. The model will step through all six skills, surface counterarguments, flag bias, and finish with a concise justification, confidence rating, and next step.',
+  definition: 'A six-skill model of critical thinking (Facione, Delphi Report) that operationalizes interpretation, analysis, evaluation, inference, explanation, and self-regulation. It structures balanced, evidence-based reasoning and makes bias checks explicit.',
+  help: 'Provide a topic/claim/problem plus pro/con evidence. Optionally add alternatives, criteria, and stakeholders. The output walks through all six skills, strengthens a counterargument, flags bias, states confidence/uncertainty, and ends with one concrete next step.',
   fields: [
     { key:'topic', label:'Topic / claim / problem', type:'text',
-      desc:'The statement or issue under consideration.', 
+      desc:'The statement or issue under consideration.',
       ph:'e.g., “Feature X reduces churn by 10%.”' },
+
     { key:'evidence', label:'Evidence supporting', type:'textarea',
       desc:'Main supporting data, arguments, or reasoning.',
       ph:'Key studies, metrics, examples…' },
+
     { key:'counter', label:'Evidence opposing', type:'textarea',
       desc:'Counterevidence or disconfirming data.',
       ph:'Limitations, critiques, contrary findings…' },
+
     { key:'alt_explanations', label:'Alternative explanations / hypotheses', type:'textarea',
       desc:'Other plausible causes or interpretations.',
       ph:'Market seasonality, user bias, sampling issues…' },
+
     { key:'criteria', label:'Evaluation criteria (optional)', type:'textarea',
       desc:'Standards for judging evidence or claims.',
       ph:'Validity, reliability, fairness, impact' },
+
     { key:'stakeholders', label:'Stakeholders (optional)', type:'textarea',
       desc:'Who is affected by the conclusion or decision.',
       ph:'Executives, customers, regulators, peers' },
+
     {
       key:'explain_aud',
       label:'Explanation audience',
@@ -1508,21 +1649,41 @@ boosters: [
       desc:'Who the reasoning will be explained to.',
       ph:'Executives, peers, students, customers…'
     },
+
     { key:'selfreg_checks', label:'Bias / self-regulation notes', type:'text',
       desc:'Bias checks, personal reflection, or quality controls.',
-      ph:'Seek disconfirming data; avoid anchoring; confidence rating…' }
+      ph:'Seek disconfirming data; avoid anchoring; confidence rating…' },
+
+    // NEW: bias picker directly under self-reg notes (single-line inline inserts)
+    { key:'selfreg_bias_picks', label:'Biases (from library)', type:'repeater',
+      itemType:'typeahead', dataset:'bias', unit:'bias', autofill:'bias->inline',
+      desc:'Optional: attach named biases or techniques to make checks explicit.',
+      ph:'Start typing to add named biases…' },
+
+    // Optional finishing helpers so the close-out is explicit
+    { key:'confidence', label:'Confidence & uncertainty (optional)', type:'text',
+      desc:'State your confidence and uncertainty range.',
+      ph:'Confidence: medium; Uncertainty: ±5–7pp' },
+
+    { key:'next_step', label:'Next step (optional)', type:'text',
+      desc:'One concrete follow-up action.',
+      ph:'Run A/B on alt hypothesis; schedule review in 2 weeks' }
   ],
   boosters: [
-    'Always state your confidence level (low/medium/high) and uncertainty range.',
-    'Test each conclusion against at least one counterexample.',
+    'Always state a confidence level (low/medium/high) and an uncertainty range.',
     'Strengthen at least one opposing argument before rebutting.',
-    'Make bias explicit and propose a mitigation strategy.',
+    'Test each key claim against at least one counterexample or alternative mechanism.',
+    'Make bias checks explicit; tie each to a mitigation technique.',
     'Connect inference to real-world implications or decisions.',
-    'Finish with a 2-line “Because–Therefore” justification and 1 actionable next step.'
+    'Finish with a 2-line “Because–Therefore” justification and one actionable next step.'
   ],
-  template: ({ topic, evidence, counter, alt_explanations, criteria, stakeholders, explain_aud, selfreg_checks, ctx }) => [
+  template: ({ topic, evidence, counter, alt_explanations, criteria, stakeholders, explain_aud, selfreg_checks, selfreg_bias_picks, confidence, next_step, ctx, audience, style, tone }) => [
     'Apply Facione’s six core critical thinking skills.',
     ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+
     topic && `Target issue: ${topic}`,
     'Output:',
     '1) Interpretation — Clarify what the issue and evidence mean in plain terms.',
@@ -1531,12 +1692,22 @@ boosters: [
     alt_explanations && `4) Inference — Draw a conclusion, with uncertainty and alternatives:\n${alt_explanations}`,
     criteria && `Criteria — Standards applied for evaluation:\n${criteria}`,
     stakeholders && `Stakeholders — Who is impacted:\n${stakeholders}`,
+
     explain_aud && (
-      '5) Explanation — Frame the conclusion in terms suitable for the audience(s):\n' +
+      '5) Explanation — Frame the conclusion for the audience(s):\n' +
       String(explain_aud).split(/\n+/).map((a,i)=>`${i+1}. ${a}`).join('\n')
     ),
+
     selfreg_checks && `6) Self-regulation — Bias/quality checks applied:\n${selfreg_checks}`,
-    'Close with:\n- Because–Therefore justification\n- Confidence level & uncertainty range\n- One next step (experiment, check, or action)\n\nChecklist:\n- [ ] All six skills addressed\n- [ ] At least one counterargument strengthened\n- [ ] Bias check included\n- [ ] Confidence level stated\n- [ ] Actionable next step proposed'
+    selfreg_bias_picks && (
+      'Self-regulation — Named biases/techniques (from library):\n' +
+      String(selfreg_bias_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+
+    confidence && `Confidence & uncertainty:\n${confidence}`,
+    next_step && `Next step:\n${next_step}`,
+
+    'Close with:\n- Because–Therefore justification\n- Confidence level & uncertainty range\n- One next step (experiment, check, or action)\n\nChecklist:\n- [ ] All six skills addressed\n- [ ] One opposing argument strengthened\n- [ ] Bias check included (named where possible)\n- [ ] Confidence level stated\n- [ ] Actionable next step proposed'
   ].filter(Boolean).join('\n')
 },
 {
@@ -1984,7 +2155,7 @@ boosters: [
       desc: 'The main character (name, role, traits, flaws, backstory, or hidden potential).',
       ph: 'e.g., Aria, a cautious village girl with secret magic powers' },
     { key: 'hero_persona', label: 'Hero Persona', type: 'repeater',
-      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
       desc: 'Attach a persona profile to your hero (e.g., archetypal roles, personality models).',
       ph: 'Search and attach full persona profiles' },
 
@@ -1996,7 +2167,7 @@ boosters: [
       desc: 'The villain, force, or inner conflict opposing the hero.',
       ph: 'e.g., Evil sorcerer / Aria’s own fear of power' },
     { key: 'nemesis_persona', label: 'Nemesis Persona', type: 'repeater',
-      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
       desc: 'Attach a persona profile to your nemesis or antagonist.',
       ph: 'Search and attach full persona profiles' },
 
@@ -2004,7 +2175,7 @@ boosters: [
       desc: 'Wise or flawed figure who offers guidance or tools.',
       ph: 'e.g., An eccentric old mage who teaches her control' },
     { key: 'mentor_persona', label: 'Mentor Persona', type: 'repeater',
-      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
       desc: 'Attach a persona profile to your mentor or guide figure.',
       ph: 'Search and attach full persona profiles' },
 
@@ -2012,7 +2183,7 @@ boosters: [
       desc: 'Friends, helpers, or fellow travelers who support the hero.',
       ph: 'e.g., Loyal blacksmith, mischievous fox spirit' },
     { key: 'allies_persona', label: 'Allies Persona', type: 'repeater',
-      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+    itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
       desc: 'Attach persona profiles for the hero’s allies or companions.',
       ph: 'Search and attach full persona profiles' },
 
@@ -2020,7 +2191,7 @@ boosters: [
       desc: 'The hero’s dark side, flaw, or an antagonist who reflects their inner struggle.',
       ph: 'e.g., Her fear of power, mirrored in the sorcerer' },
     { key: 'shadow_persona', label: 'Shadow Persona', type: 'repeater',
-      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->textarea',
+     itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
       desc: 'Attach a persona profile to represent the shadow aspect.',
       ph: 'Search and attach full persona profiles' },
 
@@ -2147,140 +2318,582 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
   
-  {
-  id:'debiasing-checklist',
-  slug:'heuristics-biases',
-  label:'Heuristics & Biases — Debiasing Pre-flight',
-  kind:'framework',
-  categories:['critical thinking frameworks','quality checks'],
-  tags:[
-    'type:framework','topic:debiasing','phase:review','level:intermediate',
-    'use:decisions','use:forecasts','use:research-summaries'
+{
+  id: 'debiasing-checklist',
+  slug: 'heuristics-biases-preflight',
+  label: 'Heuristics & Biases — Debiasing Pre-flight',
+  kind: 'framework',
+  categories: ['critical thinking frameworks','quality checks','decision hygiene'],
+  tags: [
+    'type:framework','topic:debiasing','topic:heuristics','topic:consider-the-opposite','topic:base-rates',
+    'phase:review','phase:premortem',
+    'level:intermediate'
   ],
-  use_cases:[
-    'Review a draft answer/decision','Forecasting sanity check','Risk review'
+
+  use_cases: [
+    'Review a draft answer/decision before publishing or acting',
+    'Sanity-check a forecast or prediction',
+    'Run a risk review before committing resources',
+    'Surface blind spots in research summaries or analyses',
+    'Do a quick “red team” pass under time pressure'
   ],
-  definition:'Run a short checklist to catch common cognitive biases and revise.',
-  help:'Describe the decision/draft, stakes, time pressure, and known risks; get a bias scan and a revision.',
-  fields:[
-    {key:'decision',     label:'Decision/draft to check', type:'textarea', ph:'Paste the answer/decision you want to sanity-check'},
-    {key:'stakes',       label:'Stakes/impact',           type:'text',     ph:'e.g., medium; reputational + cost'},
-    {key:'time_pressure',label:'Time pressure',           type:'text',     ph:'e.g., high / moderate / low'},
-    {key:'known_biases', label:'Known risks',             type:'text',     ph:'e.g., anchoring, confirmation, sunk cost'},
-    {key:'tactics',      label:'Debiasing tactics',       type:'text',     ph:'base rates; outside view; premortem; reference class; “what would change my mind?”'}
+
+  definition: 'A structured mental pre-flight that scans for common biases, applies concrete debiasing tactics, and strengthens a draft or decision. Inspired by Kahneman/Tversky’s catalog, Klein’s premortem, and aviation/medical checklists.',
+  
+  help: 'Paste your draft/decision and context. Name any suspected biases and preferred tactics. Use the pickers to attach named biases and techniques (single-line inline). The checklist will run a bias scan, evidence check, premortem, and propose a revised decision with explicit uncertainties.',
+
+  fields: [
+    { 
+      key: 'decision',
+      label: 'Decision/draft to check',
+      type: 'textarea',
+      desc: 'The answer, judgment, or plan you want to stress-test. Include reasoning if available.',
+      ph: 'e.g., Invest in new product launch Q3; Survey results show 70% interest'
+    },
+
+    { 
+      key: 'stakes',
+      label: 'Stakes/impact',
+      type: 'text',
+      desc: 'How much does this decision matter? Higher stakes → slower, more thorough debiasing.',
+      ph: 'High (strategic pivot, $M impact) | Medium (team workflow) | Low (wording choice)'
+    },
+
+    { 
+      key: 'time_pressure',
+      label: 'Time pressure',
+      type: 'text',
+      desc: 'Biases amplify under pressure. State the constraint clearly.',
+      ph: 'High (hours) | Moderate (days) | Low (weeks)'
+    },
+
+    // Known biases (free text) + picker (single-line inline)
+    { 
+      key: 'known_biases',
+      label: 'Known or suspected biases',
+      type: 'textarea',
+      desc: 'Biases you already suspect may be at play. Naming them upfront sharpens the scan.',
+      ph: 'Anchoring, confirmation, sunk cost, halo effect, recency'
+    },
+    {
+      key: 'known_biases_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      dataset: 'bias',
+      unit: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Optional: attach named biases for shared language and quick inline context.',
+      ph: 'Start typing to add named biases…'
+    },
+
+    // Tactics (free text) + picker (single-line inline)
+    { 
+      key: 'tactics',
+      label: 'Preferred debiasing tactics',
+      type: 'textarea',
+      desc: 'List tactics you want to emphasize. The AI defaults to a mix if blank.',
+      ph: 'Outside view, base rates, premortem, “consider the opposite,” disconfirming evidence'
+    },
+    {
+      key: 'tactics_picks',
+      label: 'Debiasing tactics (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      dataset: 'bias',
+      unit: 'technique',
+      autofill: 'bias->inline',
+      desc: 'Pick named mitigation techniques matched to the suspected biases.',
+      ph: 'Search library for mitigation patterns…'
+    },
+
+    { 
+      key: 'mission_alignment',
+      label: 'Mission/values alignment (optional)',
+      type: 'textarea',
+      desc: 'State how this decision should align with broader mission, ethics, or stakeholder values.',
+      ph: 'e.g., Consistent with accessibility-first principle; avoids reputational risk'
+    },
+
+    { 
+      key: 'persona',
+      label: 'Decision-maker persona (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Select a decision-maker persona to frame the voice/lens of the review.',
+      ph: 'e.g., Analyst, Risk Officer, UX Researcher'
+    }
   ],
-  boosters:[
-    'End with a one-line “If wrong, it’s because…” and a quick red-team question.'
+
+  boosters: [
+    'Ask first: “What would convince me I’m wrong?”',
+    'End with a one-liner: “If I’m wrong, it’s because…”',
+    'Run a quick premortem: Imagine it failed in 6 months — why?',
+    'Check for *bias clusters* (e.g., Anchoring + Confirmation).',
+    'Re-state base rates/outside-view statistics explicitly.',
+    'List ≥2 disconfirming pieces of evidence before finalizing.',
+    'Balance head (logic), heart (values), and gut (instinct) before the call.'
   ],
-  template:({decision,stakes,time_pressure,known_biases,tactics,ctx})=>[
-    'Run a cognitive bias pre-flight check.',
+
+  template: ({ decision, stakes, time_pressure, known_biases, known_biases_picks, tactics, tactics_picks, mission_alignment, persona, ctx, audience, style, tone }) => [
+    'Run a structured Debiasing Pre-flight Checklist.',
     ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+
+    persona && `Persona lens: ${persona}`,
     stakes && `Stakes: ${stakes}`,
     time_pressure && `Time pressure: ${time_pressure}`,
-    known_biases && `Known risks: ${known_biases}`,
-    tactics && `Preferred tactics: ${tactics}`,
-    decision && `Draft under review:\n${decision}`,
-    'Output:',
-    '1) Bias scan (anchoring, availability, confirmation, sunk cost, overconfidence, base-rate neglect, scope insensitivity).',
-    '2) Evidence/assumption spot-check; note priors/base rates.',
-    '3) Revised answer/decision with explicit uncertainties.',
-    '4) Premortem: top failure mode + mitigation.',
-    '5) Decide: go / iterate / stop, with reason.'
+
+    known_biases_picks && (
+      'Known/suspected biases (from library):\n' +
+      String(known_biases_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+    known_biases && `Known/suspected biases (free text): ${known_biases}`,
+
+    tactics_picks && (
+      'Debiasing tactics:\n' +
+      String(tactics_picks).split(/\n+/).map((s,i)=>`${i+1}. ${s.trim()}`).join('\n')
+    ),
+    tactics && `Preferred debiasing tactics: ${tactics}`,
+
+    mission_alignment && `Mission/values alignment: ${mission_alignment}`,
+    decision && `Decision/draft under review:\n${decision}`,
+
+    '',
+    'Output format:',
+    '1) **Bias scan** — Highlight likely biases (anchoring, availability, confirmation, sunk cost, halo effect, overconfidence, base-rate neglect, scope insensitivity, groupthink).',
+    '2) **Evidence & assumptions** — Spot-check key assumptions. Flag base rates, missing data, or untested beliefs.',
+    '3) **Disconfirming view** — Provide 2+ reasons why this could be wrong. Apply “consider the opposite.”',
+    '4) **Premortem** — If this fails in 6–12 months, identify the top 1–2 failure modes and mitigations.',
+    '5) **Revised decision** — Rewrite the draft in light of findings. Make uncertainties explicit (confidence ranges, probability).',
+    '6) **One-line bias guardrail** — “If I’m wrong, it’s because…” + one red-team style question.',
+    '7) **Go / Iterate / Stop** — Final recommendation with rationale, aligned to stakes and mission.'
   ].filter(Boolean).join('\n')
 },
   
-  {
-  id:'hmw_statements',
-  slug:'how-might-we-statements-hmw',
-  label:'How Might We Statements (HMW)',
-  kind:'pattern',
-  categories:['design thinking','ideation'],
-  tags:[
-    'type:pattern','topic:problem-framing','topic:ideation','phase:explore','level:beginner',
-    'use:brainstorm','use:problem-statement','use:workshop'
+{
+  id: 'hmw_statements',
+  slug: 'how-might-we-statements-hmw',
+  label: 'How Might We Statements (HMW)',
+  kind: 'pattern',
+  categories: ['design thinking','ideation','problem framing'],
+  tags: [
+    'type:pattern','topic:problem-framing','topic:ideation','topic:inclusion','topic:debiasing',
+    'phase:explore','level:beginner',
+    'use:brainstorm','use:opportunity-mapping','use:workshop','use:discovery'
   ],
-  use_cases:[
-    'frame challenges as opportunities', 
-    'product design', 'ux', 'problem solving',
-    'generate multiple solution directions',
-    'align teams around a crisp, positive prompt'
+
+  use_cases: [
+    'reframe research insights into opportunity questions',
+    'kick off brainstorming with human-centered prompts',
+    'align cross-functional teams on focus areas',
+    'spin variants at different scopes (broad ↔ narrow)',
+    'generate inclusive, non-leading prompts that avoid baked-in solutions'
   ],
-  definition:'A guiding question that reframes a need into an opportunity: “How might we [action] for [who] so that [outcome]?”',
-  help:'Provide a concise need/challenge, who is affected, and the positive outcome you want.',
-  boosters:[
-    'Offer 3–5 phrasing variants that change the verb or scope.',
-    'Keep each statement ≤20 words.',
-    'Avoid embedded solutions—stay problem-oriented.'
+
+  definition:
+    'HMW reframes a need into an optimistic, solvable question. Good HMWs are human-specific, problem-oriented (not feature-led), Goldilocks-sized, and inclusive. Template: “How might we [improve outcome] for [who] in [context] given [key constraint] so that [benefit]?”',
+
+  help:
+    'Add the core need, who is affected, desired outcome, and any constraints. Optionally include research snippets, mission/values, and a persona lens. The template returns a canonical HMW plus de-anchored variants (broad, narrow, opposite), inclusivity rewrites, and a tiny experiment stub.',
+
+  boosters: [
+    'Generate 5+ variants: 2 broad, 2 narrow, 1 wild “adjacent possible”.',
+    'Strip solutions: replace “add/build/implement” with outcomes (“help, enable, reduce, increase, simplify”).',
+    'Add a “so that …” benefit clause to keep purpose sharp.',
+    'Run a quick bias scan (anchoring, confirmation, availability, halo, groupthink); rewrite any leading phrasing.',
+    'Include one inclusive rewrite (accessibility/equity/safety) and one constraint-aware rewrite.',
+    'Attach a smallest-test plan (hypothesis, metric, tiny experiment, decision rule).'
   ],
-  fields:[
-    { key:'need',   label:'Need / challenge',        type:'textarea',
-      desc:'What problem or opportunity are we framing?',
-      ph:'Low onboarding completion for new users…' },
-    { key:'action', label:'Action to explore',       type:'text',
-      desc:'Open-ended action (no baked-in solution).',
-      ph:'improve onboarding clarity' },
-    { key:'who',    label:'Who is affected?',        type:'text',
-      desc:'Audience or segment.',
-      ph:'new SaaS signups' },
-    { key:'outcome',label:'Positive outcome',        type:'text',
-      desc:'Intended impact.',
-      ph:'reach value in the first session' },
-    { key:'dos',    label:"Do's (must do)",          type:'textarea',
-      desc:'Positive guardrails.',
-      ph:'Make variants; keep neutral tone.' },
-    { key:'donts',  label:"Don\'ts / constraints",   type:'textarea',
-      desc:'Limits to respect.',
-      ph:'No solutioning; avoid jargon.' }
+
+  fields: [
+    {
+      key: 'need',
+      label: 'Need / challenge',
+      type: 'textarea',
+      desc: 'Concise description of the problem/opportunity, grounded in evidence or observation.',
+      ph: 'New users abandon onboarding at step 2; they do not understand data permissions.'
+    },
+    {
+      key: 'who',
+      label: 'Who is affected?',
+      type: 'text',
+      desc: 'Name a specific audience/segment. Specificity improves ideas.',
+      ph: 'First-time Android users on metered data in India'
+    },
+    
+        /* Persona lens */
+    {
+      key: 'persona',
+      label: 'Persona lens (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Select a persona to inform language, values, and constraints.',
+      ph: 'e.g., Privacy-first Analyst; Busy Parent; Field Technician'
+    },
+    
+    {
+      key: 'outcome',
+      label: 'Desired outcome (benefit)',
+      type: 'text',
+      desc: 'What change in behavior/experience should a good solution achieve?',
+      ph: 'Reach first value in under 2 minutes without confusion'
+    },
+    {
+      key: 'context_detail',
+      label: 'Context (where/when/conditions)',
+      type: 'textarea',
+      desc: 'Situational details (device, channel, moment) that meaningfully shape the problem.',
+      ph: 'Mobile web at night; low bandwidth; privacy-sensitive forms'
+    },
+    {
+      key: 'constraints',
+      label: 'Constraints / non-goals',
+      type: 'textarea',
+      desc: 'Limits to respect (policy, legal, tech, brand). Also list anti-goals to avoid solution creep.',
+      ph: 'No phone number collection; avoid dark patterns; do not increase steps'
+    },
+    {
+      key: 'evidence',
+      label: 'Evidence / insight snippets',
+      type: 'textarea',
+      desc: 'Key quotes, metrics, or observations that justify the need.',
+      ph: '“I don’t know why you need this,” • 42% drop at permissions • 18% complete on 3G'
+    },
+
+    /* Inclusive + debiasing lenses */
+    {
+      key: 'inclusion_notes',
+      label: 'Inclusion & accessibility notes (optional)',
+      type: 'textarea',
+      desc: 'Accessibility, equity, and safety considerations to bake into phrasing.',
+      ph: 'Screen reader support; low-literacy wording; avoid stigma; multilingual hints'
+    },
+    {
+      key: 'bias_watchouts',
+      label: 'Bias watch-outs (optional)',
+      type: 'textarea',
+      desc: 'Suspected biases to guard against when phrasing HMW.',
+      ph: 'Anchoring on last quarter’s complaint; halo effect around premium users'
+    },
+    {
+      key: 'bias_lens',
+      label: 'Bias lens (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Insert bias primers from your library to guide the scan.',
+      ph: 'Search your bias library (e.g., anchoring, confirmation, availability)'
+    },
+
+    /* Mission/values alignment */
+    {
+      key: 'mission',
+      label: 'Mission/values alignment (optional)',
+      type: 'textarea',
+      desc: 'How should the HMW reflect mission/values and avoid harm?',
+      ph: 'Champion user autonomy; minimize data collection; dignity by default'
+    },
+
+    /* Style knobs */
+    {
+      key: 'scope_pref',
+      label: 'Scope preference',
+      type: 'select',
+      options: [
+        { value: 'Broad (exploratory, many directions)',  label: 'Broad (exploratory, many directions)' },
+        { value: 'Medium (Goldilocks default)', label: 'Medium (Goldilocks default)' },
+        { value: 'Narrow (tightly constrained)', label: 'Narrow (tightly constrained)' }
+      ],
+      desc: 'Signal the preferred breadth of the canonical HMW.',
+      ph: 'Medium'
+    },
+    {
+      key: 'verb_palette',
+      label: 'Verb palette (optional)',
+      type: 'textarea',
+      desc: 'Outcome-oriented verbs to prefer; helps avoid solution verbs.',
+      ph: 'help, enable, reduce, increase, simplify, clarify, support, reassure, connect'
+    },
+
+    /* Do/Don’t guardrails */
+    {
+      key: 'dos',
+      label: "Do's (must do)",
+      type: 'textarea',
+      desc: 'Positive guardrails for phrasing and scope.',
+      ph: 'Use plain language; add “so that…” benefit; keep ≤ 20 words'
+    },
+    {
+      key: 'donts',
+      label: "Don’ts / constraints",
+      type: 'textarea',
+      desc: 'What to avoid while phrasing HMWs.',
+      ph: 'No baked-in solutions; no jargon; avoid majority-culture assumptions'
+    },
+
+    /* Success & test */
+    {
+      key: 'success_metric',
+      label: 'Success metric (leading indicator)',
+      type: 'text',
+      desc: 'How will we know the HMW led to useful solutions?',
+      ph: 'Drop-off step-2 −20% in 4 weeks; SUS +10; NPS +6 among new users'
+    }
   ],
-  template: ({ need, action, who, outcome, dos, donts, ctx, audience, style, tone }) => [
-    'Create a clear, positive How-Might-We statement and a few concise variants.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    need && `Need/challenge: ${need}`,
-    (action || who || outcome) && `HMW: How might we ${action||'[action]'} for ${who||'[who]'} so that ${outcome||'[outcome]'}?`,
-    dos && `Do:\n${dos}`,
-    donts && `Don\'t:\n${donts}`,
-    'Provide 3–5 short variant phrasings with different verbs/scope.'
-  ].filter(Boolean).join('\n')
+
+  template: (f) => {
+    const lines = [];
+
+    const scope = f.scope_pref || 'Medium (Goldilocks default)';
+    const who = f.who || '[who]';
+    const outcome = f.outcome || '[outcome]';
+    const context = f.context_detail ? ` in ${f.context_detail}` : '';
+    const constraint = f.constraints ? ` given ${f.constraints}` : '';
+    const benefit = f.outcome ? ` so that ${f.outcome}` : '';
+    const verbs = (f.verb_palette || 'help, enable, reduce, increase, simplify, clarify, support, reassure, connect')
+      .split(/[,;]\s*/).map(v => v.trim()).filter(Boolean);
+
+    // Canonical HMW (avoid solution verbs if user put one in "action")
+    const safeAction = (f.action || 'help').replace(/\b(add|build|implement|install|integrate|deploy|launch)\b/gi, 'help');
+    const canonical = `How might we ${safeAction} for ${who}${context}${constraint}${benefit}?`;
+
+    lines.push('Create a set of high-quality How-Might-We statements with variants and checks.');
+    f.ctx && lines.push(`Context: ${f.ctx}`);
+    f.persona && lines.push(`Who is affected Persona lens = 
+    ${f.persona}`);
+    f.mission && lines.push(`Mission/values: ${f.mission}`);
+    f.bias_lens && lines.push(`Bias lens: ${f.bias_lens}`);
+    f.bias_watchouts && lines.push(`Bias watch-outs: ${f.bias_watchouts}`);
+    f.evidence && lines.push(`Evidence: ${f.evidence}`);
+    f.inclusion_notes && lines.push(`Inclusion/accessibility: ${f.inclusion_notes}`);
+    f.need && lines.push(`Need/challenge: ${f.need}`);
+    f.dos && lines.push(`Do:\n${f.dos}`);
+    f.donts && lines.push(`Don’t:\n${f.donts}`);
+    f.success_metric && lines.push(`Success metric: ${f.success_metric}`);
+
+    lines.push('');
+    lines.push('Output:');
+
+    // A) Canonical + scope setting
+    lines.push(`A) Canonical HMW (${scope} scope):`);
+    lines.push(canonical);
+
+    // B) Variant set using verb palette and scope shifts
+    lines.push('B) Variants (5+): generate 2 broad, 2 narrow, 1 wild “adjacent possible”. Prefer outcome verbs such as: ' + verbs.join(', ') + '.');
+
+    // C) Opposite/de-anchored frames
+    lines.push('C) Opposite frames: create 2 “consider the opposite” HMWs to break anchoring (e.g., if we cannot reduce steps, how might we make steps feel rewarding?).');
+
+    // D) Inclusivity/safety rewrites
+    lines.push('D) Inclusivity rewrites: provide 2 inclusive versions (accessibility, equity, safety) and explain the change briefly.');
+
+    // E) Constraint-aware rewrite
+    lines.push('E) Constraint-aware rewrite: 1 version that explicitly respects key constraints without killing creativity.');
+
+    // F) Bias scan checklist
+    lines.push('F) Bias scan (flag & fix if present): anchoring, confirmation, availability, halo, groupthink, scope insensitivity. Rewrite any leading or solution-baked phrasing.');
+
+    // G) Quick rubric (score 1–5)
+    lines.push('G) Rubric (score 1–5 each): Clarity • Human specificity • Generativity • Strategic fit • Testability. Recommend top 3 HMWs with reasons.');
+
+    // H) Experiment stub
+    lines.push('H) Smallest test (for the top HMW):');
+    lines.push('- Hypothesis: If we [idea], then [metric] will improve for [who].');
+    lines.push('- Metric: Use the provided success metric or propose a leading indicator.');
+    lines.push('- Tiny experiment: Paper prototype / copy tweak / concierge test in 1 week.');
+    lines.push('- Decision rule: Scale if effect ≥ X; iterate if 0 < effect < X; stop if ≤ 0.');
+
+    // I) One-line synthesis
+    lines.push('I) One-line synthesis: “We will explore [theme] via [top HMW] because [evidence/benefit].”');
+
+    return lines.filter(Boolean).join('\n');
+  }
 },
 
 {
-  id:'implementation_intentions',
-  slug:'if-then-planning',
-  label:'Implementation Intentions (If–Then)',
-  kind:'pattern',
-  categories:['behavior','productivity'],
-  tags:['type:pattern','topic:if-then','use:habit','level:beginner'],
-  use_cases:[
-    'bind a trigger to a specific action to reduce choice friction',
-    'translate goals into cues'
+  id: 'implementation_intentions',
+  slug: 'if-then-planning',
+  label: 'Implementation Intentions (If–Then)',
+  kind: 'pattern',
+  categories: ['behavior','productivity'],
+  tags: [
+    'type:pattern','topic:if-then','topic:habit','topic:coping-plan',
+    'phase:plan','phase:apply','level:beginner',
+    'use:habit','use:focus','use:emotion-regulation','use:adhd-support'
   ],
-  definition:'If [trigger/situation], then I will [specific action].',
-  help:'Name a reliable trigger and a crisp then-action. Optional: add 1–2 backup plans.',
-  boosters:[
-    'Make the trigger observable and frequent.',
-    'Write the action so “half-asleep you” could do it.'
+
+  use_cases: [
+    'bind a reliable cue to a tiny starter action to reduce choice friction',
+    'create coping plans for predictable obstacles',
+    'stack a new habit after an existing routine',
+    'translate goals into daily cues with a 7-day scorecard'
   ],
-  fields:[
-    { key:'trigger', label:'If [trigger/situation]…', type:'textarea', ph:'e.g., When I open my laptop…' },
-    { key:'action',  label:'…then I will [specific action]', type:'textarea', ph:'Open draft doc instead of email.' },
-    { key:'backups', label:'Backup plans (optional, one per line)', type:'textarea' }
+
+  definition:
+    'Turn intentions into cue-to-action reflexes: If [observable trigger], then I will [single, mechanical action]. Add a coping If–Then for the most likely obstacle, stack after a routine if helpful, and set a tripwire metric to revise early.',
+
+  help:
+    'Provide one clear goal, a concrete trigger you actually encounter, and a tiny then-action that starts in under 2 minutes. Optionally add a coping plan for the top obstacle, a habit stack anchor (After I [routine]...), a tiny reward, and a tripwire metric for revising the plan. You can also use WOOP: Wish, Outcome, Obstacle, Plan.',
+
+  boosters: [
+    'Make the trigger observable and frequent (time, place, routine, sensation).',
+    'Write the action so half-asleep you could do it in under 120 seconds.',
+    'Add one coping If–Then targeting the most likely obstacle.',
+    'Rehearse once: visualize cue then action firing immediately.',
+    'Attach a tiny reward to reinforce the start, not the finish.',
+    'Log a 7-day scorecard and a tripwire that forces plan revision.',
+    'Use inclusive cues and actions that work across abilities and bandwidth.'
   ],
-  template: ({ trigger, action, backups, ctx, audience, style, tone }) => [
-    'Create an If–Then implementation intention.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    trigger && ('If ' + trigger),
-    action && ('Then I will ' + action),
-    backups && (
-      'Backups:\n' + String(backups).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
-    ),
-    'Output:\n1) Trigger\n2) Specific action\n3) Backup(s)\n4) First check-in time'
-  ].filter(Boolean).join('\n')
+
+  fields: [
+    /* Goal and WOOP */
+    { key:'goal', label:'Goal intention', type:'textarea',
+      desc:'What you want to move forward. Keep it single-focus.',
+      ph:'Finish a 2-page project brief this week' },
+    { key:'wish', label:'WOOP - Wish (optional)', type:'text',
+      desc:'Short description of what you want.',
+      ph:'Write consistently each morning' },
+    { key:'outcome', label:'WOOP - Outcome (optional)', type:'text',
+      desc:'Why it matters. One short sentence.',
+      ph:'Less stress and a stronger proposal' },
+    { key:'obstacle', label:'WOOP - Obstacle (optional)', type:'text',
+      desc:'The inner or outer blocker that usually stops you.',
+      ph:'Morning email rabbit hole' },
+
+    /* Primary If-Then */
+    { key:'trigger', label:'IF - Trigger or situation', type:'textarea',
+      desc:'Observable cue types: time, place, after a routine, app open, body sensation.',
+      ph:'When I sit at my desk after making coffee at 8:30...' },
+    { key:'action', label:'THEN - Single, mechanical action', type:'textarea',
+      desc:'2-minute starter, no decisions required.',
+      ph:'Start a 15-minute timer and open Brief_Q2.md' },
+
+    /* Coping and stacking */
+    { key:'coping', label:'Coping If–Then (obstacle plan)', type:'textarea',
+      desc:'If [obstacle shows up], then I will [replacement action].',
+      ph:'If I feel the urge to check email, then I toggle Do Not Disturb and write 1 sentence' },
+    { key:'stack_anchor', label:'Habit stack (optional)', type:'textarea',
+      desc:'After I [existing routine], I will [new tiny action].',
+      ph:'After I put the mug down, I type the brief title' },
+
+    /* Logistics and supports */
+    { key:'schedule', label:'Schedule window', type:'text',
+      desc:'Timebox or daily window when the cue will occur.',
+      ph:'Weekdays 8:30–9:00 AM' },
+    { key:'duration', label:'Timebox for the block', type:'text',
+      desc:'Default minutes for the first block or timer.',
+      ph:'15 minutes' },
+    { key:'reward', label:'Tiny reward', type:'text',
+      desc:'Simple, immediate reinforcement after starting.',
+      ph:'Make tea playlist after the first 3 sentences' },
+    { key:'environment', label:'Environment tweak', type:'textarea',
+      desc:'Remove friction, place prompts, pin files, block distractions.',
+      ph:'Pin the brief in the dock, auto-launch timer, block social sites' },
+
+    /* Inclusion, personas, bias lenses */
+    { key:'inclusion', label:'Inclusion and accessibility', type:'textarea',
+      desc:'Adjust cues and actions for abilities, language, bandwidth.',
+      ph:'Use large-font sticky, audio chime, offline doc for low bandwidth' },
+    { key:'personas', label:'Persona context (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Pull from your persona library to tailor language and supports.',
+      ph:'ADHD knowledge worker • Low-bandwidth mobile user' },
+    { key:'bias_lenses', label:'Bias check lenses (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'bias', autofill:'bias->inline',
+      desc:'Heuristics to watch for: optimism, planning fallacy, present bias.',
+      ph:'Present bias • Planning fallacy' },
+
+    /* Measurement and revision */
+    { key:'tripwire', label:'Tripwire metric', type:'text',
+      desc:'Condition that triggers revision of the plan.',
+      ph:'If I miss 3 cues in a row, shrink the action by 50 percent' },
+    { key:'scorecard', label:'Scorecard target', type:'text',
+      desc:'Simple adherence goal for the next 7 days.',
+      ph:'4 of 5 weekdays' },
+    { key:'checkin', label:'First check-in time', type:'text',
+      desc:'When you will review and adjust.',
+      ph:'Friday 4:30 PM' },
+
+    /* Extra context */
+    { key:'ctx', label:'Context (optional)', type:'textarea',
+      desc:'Any constraints or notes the AI should honor.',
+      ph:'Travel week, limited mornings, use offline-capable apps' }
+  ],
+
+  template: (f) => {
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const copingLines = toLines(f.coping);
+    const personas = String(f.personas || '').trim();
+    const biases = String(f.bias_lenses || '').trim();
+
+    const out = [];
+
+    out.push('Create an Implementation Intentions plan with action and coping If–Then, optional habit stack, and a 7-day scorecard. Keep cues observable and actions mechanical.');
+
+    // Context
+    f.ctx && out.push(`Context: ${f.ctx}`);
+    f.goal && out.push(`Goal: ${f.goal}`);
+
+    // WOOP block if present
+    if (f.wish || f.outcome || f.obstacle) {
+      out.push('WOOP:');
+      f.wish && out.push(`- Wish: ${f.wish}`);
+      f.outcome && out.push(`- Outcome: ${f.outcome}`);
+      f.obstacle && out.push(`- Obstacle: ${f.obstacle}`);
+    }
+
+    // Primary plan
+    f.trigger && out.push(`IF: ${f.trigger}`);
+    f.action && out.push(`THEN: ${f.action}`);
+
+    // Coping plan(s)
+    if (copingLines.length) {
+      out.push('Coping If–Then:');
+      copingLines.forEach((c, i) => out.push(`${i + 1}. ${c}`));
+    }
+
+    // Habit stack
+    f.stack_anchor && out.push(`Habit stack: After I ${f.stack_anchor}`);
+
+    // Logistics
+    (f.schedule || f.duration || f.reward || f.environment) && out.push('Supports:');
+    f.schedule && out.push(`- Schedule window: ${f.schedule}`);
+    f.duration && out.push(`- Timebox: ${f.duration}`);
+    f.reward && out.push(`- Tiny reward: ${f.reward}`);
+    f.environment && out.push(`- Environment tweak: ${f.environment}`);
+
+    // Inclusion and bias hooks
+    (f.inclusion || personas || biases) && out.push('Inclusion and bias checks:');
+    f.inclusion && out.push(`- Accessibility and inclusion: ${f.inclusion}`);
+    personas && out.push(`- Personas: ${personas}`);
+    biases && out.push(`- Bias lenses: ${biases}`);
+
+    // Measurement
+    (f.scorecard || f.tripwire || f.checkin) && out.push('Measurement and revision:');
+    f.scorecard && out.push(`- Scorecard target: ${f.scorecard}`);
+    f.tripwire && out.push(`- Tripwire: ${f.tripwire}`);
+    f.checkin && out.push(`- First check-in: ${f.checkin}`);
+
+    // Output instructions
+    out.push('Output:');
+    out.push('1) Final primary If–Then in one line.');
+    if (copingLines.length) out.push('2) Coping If–Then in one line.');
+    if (f.stack_anchor) out.push('3) Habit stack in one line.');
+    out.push('4) 7-day scorecard with checkboxes for adherence.');
+    out.push('5) 10-second rehearsal script that visualizes cue then action.');
+    out.push('6) Debiasing and quality check: confirm cue is observable, action starts under 2 minutes, coping plan covers the top obstacle, reward reinforces the start, and tripwire is set.');
+    out.push('7) One-line revision rule if the tripwire triggers.');
+
+    return out.join('\n');
+  }
 },
 
 {
@@ -4712,7 +5325,7 @@ boosters: [
       type: 'repeater',
       itemType: 'typeahead',
       itemLabel: 'persona',
-      autofill: 'persona->textarea',
+      autofill: 'persona->inline',
       desc: 'Pick one or more personas to represent your audience. Full persona profiles will autofill here for richer context.',
       ph: 'Who is acting?'
     },
@@ -5856,32 +6469,231 @@ boosters: [
   kind: 'framework',
   categories: ['prioritization', 'growth', 'experimentation'],
   tags: [
-    'type:framework','topic:scoring','use:backlog-grooming','use:experiments'
+    'type:framework','topic:scoring','topic:prioritization','phase:triage','level:beginner',
+    'use:backlog-grooming','use:experiments','use:ops-improvement','use:design-roadmap'
   ],
-  use_cases: ['fast triage of ideas','growth experiments','ops improvements'],
-  boosters: ['Keep scales consistent (e.g., 1–10).'],
-  definition: 'ICE is a lightweight scoring model: Impact × Confidence × Ease.',
-  help: 'Use quick gut-checks for each dimension, then multiply.',
+
+  use_cases: [
+    'fast triage of product ideas or experiments',
+    'growth/CRO backlog grooming and sprint planning',
+    'ops/process improvements and quick wins identification',
+    'research/design workstream prioritization before deeper sizing'
+  ],
+
+  definition:
+    'ICE multiplies three quick ratings—Impact, Confidence, and Ease—to rank ideas for a first-pass, evidence-aware triage. Keep scales explicit and consistent; justify each score briefly to reduce bias and gaming.',
+
+  help:
+    'Provide an idea and rate Impact, Confidence, and Ease using the chosen scale (1–5 or 1–10). Optionally switch to Effort mode (Ease is auto-derived from Effort), set weights, cite evidence and dependencies, add inclusion guardrails, and specify a next test. The template returns a scored breakdown, brief justifications, a recommendation band, and a tiny experiment plan.',
+
+  boosters: [
+    'Define and display your scale rubric before scoring (e.g., Impact 1=negligible, 5=step-change).',
+    'Require a one-line justification for each dimension; Confidence must cite evidence class.',
+    'Include hidden work in Ease (security, legal, data, localization, QA, change mgmt).',
+    'Use medians from multiple raters for contentious items; add a comment if spread >2.',
+    'Add an inclusion/ethics gate: high-ICE items with harm risk pause for review.',
+    'Prefer Effort mode when teams think in cost; Ease = (max+1 − Effort).',
+    'Re-score after new evidence; Confidence cannot exceed your strongest evidence rung.'
+  ],
+
   fields: [
-    { key: 'item', label: 'Idea / experiment', type: 'text', ph: 'e.g., Exit-intent survey' },
-    { key: 'impact', label: 'Impact (1–10)', type: 'text', ph: 'e.g., 6' },
-    { key: 'confidence', label: 'Confidence (1–10)', type: 'text', ph: 'e.g., 7' },
-    { key: 'ease', label: 'Ease (1–10)', type: 'text', ph: 'e.g., 8' },
-    { key: 'notes', label: 'Notes (optional)', type: 'textarea', ph: 'Risks, pre-requisites' }
+    /* Core item */
+    { key:'item',       label:'Idea / experiment', type:'text',
+      desc:'Short, concrete description of the idea to prioritize.',
+      ph:'e.g., Reduce signup fields from 8→4' },
+
+    { key:'summary',    label:'One-line value hypothesis (optional)', type:'text',
+      desc:'Crisp because→therefore statement to focus the scoring.',
+      ph:'If we halve fields, more users will complete signup, raising activation.' },
+
+    /* Scale & mode */
+    { key:'scale',      label:'Scale', type:'select',
+      options:[ '1-5','1-10' ],
+      desc:'Choose the rating scale. Keep it consistent across items in a session.',
+      ph:'1-5' },
+
+    { key:'mode',       label:'Ease vs. Effort', type:'select',
+      options:[
+        { value:'ease',   label:'Rate Ease directly' },
+        { value:'effort', label:'Rate Effort; convert to Ease automatically' }
+      ],
+      desc:'Pick how you’ll represent cost. Effort mode converts Effort→Ease internally.',
+      ph:'ease' },
+
+    /* Scores */
+    { key:'impact',     label:'Impact (num)', type:'text',
+      desc:'Expected outcome change if it works (use your rubric).',
+      ph:'e.g., 4' },
+    { key:'confidence', label:'Confidence (num)', type:'text',
+      desc:'How strong the evidence is behind your Impact/Ease estimates.',
+      ph:'e.g., 3' },
+    { key:'ease',       label:'Ease (num, if mode=ease)', type:'text',
+      desc:'How easy/cheap/fast this is to execute (higher = easier).',
+      ph:'e.g., 3' },
+    { key:'effort',     label:'Effort (num, if mode=effort)', type:'text',
+      desc:'Total cost/complexity (higher = harder). Converted to Ease = max+1−Effort.',
+      ph:'e.g., 3' },
+
+    /* Weights (optional) */
+    { key:'w_impact',   label:'Weight: Impact', type:'text',
+      desc:'Optional multiplier to emphasize Impact (default 1).',
+      ph:'1' },
+    { key:'w_conf',     label:'Weight: Confidence', type:'text',
+      desc:'Optional multiplier to emphasize Confidence (default 1).',
+      ph:'1' },
+    { key:'w_ease',     label:'Weight: Ease', type:'text',
+      desc:'Optional multiplier to emphasize Ease (default 1).',
+      ph:'1' },
+
+    /* Rubric & evidence */
+    { key:'rubric_impact',   label:'Impact rubric (quick)', type:'textarea',
+      desc:'Your scale definitions for Impact (keeps ratings consistent).',
+      ph:'1=negligible; 3=~1–3% on key metric; 5=≥5% or unlocks new capability' },
+    { key:'rubric_conf',     label:'Confidence rubric (quick)', type:'textarea',
+      desc:'Define evidence classes for Confidence.',
+      ph:'1=assumption only; 3=multiple signals; 5=replicated A/Bs in this context' },
+    { key:'rubric_ease',     label:'Ease/Effort rubric (quick)', type:'textarea',
+      desc:'Define effort bands including hidden work.',
+      ph:'1=multi-team, heavy dependencies; 3=one team/1–2 sprints; 5=hours/copy' },
+
+    { key:'evidence',   label:'Best supporting evidence', type:'textarea',
+      desc:'Cite the strongest evidence you have (link, metric, study).',
+      ph:'A/B showed +2.1 pp on a similar form; usability: users stall on phone field' },
+
+    { key:'dependencies',label:'Dependencies / approvals', type:'textarea',
+      desc:'Anything that can slow execution (security, legal, data, localization, QA).',
+      ph:'Privacy review; analytics event update; i18n strings' },
+
+    /* Inclusion & lenses */
+    { key:'inclusion',  label:'Inclusion / ethics guardrail', type:'textarea',
+      desc:'Equity, accessibility, or harm-reduction constraints that must be met.',
+      ph:'AA contrast; no dark patterns; minimal PII; translated strings' },
+
+    { key:'persona',    label:'Persona lens (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Pull a persona from your library to color Impact and risks.',
+      ph:'e.g., New-to-product user • Screen-reader user' },
+
+    { key:'bias_lens',  label:'Bias lens (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'bias', autofill:'bias->inline',
+      desc:'Common pitfalls to watch (anchoring, availability, sunk cost, halo, groupthink).',
+      ph:'Search bias library' },
+
+    /* Tie-breakers & next step */
+    { key:'tiebreakers',label:'Tie-breakers (optional)', type:'textarea',
+      desc:'How to break ICE ties: time-to-impact, strategic fit, learning value, risk reduction.',
+      ph:'Prefer sooner impact; prioritize privacy improvements' },
+
+    { key:'next_test',  label:'Next test (≤1 week)', type:'textarea',
+      desc:'Smallest viable experiment if this ranks high.',
+      ph:'Ship 2 headline variants to 25% traffic; success if +1.5 pp activation' },
+
+    { key:'notes',      label:'Notes (optional)', type:'textarea',
+      desc:'Context, risks, or scope assumptions.',
+      ph:'Mobile-only first; do not change legal text' }
   ],
+
   template: (f) => {
-    const n = x => Number(String(x||'').replace(/[^0-9.\-]/g,'')); 
-    const I = n(f.impact), C = n(f.confidence), E = n(f.ease);
-    const score = (Number.isFinite(I)&&Number.isFinite(C)&&Number.isFinite(E)) ? (I*C*E) : null;
-    return [
-      'Score with ICE (Impact × Confidence × Ease).',
-      f.usecase && `Context: ${f.usecase}`,
-      f.item && `Item: ${f.item}`,
-      (f.impact||f.confidence||f.ease) && `Estimates:\nImpact: ${f.impact}\nConfidence: ${f.confidence}\nEase: ${f.ease}`,
-      (score!=null) && `ICE Score: ${score}`,
-      f.notes && ('Notes:\n' + f.notes),
-      'Output:\n1) ICE breakdown + score\n2) Rationale + quick risks\n3) Recommendation + next step'
-    ].filter(Boolean).join('\n');
+    const asNum = v => {
+      const n = Number(String(v ?? '').replace(/[^0-9.\-]/g, ''));
+      return Number.isFinite(n) ? n : null;
+    };
+    const scaleStr = f.scale || '1-5';
+    const maxMatch = /1-(\d+)/.exec(scaleStr);
+    const MAX = maxMatch ? Number(maxMatch[1]) : 5;
+    const MIN = 1;
+
+    // read weights
+    const wI = asNum(f.w_impact) || 1;
+    const wC = asNum(f.w_conf)   || 1;
+    const wE = asNum(f.w_ease)   || 1;
+
+    // read scores
+    const I = asNum(f.impact);
+    const C = asNum(f.confidence);
+    let   E = null;
+
+    const mode = (f.mode && (typeof f.mode === 'string') ? f.mode : 'ease').toLowerCase();
+    if (mode === 'effort') {
+      const Eff = asNum(f.effort);
+      if (Eff != null) {
+        E = (MAX + 1) - Eff; // convert Effort→Ease
+      }
+    } else {
+      E = asNum(f.ease);
+    }
+
+    const inRange = (x) => x != null && x >= MIN && x <= MAX;
+    const ready = inRange(I) && inRange(C) && inRange(E);
+
+    // weighted ICE
+    const score = ready ? (I * wI) * (C * wC) * (E * wE) : null;
+    const maxScore = (MAX * wI) * (MAX * wC) * (MAX * wE);
+    const pct = (score != null && maxScore > 0) ? Math.round((score / maxScore) * 100) : null;
+
+    // Recommendation band
+    let band = null;
+    if (pct != null) {
+      if (pct >= 60) band = 'Do now (Quick win)';
+      else if (pct >= 40) band = 'Investigate (High potential; add evidence or reduce effort)';
+      else if (pct >= 20) band = 'Hold (Needs reframing or prerequisites)';
+      else band = 'Drop (Not competitive vs. backlog)';
+    }
+
+    // Build output
+    const out = [];
+    out.push('Score with ICE (Impact × Confidence × Ease). Keep scales explicit and justify each rating.');
+
+    f.item && out.push(`Item: ${f.item}`);
+    f.summary && out.push(`Value hypothesis: ${f.summary}`);
+    out.push(`Scale: ${scaleStr} • Mode: ${mode === 'effort' ? 'Effort→Ease' : 'Ease'}`);
+    (f.rubric_impact || f.rubric_conf || f.rubric_ease) && out.push(
+      ['Rubrics:',
+       f.rubric_impact && `- Impact: ${f.rubric_impact}`,
+       f.rubric_conf   && `- Confidence: ${f.rubric_conf}`,
+       f.rubric_ease   && `- Ease/Effort: ${f.rubric_ease}`
+      ].filter(Boolean).join('\n')
+    );
+
+    // Breakdown
+    if (ready) {
+      out.push('Ratings:');
+      out.push(`- Impact: ${I} ${f.impact_why ? '— ' + f.impact_why : ''}`);
+      out.push(`- Confidence: ${C} ${f.conf_why ? '— ' + f.conf_why : ''}`);
+      out.push(`- ${mode === 'effort' ? 'Effort' : 'Ease'}: ${mode === 'effort' ? ((MAX + 1) - E) : E} ${f.ease_why ? '— ' + f.ease_why : ''}`);
+      (wI !== 1 || wC !== 1 || wE !== 1) && out.push(`Weights: I×${wI}, C×${wC}, E×${wE}`);
+      out.push(`ICE Score: ${score} (≈ ${pct}% of max ${maxScore})`);
+      band && out.push(`Recommendation: ${band}`);
+    } else {
+      out.push('Ratings: [missing or out of range] — please provide numeric values within the chosen scale.');
+    }
+
+    // Evidence & dependencies
+    f.evidence && out.push(`Best evidence: ${f.evidence}`);
+    f.dependencies && out.push(`Dependencies/approvals: ${f.dependencies}`);
+    f.inclusion && out.push(`Inclusion/ethics guardrail: ${f.inclusion}`);
+    f.persona && out.push(`Persona lens: ${f.persona}`);
+    f.bias_lens && out.push(`Bias lens: ${f.bias_lens}`);
+    f.tiebreakers && out.push(`Tie-breakers: ${f.tiebreakers}`);
+    f.notes && out.push(`Notes: ${f.notes}`);
+
+    // Next action
+    out.push('Next step:');
+    if (band === 'Do now (Quick win)') {
+      out.push(f.next_test ? `- ${f.next_test}` : '- Propose a ≤1-week micro-test with a clear success threshold.');
+    } else if (band === 'Investigate (High potential; add evidence or reduce effort)') {
+      out.push('- Identify 1 new piece of evidence or a change that increases Ease by 1 point, then re-score.');
+      f.next_test && out.push(`- Candidate test: ${f.next_test}`);
+    } else if (band === 'Hold (Needs reframing or prerequisites)') {
+      out.push('- List blockers and a smallest unblocker; consider reframing the idea for lower effort.');
+    } else {
+      out.push('- Archive with reason; keep a note of what evidence would resurrect this.');
+    }
+
+    // Debiasing nudge
+    out.push('Debiasing check: Did we anchor on a shiny metric? Double-count Ease? Is Confidence supported by the strongest evidence cited?');
+
+    return out.filter(Boolean).join('\n');
   }
 },
 
@@ -6002,7 +6814,7 @@ boosters: [
     'Pick truly unrelated elements for bigger creativity leaps.',
     'Encourage humorous or absurd connections; even silly ideas can contain a seed of insight.'
   ],
-  definition: 'A method to introduce two random, unrelated items or concepts and force a connection between them, spurring innovative thinking by linking disparate ideas:contentReference[oaicite:0]{index=0}.',
+  definition: 'A method to introduce two random, unrelated items or concepts and force a connection between them, spurring innovative thinking by linking disparate ideas.',
   help: 'Provide a short description of your problem or topic. Optionally, suggest two random elements (objects, concepts) to connect. The model will find creative ways to link these with your problem, generating novel ideas.',
   fields: [
     { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Improving public transportation' },
@@ -6035,7 +6847,7 @@ boosters: [
     'Adopt extreme or unusual personas to push boundaries of thinking.',
     'Stay in character for each role to fully explore its viewpoint before switching.'
   ],
-  definition: 'A brainstorming variation where you imagine yourself (or your team) in a different role or persona and generate ideas from that perspective:contentReference[oaicite:1]{index=1}. By role-playing as someone else (e.g., a customer, a famous innovator), you can gain new insights and break habitual thinking.',
+  definition: 'A brainstorming variation where you imagine yourself (or your team) in a different role or persona and generate ideas from that perspective. By role-playing as someone else (e.g., a customer, a famous innovator), you can gain new insights and break habitual thinking.',
   help: 'Describe your problem or goal. Optionally list specific roles to adopt (one per line). The model will generate ideas from the perspective of each role in turn.',
   fields: [
     { key: 'problem', label: 'Problem or goal', type: 'textarea', ph: 'e.g., Increase recycling participation' },
@@ -6067,7 +6879,7 @@ boosters: [
     'Allow partial or fragmented thoughts; organize them later into branches.',
     'Use indentation or bullet nesting to mimic the structure of a mind map.'
   ],
-  definition: 'A visual brainstorming technique where you write a central concept and branch out with associated ideas in an organic, non-linear manner:contentReference[oaicite:2]{index=2}. Mind mapping leverages associative thinking by connecting related ideas in clusters around the main topic, which can stimulate holistic and imaginative thought:contentReference[oaicite:3]{index=3}.',
+  definition: 'A visual brainstorming technique where you write a central concept and branch out with associated ideas in an organic, non-linear manner. Mind mapping leverages associative thinking by connecting related ideas in clusters around the main topic, which can stimulate holistic and imaginative thought.',
   help: 'State the central topic. Optionally list some initial subtopics or first-level branches (one per line). The model will expand on each branch with sub-ideas and show connections between them in an outline form.',
   fields: [
     { key: 'topic', label: 'Central topic', type: 'text', ph: 'e.g., Renewable Energy' },
@@ -6096,10 +6908,10 @@ boosters: [
     'identify features of an ideal outcome'
   ],
   boosters: [
-    'Encourage even absurd or impossible wishes; they can spark real ideas:contentReference[oaicite:4]{index=4}.',
+    'Encourage even absurd or impossible wishes; they can spark real ideas.',
     'After listing wishes, examine each to find elements you *can* actually implement.'
   ],
-  definition: 'An ideation method where you freely wish for the perfect or even impossible solutions to a problem:contentReference[oaicite:5]{index=5}. By articulating “magic wand” wishes without restraint, you can then work backward to figure out how to incorporate aspects of those ideal solutions into practical reality:contentReference[oaicite:6]{index=6}.',
+  definition: 'An ideation method where you freely wish for the perfect or even impossible solutions to a problem. By articulating “magic wand” wishes without restraint, you can then work backward to figure out how to incorporate aspects of those ideal solutions into practical reality.',
   help: 'Describe your problem or goal. The model will generate a list of "I wish..." statements – ideal, unconstrained solutions – and then suggest ways to adapt elements of those wishes into feasible ideas or actions.',
   fields: [
     { key: 'problem', label: 'Problem or goal', type: 'textarea', ph: 'e.g., Traffic congestion in city center' }
@@ -6125,10 +6937,10 @@ boosters: [
     'overcome creative block by not overthinking'
   ],
   boosters: [
-    'Suspend judgment during the idea sprint – no idea is too silly initially:contentReference[oaicite:7]{index=7}.',
+    'Suspend judgment during the idea sprint – no idea is too silly initially.',
     'Set a clear timer or target idea count; the constraint can boost focus and output.'
   ],
-  definition: 'A brainstorming approach focusing on quantity over quality: set a short time limit and produce as many ideas as possible without filtering:contentReference[oaicite:8]{index=8}. The goal is to bypass your inner critic and get a broad list of thoughts, which can later be reviewed for viable options or refined ideas.',
+  definition: 'A brainstorming approach focusing on quantity over quality: set a short time limit and produce as many ideas as possible without filtering. The goal is to bypass your inner critic and get a broad list of thoughts, which can later be reviewed for viable options or refined ideas.',
   help: 'State the problem or question. Optionally specify a time limit or target number of ideas. The model will simulate a rapid ideation session, listing a high number of quick ideas, then help highlight the most promising ones for further exploration.',
   fields: [
     { key: 'problem', label: 'Problem or question', type: 'textarea', ph: 'e.g., New app features to engage users' },
@@ -6156,10 +6968,10 @@ boosters: [
     'generate ideas from abstract or incomplete statements'
   ],
   boosters: [
-    'Use unusual or even provocative triggers to jolt thinking in new directions:contentReference[oaicite:9]{index=9}.',
+    'Use unusual or even provocative triggers to jolt thinking in new directions.',
     'Build on whatever associations the trigger evokes, no matter how tangential or odd they seem.'
   ],
-  definition: 'A brainstorming method where you use specific prompts or "triggers" – such as open-ended sentences or abstract statements – to inspire new thoughts:contentReference[oaicite:10]{index=10}. The triggers are designed to provoke or challenge assumptions, helping the group or individual break out of conventional ideas.',
+  definition: 'A brainstorming method where you use specific prompts or "triggers" – such as open-ended sentences or abstract statements – to inspire new thoughts. The triggers are designed to provoke or challenge assumptions, helping the group or individual break out of conventional ideas.',
   help: 'Provide your problem or topic. Optionally include some trigger prompts (one per line). The model will either use your triggers or generate its own, then explore ideas that arise from responding to each trigger.',
   fields: [
     { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Low participation in community events' },
@@ -6188,10 +7000,10 @@ boosters: [
     'explore alternative outcomes or perspectives'
   ],
   boosters: [
-    'Pose wild "what if" questions beyond realistic bounds to expand thinking:contentReference[oaicite:11]{index=11}.',
+    'Pose wild "what if" questions beyond realistic bounds to expand thinking.',
     'After exploring an imagined scenario, extract any ideas that could be applied (even partially) to the real situation.'
   ],
-  definition: 'A technique of reframing problems by asking "What if...?" questions that introduce new scenarios or constraints:contentReference[oaicite:12]{index=12}. By imagining how the issue would look under different circumstances (e.g., different people, times, or rules), you gain fresh perspectives that can lead to innovative solutions.',
+  definition: 'A technique of reframing problems by asking "What if...?" questions that introduce new scenarios or constraints. By imagining how the issue would look under different circumstances (e.g., different people, times, or rules), you gain fresh perspectives that can lead to innovative solutions.',
   help: 'Describe your problem. Optionally provide a specific "What if" scenario to explore. The model will propose its own additional "What if" questions, examine each hypothetical scenario, and then connect insights back to your actual problem.',
   fields: [
     { key: 'problem', label: 'Problem or topic', type: 'textarea', ph: 'e.g., Difficulty in remote team collaboration' },
@@ -6304,10 +7116,10 @@ boosters: [
     'find new approaches when stuck on an artistic problem'
   ],
   boosters: [
-    'Interpret the card prompts loosely; any personal meaning you derive is valid:contentReference[oaicite:14]{index=14}.',
+    'Interpret the card prompts loosely; any personal meaning you derive is valid.',
     'If a prompt seems cryptic or disruptive, embrace it — use it as an opportunity to change your approach entirely.'
   ],
-  definition: 'A card-based method invented by musician Brian Eno and artist Peter Schmidt to overcome creative blocks:contentReference[oaicite:15]{index=15}. Each Oblique Strategies card presents a cryptic instruction or dilemma (e.g., "Remove specifics and convert to ambiguities") designed to break down artistic barriers and spark creative insight:contentReference[oaicite:16]{index=16}. Following these prompts encourages lateral thinking. Similarly, some creators use random oracle systems (like the I Ching, as John Cage did) for the same purpose of injecting randomness to spur innovation:contentReference[oaicite:17]{index=17}.',
+  definition: 'A card-based method invented by musician Brian Eno and artist Peter Schmidt to overcome creative blocks. Each Oblique Strategies card presents a cryptic instruction or dilemma (e.g., "Remove specifics and convert to ambiguities") designed to break down artistic barriers and spark creative insight. Following these prompts encourages lateral thinking. Similarly, some creators use random oracle systems (like the I Ching, as John Cage did) for the same purpose of injecting randomness to spur innovation.',
   help: 'Describe your situation or creative project where you feel stuck. The model will draw an "Oblique Strategy" card (a random abstract prompt) and present it. Then it will help you interpret that prompt in the context of your situation and suggest ways it could inspire a next step or solution.',
   fields: [
     { key: 'situation', label: 'Creative situation or block', type: 'textarea', ph: 'e.g., Stuck on the melody for a song' },
@@ -6416,10 +7228,10 @@ boosters: [
     'unstick a problem by reframing it in a different context'
   ],
   boosters: [
-    'Encourage wild analogies – even if the link is tenuous, it may spark a novel idea:contentReference[oaicite:24]{index=24}.',
-    'After solving the analogy problem, carefully map the insights back to the original problem to ensure relevance:contentReference[oaicite:25]{index=25}.'
+    'Encourage wild analogies – even if the link is tenuous, it may spark a novel idea.',
+    'After solving the analogy problem, carefully map the insights back to the original problem to ensure relevance.'
   ],
-  definition: 'A creative problem-solving approach that "joins together different and apparently irrelevant elements" by using analogies:contentReference[oaicite:26]{index=26}. In Synectics, you reframe the problem into an analogous situation in a distant or unrelated context (using direct, personal, symbolic, or fantasy analogies):contentReference[oaicite:27]{index=27}, brainstorm solutions for that analogy, and then translate those solutions back to the original problem:contentReference[oaicite:28]{index=28}. This leverages the mind’s ability to find connections and can yield truly novel solutions.',
+  definition: 'A creative problem-solving approach that "joins together different and apparently irrelevant elements" by using analogies. In Synectics, you reframe the problem into an analogous situation in a distant or unrelated context (using direct, personal, symbolic, or fantasy analogies), brainstorm solutions for that analogy, and then translate those solutions back to the original problem. This leverages the mind’s ability to find connections and can yield truly novel solutions.',
   help: 'Describe your problem. Optionally suggest a domain or scenario to use as an analogy. The model will rephrase your problem as an analogy in another context, solve that analogous problem, and then map the insights back to your original situation.',
   fields: [
     { key: 'problem', label: 'Original problem', type: 'textarea', ph: 'e.g., Improving team communication' },
@@ -6588,30 +7400,275 @@ boosters: [
   slug: 'hypnagogic-spark-creativity',
   label: 'Hypnagogic Spark — Semi-sleep insight technique',
   kind: 'technique',
-  categories: ['creativity', 'brainstorming'],
-  tags: ['type:technique', 'topic:consciousness', 'use:creative-block', 'level:advanced'],
+  categories: ['creativity','brainstorming','dream-methods','imagination','problem framing'],
+  tags: [
+    'type:technique','topic:consciousness','topic:sleep','topic:hypnagogia',
+    'topic:surrealism','topic:imagination','topic:dream-incubation',
+    'use:creative-block','use:metaphor-hunting','use:idea-generation','use:problem-reframing',
+    'level:advanced'
+  ],
+
   use_cases: [
-    'find novel ideas by tapping the twilight state between waking and sleeping',
-    'generate creative solutions through relaxed, dreamlike thinking'
+    'Unstick creative blocks by skimming the N1 (semi-sleep) state',
+    'Generate surprising metaphors, visuals, and symbolic pairings',
+    'Reframe problems with dreamlike, non-linear associations',
+    'Practice surrealist or Jungian-style ideation',
+    'Incubate design, story, or research sparks from hypnagogic imagery',
+    'Translate half-dream fragments into testable, real-world prototypes'
   ],
+
+  definition:
+    'A short-cycle creativity method that dips into hypnagogia (N1, threshold of sleep) to loosen associations. The state yields fleeting images, sounds, and sensations — often metaphorical and novel. By interrupting gently and capturing fragments immediately, one can translate them into prototypes or insights. Rooted in Edison and Dalí’s “object-drop” naps, ancient dream incubation, and modern creativity research. The AI simulates this drift with configurable surrealism, cycles, and priming cues.',
+
+  help:
+    'Provide a focus problem, guardrails, and optional sensory/dream cues. The model simulates hypnagogic drift (fragments, metaphors, sensory oddities), then “wakes” to cluster, interpret, and shortlist viable sparks. Use boosters to keep cycles short, capture raw, and triage the weird into concrete test plans. Bias/inclusion lenses keep the output safe and usable.',
+
   boosters: [
-    'If doing this in real life, hold an object (like Dalí’s spoon or a set of keys) so it drops when you doze off, waking you up to capture ideas:contentReference[oaicite:42]{index=42}.',
-    'In the simulation, allow thoughts to become slightly surreal or illogical – this mimics the hypnagogic state where unique connections form:contentReference[oaicite:43]{index=43}:contentReference[oaicite:44]{index=44}.'
+    'Keep sessions short (≤3 cycles, 2–4 minutes each) to preserve novelty.',
+    'Capture raw with no editing — single words, textures, colors, broken phrases.',
+    'Use a gentle cue (object in hand, timer, mantra) to simulate real drift entry/exit.',
+    'Tag fragments (metaphor • sensory • risk • archetype) to aid clustering.',
+    'Do one “wild card” pass: interpret a fragment through an alien lens (astronomy, mythology, cooking).',
+    'Same-day triage: shortlist 3 sparks, prototype 1 within 48 hours.',
+    'Include an inclusion/safety rewrite if ideas touch people, culture, or ethics.'
   ],
-  definition: 'A creativity technique famously used by inventor Thomas Edison and artist Salvador Dalí, involving the brief moments of semi-sleep (the hypnagogic state) to capture imaginative insights:contentReference[oaicite:45]{index=45}. The person lets their mind drift toward sleep and then interrupts it (for example, by a falling object that wakes them) to recall the fleeting, dreamlike ideas that surface:contentReference[oaicite:46]{index=46}. This early sleep stage (N1) lasts only a few minutes but is considered an "ideal cocktail for creativity" where reality blurs with imagination:contentReference[oaicite:47]{index=47}.',
-  help: 'Describe the problem or topic you want to get new ideas about. The model will mimic a hypnagogic brainstorming session: first producing a series of dreamy, free-associative thoughts related to the topic (as if half-asleep), and then "waking up" to interpret those strange ideas and highlight any useful insights.',
+
   fields: [
-    { key: 'problem', label: 'Problem or topic to drift on', type: 'textarea', ph: 'e.g., Designing a new kind of umbrella' }
+    {
+      key: 'problem',
+      label: 'Problem or topic to drift on',
+      type: 'textarea',
+      desc: 'One concise problem, goal, or question. Keep outcome-focused, not feature-led.',
+      ph: 'e.g., Help first-time users reach value in 2 minutes without extra data collection'
+    },
+    {
+      key: 'constraints',
+      label: 'Constraints / non-goals',
+      type: 'textarea',
+      desc: 'Hard limits (policy, ethics, brand) and explicit anti-goals.',
+      ph: 'No dark patterns • Must support low bandwidth • Avoid stigmatizing language'
+    },
+    {
+      key: 'evidence',
+      label: 'Evidence / insight snippets (optional)',
+      type: 'textarea',
+      desc: 'Quotes, metrics, or observations to ground the session.',
+      ph: '“I don’t know why you need this.” • 42% drop at permissions • 18% complete on 3G'
+    },
+    {
+      key: 'dream_cue',
+      label: 'Dream cue (optional)',
+      type: 'text',
+      desc: 'A single word/image/symbol to seed drift, like ancient dream incubation.',
+      ph: 'e.g., Lighthouse • Broken clock • Garden gate'
+    },
+    {
+      key: 'persona',
+      label: 'Persona lens (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Pull a persona from your library to color language, values, and edge cases.',
+      ph: 'e.g., Privacy-first Analyst • Busy Parent • Field Technician'
+    },
+    {
+      key: 'inclusion_guardrail',
+      label: 'Inclusion & accessibility notes (optional)',
+      type: 'textarea',
+      desc: 'Accessibility, equity, cultural, or safety guardrails.',
+      ph: 'Plain language • Screen-reader friendly • Avoid stigma'
+    },
+    {
+      key: 'mission',
+      label: 'Mission/values alignment (optional)',
+      type: 'textarea',
+      desc: 'Purpose/principles that final ideas should reflect.',
+      ph: 'Champion user autonomy • Minimize data • Dignity by default'
+    },
+    {
+      key: 'bias_lens',
+      label: 'Bias lens (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Bias primers to guide the scan (anchoring, availability, confirmation, sunk cost, halo, groupthink).',
+      ph: 'Search your bias library'
+    },
+    {
+      key: 'protocol',
+      label: 'Protocol',
+      type: 'select',
+      options: [
+        { value: 'Simulated hypnagogic brainstorm',   label: 'Simulated hypnagogic brainstorm' },
+        { value: 'Real-life: object-drop micro-nap (Dalí/Edison) Plan', label: 'Real-life: object-drop micro-nap (Dalí/Edison)' },
+        { value: 'Real-life: short timer cycles (2–4 mins) Plan',       label: 'Real-life: short timer cycles (2–4 mins)' },
+        { value: 'Real-life: nappuccino (coffee + 10–15 min window) Plan',  label: 'Real-life: nappuccino (coffee + 10–15 min window)' }
+      ],
+      desc: 'Pick simulated (default) or a safe real-life variant.',
+      ph: 'simulated'
+    },
+    {
+      key: 'cycles',
+      label: 'Cycles (1–3)',
+      type: 'text',
+      desc: 'Number of drift→capture passes. 2 is a good default.',
+      ph: '2'
+    },
+    {
+      key: 'cycle_minutes',
+      label: 'Cycle duration (mins)',
+      type: 'text',
+      desc: 'Short windows (2–4 minutes) maximize recall.',
+      ph: '3'
+    },
+    {
+      key: 'surreal_level',
+      label: 'Surreal dial',
+      type: 'select',
+      options: [
+        { value: 'Low (mild remix, analogies)',    label: 'Low (mild remix, analogies)' },
+        { value: 'Medium (odd pairings, playful logic)', label: 'Medium (odd pairings, playful logic)' },
+        { value: 'High (dreamlike leaps, symbolic material)',   label: 'High (dreamlike leaps, symbolic material)' }
+      ],
+      desc: 'How loose the associations should be.',
+      ph: 'medium'
+    },
+    {
+      key: 'priming',
+      label: 'Sensory priming (optional)',
+      type: 'textarea',
+      desc: 'Any image, texture, sound, or reference that should color the drift.',
+      ph: 'Warm brass texture • Distant train sound • Red thread motif'
+    },
+    {
+      key: 'state_hygiene',
+      label: 'State hygiene (optional)',
+      type: 'textarea',
+      desc: 'Real-world prep: lighting, position, interruption strategy.',
+      ph: 'Dim light • Reclined but upright • Keys in hand for micro-nap'
+    },
+    {
+      key: 'fragment_tag_style',
+      label: 'Fragment tagging scheme',
+      type: 'select',
+      options: [
+        { value: 'metaphor', label: 'Metaphor/analogy tags' },
+        { value: 'archetype',label: 'Archetype/symbol tags' },
+        { value: 'color_emotion', label: 'Color/emotion pairings' }
+      ],
+      desc: 'How to tag fragments for clustering later.',
+      ph: 'metaphor'
+    },
+    {
+      key: 'opposite_variant',
+      label: 'Opposite-frame pass',
+      type: 'select',
+      options: [
+        { value: 'Yes — include an opposite-framing seed', label: 'Yes — include an opposite-framing seed' },
+        { value: ' ',  label: 'No' }
+      ],
+      desc: 'Treat the main constraint as permanent and explore alternate paths.',
+      ph: 'yes'
+    },
+    {
+      key: 'capture_mode',
+      label: 'Capture mode',
+      type: 'select',
+      options: [
+        { value: 'Voice-first (rich, natural)',  label: 'Voice-first (rich, natural)' },
+        { value: 'Bulleted fragments',label: 'Bulleted fragments' },
+        { value: 'ASCII sketch notes', label: 'ASCII sketch notes' }
+      ],
+      desc: 'How to record fragments before analysis.',
+      ph: 'voice'
+    },
+    {
+      key: 'success_metric',
+      label: 'Success metric',
+      type: 'text',
+      desc: 'How to judge usefulness of the session.',
+      ph: '≥5 sparks • 1 prototype candidate • Novelty+Relevance ≥7/10'
+    },
+    {
+      key: 'next_action',
+      label: 'Next action (prototype plan)',
+      type: 'textarea',
+      desc: 'What you will prototype within 48 hours.',
+      ph: 'Storyboard 3 thumbnails • A/B headline test • Concierge demo'
+    },
+    
+    {
+  key: 'image_prompt',
+  label: 'Generate an image?',
+  type: 'select',
+  options: [
+    { value: 'yes', label: 'Yes — create an image prompt too' },
+    { value: 'no',  label: 'No' }
   ],
-  template: ({ problem, ctx }) => [
-    'Use the Hypnagogic Spark technique for fresh insights.',
-    ctx && `Context: ${ctx}`,
-    problem && `Focus problem: ${problem}`,
-    '...(Imagine drifting into a light semi-dream state while thinking about the problem)...',
-    'Hypnagogic impressions: (List a few whimsical or surreal thoughts/ideas that come to mind in this drowsy state)',
-    '...(Now imagine "waking up")...',
-    'Review these odd ideas and interpret how one or more of them could inspire a real solution or creative direction for the problem.'
-  ].filter(Boolean).join('\n')
+  desc: 'Do you want the AI to also generate a detailed image prompt for DALL·E (or similar) based on your session?',
+  ph: 'no'
+}
+  ],
+
+  template: (f) => {
+    const out = [];
+    const protocol = f.protocol || 'simulated';
+    const cycles = Number.parseInt(f.cycles || '2', 10);
+    const mins = f.cycle_minutes || '3';
+    const surreal = f.surreal_level || 'medium';
+    const opposite = (f.opposite_variant || 'yes') === 'yes';
+
+    out.push('Run a Hypnagogic Spark session (drift → capture → interpret → test).');
+    f.ctx && out.push(`Context: ${f.ctx}`);
+    f.persona && out.push(`Persona lens: ${f.persona}`);
+    f.mission && out.push(`Mission/values: ${f.mission}`);
+    f.inclusion_guardrail && out.push(`Inclusion/accessibility: ${f.inclusion_guardrail}`);
+    f.bias_lens && out.push(`Bias lens: ${f.bias_lens}`);
+    f.evidence && out.push(`Evidence: ${f.evidence}`);
+    f.constraints && out.push(`Constraints: ${f.constraints}`);
+    f.dream_cue && out.push(`Dream cue: ${f.dream_cue}`);
+    f.state_hygiene && out.push(`State hygiene: ${f.state_hygiene}`);
+
+    out.push('Session plan:');
+    out.push(`- Protocol: ${protocol} • Cycles: ${cycles} × ${mins} min • Surreal dial: ${surreal} • Capture: ${f.capture_mode || 'voice'}`);
+    f.priming && out.push(`- Sensory priming: ${f.priming}`);
+    f.fragment_tag_style && out.push(`- Fragment tagging: ${f.fragment_tag_style}`);
+    opposite && out.push('- Include one opposite-frame seed.');
+
+    f.problem && out.push(`Focus problem: ${f.problem}`);
+
+    out.push('Output:');
+    out.push('A) Hypnagogic impressions — 7–12 short fragments (words, images, textures, half-phrases). Tag each according to style.');
+    if (opposite) {
+      out.push('A2) Opposite-frame impressions — 3–5 fragments where the main constraint is treated as permanent.');
+    }
+    out.push('B) Immediate capture transcript — lightly cleaned, 1–2 lines max per fragment.');
+    out.push('C) Interpretation — map each fragment to the problem: why it might help, what it suggests.');
+    out.push('D) Clusters — group into 2–3 themes with names and gist.');
+    out.push('E) Shortlist — top 3 ideas (Novelty • Relevance • Feasibility scores 1–5). Brief justification.');
+    out.push('F) Smallest test plan (for top idea): hypothesis, metric, <60-min prototype, decision rule.');
+    out.push('G) Debiasing & inclusion check — flag biases, propose inclusion/safety rewrite if needed.');
+    out.push('H) One-line synthesis — “We will explore [theme] via [idea] because [evidence/benefit].”');
+    out.push(`I) Next action — ${f.next_action || 'Propose a concrete 48-hour step with owner and timebox.'}`);
+    
+    if (f.image_prompt === 'yes') {
+  out.push('');
+  out.push('J) Image generation prompt — Create a detailed prompt for DALL·E (or equivalent) to visualize the session’s top idea or theme. Follow these principles:');
+  out.push('- Be specific where it matters (subject, environment, key objects); sparse elsewhere.');
+  out.push('- Think like a cinematographer: lock in lighting, composition, lens, color grade, and mood.');
+  out.push('- Use concrete nouns and visual attributes (textures, materials, era, perspective).');
+  out.push('- Control the frame: suggest aspect ratio suited to purpose (1:1 icon, 16:9 banner, 2:3 poster).');
+  out.push('- If text needed, quote exact wording and style (e.g., “headline reads ‘SPARK’ in bold sans”).');
+  out.push('- Avoid mimicking living artists; describe style instead (e.g., “hand-inked lines, cel shading, pastel palette”).');
+  out.push('- Optionally suggest 2–3 variations with different lighting or composition.');
+  out.push('The final output here should be a vivid, cinematic text prompt ready for an image model.');
+}
+
+
+    return out.filter(Boolean).join('\n');
+  }
 },
 
 {
@@ -6928,51 +7985,172 @@ fields: [
   slug: 'imaginary-mentor-council',
   label: 'Imaginary Council — Multiple Mentors, One Question',
   kind: 'pattern',
-  categories: ['creativity', 'strategy'],
+  categories: ['creativity', 'strategy', 'decision-making'],
   tags: [
-    'type:pattern','topic:roleplay','topic:perspective-shift','level:intermediate',
-    'use:brainstorming','use:decision-support','use:ideation'
+    'type:pattern','topic:roleplay','topic:perspective-shift','topic:red-team',
+    'phase:explore','phase:decide','level:intermediate',
+    'use:brainstorming','use:decision-support','use:ideation','use:ethics-review'
   ],
+
   use_cases: [
-    'get advice on a problem by imagining a panel of diverse mentors or characters',
-    'break out of one-track thinking by considering how different personalities would tackle your issue',
-    'indulge in a creative self-coaching exercise by channeling wisdom from fictional or real figures'
+    'break fixation by sampling diverse lenses before deciding',
+    'stress-test a plan with skeptic, user, and ethicist seats',
+    'unblock creative work via playful roleplay with constraints',
+    'produce a smallest-viable experiment and a minority report'
   ],
+
+  definition:
+    'A structured thought experiment: pose one sharply framed question to a diverse council of imagined mentors (real, fictional, archetypal, or future/past selves). Each gives an independent answer, then cross-examines others. You synthesize overlap into a smallest viable next step, record dissent, and set a tripwire metric.',
+
+  help:
+    'Add 5–7 council members (mix of lenses). Provide one question, time horizon, success metric, constraints, and an evidence snapshot. Optionally add inclusion guardrails, bias lenses, and personas from your library. The template runs a two-round council (answers → cross-exam → one-line recommendations) and returns a synthesis, minority report, and a 1-week pilot plan.',
+
   boosters: [
-    'Choose a mix of “advisors” with wildly different viewpoints or expertise (e.g., a scientist, an artist, a child, a rebel).',
-    'Include at least one fun or unexpected persona (like your pet or a favorite fictional character) for creative insight.'
+    'Keep it one question only; run another council for additional questions.',
+    'Pick at least one User/Community Advocate and one Skeptic/Red Team seat.',
+    'Force independence: Round 1 answers without referencing other seats.',
+    'Require each seat to state one risk and one measurable success sign.',
+    'Include a cultural lens beyond your own background; avoid caricature.',
+    'Record a Minority Report and a tripwire metric that triggers review.',
+    'Timebox: ≤3 minutes per step; perfection kills perspective.'
   ],
-  definition: 'A brainstorming method where you pose a question to an imaginary panel of mentors or characters. Each “advisor” gives their perspective or solution, helping you see the issue from many angles.',
-  help: 'List 2-5 imaginary council members (could be famous people, fictional characters, or archetypes) and state your question or problem. The model will present advice or answers from each member in turn.',
-fields: [
-  {
-    key: 'advisors',
-    label: 'Council members',
-    type: 'repeater',
-    itemType: 'typeahead',   // each item is a persona-backed textarea
-    autofill: 'persona->textarea',    // on pick, dump full profile via personaText()
-    itemLabel: 'member',              // label for the + Add button
-    min: 2,
-    max: 10,
-    ph: 'Start typing to pick a persona (e.g., Marie Curie, Tony Stark, Future Self)…'
-  },
-  { key: 'question', label: 'Problem or question for the council', type: 'textarea', ph: 'Describe what you want advice or ideas about.' }
-],
-  template: ({ advisors, question, ctx, audience, style, tone }) => [
-    'Consult an imaginary mentor council for advice.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    advisors && (
-      'Council Members:\n' + String(advisors)
-        .split(/\n+/).map(s => s.trim()).filter(Boolean)
-        .map((x,i) => `${i+1}. ${x}`)
-        .join('\n')
-    ),
-    question && `Question:\n${question}`,
-    'Output:\nEach listed member provides their advice or answer in character, labeled with their name. Conclude with a synthesis or your own reflection on their perspectives.'
-  ].filter(Boolean).join('\n')
+
+  fields: [
+    /* QUESTION & CONTEXT */
+    { key:'question', label:'The one question', type:'textarea',
+      desc:'Crisp, outcome-oriented, single focus.',
+      ph:'What is the smallest action that would raise week-1 retention by 3 pp for low-bandwidth users in 2 weeks?' },
+
+    { key:'horizon', label:'Decision horizon / timeframe', type:'text',
+      desc:'When the decision matters; helps size the next step.',
+      ph:'2 weeks' },
+
+    { key:'metric', label:'Primary success metric', type:'text',
+      desc:'What you will move or observe to judge success.',
+      ph:'Activation rate (first session complete)' },
+
+    { key:'constraints', label:'Constraints & non-negotiables', type:'textarea',
+      desc:'Budget, policy, brand, legal, accessibility, ethics.',
+      ph:'No dark patterns; WCAG AA; no PII expansion; ≤1 sprint' },
+
+    { key:'evidence', label:'Evidence snapshot (strongest 3–5 facts)', type:'textarea',
+      desc:'Ground answers in reality; cite your best signals.',
+      ph:'Usability shows form abandonment at phone field; 37% on mobile 3G; similar product saw +2.1 pp with guided tour' },
+      
+          { key:'lenses', label:'Council Member lenses (one per line, aligned with list order)', type:'textarea',
+      desc:'What each seat optimizes for (Operator, Scientist, Ethicist, User Advocate, Skeptic, Visionary, Historian, Futurist, Artist…).',
+      ph:'Scientist (evidence quality)\nUser Advocate (accessibility & burden)\nSkeptic (failure modes)\nOperator (cost & sequencing)\nVisionary (long-arc value)' },
+
+    /* COUNCIL COMPOSITION */
+    {
+      key: 'advisors',
+      label: 'Council members',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'member',
+      autofill: 'persona->inline',
+      min: 3,
+      max: 9,
+      desc:'Pick diverse mentors (real, fictional, archetypes, future/past self). Type to pull from your persona library.',
+      ph:'Marie Curie • Community Health Worker • Skeptic • Visionary Founder • Your Future Self'
+    },
+
+    { key:'blind_spots', label:'Known blind spots (one per line, aligned)', type:'textarea',
+      desc:'Name each seat’s bias so the model can compensate.',
+      ph:'Scientist: narrow on quantified signals\nVisionary: over-index on upside\nOperator: short-termism' },
+
+    /* INCLUSION & BIAS HOOKS */
+    { key:'inclusion', label:'Inclusion / ethics guardrail', type:'textarea',
+      desc:'Equity, safety, consent, accessibility requirements.',
+      ph:'Minimize burden on low-bandwidth cohort; translated strings; opt-in only' },
+
+    { key:'persona', label:'Stakeholder personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Affected groups or key users to keep centered.',
+      ph:'First-time user • Screen-reader user • Support agent' },
+
+    { key:'bias_lens', label:'Bias lenses (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'bias', autofill:'bias->inline',
+      desc:'Debiasing helpers (anchoring, availability, sunk cost, halo, groupthink).',
+      ph:'Anchoring • Sunk cost • Groupthink' },
+
+    /* STYLE & PROCESS */
+    { key:'rounds', label:'Process', type:'select',
+      options:[ 'two-round (answers → cross-exam → one-line recs)', 'one-pass (answers only + synthesis)' ],
+      desc:'Two-round yields better synthesis; one-pass is faster.',
+      ph:'two-round (answers → cross-exam → one-line recs)' },
+
+    { key:'voice', label:'Voice style', type:'select',
+      options:[ 'clinical', 'roleplay-rich', 'balanced' ],
+      desc:'How “in character” the advisors should sound.',
+      ph:'balanced' },
+
+    { key:'timebox', label:'Timebox notes (optional)', type:'text',
+      desc:'Helpful for workshops and AI verbosity control.',
+      ph:'≤3 sentences per advisor; ≤1 sentence in Round 2' },
+
+    { key:'notes', label:'Additional context (optional)', type:'textarea',
+      desc:'Anything else that shapes the council’s work.',
+      ph:'Executive wants early signal next Friday; mobile first' }
+  ],
+
+  template: (f) => {
+    const lines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const advisors = lines(f.advisors);
+    const lenses = lines(f.lenses);
+    const blind = lines(f.blind_spots);
+    const seats = advisors.map((name, i) => {
+      const L = lenses[i] ? ` — Lens: ${lenses[i]}` : '';
+      const B = blind[i] ? ` — Blind spot: ${blind[i]}` : '';
+      return `${i+1}. ${name}${L}${B}`;
+    });
+
+    const out = [];
+    out.push('Run an Imaginary Council on one question. Keep Round 1 independent; then cross-examine; then synthesize into a smallest viable step with a dissent note and a tripwire metric.');
+
+    // Context
+    f.question && out.push(`Question: ${f.question}`);
+    f.horizon && out.push(`Horizon: ${f.horizon}`);
+    f.metric && out.push(`Primary metric: ${f.metric}`);
+    f.constraints && out.push(`Constraints: ${f.constraints}`);
+    f.inclusion && out.push(`Inclusion/ethics guardrail: ${f.inclusion}`);
+    f.evidence && out.push(`Evidence snapshot:\n${f.evidence}`);
+    (f.persona && String(f.persona).trim()) && out.push(`Stakeholder personas: ${f.persona}`);
+    (f.bias_lens && String(f.bias_lens).trim()) && out.push(`Bias lenses: ${f.bias_lens}`);
+    seats.length && out.push(`Council:\n${seats.join('\n')}`);
+    f.voice && out.push(`Voice style: ${f.voice}`);
+    f.timebox && out.push(`Timebox: ${f.timebox}`);
+    f.notes && out.push(`Notes: ${f.notes}`);
+
+    // Protocol
+    const twoRound = !f.rounds || /^two-round/i.test(f.rounds);
+    out.push('Protocol:');
+    out.push('- Round 1 — Independent answers (3–5 sentences each; no referencing other seats). Include: one concrete move, one risk, and one early metric signal.');
+    if (twoRound) {
+      out.push('- Cross-exam — Each seat asks one adversarial, testable question to a different seat.');
+      out.push('- Round 2 — One-sentence recommendation per seat (imperative voice).');
+    }
+
+    // Output scaffolding
+    out.push('Output:');
+    out.push('A) Round 1 answers by seat (label each with the seat name).');
+    if (twoRound) out.push('B) Cross-exam questions (seat → seat).');
+    if (twoRound) out.push('C) Round 2 one-line recommendations (seat: recommendation).');
+    out.push('D) Synthesis —');
+    out.push('   - Overlap: the move most seats would support now (state scope).');
+    out.push('   - Smallest viable experiment (≤1 week): owner, steps, sample/traffic, success threshold on the primary metric.');
+    out.push('   - Inclusion adjustment: one change to reduce burden on the least advantaged group.');
+    out.push('   - Dependencies to clear before starting.');
+    out.push('E) Minority Report — one principled dissent with the risk it guards against and a condition under which it becomes the main plan.');
+    out.push('F) Pre-mortem — “If this fails in [horizon], the most likely cause is ___; mitigation: ___.”');
+    out.push('G) Tripwire — define the metric/condition that triggers rollback or escalation.');
+    out.push('H) Decision — choose: go / iterate / stop, with one-line rationale.');
+
+    // Debiasing & hygiene
+    out.push('Debiasing check: Did any seat dominate? Are Confidence claims tied to the evidence snapshot? Did we double-count effort? Have we represented affected users fairly?');
+
+    return out.join('\n');
+  }
 },
 {
   id: 'rubber_duck',
