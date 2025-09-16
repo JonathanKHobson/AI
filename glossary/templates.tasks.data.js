@@ -740,10 +740,22 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
     // MODE
     { key:'mode', label:'What do you want?', type:'select',
       options:[
-        {value:'tailor',  label:'Tailor my resume to this job'},
-        {value:'rewrite', label:'Rewrite from scratch using my info'},
-        {value:'feedback',label:'Critique + line edits only'},
-        {value:'hybrid',  label:'Light tailoring + feedback (no full rewrite)'}
+    { 
+      value:'Tailor my existing resume to this specific job description. Prioritize relevance, mirror JD keywords naturally for ATS, trim unrelated content, and surface my most impactful results.',  
+      label:'Tailor my resume to this job' 
+    },
+    { 
+      value:'Rewrite my resume from scratch using the info provided. Reorganize sections, unify tone, generate strong RAP bullets, ensure ATS readiness, and produce a polished, recruiter-friendly draft.', 
+      label:'Rewrite from scratch using my info' 
+    },
+    { 
+      value:'Provide detailed critique of my resume without rewriting. Score ATS readiness, clarity, and impact. Give section-by-section notes and propose targeted fixes with example RAP rewrites.', 
+      label:'Critique + line edits only' 
+    },
+    { 
+      value:'Provide a hybrid response: critique and prioritized fixes while also lightly tailoring the resume to the job description. Do not perform a full rewrite.',  
+      label:'Hybrid: Light tailoring + feedback' 
+    }
       ]
     },
 
@@ -1000,7 +1012,237 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
       outRules.join('\n')
     ].filter(Boolean).join('\n');
   }
+},
+
+{
+  id: 'cover_letter',
+  slug: 'cover-letter-tailor-rewrite-feedback',
+  label: 'Cover Letter — Tailor / Rewrite / Feedback',
+  kind: 'task',
+  categories: ['career','personal-admin'],
+  tags: [
+    'type:task','topic:cover-letter','use:job-application',
+    'use:ats','use:editing','use:feedback'
+  ],
+
+  use_cases: [
+    'tailor a cover letter to a specific job description',
+    'rewrite a cover letter from raw notes or outdated draft',
+    'receive critique with section-by-section feedback and example rewrites',
+    'draft a new, recruiter-engaging and ATS-safe cover letter from scratch'
+  ],
+
+  definition: 'Create, tailor, or critique a cover letter — concise, story-driven, and outcome-oriented (Why · How · What).',
+
+  help: 'Paste the job description, your info, and choose Tailor, Rewrite, Feedback, or Hybrid mode. Fields are grouped by Job Target, Applicant Basics, Content Inputs, and Preferences. Leave blanks if not needed; boosters auto-kick in.',
+
+  fields: [
+    // MODE
+    { key:'mode', label:'What do you want?', type:'select',
+      options:[
+    { 
+      value:'Tailor my existing cover letter to the job description. Align my story with company mission and values, mirror JD keywords, trim irrelevant content, and strengthen hook and closing.',  
+      label:'Tailor my cover letter to this job' 
+    },
+    { 
+      value:'Rewrite my cover letter completely from the info provided. Rebuild structure with Hook → Why Them → Why You → Why Now → Closing. Integrate RAP/PAR storytelling and ATS-safe formatting.', 
+      label:'Rewrite from scratch using my info' 
+    },
+    { 
+      value:'Provide critique of my cover letter without rewriting. Score Hook, Alignment, Storytelling, and Clarity. Give section-by-section feedback and suggest targeted improvements.', 
+      label:'Critique + section notes only' 
+    },
+    { 
+      value:'Provide a hybrid response: critique with targeted fixes and light tailoring of content for the job description. Do not perform a full rewrite.',  
+      label:'Hybrid: Light tailoring + feedback' 
+    }
+      ]
+    },
+
+    // JOB TARGET
+    { 
+      key:'target_role', label:'Target role/title', type:'text',
+      desc:'The exact job title from the posting. ATS systems match this literally.',
+      ph:'e.g., Senior UX Researcher'
+    },
+    { 
+      key:'company', label:'Company', type:'text',
+      desc:'The organization you’re applying to. Guides tone and voice.',
+      ph:'e.g., OpenAI'
+    },
+    { 
+      key:'company_values', label:'Company values / notes', type:'textarea',
+      desc:'Cultural or mission-related cues you’ve researched. Mirrors values in the letter.',
+      ph:'e.g., Inclusive design, ethical AI, rapid prototyping'
+    },
+    { 
+      key:'job_description', label:'Job description (paste full text)', type:'textarea',
+      desc:'Paste the full job posting. AI uses this to align keywords and expectations.',
+      ph:'Copy/paste entire job listing here, including responsibilities and qualifications.'
+    },
+
+    // REGION / LOCALIZATION
+    { 
+      key:'region', label:'Region / Country', type:'text',
+      desc:'Ensures correct spelling (US/UK), etiquette, and format.',
+      ph:'e.g., United States'
+    },
+
+    // APPLICANT BASICS
+    { 
+      key:'full_name', label:'Your name', type:'text',
+      desc:'Your full name as you’d like it signed.',
+      ph:'e.g., Jonathan Kyle Hobson'
+    },
+    { 
+      key:'contact_block', label:'Header contact info', type:'textarea',
+      desc:'Plain text only — ATS-friendly. Include at least email and phone. Optional: LinkedIn, portfolio.',
+      ph:'Email: name@email.com\nPhone: 123-456-7890\nCity: Austin, TX\nLinkedIn: linkedin.com/in/you'
+    },
+
+    // PERSONA + MISSION
+    { 
+      key:'career_persona', label:'Career persona (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Pulls in a career persona from your library to enrich voice and positioning.',
+      ph:'Search persona library (e.g., UX Researcher, AI Strategist)'
+    },
+    { 
+      key:'mission_alignment', label:'Mission alignment (purpose)', type:'textarea',
+      desc:'Your broader mission or purpose — a cause beyond self-enrichment. Connects personal values to company goals.',
+      ph:'e.g., Dedicated to making technology accessible and ethical for all users.'
+    },
+
+    // LETTER CONTENT INPUTS
+    { 
+      key:'hook', label:'Opening hook (optional)', type:'textarea',
+      desc:'Optional: A strong opening line/story. AI can generate one if blank.',
+      ph:'e.g., At the intersection of UX research and AI ethics, I design responsibly.'
+    },
+    { 
+      key:'why_them', label:'Why Them (company alignment)', type:'textarea',
+      desc:'Why this company matters to you. Pull in mission, product, or culture cues.',
+      ph:'e.g., Your commitment to human-centered AI resonates with my values.'
+    },
+    { 
+      key:'why_you', label:'Why You (your value)', type:'textarea',
+      desc:'Your skills + results that fit their needs. Use RAP or PAR-style examples.',
+      ph:'e.g., Increased retention 25% through user research driving design pivots.'
+    },
+    { 
+      key:'why_now', label:'Why Now (timing/career arc)', type:'textarea',
+      desc:'Why this role fits your current trajectory. Explains motivation and timing.',
+      ph:'e.g., After leading cross-functional projects, I’m ready to scale impact in a mission-driven company.'
+    },
+    { 
+      key:'closing_pref', label:'Closing preference (optional)', type:'textarea',
+      desc:'Closing style (warm, confident, formal). Otherwise AI generates recruiter-friendly close.',
+      ph:'e.g., I’d welcome the chance to discuss how I can contribute.'
+    },
+
+    // TONE / FORMATTING
+    { key:'tone_primary', label:'Primary tone', type:'select',
+      options:['professional','impactful','concise','technical','friendly','executive','mission-driven'] },
+    { key:'tone_secondary', label:'Secondary tone (optional)', type:'select',
+      options:['— none —','professional','impactful','concise','technical','friendly','executive','mission-driven'] },
+    { 
+      key:'length_pref', label:'Letter length', type:'select',
+      desc:'Recruiters skim. Shorter is often better unless depth adds value.',
+      options:[
+        {value:'short', label:'Short (200–250 words)'},
+        {value:'medium',label:'Medium (300–400 words)'},
+        {value:'long',  label:'Long (450–500 words)'}
+      ]
+    },
+    { 
+      key:'format_policy', label:'Formatting', type:'select',
+      desc:'ATS prefers plain. Recruiter-friendly allows more spacing and headings.',
+      options:['ATS-safe','Recruiter-friendly (spaced paragraphs)','Plain text only']
+    },
+
+    // CONSTRAINTS
+    { 
+      key:'constraints', label:'Constraints', type:'textarea',
+      desc:'Rules to follow (style, tone, things to avoid).',
+      ph:'Avoid salary mentions. No buzzwords. Keep US spelling.'
+    }
+  ],
+
+  boosters: [
+    'Open with a hook — avoid “I am writing to apply…” clichés.',
+    'Mirror company mission/values explicitly in “Why Them.”',
+    'Show value through RAP/PAR storytelling with measurable results.',
+    'Tie “Why Now” to your trajectory and their timing.',
+    'Close with confidence and a call to action.',
+    'Keep paragraphs 3–4 lines max for readability.',
+    'Generate 2 alternate hooks + closings in Tailor/Rewrite mode.',
+    'Feedback mode: score Hook, Alignment, Storytelling, and Clarity (0–10).'
+  ],
+
+  template: (f) => {
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '— none —') ? f.tone_secondary : ''
+    );
+    const lengthMap = { short:'200–250 words', medium:'300–400 words', long:'450–500 words' };
+    const lengthStr = lengthMap[f.length_pref] || '300–400 words';
+
+    const isFeedback = f.mode === 'feedback';
+    const isRewrite  = f.mode === 'rewrite';
+    const isHybrid   = f.mode === 'hybrid';
+    const isTailor   = !isFeedback && !isRewrite && !isHybrid;
+
+    const outRules = isFeedback ? [
+      'Output format:',
+      '- Section scores (Hook, Alignment, Storytelling, Clarity)',
+      '- Overall critique (structure, tone, ATS-readiness)',
+      '- Section-by-section notes (Opening, Why Them, Why You, Why Now, Closing)',
+      '- Top 5 prioritized fixes with rationale',
+      '- Example rewrites of weakest 2 sections (Before → After)'
+    ] : [
+      'Output format:',
+      '- Greeting (with recruiter/hiring manager if known)',
+      '- Hook (1–2 sentences)',
+      '- Why Them (company/role alignment)',
+      '- Why You (skills + outcomes, RAP/PAR style)',
+      '- Why Now (career fit, timing)',
+      '- Mission Alignment (if provided)',
+      '- Closing (confident CTA)',
+      '- Alternate opening + closing options (2 each)',
+      '- Change log: 3–5 bullets summarizing edits'
+    ];
+
+    return [
+      'Help me produce a high-quality, ATS-aware cover letter.',
+      `Mode: ${f.mode || 'tailor'}`,
+      f.target_role && `Target role: ${f.target_role}`,
+      f.company && `Company: ${f.company}`,
+      f.job_description && `Job description:\n<<<\n${f.job_description}\n>>>`,
+      f.company_values && `Company values:\n${f.company_values}`,
+      f.region && `Region: ${f.region}`,
+      tones && `Tone: ${tones}`,
+      `Length: ${lengthStr}`,
+      `Formatting: ${f.format_policy || 'ATS-safe'}`,
+      f.full_name && `Name: ${f.full_name}`,
+      f.contact_block && `Contact:\n${f.contact_block}`,
+      f.career_persona && `Career persona: ${f.career_persona}`,
+      f.mission_alignment && `Mission alignment:\n${f.mission_alignment}`,
+      f.hook && `Opening hook:\n${f.hook}`,
+      f.why_them && `Why Them:\n${f.why_them}`,
+      f.why_you && `Why You:\n${f.why_you}`,
+      f.why_now && `Why Now:\n${f.why_now}`,
+      f.closing_pref && `Closing preference:\n${f.closing_pref}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+      isTailor && 'Tailor policy: Keep authentic voice; prune irrelevant details; emphasize JD-aligned value.',
+      isRewrite && 'Rewrite policy: Rebuild from scratch if needed; unify tone; integrate values; no fabrications.',
+      isHybrid && 'Hybrid policy: Provide critique + light tailoring, no full rewrite.',
+      isFeedback && 'Feedback policy: Provide critique, scores, and example section fixes only.',
+      outRules.join('\n')
+    ].filter(Boolean).join('\n');
+  }
 }
+
 
 
   ];
