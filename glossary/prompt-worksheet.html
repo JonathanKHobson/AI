@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Template → Printable Worksheet</title>
+  <style>
+    :root {
+      --ink:#111;
+      --muted:#666;
+      --line:#c7c7c7;
+      --accent:#222;
+      --paper:#fff;
+      --pad:14px;
+      --radius:14px;
+      --maxw:900px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: #f6f6f6; color: var(--ink);
+      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    .container { max-width: var(--maxw); margin: 24px auto 120px; padding: 0 16px; }
+    header.app {
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      margin-bottom: 12px;
+    }
+    header.app h1 { font-size: 20px; margin: 0; letter-spacing: .2px; }
+    .controls {
+      background: #fff; border: 1px solid #e6e6e6; border-radius: var(--radius);
+      padding: 12px; display:grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items:center;
+      position: sticky; top: 0; z-index: 10; box-shadow: 0 10px 18px -18px rgba(0,0,0,.35);
+    }
+    .controls .left { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+    .controls select, .controls button {
+      font: inherit; padding: 8px 10px; border-radius: 10px; border:1px solid #ddd; background:#fff; cursor:pointer;
+    }
+    .controls summary { cursor: pointer; color: var(--muted); }
+
+    /* Sheet (printable) */
+    .sheet {
+      background: var(--paper); color: var(--ink); border: 1px solid #e9e9e9; border-radius: var(--radius);
+      padding: 28px; margin-top: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
+    }
+    .sheet header {
+      border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 16px;
+      display:flex; justify-content:space-between; align-items:end; gap: 12px; flex-wrap: wrap;
+    }
+    .title { font-size: 22px; font-weight: 700; }
+    .meta { color: var(--muted); font-size: 12px; }
+    .prep { display:flex; gap: 14px; flex-wrap: wrap; }
+    .prep .line { min-width: 230px; border-bottom:1.5px solid #000; padding: 3px 4px; }
+    .desc { color: #222; margin: 6px 0 2px; font-size: 13px; }
+
+    /* Field blocks */
+    .section { margin: 18px 0 8px; page-break-inside: avoid; }
+    .section h3 { font-size: 13px; letter-spacing: .2px; color: var(--accent); margin: 0 0 6px; text-transform: uppercase; }
+    .field { margin: 10px 0 14px; }
+    .field label { display:block; font-weight: 600; }
+    .field .help { color: var(--muted); font-size: 12px; margin: 2px 0 8px; }
+
+    .write-one { border-bottom:2px solid #000; padding: 7px 2px; height: 30px; }
+    .write-multi { border:1.6px solid #000; border-radius: 8px; min-height: 120px; padding: 10px; }
+
+    .lined {
+      background: repeating-linear-gradient(
+        to bottom, #fff 0, #fff 23px, var(--line) 24px
+      );
+    }
+
+    .bullets { border:1.6px solid #000; border-radius: 8px; padding: 6px 10px; }
+    .bullets .row { display:flex; align-items:center; gap:8px; padding: 8px 0; border-bottom: 1px dotted #aaa; }
+    .bullets .row:last-child { border-bottom: none; }
+    .box { width: 16px; height: 16px; border: 2px solid #000; border-radius: 3px; flex: 0 0 auto; }
+    .dot { width: 10px; height: 10px; border: 2px solid #000; border-radius: 50%; flex: 0 0 auto; }
+    .label { flex: 1 1 auto; min-height: 18px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+
+    .notes { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+    .foot { border-top: 1px solid #000; margin-top: 18px; padding-top: 8px; display:flex; gap: 14px; flex-wrap: wrap; }
+    .foot .line { min-width: 200px; border-bottom:1.5px solid #000; padding: 3px 4px; }
+
+    /* Print rules */
+    @page { size: letter; margin: 12mm; }
+    @media print {
+      body { background: var(--paper); }
+      .controls, .app { display: none !important; }
+      .sheet { box-shadow: none; border: none; margin: 0; padding: 0; }
+      .container { max-width: none; padding: 0; margin: 0; }
+      .section { page-break-inside: avoid; }
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="app">
+      <h1>Template → Printable Worksheet</h1>
+      <div style="color:var(--muted); font-size:12px">Client-side • No deps • Print to PDF</div>
+    </header>
+
+    <div class="controls" role="region" aria-label="controls">
+      <div class="left">
+        <label for="templateSelect" style="color:var(--muted)">Template</label>
+        <select id="templateSelect" aria-label="Pick template">
+          <option value="">Loading…</option>
+        </select>
+        <button id="renderBtn" title="Render the selected template">Render worksheet</button>
+        <button id="printBtn" title="Download as PDF via the browser print dialog">Download PDF</button>
+        <a id="backBtn" class="btn" href="./prompt-builder.html" style="text-decoration:none">Back</a>
+      </div>
+    </div>
+
+    <section id="mount"></section>
+  </div>
+
+  <!-- Pull the same datasets your PromptBuilder uses -->
+  <script src="./templates.data.js"></script>
+  <script>
+    // Lightweight loader for tasks, mirroring your main page
+    function ensureTasksLoaded(onready){
+      if (Array.isArray(window.TASK_TEMPLATES)) { onready && onready(); return; }
+      const s = document.createElement('script');
+      s.src = './templates.tasks.data.js';
+      s.onload  = ()=> onready && onready();
+      s.onerror = ()=> { console.info('Tasks dataset not found at ./templates.tasks.data.js'); onready && onready(); };
+      document.head.appendChild(s);
+    }
+  </script>
+
+  <script>
+    // Tiny DOM helper
+    function el(tag, attrs={}, ...children){
+      const node = document.createElement(tag);
+      for (const [k,v] of Object.entries(attrs||{})){
+        if (k === 'class') node.className = v;
+        else if (k === 'html') node.innerHTML = v;
+        else node.setAttribute(k, v);
+      }
+      for (const child of children.flat()){
+        if (child == null) continue;
+        node.appendChild(child.nodeType ? child : document.createTextNode(String(child)));
+      }
+      return node;
+    }
+
+    const mount = document.getElementById('mount');
+
+    // Printable renderer (ported from your print template)
+    function renderWorksheet(t){
+      mount.innerHTML = '';
+      if (!t) { mount.appendChild(el('div', {}, 'No template selected.')); return; }
+
+      const top = el('header', {},
+        el('div', {},
+          el('div', {class:'title'}, t.label || t.title || t.name || t.id || 'Worksheet'),
+          el('div', {class:'meta'}, [ (t.kind||'').toUpperCase(), ' • ', (t.categories||[]).join(', ') ].filter(Boolean).join(''))
+        ),
+        el('div', {class:'prep'},
+          el('div', {class:'line', title:'Prepared by'}, 'Prepared by:'),
+          el('div', {class:'line', title:'Date'}, 'Date:'),
+          el('div', {class:'line', title:'Version'}, 'Version:')
+        )
+      );
+
+      const intro = el('div', {},
+        t.definition ? el('div', {class:'desc'}, t.definition) : null,
+        t.help ? el('div', {class:'notes'}, 'Notes: ' + t.help) : null
+      );
+
+      const sheet = el('section', {class:'sheet'}, top, intro);
+
+      // Fields
+      const fields = getFields(t);
+      if (fields.length){
+        const sec = el('div', {class:'section'}, el('h3', {}, 'Worksheet'));
+        for (const f of fields){ sec.appendChild(renderField(f)); }
+        sheet.appendChild(sec);
+      }
+
+      // Use cases and Boosters
+      if ((t.use_cases && t.use_cases.length) || (t.boosters && t.boosters.length)){
+        const sec2 = el('div', {class:'section two-col'});
+        if (t.use_cases && t.use_cases.length){
+          sec2.appendChild(el('div', {}, el('h3', {}, 'Use cases'), checklist(t.use_cases)));
+        }
+        if (t.boosters && t.boosters.length){
+          sec2.appendChild(el('div', {}, el('h3', {}, 'Boosters'), checklist(t.boosters)));
+        }
+        sheet.appendChild(sec2);
+      }
+
+      const foot = el('div', {class:'foot'},
+        el('div', {class:'line'}, 'Reviewer:'),
+        el('div', {class:'line'}, 'Next review:'),
+        el('div', {class:'line'}, 'Decision: Go / Iterate / Stop')
+      );
+
+      sheet.appendChild(foot);
+      mount.appendChild(sheet);
+      try { sheet.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){}
+    }
+
+    function renderField(f){
+      const type = (f.type || 'textarea').toLowerCase();
+      const wrap = el('div', {class:'field'});
+      wrap.appendChild(el('label', {}, f.label || f.key || 'Field'));
+      if (f.desc) wrap.appendChild(el('div', {class:'help'}, f.desc));
+
+      if (type === 'text'){
+        wrap.appendChild(el('div', {class:'write-one', title:'Write here'}));
+      } else if (type === 'textarea'){
+        wrap.appendChild(el('div', {class:'write-multi lined', style:`min-height:${f.minHeight||160}px`}));
+      } else if (type === 'repeater'){
+        const list = el('div', {class:'bullets'});
+        const rows = Number(f.rows || 6);
+        for (let i=0;i<rows;i++){
+          list.appendChild(el('div', {class:'row'}, el('div', {class:'box'}), el('div', {class:'label'})));
+        }
+        wrap.appendChild(list);
+        if (f.unit) wrap.appendChild(el('div', {class:'notes'}, `Add ${f.unit}${f.unit.endsWith('s')?'':'s'} as needed`));
+      } else if (type === 'select' && Array.isArray(f.options)){
+        const list = el('div', {class:'bullets'});
+        for (const opt of f.options){
+          list.appendChild(el('div', {class:'row'}, el('div', {class:'dot'}), el('div', {class:'label'}, opt.label || String(opt))));
+        }
+        wrap.appendChild(list);
+      } else if (type === 'checkboxes' && Array.isArray(f.options)){
+        const list = el('div', {class:'bullets'});
+        for (const opt of f.options){
+          list.appendChild(el('div', {class:'row'}, el('div', {class:'box'}), el('div', {class:'label'}, opt.label || String(opt))));
+        }
+        wrap.appendChild(list);
+      } else {
+        wrap.appendChild(el('div', {class:'write-multi lined'}));
+      }
+      return wrap;
+    }
+
+    function checklist(items){
+      const list = el('div', {class:'bullets'});
+      for (const it of items){
+        list.appendChild(el('div', {class:'row'}, el('div', {class:'box'}), el('div', {class:'label'}, it)));
+      }
+      return list;
+    }
+
+    // Dataset plumbing
+    const qs = new URLSearchParams(location.search);
+    const KIND = (qs.get('kind') || 'patterns').toLowerCase(); // patterns | tasks
+    const TID  = (qs.get('id') || '').trim();
+    const XFER = (qs.get('xfer') || '').trim();
+
+    function PATTERNS(){ return (window.TEMPLATES || window.FRAMEWORKS || []); }
+    function TASKS(){ return Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES : []; }
+    function dataset(){ return KIND === 'tasks' ? TASKS() : PATTERNS(); }
+    function getFields(t){ return Array.isArray(t?.fields) ? t.fields : (Array.isArray(t?.schema?.fields) ? t.schema.fields : (t?.inputs || [])); }
+    function idOf(t){ return t.id || t.slug || t.key || t.name || t.title; }
+    function findTpl(list, id){
+      const key = String(id||'').toLowerCase();
+      return list.find(t =>
+        [t.id,t.slug,t.key,t.name,t.title].some(v => String(v||'').toLowerCase() === key)
+      ) || null;
+    }
+
+    function buildSelect(list, id){
+      const sel = document.getElementById('templateSelect');
+      sel.innerHTML = '';
+      sel.appendChild(new Option('Choose…', ''));
+      for (const t of list){
+        const label = t.label || t.title || t.name || t.id || '(untitled)';
+        const value = idOf(t) || label;
+        const opt = new Option(label, value);
+        if (id && String(value).toLowerCase() === String(id).toLowerCase()) opt.selected = true;
+        sel.appendChild(opt);
+      }
+    }
+
+    function prefillFromSession(){
+      if (!XFER) return null;
+      try { return JSON.parse(sessionStorage.getItem(XFER) || '{}'); } catch(_) { return null; }
+    }
+
+    function boot(){
+      const go = ()=>{
+        const list = dataset();
+        buildSelect(list, TID);
+        let tpl = TID ? findTpl(list, TID) : null;
+        if (!tpl && list.length) tpl = list[0];
+        renderWorksheet(tpl);
+
+        // Swap template via dropdown
+        document.getElementById('renderBtn').addEventListener('click', ()=>{
+          const selId = document.getElementById('templateSelect').value;
+          const chosen = findTpl(dataset(), selId);
+          renderWorksheet(chosen);
+        });
+
+        // Print
+        document.getElementById('printBtn').addEventListener('click', ()=>{
+          if (!mount.firstChild) return;
+          window.print();
+        });
+
+        // Optional: you can use the session xfer to write faint hints into the sheet.
+        // Example: put "Context: ..." above the first field if present.
+        const saved = prefillFromSession();
+        if (saved && saved.common && saved.common.usecase && mount.querySelector('.sheet')){
+          const hint = el('div', {class:'notes'}, 'Context: ' + saved.common.usecase);
+          const sheet = mount.querySelector('.sheet');
+          sheet.insertBefore(hint, sheet.children[1] || null);
+        }
+      };
+
+      if (KIND === 'tasks') ensureTasksLoaded(go); else go();
+    }
+
+    document.addEventListener('DOMContentLoaded', boot);
+  </script>
+</body>
+</html>

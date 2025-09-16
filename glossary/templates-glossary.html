@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Prompt Template Glossary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <style>
+    /* ============ THEME TOKENS (kept your names; values aligned to index) ============ */
+    :root{
+      /* Dark (default) */
+      --bg:#0b0f14;
+      --panel:#121821;
+      --panel-2:#0d131b;
+      --ink:#e7eff7;
+      --ink-2:#9db0c3;
+      --line:#1b2838;
+
+      --accent:#4ea1ff;
+      --link:#4ea1ff;
+
+      --chip:#1b2533;
+      --chipOn:#13202e;
+
+      --br:12px;
+      --shadow:0 6px 18px rgba(0,0,0,.25);
+
+      /* Buttons (dark) */
+      --btn-bg:#1b2533;
+      --btn-bg-hover:#13202e;
+      --btn-border:#1b2838;
+      --btn-text:#e7eff7;
+
+      --btn-ghost-border:#1b2838;
+      --btn-ghost-text:#e7eff7;
+
+      /* Prompt Builder / Ask buttons */
+      --pb-bg:#1b2533;
+      --pb-bg-hover:#13202e;
+      --pb-border:#1b2838;
+      --pb-text:#e7eff7;
+
+      /* Theme icon: dark = golden dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
+    }
+    html[data-theme="light"]{
+      /* Light */
+      --bg:#f7fafc;
+      --panel:#ffffff;
+      --panel-2:#ffffff;
+      --ink:#121621;
+      --ink-2:#5a6b7b;
+      --line:#d8e0ea;
+
+      --accent:#2563eb;
+      --link:#2563eb;
+
+      --chip:#f1f5f9;
+      --chipOn:#eef2f7;
+
+      --shadow:0 6px 18px rgba(17, 38, 84, .10);
+
+      /* Buttons (light) */
+      --btn-bg:#f1f5f9;
+      --btn-bg-hover:#eef2f7;
+      --btn-border:#d8e0ea;
+      --btn-text:#121621;
+
+      --btn-ghost-border:#d8e0ea;
+      --btn-ghost-text:#121621;
+
+      --pb-bg:#f1f5f9;
+      --pb-bg-hover:#eef2f7;
+      --pb-border:#d8e0ea;
+      --pb-text:#121621;
+
+      /* Light = dark dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23121621'/></svg>");
+    }
+
+    /* ============ GLOBAL ============ */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, var(--bg), var(--bg) 40%);
+      color:var(--ink);
+      font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1200px; margin:0 auto; padding:24px}
+    header{display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:12px}
+    h1{font-size:24px; margin:0}
+    .sub{color:var(--ink-2); font-size:13px}
+
+    /* ============ PANELS & LAYOUT (unchanged structure) ============ */
+    .pane{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--br);
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .controls{
+      display:grid;
+      grid-template-columns: 1.3fr .9fr .9fr .9fr auto;
+      gap:10px; align-items:end;
+    }
+    .filters{margin-top:10px}
+
+    /* ============ FORMS (unchanged) ============ */
+    label.sub{display:block; margin:0 0 6px 2px}
+    input, select, textarea{
+      width:100%; padding:10px 12px;
+      background:var(--panel-2); color:var(--ink);
+      border:1px solid #22304922; border-radius:10px; outline:none;
+      transition: border-color .15s ease, background-color .15s ease;
+    }
+    input::placeholder, textarea::placeholder{color:#8ea0be}
+    input:focus, select:focus, textarea:focus{border-color:#3b5ea8}
+
+    /* ============ BUTTONS (same classes; themed by tokens) ============ */
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px; border-radius:10px; cursor:pointer; user-select:none;
+      background:var(--btn-bg); color:var(--btn-text); border:1px solid var(--btn-border);
+      transition: transform .04s ease, background-color .12s ease, border-color .12s ease;
+      text-decoration:none;
+      font-size:14px;
+    }
+    .btn:hover{background:var(--btn-bg-hover)}
+    .btn:active{transform:translateY(1px)}
+    .btn-ghost{
+      background:transparent; color:var(--btn-ghost-text);
+      border:1px dashed var(--btn-ghost-border);
+    }
+    .btn-link{
+      background:transparent; border:none; padding:0; color:var(--link);
+      font-size:13px;
+    }
+    .btn-sm{ padding:6px 10px; font-size:13px; border-radius:8px }
+    .btn-xs{ padding:4px 10px;  font-size:12px; border-radius:6px }
+
+    /* Theme button dot */
+    #themeBtn::before{
+      content:""; width:14px; height:14px; display:inline-block;
+      background-image:var(--theme-icon);
+      background-size:14px 14px; background-repeat:no-repeat;
+      border-radius:50%;
+    }
+
+    /* ============ CHIPS ============ */
+    .chip{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 10px; border-radius:999px; background:var(--chip);
+      border:1px solid var(--line); color:var(--ink); font-size:12px;
+    }
+    html[data-theme="light"] .chip{ color:var(--ink); border-color:var(--line) }
+    .chip .x{cursor:pointer; opacity:.9}
+    .chip-plain{ background:transparent; border:1px solid #3a4a6a66; color:var(--ink-2) }
+
+    /* ============ GRID & CARDS ============ */
+    .grid{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px }
+    @media(min-width:860px){ .grid{ grid-template-columns:1fr 1fr } }
+    .card{
+      background:var(--panel); border:1px solid #212a3a; border-radius:var(--br);
+      padding:14px; display:flex; gap:12px; position:relative; overflow:hidden; box-shadow:var(--shadow);
+      cursor:pointer;
+      /* vertical layout so buttons can anchor to bottom */
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 80px;  /* room for two buttons */
+    }
+    .card h3{margin:0 0 6px 0; font-size:16px}
+    .muted{color:var(--ink-2)}
+    .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+    .pill{display:inline-flex; padding:4px 8px; border-radius:999px; background:#2b2a46; border:1px solid #3b3a66; color:#d6d2ff; font-size:12px}
+    html[data-theme="light"] .pill{ background:#eef1ff; border-color:#cfd8ff; color:#2a2b66 }
+    .right{margin-left:auto}
+
+    /* Prompt Builder + Ask ChatGPT buttons, anchored bottom-right */
+    .card .pb-btn{
+      position:absolute; right:10px; bottom:48px;
+      background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
+      display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
+    }
+    .card .ask-btn{
+      position:absolute; right:10px; bottom:10px;
+      background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
+      display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
+    }
+    .pb-btn:hover, .ask-btn:hover{ background:var(--pb-bg-hover) }
+
+    /* COUNT */
+    .hdr-wrap{display:flex; gap:12px; align-items:baseline}
+    .count{color:var(--ink-2); font-size:13px}
+
+    /* ============ MODALS ============ */
+    dialog{ border:none; border-radius:16px; padding:0; width:min(920px, 96vw); color:var(--ink) }
+    dialog::backdrop{ background:rgba(2,8,21,.55) }
+    .modal{ display:grid; grid-template-columns:1.1fr .9fr; gap:0 }
+    @media(max-width:900px){ .modal{ grid-template-columns:1fr } }
+    .m-left{ padding:18px; background:var(--panel); border-right:1px solid #212a3a }
+    .m-right{ padding:18px; background:var(--panel-2) }
+    .close{ position:absolute; right:10px; top:10px }
+
+    .field{margin:10px 0}
+    .field label{display:block; font-size:13px; color:var(--ink-2); margin-bottom:6px}
+    pre.out{background:#0c0f14; border:1px solid #223049; border-radius:10px; padding:12px; white-space:pre-wrap; word-break:break-word; max-height:42vh; overflow:auto}
+    html[data-theme="light"] pre.out{ background:#f3f6fb; border-color:#d9e2f0 }
+
+    /* Ask ChatGPT helper dialog */
+    #copyDlg .content{ padding:16px; background:var(--panel); border-radius:16px }
+    #copyDlg h3{ margin:0 0 8px 0; font-size:18px }
+    #copyDlg p{ margin:0 0 10px 0; color:var(--ink-2) }
+    #copyDlg textarea{
+      width:100%; height:220px; resize:vertical;
+      background:var(--panel-2); color:var(--ink);
+      border:1px solid var(--line); border-radius:10px; padding:10px;
+      font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    #copyDlg .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px }
+  </style>
+</head>
+<body>
+
+  <!-- Data files -->
+  <script src="templates.data.js"></script>
+  <script src="templates.tasks.data.js"></script>
+
+  <div class="wrap">
+    <header>
+      <div class="hdr-wrap">
+        <h1>Prompt Template Glossary</h1>
+        <div id="hdrCount" class="count">Showing …</div>
+      </div>
+      <div class="hdr-actions">
+        <button id="themeBtn" class="btn btn-sm" title="Toggle theme">Light</button>
+      </div>
+    </header>
+
+    <section class="pane">
+      <div class="controls">
+        <div>
+          <label class="sub">Search</label>
+          <input id="q" placeholder="Search label, definition, fields, tags…"/>
+        </div>
+        <div>
+          <label class="sub">Kind</label>
+          <select id="kind"></select>
+        </div>
+        <div>
+          <label class="sub">Category</label>
+          <select id="cat"></select>
+        </div>
+        <div>
+          <label class="sub">Tags</label>
+          <input id="tag" placeholder="Search cleaned tags (e.g., framework)"/>
+        </div>
+        <div>
+          <label class="sub">&nbsp;</label>
+          <button id="reset" class="btn btn-ghost btn-sm">Reset</button>
+        </div>
+      </div>
+
+      <!-- Active Filters -->
+      <div id="active" class="filters"></div>
+    </section>
+
+    <section id="list" class="grid" aria-live="polite"></section>
+
+    <!-- Detail modal -->
+    <dialog id="dlg">
+      <button class="btn btn-sm close" id="dlgClose" aria-label="Close">Close ✕</button>
+      <div class="modal">
+        <div class="m-left">
+          <h2 id="dlgTitle" style="margin:0 0 6px 0; font-size:18px"></h2>
+          <div class="meta" id="dlgMeta"></div>
+          <div id="dlgDef" class="muted" style="margin:10px 0 12px 0"></div>
+          <div id="dlgHelp" style="white-space:pre-wrap; margin-bottom:12px"></div>
+
+          <div>
+            <div class="sub">Use cases</div>
+            <div class="meta" id="dlgUse"></div>
+          </div>
+
+          <div style="margin-top:14px">
+            <div class="sub">Boosters</div>
+            <ul id="dlgBoost" style="margin:6px 0 0 18px; padding:0"></ul>
+          </div>
+        </div>
+
+        <div class="m-right">
+          <div class="sub" style="margin-bottom:6px">Questions this template asks</div>
+          <div id="questions"></div>
+
+          <div class="meta" style="margin-top:14px; gap:8px">
+            <a id="openPB" class="btn btn-sm pb-btn" href="#" target="_blank" rel="noopener">Open in Prompt Builder</a>
+            <a id="askBtnModal" class="btn btn-sm ask-btn" href="#" target="_blank" rel="noopener">💬 Ask ChatGPT</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Prompt-copied helper dialog for Ask ChatGPT -->
+    <dialog id="copyDlg">
+      <div class="content">
+        <h3 id="copyTitle">Prompt copied ✓</h3>
+        <p>A new tab opened with ChatGPT. If the message isn’t prefilled there, just paste (Ctrl/⌘+V) into the chat box.</p>
+        <textarea id="copyText" readonly></textarea>
+        <div class="actions">
+          <button id="copyAgain" class="btn btn-sm">Copy again</button>
+          <button id="copyClose" class="btn btn-sm btn-ghost">Got it</button>
+        </div>
+      </div>
+    </dialog>
+  </div>
+
+<script>
+/* ========== Utilities (kept) ========== */
+const $=(s,e=document)=>e.querySelector(s);
+const $$=(s,e=document)=>Array.from(e.querySelectorAll(s));
+const h=(t,p={},...kids)=>{
+  const el=document.createElement(t);
+  for(const[k,v] of Object.entries(p)){
+    if(k==='class') el.className=v;
+    else if(k==='text') el.textContent=v;
+    else if(k==='dataset') for(const[dk,dv] of Object.entries(v)) el.dataset[dk]=dv;
+    else if(k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if(v!=null) el.setAttribute(k,v);
+  }
+  for(const kid of kids.flat()){
+    if(kid==null) continue;
+    el.appendChild(typeof kid==='string' ? document.createTextNode(kid) : kid);
+  }
+  return el;
+};
+const unique = a => Array.from(new Set(a));
+const cleanTag = t => {
+  if (typeof t !== 'string') return '';
+  const i = t.indexOf(':');
+  return i >= 0 ? t.slice(i+1).trim() : t.trim();
+};
+const slugify = s => String(s||'').toLowerCase().trim()
+  .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+
+function safeKey(t){
+  const cands=[t.id,t.slug,t.label].map(x=>String(x||'').trim().toLowerCase()).filter(Boolean);
+  const nonNone=cands.find(k=>k!=='none');
+  return nonNone || cands[0] || Math.random().toString(36).slice(2);
+}
+function safeLinkId(t){
+  const cand = (t.id && t.id.toLowerCase()!=='none') ? t.id
+             : (t.slug && t.slug.toLowerCase()!=='none') ? t.slug
+             : slugify(t.label)||'template';
+  return cand;
+}
+function cleanCategories(arr){
+  const inArr = Array.isArray(arr) ? arr : [];
+  return unique(inArr.map(c => (String(c).toLowerCase()==='none' ? 'Framework' : c)));
+}
+async function copyText(txt){
+  try { await navigator.clipboard.writeText(txt); return true; }
+  catch {
+    const ta = document.createElement('textarea');
+    ta.style.position='fixed'; ta.style.left='-9999px'; ta.value=txt;
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+    return true;
+  }
+}
+
+/* ========== Theme (label shows NEXT theme) ========== */
+const THEME_KEY='templates.theme';
+function applyTheme(){
+  const t = localStorage.getItem(THEME_KEY) || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  $('#themeBtn').textContent = t === 'dark' ? 'Light' : 'Dark';
+}
+$('#themeBtn').addEventListener('click', ()=>{
+  const cur = localStorage.getItem(THEME_KEY) || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme();
+});
+applyTheme();
+
+/* ========== Data aggregation (kept) ========== */
+function aggregateTemplates(){
+  const buckets=[];
+  if (Array.isArray(window.TEMPLATES)) buckets.push(window.TEMPLATES);
+  if (Array.isArray(window.TASKS)) buckets.push(window.TASKS);
+  if (Array.isArray(window.TASK_TEMPLATES)) buckets.push(window.TASK_TEMPLATES);
+  if (Array.isArray(window.FRAMEWORKS)) buckets.push(window.FRAMEWORKS);
+
+  const seen=new Set();
+  const out=[];
+  for(const list of buckets){
+    for(const t of list){
+      if(!t) continue;
+      const key = safeKey(t);
+      if(seen.has(key)) continue;
+      seen.add(key);
+
+      const cleanedTags=(t.tags||[]).map(cleanTag).filter(Boolean);
+      const displayKind = (t.kind && String(t.kind).toLowerCase()!=='none') ? t.kind : 'Framework';
+      const displayCats = cleanCategories(t.categories);
+
+      out.push({
+        ...t,
+        _cleanedTags: cleanedTags,
+        _displayKind: displayKind,
+        _displayCats: displayCats
+      });
+    }
+  }
+  return out;
+}
+const DATA = aggregateTemplates();
+
+/* search index */
+for(const t of DATA){
+  const bits = [
+    t.label, t.slug, t.id, t._displayKind, t.definition, t.help,
+    ...(t._displayCats||[]),
+    ...(t.tags||[]),
+    ...(t._cleanedTags||[]),
+    ...(t.use_cases||[]),
+    ...(t.boosters||[]),
+    ...(Array.isArray(t.fields) ? t.fields.map(f=>f?.label||f?.key||'') : [])
+  ].filter(Boolean).join(' ').toLowerCase();
+  t._search = bits;
+}
+
+/* ========== Filters (kept) ========== */
+const state = { q:'', kind:'', cat:'', tag:'' };
+const allKinds = unique(DATA.map(d=>d._displayKind || 'unknown'))
+  .filter(k => k.toLowerCase() !== 'none').sort();
+const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
+
+function fillSelect(sel, list, labelAll='All'){
+  sel.innerHTML = '';
+  sel.append(h('option', {value:''}, labelAll));
+  for(const v of list){ sel.append(h('option', {value:v}, v)); }
+}
+fillSelect($('#kind'), allKinds);
+fillSelect($('#cat'), allCats);
+
+$('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); });
+$('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); });
+$('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); });
+$('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); });
+
+$('#reset').addEventListener('click', ()=>{
+  state.q = state.kind = state.cat = state.tag = '';
+  $('#q').value=''; $('#kind').value=''; $('#cat').value=''; $('#tag').value='';
+  render();
+});
+
+function matches(d){
+  const q = state.q.trim().toLowerCase();
+  if (q && !d._search.includes(q)) return false;
+  if (state.kind && (d._displayKind||'') !== state.kind) return false;
+  if (state.cat && !(d._displayCats||[]).includes(state.cat)) return false;
+  const tg = state.tag.trim().toLowerCase();
+  if (tg){
+    const cleaned=(d._cleanedTags||[]).map(x=>x.toLowerCase());
+    if (!cleaned.some(x => x.includes(tg))) return false;
+  }
+  return true;
+}
+
+function renderActiveFilters(rowsTotal){
+  const all = DATA.length;
+  const active = $('#active'); active.innerHTML = '';
+
+  const chips=[];
+  if(state.q)    chips.push(['Search', `"${state.q}"`, 'q']);
+  if(state.kind) chips.push(['Kind', state.kind, 'kind']);
+  if(state.cat)  chips.push(['Category', state.cat, 'cat']);
+  if(state.tag)  chips.push(['Tags', `"${state.tag}"`, 'tag']);
+
+  $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
+
+  if(chips.length===0){
+    active.append(h('span',{class:'chip chip-plain'}, 'No active filters'));
+    return;
+  }
+  for(const [k,v,field] of chips){
+    const chip = h('span',{class:'chip'}, `${k}: ${v} `, h('span',{class:'x', onclick:()=>{ state[field]=''; const el=$('#'+field); if(el) el.value=''; render(); }}, '✕'));
+    active.append(chip);
+  }
+  active.append(
+    h('a', {href:'#', class:'btn-link', onclick:(e)=>{ e.preventDefault(); state.q=state.kind=state.cat=state.tag=''; ['q','kind','cat','tag'].forEach(id=>{$('#'+id).value=''}); render(); }}, 'Clear all')
+  );
+}
+
+/* ========== Ask ChatGPT prompt builder ========== */
+function buildTemplateSummary(t){
+  const parts = [];
+  const line = (k,v)=> v ? parts.push(`${k}: ${v}`) : null;
+
+  line('Label', t.label || '');
+  line('Kind', t._displayKind || '');
+  if (t._displayCats?.length) line('Categories', t._displayCats.join(', '));
+  if (t._cleanedTags?.length) line('Tags', t._cleanedTags.join(', '));
+  if (t.definition) parts.push('\nDefinition:\n' + t.definition);
+  if (t.help)       parts.push('\nHelp:\n' + t.help);
+  if (t.use_cases?.length) parts.push('\nUse cases:\n- ' + t.use_cases.join('\n- '));
+  if (t.boosters?.length) parts.push('\nBoosters:\n- ' + t.boosters.join('\n- '));
+
+  const fields = Array.isArray(t.fields) ? t.fields : [];
+  if (fields.length){
+    parts.push('\nFields:');
+    for (const f of fields){
+      const bits=[];
+      if (f.desc) bits.push(f.desc);
+      if (f.placeholder||f.ph) bits.push('Hint: '+(f.placeholder||f.ph));
+      if (f.type) bits.push('Type: '+f.type);
+      if (Array.isArray(f.options) && f.options.length){
+        const opts = f.options.map(o => typeof o==='object' ? (o.label||o.value) : o).filter(Boolean).join(', ');
+        if (opts) bits.push('Options: '+opts);
+      }
+      parts.push(`- ${f.label || f.key || '(field)'}${bits.length? ' — ' + bits.join(' · ') : ''}`);
+    }
+  }
+  return parts.join('\n');
+}
+
+function buildChatGPTPrompt(t){
+  const kind = (t._displayKind || 'framework').toLowerCase();
+  const summary = buildTemplateSummary(t);
+
+  return [
+    `You are an expert AI tutor. The user is viewing a "${kind}" entry and wants more depth, examples, and comparisons.`,
+    ``,
+    summary,
+    ``,
+    `Please:`,
+    `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
+    `2) Contrast it with closely related terms (if any) and note common confusions.`,
+    `3) Offer pitfalls, best practices, and a short checklist.`,
+    `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
+    `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
+  ].join('\n');
+}
+
+function openChatGPTWithPrompt(prompt){
+  const MAX_Q = 4000; // keep URL tolerable; full text still on clipboard
+  const q = encodeURIComponent(prompt.slice(0, MAX_Q));
+  const url = `https://chat.openai.com/?q=${q}`;
+  window.open(url, '_blank', 'noopener');
+}
+
+function showCopyDialog(text, title='Prompt copied ✓'){
+  $('#copyTitle').textContent = title;
+  $('#copyText').value = text;
+  $('#copyDlg').showModal();
+}
+
+$('#copyAgain').addEventListener('click', async ()=>{
+  await copyText($('#copyText').value);
+});
+$('#copyClose').addEventListener('click', ()=> $('#copyDlg').close());
+$('#copyDlg').addEventListener('click', (e)=>{
+  const box = $('.content', $('#copyDlg'));
+  if (!box.contains(e.target)) $('#copyDlg').close();
+});
+
+/* ========== List rendering (adds Ask ChatGPT button on cards) ========== */
+const listEl = $('#list');
+
+function render(){
+  const rows = DATA.filter(matches).sort((a,b)=> String(a.label).localeCompare(String(b.label)));
+  renderActiveFilters(rows.length);
+  listEl.innerHTML='';
+
+  for(const t of rows){
+    const meta = h('div',{class:'meta'},
+      h('span',{class:'pill'}, t._displayKind || '—'),
+      ...(t._displayCats||[]).map(c=>h('span',{class:'pill'}, c))
+    );
+    const tags = h('div',{class:'meta'}, ...(t._cleanedTags||[]).map(tag=>h('span',{class:'chip'}, tag)));
+    const def  = h('div',{class:'muted'}, t.definition || '');
+
+    const linkId = safeLinkId(t);
+    const pbUrl = `prompt-builder.html#${encodeURIComponent(linkId)}`;
+
+    const openPB = h('a',{
+      class:'btn pb-btn btn-xs right',
+      href: pbUrl, target: "_blank", rel: "noopener"
+    }, 'Open in Prompt Builder');
+
+    const askBtn = h('a',{
+      class:'btn ask-btn btn-xs right',
+      href: '#',
+      onclick: async (e)=>{ e.preventDefault();
+        const prompt = buildChatGPTPrompt(t);
+        await copyText(prompt);
+        openChatGPTWithPrompt(prompt);
+        showCopyDialog(prompt);
+      }
+    }, '💬 Ask ChatGPT');
+
+    const cardBody = h('div',{style:'flex:1'},
+      h('h3',{}, t.label),
+      def,
+      meta,
+      tags
+    );
+
+    const card = h('div',{class:'card', role:'button'});
+    card.append(cardBody, openPB, askBtn);
+
+    // Click anywhere except PB/Ask opens preview modal
+    card.addEventListener('click', (e)=>{
+      if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+      openModal(t, pbUrl);
+    });
+
+    listEl.append(card);
+  }
+}
+render();
+
+/* ========== Detail modal (adds Ask ChatGPT in modal) ========== */
+const dlg = $('#dlg');
+const modalContent = ()=> $('.modal', dlg);
+
+$('#dlgClose').addEventListener('click', ()=> dlg.close());
+dlg.addEventListener('click', (e)=>{
+  const m = modalContent();
+  if(!m) return;
+  if(!m.contains(e.target)) dlg.close();
+});
+dlg.addEventListener('keydown', (e)=>{ if(e.key==='Escape') dlg.close(); });
+
+function openModal(t, pbUrl){
+  $('#dlgTitle').textContent = t.label || t.slug || t.id || 'Template';
+
+  const meta = $('#dlgMeta'); meta.innerHTML='';
+  meta.append(h('span',{class:'pill'}, t._displayKind || '—'));
+  for(const c of (t._displayCats||[])) meta.append(h('span',{class:'pill'}, c));
+  for(const tag of (t._cleanedTags||[])) meta.append(h('span',{class:'chip'}, tag));
+
+  $('#dlgDef').textContent = t.definition || '';
+  $('#dlgHelp').textContent = t.help || '';
+
+  const use = $('#dlgUse'); use.innerHTML='';
+  for(const u of (t.use_cases||[])) use.append(h('span',{class:'chip'}, u));
+
+  const boost = $('#dlgBoost'); boost.innerHTML='';
+  for(const b of (t.boosters||[])) boost.append(h('li',{}, b));
+
+  // Questions from fields[]
+  const q = $('#questions'); q.innerHTML='';
+  const fields = Array.isArray(t.fields) ? t.fields : [];
+  for(const f of fields){
+    const infoBits = [];
+    if(f.desc) infoBits.push(f.desc);
+    if(f.placeholder||f.ph) infoBits.push('Hint: '+(f.placeholder||f.ph));
+    if(f.type) infoBits.push('Type: '+f.type);
+    if(Array.isArray(f.options)) {
+      const opts = f.options.map(o => typeof o==='object' ? (o.label||o.value) : o).filter(Boolean).join(', ');
+      if(opts) infoBits.push('Options: '+opts);
+    }
+    q.append(
+      h('div',{class:'field'},
+        h('label',{}, f.label || f.key || '(field)'),
+        h('div',{class:'muted'}, infoBits.join(' · '))
+      )
+    );
+  }
+
+  $('#openPB').setAttribute('href', pbUrl);
+
+  // Modal Ask ChatGPT
+  const askBtnModal = $('#askBtnModal');
+  askBtnModal.onclick = async (e)=>{
+    e.preventDefault();
+    const prompt = buildChatGPTPrompt(t);
+    await copyText(prompt);
+    openChatGPTWithPrompt(prompt);
+    showCopyDialog(prompt);
+  };
+
+  dlg.showModal();
+}
+
+/* Initial theme label */
+applyTheme();
+</script>
+</body>
+</html>
