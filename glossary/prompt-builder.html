@@ -19,6 +19,43 @@
   --border-strong:#b9c6d6;
 }
 
+.modal::backdrop{ background: rgba(0,0,0,.4); }
+.modal-body{ width:min(880px, 96vw); padding:16px; background:var(--bg); color:var(--text);
+  border:1px solid var(--border); border-radius:12px; }
+.modal-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.modal-section .field{ margin:12px 0; }
+.modal-footer{ display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+.modal .icon.close{ font-size:20px; line-height:1; }
+#actionPreview{ width:100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.scope-row{ display:flex; gap:24px; align-items:center; flex-wrap:wrap; }
+.radio{ display:flex; gap:8px; align-items:center; }
+.radio input{ transform: translateY(1px); }
+.hint{ opacity:.7; font-weight:400; }
+.note{ margin:6px 0 0; opacity:.75; font-size:.9em; }
+
+.toast{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 60ch;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--chip);
+  color: var(--text);
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  z-index: 9999;
+  font-size: 13px;
+}
+
+.metaRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toast[hidden]{ display:none; }
+
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
@@ -676,12 +713,14 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 </head>
 <body>
   <header>
-    <a class="btn sm" href="../glossary/index.html" target="_blank" rel="noopener">← Back to Glossary</a>
+    <a class="btn sm" href="../glossary/index.html" target="_blank" rel="noopener">← Back to Full Glossary</a>
+    <a class="btn sm" href="./Templates-Glossary.html" target="_blank" rel="noopener">Open Template Glossary</a>
+
     <strong>Prompt Framework Builder</strong>
     <span class="pill" data-val="framework" title="Thinking Structures & Patterns">thinking structures + patterns</span>
     <span class="spacer"></span>
-    <button id="copyBtn" class="btn sm">Copy all Prompts</button>
-    <button id="openBtn" class="btn primary sm">Open all ChatGPT</button>
+<button id="copyBtn" class="btn sm">Copy Prompt</button>
+<button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
     <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
   </header>
 
@@ -790,8 +829,9 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
         
         <!-- Secondary quick actions: mirrors header actions -->
 <div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
-  <button id="copyBtn2" class="btn sm" title="Copy just this prompt (active tab)">Copy This Prompt</button>
-  <button id="openBtn2" class="btn primary sm" title="Open just this prompt in ChatGPT">Open This in ChatGPT</button>
+<button id="copyBtn2" class="btn sm" title="Copy active tab">Copy Prompt</button>
+<button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
+<button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
     <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
 </div>
 
@@ -809,15 +849,20 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 <div id="previewLabel" class="areaLabel"><span class="dot"></span><span>Preview • Active tab</span></div>
 <pre id="out"></pre>
 
+<div class="outActions" style="margin-top:8px">
+  <button id="addPromptBtn" class="btn primary" title="Add another template to this session">+ Add template</button>
+  <button id="copyAllBtnFooter" class="btn sm" data-action="copy-all">Copy Prompt</button>
+<button id="openAllBtnFooter" class="btn primary sm" data-action="open-all">💬 Ask ChatGPT</button>
+</div>
+
 <div id="deckLabel" class="areaLabel" hidden><span class="dot"></span><span>Output deck • All templates</span></div>
+
+
+
 <div id="outDeck" class="out-deck" hidden></div>
 
 <!-- New: add-template button under the preview/deck -->
-<div class="outActions" style="margin-top:8px">
-  <button id="addPromptBtn" class="btn primary" title="Add another template to this session">+ Add template</button>
-  <button id="copyAllBtnFooter" class="btn sm" data-action="copy-all">Copy all Prompts</button>
-  <button id="openAllBtnFooter" class="btn primary sm" data-action="open-all">Open all ChatGPT</button>
-</div>
+
 
 
     </div>
@@ -838,6 +883,47 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     <button class="btn" type="button" id="dlgClose">Close</button>
 
   </form></dialog>
+  
+  
+<dialog id="actionModal" class="modal">
+  <form method="dialog" class="modal-body" id="actionForm" aria-labelledby="actionTitle">
+    <header class="modal-header">
+      <h3 id="actionTitle">Copy Prompt</h3>
+      <button type="button" class="icon close" aria-label="Close" id="actionClose">×</button>
+    </header>
+
+    <section class="modal-section">
+      <div class="field">
+        <label>Which content?</label>
+        <div class="scope-row" role="radiogroup" aria-label="Which content">
+          <label class="radio">
+            <input type="radio" name="scope" value="prompt" id="scopePrompt" checked>
+            <span>Current prompt <small class="hint">(the active template)</small></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="scope" value="all" id="scopeAll">
+            <span>All prompts <small class="hint">(everything in your list)</small></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="actionPreview">Preview (you can edit before confirming)</label>
+        <textarea id="actionPreview" rows="14" spellcheck="false"></textarea>
+      </div>
+
+      <p id="actionNote" class="note" hidden></p>
+    </section>
+
+    <footer class="modal-footer">
+      <button type="submit" class="btn primary" id="actionConfirm">Copy</button>
+      <button type="button" class="btn" id="actionCancel">Cancel</button>
+    </footer>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" aria-live="polite" hidden></div>
+
   
   <script src="./templates.data.js"></script>
   <script src="./glossary.data.js"></script>
@@ -926,6 +1012,28 @@ function ensureTasksLoaded(onready){
   <script>
   (function(){
     const $ = s=>document.querySelector(s);
+    // Use the new Action Modal for copy/open flows
+window.__USE_ACTION_MODAL__ = true;
+
+(function ensureThemeToggle(){
+  const btn = document.getElementById('theme');
+  if (!btn) return;
+  btn.addEventListener('click', ()=>{
+    const root = document.documentElement;
+    const cur  = root.getAttribute('data-theme') || 'dark';
+    const next = (cur === 'light') ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    btn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+    const label = btn.querySelector('span:last-child');
+    if (label) label.textContent = next === 'light' ? 'Dark' : 'Light';
+    try{
+      const ui = JSON.parse(localStorage.getItem('pb.v1.ui') || '{}');
+      ui.theme = next;
+      localStorage.setItem('pb.v1.ui', JSON.stringify(ui));
+    }catch(_){}
+    // Let your existing "saveUI after click" hook run too (it already exists).
+  });
+})();
     
     
     // --- Persistence (localStorage) ------------------------------
@@ -1336,6 +1444,89 @@ function biasKindOf(b){
   return 'bias';
 }
 
+// --- Autofill helpers (personas/bias/etc.) -------------------------------
+
+function tryAutofillValue(field, sug) {
+  // Only for typeahead fields with an autofill directive
+  if (!field || !field.autofill) return null;
+
+  // "bias->inline", "persona->inline", etc.
+  const [domain, mode] = String(field.autofill).split('->');
+  const dataset = field.dataset || field.source || field.autocomplete || ''; // robustness
+  const key = sug && (sug.value || sug.id || sug.slug || sug.label);
+
+  if (!key) return null;
+
+  if (domain === 'persona' && mode === 'inline') {
+    // Reuse your existing persona inline if present
+    return personaInlineLookup(key);
+  }
+
+  if (domain === 'bias' && mode === 'inline') {
+    return biasInlineLookup(key, dataset);
+  }
+
+  // Fallback: not recognized
+  return null;
+}
+
+// Persona inline lookup (uses your existing store if available)
+function personaInlineLookup(key) {
+  const lib = (window.DATASETS && (window.DATASETS.persona || window.DATASETS.personas)) || [];
+  const p = findByAnyKey(lib, key);
+  if (!p) return key;
+  // Example inline: "Name — profession; summary"
+  const parts = [
+    p.name,
+    p.profession ? `— ${p.profession}` : null,
+    p.summary ? `; ${p.summary}` : null
+  ].filter(Boolean);
+  return parts.join(' ').replace(/\s+/g,' ').trim();
+}
+
+// Bias inline lookup
+function biasInlineLookup(key, datasetName) {
+  // Prefer the bias dataset explicitly, then any global registry
+  const lib =
+    (window.DATASETS && window.DATASETS[datasetName || 'bias']) ||
+    (window.LIB && (window.LIB.bias || window.LIB.biases)) ||
+    (window.DATASETS && (window.DATASETS.bias || window.DATASETS.biases)) ||
+    [];
+
+  const b = findByAnyKey(lib, key);
+  if (!b) return key;
+
+  // Compose a SINGLE LINE summary similar in spirit to persona->inline
+  // Tweak fields as your bias.data.js provides (kind/type/summary/aliases etc.)
+  const kind = b.kind || b.type || (b.tags && b.tags.find(t=>/^kind:|^type:/.test(t))) || '';
+  const kindInline = kind ? (String(kind).replace(/^.*?:/,'').trim()) : '';
+
+  // Prefer a short summary; otherwise use first sentence of description/notes
+  const summary =
+    b.summary ||
+    (b.description && String(b.description).split(/[.?!]\s/)[0]) ||
+    (b.notes && String(b.notes).split(/\n/)[0]) ||
+    '';
+
+  const parts = [
+    b.name,
+    kindInline ? `— ${kindInline}` : null,
+    summary ? `; ${summary}` : null
+  ].filter(Boolean);
+
+  return parts.join(' ').replace(/\s+/g,' ').trim();
+}
+
+// small utility: find object by various keys
+function findByAnyKey(list, key) {
+  const k = String(key).toLowerCase();
+  return list.find(x =>
+    (x.id && String(x.id).toLowerCase() === k) ||
+    (x.slug && String(x.slug).toLowerCase() === k) ||
+    (x.name && String(x.name).toLowerCase() === k) ||
+    (x.label && String(x.label).toLowerCase() === k)
+  );
+}
 
 
 // Mirror personaFilter signature
@@ -1730,6 +1921,7 @@ function switchFramework(newId){
 
 // --- Multi-tab state (with migration from single state) ---
 let state = loadSavedState() || window.state || {};
+window.state = state; // expose for action modal + other modules
 state.common = state.common || {};
 
 
@@ -1767,7 +1959,10 @@ state.common = state.common || {};
 
 // If already migrated, keep it. Otherwise wrap the old single-state into a tab.
 if (!Array.isArray(state.tabs) || !state.tabs.length){
-  const initialId = (typeof state.id === 'string') ? state.id : (FRAMEWORKS[0]?.id || null);
+  // Prefer the Template Picker (id:'none') when seeding a fresh session.
+const initialId = (typeof state.id === 'string')
+  ? state.id
+  : ((FRAMEWORKS.find(f => f && f.id === 'none')?.id) || (FRAMEWORKS[0]?.id) || null);
 state.tabs = [{
   id: initialId,
   fields: state.fields || {},
@@ -1847,8 +2042,11 @@ fwHint.textContent = `Showing ${count}/${total} — Hit Enter`;
   if (keep){
     sel.value = t.id;
   } else {
-    sel.selectedIndex = 0;  // visually show the top match
+  sel.selectedIndex = 0;               // visually show the top match
+  if (t && list.length) {              // NEW: commit the default into state
+    t.id = list[0].id;
   }
+}
     // Keep helper preview in sync with whatever is visually selected
   if (typeof updatePickerPreview === 'function') updatePickerPreview();
 
@@ -2412,6 +2610,9 @@ return [header, personaSection, body, extraText, biasTail]
 
 }
 
+window.makePromptForTab = makePromptForTab;
+
+
 function emitAll(){
   // keep legacy preview in #out (active tab)
   const out = document.getElementById('out');
@@ -2558,7 +2759,13 @@ fw.fields.forEach(f=>{
 
     // Seed from any saved value (newline-separated), else start with one empty
     const seed = (t.fields && t.fields[f.key]) ? String(t.fields[f.key]) : '';
-    const parts = seed ? seed.split(/\n+/).map(s=>s.trim()).filter(Boolean) : [''];
+    const parts = seed
+  ? (itType === 'typeahead_textarea'
+      ? seed.split(/\n\s*---\s*\n/)
+      : seed.split(/\n+/)
+    ).map(s=>s.trim()).filter(Boolean)
+  : [''];
+
     parts.forEach(v => addTask(v));
     // Ensure state is synced even if initial values came from seed
     sync();
@@ -2601,7 +2808,10 @@ if (f.type === 'repeater'){
       .filter(Boolean);
 
   const sync = ()=>{
-    (t.fields || (t.fields = {}))[f.key] = readValues().join('\n');
+    // Preserve multi-line rows: use a block joiner for textarea rows
+const joiner = (itType === 'typeahead_textarea') ? '\n\n---\n\n' : '\n';
+(t.fields || (t.fields = {}))[f.key] = readValues().join(joiner);
+
     emit();
   };
 
@@ -2690,20 +2900,44 @@ if (itType === 'typeahead' || itType === 'typeahead_textarea'){
       `.trim();
 
       it.addEventListener('click', ()=>{
-        if (source === 'bias'){
-          // textarea variant pastes full bias profile; otherwise paste the name
-          if (itType === 'typeahead_textarea'){
-            input.value = biasText(obj);
-          }else{
-            input.value = obj.name || '';
-          }
-        } else {
-          if (itType === 'typeahead_textarea'){
-            input.value = personaText(obj);
-          }else{
-            input.value = (obj.name || '');
-          }
-        }
+if (source === 'bias'){
+  // Mirror single-field modes for biases
+  const wantsTextarea = (f.autofill === 'bias->textarea') || (itType === 'typeahead_textarea');
+  const modeInline    = (f.autofill === 'bias->inline');
+  const modeTemplate  = (f.autofill === 'bias->template');
+
+  if (wantsTextarea){
+    input.value = biasText(obj);
+  } else if (modeTemplate){
+    input.value = biasFillTemplate(f.bias_template, obj);
+  } else if (modeInline){
+    input.value = biasInlineFlexible(obj, {
+      labels:  f?.inline_labels !== false,
+      sep:     f?.separator || ' · ',
+      include: Array.isArray(f?.include) ? f.include : undefined
+    });
+  } else {
+    input.value = obj.name || '';
+  }
+} else {
+  // keep persona behavior identical to before
+  const txt = (typeof personaStringFor === 'function')
+    ? personaStringFor({ ...f, type: itType }, obj)
+    : (itType === 'typeahead_textarea'
+        ? (typeof personaText === 'function' ? personaText(obj) : (obj.summary || obj.name || ''))
+        : (f?.autofill === 'persona->inline'
+            ? (typeof personaInlineFlexible === 'function'
+                ? personaInlineFlexible(obj, {
+                    labels: f?.inline_labels !== false,
+                    sep:    f?.separator || ' · ',
+                    include: Array.isArray(f?.include) ? f.include : undefined
+                  })
+                : (obj.name || ''))
+            : (obj.name || '')));
+  input.value = txt;
+}
+
+
         listEl.hidden = true;
         sync();
       });
@@ -2746,7 +2980,13 @@ if (itType === 'typeahead' || itType === 'typeahead_textarea'){
 
   // Seed from saved newline list or start with one blank
   const seed = (t.fields && t.fields[f.key]) ? String(t.fields[f.key]) : '';
-  const parts = seed ? seed.split(/\n+/).map(s=>s.trim()).filter(Boolean) : [''];
+const parts = seed
+  ? (itType === 'typeahead_textarea'
+      ? seed.split(/\n\s*---\s*\n/)
+      : seed.split(/\n+/)
+    ).map(s=>s.trim()).filter(Boolean)
+  : [''];
+
   parts.forEach(v => addItem(v));
   sync();
 
@@ -3208,23 +3448,37 @@ chips.appendChild(box);
 }
 
 
-// Row 1: Open in Glossary (its own line)
+// Row 1: Open in Glossary (two links: Full + Template)
 if (meta?.slug){
   const row = document.createElement('div');
   row.className = 'metaRow';
-  const a = document.createElement('a');
-  a.className = 'chip metaLink';
-  a.href = `../glossary/index.html#${meta.slug}`;
-  a.textContent = 'Open in Glossary';
-  a.title = meta.label;
-  row.appendChild(a);
+  row.style.gap = '0.5rem'; // adds spacing between glossary chips
+
+  // Full Glossary (existing behavior, just relabeled)
+  const fullA = document.createElement('a');
+  fullA.className = 'chip metaLink';
+  fullA.href = `../glossary/index.html#${meta.slug}`;
+  fullA.textContent = 'Open in Full Glossary';
+  fullA.title = meta.label;
+  row.appendChild(fullA);
+
+  // Template Glossary (new, deep-links by slug as well)
+  const tplA = document.createElement('a');
+  tplA.className = 'chip metaLink';
+  tplA.href = `./Templates-Glossary.html#${meta.slug}`;
+  tplA.textContent = 'Open in Template Glossary';
+  tplA.title = meta.label;
+  row.appendChild(tplA);
+
   box.appendChild(row);
 }
+
 
 // Optional status (still small, under its own row)
 if (meta?.status){
   const row = document.createElement('div');
   row.className = 'metaRow';
+  row.style.gap = '0.5rem'; // adds spacing between glossary chips
   const st = document.createElement('span');
   st.className = 'chip';
   st.textContent = `Status: ${meta.status}`;
@@ -3496,6 +3750,16 @@ switchFramework(first.value);
   document.addEventListener('tab-switched', refreshFromTab);
 })();
 
+function showToast(msg, ms=1600){
+  const el = document.getElementById('toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(()=>{ el.hidden = true; }, ms);
+}
+
+
 
 // === Bias multi-select (chips + typeahead) ===
 (function(){
@@ -3725,7 +3989,7 @@ function getAllGeneratedText(){
   } 
   
 // Actions
-$('#copyBtn').addEventListener('click', async ()=>{
+$('#copyBtn').addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
   const deck = document.getElementById('outDeck');
   let text = '';
 
@@ -3765,7 +4029,7 @@ $('#copyBtn').addEventListener('click', async ()=>{
 
 
 
-   $('#openBtn').addEventListener('click', async ()=>{
+   $('#openBtn').addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
   const txt = getAllGeneratedText();
   const dlg = $('#msg');
   // 1) Copy to clipboard (primary guarantee)
@@ -3899,10 +4163,15 @@ dlg.addEventListener('cancel', () => {
 
 
 // Mirror header actions in the secondary action row (no code duplication)
-(function wireSecondaryActions(){
+(function wireSecondaryActions(){ if (window.__USE_ACTION_MODAL__) return;
   const copy2  = document.getElementById('copyBtn2');
   const open2  = document.getElementById('openBtn2');
   const clear2 = document.getElementById('clearBtn2');
+  
+  
+  
+  
+  
 
   function activePromptText(){
     try{
@@ -3970,7 +4239,7 @@ dlg.addEventListener('cancel', () => {
 })();
 
 // === Core button re-bind (safe even if called multiple times) ===
-(function wireCoreButtons(){
+(function wireCoreButtons(){ if (window.__USE_ACTION_MODAL__) return;
   const $ = s => document.querySelector(s);
 
   // Header buttons (original)
@@ -4054,8 +4323,271 @@ dlg.addEventListener('cancel', () => {
   }
 })();
 
+// Global: build a ChatGPT URL with best-effort prefill
+// Build a ChatGPT URL; prefer ?prompt= only. Also return a length hint.
+function buildChatURL(prompt){
+  const base = (localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/').trim();
+  const txt  = String(prompt || '');
+  let url = 'https://chatgpt.com/';
+  try {
+    const u = new URL(base);
+    // Only set ?prompt=. Do NOT also set q/input (those can bloat and cause 431).
+    u.search = ''; // clear any previous search
+    u.searchParams.set('prompt', txt);
+    url = u.toString();
+  } catch(_) {
+    url = 'https://chatgpt.com/?prompt=' + encodeURIComponent(txt);
+  }
+  // Conservative headroom: warn if the URL exceeds ~7.8k chars (varies by browser/server).
+  const TOO_LONG = url.length > 7800;
+  return { url, tooLong: TOO_LONG, base: (new URL((() => {
+    try { return base; } catch(_) { return 'https://chatgpt.com/'; }
+  })())).origin + '/' };
+}
+window.buildChatURL = buildChatURL;
+
+
+
+
+// ===== Action Modal v2 — unified, conflict-safe =====
+(function(){
+  const dlg = document.getElementById('actionModal');
+  if (!dlg) return;
+
+  const $ = (sel)=> document.querySelector(sel);
+  const title   = $('#actionTitle');
+  const closeX  = $('#actionClose');
+  const cancelB = $('#actionCancel');
+  const confirm = $('#actionConfirm');
+  const form    = $('#actionForm');
+  const ta      = $('#actionPreview');
+  const note    = $('#actionNote');
+  const rPrompt = $('#scopePrompt');
+  const rAll    = $('#scopeAll');
+
+  // --- conflict shield ---
+  // Use capture-phase listeners + stopImmediatePropagation to prevent old handlers from firing.
+  function bindCapture(el, fn){
+    if (!el) return;
+    el.addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      ev.stopPropagation();
+      ev.stopImmediatePropagation();
+      fn(ev);
+    }, {capture:true});
+    // also nuke inline onclicks if any
+    el.onclick = null;
+  }
+
+  // --- text builders ---
+  function getActiveTab(){
+    const s = window.state || {};
+    const i = Number.isInteger(s.active) ? s.active : 0;
+    return (s.tabs && s.tabs[i]) ? s.tabs[i] : null;
+  }
+  function promptLabel(t, idx){
+    const meta = (window.FRAMEWORKS_BY_ID && t?.id) ? window.FRAMEWORKS_BY_ID[t.id] : null;
+    const name = meta?.label || t?.id || 'Prompt';
+    return `## ${idx+1}. ${name}`;
+  }
+  function textForSingle(tOverride){
+    try{
+      const t = tOverride || getActiveTab();
+      if (!t) return '';
+      if (typeof window.makePromptForTab === 'function'){
+        return window.makePromptForTab(t) || '';
+      }
+      return '';
+    }catch(_){ return ''; }
+  }
+  function textForAll(){
+    try{
+      const tabs = (window.state && Array.isArray(window.state.tabs)) ? window.state.tabs : [];
+      if (!tabs.length) return textForSingle();
+      if (typeof window.makePromptForTab === 'function'){
+        return tabs.map((t, idx)=>{
+          const body = window.makePromptForTab(t) || '';
+          return body ? `${promptLabel(t, idx)}\n${body}` : '';
+        }).filter(Boolean).join('\n\n---\n\n');
+      }
+      return '';
+    }catch(_){ return ''; }
+  }
+  function buildText(scope){
+    return (scope === 'all') ? textForAll() : textForSingle();
+  }
+
+  function setScope(scope){
+    rPrompt.checked = (scope === 'prompt');
+    rAll.checked    = (scope === 'all');
+    const txt = buildText(scope);
+    ta.value = txt;
+    // soft URL length hint for ChatGPT
+const built = window.buildChatURL(txt);
+note.hidden = !built.tooLong;
+if (built.tooLong){
+  note.textContent = 'This prompt is very long. We’ll copy it and open ChatGPT so you can paste (Ctrl/Cmd+V).';
+}
+
+  }
+
+  // --- launcher ---
+  let modalAction = 'copy'; // 'copy' | 'ask'
+  function openModal(kind, defaultScope){
+    modalAction = kind;
+    title.textContent = (kind === 'ask') ? '💬 Ask ChatGPT' : 'Copy Prompt';
+    confirm.textContent = (kind === 'ask') ? 'Open in ChatGPT' : 'Copy';
+    setScope(defaultScope || 'prompt');
+      ta.value = ta.value || buildText(rAll.checked ? 'all' : 'prompt'); // fallback if anything races
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    setTimeout(()=> ta.focus(), 30);
+  }
+
+  // radio changes
+  rPrompt.addEventListener('change', ()=> setScope('prompt'));
+  rAll   .addEventListener('change', ()=> setScope('all'));
+
+  // close/cancel
+  function closeModal(){ try{ dlg.close(); }catch(_){ dlg.open=false; } }
+  closeX.addEventListener('click', closeModal);
+  cancelB.addEventListener('click', closeModal);
+  dlg.addEventListener('cancel', (e)=>{ e.preventDefault(); closeModal(); });
+
+  // confirm
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const txt = ta.value || '';
+  if (!txt.trim()) return;
+
+  if (modalAction === 'copy'){
+    try { await navigator.clipboard.writeText(txt); } catch(_){}
+    showToast('Copied to clipboard.');
+    closeModal();
+    return;
+  }
+
+  // Ask ChatGPT
+  let built;
+  try { built = window.buildChatURL(txt); } catch(_) { built = { url:'https://chatgpt.com/?prompt='+encodeURIComponent(txt), tooLong:false, base:'https://chatgpt.com/' }; }
+
+  if (built.tooLong){
+    // URL would be too long; fallback: copy then open a clean chat for paste.
+    try { await navigator.clipboard.writeText(txt); } catch(_){}
+    showToast('Text copied. ChatGPT opened — paste (Ctrl/Cmd+V).', 2600);
+    window.open(built.base, '_blank', 'noopener,noreferrer');
+    closeModal();
+    return;
+  }
+
+  window.open(built.url, '_blank', 'noopener,noreferrer');
+  closeModal();
+});
+
+
+  // --- wire triggers in CAPTURE (kills prior handlers) ---
+  function wire(id, kind, defaultScope){
+    const el = document.getElementById(id);
+    bindCapture(el, ()=> openModal(kind, defaultScope));
+  }
+  // Header (defaults to All)
+  wire('copyBtn', 'copy', 'all');
+  wire('openBtn', 'ask',  'all');
+  // Configure (defaults to Current)
+  wire('copyBtn2', 'copy', 'prompt');
+  wire('openBtn2', 'ask',  'prompt');
+  // Footer duplicates if present (All)
+  wire('copyAllBtnFooter', 'copy', 'all');
+  wire('openAllBtnFooter', 'ask',  'all');
+
+  // Inline chips (per-card) — give them class .js-inline-copy and data-idx (card index)
+  document.addEventListener('click', function onChip(e){
+    const btn = e.target.closest('.js-inline-copy');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    const ix = Number(btn.getAttribute('data-idx'));
+    const prev = window.state?.active;
+    if (Number.isInteger(ix) && window.state?.tabs?.[ix]){
+      window.state.active = ix;
+      // Build once with that active index, then restore
+      setScope('prompt');
+      window.state.active = prev;
+    } else {
+      setScope('prompt');
+    }
+    openModal('copy', 'prompt');
+  }, {capture:true}); // capture to preempt old handlers
+})();
+
 
   })();
   </script>
+  
+  <script>
+/* === Print Worksheet — full wiring (works with or without Action Modal) === */
+(function wireWorksheetButton(){
+  function getKind(){
+    try { return (typeof currentDataset === 'function')
+      ? currentDataset()
+      : (localStorage.getItem('fw_dataset') || 'patterns'); }
+    catch(_) { return 'patterns'; }
+  }
+  function getActive(){
+    try {
+      if (typeof activeTab === 'function') return activeTab();
+      const s = window.state;
+      if (s && Array.isArray(s.tabs)) return s.tabs[s.active];
+    } catch(_) {}
+    return null;
+  }
+  function collectFromTab(t){
+    const bag = { common:{}, fields:{} };
+    // Per-tab common in your app: { ctx, audience, style, tone }
+    try {
+      const c = t?.common || {};
+      if (c.ctx)       bag.common.usecase  = c.ctx;
+      if (c.audience)  bag.common.audience = c.audience;
+      if (c.style)     bag.common.style    = c.style;
+      if (c.tone)      bag.common.tone     = c.tone;
+    } catch(_){}
+    try { Object.assign(bag.fields, t?.fields || {}); } catch(_){}
+    // Bias chips from UI (optional)
+    try{
+      const chips = Array.from(document.querySelectorAll('#biasChips .chip'))
+        .map(c => (c.textContent||'').trim()).filter(Boolean);
+      if (chips.length) bag.common.biases = chips;
+    }catch(_){}
+    return bag;
+  }
+  function openWorksheet(){
+    const t = getActive();
+    const id = t?.id || document.getElementById('frameworkSel')?.value || '';
+    if (!id || id === 'none'){ alert('Pick a template first.'); return; }
+
+    const kind = getKind(); // 'patterns' | 'tasks'
+    const key  = `pb.v1.xfer.${kind}.${id}`;
+    try { sessionStorage.setItem(key, JSON.stringify(collectFromTab(t))); } catch(_){}
+
+    const url = new URL('./prompt-worksheet.html', location.href);
+    url.searchParams.set('kind', kind);
+    url.searchParams.set('id',   id);
+    url.searchParams.set('xfer', key);
+    window.open(url.toString(), '_blank', 'noopener');
+  }
+
+  // Event delegation so it works regardless of when the row is rendered
+  document.addEventListener('click', function onClick(e){
+    const btn = e.target.closest('#worksheetBtn2, #worksheetBtnHeader');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    openWorksheet();
+  }, { capture:true });
+})();
+</script>
+
+  
 </body>
 </html>
