@@ -56,6 +56,7 @@
 .toast[hidden]{ display:none; }
 
 
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
@@ -237,6 +238,10 @@
   display:flex; align-items:center; gap:10px;
   margin:6px 0 4px; font-size:12px; color:var(--muted);
 }
+/* Ensure meta row really hides in “Show all” without touching anything else */
+#fieldProgressMeta[hidden]{ display:none !important; }
+/* Only the bar, still narrow-scoped (does not affect deck) */
+#fieldProgress[hidden]{ display:none !important; }
 .progressMeta .pct{ font-variant-numeric: tabular-nums; }
 .progressMeta .nudge{ opacity:.9; }
 
@@ -753,7 +758,8 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     <strong>Prompt Framework Builder</strong>
     <span class="pill" data-val="framework" title="Thinking Structures & Patterns">thinking structures + patterns</span>
     <span class="spacer"></span>
-    <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (beta)</a>
+    <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
+    <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
 
 <button id="copyBtn" class="btn sm">Copy Prompt</button>
 <button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
@@ -891,8 +897,6 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
     <button id="copyBtn2" class="btn sm" title="Copy active tab">Copy Prompt</button>
     <button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
-        <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Step-by-Step Wizard (beta)</a>
-
     <button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
     <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
   </div>
@@ -1131,6 +1135,23 @@ function saveNow(){
   try{
     // 'state' is our live app state (tabs, fields, active, etc.)
     localStorage.setItem(LS_KEYS.state, JSON.stringify(state));
+    // --- optional: snapshot history (shows up in saved-sessions.html) ---
+// --- snapshot history for saved-sessions.html ---
+try {
+  const key  = 'pb.v1.history';
+  const ui   = JSON.parse(localStorage.getItem((LS_KEYS && LS_KEYS.ui) || 'pb.v1.ui') || '{}');
+  const snap = {
+    ts: Date.now(),
+    kind: (window.__SAVE_KIND__ || 'unknown'), // 'manual' or 'auto'
+    state: state,
+    ui: ui
+  };
+  const hist = JSON.parse(localStorage.getItem(key) || '[]');
+  hist.push(snap);
+  const MAX = 50; // adjust if you want more or fewer snapshots
+  while (hist.length > MAX) hist.shift();
+  localStorage.setItem(key, JSON.stringify(hist));
+} catch (_) { /* ignore quota/JSON errors */ }
   }catch(e){
     console.warn('localStorage save failed:', e);
   }finally{
@@ -1139,7 +1160,10 @@ function saveNow(){
 }
 function scheduleSave(){
   if (_saveTimer) clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(saveNow, 300); // debounce a bit
+  _saveTimer = setTimeout(()=>{
+    window.__SAVE_KIND__ = 'auto';
+    try { saveNow(); } finally { window.__SAVE_KIND__ = undefined; }
+  }, 300); // keep your debounce
 }
 
 // UI (theme + left panel width)
@@ -1228,8 +1252,16 @@ applySavedUI();
 // Global safety nets: save on input/changes and when leaving
 document.addEventListener('input',  scheduleSave, { capture:true });
 document.addEventListener('change', scheduleSave, { capture:true });
-document.addEventListener('visibilitychange', ()=>{ if (document.hidden) saveNow(); });
-window.addEventListener('beforeunload', saveNow);
+document.addEventListener('visibilitychange', ()=>{
+  if (document.hidden){
+    window.__SAVE_KIND__ = 'auto';
+    try { saveNow(); } finally { window.__SAVE_KIND__ = undefined; }
+  }
+});
+window.addEventListener('beforeunload', ()=>{
+  window.__SAVE_KIND__ = 'auto';
+  try { saveNow(); } finally { window.__SAVE_KIND__ = undefined; }
+});
 
 // Save UI when theme toggles or the resizer stops
 window.addEventListener('load', ()=>{
@@ -1850,48 +1882,55 @@ function encouragement(pct){
 function updateStepperUI(tab, total, visibleCount){
   if (!progWrap || !navWrap) return;
 
-  const guided = isGuided(tab);
+const guided = isGuided(tab);
+if (metaWrap){
+  metaWrap.hidden = !guided;
+  metaWrap.setAttribute('aria-hidden', String(!guided));
+}
 
-  // Progress: only visible in guided mode
-  progWrap.hidden = !guided;
+
+
+  // Master visibility: hide BOTH progress pieces when not guided
+  if (progWrap) progWrap.hidden = !guided;
+  if (typeof metaWrap !== 'undefined' && metaWrap) metaWrap.hidden = !guided;
+
   if (guided){
     const size  = stepSize();
     const start = (tab.step || 0) * size;
     const done  = Math.min(start + visibleCount, total);
     const pct   = total ? (done / total) * 100 : 0;
+
+    // bar + aria
     progBar.style.width = pct + '%';
-    // ARIA and meta header
-if (progWrap){
-  progWrap.setAttribute('aria-valuenow', String(Math.round(pct)));
-}
-if (metaWrap){
-  metaWrap.hidden = false;
-  const size = stepSize();
-  const totalPages = Math.max(1, Math.ceil(total / size));
-  const page = (tab.step || 0) + 1;
-  if (metaStep) metaStep.textContent = `Step ${page} of ${totalPages}`;
-  if (metaPct)  metaPct.textContent  = `${Math.round(pct)}%`;
-  if (metaNudge)metaNudge.textContent = encouragement(pct);
-} 
+    if (progWrap) progWrap.setAttribute('aria-valuenow', String(Math.round(pct)));
+
+    // meta row (step pill, % and nudge)
+    if (typeof metaWrap !== 'undefined' && metaWrap){
+      const totalPages = Math.max(1, Math.ceil(total / size));
+      const page = (tab.step || 0) + 1;
+      if (typeof metaStep !== 'undefined' && metaStep) metaStep.textContent = `Step ${page} of ${totalPages}`;
+      if (typeof metaPct  !== 'undefined' && metaPct)  metaPct.textContent  = `${Math.round(pct)}%`;
+      if (typeof metaNudge!== 'undefined' && metaNudge)metaNudge.textContent = encouragement(pct);
+    }
   }
 
-  // Nav row: always visible so users can toggle back from "Show all"
+  // Nav row stays visible so users can "Collapse" back to guided
   navWrap.hidden = false;
 
-  // Back/Next only meaningful in guided mode
-  if (guided){
+  // Back/Next must be HIDDEN (not just disabled) when not guided
+  if (typeof navBack !== 'undefined' && navBack){
+    navBack.hidden   = !guided;
+    navBack.disabled = guided ? ((tab.step || 0) <= 0) : true;
+  }
+  if (typeof navNext !== 'undefined' && navNext){
     const size = stepSize();
-    navBack.disabled = (tab.step || 0) <= 0;
-    navNext.disabled = ((tab.step || 0) + 1) * size >= total;
-  }else{
-    navBack.disabled = true;
-    navNext.disabled = true;
-    if (metaWrap) metaWrap.hidden = true;
-
+    const atEnd = ((tab.step || 0) + 1) * size >= total;
+    navNext.hidden   = !guided;
+    navNext.disabled = guided ? atEnd : true;
   }
 
-  // Toggle button label + title
-  if (navAll){
+  // Toggle button label + title (Show all vs Collapse)
+  if (typeof navAll !== 'undefined' && navAll){
     if (guided){
       navAll.textContent = 'Show all';
       navAll.title = 'Show every field at once';
@@ -1901,6 +1940,7 @@ if (metaWrap){
     }
   }
 }
+
 
 
 function _activeTabSafe(){ return (typeof activeTab === 'function') ? activeTab() : null; }
@@ -3720,29 +3760,36 @@ chips.appendChild(box);
   box.appendChild(saveHelp);
 
   // Wire up behavior
-  const doImmediateSave = () => {
-    if (typeof window.saveNow === 'function') return window.saveNow();
-    if (typeof window.scheduleSave === 'function') return window.scheduleSave();
-    // Fallback: write state directly (keeps working even if you didn’t add saveNow yet)
-    try{ localStorage.setItem((LS_KEYS && LS_KEYS.state) || 'pb.v1.state', JSON.stringify(state)); }catch(e){}
-  };
+// Wire up behavior
+const doImmediateSave = () => {
+  // Prefer immediate save (no debounce) so the snapshot timestamp matches the click
+  if (typeof window.saveNow === 'function') return window.saveNow();
+  if (typeof window.scheduleSave === 'function') return window.scheduleSave();
+  // Fallback: write state directly
+  try{ localStorage.setItem((LS_KEYS && LS_KEYS.state) || 'pb.v1.state', JSON.stringify(state)); }catch(e){}
+};
 
-  saveBtn.addEventListener('click', ()=>{
-    const original = saveBtn.textContent;
-    saveBtn.disabled = true;
-    saveBtn.textContent = 'Saving…';
+saveBtn.addEventListener('click', ()=>{
+  const original = saveBtn.textContent;
+  saveBtn.disabled = true;
+  saveBtn.textContent = 'Saving…';
 
-    try { doImmediateSave(); } finally {
-      // lightweight “it saved” feedback
+  try {
+    // Tag this one as a MANUAL save (consumed inside saveNow → history)
+    window.__SAVE_KIND__ = 'manual';
+    doImmediateSave();
+  } finally {
+    window.__SAVE_KIND__ = undefined;
+    // lightweight “it saved” feedback
+    setTimeout(()=>{
+      saveBtn.textContent = 'Saved ✓';
       setTimeout(()=>{
-        saveBtn.textContent = 'Saved ✓';
-        setTimeout(()=>{
-          saveBtn.disabled = false;
-          saveBtn.textContent = original;
-        }, 900);
-      }, 400);
-    }
-  });
+        saveBtn.disabled = false;
+        saveBtn.textContent = original;
+      }, 900);
+    }, 400);
+  }
+});
 
   resetBtn.addEventListener('click', ()=>{
     const msg =
