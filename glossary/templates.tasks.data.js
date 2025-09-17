@@ -271,88 +271,186 @@
   kind: 'task',
   categories: ['communication','writing'],
   tags: ['type:task','topic:dm','use:outreach','use:follow-up','use:networking'],
+
   definition: 'Compose a short, platform-aware direct message that earns a quick yes.',
-  help: 'Keep it tight. Add context and a single, easy CTA. Leave “Additional instructions” empty to use boosters.',
+  help: 'Keep it tight. Add context and a single, easy CTA. Leave “Constraints” empty to let boosters kick in.',
+
   fields: [
-    { key:'platform',   label:'Platform', type:'select',
+    {
+      key:'platform',
+      label:'Platform',
+      type:'select',
+      desc:'Guides tone, character norms, link etiquette, and formatting.',
       options:[
-        'LinkedIn','Twitter/X','Instagram','Facebook','Discord','Slack','Reddit'
-      ], desc:'Guides tone, character norms, and link etiquette.'
+        {
+          label:'LinkedIn',
+          value:'Platform: LinkedIn DM. Keep it skimmable with short lines. Avoid multiple links (≤1). Professional, friendly. Use a human first-name signoff if needed. No emoji unless “friendly” policy. Mention 1 concrete mutual or role-relevance.'
+        },
+        {
+          label:'Twitter/X',
+          value:'Platform: Twitter/X DM. Keep under 280 characters per variant. One link max. Punchy opening (≤50 chars). Use casual but credible tone; no hashtags. If link present, place at end.'
+        },
+        {
+          label:'Instagram',
+          value:'Platform: Instagram DM. Conversational, warm, light. Prefer no links; if necessary, 1 link, promise context. Keep lines short; emojis allowed if policy permits.'
+        },
+        {
+          label:'Facebook',
+          value:'Platform: Facebook DM. Friendly and concise. Avoid corporate jargon. 1 link max. Reference a shared group/page if relevant.'
+        },
+        {
+          label:'Discord',
+          value:'Platform: Discord DM. Casual, concise, low-fluff. No formal signoff. Use inline code/quote sparingly if helpful. Avoid links unless necessary; if included, set context first.'
+        },
+        {
+          label:'Slack',
+          value:'Platform: Slack DM. Work-appropriate and concise. Start with a crisp ask; include two times or yes/no. Avoid signatures. No more than one link; add a 3–5 word link label.'
+        },
+        {
+          label:'Reddit',
+          value:'Platform: Reddit DM. Neutral-friendly tone, no marketing speak. Cite the exact thread or comment. Avoid links unless requested; if used, describe content plainly.'
+        }
+      ]
     },
-    { key:'recipient',  label:'Recipient', type:'text', ph:'Product lead at Finix' },
-    { key:'relationship', label:'Relationship', type:'select',
-      options:['cold','warm (light prior touch)','known colleague','friend/peer','internal teammate']
+
+    { key:'recipient',  label:'Recipient', type:'text', ph:'e.g., Product Lead at Finix' },
+
+    {
+      key:'relationship',
+      label:'Relationship',
+      type:'select',
+      desc:'Shapes the opener, credibility, and ask size.',
+      options:[
+        {
+          label:'Cold',
+          value:'Relationship: Cold outreach. Earn permission in the first line with a concrete relevance hook. Prove you did your homework (1 detail). Keep the ask trivially easy (yes/no or two time slots).'
+        },
+        {
+          label:'Warm (light prior touch)',
+          value:'Relationship: Warm touch. Reference the exact prior interaction (event, post, reply). Build from that thread. Slightly bigger ask allowed, but still ≤15 minutes or async reply.'
+        },
+        {
+          label:'Known colleague',
+          value:'Relationship: Known colleague. Skip pleasantries; lead with context and the single action needed. Offer mutual benefit and a short deadline window.'
+        },
+        {
+          label:'Friend/peer',
+          value:'Relationship: Friend/peer. Personal, light tone. Acknowledge relationship briefly; keep ask respectful of time, include a flexible fallback.'
+        },
+        {
+          label:'Internal teammate',
+          value:'Relationship: Internal teammate. Be direct and action-oriented. Include the “why,” the exact deliverable, and a due-by option. No fluff; point to the doc/task link.'
+        }
+      ]
     },
-    { key:'style_persona', label:'Style persona (optional)',   
-    type:'repeater',
-  itemType:'typeahead',
-  itemLabel:'persona',
-  autofill:'persona->inline',
-ph:'e.g., “Helpful PM”, “Curious analyst”',
-    desc:'Type to search your persona library.'
+
+    {
+      key:'style_persona',
+      label:'Style persona (optional)',
+      type:'repeater',
+      itemType:'typeahead',
+      itemLabel:'persona',
+      autofill:'persona->inline',
+      ph:'e.g., “Helpful PM”, “Curious analyst”, “Empathic coach”',
+      desc:'Search your persona library to add voice cues. Multiple personas will be blended.'
     },
-    { key:'tone_primary',  label:'Tone', type:'select',
+
+    {
+      key:'tone_primary',
+      label:'Tone',
+      type:'select',
       options:['professional','friendly','polite','confident','humble','direct','concise','warm','empathetic','authoritative','casual','inquisitive','urgent','no-nonsense']
     },
-    { key:'tone_secondary', label:'Tone (2nd, optional)', type:'select',
+    {
+      key:'tone_secondary',
+      label:'Tone (2nd, optional)',
+      type:'select',
       options:['— none —','professional','friendly','polite','confident','humble','direct','concise','warm','empathetic','authoritative','casual','inquisitive','urgent','no-nonsense']
     },
-    { key:'length',     label:'Length', type:'select',
+
+    {
+      key:'length',
+      label:'Length',
+      type:'select',
       options:[
         {value:'ultra',label:'Ultra-short (≤50 words)'},
         {value:'short',label:'Short (≤90 words)'}
       ]
     },
-    { key:'context',    label:'Context', type:'textarea', ph:'Where you saw them / why relevant' },
+
+    { key:'context',    label:'Context', type:'textarea', ph:'Where you saw them / why relevant / mutuals / thread' },
     { key:'value',      label:'Value to emphasize', type:'textarea', ph:'What they gain in concrete terms' },
-    { key:'cta',        label:'Call to Action', type:'text', ph:'Quick yes/no ask or 2 slots' },
+    { key:'cta',        label:'Call to Action', type:'text', ph:'Quick yes/no ask or offer 2 time slots' },
+
     { key:'link',       label:'Optional link', type:'text', ph:'URL to include (if any)' },
-    { key:'emoji',      label:'Emoji policy', type:'select', options:['none','sparing','friendly'] },
+
+    {
+      key:'emoji',
+      label:'Emoji policy',
+      type:'select',
+      desc:'Controls whether emojis are allowed and how many.',
+      options:[
+        {label:'None',     value:'Emoji policy: none. Do not use emojis.'},
+        {label:'Sparing',  value:'Emoji policy: sparing. ≤1 emoji, only if it clarifies tone.'},
+        {label:'Friendly', value:'Emoji policy: friendly. ≤2 emojis, context-appropriate; never replace crucial words.'}
+      ]
+    },
+
     { key:'variants',   label:'How many DM variants?', type:'select', options:['1','2','3'] },
-    { key:'history',    label:'Prior thread / notes (optional)', type:'textarea' },
-    { key:'constraints',label:'Constraints (optional)', type:'textarea', ph:'No hype; avoid buzzwords' }
+
+    { key:'history',    label:'Prior thread / notes (optional)', type:'textarea', ph:'Paste relevant snippets or prior exchanges' },
+    { key:'constraints',label:'Constraints (optional)', type:'textarea', ph:'No hype; avoid buzzwords; US spelling' }
   ],
+
   boosters: [
     'Make line 1 hooky (≤50 chars) and specific to the recipient.',
     'One ask only. Provide a trivial accept path (button, yes/no, or two times).',
     'Personalize with a concrete detail from Context—no generic flattery.',
-    'Respect platform norms: if Twitter/X, keep under 280 chars; avoid link overload on LinkedIn.',
-    'Skip signature blocks in DMs; use first name if needed.'
+    'Respect platform norms: e.g., Twitter/X ≤280 chars; LinkedIn ≤1 link.',
+    'Skip signatures in DMs; first name is fine if needed.'
   ],
-  template: (f)=>{
-    const join2=(a,b)=>[a,b].filter(Boolean).join(' + ');
-    const tones=join2(f.tone_primary,(f.tone_secondary&&f.tone_secondary!=='— none —')?f.tone_secondary:'');
-    const lenMap={ultra:'≤50 words',short:'≤90 words'};
-    const lenStr=lenMap[f.length]||'≤90 words';
-    const variants=Math.max(1,parseInt(f.variants||'1',10));
-    const ctx=f.ctx||'';
-    const toneCommon=f.tone||'';
-    const persona=f.style_persona?`Write in the voice of: ${f.style_persona}.`:'';
-    const platform=f.platform||'DM';
-    const link=f.link?`Include link: ${f.link}`:'';
-    const history=f.history?`Prior context:\n<<<\n${f.history}\n>>>`:'';
-    const constraints=f.constraints?`Constraints: ${f.constraints}`:'';
 
-    const outRules=[
+  template: (f) => {
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '— none —') ? f.tone_secondary : ''
+    );
+    const lenMap = { ultra:'≤50 words', short:'≤90 words' };
+    const lenStr = lenMap[f.length] || '≤90 words';
+    const variants = Math.max(1, parseInt(f.variants||'1',10));
+
+    const personaList = Array.isArray(f.style_persona) ? f.style_persona.filter(Boolean) : (f.style_persona ? [f.style_persona] : []);
+    const personaLine = personaList.length ? `Write in the blended voice of: ${personaList.join(' | ')}.` : '';
+
+    const platformDirective   = f.platform ? String(f.platform) : 'Platform: Generic DM. Keep concise and human.';
+    const relationshipDirective = f.relationship ? String(f.relationship) : 'Relationship: Unspecified; assume respectful, relevance-first cold intro.';
+
+    const linkLine = f.link ? `Include exactly one link at the end: ${f.link}` : 'No links unless essential.';
+    const emojiPolicy = f.emoji ? String(f.emoji) : 'Emoji policy: none.';
+
+    const outRules = [
       'Output format:',
-      '- Provide the DM body only (no greeting lines like “Dear”).',
+      '- Provide the DM body only (no formal greeting like “Dear”).',
       '- Keep the first line ≤50 characters.',
-      (variants>1)&&`- Provide ${variants} variants separated by a line with only: ---`
+      `- Target length: ${lenStr}.`,
+      (variants>1) && `- Provide ${variants} variants separated by a line with only: ---`
     ].filter(Boolean).join('\n');
 
     return [
-      `Draft a ${platform} direct message.`,
-      f.recipient&&`Recipient: ${f.recipient}`,
-      f.relationship&&`Relationship: ${f.relationship}`,
-      ctx&&`Context: ${ctx}`,
-      (tones||toneCommon)&&`Tone: ${tones||toneCommon}`,
-      `Length: ${lenStr}`,
-      persona,
-      f.value&&`Value to emphasize: ${f.value}`,
-      f.cta&&`Primary call to action: ${f.cta}`,
-      link,
-      history,
-      constraints,
+      'Compose a platform-aware direct message that earns a quick yes.',
+      platformDirective,
+      relationshipDirective,
+      (tones || f.tone) && `Tone: ${tones || f.tone}`,
+      personaLine,
+      f.recipient && `Recipient: ${f.recipient}`,
+      f.context   && `Personalization context: ${f.context}`,
+      f.value     && `Value to emphasize: ${f.value}`,
+      f.cta       && `Primary call to action: ${f.cta}`,
+      linkLine,
+      emojiPolicy,
+      f.history   && `Prior context:\n<<<\n${f.history}\n>>>`,
+      f.constraints && `Constraints: ${f.constraints}`,
       outRules
     ].filter(Boolean).join('\n');
   }
