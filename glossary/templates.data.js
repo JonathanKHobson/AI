@@ -3197,55 +3197,237 @@ boosters: [
 },
 
 {
-    id: 'monroe_sequence',
-    slug: 'monroes-motivated-sequence',
-    label: 'Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action',
-    kind: 'framework',
-    categories: ['messaging frameworks', 'persuasion'],
-    tags: [
-      'type:framework','topic:persuasion','phase:compose','level:intermediate',
-      'use:speechwriting','use:advocacy','use:public-speaking'
-    ],
-    use_cases: [
-      'structure persuasive speeches or pitches for maximum impact',
-      'guide the audience from feeling a need to taking an action',
-      'formulate outreach messages (e.g., campaign appeals, motivational talks)'
-    ],
-    boosters: [
-      'Open with a compelling hook (story or statistic) to grab Attention in the first step.',
-      'In the Visualization step, paint a vivid picture of the future where the need is resolved (positive or negative outcomes).'
-    ],
-    definition: 'A five-step persuasive framework that grabs attention, establishes a need, presents a satisfying solution, helps the audience visualize the outcome, and ends with a call to action.',
-    help: 'Provide the audience’s problem/need and your proposed solution. Optionally include an attention-grabber or desired call-to-action. The model will generate a structured persuasive message through all five steps of Monroe’s sequence.',
-    fields: [
-      { key: 'attention', label: 'Attention (hook, optional)', type: 'textarea',
-        desc: 'An opening hook (question, anecdote, startling fact) to get attention.',
-        ph: 'e.g., "Did you know nearly 40% of food gets thrown away while millions go hungry?"' },
-      { key: 'audience_need', label: 'Need (audience problem)', type: 'textarea',
-        desc: 'The problem or need affecting the audience that must be addressed.',
-        ph: 'e.g., Working parents struggle to find time to cook healthy meals.' },
-      { key: 'solution', label: 'Satisfaction (solution)', type: 'text',
-        desc: 'Your solution or idea that will satisfy the need.',
-        ph: 'e.g., A meal prep delivery service that provides ready-to-eat healthy dinners.' },
-      { key: 'cta', label: 'Action (call-to-action, optional)', type: 'text',
-        desc: 'The specific action you want the audience to take at the end.',
-        ph: 'e.g., Sign up for a free week of our service today.' }
-    ],
-    template: ({ attention, audience_need, solution, cta, ctx, audience, style, tone }) => [
-      'Use Monroe’s Motivated Sequence to structure a persuasive message.',
+  id: 'monroe_sequence',
+  slug: 'monroes-motivated-sequence',
+  label: 'Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action',
+  kind: 'framework',
+  categories: ['messaging frameworks', 'persuasion', 'public speaking', 'rhetoric'],
+  tags: [
+    'type:framework','topic:persuasion','topic:monroe','topic:cta',
+    'phase:compose','phase:revise','level:intermediate',
+    'use:speechwriting','use:advocacy','use:public-speaking','use:fundraising','use:sales-enablement'
+  ],
+  use_cases: [
+    'structure persuasive talks and pitches that move an audience to act',
+    'craft fundraising, policy, or campaign appeals with clear next steps',
+    'generate variants (positive / negative / contrast) of the visualization step for testing',
+    'adapt one core argument across channels (speech, landing page, email, video script)'
+  ],
+  boosters: [
+    'Map each Need point to a matching Satisfaction point (1:1) to prove the solution *specifically* fixes what hurts.',
+    'Choose a Visualization mode: Positive (benefits realized), Negative (cost of inaction), or Contrast (before vs after).',
+    'End with a single, concrete Action (who/what/when/where) and remove friction (link/QR/script/phone line).',
+    'Braid evidence (logos), credibility (ethos), and emotion (pathos) across steps—do not rely on fear alone.',
+    'Align the Need with human motivations (e.g., safety, belonging, esteem, purpose) without treating them as strictly hierarchical.',
+    'Ethics guardrail: represent risks fairly, cite sources, and avoid coercive fear appeals; include alternatives/safeguards where relevant.',
+    'Localization & inclusion: tailor examples and idioms to the personas’ culture and access needs; offer accessible formats.'
+  ],
+  definition: 'A five-step persuasive pattern (Attention → Need → Satisfaction → Visualization → Action) that first secures attention, then makes the audience *feel and understand* a problem, proposes a credible solution, future-paces the outcome, and ends with a specific, low-friction call to action.',
+  help: 'Provide the audience, the problem/need, and your proposed solution. Select a Visualization mode (positive/negative/contrast), channel and length, and specify the exact Action you want. The model will generate a structured message with ethical, audience-aware language and friction-reducing details.',
+  fields: [
+    {
+      key: 'personas',
+      label: 'Audience / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who are you persuading? Drives tone, examples, and cultural references.',
+      ph: 'Healthcare donors; City council staffer; Busy parent; Field technicians'
+    },
+    {
+      key: 'channel',
+      label: 'Primary delivery channel',
+      type: 'select',
+      options: ['live speech','webinar','landing page','email','short video script (≤60s)','long video script (2–5 min)','social post thread'],
+      desc: 'We will tailor structure, sentence length, and pacing to this channel.',
+      ph: 'live speech'
+    },
+    {
+      key: 'length',
+      label: 'Target length / duration',
+      type: 'select',
+      options: ['60 seconds','3 minutes','5 minutes','~300 words','~600 words'],
+      desc: 'Controls depth per step and verbosity.',
+      ph: '3 minutes'
+    },
+    {
+      key: 'attention',
+      label: 'Attention (hook)',
+      type: 'textarea',
+      desc: 'Opening device: story, startling fact, question, or vivid image tied to audience values.',
+      ph: '“Last winter, 1 in 6 local families lost heat at least once.”'
+    },
+    {
+      key: 'need_points',
+      label: 'Need — proof points (one per line)',
+      type: 'textarea',
+      desc: 'Evidence that a real, relevant problem exists (data, anecdotes, stakes).',
+      ph: 'Energy shutoffs increased 22%\nKids miss school from cold-related illness\nEnergy debt traps families'
+    },
+    {
+      key: 'need_motivation',
+      label: 'Underlying motivations (non-hierarchical)',
+      type: 'select',
+      options: ['safety & stability','belonging & community','esteem & status','autonomy & mastery','purpose & legacy','other'],
+      desc: 'What human motives this problem triggers; used to heighten salience.',
+      ph: 'safety & stability'
+    },
+    {
+      key: 'solution',
+      label: 'Satisfaction — your solution',
+      type: 'textarea',
+      desc: 'What exactly should be done; include mechanism-of-action (how it fixes each need point).',
+      ph: 'Warmth Fund covers the arrears gap; auto-enrollment via utility partners; <5% admin overhead'
+    },
+    {
+      key: 'objections',
+      label: 'Likely objections & pre-buttals (one per line)',
+      type: 'textarea',
+      desc: 'Top 3–5 concerns and concise responses.',
+      ph: '“Overhead is wasteful” → independent audit under 5%\n“People will abuse it” → eligibility checks monthly'
+    },
+    {
+      key: 'credibility',
+      label: 'Ethos / credibility',
+      type: 'textarea',
+      desc: 'Why you/this solution is trustworthy (experience, partners, results, certifications).',
+      ph: 'Partnered with City Housing Office; audited by Smith & Co.; 2,300 families helped last winter'
+    },
+    {
+      key: 'visualization_mode',
+      label: 'Visualization mode',
+      type: 'select',
+      options: ['positive (future if we act)','negative (future if we don’t)','contrast (negative then positive)'],
+      desc: 'Controls the future-pacing scene in step 4.',
+      ph: 'contrast (negative then positive)'
+    },
+    {
+      key: 'visual_details',
+      label: 'Visualization details (sensory cues, characters, setting)',
+      type: 'textarea',
+      desc: 'Images/sounds/emotions to make the future concrete; keep respectful and specific.',
+      ph: 'A warm kitchen at 6am; kids doing homework at the table; quiet furnace hum'
+    },
+    {
+      key: 'cta',
+      label: 'Action — call-to-action',
+      type: 'textarea',
+      desc: 'One specific action: who should do what, where, and when.',
+      ph: 'Scan the QR code and pledge $25/month before Friday at 6pm'
+    },
+    {
+      key: 'friction_removers',
+      label: 'Friction removers',
+      type: 'textarea',
+      desc: 'Make acting easy: links, QR, phone script, calendar link, default amounts.',
+      ph: 'QR code; one-click Apple/Google Pay; prefilled $25; calendar reminder'
+    },
+    {
+      key: 'safeguards',
+      label: 'Ethical safeguards / alternatives',
+      type: 'textarea',
+      desc: 'Disclosure, consent, opt-out, alternative actions—avoid coercion and fear-only appeals.',
+      ph: 'Provide hotline for questions; suggest non-monetary volunteering alternative'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias & blind-spot checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Cognitive or cultural biases to monitor (sampling, confirmation, fear appeal overuse, WEIRD framing).',
+      ph: 'confirmation bias; fear appeal escalation; WEIRD examples'
+    },
+    {
+      key: 'metrics',
+      label: 'Success metrics & measurement window',
+      type: 'textarea',
+      desc: 'Define how you’ll know the CTA worked.',
+      ph: 'Pledges: 200 by Friday; conversion ≥ 8%; unsubscribe rate < 0.5%'
+    },
+    {
+      key: 'localization',
+      label: 'Localization & inclusion notes (optional)',
+      type: 'textarea',
+      desc: 'Language choices, reading level, cultural references, accessibility format needs.',
+      ph: 'US Spanish version; 6th-grade reading level; alt text for images; captions for video'
+    }
+  ],
+  template: (args) => {
+    const {
+      personas, channel, length, attention, need_points, need_motivation,
+      solution, objections, credibility, visualization_mode, visual_details,
+      cta, friction_removers, safeguards, bias_checks, metrics, localization,
+      ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const list = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
+
+    // Guidance blocks
+    const channelGuide = channel ? `Channel: ${channel} — we will match pacing, sentence length, and structure to this medium.` : null;
+    const lengthGuide = length ? `Target length: ${length} — adjust depth per step accordingly.` : null;
+
+    const visGuide = (() => {
+      const base = visual_details ? `Use these details: ${visual_details}` : 'Use vivid but respectful sensory details.';
+      switch ((visualization_mode || '').toLowerCase()) {
+        case 'positive (future if we act)':
+          return `Visualization (Positive): Show the world *with* the solution in place—benefits realized, harms reduced. ${base}`;
+        case 'negative (future if we don’t)':
+          return `Visualization (Negative): Show the credible cost of inaction—consequences if we fail to act. Avoid sensationalism. ${base}`;
+        case 'contrast (negative then positive)':
+          return `Visualization (Contrast): Briefly paint the negative path (if we do nothing), then flip to the positive path (if we act). ${base}`;
+        default:
+          return 'Visualization: Choose a mode (positive / negative / contrast) and future-pace respectfully.';
+      }
+    })();
+
+    const ethics = [
+      safeguards && `Ethical safeguards: ${safeguards}`,
+      bias_checks && (Array.isArray(bias_checks)
+        ? 'Bias checks:\n' + bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n')
+        : `Bias checks:\n${bias_checks}`)
+    ].filter(Boolean).join('\n');
+
+    return [
+      'Use Monroe’s Motivated Sequence to craft a persuasive, ethical message.',
       ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
       style && `Style: ${style}`,
       tone && `Tone: ${tone}`,
-      attention && ('Attention:\n' + attention),
-      audience_need && ('Need:\n' + audience_need),
-      solution && (`Satisfaction (Solution): ${solution}`),
-      'Visualization: <the model will describe outcomes with the solution vs. without it>',
-      cta && (`Action: ${cta}`),
-      'Output:\n1) Attention\n2) Need\n3) Solution\n4) Visualization\n5) Action'
-    ].filter(Boolean).join('\n')
-  },
+      personas && (Array.isArray(personas)
+        ? 'Audience / personas:\n' + personas.map((p,i)=>`${i+1}. ${p}`).join('\n')
+        : list('Audience / personas:', personas)),
+      channelGuide,
+      lengthGuide,
+      localization && `Localization & inclusion: ${localization}`,
 
+      attention && `\nAttention (Hook):\n${attention}`,
+
+      need_points && `\nNeed (Problem & Stakes):\n${toLines(need_points).map((x,i)=>`${i+1}. ${x}`).join('\n')}`,
+      need_motivation && `Underlying motivations: ${need_motivation}`,
+
+      solution && `\nSatisfaction (Solution & Mechanism):\n${solution}`,
+      objections && `Likely objections & pre-buttals:\n${toLines(objections).map((x,i)=>`${i+1}. ${x}`).join('\n')}`,
+      credibility && `Credibility (Ethos):\n${credibility}`,
+
+      `\n${visGuide}`,
+
+      cta && `\nAction (Single, Concrete CTA):\n${cta}`,
+      friction_removers && `Friction removers:\n${friction_removers}`,
+
+      metrics && `\nSuccess metrics:\n${metrics}`,
+      ethics && `\n${ethics}`,
+
+      '\nOutput:',
+      '1) A channel-appropriate script/text following A→N→S→V→A.',
+      '2) A 1–2 sentence “Because → Therefore” summary.',
+      '3) Optional variant: swap Visualization mode (positive/negative/contrast) for A/B testing.',
+      '4) Compliance note: cite data sources inline or in footnotes; avoid manipulative claims.'
+    ].filter(Boolean).join('\n');
+  }
+},
 {
   id:'ooda_loop',
   slug:'ooda-loop',
@@ -6077,42 +6259,218 @@ boosters: [
 },
 
   {
-    id:'kepner_tregoe',
-    slug:'kepner-tregoe-psdm',
-    label:'Kepner–Tregoe (Situation–Problem–Decision–Potential Problem)',
-    kind:'framework',
-    categories:['decision','quality','operations'],
-    tags:[
-      'type:framework','topic:psdm','phase:plan','level:intermediate',
-      'use:option-selection','use:risk-management'
-    ],
-    use_cases:[
-      'separate problem analysis from decision analysis',
-      'pick criteria and evaluate alternatives',
-      'anticipate downstream risks'
-    ],
-    boosters:[
-      'Weight criteria explicitly; show score math simply.',
-      'List preventive and contingent actions for top risks.'
-    ],
-    definition:'A structured sequence for situation appraisal, problem analysis, decision analysis, and potential-problem analysis.',
-    help:'Fill each stage concisely; end with a decision record.',
-    fields:[
-      { key:'situation', label:'Situation appraisal', type:'textarea' },
-      { key:'problem',   label:'Problem analysis (is/is not, specs)', type:'textarea' },
-      { key:'decision',  label:'Decision analysis (criteria, options)', type:'textarea' },
-      { key:'potential', label:'Potential-problem analysis (risks)', type:'textarea' }
-    ],
-    template:({situation,problem,decision,potential,ctx})=>[
-      'Apply Kepner–Tregoe.',
+  id: 'kepner_tregoe',
+  slug: 'kepner-tregoe-psdm',
+  label: 'Kepner–Tregoe (Situation · Problem · Decision · Potential Problem)',
+  kind: 'framework',
+  categories: ['decision', 'quality', 'operations', 'risk'],
+  tags: [
+    'type:framework','topic:psdm','topic:root-cause','topic:criteria-weighting','topic:risk',
+    'phase:analyze','phase:decide','phase:plan','level:intermediate',
+    'use:option-selection','use:incident-response','use:risk-management','use:change-approval','use:vendor-evaluation'
+  ],
+  use_cases: [
+    'separate problem analysis from decision analysis',
+    'choose among alternatives with explicit must/want criteria',
+    'stabilize incidents and find verified root causes',
+    'anticipate downstream risks and define prevention/contingency',
+    'produce an auditable decision record for stakeholders'
+  ],
+  boosters: [
+    'Timebox each track (SA/PA/DA/PPA) to avoid analysis paralysis; loop if stakes demand.',
+    'In PA, write an IS / IS-NOT spec for what, where, when, extent; hunt for distinctions & changes.',
+    'In DA, screen options with MUSTs first; score WANTs with weights (0–5 or 0–10), then check risks.',
+    'In PPA, for each potential problem, capture cause → preventive action → contingent action → trigger → owner.',
+    'Record data sources & assumptions; if weak, add a fast test to upgrade the evidence.',
+    'Assign owners and dates for every next step; end with a one-line decision record (Because → Therefore).'
+  ],
+  definition: 'A four-track critical thinking method: Situation Appraisal (prioritize and assign), Problem Analysis (verify root cause), Decision Analysis (select option via must/want criteria and risk), and Potential Problem Analysis (anticipate and mitigate implementation risks).',
+  help: 'Fill the four tracks succinctly. Keep facts separate from assumptions. Use MUST/WANT criteria and weighted scoring for decisions. Close with a decision record (choice, rationale, risks, next actions, owners, dates).',
+  fields: [
+    // People & context
+    {
+      key: 'audience',
+      label: 'Stakeholders / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who cares about this outcome? Include approvers, users, operators.',
+      ph: 'e.g., On-call SRE; Product Owner; Compliance Lead; Customer Success Manager'
+    },
+    { key: 'context', label: 'Context / scope', type: 'textarea',
+      desc: 'Boundaries, constraints, environment, definition of done.',
+      ph: 'e.g., Checkout latency incident in EU region; scope: API v2 only; DoD: p95<500ms for 24h'
+    },
+
+    // Situation Appraisal (SA)
+    { key: 'sa_concerns', label: 'SA — List concerns (one per line)', type: 'textarea',
+      desc: 'Issues, decisions, plans, risks to consider.',
+      ph: 'Latency spike after release\nCustomer comms plan\nRollback decision' },
+    { key: 'sa_priorities', label: 'SA — Priority rationale', type: 'text',
+      desc: 'Impact × urgency × trend; what’s first and why.',
+      ph: '1) Latency spike (high impact, rising); 2) Rollback; 3) Comms' },
+    { key: 'sa_next_steps', label: 'SA — Owners & next steps', type: 'textarea',
+      desc: 'Who does what by when.',
+      ph: 'Infra: assess DB index by 15:00\nComms: status page update now' },
+
+    // Problem Analysis (PA)
+    { key: 'pa_problem', label: 'PA — Problem statement', type: 'text',
+      desc: 'Single-sentence description of the symptom.',
+      ph: 'p95 latency degraded to 2.5s in EU after 14:55' },
+    { key: 'pa_is_is_not', label: 'PA — IS / IS-NOT spec (what/where/when/extent)', type: 'textarea',
+      desc: 'Contrast to isolate the cause; include patterns and exclusions.',
+      ph: 'WHAT: API v2 IS slow; API v1 IS-NOT\nWHERE: EU IS; US IS-NOT\nWHEN: after 14:55 IS; before 14:55 IS-NOT\nEXTENT: p95=2.5s IS; p99 error rate stable IS-NOT' },
+    { key: 'pa_distinctions', label: 'PA — Distinctions & changes', type: 'textarea',
+      desc: 'What is different about the IS vs IS-NOT cases; what changed near onset.',
+      ph: 'EU DB index rolled out at 14:40; connection pool size reduced in EU only' },
+    { key: 'pa_causes', label: 'PA — Possible causes (one per line)', type: 'textarea',
+      desc: 'Hypotheses that explain ALL facts in IS/IS-NOT.',
+      ph: 'Mis-tuned DB index\nHot code path calling N+1 queries' },
+    { key: 'pa_tests', label: 'PA — Tests/verification', type: 'textarea',
+      desc: 'How you will confirm the true cause quickly.',
+      ph: 'Rollback index in EU; compare latency; trace API v2 for N+1' },
+
+    // Decision Analysis (DA)
+    { key: 'da_statement', label: 'DA — Decision statement', type: 'text',
+      desc: 'Do what, about what, by when.',
+      ph: 'Choose remediation for EU latency by 17:00' },
+    { key: 'da_musts', label: 'DA — MUST criteria (one per line)', type: 'textarea',
+      desc: 'Non-negotiables; options failing any must are eliminated.',
+      ph: 'No data loss\nNo additional downtime\nCompliant with change policy' },
+    { key: 'da_wants', label: 'DA — WANT criteria + weights (one per line)', type: 'textarea',
+      desc: 'Desirables with weights in ( ), e.g., 0–5 scale.',
+      ph: 'Speed of recovery (5)\nLow user impact (4)\nLow effort (2)' },
+    { key: 'da_options', label: 'DA — Options (one per line)', type: 'textarea',
+      desc: 'Feasible alternatives to choose among.',
+      ph: 'Revert index now\nRetune index live\nHotfix code path\nTraffic shift to US' },
+    { key: 'da_scoring', label: 'DA — Scoring notes', type: 'textarea',
+      desc: 'Which options pass MUSTs; WANT scores & totals; tie-break logic.',
+      ph: 'Revert passes MUSTs; total WANT score = 34 > others; tie-break: risk lower' },
+    { key: 'da_risks', label: 'DA — Adverse consequences / mitigations', type: 'textarea',
+      desc: 'Identify downside of selected option and how you’ll reduce it.',
+      ph: 'Overnight job delay → increase batch window; comms to merchants' },
+
+    // Potential Problem Analysis (PPA)
+    { key: 'ppa_potential', label: 'PPA — Potential problems (one per line)', type: 'textarea',
+      desc: 'What could go wrong with the chosen plan.',
+      ph: 'Rollback fails\nJob overrun\nCustomer confusion' },
+    { key: 'ppa_causes', label: 'PPA — Likely causes (one per line)', type: 'textarea',
+      desc: 'What would make each problem occur.',
+      ph: 'Replica lag\nCron overlap\nAmbiguous status page copy' },
+    { key: 'ppa_preventive', label: 'PPA — Preventive actions', type: 'textarea',
+      desc: 'Reduce the likelihood of each problem.',
+      ph: 'Verify replica health; lock cron windows; rewrite status text' },
+    { key: 'ppa_contingent', label: 'PPA — Contingent actions', type: 'textarea',
+      desc: 'If it happens, what you’ll do.',
+      ph: 'Abort rollback and fail forward; manual job pause; targeted email' },
+    { key: 'ppa_triggers', label: 'PPA — Triggers / early warnings', type: 'textarea',
+      desc: 'Signals that should fire the contingent action.',
+      ph: 'Replica lag > 150ms\nBatch runtime > 30m\nCSAT dip > 10%' },
+    { key: 'ppa_owners', label: 'PPA — Owners & timing', type: 'textarea',
+      desc: 'Who owns each preventive/contingent action and when.',
+      ph: 'DBA: replica checks 16:30\nComms: draft update by 16:15' },
+
+    // Evidence, bias & governance
+    { key: 'data_sources', label: 'Evidence & data sources', type: 'textarea',
+      desc: 'Where facts came from; quality and freshness of data.',
+      ph: 'APM traces; DB metrics; release log; customer tickets (last 2h)' },
+    { key: 'assumptions', label: 'Assumptions (to validate)', type: 'textarea',
+      desc: 'Assumptions still in play; plan a quick test for risky ones.',
+      ph: 'Index change caused latency → test by rollback' },
+    {
+      key: 'bias_checks',
+      label: 'Bias / culture / safety checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Specific biases or risks to watch (confirmation, sunk cost, groupthink, etc.).',
+      ph: 'e.g., Confirmation bias; Authority bias; Local maxima bias; HIPPO; Overconfidence'
+    },
+
+    // Decision record & follow-up
+    { key: 'chosen_option', label: 'Decision record — chosen option', type: 'text',
+      desc: 'Which option you selected.',
+      ph: 'Revert index now; schedule re-index off-peak' },
+    { key: 'rationale', label: 'Decision record — rationale (Because → Therefore)', type: 'textarea',
+      desc: 'Why this choice best meets MUST/WANT criteria and handles risk.',
+      ph: 'Because it restores p95 fastest and meets MUSTs with lowest risk, therefore we revert now and re-index later.' },
+    { key: 'next_actions', label: 'Next actions & owners', type: 'textarea',
+      desc: 'Concrete steps to execute the decision.',
+      ph: 'DBA: revert at 16:45\nSRE: monitor p95\nComms: status page + email\nOwner: Ops lead' },
+    { key: 'review', label: 'Review date / success metrics', type: 'text',
+      desc: 'When and how you’ll assess success.',
+      ph: 'Post-incident review tomorrow 10:00; success = p95<500ms for 24h; no error spikes' }
+  ],
+  template: (args) => {
+    const {
+      audience, context,
+      sa_concerns, sa_priorities, sa_next_steps,
+      pa_problem, pa_is_is_not, pa_distinctions, pa_causes, pa_tests,
+      da_statement, da_musts, da_wants, da_options, da_scoring, da_risks,
+      ppa_potential, ppa_causes, ppa_preventive, ppa_contingent, ppa_triggers, ppa_owners,
+      data_sources, assumptions, bias_checks,
+      chosen_option, rationale, next_actions, review,
+      ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listBlock = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
+
+    const out = [
+      'Apply Kepner–Tregoe (SA → PA → DA → PPA).',
       ctx && `Context: ${ctx}`,
-      situation && `Situation:\n${situation}`,
-      problem && `Problem analysis:\n${problem}`,
-      decision && `Decision analysis:\n${decision}`,
-      potential && `Potential-problem analysis:\n${potential}`,
-      'Close with: chosen option, justification, and next actions.'
-    ].filter(Boolean).join('\n')
-  },
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      audience && ('Stakeholders / personas:\n' + (Array.isArray(audience) ? audience.map((p,i)=>`${i+1}. ${p}`).join('\n') : String(audience))),
+      context && `Scope & context:\n${context}`,
+
+      // SA
+      listBlock('Situation Appraisal — Concerns:', sa_concerns),
+      sa_priorities && `SA — Priority rationale: ${sa_priorities}`,
+      listBlock('SA — Owners & next steps:', sa_next_steps),
+
+      // PA
+      pa_problem && `Problem Analysis — Problem statement: ${pa_problem}`,
+      pa_is_is_not && `PA — IS / IS-NOT spec:\n${pa_is_is_not}`,
+      listBlock('PA — Distinctions & changes:', pa_distinctions),
+      listBlock('PA — Possible causes:', pa_causes),
+      listBlock('PA — Tests / verification:', pa_tests),
+
+      // DA
+      da_statement && `Decision Analysis — Decision statement: ${da_statement}`,
+      listBlock('DA — MUST criteria:', da_musts),
+      listBlock('DA — WANT criteria + weights:', da_wants),
+      listBlock('DA — Options:', da_options),
+      da_scoring && `DA — Scoring notes:\n${da_scoring}`,
+      listBlock('DA — Adverse consequences / mitigations:', da_risks),
+
+      // PPA
+      listBlock('PPA — Potential problems:', ppa_potential),
+      listBlock('PPA — Likely causes:', ppa_causes),
+      listBlock('PPA — Preventive actions:', ppa_preventive),
+      listBlock('PPA — Contingent actions:', ppa_contingent),
+      listBlock('PPA — Triggers / early warnings:', ppa_triggers),
+      listBlock('PPA — Owners & timing:', ppa_owners),
+
+      // Evidence & bias
+      data_sources && `Evidence & data sources:\n${data_sources}`,
+      assumptions && `Assumptions (to validate):\n${assumptions}`,
+      bias_checks && ('Bias / culture / safety checks:\n' + (Array.isArray(bias_checks) ? bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n') : String(bias_checks))),
+
+      // Decision record
+      chosen_option && `Decision record — chosen option: ${chosen_option}`,
+      rationale && `Decision record — rationale:\n${rationale}`,
+      listBlock('Next actions & owners:', next_actions),
+      review && `Review date / success metrics: ${review}`,
+
+      'Output:\n1) SA queue with owners & priorities\n2) PA cause verified by IS/IS-NOT + tests\n3) DA choice with MUST/WANT math + risk plan\n4) PPA register (preventive, contingent, triggers, owners)\n5) Decision record & review checkpoint'
+    ];
+
+    return out.filter(Boolean).join('\n');
+  }
+},
 
 {
   id: 'kipling_5w1h',
@@ -6192,130 +6550,741 @@ boosters: [
   ].filter(Boolean).join('\n')
 },
 
-  {
-    id:'maslaha_public_interest',
-    slug:'maslaha-public-interest-reasoning',
-    label:'Maṣlaḥa — Public Interest Reasoning (Islamic Ethics)',
-    kind:'framework',
-    categories:['ethics','governance','cultural frameworks'],
-    tags:[
-      'type:framework','topic:public-interest','topic:harm-benefit','phase:plan','level:advanced',
-      'use:policy','use:governance','use:risk-balancing'
-    ],
-    use_cases:[
-      'weigh harms and benefits to the public',
-      'craft proportionate, transparent justifications',
-      'design exceptions and safeguards'
-    ],
-    boosters:[
-      'Show explicit harm/benefit tradeoffs and the least-harm alternative.',
-      'Document conditions/limits and a review cadence.'
-    ],
-    definition:'A normative lens that prioritizes public benefit and harm minimization with transparent justification.',
-    help:'State the issue, stakeholders, harms/benefits, precedents, and your proportional ruling.',
-    fields:[
-      { key:'issue',      label:'Issue/decision', type:'textarea' },
-      { key:'stakeholders',label:'Stakeholders (one per line)', type:'textarea' },
-      { key:'harms',      label:'Harms/risks', type:'textarea' },
-      { key:'benefits',   label:'Benefits', type:'textarea' },
-      { key:'precedent',  label:'Precedents/principles', type:'textarea' },
-      { key:'ruling',     label:'Proportional ruling/decision', type:'textarea' }
-    ],
-    template:({issue,stakeholders,harms,benefits,precedent,ruling,ctx})=>[
-      'Apply Maṣlaḥa (public interest reasoning).',
-      ctx && `Context: ${ctx}`,
-      issue && `Issue:\n${issue}`,
-      stakeholders && ('Stakeholders:\n' + String(stakeholders).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      harms && `Harms/risks:\n${harms}`,
-      benefits && `Benefits:\n${benefits}`,
-      precedent && `Precedents/principles:\n${precedent}`,
-      ruling && `Proportional ruling:\n${ruling}`,
-      'Include monitoring plan and appeal/override criteria.'
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'maslaha_public_interest',
+  slug: 'maslaha-public-interest-reasoning',
+  label: 'Maṣlaḥa — Public Interest Reasoning (Islamic Ethics)',
+  kind: 'framework',
+  categories: ['ethics', 'governance', 'cultural frameworks', 'policy'],
+  tags: [
+    'type:framework','topic:public-interest','topic:maqasid','topic:harm-benefit',
+    'topic:proportionality','topic:legal-maxims','phase:plan','phase:review','level:advanced',
+    'use:policy','use:governance','use:risk-balancing','use:equity-impact','use:exception-handling'
+  ],
+  use_cases: [
+    'weigh public harms/benefits for a policy or product decision',
+    'craft proportionate, transparent justifications with safeguards and sunset reviews',
+    'design culturally aware exceptions and appeal processes',
+    'align options with the maqāṣid al-sharīʿa (objectives) and legal maxims',
+    'bridge Western risk–benefit methods with Middle Eastern ethical reasoning'
+  ],
+  boosters: [
+    'Rank affected goods by tier: ḍarūrī (necessity) > ḥājī (need) > taḥsīnī (refinement).',
+    'Screen options with legal maxims (no harm; hardship brings ease; custom is authoritative) before scoring.',
+    'Show an explicit lesser-harm choice when no harmless option exists; document conditions/limits.',
+    'Quantify severity × likelihood for harms/benefits; note uncertainty and evidence strength.',
+    'State precedents and texts that support or constrain your choice; avoid claims of benefit without proof.',
+    'Add equity checks for vulnerable groups; define exceptions, appeal paths, and review cadence.',
+    'Write a one-line public rationale (Because → Therefore) and a decision rule for future reevaluation.'
+  ],
+  definition: 'A public-interest reasoning lens from Islamic legal ethics that prioritizes welfare and harm-minimization within the objectives of the law (maqāṣid). It balances evidence, proportionality, custom, and maxims to select the option that best secures essential goods while averting greater harms.',
+  help: '1) State the issue, scope, and stakeholders (personas). 2) Identify maqāṣid impacted and rank by necessity (ḍarūrī/ḥājī/taḥsīnī). 3) List options; screen out those that breach decisive constraints or maxims. 4) For remaining options, compare harms/benefits with severity × likelihood and equity impacts. 5) Propose a proportionate ruling with conditions, safeguards, and a review date. 6) Record precedent, evidence, biases, and a public-facing rationale. Include Western-bridging notes when needed for non-specialist audiences.',
+  fields: [
+    {
+      key: 'issue',
+      label: 'Issue / decision',
+      type: 'textarea',
+      desc: 'What must be decided and why it matters now.',
+      ph: 'e.g., Should we enable biometric login for low-end Android devices to reduce account takeovers?'
+    },
+    {
+      key: 'stakeholders',
+      label: 'Stakeholders / personas (one per line or typeahead)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'People/groups affected (users, operators, neighbors, regulators, vulnerable groups).',
+      ph: 'Frontline delivery workers\nLow-literacy users\nSecurity team\nLocal regulators'
+    },
+    {
+      key: 'context',
+      label: 'Context & scope',
+      type: 'textarea',
+      desc: 'Locale, custom (ʿurf), legal environment, constraints, time horizon.',
+      ph: 'MENA markets; high SIM swap fraud; budget-limited; Ramadan peak hours'
+    },
+    {
+      key: 'maqasid',
+      label: 'Maqāṣid impacted (objectives)',
+      type: 'textarea',
+      desc: 'Which objectives are at stake (e.g., life, intellect, property, family/lineage, religion) and how.',
+      ph: 'Property (protect users’ funds); Intellect (avoid dark patterns); Life (safety for delivery riders)'
+    },
+    {
+      key: 'tiering',
+      label: 'Priority tier (ḍarūrī / ḥājī / taḥsīnī)',
+      type: 'text',
+      desc: 'Rank the dominant objective(s) by necessity level.',
+      ph: 'ḍarūrī (essential) for property protection; ḥājī for convenience'
+    },
+    {
+      key: 'options',
+      label: 'Options under consideration (one per line)',
+      type: 'textarea',
+      desc: 'Feasible alternatives, including “do nothing.”',
+      ph: 'A) Enable biometrics for all\nB) Biometrics opt-in with education\nC) SMS OTP only (status quo)\nD) Hardware key pilot for high-risk users'
+    },
+    {
+      key: 'constraints',
+      label: 'Constraints / red lines',
+      type: 'textarea',
+      desc: 'Non-negotiables (legal, security, accessibility, decisive texts/principles).',
+      ph: 'No coerced biometrics; must pass accessibility; data storage limits; avoid deception'
+    },
+    {
+      key: 'maxims',
+      label: 'Legal maxims screen',
+      type: 'textarea',
+      desc: 'Apply relevant maxims (no harm; hardship begets facility; custom is authoritative; certainty is not overruled by doubt; actions are by intentions). Note any option eliminated.',
+      ph: 'Option A conflicts with “no harm” for survivors of domestic abuse (coercion risk) → eliminate A'
+    },
+    {
+      key: 'harms',
+      label: 'Harms / risks (severity × likelihood)',
+      type: 'textarea',
+      desc: 'List foreseeable harms per option; rate 1–5 for severity and likelihood; mark uncertainty.',
+      ph: 'B: Coerced unlock — Sev 4, Lik 2 (uncertain); Data breach impact — Sev 5, Lik 1'
+    },
+    {
+      key: 'benefits',
+      label: 'Benefits (magnitude × likelihood)',
+      type: 'textarea',
+      desc: 'List benefits per option; rate 1–5 for magnitude and likelihood; mark uncertainty.',
+      ph: 'B: Reduced ATO — Mag 4, Lik 3; Faster login — Mag 3, Lik 4'
+    },
+    {
+      key: 'equity',
+      label: 'Equity & vulnerable groups',
+      type: 'textarea',
+      desc: 'Who bears the harms? Who gains the benefits? Accessibility and inclusion considerations.',
+      ph: 'Blind users; feature phones; refugees without stable IDs'
+    },
+    {
+      key: 'precedent',
+      label: 'Precedents / principles / evidence',
+      type: 'textarea',
+      desc: 'Texts, policies, case analogies, empirical data supporting or constraining action.',
+      ph: 'Consumer protection regs; prior rulings on coercion; fraud analytics report; industry codes'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias & ethical dilemma checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'List cognitive/social biases, ethical dilemmas, or cultural blind spots to watch.',
+      ph: 'Confirmation bias; WEIRD sampling; urban bias; stigma risk for certain names/accents'
+    },
+    {
+      key: 'proportionality',
+      label: 'Proportionality & lesser-harm reasoning',
+      type: 'textarea',
+      desc: 'Explain why the chosen option secures greater goods or averts greater harms with least side-effects.',
+      ph: 'B secures property (ḍarūrī) with lower coercion risk than A; conditions mitigate residual risk'
+    },
+    {
+      key: 'safeguards',
+      label: 'Safeguards / conditions / exceptions',
+      type: 'textarea',
+      desc: 'Preventive measures, carve-outs, consent requirements, rate limits, transparency notices.',
+      ph: 'Opt-in + informed consent; easy opt-out; “panic PIN”; rate-limit unlock attempts; audit logs'
+    },
+    {
+      key: 'ruling',
+      label: 'Ruling / decision (Because → Therefore)',
+      type: 'textarea',
+      desc: 'Concise, public-facing conclusion linking evidence, maqāṣid, and proportionality.',
+      ph: 'Because B secures essential property interests with minimal harm and passes maxims, therefore adopt B with safeguards'
+    },
+    {
+      key: 'monitoring',
+      label: 'Monitoring plan & metrics',
+      type: 'textarea',
+      desc: 'What to track, early-warning triggers, who monitors, cadence.',
+      ph: 'Weekly fraud rate; coercion reports; accessibility complaints; trigger: +20% coercion reports'
+    },
+    {
+      key: 'appeals',
+      label: 'Appeal / override & review cadence',
+      type: 'textarea',
+      desc: 'How affected parties can contest; scheduled review and sunset.',
+      ph: 'User appeal channel; external ombud review; 90-day sunset unless renewed'
+    },
+    {
+      key: 'western_bridge',
+      label: 'Bridge note for Western audiences (optional)',
+      type: 'textarea',
+      desc: 'One-paragraph explanation drawing parallels (e.g., proportionality, public interest tests) without erasing differences.',
+      ph: 'This balances goods much like proportionality analysis in constitutional law but is bounded by maqāṣid and legal maxims'
+    }
+  ],
+  template: (args) => {
+    const {
+      issue, stakeholders, context, maqasid, tiering, options, constraints, maxims,
+      harms, benefits, equity, precedent, bias_checks, proportionality,
+      safeguards, ruling, monitoring, appeals, western_bridge, ctx, style, tone
+    } = args;
 
-  {
-    id:'musyawarah_mufakat',
-    slug:'musyawarah-mufakat-indonesia',
-    label:'Musyawarah & Mufakat — Deliberation to Consensus (Indonesia)',
-    kind:'framework',
-    categories:['decision','facilitation','cultural frameworks'],
-    tags:[
-      'type:framework','topic:consensus','topic:deliberation','phase:decide','level:intermediate',
-      'use:group-decisions','use:policy','use:community'
-    ],
-    use_cases:[
-      'facilitate inclusive deliberation',
-      'surface objections and modify options',
-      'craft a consensus statement'
-    ],
-    boosters:[
-      'Require an objection-handling pass before closing.',
-      'Record the consensus statement and follow-up tasks.'
-    ],
-    definition:'A culturally grounded process emphasizing inclusive deliberation (musyawarah) culminating in consensus (mufakat).',
-    help:'List participants, options, concerns; co-author a consensus statement.',
-    fields:[
-      { key:'issue',       label:'Issue/decision', type:'textarea' },
-      { key:'participants',label:'Participants (one per line)', type:'textarea' },
-      { key:'options',     label:'Options (one per line)', type:'textarea' },
-      { key:'concerns',    label:'Concerns/objections (one per line)', type:'textarea' },
-      { key:'consensus',   label:'Consensus statement (draft)', type:'textarea' },
-      { key:'follow_up',   label:'Follow-up actions & owners', type:'textarea' }
-    ],
-    template:({issue,participants,options,concerns,consensus,follow_up,ctx})=>[
-      'Run Musyawarah→Mufakat.',
-      ctx && `Context: ${ctx}`,
-      issue && `Issue:\n${issue}`,
-      participants && ('Participants:\n' + String(participants).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      options && ('Options:\n' + String(options).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      concerns && ('Concerns:\n' + String(concerns).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      consensus && `Consensus statement (draft):\n${consensus}`,
-      follow_up && `Follow-up:\n${follow_up}`,
-      'Output: final consensus text + action list with owners/dates.'
-    ].filter(Boolean).join('\n')
-  },
+    const toLines = (s) => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const list = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
 
-  {
-    id:'naive_dialecticism',
-    slug:'naive-dialecticism-east-asia',
-    label:'Naïve Dialecticism (East Asian Holistic Reasoning)',
-    kind:'framework',
-    categories:['reasoning','philosophy','cultural frameworks'],
-    tags:[
-      'type:framework','topic:both-and','topic:contradiction','phase:explore','level:advanced',
-      'use:paradox-framing','use:change-over-time'
-    ],
-    use_cases:[
-      'embrace change and contradiction in planning',
-      'craft both/and integrations',
-      'generate harmony-seeking adjustments'
-    ],
-    boosters:[
-      'Write an explicit “both can be true” statement for the core tension.',
-      'Propose a small harmonizing step that reduces conflict.'
-    ],
-    definition:'A belief system that expects change, tolerates contradiction, and reasons holistically across context.',
-    help:'Name poles, context factors, tensions, and harmony moves.',
-    fields:[
-      { key:'poles',     label:'Opposed poles (A vs. B)', type:'textarea', ph:'Efficiency vs. Quality…' },
-      { key:'context',   label:'Context factors (one per line)', type:'textarea', ph:'Time horizon… Stakeholders…' },
-      { key:'tensions',  label:'Areas of tension', type:'textarea' },
-      { key:'harmony',   label:'Harmony-seeking moves', type:'textarea' },
-      { key:'both_and',  label:'Both-and statement', type:'textarea' }
-    ],
-    template:({poles,context,tensions,harmony,both_and,ctx})=>[
-      'Apply Naïve Dialecticism.',
+    return [
+      'Apply Maṣlaḥa (public-interest reasoning) with maqāṣid & maxims.',
       ctx && `Context: ${ctx}`,
-      poles && `Poles:\n${poles}`,
-      context && ('Context factors:\n' + String(context).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      tensions && `Tensions:\n${tensions}`,
-      harmony && `Harmony moves:\n${harmony}`,
-      both_and && `Both-and statement:\n${both_and}`,
-      'End with a “change over time” note and a follow-up review date.'
-    ].filter(Boolean).join('\n')
-  },
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
 
+      issue && `Issue / decision:\n${issue}`,
+      stakeholders && (Array.isArray(stakeholders)
+        ? 'Stakeholders / personas:\n' + stakeholders.map((p,i)=>`${i+1}. ${p}`).join('\n')
+        : list('Stakeholders / personas:', stakeholders)),
+      context && `Context & scope:\n${context}`,
+
+      maqasid && `Maqāṣid impacted:\n${maqasid}`,
+      tiering && `Priority tier: ${tiering}`,
+
+      list('Options:', options),
+      constraints && `Constraints / red lines:\n${constraints}`,
+      maxims && `Legal maxims screen:\n${maxims}`,
+
+      harms && `Harms / risks (severity × likelihood):\n${harms}`,
+      benefits && `Benefits (magnitude × likelihood):\n${benefits}`,
+      equity && `Equity & vulnerable groups:\n${equity}`,
+
+      precedent && `Precedents / principles / evidence:\n${precedent}`,
+      bias_checks && (Array.isArray(bias_checks)
+        ? 'Bias & ethical dilemma checks:\n' + bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n')
+        : `Bias & ethical dilemma checks:\n${bias_checks}`),
+
+      proportionality && `Proportionality & lesser-harm reasoning:\n${proportionality}`,
+      safeguards && `Safeguards / conditions / exceptions:\n${safeguards}`,
+      ruling && `Ruling (Because → Therefore):\n${ruling}`,
+
+      monitoring && `Monitoring plan & metrics:\n${monitoring}`,
+      appeals && `Appeal / override & review cadence:\n${appeals}`,
+      western_bridge && `Bridge note (Western audience):\n${western_bridge}`,
+
+      'Output:\n1) Screened option set (maxims/constraints)\n2) Ranked harms/benefits with equity notes\n3) Proportionate ruling with safeguards\n4) Monitoring + appeal + review cadence\n5) Public-facing rationale (Because → Therefore)'
+    ].filter(Boolean).join('\n');
+  }
+},
+{
+  id: 'musyawarah_mufakat',
+  slug: 'musyawarah-mufakat-indonesia',
+  label: 'Musyawarah & Mufakat — Deliberation to Consensus (Indonesia)',
+  kind: 'framework',
+  categories: ['decision', 'facilitation', 'cultural frameworks', 'governance'],
+  tags: [
+    'type:framework','topic:consensus','topic:deliberation','topic:pancasila',
+    'phase:decide','phase:facilitate','level:intermediate',
+    'use:group-decisions','use:policy','use:community','use:participatory-planning'
+  ],
+  use_cases: [
+    'facilitate inclusive deliberation that leads to a legitimate consensus',
+    'surface objections, modify options, and document “can live with” agreements',
+    'run village/organizational forums (Musyawarah Desa, coalition meetings)',
+    'produce transparent decision records (minutes, consensus text, owners/dates)'
+  ],
+  boosters: [
+    'Representation first: confirm all materially affected groups are present or consulted before seeking consensus.',
+    'Use round-robin speaking and “steelman then respond.”',
+    'Require one explicit objection-handling pass before closing.',
+    'Consent test: “Can you live with option X if we add Y?”—seek explicit assent.',
+    'Publish notulen (minutes) + keputusan musyawarah (decision record) with owners/dates and review cadence.',
+    'Power checks: rotate facilitation; allow anonymous input; disclose criteria for accepting/rejecting proposals.',
+    'Cultural fit: honor adat and gotong royong while staying evidence-informed and accessible.'
+  ],
+  definition: 'A culturally grounded, consensus-first decision process: open deliberation (musyawarah) that seeks a mutually acceptable agreement (mufakat), prioritizing dignity, inclusion, and social cohesion over adversarial wins.',
+  help: 'Provide the issue, participants/personas, options, concerns, and consensus mode. The model will facilitate a musyawarah flow (air views → shape options → test consensus → document mufakat), including objection handling, safeguards, a clear decision record, and follow-up.',
+  fields: [
+    { key: 'issue', label: 'Issue / decision', type: 'textarea',
+      desc: 'What must be decided; scope and constraints.', ph: 'e.g., Priorities for next year’s community budget' },
+
+    { key: 'participants', label: 'Participants (names/roles; one per line)', type: 'textarea',
+      desc: 'List attendees or groups represented.', ph: 'Rina — youth lead\nPak Budi — neighborhood chair\nClinic nurse rep' },
+
+    { key: 'personas', label: 'Audience / personas (for inclusive language & examples)',
+      type: 'repeater', itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
+      desc: 'Segments that shape tone, examples, and materials.', ph: 'Urban poor households; Small traders; Disability advocates' },
+
+    { key: 'session_mode', label: 'Session mode', type: 'select',
+      options: [
+        'Musyawarah Desa (village assembly) — formal, broad participation, recorded minutes',
+        'Musrenbang-style planning forum — proposals ladder upward',
+        'Organizational/coalition meeting — internal governance with stakeholders'
+      ],
+      desc: 'Sets procedure, documentation, and escalation paths.',
+      ph: 'Musyawarah Desa (village assembly) — formal, broad participation, recorded minutes' },
+
+    /* NEW: English default + optional Bahasa elements */
+    { key: 'include_bahasa', label: 'Include Bahasa Indonesia terms & mini-glossary?', type: 'select',
+      options: [
+        'no (English only — default)',
+        'yes — include key terms (musyawarah, mufakat, gotong royong, adat) and a short glossary'
+      ],
+      desc: 'English is the default output. Choose “yes” if you want Indonesian terms preserved with brief definitions.',
+      ph: 'no (English only — default)'
+    },
+
+    { key: 'values', label: 'Guiding values / principles (optional)', type: 'textarea',
+      desc: 'E.g., Pancasila (especially sila ke-4), adat norms, equity, transparency.',
+      ph: 'Pancasila #4 (deliberation/representation); equity; transparency; respect' },
+
+    { key: 'evidence', label: 'Evidence & lived experience inputs', type: 'textarea',
+      desc: 'Key data points and community stories to consider.',
+      ph: 'Survey: 28% households face water outages; testimony from RT03 caregivers' },
+
+    { key: 'options', label: 'Options (one per line)', type: 'textarea',
+      desc: 'Candidate choices; can be adapted during musyawarah.',
+      ph: 'Prioritize clean water pumps\nUpgrade clinic night shift\nScholarships for vocational training' },
+
+    { key: 'criteria', label: 'Decision criteria', type: 'textarea',
+      desc: 'How options will be judged (fairness, cost, reach, urgency, feasibility).',
+      ph: 'Urgency; households helped; cost per household; long-term impact; feasibility this year' },
+
+    { key: 'concerns', label: 'Concerns / objections (one per line)', type: 'textarea',
+      desc: 'Known risks or conflicts to address in objection handling.',
+      ph: 'Elite capture; affordability; staffing limits; land-use disputes' },
+
+    { key: 'consensus_mode', label: 'Consensus mode', type: 'select',
+      options: [
+        'Mufakat (full consensus) — explicit assent from all present',
+        'Consent (no strong objection) — “can live with it” standard',
+        'Layered: seek mufakat, else consent with recorded reservations',
+        'Timebound: seek mufakat; if deadlocked, schedule revisit or pilot'
+      ],
+      desc: 'Defines how agreement is confirmed and what to do if deadlocked.',
+      ph: 'Layered: seek mufakat, else consent with recorded reservations' },
+
+    { key: 'fallback_protocol', label: 'Fallback protocol (if no consensus)', type: 'select',
+      options: [
+        'Revisit after info-gathering (set date & owner)',
+        'Pilot a limited option; review before scaling',
+        'Escalate to representative body / adat council',
+        'Supermajority vote (record minority opinion) — last resort'
+      ],
+      desc: 'Respectful path that preserves relationships and legitimacy.',
+      ph: 'Pilot a limited option; review before scaling' },
+
+    { key: 'inclusion_supports', label: 'Inclusion supports', type: 'textarea',
+      desc: 'Practical aids to participation (childcare, stipends, translation, accessibility).',
+      ph: 'Childcare; transport voucher; sign-language interpreter; large-print materials' },
+
+    { key: 'bias_checks', label: 'Bias / blind-spot checks',
+      type: 'repeater', itemType: 'typeahead', itemLabel: 'bias', autofill: 'bias->inline',
+      desc: 'Common risks: elite capture, gender silencing, urban bias, confirmation bias.',
+      ph: 'elite capture; gender dynamics; recency bias; tokenism' },
+
+    { key: 'consensus', label: 'Consensus statement (draft)', type: 'textarea',
+      desc: 'Plain-language draft to refine (what we’re agreeing to and why).',
+      ph: 'We agree to prioritize clean water pumps in RW 1–5 this year, with…' },
+
+    { key: 'follow_up', label: 'Follow-up actions & owners', type: 'textarea',
+      desc: 'Who will do what by when; include monitoring & communication.',
+      ph: 'Public works maps pumps (Dina) by 1 Aug; budget request (Arif) by 10 Aug; monthly status post' },
+
+    { key: 'cross_cultural_note', label: 'Include cross-cultural explainer?', type: 'select',
+      options: [
+        'auto (default) — include a short note only if audience is likely unfamiliar',
+        'include — always add a concise explainer',
+        'include (expanded) — add a brief paragraph with examples',
+        'omit — do not include an explainer'
+      ],
+      desc: 'Controls whether the output includes a ready-made explainer comparing consensus-first Musyawarah to adversarial voting.',
+      ph: 'auto (default) — include a short note only if needed' },
+
+    { key: 'audience_familiarity', label: 'Audience familiarity (if known)', type: 'select',
+      options: ['mixed / unknown','familiar with Indonesian practice','unfamiliar / Western norms'],
+      desc: 'Tuning parameter for the optional explainer.',
+      ph: 'mixed / unknown' },
+
+    { key: 'review_date', label: 'Review date / cadence', type: 'text',
+      desc: 'When to revisit the decision and assess outcomes.',
+      ph: 'Quarterly; next review 30 Nov' }
+  ],
+  template: (args) => {
+    const {
+      issue, participants, personas, session_mode, include_bahasa, values, evidence,
+      options, criteria, concerns, consensus_mode, fallback_protocol,
+      inclusion_supports, bias_checks, consensus, follow_up,
+      cross_cultural_note, audience_familiarity, review_date,
+      ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const enumList = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
+
+    const wantBahasa = (include_bahasa || '').toLowerCase().startsWith('yes');
+    const glossary = wantBahasa
+      ? 'Glossary: musyawarah = deliberation; mufakat = consensus; gotong royong = mutual aid; adat = customary law/norms.'
+      : null;
+
+    const shouldExplain = (() => {
+      const mode = (cross_cultural_note || 'auto').toLowerCase();
+      const fam  = (audience_familiarity || 'mixed / unknown').toLowerCase();
+      if (mode.startsWith('omit')) return false;
+      if (mode.startsWith('include')) return true;
+      // auto: include iff unfamiliar or mixed/unknown
+      return fam.includes('unfamiliar') || fam.includes('mixed');
+    })();
+
+    const explainer = shouldExplain
+      ? ((cross_cultural_note || '').toLowerCase().includes('expanded')
+          ? 'Cross-cultural explainer: In Musyawarah (deliberation), proposals are modified until stakeholders can accept them; Mufakat (consensus) affirms a solution people can live with. Unlike adversarial majority voting, the emphasis is cohesion and dignity—dissent is addressed by adjusting options or adding safeguards, not outvoting.'
+          : 'Cross-cultural explainer: Musyawarah = deliberation; Mufakat = consensus. Rather than a majority defeating a minority, proposals are adjusted until participants can accept them, preserving cohesion and legitimacy.')
+      : null;
+
+    return [
+      'Facilitate a Musyawarah → Mufakat process (deliberation to consensus) in clear English, honoring Indonesian practice while ensuring inclusion and transparency.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      issue && `\nIssue / Decision:\n${issue}`,
+      participants && enumList('Participants:', participants),
+
+      personas && (Array.isArray(personas)
+        ? 'Audience / personas:\n' + personas.map((p,i)=>`${i+1}. ${p}`).join('\n')
+        : enumList('Audience / personas:', personas)),
+
+      session_mode && `Session mode: ${session_mode}`,
+      values && `Guiding values / principles:\n${values}`,
+
+      evidence && `\nEvidence & lived experience:\n${evidence}`,
+      options && enumList('Initial options:', options),
+      criteria && `Decision criteria:\n${criteria}`,
+      concerns && enumList('\nKnown concerns / objections:', concerns),
+
+      consensus_mode && `\nConsensus mode: ${consensus_mode}`,
+      fallback_protocol && `Fallback protocol (if no consensus): ${fallback_protocol}`,
+      inclusion_supports && `Inclusion supports:\n${inclusion_supports}`,
+
+      bias_checks && (Array.isArray(bias_checks)
+        ? 'Bias / blind-spot checks:\n' + bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n')
+        : `Bias / blind-spot checks:\n${bias_checks}`),
+
+      explainer && `\n${explainer}`,
+      glossary && `${glossary}`,
+
+      '\nProcess:',
+      '- 1) Framing: confirm scope, constraints, and representation of affected groups.',
+      '- 2) Musyawarah (deliberation): round-robin speaking; “steelman then respond”; log proposals and rationales.',
+      '- 3) Option shaping: adapt/merge options; add safeguards to address concerns; map revisions to criteria.',
+      '- 4) Consensus test: use the selected mode (mufakat / consent / layered). Seek explicit assent; avoid treating silence as agreement.',
+      '- 5) Objection-handling pass: record objections; modify options or add safeguards; retest consensus.',
+      '- 6) Mufakat (agreement): read back the agreement; confirm owners/dates; note reservations if any.',
+      '- 7) Documentation: publish minutes (notulen) and the decision record (keputusan musyawarah); share appeal/revisit path.',
+
+      consensus && `\nConsensus statement (draft to refine):\n${consensus}`,
+      follow_up && `Follow-up actions & owners:\n${follow_up}`,
+      review_date && `Review cadence: ${review_date}`,
+
+      '\nOutput:',
+      'A) Final consensus text (plain English) with rationale linked to concerns & criteria.',
+      'B) Action list with named owners, dates, and monitoring/communication steps.',
+      'C) Minutes + decision record, including any reservations.',
+      'D) Inclusion log (who was present/consulted, supports provided) and bias-check notes.'
+    ].filter(Boolean).join('\n');
+  }
+},
+  {
+  id: 'naive_dialecticism',
+  slug: 'naive-dialecticism-east-asia',
+  label: 'Naïve Dialecticism (East Asian Holistic Reasoning)',
+  kind: 'framework',
+  categories: ['reasoning', 'philosophy', 'cultural frameworks'],
+  tags: [
+    'type:framework','topic:both-and','topic:contradiction','topic:holism',
+    'phase:explore','phase:integrate','level:advanced',
+    'use:paradox-framing','use:change-over-time','use:consensus-design'
+  ],
+  use_cases: [
+    'frame tensions as “both true in different respects” and design coexistence',
+    'blend stakeholder views into a context-fitted middle (Zhongyong) or complementary pair (Yin–Yang)',
+    'plan reversible probes when conditions are in flux; set triggers for pivots',
+    'adapt Western analytic cases to East/Southeast Asian consensus practices (e.g., musyawarah → mufakat)'
+  ],
+  boosters: [
+    'Name *where* each side holds: “A holds under ___; ¬A holds under ___.” Scope beats slogans.',
+    'Treat contradictions as signals to **broaden context** or **shift time horizon** before forcing a decision.',
+    'Design a “small harmonizing step” that reduces friction without erasing difference.',
+    'Log at least one **coexistence pattern** (e.g., time-slicing, space-splitting, role-separating) before any merger.',
+    'Respect cultural plurality: avoid essentializing “East vs West”; document local practices (adat, gotong royong) and how they shape the solution.'
+  ],
+  definition: 'A culturally informed reasoning stance—common across East Asia—that expects change, tolerates contradiction, and reasons holistically across context. It prefers “both–and” integration or respectful coexistence over binary wins, and often locates a fitting middle (Zhongyong), a complement of opposites (Yin–Yang), or a consensus everyone can live with (mufakat).',
+  help: 'List opposing poles, contextual factors, and where each claim holds. Choose a dialectical lens (e.g., Yin–Yang, Zhongyong, Musyawarah→Mufakat) and a session goal (divergent discovery, convergent harmonization, probe/pilot). The template will produce both-and statements, coexistence/integration moves, and a time-based plan with pivot triggers. Includes optional cross-cultural notes for Western audiences; adds personas and bias checks.',
+
+  fields: [
+    {
+      key: 'personas',
+      label: 'Audience / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Stakeholder segments whose values/examples should shape tone and design.',
+      ph: 'e.g., Factory operators; Village elders; Procurement; Climate advocates'
+    },
+    {
+      key: 'lens',
+      label: 'Dialectical lens',
+      type: 'select',
+      options: [
+        'Yin–Yang (complementary opposites; maintain dynamic balance)',
+        'Zhongyong / Middle Way (fitting mean after weighing extremes)',
+        'Buddhist conditionality (truths are contingent; avoid clinging to absolutes)',
+        'Musyawarah → Mufakat (deliberation to consensus; Indonesia)',
+        'Tri Hita Karana (harmony among people–nature–the transcendent; Bali)',
+        'Coexistence patterning (time/space/role separation rather than fusion)'
+      ],
+      desc: 'Sets how the “both–and” move is framed and justified.',
+      ph: 'Musyawarah → Mufakat (deliberation to consensus; Indonesia)'
+    },
+    {
+      key: 'session_goal',
+      label: 'Session goal',
+      type: 'select',
+      options: [
+        'Divergent — surface partial truths & contradictions without solving yet',
+        'Convergent — craft a coexistence/integration that parties can live with',
+        'Probe — design a small, reversible test to learn before committing',
+        'Park & watch — define signals and a review window; defer merger'
+      ],
+      desc: 'Determines whether to open options, harmonize, experiment, or timebox deferral.',
+      ph: 'Convergent — craft a coexistence/integration that parties can live with'
+    },
+
+    /* ===== Language handling updated: English default + optional terms/glossary ===== */
+    {
+      key: 'include_bahasa',
+      label: 'Include Bahasa/Indonesian terms & mini-glossary?',
+      type: 'select',
+      options: [
+        'no (English only — default)',
+        'yes — include key terms with brief definitions (e.g., musyawarah, mufakat, gotong royong, adat)'
+      ],
+      desc: 'Output is in English by default. Select “yes” to preserve Indonesian key terms with a mini-glossary.',
+      ph: 'no (English only — default)'
+    },
+
+    {
+      key: 'poles',
+      label: 'Opposed poles (A vs. ¬A)',
+      type: 'textarea',
+      desc: 'Name the tension plainly (no strawmen).',
+      ph: 'e.g., Centralized standards (A) vs. Local autonomy (¬A)'
+    },
+    {
+      key: 'scope_a',
+      label: 'Scope where A holds',
+      type: 'textarea',
+      desc: 'Contexts, constraints, and time horizons where A is valid/useful.',
+      ph: 'High risk; multi-site compliance; new staff; crisis periods'
+    },
+    {
+      key: 'scope_not_a',
+      label: 'Scope where ¬A holds',
+      type: 'textarea',
+      desc: 'Contexts where the opposite or alternative is valid/useful.',
+      ph: 'Mature teams; stable environments; culturally specific practices'
+    },
+    {
+      key: 'context',
+      label: 'Context factors (one per line)',
+      type: 'textarea',
+      desc: 'Field/relationship variables: people, place, time, norms, dependencies.',
+      ph: 'Regulatory cycle\nHarvest season\nRelational hierarchies\nSupply constraints'
+    },
+    {
+      key: 'indonesian_practices',
+      label: 'Indonesian lenses (optional)',
+      type: 'textarea',
+      desc: 'Adat/custom, gotong royong (mutual aid), musyawarah/mufakat, Pancasila #4, budi (reason–feeling integration).',
+      ph: 'Gotong royong for maintenance days; Musyawarah for policy shifts; Tri Hita Karana for land–water use'
+    },
+    {
+      key: 'tensions',
+      label: 'Specific tensions / failure modes',
+      type: 'textarea',
+      desc: 'Where do frictions show up (status, face, timing, metrics, authority)?',
+      ph: 'Face loss in public critique; KPI conflict; vendor lock-in; language register'
+    },
+    {
+      key: 'moves',
+      label: 'Harmony-seeking moves (coexistence & integration)',
+      type: 'textarea',
+      desc: 'Concrete patterns: time-slicing, space-splitting, role separation, layered standards, dual metrics.',
+      ph: 'Time-slice: centralize during audits, localize otherwise\nDual metrics: quality (local) + compliance (central)'
+    },
+    {
+      key: 'both_and',
+      label: 'Both–and statement (single paragraph)',
+      type: 'textarea',
+      desc: 'Synthesize without erasing difference; include limits and review window.',
+      ph: 'We keep a lean central backbone while granting local parametric freedom within guardrails…'
+    },
+    {
+      key: 'probe',
+      label: 'Probe / pilot plan (if goal = Probe)',
+      type: 'textarea',
+      desc: 'Hypothesis, smallest test, success criteria, ethics/safeguards.',
+      ph: 'Run 6-week trial in 2 districts; success if complaint rate ↓20% with ≤2% compliance drift'
+    },
+    {
+      key: 'triggers',
+      label: 'Change triggers & pivot thresholds',
+      type: 'textarea',
+      desc: 'Early signals that flip which side should dominate; include time horizon.',
+      ph: 'Spike in non-compliance >3% (A dominates); staff tenure >18mo (¬A dominates)'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias / blind-spot checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'E.g., confirmation, WEIRD framing, majority-imposes-consensus, recency.',
+      ph: 'WEIRD examples; elite capture; fear of loss face; false dichotomy'
+    },
+
+    /* ===== Replace freeform explainer with toggles like your other template ===== */
+    {
+      key: 'cross_cultural_note',
+      label: 'Include cross-cultural explainer?',
+      type: 'select',
+      options: [
+        'auto (default) — include a short note only if audience is likely unfamiliar',
+        'include — always add a concise explainer',
+        'include (expanded) — add a brief paragraph with examples',
+        'omit — do not include an explainer'
+      ],
+      desc: 'Controls whether the output includes a ready-made explainer comparing “both–and”/consensus reasoning with adversarial, either–or norms.',
+      ph: 'auto (default) — include a short note only if needed'
+    },
+    {
+      key: 'audience_familiarity',
+      label: 'Audience familiarity (if known)',
+      type: 'select',
+      options: ['mixed / unknown','familiar with dialectical practice','unfamiliar / Western norms'],
+      desc: 'Tuning parameter for the optional explainer.',
+      ph: 'mixed / unknown'
+    },
+
+    {
+      key: 'review',
+      label: 'Review date / cadence',
+      type: 'text',
+      desc: 'When to revisit the arrangement, with whom, and how.',
+      ph: 'Quarterly; Musyawarah-style check-in on 30 Nov'
+    }
+  ],
+
+  template: (args) => {
+    const {
+      personas, lens, session_goal, include_bahasa,
+      poles, scope_a, scope_not_a, context, indonesian_practices,
+      tensions, moves, both_and, probe, triggers, bias_checks,
+      cross_cultural_note, audience_familiarity, review, ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listBlock = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
+
+    // Lens guidance for the AI
+    const lensGuide = (() => {
+      const L = (lens || '').toLowerCase();
+      if (L.includes('yin')) return 'Lens: Yin–Yang — treat A and ¬A as interdependent. Specify what each guards against, how dominance alternates with context/time, and which feedbacks maintain balance.';
+      if (L.includes('zhongyong') || L.includes('middle')) return 'Lens: Zhongyong / Middle Way — fully understand extremes, then justify a context-fitted mean (not an average).';
+      if (L.includes('buddhist')) return 'Lens: Buddhist conditionality — state conditions under which each claim holds; avoid absolutes; prefer “when/if” clauses.';
+      if (L.includes('musyawarah')) return 'Lens: Musyawarah → Mufakat — modify options until parties can live with them; record reservations; run an objection-handling pass; document the decision record.';
+      if (L.includes('tri hita')) return 'Lens: Tri Hita Karana — evaluate impacts across people↔people, people↔nature, and the transcendent/cultural duties; ensure no leg is neglected.';
+      if (L.includes('coexistence')) return 'Lens: Coexistence patterning — avoid forced fusion; implement time-slicing, space-splitting, or role-separation with clear interfaces.';
+      return 'Lens: Dialectical (general) — expect change, accept scoped contradictions, and fit solutions to context.';
+    })();
+
+    // Goal guidance for the AI
+    const goalGuide = (() => {
+      const G = (session_goal || '').toLowerCase();
+      if (G.startsWith('divergent')) return 'Goal mode: Divergent — collect partial truths; write paired “A true when ___ / ¬A true when ___”; do not merge yet.';
+      if (G.startsWith('convergent')) return 'Goal mode: Convergent — design a coexistence/integration pattern; run consent tests (“can you live with it if…?”); attach safeguards.';
+      if (G.startsWith('probe')) return 'Goal mode: Probe — create a reversible pilot with success metrics and ethics guardrails; set pivot thresholds.';
+      if (G.startsWith('park')) return 'Goal mode: Park & watch — document known unknowns, define revisit signals, set a firm review date.';
+      return null;
+    })();
+
+    // Optional Bahasa/terms mini-glossary
+    const wantBahasa = (include_bahasa || '').toLowerCase().startsWith('yes');
+    const glossary = wantBahasa
+      ? 'Glossary (terms preserved with brief defs): musyawarah = deliberation; mufakat = consensus; gotong royong = mutual aid; adat = customary norms.'
+      : null;
+
+    // Cross-cultural explainer auto logic
+    const shouldExplain = (() => {
+      const mode = (cross_cultural_note || 'auto').toLowerCase();
+      const fam  = (audience_familiarity || 'mixed / unknown').toLowerCase();
+      if (mode.startsWith('omit')) return false;
+      if (mode.startsWith('include')) return true;
+      // auto: include iff unfamiliar or mixed/unknown
+      return fam.includes('unfamiliar') || fam.includes('mixed');
+    })();
+
+    const explainer = shouldExplain
+      ? ((cross_cultural_note || '').toLowerCase().includes('expanded')
+          ? 'Cross-cultural explainer: Dialectical reasoning treats apparently contradictory claims as conditionally true under different scopes (time/place/role). Rather than eliminating one side, we design coexistence or a fitting middle. In consensus-first practice, proposals are adjusted until parties can accept them; dissent is addressed by revising options or adding safeguards rather than outvoting.'
+          : 'Cross-cultural explainer: “Both–and” reasoning scopes truths to context and time. Instead of forcing a binary win, we seek coexistence or a fitted middle, and adjust proposals until stakeholders can accept them.')
+      : null;
+
+    const inclusion = personas
+      ? (Array.isArray(personas)
+          ? 'Audience / personas:\n' + personas.map((p,i)=>`${i+1}. ${p}`).join('\n')
+          : listBlock('Audience / personas:', personas))
+      : null;
+
+    const bias = bias_checks
+      ? (Array.isArray(bias_checks)
+          ? 'Bias / blind-spot checks:\n' + bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n')
+          : `Bias / blind-spot checks:\n${bias_checks}`)
+      : null;
+
+    return [
+      'Apply Naïve Dialecticism (East Asian holistic reasoning) in clear English, with cultural respect and anti-essentialism.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      lensGuide,
+      goalGuide,
+      inclusion,
+
+      poles && `\nTension:\n${poles}`,
+      scope_a && `Where A holds:\n${scope_a}`,
+      scope_not_a && `Where ¬A holds:\n${scope_not_a}`,
+
+      context && `Context factors:\n${toLines(context).map((x,i)=>`${i+1}. ${x}`).join('\n')}`,
+      indonesian_practices && `Indonesian lenses applied:\n${indonesian_practices}`,
+      tensions && `Specific tensions / failure modes:\n${tensions}`,
+
+      moves && `Harmony-seeking moves (coexistence & integration):\n${moves}`,
+      both_and && `Both–and statement:\n${both_and}`,
+
+      probe && `Probe / pilot plan:\n${probe}`,
+      triggers && `Change triggers & pivot thresholds:\n${triggers}`,
+
+      bias,
+      explainer && `\n${explainer}`,
+      glossary && `${glossary}`,
+
+      '\nOutput:',
+      '1) Scoped truths for A and ¬A (contexts & limits).',
+      '2) Chosen coexistence/integration pattern with safeguards and owners.',
+      '3) If Probe: a reversible pilot with success metrics and ethics notes.',
+      '4) Decision record suitable for consensus documentation (where applicable).',
+      '5) Review plan with triggers acknowledging change over time.'
+    ].filter(Boolean).join('\n');
+  }
+},
   {
     id:'nyaya_syllogism',
     slug:'nyaya-five-member-syllogism',
@@ -7554,31 +8523,391 @@ Dissatisfaction ↓`;
   slug: 'mind-mapping',
   label: 'Mind Mapping — Visual cluster of ideas',
   kind: 'pattern',
-  categories: ['creativity', 'organization'],
-  tags: ['type:technique', 'topic:mind-map', 'use:ideas', 'level:beginner'],
+  categories: ['creativity', 'organization', 'visual thinking', 'learning'],
+  tags: [
+    'type:technique','topic:mind-map','topic:visual-notes','topic:concept-mapping',
+    'phase:discover','phase:design','phase:synthesize','level:beginner',
+    'use:ideas','use:workshop','use:research-synthesis','use:study-notes','use:roadmapping'
+  ],
   use_cases: [
-    'brainstorm non-linearly around a central idea',
-    'see connections among subtopics'
+    'brainstorm non-linearly around a central idea and discover hidden clusters',
+    'synthesize research/interviews into themes and questions',
+    'plan curricula, talks, or documents (export map → outline)',
+    'facilitate workshops and converge on top decisions/actions',
+    'decompose projects (WBS/site map) and surface dependencies/risks'
   ],
   boosters: [
-    'Allow partial or fragmented thoughts; organize them later into branches.',
-    'Use indentation or bullet nesting to mimic the structure of a mind map.'
+    'Limit to 4–7 primary branches; keep one keyword per twig (avoid paragraphs).',
+    'Add cross-links between branches and label the relation (“blocks”, “enables”).',
+    'Code meaning visually: consistent colors per branch, icons for status/risks, and enclosures for subsystems.',
+    'End with “Top 3 decisions + owners + dates” so the map drives action.',
+    'Include an “Unknowns/Assumptions” branch and a “Counter-map” (missing voices).',
+    'Accessibility: pair color with shape; prefer color-blind-safe palettes; keep text large with good contrast.',
+    'For workshops: timebox rounds, rotate scribes, finish with dot-vote → converge.'
   ],
-  definition: 'A visual brainstorming technique where you write a central concept and branch out with associated ideas in an organic, non-linear manner. Mind mapping leverages associative thinking by connecting related ideas in clusters around the main topic, which can stimulate holistic and imaginative thought.',
-  help: 'State the central topic. Optionally list some initial subtopics or first-level branches (one per line). The model will expand on each branch with sub-ideas and show connections between them in an outline form.',
+  definition: 'A visual thinking method that radiates from a central topic into labeled branches and sub-branches, using spatial layout, color, and minimal text to reveal structure, gaps, and connections. It supports associative thinking for divergence and quick translation into outlines for convergence.',
+  help: 'Provide a central topic. Optionally seed primary branches, choose a map type (radial, concept, affinity, fishbone, causal, argument, sitemap/WBS), and set limits (max branches/depth). The model will expand branches, add cross-links, and return an outline/ASCII/JSON—or, if selected, Python code for a chart or an image-generation prompt. Include personas to tailor language and “bias checks” to avoid blind spots.',
   fields: [
-    { key: 'topic', label: 'Central topic', type: 'text', ph: 'e.g., Renewable Energy' },
-    { key: 'branches', label: 'Primary branches (optional, one per line)', type: 'textarea', ph: 'e.g., Solar\nWind\nHydro\nGeothermal' }
+    { key: 'topic', label: 'Central topic', type: 'text', desc: 'Short title that frames scope.', ph: 'e.g., Renewable Energy Transition 2030' },
+
+    {
+      key: 'personas',
+      label: 'Audience / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who is this for? Influences wording and examples.',
+      ph: 'e.g., City planner; High-school students; CTO; Policy analyst'
+    },
+
+    {
+      key: 'goal',
+      label: 'Session goal',
+      type: 'select',
+      options: ['diverge (ideas)', 'converge (decisions)', 'both'],
+      desc: 'Choose whether to explode ideas, converge to choices, or run a two-phase diverge→converge session.',
+      ph: 'diverge (ideas)'
+    },
+
+    {
+      key: 'map_type',
+      label: 'Map type',
+      type: 'select',
+      options: [
+        'radial mind map','concept map (labeled edges)','affinity clusters (KJ)',
+        'fishbone (Ishikawa causes)','causal loop (systems)','argument map','sitemap/WBS'
+      ],
+      desc: 'Pick a structure that matches your task (we will generate detailed, method-specific instructions).',
+      ph: 'radial mind map'
+    },
+
+    { key: 'branches', label: 'Primary branch seeds (optional, one per line)', type: 'textarea',
+      desc: 'Seed 4–7 top categories to guide expansion.',
+      ph: 'Policy\nTechnology\nEconomics\nCommunity\nEnvironment\nRisks' },
+
+    { key: 'branch_limit', label: 'Max primary branches', type: 'text',
+      desc: 'Recommend 4–7 for legibility.', ph: '6' },
+
+    { key: 'depth_limit', label: 'Max depth', type: 'text',
+      desc: 'How many sub-levels to expand.', ph: '2' },
+
+    {
+      key: 'cross_links',
+      label: 'Cross-links',
+      type: 'select',
+      options: ['auto (suggest)', 'always add', 'skip'],
+      desc: 'Whether to add cross-branch connections and label them.',
+      ph: 'auto (suggest)'
+    },
+
+    {
+      key: 'color_scheme',
+      label: 'Color scheme',
+      type: 'select',
+      options: ['neutral','high-contrast','color-blind-safe'],
+      desc: 'Palette guidance for visuals; we will translate this choice into instructions suited to your selected map format.',
+      ph: 'color-blind-safe'
+    },
+
+    {
+      key: 'output',
+      label: 'Output format',
+      type: 'select',
+      options: [
+        'indented outline','ASCII tree','JSON (nodes & edges)',
+        'python code (graph/chart)','image prompt (for an AI image generator)','verbal description'
+      ],
+      desc: 'Primary artifact to return (structure vs. code vs. prompt vs. prose).',
+      ph: 'indented outline'
+    },
+
+    // NEW: Map rendering modality (explicit, richer instructions per choice)
+    {
+      key: 'map_format',
+      label: 'Second Output Format (Optiona)',
+      type: 'select',
+      options: [
+        'ascii (plain text symbols)',
+        'python (generate code for a chart/graph)',
+        'image prompt (DALL·E or similar)',
+        'verbal description (narrative layout instructions)'
+      ],
+      desc: 'How the map should be produced. We will generate format-specific instructions (e.g., ASCII drawing rules, Python plotting code spec, or an image-generation prompt).',
+      ph: 'ascii (plain text symbols)'
+    },
+
+    {
+      key: 'facilitation',
+      label: 'Session mode',
+      type: 'select',
+      options: ['solo','workshop'],
+      desc: 'Solo = fast personal exploration and synthesis. Workshop = structured group facilitation with rounds, dot-votes, and convergence.',
+      ph: 'solo'
+    },
+
+    { key: 'timebox', label: 'Timebox', type: 'text', desc: 'Duration for the sprint/round.', ph: 'e.g., 12 minutes' },
+
+    {
+      key: 'bias_checks',
+      label: 'Bias / blind-spot checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Inline prompts to broaden perspectives (sampling, cultural, recency, groupthink…).',
+      ph: 'e.g., WEIRD sampling; confirmation bias; urban bias; survivorship bias'
+    },
+
+    { key: 'constraints', label: 'Constraints & scope notes (optional)', type: 'textarea',
+      desc: 'Boundaries, assumptions, known exclusions.', ph: 'No capex modeling; focus on municipal actions only' },
+
+    {
+      key: 'next_artifact',
+      label: 'Follow-on artifact',
+      type: 'select',
+      options: ['outline','task backlog','slide','brief/spec'],
+      desc: 'What the model should produce from the map after thinking.',
+      ph: 'outline'
+    },
+
+    { key: 'explainer', label: 'Audience explainer (optional)', type: 'textarea',
+      desc: 'A 2–3 sentence “what is a mind map” primer for newcomers.',
+      ph: 'A mind map starts with a central idea and grows branches that hold keywords and connections…' }
   ],
-  template: ({ topic, branches, ctx }) => [
-    'Create a Mind Map of ideas.',
-    ctx && `Context: ${ctx}`,
-    topic && `Central Topic: ${topic}`,
-    branches
-      ? 'Primary Branches:\n' + String(branches).split(/\n+/).map(b => `- ${b}`).join('\n')
-      : 'Think of major subtopics branching out from the central topic.',
-    'Expand each branch with sub-ideas, using indented bullet points to show connections.'
-  ].filter(Boolean).join('\n')
+  template: (args) => {
+    const {
+      topic, personas, goal, map_type, branches, branch_limit, depth_limit,
+      cross_links, color_scheme, output, map_format, facilitation, timebox,
+      bias_checks, constraints, next_artifact, explainer, ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const list = (title, s) => s && `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n');
+    const seeds = toLines(branches);
+
+    // Detailed instruction blocks per map type
+    const mapTypeGuide = (t) => {
+      switch ((t||'').toLowerCase()) {
+        case 'radial mind map':
+          return [
+            'Map Type — Radial mind map:',
+            '- Place a single CENTRAL NODE (title + 2–4 words).',
+            '- Create 4–7 PRIMARY BRANCHES radiating outward; one KEYWORD per branch.',
+            '- Add 1–2 SUB-LEVELS with short keywords; avoid sentences.',
+            '- Add CROSS-LINKS between branches where ideas relate; label links (e.g., “enables”, “conflicts”).'
+          ].join('\n');
+        case 'concept map (labeled edges)':
+          return [
+            'Map Type — Concept map (labeled edges):',
+            '- Create a NETWORK of nodes where EACH EDGE has a RELATION LABEL (e.g., causes, requires, contrasts).',
+            '- Prioritize precise linking phrases; clarify directionality if causal.',
+            '- Group related nodes spatially; avoid duplicate nodes by cross-linking.'
+          ].join('\n');
+        case 'affinity clusters (kj)':
+          return [
+            'Map Type — Affinity clusters (KJ):',
+            '- Start from many small notes; CLUSTER by similarity without predefined categories.',
+            '- Name each cluster with a short THEME label; allow multi-membership via cross-links.',
+            '- Surface 3–5 top clusters and any outliers needing further research.'
+          ].join('\n');
+        case 'fishbone (ishikawa causes)':
+          return [
+            'Map Type — Fishbone (Ishikawa):',
+            '- Put the EFFECT/PROBLEM at the head; draw main bones for cause categories (e.g., People/Process/Tech/Env).',
+            '- Add secondary bones for specific causes; use short cause phrases.',
+            '- Optionally tag each cause with evidence strength or likelihood.'
+          ].join('\n');
+        case 'causal loop (systems':
+        case 'causal loop (systems)':
+          return [
+            'Map Type — Causal loop (systems):',
+            '- Draw variables as nodes; connect with arrows showing influence (+/−).',
+            '- Identify REINFORCING (R) and BALANCING (B) loops; annotate delays (||).',
+            '- Focus on feedback structure; keep variable names measurable where possible.'
+          ].join('\n');
+        case 'argument map':
+          return [
+            'Map Type — Argument map:',
+            '- Center on a CLAIM; attach PREMISES; add OBJECTIONS and REBUTTALS.',
+            '- Use short, testable statements; cite strongest evidence.',
+            '- Mark confidence and the top missing evidence.'
+          ].join('\n');
+        case 'sitemap/wbs':
+          return [
+            'Map Type — Sitemap / WBS:',
+            '- Build a HIERARCHICAL tree: product/site sections (level 1), pages/features (level 2), components/tasks (level 3).',
+            '- Keep sibling granularity consistent; add cross-links for shared components.',
+            '- Tag nodes with owner/priority where relevant.'
+          ].join('\n');
+        default:
+          return null;
+      }
+    };
+
+    // Session goal guidance
+    const sessionGoalGuide = (g) => {
+      switch ((g||'').toLowerCase()) {
+        case 'diverge (ideas)':
+          return [
+            'Session Goal — Diverge (ideas):',
+            '- Generate breadth first: rapid branching, no judgment, no pruning during the sprint.',
+            '- Use timeboxed rounds and prompt shifts (SCAMPER, “what if…”) to expand coverage.'
+          ].join('\n');
+        case 'converge (decisions)':
+          return [
+            'Session Goal — Converge (decisions):',
+            '- Sift and shape: merge duplicates, prune low-value twigs, and elevate 3–5 themes.',
+            '- Close with a decision snapshot: Top 3 decisions, owners, dates, and success criteria.'
+          ].join('\n');
+        case 'both':
+          return [
+            'Session Goal — Diverge → Converge:',
+            '- Phase 1 (Diverge): fast, judgment-free expansion with timebox.',
+            '- Phase 2 (Converge): cluster, cross-link, and select Top 3 decisions with owners and dates.'
+          ].join('\n');
+        default:
+          return null;
+      }
+    };
+
+    // Color scheme guidance (translated to the format later)
+    const colorSchemeGuide = (c) => {
+      switch ((c||'').toLowerCase()) {
+        case 'high-contrast':
+          return 'Color Scheme — High-contrast: assign distinct, saturated colors per primary branch; ensure text on dark fills uses light text, and vice versa.';
+        case 'color-blind-safe':
+          return 'Color Scheme — Color-blind-safe: use a palette like Okabe–Ito; pair each color with a unique marker (icon/shape) to avoid reliance on color alone.';
+        case 'neutral':
+          return 'Color Scheme — Neutral: minimal color; use line weight, icons, and enclosure shapes to convey hierarchy and status.';
+        default:
+          return null;
+      }
+    };
+
+    // Map rendering modality guidance
+    const formatGuide = (f, scheme) => {
+      const schemeHint = scheme ? colorSchemeGuide(scheme) : null;
+      switch ((f||'').toLowerCase()) {
+        case 'ascii (plain text symbols)':
+          return [
+            'Rendering — ASCII:',
+            '- Produce a monospaced ASCII diagram using ├─, └─, │ and indentation for hierarchy.',
+            '- Label cross-links inline as “(→ see Branch X)”.',
+            '- Keep line length ≤ 100 chars; no color—use emoji/icons sparingly if supported.',
+            schemeHint && `- Accessibility translation of color scheme: ${schemeHint}`
+          ].filter(Boolean).join('\n');
+        case 'python (generate code for a chart/graph)':
+          return [
+            'Rendering — Python code:',
+            '- Output runnable Python that builds the map as a graph/tree using matplotlib (and networkx if needed).',
+            '- Do NOT use seaborn; one figure only; avoid external files; ensure code runs in a clean environment.',
+            '- Add readable node labels; if color scheme is selected, map branches to a safe palette.',
+            schemeHint && `- Apply palette guidance: ${schemeHint}`
+          ].filter(Boolean).join('\n');
+        case 'image prompt (dall·e or similar)':
+          return [
+            'Rendering — Image-generation prompt:',
+            '- Return a concise, explicit prompt that specifies layout (radial/network/fishbone/etc.), labels, hierarchy depth, and styling.',
+            '- Include palette/style notes if color scheme is selected; request high contrast and legible typography.',
+            schemeHint && `- Palette/accessibility guidance: ${schemeHint}`
+          ].filter(Boolean).join('\n');
+        case 'verbal description (narrative layout instructions)':
+          return [
+            'Rendering — Verbal description:',
+            '- Provide a clear paragraph describing the final layout: center, branches, notable cross-links, and visual encoding.',
+            schemeHint && `- Mention how color/shape encodes categories: ${schemeHint}`
+          ].filter(Boolean).join('\n');
+        default:
+          return null;
+      }
+    };
+
+    // Output format guidance (additional artifact spec)
+    const outputGuide = (o) => {
+      switch ((o||'').toLowerCase()) {
+        case 'ascii tree':
+          return 'Output — ASCII tree: include a clean, monospaced tree with 1–2 sub-levels and inline cross-link notes.';
+        case 'indented outline':
+          return 'Output — Indented outline: hierarchical bullets, 1–2 sub-levels, cross-links noted as “(→ Branch X)”.';
+        case 'json (nodes & edges)':
+          return 'Output — JSON: provide nodes [{id,label,type,tags}] and edges [{from,to,label}] with stable ids.';
+        case 'python code (graph/chart)':
+          return 'Output — Python code: return runnable code that renders the map as a single matplotlib figure; no seaborn; label nodes clearly.';
+        case 'image prompt (for an ai image generator)':
+          return 'Output — Image prompt: produce a tight, explicit prompt describing layout, labels, hierarchy, and palette for an AI image generator.';
+        case 'verbal description':
+          return 'Output — Verbal description: a narrative depiction of the final map layout and key relationships.';
+        default:
+          return null;
+      }
+    };
+
+    // Session mode expansion
+    const facilitationGuide = (m, tb) => {
+      switch ((m||'').toLowerCase()) {
+        case 'solo':
+          return [
+            'Session Mode — Solo:',
+            `- Work in ${tb || 'short'} sprints: explode → cluster → cross-link → select Top 3 decisions.`,
+            '- Capture “Unknowns/Assumptions” and next research prompts; end with a mini action list.'
+          ].join('\n');
+        case 'workshop':
+          return [
+            'Session Mode — Workshop:',
+            `- Facilitate timeboxed rounds (${tb || 'e.g., 2×8 minutes diverge + 8 minutes converge'}).`,
+            '- Rotate scribes, then dot-vote to converge; assign owners/dates for Top 3 outcomes.'
+          ].join('\n');
+        default:
+          return null;
+      }
+    };
+
+    const boosters = [
+      'Use 4–7 primary branches; one keyword per twig.',
+      'Add cross-links and label relationships (e.g., “enables”, “blocks”).',
+      'Code meaning visually: color per branch, icons for risks/tasks.',
+      'End with Top-3 decisions & owners; mark unknowns.'
+    ];
+
+    return [
+      'Create a Mind Map that balances divergence and clarity.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      topic && `Central Topic: ${topic}`,
+      personas && (Array.isArray(personas)
+        ? 'Audience / personas:\n' + personas.map((p,i)=>`${i+1}. ${p}`).join('\n')
+        : list('Audience / personas:', personas)),
+
+      goal && sessionGoalGuide(goal),
+      map_type && mapTypeGuide(map_type),
+      (branch_limit || depth_limit) && `Limits: ${branch_limit ? `branches ≤ ${branch_limit}` : ''}${branch_limit && depth_limit ? '; ' : ''}${depth_limit ? `depth ≤ ${depth_limit}` : ''}`,
+      cross_links && `Cross-links preference: ${cross_links}`,
+      color_scheme && colorSchemeGuide(color_scheme),
+      facilitation && facilitationGuide(facilitation, timebox),
+      constraints && `Constraints & scope:\n${constraints}`,
+      explainer && `Explainer:\n${explainer}`,
+
+      seeds.length ? 'Primary branches (seeds):\n' + seeds.map((b,i)=>`- ${b}`).join('\n') : 'Primary branches: (generate 4–7 from the topic)',
+
+      'Rules:',
+      boosters.map(x => `- ${x}`).join('\n'),
+
+      map_format && formatGuide(map_format, color_scheme),
+      output && outputGuide(output),
+
+      'Deliverables:',
+      '- A) The map artifact per the selected rendering/output instructions.',
+      '- B) “Decisions / Actions / Risks / Unknowns” bullets with owners & dates.',
+      next_artifact && `- C) Convert map into: ${next_artifact}.`,
+
+      bias_checks && (Array.isArray(bias_checks)
+        ? 'Bias / blind-spot checks:\n' + bias_checks.map((b,i)=>`${i+1}. ${b}`).join('\n')
+        : `Bias / blind-spot checks:\n${bias_checks}`)
+    ].filter(Boolean).join('\n');
+  }
 },
 
 {
