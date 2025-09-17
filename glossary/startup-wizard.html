@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Startup Wizard — Prompt Builder</title>
+  <style>
+    /* ========= Brand-aligned variables ========= */
+    :root{
+      --paper:#fff; --ink:#0b0f14; --muted:#4a5568; --line:#dbe3ef; --accent:#185adb;
+      --bg:#f6f8fb; --chip:#eef2f7; --radius:16px; --pad:14px;
+      --shadow:0 1px 1px rgba(0,0,0,.03), 0 8px 24px rgba(0,0,0,.06);
+
+      /* Light = dark dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23121621'/></svg>");
+    }
+    :root[data-theme="dark"]{
+      --paper:#0f151d; --ink:#e7eff7; --muted:#9db0c3; --line:#1b2838; --accent:#4ea1ff;
+      --bg:#0b0f14; --chip:#111a25; --shadow:0 1px 1px rgba(0,0,0,.3), 0 12px 28px rgba(0,0,0,.35);
+
+      /* Theme icon: dark = golden dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+    a{color:inherit; text-decoration:none}
+    .app{max-width:1160px; margin:0 auto; padding:12px}
+
+    /* ========= Appbar ========= */
+    header.appbar{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px; margin:8px 0 16px;
+      background:var(--paper); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow);
+    }
+    .spacer{flex:1}
+    .btn{
+      border:1px solid var(--line); background:transparent; color:inherit;
+      border-radius:10px; padding:8px 12px; cursor:pointer; transition:.15s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 3px 12px rgba(0,0,0,.08)}
+    .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+    .btn.tiny{padding:6px 10px; font-size:12px}
+    .btn.ghost{background:transparent}
+    .btn .ico{
+      width:14px; height:14px; margin-right:8px; display:inline-block; vertical-align:-2px;
+      background-repeat:no-repeat; background-size:14px 14px; background-image:var(--theme-icon);
+      content:"";
+    }
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--line);
+      background:var(--chip); border-radius:999px; font-size:12px}
+
+    /* ========= Layout ========= */
+    main.grid{display:grid; grid-template-columns:300px 1fr; gap:18px}
+    @media (max-width:900px){ main.grid{grid-template-columns:1fr} aside{order:2} section.stage{order:1} }
+    .panel{
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .sidebar{padding:16px; position:sticky; top:74px; align-self:start}
+    .stage{padding:16px 18px; display:flex; flex-direction:column; min-height:58vh}
+
+    /* ========= Progress ========= */
+    .progressWrap{display:flex; align-items:center; gap:10px; margin:8px 0 16px}
+    .progress{flex:1; height:10px; background:var(--line); border-radius:999px; overflow:hidden}
+    .progress > div{height:100%; width:0%; background:var(--accent); transition:width .25s ease}
+    .progMeta{font-size:12px; color:var(--muted); white-space:nowrap}
+
+    /* ========= Sidebar steps ========= */
+    #fwName{margin:6px 0 10px; font-size:14px; opacity:.85}
+    .step-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; max-height:60vh; overflow:auto}
+    .step-list li{
+      display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; cursor:pointer;
+      border:1px solid transparent;
+    }
+    .step-list li:hover{background:var(--chip)}
+    .step-list li.active{background:color-mix(in lch, var(--accent) 14%, transparent); border-color:var(--accent)}
+    .step-list .num{
+      width:26px; height:26px; border-radius:8px; display:grid; place-items:center;
+      background:#e5e7eb; font-weight:700; color:#111;
+    }
+    :root[data-theme="dark"] .step-list .num{ background:#1f2a37; color:#e7eff7 }
+    .step-list li.done .num{ background:#d1fae5; color:#065f46 }
+    :root[data-theme="dark"] .step-list li.done .num{ background:#0b3b2e; color:#9ff0c2 }
+
+    /* ========= Stage group ========= */
+    .stageWrap{flex:1; display:grid; align-content:flex-start; justify-items:stretch; padding:6px 4px}
+    .stageWrap.centered{align-content:center}
+    .stageHeader{margin:0 0 8px; font-weight:700}
+    .stageInner{max-width:820px; margin:0 auto; width:100%}
+    .help{color:var(--muted); font-size:12px}
+
+    /* ========= Fields ========= */
+    .field{margin:12px 0}
+    .field label{display:block; font-weight:600; margin-bottom:8px}
+    .fieldHolder{position:relative}
+    input[type="text"], textarea, select{
+      width:100%; background:var(--chip); color:inherit; border:1px solid var(--line);
+      border-radius:12px; padding:12px 14px; outline:none
+    }
+    textarea{min-height:140px}
+    pre.output{
+      white-space:pre-wrap; background:var(--chip); border:1px solid var(--line);
+      border-radius:12px; padding:12px; margin:8px 0 0;
+    }
+
+    /* ========= Footer actions ========= */
+    footer.actions{display:flex; gap:8px; justify-content:space-between; margin-top:12px; flex-wrap:wrap}
+    footer.actions .btn{min-width:96px}
+    .actionRow{display:flex; gap:8px; flex-wrap:wrap}
+
+/* ========= Setup (Step 0) ========= */
+.setupHead{display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+
+/* Elastic 12-col grid that never overflows */
+.controls{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap:12px;
+  align-items:end; /* bottoms line up */
+}
+/* allow grid children to shrink instead of forcing overflow */
+.controls > div{ min-width:0; }
+
+/* Column spans (desktop) */
+.controls .cell-search{ grid-column: span 6; } /* big */
+.controls .cell-kind{   grid-column: span 2; }
+.controls .cell-cat{    grid-column: span 2; }
+.controls .cell-tags{   grid-column: span 2; } /* compact by default */
+.controls .reset-cell{  grid-column: 12 / -1; justify-self:end; }
+
+/* Roomier inputs/selects */
+.controls .sub{font-size:12px; color:var(--muted); display:block; margin-bottom:6px}
+.controls input,
+.controls select{
+  height:44px; padding:10px 14px; font-size:14px; width:100%; min-width:0;
+  background:var(--chip); border:1px solid var(--line); border-radius:12px; outline:none;
+}
+.controls input:focus,
+.controls select:focus{
+  border-color: color-mix(in lch, var(--accent) 45%, var(--line));
+  box-shadow: 0 0 0 3px color-mix(in lch, var(--accent) 18%, transparent);
+}
+
+/* Search icon + custom caret */
+:root{
+  --search-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%234a5568' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='7' cy='7' r='4.5'/><path d='M10.6 10.6L15 15'/></svg>");
+  --select-caret: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='%234a5568'><path d='M5 7l5 6 5-6z'/></svg>\");
+}
+:root[data-theme="dark"]{
+  --search-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239db0c3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='7' cy='7' r='4.5'/><path d='M10.6 10.6L15 15'/></svg>");
+  --select-caret: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='%239db0c3'><path d='M5 7l5 6 5-6z'/></svg>\");
+}
+.controls .ta-menu{ position:relative; overflow:visible; } /* keep typeahead contained to this cell */
+.controls .ta-menu input{
+  padding-left:36px;
+  background-image: var(--search-icon);
+  background-repeat:no-repeat;
+  background-position:10px center;
+  background-size:16px 16px;
+}
+
+/* Custom caret for selects */
+.controls select{
+  appearance:none; -webkit-appearance:none;
+  background-image: var(--select-caret);
+  background-repeat:no-repeat;
+  background-position: calc(100% - 10px) center;
+  padding-right:32px; max-width:100%;
+}
+
+/* Active filters */
+.filters{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.chip{display:inline-flex; align-items:center; gap:6px; padding:6px 8px; border:1px solid var(--line); border-radius:999px; background:var(--chip); font-size:12px}
+.chip button{border:none; background:transparent; cursor:pointer; font-weight:700}
+
+/* Result metadata + top list */
+.resultMeta{font-size:12px; color:var(--muted); margin:8px 0}
+.resultsHeader{display:flex; align-items:baseline; gap:10px; margin-top:14px}
+.resultsHeader h4{margin:0; font-size:14px}
+.resultsHeader .dim{color:var(--muted)}
+.cardList{display:grid; grid-template-columns:1fr; gap:10px; margin-top:8px}
+.bestCard{border:1px solid var(--line); border-radius:12px; padding:12px; background:var(--paper); box-shadow:var(--shadow)}
+.bestTitle{margin:0 0 4px; font-weight:700}
+.dim{color:var(--muted)}
+.row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+/* Responsive tweaks */
+@media (max-width: 1100px){
+  .controls .cell-search{ grid-column: 1 / -1; }
+  .controls .cell-kind,
+  .controls .cell-cat{ grid-column: span 6; }
+  .controls .cell-tags{ grid-column: 1 / -1; }
+  .controls .reset-cell{ grid-column: 1 / -1; justify-self:start; }
+}
+
+
+/* Typeahead */
+.ta-menu{position:relative}
+.ta-list{position:absolute; z-index:25; inset:auto 0 auto 0; margin-top:4px; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); max-height:280px; overflow:auto}
+.ta-item{padding:8px 10px; border-bottom:1px solid var(--line); cursor:pointer}
+.ta-item:last-child{border-bottom:none}
+.ta-item strong{display:block}
+.ta-item small{display:block; color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="appbar">
+      <a class="btn tiny" href="./prompt-builder.html" title="Back to Prompt Builder">← Back</a>
+      <strong>Startup Wizard</strong>
+      <span class="pill"><span>One field at a time</span></span>
+      <div class="spacer"></div>
+      <button id="setupBtn" class="btn tiny" type="button" title="Back to Setup">Setup</button>
+      <button id="themeBtn" class="btn tiny" type="button" aria-pressed="false" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span>Light
+      </button>
+      <a id="builderLink" class="btn tiny" href="./prompt-builder.html">Prompt Builder</a>
+    </header>
+
+    <div class="progressWrap">
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-live="polite">
+        <div id="bar" aria-hidden="true"></div>
+      </div>
+      <div class="progMeta">
+        <span id="progPct">0%</span> • <span id="progStep">0 / 0</span> • <span id="progMsg">Setup</span>
+      </div>
+    </div>
+
+    <main class="grid">
+      <!-- Sidebar (steps) -->
+      <aside class="panel sidebar">
+        <h3 id="fwName">Setup</h3>
+        <ol id="stepList" class="step-list"></ol>
+      </aside>
+
+      <!-- Stage -->
+      <section class="panel stage">
+        <div id="stageWrap" class="stageWrap">
+          <h3 id="stepTitle" class="stageHeader"></h3>
+          <div id="stepPane" class="stageInner"></div>
+        </div>
+
+        <footer class="actions">
+          <div class="actionRow">
+            <button id="prevBtn" class="btn">Back</button>
+            <button id="nextBtn" class="btn">Next</button>
+            <button id="backToSetupBtn" class="btn ghost">Back to Setup</button>
+          </div>
+          <div class="actionRow">
+            <button id="copyBtn" class="btn tiny" hidden>Copy</button>
+            <button id="chatBtn" class="btn tiny" hidden>Ask ChatGPT</button>
+            <a id="openPB" class="btn tiny" href="./prompt-builder.html" target="_blank" rel="noopener" hidden>Prompt Builder</a>
+            <button id="printBtn" class="btn tiny" hidden>Print Worksheet</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- Templates dataset -->
+  <script src="./templates.data.js"></script>
+
+  <script>
+  /* ========= Theme ========= */
+  (function themeInit(){
+    const key='pb_theme';
+    const btn = document.getElementById('themeBtn');
+
+    function apply(theme){
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(key, theme);
+      const next = (theme === 'dark') ? 'Light' : 'Dark';
+      btn.innerHTML = '<span class="ico" aria-hidden="true"></span>' + next;
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'false' : 'true');
+    }
+
+    const saved = localStorage.getItem(key) || 'dark';
+    apply(saved);
+    btn?.addEventListener('click', ()=>{
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      apply(cur === 'dark' ? 'light' : 'dark');
+    });
+  })();
+
+  /* ========= Data & helpers ========= */
+  const ALL = (window.TEMPLATES || window.FRAMEWORKS || []).slice();
+  const byId = id => ALL.find(f=>String(f.id).toLowerCase()===String(id).toLowerCase());
+  const bySlug = slug => ALL.find(f=>String(f.slug||'').toLowerCase()===String(slug).toLowerCase());
+  const TEMPLATE_PICKER = byId('none') || ALL.find(f=>f.id==='none') || ALL[0];
+
+  const norm = s => (s||'').toLowerCase();
+  const tok = s => norm(s).split(/[^a-z0-9]+/).filter(Boolean);
+
+  function builderURL(slug, prefill){
+    const base = './prompt-builder.html';
+    const u = new URL(base, location.href);
+    if (slug) u.searchParams.set('slug', slug);
+    if (prefill) u.searchParams.set('prefill', btoa(unescape(encodeURIComponent(JSON.stringify(prefill)))));
+    return u.toString();
+  }
+
+  function composePrompt(fw, fields){
+    try{
+      const body = fw.template(fields || {});
+      if (Array.isArray(body)) return body.filter(Boolean).join('\\n\\n');
+      return String(body||'');
+    }catch(e){ return ''; }
+  }
+
+  // index for filtering/scoring
+  const INDEX = ALL.map(f=>{
+    const text = [
+      f.label, f.slug, f.definition, f.help,
+      ...(f.use_cases||[]), ...(f.tags||[]), ...(f.categories||[])
+    ].filter(Boolean).join(' ').toLowerCase();
+    return {
+      id:f.id, slug:f.slug, label:f.label,
+      kind:(f.kind||'').toLowerCase(),
+      tags:(f.tags||[]).map(norm),
+      cats:(f.categories||[]).map(norm),
+      text
+    };
+  });
+
+  const KINDS = Array.from(new Set(INDEX.map(x=>x.kind).filter(Boolean))).sort();
+  const CATS  = Array.from(new Set(INDEX.flatMap(x=>x.cats))).sort();
+
+  function filterAndScore(q, kind, cat, tags){
+    const qTokens = tok(q);
+    const tagSet = new Set((tags||[]).map(norm).filter(Boolean));
+    return INDEX.filter(x=>{
+      if (kind && x.kind!==norm(kind)) return false;
+      if (cat && !x.cats.includes(norm(cat))) return false;
+      if (tagSet.size){
+        let hit=false;
+        for (const t of tagSet){ if (x.tags.includes(t)) { hit=true; break; } }
+        if (!hit) return false;
+      }
+      // search check
+      if (qTokens.length){
+        return qTokens.every(t => x.text.includes(t));
+      }
+      return true;
+    }).map(x=>{
+      let s=0;
+      qTokens.forEach(t=>{
+        if (tok(x.label).some(l=>l.startsWith(t))) s+=3;
+        if (x.tags.includes(t)) s+=2;
+        if (x.text.includes(t)) s+=1;
+      });
+      return {ref:x, score:s};
+    }).sort((a,b)=> b.score - a.score || a.ref.label.localeCompare(b.ref.label,'en',{sensitivity:'base'}));
+  }
+
+  /* ========= State ========= */
+  const state = {
+    mode:'setup',            // 'setup' | 'flow'
+    fw:TEMPLATE_PICKER,      // current framework when in 'flow'
+    steps:[], idx:0, maxVisited:0,
+    answers:{},              // field answers for current fw
+    // setup filters
+    setup:{
+      q:'', kind:'', cat:'', tags:[], selectedId:(TEMPLATE_PICKER?.id||'none')
+    }
+  };
+
+  /* ========= DOM refs ========= */
+  const fwName   = document.getElementById('fwName');
+  const stepList = document.getElementById('stepList');
+  const stepTitle= document.getElementById('stepTitle');
+  const stepPane = document.getElementById('stepPane');
+  const stageWrap= document.getElementById('stageWrap');
+  const bar      = document.getElementById('bar');
+
+  const btnPrev  = document.getElementById('prevBtn');
+  const btnNext  = document.getElementById('nextBtn');
+  const btnSetup = document.getElementById('setupBtn');
+  const btnBackSetup = document.getElementById('backToSetupBtn');
+  const btnCopy  = document.getElementById('copyBtn');
+  const btnChat  = document.getElementById('chatBtn');
+  const btnPrint = document.getElementById('printBtn');
+  const linkPB   = document.getElementById('openPB');
+
+  /* ========= Progress ========= */
+  function setProgress(i,n){
+    if (state.mode==='setup'){
+      bar.style.width = '0%';
+      document.getElementById('progPct').textContent = '0%';
+      document.getElementById('progStep').textContent = 'Setup';
+      document.getElementById('progMsg').textContent = 'Choose a template';
+      return;
+    }
+    const pct = Math.max(0, Math.min(100, Math.round(((i+1)/Math.max(1,n))*100)));
+    bar.style.width = pct + '%';
+    document.getElementById('progPct').textContent = pct + '%';
+    document.getElementById('progStep').textContent = (i+1) + ' / ' + n;
+    const cheers = [
+      {max:10,  text:'Let’s start'},
+      {max:30,  text:'Nice momentum'},
+      {max:55,  text:'You’re rolling'},
+      {max:80,  text:'Over halfway'},
+      {max:95,  text:'Almost there'},
+      {max:100, text:'Finish strong'}
+    ];
+    const pick = cheers.find(c => pct <= c.max) || cheers[cheers.length-1];
+    document.getElementById('progMsg').textContent = pick.text;
+  }
+
+  /* ========= Setup (Step 0) UI ========= */
+function renderSetup(){
+  const TOTAL = ALL.length;
+
+  fwName.textContent = 'Setup';
+  stepList.innerHTML = ''; // no steps in setup
+  stepTitle.textContent = 'Choose a template';
+  stageWrap.classList.remove('centered');
+  stepPane.innerHTML = '';
+
+  // header row: totals + glossary
+  const head = document.createElement('div');
+  head.className = 'setupHead';
+  head.innerHTML = `
+    <div class="resultMeta" id="resultMeta" aria-live="polite"></div>
+    <div class="spacer"></div>
+    <a class="btn tiny" href="./templates-glossary.html" target="_blank" rel="noopener">Open Template Glossary</a>
+  `;
+  stepPane.appendChild(head);
+
+  // controls
+  const pane = document.createElement('section');
+  pane.className = 'pane';
+  pane.innerHTML = `
+<div class="controls">
+  <div class="ta-menu cell-search">
+    <label class="sub" for="q">Search</label>
+    <input id="q" placeholder="Search label, definition, fields, tags…" autocomplete="off"/>
+    <div id="qList" class="ta-list" hidden></div>
+  </div>
+
+  <div class="cell-kind">
+    <label class="sub" for="kind">Kind</label>
+    <select id="kind"><option value="">All</option></select>
+  </div>
+
+  <div class="cell-cat">
+    <label class="sub" for="cat">Category</label>
+    <select id="cat"><option value="">All</option></select>
+  </div>
+
+  <div class="cell-tags">
+    <label class="sub" for="tag">Tags</label>
+    <input id="tag" placeholder="Search cleaned tags (e.g., framework)" autocomplete="off"/>
+  </div>
+
+  <div class="reset-cell">
+    <label class="sub">&nbsp;</label>
+    <button id="reset" class="btn tiny">Reset</button>
+  </div>
+</div>
+
+
+    <!-- Active Filters -->
+    <div id="active" class="filters" aria-live="polite"></div>
+
+    <!-- Top results header -->
+    <div class="resultsHeader">
+      <h4>Top matches</h4>
+      <span class="dim" id="topMeta">Showing top 3 of 0 (out of ${TOTAL})</span>
+      <div class="spacer"></div>
+    </div>
+    <div class="help">Refine with filters. For the full list, use the <em>All matches</em> dropdown or open the Template Glossary.</div>
+
+    <!-- Top 3 cards -->
+    <div id="topList" class="cardList"></div>
+
+    <!-- Full matches control -->
+    <div style="margin-top:12px">
+      <label class="sub" for="matchSel">All matches (<span id="matchCount">0</span>)</label>
+      <select id="matchSel" style="width:100%"></select>
+      <div class="help">For full results (with descriptions), open the <a href="./templates-glossary.html" target="_blank" rel="noopener">Template Glossary</a>.</div>
+    </div>
+  `;
+  stepPane.appendChild(pane);
+
+  // populate dropdowns
+  const kindSel = pane.querySelector('#kind');
+  KINDS.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=k||'—'; kindSel.appendChild(o); });
+  const catSel = pane.querySelector('#cat');
+  CATS.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o); });
+
+  // refs
+  const q      = pane.querySelector('#q');
+  const qList  = pane.querySelector('#qList');
+  const tag    = pane.querySelector('#tag');
+  const active = pane.querySelector('#active');
+  const reset  = pane.querySelector('#reset');
+  const meta   = head.querySelector('#resultMeta');
+  const topMeta= pane.querySelector('#topMeta');
+  const topList= pane.querySelector('#topList');
+  const matchSel = pane.querySelector('#matchSel');
+  const matchCount = pane.querySelector('#matchCount');
+
+  // init values
+  q.value = state.setup.q || '';
+  kindSel.value = state.setup.kind || '';
+  catSel.value  = state.setup.cat || '';
+  renderActiveChips();
+  recompute();
+
+  // chips
+  function renderActiveChips(){
+    active.innerHTML = '';
+    if (state.setup.q){
+      chip('Search: '+state.setup.q, ()=>{ state.setup.q=''; q.value=''; recompute(); });
+    }
+    if (state.setup.kind){
+      chip('Kind: '+state.setup.kind, ()=>{ state.setup.kind=''; kindSel.value=''; recompute(); });
+    }
+    if (state.setup.cat){
+      chip('Category: '+state.setup.cat, ()=>{ state.setup.cat=''; catSel.value=''; recompute(); });
+    }
+    state.setup.tags.forEach(t=> chip('#'+t, ()=>{ state.setup.tags = state.setup.tags.filter(x=>x!==t); recompute(); }));
+    function chip(text, onX){
+      const c=document.createElement('span'); c.className='chip'; c.innerHTML = `${text} <button type="button" aria-label="Remove filter">×</button>`;
+      c.querySelector('button').addEventListener('click', onX);
+      active.appendChild(c);
+    }
+  }
+
+  // recompute everything (counts, top3, dropdown, typeahead)
+  function recompute(){
+    const list = filterAndScore(state.setup.q, state.setup.kind, state.setup.cat, state.setup.tags);
+    const matches = list.map(x=>x.ref);
+
+    // meta lines
+    meta.textContent = `${TOTAL} total templates • ${matches.length} match your filters`;
+    topMeta.textContent = `Showing top 3 of ${matches.length} (out of ${TOTAL})`;
+
+    // Top 3 cards (default to Template Picker if empty)
+    topList.innerHTML = '';
+    const top = matches.slice(0,3);
+    const show = top.length ? top : [ { id: TEMPLATE_PICKER.id, slug: TEMPLATE_PICKER.slug, label: TEMPLATE_PICKER.label, kind: TEMPLATE_PICKER.kind||'template', cats: TEMPLATE_PICKER.categories||[], def: TEMPLATE_PICKER.definition||TEMPLATE_PICKER.help||'' } ];
+    show.forEach(ref=>{
+      const f = byId(ref.id) || TEMPLATE_PICKER;
+      const metaBits = [ (f.kind||'template'), ...(f.categories||[]).slice(0,2) ].filter(Boolean).join(' • ');
+      const card = document.createElement('div');
+      card.className = 'bestCard';
+      card.innerHTML = `
+        <div class="row">
+          <h4 class="bestTitle">${f.label}</h4>
+          <span class="pill dim">${metaBits}</span>
+        </div>
+        <div class="help">${(f.definition||f.help||'').toString().slice(0,220)}</div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn primary tiny" type="button" data-use="${f.id}">Use this template</button>
+          <a class="btn tiny" href="./templates-glossary.html${f.slug ? ('#'+encodeURIComponent(f.slug)) : ''}" target="_blank" rel="noopener">View in Glossary</a>
+          <a class="btn tiny" href="${builderURL(f.slug||f.id)}" target="_blank" rel="noopener">Prompt Builder</a>
+        </div>
+      `;
+      topList.appendChild(card);
+    });
+
+    // wire "Use this template" (delegate to topList)
+    topList.onclick = (ev)=>{
+      const b = ev.target.closest('[data-use]');
+      if (!b) return;
+      const id = b.getAttribute('data-use');
+      const f = byId(id);
+      if (f){ state.mode='flow'; state.fw=f; state.answers={}; buildFlow(); render(); }
+    };
+
+    // matches dropdown
+    matchSel.innerHTML = '';
+    matches.forEach(ref=>{
+      const f = byId(ref.id);
+      const o=document.createElement('option');
+      o.value=f.id;
+      o.textContent = `${f.label} • ${f.kind||'template'}`;
+      matchSel.appendChild(o);
+    });
+    matchCount.textContent = String(matches.length);
+    matchSel.disabled = !matches.length;
+
+    // default selection stays on first match or Template Picker if none
+    const selected = matches[0]?.id || (TEMPLATE_PICKER?.id||'none');
+    matchSel.value = selected;
+    state.setup.selectedId = selected;
+
+    // typeahead suggestions
+    renderSuggestions(matches.slice(0,10));
+  }
+
+  // typeahead helpers
+  function renderSuggestions(refs){
+    const qval = q.value.trim();
+    if (!qval){ qList.hidden=true; qList.innerHTML=''; return; }
+    qList.innerHTML='';
+    refs.forEach(r=>{
+      const f = byId(r.id);
+      const item=document.createElement('div');
+      item.className='ta-item';
+      item.setAttribute('role','option');
+      item.innerHTML = `<strong>${f.label}</strong><small>${(f.definition||f.help||'').toString().slice(0,100)}</small>`;
+      item.addEventListener('click', ()=>{
+        q.value = f.label;
+        state.setup.q = f.label;
+        qList.hidden=true; renderActiveChips(); recompute();
+      });
+      qList.appendChild(item);
+    });
+    qList.hidden = !qList.children.length;
+  }
+
+  // events
+  let qDebounce;
+  q.addEventListener('input', ()=>{
+    state.setup.q = q.value.trim();
+    clearTimeout(qDebounce);
+    qDebounce = setTimeout(()=>{ renderActiveChips(); recompute(); }, 160);
+  });
+  q.addEventListener('keydown', (e)=>{ if (e.key==='Escape'){ qList.hidden=true; } });
+  kindSel.addEventListener('change', ()=>{ state.setup.kind = kindSel.value; renderActiveChips(); recompute(); });
+  catSel.addEventListener('change',  ()=>{ state.setup.cat  = catSel.value;  renderActiveChips(); recompute(); });
+
+  // tags: on Enter/Comma add
+  tag.addEventListener('keydown', (e)=>{
+    if (e.key==='Enter' || e.key===',' ){
+      e.preventDefault();
+      const v = tag.value.trim().replace(/[, ]+$/,'');
+      if (v && !state.setup.tags.includes(v.toLowerCase())){
+        state.setup.tags.push(v.toLowerCase());
+        tag.value='';
+        renderActiveChips(); recompute();
+      }
+    }
+  });
+
+  // reset
+  const resetBtn = pane.querySelector('#reset');
+  resetBtn.addEventListener('click', ()=>{
+    state.setup = { q:'', kind:'', cat:'', tags:[], selectedId:(TEMPLATE_PICKER?.id||'none') };
+    q.value=''; kindSel.value=''; catSel.value=''; tag.value='';
+    renderActiveChips(); recompute();
+  });
+
+  // selecting from All matches dropdown also moves the top list focus (first card stays first; CTA still works)
+  matchSel.addEventListener('change', ()=>{
+    state.setup.selectedId = matchSel.value;
+    // Scroll the chosen card into view if it's in top3; otherwise user will likely click CTA from the card list/dropdown below.
+    const chosenCard = topList.querySelector(`[data-use="${state.setup.selectedId}"]`);
+    if (chosenCard) chosenCard.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+}
+
+
+  /* ========= Flow steps ========= */
+  function introStepFor(fw){
+    return {
+      id:'intro',
+      title: (fw.id==='none') ? 'Orientation — Template Picker' : `${fw.label} — Orientation`,
+      render: el=>{
+        el.innerHTML = '';
+        const p = document.createElement('p');
+        const def = fw.definition || fw.help || '';
+        const n = Array.isArray(fw.fields) ? fw.fields.length : 0;
+        p.className='help'; p.textContent = (fw.id==='none')
+          ? 'Tell us your goal and context. We’ll suggest top frameworks and give you a ready-made prompt to ask ChatGPT directly.'
+          : `${def}  Steps: ${n} field${n===1?'':'s'} + output.`;
+        el.appendChild(p);
+
+        if (fw.id!=='none'){
+          const meta = document.createElement('div');
+          meta.className='help';
+          meta.innerHTML = [
+            fw.use_cases?.length ? `<div>Common uses: ${fw.use_cases.slice(0,3).join(' • ')}</div>` : '',
+            fw.tags?.length ? `<div>Tags: ${fw.tags.slice(0,6).join(', ')}</div>` : ''
+          ].join('');
+          el.appendChild(meta);
+        }
+      }
+    };
+  }
+
+  function fieldStep(f){
+    return {
+      id:'f_'+(f.key||Math.random().toString(36).slice(2)),
+      title: f.label || f.key,
+      render: el=>{
+        el.innerHTML='';
+        const wrap = document.createElement('div'); wrap.className='field';
+        const label=document.createElement('label'); label.textContent=f.label || f.key;
+        const holder=document.createElement('div'); holder.className='fieldHolder';
+        let input;
+        if (f.type==='select' && Array.isArray(f.options)){
+          input = document.createElement('select');
+          f.options.forEach(opt=>{
+            const o=document.createElement('option'); o.value=opt; o.textContent=opt; input.appendChild(o);
+          });
+        } else if (f.type==='textarea' || f.type==='typeahead_textarea'){
+          input = document.createElement('textarea'); input.rows=6;
+        } else {
+          input = document.createElement('input'); input.type='text';
+        }
+        input.placeholder = f.ph || '';
+        input.value = state.answers[f.key] || '';
+        input.addEventListener('input', ()=>{ state.answers[f.key] = input.value; });
+        holder.appendChild(input);
+        wrap.append(label, holder);
+        if (f.desc){ const d=document.createElement('div'); d.className='help'; d.textContent=f.desc; wrap.appendChild(d); }
+        el.appendChild(wrap);
+      }
+    };
+  }
+
+  function finishStepFor(fw){
+    return {
+      id:'output',
+      title:'Output',
+      render: el=>{
+        el.innerHTML='';
+        const text = composePrompt(fw, { ...state.answers });
+        const pre = document.createElement('pre'); pre.className='output'; pre.textContent = text || '(answer steps to generate a prompt)';
+        el.appendChild(pre);
+
+        // enable actions when we have text
+        const has = !!text.trim();
+        btnCopy.hidden = !has;
+        btnChat.hidden = !has;
+        linkPB.hidden  = false;  // always visible; opens selected fw in PB
+        btnPrint.hidden= !has;
+
+        // wire actions
+        btnCopy.onclick = async ()=>{ try{ await navigator.clipboard.writeText(text); }catch(e){} };
+        btnChat.onclick = ()=>{
+          const base = localStorage.getItem('chatgpt_target') || 'https://chat.openai.com/';
+          let url = base; try { const u = new URL(base); u.searchParams.set('q', text); url = u.toString(); } catch(e){}
+          window.open(url, '_blank', 'noopener,noreferrer');
+        };
+        linkPB.href = builderURL(fw.slug || fw.id);
+        btnPrint.onclick = ()=>{
+          const u = new URL('./prompt-worksheet.html', location.href);
+          u.searchParams.set('slug', fw.slug || fw.id);
+          u.searchParams.set('text', text);
+          window.open(u.toString(), '_blank', 'noopener,noreferrer');
+        };
+      }
+    };
+  }
+
+  function pickerFlow(){
+    // intro → goal → context → keywords → recommendations → ask (output)
+    const sGoal = {
+      id:'goal', title:'Your goal',
+      render: el=>{
+        el.innerHTML='';
+        const ta=document.createElement('textarea'); ta.placeholder='What are you trying to accomplish?'; ta.value=state.answers.pb_goal||''; ta.rows=6;
+        ta.addEventListener('input', ()=>{ state.answers.pb_goal = ta.value; });
+        el.appendChild(ta);
+        el.insertAdjacentHTML('beforeend','<div class="help">Be specific (action, audience, constraints).</div>');
+      }
+    };
+    const sCtx = {
+      id:'ctx', title:'Context (optional)',
+      render: el=>{
+        el.innerHTML='';
+        const ta=document.createElement('textarea'); ta.placeholder='Audience, constraints, domain, style, tone… (optional)'; ta.value=state.answers.pb_ctx||''; ta.rows=5;
+        ta.addEventListener('input', ()=>{ state.answers.pb_ctx = ta.value; });
+        el.appendChild(ta);
+      }
+    };
+    const sKw = {
+      id:'kw', title:'Keywords (optional)',
+      render: el=>{
+        el.innerHTML='';
+        const input=document.createElement('input'); input.type='text'; input.placeholder='e.g., summarize, compare, AIDA, interview…'; input.value=state.answers.pb_kw||'';
+        input.addEventListener('input', ()=>{ state.answers.pb_kw = input.value; });
+        el.appendChild(input);
+      }
+    };
+    const sRec = {
+      id:'rec', title:'Recommended frameworks',
+      render: el=>{
+        el.innerHTML='';
+        const q=[state.answers.pb_goal,state.answers.pb_ctx,state.answers.pb_kw].filter(Boolean).join(' ');
+        const ranked = filterAndScore(q, '', '', []).map(x=>x.ref);
+        const top = ranked.filter(f=>f.id!=='none').slice(0,3).map(r => byId(r.id));
+        if (!top.length){
+          el.insertAdjacentHTML('beforeend','<div class="help">Type a goal/context to see matches.</div>');
+          return;
+        }
+        top.forEach(f=>{
+          const row=document.createElement('div'); row.className='panel'; row.style.padding='10px';
+          row.innerHTML = `
+            <div>
+              <div><strong>${f.label}</strong></div>
+              <div class="help">${(f.use_cases||[]).slice(0,2).join(' • ') || (f.definition||'')}</div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <a class="btn tiny" href="${builderURL(f.slug||f.id)}" target="_blank" rel="noopener">Prompt Builder</a>
+                <button class="btn tiny" type="button" data-use="${f.id}">Use here</button>
+              </div>
+            </div>`;
+          el.appendChild(row);
+        });
+        el.addEventListener('click', ev=>{
+          const b = ev.target.closest('[data-use]');
+          if (!b) return;
+          const id = b.getAttribute('data-use');
+          const f = byId(id);
+          if (f){ state.fw = f; state.answers={}; buildFlow(); render(); }
+        }, { once:true });
+      }
+    };
+    const sAsk = {
+      id:'ask', title:'Ask ChatGPT directly',
+      render: el=>{
+        el.innerHTML='';
+        const lines=[];
+        if (state.answers.pb_goal) lines.push('Goal: '+state.answers.pb_goal);
+        if (state.answers.pb_ctx)  lines.push('Context: '+state.answers.pb_ctx);
+        if (state.answers.pb_kw)   lines.push('Keywords: '+state.answers.pb_kw);
+        const prompt = [
+          'You are a prompt-framework recommender.',
+          'Recommend the 3 best frameworks/patterns for my task.',
+          'For each: name, when to use it, and how it helps.',
+          'Then give me a single prompt applying the best one.'
+        ].join(' ');
+        const text = [prompt, ...lines].join('\\n');
+        const pre=document.createElement('pre'); pre.className='output'; pre.textContent=text;
+        el.appendChild(pre);
+
+        const has = !!text.trim();
+        btnCopy.hidden = !has;
+        btnChat.hidden = !has;
+        linkPB.hidden  = false;
+        btnPrint.hidden= !has;
+
+        btnCopy.onclick = async ()=>{ try{ await navigator.clipboard.writeText(text); }catch(e){} };
+        btnChat.onclick = ()=>{
+          const base = localStorage.getItem('chatgpt_target') || 'https://chat.openai.com/';
+          let url = base; try { const u = new URL(base); u.searchParams.set('q', text); url = u.toString(); } catch(e){}
+          window.open(url, '_blank', 'noopener,noreferrer');
+        };
+        linkPB.href = builderURL('none');
+        btnPrint.onclick = ()=>{
+          const u = new URL('./prompt-worksheet.html', location.href);
+          u.searchParams.set('slug', 'none');
+          u.searchParams.set('text', text);
+          window.open(u.toString(), '_blank', 'noopener,noreferrer');
+        };
+      }
+    };
+    return [introStepFor(state.fw), sGoal, sCtx, sKw, sRec, sAsk];
+  }
+
+  function genericFlow(fw){
+    const steps=[introStepFor(fw)];
+    (Array.isArray(fw.fields) ? fw.fields : []).forEach(f => steps.push(fieldStep(f)));
+    steps.push(finishStepFor(fw));
+    return steps;
+  }
+
+  function buildFlow(){
+    state.idx = 0;
+    state.maxVisited = 0;
+    state.steps = (state.fw.id==='none') ? pickerFlow() : genericFlow(state.fw);
+  }
+
+  /* ========= Render ========= */
+  function render(){
+    if (state.mode==='setup'){
+      // header & controls state
+      document.getElementById('builderLink').href = builderURL();
+      btnPrev.hidden = true;
+      btnNext.hidden = true;
+      btnBackSetup.hidden = true;
+      btnCopy.hidden = true; btnChat.hidden = true; btnPrint.hidden = true; linkPB.hidden = true;
+
+      renderSetup();
+      setProgress(0,0);
+      return;
+    }
+
+    // FLOW mode
+    fwName.textContent = (state.fw.id==='none') ? 'Template Picker' : state.fw.label;
+
+    // steps list
+    stepList.innerHTML='';
+    state.steps.forEach((s,i)=>{
+      const li = document.createElement('li');
+      const done = i <= state.maxVisited;
+      li.className = (done ? 'done ' : '') + (i===state.idx ? 'active' : '');
+      li.innerHTML = `<span class="num">${i+1}</span><span>${s.title}</span>`;
+      li.addEventListener('click', ()=>{ state.idx=i; state.maxVisited=Math.max(state.maxVisited, i); render(); });
+      stepList.appendChild(li);
+    });
+
+    // stage
+    const cur = state.steps[state.idx];
+    stepTitle.textContent = cur.title;
+    stepPane.innerHTML='';
+    cur.render(stepPane);
+
+    // center header+field only if there is a field
+    const hasField = !!stepPane.querySelector('input, textarea, select, .field');
+    stageWrap.classList.toggle('centered', hasField);
+
+    // nav visibility
+    const atFirst = state.idx===0, atLast = state.idx>=state.steps.length-1;
+    btnPrev.hidden = false; btnNext.hidden = false; btnBackSetup.hidden = false;
+    btnPrev.disabled = atFirst;
+    btnNext.disabled = atLast;
+
+    // PB link always points to chosen fw
+    linkPB.href = builderURL(state.fw.slug || state.fw.id);
+
+    // reset action buttons unless the step renderer enabled them
+    btnCopy.hidden = true; btnChat.hidden = true; btnPrint.hidden = true;
+
+    setProgress(state.idx, state.steps.length);
+  }
+
+  /* ========= Wire controls ========= */
+  btnPrev.addEventListener('click', ()=>{ if (state.idx>0){ state.idx--; render(); } });
+  btnNext.addEventListener('click', ()=>{ if (state.idx<state.steps.length-1){ state.idx++; state.maxVisited=Math.max(state.maxVisited, state.idx); render(); } });
+  btnBackSetup.addEventListener('click', ()=>{ state.mode='setup'; render(); });
+  btnSetup.addEventListener('click', ()=>{ state.mode='setup'; render(); });
+
+  // Deep link ?slug=
+  (function boot(){
+    const p = new URLSearchParams(location.search);
+    const slug = (p.get('slug')||'').trim().toLowerCase();
+    const initial = slug ? (bySlug(slug) || byId(slug) || TEMPLATE_PICKER) : TEMPLATE_PICKER;
+    state.mode = 'setup';       // show Setup first
+    state.fw = initial;
+    render();                   // initial render is setup
+  })();
+  </script>
+</body>
+</html>
