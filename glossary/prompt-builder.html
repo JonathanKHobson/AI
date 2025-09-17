@@ -123,6 +123,12 @@
   padding:16px;
 }
 
+/* When the preview is hidden, give the left panel the whole stage */
+.wrap.preview-hidden{ grid-template-columns: 1fr; }
+.wrap.preview-hidden #resizer{ display:none; }
+.wrap.preview-hidden #previewPanel{ display:none; }
+
+
 /* Add breathing room to the right of the resizer only */
 /* Extra breathing room between resizer and the right panel */
 .wrap > #resizer + .panel{
@@ -134,6 +140,10 @@
 
     .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius)}
     .panel h2{margin:0;padding:12px 14px;border-bottom:1px solid var(--border);font-size:18px}
+    
+    .panel h2{ display:flex; align-items:center; gap:10px; }
+.panel h2 .spacer{ flex:1; }
+
     .panel section{padding:14px}
 
     label{display:block;margin:10px 0 6px;color:var(--muted);font-size:16px; font-weight:600;}
@@ -214,6 +224,30 @@
 
 /* Nice vertical rhythm between fields */
 .field + .field{ margin-top:12px; }
+
+/* Stepper progress + field nav */
+.progress{
+  height:6px; background:var(--border); border-radius:4px; margin:8px 0;
+}
+.progress > .bar{
+  height:100%; background:var(--accent); width:0%; border-radius:4px; transition:width .25s;
+}
+
+.progressMeta{
+  display:flex; align-items:center; gap:10px;
+  margin:6px 0 4px; font-size:12px; color:var(--muted);
+}
+.progressMeta .pct{ font-variant-numeric: tabular-nums; }
+.progressMeta .nudge{ opacity:.9; }
+
+
+
+.field-nav{
+  display:flex; gap:8px; margin:8px 0 0;
+  align-items:center; flex-wrap:wrap;
+}
+.field-nav .spacer{ flex:1; }
+
 
 
 /* Inline counters inside inputs/textareas */
@@ -714,11 +748,13 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 <body>
   <header>
     <a class="btn sm" href="../glossary/index.html" target="_blank" rel="noopener">← Back to Full Glossary</a>
-    <a class="btn sm" href="./templates-glossary.html" target="_blank" rel="noopener">Open Template Glossary</a>
+    <a class="btn sm" href="./Templates-Glossary.html" target="_blank" rel="noopener">Open Template Glossary</a>
 
     <strong>Prompt Framework Builder</strong>
     <span class="pill" data-val="framework" title="Thinking Structures & Patterns">thinking structures + patterns</span>
     <span class="spacer"></span>
+    <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (beta)</a>
+
 <button id="copyBtn" class="btn sm">Copy Prompt</button>
 <button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
     <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
@@ -726,7 +762,9 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
   <div class="wrap">
   <div class="panel" id="configPanel">
-      <h2>Configure</h2>
+      <h2><span>Configure</span>
+        <span class="spacer"></span>
+        <button id="showPreviewBtn" class="btn sm" title="Show the preview panel" hidden>Show Preview</button></h2>
       
 <!-- Hidden until >1 template -->
 <h3 id="tabbarLabel" class="subhead" hidden>Active templates</h3>
@@ -822,28 +860,57 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
         
       </section>
 
-      <section>
-        <h3 style="margin:0 0 6px;font-size:14px">Template fields</h3>
-        <div id="fields"></div>
-        <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
-        
-        <!-- Secondary quick actions: mirrors header actions -->
-<div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
-<button id="copyBtn2" class="btn sm" title="Copy active tab">Copy Prompt</button>
-<button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
-<button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
-    <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
+<section>
+  <h3 id="fieldsHeader" style="margin:0 0 6px;font-size:14px">Template fields</h3>
+
+ <!-- Guided mode progress (hidden until step mode) -->
+<div id="fieldProgressMeta" class="progressMeta" aria-live="polite" hidden>
+  <span id="fieldStepPill" class="pill"></span>
+  <span class="spacer"></span>
+  <span id="fieldPct" class="pct">0%</span>
+  <span id="fieldNudge" class="nudge">Let’s begin.</span>
+</div>
+<div id="fieldProgress" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" hidden>
+  <div id="fieldProgressBar" class="bar" style="width:0%"></div>
 </div>
 
-      </section>
+  <!-- The fields panel (we'll slice these in JS when guided) -->
+  <div id="fields"></div>
+
+  <!-- Step controls (hidden until step mode) -->
+  <div id="fieldNav" class="field-nav" hidden>
+    <button id="fieldBack" class="btn sm" type="button" title="Previous">← Back</button>
+    <button id="fieldNext" class="btn sm" type="button" title="Next">Next →</button>
+    <span class="spacer"></span>
+    <button id="fieldShowAll" class="btn sm" type="button" title="Show every field at once">Show all</button>
+  </div>
+
+  <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
+
+  <!-- Secondary quick actions: mirrors header actions -->
+  <div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
+    <button id="copyBtn2" class="btn sm" title="Copy active tab">Copy Prompt</button>
+    <button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
+        <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Step-by-Step Wizard (beta)</a>
+
+    <button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
+    <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
+  </div>
+</section>
+
 
       <section>
         <div class="chips" id="metaChips"></div>
       </section>
     </div>
 <div id="resizer" class="resizer" role="separator" aria-orientation="vertical" aria-valuemin="280" aria-valuemax="900" tabindex="0"></div>
-    <div class="panel">
-      <h2>Generated prompt</h2>
+<div class="panel" id="previewPanel">
+
+    <h2>
+    <span>Generated prompt</span>
+    <span class="spacer"></span>
+    <button id="hidePreviewBtn" class="btn sm" title="Hide the preview panel">Hide Preview</button>
+  </h2>
       <div id="masterPromptTotal" class="prompt-total prompt-total--master" aria-live="polite"></div>
 
 <div id="previewLabel" class="areaLabel"><span class="dot"></span><span>Preview • Active tab</span></div>
@@ -1092,7 +1159,55 @@ function applySavedUI(){
       if (label) label.textContent = isLight ? 'Dark' : 'Light';
     }
   }
+  
+// NEW: restore preview hidden state
+if (ui.previewHidden){
+  const wrap = document.querySelector('.wrap');
+  wrap && wrap.classList.add('preview-hidden');
+
+  // preview panel hint
+  const previewPanel = document.getElementById('previewPanel');
+  if (previewPanel) previewPanel.setAttribute('aria-hidden', 'true');
+
+  // main toggle (in preview header if present)
+  const pbtn = document.getElementById('previewToggle');
+  if (pbtn){
+    pbtn.setAttribute('aria-pressed', 'true');
+    pbtn.textContent = 'Show Preview';
+  }
+
+  // Show button in configure header (left) — unhide it
+  const showBtn = document.getElementById('showPreviewBtn');
+  if (showBtn){
+    showBtn.hidden = false;
+    showBtn.setAttribute('aria-hidden', 'false');
+  }
+} else {
+  // ensure left show button is hidden by default when preview visible
+  const showBtn = document.getElementById('showPreviewBtn');
+  if (showBtn){
+    showBtn.hidden = true;
+    showBtn.setAttribute('aria-hidden', 'true');
+  }
 }
+
+  
+  // Restore preview hidden state and sync the two buttons
+const wrap = document.querySelector('.wrap');
+const isHidden = !!( (_safeParse(localStorage.getItem(LS_KEYS.ui)) || {}).previewHidden );
+
+if (wrap) wrap.classList.toggle('preview-hidden', isHidden);
+
+const panel = document.getElementById('previewPanel');
+if (panel) panel.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
+
+const showBtn = document.getElementById('showPreviewBtn');
+const hideBtn = document.getElementById('hidePreviewBtn');
+if (showBtn) showBtn.hidden = !isHidden;
+if (hideBtn) hideBtn.hidden =  isHidden;
+  
+}
+
 
 function saveUI(){
   try{
@@ -1100,7 +1215,8 @@ function saveUI(){
     const cols = wrap ? getComputedStyle(wrap).gridTemplateColumns : '';
     const leftW = cols ? cols.split(' ')[0] : getComputedStyle(document.documentElement).getPropertyValue('--leftW') || '360px';
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-    localStorage.setItem(LS_KEYS.ui, JSON.stringify({ leftW, theme, ts: Date.now() }));
+    const previewHidden = !!(wrap && wrap.classList.contains('preview-hidden'));
+    localStorage.setItem(LS_KEYS.ui, JSON.stringify({ leftW, theme, previewHidden, ts: Date.now() }));
   }catch(e){
     console.warn('localStorage UI save failed:', e);
   }
@@ -1119,15 +1235,55 @@ window.addEventListener('beforeunload', saveNow);
 window.addEventListener('load', ()=>{
   const themeBtn = document.getElementById('theme');
   if (themeBtn){
-    themeBtn.addEventListener('click', ()=> setTimeout(saveUI, 0)); // after your existing toggle code runs
+    themeBtn.addEventListener('click', ()=> setTimeout(saveUI, 0));
   }
+
+// NEW: show/hide preview panel — wire both header buttons (preview header and left header)
+const hidePreviewBtn  = document.getElementById('hidePreviewBtn');   // in preview panel header
+const showPreviewBtn  = document.getElementById('showPreviewBtn');   // in Configure header (left)
+const legacyToggleBtn = document.getElementById('previewToggle');    // old header button (optional)
+
+function togglePreview(){
+  const wrap  = document.querySelector('.wrap');
+  if (!wrap) return;
+
+  const nowHidden = !wrap.classList.contains('preview-hidden');
+  wrap.classList.toggle('preview-hidden', nowHidden);
+
+  // preview panel visibility (for a11y)
+  const panel = document.getElementById('previewPanel');
+  if (panel) panel.setAttribute('aria-hidden', nowHidden ? 'true' : 'false');
+
+  // New buttons: hide/show live in the panel headers
+  const hideBtn = document.getElementById('hidePreviewBtn');  // right-side header
+  const showBtn = document.getElementById('showPreviewBtn');  // left-side header
+  if (hideBtn) hideBtn.hidden = nowHidden;   // hidden when preview is hidden
+  if (showBtn) showBtn.hidden = !nowHidden;  // shown when preview is hidden
+
+  // Legacy header toggle (if still in DOM)
+  const legacy = document.getElementById('previewToggle');
+  if (legacy){
+    legacy.setAttribute('aria-pressed', nowHidden ? 'true' : 'false');
+    legacy.textContent = nowHidden ? 'Show Preview' : 'Hide Preview';
+  }
+
+  saveUI();
+}
+
+
+// wire both buttons (if present)
+if (hidePreviewBtn)  hidePreviewBtn.addEventListener('click', togglePreview);
+if (showPreviewBtn)  showPreviewBtn.addEventListener('click', togglePreview);
+if (legacyToggleBtn) legacyToggleBtn.addEventListener('click', togglePreview); // optional
+
+
   const resizer = document.getElementById('resizer');
   if (resizer){
-    // Pointer up = resizing done; also catch keyboard nudges on the resizer
     resizer.addEventListener('pointerup', saveUI);
     resizer.addEventListener('keyup',     saveUI);
   }
 });
+
     
     /* ===== Persona helpers ===== */
 function personaIndex(){
@@ -1638,6 +1794,144 @@ function defaultBooster(id){
     const help = $('#fwHelp');
     const chips = $('#metaChips');
     
+    // Guided-mode DOM refs (progress + nav)
+const progWrap = document.getElementById('fieldProgress');
+const progBar  = document.getElementById('fieldProgressBar');
+const navWrap  = document.getElementById('fieldNav');
+const navBack  = document.getElementById('fieldBack');
+const navNext  = document.getElementById('fieldNext');
+const navAll   = document.getElementById('fieldShowAll');
+
+const metaWrap = document.getElementById('fieldProgressMeta');
+const metaStep = document.getElementById('fieldStepPill');
+const metaPct  = document.getElementById('fieldPct');
+const metaNudge= document.getElementById('fieldNudge');
+
+// Smoothly align the "Template fields" header to the top of the left panel
+function scrollFieldsHeaderIntoView(smooth = true){
+  const panel  = document.getElementById('configPanel');
+  const header = document.getElementById('fieldsHeader');
+  if (!panel || !header) return;
+
+  const panelTop  = panel.getBoundingClientRect().top;
+  const headerTop = header.getBoundingClientRect().top;
+  const target    = headerTop - panelTop + panel.scrollTop - 6; // small padding nudge
+
+  try {
+    panel.scrollTo({ top: target, behavior: smooth ? 'smooth' : 'auto' });
+  } catch (e) {
+    panel.scrollTop = target; // fallback
+  }
+}
+
+
+
+// === Guided-mode helpers ===
+function isGuided(tab){ return !!tab && tab.showAll === false; }
+function stepSize(){ return 4; } // show 4 per “page”
+
+function sliceFieldsForStep(tab, all){
+  if (!isGuided(tab)) return all;
+  const size  = stepSize();
+  const start = (tab.step || 0) * size;
+  return all.slice(start, start + size);
+}
+
+function encouragement(pct){
+  if (pct >= 100) return 'Ready to generate!';
+  if (pct >= 80)  return 'Almost there — nice!';
+  if (pct >= 60)  return 'Momentum looks good.';
+  if (pct >= 40)  return 'Keep going — you’ve got this.';
+  if (pct >= 20)  return 'Great start.';
+  return 'Let’s begin.';
+}
+
+
+function updateStepperUI(tab, total, visibleCount){
+  if (!progWrap || !navWrap) return;
+
+  const guided = isGuided(tab);
+
+  // Progress: only visible in guided mode
+  progWrap.hidden = !guided;
+  if (guided){
+    const size  = stepSize();
+    const start = (tab.step || 0) * size;
+    const done  = Math.min(start + visibleCount, total);
+    const pct   = total ? (done / total) * 100 : 0;
+    progBar.style.width = pct + '%';
+    // ARIA and meta header
+if (progWrap){
+  progWrap.setAttribute('aria-valuenow', String(Math.round(pct)));
+}
+if (metaWrap){
+  metaWrap.hidden = false;
+  const size = stepSize();
+  const totalPages = Math.max(1, Math.ceil(total / size));
+  const page = (tab.step || 0) + 1;
+  if (metaStep) metaStep.textContent = `Step ${page} of ${totalPages}`;
+  if (metaPct)  metaPct.textContent  = `${Math.round(pct)}%`;
+  if (metaNudge)metaNudge.textContent = encouragement(pct);
+} 
+  }
+
+  // Nav row: always visible so users can toggle back from "Show all"
+  navWrap.hidden = false;
+
+  // Back/Next only meaningful in guided mode
+  if (guided){
+    const size = stepSize();
+    navBack.disabled = (tab.step || 0) <= 0;
+    navNext.disabled = ((tab.step || 0) + 1) * size >= total;
+  }else{
+    navBack.disabled = true;
+    navNext.disabled = true;
+    if (metaWrap) metaWrap.hidden = true;
+
+  }
+
+  // Toggle button label + title
+  if (navAll){
+    if (guided){
+      navAll.textContent = 'Show all';
+      navAll.title = 'Show every field at once';
+    }else{
+      navAll.textContent = 'Collapse';
+      navAll.title = 'Return to guided (few-at-a-time) view';
+    }
+  }
+}
+
+
+function _activeTabSafe(){ return (typeof activeTab === 'function') ? activeTab() : null; }
+
+navBack && navBack.addEventListener('click', ()=>{
+  const t = _activeTabSafe(); if (!t) return;
+  t.step = Math.max((t.step||0) - 1, 0);
+  if (typeof scheduleSave === 'function') scheduleSave();
+  if (typeof renderFields === 'function') renderFields();
+scrollFieldsHeaderIntoView();
+});
+
+navNext && navNext.addEventListener('click', ()=>{
+  const t = _activeTabSafe(); if (!t) return;
+  t.step = (t.step||0) + 1;
+  if (typeof scheduleSave === 'function') scheduleSave();
+  if (typeof renderFields === 'function') renderFields();
+scrollFieldsHeaderIntoView();
+});
+
+navAll && navAll.addEventListener('click', ()=>{
+  const t = _activeTabSafe(); if (!t) return;
+  // Toggle: guided (showAll=false) → Show all; Show all → guided
+  t.showAll = !t.showAll;
+  // Optional: keep current step when collapsing back; no reset needed
+  if (typeof scheduleSave === 'function') scheduleSave();
+  if (typeof renderFields === 'function') renderFields();
+scrollFieldsHeaderIntoView();
+});
+
+
 
 
 // Use external dataset loaded by templates.data.js.
@@ -1893,6 +2187,11 @@ sel.addEventListener('change', updatePickerPreview);  // always fires on commit
 function switchFramework(newId){
   const t = activeTab();
   if (!t) return;
+  
+    // Guided-mode defaults (defensive)
+  if (typeof t.step !== 'number')   t.step = 0;
+  if (typeof t.showAll !== 'boolean') t.showAll = false;
+
 
   const oldId = t.id;
   // Save current draft under old framework id
@@ -1967,13 +2266,16 @@ state.tabs = [{
   id: initialId,
   fields: state.fields || {},
   extra: (state.extra && state.extra[initialId]) ?? undefined,
-  // NEW: per-tab common context (migrates from old global if present)
+  // NEW: per-tab common context 
   common: {
     ctx:       (state.common?.usecase ?? state.common?.ctx) ?? '',
     audience:  state.common?.audience ?? '',
     style:     state.common?.style ?? '',
     tone:      state.common?.tone ?? ''
-  }
+  },
+  // NEW: guided-mode state
+  step: 0,
+  showAll: false
 }];
 // Optional cleanup of legacy globals
 delete state.common;
@@ -2393,13 +2695,18 @@ function addTab(copyCurrent = false){
     id:     cur.id,
     fields: { ...(cur.fields || {}) },
     extra:  cur.extra,
-    common: { ...(cur.common || {}) }
+    common: { ...(cur.common || {}) },
+    step:   0,
+    showAll:false
   } : {
     id:     (none?.id || null),
     fields: {},
     extra:  undefined,
-    common: { ctx:'', audience:'', style:'', tone:'' }   // NEW: per-tab
+    common: { ctx:'', audience:'', style:'', tone:'' },   // NEW: per-tab
+    step:   0,
+    showAll:false
   };
+
 
   state.tabs.push(next);
   state.active = state.tabs.length - 1;
@@ -2701,8 +3008,14 @@ help.textContent = fw.help || '';
   ctx.textContent = `Editing: Tab ${idx} • ` + (fw ? fw.label : 'No template');
   fieldsWrap.appendChild(ctx);
 }
+
+const tabNow     = activeTab();
+const allFields  = Array.isArray(fw.fields) ? fw.fields : [];
+const visFields  = sliceFieldsForStep(tabNow, allFields);
+
       
-fw.fields.forEach(f=>{
+visFields.forEach(f=>{
+
   const wrap = document.createElement('div');
   wrap.className = 'field';
 
@@ -3317,7 +3630,9 @@ function personaStringFor(field, p){
   fieldsWrap.appendChild(wrap);
 });
 
-      
+    // After rendering the current slice, sync the stepper UI
+updateStepperUI(tabNow, allFields.length, visFields.length);
+  
       
 
 // --- Additional instructions box (prefilled from per-framework boosters) ---
