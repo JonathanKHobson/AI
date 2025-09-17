@@ -203,6 +203,24 @@
   pointer-events:none;     /* don't steal clicks from the input */
 }
 
+/* --- Finder: "More filters" disclosure --- */
+.filtersToggle{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; color:var(--muted);
+  background:transparent; border:none; cursor:pointer;
+  padding:4px 2px; margin:2px 0 6px;
+}
+.filtersToggle .chev{ transition: transform .2s ease; }
+.filtersToggle[aria-expanded="true"] .chev{ transform: rotate(90deg); }
+
+.filtersRow{
+  display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;
+}
+@media (max-width: 720px){
+  .filtersRow{ grid-template-columns: 1fr; }
+}
+
+
 .ta-menu {
   position: absolute; z-index: 50; margin-top: 4px; max-height: 240px; overflow:auto;
   border: 1px solid var(--border-color, #ddd); border-radius: 8px; background: var(--bg, #fff);
@@ -797,6 +815,29 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   Type to filter the <b>dropdown list below</b>.
 </div>
 
+<button id="filtersToggle" class="filtersToggle" type="button"
+        aria-expanded="false" aria-controls="filtersWrap">
+  <span class="chev">▸</span><span>More filters</span>
+</button>
+
+<div id="filtersWrap" hidden>
+  <div class="filtersRow">
+    <div>
+      <label for="filterKind">Kind</label>
+      <select id="filterKind">
+        <option value="__all__">All kinds</option>
+      </select>
+    </div>
+    <div>
+      <label for="filterCategory">Category</label>
+      <select id="filterCategory">
+        <option value="__all__">All categories</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -1314,6 +1355,11 @@ if (legacyToggleBtn) legacyToggleBtn.addEventListener('click', togglePreview); /
     resizer.addEventListener('pointerup', saveUI);
     resizer.addEventListener('keyup',     saveUI);
   }
+  
+    // Init Kind/Category options on load
+  if (document.getElementById('filtersWrap')) updateFilterOptions();
+
+  
 });
 
     
@@ -2025,6 +2071,88 @@ const PICKER = function(){
 
 
 const searchEl = document.getElementById('fwSearch');
+
+/* === More filters (Kind/Category) — disclosure + wiring === */
+const filtersToggle = document.getElementById('filtersToggle');
+const filtersWrap   = document.getElementById('filtersWrap');
+const kindSel       = document.getElementById('filterKind');
+const catSel        = document.getElementById('filterCategory');
+
+// Treat "kind:none" as framework; present "category:none" to the user as "helper"
+function normalizeKind(k){
+  const v = String(k||'').toLowerCase();
+  return v === 'none' || !v ? 'framework' : v;
+}
+function normalizeCategory(c){
+  const v = String(c||'').toLowerCase();
+  return v === 'none' ? 'helper' : v;
+}
+function friendlyKind(k){ return k ? k[0].toUpperCase()+k.slice(1) : ''; }
+function friendlyCategory(c){ return String(c||'').replace(/-/g,' '); }
+
+// All items visible for the current dataset chip (Patterns/Tasks), including the picker "none"
+function pickerBase(){
+  const list = (typeof PICKER === 'function') ? PICKER() : [];
+  return Array.isArray(list) ? list.filter(Boolean) : [];
+}
+
+function computeKindOptions(){
+  const set = new Set();
+  pickerBase().forEach(f => set.add(normalizeKind(f.kind)));
+  // No "none" bucket in the UI (merged to framework by normalizeKind)
+  return Array.from(set).sort();
+}
+
+function computeCategoryOptions(kind){
+  let arr = pickerBase();
+  if (kind && kind !== '__all__'){
+    arr = arr.filter(f => normalizeKind(f.kind) === kind);
+  }
+  const set = new Set();
+  arr.forEach(f => (f.categories||[]).forEach(c => set.add(normalizeCategory(c))));
+  return Array.from(set).sort();
+}
+
+function updateFilterOptions(){
+  if (!kindSel || !catSel) return;
+  const prevKind = kindSel.value;
+  const prevCat  = catSel.value;
+
+  // Kinds
+  const kinds = computeKindOptions();
+  kindSel.innerHTML =
+    `<option value="__all__">All kinds</option>` +
+    kinds.map(k => `<option value="${k}">${friendlyKind(k)}</option>`).join('');
+  if ([...kindSel.options].some(o=>o.value===prevKind)) kindSel.value = prevKind;
+
+  // Categories (scoped by chosen kind)
+  const k = kindSel.value === '__all__' ? null : kindSel.value;
+  const cats = computeCategoryOptions(k);
+  catSel.innerHTML =
+    `<option value="__all__">All categories</option>` +
+    cats.map(c => `<option value="${c}">${friendlyCategory(c)}</option>`).join('');
+  if ([...catSel.options].some(o=>o.value===prevCat)) catSel.value = prevCat;
+}
+
+// Toggle the disclosure
+filtersToggle?.addEventListener('click', ()=>{
+  const expanded = filtersToggle.getAttribute('aria-expanded') === 'true';
+  const next = !expanded;
+  filtersToggle.setAttribute('aria-expanded', String(next));
+  filtersWrap.hidden = !next;
+  if (next) updateFilterOptions();
+});
+
+// React to dropdown changes
+kindSel?.addEventListener('change', ()=>{
+  updateFilterOptions();                            // keep Category in sync
+  buildFrameworkOptions(searchEl?.value || '');     // re-filter list
+});
+catSel?.addEventListener('change', ()=>{
+  buildFrameworkOptions(searchEl?.value || '');
+});
+
+
 const allBtn   = document.getElementById('fwAll');
 const sug      = document.getElementById('fwSuggest'); // NEW
 
@@ -2142,6 +2270,8 @@ setDataset(currentDataset());
 // S4 — actually switch the dataset used by the picker/search
 chipPatterns?.addEventListener('click', ()=>{
   setDataset('patterns');
+    updateFilterOptions();
+
   buildFrameworkOptions(document.getElementById('fwSearch')?.value || '');
   // optional: re-render fields if your UI depends on active list
   // renderFields(); emit();
@@ -2150,6 +2280,8 @@ chipPatterns?.addEventListener('click', ()=>{
 chipTasks?.addEventListener('click', ()=>{
   ensureTasksLoaded(()=>{
     setDataset('tasks');
+        updateFilterOptions();
+
     buildFrameworkOptions(document.getElementById('fwSearch')?.value || '');
     // optional: re-render fields if your UI depends on active list
     // renderFields(); emit();
@@ -2347,6 +2479,21 @@ function buildFrameworkOptions(filterText=''){
 }
 
   }
+  
+    // Apply Kind/Category filters from the disclosure (if present)
+  const kSel = document.getElementById('filterKind');
+  const cSel = document.getElementById('filterCategory');
+  const kindFilter = (kSel && kSel.value !== '__all__') ? kSel.value : null;
+  const catFilter  = (cSel && cSel.value !== '__all__') ? cSel.value : null;
+
+  if (kindFilter){
+    list = list.filter(f => normalizeKind(f.kind) === kindFilter);
+  }
+  if (catFilter){
+    list = list.filter(f => (f.categories||[])
+      .some(c => normalizeCategory(c) === catFilter));
+  }
+
 
   // Rebuild <select> to reflect the filtered ordering
   sel.innerHTML = '';
@@ -4923,21 +5070,31 @@ form.addEventListener('submit', async (e)=>{
     }catch(_){}
     return bag;
   }
-  function openWorksheet(){
-    const t = getActive();
-    const id = t?.id || document.getElementById('frameworkSel')?.value || '';
-    if (!id || id === 'none'){ alert('Pick a template first.'); return; }
+function openWorksheet(){
+  const t  = getActive();
+  const id = t?.id || document.getElementById('frameworkSel')?.value || '';
+  if (!id || id === 'none'){ alert('Pick a template first.'); return; }
 
-    const kind = getKind(); // 'patterns' | 'tasks'
-    const key  = `pb.v1.xfer.${kind}.${id}`;
-    try { sessionStorage.setItem(key, JSON.stringify(collectFromTab(t))); } catch(_){}
+  const kind = getKind(); // 'patterns' | 'tasks'
+  const key  = `pb.v1.xfer.${kind}.${id}`;
 
-    const url = new URL('./prompt-worksheet.html', location.href);
-    url.searchParams.set('kind', kind);
-    url.searchParams.set('id',   id);
-    url.searchParams.set('xfer', key);
-    window.open(url.toString(), '_blank', 'noopener');
-  }
+  // 1) Gather tab data
+  const bag = collectFromTab(t);           // returns { common:{}, fields:{} }
+
+  // 2) Reshape to what the worksheet expects
+  const payload = { common: bag.common, values: bag.fields };
+
+  // 3) Use localStorage so the new tab can see it
+  try { localStorage.setItem(key, JSON.stringify(payload)); } catch(_) {}
+
+  // 4) Open the worksheet with the transfer key
+  const url = new URL('./prompt-worksheet.html', location.href);
+  url.searchParams.set('kind', kind);
+  url.searchParams.set('id',   id);
+  url.searchParams.set('xfer', key);
+  window.open(url.toString(), '_blank', 'noopener');
+}
+
 
   // Event delegation so it works regardless of when the row is rendered
   document.addEventListener('click', function onClick(e){
@@ -4948,6 +5105,62 @@ form.addEventListener('submit', async (e)=>{
     openWorksheet();
   }, { capture:true });
 })();
+</script>
+
+  
+  <!-- In your Prompt Builder page JS -->
+<script>
+  // Collect all field values from the current template form
+  function collectTemplateValues(templateId, kind) {
+    const values = {};
+
+    // Example selectors. Prefer a consistent data-field="key" attribute.
+    document.querySelectorAll('[data-field]').forEach(node => {
+      const key = node.dataset.field || node.name || node.id;
+      if (!key) return;
+
+      if (node.type === 'checkbox') {
+        // group checkboxes by key into an array of checked option values/labels
+        const arr = values[key] || (values[key] = []);
+        if (node.checked) arr.push(node.value || node.getAttribute('data-label') || node.labels?.[0]?.textContent || '✓');
+      } else if (node.tagName === 'SELECT') {
+        if (node.multiple) {
+          values[key] = Array.from(node.selectedOptions).map(o => o.value || o.textContent.trim());
+        } else {
+          values[key] = node.value || node.selectedOptions[0]?.textContent.trim() || '';
+        }
+      } else {
+        values[key] = node.value ?? '';
+      }
+    });
+
+    return {
+      id: templateId,
+      kind: kind || 'patterns',  // or 'tasks' to match your dataset
+      common: {
+        // Optional meta that your worksheet page can surface
+        title: document.querySelector('[data-template-title]')?.textContent?.trim() || '',
+        usecase: document.querySelector('[data-usecase]')?.value?.trim() || ''
+      },
+      values
+    };
+  }
+
+  // Call this from your “Print worksheet” click handler
+  function openPrintableWorksheet(templateId, kind) {
+    const payload = collectTemplateValues(templateId, kind);
+    const xferKey = `xfer:${payload.kind}:${payload.id}:${Date.now()}`;
+    localStorage.setItem(xferKey, JSON.stringify(payload));
+
+    const url = `./prompt-worksheet.html?id=${encodeURIComponent(payload.id)}&kind=${encodeURIComponent(payload.kind)}&xfer=${encodeURIComponent(xferKey)}`;
+    window.open(url, '_blank'); // new tab is fine, same-origin keeps sessionStorage accessible
+  }
+
+  // Example button hookup:
+  document.getElementById('printWorksheetBtn')?.addEventListener('click', () => {
+    const templateId = window.currentTemplateId; // however you track it
+    openPrintableWorksheet(templateId, 'patterns'); // or 'tasks'
+  });
 </script>
 
   
