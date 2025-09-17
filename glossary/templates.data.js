@@ -2897,44 +2897,182 @@ boosters: [
 },
 
 {
-  id:'inclusive_design',
-  slug:'inclusive-design-framework',
-  label:'Inclusive Design (edge personas)',
-  kind:'pattern',
-  categories:['design','ethics','accessibility'],
-  tags:[
-    'type:pattern','topic:inclusive-design','topic:edge-cases','level:beginner',
-    'use:product','use:content','use:service-design'
+  id: 'inclusive_design',
+  slug: 'inclusive-design-framework',
+  label: 'Inclusive Design (edge personas)',
+  kind: 'framework',
+  categories: ['design','ethics','accessibility','research','content'],
+  tags: [
+    'type:framework','topic:inclusive-design','topic:persona-spectrum','topic:wcag',
+    'phase:discover','phase:design','phase:test','level:intermediate',
+    'use:product','use:content','use:service-design','use:policy'
   ],
-  use_cases:[
-    'identify edge personas and barriers',
-    'design adaptations that reduce exclusion',
-    'articulate benefits to all users'
+
+  use_cases: [
+    'identify edge personas and mismatches (permanent • temporary • situational)',
+    'co-design adaptations that reduce exclusion and cognitive load',
+    'map designs to WCAG and beyond (cognition, language, environment)',
+    'spec edge-first acceptance criteria and lightweight usability tests',
+    'articulate “solve for one → extend to many” benefits with metrics'
   ],
-  definition:'Design for “edge cases” to reduce exclusion, following Microsoft’s Inclusive Design principles.',
-  help:'Pick an edge persona, name the barrier, propose an adaptation, and explain the universal benefit.',
-  boosters:[
-    'Name concrete assistive tech or environmental constraints where relevant.',
-    'Suggest a quick hallway/usability test to validate the adaptation.'
+
+  definition:
+    'Design for predictable contexts of exclusion by surfacing mismatches (user × environment × interface), co-designing adaptations with edge personas, and validating that improvements lift outcomes for everyone (solve for one → extend to many).',
+
+  help:
+    'Start with at least one edge persona and a concrete barrier. Add the environment, assistive tech, and constraints. Propose specific adaptations, map to WCAG where relevant, plan a quick validation, and define success metrics and universal benefits. Use persona/bias autofill to enrich context.',
+
+  boosters: [
+    'Recognize exclusion; treat “edge cases” as design inputs, not exceptions.',
+    'Use Persona Spectrum (permanent • temporary • situational) for each need.',
+    'Co-design: include lived-experience reviewers before code-complete.',
+    'Write adaptations as observable behaviors, not vague intentions.',
+    'Pair each adaptation with an acceptance test and a success metric.',
+    'Specify cognitive load reductions (steps, memory, reading level).',
+    'Name assistive tech and environmental constraints explicitly.',
+    'Return one small “do now” improvement and one “follow-on” improvement.'
   ],
-  fields:[
-    { key:'edge_persona', label:'Persona at the edge — who might struggle most?', type:'textarea', ph:'e.g., Low-vision user; one-handed; low bandwidth…' },
-    { key:'barrier',      label:'Barrier — what prevents full use?', type:'textarea', ph:'Perception, cognition, motor, language, network…' },
-    { key:'adaptation',   label:'Adaptation — design change to reduce exclusion', type:'textarea', ph:'Concrete UI/content/process change.' },
-    { key:'benefit',      label:'Benefit to all — how does this help beyond the edge user?', type:'textarea', ph:'Explicit generalization.' }
+
+  fields: [
+    /* People & lenses */
+    { key: 'edge_persona', label: 'Persona at the edge — who might struggle most?', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'persona', autofill: 'persona->inline',
+      desc: 'Pull from your persona library; include needs, abilities, devices, language, and constraints.',
+      ph: 'Low-vision screen-reader user on mobile • One-handed parent on a bus • Newcomer with limited language' },
+
+    { key: 'spectrum', label: 'Persona Spectrum (P • T • S)', type: 'textarea',
+      desc: 'Permanent, temporary, and situational variants of the same need.',
+      ph: 'Vision: blind (P) • dilated pupils (T) • glare on screen (S)' },
+
+    { key: 'bias_lenses', label: 'Bias lenses (optional)', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'bias', autofill: 'bias->inline',
+      desc: 'Heuristics to watch for (e.g., typical user bias, WEIRD bias, optimistic planning).',
+      ph: 'Typical-user bias • Language centrism • Present bias' },
+
+    /* Context & environment */
+    { key: 'environment', label: 'Environment & constraints', type: 'textarea',
+      desc: 'Situational factors: bandwidth, noise, lighting, motion, device, input mode.',
+      ph: 'Low bandwidth, bright sun, noisy bus, small phone, one-handed, intermittent power' },
+
+    { key: 'assistive', label: 'Assistive tech & settings', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'AT', autofill: 'assistive->inline',
+      desc: 'Relevant AT or OS features the design should honor.',
+      ph: 'Screen reader (TalkBack/VoiceOver) • Switch control • High contrast • Reduce motion' },
+
+    /* Problem framing */
+    { key: 'flow', label: 'Target task/flow', type: 'text',
+      desc: 'The specific interaction to improve.',
+      ph: 'Account sign-up → email verification → first run' },
+
+    { key: 'barrier', label: 'Barrier — what prevents full use?', type: 'textarea',
+      desc: 'Name the mismatch (perception, cognition, motor, language, economic, cultural).',
+      ph: 'Dense jargon; small hit targets; time-limited code; bandwidth-heavy assets' },
+
+    /* Adaptations & content */
+    { key: 'adaptation', label: 'Adaptation — design change to reduce exclusion', type: 'textarea',
+      desc: 'Concrete change: controls, sequence, copy, media, defaults; 1 change per line.',
+      ph: 'Increase target size to 44px; add “resend code” with no timeouts; plain-language alt text' },
+
+    { key: 'content_rules', label: 'Inclusive content rules (optional)', type: 'textarea',
+      desc: 'Language, reading level, tone, examples, localization and RTL considerations.',
+      ph: 'Plain language at ~8th grade; examples not culture-bound; avoid idioms; provide glossary' },
+
+    /* Standards mapping */
+    { key: 'wcag', label: 'WCAG mapping (optional)', type: 'repeater',
+      itemType: 'typeahead', itemLabel: 'SC', autofill: 'wcag->sc',
+      desc: 'Map each adaptation to relevant WCAG 2.2 success criteria.',
+      ph: '1.4.3 Contrast (Minimum) • 2.1.1 Keyboard • 2.5.5 Target Size' },
+
+    /* Measurement & validation */
+    { key: 'metrics', label: 'Success metrics', type: 'textarea',
+      desc: 'Define measurable outcomes and thresholds.',
+      ph: 'Task completion +15% for screen-reader users; error rate –30%; time on task –20%' },
+
+    { key: 'validation', label: 'Validation plan', type: 'textarea',
+      desc: 'Lightweight test with edge participants; protocol, tasks, success criteria.',
+      ph: 'Hallway test with 3 SR users; success = complete sign-up without sighted assist in ≤3 min' },
+
+    { key: 'universal_benefit', label: 'Benefit to all — generalization', type: 'textarea',
+      desc: 'Explain who else benefits (curb-cut effect).',
+      ph: 'Larger targets help cold-weather gloves and tremor; plain language helps non-native speakers' },
+
+    /* Ops & follow-through */
+    { key: 'acceptance', label: 'Edge-first acceptance criteria', type: 'textarea',
+      desc: 'Observable pass/fail statements centering the edge persona.',
+      ph: 'Using VoiceOver only, a first-time user can complete verification within 3 minutes without errors' },
+
+    { key: 'handoffs', label: 'Handoffs & documentation', type: 'textarea',
+      desc: 'Notes for engineering, QA, localization, and support.',
+      ph: 'ARIA roles; tab order; transcript/captions; string keys for i18n; QA scripts' },
+
+    { key: 'next_steps', label: 'Do-now & follow-on improvements', type: 'textarea',
+      desc: 'One small change to ship now; one deeper change next.',
+      ph: 'Now: enlarge targets • Next: redesign verification to passwordless magic link' },
+
+    /* Extra context */
+    { key: 'ctx', label: 'Context (optional)', type: 'textarea',
+      desc: 'Constraints or notes the AI should honor.',
+      ph: 'Mobile-first, two-sprint window, regulated industry copy requirements' }
   ],
-  template: ({ edge_persona, barrier, adaptation, benefit, ctx, audience, style, tone }) => [
-    'Apply Inclusive Design to reduce exclusion.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    edge_persona && ('Edge persona:\n' + edge_persona),
-    barrier && ('Barrier:\n' + barrier),
-    adaptation && ('Adaptation:\n' + adaptation),
-    benefit && ('Benefit to all:\n' + benefit),
-    'Output:\n1) Edge case summary\n2) Barrier(s)\n3) Adaptation(s)\n4) Validation step\n5) Expected universal benefit'
-  ].filter(Boolean).join('\n')
+
+  template: (f) => {
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listBlock = (label, arr) => arr && arr.length ? [label, ...arr.map((x,i)=>`${i+1}. ${x}`)].join('\n') : null;
+
+    const edgeList = toLines(f.edge_persona);
+    const adaptList = toLines(f.adaptation);
+    const wcagList = toLines(f.wcag);
+    const metricList = toLines(f.metrics);
+    const nextList = toLines(f.next_steps);
+
+    const out = [];
+    out.push('Apply an Inclusive Design pass with Persona Spectrum, concrete adaptations, edge-first acceptance criteria, and a lightweight validation plan. Be specific and measurable.');
+
+    // Context
+    f.ctx && out.push(`Context: ${f.ctx}`);
+    f.flow && out.push(`Target flow: ${f.flow}`);
+
+    // People & lenses
+    edgeList.length && out.push(listBlock('Edge personas:', edgeList));
+    f.spectrum && out.push(`Persona Spectrum (P • T • S):\n${f.spectrum}`);
+    const biasTxt = String(f.bias_lenses || '').trim();
+    biasTxt && out.push(`Bias lenses: ${biasTxt}`);
+
+    // Environment & AT
+    f.environment && out.push(`Environment & constraints:\n${f.environment}`);
+    const atTxt = String(f.assistive || '').trim();
+    atTxt && out.push(`Assistive tech & settings:\n${atTxt}`);
+
+    // Barrier & adaptations
+    f.barrier && out.push(`Barrier:\n${f.barrier}`);
+    adaptList.length && out.push(listBlock('Adaptations:', adaptList));
+
+    // Content rules & standards
+    f.content_rules && out.push(`Inclusive content rules:\n${f.content_rules}`);
+    wcagList.length && out.push(listBlock('WCAG mapping:', wcagList));
+
+    // Measurement & validation
+    metricList.length && out.push(listBlock('Success metrics:', metricList));
+    f.validation && out.push(`Validation plan:\n${f.validation}`);
+    f.universal_benefit && out.push(`Benefit to all:\n${f.universal_benefit}`);
+
+    // Ops
+    f.acceptance && out.push(`Edge-first acceptance criteria:\n${f.acceptance}`);
+    f.handoffs && out.push(`Handoffs & documentation:\n${f.handoffs}`);
+    nextList.length && out.push(listBlock('Next steps (now • later):', nextList));
+
+    // Output spec (instructions to AI)
+    out.push('Output:');
+    out.push('1) Mismatch map: user × environment × interface (3–5 bullets).');
+    out.push('2) Adaptations table (bulleted): change → rationale → WCAG/standard (if any) → acceptance test.');
+    out.push('3) Inclusive content rewrite (1 short example of improved copy).');
+    out.push('4) Validation script: tasks, participants (edge-first), success criteria, and what to measure.');
+    out.push('5) Metrics: target thresholds and how they generalize (curb-cut effect).');
+    out.push('6) Risks & trade-offs (performance, localization, support) and mitigations.');
+    out.push('7) Change log: what to ship now vs. next sprint.');
+
+    return out.filter(Boolean).join('\n');
+  }
 },
   
   {
@@ -5554,82 +5692,389 @@ boosters: [
 },
 
   {
-    id:'kaitiakitanga',
-    slug:'kaitiakitanga-guardianship',
-    label:'Kaitiakitanga — Guardianship & Stewardship (Māori)',
-    kind:'framework',
-    categories:['ethics','governance','cultural frameworks'],
-    tags:[
-      'type:framework','topic:stewardship','topic:intergenerational','phase:plan','level:intermediate',
-      'use:ai-governance','use:impact-assessment'
-    ],
-    use_cases:[
-      'assess long-term impacts and duties of care',
-      'plan safeguards for taonga (valued things)',
-      'design community accountability'
-    ],
-    boosters:[
-      'Add an intergenerational horizon (e.g., 25–50 years).',
-      'Name kaitiaki roles and escalation paths.'
-    ],
-    definition:'A stewardship lens that emphasizes protection of valued things (taonga), obligations to community, and long-term balance.',
-    help:'Map impacts, duties, and guardianship actions.',
-    fields:[
-      { key:'taonga',      label:'What are we safeguarding (taonga)?', type:'textarea' },
-      { key:'stakeholders',label:'Affected people/places (one per line)', type:'textarea' },
-      { key:'impacts',     label:'Potential impacts (near/long term)', type:'textarea' },
-      { key:'principles',  label:'Guardianship principles/policies', type:'textarea' },
-      { key:'actions',     label:'Actions & accountability', type:'textarea' }
-    ],
-    template:({taonga,stakeholders,impacts,principles,actions,ctx})=>[
-      'Apply Kaitiakitanga (guardianship).',
-      ctx && `Context: ${ctx}`,
-      taonga && `Taonga:\n${taonga}`,
-      stakeholders && ('Stakeholders:\n' + String(stakeholders).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')),
-      impacts && `Impacts:\n${impacts}`,
-      principles && `Principles/policies:\n${principles}`,
-      actions && `Actions & accountability:\n${actions}`,
-      'End with: intergenerational check and reporting cadence.'
-    ].filter(Boolean).join('\n')
-  },
+  id: 'kaitiakitanga',
+  slug: 'kaitiakitanga-guardianship',
+  label: 'Kaitiakitanga — Guardianship & Stewardship (Māori)',
+  kind: 'framework',
+  categories: ['ethics','governance','cultural frameworks'],
+  tags: [
+    'type:framework','topic:stewardship','topic:intergenerational','topic:mauri',
+    'topic:whakapapa','topic:co-governance','phase:plan','level:intermediate',
+    'use:ai-governance','use:impact-assessment','use:policy','use:product-strategy'
+  ],
 
-  {
-    id:'kansei_engineering',
-    slug:'kansei-engineering',
-    label:'Kansei Engineering (Emotion→Design Mapping)',
-    kind:'framework',
-    categories:['design','research','analysis frameworks'],
-    tags:[
-      'type:framework','topic:emotion-design','phase:design','level:intermediate',
-      'use:feature-mapping','use:experience-goals'
-    ],
-    use_cases:[
-      'translate target feelings into design parameters',
-      'build a testable emotion→stimulus map',
-      'prioritize features by affective impact'
-    ],
-    boosters:[
-      'Pick ≤5 emotion words and operationalize each with observable cues.',
-      'Plan a small test to validate the mapping.'
-    ],
-    definition:'A method to connect desired emotional responses with concrete design attributes.',
-    help:'Define emotion goals; map to stimuli/features; plan validation.',
-    fields:[
-      { key:'emotions', label:'Target emotion words (one per line)', type:'textarea', ph:'Calm\nTrust\nExcited' },
-      { key:'stimuli',  label:'Design stimuli/features (one per line)', type:'textarea', ph:'Color palette…\nMicrocopy tone…\nLatency…' },
-      { key:'mapping',  label:'Emotion→Feature hypotheses', type:'textarea', ph:'Which feature drives which feeling, and why.' },
-      { key:'test',     label:'Validation plan', type:'textarea', ph:'Method, sample, success criteria.' }
-    ],
-    template:({emotions,stimuli,mapping,test,ctx})=>[
-      'Use Kansei Engineering to map emotion goals to design features.',
-      ctx && `Context: ${ctx}`,
-      emotions && `Emotions:\n${emotions}`,
-      stimuli && `Stimuli/features:\n${stimuli}`,
-      mapping && `Hypothesized mapping:\n${mapping}`,
-      test && `Validation plan:\n${test}`,
-      'Output: prioritized features with expected affect and a test plan.'
-    ].filter(Boolean).join('\n')
-  },
+  use_cases: [
+    'assess long-term responsibilities for places, communities, species, data, or knowledge (taonga)',
+    'design safeguards (e.g., rāhui triggers) and monitoring with local guardians (kaitiaki)',
+    'set co-governance, escalation paths, and reciprocity duties with affected groups'
+  ],
+
+  boosters: [
+    "Treat kaitiakitanga as relational and place-based. Do not generalize across iwi/hapū; name the specific partners and tikanga you’ll follow.",
+    "Add an intergenerational horizon (25–100 years) and define ‘mauri’ indicators you will uphold.",
+    "Name kaitiaki roles, decision rights, and escalation paths; specify how and when guardians can pause/stop activity (rāhui).",
+    "State tangible reciprocity (manaakitanga): who benefits, how, and how you’ll remain accountable over time.",
+    "If any of: partner consent, guardianship roles, or mauri indicators are missing, insert a clear [[MISSING]] note and a next step."
+  ],
+
+  definition: "A stewardship lens grounded in Māori values that centers kinship with place and beings, protection of taonga (treasures), guardians' obligations, and long-term balance. It emphasizes mauri (life force), tikanga (correct practice), and co-governance with kaitiaki.",
+
+  help: "Map the taonga, the people/places (whakapapa), the guardians and protocols (tikanga), what strengthens mauri, and the safeguards you’ll use (including rāhui). The output is a practical plan with roles, metrics, reciprocity, and review cadence. This scaffold does not replace iwi/hapū authority; it helps you prepare and show respect.",
+
+  fields: [
+    // Core focus
+    { key: 'taonga',
+      label: 'Taonga — what are we safeguarding?',
+      type: 'textarea',
+      desc: 'Name the valued thing(s): place, river, species, language, knowledge, datasets, stories, community trust.',
+      ph: 'e.g., Coastal estuary and customary fisheries; Whanganui-style river data; local language archives'
+    },
+
+    { key: 'place',
+      label: 'Place & context (where/whose place?)',
+      type: 'textarea',
+      desc: 'Name the rohe (area), waterways, mountains, community context; note prior impacts or existing protections.',
+      ph: 'e.g., Te Tai Tokerau coastline; existing rāhui after shellfish die-off in 2023; community monitoring group active'
+    },
+
+    // Partners & guardians (persona typeaheads)
+    { key: 'kaitiaki_partners',
+      label: 'Kaitiaki / mana whenua partners',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'partner',
+      autofill: 'persona->inline',
+      desc: 'Local guardians or authorities (iwi/hapū/whānau, community groups) who hold rangatiratanga or stewardship roles.',
+      ph: 'Start typing to add partners (e.g., [Iwi/Hapū Name], Harbour Care, Marae committee)'
+    },
+
+    { key: 'steward_team',
+      label: 'Your stewarding team (internal)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'role',
+      autofill: 'persona->inline',
+      desc: 'Internal roles accountable to kaitiaki (product, data, legal, ops, research, ethics). Include decision rights.',
+      ph: 'Start typing to add roles (e.g., Head of Data, Community Liaison, Ops Lead)'
+    },
+
+    // Tikanga & consent
+    { key: 'tikanga_protocols',
+      label: 'Tikanga / protocols & consent',
+      type: 'textarea',
+      desc: 'Protocols you will follow (engagement order, hui cadence, karakia, data protocols, IP/cultural safety, consent form).',
+      ph: 'e.g., Hui at marae before kickoff; co-draft data use protocol; cultural safety training for team'
+    },
+
+    // Mauri & indicators
+    { key: 'mauri_indicators',
+      label: 'Mauri indicators — how do we know vitality is upheld?',
+      type: 'textarea',
+      desc: 'Define qualitative and quantitative indicators for the vitality of the taonga (ecological, cultural, social, trust).',
+      ph: 'e.g., Shellfish abundance index; water clarity; language use at school; community trust score'
+    },
+
+    // Impacts & horizons
+    { key: 'impacts',
+      label: 'Potential impacts (near → long term)',
+      type: 'textarea',
+      desc: 'Positive and negative impacts, including distribution across groups and generations.',
+      ph: 'Near (0–2y): access changes; Mid (3–10y): species recovery; Long (25y+): cultural transmission strengthened'
+    },
+
+    { key: 'intergen_horizon',
+      label: 'Intergenerational horizon (years)',
+      type: 'text',
+      desc: 'Commit to a long view aligned with kaitiakitanga.',
+      ph: 'e.g., 50'
+    },
+
+    // Safeguards & rāhui
+    { key: 'rahui_triggers',
+      label: 'Safeguards — rāhui triggers & thresholds',
+      type: 'textarea',
+      desc: 'Explicit conditions to pause/stop or restrict activity; who declares and how it’s communicated/lifted.',
+      ph: 'e.g., Turbidity > threshold 14 days; health event; species mortality spike; misuse of taonga data'
+    },
+
+    { key: 'monitoring',
+      label: 'Monitoring & reporting cadence',
+      type: 'textarea',
+      desc: 'What you measure, by whom, how often, and where results are published. Include co-review with kaitiaki.',
+      ph: 'Monthly ecological + cultural health review; quarterly public dashboard; annual hui for adaptive changes'
+    },
+
+    // Reciprocity & benefits
+    { key: 'reciprocity',
+      label: 'Manaakitanga — reciprocity & benefits',
+      type: 'textarea',
+      desc: 'Tangible benefits to affected communities and places: capability, resources, revenue share, data returns, access.',
+      ph: 'e.g., Fund local monitoring gear; paid guardian seats; bilingual materials; data sovereignty tools'
+    },
+
+    // Governance & escalation
+    { key: 'governance',
+      label: 'Governance & escalation paths',
+      type: 'textarea',
+      desc: 'Decision rights, veto/stop powers, dispute resolution, and escalation to guardians.',
+      ph: 'e.g., Joint governance board with guardian veto on ecological risk; independent mediator named'
+    },
+
+    // Knowledge & data safety
+    { key: 'knowledge_safety',
+      label: 'Knowledge & data protocols (taonga, IP, sovereignty)',
+      type: 'textarea',
+      desc: 'Rules for handling taonga works/data (classification, consent, access, storage, CARE-aligned sharing).',
+      ph: 'e.g., Classified “taonga data”; guardians co-own access keys; no secondary use without new consent'
+    },
+
+    // Non-actions (restraint)
+    { key: 'non_actions',
+      label: 'Non-actions (deliberate restraint)',
+      type: 'textarea',
+      desc: 'What you will not do; removes over-control and reduces harm.',
+      ph: 'e.g., No commercial harvest; no model training on taonga data; no drones over wāhi tapu'
+    }
+  ],
+
+  template: (f) => {
+    const toLines = (x) => Array.isArray(x) ? x : String(x || '').split(/\n+/).map(s => s.trim()).filter(Boolean);
+    const list = (label, val) => val && toLines(val).length ? `${label}\n` + toLines(val).map((v,i)=>`  ${i+1}. ${v}`).join('\n') : '';
+    const simple = (label, val) => val ? `${label}\n${val}` : '';
+
+    const horizon = f.intergen_horizon ? `${f.intergen_horizon} years` : '[[MISSING: intergenerational horizon]]';
+    const missing = (k, note) => f[k] ? '' : `[[MISSING: ${note}]]`;
+
+    return [
+      'Apply a Kaitiakitanga (guardianship) plan. This scaffold is relational and place-based; it does not replace iwi/hapū authority. Center local kaitiaki.',
+      f.ctx && `Context: ${f.ctx}`,
+
+      simple('Taonga (what we are safeguarding):', f.taonga || '[[MISSING: taonga]]'),
+      simple('Place & context:', f.place || '[[MISSING: place/rohe context]]'),
+
+      list('Kaitiaki / mana whenua partners:', f.kaitiaki_partners) || '[[MISSING: named kaitiaki/mana whenua partners]]',
+      list('Your stewarding team (internal):', f.steward_team) || '[[MISSING: internal stewarding roles]]',
+
+      simple('Tikanga / protocols & consent:', f.tikanga_protocols || '[[MISSING: protocols and consent approach]]'),
+      simple('Mauri indicators (how vitality is upheld):', f.mauri_indicators || '[[MISSING: mauri indicators]]'),
+
+      simple('Potential impacts (near → long term):', f.impacts || '[[MISSING: impact mapping]]'),
+      `Intergenerational horizon: ${horizon}`,
+
+      simple('Safeguards — rāhui triggers & thresholds:', f.rahui_triggers || '[[MISSING: explicit pause/stop conditions]]'),
+      simple('Monitoring & reporting cadence:', f.monitoring || '[[MISSING: cadence and co-review]]'),
+
+      simple('Manaakitanga — reciprocity & benefits:', f.reciprocity || '[[MISSING: concrete reciprocity]]'),
+      simple('Governance & escalation paths:', f.governance || '[[MISSING: decision rights, dispute resolution, guardian veto/stop]]'),
+      simple('Knowledge & data protocols (taonga, IP, sovereignty):', f.knowledge_safety || '[[MISSING: data/knowledge safety]]'),
+      simple('Non-actions (deliberate restraint):', f.non_actions || '[[MISSING: explicit non-actions]]'),
+
+      '',
+      'Checklist for the AI (do not omit):',
+      '- Treat kaitiakitanga as relational and place-specific; avoid token language.',
+      '- Name the kaitiaki partners and their decision rights. If unknown, insert [[MISSING]] with a next-step engagement.',
+      '- Keep mauri indicators actionable (ecological + cultural + trust).',
+      '- Include rāhui triggers with thresholds and comms plan (who declares, how lifted).',
+      '- State reciprocity (manaakitanga) and reporting cadence openly.',
+      '- Add a clear intergenerational lens and record how today’s actions strengthen mauri over time.',
+      '- If any critical element is missing (partners, consent, mauri, safeguards), flag it explicitly and propose the next respectful step (hui, co-draft protocol, pause).',
+
+      '',
+      'Output:',
+      '1) Whakapapa map (people/places/taonga touched; partners named).',
+      '2) Mauri plan (indicators, baseline, target state, how measured).',
+      '3) Safeguards (rāhui triggers, thresholds, comms, release conditions).',
+      '4) Governance (roles, decision rights, escalation, dispute-resolution).',
+      '5) Manaakitanga & reciprocity (tangible benefits, capacity-building).',
+      '6) Intergenerational horizon and “leave-better-than-found” commitment.',
+      '7) Monitoring & public reporting cadence (with co-review by kaitiaki).',
+      '8) Non-actions (restraints) and risks explicitly accepted.',
+      '9) Next respectful step if any [[MISSING]] remains (who, when, where).'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+{
+  id: 'kansei_engineering',
+  slug: 'kansei-engineering',
+  label: 'Kansei Engineering (Emotion → Design Mapping)',
+  kind: 'framework',
+  categories: ['design', 'research', 'analysis frameworks'],
+  tags: [
+    'type:framework','topic:emotion-design','topic:user-research',
+    'phase:discover','phase:design','phase:validate','level:intermediate',
+    'use:feature-mapping','use:experience-goals','use:brand-expression','use:ux-copy'
+  ],
+  use_cases: [
+    'translate target feelings into concrete design parameters',
+    'build a testable Emotion → Stimulus map with success criteria',
+    'prioritize features and micro-interactions by affective impact',
+    'align brand emotions with visual, copy, motion, sound, and material design',
+    'validate emotional effects on prototypes before commit'
+  ],
+  boosters: [
+    'Limit to ≤5 core emotion goals; define them in users’ native language (avoid translation drift).',
+    'Anchor each emotion on 7-point semantic differential scales with clear antonyms (e.g., Calm ↔ Tense).',
+    'Map emotions to multi-sensory levers (visual, microcopy, motion/latency, sound/haptics, material).',
+    'Pre-test the emotion lexicon; refine with factor analysis or clustering before feature mapping.',
+    'Use counterbalanced stimuli and randomization; document base rates and control conditions.',
+    'Quantify links (e.g., regression/Quantification Theory I/II); for lean runs, use A/B + SD ratings.',
+    'Include accessibility & ethics checks (contrast, motion sensitivity, cultural color/gesture meanings).',
+    'Pre-register decision rules (e.g., Trust ≥ +1.0, Clarity no worse than baseline).'
+  ],
+  definition: 'A user-centered method (Nagamachi) that captures target emotions (Kansei), maps them to specific design attributes, and validates the mapping empirically—turning feelings into design data.',
+  help: '1) Specify audience, context, and ≤5 emotion goals with antonym anchors. 2) List design levers (stimuli). 3) Propose Emotion → Lever hypotheses with rationale. 4) Define measures and a validation study (method, sample, criteria). 5) Add bias/ethics/accessibility checks, confounds, localization, and a decision rule.',
+  fields: [
+    {
+      key: 'audience',
+      label: 'Audience / segment',
+      type: 'textarea',
+      desc: 'Who will feel these emotions? Include culture/locale if relevant.',
+      ph: 'e.g., First-time fintech users in Japan (20–35)',
+    },
+   {
+      key: 'audience',
+      label: 'Audience / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who will experience the emotions? Include culture/locale if relevant.',
+      ph: 'e.g., First-time fintech users in Japan (20–35)'
+    },
+    {
+      key: 'context',
+      label: 'Context of use',
+      type: 'textarea',
+      desc: 'Scenario, device, constraints, and moments that matter.',
+      ph: 'e.g., Mobile onboarding at night; low light; flaky network'
+    },
+    {
+      key: 'emotions',
+      label: 'Target emotion words (≤5, one per line)',
+      type: 'textarea',
+      desc: 'Local-language emotion terms; concise and concrete.',
+      ph: 'Calm\nTrust\nDelight\nClarity',
+      ui: { repeater: true, typeahead: ['Calm','Trust','Delight','Confidence','Reassured','Playful','Serene','Excited','Premium','Safe'] }
+    },
+    {
+      key: 'anchors',
+      label: 'Semantic differential anchors (one per line)',
+      type: 'textarea',
+      desc: 'Opposite poles for 7-point scales per emotion.',
+      ph: 'Calm ↔ Tense\nTrust ↔ Suspicion\nDelight ↔ Dull\nClarity ↔ Confusion'
+    },
+    {
+      key: 'weights',
+      label: 'Emotion weights / priorities (optional)',
+      type: 'text',
+      desc: 'Relative importance for trade-offs.',
+      ph: 'Trust: 0.4, Clarity: 0.3, Calm: 0.2, Delight: 0.1'
+    },
+    {
+      key: 'stimuli',
+      label: 'Design levers / stimuli (one per line)',
+      type: 'textarea',
+      desc: 'List levers: visual, microcopy, motion/latency, sound/haptics, material.',
+      ph: 'Color palette (muted vs saturated)\nMicrocopy tone (assuring vs playful)\nLatency (TTI under 1000ms)\nMotion (ease-out vs bounce)\nSound (soft chime vs none)'
+    },
+    {
+      key: 'mapping',
+      label: 'Emotion → Feature hypotheses (one per line)',
+      type: 'textarea',
+      desc: 'Link each emotion to specific levers with a short rationale.',
+      ph: 'Trust: neutral palette + precise microcopy + visible encryption icon (signals credibility)\nCalm: longer ease-out motion + reduced cognitive load on forms'
+    },
+    {
+      key: 'measures',
+      label: 'Measures & scales',
+      type: 'textarea',
+      desc: 'How emotions and side-effects will be measured.',
+      ph: '7-pt SD for each anchor; SUS; task success & time; NASA-TLX; opt-in HRV (optional)'
+    },
+    {
+      key: 'validation',
+      label: 'Validation plan',
+      type: 'textarea',
+      desc: 'Method, sample, counterbalancing, success criteria, analysis.',
+      ph: 'Within-subjects SD ratings on 3 prototypes; n=24; counterbalanced order; α=.05; success = +1.0 on Trust & no drop on Clarity; analysis: QTT-I + paired t-tests'
+    },
+    {
+      key: 'confounds',
+      label: 'Potential confounds & controls',
+      type: 'textarea',
+      desc: 'Non-design drivers of emotion you’ll control or record.',
+      ph: 'Brand familiarity; price salience; network speed; prior negative incidents'
+    },
+    {
+      key: 'localization',
+      label: 'Localization & translation notes',
+      type: 'textarea',
+      desc: 'Cultural/linguistic nuance for emotion words and cues.',
+      ph: '“Warm” maps to “gentle” in JP microcopy; avoid idioms; verify color symbolism'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias, culture & accessibility checks',
+      type: 'textarea',
+      desc: 'Enumerate specific biases/risks to monitor and mitigate.',
+      ph: 'Add one bias per line with a note on mitigation.',
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias, culture & accessibility checks (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Capture specific bias or risk items to check during design and validation.',
+      ph: 'e.g., Color meanings vary by culture; Motion may trigger vestibular discomfort; Gendered microcopy; WEIRD sampling'
+    },
+    {
+      key: 'guardrails',
+      label: 'Ethical & safety guardrails',
+      type: 'textarea',
+      desc: 'Non-negotiables (e.g., no dark patterns, motion limits, privacy).',
+      ph: 'No deceptive urgency; motion respects reduced-motion settings; no fear-priming'
+    },
+    {
+      key: 'risks',
+      label: 'Risks & mitigations',
+      type: 'textarea',
+      desc: 'Top risks to validity or user well-being and how you’ll mitigate.',
+      ph: 'Placebo effects → include sham variant; motion nausea → alternate static path'
+    },
+    {
+      key: 'decision_rule',
+      label: 'Decision rule',
+      type: 'text',
+      desc: 'Pre-commit go/no-go or iterate criteria.',
+      ph: 'Ship v2 if Trust ≥ +1.0 and Delight ≥ +0.5 with no metric regressions'
+    }
+  ],
+  template: ({ audience, context, emotions, anchors, weights, stimuli, mapping, measures, validation, confounds, localization, bias_checks, guardrails, risks, decision_rule, ctx, style, tone }) => [
+    'Apply Kansei Engineering: translate emotions into design and validate empirically.',
+    ctx && `Context: ${ctx}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    audience && `Audience: ${audience}`,
+    context && `Use context:\n${context}`,
+    emotions && `Emotion goals (≤5):\n${emotions}`,
+    anchors && `Semantic differential anchors:\n${anchors}`,
+    weights && `Emotion weights:\n${weights}`,
+    stimuli && `Design levers / stimuli:\n${stimuli}`,
+    mapping && `Emotion → Feature hypotheses:\n${mapping}`,
+    measures && `Measures & scales:\n${measures}`,
+    validation && `Validation plan:\n${validation}`,
+    confounds && `Potential confounds & controls:\n${confounds}`,
+    localization && `Localization & translation notes:\n${localization}`,
+    (bias_checks && String(bias_checks).trim().length > 0) && `Bias/culture/accessibility checks:\n${bias_checks}`,
+    guardrails && `Ethical & safety guardrails:\n${guardrails}`,
+    risks && `Risks & mitigations:\n${risks}`,
+    decision_rule && `Decision rule:\n${decision_rule}`,
+    'Output:\n1) Kansei lexicon & 7-pt scales\n2) Mapping table (Emotion → Lever → Rationale)\n3) Prioritized backlog (impact × feasibility)\n4) Validation design & analysis plan\n5) Risks, bias & accessibility mitigations\n6) Decision rule & next steps'
+  ].filter(Boolean).join('\n')
+},
 
   {
     id:'kepner_tregoe',
@@ -6377,44 +6822,284 @@ boosters: [
 {
   id: 'kano_model',
   slug: 'kano-model',
-  label: 'Kano Model — Must-be, Performance, Delighters',
+  label: 'Kano Model — Must-be · Performance · Delighters',
   kind: 'framework',
-  categories: ['prioritization', 'product management', 'ux'],
+  categories: ['prioritization','product management','ux','research'],
   tags: [
-    'type:framework', 'topic:prioritization', 'topic:user-satisfaction',
-    'use:backlog-refinement', 'use:research-synthesis'
+    'type:framework','topic:kano','topic:user-satisfaction','phase:prioritize','level:intermediate',
+    'use:backlog-refinement','use:research-synthesis','use:roadmap'
   ],
+
   use_cases: [
-    'separate basics from delighters',
+    'separate table-stakes from differentiators',
     'decide what prevents complaints vs. what creates delight',
-    'facilitate feature trade-offs in workshops'
+    'synthesize survey/interview findings into a build-now list',
+    'facilitate feature trade-offs with product, design, and engineering'
   ],
+
   boosters: [
-    'Add 1–2 sentence rationale per item.',
-    'Note any risks or assumptions after each list.'
+    'Give a 1–2 sentence rationale per item grounded in a quote, metric, or observation.',
+    'Segment explicitly (e.g., newcomers vs. power users); categories can flip by segment.',
+    'If you have data, compute Timko CS (customer satisfaction) and DS (dissatisfaction).',
+    'Pair categories with feasibility: add Effort and Strategic Fit to avoid “delight myopia.”',
+    'Revisit quarterly; Delighters drift toward Performance or Must-be over time.'
   ],
-  definition: 'Kano groups features by how they affect user satisfaction: Must-be, Performance, Delighters, and Indifferent/Reverse.',
-  help: 'List features under each bucket. Keep entries short; include why each belongs there.',
+
+  definition: 'Kano classifies features by how presence/absence affects satisfaction. Buckets: Must-be (basics), Performance (linear value), Delighters (wow), plus Indifferent/Reverse/Questionable. Optionally quantify with Timko coefficients.',
+
+  help: 'Enter candidate features, segments (personas), and any evidence. Choose a Study mode (the value is a directive the AI will follow). Pick table/chart preferences; their values are also injected as explicit instructions.',
+
   fields: [
-    { key: 'must_be', label: 'Must-be (expected basics)', type: 'textarea', ph: 'e.g., Reliable login; Basic search' },
-    { key: 'performance', label: 'Performance (more is better)', type: 'textarea', ph: 'e.g., Page load speed; Reporting depth' },
-    { key: 'delighters', label: 'Delighters (unexpected extras)', type: 'textarea', ph: 'e.g., Auto-summaries; Magic import' },
-    { key: 'indifferent', label: 'Indifferent / Reverse', type: 'textarea', ph: 'e.g., Flashy splash screen; Noisy confetti' },
-    { key: 'notes', label: 'Notes (optional)', type: 'textarea', ph: 'Research sources, risks, assumptions' }
+    {
+      key: 'study_mode',
+      label: 'Study mode',
+      type: 'select',
+      desc: 'Select how the AI should analyze and synthesize your inputs.',
+      options: [
+        {
+          value: 'Study Mode: Run FULL Kano with paired functional/dysfunctional interpretations. If timko_counts are provided, compute Timko coefficients per feature (CS=(A+O)/(A+O+M+I), DS=-(M+O)/(A+O+M+I)). Flag Questionable/Reverse. Split by segments where provided. Produce category calls with 1–2 sentence rationales, then a validation note on wording/sample/reliability.',
+          label: 'Full Kano + Timko (quantitative synthesis)'
+        },
+        {
+          value: 'Study Mode: Run LITE Kano classification from interviews/observations only. Infer categories directionally from quotes/behaviors. For each feature, include a Confidence tag (High/Med/Low) and at least one supporting quote or observation. Highlight where data is thin and propose 2 validation steps.',
+          label: 'Lite Kano from qualitative evidence (directional)'
+        },
+        {
+          value: 'Study Mode: Facilitate a WORKSHOP sort. Bucket features collaboratively (Must-be/Performance/Delighters/Indifferent/Reverse). After bucketing, ask 3 clarifying questions if any items are ambiguous. Output a quick action plan: what to test next, who to involve, and a suggested survey script.',
+          label: 'Workshop sort (no data)'
+        }
+      ]
+    },
+
+    {
+      key: 'stakeholder_segments',
+      label: 'Stakeholder segments (by persona)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'segment',
+      autofill: 'persona->inline',
+      desc: 'Add user/customer segments or internal stakeholders; analysis will consider flips by segment.',
+      ph: 'Start typing: New customers · Admins · Compliance · Mobile-only · Low-bandwidth…'
+    },
+
+    {
+      key: 'features',
+      label: 'Candidate features (one per line)',
+      type: 'textarea',
+      desc: 'List short, user-facing statements (outcomes, not internal tech).',
+      ph: 'One-tap sign-in\nOffline mode\nCSV export\nAuto-categorize receipts'
+    },
+
+    { key: 'must_be',      label: 'Must-be (expected basics)',        type: 'textarea', desc: 'Absence → strong dissatisfaction; presence → neutral.',       ph: 'Reliable login; Restore password; Export my data' },
+    { key: 'performance',  label: 'Performance (more is better)',     type: 'textarea', desc: 'Satisfaction scales with level/quality delivered.',           ph: 'Page load speed; Battery life; Reporting depth' },
+    { key: 'delighters',   label: 'Delighters (unexpected extras)',   type: 'textarea', desc: 'Presence delights; absence isn’t punished (initially).',       ph: '1-click migration; Smart defaults; Magical onboarding' },
+    { key: 'indifferent',  label: 'Indifferent / Reverse',            type: 'textarea', desc: 'Little impact (Indifferent) or polarizing/negative (Reverse).', ph: 'Auto-play videos; Animated splash; Forced tooltips' },
+
+    {
+      key: 'evidence',
+      label: 'Evidence (quotes, observations, metrics)',
+      type: 'textarea',
+      desc: 'Paste key quotes, analytics, or study notes that justify your buckets.',
+      ph: '“If I can’t export, I can’t use it.” · 37% bounce on login errors · NPS verbatims…'
+    },
+    {
+      key: 'timko_counts',
+      label: 'Timko counts (optional, one feature per line)',
+      type: 'textarea',
+      desc: 'Format: Feature | A:<n> O:<n> M:<n> I:<n>. AI will compute CS/DS.',
+      ph: 'Offline mode | A:21 O:8 M:4 I:7\nCSV export | A:6 O:12 M:19 I:3'
+    },
+
+    {
+      key: 'effort_map',
+      label: 'Effort / complexity (1–5) per feature',
+      type: 'textarea',
+      desc: 'Format: Feature | Effort score (1=trivial … 5=hard).',
+      ph: 'Offline mode | 5\nCSV export | 2'
+    },
+    {
+      key: 'strategic_fit',
+      label: 'Strategic fit (1–5) per feature',
+      type: 'textarea',
+      desc: 'Format: Feature | Fit score (5=strong alignment to OKRs/mission).',
+      ph: 'Offline mode | 3\nCSV export | 5'
+    },
+
+    // CHART — default is show sketch; only "No chart" suppresses it
+    {
+      key: 'ascii_chart',
+      label: 'ASCII Kano chart',
+      type: 'select',
+      desc: 'Choose extra chart instructions. If you do nothing, the default sketch below will be rendered.',
+      options: [
+        {
+          value: 'Chart: Render a SIMPLE Kano curve ASCII sketch with axes labeled (Satisfaction ↑, Feature performance →). Annotate top 3 features per category with bullet labels.',
+          label: 'Simple curve + annotate top items'
+        },
+        {
+          value: 'Chart: Render a QUADRANT-GRID ASCII with zones for Must-be (lower-left), Performance (diagonal), and Delighters (upper-left). Place top 5 features as short labels; include a legend.',
+          label: 'Quadrant grid + placements'
+        },
+        {
+          value: 'Chart: Omit ASCII chart.',
+          label: 'No chart'
+        }
+      ]
+    },
+
+    {
+      key: 'table_pref',
+      label: 'Prioritization table',
+      type: 'select',
+      desc: 'Select the table detail level.',
+      options: [
+        {
+          value: 'Table: Produce a markdown table with columns: Feature | Category | CS | DS | Effort | Fit | Tag. Compute Tag as Build/Explore/Defer using rule-of-thumb: prioritize (CS·Fit)/max(1,Effort); break ties by |DS| then lower Effort. Sort descending by priority.',
+          label: 'Full table (Category, CS, DS, Effort, Fit, Tag)'
+        },
+        {
+          value: 'Table: Produce a compact markdown table with Feature | Category only. No numeric synthesis, just clean buckets.',
+          label: 'Category-only table'
+        },
+        {
+          value: 'Table: Omit prioritization table.',
+          label: 'No table'
+        }
+      ]
+    },
+
+    {
+      key: 'assumptions',
+      label: 'Assumptions & risks',
+      type: 'textarea',
+      desc: 'Unknowns, sampling caveats, wording issues, or segment biases.',
+      ph: 'Small n for admins; wording may have primed “Like”; mobile users under-sampled…'
+    },
+    {
+      key: 'horizon',
+      label: 'Re-check horizon',
+      type: 'text',
+      desc: 'When to revisit (Kano drift/market shift).',
+      ph: 'e.g., 6 months'
+    }
   ],
-  template: ({ must_be, performance, delighters, indifferent, notes, usecase: ctx, audience, style, tone }) => [
-    'Apply the Kano Model to categorize features by user satisfaction impact.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    must_be && ('Must-be (expected basics):\n' + must_be),
-    performance && ('Performance (more is better):\n' + performance),
-    delighters && ('Delighters (unexpected extras):\n' + delighters),
-    indifferent && ('Indifferent / Reverse:\n' + indifferent),
-    notes && ('Notes:\n' + notes),
-    'Output:\n1) Clean lists per bucket with a 1–2 sentence rationale each\n2) Brief risks/assumptions\n3) Final recommendation: what to ship now vs. later'
-  ].filter(Boolean).join('\n')
+
+  template: (f) => {
+    const toLines = s => (s||'').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+
+    const features = toLines(f.features);
+    const M = toLines(f.must_be);
+    const P = toLines(f.performance);
+    const D = toLines(f.delighters);
+    const INDIFF = toLines(f.indifferent);
+    const seg = Array.isArray(f.stakeholder_segments) ? f.stakeholder_segments : toLines(f.stakeholder_segments);
+
+    const parseTimko = (line) => {
+      const [name, rest] = line.split('|').map(x=>x.trim());
+      const grab = k => {
+        const m = new RegExp(`${k}\\s*:\\s*(\\d+)`,'i').exec(rest||'');
+        return m ? Number(m[1]) : 0;
+      };
+      const A=grab('A'), O=grab('O'), Mu=grab('M'), I=grab('I');
+      const denom = A+O+Mu+I || 1;
+      const CS = (A+O)/denom;
+      const DS = - (Mu+O)/denom;
+      return { name: name||'(unnamed feature)', A, O, M:Mu, I, CS:+CS.toFixed(2), DS:+DS.toFixed(2) };
+    };
+    const timko = toLines(f.timko_counts).map(parseTimko);
+
+    const parseScalarMap = (s) => {
+      const map = {};
+      toLines(s).forEach(line => {
+        const [name, val] = line.split('|').map(x=>x.trim());
+        const n = Number(val);
+        map[name||''] = Number.isFinite(n) ? n : '';
+      });
+      return map;
+    };
+    const effort = parseScalarMap(f.effort_map);
+    const fit    = parseScalarMap(f.strategic_fit);
+
+    const wantFullTable = (f.table_pref||'').toLowerCase().includes('Feature | Category | CS');
+    const rows = (wantFullTable ? (timko.length ? timko.map(r => {
+      const eff = effort[r.name] ?? '';
+      const ft  = fit[r.name] ?? '';
+      const priority = (r.CS||0) * (Number(ft)||0) / (Math.max(1, Number(eff)||1));
+      let tag = 'Explore';
+      if (priority >= 1) tag = 'Build';
+      if (!ft || !eff) tag = 'Explore';
+      if ((r.CS||0) < 0.15 && Math.abs(r.DS||0) < 0.15) tag = 'Defer';
+      return { name:r.name, CS:r.CS, DS:r.DS, Effort:eff, Fit:ft, priority:+priority.toFixed(2), tag };
+    }) : []) : []);
+
+    if (rows.length) {
+      rows.sort((a,b)=> b.priority - a.priority || Math.abs(b.DS)-Math.abs(a.DS) || (a.Effort||9)-(b.Effort||9));
+    }
+
+    const studyDirective = f.study_mode && (''+f.study_mode);
+    const chartDirective = f.ascii_chart && (''+f.ascii_chart);
+    const tableDirective = f.table_pref && (''+f.table_pref);
+
+    const defaultSketch =
+`ASCII Kano sketch (monospace):
+Satisfaction ↑
+             |        Delighters (Attractive)
+             |         /
+             |        /
+             |       /     Performance (One-dimensional)
+   Neutral ---+-----/-----/----------------→ Feature performance
+             |    /     /
+             |   /     /
+             |  /     /
+             | /     /
+             |/     /
+             Must-be (steep drop if absent)
+Dissatisfaction ↓`;
+
+    const showDefaultSketch = !(chartDirective && chartDirective.toLowerCase().includes('omit ascii chart'));
+
+    const parts = [
+      'Apply the Kano Model to categorize and prioritize features.',
+      studyDirective,
+      tableDirective,
+
+      // Render default sketch unless explicitly told "No chart"
+      showDefaultSketch && defaultSketch,
+
+      // If they selected a chart instruction (not "No chart"), include it too
+      (chartDirective && !chartDirective.toLowerCase().includes('omit ascii chart')) ? chartDirective : null,
+
+      f.usecase && `Context: ${f.usecase}`,
+      seg.length && ('Segments:\n' + seg.map((s,i)=>`${i+1}. ${s}`).join('\n')),
+
+      features.length && 'Task: Classify each candidate feature into Must-be / Performance / Delighter / Indifferent (note any Reverse/Questionable).',
+      features.length && ('Candidates:\n' + features.map((x,i)=>`${i+1}. ${x}`).join('\n')),
+
+      M.length && ('Must-be (basics):\n' + M.map((x,i)=>`${i+1}. ${x}`).join('\n')),
+      P.length && ('Performance (linear value):\n' + P.map((x,i)=>`${i+1}. ${x}`).join('\n')),
+      D.length && ('Delighters (wow):\n' + D.map((x,i)=>`${i+1}. ${x}`).join('\n')),
+      INDIFF.length && ('Indifferent / Reverse:\n' + INDIFF.map((x,i)=>`${i+1}. ${x}`).join('\n')),
+
+      f.evidence && `Evidence:\n${f.evidence}`,
+      f.assumptions && `Assumptions & risks:\n${f.assumptions}`,
+
+      (rows.length && [
+        'Prioritization table:',
+        '| Feature | Category | CS | DS | Effort | Fit | Tag |',
+        '|---|---|---:|---:|---:|---:|---|',
+        ...rows.map(r=>`| ${r.name} | (auto) | ${r.CS} | ${r.DS} | ${r.Effort} | ${r.Fit} | ${r.tag} |`)
+      ].join('\n')) || null,
+
+      'Output:',
+      '1) Bucketed lists with 1–2 sentence rationale each (cite quote/metric).',
+      '2) If Timko provided: CS/DS per feature; call out top 3 by ↑CS and top 3 by |DS| risk.',
+      '3) If full table requested: include Feature | Category | CS | DS | Effort | Fit | Tag, sorted by priority.',
+      '4) Chart: default ASCII sketch is included unless “No chart” selected; if chart instruction chosen, also annotate as directed.',
+      '5) Risks & next steps: wording fixes, sampling gaps, validation plan, and re-check horizon.'
+    ];
+
+    return parts.filter(Boolean).join('\n');
+  }
 },
 
 {
@@ -7714,43 +8399,241 @@ boosters: [
   slug: 'empty-chair-technique',
   label: 'Empty Chair Dialogue (Gestalt)',
   kind: 'pattern',
-  categories: ['psychology', 'self-reflection'],
+  categories: ['psychology','self-reflection','communication','coaching'],
   tags: [
-    'type:pattern','topic:gestalt','topic:empty-chair','level:intermediate',
-    'use:resolve-feelings','use:closure','use:internal-conflict'
+    'type:pattern','topic:gestalt','topic:empty-chair','topic:parts-work',
+    'phase:explore','phase:integrate','level:intermediate',
+    'use:resolve-feelings','use:closure','use:internal-conflict','use:difficult-conversation'
   ],
+
   use_cases: [
-    'express thoughts and feelings to someone (or a part of yourself) as if they were present',
-    'gain closure or clarity by role-playing both sides of a difficult conversation',
-    'integrate conflicting feelings by voicing each side in turn'
+    'voice unresolved feelings (“unfinished business”) with someone not present',
+    'negotiate an internal polarity (e.g., Inner Critic vs. Playful Self)',
+    'rehearse a difficult conversation safely and concretely',
+    'transform shame/self-attack via two-chair compassion work',
+    'arrive at one boundary, one request, and one 24-hour micro-step'
   ],
+
+  definition:
+    'A Gestalt experiment that externalizes a person or inner part into an “empty chair.” You alternate speaking from each seat, in present tense, to surface needs, complete unspoken feelings, and integrate a next action.',
+
+  help:
+    'Choose the two voices (person or part), add persona overlays if helpful, name the topic, set a short timebox, and pick a switch cadence. The model will script an embodied, present-tense dialogue with deepening moves and close with an integration plan (need, boundary/request, micro-commitment).',
+
   boosters: [
-    'Be honest and unfiltered when voicing each side—let emotions flow.',
-    'Switch perspective after each statement: fully embody the other person or part when responding.'
+    'Stay present tense; short sentences; switch often (every 60–90 seconds or 1–2 turns).',
+    'Use “I” language and observable behaviors (“I need a 24-hour reply window”) instead of abstractions (“respect”).',
+    'Repeat the “hot” line to deepen before problem-solving.',
+    'If stuck, add a Third chair (Compassionate Nurturer, Mentor/Guide, or Values/Healthy Adult) for one clarifying pass.',
+    'End by de-roling: state what each side protects, then set one boundary/request and a 24-hour micro-step.',
+    'Cultural attunement: permit metaphors, indirect speech, or letter-style wording if direct address feels unsafe.'
   ],
-  definition: 'A Gestalt therapy exercise where you imagine someone (or a part of yourself) in an empty chair and have a candid dialogue to express unresolved feelings or internal conflicts.',
-  help: 'Pick who you are (or a part of you) and who is “in the chair,” then describe the topic. The model will alternate voices and end with a brief reflection.',
-fields: [
-  { key: 'you',   label: 'Your identity or role',             type: 'typeahead_textarea', autofill: 'persona->textarea',
-    ph: 'Start typing to pick a persona/part (e.g., Inner Critic, Younger Self, Therapist)…' },
-  { key: 'other', label: 'Other person or part in the chair', type: 'typeahead_textarea', autofill: 'persona->textarea',
-    ph: 'Start typing to pick a persona/part (e.g., My Manager, Future Self)…' },
-  { key: 'topic', label: 'Topic or emotion to explore',       type: 'textarea',
-    ph: 'Briefly describe the issue, conflict, or feeling you want to address.' }
-],
 
-  template: ({ you, other, topic, ctx, audience, style, tone }) => [
-  'Use the Empty Chair technique to dialogue between two perspectives.',
-  ctx && `Context: ${ctx}`,
-  audience && `Audience: ${audience}`,
-  style && `Style: ${style}`,
-  tone && `Tone: ${tone}`,
-  you && `You profile:\n${you}`,
-  other && `Other profile:\n${other}`,
-  topic && `Topic:\n${topic}`,
-  'Output:\n1) Scripted dialogue alternating between You and the Other, each expressing their thoughts/feelings\n2) A concluding reflection or resolution after several exchanges'
-].filter(Boolean).join('\n')
+  notice:
+    'This can evoke strong feelings. If you have recent trauma, active suicidality, psychosis, or dissociation, use only with a qualified clinician. Ground after: breath, cold water, brief walk.',
 
+  fields: [
+    /* Seat A (Your role) */
+    {
+      key: 'you',
+      label: 'Your role — Seat A',
+      type: 'typeahead_textarea',
+      autofill: 'persona->textarea',
+      desc: 'Your presenting self or a specific inner part (include strengths, fears, goals).',
+      ph: 'e.g., Current Self — exhausted but seeking fairness; values honesty; fears conflict'
+    },
+    {
+      key: 'you_personas',
+      label: 'Seat A persona overlays',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Add 0–3 personas to blend into Seat A’s voice (pulls from your persona library).',
+      ph: 'Start typing to add overlays (e.g., Inner Protector, Future Self, Coach You)'
+    },
+
+    /* Seat B (Other role) */
+    {
+      key: 'other',
+      label: 'Other role — Seat B',
+      type: 'typeahead_textarea',
+      autofill: 'persona->textarea',
+      desc: 'Person/part you’re addressing (include what they protect and their likely concerns).',
+      ph: 'e.g., Inner Critic — seeks safety via control; fears failure and rejection'
+    },
+    {
+      key: 'other_personas',
+      label: 'Seat B persona overlays',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Add 0–3 personas to enrich Seat B’s stance (e.g., Manager, Parent-mode, Rule-maker).',
+      ph: 'Start typing to add overlays'
+    },
+
+    /* Third chair selector + persona overlays */
+    {
+      key: 'third_chair',
+      label: 'Third chair (optional)',
+      type: 'select',
+      options: [
+        { value: 'none',           label: '— none —' },
+        { value: 'compassion',     label: 'Compassionate Nurturer' },
+        { value: 'mentor',         label: 'Mentor / Guide' },
+        { value: 'values_self',    label: 'Values / Healthy Adult' }
+      ],
+      desc: 'Add one supportive, reality-anchored voice for a single pass to help reconcile the polarity.',
+      ph: 'Choose one supportive stance'
+    },
+    {
+      key: 'third_chair_personas',
+      label: 'Third chair persona overlays (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Optionally blend 1–2 persona traits for the third chair (e.g., Therapist-mode, Elder, Teacher).',
+      ph: 'Start typing to add overlays'
+    },
+
+    /* Frame & constraints */
+    {
+      key: 'topic',
+      label: 'Topic or emotion to explore',
+      type: 'textarea',
+      desc: 'Name the issue in one or two lines; keep it specific and present-focused.',
+      ph: 'e.g., Anger about last week’s feedback meeting; fear of sending the proposal'
+    },
+    {
+      key: 'goal',
+      label: 'Outcome goal (what changes by session end?)',
+      type: 'text',
+      desc: 'Define a concrete aim to land on behavior.',
+      ph: 'e.g., Decide my boundary and draft the first sentence I will say'
+    },
+    {
+      key: 'timebox',
+      label: 'Timebox (minutes)',
+      type: 'text',
+      desc: 'Short, focused sessions are best: 10–20 minutes is typical.',
+      ph: 'e.g., 12'
+    },
+    {
+      key: 'switch_interval',
+      label: 'Switch cadence',
+      type: 'text',
+      desc: 'How often to alternate seats (by time or turns).',
+      ph: 'e.g., Every 90 seconds or every 2 lines'
+    },
+
+    /* Deepening prompts & lenses */
+    {
+      key: 'deepeners',
+      label: 'Deepening prompts (one per line)',
+      type: 'textarea',
+      desc: 'Cues the model will use to contact the feeling and the need.',
+      ph: 'Say that as “I need…”\nWhere is that in your body?\nIf you believed this fully, what would change?\nWhat does this part protect?'
+    },
+    {
+      key: 'bias_lenses',
+      label: 'Cognitive/relational lenses (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Patterns to watch (e.g., mind-reading, all-or-nothing, fundamental attribution error).',
+      ph: 'Mind-reading • Catastrophizing • Typical-user bias'
+    },
+
+    /* Guardrails */
+    {
+      key: 'chair_rules',
+      label: 'Chair rules',
+      type: 'textarea',
+      desc: 'Behavioral rules to keep the experiment safe and productive.',
+      ph: 'Present tense • Short sentences • “I” statements • No insults or threats • Switch often • Stop if overwhelmed'
+    },
+
+    /* Integration targets (pre-seed) */
+    {
+      key: 'acceptance_targets',
+      label: 'Integration targets',
+      type: 'textarea',
+      desc: 'What the session should produce, stated in observable terms.',
+      ph: 'One need; one boundary/request; one 24-hour micro-step; one sentence each chair learned'
+    }
+  ],
+
+  template: (f) => {
+    const toLines = s => String(s||'').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const list = (title, xs) => xs.length ? [title, ...xs.map((x,i)=>`${i+1}. ${x}`)].join('\n') : null;
+    const joinIf = (label, block) => block ? `${label}\n${block}` : null;
+
+    const thirdChairDescription = (value) => {
+      switch (value) {
+        case 'compassion':
+          return 'Compassionate Nurturer — warm, non-judgmental, reality-attuned care; de-escalates shame, validates needs, and seeks sustainable pace.';
+        case 'mentor':
+          return 'Mentor / Guide — seasoned advisor; frames feedback, models skills, sets achievable experiments, privileges learning over perfection.';
+        case 'values_self':
+          return 'Values / Healthy Adult — principled yet flexible; names core values, balances self/other needs, converts ideals into daily behaviors and boundaries.';
+        default:
+          return null;
+      }
+    };
+
+    const deepeners = toLines(f.deepeners);
+    const rules = toLines(f.chair_rules);
+    const aOverlays = toLines(f.you_personas && f.you_personas.join ? f.you_personas.join('\n') : f.you_personas);
+    const bOverlays = toLines(f.other_personas && f.other_personas.join ? f.other_personas.join('\n') : f.other_personas);
+    const cOverlays = toLines(f.third_chair_personas && f.third_chair_personas.join ? f.third_chair_personas.join('\n') : f.third_chair_personas);
+    const lenses = (f.bias_lenses && f.bias_lenses.length) ? f.bias_lenses.join(' • ') : '';
+
+    const out = [];
+    out.push('Run a Gestalt Empty Chair dialogue with two roles (and, if selected, a third supportive chair). Produce embodied, present-tense alternating voices; use deepening prompts; and end with one clear behavior change.');
+
+    // Context & framing
+    f.ctx && out.push(`Context: ${f.ctx}`);
+    f.goal && out.push(`Outcome goal: ${f.goal}`);
+    f.timebox && out.push(`Timebox: ${f.timebox} min`);
+    f.switch_interval && out.push(`Switch cadence: ${f.switch_interval}`);
+
+    // Roles
+    f.you && out.push(`Seat A — You:\n${f.you}`);
+    aOverlays.length && out.push(joinIf('Seat A persona overlays:', aOverlays.map((x,i)=>`${i+1}. ${x}`).join('\n')));
+
+    f.other && out.push(`Seat B — Other:\n${f.other}`);
+    bOverlays.length && out.push(joinIf('Seat B persona overlays:', bOverlays.map((x,i)=>`${i+1}. ${x}`).join('\n')));
+
+    if (f.third_chair && f.third_chair !== 'none') {
+      const desc = thirdChairDescription(f.third_chair);
+      if (desc) out.push(`Third chair:\n${desc}`);
+      cOverlays.length && out.push(joinIf('Third chair persona overlays:', cOverlays.map((x,i)=>`${i+1}. ${x}`).join('\n')));
+    }
+
+    // Topic & rules
+    f.topic && out.push(`Topic:\n${f.topic}`);
+    rules.length && out.push(list('Chair rules:', rules));
+    lenses && out.push(`Bias/relational lenses to watch: ${lenses}`);
+    deepeners.length && out.push(list('Deepening prompts the dialogue should use:', deepeners));
+    f.acceptance_targets && out.push(`Integration targets:\n${f.acceptance_targets}`);
+
+    // Output spec
+    out.push('Output:');
+    out.push('1) Scripted dialogue with labeled turns (A:, B:, and if chosen, C:), present tense, short sentences, switching per cadence. Use at least one deepening prompt every 1–2 exchanges.');
+    out.push('2) Hot-line reflection: repeat and respond to the most emotionally charged sentence to surface need/meaning.');
+    out.push('3) Integration plan:');
+    out.push('   - One explicit Need: “I need … because …”.');
+    out.push('   - One Boundary/Request in observable terms (who/what/when).');
+    out.push('   - One 24-hour micro-commitment (≤10 minutes; first next step).');
+    out.push('   - One-sentence learning from each chair (“What I realized is…”).');
+    out.push('4) De-role & ground: a 2–3 line close (breath cue, brief walk/water) and a follow-up time.');
+    out.push('5) If the third chair is used: add exactly one pass from that chair to model compassionate, realistic care and help reconcile the polarity.');
+
+    return out.filter(Boolean).join('\n');
+  }
 },
 
 {
@@ -7880,34 +8763,291 @@ fields: [
   slug: 'internal-weather-report',
   label: 'Internal Weather Report — Storm · Calm · Forecast',
   kind: 'pattern',
-  categories: ['self-reflection', 'creativity'],
+  categories: ['self-reflection', 'wellbeing', 'communication'],
   tags: [
-    'type:pattern','topic:emotions','topic:metaphor','level:beginner',
-    'use:journal','use:emotional-awareness','use:stress-relief'
+    'type:pattern','topic:emotions','topic:metaphor','topic:stress-regulation',
+    'use:journal','use:check-in','use:team-standup','level:beginner'
   ],
+
   use_cases: [
-    'articulate your current mood or emotional state using weather metaphors',
-    'gain perspective on emotional ups and downs by “forecasting” possible changes',
-    'playfully externalize feelings to reduce their intensity and understand them'
+    'one-minute mood check to reduce reactivity',
+    'pre-meeting “state of me” for clearer collaboration',
+    'post-incident decompression and next-step planning',
+    'daily self-regulation ritual integrated with spoons/energy tracking'
   ],
+
+  definition:
+    'A compact self-report using weather metaphors: name the current “Storm” (nowcast), the “Calm” (anchors/resources), and a short “Forecast” (near-term expectations, boundaries, and next step).',
+
+  help:
+    'Describe how you feel in plain words or sliders. The model converts it into a humane “weather report” with a tiny action plan. Keep it brief, concrete, and non-judgmental. Use numbers (0–10) if words are hard today.',
+
   boosters: [
-    'Don’t shy away from dramatic weather—intense storm imagery can help validate strong feelings (just include a shift toward resolution).',
-    'End the report with a gentle forecast or hope (e.g., “skies clearing later”) to remind yourself that emotions change.'
+    'Prefer 1–3 precise feelings and one body signal over long narratives.',
+    'Use sliders: Temperature (arousal), Pressure (demands), Visibility (clarity), Wind (context switching), Humidity (uncertainty).',
+    'End with one boundary, one 10–20 minute step, and one contingency.',
+    'If sharing with others, keep content impact-focused and opt-in only.',
+    'Optionally convert the Forecast into an If–Then plan (implementation intention).'
   ],
-  definition: 'A reflective journaling exercise that describes one’s mood and feelings as a weather report, complete with current conditions, any changes on the horizon, and a short-term forecast for emotional climate.',
-  help: 'Describe how you feel right now in plain terms (e.g., anxious, relieved, etc.). The model will turn it into a creative “weather report” of your inner world, mentioning the current weather (emotional state), any transitions, and an outlook for the near future.',
+
   fields: [
-    { key: 'mood', label: 'Current mood or feeling', type: 'textarea', ph: 'e.g., I feel nervous but also a bit hopeful about my new job.' }
+    {
+      key: 'mood',
+      label: 'Free text mood (optional)',
+      type: 'textarea',
+      desc: 'Plain description in your own words. Helpful for nuance.',
+      ph: 'Nervous but hopeful; scattered after meetings; low social battery.'
+    },
+    {
+      key: 'mood_personas',
+      label: 'Mood persona(s)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Add guiding archetypes to frame tone and needs (e.g., Steady Navigator, Playful Sprite, Anxious Scholar).',
+      ph: 'Start typing to insert one or more mood archetypes…'
+    },
+
+    {
+      key: 'body_signals',
+      label: 'Body signals (optional)',
+      type: 'textarea',
+      desc: 'Where and how it shows up in the body.',
+      ph: 'Tight jaw; fluttery stomach; shallow breath; heavy shoulders.'
+    },
+    {
+      key: 'body_persona',
+      label: 'Somatic mentor persona(s) (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Somatic coaches/mentors to guide interoception and pacing (e.g., Breath Coach, Gentle Physio, Mindful Yogi).',
+      ph: 'Start typing to add one or more somatic mentor personas…'
+    },
+
+    {
+      key: 'temperature',
+      label: 'Temperature (arousal 0–10)',
+      type: 'text',
+      desc: 'How revved up you feel (0=very calm, 10=amped).',
+      ph: 'e.g., 7'
+    },
+    {
+      key: 'pressure',
+      label: 'Pressure (demands/stress 0–10)',
+      type: 'text',
+      desc: 'Obligations, deadlines, social load.',
+      ph: 'e.g., 6'
+    },
+    {
+      key: 'visibility',
+      label: 'Visibility (clarity 0–10)',
+      type: 'text',
+      desc: 'How clear the next steps feel (0=fog, 10=clear skies).',
+      ph: 'e.g., 5'
+    },
+    {
+      key: 'wind',
+      label: 'Wind (context switching 0–10)',
+      type: 'text',
+      desc: 'Mental churn; number of competing threads.',
+      ph: 'e.g., 8'
+    },
+    {
+      key: 'humidity',
+      label: 'Humidity (uncertainty low/med/high)',
+      type: 'text',
+      desc: 'Ambient ambiguity level.',
+      ph: 'e.g., high'
+    },
+    {
+      key: 'spoons',
+      label: 'Energy spoons (0–10, optional)',
+      type: 'text',
+      desc: 'Quick energy budget estimate (Spoon Theory).',
+      ph: 'e.g., 4'
+    },
+
+    {
+      key: 'anchors',
+      label: 'Calm anchors/resources',
+      type: 'textarea',
+      desc: 'Routines, people, tools, values that stabilize you.',
+      ph: 'Water + walk; focus playlist; “kindness over speed”; pair with Sam at 2pm.'
+    },
+    {
+      key: 'values_persona',
+      label: 'Values/mentor persona(s) (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Supportive inner mentor/values voices to guide choices (e.g., Compassionate Nurturer, Stoic Coach, Future Self).',
+      ph: 'Start typing to add mentor/values personas…'
+    },
+
+    {
+      key: 'boundary',
+      label: 'Boundary (one line)',
+      type: 'text',
+      desc: 'Behavioral “no” or limit for today.',
+      ph: 'No new meetings after 3pm; slack replies after 5pm tomorrow.'
+    },
+    {
+      key: 'request',
+      label: 'Request (optional)',
+      type: 'textarea',
+      desc: 'What you’ll ask of others (who/what/when).',
+      ph: 'PM: clarify acceptance criteria by noon; teammate: pair 20m on blockers.'
+    },
+    {
+      key: 'next_step',
+      label: 'Tiny next step (10–20 min)',
+      type: 'text',
+      desc: 'Smallest viable action aligned to current capacity.',
+      ph: 'Draft 3 bullets for spec; rename files; 10-minute walk.'
+    },
+    {
+      key: 'contingency',
+      label: 'If it worsens → fallback',
+      type: 'textarea',
+      desc: 'Pre-decided move if “storm” intensifies.',
+      ph: 'Ping manager; postpone non-urgent task; breathing box 3 minutes.'
+    },
+
+    {
+      key: 'share_mode',
+      label: 'Share mode',
+      type: 'select',
+      desc: 'Select how the output should be framed for the intended audience. The selected value injects explicit AI instructions.',
+      options: [
+        {
+          value: 'private log — write in first-person; include feelings + body signals; no audience; no requests; avoid names; ≤120 words; gentle, validating tone.',
+          label: 'Private log'
+        },
+        {
+          value: 'team standup — neutral, impact-focused; omit personal details; state availability, one boundary, one request, and one tiny next step as bullets; ≤80 words.',
+          label: 'Team standup (impact-focused)'
+        },
+        {
+          value: 'partner/friend check-in — warm, supportive; include feelings + needs and one specific request; de-jargonize; include appreciation; ≤150 words.',
+          label: 'Partner/friend check-in (feelings + needs)'
+        }
+      ]
+    },
+    {
+      key: 'tone_pref',
+      label: 'Style tone (optional)',
+      type: 'select',
+      desc: 'Choose how the language should read. The selected value injects stylistic instructions into the prompt.',
+      options: [
+        { value: 'plain — everyday language; concrete nouns; short sentences; avoid metaphors unless user provided.', label: 'Plain' },
+        { value: 'poetic — concise vivid metaphors; sensory detail; no purple prose; keep it under control.', label: 'Poetic' },
+        { value: 'playful — light humor; gentle; no sarcasm; keep safety and care foregrounded.', label: 'Playful' },
+        { value: 'clinical — objective descriptions; behavioral/physiological terms; non-judgmental; no advice creep.', label: 'Clinical' },
+        { value: 'coach-like — compassionate, action-oriented; normalize emotions; offer one tiny step and one encouragement.', label: 'Coach-like' }
+      ]
+    },
+    {
+      key: 'constraints',
+      label: 'Constraints (optional)',
+      type: 'textarea',
+      desc: 'Formatting or privacy constraints.',
+      ph: '≤120 words; no medical labels; avoid sensitive details.'
+    }
   ],
-  template: ({ mood, ctx, audience, style, tone }) => [
-    'Draft an internal weather report for the current emotional state.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    mood && `Mood description:\n${mood}`,
-    'Output:\n1) “Current conditions” describing the emotion as weather (e.g., thunderstorms of anxiety, or a sunny calm)\n2) Any “shifts” or changes happening (e.g., storm passing, clouds gathering)\n3) A short “forecast” for the near future mood (e.g., clearing skies, a chance of lightheartedness)'
-  ].filter(Boolean).join('\n')
+
+  template: (f) => {
+    const lines = [];
+    const asNum = (x) => {
+      const v = Number(String(x||'').replace(/[^0-9.]/g,''));
+      return Number.isFinite(v) ? v : null;
+    };
+    const listify = (val) =>
+      Array.isArray(val)
+        ? val
+        : String(val || '')
+            .split(/\n+/)
+            .map(s => s.trim())
+            .filter(Boolean);
+
+    // Metrics
+    const T = asNum(f.temperature), P = asNum(f.pressure), V = asNum(f.visibility), W = asNum(f.wind);
+    const metrics = [];
+    if (T!=null) metrics.push(`Temp=${T}/10`);
+    if (P!=null) metrics.push(`Pressure=${P}/10`);
+    if (V!=null) metrics.push(`Visibility=${V}/10`);
+    if (W!=null) metrics.push(`Wind=${W}/10`);
+    if (f.humidity) metrics.push(`Humidity=${f.humidity}`);
+    if (f.spoons) metrics.push(`Spoons=${f.spoons}/10`);
+
+    // Header
+    lines.push('Create an Internal Weather Report (Storm · Calm · Forecast). Keep it humane, concise, and non-judgmental.');
+    if (f.ctx) lines.push(`Context: ${f.ctx}`);
+    if (f.share_mode) lines.push(`Audience mode directive: ${f.share_mode}`);
+    if (f.tone_pref) lines.push(`Style tone directive: ${f.tone_pref}`);
+    if (f.constraints) lines.push(`Constraints: ${f.constraints}`);
+
+    // Storm
+    lines.push('Storm — Nowcast:');
+    if (f.mood) lines.push(`• Feelings: ${f.mood}`);
+    if (f.mood_personas && String(f.mood_personas).trim()) {
+      const mp = listify(f.mood_personas);
+      if (mp.length) lines.push(`• Mood persona(s): ${mp.join('; ')}`);
+    }
+    if (f.body_signals) lines.push(`• Body: ${f.body_signals}`);
+    if (f.body_persona && String(f.body_persona).trim()) {
+      const bp = listify(f.body_persona);
+      if (bp.length) lines.push(`• Somatic mentor persona(s): ${bp.join('; ')}`);
+    }
+    if (metrics.length) lines.push(`• Metrics: ${metrics.join(' · ')}`);
+
+    // Calm
+    lines.push('Calm — Anchors & Capacity:');
+    if (f.anchors) lines.push(`• Anchors: ${f.anchors}`);
+    if (f.values_persona && String(f.values_persona).trim()) {
+      const vp = listify(f.values_persona);
+      if (vp.length) lines.push(`• Mentor/values persona(s): ${vp.join('; ')}`);
+    }
+    if (f.boundary) lines.push(`• Boundary: ${f.boundary}`);
+
+    // Forecast
+    lines.push('Forecast — Next few hours:');
+    if (f.request) lines.push(`• Request: ${f.request}`);
+    if (f.next_step) lines.push(`• Tiny next step (10–20m): ${f.next_step}`);
+    if (f.contingency) lines.push(`• If worsens → ${f.contingency}`);
+
+    // If–Then (auto-generate a simple implementation intention)
+    if (f.next_step) {
+      const trigger = (P!=null && P>=7) ? 'when pressure spikes again'
+                    : (V!=null && V<=4) ? 'when visibility feels foggy'
+                    : 'when I notice avoidance';
+      lines.push('Implementation Intention:');
+      lines.push(`If ${trigger}, then I will ${f.next_step}.`);
+    }
+
+    // Share-safe scaffold (only if sharing externally)
+    if (f.share_mode && !/private log/i.test(f.share_mode)) {
+      lines.push('Team-safe summary (no private details):');
+      lines.push('- Current impact: how conditions affect availability/focus.');
+      lines.push('- One request and one boundary, with timing.');
+      lines.push('- One tiny next step you commit to.');
+    }
+
+    lines.push('Close with one grounding act (water, breath, light, brief stretch). Emotions are weather; they change.');
+
+    // Output spec
+    lines.push('Output:');
+    lines.push('1) Current conditions (Storm): feelings, body, metrics, and any mood/somatic personas in one short paragraph.');
+    lines.push('2) Calm (Anchors): list 2–4 supports (values/mentor persona(s) if provided).');
+    lines.push('3) Forecast: expectations for the next few hours + boundary + tiny next step + request + contingency.');
+    lines.push('4) Optional team-safe summary aligned to Share mode directive.');
+    lines.push('5) One-line Implementation Intention if appropriate.');
+
+    return lines.filter(Boolean).join('\n');
+  }
 },
 {
   id: 'synesthetic_brainstorm',
