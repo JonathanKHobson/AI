@@ -167,13 +167,25 @@
 .resizer::before{
   content:'';
   position:absolute;
-  top:12px; bottom:12px;
-  left:50%; transform:translateX(-50%);
-  width:2px; border-radius:2px;
-  background: rgba(255,255,255,.30);        /* dark mode default */
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  width:6px; height:36px;                    /* tall enough to read */
+  border-radius:3px;
+  /* Three stacked dots using a repeating background */
+  background-image:
+    radial-gradient(currentColor 45%, transparent 46%),
+    radial-gradient(currentColor 45%, transparent 46%),
+    radial-gradient(currentColor 45%, transparent 46%);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  background-position:
+    50% calc(50% - 10px),
+    50% 50%,
+    50% calc(50% + 10px);
+  opacity:.85;
+  color: rgba(255,255,255,.88);              /* dark theme default */
 }
 :root[data-theme="light"] .resizer::before{
-  background: rgba(0,0,0,.28);              /* light mode default */
+  background: rgba(0,0,0,72);              /* light mode default */
 }
 .resizer:hover::before,
 .resizer:focus-visible::before{
@@ -1529,6 +1541,51 @@ function templateMatchesCompat(t, q, kind, tagValue, catValue){
   }
 }
 
+// --- Picker badges (kind / use-case) ---------------------------------------
+// Choose how #frameworkSel options annotate items:
+//   'kind'    → " • framework"
+//   'use'     → " • problem-framing" (falls back to kind if no use tag found)
+//   'both'    → " • framework • problem-framing"
+const FW_OPTION_BADGE_MODE = 'both';   // change to 'kind' or 'use' if you prefer
+
+// Optional: raw vs pretty casing for use tag display
+//   'raw'    → "problem-framing"
+//   'pretty' → "Problem framing"
+const FW_USE_LABEL_STYLE = 'raw';
+
+// Treat these as unhelpful "use" tags; skip them when choosing a badge.
+const UNHELPFUL_USE_TAGS = new Set(['pattern', 'patterns', 'recipe', 'recipes']);
+
+
+function firstUseTag(t){
+  // Gather all candidate "use" values from tags and use_cases
+  const usesFromTags = (t.tags || [])
+    .map(String)
+    .map(s => s.trim().toLowerCase())
+    .filter(s => s.startsWith('use:'))
+    .map(s => s.split(':', 2)[1])
+    .filter(Boolean);
+
+  const usesFromArray = Array.isArray(t.use_cases)
+    ? t.use_cases.map(String).map(s => s.trim().toLowerCase()).filter(Boolean)
+    : [];
+
+  const candidates = [...usesFromTags, ...usesFromArray];
+
+  // Return the first candidate that's not on the skip list
+  const picked = candidates.find(u => !UNHELPFUL_USE_TAGS.has(u));
+  return picked || '';
+}
+
+
+function friendlyUseTag(u){
+  if (!u) return '';
+  if (FW_USE_LABEL_STYLE === 'pretty'){
+    const s = u.replace(/-/g,' ');
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  return u; // 'raw'
+}
 
 
 
@@ -1558,16 +1615,29 @@ const hits = base.filter(t => templateMatchesCompat(t, q, kind, tag, cat));
   }
 
   sel.innerHTML = hits.map(t => {
-    const label = t.label || t.name || t.slug || t.id || 'Untitled';
-    const k     = t.kind ? ` • ${t.kind}` : '';
-    const val   = t.id || t.slug || label;
-    return `<option value="${val}">${label}${k}</option>`;
-  }).join('');
+const label = t.label || t.name || t.slug || t.id || 'Untitled';
+const kindBadge = t.kind ? ` • ${t.kind}` : '';
+
+const u0 = firstUseTag(t);
+const useBadge = u0 ? ` • ${friendlyUseTag(u0)}` : '';
+
+let suffix = kindBadge;              // default: keep existing behavior
+if (FW_OPTION_BADGE_MODE === 'use')  suffix = useBadge || kindBadge;     // prefer use; fallback to kind
+if (FW_OPTION_BADGE_MODE === 'both') suffix = `${kindBadge}${useBadge}`; // show both if available
+
+const val = t.id || t.slug || label;
+return `<option value="${val}">${label}${suffix}</option>`;
+
+  })
+  
+  .join('');
 
   if (!sel.innerHTML){
     sel.innerHTML = `<option disabled>(No matches)</option>`;
   }
 }
+
+
 
 
 
@@ -2266,6 +2336,24 @@ function pick(i){
     if (ev.target!==inputEl && !menuEl.contains(ev.target)) close();
   });
 }
+
+// Escape text for use inside HTML attributes (e.g., title="")
+function attrEscape(s){
+  return String(s ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// Build the tooltip text for a framework option
+function optionTooltip(t){
+  const src = (t.definition || t.help || ((t.use_cases||[])[0]) || '').toString().trim();
+  const clean = src.replace(/\s+/g,' ');
+  // Keep it short-ish; browsers render long titles but huge blobs feel janky
+  return attrEscape(clean.length ? clean.slice(0, 300) : 'No description');
+}
+
 
 /* ===== Bias helpers ===== */
 // Minimal, persona-parallel utilities. Won’t touch existing persona flows.
