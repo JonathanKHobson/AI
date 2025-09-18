@@ -4,8 +4,8 @@
   {
   id: 'none',
   slug: 'none',
-  label: '— Template Picker —',
-  kind: 'none',
+  label: '— Task Picker —',
+  kind: 'helper',
   categories: ['none'],
   tags: ['type:none','type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
   use_cases: [
