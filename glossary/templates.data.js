@@ -9,8 +9,8 @@
   slug: 'none',
   label: '— Pattern Picker —',
   kind: 'helper',
-  categories: ['none'],
-  tags: ['type:none','type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
+  categories: [ 'template-picker' ],
+  tags: [ 'type:helper', 'use:framework-picker', 'use:template-picker', 'topic:meta' ],
   use_cases: [
     'help me pick the best framework',
     'explain which framework fits my task',
@@ -104,12 +104,8 @@
   slug: 'abcde-cbt-framework',
   label: 'ABCDE — Activating event · Belief · Consequence · Dispute · Effect',
   kind: 'framework',
-  categories: ['psychology','self-reflection','coaching','resilience'],
-  tags: [
-    'type:framework','topic:cbt','topic:rebt','topic:reframing',
-    'use:cognitive-bias','use:thought-challenge','use:emotional-regulation',
-    'level:intermediate','method:structured-questioning'
-  ],
+  categories: [ 'psychology', 'self-reflection', 'critical thinking', 'product management' ],
+  tags: [ 'type:framework', 'use:recipe', 'use:problem-framing', 'topic:debiasing', 'use:scope-management', 'use:presentations', 'level:intermediate', 'topic:future-self' ],
   use_cases: [
     'reframe negative thoughts or assumptions',
     'self-coaching through emotional situations',
@@ -172,16 +168,9 @@
   id: 'addie',
   slug: 'addie-instructional-design',
   label: 'ADDIE — Analyze · Design · Develop · Implement · Evaluate',
-  kind: 'framework',
-  categories: [
-    'education','planning','training','curriculum-design','evaluation'
-  ],
-  tags: [
-    'type:framework','topic:instructional-design','topic:learning-design',
-    'phase:plan','phase:develop','phase:evaluate',
-    'level:beginner','use:course-development','use:lesson-planning',
-    'use:training-strategy','use:e-learning','method:addie'
-  ],
+  kind: 'strategy',
+  categories: [ 'education', 'planning', 'design' ],
+  tags: [ 'type:framework', 'use:pattern', 'use:goals', 'use:evaluation', 'level:beginner', 'use:ad-copy' ],
   use_cases: [
     'plan and structure an educational course or program',
     'develop training or e-learning materials systematically',
@@ -259,12 +248,9 @@
     id:'aida',
     slug:'aida-model',
     label:'AIDA — Attention · Interest · Desire · Action',
-    kind:'framework',
-    categories:['messaging frameworks','prompt development techniques'],
-    tags:[
-  'type:framework','topic:messaging','phase:apply','level:beginner',
-  'use:ad-copy','use:landing-page','use:email-campaign','use:social-post'
-],
+    kind:'strategy',
+    categories: [ 'storytelling frameworks', 'prompt development techniques' ],
+    tags: [ 'type:framework', 'use:healing', 'phase:apply', 'level:beginner', 'use:ad-copy', 'use:task-brief', 'phase:premortem' ],
 use_cases: [
   'ad copy',
   'landing page messaging',
@@ -302,16 +288,9 @@ boosters: [
   id: 'argument-map',
   slug: 'argument-mapping',
   label: 'Argument Mapping — Claim · Premises · Objections · Rejoinders',
-  kind: 'framework',
-  categories: [
-    'reasoning patterns','critical thinking','debate','philosophy','rhetoric'
-  ],
-  tags: [
-    'type:framework','topic:argumentation','topic:toulmin',
-    'phase:structure','phase:analyze',
-    'level:beginner','use:debate-prep','use:analysis','use:policy-brief',
-    'use:fallacy-detection','use:critical-writing'
-  ],
+  kind: 'strategy',
+  categories: [ 'reasoning', 'critical thinking', 'design', 'psychology', 'ethics' ],
+  tags: [ 'type:framework', 'use:presentations', 'use:teaching', 'topic:future-self', 'phase:apply', 'level:beginner', 'phase:premortem', 'use:pattern', 'use:iteration', 'use:copywriting' ],
   use_cases: [
     'debate preparation and rebuttal planning',
     'design trade-offs and product decisions',
@@ -401,13 +380,8 @@ boosters: [
   slug: 'before-after-bridge-formula',
   label: 'Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)',
   kind: 'framework',
-  categories: ['messaging frameworks','marketing','storytelling','persuasion'],
-  tags: [
-    'type:framework','topic:copywriting','topic:storytelling',
-    'phase:compose','level:beginner',
-    'use:value-proposition','use:ad-copy','use:pitch','use:onboarding',
-    'use:fundraising','use:branding','use:sales-email'
-  ],
+  categories: [ 'storytelling frameworks', 'writing', 'decision' ],
+  tags: [ 'type:framework', 'use:copywriting', 'use:storytelling', 'phase:compose', 'level:beginner', 'topic:values', 'use:ad-copy', 'use:prioritization', 'use:coding', 'topic:debiasing', 'use:teaching', 'use:scope-management' ],
   use_cases: [
     'highlight a product’s impact by contrasting life before vs. after its use',
     'craft persuasive marketing copy, landing page sections, or fundraising appeals',
@@ -472,12 +446,9 @@ boosters: [
   id:'bias_interrupters',
   slug:'bias-interrupters',
   label:'Bias Interrupters — diagnose risk · insert guardrail · measure effect',
-  kind:'pattern',
-  categories:['people','ethics','operations'],
-  tags:[
-    'type:pattern','topic:bias-interrupters','topic:rubrics','level:intermediate',
-    'use:hiring','use:evaluation','use:promotion','use:peer-review','use:calibration'
-  ],
+  kind: 'heuristic',
+  categories: [ 'strategy', 'ethics', 'operations' ],
+  tags: [ 'use:pattern', 'topic:debiasing', 'topic:matrix', 'level:intermediate', 'use:healing', 'use:evaluation', 'use:iteration' ],
 
   use_cases:[
     'hiring loops (sourcing → screening → interview → debrief)',
@@ -559,12 +530,9 @@ boosters: [
   id:'bias_impact_assessment',
   slug:'bias-impact-assessment',
   label:'Bias Impact Assessment (AI/tech pre-launch)',
-  kind:'pattern',
-  categories:['ai','ethics','risk'],
-  tags:[
-    'type:pattern','topic:impact-assessment','topic:transparency','level:advanced',
-    'use:pre-launch','use:model-review','use:policy','use:governance'
-  ],
+    kind:'strategy',
+  categories: [ 'design', 'ethics', 'writing' ],
+  tags: [ 'use:pattern', 'use:healing', 'level:advanced', 'use:prioritization', 'use:format-guidance' ],
 
   use_cases:[
     'pre-deployment review for ML models or decision systems',
@@ -645,14 +613,9 @@ boosters: [
   id: 'blooms',
   slug: 'blooms-taxonomy',
   label: 'Bloom’s — Remember · Understand · Apply · Analyze · Evaluate · Create',
-  kind: 'framework',
-  categories: ['education','critical thinking frameworks','assessment','curriculum design'],
-  tags: [
-    'type:framework','topic:learning','topic:assessment',
-    'phase:design','phase:evaluate','level:beginner',
-    'use:learning-objectives','use:quiz-items','use:lesson-plans','use:tutoring',
-    'use:rubric-design','use:competency-framework'
-  ],
+  kind: 'heuristic',
+  categories: [ 'education', 'critical thinking', 'design' ],
+  tags: [ 'type:framework', 'use:pattern', 'use:evaluation', 'level:beginner', 'use:process-improvement', 'use:coding' ],
   use_cases: [
     'write measurable learning objectives',
     'design quiz, homework, or exam items',
@@ -726,11 +689,8 @@ boosters: [
     slug:'clear-framework',
     label:'CLEAR — Challenge · Limitation · Effect · Action · Result',
     kind:'framework',
-    categories:['analysis frameworks','prompt development techniques'],
-    tags:[
-  'type:framework','topic:analysis','phase:apply','level:beginner',
-  'use:problem-framing','use:retrospective','use:decision-record'
-],
+    categories: [ 'analysis frameworks', 'prompt development techniques' ],
+    tags: [ 'type:framework', 'use:pattern', 'phase:apply', 'level:beginner', 'use:problem-framing', 'use:decision-making' ],
 use_cases: [
   'problem framing',
   'decision record',
@@ -768,11 +728,8 @@ boosters: [
   slug:'clear-path-forward-framework',
   label:'CLEAR Path Forward — Concise · Logical · Explicit · Adaptive · Reflective',
   kind:'framework',
-  categories:['prompt development techniques','prompt literacy'],
-  tags:[
-    'type:framework','topic:prompting','phase:apply','level:beginner',
-    'use:prompt-optimization','use:prompt-iteration','use:clarifying-questions','use:next-step'
-  ],
+  categories: [ 'prompt development techniques' ],
+  tags: [ 'type:framework', 'topic:prompting', 'phase:apply', 'level:beginner', 'use:prioritization', 'use:iteration', 'use:pattern', 'use:process-improvement' ],
   use_cases: [
     'prompt optimization','clarifying prompts','next-step planning',
     'teaching prompt literacy','debugging failed prompts'
@@ -804,12 +761,9 @@ boosters: [
   id:'clear_pm',
   slug:'clear-prompting-method',
   label:'CLEAR Prompting Method — Clarity · Length · Empathy · Actionability · Relevance',
-  kind:'framework',
-  categories:['prompt development techniques'],
-  tags:[
-    'type:framework','topic:prompting','phase:apply','level:beginner',
-    'use:prompt-hygiene','use:length-control','use:audience-empathy','use:scope-management'
-  ],
+    kind:'framework',
+  categories: [ 'prompt development techniques' ],
+  tags: [ 'type:framework', 'topic:prompting', 'phase:apply', 'level:beginner', 'use:communication', 'topic:matrix', 'use:scope-management' ],
   use_cases: [
     'prompt hygiene','length control','audience fit',
     'scope management','instruction cleanup'
@@ -841,13 +795,9 @@ boosters: [
   id: 'cognitive_debiasing',
   slug: 'cognitive-debiasing',
   label: 'Cognitive Debiasing — state assumption · seek disconfirming evidence · adjust',
-  kind: 'pattern',
-  categories: ['ethics','bias','critical thinking'],
-  tags: [
-    'type:pattern','topic:debiasing','topic:consider-the-opposite',
-    'level:beginner','use:analysis','use:strategy','use:review',
-    'use:decision-audit','use:risk-assessment','use:post-mortem','use:scenario-planning'
-  ],
+  kind: 'strategy',
+  categories: [ 'ethics', 'operations', 'critical thinking' ],
+  tags: [ 'use:pattern', 'topic:debiasing', 'topic:decomposition', 'level:beginner', 'use:decision-making', 'phase:premortem' ],
   use_cases: [
     'document a current assumption and actively seek disconfirming evidence',
     'run a quick pre-mortem on a plan or forecast',
@@ -974,11 +924,9 @@ boosters: [
     id:'comparative_analysis',
     slug:'comparative-analysis',
     label:'Comparative Analysis — rank • pros/cons • matrix',
-    kind:'framework',
-    categories:['analysis frameworks','decision support'],
-    tags:[
-      'type:framework','topic:comparison','topic:evaluation','phase:apply','level:intermediate'
-    ],
+    kind:'strategy',
+    categories: [ 'analysis frameworks', 'decision' ],
+    tags: [ 'type:framework', 'phase:compose', 'use:evaluation', 'phase:apply', 'level:intermediate' ],
     use_cases:[
       'choose between options','competitive analysis','tool selection','feature trade-offs'
     ],
@@ -1117,12 +1065,9 @@ boosters: [
   id: 'constraint_flip',
   slug: 'constraint-flip',
   label: 'Constraint Flip (play with edges)',
-  kind: 'pattern',
-  categories: ['creativity','strategy','cultural frameworks'],
-  tags: [
-    'type:pattern','topic:constraints','topic:inversion',
-    'use:ideation','use:innovation-workshop','use:design-sprint','level:beginner'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'strategy', 'cultural frameworks' ],
+  tags: [ 'use:pattern', 'use:presentations', 'use:decision-making', 'use:ideation', 'use:workshop', 'level:beginner' ],
   use_cases: [
     'turn blockers into creative triggers',
     'explore exaggerated, inverted, or removed constraints',
@@ -1181,12 +1126,9 @@ boosters: [
     id:'costar',
     slug:'costar-framework',
     label:'COSTAR — Context · Objective · Style · Tone · Audience · Response',
-    kind:'pattern',
-    categories:['prompt development techniques','messaging frameworks'],
-    tags:[
-  'type:pattern','topic:prompting','phase:apply','level:beginner',
-  'use:creative-brief','use:message-brief','use:content-brief'
-],
+    kind:'framework',
+    categories: [ 'prompt development techniques', 'storytelling frameworks' ],
+    tags: [ 'use:pattern', 'topic:prompting', 'phase:apply', 'level:beginner', 'use:ideation', 'use:task-brief', 'use:content' ],
 use_cases: [
   'creative brief',
   'message brief',
@@ -1223,14 +1165,9 @@ boosters: [
   id: 'eisenhower_matrix',
   slug: 'eisenhower-priority-matrix',
   label: 'Eisenhower Matrix — Urgent/Important Prioritization',
-  kind: 'framework',
-  categories: ['productivity','prioritization','psychology','decision-making'],
-  tags: [
-    'type:framework','topic:time-management','topic:decision-making',
-    'phase:plan','level:beginner','level:intermediate',
-    'use:task-prioritization','use:workflow','use:team-alignment',
-    'use:strategic-planning','use:stress-reduction','use:leadership-retreat'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'prioritization', 'psychology', 'decision' ],
+  tags: [ 'type:framework', 'use:scope-management', 'use:decision-making', 'use:pattern', 'level:beginner', 'level:intermediate', 'use:prioritization', 'use:presentations' ],
   use_cases: [
     'categorize tasks by urgency and importance',
     'decide what to do now, schedule for later, delegate, or drop',
@@ -1301,15 +1238,8 @@ boosters: [
   slug: 'feature-advantage-benefit',
   label: 'FAB — Feature · Advantage · Benefit',
   kind: 'framework',
-  categories: ['messaging frameworks','marketing','sales','copywriting','communication'],
-  tags: [
-    'type:framework','topic:copywriting','topic:value-prop','topic:sales-enablement',
-    'topic:persuasion','topic:resume-optimization',
-    'phase:craft','phase:apply',
-    'level:beginner','level:intermediate',
-    'use:product-marketing','use:sales-copy','use:value-messaging','use:resume-writing',
-    'use:ad-copy','use:pitch-decks'
-  ],
+  categories: [ 'storytelling frameworks', 'writing', 'strategy', 'education' ],
+  tags: [ 'type:framework', 'use:copywriting', 'topic:values', 'use:scope-management', 'use:decision-making', 'use:prioritization', 'use:content', 'phase:apply', 'level:beginner', 'level:intermediate', 'use:pattern', 'use:ad-copy', 'use:healing' ],
   use_cases: [
     'Turn product features into user-focused benefits for marketing copy.',
     'Train a model to articulate why a feature matters to customers.',
@@ -1388,11 +1318,9 @@ boosters: [
     id:'facts_primer',
     slug:'facts-expertise-primer',
     label:'Facts & Expertise Primer',
-    kind:'framework',
-    categories:['prompt development techniques','quality scaffolds'],
-    tags:[
-      'type:framework','topic:priming','topic:fact-checking','phase:setup','level:beginner'
-    ],
+    kind:'technique',
+    categories: [ 'prompt development techniques', 'quality' ],
+    tags: [ 'type:framework', 'use:teaching', 'level:beginner', 'use:case-study' ],
     use_cases:[
       'prime a conversation with domain facts',
       'reduce hallucinations',
@@ -1452,14 +1380,9 @@ boosters: [
   id: 'feynman',
   slug: 'feynman-technique',
   label: 'Feynman Technique — Explain Like I’m 5',
-  kind: 'pattern',
-  categories: ['education','learning','critical thinking','communication','pedagogy'],
-  tags: [
-    'type:pattern','topic:simplification','topic:teaching','topic:critical-thinking',
-    'topic:pedagogy','topic:learning-strategies',
-    'level:beginner','use:explanation','use:study','use:teaching','use:debug-understanding',
-    'use:simplification','use:executive-briefs','use:teaching-kids'
-  ],
+  kind: 'framework',
+  categories: [ 'education', 'reasoning', 'critical thinking', 'psychology' ],
+  tags: [ 'use:pattern', 'topic:clarification', 'use:teaching', 'use:copywriting', 'level:beginner', 'use:case-study', 'topic:debiasing', 'use:task-brief' ],
   use_cases: [
     'Simplify complex concepts for learners or non-experts.',
     'Debug your own understanding by explaining simply.',
@@ -1537,12 +1460,9 @@ boosters: [
   id:'few_shot',
   slug:'few-shot-examples',
   label:'Examples / Few-Shot Prompting',
-  kind:'pattern',
-  categories:['prompt development techniques','prompt literacy'],
-  tags:[
-    'type:pattern','topic:examples','topic:few-shot','phase:apply','level:beginner',
-    'use:format-guidance','use:style-transfer','use:output-shaping'
-  ],
+  kind:'technique',
+  categories: [ 'prompt development techniques' ],
+  tags: [ 'use:pattern', 'phase:explore', 'topic:future-self', 'phase:apply', 'level:beginner', 'use:format-guidance', 'use:storytelling' ],
   use_cases:[
     'show ideal output format with 1+ shots',
     'demonstrate style/voice to imitate',
@@ -1593,13 +1513,8 @@ boosters: [
   slug: 'facione-core-skills',
   label: 'Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate',
   kind: 'framework',
-  categories: ['critical thinking frameworks','education','reasoning','decision-making'],
-  tags: [
-    'type:framework','topic:critical-thinking','topic:argumentation',
-    'topic:bias-checking','topic:decision-quality','topic:evidence-based-reasoning',
-    'phase:interpret','phase:analyze','phase:evaluate','phase:infer','phase:explain','phase:self-regulate',
-    'level:intermediate','level:advanced'
-  ],
+  categories: [ 'critical thinking', 'education', 'reasoning', 'decision' ],
+  tags: [ 'type:framework', 'use:copywriting', 'use:presentations', 'topic:debiasing', 'use:decision-making', 'use:healing', 'use:discover', 'phase:apply', 'use:evaluation', 'level:beginner', 'phase:explore', 'topic:future-self', 'level:intermediate', 'level:advanced' ],
   use_cases: [
     'Appraise evidence for and against a claim.',
     'Write critical research summaries or peer reviews.',
@@ -1714,14 +1629,9 @@ boosters: [
   id: 'first_principles',
   slug: 'first-principles-analysis',
   label: 'First Principles — Question assumptions & reason from basics',
-  kind: 'framework',
-  categories: ['reasoning','innovation','analysis','creativity','philosophy','science','entrepreneurship'],
-  tags: [
-    'type:framework','topic:problem-solving','topic:assumptions','topic:critical-thinking','topic:innovation',
-    'topic:reductionism','topic:scientific-method','level:intermediate',
-    'use:strategy','use:research','use:inventive-thinking','use:decision-making',
-    'use:validation','use:product-design','use:teaching'
-  ],
+  kind: 'heuristic',
+  categories: [ 'reasoning', 'ideation', 'analysis frameworks', 'creativity', 'psychology', 'product management' ],
+  tags: [ 'type:framework', 'use:problem-framing', 'use:presentations', 'use:copywriting', 'use:workshop', 'use:ideation', 'level:intermediate', 'use:pattern', 'use:content', 'use:decision-making', 'topic:values', 'use:teaching' ],
   use_cases: [
     'Solve complex problems by breaking them down to fundamental truths.',
     'Challenge default assumptions to find innovative or unexpected solutions.',
@@ -1784,12 +1694,9 @@ boosters: [
   id:'goal_breakdown',
   slug:'goal-breakdown-decomposition',
   label:'Goal Breakdown (Prompt/Question Decomposition)',
-  kind:'pattern',
-  categories:['planning','prompt development techniques'],
-  tags:[
-    'type:pattern','topic:decomposition','topic:questions','phase:plan','level:beginner',
-    'use:breakdown','use:micro-tasks','use:research-questions'
-  ],
+  kind:'technique',
+  categories: [ 'planning', 'prompt development techniques' ],
+  tags: [ 'use:pattern', 'topic:decomposition', 'level:beginner', 'use:ideation', 'use:task-brief' ],
   use_cases:[
     'break a complex goal into micro-tasks',
     'turn a vague prompt into concrete sub-questions',
@@ -1830,12 +1737,9 @@ boosters: [
   id:'goal_composition',
   slug:'goal-composition',
   label:'Goal Composition (Prompt/Question Composition)',
-  kind:'pattern',
-  categories:['planning','prompt development techniques'],
-  tags:[
-    'type:pattern','topic:composition','topic:goals','phase:plan','level:beginner',
-    'use:synthesis','use:roadmap','use:prioritization'
-  ],
+  kind:'technique',
+  categories: [ 'planning', 'prompt development techniques' ],
+  tags: [ 'use:pattern', 'topic:decomposition', 'use:goals', 'level:beginner', 'use:prioritization' ],
   use_cases:[
     'compose a broader goal from many sub-prompts/actions',
     'derive an objective and plan from granular tasks',
@@ -1885,12 +1789,9 @@ boosters: [
   id:'goal_prompting',
   slug:'goal-prompting',
   label:'Goal Prompting',
-  kind:'pattern',
-  categories:['planning','prompt development techniques'],
-  tags:[
-    'type:pattern','topic:goals','phase:plan','level:beginner',
-    'use:brainstorm','use:roadmap','use:prioritize'
-  ],
+  kind:'technique',
+  categories: [ 'planning', 'prompt development techniques' ],
+  tags: [ 'use:pattern', 'use:goals', 'level:beginner', 'use:brainstorm', 'use:prioritization' ],
   use_cases:[
     'state a primary goal and supporting goals',
     'ask the model to prioritize or plan',
@@ -1941,14 +1842,9 @@ boosters: [
   id: 'golden',
   slug: 'golden-circle-framework',
   label: 'Golden Circle — Why · How · What · Mission',
-  kind: 'framework',
-  categories: ['messaging frameworks','cultural frameworks','strategy','leadership','personal-development','branding'],
-  tags: [
-    'type:framework','topic:purpose','topic:messaging','topic:mission','topic:vision','topic:values',
-    'phase:overview','level:beginner',
-    'use:brand-messaging','use:mission-vision','use:pitch-deck',
-    'use:community-engagement','use:personal-purpose','use:leadership-alignment','use:storytelling'
-  ],
+  kind: 'strategy',
+  categories: [ 'storytelling frameworks', 'cultural frameworks', 'strategy', 'ideation', 'prompt development techniques', 'planning' ],
+  tags: [ 'type:framework', 'use:goals', 'use:healing', 'use:decision-making', 'topic:values', 'use:discover', 'level:beginner', 'use:prioritization', 'use:communication', 'use:pattern', 'use:storytelling' ],
   use_cases: [
     'Craft an authentic brand or organizational purpose statement.',
     'Align team or community around shared mission and values.',
@@ -2016,14 +1912,9 @@ boosters: [
   id: 'grow',
   slug: 'grow-coaching-model',
   label: 'GROW — Goal · Reality · Options · Way Forward',
-  kind: 'framework',
-  categories: ['coaching','planning','reflection','leadership','therapy','teamwork'],
-  tags: [
-    'type:framework','topic:goal-setting','topic:coaching','topic:decision-making',
-    'topic:reflection','phase:plan','level:beginner',
-    'use:personal-development','use:mentoring','use:problem-solving',
-    'use:team-alignment','use:career-development','use:therapy-coaching','use:leadership-alignment'
-  ],
+  kind: 'strategy',
+  categories: [ 'critical thinking', 'planning', 'self-reflection', 'ideation', 'prompt development techniques', 'storytelling frameworks' ],
+  tags: [ 'type:framework', 'use:goals', 'use:decision-making', 'use:ideation', 'use:pattern', 'level:beginner', 'use:coding', 'use:problem-framing' ],
   use_cases: [
     'Structure a coaching or mentoring conversation with clarity.',
     'Set personal or team goals with grounded reality-checks and next steps.',
@@ -2118,13 +2009,8 @@ boosters: [
   slug: 'heros-journey-narrative',
   label: 'Hero’s Journey — Departure · Initiation · Return',
   kind: 'framework',
-  categories: ['storytelling frameworks','creative writing','myth-making','personal growth','game design'],
-  tags: [
-    'type:framework','topic:storytelling','topic:archetypes','topic:mythic-structure',
-    'phase:compose','level:intermediate',
-    'use:plot-outline','use:character-development','use:mythic-narrative',
-    'use:game-design','use:personal-growth','use:autobiographical-storytelling','use:screenwriting'
-  ],
+  categories: [ 'storytelling frameworks', 'writing', 'cultural frameworks', 'design' ],
+  tags: [ 'type:framework', 'use:storytelling', 'phase:explore', 'topic:future-self', 'phase:compose', 'level:intermediate', 'topic:prompting', 'use:goals', 'use:pattern', 'use:copywriting' ],
   use_cases: [
     'Generate mythic or epic story outlines.',
     'Develop a character’s transformative arc.',
@@ -2322,13 +2208,9 @@ boosters: [
   id: 'debiasing-checklist',
   slug: 'heuristics-biases-preflight',
   label: 'Heuristics & Biases — Debiasing Pre-flight',
-  kind: 'framework',
-  categories: ['critical thinking frameworks','quality checks','decision hygiene'],
-  tags: [
-    'type:framework','topic:debiasing','topic:heuristics','topic:consider-the-opposite','topic:base-rates',
-    'phase:review','phase:premortem',
-    'level:intermediate'
-  ],
+  kind: 'heuristic',
+  categories: [ 'critical thinking', 'quality', 'decision' ],
+  tags: [ 'type:framework', 'topic:debiasing', 'use:healing', 'topic:decomposition', 'use:case-study', 'use:pattern', 'phase:premortem', 'level:intermediate' ],
 
   use_cases: [
     'Review a draft answer/decision before publishing or acting',
@@ -2479,13 +2361,9 @@ boosters: [
   id: 'hmw_statements',
   slug: 'how-might-we-statements-hmw',
   label: 'How Might We Statements (HMW)',
-  kind: 'pattern',
-  categories: ['design thinking','ideation','problem framing'],
-  tags: [
-    'type:pattern','topic:problem-framing','topic:ideation','topic:inclusion','topic:debiasing',
-    'phase:explore','level:beginner',
-    'use:brainstorm','use:opportunity-mapping','use:workshop','use:discovery'
-  ],
+  kind: 'strategy',
+  categories: [ 'design', 'ideation', 'reasoning' ],
+  tags: [ 'use:pattern', 'use:problem-framing', 'use:ideation', 'use:decision-making', 'topic:debiasing', 'phase:explore', 'level:beginner', 'use:brainstorm', 'topic:prompting', 'use:workshop', 'use:discover' ],
 
   use_cases: [
     'reframe research insights into opportunity questions',
@@ -2722,13 +2600,9 @@ boosters: [
   id: 'implementation_intentions',
   slug: 'if-then-planning',
   label: 'Implementation Intentions (If–Then)',
-  kind: 'pattern',
-  categories: ['behavior','productivity'],
-  tags: [
-    'type:pattern','topic:if-then','topic:habit','topic:coping-plan',
-    'phase:plan','phase:apply','level:beginner',
-    'use:habit','use:focus','use:emotion-regulation','use:adhd-support'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'creativity' ],
+  tags: [ 'use:pattern', 'use:storytelling', 'use:healing', 'phase:apply', 'level:beginner', 'use:presentations', 'use:ad-copy' ],
 
   use_cases: [
     'bind a reliable cue to a tiny starter action to reduce choice friction',
@@ -2900,13 +2774,9 @@ boosters: [
   id: 'inclusive_design',
   slug: 'inclusive-design-framework',
   label: 'Inclusive Design (edge personas)',
-  kind: 'framework',
-  categories: ['design','ethics','accessibility','research','content'],
-  tags: [
-    'type:framework','topic:inclusive-design','topic:persona-spectrum','topic:wcag',
-    'phase:discover','phase:design','phase:test','level:intermediate',
-    'use:product','use:content','use:service-design','use:policy'
-  ],
+  kind: 'heuristic',
+  categories: [ 'design', 'ethics', 'quality', 'reasoning', 'education' ],
+  tags: [ 'type:framework', 'use:pattern', 'use:goals', 'use:healing', 'use:discover', 'use:content', 'level:intermediate' ],
 
   use_cases: [
     'identify edge personas and mismatches (permanent • temporary • situational)',
@@ -3079,12 +2949,9 @@ boosters: [
   id:'kwy_vector',
   slug:'keywords-why-tasks-vector',
   label:'Keywords + Why + Tasks — Vector Priming',
-  kind:'pattern',
-  categories:['prompt development techniques','planning'],
-  tags:[
-    'type:pattern','topic:keywords','topic:why','topic:tasking','phase:plan','level:intermediate',
-    'use:vector-priming','use:context-packing','use:negative-avoidance'
-  ],
+  kind:'technique',
+  categories: [ 'prompt development techniques', 'planning' ],
+  tags: [ 'use:pattern', 'topic:clarification', 'phase:apply', 'use:teaching', 'level:intermediate', 'use:content', 'topic:decomposition' ],
   use_cases:[
     'prime the model with topical vectors via keywords',
     'explain situational “why” for better alignment',
@@ -3146,12 +3013,9 @@ boosters: [
   id:'least_to_most',
   slug:'least-to-most-ltm',
   label:'Least to Most (LtM)',
-  kind:'pattern',
-  categories:['reasoning','planning'],
-  tags:[
-    'type:pattern','topic:progressive-complexity','topic:reasoning','phase:solve','level:intermediate',
-    'use:scaffolding','use:math','use:algorithms','use:teaching'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'planning' ],
+  tags: [ 'use:pattern', 'use:presentations', 'use:healing', 'use:problem-framing', 'level:intermediate', 'use:storytelling', 'topic:matrix', 'use:goals', 'use:teaching' ],
   use_cases:[
     'tackle problems by escalating from simple to complex',
     'derive a general method from trivial and small cases',
@@ -3201,12 +3065,8 @@ boosters: [
   slug: 'monroes-motivated-sequence',
   label: 'Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action',
   kind: 'framework',
-  categories: ['messaging frameworks', 'persuasion', 'public speaking', 'rhetoric'],
-  tags: [
-    'type:framework','topic:persuasion','topic:monroe','topic:cta',
-    'phase:compose','phase:revise','level:intermediate',
-    'use:speechwriting','use:advocacy','use:public-speaking','use:fundraising','use:sales-enablement'
-  ],
+  categories: [ 'storytelling frameworks', 'decision', 'reasoning', 'ethics' ],
+  tags: [ 'type:framework', 'use:decision-making', 'use:iteration', 'use:communication', 'phase:compose', 'use:recipe', 'level:intermediate', 'use:copywriting', 'use:ad-copy', 'use:content', 'topic:debiasing', 'use:scope-management' ],
   use_cases: [
     'structure persuasive talks and pitches that move an audience to act',
     'craft fundraising, policy, or campaign appeals with clear next steps',
@@ -3432,9 +3292,9 @@ boosters: [
   id:'ooda_loop',
   slug:'ooda-loop',
   label:'OODA Loop (Observe–Orient–Decide–Act)',
-  kind:'pattern',
-  categories:['decision','strategy','ops'],
-  tags:['type:pattern','topic:ooda','use:decision','level:beginner'],
+    kind:'strategy',
+  categories: [ 'decision', 'strategy', 'operations' ],
+  tags: [ 'use:pattern', 'use:coding', 'use:decision-making', 'level:beginner' ],
   use_cases:[
     'cut through indecision with a tight OODA pass',
     'establish a clear next action under uncertainty'
@@ -3469,12 +3329,9 @@ boosters: [
     id: 'okr',
     slug: 'okr-goal-setting',
     label: 'OKR — Objective & Key Results',
-    kind: 'framework',
-    categories: ['strategy', 'planning'],
-    tags: [
-      'type:framework','topic:goals','topic:metrics','level:beginner',
-      'use:strategic-planning','use:team-goals','use:performance-management'
-    ],
+    kind: 'strategy',
+    categories: [ 'strategy', 'planning' ],
+    tags: [ 'type:framework', 'use:goals', 'topic:matrix', 'level:beginner', 'use:pattern', 'use:scope-management' ],
     use_cases: [
       'define clear organizational or personal goals with measurable outcomes',
       'break down a vision into concrete targets',
@@ -3514,11 +3371,8 @@ boosters: [
   slug: 'par-problem-action-result',
   label: 'PAR — Problem · Action · Result',
   kind: 'framework',
-  categories: ['storytelling frameworks', 'prompt development techniques'],
-  tags: [
-    'type:framework','topic:storytelling','phase:apply','level:beginner',
-    'use:resume-bullet','use:case-study','use:status-update','use:performance-review'
-  ],
+  categories: [ 'storytelling frameworks', 'prompt development techniques' ],
+  tags: [ 'type:framework', 'use:storytelling', 'phase:apply', 'level:beginner', 'use:recipe', 'use:case-study', 'use:prioritization', 'use:pattern' ],
   use_cases: [
     'summarize work experience on resumes',
     'write concise case study or incident summaries',
@@ -3566,11 +3420,8 @@ boosters: [
   slug: 'rap-result-action-problem',
   label: 'RAP — Result · Action · Problem',
   kind: 'framework',
-  categories: ['storytelling frameworks', 'prompt development techniques'],
-  tags: [
-    'type:framework','topic:storytelling','phase:apply','level:beginner',
-    'use:resume-bullet','use:sales-pitch','use:cover-letter','use:investor-pitch'
-  ],
+  categories: [ 'storytelling frameworks', 'prompt development techniques' ],
+  tags: [ 'type:framework', 'use:storytelling', 'phase:apply', 'level:beginner', 'use:recipe', 'use:prioritization', 'use:discover' ],
   use_cases: [
     'write resume bullets that hook with impact first',
     'open sales or investor pitches with outcomes before context',
@@ -3618,11 +3469,8 @@ boosters: [
     slug: 'pas-copywriting',
     label: 'PAS — Problem · Agitate · Solution',
     kind: 'framework',
-    categories: ['messaging frameworks', 'marketing'],
-    tags: [
-      'type:framework','topic:copywriting','phase:compose','level:beginner',
-      'use:ad-copy','use:email-copy','use:landing-page'
-    ],
+    categories: [ 'storytelling frameworks', 'writing' ],
+    tags: [ 'type:framework', 'use:copywriting', 'phase:compose', 'level:beginner', 'use:ad-copy', 'use:task-brief' ],
     use_cases: [
       'write persuasive copy by addressing the reader’s pain and offering relief',
       'structure marketing messages or support tickets by focusing on problem then solution',
@@ -3662,12 +3510,9 @@ boosters: [
     id: 'pestle',
     slug: 'pestle-analysis',
     label: 'PESTLE — Political · Economic · Social · Technological · Legal · Environmental',
-    kind: 'framework',
-    categories: ['analysis frameworks', 'strategy'],
-    tags: [
-      'type:framework','topic:environment-scan','phase:overview','level:intermediate',
-      'use:market-analysis','use:risk-analysis','use:strategic-planning'
-    ],
+    kind: 'strategy',
+    categories: [ 'analysis frameworks', 'strategy' ],
+    tags: [ 'type:framework', 'use:scope-management', 'use:discover', 'level:intermediate', 'use:pattern' ],
     use_cases: [
       'analyze external factors affecting a business or project',
       'scan the macro-environment before launching an initiative',
@@ -3731,12 +3576,9 @@ boosters: [
   id:'paul-elder',
   slug:'paul-elder',
   label:'Paul–Elder — Elements of Thought + Standards',
-  kind:'framework',
-  categories:['critical thinking frameworks','prompt development techniques'],
-  tags:[
-    'type:framework','topic:critical-thinking','phase:analyze','level:intermediate',
-    'use:argument-critique','use:decision-memo','use:policy-analysis'
-  ],
+    kind:'strategy',
+  categories: [ 'critical thinking', 'prompt development techniques' ],
+  tags: [ 'type:framework', 'use:copywriting', 'phase:apply', 'level:intermediate', 'use:presentations', 'use:decision-making', 'use:pattern' ],
   use_cases:[
     'Argument/brief critique','Decision memos','Policy/position analysis','Lesson planning checks'
   ],
@@ -3785,12 +3627,9 @@ boosters: [
   id:'peas',
   slug:'peas-framework',
   label:'PEAS — Performance measure · Environment · Actuators · Sensors',
-  kind:'framework',
-  categories:['AI systems design','analysis frameworks'],
-  tags:[
-    'type:framework','topic:ai-systems','phase:design','level:intermediate',
-    'use:agent-spec','use:task-modeling','use:benchmarking','use:requirements-doc'
-  ],
+    kind:'framework',
+  categories: [ 'design', 'analysis frameworks' ],
+  tags: [ 'type:framework', 'use:process-improvement', 'use:pattern', 'level:intermediate', 'use:scope-management', 'use:task-brief', 'use:teaching' ],
   use_cases: [
     'agent specification','requirements doc','benchmark design',
     'task environment mapping','simulation setup'
@@ -3822,12 +3661,9 @@ boosters: [
   id:'persona',
   slug:'persona-actas',
   label:'Persona — ActAs / Simulate',
-  kind:'pattern',
-  categories:['prompt development techniques','persona prompting'],
-  tags:[
-    'type:pattern','topic:persona','phase:apply','level:beginner',
-    'use:act-as','use:simulation','use:roleplay','use:agent-spec'
-  ],
+  kind:'technique',
+  categories: [ 'prompt development techniques', 'reasoning' ],
+  tags: [ 'use:pattern', 'use:goals', 'phase:apply', 'level:beginner', 'topic:clarification', 'use:scope-management' ],
   boosters:[
     "Stay in-character. Prefer precise, domain-correct terminology. Cite trade-offs briefly before final answer."
   ],
@@ -3875,12 +3711,9 @@ boosters: [
   id:'plan_solve',
   slug:'plan-and-solve-ps',
   label:'Plan and Solve (P&S)',
-  kind:'pattern',
-  categories:['reasoning','planning'],
-  tags:[
-    'type:pattern','topic:plan-first','topic:execution','topic:verification','phase:solve','level:intermediate',
-    'use:math','use:coding','use:ops-procedures'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'planning' ],
+  tags: [ 'use:pattern', 'topic:clarification', 'use:problem-framing', 'level:intermediate', 'topic:matrix', 'use:coding', 'use:process-improvement' ],
   use_cases:[
     'create a short plan before executing a solution',
     'separate planning from working to reduce errors',
@@ -3937,9 +3770,9 @@ boosters: [
   id:'pomodoro',
   slug:'pomodoro-scaffold',
   label:'Pomodoro Scaffold',
-  kind:'pattern',
-  categories:['productivity','focus'],
-  tags:['type:pattern','topic:pomodoro','use:focus','level:beginner'],
+    kind:'framework',
+  categories: [ 'creativity', 'operations' ],
+  tags: [ 'use:pattern', 'phase:premortem', 'use:presentations', 'level:beginner' ],
   use_cases:[
     'frame a single 25-minute focus sprint',
     'pair a micro-goal with a reward and next step'
@@ -3974,9 +3807,9 @@ boosters: [
   id:'premortem',
   slug:'pre-mortem-scaffold',
   label:'Pre-Mortem Scaffold',
-  kind:'pattern',
-  categories:['risk','planning','decision'],
-  tags:['type:pattern','topic:premortem','use:planning','level:beginner'],
+    kind:'strategy',
+  categories: [ 'writing', 'planning', 'decision' ],
+  tags: [ 'use:pattern', 'phase:premortem', 'level:beginner' ],
   use_cases:[
     'surface failure modes before committing',
     'turn risks into preventive steps and immediate actions'
@@ -4013,12 +3846,9 @@ boosters: [
   id:'prompt_augmentation',
   slug:'prompt-augmentation-demonstration-learning',
   label:'Prompt Augmentation (Demonstration Learning)',
-  kind:'pattern',
-  categories:['prompt development techniques','prompt literacy'],
-  tags:[
-    'type:pattern','topic:examples','topic:demonstrations','phase:apply','level:intermediate',
-    'use:format-guidance','use:style-transfer','use:pattern-learning'
-  ],
+    kind:'framework',
+  categories: [ 'prompt development techniques' ],
+  tags: [ 'use:pattern', 'phase:explore', 'use:presentations', 'phase:apply', 'level:intermediate', 'use:format-guidance', 'use:storytelling' ],
   use_cases:[
     'teach the model a Q→A pattern by example',
     'lock in output format and tone via paired demonstrations',
@@ -4073,12 +3903,9 @@ boosters: [
   id:'raccca',
   slug:'raccca-framework',
   label:'RACCCA — Relevance · Accuracy · Completeness · Clarity · Coherence · Appropriateness',
-  kind:'framework',
-  categories:['evaluation frameworks','prompt development techniques'],
-  tags:[
-    'type:framework','topic:evaluation','phase:evaluate','level:beginner',
-    'use:output-evaluation','use:rubric-scoring','use:quality-review','use:model-comparison'
-  ],
+  kind: 'heuristic',
+  categories: [ 'education', 'prompt development techniques' ],
+  tags: [ 'type:framework', 'use:evaluation', 'level:beginner', 'use:coding', 'use:pattern', 'phase:compose' ],
   use_cases: [
     'quality review','rubric evaluation','model comparison',
     'content audit','risk screening'
@@ -4110,12 +3937,9 @@ boosters: [
     id:'ratio',
     slug:'ratio-framework',
     label:'RATIO — Role · Audience · Task · Instructions · Output',
-    kind:'pattern',
-    categories:['prompt development techniques'],
-   tags:[
-  'type:pattern','topic:prompting','phase:apply','level:beginner',
-  'use:prompt-spec','use:instructional-prompt','use:task-brief'
-],
+    kind:'framework',
+    categories: [ 'prompt development techniques' ],
+   tags: [ 'use:pattern', 'topic:prompting', 'phase:apply', 'level:beginner', 'use:task-brief' ],
 use_cases: [
   'prompt specification',
   'instructional prompt',
@@ -4151,12 +3975,9 @@ boosters: [
   id:'reflect_bias',
   slug:'reflect-bias-scaffold',
   label:'REFLECT (bias reflection)',
-  kind:'pattern',
-  categories:['ethics','bias','critical thinking'],
-  tags:[
-    'type:pattern','topic:bias','topic:reflection','level:beginner',
-    'use:interviews','use:analysis','use:synthesis'
-  ],
+    kind:'framework',
+  categories: [ 'ethics', 'operations', 'critical thinking' ],
+  tags: [ 'use:pattern', 'topic:debiasing', 'use:ideation', 'level:beginner', 'use:discover' ],
   use_cases:[
     'spot potential bias during interviews, analysis, or synthesis',
     'reframe a problem from multiple perspectives',
@@ -4202,12 +4023,9 @@ boosters: [
     id:'risen',
     slug:'risen-framework',
     label:'RISEN — Role · Instructions · Steps · End goal · Narrowing',
-    kind:'pattern',
-    categories:['prompt development techniques'],
-    tags:[
-  'type:pattern','topic:prompting','phase:plan','level:intermediate',
-  'use:project-plan','use:workflow-design','use:research-plan'
-],
+    kind:'strategy',
+    categories: [ 'prompt development techniques' ],
+    tags: [ 'use:pattern', 'topic:prompting', 'level:intermediate' ],
 use_cases: [
   'project plan',
   'research plan',
@@ -4242,12 +4060,9 @@ boosters: [
     id:'rodes',
     slug:'rodes-framework',
     label:'RODES — Role · Objective · Details · Examples · Sense check',
-    kind:'pattern',
-    categories:['prompt development techniques'],
-    tags:[
-  'type:pattern','topic:prompting','phase:apply','level:intermediate',
-  'use:example-guided-writing','use:ux-microcopy','use:quality-check'
-],
+    kind:'framework',
+    categories: [ 'prompt development techniques' ],
+    tags: [ 'use:pattern', 'topic:prompting', 'phase:apply', 'level:intermediate', 'use:copywriting', 'use:healing' ],
 use_cases: [
   'example-guided rewriting',
   'UX microcopy',
@@ -4283,12 +4098,9 @@ boosters: [
   id:'root_cause',
   slug:'root-cause-analysis',
   label:'Root Cause Analysis',
-  kind:'pattern',
-  categories:['quality','operations','reasoning'],
-  tags:[
-    'type:pattern','topic:5-whys','topic:causality','phase:diagnose','level:beginner',
-    'use:incident-review','use:bug-analysis','use:process-improvement'
-  ],
+    kind:'framework',
+  categories: [ 'quality', 'operations', 'reasoning' ],
+  tags: [ 'use:pattern', 'phase:apply', 'use:ideation', 'level:intermediate', 'level:beginner', 'use:process-improvement' ],
   use_cases:[
     'identify primary causes vs symptoms',
     'propose targeted countermeasures',
@@ -4338,12 +4150,9 @@ boosters: [
     id:'rtf',
     slug:'rtf-framework',
     label:'RTF — Role · Task · Format',
-    kind:'pattern',
-    categories:['prompt development techniques'],
-    tags:[
-  'type:pattern','topic:prompting','phase:apply','level:beginner',
-  'use:general-purpose','use:format-enforcement','use:starter-prompt'
-],
+    kind:'framework',
+    categories: [ 'prompt development techniques' ],
+    tags: [ 'use:pattern', 'topic:prompting', 'phase:apply', 'level:beginner', 'use:goals', 'use:format-guidance', 'use:storytelling' ],
 use_cases: [
   'general-purpose prompting',
   'format enforcement',
@@ -4376,9 +4185,9 @@ boosters: [
   id:'scamper',
   slug:'scamper-framework',
   label:'SCAMPER (idea expansion)',
-  kind:'pattern',
-  categories:['creativity','ideation'],
-  tags:['type:pattern','topic:scamper','use:ideas','level:beginner'],
+    kind:'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'use:pattern', 'use:storytelling', 'level:beginner' ],
   use_cases:[
     'systematically generate variants of an idea',
     'unstick creative exploration'
@@ -4422,11 +4231,8 @@ boosters: [
     slug:'scenario-based-deliberative',
     label:'Scenario-based Prompting — Deliberative reasoning',
     kind:'framework',
-    categories:['prompt development techniques','reasoning'],
-    tags:[
-      'type:framework','topic:prompting','phase:compose','level:intermediate',
-      'use:scenario','use:empathy','use:deliberation','use:edge-cases'
-    ],
+    categories: [ 'prompt development techniques', 'reasoning' ],
+    tags: [ 'type:framework', 'topic:prompting', 'phase:compose', 'level:intermediate', 'use:pattern', 'topic:matrix', 'use:iteration', 'use:case-study' ],
     use_cases:[
       'coaching & advice','policy-sensitive responses','support empathy','edge-case analysis'
     ],
@@ -4460,12 +4266,9 @@ boosters: [
   id:'six_hats',
   slug:'six-thinking-hats',
   label:'Six Thinking Hats',
-  kind:'pattern',
-  categories:['decision-making','ideation'],
-  tags:[
-    'type:pattern','topic:perspective-taking','topic:facilitation','phase:explore','level:beginner',
-    'use:workshops','use:brainstorm','use:alignment'
-  ],
+    kind:'framework',
+  categories: [ 'decision', 'ideation' ],
+  tags: [ 'use:pattern', 'use:decision-making', 'use:iteration', 'phase:explore', 'level:beginner', 'use:workshop', 'use:brainstorm' ],
   use_cases:[
     'explore multiple perspectives on a topic',
     'structure a discussion or solo reasoning',
@@ -4514,12 +4317,9 @@ boosters: [
     id: 'smart',
     slug: 'smart-goals',
     label: 'SMART Goals — Specific · Measurable · Achievable · Relevant · Time-bound',
-    kind: 'framework',
-    categories: ['planning', 'productivity'],
-    tags: [
-      'type:framework','topic:goal-setting','phase:plan','level:beginner',
-      'use:personal-goals','use:project-planning','use:performance-goals'
-    ],
+    kind: 'strategy',
+    categories: [ 'planning', 'creativity' ],
+    tags: [ 'type:framework', 'use:goals', 'use:pattern', 'level:beginner' ],
     use_cases: [
       'refine vague goals into actionable statements',
       'ensure project objectives have clear success criteria and timelines',
@@ -4551,12 +4351,9 @@ boosters: [
   id:'soar',
   slug:'soar-analysis',
   label:'SOAR Analysis',
-  kind:'pattern',
-  categories:['strategy','planning'],
-  tags:[
-    'type:pattern','topic:strategy','topic:positive-deviance','phase:plan','level:beginner',
-    'use:offsites','use:visioning','use:roadmapping'
-  ],
+    kind:'strategy',
+  categories: [ 'strategy', 'planning' ],
+  tags: [ 'use:pattern', 'topic:decomposition', 'level:beginner', 'topic:clarification', 'use:decision-making' ],
   use_cases:[
     'forward-looking strategic discussion',
     'align aspirations with measurable results',
@@ -4629,12 +4426,9 @@ boosters: [
   id:'socratic',
   slug:'socratic-method',
   label:'Socratic Questioning Method',
-  kind:'pattern',
-  categories:['reasoning','critical thinking'],
-  tags:[
-'type:pattern','topic:socratic','topic:assumptions','phase:explore','level:beginner',
-    'use:analysis','use:teaching','use:debiasing'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'critical thinking' ],
+  tags: [ 'use:pattern', 'use:communication', 'use:presentations', 'phase:explore', 'level:beginner', 'use:teaching', 'topic:debiasing' ],
   use_cases:[
     'interrogate claims and assumptions',
     'separate knowledge from belief',
@@ -4701,11 +4495,8 @@ boosters: [
     slug:'star-technique',
     label:'STAR — Situation · Task · Action · Result',
     kind:'framework',
-    categories:['storytelling frameworks','prompt development techniques'],
-   tags:[
-  'type:framework','topic:storytelling','phase:apply','level:beginner',
-  'use:behavioral-interview','use:resume-bullet','use:case-study'
-],
+    categories: [ 'storytelling frameworks', 'prompt development techniques' ],
+   tags: [ 'type:framework', 'use:storytelling', 'phase:apply', 'level:beginner', 'use:format-guidance', 'use:recipe', 'use:case-study' ],
 use_cases: [
   'behavioral interview answer',
   'resume bullet',
@@ -4739,12 +4530,9 @@ boosters: [
     id:'swot',
     slug:'swot-analysis',
     label:'SWOT — Strengths · Weaknesses · Opportunities · Threats',
-    kind:'framework',
-    categories:['analysis frameworks','prompt development techniques'],
-    tags:[
-  'type:framework','topic:analysis','phase:overview','level:beginner',
-  'use:competitive-analysis','use:market-analysis','use:product-strategy'
-],
+    kind:'strategy',
+    categories: [ 'analysis frameworks', 'prompt development techniques' ],
+    tags: [ 'type:framework', 'use:pattern', 'use:discover', 'level:beginner' ],
 use_cases: [
   'competitive analysis',
   'market scan',
@@ -4781,12 +4569,9 @@ boosters: [
   id:'task_breakdown',
   slug:'task-recipe-cot',
   label:'Task Prompt Breakdown — Task/Recipe + Do/Don’t (CoT)',
-  kind:'pattern',
-  categories:['prompt development techniques','planning'],
-  tags:[
-    'type:pattern','topic:tasking','topic:reasoning','phase:plan','level:beginner',
-    'use:project-steps','use:recipe','use:breakdown','use:delegation'
-  ],
+  kind:'technique',
+  categories: [ 'prompt development techniques', 'planning' ],
+  tags: [ 'use:pattern', 'use:teaching', 'use:healing', 'level:beginner', 'use:process-improvement', 'use:recipe', 'use:ideation', 'use:iteration' ],
   use_cases: [
     'break a goal into concrete steps',
     'write a procedural recipe',
@@ -4844,12 +4629,9 @@ boosters: [
   id:'tot_brainstorm',
   slug:'tree-of-thought-brainstorm',
   label:'Tree of Thought — Brainstorm & Evaluate',
-  kind:'pattern',
-  categories:['reasoning','planning'],
-  tags:[
-    'type:pattern','topic:reasoning','topic:branching','phase:explore','level:advanced',
-    'use:brainstorm','use:compare-alternatives','use:decision'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'planning' ],
+  tags: [ 'use:pattern', 'use:healing', 'use:teaching', 'phase:explore', 'level:advanced', 'use:brainstorm', 'use:ideation', 'use:decision-making' ],
   use_cases:[
     'generate multiple solution paths before deciding',
     'compare tradeoffs across ideas using a scoring rubric',
@@ -4938,12 +4720,9 @@ boosters: [
   id:'tot_decompose',
   slug:'tree-of-thought-decomposition',
   label:'Tree of Thought — Decomposition',
-  kind:'pattern',
-  categories:['reasoning','planning'],
-  tags:[
-    'type:pattern','topic:decomposition','topic:branching','phase:plan','level:advanced',
-    'use:breakdown','use:alternatives','use:execution-plan'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'planning' ],
+  tags: [ 'use:pattern', 'topic:decomposition', 'use:teaching', 'level:advanced', 'use:ideation' ],
   use_cases:[
     'break a complex goal into a branching plan with alternatives',
     'surface trade-offs at ambiguous nodes with scoring',
@@ -5033,12 +4812,9 @@ boosters: [
   id:'triangulation',
   slug:'triangulation-methods',
   label:'Triangulation Methods',
-  kind:'pattern',
-  categories:['research','ethics','bias'],
-  tags:[
-    'type:pattern','topic:triangulation','topic:validation','level:intermediate',
-    'use:ux-research','use:analytics','use:mixed-methods'
-  ],
+    kind:'framework',
+  categories: [ 'reasoning', 'ethics', 'operations' ],
+  tags: [ 'use:pattern', 'use:presentations', 'topic:values', 'level:intermediate', 'phase:apply', 'use:workshop' ],
   use_cases:[
     'reduce single-method bias by cross-checking findings',
     'document alignment/divergence across methods',
@@ -5090,12 +4866,9 @@ boosters: [
   id:'triz',
   slug:'triz-inventive-problem-solving',
   label:'TRIZ (Theory of Inventive Problem Solving)',
-  kind:'pattern',
-  categories:['innovation','engineering','reasoning'],
-  tags:[
-    'type:pattern','topic:contradictions','topic:ideality','phase:invent','level:intermediate',
-    'use:product-ideas','use:process-innovation','use:technical-problems'
-  ],
+    kind:'framework',
+  categories: [ 'ideation', 'writing', 'reasoning' ],
+  tags: [ 'use:pattern', 'use:communication', 'use:ideation', 'use:content', 'level:intermediate', 'use:workshop', 'type:technique' ],
   use_cases:[
     'resolve contradictions without trade-offs',
     'generate inventive principles to explore',
@@ -5156,13 +4929,9 @@ boosters: [
   id: 'two_min_rule',
   slug: 'two-minute-rule',
   label: '2-Minute Rule (David Allen)',
-  kind: 'pattern',
-  categories: ['productivity','behavior','workflow','time-management'],
-  tags: [
-    'type:pattern','topic:two-minute','topic:getting-things-done',
-    'use:starter','use:micro-task','use:anti-procrastination',
-    'level:beginner','method:gtd','principle:action-first'
-  ],
+  kind: 'heuristic',
+  categories: [ 'creativity', 'prioritization', 'cultural frameworks', 'product management' ],
+  tags: [ 'use:pattern', 'use:teaching', 'use:goals', 'use:storytelling', 'use:task-brief', 'use:prioritization', 'level:beginner', 'use:ad-copy', 'topic:decomposition' ],
   use_cases: [
     'reduce friction by doing a tiny version now',
     'convert avoidance into a first motion',
@@ -5220,9 +4989,9 @@ boosters: [
   id:'weighted_mini_matrix',
   slug:'weighted-mini-matrix',
   label:'Weighted Mini-Matrix (quick score)',
-  kind:'pattern',
-  categories:['decision','prioritization'],
-  tags:['type:pattern','topic:matrix','use:prioritize','level:intermediate'],
+    kind:'strategy',
+  categories: [ 'decision', 'prioritization' ],
+  tags: [ 'use:pattern', 'topic:matrix', 'use:prioritization', 'level:intermediate' ],
   use_cases:[
     'compare up to 3 options against 2–3 criteria',
     'force a transparent, quick pick'
@@ -5284,9 +5053,9 @@ boosters: [
   id:'woop',
   slug:'woop-wish-outcome-obstacle-plan',
   label:'WOOP (Wish–Outcome–Obstacle–Plan)',
-  kind:'pattern',
-  categories:['behavior','motivation'],
-  tags:['type:pattern','topic:woop','use:motivation','level:beginner'],
+    kind:'strategy',
+  categories: [ 'prioritization', 'ideation' ],
+  tags: [ 'use:pattern', 'use:workshop', 'use:evaluation', 'level:beginner' ],
   use_cases:[
     'contrast desired outcome with the main obstacle',
     'bind an if–then plan to the obstacle'
@@ -5321,16 +5090,9 @@ boosters: [
   id: 'a3_ps',
   slug: 'a3-problem-solving-toyota',
   label: 'A3 Problem Solving (Toyota)',
-  kind: 'framework',
-  categories: [
-    'quality','operations','reasoning','prompt development techniques',
-    'lean','continuous improvement','pdca'
-  ],
-  tags: [
-    'type:framework','topic:problem-solving','topic:lean',
-    'topic:root-cause','phase:plan','phase:analyze','phase:improve',
-    'level:intermediate','use:countermeasures','use:one-page-brief'
-  ],
+  kind: 'strategy',
+  categories: [ 'quality', 'operations', 'reasoning', 'prompt development techniques', 'education' ],
+  tags: [ 'type:framework', 'use:problem-framing', 'use:ideation', 'use:case-study', 'use:pattern', 'phase:apply', 'use:process-improvement', 'level:intermediate', 'use:task-brief' ],
   use_cases: [
     'structure a one-page problem brief',
     'analyze current vs. target condition',
@@ -5394,17 +5156,9 @@ boosters: [
   id: 'anekantavada_syadvada',
   slug: 'anekantavada-syadvada-jain',
   label: 'Anekāntavāda & Syādvāda (Jain Many-Sided Logic)',
-  kind: 'framework',
-  categories: [
-    'reasoning','philosophy','cultural frameworks','ethics','pluralism'
-  ],
-  tags: [
-    'type:framework','topic:dialectic','topic:many-sidedness','topic:jainism','topic:pluralism',
-    'phase:explore','phase:analyze','level:advanced',
-    'use:ambiguity-management','use:policy','use:ethical-tradeoffs',
-    'use:bias-mitigation','use:cross-cultural-dialogue','use:conflict-resolution',
-    'principle:pluralism'
-  ],
+  kind: 'heuristic',
+  categories: [ 'reasoning', 'psychology', 'cultural frameworks', 'ethics', 'quality' ],
+  tags: [ 'type:framework', 'use:ideation', 'use:decision-making', 'use:healing', 'phase:explore', 'phase:apply', 'level:advanced', 'use:scope-management', 'use:pattern', 'use:copywriting', 'topic:debiasing', 'use:content' ],
   use_cases: [
     'frame a contentious issue via multiple partial truths',
     'generate sevenfold qualified statements (syādvāda)',
@@ -5465,14 +5219,9 @@ boosters: [
   id: 'dao_wu_wei',
   slug: 'daoist-wu-wei-strategy',
   label: 'Daoist Wu-Wei Strategy (Effortless Action)',
-  kind: 'framework',
-  categories: ['strategy','ethics','cultural frameworks'],
-  tags: [
-    'type:framework','topic:wu-wei','topic:minimal-intervention',
-    'topic:timing','topic:yielding','phase:plan','level:intermediate',
-    'use:governance','use:ops-simplification','use:change-management',
-    'use:leadership-ethics','use:personal-practice'
-  ],
+  kind: 'strategy',
+  categories: [ 'strategy', 'ethics', 'cultural frameworks' ],
+  tags: [ 'type:framework', 'use:copywriting', 'use:ideation', 'use:teaching', 'use:coding', 'use:pattern', 'level:intermediate', 'use:format-guidance', 'topic:clarification', 'use:scope-management', 'use:goals' ],
   use_cases: [
     'design minimal-intervention strategies',
     'align with existing flows instead of forcing change',
@@ -5542,14 +5291,9 @@ boosters: [
   id: 'dmaic',
   slug: 'dmaic-six-sigma',
   label: 'DMAIC — Define · Measure · Analyze · Improve · Control',
-  kind: 'framework',
-  categories: ['quality','operations','decision','critical thinking'],
-  tags: [
-    'type:framework','topic:six-sigma','topic:logic','topic:process-improvement',
-    'phase:execute','level:intermediate',
-    'use:process-improvement','use:root-cause','use:experiment-design',
-    'use:continuous-improvement','use:quality-audit'
-  ],
+  kind: 'strategy',
+  categories: [ 'quality', 'operations', 'decision', 'critical thinking' ],
+  tags: [ 'type:framework', 'topic:matrix', 'level:beginner', 'use:process-improvement', 'use:ideation', 'level:intermediate', 'use:case-study', 'use:pattern', 'use:healing' ],
   use_cases: [
     'structure a data-driven improvement',
     'tie logic and evidence to countermeasures',
@@ -5608,14 +5352,9 @@ boosters: [
   id: 'east_nudge',
   slug: 'east-behavioral-nudge',
   label: 'EAST — Easy · Attractive · Social · Timely',
-  kind: 'framework',
-  categories: ['behavior','design','strategy'],
-  tags: [
-    'type:framework','topic:nudge','topic:behavioral-science',
-    'phase:design','level:beginner',
-    'use:behavior-change','use:ux','use:policy','use:cross-cultural',
-    'use:a-b-testing'
-  ],
+  kind: 'heuristic',
+  categories: [ 'prioritization', 'design', 'strategy' ],
+  tags: [ 'type:framework', 'level:intermediate', 'use:format-guidance', 'use:pattern', 'level:beginner', 'use:scope-management', 'use:content' ],
   use_cases: [
     'design nudges for adoption',
     'reduce friction in flows',
@@ -5713,14 +5452,9 @@ boosters: [
   id: 'eightfold_path',
   slug: 'buddhist-eightfold-path-adapted',
   label: 'Buddhist Eightfold Path (Adapted for Action)',
-  kind: 'framework',
-  categories: ['ethics','reasoning','cultural frameworks','spiritual frameworks','critical thinking'],
-  tags: [
-    'type:framework','topic:mindfulness','topic:ethics','topic:buddhism','topic:nonwestern-philosophy',
-    'phase:plan','level:intermediate',
-    'use:policy-guardrails','use:communication','use:self-management','use:leadership',
-    'use:cross-cultural-dialogue','use:leadership-training','use:design-ethics'
-  ],
+  kind: 'strategy',
+  categories: [ 'ethics', 'reasoning', 'cultural frameworks', 'critical thinking' ],
+  tags: [ 'type:framework', 'use:decision-making', 'use:pattern', 'use:healing', 'level:intermediate', 'use:communication', 'use:scope-management' ],
   use_cases: [
     'design ethical guardrails for decision-making',
     'structure mindful decision steps in organizations',
@@ -5792,17 +5526,9 @@ boosters: [
   id: 'ganma_confluence',
   slug: 'ganma-knowledge-confluence',
   label: 'Ganma — Knowledge Confluence (Yolŋu)',
-  kind: 'framework',
-  categories: [
-    'research','cultural frameworks','strategy','dialogue','education','ethics'
-  ],
-  tags: [
-    'type:framework','topic:knowledge-pluralism','topic:two-way-learning',
-    'topic:Indigenous-wisdom','topic:Indigenous-methodologies',
-    'phase:explore','phase:dialogue','level:advanced',
-    'use:interdisciplinary-synthesis','use:policy','use:design-research',
-    'use:co-creation','use:cross-cultural-dialogue','use:ethics-check'
-  ],
+  kind: 'strategy',
+  categories: [ 'reasoning', 'cultural frameworks', 'strategy', 'psychology', 'education', 'ethics' ],
+  tags: [ 'type:framework', 'use:healing', 'use:pattern', 'level:beginner', 'use:workshop', 'phase:explore', 'level:advanced', 'use:ideation' ],
   use_cases: [
     'Explore how Indigenous and Western (or other) knowledge systems meet without collapsing differences.',
     'Document shared insights while respecting boundaries and incommensurables.',
@@ -5877,13 +5603,9 @@ boosters: [
   id: 'kaitiakitanga',
   slug: 'kaitiakitanga-guardianship',
   label: 'Kaitiakitanga — Guardianship & Stewardship (Māori)',
-  kind: 'framework',
-  categories: ['ethics','governance','cultural frameworks'],
-  tags: [
-    'type:framework','topic:stewardship','topic:intergenerational','topic:mauri',
-    'topic:whakapapa','topic:co-governance','phase:plan','level:intermediate',
-    'use:ai-governance','use:impact-assessment','use:policy','use:product-strategy'
-  ],
+  kind: 'strategy',
+  categories: [ 'ethics', 'product management', 'cultural frameworks' ],
+  tags: [ 'type:framework', 'use:storytelling', 'use:ideation', 'topic:matrix', 'phase:apply', 'use:format-guidance', 'use:pattern', 'level:intermediate' ],
 
   use_cases: [
     'assess long-term responsibilities for places, communities, species, data, or knowledge (taonga)',
@@ -6080,13 +5802,9 @@ boosters: [
   id: 'kansei_engineering',
   slug: 'kansei-engineering',
   label: 'Kansei Engineering (Emotion → Design Mapping)',
-  kind: 'framework',
-  categories: ['design', 'research', 'analysis frameworks'],
-  tags: [
-    'type:framework','topic:emotion-design','topic:user-research',
-    'phase:discover','phase:design','phase:validate','level:intermediate',
-    'use:feature-mapping','use:experience-goals','use:brand-expression','use:ux-copy'
-  ],
+  kind: 'strategy',
+  categories: [ 'design', 'reasoning', 'analysis frameworks' ],
+  tags: [ 'type:framework', 'use:pattern', 'use:discover', 'topic:values', 'level:intermediate', 'use:coding', 'use:goals', 'phase:explore' ],
   use_cases: [
     'translate target feelings into concrete design parameters',
     'build a testable Emotion → Stimulus map with success criteria',
@@ -6262,13 +5980,9 @@ boosters: [
   id: 'kepner_tregoe',
   slug: 'kepner-tregoe-psdm',
   label: 'Kepner–Tregoe (Situation · Problem · Decision · Potential Problem)',
-  kind: 'framework',
-  categories: ['decision', 'quality', 'operations', 'risk'],
-  tags: [
-    'type:framework','topic:psdm','topic:root-cause','topic:criteria-weighting','topic:risk',
-    'phase:analyze','phase:decide','phase:plan','level:intermediate',
-    'use:option-selection','use:incident-response','use:risk-management','use:change-approval','use:vendor-evaluation'
-  ],
+  kind: 'heuristic',
+  categories: [ 'decision', 'quality', 'operations', 'writing' ],
+  tags: [ 'type:framework', 'phase:premortem', 'use:case-study', 'use:copywriting', 'use:pattern', 'phase:apply', 'use:recipe', 'level:intermediate', 'use:ideation', 'use:presentations', 'use:scope-management', 'use:evaluation' ],
   use_cases: [
     'separate problem analysis from decision analysis',
     'choose among alternatives with explicit must/want criteria',
@@ -6476,18 +6190,9 @@ boosters: [
   id: 'kipling_5w1h',
   slug: 'five-w-one-h-kipling',
   label: '5W1H — Who · What · Where · When · Why · How',
-  kind: 'framework',
-  categories: [
-    'analysis frameworks','prompt development techniques',
-    'journalism','problem-solving','research','ux-discovery'
-  ],
-  tags: [
-    'type:framework','topic:clarification','topic:analysis',
-    'phase:compose','phase:scope','level:beginner',
-    'use:requirements','use:prompt-scoping','use:root-cause',
-    'principle:holistic','method:structured-questioning',
-    'qa:requirements','qa:scope-check','journalism:interrogative'
-  ],
+  kind: 'heuristic',
+  categories: [ 'analysis frameworks', 'prompt development techniques', 'quality', 'reasoning' ],
+  tags: [ 'type:framework', 'topic:clarification', 'use:pattern', 'phase:compose', 'use:scope-management', 'level:beginner', 'use:process-improvement', 'topic:prompting', 'use:case-study', 'use:healing', 'topic:future-self', 'level:intermediate' ],
   use_cases: [
     'clarify task requirements',
     'scope a prompt before execution',
@@ -6554,13 +6259,9 @@ boosters: [
   id: 'maslaha_public_interest',
   slug: 'maslaha-public-interest-reasoning',
   label: 'Maṣlaḥa — Public Interest Reasoning (Islamic Ethics)',
-  kind: 'framework',
-  categories: ['ethics', 'governance', 'cultural frameworks', 'policy'],
-  tags: [
-    'type:framework','topic:public-interest','topic:maqasid','topic:harm-benefit',
-    'topic:proportionality','topic:legal-maxims','phase:plan','phase:review','level:advanced',
-    'use:policy','use:governance','use:risk-balancing','use:equity-impact','use:exception-handling'
-  ],
+  kind: 'strategy',
+  categories: [ 'ethics', 'product management', 'cultural frameworks', 'prompt development techniques' ],
+  tags: [ 'type:framework', 'use:content', 'use:decision-making', 'use:healing', 'topic:prompting', 'use:pattern', 'level:advanced', 'use:format-guidance', 'use:coding' ],
   use_cases: [
     'weigh public harms/benefits for a policy or product decision',
     'craft proportionate, transparent justifications with safeguards and sunset reviews',
@@ -6774,13 +6475,9 @@ boosters: [
   id: 'musyawarah_mufakat',
   slug: 'musyawarah-mufakat-indonesia',
   label: 'Musyawarah & Mufakat — Deliberation to Consensus (Indonesia)',
-  kind: 'framework',
-  categories: ['decision', 'facilitation', 'cultural frameworks', 'governance'],
-  tags: [
-    'type:framework','topic:consensus','topic:deliberation','topic:pancasila',
-    'phase:decide','phase:facilitate','level:intermediate',
-    'use:group-decisions','use:policy','use:community','use:participatory-planning'
-  ],
+  kind: 'strategy',
+  categories: [ 'decision', 'prioritization', 'cultural frameworks', 'product management' ],
+  tags: [ 'type:framework', 'use:pattern', 'use:iteration', 'use:problem-framing', 'use:recipe', 'level:intermediate', 'use:decision-making', 'use:communication' ],
   use_cases: [
     'facilitate inclusive deliberation that leads to a legitimate consensus',
     'surface objections, modify options, and document “can live with” agreements',
@@ -6994,12 +6691,8 @@ boosters: [
   slug: 'naive-dialecticism-east-asia',
   label: 'Naïve Dialecticism (East Asian Holistic Reasoning)',
   kind: 'framework',
-  categories: ['reasoning', 'philosophy', 'cultural frameworks'],
-  tags: [
-    'type:framework','topic:both-and','topic:contradiction','topic:holism',
-    'phase:explore','phase:integrate','level:advanced',
-    'use:paradox-framing','use:change-over-time','use:consensus-design'
-  ],
+  categories: [ 'reasoning', 'psychology', 'cultural frameworks' ],
+  tags: [ 'type:framework', 'level:advanced', 'use:communication', 'use:healing', 'phase:explore', 'level:intermediate', 'use:problem-framing', 'use:scope-management', 'use:pattern' ],
   use_cases: [
     'frame tensions as “both true in different respects” and design coexistence',
     'blend stakeholder views into a context-fitted middle (Zhongyong) or complementary pair (Yin–Yang)',
@@ -7289,28 +6982,25 @@ boosters: [
   id: 'nyaya_syllogism',
   slug: 'nyaya-five-member-syllogism',
   label: 'Nyāya — Five-Member Syllogism',
-  kind: 'framework',
-  categories: ['reasoning', 'philosophy', 'cultural frameworks'],
-  tags: [
-    'type:framework','topic:logic','topic:pramana','topic:vyapti',
-    'phase:structure','phase:justify','level:intermediate',
-    'use:argumentation','use:teaching','use:policy-ethics'
-  ],
+  kind: 'strategy',
+  categories: [ 'reasoning', 'psychology', 'cultural frameworks' ],
+  tags: [ 'type:framework', 'level:beginner', 'use:problem-framing', 'topic:prompting', 'topic:future-self', 'use:ideation', 'level:intermediate', 'use:presentations', 'use:teaching', 'use:pattern' ],
   use_cases: [
     'present a transparent, checkable inference in public or classroom settings',
     'teach warrant + scope (vyāpti) with culturally respectful examples',
-    'draft policy/science/legal arguments with explicit conditions and defeater checks'
+    'draft policy/science/legal arguments with explicit conditions and defeater checks',
+    'perform critique-only analyses without asserting a counter-thesis (vitaṇḍā mode)',
+    'simulate persuasion while remaining evidence-grounded (jalpa mode)'
   ],
   boosters: [
     'State the **vyāpti** with scope and at least one positive (**sapakṣa**) and one negative (**vipakṣa**) example.',
     'Run the **trairūpya** (3 marks of a sound reason) and log any **upādhi** (hidden condition).',
     'Add one **tarka** (reductio): what absurdity follows if the rule didn’t hold?',
-    'Name the intended **debate ethic** (vāda—truth-seeking) and avoid jalpa/vitaṇḍā moves.',
+    'Prefer vāda (truth-seeking). When simulating jalpa/vitaṇḍā, still anchor claims in pramāṇas (valid knowledge sources).',
     'Localize examples to the audience to avoid WEIRD-centric defaults while preserving Nyāya terms.'
   ],
-  definition: 'Classical Indian argument form (pañcāvayava): Pratijñā (thesis), Hetu (reason/mark), Udāharaṇa (universal rule + example, i.e., vyāpti with illustration), Upanaya (application to the case), Nigamana (conclusion). It is embedded in Nyāya’s epistemology (pramāṇa) and debate ethics.',
-  help: 'Fill the five members and the quality checks. Show how the **reason** is reliably connected to the **claim** via **vyāpti** (state rule + example), then **apply** it and **conclude**. Use sapakṣa/vipakṣa and upādhi-hunting to secure the rule. Pick “mode” (anvaya–vyatireki, etc.) and “direction” (pūrvavat/śeṣavat/sāmānyato dṛṣṭa) to educate the reader.',
-
+  definition: 'Classical Indian argument form (pañcāvayava): Pratijñā (thesis), Hetu (reason/mark), Udāharaṇa (universal rule + example, i.e., vyāpti with illustration), Upanaya (application to the case), Nigamana (conclusion). Rooted in Nyāya epistemology (pramāṇa) and ethical debate norms.',
+  help: 'Fill the five members and the quality checks. Show how the **reason** is reliably connected to the **claim** via **vyāpti** (state rule + example), then **apply** it and **conclude**. Use sapakṣa/vipakṣa and upādhi-hunting to secure the rule. Pick a debate ethic (vāda / jalpa / vitaṇḍā) to set tone, structure, and obligations.',
   fields: [
     // Audience & inclusion
     {
@@ -7320,7 +7010,7 @@ boosters: [
       itemType: 'typeahead',
       itemLabel: 'persona',
       autofill: 'persona->inline',
-      desc: 'Stakeholders or readership shaping tone, examples, and level of formality.',
+      desc: 'Stakeholders or readership shaping tone, examples, and formality.',
       ph: 'e.g., City council; High-school logic class; Community elders'
     },
     {
@@ -7337,14 +7027,14 @@ boosters: [
     // Cultural & didactic switches
     {
       key: 'debate_ethic',
-      label: 'Debate ethic',
+      label: 'Debate ethic (mode of engagement)',
       type: 'select',
       options: [
         'vāda — truth-seeking, shared standards, fair conduct',
-        'jalpa — win-oriented (not recommended here)',
-        'vitaṇḍā — cavil/attack-only (avoid for productive inquiry)'
+        'jalpa — win-oriented persuasion (evidence-grounded)',
+        'vitaṇḍā — refutation-only (no counter-thesis)'
       ],
-      desc: 'Sets the tone and conduct norms; Nyāya privileges vāda.',
+      desc: 'Sets tone and obligations. Vāda is the Nyāya ideal; jalpa emphasizes persuasion; vitaṇḍā limits you to critique.',
       ph: 'vāda — truth-seeking, shared standards, fair conduct'
     },
     {
@@ -7352,11 +7042,11 @@ boosters: [
       label: 'Inference mode (vyāpti establishment)',
       type: 'select',
       options: [
-        'anvaya–vyatireki — positive agreement + negative concomitance (strongest)',
+        'anvaya–vyatireki — positive agreement + negative concomitance',
         'kevalānvayi — only positive agreement (no true counter-cases)',
         'kevalavyatireki — only negative concomitance (absence pattern)'
       ],
-      desc: 'How the universal connection is secured.',
+      desc: 'How the universal connection (vyāpti) is secured.',
       ph: 'anvaya–vyatireki — positive + negative'
     },
     {
@@ -7366,66 +7056,118 @@ boosters: [
       options: [
         'pūrvavat — cause → effect (e.g., clouds ⇒ rain)',
         'śeṣavat — effect → cause (e.g., swollen river ⇒ upstream rain)',
-        'sāmānyato dṛṣṭa — constant conjunction without causal story'
+        'sāmānyato dṛṣṭa — constant conjunction (no explicit causal story)'
       ],
-      desc: 'Pedagogic cue for how the hetu relates to the sādhya.',
+      desc: 'How the hetu relates to the sādhya.',
       ph: 'śeṣavat — effect → cause'
     },
 
     // Core five members
     { key: 'paksa',     label: 'Pakṣa (subject under discussion)', type: 'text',     desc: 'What the claim is about.', ph: 'e.g., This hill / This model / This policy' },
-    { key: 'sadhya',    label: 'Sādhya (property to be proved)',   type: 'text',     desc: 'Target predicate you aim to establish.', ph: 'e.g., has fire / is overfitting / reduces outages' },
+    { key: 'sadhya',    label: 'Sādhya (property to be proved)',   type: 'text',     desc: 'Target predicate to establish.', ph: 'e.g., has fire / is overfitting / reduces outages' },
     { key: 'pratijna',  label: 'Pratijñā — Thesis/claim',          type: 'textarea', desc: 'State the thesis about the pakṣa + sādhya.', ph: 'The hill has fire.' },
-    { key: 'hetu',      label: 'Hetu — Reason/mark (linga)',       type: 'textarea', desc: 'Observable sign in the pakṣa that indicates the sādhya.', ph: 'Because there is smoke.' },
+    { key: 'hetu',      label: 'Hetu — Reason/mark (linga)',       type: 'textarea', desc: 'Observable sign in the pakṣa indicating the sādhya.', ph: 'Because there is smoke.' },
 
     // Vyāpti & illustration
-    { key: 'vyapti',    label: 'Vyāpti — Universal rule (with scope)', type: 'textarea', desc: 'State the dependable connection and any conditions.', ph: 'Wherever there is smoke (from combustion in oxygen), there is fire.' },
+    { key: 'vyapti',    label: 'Vyāpti — Universal rule (with scope/conditions)', type: 'textarea', desc: 'Dependable connection between hetu and sādhya, with qualifiers.', ph: 'Wherever there is smoke (from combustion in oxygen), there is fire.' },
     { key: 'sapaksha',  label: 'Sapakṣa — Positive example(s)',        type: 'textarea', desc: 'Similar cases where hetu and sādhya co-occur.', ph: 'Kitchens with cooking fires; foundry furnace room.' },
-    { key: 'vipaksha',  label: 'Vipakṣa — Negative example(s)',        type: 'textarea', desc: 'Dissimilar cases where sādhya is absent, and so is hetu.', ph: 'Lakes; refrigerated rooms (no fire, no smoke).' },
+    { key: 'vipaksha',  label: 'Vipakṣa — Negative example(s)',        type: 'textarea', desc: 'Dissimilar cases where sādhya is absent and so is hetu.', ph: 'Lakes; refrigerated rooms (no fire, no smoke).' },
 
     // Application & conclusion
-    { key: 'upanaya',   label: 'Upanaya — Application', type: 'textarea', desc: 'Show the pakṣa fits the rule’s conditions and the hetu is of the relevant kind.', ph: 'This hill has smoke of the combustion type, not fog.' },
+    { key: 'upanaya',   label: 'Upanaya — Application to the case', type: 'textarea', desc: 'Show the pakṣa fits the rule’s conditions and the hetu is of the relevant kind.', ph: 'This hill has combustion-smoke, not fog.' },
     { key: 'nigamana',  label: 'Nigamana — Conclusion', type: 'textarea', desc: 'Restate the conclusion succinctly.', ph: 'Therefore, the hill has fire.' },
 
     // Quality controls
-    { key: 'upadhi',    label: 'Upādhi — Hidden condition(s)', type: 'textarea', desc: 'Qualifiers that, if missing, would break the vyāpti.', ph: 'Only in oxygenated environments; not chemical “smokes” without flame.' },
+    { key: 'upadhi',    label: 'Upādhi — Hidden condition(s)', type: 'textarea', desc: 'Qualifiers that, if missing, break the vyāpti.', ph: 'Only in oxygenated environments; exclude chemical “smokes” without flame.' },
     { key: 'trairupya', label: 'Trairūpya check (3 marks of a sound hetu)', type: 'textarea', desc: '1) In pakṣa? 2) In sapakṣa? 3) Absent in vipakṣa?', ph: '1) Yes, smoke on hill. 2) Yes, kitchens. 3) Absent on lakes.' },
     { key: 'tarka',     label: 'Tarka — Reductio / probative reasoning', type: 'textarea', desc: 'What absurdity follows if the vyāpti failed?', ph: 'If smoke didn’t imply fire (under stated conditions), kitchens would show cold smoke—contrary to observation.' },
-    { key: 'hetvabhasa',label: 'Hetvābhāsa scan — Fallacies to avoid', type: 'textarea', desc: 'Note any risk of: asiddha, savyabhicāra/anaikāntika, viruddha, satpratipakṣa, bādhita.', ph: 'Risk of savyabhicāra if “smoke” includes fog; mitigate by specifying combustion-smoke.' },
+    { key: 'hetvabhasa',label: 'Hetvābhāsa scan — Fallacy risks', type: 'textarea', desc: 'Risk of: asiddha, savyabhicāra/anaikāntika, viruddha, satpratipakṣa, bādhita.', ph: 'Savyabhicāra risk if “smoke” includes fog; mitigate by specifying combustion-smoke.' },
+
+    // Optional: opponent’s argument for critique-mode (vitaṇḍā) or teaching
+    { key: 'opp_pratijna',  label: 'Opponent Pratijñā (their thesis)',    type: 'textarea', desc: 'Use for refutation-only mode.', ph: 'e.g., The hill has no fire.' },
+    { key: 'opp_hetu',      label: 'Opponent Hetu (their reason)',        type: 'textarea', desc: 'Their sign/reason.',           ph: 'Because the air is moist.' },
+    { key: 'opp_vyapti',    label: 'Opponent Vyāpti (their rule/example)',type: 'textarea', desc: 'Their universal connection.',  ph: 'Wherever the air is moist, fire is absent…' },
+    { key: 'opp_upanaya',   label: 'Opponent Upanaya (their application)',type: 'textarea', desc: 'Their application to case.',   ph: 'This hill’s air is moist.' },
+    { key: 'opp_nigamana',  label: 'Opponent Nigamana (their conclusion)',type: 'textarea', desc: 'Their conclusion.',            ph: 'Therefore, no fire on the hill.' },
 
     // Cross-cultural clarity
-    { key: 'western_mapping', label: 'Western explainer (optional)', type: 'textarea', desc: 'Map Nyāya parts to Toulmin/Aristotelian terms without erasing Nyāya’s extras.', ph: 'Udāharaṇa (vyāpti + example) ≈ warrant + backing; Upanaya ≈ application of warrant.' }
+    { key: 'western_mapping', label: 'Western explainer (optional)', type: 'textarea', desc: 'Map Nyāya parts to Toulmin/Aristotelian terms without erasing Nyāya’s extras.', ph: 'Udāharaṇa (vyāpti + example) ≈ warrant + backing; Upanaya ≈ application of warrant.' },
+
+    // Context/style
+    { key: 'ctx',   label: 'Context (optional)', type: 'textarea', ph: 'Setting, constraints, or audience background.' },
+    { key: 'style', label: 'Style (optional)',   type: 'text',     ph: 'Plain; academic; policy memo; didactic' },
+    { key: 'tone',  label: 'Tone (optional)',    type: 'text',     ph: 'Neutral; courteous; persuasive; forensic' }
   ],
 
   template: (args) => {
     const {
       audience, bias_checks, debate_ethic, mode, direction,
       paksa, sadhya, pratijna, hetu, vyapti, sapaksha, vipaksha, upanaya, nigamana,
-      upadhi, trairupya, tarka, hetvabhasa, western_mapping, ctx, style, tone
+      upadhi, trairupya, tarka, hetvabhasa,
+      opp_pratijna, opp_hetu, opp_vyapti, opp_upanaya, opp_nigamana,
+      western_mapping, ctx, style, tone
     } = args;
 
+    // Helpers
     const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
     const list = (title, s) => s ? `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n') : null;
 
-    const ethicGuide = debate_ethic
-      ? `Debate ethic: ${debate_ethic}. Instruction: proceed in vāda style—state opponent fairly, avoid equivocation, invite defeater checks.`
-      : 'Debate ethic: vāda (truth-seeking). State opponent fairly; invite defeater checks.';
+    // Normalize ethic selection
+    const ethicRaw = String(debate_ethic || 'vāda').toLowerCase();
+    let ethic = 'vāda';
+    if (ethicRaw.startsWith('jalpa')) ethic = 'jalpa';
+    else if (ethicRaw.startsWith('vita')) ethic = 'vitaṇḍā';
 
-    const modeGuide = mode
-      ? `Inference mode: ${mode}. Describe how the universal connection (vyāpti) was established (data/cases).`
-      : 'Inference mode: anvaya–vyatireki (positive + negative). Show both co-presence and co-absence.';
+    // Behavior specifications per ethic
+    const ethicSpec = {
+      'vāda': {
+        headline: 'Debate ethic: vāda — truth-seeking, shared standards, fair conduct.',
+        rules: [
+          'Steelman the opposing view before your thesis.',
+          'State vyāpti with scope; include sapakṣa & vipakṣa.',
+          'Run upādhi hunt, trairūpya check, and hetvābhāsa scan.',
+          'Note limits/uncertainty; invite defeaters and next tests.'
+        ],
+        warn: null,
+        modeTweaks: 'Keep tone neutral and courteous; cite relevant pramāṇas (perception, inference, analogy, testimony).',
+        structure: 'standard' // normal five-member order
+      },
+      'jalpa': {
+        headline: 'Debate ethic: jalpa — persuasion-forward (evidence-grounded).',
+        rules: [
+          'Lead with the conclusion; then present the five members succinctly.',
+          'Foreground strongest sapakṣa; pre-empt common objections briefly.',
+          'Label valid hetvābhāsa in opposing reasons; avoid fabrications.',
+          'Close with a confident call-to-belief or action.'
+        ],
+        warn: 'Persuasion mode: ensure all claims remain grounded in pramāṇas; avoid rhetorical overreach.',
+        modeTweaks: 'Assertive tone; minimize hedging without hiding known limits.',
+        structure: 'headline-first' // show conclusion before five-member form
+      },
+      'vitaṇḍā': {
+        headline: 'Debate ethic: vitaṇḍā — refutation-only (no counter-thesis asserted).',
+        rules: [
+          'Do NOT assert your own positive thesis.',
+          'Target trairūpya failures, upādhi, or bādhita conflicts in the opponent’s reasoning.',
+          'Use vipakṣa counterexamples to break vyāpti.',
+          'Conclude with “thesis not established” and what evidence would repair it.'
+        ],
+        warn: 'Refutation mode: productive for critique/training; switch to vāda when building solutions.',
+        modeTweaks: 'Forensic tone; meticulous fault isolation.',
+        structure: 'refutation' // focus on opponent five-member knockdown
+      }
+    }[ethic];
 
-    const dirGuide = direction
-      ? `Direction: ${direction}. Explain how hetu relates to sādhya in this direction.`
-      : 'Direction: (specify cause→effect, effect→cause, or constant conjunction).';
+    // Blocks
+    const audBlock =
+      (audience && (Array.isArray(audience) ? audience.length : toLines(audience).length))
+        ? 'Audience/personas:\n' + (Array.isArray(audience) ? audience : toLines(audience)).map((p,i)=>`${i+1}. ${p}`).join('\n')
+        : null;
 
-    const audBlock = audience && audience.length
-      ? 'Audience/personas:\n' + (Array.isArray(audience) ? audience : toLines(audience)).map((p,i)=>`${i+1}. ${p}`).join('\n')
-      : null;
-
-    const biasBlock = bias_checks && bias_checks.length
-      ? 'Bias / blind-spot checks:\n' + (Array.isArray(bias_checks) ? bias_checks : toLines(bias_checks)).map((b,i)=>`${i+1}. ${b}`).join('\n')
-      : null;
+    const biasBlock =
+      (bias_checks && (Array.isArray(bias_checks) ? bias_checks.length : toLines(bias_checks).length))
+        ? 'Bias / blind-spot checks:\n' + (Array.isArray(bias_checks) ? bias_checks : toLines(bias_checks)).map((b,i)=>`${i+1}. ${b}`).join('\n')
+        : null;
 
     const vyaptiBlock = (() => {
       const pos = sapaksha ? `Sapakṣa (positive instances):\n` + toLines(sapaksha).map((x,i)=>`  ${i+1}. ${x}`).join('\n') : null;
@@ -7437,38 +7179,86 @@ boosters: [
       ].filter(Boolean).join('\n') || null;
     })();
 
-    return [
-      'Use the Nyāya pañcāvayava (five-member) syllogism with cultural fidelity and public checkability.',
-      ctx && `Context: ${ctx}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-      ethicGuide,
-      modeGuide,
-      dirGuide,
-      audBlock,
-      biasBlock,
-
-      // Five members
+    // Core five-member presentation (your argument)
+    const fiveMemberYour = [
       paksa && sadhya && `Pakṣa & Sādhya:\n- Subject (pakṣa): ${paksa}\n- Probandum (sādhya): ${sadhya}`,
       pratijna && `1) Pratijñā (Thesis): ${pratijna}`,
       hetu &&     `2) Hetu (Reason/mark): ${hetu}`,
       vyaptiBlock && `3) Udāharaṇa (Universal rule + example):\n${vyaptiBlock}`,
       upanaya &&  `4) Upanaya (Application to the case):\n${upanaya}`,
-      nigamana && `5) Nigamana (Conclusion): ${nigamana}`,
+      (ethic !== 'vitaṇḍā' && nigamana) && `5) Nigamana (Conclusion): ${nigamana}`
+    ].filter(Boolean).join('\n');
 
-      // Quality controls
-      trairupya && `Trairūpya check (3 marks of a sound hetu):\n${trairupya}`,
-      upadhi &&   `Upādhi (hidden condition qualifiers):\n${upadhi}`,
-      tarka &&    `Tarka (reductio/probative reasoning):\n${tarka}`,
+    // Opponent five-member (for refutation or teaching)
+    const fiveMemberOpp =
+      (opp_pratijna || opp_hetu || opp_vyapti || opp_upanaya || opp_nigamana)
+        ? [
+            'Opponent’s five-member (for analysis):',
+            opp_pratijna && `• Pratijñā (opponent): ${opp_pratijna}`,
+            opp_hetu &&     `• Hetu (opponent): ${opp_hetu}`,
+            opp_vyapti &&   `• Vyāpti/Example (opponent): ${opp_vyapti}`,
+            opp_upanaya &&  `• Upanaya (opponent): ${opp_upanaya}`,
+            opp_nigamana && `• Nigamana (opponent): ${opp_nigamana}`
+          ].filter(Boolean).join('\n')
+        : null;
+
+    // Headline conclusion for jalpa
+    const jalpaHeadline = (ethic === 'jalpa' && nigamana)
+      ? `Headline conclusion (for attention): ${nigamana}`
+      : null;
+
+    // Mode/direction guidance
+    const modeGuide = mode
+      ? `Inference mode: ${mode}. Describe how the universal connection (vyāpti) was established.`
+      : 'Inference mode: anvaya–vyatireki (positive + negative). Show both co-presence and co-absence.';
+    const dirGuide = direction
+      ? `Direction: ${direction}. Explain how the hetu relates to the sādhya in this direction.`
+      : 'Direction: (specify cause→effect, effect→cause, or constant conjunction).';
+
+    return [
+      // Orientation & ethic-driven obligations
+      'Use the Nyāya pañcāvayava (five-member) syllogism with cultural fidelity and public checkability.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ethicSpec.headline,
+      ethicSpec.warn && `Note: ${ethicSpec.warn}`,
+      'Conduct rules:\n' + ethicSpec.rules.map((r,i)=>`${i+1}. ${r}`).join('\n'),
+      `Mode tweaks: ${ethicSpec.modeTweaks}`,
+      modeGuide,
+      dirGuide,
+      audBlock,
+      biasBlock,
+
+      // Structure variations by ethic
+      (ethic === 'jalpa') && jalpaHeadline,
+      (ethic === 'vitaṇḍā') && fiveMemberOpp && fiveMemberOpp,
+      (ethic !== 'vitaṇḍā') && fiveMemberYour,
+
+      // Quality controls (depth depends on ethic, but we always show the fields if provided)
+      (ethic !== 'jalpa' && trairupya) && `Trairūpya check (3 marks of a sound hetu):\n${trairupya}`,
+      (ethic === 'jalpa' && trairupya) && `Trairūpya (brief): ${trairupya}`,
+      upadhi && `Upādhi (hidden condition qualifiers):\n${upadhi}`,
+      tarka && `Tarka (reductio/probative reasoning):\n${tarka}`,
       hetvabhasa && `Hetvābhāsa scan (fallacy risks):\n${hetvabhasa}`,
+
+      // Teaching bridge (optional)
       western_mapping && `Western mapping (for teaching only):\n${western_mapping}`,
 
+      // Output contract: what the model should actually produce
       '\nOutput should include:',
-      '- The five members in order, with Nyāya terms preserved.',
+      (ethic === 'jalpa')
+        ? '- Headline conclusion, then the five members (succinct).'
+        : '- The five members in order, with Nyāya terms preserved.',
       '- Vyāpti with explicit scope/conditions and sapakṣa/vipakṣa illustrations.',
-      '- Trairūpya verdict, upādhi notes, and any tarka used.',
-      '- A short debate-ethic note (vāda) and invitation for defeater cases.',
-      '- (If teaching Western audiences) a brief mapping to familiar forms without erasing Nyāya specifics.'
+      (ethic === 'vitaṇḍā')
+        ? '- Refutation summary: identify trairūpya/upādhi/hetvābhāsa failures; conclude “thesis not established” and state evidence needed to repair it.'
+        : '- Trairūpya verdict, upādhi notes, and any tarka used.',
+      (ethic === 'vāda')
+        ? '- Invite defeaters and propose next tests with limits/uncertainty stated.'
+        : (ethic === 'jalpa'
+            ? '- Persuasion close: confident call-to-belief/action (evidence-grounded).'
+            : '- Forensic close: no counter-thesis; list repair conditions.')
     ].filter(Boolean).join('\n');
   }
 },
@@ -7476,12 +7266,9 @@ boosters: [
   id:'pdca_cycle',
   slug:'pdca-deming-cycle',
   label:'PDCA — Plan · Do · Check · Act',
-  kind:'framework',
-  categories:['quality','operations','education'],
-  tags:[
-    'type:framework','topic:iteration','phase:iterate','level:beginner',
-    'use:continuous-improvement','use:lesson-planning'
-  ],
+    kind:'strategy',
+  categories: [ 'quality', 'operations', 'education' ],
+  tags: [ 'type:framework', 'use:iteration', 'level:beginner', 'use:process-improvement', 'use:pattern' ],
   use_cases:[
     'design small learning or improvement loops',
     'close the feedback loop on changes'
@@ -7514,11 +7301,8 @@ boosters: [
     slug:'pramana-means-of-knowledge',
     label:'Pramāṇa — Means of Knowledge',
     kind:'framework',
-    categories:['reasoning','research','philosophy'],
-    tags:[
-      'type:framework','topic:evidence','phase:validate','level:advanced',
-      'use:source-triangulation','use:epistemic-audit'
-    ],
+    categories: [ 'reasoning', 'psychology' ],
+    tags: [ 'type:framework', 'use:healing', 'topic:values', 'level:advanced', 'use:presentations' ],
     use_cases:[
       'audit evidence types supporting a claim',
       'decide what new evidence would change the answer'
@@ -7550,12 +7334,9 @@ boosters: [
     id:'qiyas_analogy',
     slug:'qiyas-analogical-reasoning',
     label:'Qiyās — Analogical Reasoning (Islamic Jurisprudence)',
-    kind:'framework',
-    categories:['reasoning','philosophy','cultural frameworks'],
-    tags:[
-      'type:framework','topic:analogy','phase:apply','level:advanced',
-      'use:policy-analogy','use:case-based-reasoning'
-    ],
+    kind:'strategy',
+    categories: [ 'reasoning', 'psychology', 'cultural frameworks' ],
+    tags: [ 'type:framework', 'use:pattern', 'phase:apply', 'level:advanced', 'use:healing' ],
     use_cases:[
       'extend rulings by identifying effective cause',
       'structure analogies between known and novel cases'
@@ -7589,12 +7370,9 @@ boosters: [
     id:'rapid_decision_rights',
     slug:'rapid-decision-rights',
     label:'RAPID — Recommend · Agree · Perform · Input · Decide',
-    kind:'framework',
-    categories:['decision','operations','governance'],
-    tags:[
-      'type:framework','topic:decision-rights','phase:plan','level:beginner',
-      'use:roles-responsibility','use:decision-record'
-    ],
+    kind:'strategy',
+    categories: [ 'decision', 'operations', 'product management' ],
+    tags: [ 'type:framework', 'use:decision-making', 'use:pattern', 'level:beginner', 'use:presentations' ],
     use_cases:[
       'clarify who does what in a decision',
       'speed up approvals by defining roles'
@@ -7630,12 +7408,9 @@ boosters: [
     id:'scientific_method',
     slug:'scientific-method',
     label:'Scientific Method — Question · Hypothesis · Method · Data · Analysis · Conclusion',
-    kind:'framework',
-    categories:['research','education','reasoning'],
-    tags:[
-      'type:framework','topic:experiment','phase:test','level:beginner',
-      'use:ab-testing','use:literature-replication'
-    ],
+    kind: 'heuristic',
+    categories: [ 'reasoning', 'education' ],
+    tags: [ 'type:framework', 'use:pattern', 'use:content', 'level:beginner', 'use:iteration' ],
     use_cases:[
       'design an experiment or A/B test',
       'replicate a result with clear hypotheses'
@@ -7671,11 +7446,8 @@ boosters: [
     slug:'scqa-situation-complication-question-answer',
     label:'SCQA — Situation · Complication · Question · Answer',
     kind:'framework',
-    categories:['storytelling frameworks','analysis frameworks'],
-    tags:[
-      'type:framework','topic:structure','phase:compose','level:beginner',
-      'use:briefs','use:memos','use:presentations'
-    ],
+    categories: [ 'storytelling frameworks', 'analysis frameworks' ],
+    tags: [ 'type:framework', 'topic:future-self', 'phase:compose', 'level:beginner', 'use:task-brief', 'topic:matrix', 'use:presentations' ],
     use_cases:[
       'structure memos or executive summaries',
       'turn research into a compelling arc'
@@ -7706,12 +7478,9 @@ boosters: [
     id:'sentipensar',
     slug:'sentipensar-thinking-feeling',
     label:'Sentipensar — Thinking-Feeling Integration (Latin America)',
-    kind:'framework',
-    categories:['reasoning','design','cultural frameworks'],
-    tags:[
-      'type:framework','topic:affect-cognition','phase:plan','level:intermediate',
-      'use:research-synthesis','use:ethics','use:co-design'
-    ],
+    kind:'strategy',
+    categories: [ 'reasoning', 'design', 'cultural frameworks' ],
+    tags: [ 'type:framework', 'topic:decomposition', 'use:pattern', 'level:intermediate' ],
     use_cases:[
       'integrate analytic and experiential knowledge',
       'design with empathy and evidence side-by-side'
@@ -7743,12 +7512,9 @@ boosters: [
     id:'talanoa_dialogue',
     slug:'talanoa-dialogue',
     label:'Talanoa Dialogue (Pacific)',
-    kind:'framework',
-    categories:['facilitation','cultural frameworks','decision'],
-    tags:[
-      'type:framework','topic:story-sharing','topic:trust','phase:explore','level:beginner',
-      'use:conflict-resolution','use:policy-dialogue'
-    ],
+    kind:'strategy',
+    categories: [ 'prioritization', 'cultural frameworks', 'decision' ],
+    tags: [ 'type:framework', 'use:storytelling', 'use:content', 'phase:explore', 'level:beginner', 'use:pattern' ],
     use_cases:[
       'build empathy and trust before negotiating',
       'surface shared issues via story-first dialogue'
@@ -7779,12 +7545,9 @@ boosters: [
     id:'tote',
     slug:'tote-test-operate-test-exit',
     label:'TOTE — Test · Operate · Test · Exit',
-    kind:'pattern',
-    categories:['planning','cognitive models'],
-    tags:[
-      'type:pattern','topic:control-loop','phase:iterate','level:beginner',
-      'use:rapid-iteration','use:prompt-tuning'
-    ],
+    kind: 'heuristic',
+    categories: [ 'planning', 'ideation' ],
+    tags: [ 'use:pattern', 'use:communication', 'use:iteration', 'level:beginner', 'topic:prompting' ],
     use_cases:[
       'build a minimal control loop for a task',
       'decide when to stop iterating'
@@ -7815,12 +7578,9 @@ boosters: [
     id:'vroom_yetton',
     slug:'vroom-yetton-jago-decision',
     label:'Vroom–Yetton–Jago Decision Model',
-    kind:'framework',
-    categories:['decision','leadership','operations'],
-    tags:[
-      'type:framework','topic:leadership','topic:participation','phase:plan','level:intermediate',
-      'use:meeting-design','use:time-critical-decisions'
-    ],
+    kind:'strategy',
+    categories: [ 'decision', 'ideation', 'operations' ],
+    tags: [ 'type:framework', 'use:pattern', 'topic:clarification', 'level:intermediate', 'use:decision-making' ],
     use_cases:[
       'choose an autocratic, consultative, or group style',
       'balance decision quality vs. speed and commitment'
@@ -7854,12 +7614,9 @@ boosters: [
     id:'zhongyong_mean',
     slug:'zhongyong-doctrine-of-the-mean',
     label:'Zhongyong — Doctrine of the Mean (Confucian Moderation)',
-    kind:'framework',
-    categories:['ethics','reasoning','cultural frameworks'],
-    tags:[
-      'type:framework','topic:moderation','topic:context','phase:plan','level:intermediate',
-      'use:policy-guardrails','use:communication'
-    ],
+    kind:'strategy',
+    categories: [ 'ethics', 'reasoning', 'cultural frameworks' ],
+    tags: [ 'type:framework', 'use:iteration', 'use:content', 'use:pattern', 'level:intermediate', 'use:communication' ],
     use_cases:[
       'avoid extremes by calibrating to context',
       'craft proportionate responses and tone'
@@ -7891,12 +7648,9 @@ boosters: [
   id: 'moscow',
   slug: 'moscow-prioritization',
   label: 'MoSCoW — Must · Should · Could · Won’t',
-  kind: 'framework',
-  categories: ['prioritization', 'planning', 'product management'],
-  tags: [
-    'type:framework','topic:prioritization','topic:requirements','level:beginner',
-    'use:project-planning','use:backlog-refinement','use:scope-management'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'planning', 'product management' ],
+  tags: [ 'type:framework', 'use:prioritization', 'use:process-improvement', 'level:beginner', 'use:pattern', 'use:scope-management' ],
   use_cases: [
     'prioritize product features or requirements',
     'ux research',
@@ -7941,12 +7695,9 @@ boosters: [
   id: 'kano_model',
   slug: 'kano-model',
   label: 'Kano Model — Must-be · Performance · Delighters',
-  kind: 'framework',
-  categories: ['prioritization','product management','ux','research'],
-  tags: [
-    'type:framework','topic:kano','topic:user-satisfaction','phase:prioritize','level:intermediate',
-    'use:backlog-refinement','use:research-synthesis','use:roadmap'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'product management', 'quality', 'reasoning' ],
+  tags: [ 'type:framework', 'use:brainstorm', 'use:iteration', 'use:prioritization', 'level:intermediate', 'use:process-improvement', 'use:pattern' ],
 
   use_cases: [
     'separate table-stakes from differentiators',
@@ -8224,11 +7975,9 @@ Dissatisfaction ↓`;
   id: 'rice_scoring',
   slug: 'rice-scoring',
   label: 'RICE — Reach × Impact × Confidence ÷ Effort',
-  kind: 'framework',
-  categories: ['prioritization', 'product management'],
-  tags: [
-    'type:framework','topic:scoring','use:backlog-prioritization','use:roadmap'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'product management' ],
+  tags: [ 'type:framework', 'use:coding', 'use:prioritization', 'use:pattern' ],
   use_cases: ['rank features quantitatively','allocate scarce resources'],
   boosters: ['Show the formula and numbers; round to 2 decimals.'],
   definition: 'RICE prioritizes by Reach, Impact, Confidence, and Effort. Score = (R × I × C) / E.',
@@ -8269,12 +8018,9 @@ Dissatisfaction ↓`;
   id: 'ice_scoring',
   slug: 'ice-scoring',
   label: 'ICE — Impact × Confidence × Ease',
-  kind: 'framework',
-  categories: ['prioritization', 'growth', 'experimentation'],
-  tags: [
-    'type:framework','topic:scoring','topic:prioritization','phase:triage','level:beginner',
-    'use:backlog-grooming','use:experiments','use:ops-improvement','use:design-roadmap'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'cultural frameworks', 'operations' ],
+  tags: [ 'type:framework', 'use:coding', 'use:prioritization', 'level:intermediate', 'level:beginner', 'use:process-improvement', 'use:pattern' ],
 
   use_cases: [
     'fast triage of product ideas or experiments',
@@ -8504,11 +8250,9 @@ Dissatisfaction ↓`;
   id: 'value_effort_matrix',
   slug: 'value-effort-matrix',
   label: 'Value vs. Effort — 2×2 Quick Wins Matrix',
-  kind: 'framework',
-  categories: ['prioritization', 'workshops', 'product management'],
-  tags: [
-    'type:framework','topic:matrix','use:stakeholder-workshop','use:portfolio-triage'
-  ],
+  kind: 'strategy',
+  categories: [ 'prioritization', 'operations', 'product management' ],
+  tags: [ 'type:framework', 'topic:matrix', 'use:workshop', 'level:intermediate' ],
   use_cases: ['visualize trade-offs','identify quick wins','kill time sinks'],
   boosters: ['Sort final list by “Quick Wins” first.'],
   definition: 'Plot backlog items on High/Low Value vs. High/Low Effort. Prioritize Quick Wins.',
@@ -8535,11 +8279,9 @@ Dissatisfaction ↓`;
   id: 'wsjf',
   slug: 'wsjf-weighted-shortest-job-first',
   label: 'WSJF — (Business Value + Time Criticality + Risk Reduction) ÷ Job Size',
-  kind: 'framework',
-  categories: ['agile', 'prioritization', 'safe'],
-  tags: [
-    'type:framework','topic:wsjf','use:program-increment','use:flow-optimization'
-  ],
+  kind: 'heuristic',
+  categories: [ 'strategy', 'prioritization' ],
+  tags: [ 'type:framework', 'topic:future-self', 'use:process-improvement', 'use:prioritization' ],
   use_cases: ['maximize economic throughput','PI planning in SAFe'],
   boosters: ['Call out assumptions; avoid gaming Job Size.'],
   definition: 'WSJF prioritizes by Cost of Delay over Job Size. CoD ≈ Business Value + Time Criticality + Risk Reduction.',
@@ -8576,10 +8318,8 @@ Dissatisfaction ↓`;
   slug: 'opportunity-scoring-gap-analysis',
   label: 'Opportunity Scoring — Importance vs. Satisfaction',
   kind: 'framework',
-  categories: ['research', 'prioritization', 'product discovery'],
-  tags: [
-    'type:framework','topic:opportunity','use:voice-of-customer','use:gap-analysis'
-  ],
+  categories: [ 'reasoning', 'prioritization', 'product management' ],
+  tags: [ 'type:framework', 'topic:prompting', 'topic:clarification', 'use:pattern' ],
   use_cases: ['surface unmet needs','turn surveys into priorities'],
   boosters: ['Flag items with high importance and low satisfaction as top opportunities.'],
   definition: 'Compare importance vs. satisfaction to find largest gaps and prioritize opportunities.',
@@ -8606,9 +8346,9 @@ Dissatisfaction ↓`;
   id: 'random_assoc',
   slug: 'random-association',
   label: 'Random Association — Combine unrelated ideas',
-  kind: 'pattern',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:random', 'use:brainstorm', 'level:beginner'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'use:brainstorm', 'level:beginner' ],
   use_cases: [
     'break creative block with random prompts',
     'discover unconventional ideas by forced connections'
@@ -8639,9 +8379,9 @@ Dissatisfaction ↓`;
   id: 'role_storming',
   slug: 'role-storming',
   label: 'Role Storming — Ideation as different personas',
-  kind: 'pattern',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:role-play', 'use:brainstorm', 'level:beginner'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'phase:apply', 'use:brainstorm', 'level:beginner' ],
   use_cases: [
     'get fresh ideas by changing perspective',
     'uncover insights via imaginary roles'
@@ -8671,13 +8411,9 @@ Dissatisfaction ↓`;
   id: 'mind_map',
   slug: 'mind-mapping',
   label: 'Mind Mapping — Visual cluster of ideas',
-  kind: 'pattern',
-  categories: ['creativity', 'organization', 'visual thinking', 'learning'],
-  tags: [
-    'type:technique','topic:mind-map','topic:visual-notes','topic:concept-mapping',
-    'phase:discover','phase:design','phase:synthesize','level:beginner',
-    'use:ideas','use:workshop','use:research-synthesis','use:study-notes','use:roadmapping'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'prioritization', 'critical thinking', 'reasoning' ],
+  tags: [ 'type:technique', 'use:decision-making', 'topic:values', 'use:coding', 'use:discover', 'use:pattern', 'use:prioritization', 'level:beginner', 'use:workshop', 'use:case-study' ],
   use_cases: [
     'brainstorm non-linearly around a central idea and discover hidden clusters',
     'synthesize research/interviews into themes and questions',
@@ -9063,9 +8799,9 @@ Dissatisfaction ↓`;
   id: 'wishing',
   slug: 'wishing-technique',
   label: 'Wishing — Imagine ideal solutions',
-  kind: 'pattern',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:ideation', 'use:brainstorm', 'level:beginner'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'use:ideation', 'use:brainstorm', 'level:beginner' ],
   use_cases: [
     'think beyond realistic constraints',
     'identify features of an ideal outcome'
@@ -9092,9 +8828,9 @@ Dissatisfaction ↓`;
   id: 'rapid_ideation',
   slug: 'rapid-ideation',
   label: 'Rapid Ideation — Timed idea sprint',
-  kind: 'technique',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:brainstorm', 'use:quantity-over-quality', 'level:beginner'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'use:brainstorm', 'use:healing', 'level:beginner' ],
   use_cases: [
     'generate lots of ideas under time pressure',
     'overcome creative block by not overthinking'
@@ -9123,9 +8859,9 @@ Dissatisfaction ↓`;
   id: 'trigger_storming',
   slug: 'trigger-storming',
   label: 'Trigger Storming — Prompt-based brainstorming',
-  kind: 'technique',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:prompts', 'use:brainstorm', 'level:intermediate'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'topic:prompting', 'use:brainstorm', 'level:intermediate' ],
   use_cases: [
     'spark discussion with provocative prompts',
     'generate ideas from abstract or incomplete statements'
@@ -9155,9 +8891,9 @@ Dissatisfaction ↓`;
   id: 'what_if',
   slug: 'what-if-scenarios',
   label: 'What If — Scenario reframing questions',
-  kind: 'technique',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:reframing', 'use:brainstorm', 'level:beginner'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'use:problem-framing', 'use:brainstorm', 'level:beginner' ],
   use_cases: [
     'reframe a problem by changing context or constraints',
     'explore alternative outcomes or perspectives'
@@ -9187,17 +8923,9 @@ Dissatisfaction ↓`;
   id: 'freewrite',
   slug: 'freewriting-zero-draft',
   label: 'Freewriting — Unfiltered Stream of Thought (Zero Draft)',
-  kind: 'technique',
-  categories: [
-    'creativity','writing','self-reflection',
-    'creativity techniques','mental health','productivity','coaching'
-  ],
-  tags: [
-    'type:technique','topic:writing','topic:flow-state','topic:idea-generation',
-    'topic:subconscious','topic:unblocking',
-    'use:brainstorm','use:prewriting','use:therapy-journaling',
-    'use:creative-block','use:idea-mining','level:beginner'
-  ],
+  kind: 'framework',
+  categories: [ 'creativity', 'writing', 'self-reflection', 'cultural frameworks', 'critical thinking' ],
+  tags: [ 'type:technique', 'use:copywriting', 'use:prioritization', 'use:ideation', 'use:presentations', 'use:teaching', 'use:brainstorm', 'use:goals', 'level:beginner' ],
   use_cases: [
     'Overcome writer’s block or creative block.',
     'Discover latent ideas by writing without stopping.',
@@ -9271,9 +8999,9 @@ Dissatisfaction ↓`;
   id: 'oblique_strategies',
   slug: 'oblique-strategies-cards',
   label: 'Oblique Strategies — Lateral thinking prompt cards',
-  kind: 'technique',
-  categories: ['creativity', 'ideation'],
-  tags: ['type:technique', 'topic:cards', 'use:creative-block', 'level:intermediate'],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'type:technique', 'topic:clarification', 'use:ideation', 'level:intermediate' ],
   use_cases: [
     'break out of a creative rut with random prompts',
     'find new approaches when stuck on an artistic problem'
@@ -9301,13 +9029,9 @@ Dissatisfaction ↓`;
   id: 'disney_creative',
   slug: 'disney-dreamer-realist-critic',
   label: 'Disney Strategy — Dreamer · Realist · Critic',
-  kind: 'framework',
-  categories: ['creativity','evaluation','storytelling'],
-  tags: [
-    'type:framework','topic:perspective-taking','topic:iteration',
-    'use:develop-idea','use:creative-randomness','use:innovation-sprints','use:team-workshops',
-    'level:intermediate'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'education', 'storytelling frameworks' ],
+  tags: [ 'type:framework', 'use:decision-making', 'use:iteration', 'use:goals', 'use:brainstorm', 'use:workshop', 'level:intermediate' ],
   use_cases: [
     'develop an idea from wild concept to practical plan',
     'balance imaginative thinking with realism and critical review',
@@ -9384,8 +9108,8 @@ Dissatisfaction ↓`;
   slug: 'synectics-analogies',
   label: 'Synectics — Analogies & Problem Transfer',
   kind: 'framework',
-  categories: ['creativity', 'problem-solving'],
-  tags: ['type:framework', 'topic:analogies', 'use:innovate', 'level:advanced'],
+  categories: [ 'creativity', 'reasoning' ],
+  tags: [ 'type:framework', 'phase:apply', 'level:intermediate', 'level:advanced' ],
   use_cases: [
     'find solutions by drawing analogies from unrelated domains',
     'unstick a problem by reframing it in a different context'
@@ -9416,14 +9140,9 @@ Dissatisfaction ↓`;
   id: 'active_imagination',
   slug: 'active-imagination-dialogue',
   label: 'Active Imagination — Dialogue with Inner Voices',
-  kind: 'technique',
-  categories: ['psychology','creativity','self-reflection','symbolic-dialogue'],
-  tags: [
-    'type:technique','topic:jungian','topic:archetypes','topic:dreamwork','topic:imagination',
-    'use:self-reflection','use:shadow-work','use:creative-insight','use:archetype-exploration',
-    'use:creative-writing','use:therapeutic-dialogue',
-    'level:advanced','method:dialogue'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'creativity', 'self-reflection' ],
+  tags: [ 'type:technique', 'use:ideation', 'phase:explore', 'type:framework', 'use:copywriting', 'use:pattern', 'level:advanced' ],
   use_cases: [
     'gain insight by conversing with parts of yourself or imagined characters',
     'resolve inner conflicts through symbolic dialogue',
@@ -9494,14 +9213,8 @@ Dissatisfaction ↓`;
   slug: 'head-heart-gut-decision',
   label: 'Head–Heart–Gut — Logic · Emotion · Instinct (Rational · Emotional · Instinctual check)',
   kind: 'framework',
-  categories: ['decision-making','self-reflection','psychology','leadership','coaching','ethics'],
-  tags: [
-    'type:framework','topic:decision-making','topic:emotional-intelligence',
-    'topic:embodied-cognition','topic:values','topic:intuition-vs-logic',
-    'use:decision-support','use:values-check','use:intuition',
-    'use:coaching-conversations','use:leadership-alignment','use:self-awareness',
-    'level:intermediate'
-  ],
+  categories: [ 'decision', 'self-reflection', 'psychology', 'ideation', 'critical thinking', 'ethics' ],
+  tags: [ 'type:framework', 'use:decision-making', 'topic:prompting', 'topic:decomposition', 'topic:values', 'level:beginner', 'use:goals', 'use:pattern', 'topic:future-self', 'level:intermediate' ],
   use_cases: [
     'Make well-rounded decisions by considering logic, feelings, and intuition.',
     'Resolve internal conflict by aligning thoughts, values, and instincts.',
@@ -9562,14 +9275,9 @@ Dissatisfaction ↓`;
   id: 'hypnagogic_spark',
   slug: 'hypnagogic-spark-creativity',
   label: 'Hypnagogic Spark — Semi-sleep insight technique',
-  kind: 'technique',
-  categories: ['creativity','brainstorming','dream-methods','imagination','problem framing'],
-  tags: [
-    'type:technique','topic:consciousness','topic:sleep','topic:hypnagogia',
-    'topic:surrealism','topic:imagination','topic:dream-incubation',
-    'use:creative-block','use:metaphor-hunting','use:idea-generation','use:problem-reframing',
-    'level:advanced'
-  ],
+  kind: 'framework',
+  categories: [ 'creativity', 'design', 'ethics', 'ideation', 'reasoning' ],
+  tags: [ 'type:technique', 'use:presentations', 'phase:premortem', 'level:beginner', 'use:healing', 'use:ideation', 'use:workshop', 'use:problem-framing', 'level:advanced' ],
 
   use_cases: [
     'Unstick creative blocks by skimming the N1 (semi-sleep) state',
@@ -9838,12 +9546,9 @@ Dissatisfaction ↓`;
   id: 'parts_work',
   slug: 'parts-work-dialogue',
   label: 'Parts Work Dialogue (IFS therapy)',
-  kind: 'pattern',
-  categories: ['psychology', 'self-reflection'],
-  tags: [
-    'type:pattern','topic:parts-work','topic:IFS','level:intermediate',
-    'use:internal-conflict','use:self-discovery','use:trauma-processing'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'self-reflection' ],
+  tags: [ 'use:pattern', 'type:framework', 'topic:clarification', 'level:intermediate', 'use:content', 'use:discover', 'topic:prompting' ],
   use_cases: [
     'resolve internal conflicts by giving each part a voice',
     'understand the needs and fears of your inner “family” members',
@@ -9876,13 +9581,9 @@ Dissatisfaction ↓`;
   id: 'empty_chair',
   slug: 'empty-chair-technique',
   label: 'Empty Chair Dialogue (Gestalt)',
-  kind: 'pattern',
-  categories: ['psychology','self-reflection','communication','coaching'],
-  tags: [
-    'type:pattern','topic:gestalt','topic:empty-chair','topic:parts-work',
-    'phase:explore','phase:integrate','level:intermediate',
-    'use:resolve-feelings','use:closure','use:internal-conflict','use:difficult-conversation'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'self-reflection', 'education', 'critical thinking' ],
+  tags: [ 'use:pattern', 'use:content', 'use:ad-copy', 'type:framework', 'phase:explore', 'level:intermediate', 'use:problem-framing', 'phase:compose', 'topic:clarification' ],
 
   use_cases: [
     'voice unresolved feelings (“unfinished business”) with someone not present',
@@ -10118,12 +9819,9 @@ Dissatisfaction ↓`;
   id: 'somatic_focusing',
   slug: 'somatic-focusing-felt-sense',
   label: 'Somatic Focusing — Feel · Ask · Listen',
-  kind: 'pattern',
-  categories: ['psychology', 'self-reflection'],
-  tags: [
-    'type:pattern','topic:somatic','topic:felt-sense','level:intermediate',
-    'use:anxiety-management','use:inner-wisdom','use:emotional-processing'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'self-reflection' ],
+  tags: [ 'use:pattern', 'use:communication', 'topic:future-self', 'level:intermediate', 'use:scope-management', 'level:beginner', 'topic:prompting' ],
   use_cases: [
     'tune into a bodily sensation to discover the message or emotion it holds',
     'reduce overwhelm by patiently listening to what your body is telling you',
@@ -10154,15 +9852,9 @@ Dissatisfaction ↓`;
   id: 'spoon_planner',
   slug: 'spoon-theory-energy-planner',
   label: 'Energy Budget Planner (Spoon Theory)',
-  kind: 'framework',
-  categories: ['productivity','self-care','mental health','wellbeing'],
-  tags: [
-    'type:framework','topic:spoon-theory','topic:energy-management',
-    'topic:mental-health','topic:neurodiversity',
-    'level:beginner','use:daily-planning','use:adhd','use:chronic-illness',
-    'use:burnout-prevention','use:inclusion','use:disability-advocacy',
-    'use:self-advocacy','use:therapy-support'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'self-reflection', 'cultural frameworks', 'writing' ],
+  tags: [ 'type:framework', 'use:storytelling', 'use:scope-management', 'use:healing', 'use:presentations', 'level:beginner', 'use:pattern', 'use:ad-copy', 'use:decision-making', 'use:goals' ],
   use_cases: [
     'Plan your day according to limited energy or focus (“spoons”).',
     'Prioritize tasks when fatigued, neurodivergent, or living with chronic illness.',
@@ -10240,12 +9932,9 @@ Dissatisfaction ↓`;
   id: 'internal_weather',
   slug: 'internal-weather-report',
   label: 'Internal Weather Report — Storm · Calm · Forecast',
-  kind: 'pattern',
-  categories: ['self-reflection', 'wellbeing', 'communication'],
-  tags: [
-    'type:pattern','topic:emotions','topic:metaphor','topic:stress-regulation',
-    'use:journal','use:check-in','use:team-standup','level:beginner'
-  ],
+  kind: 'framework',
+  categories: [ 'self-reflection', 'writing', 'education' ],
+  tags: [ 'use:pattern', 'use:presentations', 'use:workshop', 'use:goals', 'level:beginner', 'phase:premortem' ],
 
   use_cases: [
     'one-minute mood check to reduce reactivity',
@@ -10531,12 +10220,9 @@ Dissatisfaction ↓`;
   id: 'synesthetic_brainstorm',
   slug: 'synesthetic-brainstorm',
   label: 'Synesthetic Brainstorm — Color · Sound · Texture',
-  kind: 'pattern',
-  categories: ['creativity', 'ideation'],
-  tags: [
-    'type:pattern','topic:metaphor','topic:sensory','level:beginner',
-    'use:idea-generation','use:perspective-shift','use:creative-block'
-  ],
+  kind: 'framework',
+  categories: [ 'creativity', 'ideation' ],
+  tags: [ 'use:pattern', 'use:workshop', 'use:storytelling', 'level:beginner', 'use:ideation', 'use:decision-making' ],
   use_cases: [
     'generate fresh ideas by translating an abstract problem into sensory metaphors',
     'unlock intuition about a concept by describing its color, sound, texture, or taste',
@@ -10566,11 +10252,8 @@ Dissatisfaction ↓`;
   slug: 'tarot-spread-reflection',
   label: 'Tarot Spread Reflection — Past · Present · Future',
   kind: 'framework',
-  categories: ['creativity', 'self-reflection'],
-  tags: [
-    'type:framework','topic:tarot','topic:storytelling','level:intermediate',
-    'use:personal-insight','use:creative-inspiration','use:journal'
-  ],
+  categories: [ 'creativity', 'self-reflection' ],
+  tags: [ 'type:framework', 'use:content', 'use:storytelling', 'level:intermediate', 'use:goals', 'use:ideation' ],
   use_cases: [
     'gain personal insight by interpreting a situation through symbolic cards',
     'use archetypal imagery to brainstorm solutions or perspectives on a problem',
@@ -10602,13 +10285,9 @@ Dissatisfaction ↓`;
   id: 'imaginary_council',
   slug: 'imaginary-mentor-council',
   label: 'Imaginary Council — Multiple Mentors, One Question',
-  kind: 'pattern',
-  categories: ['creativity', 'strategy', 'decision-making'],
-  tags: [
-    'type:pattern','topic:roleplay','topic:perspective-shift','topic:red-team',
-    'phase:explore','phase:decide','level:intermediate',
-    'use:brainstorming','use:decision-support','use:ideation','use:ethics-review'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'strategy', 'decision' ],
+  tags: [ 'use:pattern', 'phase:apply', 'use:decision-making', 'phase:premortem', 'phase:explore', 'use:recipe', 'level:intermediate', 'use:brainstorm', 'use:ideation' ],
 
   use_cases: [
     'break fixation by sampling diverse lenses before deciding',
@@ -10774,12 +10453,9 @@ Dissatisfaction ↓`;
   id: 'rubber_duck',
   slug: 'rubber-duck-debugging',
   label: 'Rubber Duck Debugging — Explain to Understand',
-  kind: 'pattern',
-  categories: ['analysis', 'productivity'],
-  tags: [
-    'type:pattern','topic:explaining','topic:debugging','level:beginner',
-    'use:problem-solving','use:learning','use:clarification'
-  ],
+  kind: 'framework',
+  categories: [ 'analysis frameworks', 'creativity' ],
+  tags: [ 'use:pattern', 'phase:explore', 'topic:debiasing', 'level:beginner', 'use:problem-framing', 'topic:clarification' ],
   use_cases: [
     'work through a tricky problem by explaining it step-by-step as if to a complete novice (or a rubber duck)',
     'clarify your understanding of a bug or question by articulating every detail and assumption',
@@ -10808,12 +10484,9 @@ Dissatisfaction ↓`;
   id: 'shadow_work',
   slug: 'shadow-work-dialogue',
   label: 'Shadow Work Dialogue — Conscious Self · Shadow Self',
-  kind: 'pattern',
-  categories: ['psychology', 'self-reflection'],
-  tags: [
-    'type:pattern','topic:shadow','topic:unconscious','level:advanced',
-    'use:inner-demons','use:self-acceptance','use:emotional-healing'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'self-reflection' ],
+  tags: [ 'use:pattern', 'use:ideation', 'use:presentations', 'level:advanced', 'level:beginner', 'topic:future-self', 'use:healing' ],
   use_cases: [
     'confront a “shadow” side of yourself (traits or emotions you’ve repressed) by personifying it',
     'gain insight into negative patterns by dialoguing with the part of you that acts them out',
@@ -10952,12 +10625,9 @@ template: ({
   id: 'inner_child',
   slug: 'inner-child-dialogue',
   label: 'Inner Child Work — Conscious Self · Inner Child',
-  kind: 'pattern',
-  categories: ['psychology', 'self-reflection'],
-  tags: [
-    'type:pattern','topic:inner-child','topic:wounded-self','level:intermediate',
-    'use:healing','use:re-parenting','use:emotional-integration'
-  ],
+  kind: 'framework',
+  categories: [ 'psychology', 'self-reflection' ],
+  tags: [ 'use:pattern', 'level:beginner', 'topic:future-self', 'level:intermediate', 'use:healing', 'topic:prompting' ],
   use_cases: [
     'connect with and comfort your “inner child” (wounded or vulnerable parts of yourself)',
     'practice re-parenting: respond with the compassion and guidance you needed then',
@@ -11071,12 +10741,9 @@ template: ({
   id:'toulmin',
   slug:'toulmin-argument-model',
   label:'Toulmin’s Argument Model — Claim · Grounds · Warrant · Backing · Qualifier · Rebuttal',
-  kind:'framework',
-  categories:['reasoning patterns','critical thinking','debate','philosophy','rhetoric'],
-  tags:[
-    'type:framework','topic:argumentation','topic:toulmin','phase:structure',
-    'level:intermediate','use:debate-prep','use:analysis','use:policy-brief','use:legal-writing'
-  ],
+    kind:'strategy',
+  categories: [ 'reasoning', 'critical thinking', 'design', 'psychology', 'ethics' ],
+  tags: [ 'type:framework', 'use:presentations', 'use:teaching', 'topic:future-self', 'level:intermediate', 'phase:premortem', 'use:pattern', 'use:copywriting' ],
   use_cases:[
     'debate prep and competitive argumentation',
     'legal briefs and litigation strategy',
@@ -11135,14 +10802,9 @@ template: ({
   id: 'epic_quest',
   slug: 'epic-quest-tasking',
   label: 'Epic Quest Tasking — Gamify the Chore',
-  kind: 'pattern',
-  categories: ['productivity', 'creativity', 'storytelling', 'motivation', 'self-care'],
-  tags: [
-    'type:pattern','topic:gamification','topic:play','topic:game-theory','topic:narrative-design',
-    'method:story-scaffold',
-    'level:intermediate',
-    'use:motivation','use:adhd','use:routine','use:habit-building','use:executive-function','use:therapy'
-  ],
+  kind: 'framework',
+  categories: [ 'creativity', 'storytelling frameworks', 'ideation', 'self-reflection' ],
+  tags: [ 'use:pattern', 'topic:clarification', 'phase:apply', 'use:storytelling', 'level:intermediate', 'use:evaluation', 'use:ad-copy', 'topic:prompting', 'use:healing', 'use:ideation', 'use:goals' ],
   use_cases: [
     'Transform chores or tasks into engaging quests through narrative play.',
     'Help neurodivergent individuals overcome task resistance by reframing them as heroic missions.',
@@ -11215,12 +10877,9 @@ template: ({
   id: 'time_machine',
   slug: 'time-machine-perspectives',
   label: 'Time Machine Advice — Past Self & Future Self',
-  kind: 'pattern',
-  categories: ['self-reflection', 'planning'],
-  tags: [
-    'type:pattern','topic:future-self','topic:reflection','level:beginner',
-    'use:life-choices','use:personal-growth','use:perspective'
-  ],
+  kind: 'strategy',
+  categories: [ 'self-reflection', 'planning' ],
+  tags: [ 'use:pattern', 'topic:future-self', 'use:ideation', 'level:beginner', 'topic:clarification', 'use:goals', 'use:decision-making' ],
   use_cases: [
     'gain wisdom on a current challenge by imagining advice from your younger and older self',
     'practice self-compassion by viewing your situation through the eyes of a past you and a future you',
@@ -11251,12 +10910,9 @@ template: ({
   id: 'mind_map',
   slug: 'mind-map-outline',
   label: 'Mind Map — Central Idea with Branches',
-  kind: 'framework',
-  categories: ['creativity', 'analysis'],
-  tags: [
-    'type:framework','topic:mind-mapping','topic:nonlinear','level:beginner',
-    'use:brainstorm','use:note-taking','use:idea-organization'
-  ],
+  kind: 'strategy',
+  categories: [ 'creativity', 'analysis frameworks' ],
+  tags: [ 'type:framework', 'use:decision-making', 'use:healing', 'level:beginner', 'use:brainstorm', 'use:ideation' ],
   use_cases: [
     'quickly brainstorm and organize ideas around a central topic in a visual hierarchy (textually represented)',
     'generate an outline of subtopics and details for a broad subject',
@@ -11293,6 +10949,229 @@ template: ({
 
 
   ];
+  
+  ;(() => {
+  // 1) Canonical schema (keep this small and opinionated)
+  const TAG_SCHEMA = {
+    type:   ['framework','pattern','task','helper','heuristic','strategy','method'],
+    use:    ['ideation','copywriting','presentations','evaluation','decision-making','process-improvement','task-brief','content','teaching','prioritization','workshop','problem-framing','iteration','goals','ad-copy','scope-management','format-guidance','healing','coding'],
+    phase:  ['explore','define','ideate','plan','compose','apply','evaluate','review','prioritize','troubleshoot','debug','premortem','compare','decide'],
+    level:  ['beginner','intermediate','advanced'],
+    topic:  ['prompting','debiasing','logic','ethics','psychology','education','design','reasoning','philosophy','storytelling','matrix','values','future-self'],
+    format: ['checklist','table','matrix','outline','plan','recipe','map','tree'],
+    aud:    [] // optional audience/persona facet
+  };
+
+  // 2) Alias map → collapses singletons to canon
+  const TAG_ALIASES = new Map([
+    // namespaces
+    ['phase:evaluate/review','phase:evaluate'],
+    ['phase:compare/decide','phase:compare'], // you’ll still have a compare→decide step in UI
+    ['phase:premortem','phase:premortem'],
+    ['use:ad copy','use:ad-copy'],
+    ['use:pattern','use:iteration'], // or route to 'use:process-improvement' if that’s truer for your set
+    ['topic:matrix','format:matrix'], // matrix is a format, not a topic
+    // common slips
+    ['use:task-brief','use:task-brief'],
+    ['use:message-brief','use:task-brief'],
+    ['use:process improvement','use:process-improvement'],
+    ['phase:apply','phase:apply'],
+    // kebab/case normalizations happen below too
+  ]);
+
+  // 3) Helpers
+  const kebab = s => String(s||'').trim().toLowerCase().replace(/\s+/g,'-');
+  const normTag = t => {
+    if (!t) return null;
+    let v = kebab(t);
+    if (TAG_ALIASES.has(v)) v = TAG_ALIASES.get(v);
+    return v;
+  };
+  const parseTag = t => {
+    const v = normTag(t);
+    const m = v && v.match(/^([^:]+):(.+)$/);
+    return m ? { ns: m[1], val: m[2] } : null;
+  };
+
+  // 4) Build faceted view + counts + backfill from kind/categories
+  const SRC = (window.TEMPLATES || window.FRAMEWORKS || []).filter(Boolean);
+  const INDEX = { all: new Map(), byNS: new Map() };
+
+  function addCount(tag){
+    const v = normTag(tag);
+    if (!v) return;
+    INDEX.all.set(v, 1 + (INDEX.all.get(v)||0));
+    const { ns, val } = parseTag(v) || {};
+    if (!ns || !val) return;
+    if (!INDEX.byNS.has(ns)) INDEX.byNS.set(ns, new Map());
+    const nsMap = INDEX.byNS.get(ns);
+    nsMap.set(val, 1 + (nsMap.get(val)||0));
+  }
+
+  // Pass 1: count existing tags
+  for (const t of SRC){
+    (t.tags||[]).forEach(addCount);
+  }
+
+  // Utility: gently map categories/kind into tags if missing
+  function deriveTagsFromMeta(t){
+    const out = new Set(t.tags?.map(normTag).filter(Boolean) || []);
+    // from kind → type
+    if (t.kind && ![...out].some(x=>/^type:/.test(x))){
+      const typeGuess = kebab(t.kind); // framework, pattern, task, helper...
+      out.add(`type:${typeGuess}`);
+    }
+    // from categories → topic (conservative: only take simple words)
+    for (const c of (t.categories||[])){
+      const val = kebab(c).replace(/[^a-z0-9\-]+/g,'-');
+      if (val && !val.includes('storytelling frameworks')) { // sample guard for noisy category
+        // choose topic or format by heuristic
+        if (['matrix','table','checklist','outline','map','tree'].includes(val)) out.add(`format:${val}`);
+        else out.add(`topic:${val}`);
+      }
+    }
+    return [...out];
+  }
+
+  // Pass 2: normalize + facet each template
+  const FACETED = SRC.map(t => {
+    const raw = (t.tags||[]).map(normTag).filter(Boolean);
+    const withMeta = new Set([...raw, ...deriveTagsFromMeta(t)]);
+    const facets = { type:null, use:[], phase:[], level:null, topic:[], format:[], aud:[] };
+
+    for (const tag of withMeta){
+      const p = parseTag(tag);
+      if (!p) continue;
+      const ns = p.ns, val = p.val;
+      if (ns === 'type' && TAG_SCHEMA.type.includes(val)) facets.type = val;
+      else if (ns === 'level' && TAG_SCHEMA.level.includes(val)) facets.level = val;
+      else if (ns in TAG_SCHEMA) {
+        const arr = facets[ns];
+        if (Array.isArray(arr)) {
+          if (!arr.includes(val)) arr.push(val);
+        }
+      }
+      // keep counting after aliasing
+      addCount(tag);
+    }
+
+    // Minimal guarantees
+    if (!facets.type && t.kind) facets.type = kebab(t.kind);
+    if (!facets.level) facets.level = 'beginner'; // default you can change
+
+    return { ...t, facets, tags_normalized: [...new Set(Object.entries(facets)
+        .flatMap(([ns, v]) => Array.isArray(v) ? v.map(x=>`${ns}:${x}`) : (v? [`${ns}:${v}`]:[])))] };
+  });
+
+  // 5) Public API for UI and external pages
+  window.TagAPI = {
+    // Backwards compatibility: original list
+    getTemplatesRaw: () => SRC,
+
+    // New faceted view (don’t mutate)
+    getTemplatesFaceted: () => FACETED,
+
+    // Simple grouped options: "namespace" header + values (sorted by count)
+    getDropdownModel: () => {
+      const out = [];
+      for (const ns of ['type','use','phase','level','topic','format']) {
+        const nsMap = INDEX.byNS.get(ns);
+        if (!nsMap) continue;
+        const items = [...nsMap.entries()]
+          .sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]))
+          .map(([val,count]) => ({ ns, val, count, tag:`${ns}:${val}` }));
+        if (items.length) out.push({ namespace: ns, items });
+      }
+      return out;
+    },
+
+    // Handy counts for audits
+    getCounts: () => ({
+      byTag: Object.fromEntries([...INDEX.all.entries()].sort((a,b)=>b[1]-a[1])),
+      byNamespace: Object.fromEntries(
+        [...INDEX.byNS.entries()].map(([ns, m]) => [ns, Object.fromEntries(m.entries())])
+      ),
+      singletons: [...INDEX.all.entries()].filter(([,n])=>n===1).map(([k])=>k)
+    })
+  };
+
+  // 6) Gentle log so you can spot problems without breaking anything
+  console.groupCollapsed('%cTagAPI ready','color:#0b7');
+  const counts = window.TagAPI.getCounts();
+  console.log('Singletons (fix or alias these):', counts.singletons.slice(0,50), counts.singletons.length>50?'…':'');
+  console.log('Facets preview:', window.TagAPI.getTemplatesFaceted().slice(0,3));
+  console.groupEnd();
+})();
+  
+  // === Canonicalize tags & categories (runs once on load) ===
+// Purpose: merge near-duplicates (e.g., debiasing → bias), normalize separators/case,
+// and dedupe. Works for namespaced tags like "topic:debiasing" → "topic:bias".
+(function normalizeTaxonomy(list){
+  // Expandable alias groups. Left side = canonical form; right side = regexes to match variants.
+  const ALIASES = {
+    bias: [
+      /^bias$/, /^biased$/, /^bias-?check(s)?$/, /^fair(ness)?-?check(s)?$/,
+      /^de-?bias(ing|e)?$/, /^unbias(ing|ed)?$/, /^bias-?mitigation$/, /^mitigate-?bias$/i
+    ],
+    brainstorming: [
+      /^brainstorm(ing)?$/, /^ideation$/, /^idea[-\s]?organization$/, /^mind[-\s]?map(ping)?$/i
+    ],
+    accessibility: [
+      /^a11y$/, /^accessibility$/, /^inclusive[-\s]?design$/, /^universal[-\s]?design$/, /^wcag$/i
+    ],
+    privacy: [
+      /^privacy$/, /^data[-\s]?privacy$/, /^pii$/, /^gdpr$/, /^ccpa$/i
+    ],
+    safety: [
+      /^safety$/, /^trust[-\s]?and[-\s]?safety$/, /^content[-\s]?safety$/, /^guardrails?$/, /^risk$/i
+    ],
+    analysis: [/^analysis$/, /^analytical$/, /^analyses$/i],
+    planning: [/^planning$/, /^plan$/, /^roadmap(ping)?$/, /^prioritization$/i],
+    teaching: [/^teaching$/, /^education$/, /^learning$/, /^pedagogy$/, /^tutorial$/i],
+    debugging: [/^debug(ging)?$/, /^troubleshoot(ing)?$/, /^bugfix(ing)?$/, /^fix$/i],
+    evaluation: [/^eval(uation|s)?$/, /^assessment$/, /^measure(ment)?$/i],
+  };
+
+  // Keep namespace (e.g., "topic:"/"use:"/"level:"), clean the value.
+  function canonOne(raw) {
+    if (!raw) return null;
+    const s = String(raw).trim();
+    let ns = '', val = s;
+
+    // Split "ns:value" if present
+    const m = s.match(/^([a-z]+)\s*:\s*(.+)$/i);
+    if (m) { ns = m[1].toLowerCase(); val = m[2]; }
+
+    // Normalize separators & case on value
+    let v = String(val).replace(/[_.]/g, '-').replace(/\s+/g, '-').replace(/[–—]/g, '-')
+      .toLowerCase().replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+    // Try alias groups
+    outer: for (const [canon, patterns] of Object.entries(ALIASES)) {
+      for (const re of patterns) { if (re.test(v)) { v = canon; break outer; } }
+    }
+
+    // Recombine with namespace (if there was one)
+    return ns ? `${ns}:${v}` : v;
+  }
+
+  function canonList(arr) {
+    if (!Array.isArray(arr)) return [];
+    const seen = new Set();
+    const out = [];
+    for (const t of arr.map(canonOne).filter(Boolean)) {
+      if (!seen.has(t)) { seen.add(t); out.push(t); }
+    }
+    return out;
+  }
+
+  for (const t of list) {
+    if (t && Array.isArray(t.tags))       t.tags       = canonList(t.tags);
+    if (t && Array.isArray(t.categories)) t.categories = canonList(t.categories);
+  }
+})(TEMPLATES);
+// === End taxonomy normalization ===
+
 
   // === Lightweight search hooks (optional) ===
   // Mirrors how the app scores matches (label/slug/defs/tags/categories/use_cases/boosters/fields)
@@ -11314,3 +11193,5 @@ template: ({
   // 4) Node/CommonJS convenience (harmless in browser)
   if (typeof module !== 'undefined') module.exports = TEMPLATES;
 })(typeof window !== 'undefined' ? window : globalThis);
+
+
