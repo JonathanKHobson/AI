@@ -1121,17 +1121,48 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 <div id="toast" class="toast" aria-live="polite" hidden></div>
 
+
+<script>
+(function(){
+  // Bump this on every deploy where data/labels/kinds change
+  const APP_VERSION = '2025-09-17-3';
+  const KEY = 'pb.version';
+  try {
+    const prev = localStorage.getItem(KEY);
+    if (prev !== APP_VERSION) {
+      // Purge localStorage keys used by Prompt Builder
+      const kill = [/^pb[._-]/i, /promptbuilder/i, /session/i, /template/i, /framework/i, /tasks/i];
+      for (const k in localStorage) {
+        if (kill.some(rx => rx.test(k))) localStorage.removeItem(k);
+      }
+      localStorage.setItem(KEY, APP_VERSION);
+
+      // Best-effort: clear Cache API + unregister stray SWs (if any)
+      if (window.caches && caches.keys) {
+        caches.keys().then(ns => Promise.all(ns.map(n => caches.delete(n)))).catch(()=>{});
+      }
+      if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+        navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())).catch(()=>{});
+      }
+    }
+    // expose for later use if you want
+    window.APP_VERSION = APP_VERSION;
+  } catch(e) {}
+})();
+</script>
+
   
-  <script src="./templates.data.js"></script>
-  <script src="./glossary.data.js"></script>
+<script src="./templates.data.js?v=2025-09-17-3"></script>
+<script src="./glossary.data.js?v=2025-09-17-3"></script>
+
   
     <script>
   // Frameworks DB (window.FRAMEWORKS) — safe to load even if absent
   (function tryLoadFrameworks(){
-    const s = document.createElement('script');
-    s.src = './templates.data.js';
-    s.onerror = ()=>console.info('Template data not found at ./template.data.js.');
-    document.head.appendChild(s);
+const s = document.createElement('script');
+s.src = './templates.data.js?v=' + APP_VERSION;
+s.onerror = ()=>console.info('Template data not found at ./template.data.js.');
+document.head.appendChild(s);
   })();
 </script>
 
@@ -1141,7 +1172,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     // the glossary may be at /AI/glossary/glossary.data.js. We try to load it dynamically.
     (function tryLoadGlossary(){
       const s = document.createElement('script');
-      s.src = './glossary.data.js';
+     s.src = './glossary.data.js?v=' + APP_VERSION;
       s.onerror = ()=>console.info('Glossary not found at ./glossary/glossary.data.js — continuing without it.');
       document.head.appendChild(s);
     })();
@@ -1151,7 +1182,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   // Personas DB (window.PERSONAS) — safe to load even if absent
   (function tryLoadPersonas(){
     const s = document.createElement('script');
-    s.src = './persona.data.js';
+    s.src = './persona.data.js?v=' + APP_VERSION;
     s.onerror = ()=>console.info('Persona data not found at ./persona.data.js — typeahead will still allow free text.');
     document.head.appendChild(s);
   })();
@@ -1179,27 +1210,65 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       // Light fallbacks for common naming/paths
       if (!final) {
         const next = (path === './bias.data.js')
-          ? './biases.data.js'
+          ? './biases.data.js?v=' + APP_VERSION
           : (path === './biases.data.js')
-            ? './biased.data.js'
+            ? './biased.data.js?v=' + APP_VERSION
             : null;
         if (next) { inject(next); return; }
       }
     };
     document.head.appendChild(s);
   }
-  inject('./bias.data.js');
+  inject('./bias.data.js?v=' + APP_VERSION);
 })();
 </script>
 
 
 
 <script>
+
+
+// ---- Version & cache hygiene ----
+const APP_VERSION = '2025-09-17-1'; // bump on each deploy
+ensureFreshVersion();
+
+function purgeAllLocalData() {
+  try {
+    // Nuke known Prompt Builder keys (adjust prefixes if yours differ)
+    const kill = [/^pb[._-]/i, /promptbuilder/i, /session/i, /template/i, /framework/i, /tasks/i];
+    for (const k of Object.keys(localStorage)) {
+      if (kill.some(rx => rx.test(k))) localStorage.removeItem(k);
+    }
+  } catch(_) {}
+
+  // Best-effort: clear HTTP caches (works even without a SW)
+  if (window.caches && caches.keys) {
+    caches.keys().then(names => Promise.all(names.map(n => caches.delete(n)))).catch(()=>{});
+  }
+  // Best-effort: unregister any stray service workers that might be caching files
+  if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+    navigator.serviceWorker.getRegistrations()
+      .then(regs => regs.forEach(r => r.unregister()))
+      .catch(()=>{});
+  }
+}
+
+// Call at startup: if version changed, wipe & set new version
+function ensureFreshVersion() {
+  const KEY = 'pb.version';
+  const prev = localStorage.getItem(KEY);
+  if (prev !== APP_VERSION) {
+    purgeAllLocalData();
+    localStorage.setItem(KEY, APP_VERSION);
+  }
+}
+
+
 // S4 — Lazy loader for tasks dataset (window.TASK_TEMPLATES)
 function ensureTasksLoaded(onready){
   if (Array.isArray(window.TASK_TEMPLATES)) { onready && onready(); return; }
   const s = document.createElement('script');
-  s.src = './templates.tasks.data.js';
+  s.src = './templates.tasks.data.js?v=' + APP_VERSION;;
   s.onload  = ()=> onready && onready();
   s.onerror = ()=> { console.info('Tasks dataset not found at ./templates.tasks.data.js'); onready && onready(); };
   document.head.appendChild(s);
@@ -4861,18 +4930,30 @@ if (keys.length){
     }
 
 function ctxStringFromTab(t){
+  // Live DOM is authoritative to avoid “ghost” values from stale saved state.
   const c = (t && t.common) || {};
-  const u = (c.ctx||'').trim();
-  const a = (c.audience||'').trim();
-  const s = (c.style||'').trim();
-  const tn = (c.tone||'').trim();
-  const bits=[];
-  if(u) bits.push(`Use-case: ${u}`);
-  if(a) bits.push(`Audience: ${a}`);
-  if(s) bits.push(`Style: ${s}`);
-  if(tn) bits.push(`Tone: ${tn}`);
+  const pick = (id, fb='')=>{
+    const el = document.getElementById(id);
+    // If the input exists, use exactly what the user sees (including blank)
+    if (el) return (el.value || '').trim();
+    // Fallback to saved state only if the field doesn’t exist in DOM
+    return (fb || '').trim();
+  };
+
+  const u  = pick('usecase',  c.ctx);
+  const a  = pick('audience', c.audience);
+  const s  = pick('style',    c.style);
+  const tn = pick('tone',     c.tone);
+
+  const bits = [];
+  if (u)  bits.push(`Use-case: ${u}`);
+  if (a)  bits.push(`Audience: ${a}`);
+  if (s)  bits.push(`Style: ${s}`);
+  if (tn) bits.push(`Tone: ${tn}`);
+
   return bits.join(' | ');
 }
+
 
 function emit(){
   emitAll();
