@@ -269,6 +269,18 @@
   display:flex; gap:8px; margin:8px 0 0;
   align-items:center; flex-wrap:wrap;
 }
+
+/* Bottom stepper hint */
+.step-hint{
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .field-nav .spacer{ flex:1; }
 
 
@@ -312,6 +324,14 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 
 .desc{
+  color:var(--muted);
+  font-size:12px;       /* smaller than label */
+  line-height:1.35;
+  margin-top:6px;
+  opacity:0.8;            /* a bit stronger than .help so it reads clearly */
+}
+
+.titledesc{
   color:var(--muted);
   font-size:13px;       /* smaller than label */
   line-height:1.35;
@@ -398,6 +418,13 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 /* Output deck */
 #outDeck{ display:flex; flex-direction:column; gap:12px; margin-top:12px; }
+/* Ensure hidden really hides regardless of author styles */
+#outDeck[hidden],
+#deckLabel[hidden],
+.tabs[hidden],
+[hidden]{
+  display: none !important;
+}
 .outCard{
   border:1px solid var(--border); border-radius:var(--radius); background:var(--card);
   padding:10px 12px;
@@ -743,24 +770,38 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 
 /* More breathing room between chips and search */
-#datasetChips { margin: 6px 0 10px; }
+#kindChips{ margin: 6px 0 10px; }
 
 /* Chips: readable in dark mode when not selected */
-#datasetChips .chip {
+#kindChips .chip {
   background: var(--chip);
   color: var(--text);
   border: 1px solid var(--border);
 }
-#datasetChips .chip[aria-pressed="true"] {
+#kindChips .chip[aria-pressed="true"] {
   background: var(--accent);
-  color: #061422;                 /* dark text on accent */
+  color: #061422;
 }
-:root[data-theme="light"] #datasetChips .chip[aria-pressed="true"]{
-  color: #fff;                    /* light theme: white text on accent */
+:root[data-theme="light"] #kindChips .chip[aria-pressed="true"]{
+  color: #fff;
 }
 
 :root[data-theme="light"] .btn.danger{ background: var(--red); color:#fff; }
 :root[data-theme="dark"]  .btn.danger{ background: var(--red); color:#fff; }
+
+/* Extra UI helpers */
+.extraHelpers{
+  display:flex; gap:10px; align-items:center; margin:6px 0 0;
+  font-size:12px; color:var(--muted);
+}
+.extraHelpers .restore{
+  background:none; border:none; padding:0; cursor:pointer;
+  color:var(--accent); text-decoration:underline; font-size:12px;
+}
+
+/* Subhead without left padding (use with class="subhead no-pad") */
+.subhead.no-pad { padding-left: 0; }
+
 
 
     @media (max-width: 960px){
@@ -796,13 +837,25 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
       
       <section>
-        <label for="frameworkSel">Templates</label>
-        
-        <div id="datasetChips" class="chips" role="toolbar" aria-label="Template sets">
-  <button class="chip" id="chipPatterns" aria-pressed="true"  type="button" title="Frameworks & patterns">Patterns</button>
-<button class="chip" id="chipTasks"    aria-pressed="false" type="button" title="Task-specific templates (preview)">Tasks</button>
-
+    
+    <div id="pickerHeader" style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
+    <h3 style="margin:0; font-size:14px">Pick a Template</h3>
+    <button id="pickerToggle" class="btn sm" type="button"
+          aria-expanded="true" aria-controls="pickerBody" title="Hide template picker">Hide</button>
 </div>
+<!-- Collapsible picker body (default: shown) -->
+<div id="pickerBody">
+
+
+        
+<div id="kindChips" class="chips" role="toolbar" aria-label="Kinds"></div>
+<input type="hidden" id="filterKind" value="__all__" />
+ <div id="setstHelp" class=".titledesc">
+    Search Bar
+    <div id="finderHelp" class="desc" style="margin:6px 0 8px">
+  Type to filter the <b>dropdown list below</b>.
+  </div>
+  </div>
         
 <div id="finderBar" class="finder">
   <input id="fwSearch" type="text" placeholder="Find a template by name, tag, or use case… (Ctrl/Cmd+K)">
@@ -812,21 +865,19 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <button id="fwAll" type="button" class="btn tiny" title="Show full list">All</button>
 </div>
 <div id="finderHelp" class="desc" style="margin:6px 0 8px">
-  Type to filter the <b>dropdown list below</b>.
-</div>
-
-<button id="filtersToggle" class="filtersToggle" type="button"
+  <button id="filtersToggle" class="filtersToggle" type="button"
         aria-expanded="false" aria-controls="filtersWrap">
   <span class="chev">▸</span><span>More filters</span>
 </button>
+</div>
+
+
 
 <div id="filtersWrap" hidden>
   <div class="filtersRow">
     <div>
-      <label for="filterKind">Kind</label>
-      <select id="filterKind">
-        <option value="__all__">All kinds</option>
-      </select>
+<label for="filterTag">Tag</label>
+<select id="filterTag"></select>
     </div>
     <div>
       <label for="filterCategory">Category</label>
@@ -839,76 +890,99 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 
 
-
-
-<select id="frameworkSel" aria-label="Search results: templates list"></select>
-<div class="pickerHelp">
-  <div id="fwListHelp" class="desc">
+ <div id="setstHelp" class=".titledesc">
+    All Matches
+   <div id="fwListHelp" class="desc">
     This dropdown shows matching templates. Click to open it, then pick one.
   </div>
+  </div>
+<select id="frameworkSel" aria-label="Search results: templates list"></select>
+<div class="pickerHelp">
+
   <div id="fwHelp" class="help" aria-live="polite"></div>
 </div>
-
+</div>
 
       </section>
+      
+      
 
       <section>
       
-      <!-- Hidden until >1 template -->
+ 
       
       <div class="help"><br>Fill in the template below. Only fill what helps. Empty fields are omitted in the prompt.</div>
 
-      
-<div id="tabbar" class="tabs" hidden></div>
 
 
-        <h3 style="margin:0 0 6px;font-size:14px">Common context (optional)</h3>
-        <div class="row">
-          <div>
-            <label for="usecase">Use‑case / scenario</label>
-            <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
-          </div>
-          <div>
-<label for="audience">Audience</label>
-<div id="audienceChipsWrap" class="chipsInput">
-  <div id="audienceChips" class="chips"></div>
-  <input id="audience" type="text"
-         placeholder="e.g., Busy SMB owners"
-         autocomplete="off" data-typeahead="persona" />
+
+      <!-- Common context header + toggle -->
+<div id="commonCtxHeader" style="display:flex; align-items:center; gap:8px; margin:0 0 6px">
+  <h3 style="margin:0; font-size:14px">Common context (optional)</h3>
+  <button id="commonCtxToggle" class="btn sm" type="button" aria-expanded="false" aria-controls="commonCtxBody" title="Show common context">Show</button>
 </div>
-<div id="audienceSuggestions" class="ta-menu" hidden></div>
+<div class="help" id="commonCtxScopeHelp" aria-live="polite">
+  Not part of the template’s fields. Optional context for this prompt (each tab has its own).
+</div>
 
-          </div>
+<!-- Collapsible body (hidden by default) -->
+<div id="commonCtxBody" hidden>
+  <div class="row">
+    <div>
+      <label for="usecase">Use-case / scenario</label>
+      <input id="usecase" type="text" placeholder="e.g., Launch email for a new service" />
+    </div>
+    <div>
+      <label for="audience">Audience</label>
+      <div id="audienceChipsWrap" class="chipsInput">
+        <div id="audienceChips" class="chips"></div>
+        <input id="audience" type="text"
+               placeholder="e.g., Busy SMB owners"
+               autocomplete="off" data-typeahead="persona" />
+      </div>
+      <div id="audienceSuggestions" class="ta-menu" hidden></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="style">Style</label>
+      <input id="style" type="text" placeholder="e.g., Practical, plain language" />
+    </div>
+    <div>
+      <label for="tone">Tone</label>
+      <input id="tone" type="text" placeholder="e.g., Friendly, confident" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="grid-column:1/-1">
+      <div id="biasCtx" class="field">
+        <label for="biasInput">Bias awareness &amp; mitigation</label>
+        <div id="biasChipsWrap" class="chipsInput">
+          <div id="biasChips" class="chips"></div>
+          <input id="biasInput" type="text" placeholder="Type to add biases, tactics, or dilemmas…" autocomplete="off" />
         </div>
-        <div class="row">
-          <div>
-            <label for="style">Style</label>
-            <input id="style" type="text" placeholder="e.g., Practical, plain language" />
-          </div>
-          <div>
-            <label for="tone">Tone</label>
-            <input id="tone" type="text" placeholder="e.g., Friendly, confident" />
-          </div>
-        </div>
-        
-                <div class="row">
-          <div style="grid-column:1/-1">
-          <div id="biasCtx" class="field">
-            <label for="biasInput">Bias awareness &amp; mitigation</label>
-            <div id="biasChipsWrap" class="chipsInput">
-              <div id="biasChips" class="chips"></div>
-              <input id="biasInput" type="text" placeholder="Type to add biases, tactics, or dilemmas…" autocomplete="off" />
-            </div>
-            <div id="biasSuggestions" class="ta-menu" hidden></div>
-            <div class="help">Add biases to avoid, mitigation tactics to apply, or ethical dilemmas to consider. We’ll adapt the prompt accordingly.</div>
-          </div>
-          </div>
-        </div>
+        <div id="biasSuggestions" class="ta-menu" hidden></div>
+        <div class="help">Add biases to avoid, mitigation tactics to apply, or ethical dilemmas to consider. We’ll adapt the prompt accordingly.</div>
+      </div>
+    </div>
+  </div>
+</div>
         
       </section>
 
 <section>
-  <h3 id="fieldsHeader" style="margin:0 0 6px;font-size:14px">Template fields</h3>
+<!-- Fields header + toggle -->
+<div id="fieldsHeaderRow" style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
+  <h3 id="fieldsHeader" style="margin:0;font-size:14px">Template fields</h3>
+  <button id="fieldsToggle" class="btn sm" type="button"
+          aria-expanded="true" aria-controls="fieldsBody" title="Hide template fields">Hide</button>
+</div>
+
+<!-- Collapsible fields body (default: shown) -->
+<div id="fieldsBody">
+
 
  <!-- Guided mode progress (hidden until step mode) -->
 <div id="fieldProgressMeta" class="progressMeta" aria-live="polite" hidden>
@@ -921,18 +995,27 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <div id="fieldProgressBar" class="bar" style="width:0%"></div>
 </div>
 
-  <!-- The fields panel (we'll slice these in JS when guided) -->
+    <!-- The fields panel (we'll slice these in JS when guided) -->
   <div id="fields"></div>
+
+  <!-- Stepper hint (only in guided mode and not on last page) -->
+  <div id="fieldStepHint" class="step-hint" aria-live="polite" hidden>
+    More fields ahead — continue with <strong>Next</strong>.
+  </div>
 
   <!-- Step controls (hidden until step mode) -->
   <div id="fieldNav" class="field-nav" hidden>
     <button id="fieldBack" class="btn sm" type="button" title="Previous">← Back</button>
-    <button id="fieldNext" class="btn sm" type="button" title="Next">Next →</button>
+    <button id="fieldNext" class="btn primary sm" type="button" title="Next">Next →</button>
     <span class="spacer"></span>
     <button id="fieldShowAll" class="btn sm" type="button" title="Show every field at once">Show all</button>
   </div>
+  
+   <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
 
-  <div class="help"><br> Only fill what helps. Empty fields are omitted in the prompt.</div>
+<!-- Additional instructions mount (content is rendered by JS) -->
+<div id="extraWrap" class="field" hidden></div>
+
 
   <!-- Secondary quick actions: mirrors header actions -->
   <div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
@@ -940,6 +1023,8 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     <button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
     <button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
     <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
+  </div>
+  
   </div>
 </section>
 
@@ -967,7 +1052,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 <button id="openAllBtnFooter" class="btn primary sm" data-action="open-all">💬 Ask ChatGPT</button>
 </div>
 
-<div id="deckLabel" class="areaLabel" hidden><span class="dot"></span><span>Output deck • All templates</span></div>
+<div id="deckLabel" class="areaLabel" hidden><span class="dot"></span><span>Output deck • All prompts</span></div>
 
 
 
@@ -1119,6 +1204,234 @@ function ensureTasksLoaded(onready){
   s.onerror = ()=> { console.info('Tasks dataset not found at ./templates.tasks.data.js'); onready && onready(); };
   document.head.appendChild(s);
 }
+
+/* === Unified templates adapter + FIND shim (add below the function) === */
+function getAllTemplates(){
+  // Accept several common globals so we never return []
+  const A = (Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS :
+            (Array.isArray(window.TEMPLATES)  ? window.TEMPLATES  :
+            (Array.isArray(window.templates)  ? window.templates  : [])));
+
+  const B = (Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES :
+            (Array.isArray(window.tasks)          ? window.tasks          : []));
+
+  const normalize = (t, fallbackKind) => {
+    const kind = (t.kind || fallbackKind || 'framework').toString().trim().toLowerCase();
+    // normalize category/categories onto .categories for matching
+    const cats = Array.isArray(t.categories) ? t.categories :
+                 (t.category ? [t.category] : []);
+    return { ...t, kind, categories: cats };
+  };
+
+  const fw = A.map(t => normalize(t, 'framework'));
+  const tk = B.map(t => normalize(t, 'task'));
+  return [...fw, ...tk];
+}
+
+function uniqueKinds(){
+  const set = new Set(getAllTemplates().map(t => (t.kind || 'framework')));
+  return [...set].sort((a,b)=> String(a).localeCompare(String(b)));
+}
+function uniqueCategories(){
+  const cats = new Set();
+  for (const t of getAllTemplates()){
+    const c = Array.isArray(t.categories) ? t.categories : [];
+    c.forEach(x => cats.add(String(x)));
+  }
+  return [...cats].sort((a,b)=> String(a).localeCompare(String(b)));
+}
+
+// --- Tag grouping (namespace:value → grouped, ordered, de-duped) ---
+function collectAllTags(){
+  const all = (typeof getAllTemplates === 'function') ? getAllTemplates() : (window.TEMPLATES || window.FRAMEWORKS || []);
+  const tags = new Set();
+  for (const t of all){
+    (t.tags || []).forEach(x => { if (x && typeof x === 'string') tags.add(x.trim()); });
+  }
+  return [...tags];
+}
+
+function groupTagsByNamespace(){
+  const raw = collectAllTags();
+  const map = new Map(); // ns -> Set(values)
+  for (const tag of raw){
+    const m = String(tag).split(':');
+    const ns = (m[0] || 'misc').toLowerCase().trim();
+    const val = (m[1] || m[0] || '').toLowerCase().trim();
+    if (!map.has(ns)) map.set(ns, new Set());
+    if (val) map.get(ns).add(val);
+  }
+
+  // priority order for namespaces; unknowns follow alphabetically
+  const order = ['topic','type','phase','level','use'];
+  const rest = [...map.keys()].filter(ns => !order.includes(ns)).sort((a,b)=>a.localeCompare(b));
+
+  const ordered = [...order, ...rest].filter(ns => map.has(ns));
+  return ordered.map(ns => ({
+    ns,
+    values: [...map.get(ns)].sort((a,b)=> a.localeCompare(b))
+  }));
+}
+
+// Build chips from actual kinds in data (e.g., framework, pattern, task, helper, etc.)
+function renderKindChips(){
+  const wrap = document.getElementById('kindChips');
+  if (!wrap) return;
+  const kinds = (typeof uniqueKinds === 'function') ? uniqueKinds() : [];
+  const current = (document.getElementById('filterKind')?.value) || '__all__';
+
+  // Always add an "All" chip first
+  const chips = ['__all__', ...kinds];
+
+  wrap.innerHTML = chips.map(k=>{
+    const label = (k === '__all__') ? 'All' : k[0].toUpperCase() + k.slice(1);
+    const pressed = current === k;
+    return `<button class="chip" type="button" data-kind="${k}" aria-pressed="${pressed?'true':'false'}">${label}</button>`;
+  }).join('');
+
+  wrap.onclick = (e)=>{
+    const btn = e.target.closest('button[data-kind]');
+    if (!btn) return;
+    const k = btn.getAttribute('data-kind');
+
+    // sync hidden holder so filters can read it
+    const hidden = document.getElementById('filterKind');
+    if (hidden) hidden.value = k;
+
+    // toggle visuals
+    [...wrap.querySelectorAll('button[data-kind]')].forEach(b=>{
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+
+    // rebuild list with new kind filter
+    refreshTemplateList && refreshTemplateList();
+  };
+}
+
+// Populate Kind & Category selects from the unified list, then sync the chips
+function updateFilterOptions(){
+  const tagSel  = document.getElementById('filterTag');
+  const catSel  = document.getElementById('filterCategory');
+  const kindVal = document.getElementById('filterKind')?.value || '__all__';
+
+  // 1) Tags, grouped by namespace
+  if (tagSel){
+    const groups = groupTagsByNamespace();
+    const prev   = tagSel.value || '__all__';
+    let html = `<option value="__all__">All tags</option>`;
+    html += groups.map(g => {
+      const label = g.ns[0].toUpperCase() + g.ns.slice(1);
+      const opts  = g.values.map(v => `<option value="${g.ns}:${v}">${v}</option>`).join('');
+      return `<optgroup label="${label}">${opts}</optgroup>`;
+    }).join('');
+    tagSel.innerHTML = html;
+    const hasPrev = [...tagSel.options].some(o => o.value === prev);
+    tagSel.value = hasPrev ? prev : '__all__';
+  }
+
+  // 2) Categories (scoped to current kind chip)
+  if (catSel){
+    const all = (typeof getAllTemplates === 'function') ? getAllTemplates() : (window.TEMPLATES || window.FRAMEWORKS || []);
+    const curKind = (kindVal && kindVal !== '__all__') ? String(kindVal).toLowerCase() : null;
+    const set = new Set();
+    for (const t of all){
+      const k = String(t.kind || 'framework').toLowerCase();
+      if (curKind && k !== curKind) continue;
+      (t.categories || []).forEach(c => set.add(String(c)));
+    }
+    const prev = catSel.value || '__all__';
+    const cats = [...set].sort((a,b)=> String(a).localeCompare(String(b)));
+    catSel.innerHTML = `<option value="__all__">All categories</option>` + cats.map(c => `<option value="${c}">${c.replace(/-/g,' ')}</option>`).join('');
+    const hasPrev = [...catSel.options].some(o => o.value === prev);
+    catSel.value = hasPrev ? prev : '__all__';
+  }
+
+  // 3) (Re)render kind chips
+  if (typeof renderKindChips === 'function') renderKindChips();
+}
+
+// Decide if a template matches the current search + filters
+function templateMatches(t, q, kind, tagValue, catValue){
+  const qq = (q || '').trim().toLowerCase();
+
+  // text search across common fields
+  const qok = (() => {
+    if (!qq) return true;
+    const hay = [
+      t.label, t.slug, t.id,
+      (t.tags || []).join(' '),
+      (t.categories || []).join(' '),
+      (t.use_cases || []).join(' '),
+      (t.definition || ''), (t.help || ''),
+      ...((t.fields || []).flatMap(f => [f.label, f.desc, f.ph]))
+    ].filter(Boolean).join(' ').toLowerCase();
+    return hay.includes(qq);
+  })();
+
+  // kind (from chips via hidden #filterKind)
+  const kok = (kind && kind !== '__all__')
+    ? (String(t.kind || 'framework').toLowerCase() === String(kind).toLowerCase())
+    : true;
+
+  // tag exact match (namespace:value)
+  const tok = (tagValue && tagValue !== '__all__')
+    ? (t.tags || []).some(tag => String(tag).toLowerCase() === String(tagValue).toLowerCase())
+    : true;
+
+  // category match
+  const cok = (catValue && catValue !== '__all__')
+    ? (t.categories || []).map(String).some(c => c.toLowerCase() === String(catValue).toLowerCase())
+    : true;
+
+  return qok && kok && tok && cok;
+}
+
+
+
+function refreshTemplateList(){
+  const sel = document.getElementById('frameworkSel');
+  if (!sel) return;
+
+  const q    = document.getElementById('fwSearch')?.value || '';
+  const kind = document.getElementById('filterKind')?.value || '__all__';   // from chips
+  const tag  = document.getElementById('filterTag')?.value || '__all__';
+  const cat  = document.getElementById('filterCategory')?.value || '__all__';
+
+  const all  = (typeof getAllTemplates === 'function') ? getAllTemplates()
+              : (window.TEMPLATES || window.FRAMEWORKS || []);
+  const hits = all.filter(t => templateMatches(t, q, kind, tag, cat));
+
+  // “Showing N / M” hint
+  const hint = document.getElementById('fwHint');
+  if (hint){
+    hint.hidden = false;
+    hint.textContent = `Showing ${hits.length} / ${all.length}`;
+  }
+
+  sel.innerHTML = hits.map(t => {
+    const label = t.label || t.name || t.slug || t.id || 'Untitled';
+    const k     = t.kind ? ` • ${t.kind}` : '';
+    const val   = t.id || t.slug || label;
+    return `<option value="${val}">${label}${k}</option>`;
+  }).join('');
+
+  if (!sel.innerHTML){
+    sel.innerHTML = `<option disabled>(No matches)</option>`;
+  }
+}
+
+
+
+// Replace the older FIND with the unified one
+window.FIND = function(id){
+  const k = String(id||'').toLowerCase();
+  return getAllTemplates().find(t =>
+    String(t.id||'').toLowerCase()     === k ||
+    String(t.slug||'').toLowerCase()   === k ||
+    String(t.label||'').toLowerCase()  === k ||   // ← label support
+    String(t.title||'').toLowerCase()  === k      // (back-compat if any old items use title)
+  );
+};
 </script>
 
   <script>
@@ -1157,8 +1470,11 @@ const LS_KEYS = {
 // Clear all saved app data and reload
 function resetSavedSession(){
   try{
-    localStorage.removeItem(LS_KEYS.state);
-    localStorage.removeItem(LS_KEYS.ui);
+    if (typeof clearCommonContext === 'function') clearCommonContext();
+    localStorage.removeItem((LS_KEYS && LS_KEYS.state) || 'pb.v1.state');
+    localStorage.removeItem((LS_KEYS && LS_KEYS.ui)    || 'pb.v1.ui');
+    // also nuke any old per-field mirrors for good measure
+    ['usecase','audience','style','tone'].forEach(id=> localStorage.removeItem('fw_'+id));
   }catch(e){ console.warn('Reset failed:', e); }
   location.reload();
 }
@@ -1222,7 +1538,16 @@ function applySavedUI(){
       // optional label swap if your button shows "Light"/"Dark"
       const label = tbtn.querySelector('span:last-child');
       if (label) label.textContent = isLight ? 'Dark' : 'Light';
+        // Restore Common context collapsed state (default: collapsed/hidden)
+  const ccCollapsed = (ui && typeof ui.commonCollapsed === 'boolean') ? ui.commonCollapsed : true;
+  setCommonCtxCollapsed(ccCollapsed);
     }
+    // NEW: restore Picker + Fields collapsed state (defaults: expanded/shown)
+const pkCollapsed = (ui && typeof ui.pickerCollapsed === 'boolean') ? ui.pickerCollapsed : false;
+const fdCollapsed = (ui && typeof ui.fieldsCollapsed === 'boolean') ? ui.fieldsCollapsed : false;
+setPickerCollapsed(pkCollapsed);
+setFieldsCollapsed(fdCollapsed);
+
   }
   
 // NEW: restore preview hidden state
@@ -1280,8 +1605,18 @@ function saveUI(){
     const cols = wrap ? getComputedStyle(wrap).gridTemplateColumns : '';
     const leftW = cols ? cols.split(' ')[0] : getComputedStyle(document.documentElement).getPropertyValue('--leftW') || '360px';
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const previewHidden = !!(wrap && wrap.classList.contains('preview-hidden'));
-    localStorage.setItem(LS_KEYS.ui, JSON.stringify({ leftW, theme, previewHidden, ts: Date.now() }));
+    const commonCollapsed = !!(document.getElementById('commonCtxBody')?.hidden);
+    const previewHidden = !!(wrap && wrap.classList.contains('preview-hidden')); // <-- define BEFORE using
+     const pickerCollapsed = !!(document.getElementById('pickerBody')?.hidden);
+    const fieldsCollapsed = !!(document.getElementById('fieldsBody')?.hidden);
+
+    localStorage.setItem(LS_KEYS.ui, JSON.stringify({ leftW, theme,
+      previewHidden,
+      commonCollapsed,
+      pickerCollapsed,
+      fieldsCollapsed, 
+      ts: Date.now() 
+      }));
   }catch(e){
     console.warn('localStorage UI save failed:', e);
   }
@@ -1354,13 +1689,191 @@ if (legacyToggleBtn) legacyToggleBtn.addEventListener('click', togglePreview); /
   if (resizer){
     resizer.addEventListener('pointerup', saveUI);
     resizer.addEventListener('keyup',     saveUI);
+    
+      // Common context show/hide toggle
+  const ccToggle = document.getElementById('commonCtxToggle');
+  if (ccToggle){
+    ccToggle.addEventListener('click', ()=>{
+      const body = document.getElementById('commonCtxBody');
+      if (!body) return;
+      const collapsed = !body.hidden ? true : false; // flip
+      setCommonCtxCollapsed(collapsed);
+      saveUI();
+    });
+  }
+  
+  // Picker show/hide toggle
+const pickerToggle = document.getElementById('pickerToggle');
+if (pickerToggle){
+  pickerToggle.addEventListener('click', ()=>{
+    const body = document.getElementById('pickerBody');
+    if (!body) return;
+    const collapsed = !body.hidden ? true : false;
+    setPickerCollapsed(collapsed);
+    saveUI();
+  });
+}
+
+// Fields show/hide toggle
+const fieldsToggle = document.getElementById('fieldsToggle');
+if (fieldsToggle){
+  fieldsToggle.addEventListener('click', ()=>{
+    const body = document.getElementById('fieldsBody');
+    if (!body) return;
+    const collapsed = !body.hidden ? true : false;
+    setFieldsCollapsed(collapsed);
+    saveUI();
+  });
+}
+
+    
   }
   
     // Init Kind/Category options on load
   if (document.getElementById('filtersWrap')) updateFilterOptions();
+  
+  // === Unified search + filters wiring (uses refreshTemplateList) ===
+// === Unified search + filters wiring (uses refreshTemplateList) ===
+const fwSearch   = document.getElementById('fwSearch');
+const tagSel     = document.getElementById('filterTag');
+const catSel     = document.getElementById('filterCategory');
+const kindHidden = document.getElementById('filterKind');  // chips write here
+const allBtn     = document.getElementById('fwAll');
 
+fwSearch && fwSearch.addEventListener('input',  refreshTemplateList);
+tagSel   && tagSel.addEventListener('change',   refreshTemplateList);
+catSel   && catSel.addEventListener('change',   refreshTemplateList);
+
+allBtn && allBtn.addEventListener('click', ()=>{
+  if (fwSearch)   fwSearch.value = '';
+  if (tagSel)     tagSel.value   = '__all__';
+  if (catSel)     catSel.value   = '__all__';
+  if (kindHidden) kindHidden.value = '__all__';
+  if (typeof renderKindChips === 'function') renderKindChips();
+  refreshTemplateList();
+});
+
+  // Deck visibility: show only when there are 2+ tabs
+  updateDeckVisibility();
+
+  // Keep deck visibility synced with tab changes without touching your tab code
+  (function observeTabs(){
+    const tabbar = document.getElementById('tabbar');
+    if (!tabbar) return;
+    const mo = new MutationObserver(() => updateDeckVisibility());
+    mo.observe(tabbar, { childList: true }); // watch add/remove tab pills
+  })();
+
+
+
+// After the page is ready, make sure tasks are loaded, then (re)build filters & list
+ensureTasksLoaded(()=>{
+  try{
+    updateFilterOptions();   // will rewrite below
+    refreshTemplateList();   // will add below
+  }catch(_){}
+});
   
 });
+
+
+function setCommonCtxCollapsed(collapsed){
+  const body   = document.getElementById('commonCtxBody');
+  const toggle = document.getElementById('commonCtxToggle');
+  if (!body || !toggle) return;
+  body.hidden = !!collapsed;
+  toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  toggle.textContent = collapsed ? 'Show' : 'Hide';
+  toggle.title = collapsed ? 'Show common context' : 'Hide common context';
+}
+
+function setPickerCollapsed(collapsed){
+  const body   = document.getElementById('pickerBody');
+  const toggle = document.getElementById('pickerToggle');
+  if (!body || !toggle) return;
+  body.hidden = !!collapsed;
+  toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  toggle.textContent = collapsed ? 'Show' : 'Hide';
+  toggle.title = collapsed ? 'Show template picker' : 'Hide template picker';
+}
+
+function setFieldsCollapsed(collapsed){
+  const body   = document.getElementById('fieldsBody');
+  const toggle = document.getElementById('fieldsToggle');
+  if (!body || !toggle) return;
+  body.hidden = !!collapsed;
+  toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  toggle.textContent = collapsed ? 'Show' : 'Hide';
+  toggle.title = collapsed ? 'Show template fields' : 'Hide template fields';
+}
+
+
+function updateDeckVisibility(){
+  const deckLabel = document.getElementById('deckLabel');
+  const deck      = document.getElementById('outDeck');
+
+  // Prefer state.tabs if available; else infer from #tabbar children
+  let count = 0;
+  try {
+    if (state && Array.isArray(state.tabs)) {
+      // ignore any soft-deleted tabs if you use that pattern
+      count = state.tabs.filter(t => !t?._deleted).length;
+    } else {
+      const tabbar = document.getElementById('tabbar');
+      count = tabbar ? tabbar.children.length : 0;
+    }
+  } catch(_) {}
+
+  const show = count >= 2;
+
+  [deckLabel, deck].forEach(el => {
+    if (!el) return;
+    el.hidden = !show;
+    el.setAttribute('aria-hidden', String(!show));
+  });
+}
+
+
+// Clear Common context across UI + state (all tabs)
+function clearCommonContext(){
+  // 1) Clear visible inputs
+  const ids = ['usecase','audience','style','tone','biasInput'];
+  ids.forEach(id=>{
+    const el = document.getElementById(id);
+    if (el){ el.value = ''; el.classList.remove('filled'); }
+  });
+
+  // 2) Clear chips UI
+  const audienceChips = document.getElementById('audienceChips');
+  const biasChips     = document.getElementById('biasChips');
+  if (audienceChips) audienceChips.innerHTML = '';
+  if (biasChips)     biasChips.innerHTML     = '';
+
+  // 3) Clear per-tab Common context in state
+  try{
+    (state.tabs || []).forEach(t=>{
+      t.common = t.common || {};
+      t.common.ctx = '';
+      t.common.audience = '';
+      t.common.style = '';
+      t.common.tone  = '';
+      // persona/bias selections
+      t.common.audience_persona  = null;
+      t.common.audience_personas = [];
+      t.common.bias_ids          = [];
+      t.common.bias_names        = '';
+    });
+  }catch(_){}
+
+  // 4) Clear any per-field localStorage mirrors
+  try{
+    ['usecase','audience','style','tone'].forEach(id=> localStorage.removeItem('fw_'+id));
+  }catch(_){}
+
+  // 5) Reflect immediately in preview
+  if (typeof renderFields === 'function') renderFields();   // re-hydrate chips/inputs
+  if (typeof emitAll      === 'function') emitAll();        // re-render preview + deck
+}
 
     
     /* ===== Persona helpers ===== */
@@ -1885,6 +2398,122 @@ const metaStep = document.getElementById('fieldStepPill');
 const metaPct  = document.getElementById('fieldPct');
 const metaNudge= document.getElementById('fieldNudge');
 
+// Additional instructions (lazy refs — content is rendered dynamically)
+function extraRefs(){
+  const wrap    = document.getElementById('extraWrap');
+  const input   = wrap ? wrap.querySelector('#extra') : null;
+  const counter = wrap ? wrap.querySelector('#extraCounter') : null;
+  return { wrap, input, counter };
+}
+
+// Render the Default Included Instructions area (idempotent)
+function renderExtraMount(){
+  const { wrap } = extraRefs();
+  if (!wrap) return;
+  if (wrap.dataset.ready === '1') return;
+
+  wrap.innerHTML = `
+    <label for="extra">Default Included Instructions</label>
+    <div class="help">Pre-filled with this template’s recommendations. Editing replaces the defaults in your prompt.</div>
+    <div class="fieldHolder">
+      <textarea id="extra" class="hasCounter" placeholder=""></textarea>
+      <span id="extraCounter" class="counter">0 ch</span>
+    </div>
+    <div class="extraHelpers">
+      <button type="button" id="extraRestore" class="restore" title="Restore this template’s recommended text">Restore recommended text</button>
+    </div>
+
+    <label for="extraMore" style="margin-top:12px">Anything else to include (optional)</label>
+    <div class="help">Add any extra guidance you want appended to your prompt.</div>
+    <div class="fieldHolder">
+      <textarea id="extraMore" class="hasCounter" placeholder="Type any additional guidance…"></textarea>
+      <span id="extraMoreCounter" class="counter">0 ch</span>
+    </div>
+  `;
+  wrap.dataset.ready = '1';
+
+  // Wire up local input handlers once
+  const input       = wrap.querySelector('#extra');
+  const inputMore   = wrap.querySelector('#extraMore');
+  const counter     = wrap.querySelector('#extraCounter');
+  const counterMore = wrap.querySelector('#extraMoreCounter');
+  const restoreBtn  = wrap.querySelector('#extraRestore');
+
+  function setCount(el, badge){
+    if (!el || !badge) return;
+    badge.textContent = (el.value || '').length + ' ch';
+  }
+
+  input?.addEventListener('input', ()=>{
+    // Persist to active tab
+    const t = _activeTabSafe(); if (!t) return;
+    t.extra = input.value;
+    input.classList.toggle('filled', !!input.value.trim());
+    setCount(input, counter);
+    if (typeof scheduleSave === 'function') scheduleSave();
+    if (typeof renderPreview === 'function') renderPreview();
+  });
+
+  inputMore?.addEventListener('input', ()=>{
+    const t = _activeTabSafe(); if (!t) return;
+    t.extra_more = inputMore.value;
+    inputMore.classList.toggle('filled', !!inputMore.value.trim());
+    setCount(inputMore, counterMore);
+    if (typeof scheduleSave === 'function') scheduleSave();
+    if (typeof renderPreview === 'function') renderPreview();
+  });
+
+  restoreBtn?.addEventListener('click', ()=>{
+    const t = _activeTabSafe(); if (!t) return;
+    const def = defaultBooster(t.id) || '';
+    t.extra = def;
+    if (input){
+      input.value = def;
+      input.classList.toggle('filled', !!def.trim());
+      setCount(input, counter);
+    }
+    if (typeof scheduleSave === 'function') scheduleSave();
+    if (typeof renderPreview === 'function') renderPreview();
+  });
+}
+
+
+// Bottom “next steps” helper
+const stepHint = document.getElementById('fieldStepHint');
+
+
+/* Bottom stepper hint — isolated so it can never break field rendering */
+function updateStepHint(tab, total){
+  try {
+    const hint = stepHint;           // uses the global ref you already defined
+    if (!hint) return;
+
+    const guided = !!(tab && tab.showAll === false);
+    const size   = (typeof stepSize === 'function') ? stepSize() : 4;
+    const totalN = Number.isFinite(total) ? total : 0;
+    const pages  = size > 0 ? Math.ceil(totalN / size) : 0;
+
+    const cur = Number(tab?.step) || 0;
+    const atEnd = pages <= 0 || cur >= (pages - 1);
+
+    // show only when guided, not at end, and not in "Show all"
+    const show = guided && !atEnd;
+
+    hint.hidden = !show;
+    hint.setAttribute('aria-hidden', String(!show));
+    if (show){
+      // textContent avoids accidental HTML injection; simple and robust
+      hint.textContent = 'More fields ahead — continue with Next.';
+    }
+  } catch (e){
+    // Fail closed: never let the hint crash the app
+    try {
+      stepHint.hidden = true;
+      stepHint.setAttribute('aria-hidden','true');
+    } catch (_) {}
+  }
+}
+
 // Smoothly align the "Template fields" header to the top of the left panel
 function scrollFieldsHeaderIntoView(smooth = true){
   const panel  = document.getElementById('configPanel');
@@ -1923,6 +2552,57 @@ function encouragement(pct){
   if (pct >= 20)  return 'Great start.';
   return 'Let’s begin.';
 }
+
+function updateExtraUI(tab, total){
+  renderExtraMount(); // ensure the mount exists exactly once
+  const { wrap, input, counter } = extraRefs();
+  if (!wrap) return;
+
+  // Visibility: guided shows on last step; show-all always shows
+  const guided = isGuided(tab);
+  const size   = stepSize();
+  const atEnd  = ((tab.step || 0) + 1) * size >= total;
+  const show   = guided ? atEnd : true;
+
+  wrap.hidden = !show;
+  wrap.setAttribute('aria-hidden', String(!show));
+  if (!show) return;
+
+  // Prefill rule: if tab.extra is empty, prefill from boosters
+  const def = defaultBooster(tab?.id) || '';
+  const current = String(tab?.extra || '');
+
+  if (!current && input){
+    // Only prefill when empty (don’t clobber user edits)
+    input.value = def;
+    tab.extra = def;
+  }
+
+  // Sync UI for #extra
+  if (input){
+    const val = String(tab.extra || '');
+    if (input.value !== val) input.value = val;
+    input.classList.toggle('filled', !!val.trim());
+    if (counter) counter.textContent = (val.length || 0) + ' ch';
+    // Keep placeholder showing boosters if user completely clears the box
+    input.placeholder = def || input.placeholder || '';
+  }
+
+  // Sync UI for #extraMore (new field)
+  const inputMore   = wrap.querySelector('#extraMore');
+  const counterMore = wrap.querySelector('#extraMoreCounter');
+  if (inputMore){
+    const moreVal = String(tab.extra_more || '');
+    if (inputMore.value !== moreVal) inputMore.value = moreVal;
+    inputMore.classList.toggle('filled', !!moreVal.trim());
+    if (counterMore) counterMore.textContent = (moreVal.length || 0) + ' ch';
+  }
+}
+
+
+
+
+
 
 
 function updateStepperUI(tab, total, visibleCount){
@@ -1963,16 +2643,24 @@ if (metaWrap){
   // Nav row stays visible so users can "Collapse" back to guided
   navWrap.hidden = false;
 
-  // Back/Next must be HIDDEN (not just disabled) when not guided
+  // Back/Next: hide at edges (clarity tweak)
+  const size  = stepSize();
+  const step  = (tab.step || 0);
+  const atStart = step <= 0;
+  const atEnd   = ((step + 1) * size) >= total;
+
   if (typeof navBack !== 'undefined' && navBack){
-    navBack.hidden   = !guided;
-    navBack.disabled = guided ? ((tab.step || 0) <= 0) : true;
+    // Guided: hide Back on first step; otherwise show it
+    const showBack = guided && !atStart;
+    navBack.hidden   = !showBack;
+    navBack.disabled = !showBack; // keep disabled in sync with visibility
   }
+
   if (typeof navNext !== 'undefined' && navNext){
-    const size = stepSize();
-    const atEnd = ((tab.step || 0) + 1) * size >= total;
-    navNext.hidden   = !guided;
-    navNext.disabled = guided ? atEnd : true;
+    // Guided: hide Next on last step; otherwise show it
+    const showNext = guided && !atEnd;
+    navNext.hidden   = !showNext;
+    navNext.disabled = !showNext; // keep disabled in sync with visibility
   }
 
   // Toggle button label + title (Show all vs Collapse)
@@ -1984,7 +2672,15 @@ if (metaWrap){
       navAll.textContent = 'Collapse';
       navAll.title = 'Return to guided (few-at-a-time) view';
     }
+    
+    
+    
   }
+
+  // NEW: update the bottom hint (safe; won’t throw)
+  updateStepHint(tab, total);
+  // (extra UI handled directly in renderFields)
+
 }
 
 
@@ -2113,7 +2809,7 @@ function computeCategoryOptions(kind){
   return Array.from(set).sort();
 }
 
-function updateFilterOptions(){
+function updateFilterOptions__LEGACY(){
   if (!kindSel || !catSel) return;
   const prevKind = kindSel.value;
   const prevCat  = catSel.value;
@@ -2145,11 +2841,11 @@ filtersToggle?.addEventListener('click', ()=>{
 
 // React to dropdown changes
 kindSel?.addEventListener('change', ()=>{
-  updateFilterOptions();                            // keep Category in sync
-  buildFrameworkOptions(searchEl?.value || '');     // re-filter list
+  updateFilterOptions();   // keep Category in sync
+  refreshTemplateList();   // re-filter list
 });
 catSel?.addEventListener('change', ()=>{
-  buildFrameworkOptions(searchEl?.value || '');
+  refreshTemplateList();
 });
 
 
@@ -2168,12 +2864,44 @@ function fwSubtext(f){
 }
 
 function rankFrameworks(q){
-  const list = (typeof PICKER === 'function') ? PICKER() : [];
+  const list = (typeof getAllTemplates === 'function') ? getAllTemplates() : (window.TEMPLATES || window.FRAMEWORKS || []);
+  const toks = String(q||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  if (!toks.length) return list;
+
+  function score(f){
+    let s = 0;
+    const label = String(f.label || '').toLowerCase();
+    const slug  = String(f.slug  || '').toLowerCase();
+    const usec  = (f.use_cases || []).map(x => String(x).toLowerCase());
+    const tags  = (f.tags || []).map(x => String(x).toLowerCase());
+    const cats  = (f.categories || []).map(x => String(x).toLowerCase());
+    const def   = String(f.definition || '').toLowerCase();
+    const help  = String(f.help || '').toLowerCase();
+
+    for (const t of toks){
+      // SUPER boost: exact token in any use_case
+      if (usec.some(u => u === t)) s += 40;
+      // Strong: token contained in a use_case phrase
+      if (usec.some(u => u.includes(t))) s += 25;
+
+      // Label/slug startsWith get strong boosts
+      if (label.startsWith(t)) s += 12;
+      if (slug.startsWith(t))  s += 8;
+
+      // Any presence across label/tags/cats/def/help
+      if (label.includes(t)) s += 6;
+      if (tags.some(v => v.includes(t))) s += 4;
+      if (cats.some(v => v.includes(t))) s += 3;
+      if (def.includes(t) || help.includes(t)) s += 2;
+    }
+    return s;
+  }
+
   return list
-    .map(f => ({ f, s: matchScore(f, q) }))
+    .map(f => ({ f, s: score(f) }))
     .filter(x => x.s > 0)
-    .sort((a,b)=> b.s - a.s || a.f.label.localeCompare(b.f.label,'en',{sensitivity:'base'}))
-    .map(x=>x.f);
+    .sort((a,b)=> b.s - a.s || String(a.f.label||'').localeCompare(String(b.f.label||''),'en',{sensitivity:'base'}))
+    .map(x => x.f);
 }
 
 function hideFwSuggestions(){
@@ -2201,8 +2929,8 @@ function renderFwSuggestions(q){
     const ranked = rankFrameworks(query).slice(0,12);
     if (!ranked.length){ hideFwSuggestions(); return; }
     sug.innerHTML = ranked.map(f => `
-      <div class="taItem" role="option" data-id="${f.id}">
-        <span class="name">${f.label}</span>
+      <div class="taItem" role="option" data-id="${f.id || f.slug}">
+        <span class="name">${f.label || f.slug || f.id || 'Untitled'}</span>
         <span class="sub">${fwSubtext(f)}</span>
       </div>
     `).join('');
@@ -2210,8 +2938,8 @@ function renderFwSuggestions(q){
     sug.hidden = false;
   };
 
-  const ds = (typeof currentDataset === 'function') ? currentDataset() : 'patterns';
-  if (ds === 'tasks' && typeof ensureTasksLoaded === 'function') ensureTasksLoaded(doRender);
+  // Always ensure tasks are present so the unified list is complete
+  if (typeof ensureTasksLoaded === 'function') ensureTasksLoaded(doRender);
   else doRender();
 }
 
@@ -2362,7 +3090,15 @@ function switchFramework(newId){
   
     // Guided-mode defaults (defensive)
   if (typeof t.step !== 'number')   t.step = 0;
+  if (typeof updateExtraUI === 'function'){
+  updateExtraUI(activeTab && activeTab(), 0);
+}
   if (typeof t.showAll !== 'boolean') t.showAll = false;
+  // Safe: will only prefill if empty
+if (typeof updateExtraUI === 'function'){
+  // total may not be known here; pass 0 — visibility will be corrected on renderFields
+  updateExtraUI(activeTab && activeTab(), 0);
+}
 
 
   const oldId = t.id;
@@ -2459,88 +3195,47 @@ delete state.fields;
 }; // use let so we can set the id after we build options
 
 function buildFrameworkOptions(filterText=''){
-  const base = PICKER().slice()
-    .sort((a,b)=> a.label.localeCompare(b.label,'en',{sensitivity:'base'}));
+  // 1) Keep legacy callers working: treat the arg as "what's in the search box"
+  const search = document.getElementById('fwSearch');
+  if (search) search.value = filterText || '';
 
-  const total = base.length;
-  let list = base;
-  let usedFallback = false;
+  // 2) Rebuild filters + dropdown from the unified source (both files)
+  const afterReady = ()=>{
+    // Rebuild Kind/Category from unified data and render kind chips
+    if (typeof updateFilterOptions === 'function') updateFilterOptions();
+    // Rebuild the <select id="frameworkSel"> from unified data
+    if (typeof refreshTemplateList === 'function') refreshTemplateList();
 
-  const q = (filterText||'').trim();
-  if (q){
-    list = base
-      .map(f=>({f, s: matchScore(f, q)}))
-      .filter(x=> x.s > 0)
-      .sort((a,b)=> b.s - a.s || a.f.label.localeCompare(b.f.label,'en',{sensitivity:'base'}))
-      .map(x=> x.f);
-    if (!list.length) {
-  list = base;           // graceful fallback
-  usedFallback = true;   // <-- we really fell back
-}
+    // 3) Preserve/repair selection like the old function did
+    try {
+      const sel = document.getElementById('frameworkSel');
+      const t   = (typeof activeTab === 'function') ? activeTab() : null;
+      if (!sel || !t) return;
 
-  }
-  
-    // Apply Kind/Category filters from the disclosure (if present)
-  const kSel = document.getElementById('filterKind');
-  const cSel = document.getElementById('filterCategory');
-  const kindFilter = (kSel && kSel.value !== '__all__') ? kSel.value : null;
-  const catFilter  = (cSel && cSel.value !== '__all__') ? cSel.value : null;
+      const optValues = Array.from(sel.options).map(o => o.value);
+      if (!optValues.includes(t.id)) {
+        // Pick the first real option
+        const first = sel.options[0];
+        if (first && !first.disabled) {
+          sel.value = first.value;
+          t.id = first.value;
+          // Keep the helper preview in sync (like before)
+          if (typeof updatePickerPreview === 'function') updatePickerPreview();
+        }
+      } else {
+        // Keep the visual selection aligned with state
+        sel.value = t.id;
+        if (typeof updatePickerPreview === 'function') updatePickerPreview();
+      }
+    } catch(_) {}
+  };
 
-  if (kindFilter){
-    list = list.filter(f => normalizeKind(f.kind) === kindFilter);
-  }
-  if (catFilter){
-    list = list.filter(f => (f.categories||[])
-      .some(c => normalizeCategory(c) === catFilter));
-  }
-
-
-  // Rebuild <select> to reflect the filtered ordering
-  sel.innerHTML = '';
-  list.forEach(f => {
-    const o = document.createElement('option');
-    o.value = f.id;
-    o.textContent = f.label;
-
-    // Tooltip fallback (works in many browsers when hovering the closed select or list entries)
-    o.title = (f.definition || f.help || (Array.isArray(f.use_cases) && f.use_cases[0]) || '').toString();
-
-    sel.appendChild(o);
-  });
-
-
-  // Update the little "Showing N/M" hint
-  const fwHint = document.getElementById('fwHint');
-  if (fwHint){
-    if (q){
-      // If we fell back to base because there were 0 hits, treat it as "all"
-const count = usedFallback ? total : list.length;
-fwHint.textContent = `Showing ${count}/${total} — Hit Enter`;
-
-      fwHint.hidden = false;
-    } else {
-      fwHint.textContent = '';
-      fwHint.hidden = true;
-    }
-  }
-
-  // Preserve current tab's selection if it's in the filtered list; otherwise
-  // at least show the *first* filtered option in the dropdown so users see the filter working.
-  const t = activeTab();
-  const keep = t.id && list.find(x=>x.id===t.id);
-  if (keep){
-    sel.value = t.id;
+  if (typeof ensureTasksLoaded === 'function') {
+    ensureTasksLoaded(afterReady);   // guarantees both datasets are present
   } else {
-  sel.selectedIndex = 0;               // visually show the top match
-  if (t && list.length) {              // NEW: commit the default into state
-    t.id = list[0].id;
+    afterReady();
   }
 }
-    // Keep helper preview in sync with whatever is visually selected
-  if (typeof updatePickerPreview === 'function') updatePickerPreview();
-
-}
-
 
 
 // Boot: render only after the active dataset is ready (handles lazy Tasks)
@@ -2787,7 +3482,7 @@ if (searchEl){
 // Live filter + rich suggestions
 searchEl.addEventListener('input', ()=>{
   const q = searchEl.value;
-  buildFrameworkOptions(q);
+  refreshTemplateList();
   renderFwSuggestions(q);
 });
 
@@ -2815,7 +3510,7 @@ searchEl.addEventListener('keydown', (e)=>{
       return;
     }
     // Fallback: commit the first filtered option as before
-    buildFrameworkOptions(searchEl.value);
+    refreshTemplateList();
     const first = sel?.options?.[0];
     if (first){
       e.preventDefault();
@@ -2828,7 +3523,7 @@ searchEl.addEventListener('keydown', (e)=>{
     e.preventDefault();
     hideFwSuggestions();
     searchEl.value = '';
-    buildFrameworkOptions('');
+    refreshTemplateList()
     const hint = document.getElementById('fwHint'); 
     if (hint){ hint.hidden = true; hint.textContent = ''; }
     sel?.focus();
@@ -2904,6 +3599,7 @@ function addTab(copyCurrent = false){
   syncCommonInputs();          // NEW: hydrate the Common Context UI for this tab
   emitAll();
   scheduleSave();
+    if (typeof updateDeckVisibility === 'function') updateDeckVisibility();
 }
 
 function syncCommonInputs(){
@@ -2941,6 +3637,7 @@ function closeTab(idx){
   if (state.active >= state.tabs.length) state.active = state.tabs.length - 1;
   renderTabs(); buildFrameworkOptions(document.getElementById('fwSearch')?.value||'');
   renderFields(); emitAll();
+    if (typeof updateDeckVisibility === 'function') updateDeckVisibility();
 }
 
 function clearOrCloseTab(idx){
@@ -2967,6 +3664,7 @@ state.tabs[0] = {
   buildFrameworkOptions(document.getElementById('fwSearch')?.value || '');
   renderFields();
   emitAll();
+    if (typeof updateDeckVisibility === 'function') updateDeckVisibility();
 }
 
 
@@ -3016,6 +3714,8 @@ x.title = 'Remove this template';
 
     bar.appendChild(b);
   });
+  
+    if (typeof updateDeckVisibility === 'function') updateDeckVisibility();
 }
 
       function nudgeFieldsSwap(){
@@ -3025,6 +3725,22 @@ x.title = 'Remove this template';
   // reflow to restart animation
   void f.offsetWidth;
   f.classList.add('fields-swap');
+}
+
+function updateDeckVisibility(){
+  const deckLabel = document.getElementById('deckLabel');
+  const deck      = document.getElementById('outDeck');
+
+  // How many tabs are actually present?
+  let count = 0;
+  try { count = Array.isArray(state?.tabs) ? state.tabs.length : 0; } catch(_) {}
+
+  const show = count >= 2;
+  [deckLabel, deck].forEach(el=>{
+    if (!el) return;
+    el.hidden = !show;
+    el.setAttribute('aria-hidden', String(!show));
+  });
 }
       
 
@@ -3087,6 +3803,15 @@ const rawExtra = (t.extra ?? '').trim();
 const extra = rawExtra.length ? rawExtra : boosterFallback;
 const extraText = extra ? `Additional instructions: ${extra}` : '';
 
+// New: append the “Anything else to include (optional)” box if present
+const extraMore = (t.extra_more ?? '').trim();
+// Keep the label if the ONLY thing present is extra_more
+const extraCombined =
+  (extraText && extraMore) ? `${extraText}\n\n${extraMore}` :
+  (extraText)              ?  extraText :
+  (extraMore)              ? `Additional instructions: ${extraMore}` :
+                              '';
+
 const header = meta.definition ? `Using ${meta.label}: ${meta.definition}` : `Using ${meta.label}.`;
 
 // If the template didn’t render a bias block, append a compact one at the end.
@@ -3095,7 +3820,7 @@ const biasTail = (biasAuto && !String(body).includes('Bias directives') && !Stri
   ? biasAuto : '';
 
 // Assemble: Header → (optional persona section) → Body → Extra → (optional bias tail)
-return [header, personaSection, body, extraText, biasTail]
+return [header, personaSection, body, extraCombined, biasTail]
   .filter(Boolean)
   .join('\n')
   .replace(/\n{3,}/g,'\n\n')
@@ -3822,44 +4547,120 @@ updateStepperUI(tabNow, allFields.length, visFields.length);
   
       
 
-// --- Additional instructions box (prefilled from per-framework boosters) ---
+// --- Default Included Instructions + “Anything else” box ---
+// Render into the fixed under-stepper mount (#extraWrap), not the scrolling fields list.
 {
-  const wrap = document.createElement('div');
-  wrap.className = 'field';
+  const mount = document.getElementById('extraWrap');
+  if (mount){
+    mount.innerHTML = '';           // rebuild each render for the active tab
 
-  const label = document.createElement('label');
-  label.textContent = 'Additional instructions';
-  label.setAttribute('for', 'extra');
+    // 2.3 — Label rename
+    const label = document.createElement('label');
+    label.textContent = 'Default Included Instructions';
+    label.setAttribute('for', 'extra');
 
-  const holder = document.createElement('div');
-  holder.className = 'fieldHolder';
+    // Main textarea (prefill boosters as placeholder; user text wins if present)
+    const holder = document.createElement('div');
+    holder.className = 'fieldHolder';
 
-  const ta = document.createElement('textarea');
-  ta.id = 'extra';
-  ta.rows = 3;
+    const ta = document.createElement('textarea');
+    ta.id = 'extra';
+    ta.rows = 3;
 
-  // Deterministic behavior: use placeholder for boosters; user text wins if present
-  const def = defaultBooster(t.id);
-  const cur = (t.extra || '').trim();
-  if (cur) ta.value = cur;
-  if (!cur && def) ta.placeholder = def;
+    const def = defaultBooster(t.id);
+    const cur = (t.extra || '').trim();
+    if (cur) ta.value = cur;
+    if (!cur && def) ta.placeholder = def;
 
-  holder.appendChild(ta);
-  wrap.appendChild(label);
-  wrap.appendChild(holder);
+    holder.appendChild(ta);
+    mount.appendChild(label);
+    mount.appendChild(holder);
 
-  // Save + preview updates
-  fieldInput(ta, ()=>{
-    t.extra = ta.value.trim();
-    emit();
-  });
+    // Helper line (keeps deterministic behavior obvious)
+    const tip = document.createElement('div');
+    tip.className = 'help';
+    tip.textContent = 'Pre-filled with this template’s recommendations. Editing replaces the defaults in your prompt.';
+    mount.appendChild(tip);
 
-  // Inline counter (Stage 1)
-  setupCounter(ta);
+    // Restore button (small, optional)
+    const helpers = document.createElement('div');
+    helpers.className = 'extraHelpers';
+    const restore = document.createElement('button');
+    restore.type = 'button';
+    restore.id = 'extraRestore';
+    restore.className = 'restore';
+    restore.textContent = 'Restore recommended text';
+    helpers.appendChild(restore);
+    mount.appendChild(helpers);
 
-  fieldsWrap.appendChild(wrap);
+    // Save + preview updates for main box
+    fieldInput(ta, ()=>{
+      t.extra = ta.value.trim();
+      ta.classList.toggle('filled', !!t.extra);
+      if (typeof scheduleSave === 'function') scheduleSave();
+      emit();
+    });
+
+    setupCounter(ta);
+    if (ta._counterNode) ta._counterNode.id = 'extraCounter';
+
+    restore.addEventListener('click', ()=>{
+      const txt = defaultBooster(t.id) || '';
+      t.extra = txt;
+      ta.value = txt;
+      ta.classList.toggle('filled', !!txt);
+      if (ta._counterNode) ta._counterNode.textContent = txt.length ? `${Math.ceil(txt.length/4)}t · ${txt.length}c` : '';
+      if (typeof scheduleSave === 'function') scheduleSave();
+      emit();
+    });
+
+    // 2.4 — Second textarea (blank by default; appended to the prompt)
+    const label2 = document.createElement('label');
+    label2.setAttribute('for', 'extraMore');
+    label2.style.marginTop = '12px';
+    label2.textContent = 'Anything else to include (optional)';
+
+    const holder2 = document.createElement('div');
+    holder2.className = 'fieldHolder';
+
+    const ta2 = document.createElement('textarea');
+    ta2.id = 'extraMore';
+    ta2.rows = 3;
+    ta2.placeholder = 'Type any additional guidance for the AI…';
+    ta2.value = (t.extra_more || '');
+
+    holder2.appendChild(ta2);
+    mount.appendChild(label2);
+    mount.appendChild(holder2);
+
+    const tip2 = document.createElement('div');
+    tip2.className = 'help';
+    tip2.textContent = 'This text will be appended after the default instructions (if any).';
+    mount.appendChild(tip2);
+
+    fieldInput(ta2, ()=>{
+      t.extra_more = ta2.value;
+      ta2.classList.toggle('filled', !!ta2.value.trim());
+      if (typeof scheduleSave === 'function') scheduleSave();
+      emit();
+    });
+
+    setupCounter(ta2);
+    if (ta2._counterNode) ta2._counterNode.id = 'extraMoreCounter';
+  }
+
+  // Visibility (same rule you had before): in guided mode, show on last step; in show-all, always show
+  const guided = isGuided(t);
+  const size   = stepSize();
+  const atEnd  = ((t.step || 0) + 1) * size >= (Array.isArray(fw?.fields) ? fw.fields.length : 0);
+  const show   = guided ? atEnd : true;
+
+  if (mount){
+    mount.hidden = !show;
+    mount.setAttribute('aria-hidden', String(!show));
+  }
 }
-// --- end Additional instructions box ---
+// --- end Default Included Instructions + “Anything else” box ---
 
 
 
@@ -3942,6 +4743,9 @@ saveBtn.addEventListener('click', ()=>{
     const msg =
       'This will clear all tabs, fields, and saved preferences for Prompt Builder in this browser.\n\nStart fresh?';
     if (!confirm(msg)) return;
+    
+      // NEW: clear Common context immediately so the UI reflects it
+  if (typeof clearCommonContext === 'function') clearCommonContext();
 
     if (typeof window.resetSavedSession === 'function'){
       window.resetSavedSession();
