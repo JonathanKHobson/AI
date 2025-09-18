@@ -7,8 +7,8 @@
 {
   id: 'none',
   slug: 'none',
-  label: '— Template Picker —',
-  kind: 'none',
+  label: '— Pattern Picker —',
+  kind: 'helper',
   categories: ['none'],
   tags: ['type:none','type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
   use_cases: [
@@ -7285,44 +7285,193 @@ boosters: [
     ].filter(Boolean).join('\n');
   }
 },
-  {
-    id:'nyaya_syllogism',
-    slug:'nyaya-five-member-syllogism',
-    label:'Nyāya — Five-Member Syllogism',
-    kind:'framework',
-    categories:['reasoning','philosophy','cultural frameworks'],
-    tags:[
-      'type:framework','topic:logic','phase:structure','level:intermediate',
-      'use:argumentation','use:explain-like-i\'m-5'
-    ],
-    use_cases:[
-      'structure explanations with example and application',
-      'justify conclusions with explicit inference steps'
-    ],
-    boosters:[
-      'Keep each member one line.',
-      'Choose a vivid, relevant example.'
-    ],
-    definition:'Classical Indian argument form: Proposition, Reason, Example, Application, Conclusion.',
-    help:'Fill each member; keep language crisp.',
-    fields:[
-      { key:'proposition', label:'Proposition (pratijñā)', type:'text' },
-      { key:'reason',      label:'Reason (hetu)', type:'textarea' },
-      { key:'example',     label:'Example (udāharaṇa)', type:'textarea' },
-      { key:'application', label:'Application (upanaya)', type:'textarea' },
-      { key:'conclusion',  label:'Conclusion (nigamana)', type:'textarea' }
-    ],
-    template:({proposition,reason,example,application,conclusion,ctx})=>[
-      'Use the Nyāya five-member syllogism.',
-      ctx && `Context: ${ctx}`,
-      proposition && `Proposition: ${proposition}`,
-      reason && `Reason: ${reason}`,
-      example && `Example: ${example}`,
-      application && `Application: ${application}`,
-      conclusion && `Conclusion: ${conclusion}`
-    ].filter(Boolean).join('\n')
-  },
+{
+  id: 'nyaya_syllogism',
+  slug: 'nyaya-five-member-syllogism',
+  label: 'Nyāya — Five-Member Syllogism',
+  kind: 'framework',
+  categories: ['reasoning', 'philosophy', 'cultural frameworks'],
+  tags: [
+    'type:framework','topic:logic','topic:pramana','topic:vyapti',
+    'phase:structure','phase:justify','level:intermediate',
+    'use:argumentation','use:teaching','use:policy-ethics'
+  ],
+  use_cases: [
+    'present a transparent, checkable inference in public or classroom settings',
+    'teach warrant + scope (vyāpti) with culturally respectful examples',
+    'draft policy/science/legal arguments with explicit conditions and defeater checks'
+  ],
+  boosters: [
+    'State the **vyāpti** with scope and at least one positive (**sapakṣa**) and one negative (**vipakṣa**) example.',
+    'Run the **trairūpya** (3 marks of a sound reason) and log any **upādhi** (hidden condition).',
+    'Add one **tarka** (reductio): what absurdity follows if the rule didn’t hold?',
+    'Name the intended **debate ethic** (vāda—truth-seeking) and avoid jalpa/vitaṇḍā moves.',
+    'Localize examples to the audience to avoid WEIRD-centric defaults while preserving Nyāya terms.'
+  ],
+  definition: 'Classical Indian argument form (pañcāvayava): Pratijñā (thesis), Hetu (reason/mark), Udāharaṇa (universal rule + example, i.e., vyāpti with illustration), Upanaya (application to the case), Nigamana (conclusion). It is embedded in Nyāya’s epistemology (pramāṇa) and debate ethics.',
+  help: 'Fill the five members and the quality checks. Show how the **reason** is reliably connected to the **claim** via **vyāpti** (state rule + example), then **apply** it and **conclude**. Use sapakṣa/vipakṣa and upādhi-hunting to secure the rule. Pick “mode” (anvaya–vyatireki, etc.) and “direction” (pūrvavat/śeṣavat/sāmānyato dṛṣṭa) to educate the reader.',
 
+  fields: [
+    // Audience & inclusion
+    {
+      key: 'audience',
+      label: 'Audience / personas',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Stakeholders or readership shaping tone, examples, and level of formality.',
+      ph: 'e.g., City council; High-school logic class; Community elders'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias / blind-spot checks',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Potential distortions to watch for (e.g., WEIRD examples, confirmation bias).',
+      ph: 'WEIRD examples; elite capture; face-saving pressures; anchoring; false dichotomy'
+    },
+
+    // Cultural & didactic switches
+    {
+      key: 'debate_ethic',
+      label: 'Debate ethic',
+      type: 'select',
+      options: [
+        'vāda — truth-seeking, shared standards, fair conduct',
+        'jalpa — win-oriented (not recommended here)',
+        'vitaṇḍā — cavil/attack-only (avoid for productive inquiry)'
+      ],
+      desc: 'Sets the tone and conduct norms; Nyāya privileges vāda.',
+      ph: 'vāda — truth-seeking, shared standards, fair conduct'
+    },
+    {
+      key: 'mode',
+      label: 'Inference mode (vyāpti establishment)',
+      type: 'select',
+      options: [
+        'anvaya–vyatireki — positive agreement + negative concomitance (strongest)',
+        'kevalānvayi — only positive agreement (no true counter-cases)',
+        'kevalavyatireki — only negative concomitance (absence pattern)'
+      ],
+      desc: 'How the universal connection is secured.',
+      ph: 'anvaya–vyatireki — positive + negative'
+    },
+    {
+      key: 'direction',
+      label: 'Direction of inference',
+      type: 'select',
+      options: [
+        'pūrvavat — cause → effect (e.g., clouds ⇒ rain)',
+        'śeṣavat — effect → cause (e.g., swollen river ⇒ upstream rain)',
+        'sāmānyato dṛṣṭa — constant conjunction without causal story'
+      ],
+      desc: 'Pedagogic cue for how the hetu relates to the sādhya.',
+      ph: 'śeṣavat — effect → cause'
+    },
+
+    // Core five members
+    { key: 'paksa',     label: 'Pakṣa (subject under discussion)', type: 'text',     desc: 'What the claim is about.', ph: 'e.g., This hill / This model / This policy' },
+    { key: 'sadhya',    label: 'Sādhya (property to be proved)',   type: 'text',     desc: 'Target predicate you aim to establish.', ph: 'e.g., has fire / is overfitting / reduces outages' },
+    { key: 'pratijna',  label: 'Pratijñā — Thesis/claim',          type: 'textarea', desc: 'State the thesis about the pakṣa + sādhya.', ph: 'The hill has fire.' },
+    { key: 'hetu',      label: 'Hetu — Reason/mark (linga)',       type: 'textarea', desc: 'Observable sign in the pakṣa that indicates the sādhya.', ph: 'Because there is smoke.' },
+
+    // Vyāpti & illustration
+    { key: 'vyapti',    label: 'Vyāpti — Universal rule (with scope)', type: 'textarea', desc: 'State the dependable connection and any conditions.', ph: 'Wherever there is smoke (from combustion in oxygen), there is fire.' },
+    { key: 'sapaksha',  label: 'Sapakṣa — Positive example(s)',        type: 'textarea', desc: 'Similar cases where hetu and sādhya co-occur.', ph: 'Kitchens with cooking fires; foundry furnace room.' },
+    { key: 'vipaksha',  label: 'Vipakṣa — Negative example(s)',        type: 'textarea', desc: 'Dissimilar cases where sādhya is absent, and so is hetu.', ph: 'Lakes; refrigerated rooms (no fire, no smoke).' },
+
+    // Application & conclusion
+    { key: 'upanaya',   label: 'Upanaya — Application', type: 'textarea', desc: 'Show the pakṣa fits the rule’s conditions and the hetu is of the relevant kind.', ph: 'This hill has smoke of the combustion type, not fog.' },
+    { key: 'nigamana',  label: 'Nigamana — Conclusion', type: 'textarea', desc: 'Restate the conclusion succinctly.', ph: 'Therefore, the hill has fire.' },
+
+    // Quality controls
+    { key: 'upadhi',    label: 'Upādhi — Hidden condition(s)', type: 'textarea', desc: 'Qualifiers that, if missing, would break the vyāpti.', ph: 'Only in oxygenated environments; not chemical “smokes” without flame.' },
+    { key: 'trairupya', label: 'Trairūpya check (3 marks of a sound hetu)', type: 'textarea', desc: '1) In pakṣa? 2) In sapakṣa? 3) Absent in vipakṣa?', ph: '1) Yes, smoke on hill. 2) Yes, kitchens. 3) Absent on lakes.' },
+    { key: 'tarka',     label: 'Tarka — Reductio / probative reasoning', type: 'textarea', desc: 'What absurdity follows if the vyāpti failed?', ph: 'If smoke didn’t imply fire (under stated conditions), kitchens would show cold smoke—contrary to observation.' },
+    { key: 'hetvabhasa',label: 'Hetvābhāsa scan — Fallacies to avoid', type: 'textarea', desc: 'Note any risk of: asiddha, savyabhicāra/anaikāntika, viruddha, satpratipakṣa, bādhita.', ph: 'Risk of savyabhicāra if “smoke” includes fog; mitigate by specifying combustion-smoke.' },
+
+    // Cross-cultural clarity
+    { key: 'western_mapping', label: 'Western explainer (optional)', type: 'textarea', desc: 'Map Nyāya parts to Toulmin/Aristotelian terms without erasing Nyāya’s extras.', ph: 'Udāharaṇa (vyāpti + example) ≈ warrant + backing; Upanaya ≈ application of warrant.' }
+  ],
+
+  template: (args) => {
+    const {
+      audience, bias_checks, debate_ethic, mode, direction,
+      paksa, sadhya, pratijna, hetu, vyapti, sapaksha, vipaksha, upanaya, nigamana,
+      upadhi, trairupya, tarka, hetvabhasa, western_mapping, ctx, style, tone
+    } = args;
+
+    const toLines = s => String(s || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const list = (title, s) => s ? `${title}\n` + toLines(s).map((x,i)=>`${i+1}. ${x}`).join('\n') : null;
+
+    const ethicGuide = debate_ethic
+      ? `Debate ethic: ${debate_ethic}. Instruction: proceed in vāda style—state opponent fairly, avoid equivocation, invite defeater checks.`
+      : 'Debate ethic: vāda (truth-seeking). State opponent fairly; invite defeater checks.';
+
+    const modeGuide = mode
+      ? `Inference mode: ${mode}. Describe how the universal connection (vyāpti) was established (data/cases).`
+      : 'Inference mode: anvaya–vyatireki (positive + negative). Show both co-presence and co-absence.';
+
+    const dirGuide = direction
+      ? `Direction: ${direction}. Explain how hetu relates to sādhya in this direction.`
+      : 'Direction: (specify cause→effect, effect→cause, or constant conjunction).';
+
+    const audBlock = audience && audience.length
+      ? 'Audience/personas:\n' + (Array.isArray(audience) ? audience : toLines(audience)).map((p,i)=>`${i+1}. ${p}`).join('\n')
+      : null;
+
+    const biasBlock = bias_checks && bias_checks.length
+      ? 'Bias / blind-spot checks:\n' + (Array.isArray(bias_checks) ? bias_checks : toLines(bias_checks)).map((b,i)=>`${i+1}. ${b}`).join('\n')
+      : null;
+
+    const vyaptiBlock = (() => {
+      const pos = sapaksha ? `Sapakṣa (positive instances):\n` + toLines(sapaksha).map((x,i)=>`  ${i+1}. ${x}`).join('\n') : null;
+      const neg = vipaksha ? `Vipakṣa (negative instances):\n` + toLines(vipaksha).map((x,i)=>`  ${i+1}. ${x}`).join('\n') : null;
+      return [
+        vyapti && `Vyāpti (universal rule + scope):\n${vyapti}`,
+        pos,
+        neg
+      ].filter(Boolean).join('\n') || null;
+    })();
+
+    return [
+      'Use the Nyāya pañcāvayava (five-member) syllogism with cultural fidelity and public checkability.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ethicGuide,
+      modeGuide,
+      dirGuide,
+      audBlock,
+      biasBlock,
+
+      // Five members
+      paksa && sadhya && `Pakṣa & Sādhya:\n- Subject (pakṣa): ${paksa}\n- Probandum (sādhya): ${sadhya}`,
+      pratijna && `1) Pratijñā (Thesis): ${pratijna}`,
+      hetu &&     `2) Hetu (Reason/mark): ${hetu}`,
+      vyaptiBlock && `3) Udāharaṇa (Universal rule + example):\n${vyaptiBlock}`,
+      upanaya &&  `4) Upanaya (Application to the case):\n${upanaya}`,
+      nigamana && `5) Nigamana (Conclusion): ${nigamana}`,
+
+      // Quality controls
+      trairupya && `Trairūpya check (3 marks of a sound hetu):\n${trairupya}`,
+      upadhi &&   `Upādhi (hidden condition qualifiers):\n${upadhi}`,
+      tarka &&    `Tarka (reductio/probative reasoning):\n${tarka}`,
+      hetvabhasa && `Hetvābhāsa scan (fallacy risks):\n${hetvabhasa}`,
+      western_mapping && `Western mapping (for teaching only):\n${western_mapping}`,
+
+      '\nOutput should include:',
+      '- The five members in order, with Nyāya terms preserved.',
+      '- Vyāpti with explicit scope/conditions and sapakṣa/vipakṣa illustrations.',
+      '- Trairūpya verdict, upādhi notes, and any tarka used.',
+      '- A short debate-ethic note (vāda) and invitation for defeater cases.',
+      '- (If teaching Western audiences) a brief mapping to familiar forms without erasing Nyāya specifics.'
+    ].filter(Boolean).join('\n');
+  }
+},
   {
   id:'pdca_cycle',
   slug:'pdca-deming-cycle',
