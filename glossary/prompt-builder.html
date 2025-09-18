@@ -846,12 +846,14 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 <!-- Collapsible picker body (default: shown) -->
 <div id="pickerBody">
 
+    <label for="filterUse">Use Cases</label>
+    <!-- Quick-select use-case chips (intent-first) -->
+<div id="useChips" class="chips" role="toolbar" aria-label="Use cases"></div>
+<input type="hidden" id="filterUse" value="all" />
+    
 
-        
-<div id="kindChips" class="chips" role="toolbar" aria-label="Kinds"></div>
-<input type="hidden" id="filterKind" value="__all__" />
  <div id="setstHelp" class=".titledesc">
-    Search Bar
+    <label for="filterSearch">Search Bar</label>
     <div id="finderHelp" class="desc" style="margin:6px 0 8px">
   Type to filter the <b>dropdown list below</b>.
   </div>
@@ -874,6 +876,15 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 
 <div id="filtersWrap" hidden>
+
+    <!-- Kind filter moved under More filters -->
+<div class="field">
+  <label class="sm">Kind</label>
+<div id="kindChips" class="chips" role="toolbar" aria-label="Kinds"></div>
+<input type="hidden" id="filterKind" value="__all__" />
+</div>
+
+
   <div class="filtersRow">
     <div>
 <label for="filterTag">Tag</label>
@@ -886,6 +897,10 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       </select>
     </div>
   </div>
+  
+
+
+  
 </div>
 
 
@@ -921,12 +936,15 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <h3 style="margin:0; font-size:14px">Common context (optional)</h3>
   <button id="commonCtxToggle" class="btn sm" type="button" aria-expanded="false" aria-controls="commonCtxBody" title="Show common context">Show</button>
 </div>
+
+
+<!-- Collapsible body (hidden by default) -->
+<div id="commonCtxBody" hidden>
+
 <div class="help" id="commonCtxScopeHelp" aria-live="polite">
   Not part of the template’s fields. Optional context for this prompt (each tab has its own).
 </div>
 
-<!-- Collapsible body (hidden by default) -->
-<div id="commonCtxBody" hidden>
   <div class="row">
     <div>
       <label for="usecase">Use-case / scenario</label>
@@ -1206,8 +1224,39 @@ function ensureTasksLoaded(onready){
 }
 
 /* === Unified templates adapter + FIND shim (add below the function) === */
+// --- Canonical kinds (singular) + labels shown in chips ---
+const KIND_ORDER  = ['helper','task','technique','framework','strategy','heuristic'];
+const KIND_LABELS = {
+  helper:     'Helpers',
+  task:       'Tasks',
+  technique:  'Techniques',
+  framework:  'Frameworks',
+  strategy:   'Strategies',
+  heuristic:  'Heuristics'
+};
+
+// Map noisy/legacy inputs → canonical kind
+function normalizeKind(raw, fallback='framework'){
+  const k = String(raw || fallback || '').trim().toLowerCase();
+  // plurals → singular
+  const dePlural = {
+    helpers: 'helper', tasks: 'task', techniques: 'technique',
+    frameworks: 'framework', strategies: 'strategy', heuristics: 'heuristic',
+    patterns: 'framework', pattern: 'framework'  // removed kind → framework
+  };
+  if (dePlural[k]) return dePlural[k];
+
+  // common aliases
+  const alias = {
+    pattern: 'framework', // safety if someone slips it back in
+    approach: 'strategy', playbook: 'strategy',
+    rule: 'heuristic', rules: 'heuristic'
+  };
+  return alias[k] || k || 'framework';
+}
+
 function getAllTemplates(){
-  // Accept several common globals so we never return []
+  // Accept several globals so "9/9" never happens because one dataset failed to load.
   const A = (Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS :
             (Array.isArray(window.TEMPLATES)  ? window.TEMPLATES  :
             (Array.isArray(window.templates)  ? window.templates  : [])));
@@ -1215,8 +1264,8 @@ function getAllTemplates(){
   const B = (Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES :
             (Array.isArray(window.tasks)          ? window.tasks          : []));
 
-  const normalize = (t, fallbackKind) => {
-    const kind = (t.kind || fallbackKind || 'framework').toString().trim().toLowerCase();
+  const normalize = (t, fbKind) => {
+    const kind = normalizeKind(t.kind, fbKind);
     // normalize category/categories onto .categories for matching
     const cats = Array.isArray(t.categories) ? t.categories :
                  (t.category ? [t.category] : []);
@@ -1227,6 +1276,7 @@ function getAllTemplates(){
   const tk = B.map(t => normalize(t, 'task'));
   return [...fw, ...tk];
 }
+
 
 function uniqueKinds(){
   const set = new Set(getAllTemplates().map(t => (t.kind || 'framework')));
@@ -1277,14 +1327,14 @@ function groupTagsByNamespace(){
 function renderKindChips(){
   const wrap = document.getElementById('kindChips');
   if (!wrap) return;
-  const kinds = (typeof uniqueKinds === 'function') ? uniqueKinds() : [];
+
   const current = (document.getElementById('filterKind')?.value) || '__all__';
 
-  // Always add an "All" chip first
-  const chips = ['__all__', ...kinds];
+  // Always render the six canonical kinds in this order, preceded by "All".
+  const chips = ['__all__', ...KIND_ORDER];
 
   wrap.innerHTML = chips.map(k=>{
-    const label = (k === '__all__') ? 'All' : k[0].toUpperCase() + k.slice(1);
+    const label = (k === '__all__') ? 'All' : KIND_LABELS[k] || (k[0].toUpperCase()+k.slice(1));
     const pressed = current === k;
     return `<button class="chip" type="button" data-kind="${k}" aria-pressed="${pressed?'true':'false'}">${label}</button>`;
   }).join('');
@@ -1305,8 +1355,83 @@ function renderKindChips(){
 
     // rebuild list with new kind filter
     refreshTemplateList && refreshTemplateList();
+    // keep category select in sync with the kind scope
+    updateFilterOptions && updateFilterOptions();
   };
 }
+
+
+// Intent-first quick filters (left→right): All · Write · Plan · Decide · Ideate · Analyze
+const USE_CASES = [
+  { id:'all',    label:'All',    tokens: [] },
+  { id:'write',  label:'Write',  tokens: ['write','writing','draft','compose','rewrite','copy','email','post','cta','script'] },
+  { id:'plan',   label:'Plan',   tokens: ['plan','planning','roadmap','okr','milestone','timeline','strategy','raci','project'] },
+  { id:'decide', label:'Decide', tokens: ['decide','decision','prioritization','prioritize','matrix','rank','score','tradeoff','kano','eisenhower','moscow'] },
+  { id:'ideate', label:'Ideate', tokens: ['idea','ideate','ideation','brainstorm','generate','concept','diverge','explore'] },
+  { id:'analyze',label:'Analyze',tokens: ['analyze','analysis','synthesis','synthesize','compare','contrast','summary','summarize','swot','research','report','brief','teardown'] }
+];
+
+function matchesUsePreset(t, useId){
+  if (!useId || useId === 'all') return true;
+  const preset = USE_CASES.find(p => p.id === useId);
+  if (!preset || !preset.tokens || !preset.tokens.length) return true;
+
+  const hay = [
+    t.label, t.slug, t.id,
+    (t.tags || []).join(' '),
+    (t.categories || []).join(' '),
+    (t.use_cases || []).join(' '),
+    (t.definition || ''), (t.help || ''),
+    ...((t.fields || []).flatMap(f => [f.label, f.desc, f.ph]))
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  return preset.tokens.some(tok => hay.includes(String(tok).toLowerCase()));
+}
+
+
+// Count matches for a preset by scanning each template's text surface
+function countUseMatches(preset){
+  const all = (typeof getAllTemplates === 'function') ? getAllTemplates() : (window.TEMPLATES || window.FRAMEWORKS || []);
+  if (!preset || preset.id === 'all' || !preset.tokens.length) return all.length;
+  const toks = preset.tokens.map(t=>String(t).toLowerCase());
+  return all.filter(t=>{
+    const hay = [
+      t.label, t.slug, t.id,
+      (t.tags||[]).join(' '),
+      (t.categories||[]).join(' '),
+      (t.use_cases||[]).join(' '),
+      (t.definition||''), (t.help||''),
+      ...((t.fields||[]).flatMap(f=>[f.label,f.desc,f.ph]))
+    ].filter(Boolean).join(' ').toLowerCase();
+    return toks.some(tok => hay.includes(tok));
+  }).length;
+}
+
+function renderUseChips(){
+  const wrap = document.getElementById('useChips');
+  if (!wrap) return;
+  const cur = (document.getElementById('filterUse')?.value) || 'all';
+  wrap.innerHTML = USE_CASES.map(p=>{
+    const pressed = cur === p.id;
+    const n = countUseMatches(p);
+    const label = (p.id === 'all') ? 'All' : p.label;
+    return `<button class="chip" type="button" data-use="${p.id}" aria-pressed="${pressed?'true':'false'}" title="${label} • ${n}">${label}</button>`;
+  }).join('');
+
+  wrap.onclick = (e)=>{
+    const btn = e.target.closest('button[data-use]');
+    if (!btn) return;
+    const use = btn.getAttribute('data-use');
+    const hidden = document.getElementById('filterUse');
+    if (hidden) hidden.value = use;
+
+    [...wrap.querySelectorAll('button[data-use]')].forEach(b=>{
+      b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+    });
+    refreshTemplateList && refreshTemplateList();
+  };
+}
+
 
 // Populate Kind & Category selects from the unified list, then sync the chips
 function updateFilterOptions(){
@@ -1346,8 +1471,10 @@ function updateFilterOptions(){
     catSel.value = hasPrev ? prev : '__all__';
   }
 
-  // 3) (Re)render kind chips
-  if (typeof renderKindChips === 'function') renderKindChips();
+// 3) (Re)render chips
+if (typeof renderKindChips === 'function') renderKindChips();
+if (typeof renderUseChips  === 'function') renderUseChips();
+
 }
 
 // Decide if a template matches the current search + filters
@@ -1369,9 +1496,9 @@ function templateMatches(t, q, kind, tagValue, catValue){
   })();
 
   // kind (from chips via hidden #filterKind)
-  const kok = (kind && kind !== '__all__')
-    ? (String(t.kind || 'framework').toLowerCase() === String(kind).toLowerCase())
-    : true;
+// t.kind is already canonicalized by getAllTemplates()
+const kok = (kind && kind !== '__all__') ? (t.kind === String(kind).toLowerCase()) : true;
+
 
   // tag exact match (namespace:value)
   const tok = (tagValue && tagValue !== '__all__')
@@ -1386,6 +1513,23 @@ function templateMatches(t, q, kind, tagValue, catValue){
   return qok && kok && tok && cok;
 }
 
+// --- COMPAT: keep Kind/Tag/Category working no matter the signature ---
+function templateMatchesCompat(t, q, kind, tagValue, catValue){
+  try{
+    // If templateMatches expects 6 args, we inject `use` from the hidden input
+    if (templateMatches.length === 6){
+      const use = document.getElementById('filterUse')?.value || 'all';
+      return templateMatches(t, q, use, kind, tagValue, catValue);
+    }
+    // Legacy 5-arg version — pass through unchanged
+    return templateMatches(t, q, kind, tagValue, catValue);
+  }catch(e){
+    // Fail closed (exclude) on unexpected errors
+    return false;
+  }
+}
+
+
 
 
 function refreshTemplateList(){
@@ -1398,8 +1542,13 @@ function refreshTemplateList(){
   const cat  = document.getElementById('filterCategory')?.value || '__all__';
 
   const all  = (typeof getAllTemplates === 'function') ? getAllTemplates()
-              : (window.TEMPLATES || window.FRAMEWORKS || []);
-  const hits = all.filter(t => templateMatches(t, q, kind, tag, cat));
+            : (window.TEMPLATES || window.FRAMEWORKS || []);
+
+const use  = document.getElementById('filterUse')?.value || 'all';
+const base = (use === 'all') ? all : all.filter(t => matchesUsePreset(t, use));
+
+const hits = base.filter(t => templateMatchesCompat(t, q, kind, tag, cat));
+
 
   // “Showing N / M” hint
   const hint = document.getElementById('fwHint');
@@ -1749,9 +1898,16 @@ allBtn && allBtn.addEventListener('click', ()=>{
   if (tagSel)     tagSel.value   = '__all__';
   if (catSel)     catSel.value   = '__all__';
   if (kindHidden) kindHidden.value = '__all__';
+
+  const useHidden = document.getElementById('filterUse');
+  if (useHidden) useHidden.value = 'all';
+
   if (typeof renderKindChips === 'function') renderKindChips();
+  if (typeof renderUseChips  === 'function') renderUseChips();
+
   refreshTemplateList();
 });
+
 
   // Deck visibility: show only when there are 2+ tabs
   updateDeckVisibility();
@@ -3112,15 +3268,15 @@ if (typeof updateExtraUI === 'function'){
   // Switch to the new framework id
   t.id = newId;
 
-  // Restore prior draft if available, otherwise start fresh
-  const prior = t._drafts[newId];
-  if (prior){
-    t.fields = { ...(prior.fields || {}) };
-    t.extra  = prior.extra;
-  } else {
-    t.fields = {};
-    if (!t.extra || !String(t.extra).trim()) delete t.extra; // allow boosters to prefill
-  }
+// Restore prior fields, but ALWAYS reset the default-included instructions
+// to this template’s boosters (acts like "Restore recommended text" on switch)
+const prior = t._drafts[newId];
+t.fields = prior ? { ...(prior.fields || {}) } : {};
+
+// Hard reset the instructions to the new template’s boosters
+t.extra = (typeof defaultBooster === 'function' ? (defaultBooster(newId) || '') : '');
+// renderFields() below will rebuild #extra and counter consistently
+
 
   renderTabs(); renderFields(); emitAll(); nudgeFieldsSwap(); scheduleSave();
 }
