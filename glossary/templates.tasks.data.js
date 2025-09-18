@@ -6,8 +6,8 @@
   slug: 'none',
   label: '— Task Picker —',
   kind: 'helper',
-  categories: ['none'],
-  tags: ['type:none','type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
+  categories: ['template-picker'],
+  tags: ['type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
   use_cases: [
     'help me pick the best framework',
     'explain which framework fits my task',
@@ -103,7 +103,7 @@
     kind: 'task',
     categories: ['communication', 'writing'],
     tags: [
-      'type:task','topic:email',
+      'type:task','topic:email','topic:writing',
       'use:outreach','use:follow-up','use:networking','use:support','use:ops','use:sales'
     ],
     use_cases: [
@@ -270,7 +270,7 @@
   label: 'DM — Outreach & Follow-up',
   kind: 'task',
   categories: ['communication','writing'],
-  tags: ['type:task','topic:dm','use:outreach','use:follow-up','use:networking'],
+  tags: ['type:task','topic:writing','topic:dm','use:outreach','use:follow-up','use:networking'],
 
   definition: 'Compose a short, platform-aware direct message that earns a quick yes.',
   help: 'Keep it tight. Add context and a single, easy CTA. Leave “Constraints” empty to let boosters kick in.',
@@ -465,7 +465,7 @@
   label: 'Memo — TL;DR + Recommendation',
   kind: 'task',
   categories: ['communication','writing'],
-  tags: ['type:task','topic:memo','use:internal','use:decision'],
+  tags: ['type:task','topic:writing','topic:memo','use:internal','use:decision'],
   definition: 'Draft a crisp memo with TL;DR, background, analysis, recommendation, risks, and next steps.',
   help: 'Great memos are skimmable. Provide key points; the template will structure the rest.',
   fields: [
@@ -563,7 +563,8 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   label: 'Letter — Formal / Personal',
   kind: 'task',
   categories: ['communication','writing'],
-  tags: ['type:task','topic:letter','use:formal','use:personal'],
+  tags: ['type:task','topic:writing',
+      'use:outreach','topic:letter','use:formal','use:personal'],
   definition: 'Compose a well-structured letter (formal or personal) with appropriate salutation and sign-off.',
   fields: [
     { key:'recipient',     label:'Recipient', type:'text', ph:'Hiring Manager at Flux' },
@@ -648,7 +649,8 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   label: 'Announcement — Change & Action',
   kind: 'task',
   categories: ['communication','writing'],
-  tags: ['type:task','topic:announcement','use:internal','use:external'],
+  tags: ['type:task','topic:writing',
+      'use:outreach','topic:announcement','use:internal','use:external'],
   definition: 'Announce a change with a clear headline, effective date, impact, and action required.',
   fields: [
     { key:'channel',    label:'Channel', type:'select',
@@ -732,7 +734,8 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   label: 'Press Release — AP Style',
   kind: 'task',
   categories: ['communication','writing'],
-  tags: ['type:task','topic:press-release','use:pr','use:launch'],
+  tags: ['type:task','topic:writing',
+      'use:outreach','topic:press-release','use:pr','use:launch'],
   definition: 'Standard AP-style press release with headline, subhead, dateline, body, quotes, boilerplate, and media contact.',
   fields: [
     { key:'org',        label:'Organization', type:'text', ph:'Acme, Inc.' },
@@ -818,7 +821,8 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   kind: 'task',
   categories: ['career','personal-admin'],
   tags: [
-    'type:task','topic:resume','use:job-application',
+    'type:task','topic:writing',
+      'topic:resume','use:job','use:job-application',
     'use:ats','use:editing','use:feedback'
   ],
 
@@ -1119,7 +1123,7 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   kind: 'task',
   categories: ['career','personal-admin'],
   tags: [
-    'type:task','topic:cover-letter','use:job-application',
+    'type:task','topic:cover-letter','topic:writing','use:job','use:job-application',
     'use:ats','use:editing','use:feedback'
   ],
 
