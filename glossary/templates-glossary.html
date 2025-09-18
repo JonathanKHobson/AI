@@ -104,7 +104,7 @@
     }
     .controls{
       display:grid;
-      grid-template-columns: 1.3fr .9fr .9fr .9fr auto;
+      grid-template-columns: 1.3fr .9fr .9fr .9fr .9fr .9fr .9fr .9fr auto;
       gap:10px; align-items:end;
     }
     .filters{margin-top:10px}
@@ -149,6 +149,8 @@
       background-size:14px 14px; background-repeat:no-repeat;
       border-radius:50%;
     }
+    
+
 
     /* ============ CHIPS ============ */
     .chip{
@@ -190,6 +192,54 @@
       background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
       display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
     }
+    
+    /* More breathing room above the fixed buttons */
+#list .card{
+  /* give the buttons more headroom */
+  padding-bottom: 116px; /* was 80px */
+  transition: box-shadow .18s ease, transform .06s ease, border-color .18s ease;
+}
+
+/* Add vertical space after the chips/tags stack inside cards */
+#list .card .meta{ margin-bottom: 8px; }
+#list .card .meta:last-child{ margin-bottom: 16px; }
+
+/* Hover & focus affordance: lift, highlight border */
+#list .card:hover,
+#list .card:focus-visible{
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 2px color-mix(in oklab, var(--accent) 35%, transparent);
+  transform: translateY(-1px);
+  outline: none; /* rely on the custom ring below */
+}
+
+/* Clear, lightweight focus ring for keyboard users */
+#list .card:focus-visible{
+  box-shadow: var(--shadow), 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* Optional: tiny “Click to expand” hint badge (top-right) */
+#list .card::after{
+  content: "Click to expand";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--chip);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;
+}
+#list .card:hover::after,
+#list .card:focus-visible::after{ opacity: .9; transform: translateY(0); }
+
+    
     .pb-btn:hover, .ask-btn:hover{ background:var(--pb-bg-hover) }
 
     /* COUNT */
@@ -258,6 +308,25 @@
           <label class="sub">Tags</label>
           <input id="tag" placeholder="Search cleaned tags (e.g., framework)"/>
         </div>
+        
+        <div>
+  <label class="sub">Topic</label>
+  <select id="tagTopic"></select>
+</div>
+<div>
+  <label class="sub">Phase</label>
+  <select id="tagPhase"></select>
+</div>
+<div>
+  <label class="sub">Level</label>
+  <select id="tagLevel"></select>
+</div>
+<div>
+  <label class="sub">Use</label>
+  <select id="tagUse"></select>
+</div>
+
+        
         <div>
           <label class="sub">&nbsp;</label>
           <button id="reset" class="btn btn-ghost btn-sm">Reset</button>
@@ -406,11 +475,25 @@ function aggregateTemplates(){
       const displayKind = (t.kind && String(t.kind).toLowerCase()!=='none') ? t.kind : 'Framework';
       const displayCats = cleanCategories(t.categories);
 
+const tagsByNs = {};
+for (const raw of (t.tags||[])) {
+  if (typeof raw !== 'string') continue;
+  const i = raw.indexOf(':');
+  if (i > -1) {
+    const ns = raw.slice(0,i).trim().toLowerCase();
+    const val = raw.slice(i+1).trim();
+    if (val) (tagsByNs[ns] ||= []).push(val);
+  }
+}
+
+
+
       out.push({
         ...t,
-        _cleanedTags: cleanedTags,
-        _displayKind: displayKind,
-        _displayCats: displayCats
+  _cleanedTags: cleanedTags,
+  _displayKind: displayKind,
+  _displayCats: displayCats,
+  _tagsByNs: tagsByNs
       });
     }
   }
@@ -433,7 +516,7 @@ for(const t of DATA){
 }
 
 /* ========== Filters (kept) ========== */
-const state = { q:'', kind:'', cat:'', tag:'' };
+const state = { q:'', kind:'', cat:'', tag:'', topic:'', phase:'', level:'', use:'' };
 const allKinds = unique(DATA.map(d=>d._displayKind || 'unknown'))
   .filter(k => k.toLowerCase() !== 'none').sort();
 const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
@@ -446,15 +529,63 @@ function fillSelect(sel, list, labelAll='All'){
 fillSelect($('#kind'), allKinds);
 fillSelect($('#cat'), allCats);
 
+// Namespaced tag helpers
+const TAG_NAMESPACES = ['topic','phase','level','use'];
+
+// Map state fields -> control IDs (so we can clear UI + state in sync)
+const ID_FOR_FIELD = {
+  q:'q', kind:'kind', cat:'cat', tag:'tag',
+  topic:'tagTopic', phase:'tagPhase', level:'tagLevel', use:'tagUse'
+};
+
+// One canonical "clear everything" helper
+function clearAll(){
+  // reset state
+  state.q = state.kind = state.cat = state.tag =
+  state.topic = state.phase = state.level = state.use = '';
+
+  // reset controls (skip gracefully if an element doesn't exist)
+  Object.values(ID_FOR_FIELD).forEach(id=>{
+    const el = $('#'+id);
+    if (el) el.value = '';
+  });
+
+  render();
+}
+
+
+function allTagValuesBy(ns){
+  return unique(DATA.flatMap(d =>
+    (d.tags||[])
+      .map(String)
+      .filter(t => t.toLowerCase().startsWith(ns+':'))
+      .map(cleanTag)
+  )).sort();
+}
+
+// Fill the four dropdowns
+fillSelect($('#tagTopic'), allTagValuesBy('topic'), 'All Topics');
+fillSelect($('#tagPhase'), allTagValuesBy('phase'), 'All Phases');
+fillSelect($('#tagLevel'), allTagValuesBy('level'), 'All Levels');
+fillSelect($('#tagUse'),   allTagValuesBy('use'),   'All Uses');
+
+
 $('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); });
 $('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); });
 $('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); });
 $('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); });
 
+$('#tagTopic').addEventListener('change', ()=>{ state.topic=$('#tagTopic').value; render(); });
+$('#tagPhase').addEventListener('change', ()=>{ state.phase=$('#tagPhase').value; render(); });
+$('#tagLevel').addEventListener('change', ()=>{ state.level=$('#tagLevel').value; render(); });
+$('#tagUse').addEventListener('change',   ()=>{ state.use=$('#tagUse').value;   render(); });
+
+
 $('#reset').addEventListener('click', ()=>{
-  state.q = state.kind = state.cat = state.tag = '';
-  $('#q').value=''; $('#kind').value=''; $('#cat').value=''; $('#tag').value='';
-  render();
+state.q = state.kind = state.cat = state.tag = state.topic = state.phase = state.level = state.use = '';
+['q','kind','cat','tag','tagTopic','tagPhase','tagLevel','tagUse'].forEach(id => { const el=$('#'+id); if (el) el.value=''; });
+render();
+
 });
 
 function matches(d){
@@ -462,11 +593,21 @@ function matches(d){
   if (q && !d._search.includes(q)) return false;
   if (state.kind && (d._displayKind||'') !== state.kind) return false;
   if (state.cat && !(d._displayCats||[]).includes(state.cat)) return false;
+  
   const tg = state.tag.trim().toLowerCase();
   if (tg){
     const cleaned=(d._cleanedTags||[]).map(x=>x.toLowerCase());
     if (!cleaned.some(x => x.includes(tg))) return false;
   }
+  
+  // Namespaced tag filters (exact match against values, case-insensitive)
+const want = (ns) => (state[ns]||'').trim().toLowerCase();
+if (want('topic') && !(d._tagsByNs?.topic||[]).some(x => x.toLowerCase() === want('topic'))) return false;
+if (want('phase') && !(d._tagsByNs?.phase||[]).some(x => x.toLowerCase() === want('phase'))) return false;
+if (want('level') && !(d._tagsByNs?.level||[]).some(x => x.toLowerCase() === want('level'))) return false;
+if (want('use')   && !(d._tagsByNs?.use||[]).some(x => x.toLowerCase() === want('use')))   return false;
+
+  
   return true;
 }
 
@@ -479,6 +620,11 @@ function renderActiveFilters(rowsTotal){
   if(state.kind) chips.push(['Kind', state.kind, 'kind']);
   if(state.cat)  chips.push(['Category', state.cat, 'cat']);
   if(state.tag)  chips.push(['Tags', `"${state.tag}"`, 'tag']);
+  if(state.topic) chips.push(['Topic', state.topic, 'topic']);
+if(state.phase) chips.push(['Phase', state.phase, 'phase']);
+if(state.level) chips.push(['Level', state.level, 'level']);
+if(state.use)   chips.push(['Use',   state.use,   'use']);
+
 
   $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
 
@@ -609,7 +755,12 @@ function render(){
       tags
     );
 
-    const card = h('div',{class:'card', role:'button'});
+    const card = h('div',{
+  class:'card',
+  role:'button',
+  tabIndex:'0',
+  'aria-label': `Expand details for ${t.label || t.slug || t.id || 'template'}`
+});
     card.append(cardBody, openPB, askBtn);
 
     // Click anywhere except PB/Ask opens preview modal
@@ -617,6 +768,16 @@ function render(){
       if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
       openModal(t, pbUrl);
     });
+    
+    card.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter' || e.key === ' '){
+    // don’t fire when the user is focusing the buttons
+    if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+    e.preventDefault();
+    openModal(t, pbUrl);
+  }
+});
+
 
     listEl.append(card);
   }
