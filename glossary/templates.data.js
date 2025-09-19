@@ -10414,7 +10414,10 @@ Dissatisfaction ↓`;
         "facilitate inclusive deliberation that leads to a legitimate consensus",
         "surface objections, modify options, and document “can live with” agreements",
         "run village/organizational forums (Musyawarah Desa, coalition meetings)",
-        "produce transparent decision records (minutes, consensus text, owners/dates)"
+        "produce transparent decision records (minutes, consensus text, owners/dates)",
+        "facilitate inclusive deliberation", 
+        "surface objections and modify options", 
+        "craft a consensus statement"
       ],
       boosters: [
         "Representation first: confirm all materially affected groups are present or consulted before seeking consensus.",
@@ -10714,7 +10717,9 @@ Dissatisfaction ↓`;
         "frame tensions as “both true in different respects” and design coexistence",
         "blend stakeholder views into a context-fitted middle (Zhongyong) or complementary pair (Yin–Yang)",
         "plan reversible probes when conditions are in flux; set triggers for pivots",
-        "adapt Western analytic cases to East/Southeast Asian consensus practices (e.g., musyawarah → mufakat)"
+        "adapt Western analytic cases to East/Southeast Asian consensus practices (e.g., musyawarah → mufakat)",
+        "embrace change and contradiction in planning", 
+        "craft both/and integrations', 'generate harmony-seeking adjustments"
       ],
       boosters: [
         "Name *where* each side holds: “A holds under ___; ¬A holds under ___.” Scope beats slogans.",
@@ -11022,7 +11027,9 @@ Dissatisfaction ↓`;
         "teach warrant + scope (vyāpti) with culturally respectful examples",
         "draft policy/science/legal arguments with explicit conditions and defeater checks",
         "perform critique-only analyses without asserting a counter-thesis (vitaṇḍā mode)",
-        "simulate persuasion while remaining evidence-grounded (jalpa mode)"
+        "simulate persuasion while remaining evidence-grounded (jalpa mode)",
+        "structure explanations with example and application", 
+        "justify conclusions with explicit inference steps"
       ],
       boosters: [
         "State the **vyāpti** with scope and at least one positive (**sapakṣa**) and one negative (**vipakṣa**) example.",
@@ -11409,463 +11416,1726 @@ Dissatisfaction ↓`;
       }
     },
 
+  {
+  id: "oblique_strategies",
+  slug: "oblique-strategies-cards",
+  label: "Oblique Strategies — Lateral thinking prompt cards",
+  kind: "framework",
+  categories: ["creativity","brainstorming","design"],
+  tags: [
+    "type:technique","topic:lateral-thinking","topic:constraints",
+    "use:brainstorming","use:creative-block","use:reframing","level:intermediate"
+  ],
+
+  use_cases: [
+    "break out of creative ruts with structured randomness",
+    "reframe problems in music, writing, design, product, research",
+    "generate surprising alternatives under tight constraints",
+    "facilitate short team sprints with micro-experiments",
+    "break out of a creative rut with random prompts", 
+    "find new approaches when stuck on an artistic problem"
+  ],
+
+  boosters: [
+    "Accept the first draw and try a literal micro-action before interpreting metaphorically.",
+    "Timebox every card experiment (10–20 minutes) and log Card → Action → Effect.",
+    "If a card conveniently agrees with your current plan, discard and redraw once; you’re optimizing for dissonance, not comfort.",
+    "Translate poetic prompts into a concrete verb + object instruction (e.g., “emphasize the flaws” → duplicate noisy layer and raise gain)."
+  ],
+
+  definition:
+    "A ritualized method (originating with Brian Eno & Peter Schmidt) that uses terse, random prompts to disrupt habitual patterns. The value comes from committing to a timeboxed micro-experiment, not from ‘finding the right card’.",
+
+  help:
+    "Describe the stuck point and select session options. The model will draw card(s), translate each into literal + metaphorical moves, run timeboxed micro-experiments (conceptually), and return a log, insights, and next actions.",
+
+  fields: [
     {
-      id: "oblique_strategies",
-      slug: "oblique-strategies-cards",
-      label: "Oblique Strategies — Lateral thinking prompt cards",
-      kind: "framework",
-      categories: [
-        "creativity",
-        "brainstorming"
+      key: "situation",
+      label: "Creative situation or block",
+      type: "textarea",
+      desc: "Where are you stuck? State it in one sentence to aim the deck.",
+      ph: "e.g., Stuck on the chorus melody; landing page headline feels flat."
+    },
+    {
+      key: "session_goal",
+      label: "Session goal",
+      type: "select",
+      options: [
+        "diverge — generate many unusual directions",
+        "reframe — change the way the brief is posed",
+        "unstick — find one workable next move fast",
+        "converge — compare two or three alternatives and pick one"
       ],
-      tags: [
-        "type:technique",
-        "topic:clarification",
-        "use:brainstorming",
-        "level:intermediate"
+      desc: "Sets how the AI uses the card(s): broad exploration (diverge), perspective shift (reframe), quick nudge (unstick), or down-select (converge).",
+      ph: "unstick — find one workable next move fast"
+    },
+    {
+      key: "mode",
+      label: "Session mode",
+      type: "select",
+      options: [
+        "solo sprint — one person draws; immediate micro-action; quick self-debrief",
+        "pair jam — one draws, one translates to 3 concrete options; pick 1 and test",
+        "workshop — facilitator draws; team timeboxes a rapid prototype; short share-out"
       ],
-      use_cases: [
-        "break out of a creative rut with random prompts",
-        "find new approaches when stuck on an artistic problem"
+      desc: "Changes facilitation instructions and outputs for solo vs. pair vs. group.",
+      ph: "solo sprint — one person draws; immediate micro-action; quick self-debrief"
+    },
+    {
+      key: "draws",
+      label: "Number of cards to draw",
+      type: "text",
+      desc: "Usually 1. Use 2 for ‘constraint + focus’ compound prompts.",
+      ph: "1"
+    },
+    {
+      key: "redraw_policy",
+      label: "Redraw policy",
+      type: "select",
+      options: [
+        "accept-first — commit to the first card; no shopping",
+        "attempt-then-one-redraw — try literally for 3–5 minutes, then allow 1 redraw",
+        "best-of-three-with-log — draw 3, briefly test each, keep the highest-yield"
       ],
-      boosters: [
-        "Interpret the card prompts loosely; any personal meaning you derive is valid.",
-        "If a prompt seems cryptic or disruptive, embrace it — use it as an opportunity to change your approach entirely."
+      desc: "Controls randomness discipline and prevents card shopping.",
+      ph: "attempt-then-one-redraw — try, then allow 1 redraw"
+    },
+    {
+      key: "interpretation_style",
+      label: "Interpretation style",
+      type: "select",
+      options: [
+        "literal-first — enact a concrete, small move that matches the words",
+        "metaphor-first — rephrase card as a metaphor then choose an action",
+        "alternate — run one literal pass, then one metaphorical pass"
       ],
-      definition: "A card-based method invented by musician Brian Eno and artist Peter Schmidt to overcome creative blocks. Each Oblique Strategies card presents a cryptic instruction or dilemma (e.g., \"Remove specifics and convert to ambiguities\") designed to break down artistic barriers and spark creative insight. Following these prompts encourages lateral thinking. Similarly, some creators use random oracle systems (like the I Ching, as John Cage did) for the same purpose of injecting randomness to spur innovation.",
-      help: "Describe your situation or creative project where you feel stuck. The model will draw an \"Oblique Strategy\" card (a random abstract prompt) and present it. Then it will help you interpret that prompt in the context of your situation and suggest ways it could inspire a next step or solution.",
-      fields: [
-        {
-          label: "Creative situation or block",
-          key: "situation",
-          ph: "e.g., Stuck on the melody for a song",
-          type: "textarea"
-        },
-        {
-          label: "Number of cards to draw (optional)",
-          key: "draws",
-          ph: "e.g., 1 or 2",
-          type: "text"
-        }
+      desc: "Determines how the model translates the card into actions.",
+      ph: "literal-first — enact a concrete, small move"
+    },
+    {
+      key: "timebox_minutes",
+      label: "Timebox per card (minutes)",
+      type: "text",
+      desc: "Micro-experiment duration per card.",
+      ph: "15"
+    },
+    {
+      key: "deck_mode",
+      label: "Deck / prompt source",
+      type: "select",
+      options: [
+        "classic-random — draw from a general oblique deck",
+        "mode-filtered — draw from a chosen prompt mode (expand / subtract / invert / randomize / humanize)",
+        "domain-deck — use a domain-specific pack (music, writing, design, research)",
+        "custom-list — use your own seed cards (see ‘Custom cards’ below)"
       ],
-      template: ({ situation, draws, ctx }) => [
-    'Use Oblique Strategies to generate lateral thinking prompts.',
-    ctx && `Context: ${ctx}`,
-    situation && `Situation: ${situation}`,
-    `Draw ${draws || 1} prompt card(s) and apply the instruction(s) to the situation.`,
-    'For each drawn prompt, consider its meaning and brainstorm how to apply it to your work or problem.'
-  ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "oblique strategies — lateral thinking prompt cards oblique-strategies-cards a card-based method invented by musician brian eno and artist peter schmidt to overcome creative blocks. each oblique strategies card presents a cryptic instruction or dilemma (e.g., \"remove specifics and convert to ambiguities\") designed to break down artistic barriers and spark creative insight. following these prompts encourages lateral thinking. similarly, some creators use random oracle systems (like the i ching, as john cage did) for the same purpose of injecting randomness to spur innovation. describe your situation or creative project where you feel stuck. the model will draw an \"oblique strategy\" card (a random abstract prompt) and present it. then it will help you interpret that prompt in the context of your situation and suggest ways it could inspire a next step or solution. type:technique topic:clarification use:brainstorming level:intermediate creativity brainstorming break out of a creative rut with random prompts find new approaches when stuck on an artistic problem interpret the card prompts loosely; any personal meaning you derive is valid. if a prompt seems cryptic or disruptive, embrace it — use it as an opportunity to change your approach entirely. creative situation or block number of cards to draw (optional)"
-      }
+      desc: "Alters how prompts are selected and described in the instructions.",
+      ph: "classic-random — draw from a general oblique deck"
+    },
+    {
+      key: "mode_filters",
+      label: "Mode filters (if using mode-filtered)",
+      type: "repeater",
+      itemType: "select",
+      itemLabel: "filter",
+      options: ["expand","subtract","invert","randomize","humanize","silence/noise","chance/dice"],
+      desc: "Pick 1–2 prompt modes to bias the draw when ‘mode-filtered’ is selected."
+    },
+    {
+      key: "custom_cards",
+      label: "Custom cards (if using custom-list)",
+      type: "repeater",
+      itemType: "text",
+      itemLabel: "card",
+      desc: "One prompt per line; terse and action-suggestive.",
+      ph: "e.g., Remove the spine; Start from silence; Swap the protagonist"
+    },
+    {
+      key: "constraints",
+      label: "Constraints to respect (optional)",
+      type: "textarea",
+      desc: "Non-negotiables: deadlines, safety, brand, legal, scope.",
+      ph: "Ship by Friday; no new dependencies; keep accessibility AA"
+    },
+    {
+      key: "materials",
+      label: "Materials / artifacts at hand (optional)",
+      type: "textarea",
+      desc: "What you’re working with now: sketches, stems, copy, data.",
+      ph: "Two melody stems; draft headline; Figma wireframe; dataset v3"
+    },
+
+    // Persona & bias typeaheads (inline autofill)
+    {
+      key: "audience",
+      label: "Personas / audience (optional)",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "persona",
+      autofill: "persona->inline",
+      desc: "Who this work is ultimately for; informs how prompts are applied.",
+      ph: "novice songwriter; SMB owner; teen learner; procurement manager"
+    },
+    {
+      key: "bias_checks",
+      label: "Bias checks (optional)",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "bias",
+      autofill: "bias->inline",
+      desc: "Cognitive tendencies to guard against during interpretation.",
+      ph: "confirmation bias; sunk-cost; status-quo; availability"
     },
 
     {
-      id: "okr",
-      slug: "okr-goal-setting",
-      label: "OKR — Objective & Key Results",
-      kind: "strategy",
-      categories: [
-        "strategy",
-        "planning"
+      key: "application_scope",
+      label: "Where to apply the card",
+      type: "select",
+      options: [
+        "whole — apply to the entire work/process",
+        "element — apply to a single component (pick one)",
+        "process — apply to workflow (ordering, roles, tools)",
+        "constraints — apply to rules/limits themselves"
       ],
-      tags: [
-        "type:framework",
-        "use:goals",
-        "topic:matrix",
-        "level:beginner",
-        "use:pattern",
-        "use:scope-management"
-      ],
-      use_cases: [
-        "define clear organizational or personal goals with measurable outcomes",
-        "break down a vision into concrete targets",
-        "evaluate progress by looking at quantifiable results tied to objectives"
-      ],
-      boosters: [
-        "Make each Key Result specific, with a clear metric, target value, and timeframe.",
-        "Ensure Key Results are outcomes (what is achieved), not tasks (what is done)."
-      ],
-      definition: "A goal-setting framework pairing a qualitative Objective (what you want to achieve) with a set of quantitative Key Results (how you measure achievement).",
-      help: "Enter a high-level objective and optionally some initial key result ideas. The model will generate/refine a set of Key Results that make the objective specific and measurable.",
-      fields: [
-        {
-          label: "Objective (qualitative goal)",
-          desc: "The significant goal to achieve (concise and inspirational).",
-          key: "objective",
-          ph: "e.g., Become the market leader in customer satisfaction.",
-          type: "textarea"
-        },
-        {
-          label: "Key Results (optional, one per line)",
-          desc: "Draft key results (metrics/targets) if you have any, one per line.",
-          key: "key_results",
-          ph: "e.g., NPS score ≥ 60 by Q4\nRepeat purchase rate 30% higher by year-end",
-          type: "textarea"
-        }
-      ],
-      template: ({ objective, key_results, ctx, audience, style, tone }) => [
-      'Develop an OKR with a strong Objective and 2–5 measurable Key Results.',
+      desc: "Directs the AI to target the card at a scope level.",
+      ph: "element — apply to a single component"
+    },
+    {
+      key: "success_metric",
+      label: "Success metric (optional)",
+      type: "text",
+      desc: "How we’ll judge if the card helped.",
+      ph: "Produce 3 viable variants; reduce edit time by 20%"
+    },
+{
+  key: "output_format",
+  label: "Output format",
+  type: "select",
+  options: [
+    "ascii — bullets with branches for each card",
+    "json — structured log of card→actions→effects",
+    "action-plan — prioritized next steps with owners/timing",
+    "card-log-table — markdown table summarizing the session",
+    "ai-image — generate an image prompt for an image model",
+    "verbal-visual — written visual description of the result",
+    "python-graph — Python code to plot a simple chart/graph"
+  ],
+  desc: "Shapes the final deliverable and schema. New options include an image-generation prompt, a prose visual description, and Python plotting code.",
+  ph: "json — structured log of card→actions→effects"
+}
+
+  ],
+
+  template: ({
+    situation, session_goal, mode, draws, redraw_policy, interpretation_style,
+    timebox_minutes, deck_mode, mode_filters, custom_cards, constraints, materials,
+    audience, bias_checks, application_scope, success_metric, output_format, ctx
+  }) => {
+    const list = (s) => String(s||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const bullets = (arr,prefix="• ") => (arr||[]).map(x=>`${prefix}${x}`).join("\n");
+
+    const personas = Array.isArray(audience) ? audience.map(p=>`- ${p}`).join("\n") : null;
+    const biases = Array.isArray(bias_checks) ? bias_checks.map(b=>`- ${b}`).join("\n") : null;
+    const filters = Array.isArray(mode_filters) ? mode_filters.map(f=>`- ${f}`).join("\n") : null;
+    const custom = Array.isArray(custom_cards) ? custom_cards.map(c=>`- ${c}`).join("\n") : null;
+
+    const goalInstr = {
+      "diverge": "Bias toward quantity and variety. For each card, produce at least 5 quick variants. No critique during generation; critique after the timebox.",
+      "reframe": "Translate the card into a new statement of the brief, then propose 2–3 solutions that only make sense under that reframed brief.",
+      "unstick": "Aim for the smallest concrete move that creates momentum. Produce exactly one next action per card and do not over-optimize.",
+      "converge": "Use the card to create contrast between 2–3 candidate solutions. Compare against constraints and the success metric; pick one and justify."
+    }[String(session_goal||"unstick").split(" ")[0]];
+
+    const modeInstr = {
+      "solo sprint": "Solo sprint: draw, enact one literal micro-action immediately, then note effect in one sentence.",
+      "pair jam": "Pair jam: drawer reads card; partner proposes three concrete actions; pick one; enact; swap roles if repeating.",
+      "workshop": "Workshop: facilitator draws; team timeboxes a 10–15min prototype; 2-minute show-and-tell; log insights; optionally repeat once."
+    };
+
+    const redrawInstr = {
+      "accept-first": "Redraw policy: accept the first card. No shopping. Commit to a literal attempt for the full timebox.",
+      "attempt-then-one-redraw": "Redraw policy: attempt the first card literally for 3–5 minutes. If sterile, allow exactly one redraw and commit.",
+      "best-of-three-with-log": "Redraw policy: draw three cards up front. Run 5-minute micro-tests for each. Keep the highest-yield and discard the rest, logging why."
+    };
+
+    const interpInstr = {
+      "literal-first": "Interpretation: start literal. Translate the words into a concrete verb + object change, then optionally a metaphorical variant.",
+      "metaphor-first": "Interpretation: start metaphorical. Re-express the card as a framing, then derive one concrete action consistent with that frame.",
+      "alternate": "Interpretation: run two passes per card—first literal (small concrete change), then metaphorical (reframe), compare effects."
+    };
+
+    const deckInstr = {
+      "classic-random": "Deck: classic random. Draw blindly from a general oblique set; do not browse for favorites.",
+      "mode-filtered": `Deck: mode-filtered. Bias draws toward:\n${filters || "- expand"}`,
+      "domain-deck": "Deck: domain-specific. Use prompts phrased for your domain (music/writing/design/research); examples should reference domain artifacts.",
+      "custom-list": `Deck: custom. Use only the provided seed cards:\n${custom || "- (add custom cards)"}`
+    };
+
+    const scopeInstr = {
+      "whole": "Scope: apply the card to the entire work/process; expect large shifts; keep changes reversible.",
+      "element": "Scope: apply to one named element only (e.g., headline, bassline, hero image, onboarding step).",
+      "process": "Scope: apply to workflow—sequence, roles, or tool choices—rather than the artifact itself.",
+      "constraints": "Scope: apply to the constraints—remove, swap, or invert a rule—then re-attempt the task under the new rule."
+    };
+
+    const outInstr = {
+  "ascii":
+    "Output format: ASCII. For each card, return bullets:\n- Card text\n- Literal micro-action (≤2 sentences)\n- Metaphorical variant (≤2)\n- Timebox and what happened\n- Keep / discard / iterate",
+  "json":
+    "Output format: JSON. Return an array of objects with keys: card, literal_action, metaphor_action, timebox_minutes, effect, decision, lesson.",
+  "action-plan":
+    "Output format: Action plan. Return a prioritized list of next steps with owners/dates, each traced back to the originating card.",
+  "card-log-table":
+    "Output format: Card log table (Markdown). Columns: Card | Literal action | Metaphor action | Timebox | Effect | Decision | Lesson.",
+  "ai-image":
+    "Output format: AI Image Prompt. Produce a single, well-structured image-generation prompt that renders the best post-card concept. Include:\n- Subject & key scene elements\n- Style & medium (e.g., ink illustration, cinematic still, isometric UI mock)\n- Composition (framing, focal point, camera/angle)\n- Lighting and mood\n- Palette or tonal guidance (optional)\n- Aspect ratio\n- Negative cues (what to avoid)\nAlso provide a one-line rationale mapping elements back to the card(s). Do NOT include copyrighted characters/styles by name.",
+  "verbal-visual":
+    "Output format: Verbal visual description. Write a vivid, concrete description of the final concept as if describing a finished image to someone who cannot see it. Include:\n- Foreground, midground, background\n- Spatial relationships and movement\n- Texture, scale, light/shadow, and color language\n- Key focal points and why they matter\nOptionally add an ASCII mini-layout (no fancy box-drawing) to sketch composition.",
+  "python-graph":
+    "Output format: Python plotting code. Generate a single, self-contained Python snippet that creates a simple chart reflecting the experiment's key comparison (e.g., baseline vs. card variant counts, option scores, or time savings). Requirements:\n- Use matplotlib only\n- Exactly one figure (no subplots)\n- Do not set custom colors or styles\n- Include a tiny inline dummy dataset if user data is absent (clearly label it as sample)\n- Add axis labels and a concise title referencing the card\nReturn the code in a fenced block and briefly state what the chart communicates."
+};
+
+    const tb = Number.parseInt(timebox_minutes||"15",10) || 15;
+    const n = Number.parseInt(draws||"1",10) || 1;
+
+    return [
+      "Use Oblique Strategies to generate lateral moves via timeboxed micro-experiments.",
       ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
+      situation && `Stuck point: ${situation}`,
+      constraints && `Constraints to respect:\n${constraints}`,
+      materials && `Materials on hand:\n${materials}`,
+      audience && `Personas / audience:\n${personas}`,
+      bias_checks && `Bias checks to watch for:\n${biases}`,
+
+      // Operating doctrine
+      `Session goal: ${goalInstr}`,
+      mode && (modeInstr[mode.split(" — ")[0]] || modeInstr[String(mode||"").split(" ")[0]]),
+      redraw_policy && (redrawInstr[redraw_policy.split(" ")[0]] || redrawInstr["attempt-then-one-redraw"]),
+      interpretation_style && (interpInstr[interpretation_style.split(" ")[0]] || interpInstr["literal-first"]),
+      deck_mode && deckInstr[deck_mode.split(" ")[0]] || deckInstr["classic-random"],
+      application_scope && (scopeInstr[application_scope.split(" ")[0]] || scopeInstr["element"]),
+      success_metric && `Success metric: ${success_metric}`,
+
+      // Draw & apply
+      `Draw ${n} card(s). For each card, run a ${tb}-minute micro-experiment following the selected interpretation style.`,
+      "For every card, produce BOTH:\n- A literal micro-action (concrete, reversible, 1–2 sentences)\n- A metaphorical variant (reframing or sideways move, 1–2 sentences)\nThen enact one; record effect and a keep/discard decision.",
+
+      // Output format specification
+      outInstr[output_format?.split(" ")[0] || "json"]
+    ].filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text:
+      "Oblique Strategies framework lateral thinking prompts Brian Eno Peter Schmidt creative block randomness ritual timebox micro-experiment deck mode filters custom seed cards solo pair workshop redraw policy literal metaphorical actions JSON log action plan personas bias checks"
+  }
+},
+{
+  id: "okr",
+  slug: "okr-goal-setting",
+  label: "OKR — Objective & Key Results",
+  kind: "framework",
+  categories: ["strategy", "planning", "measurement"],
+  tags: [
+    "type:framework",
+    "topic:goal-setting",
+    "topic:alignment",
+    "topic:metrics",
+    "phase:plan",
+    "level:beginner",
+    "use:scope-management",
+    "use:execution",
+    "use:review"
+  ],
+
+  use_cases: [
+    "translate strategy into a small set of measurable outcomes",
+    "align teams and individuals around a shared destination",
+    "separate outcomes (KRs) from initiatives (the work)",
+    "review progress with honest scoring and learning, not blame",
+    "define clear organizational or personal goals with measurable outcomes", "break down a vision into concrete targets", "evaluate progress by looking at quantifiable results tied to objectives"
+  ],
+
+  boosters: [
+    "Keep 1–3 Objectives per scope; 2–5 Key Results per Objective.",
+    "Make every KR outcome-based with a metric, baseline, target, and timeframe.",
+    "Declare stretch policy: committed (must hit) vs aspirational (aim ~0.7 score).",
+    "Add Goodhart guardrails (a balancing metric or qualitative check) for any KR that could be gamed.",
+    "Publish owners and a weekly/biweekly check-in ritual (date, agenda, next steps)."
+  ],
+
+  definition:
+    "OKRs pair a qualitative Objective (the inspiring ‘what’) with 2–5 quantitative Key Results (the measurable ‘how we’ll know’). They create focus, alignment, and learning through periodic check-ins and end-of-cycle review.",
+
+  help:
+    "Provide an Objective and any draft KRs. The model will refine KRs (metric, baseline→target, timeframe), propose guardrails, suggest initiatives (separate from KRs), and define check-ins and scoring. Use persona and bias typeaheads to tailor wording and reduce pitfalls.",
+
+  fields: [
+    {
+      key: "objective",
+      label: "Objective (qualitative goal)",
+      type: "textarea",
+      desc: "A concise, inspiring destination. Avoid embedding metrics or tasks.",
+      ph: "e.g., Delight new customers with a frictionless onboarding experience."
+    },
+
+    // Personas (per your spec)
+    {
+      key: "audience",
+      label: "Primary personas / stakeholders",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "persona",
+      autofill: "persona->inline",
+      desc: "Who this Objective serves or must persuade (drives language and trade-offs).",
+      ph: "e.g., New SMB admins; Support agents; Compliance reviewer"
+    },
+
+    // Bias checks (per your spec)
+    {
+      key: "bias_checks",
+      label: "Bias & risk checks",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "bias",
+      autofill: "bias->inline",
+      desc: "Known pitfalls to watch (e.g., Goodhart’s law, sandbagging, survivorship).",
+      ph: "e.g., Goodhart’s law; Outcome reporting bias; Selection bias"
+    },
+
+    {
+      key: "mission_link",
+      label: "Mission / strategy link",
+      type: "textarea",
+      desc: "How this Objective advances the mission or annual strategy. ‘Why this now?’",
+      ph: "e.g., Supports FY25 strategy pillar: Customer trust & retention"
+    },
+
+    {
+      key: "time_horizon",
+      label: "Time horizon",
+      type: "select",
+      options: [
+        "Q (quarter — ~13 weeks)",
+        "H1/H2 (half-year)",
+        "FY (annual)",
+        "Custom (specify dates in notes)"
+      ],
+      desc: "Sets cadence expectations for KRs and reviews.",
+      ph: "Q (quarter — ~13 weeks)"
+    },
+
+    {
+      key: "owners",
+      label: "Owners / stewards",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "persona",
+      autofill: "persona->inline",
+      desc: "People accountable for the Objective/KRs; cross-functional as needed.",
+      ph: "e.g., Growth PM; Design lead; Data analyst"
+    },
+
+    // Structured KRs with baselines/targets, etc.
+    {
+      key: "key_results",
+      label: "Key Results",
+      type: "repeater",
+      itemType: "group",
+      itemLabel: "KR",
+      desc: "2–5 outcome metrics that prove progress on the Objective.",
+      fields: [
+        { key: "metric",       label: "Metric (name & formula)", type: "text",     ph: "e.g., Onboarding time = avg days signup→‘first value’" },
+        { key: "baseline",     label: "Baseline (current value)", type: "text",    ph: "e.g., 14 days (Q2 actual)" },
+        { key: "target",       label: "Target (end-of-cycle)",    type: "text",    ph: "e.g., ≤ 4 days by Q4" },
+        { key: "type",         label: "Type",                     type: "select",  options: ["leading (predictive/behavioral)", "lagging (outcome/impact)"], ph: "leading or lagging" },
+        { key: "timeframe",    label: "Timeframe",                type: "text",    ph: "e.g., by end of Q3; monthly readout" },
+        { key: "owner",        label: "KR owner",                 type: "text",    ph: "e.g., Onboarding PM" },
+        { key: "instrument",   label: "Instrumentation / data source", type: "textarea", ph: "e.g., Product analytics event ‘first_success’; survey CSAT item Q3" },
+        { key: "guardrail",    label: "Goodhart guardrail (balancing metric)", type: "text", ph: "e.g., CSAT ≥ 4.5 while time drops" },
+        { key: "risks",        label: "Risks & assumptions",      type: "textarea", ph: "e.g., Data latency; seasonality; staffing limits" },
+        { key: "initiatives",  label: "Candidate initiatives (tasks/projects)", type: "textarea", ph: "e.g., Guided setup; checklist; 1:1 concierge for first 50 users" }
+      ]
+    },
+
+    {
+      key: "non_goals",
+      label: "Non-goals / out of scope",
+      type: "textarea",
+      desc: "What we will not pursue this cycle (prevents scope creep).",
+      ph: "e.g., No pricing experiments during onboarding redesign"
+    },
+
+    {
+      key: "scoring_method",
+      label: "Scoring method",
+      type: "select",
+      options: [
+        "0.0–1.0 (Google style: ~0.7 = ambitious success)",
+        "RAG (Red/Amber/Green with numeric mapping: R=0.3/A=0.6/G=1.0)",
+        "Binary (Met / Not met, for committed KRs)"
+      ],
+      desc: "Defines how progress is graded at check-ins and end-cycle.",
+      ph: "0.0–1.0 (Google style: ~0.7 = ambitious success)"
+    },
+
+    {
+      key: "checkins",
+      label: "Check-in cadence & agenda",
+      type: "textarea",
+      desc: "When and how you’ll review (and what gets updated each time).",
+      ph: "e.g., Fridays biweekly: update KR data, blockers, next actions"
+    },
+
+    {
+      key: "dependencies",
+      label: "Dependencies & resources",
+      type: "textarea",
+      desc: "Cross-team needs, budget/tools, approvals that affect success.",
+      ph: "e.g., Data pipeline from Analytics; 2 eng sprints; Legal sign-off"
+    },
+
+    {
+      key: "visibility",
+      label: "Visibility",
+      type: "select",
+      options: ["Public (org-wide)", "Team", "Private (draft)"],
+      desc: "Who can see the OKR; default to transparency.",
+      ph: "Public (org-wide)"
+    }
+  ],
+
+  template: ({ objective, audience, bias_checks, mission_link, time_horizon, owners, key_results, non_goals, scoring_method, checkins, dependencies, visibility, ctx, style, tone }) => {
+    const list = (arr, bullet = "- ") =>
+      String(arr || "")
+        .split(/\n+/)
+        .map(s => s.trim())
+        .filter(Boolean)
+        .map(s => `${bullet}${s}`)
+        .join("\n");
+
+    const personas = Array.isArray(audience) ? audience : (audience ? [audience] : []);
+    const biases   = Array.isArray(bias_checks) ? bias_checks : (bias_checks ? [bias_checks] : []);
+    const ownersL  = Array.isArray(owners) ? owners : (owners ? [owners] : []);
+
+    // Render structured KRs if provided
+    const renderKRs = () => {
+      if (!Array.isArray(key_results) || key_results.length === 0) return null;
+      const rows = key_results.map((kr, i) => {
+        const idx = i + 1;
+        const metric = kr?.metric ? `Metric: ${kr.metric}` : "Metric: (define)";
+        const baseline = kr?.baseline ? `Baseline: ${kr.baseline}` : "Baseline: (define)";
+        const target = kr?.target ? `Target: ${kr.target}` : "Target: (define)";
+        const type = kr?.type ? `Type: ${kr.type}` : "Type: (leading/lagging?)";
+        const timeframe = kr?.timeframe ? `Timeframe: ${kr.timeframe}` : "Timeframe: (define)";
+        const owner = kr?.owner ? `Owner: ${kr.owner}` : "Owner: (assign)";
+        const instrument = kr?.instrument ? `Instrumentation: ${kr.instrument}` : "Instrumentation: (source & formula)";
+        const guardrail = kr?.guardrail ? `Guardrail: ${kr.guardrail}` : "Guardrail: (balancing metric if risk of gaming)";
+        const risks = kr?.risks ? `Risks: ${kr.risks}` : "Risks: (note major assumptions)";
+        const inits = kr?.initiatives ? `Initiatives: ${kr.initiatives}` : "Initiatives: (2–3 candidate projects)";
+        return [
+          `KR${idx}:`,
+          `  ${metric}`,
+          `  ${baseline} → ${target}`,
+          `  ${type}; ${timeframe}; ${owner}`,
+          `  ${instrument}`,
+          `  ${guardrail}`,
+          `  ${risks}`,
+          `  ${inits}`
+        ].join("\n");
+      });
+      return rows.join("\n");
+    };
+
+    return [
+      "Design a high-quality OKR with guardrails and a working cadence.",
+      ctx && `Context: ${ctx}`,
       style && `Style: ${style}`,
       tone && `Tone: ${tone}`,
-      objective && `Objective: ${objective}`,
-      key_results && (
-        'Given Key Result ideas:\n' + String(key_results).split(/\n+/).map(s => s.trim()).filter(Boolean).map((kr,i) => `${i+1}. ${kr}`).join('\n')
-      ),
-      'Output:\n1) Objective (qualitative)\n2) 2–5 Key Results (with metrics & targets)'
-    ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "okr — objective & key results okr-goal-setting a goal-setting framework pairing a qualitative objective (what you want to achieve) with a set of quantitative key results (how you measure achievement). enter a high-level objective and optionally some initial key result ideas. the model will generate/refine a set of key results that make the objective specific and measurable. type:framework use:goals topic:matrix level:beginner use:pattern use:scope-management strategy planning define clear organizational or personal goals with measurable outcomes break down a vision into concrete targets evaluate progress by looking at quantifiable results tied to objectives make each key result specific, with a clear metric, target value, and timeframe. ensure key results are outcomes (what is achieved), not tasks (what is done). objective (qualitative goal) key results (optional, one per line)"
-      }
-    },
 
-    {
-      id: "ooda_loop",
-      slug: "ooda-loop",
-      label: "OODA Loop (Observe–Orient–Decide–Act)",
-      kind: "strategy",
-      categories: [
-        "decision",
-        "strategy",
-        "operations"
-      ],
-      tags: [
-        "use:pattern",
-        "use:coding",
-        "use:decision-making",
-        "level:beginner"
-      ],
-      use_cases: [
-        "cut through indecision with a tight OODA pass",
-        "establish a clear next action under uncertainty"
-      ],
-      boosters: [
-        "Add a quick feedback note: how you’ll check results after acting.",
-        "Limit Observe/Orient to facts relevant to the next step."
-      ],
-      definition: "A rapid decision cadence: Observe → Orient → Decide → Act.",
-      help: "Keep each stage concise; bias toward action with feedback.",
-      fields: [
-        {
-          label: "Observe — What’s the situation / facts?",
-          key: "observe",
-          ph: "Crisp, decision-relevant facts only.",
-          type: "textarea"
-        },
-        {
-          label: "Orient — What matters most right now?",
-          key: "orient",
-          ph: "Priorities, constraints, values.",
-          type: "textarea"
-        },
-        {
-          label: "Decide — What’s the next best step?",
-          key: "decide",
-          ph: "One sentence.",
-          type: "textarea"
-        },
-        {
-          label: "Act — What will I actually do now?",
-          key: "act",
-          ph: "Concrete action and owner.",
-          type: "textarea"
-        }
-      ],
-      template: ({ observe, orient, decide, act, ctx, audience, style, tone }) => [
-    'Run an OODA pass to unblock a decision.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    observe && ('Observe (facts):\n' + observe),
-    orient && ('Orient (what matters):\n' + orient),
-    decide && ('Decide (next best step):\n' + decide),
-    act && ('Act (now):\n' + act),
-    'Output:\n1) Key facts\n2) Priority frame\n3) Decision\n4) Immediate action + feedback check'
-  ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "ooda loop (observe–orient–decide–act) ooda-loop a rapid decision cadence: observe → orient → decide → act. keep each stage concise; bias toward action with feedback. use:pattern use:coding use:decision-making level:beginner decision strategy operations cut through indecision with a tight ooda pass establish a clear next action under uncertainty add a quick feedback note: how you’ll check results after acting. limit observe/orient to facts relevant to the next step. observe — what’s the situation / facts? orient — what matters most right now? decide — what’s the next best step? act — what will i actually do now?"
-      }
-    },
+      objective && `\nObjective:\n${objective}`,
 
-    {
-      id: "opportunity_scoring",
-      slug: "opportunity-scoring-gap-analysis",
-      label: "Opportunity Scoring — Importance vs. Satisfaction",
-      kind: "framework",
-      categories: [
-        "reasoning",
-        "planning",
-        "product-management"
-      ],
-      tags: [
-        "type:framework",
-        "topic:prompting",
-        "topic:clarification",
-        "use:pattern"
-      ],
-      use_cases: [
-        "surface unmet needs",
-        "turn surveys into priorities"
-      ],
-      boosters: [
-        "Flag items with high importance and low satisfaction as top opportunities."
-      ],
-      definition: "Compare importance vs. satisfaction to find largest gaps and prioritize opportunities.",
-      help: "Add lines like \"Item | importance (1–5) | satisfaction (1–5)\".",
-      fields: [
-        {
-          label: "Items (one per line, with optional scores)",
-          key: "items",
-          ph: "Faster checkout | 5 | 2\nBetter docs | 4 | 3\nMobile offline | 5 | 1",
-          type: "textarea"
-        },
-        {
-          label: "Research method (optional)",
-          key: "method",
-          ph: "e.g., Survey n=214 + 8 interviews",
-          type: "text"
-        },
-        {
-          label: "Notes (optional)",
-          key: "notes",
-          ph: "Segments, anomalies, caveats",
-          type: "textarea"
-        }
-      ],
-      template: ({ items, method, notes, usecase: ctx, audience, style, tone }) => [
-    'Perform Opportunity Scoring (Importance vs. Satisfaction) to find unmet needs.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    method && ('Research method:\n' + method),
-    items && ('Raw items:\n' + items),
-    notes && ('Notes:\n' + notes),
-    'Output:\n1) Table with Item | Importance | Satisfaction | Gap (Imp–Sat)\n2) Top 5 opportunities with rationale\n3) Suggested next step per opportunity (experiment or design task)'
-  ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "opportunity scoring — importance vs. satisfaction opportunity-scoring-gap-analysis compare importance vs. satisfaction to find largest gaps and prioritize opportunities. add lines like \"item | importance (1–5) | satisfaction (1–5)\". type:framework topic:prompting topic:clarification use:pattern reasoning planning product-management surface unmet needs turn surveys into priorities flag items with high importance and low satisfaction as top opportunities. items (one per line, with optional scores) research method (optional) notes (optional)"
-      }
-    },
+      mission_link && `\nMission / Strategy link:\n${mission_link}`,
 
-    {
-      id: "par",
-      slug: "par-problem-action-result",
-      label: "PAR — Problem · Action · Result",
-      kind: "framework",
-      categories: [
-        "storytelling-frameworks",
-        "prompt-development-techniques"
-      ],
-      tags: [
-        "type:framework",
-        "use:storytelling",
-        "phase:apply",
-        "level:beginner",
-        "use:recipe",
-        "use:case-study",
-        "use:planning",
-        "use:pattern"
-      ],
-      use_cases: [
-        "summarize work experience on resumes",
-        "write concise case study or incident summaries",
-        "prepare performance review notes",
-        "give crisp updates in team reports"
-      ],
-      boosters: [
-        "Quantify results with metrics or proxies (%, $, Δ, time saved).",
-        "Make the Problem clear and show why it mattered (stakes).",
-        "Emphasize your unique role in the Action (avoid “we did” unless team impact is key).",
-        "Adapt output tone to context: factual (resume), reflective (review), persuasive (case study)."
-      ],
-      definition: "A concise storytelling pattern that frames a challenge (Problem), the steps taken (Action), and the measurable outcome (Result). A simpler alternative to STAR.",
-      help: "Use PAR for clear, structured summaries of your work or impact. Start with the challenge, describe what you did, and end with the result.",
-      fields: [
-        {
-          label: "Problem (situation/stakes)",
-          desc: "The obstacle, gap, or situation, ideally with stakes or urgency.",
-          key: "problem",
-          ph: "e.g., High churn after trial threatened renewal revenue",
-          type: "textarea"
-        },
-        {
-          label: "Action (your steps)",
-          desc: "What you did specifically to address the problem.",
-          key: "action",
-          ph: "e.g., Designed onboarding emails and in-app tutorials",
-          type: "textarea"
-        },
-        {
-          label: "Result (outcome/impact)",
-          desc: "The measurable or observable impact of your action.",
-          key: "result",
-          ph: "e.g., Reduced churn from 14% → 8% within 3 months",
-          type: "textarea"
-        },
-        {
-          label: "Audience (optional)",
-          desc: "Who this output is for (recruiter, manager, client).",
-          key: "audience",
-          ph: "e.g., Performance review",
-          type: "text"
-        },
-        {
-          label: "Output format (optional)",
-          desc: "Preferred structure: bullet point, short paragraph, or case study snippet.",
-          key: "format",
-          ph: "e.g., Resume bullet",
-          type: "text"
-        }
-      ],
-      template: ({ problem, action, result, audience, format, ctx }) => [
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    problem && `Problem: ${problem}`,
-    action && `Action: ${action}`,
-    result && `Result: ${result}`,
-    format && `Format: ${format}`,
-    'Output: structured bullets or summary following Problem → Action → Result.'
-  ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "par — problem · action · result par-problem-action-result a concise storytelling pattern that frames a challenge (problem), the steps taken (action), and the measurable outcome (result). a simpler alternative to star. use par for clear, structured summaries of your work or impact. start with the challenge, describe what you did, and end with the result. type:framework use:storytelling phase:apply level:beginner use:recipe use:case-study use:planning use:pattern storytelling-frameworks prompt-development-techniques summarize work experience on resumes write concise case study or incident summaries prepare performance review notes give crisp updates in team reports quantify results with metrics or proxies (%, $, δ, time saved). make the problem clear and show why it mattered (stakes). emphasize your unique role in the action (avoid “we did” unless team impact is key). adapt output tone to context: factual (resume), reflective (review), persuasive (case study). problem (situation/stakes) action (your steps) result (outcome/impact) audience (optional) output format (optional)"
-      }
-    },
+      personas.length ? `\nPrimary personas / stakeholders:\n${list(personas)}` : null,
 
-    {
-      id: "parts_work",
-      slug: "parts-work-dialogue",
-      label: "Parts Work Dialogue (IFS therapy)",
-      kind: "framework",
-      categories: [
-        "psychology",
-        "self-reflection"
-      ],
-      tags: [
-        "use:pattern",
-        "type:framework",
-        "topic:clarification",
-        "level:intermediate",
-        "use:content",
-        "use:discover",
-        "topic:prompting"
-      ],
-      use_cases: [
-        "resolve internal conflicts by giving each part a voice",
-        "understand the needs and fears of your inner “family” members",
-        "foster self-compassion by mediating between your inner voices"
-      ],
-      boosters: [
-        "Clearly define each part’s role (e.g., Inner Critic vs. Vulnerable Child).",
-        "Allow each part to speak without judgment, then have your core Self respond with empathy."
-      ],
-      definition: "An internal dialogue technique (from Internal Family Systems therapy) where you personify and converse with different parts of yourself to unearth and harmonize conflicting inner voices.",
-      help: "Name two parts of you in tension (e.g., a protective part and a wounded part), plus any context about their conflict. The model will script a dialogue between them, facilitated by your core Self.",
-      fields: [
-        {
-          label: "Part A (name/role)",
-          key: "part_a",
-          ph: "e.g., Inner Critic",
-          type: "text"
-        },
-        {
-          label: "Part B (name/role)",
-          key: "part_b",
-          ph: "e.g., Inner Child",
-          type: "text"
-        },
-        {
-          label: "Conflict or concern between them",
-          key: "issue",
-          ph: "Briefly describe what they disagree on or feel.",
-          type: "textarea"
-        }
-      ],
-      template: ({ part_a, part_b, issue, ctx, audience, style, tone }) => [
-    'Facilitate a Parts Work dialogue between two inner parts.',
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    part_a && `Part A: ${part_a}`,
-    part_b && `Part B: ${part_b}`,
-    issue && `Issue:\n${issue}`,
-    'Output:\n1) Dialogue script where Part A and Part B each express their perspective and needs\n2) Interventions or reassurance from the core Self to mediate and move toward understanding'
-  ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "parts work dialogue (ifs therapy) parts-work-dialogue an internal dialogue technique (from internal family systems therapy) where you personify and converse with different parts of yourself to unearth and harmonize conflicting inner voices. name two parts of you in tension (e.g., a protective part and a wounded part), plus any context about their conflict. the model will script a dialogue between them, facilitated by your core self. use:pattern type:framework topic:clarification level:intermediate use:content use:discover topic:prompting psychology self-reflection resolve internal conflicts by giving each part a voice understand the needs and fears of your inner “family” members foster self-compassion by mediating between your inner voices clearly define each part’s role (e.g., inner critic vs. vulnerable child). allow each part to speak without judgment, then have your core self respond with empathy. part a (name/role) part b (name/role) conflict or concern between them"
-      }
-    },
+      time_horizon && `\nTime horizon: ${time_horizon}`,
 
+      ownersL.length ? `\nOwners / stewards:\n${list(ownersL)}` : null,
+
+      "\nKey Results (make them outcome-based; include metric, baseline→target, timeframe):",
+      renderKRs() || "- (define 2–5 KRs with metric, baseline, target, timeframe, owner, instrumentation, guardrail, risks, initiatives)",
+
+      non_goals && `\nNon-goals / out of scope:\n${non_goals}`,
+
+      dependencies && `\nDependencies & resources:\n${dependencies}`,
+
+      scoring_method && `\nScoring method: ${scoring_method}`,
+
+      checkins && `\nCheck-in cadence & agenda:\n${checkins}`,
+
+      visibility && `\nVisibility: ${visibility}`,
+
+      biases.length ? `\nBias & risk checks to apply:\n${list(biases)}` : null,
+
+      "\nInstruction to the AI:",
+      "- Validate the Objective (inspiring, user-impact oriented, time-bounded in scope, no embedded metrics).",
+      "- For each KR: ensure a clear metric definition (formula & source), current baseline, specific target, timeframe, and owner.",
+      "- Classify KR as leading or lagging; if likely to be gamed, propose a Goodhart guardrail.",
+      "- Distinguish initiatives (work) from KRs (outcomes). Propose 1–3 initiatives per KR, but do not turn initiatives into KRs.",
+      "- Define a simple scoring rubric based on the selected method (e.g., 0.0–1.0 with example thresholds).",
+      "- Outline the check-in ritual (who, when, updates, blockers, next actions).",
+      "- Provide a short risks & assumptions note (measurement validity, seasonality, data latency, resourcing).",
+      "- Provide a one-line ‘Because–Therefore’ summary tying KRs to the Objective.",
+      "- Return a compact JSON summary at the end with keys: objective, krs[], guardrails[], initiatives[], checkins, scoring, risks, dependencies, personas, visibility.",
+
+      "\nOutput:",
+      "1) Refined Objective (1–2 lines).",
+      "2) KR set (2–5), each with metric, baseline→target, timeframe, owner, instrumentation, guardrail.",
+      "3) Initiatives per KR (bulleted).",
+      "4) Scoring rubric & check-in plan.",
+      "5) Risks/assumptions & bias checks applied.",
+      "6) Final JSON summary (schema described above)."
+    ]
+    .filter(Boolean)
+    .join("\n");
+  },
+
+  meta: {
+    search_text:
+      "OKR Objective & Key Results framework goals alignment metrics baselines targets scoring cadence guardrails Goodhart personas bias sandbagging quarter check-in initiatives outcome vs output transparency"
+  }
+},
+
+  {
+  id: "ooda_loop",
+  slug: "ooda-loop",
+  label: "OODA Loop (Observe–Orient–Decide–Act)",
+  kind: "strategy",
+  categories: ["decision", "strategy", "operations"],
+  tags: [
+    "type:framework",
+    "topic:ooda",
+    "topic:fast-loop",
+    "use:pattern",
+    "use:coding",
+    "use:decision-making",
+    "use:incident-response",
+    "use:product-discovery",
+    "use:design-decisions",
+    "level:beginner"
+  ],
+  use_cases: [
+    "cut through indecision with a tight OODA pass",
+    "establish a clear next action under uncertainty",
+    "stabilize incidents with fast, instrumented probes",
+    "accelerate product discovery with reversible experiments",
+    "adapt strategy against a live competitor (get inside their loop)",
+    "make time-boxed choices when information is incomplete"
+  ],
+  boosters: [
+    "Name a testable hypothesis in Decide (If we do X, we expect Y within Z time).",
+    "Prefer reversible moves first; pre-define rollback/kill criteria.",
+    "Add a quick feedback note: how you’ll check results after acting.",
+    "Diversify sensors (qual + quant) to reduce blind spots in Observe.",
+    "Limit Observe/Orient to facts relevant to the next step; defer the rest."
+  ],
+  definition: "A rapid decision cadence that learns faster than the environment or opponent: Observe (gather signals) → Orient (update mental models, surface assumptions) → Decide (pick a hypothesis to try) → Act (run a small, instrumented move) → feed results back into the loop.",
+  help: "Use this when speed + learning matter. Keep stages concise, set a decision timebox, prefer small reversible actions with clear metrics, and route results back into your model.",
+  fields: [
     {
-      id: "pas",
-      slug: "pas-copywriting",
-      label: "PAS — Problem · Agitate · Solution",
-      kind: "framework",
-      categories: [
-        "storytelling-frameworks",
-        "writing"
+      label: "Session goal (divergent vs. convergent)",
+      key: "session_goal",
+      type: "select",
+      options: [
+        "Divergent scan — widen aperture: seek new signals, generate multiple options, postpone commitment.",
+        "Convergent commit — narrow choices: compare options against intent/constraints, pick one, timebox execution."
       ],
-      tags: [
-        "type:framework",
-        "use:copywriting",
-        "phase:compose",
-        "level:beginner",
-        "use:ad-copy",
-        "use:task-brief"
+      desc: "Sets the stance of the loop: ideation vs. decision. Drives how broad Observe/Orient should be and how assertive Decide/Act should be.",
+      ph: "Convergent commit — narrow choices…"
+    },
+    {
+      label: "Mission intent (what ‘winning’ looks like)",
+      key: "intent",
+      type: "textarea",
+      desc: "One or two lines on desired end-state / focus of effort to align decentralized action.",
+      ph: "Restore service for Tier-1 customers within 2h with minimal data loss."
+    },
+    {
+      label: "Time horizon / tempo",
+      key: "tempo",
+      type: "select",
+      options: [
+        "Fast transient (hours) — prioritize speed, run probes, accept partial info.",
+        "Tactical (days) — short sprints, staged rollouts, daily learning.",
+        "Operational (weeks) — cadence reviews, multiple probes in parallel.",
+        "Strategic (quarters) — broad sensing, higher proof bar, fewer irreversible moves."
       ],
-      use_cases: [
-        "write persuasive copy by addressing the reader’s pain and offering relief",
-        "structure marketing messages or support tickets by focusing on problem then solution",
-        "craft introductions for pitches or blogs that hook with a problem and promise a solution"
+      desc: "Influences how much evidence you need before Decide, and the size of Acts.",
+      ph: "Fast transient (hours)…"
+    },
+    {
+      label: "Decision type",
+      key: "decision_type",
+      type: "select",
+      options: [
+        "Two-way door (reversible) — bias to action; smaller probe; quicker timebox.",
+        "One-way door (hard to reverse) — raise evidence threshold; expand Observe/Orient; add pre-mortem."
       ],
-      boosters: [
-        "In the Agitate step, delve into emotional or practical consequences of the problem to make it feel urgent.",
-        "Keep the Solution clear and directly tied to resolving the specific problem that was agitated."
-      ],
-      definition: "A copywriting formula that presents a Problem, amplifies it (Agitate), then provides a Solution to resolve the discomfort.",
-      help: "Provide the audience’s problem and your solution. The model will emphasize the pain of the problem (agitation) and then introduce the solution as the remedy.",
-      fields: [
-        {
-          label: "Problem",
-          desc: "The core problem or pain point your audience faces.",
-          key: "problem",
-          ph: "e.g., Project managers struggle to get timely updates from team members.",
-          type: "textarea"
-        },
-        {
-          label: "Agitate (pain details, optional)",
-          desc: "Details that exacerbate the problem or the feelings it causes.",
-          key: "agitate",
-          ph: "e.g., They spend hours chasing updates and feel constant stress as deadlines approach.",
-          type: "textarea"
-        },
-        {
-          label: "Solution",
-          desc: "Your product or idea that solves the problem.",
-          key: "solution",
-          ph: "e.g., SyncMaster auto-updates project status in real-time.",
-          type: "text"
-        }
-      ],
-      template: ({ problem, agitate, solution, ctx, audience, style, tone }) => [
-      'Use the PAS formula to write a persuasive message.',
+      desc: "Guides risk posture and evidence bar.",
+      ph: "Two-way door (reversible)…"
+    },
+    {
+      label: "Observe — What’s the situation / facts?",
+      key: "observe",
+      type: "textarea",
+      desc: "Crisp, decision-relevant signals only (telemetry, user reports, constraints). Call out uncertainty.",
+      ph: "Key metrics, recent events, constraints, notable anomalies…"
+    },
+    {
+      label: "Orient — What matters most right now?",
+      key: "orient",
+      type: "textarea",
+      desc: "Interpretation/model update: priorities, assumptions, risks, context shifts. Note competing hypotheses.",
+      ph: "Our best model is… Assumptions: … Risks: …"
+    },
+    {
+      label: "Hypothesis (optional)",
+      key: "hypothesis",
+      type: "textarea",
+      desc: "Decision as a testable claim: If we do X, we expect Y within Z (measure: M).",
+      ph: "If we ship guided checklist to 20% mobile users, TTV ↓ 30% within 48h (metric: median TTV)."
+    },
+    {
+      label: "Decide — What’s the next best step?",
+      key: "decide",
+      type: "textarea",
+      desc: "One sentence choice aligned to intent and current orientation. Mention confidence level if useful.",
+      ph: "Roll out fix A to region-1 behind a flag; monitor error rate."
+    },
+    {
+      label: "Act — What will we actually do now?",
+      key: "act",
+      type: "textarea",
+      desc: "Concrete action, owner, start time. Keep it small, observable, and reversible when possible.",
+      ph: "Owner: Priya; Start: 10:15; Steps: enable flag, run smoke tests, watch dashboards."
+    },
+    {
+      label: "Metrics & feedback window",
+      key: "metrics",
+      type: "textarea",
+      desc: "Success/failure signals, thresholds, and timebox to evaluate.",
+      ph: "SLO error rate < 1% within 30m; if > 2% for 10m, rollback."
+    },
+    {
+      label: "Kill switch / rollback criteria",
+      key: "killswitch",
+      type: "textarea",
+      desc: "Pre-agreed conditions to stop or reverse the action to limit blast radius.",
+      ph: "If p95 latency > 400ms for 5 consecutive minutes → auto-disable feature flag."
+    },
+    {
+      label: "Stakeholder personas (for orientation & comms)",
+      key: "audience",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "persona",
+      autofill: "persona->inline",
+      desc: "Whose perspectives/signals matter here (customers, SRE, finance, regulator, etc.)?",
+      ph: "Add relevant personas…"
+    },
+    {
+      label: "Bias checks (common pitfalls to watch)",
+      key: "bias_checks",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "bias",
+      autofill: "bias->inline",
+      desc: "Inline reminders (e.g., confirmation bias, sunk-cost, anchoring) to improve Orientation quality.",
+      ph: "Add bias checks…"
+    },
+    {
+      label: "Risks & countermeasures (optional)",
+      key: "risks",
+      type: "textarea",
+      desc: "Foreseeable downsides and the small safeguards you’ll add now.",
+      ph: "Risk: noisy alert storms → Countermeasure: raise threshold + dedupe rule."
+    },
+    {
+      label: "Comms plan (optional)",
+      key: "comms",
+      type: "textarea",
+      desc: "Who needs to know what and when (especially if Act affects them)?",
+      ph: "Status to #incident; customer notice if >30m impact."
+    }
+  ],
+  template: ({
+    session_goal,
+    intent,
+    tempo,
+    decision_type,
+    observe,
+    orient,
+    hypothesis,
+    decide,
+    act,
+    metrics,
+    killswitch,
+    audience,
+    bias_checks,
+    risks,
+    comms,
+    ctx,
+    audience: aud, // legacy
+    style,
+    tone
+  }) => {
+    const listify = (s) => String(s||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const personas = Array.isArray(audience) ? audience : [];
+    const biases = Array.isArray(bias_checks) ? bias_checks : [];
+
+    const lines = [
+      "Run an OODA pass to unblock a decision.",
       ctx && `Context: ${ctx}`,
-      audience && `Audience: ${audience}`,
+      aud && `Audience: ${aud}`,
       style && `Style: ${style}`,
       tone && `Tone: ${tone}`,
-      problem && ('Problem:\n' + problem),
-      agitate && ('Agitate:\n' + agitate),
-      solution && (`Solution: ${solution}`),
-      'Output:\n1) State the problem\n2) Agitate with vivid detail\n3) Present the solution and its relief'
-    ].filter(Boolean).join('\n'),
-      meta: {
-        search_text: "pas — problem · agitate · solution pas-copywriting a copywriting formula that presents a problem, amplifies it (agitate), then provides a solution to resolve the discomfort. provide the audience’s problem and your solution. the model will emphasize the pain of the problem (agitation) and then introduce the solution as the remedy. type:framework use:copywriting phase:compose level:beginner use:ad-copy use:task-brief storytelling-frameworks writing write persuasive copy by addressing the reader’s pain and offering relief structure marketing messages or support tickets by focusing on problem then solution craft introductions for pitches or blogs that hook with a problem and promise a solution in the agitate step, delve into emotional or practical consequences of the problem to make it feel urgent. keep the solution clear and directly tied to resolving the specific problem that was agitated. problem agitate (pain details, optional) solution"
-      }
+      intent && `Mission intent (focus of effort): ${intent}`,
+      tempo && `Tempo: ${tempo}`,
+      session_goal && `Session goal: ${session_goal}`,
+      decision_type && `Decision type: ${decision_type}`,
+
+      // Behavior implications of selects (embedded instructions, not just echo):
+      decision_type && (decision_type.startsWith("Two-way")
+        ? "Guidance: Favor speed and small, reversible Acts; accept partial info; set short feedback windows and explicit rollback."
+        : "Guidance: Raise evidence bar; expand Observe/Orient; run pre-mortem and add safeguards before committing."),
+
+      session_goal && (session_goal.startsWith("Divergent")
+        ? "Mode: Divergent scan — broaden Observe (add at least one new signal), list ≥3 options during Orient, and delay commitment until options are compared against intent."
+        : "Mode: Convergent commit — narrow to 1–2 options, compare against intent/constraints, pick one, and timebox execution."),
+
+      tempo && (tempo.startsWith("Fast")
+        ? "Tempo note: Optimize for short cycles (hours). Keep actions minimal and instrumented; prefer flags and quick rollbacks."
+        : null),
+
+      observe && ("Observe (facts):\n" + observe),
+      orient && ("Orient (model & what matters):\n" + orient),
+      hypothesis && ("Hypothesis:\n" + hypothesis),
+      decide && ("Decide (next best step):\n" + decide),
+      act && ("Act (now):\n" + act),
+      metrics && ("Metrics & feedback window:\n" + metrics),
+      killswitch && ("Kill switch / rollback:\n" + killswitch),
+
+      personas.length ? ("Stakeholder personas:\n" + personas.map((p,i)=>`${i+1}. ${p}`).join("\n")) : null,
+      biases.length ? ("Bias checks:\n" + biases.map((b,i)=>`${i+1}. ${b}`).join("\n")) : null,
+      risks && ("Risks & countermeasures:\n" + risks),
+      comms && ("Comms plan:\n" + comms),
+
+      "Output:",
+      "1) Key facts (Observe) limited to decision-relevant signals.",
+      "2) Priority frame & assumptions (Orient), including any competing hypotheses.",
+      "3) Decision as a hypothesis with a clear timebox (Decide).",
+      "4) Immediate, instrumented action with owner (Act).",
+      "5) Metrics, feedback window, and rollback criteria.",
+      "6) Notes on biases guarded against and stakeholders informed."
+    ].filter(Boolean);
+
+    return lines.join("\n");
+  },
+  meta: {
+    search_text: "OODA loop observe orient decide act fast learning tempo mission command hypothesis small reversible actions instrumented feedback incident response product discovery strategy maneuver get inside their loop"
+  }
+},
+
+{
+  id: "opportunity_scoring",
+  slug: "opportunity-scoring-gap-analysis",
+  label: "Opportunity Scoring — Importance vs. Satisfaction",
+  kind: "framework",
+  categories: ["reasoning", "planning", "product-management"],
+  tags: [
+    "type:framework","topic:odi","topic:jtbd","topic:clarification","topic:prioritization",
+    "use:pattern","use:segmentation","use:roadmap","level:intermediate"
+  ],
+  use_cases: [
+    "surface unmet needs",
+    "turn surveys into priorities",
+    "prioritize a roadmap from JTBD outcome statements",
+    "compare opportunity by segment/persona and geography",
+    "post-launch re-measure to verify lift in satisfaction",
+    "triage discovery findings and allocate research/design effort",
+    "portfolio planning across multiple products or lines of service"
+  ],
+  boosters: [
+    "Write items as outcome statements (solution-agnostic, measurable).",
+    "Segment results; compute scores per persona/segment before averaging.",
+    "Pick a clear scale (e.g., 1–10) and anchor labels; keep wording consistent.",
+    "Use a scoring rule (Ulwick: I + max(I−S,0)) and sort descending; annotate the high-importance/low-satisfaction zone.",
+    "Visualize Importance (x) vs. Satisfaction (y); highlight upper-left points and note confidence/± error if available.",
+    "Propose 1 experiment per top opportunity and the outcome metric it should move."
+  ],
+  definition: "Quantitatively rank unmet needs by pairing each outcome’s Importance with current Satisfaction. High-importance, low-satisfaction outcomes indicate larger opportunities to improve or differentiate.",
+  help: "Enter outcome items and (optionally) their Importance and Satisfaction scores. Choose a scale and scoring rule. You can add personas/segments to see differences, plus bias checks to guard against sampling/measurement artifacts.",
+  fields: [
+    {
+      key: "items",
+      label: "Items (one per line, with optional scores and segment)",
+      type: "textarea",
+      desc: "Use the pattern “Outcome | Importance | Satisfaction | [Segment]”. Leave scores blank to have the model estimate or request them.",
+      ph: "Reduce time to reconcile invoices | 9 | 5 | SMB\nIncrease first-attempt resolution rate | 8 | 4 | Enterprise\nLower variance in page load time | 7 | 6"
     },
+    {
+      key: "method",
+      label: "Research method (optional)",
+      type: "text",
+      desc: "Brief provenance and sample notes (n, sampling, mode).",
+      ph: "Survey n=214 (job executors) + 8 interviews; randomized item order; 1–10 scales"
+    },
+    {
+      key: "scale",
+      label: "Scale & anchors",
+      type: "select",
+      options: [
+        "1–5 (1=not important/satisfied, 5=extremely important/satisfied)",
+        "1–7 (Likert-style anchors)",
+        "1–10 (fine resolution; common in ODI)",
+        "Top-2-box (%) on 5-point scale"
+      ],
+      desc: "Select the response scale and anchor meanings the analysis should assume.",
+      ph: "1–10 (fine resolution; common in ODI)"
+    },
+    {
+      key: "scoring",
+      label: "Scoring rule",
+      type: "select",
+      options: [
+        "Ulwick: Opportunity = I + max(I − S, 0)",
+        "2×I − S (linear approximation)",
+        "Gap only: I − S (diagnostic, no clamp)",
+        "Custom weights (set below)"
+      ],
+      desc: "Choose how to translate Importance/Satisfaction into an opportunity score.",
+      ph: "Ulwick: Opportunity = I + max(I − S, 0)"
+    },
+    {
+      key: "weights",
+      label: "Custom weights (optional)",
+      type: "text",
+      desc: "If using Custom: provide a formula or weights, e.g., Opportunity = 1.5*I − 0.5*S.",
+      ph: "Opportunity = 1.5*I − 0.5*S"
+    },
+    {
+      key: "thresholds",
+      label: "Prioritization thresholds (optional)",
+      type: "text",
+      desc: "Heuristics for what counts as a top opportunity.",
+      ph: "Flag if I≥8 AND S≤5 OR Opportunity≥15"
+    },
+    {
+      key: "audience",
+      label: "Personas/segments (typeahead repeater)",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "persona",
+      autofill: "persona->inline",
+      desc: "List personas/segments to cut the analysis by (will produce per-segment tables)."
+    },
+    {
+      key: "bias_checks",
+      label: "Bias checks (typeahead repeater)",
+      type: "repeater",
+      itemType: "typeahead",
+      itemLabel: "bias",
+      autofill: "bias->inline",
+      desc: "Common risks to watch (sampling bias, acquiescence bias, scale-use differences, cultural/translation drift)."
+    },
+    {
+      key: "notes",
+      label: "Notes (optional)",
+      type: "textarea",
+      desc: "Caveats, anomalies, or segmentation hints the analysis should honor.",
+      ph: "High variance across power users; LATAM uses scale more conservatively; device mix differs by segment."
+    },
+    {
+      key: "output_format",
+      label: "Output format",
+      type: "select",
+      options: [
+        "ASCII table & ranked list",
+        "JSON (machine-readable results)",
+        "Python — generate scatterplot and ranked table",
+        "Verbal narrative summary",
+        "Generate AI image — prompt for an opportunity landscape"
+      ],
+      desc: "Controls how results are rendered. The model will tailor instructions and output accordingly.",
+      ph: "ASCII table & ranked list"
+    }
+  ],
+  template: ({
+    items, method, scale, scoring, weights, thresholds, audience, bias_checks, notes,
+    output_format, ctx, style, tone
+  }) => {
+    const personas = Array.isArray(audience) ? audience : [];
+    const biases = Array.isArray(bias_checks) ? bias_checks : [];
+    const fmt = (arr, lead) => (arr && arr.length)
+      ? `${lead}:\n` + arr.map((x,i)=>`${i+1}. ${x}`).join('\n')
+      : null;
+
+    const scoringLine = scoring === "Custom weights (set below)" && weights
+      ? `Scoring rule: ${weights}.`
+      : scoring
+        ? `Scoring rule: ${scoring}.`
+        : "Scoring rule: Ulwick (I + max(I−S,0)).";
+
+    const scaleLine = scale ? `Scale: ${scale}.` : "Scale: 1–10 with clear anchors.";
+    const threshLine = thresholds ? `Prioritization thresholds: ${thresholds}.` : null;
+
+    const renderDirective =
+      output_format === "JSON (machine-readable results)"
+        ? "Render JSON: [{ item, importance, satisfaction, opportunity, segment? }], plus { top_opportunities: [...], method, scale, scoring }."
+      : output_format === "Python — generate scatterplot and ranked table"
+        ? [
+            "Return Python code that:",
+            "- Uses matplotlib (no seaborn/styles) to plot Importance (x) vs Satisfaction (y).",
+            "- Labels points by item (and segment if provided).",
+            "- Draws a reference diagonal y=x and shades the upper-left opportunity zone.",
+            "- Prints a ranked table of item, I, S, Opportunity.",
+            "Do not fetch external data; parse from the provided lines."
+          ].join('\n')
+      : output_format === "Generate AI image — prompt for an opportunity landscape"
+        ? "Return a concise, evocative prompt for an AI image generator that depicts an ‘opportunity landscape’ scatterplot (high-importance/low-satisfaction quadrant emphasized), including style and color guidance."
+      : output_format === "Verbal narrative summary"
+        ? "Write a crisp narrative: key segments, top 3 opportunities (why), notable overserved areas, and 1–2 next experiments per opportunity."
+      : "Produce an ASCII table with columns: Item | Importance | Satisfaction | Opportunity | Segment, followed by a ranked Top-5 list with rationales.";
+
+    return [
+      "Perform Opportunity Scoring (Importance vs. Satisfaction) to find unmet needs and prioritize action.",
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      method && `Research method:\n${method}`,
+      scaleLine,
+      scoringLine,
+      threshLine,
+      personas.length ? fmt(personas, "Personas/segments (cuts to compute") : null,
+      biases.length ? fmt(biases, "Bias checks to apply") : null,
+      notes && `Notes:\n${notes}`,
+      items && `Raw items (parse “Outcome | Importance | Satisfaction | [Segment]”):\n${items}`,
+      "Instructions to the model:",
+      "- Parse each line. If scores are missing, flag the item and do not fabricate; suggest a minimal survey instead.",
+      "- Normalize to the selected scale; keep anchors consistent.",
+      "- Compute Opportunity per the scoring rule. Never reward overserved items (S≥I) when using Ulwick.",
+      "- Compute results per persona/segment first (if provided), then overall.",
+      "- Visualize/format according to Output format.",
+      "- Identify the Top-5 opportunities with brief rationales (why high I/low S, any segment concentration).",
+      "- For each Top-5, propose one experiment or design change and the outcome metric it should move.",
+      "- Call out measurement caveats (e.g., sample size, known biases).",
+      renderDirective
+    ].filter(Boolean).join('\n');
+  },
+  meta: {
+    search_text:
+      "opportunity scoring importance satisfaction ulwick odi jobs to be done segmentation prioritization roadmap scatterplot importance-satisfaction gap analysis formula I + max(I−S,0) 2I−S"
+  }
+},
+
+{
+  id: "par",
+  slug: "par-problem-action-result",
+  label: "PAR — Problem · Action · Result",
+  kind: "framework",
+  categories: ["storytelling-frameworks", "prompt-development-techniques"],
+  tags: [
+    "type:framework","use:storytelling","phase:apply","level:beginner",
+    "use:recipe","use:case-study","use:planning","use:pattern",
+    "use:resume","use:pitch","use:postmortem","use:status-update"
+  ],
+  use_cases: [
+    "summarize work experience on resumes",
+    "write concise case study or incident summaries",
+    "prepare performance review notes",
+    "give crisp updates in team reports",
+    // additional (expanded) use cases:
+    "open sales pitches or investor memos with impact-first lines",
+    "create postmortem snapshots with verifiable outcomes",
+    "draft grant or proposal impact statements",
+    "produce agile sprint demo highlights and changelogs",
+    "generate LinkedIn headlines or portfolio captions",
+    "refine past work experience"
+  ],
+  boosters: [
+    "Quantify results with metrics or proxies (%, $, Δ, time saved). If exact data is missing, propose a plausible proxy and mark it (est.).",
+    "Make the Problem concrete and consequential (baseline, scope, timeframe).",
+    "Emphasize your specific contribution in Action (verbs + scope + levers).",
+    "Adapt voice to audience: factual (ATS resume), reflective (review), persuasive (case study/pitch).",
+    "If confidentiality applies, mask proper nouns and sensitive figures (± ranges).",
+    "Offer one alt rendition (short/long) when space or tone differs across channels."
+  ],
+  definition: "A concise storytelling pattern that frames a challenge (Problem), your intervention (Action), and the measurable outcome (Result). Can be converted to RAP (impact-first) or expanded to STAR (adds Situation & Task).",
+  help: "Fill Problem, Action, and Result as specifically as you can. Choose an Instruction Mode to keep PAR, convert to RAP, expand to STAR, ask for clarifying questions, or output both PAR+RAP.",
+  fields: [
+    { label: "Problem (situation & stakes)", key: "problem", type: "textarea",
+      desc: "Obstacle/gap with baseline, scope, timeframe, and why it mattered.",
+      ph: "e.g., Trial-to-paid conversion stalled at 3.2% (Q2), endangering runway." },
+
+    { label: "Action (your levers & role)", key: "action", type: "textarea",
+      desc: "What YOU did (verbs), scale/scope, methods/tools, decisions.",
+      ph: "e.g., Designed 5-step onboarding, added in-app tips, ran A/B, partnered with CS." },
+
+    { label: "Result (outcome & metric)", key: "result", type: "textarea",
+      desc: "Measurable outcome with delta, baseline, time horizon; add proxy if needed.",
+      ph: "e.g., Conversion +1.9 pp (3.2%→5.1%) in 6 weeks; support tickets −18%." },
+
+    // Optional detail knobs to raise evidence quality:
+    { label: "Baseline / timeframe (optional)", key: "timeframe", type: "text",
+      desc: "When/how long; include before/after if not in Problem/Result.",
+      ph: "e.g., Apr–May; baseline from Q1 cohort." },
+
+    { label: "Scope / scale (optional)", key: "scope", type: "text",
+      desc: "Team size, budget, users affected, market segment.",
+      ph: "e.g., 3-person squad; 42k MAU; SMB US." },
+
+    { label: "Tools / methods (optional)", key: "tools", type: "text",
+      desc: "Stacks, methods, or playbooks used (keep concise).",
+      ph: "e.g., Mixpanel, Braze, Optimizely, JTBD interviews." },
+
+    // Audience + persona & bias guidance
+    { label: "Audience (reader/consumer)", key: "audience", type: "text",
+      desc: "Who this is for informs tone and jargon.",
+      ph: "e.g., Recruiter (ATS), Sales VP, Engineering leadership." },
+
+    { label: "Personas (inform tone; typeahead)", key: "personas",
+      type: "repeater", itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Add personas to tailor diction (e.g., hiring manager, technical buyer)." },
+
+    { label: "Bias checks (language hygiene; typeahead)", key: "bias_checks",
+      type: "repeater", itemType: "typeahead", itemLabel: "bias", autofill: "bias->inline",
+      desc: "Inline checks to avoid biased or exclusionary phrasing (e.g., gendered verbs, cultural clichés, overclaiming)." },
+
+    // Output controls
+    { label: "Instruction Mode", key: "mode", type: "select",
+      options: [
+        "PAR — keep Problem→Action→Result",
+        "RAP — convert to Result→Action→Problem (impact-first)",
+        "STAR — expand with Situation & Task (derive from Problem/Action)",
+        "Ask-Refine — generate clarifying questions to improve each slot",
+        "Dual — output both PAR and RAP"
+      ],
+      desc: "Changes ordering and the level of scaffolding the model will produce.",
+      ph: "Select how to render and/or refine the narrative." },
+
+    { label: "Output format", key: "format", type: "select",
+      options: [
+        "Resume bullet (ATS-safe, no emojis)",
+        "Short paragraph (2–3 sentences)",
+        "Case study snippet (3–5 bullets)",
+        "One-line headline (RAP style)",
+        "Status update (concise, action-forward)"
+      ],
+      desc: "Controls length, tone, and structure of the final artifact.",
+      ph: "Resume bullet (ATS-safe, no emojis)" },
+
+    { label: "Tone (optional)", key: "tone", type: "select",
+      options: ["factual", "persuasive", "reflective", "technical", "executive"],
+      desc: "Tones map to diction (verbs, qualifiers, jargon tolerance).",
+      ph: "factual" },
+
+    { label: "Confidentiality", key: "confidentiality", type: "select",
+      options: ["normal — keep names/numbers", "redact — anonymize orgs, bound numbers"],
+      desc: "If redact, replace names with roles and numbers with ranges (±).",
+      ph: "redact — anonymize orgs, bound numbers" }
+  ],
+  template: ({ problem, action, result, timeframe, scope, tools, audience, personas = [], bias_checks = [], mode, format, tone, confidentiality, ctx }) => {
+    // Helpers
+    const nl = s => (s||"").trim();
+    const has = s => nl(s).length > 0;
+    const list = arr => (arr||[]).map(x => typeof x === "string" ? x.trim() : x).filter(Boolean);
+    const joinLines = (label, val) => has(val) ? `${label}: ${val}` : null;
+
+    // Build core PAR pieces
+    const P = has(problem) ? `Problem: ${nl(problem)}` : null;
+    const A = has(action) ? `Action: ${nl(action)}` : null;
+    const R = has(result) ? `Result: ${nl(result)}` : null;
+
+    // Evidence boosters / context cues (only included if provided)
+    const boosters = [
+      joinLines("Timeframe", timeframe),
+      joinLines("Scope", scope),
+      joinLines("Methods/Tools", tools)
+    ].filter(Boolean);
+
+    // Persona & bias guidance
+    const personaGuide = list(personas).length
+      ? `Personas to address: ${list(personas).join("; ")}. Tailor jargon and benefits to these readers.`
+      : null;
+
+    const biasGuide = list(bias_checks).length
+      ? `Apply bias checks: ${list(bias_checks).join("; ")}. Prefer neutral, specific, verifiable language; avoid overclaiming.`
+      : null;
+
+    // Mode logic: ordering + scaffolds
+    let body;
+    const parBlock = [P, A, R].filter(Boolean).join("\n");
+    const rapBlock = [R, A, P].filter(Boolean).join("\n");
+    const starBlock = [
+      "STAR expansion:",
+      has(problem) ? `Situation: ${nl(problem)}` : "Situation: (derive concise context from the Problem)",
+      "Task: (state the responsibility/expectation implied by the role)",
+      A || "Action: (what you did; specify levers, decisions, collaborators)",
+      R || "Result: (quantify impact; add timeframe/baseline)"
+    ].join("\n");
+
+    const refineQs = [
+      !has(problem) && "What specific baseline, scope, and stakes define the Problem?",
+      !has(action) && "Which actions did YOU take (verbs, levers, tools), and what was your role?",
+      !has(result) && "What outcome can be quantified (Δ%, $, time, quality/risk)? If none, what proxy metric is credible?",
+      !has(timeframe) && "Over what timeframe did the change occur (start→end)?",
+      !has(scope) && "What was the scope/scale (team size, users, budget, segment)?",
+      !has(tools) && "Which methods/tools/processes were pivotal?"
+    ].filter(Boolean);
+
+    switch ((mode||"PAR — keep Problem→Action→Result").split(" — ")[0].toLowerCase()) {
+      case "rap": body = rapBlock; break;
+      case "star": body = `${parBlock}\n\n${starBlock}`.trim(); break;
+      case "ask-refine": body = [
+          "Clarify the following to strengthen PAR:",
+          ...refineQs.map((q,i)=>`${i+1}. ${q}`)
+        ].join("\n"); break;
+      case "dual": body = [
+          "PAR:",
+          parBlock,
+          "",
+          "RAP (impact-first):",
+          rapBlock
+        ].join("\n"); break;
+      default: body = parBlock; // PAR
+    }
+
+    // Format & tone instructions
+    const toneNote = tone ? `Tone: ${tone}.` : null;
+    const audienceNote = audience ? `Audience: ${audience}.` : null;
+    const confNote = confidentiality && confidentiality.startsWith("redact")
+      ? "Confidentiality: redact proper nouns; bound sensitive numbers as ranges (e.g., ~10–15%)."
+      : null;
+
+    const formatInstr = (() => {
+      switch ((format||"Resume bullet (ATS-safe, no emojis)")) {
+        case "Resume bullet (ATS-safe, no emojis)":
+          return "Render as 1–2 ATS-safe bullets. Avoid emojis/symbols; keep to ASCII; lead with verbs; include a number.";
+        case "Short paragraph (2–3 sentences)":
+          return "Render as a 2–3 sentence paragraph: P(1) → A(1) → R(1) with one clear metric.";
+        case "Case study snippet (3–5 bullets)":
+          return "Render as 3–5 bullets with headers: Problem, Action(s), Result(s), Evidence (baseline/timeframe).";
+        case "One-line headline (RAP style)":
+          return "Render a single RAP line: Result → Action → Problem (max ~28 words, one number).";
+        case "Status update (concise, action-forward)":
+          return "Render as a status line: Action done → Result so far → Next step (≤2 lines).";
+        default:
+          return "Render concisely with clear structure and one quantified outcome.";
+      }
+    })();
+
+    // Final instruction assembly
+    return [
+      "Construct the narrative per settings below.",
+      ctx && `Context: ${ctx}`,
+      audienceNote,
+      personaGuide,
+      biasGuide,
+      toneNote,
+      confNote,
+      boosters.length ? `Evidence context: ${boosters.join(" | ")}` : null,
+      `Instruction Mode: ${mode || "PAR — keep Problem→Action→Result"} (reorder/expand as specified).`,
+      `Output format: ${format || "Resume bullet (ATS-safe, no emojis)"}. ${formatInstr}`,
+      "",
+      body,
+      "",
+      "Quality checks:",
+      "- Show causality A→R explicitly; avoid passive voice where possible.",
+      "- Include at least one concrete metric or a clearly labeled proxy (est.).",
+      "- Keep the actor (you/your team) visible; avoid vague “responsible for…” phrasing.",
+      "- If numbers are redacted, supply ranges and rationale in parentheses."
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text:
+      "PAR problem action result resume bullet case study RAP STAR convert impact-first ATS concise quantified outcomes persona bias checks confidentiality redact"
+  }
+},
+
+{
+  id: "parts_work",
+  slug: "parts-work-dialogue",
+  label: "Parts Work Dialogue (IFS therapy)",
+  kind: "framework",
+  categories: ["psychology", "self-reflection", "coaching"],
+  tags: [
+    "type:framework","topic:parts-work","topic:IFS","level:intermediate",
+    "use:conflict-resolution","use:self-compassion","use:values-alignment",
+    "use:creative-blocks","use:habits","use:decision-support"
+  ],
+  use_cases: [
+    "resolve internal conflicts by giving each part a voice",
+    "understand the needs and fears of your inner “family” members",
+    "foster self-compassion by mediating between your inner voices",
+    "negotiate behavior change (e.g., procrastination, perfectionism) with protectors",
+    "de-escalate polarized parts before high-stakes work (presentations, performance)",
+    "unblock creativity by meeting the inner critic and playful maker",
+    "need mental help", "looking for therapy", "struggle with mental health",
+    "prepare for therapy/coaching by mapping parts, roles, and requests"
+  ],
+  boosters: [
+    "Unblend: speak as “a part of me…”; let Self (calm, curious, compassionate) lead.",
+    "Greet protectors first; ask permission before approaching painful exiles.",
+    "Ask each part its positive intent and fear: “What are you trying to do for me? What are you afraid would happen if you didn’t?”",
+    "Keep agreements tiny, time-bound, and reversible; log any promises you make to parts.",
+    "Pause if flooded; use grounding (5-senses check, breath, feet on floor) before continuing."
+  ],
+  definition: "A gentle dialogue method (from Internal Family Systems) that treats the mind as a community of parts—protectors, exiles, and a core Self. By unblending, listening, and renegotiating roles, you reduce inner conflict and increase Self-leadership without pathologizing any part.",
+  help: "Name your parts, the tension, and your session goal. Choose a mode, grounding tools, and cultural framing. The template instructs the model to be safety-aware, permission-based, and culturally respectful, then to deliver your chosen output (dialogue, prompts, or summary).",
+  fields: [
+    // Core parts (names/roles)
+    { label: "Part A (name/role)", key: "part_a", type: "text",
+      desc: "A protector, exile, or other inner role.", ph: "e.g., Inner Critic (manager)" },
+    { label: "Part A (persona)", key: "part_a_persona", type: "repeater",
+      itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Personas/archetypes that color Part A’s voice.", ph: "e.g., Perfectionist • Auditor • Strict teacher" },
+
+    { label: "Part B (name/role)", key: "part_b", type: "text",
+      desc: "Another distinct part with a different aim.", ph: "e.g., Playful Creator (firefighter/creative)" },
+    { label: "Part B (persona)", key: "part_b_persona", type: "repeater",
+      itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Personas/archetypes that color Part B’s voice.", ph: "e.g., Artist • Trickster • Explorer" },
+
+    // Optional: additional parts (free-form, not persona typeahead)
+    { label: "Additional parts (optional)", key: "more_parts", type: "repeater",
+      itemType: "text", itemLabel: "part",
+      desc: "List more parts to acknowledge or briefly include.", ph: "e.g., Pragmatist • Worrier • Caretaker" },
+
+    // Self + Reptilian/Unconscious
+    { label: "Self (name/role)", key: "self_name", type: "text",
+      desc: "How you want to reference core Self leadership.", ph: "e.g., Calm Witness, Compassionate Self" },
+    { label: "Self (persona)", key: "self_persona", type: "repeater",
+      itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Descriptors for your Self’s tone (compassionate, curious, confident).", ph: "e.g., Compassionate mentor • Wise friend" },
+
+    { label: "Reptilian/Unconscious (name/role)", key: "survival_name", type: "text",
+      desc: "Metaphor for the survival/automatic system; not literal neuroanatomy.",
+      ph: "e.g., The Sentinel (survival system)" },
+    { label: "Reptilian/Unconscious (persona)", key: "survival_persona", type: "repeater",
+      itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Metaphoric traits (safety-first, vigilant, threat-scanner).", ph: "e.g., Guardian • Lookout • Bodyguard" },
+
+    // Tension & goal
+    { label: "Conflict or concern between parts", key: "issue", type: "textarea",
+      desc: "What’s the friction? What do they disagree about?", ph: "e.g., Risking a public post vs. staying safe from criticism" },
+    { label: "Session goal", key: "goal", type: "text",
+      desc: "What you want by the end (one sentence).", ph: "e.g., A small, safe first step both parts accept" },
+
+    // Personas (audience) & bias checks
+    { label: "Audience/personas (optional)", key: "audience", type: "repeater",
+      itemType: "typeahead", itemLabel: "persona", autofill: "persona->inline",
+      desc: "Who this is for (tailors tone).", ph: "e.g., Myself • Therapist • Coach • Partner" },
+    { label: "Bias checks (optional)", key: "bias_checks", type: "repeater",
+      itemType: "typeahead", itemLabel: "bias", autofill: "bias->inline",
+      desc: "Biases to avoid (moralizing, ableism, cultural erasure).",
+      ph: "e.g., Confirmation bias • All-or-nothing thinking • Cultural stereotyping" },
+
+    // Mode/scope with instructional options
+    { label: "Session mode", key: "mode", type: "select",
+      options: [
+        "Stabilize only — prioritize grounding, unblending, and protector rapport; avoid trauma narratives; end with one tiny agreement.",
+        "Light dialogue — brief, permission-based conversation with protectors; approach vulnerable content only if protectors consent; keep timebox.",
+        "Guided journaling — produce prompts for me to answer; pause if distress rises; summarize agreements at end.",
+        "With clinician — assume a licensed therapist present; still seek permission from protectors; therapist sets pace."
+      ],
+      desc: "Sets scope and safety boundaries for the session.",
+      ph: "Stabilize only — grounding first, no trauma processing" },
+
+    // Cultural/spiritual framing (now more robust + details)
+{
+  label: "Cultural/spiritual framing",
+  key: "culture",
+  type: "select",
+  options: [
+    "Secular language — everyday psychology; avoid spiritual terms and clinical jargon.",
+    "Layman/casual — friendly, colloquial phrasing; plain metaphors; no jargon.",
+    "Spiritual language — Self as compassionate awareness/Buddha-nature/fitra; use gentle spiritual metaphors on consent.",
+    "Faith-integrated — reference my faith respectfully (use my terms from details); no doctrinal claims; emphasize mercy/dignity.",
+    "New-age spiritual — optional metaphors of energy/inner light/chakras; keep grounded and consent-based.",
+    "Clinical language — official psychology terms; use clinical jargon and avoid spiritual terms.",
+    "Fantasy/mythic — creative, metaphor-rich framing; speak in imagery of quests, guardians, realms, and elemental forces."
+  ],
+  desc: "Choose how Self/parts are described to fit your worldview and tone.",
+  ph: "Layman/casual — friendly, colloquial phrasing"
+},  
+    { label: "Cultural/spiritual details (optional)", key: "culture_details", type: "textarea",
+      desc: "Your faith/culture/terms to respect (e.g., phrases, boundaries).",
+      ph: "e.g., Muslim; prefer ‘rahma/mercy’; avoid doctrine debate; use “heart” instead of “Self”" },
+
+    // Safety & grounding
+    { label: "Safety limits & triggers (optional)", key: "safety", type: "textarea",
+      desc: "Content to avoid or pace slowly; include ground rules for pausing.",
+      ph: "Avoid detailed trauma memories; pause if heart rate spikes; return to breath & 5-senses" },
+
+    { label: "Grounding tools (multi-select)", key: "grounding_presets", type: "multiselect",
+      options: [
+        "5–4–3–2–1 senses — name things you see/hear/feel/smell/taste",
+        "Box breathing — inhale/hold/exhale/hold (4–4–4–4)",
+        "Extended exhale — inhale 4, exhale 6–8",
+        "Feet on floor — press and notice support",
+        "Progressive muscle release — brief tense–release scan",
+        "Orienting — look around, find 3 colors and 3 shapes",
+        "Soothing touch — hand on heart, slow breath",
+        "Temperature shift — cool water on wrists, face",
+        "Movement — shoulder roll, neck turn, stand–sit",
+        "Naming supports — recall one safe person/place"
+      ],
+      desc: "Common stabilizers the model may suggest as needed.",
+      ph: "Select one or more grounding tools" },
+
+    { label: "Grounding tools (custom, one per line)", key: "grounding", type: "textarea",
+      desc: "Add your own practices.", ph: "Humming\nBreath with counting\nSipping warm tea" },
+
+    { label: "Timebox (optional)", key: "timebox", type: "text",
+      desc: "Total minutes for the dialogue.", ph: "e.g., 12 minutes" },
+
+    // Somatic/context cues
+    { label: "Somatic cues (optional)", key: "somatic", type: "textarea",
+      desc: "Where/how parts show up in body sensations, images, impulses.",
+      ph: "Tight jaw (Critic), fluttery chest (Exile), urge to scroll (Firefighter)" },
+
+    // Output format with instruction-bearing options
+    { label: "Output format", key: "output", type: "select",
+      options: [
+        "Scripted dialogue — alternate lines for Part A, Part B, Self (and optionally Survival System); include consent checks, brief pauses, and grounding inserts.",
+        "Coach prompts — a sequenced checklist of short prompts the user answers; include timing (60–90s each) and grounding cues between steps.",
+        "Summary & plan — a parts-map table (Part | Role | Positive intent | Fear | Somatic cue | Requests), one tiny agreement, aftercare checklist, and 24–72h follow-up reminder."
+      ],
+      desc: "How the response should be delivered.",
+      ph: "Scripted dialogue — with consent checks" }
+  ],
+  template: (args => {
+    const {
+      part_a, part_a_persona = [], part_b, part_b_persona = [], more_parts = [],
+      self_name, self_persona = [], survival_name, survival_persona = [],
+      issue, goal, audience = [], bias_checks = [], mode, culture, culture_details,
+      safety, grounding_presets = [], grounding, timebox, somatic, output,
+      ctx, style, tone
+    } = args || {};
+    const toLines = s => (s||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const bullets = (arr, lead="• ") => arr && arr.length ? arr.map(x=>`${lead}${x}`).join("\n") : null;
+
+    const culture_instructions = (() => {
+      switch (culture) {
+        case "Secular language — everyday psychology; avoid spiritual terms and clinical jargon.":
+          return "Cultural framing: Use everyday psychological language; avoid spiritual terms and heavy jargon. Explain concepts plainly.";
+        case "Layman/casual — friendly, colloquial phrasing; plain metaphors; no jargon.":
+          return "Cultural framing: Speak casually and warmly, using plain metaphors; avoid jargon; keep it conversational.";
+        case "Spiritual language — Self as compassionate awareness/Buddha-nature/fitra; use gentle spiritual metaphors on consent.":
+          return "Cultural framing: You may refer to Self as compassionate awareness/Buddha-nature/fitra; use gentle spiritual metaphors only as supportive language.";
+        case "Faith-integrated — reference my faith respectfully (use my terms from details); no doctrinal claims; emphasize mercy/dignity.":
+          return "Cultural framing: Integrate the user’s faith respectfully using their terms; do not make doctrinal claims; emphasize mercy, dignity, and compassion.";
+        case "New-age spiritual — optional metaphors of energy/inner light/chakras; keep grounded and consent-based.":
+          return "Cultural framing: You may use light energy-based metaphors (inner light/chakras) sparingly and keep guidance grounded and consent-based.";
+          case "Clinical language — official psychology terms; use clinical jargon and avoid spiritual terms.":
+  return "Cultural framing: Use clinical psychology and psychiatric terminology (e.g., affect regulation, cognitive appraisal, defensive strategies). Avoid metaphorical language. Reference established constructs (hyperarousal, avoidance, cognitive distortions). Provide Provisional, Differential, and Working diagnoses; maintain precision and clinical tone.";
+  case "Fantasy/mythic — creative, metaphor-rich framing; speak in imagery of quests, guardians, realms, and elemental forces.":
+  return "Cultural framing: Use vivid fantasy metaphors. Describe parts of the Self as adventurers, guardians, or elemental beings within an inner realm. Frame struggles as quests, choices as crossroads, and healing as forging artifacts of resilience. Keep imaginative but coherent; honor consent as sacred law of the realm.";
+        default:
+          return null;
+      }
+    })();
+
+    const output_instructions = (() => {
+      switch (output) {
+        case "Scripted dialogue — alternate lines for Part A, Part B, Self (and optionally Survival System); include consent checks, brief pauses, and grounding inserts.":
+          return "Output: Provide a scripted dialogue alternating lines for Part A, Part B, Self, and (if relevant) the Survival System. Include explicit consent checks before contacting vulnerable content, short pauses, and grounding inserts when intensity rises. Keep lines concise and kind.";
+        case "Coach prompts — a sequenced checklist of short prompts the user answers; include timing (60–90s each) and grounding cues between steps.":
+          return "Output: Provide numbered coach prompts the user can answer. Each step 60–90 seconds. Insert small grounding cues between steps. End with a recap and one tiny agreement.";
+        case "Summary & plan — a parts-map table (Part | Role | Positive intent | Fear | Somatic cue | Requests), one tiny agreement, aftercare checklist, and 24–72h follow-up reminder.":
+          return "Output: Provide a parts-map table (Part | Role | Positive intent | Fear | Somatic cue | Requests), a one-line tiny agreement (who/what/when), an aftercare checklist, and a 24–72h follow-up reminder.";
+        default:
+          return null;
+      }
+    })();
+
+    return [
+      "Facilitate a Parts Work (IFS-informed) dialogue that is safety-aware, permission-based, and culturally respectful.",
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      mode && `Session mode: ${mode}`,
+      timebox && `Timebox: ${timebox}`,
+
+      // Participants
+      part_a && `Part A: ${part_a}` ,
+      part_a_persona.length ? `Part A personas: ${part_a_persona.join(" • ")}` : null,
+      part_b && `Part B: ${part_b}`,
+      part_b_persona.length ? `Part B personas: ${part_b_persona.join(" • ")}` : null,
+      more_parts.length ? `Additional parts: ${more_parts.join(" • ")}` : null,
+      self_name && `Self reference: ${self_name}`,
+      self_persona.length ? `Self qualities: ${self_persona.join(" • ")}` : null,
+      survival_name && `Survival system (metaphor): ${survival_name}`,
+      survival_persona.length ? `Survival system traits: ${survival_persona.join(" • ")}` : null,
+
+      issue && `Presenting tension:\n${issue}`,
+      goal && `Session goal: ${goal}`,
+      somatic && `Somatic/imagery cues: ${somatic}`,
+
+      (audience.length > 0) && ("Audience/personas: " + audience.join(" • ")),
+      (bias_checks.length > 0) && ("Bias checks to avoid: " + bias_checks.join(" • ")),
+
+      culture_instructions,
+      culture_details && `Cultural/spiritual details to respect: ${culture_details}`,
+
+      safety && `Safety limits: ${safety}`,
+      grounding_presets.length ? `Grounding tools (selected):\n${bullets(grounding_presets)}` : null,
+      grounding && `Grounding tools (custom):\n${toLines(grounding).map(x=>"• "+x).join("\n")}`,
+
+      // Operating instructions for the model
+      "Model instructions:",
+      "- Lead with Self energy (calm, curious, compassionate). Do not diagnose or pathologize. Do not force disclosure.",
+      "- Unblend language: use “a part of me…” rather than totalizing identity.",
+      "- Meet protectors first. Ask explicit permission before contacting vulnerable/exile content; honor a No.",
+      "- If distress or dissociation appears, pause and offer a selected grounding tool; return to protectors or end safely.",
+      "- Treat “Reptilian/Unconscious” as a metaphor for survival/automatic responses; do not make neuroanatomical claims.",
+      "- Keep steps brief and kind; close with a small, consensual agreement and aftercare.",
+
+      // Flow (concise)
+      "Flow:",
+      "1) Find & Focus: Notice Part A and Part B (and any named parts) in sensations/images/impulses.",
+      "2) Feel toward: Check user’s feeling toward each; if not curious/compassionate, a protector is blended—meet that part first.",
+      "3) Befriend & Function: Ask each part its positive intent and fear (what it protects, what it worries will happen).",
+      "4) Permission: Ask protectors for a small, safe step toward the goal; accept constraints.",
+      "5) Tiny Agreement: Co-create one time-bound, low-risk commitment both parts accept.",
+      "6) Aftercare: Thank parts; suggest a calming close; set a 24–72h check-in.",
+
+      output_instructions || "Output: Provide a gentle, structured response (dialogue/prompts/summary) with consent checks, grounding, and a tiny agreement.",
+      "If the user indicates acute risk or overwhelming distress: pause and recommend contacting a qualified professional or crisis support appropriate to their region."
+    ].filter(Boolean).join("\n");
+  }),
+  meta: {
+    search_text: "IFS parts work dialogue Self leadership protectors exiles managers firefighters unblending survival system metaphor grounding multiselect cultural framing secular layman casual spiritual faith integrated new age personas bias checks consent safety journaling scripted dialogue summary plan"
+  }
+},
+
+{
+  id: 'pas',
+  slug: 'pas-copywriting',
+  label: 'PAS — Problem · Agitate · Solution',
+  kind: 'framework',
+  categories: ['storytelling frameworks','writing','marketing'],
+  tags: [
+    'type:framework','use:copywriting','phase:compose','level:beginner',
+    'use:ad-copy','use:task-brief','use:email','use:landing','use:pitch',
+    'topic:persuasion','topic:problem-framing'
+  ],
+  use_cases: [
+    'write persuasive copy by addressing the reader’s pain and offering relief',
+    'structure marketing messages or support tickets by focusing on problem then solution',
+    'craft introductions for pitches or blogs that hook with a problem and promise a solution',
+    'generate ad headlines/subheads that connect pain → relief',
+    'summarize customer insight into crisp, action-oriented copy blocks',
+    'draft landing hero content',
+    'produce variants for A/B testing (problem angle, agitation depth, proof type, CTA)'
+  ],
+  boosters: [
+    'Name one primary problem (not three). Specificity beats breadth.',
+    'In Agitate, quantify near-term and compounding costs (time, money, risk, morale).',
+    'Tie Solution steps directly to each agitated pain; remove one friction per sentence.',
+    'Add minimal proof (metric, testimonial, guarantee) to de-risk the promise.',
+    'Match CTA to readiness: “Learn more” < “Try free” < “Buy now”.',
+    'Ethics: be accurate, avoid fear-mongering; include accessibility/inclusion cues when relevant.'
+  ],
+  definition: 'A copywriting formula that presents a Problem, amplifies it (Agitate), then provides a Solution to resolve the discomfort.',
+  help: 'Provide the audience’s problem and your solution. Optionally add agitation details, proof, CTA, and constraints. Choose a transform to output PAS, SAP, PAR, RAP, or STAR; or select “Refine PAS” to have the model ask focused questions and then draft.',
+  fields: [
+    {
+      key: 'problem',
+      label: 'Problem',
+      type: 'textarea',
+      desc: 'The core pain point in audience language; include stakes.',
+      ph: 'e.g., Project managers chase updates; status is always stale at review time.'
+    },
+    {
+      key: 'agitate',
+      label: 'Agitate (pain details, optional)',
+      type: 'textarea',
+      desc: 'Make costs vivid (time, $$, risk, morale). Add a near-term + compounding cost.',
+      ph: 'e.g., 6–8 hours/week lost; missed dependencies cause weekend fire drills.'
+    },
+    {
+      key: 'solution',
+      label: 'Solution',
+      type: 'text',
+      desc: 'Your product/idea/process that resolves the problem; one line.',
+      ph: 'e.g., SyncMaster auto-updates project status in real time.'
+    },
+    {
+      key: 'action_steps',
+      label: 'Actions you took / will take (optional)',
+      type: 'textarea',
+      desc: 'Useful when transforming to PAR/RAP/STAR; list concrete actions.',
+      ph: 'e.g., Implemented webhook ingestion; added SLA dashboards; trained PMs.'
+    },
+    {
+      key: 'result',
+      label: 'Result / outcome (optional)',
+      type: 'textarea',
+      desc: 'Quantified outcomes/proxies; supports PAR/RAP/STAR.',
+      ph: 'e.g., Churn ↓ from 14%→8% in 3 months; CSAT ↑ to 4.6/5.'
+    },
+    {
+      key: 'situation',
+      label: 'Situation (STAR, optional)',
+      type: 'textarea',
+      desc: 'Context/constraints that set the scene (for STAR transform).',
+      ph: 'e.g., Series B stage; 3 PMs; fragmented tooling across 4 teams.'
+    },
+    {
+      key: 'task',
+      label: 'Task (STAR, optional)',
+      type: 'textarea',
+      desc: 'Objective or responsibility (for STAR transform).',
+      ph: 'e.g., Deliver reliable exec status weekly without adding PM burden.'
+    },
+    {
+      key: 'audience_insight',
+      label: 'Audience insight (optional)',
+      type: 'textarea',
+      desc: 'Objections, desires, triggers; informs tone and proof.',
+      ph: 'e.g., Skeptical of black-box automation; responds to ROI and peer proof.'
+    },
+    {
+      key: 'audience',
+      label: 'Audience personas (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'persona',
+      autofill: 'persona->inline',
+      desc: 'Who you are addressing; select one or more personas.',
+      ph: 'e.g., VP Operations; Solo founder; Nonprofit ED'
+    },
+    {
+      key: 'bias_checks',
+      label: 'Bias/ethics checks (optional)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      itemLabel: 'bias',
+      autofill: 'bias->inline',
+      desc: 'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph: 'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+    {
+      key: 'proof',
+      label: 'Proof (optional)',
+      type: 'textarea',
+      desc: 'Evidence that reduces risk: data, testimonial, certification.',
+      ph: 'e.g., “Cut close time by 62% at Acme (case study)”; SOC 2 Type II.'
+    },
+    {
+      key: 'cta',
+      label: 'Call-to-action (optional)',
+      type: 'text',
+      desc: 'Exact next step language.',
+      ph: 'e.g., Start a 14-day trial'
+    },
+    {
+      key: 'channel',
+      label: 'Channel (optional)',
+      type: 'select',
+      options: [
+        'Landing hero — headline + subhead',
+        'Email — short body + CTA',
+        'Ad — headline + body (≤90 chars body)',
+        'Pitch deck — single slide copy',
+        'Support macro — problem/solution reply',
+        'Social post — 1–2 sentences'
+      ],
+      desc: 'Shapes voice, length, and CTA strength.'
+    },
+    {
+      key: 'constraints',
+      label: 'Constraints (optional)',
+      type: 'text',
+      desc: 'Word/char limits, style rules, compliance notes.',
+      ph: 'e.g., ≤70 chars headline; avoid superlatives; plain language'
+    },
+    {
+      key: 'transform',
+      label: 'Output pattern / assistance',
+      type: 'select',
+      options: [
+        'PAS — Problem→Agitate→Solution (default persuasive copy)',
+        'SAP — Solution→Agitate→Problem (solution-first for low attention)',
+        'PAR — Problem→Action→Result (resume/case style)',
+        'RAP — Result→Action→Problem (impact-first hook)',
+        'STAR — Situation→Task→Action→Result (interview/story)',
+        'Refine PAS — Ask clarifying questions, then draft PAS'
+      ],
+      desc: 'Controls structure and instruction set used in the output.'
+    }
+  ],
+  template: ({
+    problem, agitate, solution,
+    action_steps, result, situation, task,
+    audience_insight, audience, bias_checks,
+    proof, cta, channel, constraints, transform,
+    ctx, style, tone
+  }) => {
+    const t = String(transform || 'PAS').toLowerCase();
+    const personas = Array.isArray(audience) ? audience : [];
+    const biases = Array.isArray(bias_checks) ? bias_checks : [];
+    return [
+      'Use a persuasion pattern with explicit structure and ethical guardrails.',
+      ctx && `Context: ${ctx}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      personas.length ? 'Audience personas:\n' + personas.map((p,i)=>`${i+1}. ${p}`).join('\n') : null,
+      personas.length ? 'Instruction: tailor vocabulary, objections, and proof to the personas above.' : null,
+      biases.length ? 'Bias/ethics checks to apply:\n' + biases.map(b=>`- ${b}`).join('\n') : null,
+      biases.length ? 'Instruction: avoid stereotypes, manipulative fear appeals, and inaccessible language.' : null,
+      audience_insight && `Audience insight:\n${audience_insight}`,
+      constraints && `Constraints: ${constraints}`,
+      channel && `Channel: ${channel}`,
+      'General rules: be specific; prefer concrete numbers; map each pain → relief; one primary idea per message.',
+      t.includes('refine') ? 'Mode: Refine PAS — first ask focused questions, then draft PAS.' : null,
+      t.includes('refine') ? 'Ask:\n1) Primary outcome (time, $$, risk, status)?\n2) Strongest symptom story (recent)?\n3) Smallest credible proof (metric/quote/guarantee)?\n4) Accessibility or inclusion cues?\n5) CTA that matches readiness?' : null,
+      t.includes('pas') ? 'Pattern: PAS — Problem → Agitate → Solution.' : null,
+      t.includes('pas') && problem ? 'Problem:\n' + problem : null,
+      t.includes('pas') && agitate ? 'Agitate (costs & consequences):\n' + agitate : null,
+      t.includes('pas') && solution ? 'Solution:\n' + solution : null,
+      t.includes('pas') && proof ? 'Proof:\n' + proof : null,
+      t.includes('pas') && cta ? 'CTA: ' + cta : null,
+      t.includes('sap') ? 'Pattern: SAP — Solution → Agitate → Problem (solution-first).' : null,
+      t.includes('sap') && solution ? 'Solution (lead):\n' + solution : null,
+      t.includes('sap') && agitate ? 'Agitate (pains without it):\n' + agitate : null,
+      t.includes('sap') && problem ? 'Problem (named last):\n' + problem : null,
+      t.includes('sap') && proof ? 'Proof:\n' + proof : null,
+      t.includes('sap') && cta ? 'CTA: ' + cta : null,
+      t.includes('par') ? 'Pattern: PAR — Problem → Action → Result.' : null,
+      t.includes('par') && problem ? 'Problem:\n' + problem : null,
+      t.includes('par') && (action_steps || solution) ? 'Action:\n' + (action_steps || solution) : null,
+      t.includes('par') && (result || 'Result: <proxy metric>'),
+      t.includes('rap') ? 'Pattern: RAP — Result → Action → Problem.' : null,
+      t.includes('rap') && (result || 'Result (lead): <impact or proxy>'),
+      t.includes('rap') && (action_steps || solution) ? 'Action:\n' + (action_steps || solution) : null,
+      t.includes('rap') && problem ? 'Problem (context):\n' + problem : null,
+      t.includes('star') ? 'Pattern: STAR — Situation → Task → Action → Result.' : null,
+      t.includes('star') && (situation || problem) ? 'Situation:\n' + (situation || problem) : null,
+      t.includes('star') && (task || 'Task: <objective/responsibility>'),
+      t.includes('star') && (action_steps || solution) ? 'Action:\n' + (action_steps || solution) : null,
+      t.includes('star') && (result || 'Result: <quantified impact or qualitative outcome>'),
+      'Quality checks: 1) Concrete numbers present? 2) Jargon minimized? 3) CTA matches readiness? 4) Bias/ethics checks applied?'
+    ].filter(Boolean).join('\n');
+  },
+  meta: {
+    search_text: 'PAS Problem Agitate Solution transform SAP PAR RAP STAR refine personas bias ethics CTA proof audience inclusion accessibility resume case study landing email ad headline persuasion framework'
+  }
+},
 
     {
       id: "paul-elder",
