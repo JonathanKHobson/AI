@@ -1343,7 +1343,520 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
       outRules.join('\n')
     ].filter(Boolean).join('\n');
   }
+},
+
+
+{
+  id: 'write_social_post',
+  slug: 'write-social-post',
+  label: 'Social Media Post — Tailor / Write / Brainstorm',
+  kind: 'task',
+  categories: ['marketing','social','content'],
+  tags: [
+    'type:task','use:write','use:social',
+    'topic:copywriting','topic:social-media','phase:distribution'
+  ],
+
+  use_cases: [
+    // Cross-platform + platform-specific scenarios
+    'tailor an existing post across platforms while preserving intent',
+    'write a net-new post optimized to a platform’s best practices',
+    'brainstorm multiple campaign angles with mini-drafts per platform',
+    'LinkedIn: thought-leadership with a hook, takeaway, and 3–5 hashtags',
+    'X/Twitter: punchy, sub-100-char hooks; 1–2 hashtags; thread planning',
+    'Facebook: 40–80-char status + single image; front-load key point',
+    'Instagram: first-line hook (<125 chars) + caption + 10–15 relevant hashtags',
+    'Reddit: subreddit-native explainer with markdown and genuine tone',
+    'Pinterest: keyworded Pin title + 100–300-char description + 3–5 hashtags'
+  ],
+
+  definition: 'Compose or adapt platform-native social content based on mode (Tailor / Write / Brainstorm). Injects platform rules, purpose guidance, tone, and length logic to return a polished caption (or idea board), variants, alt-text, and hashtag guidance.',
+  help: 'Pick **Task Mode**, then **Platform**. All downstream fields (placeholders/descriptions and length options) adapt to the chosen platform’s 2025 best practices. Provide goal, audience/personas, tone, hook/angle, key points, CTA, and optional source post (for Tailor) or themes (for Brainstorm).',
+
+  fields: [
+    // ===== 1) MODE (first) =====
+    { key:'task_mode', label:'Task Mode', type:'select',
+      options:[
+        { label:'Tailor an existing post', value:'Mode: Tailor\nInstruction:\n- Ingest the source post and preserve its original intent while adapting to the chosen platform and purpose.\n- Keep specified elements (voice, key claim, legal disclaimers) and improve clarity, hook, and scannability.\n- Return: adapted primary caption + rationale of changes + 1–3 variants + alt-text + hashtag suggestion.' },
+        { label:'Write a new post from scratch', value:'Mode: Write\nInstruction:\n- Generate a new platform-native post from the provided goal, audience, and key points.\n- Lead with a hook; match tone and length; include a clear CTA and optional variants.\n- Return: primary caption + 1–3 variants + alt-text + hashtag suggestion.' },
+        { label:'Brainstorm ideas with draft options', value:'Mode: Brainstorm\nInstruction:\n- Produce an idea board: multiple distinct angles with hooks, one-liners, suggested assets, and CTA options.\n- For the top ideas, provide mini-drafts matched to the chosen platform.\n- Return: idea board (N ideas), 1–2 mini-drafts per top idea, plus hashtag seeds and alt-text hints.' }
+      ]
+    },
+
+    // ===== 2) PLATFORM (drives adaptive UI & instructions) =====
+    { key:'platform', label:'Platform', type:'select',
+      options:[
+        { label:'X / Twitter', value:'Platform: X / Twitter\nGuidance:\n- Char limit: 280 (free); premium up to 25k but collapsed under “Show more”.\n- Best engagement around 70–100 chars; use threads for depth.\n- 0–2 highly relevant hashtags; images/GIFs/polls don’t consume characters.\n- Crisp verbs; data or curiosity hook; thread each idea cleanly.' },
+        { label:'Facebook', value:'Platform: Facebook\nGuidance:\n- Very long allowed, but best results at ~40–80 chars + single visual.\n- Front-load key point (mobile truncates around ~150 chars).\n- Hashtags optional and sparse; keep tone conversational.' },
+        { label:'LinkedIn', value:'Platform: LinkedIn\nGuidance:\n- Up to 3,000 chars; hook must fit first ~200 chars pre-“See more”.\n- 100–200 words with professional takeaway; 3–5 topic hashtags.\n- Use @mentions for people/companies; value-forward, B2B-appropriate tone.' },
+        { label:'Instagram', value:'Platform: Instagram\nGuidance:\n- Captions up to 2,200 chars; first ~125 chars visible in feed.\n- Use a strong first line; 10–15 relevant hashtags (end or first comment).\n- Emojis for scannability; include “link in bio” if applicable.' },
+        { label:'Reddit', value:'Platform: Reddit\nGuidance:\n- Subreddit-native value: how-to, data, or lived experience.\n- Clear title + markdown body; avoid salesy tone; disclose affiliations.\n- Engage in comments; follow subreddit rules.' },
+        { label:'Pinterest', value:'Platform: Pinterest\nGuidance:\n- Visual first (vertical 2:3). Keyworded title + 100–300-char description.\n- 3–5 specific hashtags; evergreen topics; treat as search (SEO terms).' },
+        { label:'TikTok', value:'Platform: TikTok\nGuidance:\n- Short, keyword-rich caption that rides the video hook.\n- 3–5 niche hashtags; medium-native CTA (watch/comment/share).' },
+        { label:'YouTube', value:'Platform: YouTube\nGuidance:\n- 60–150 words; name who it’s for and the payoff.\n- 1–3 topic hashtags at end; clear CTA (watch/sub/next step).' },
+        { label:'Threads', value:'Platform: Threads\nGuidance:\n- Breezy, friendly; 1–3 sentences.\n- 0–3 tasteful hashtags; personal, non-corporate voice.' }
+      ]
+    },
+
+    // ===== 3) PLATFORM-AWARE LENGTH (options change by platform) =====
+    { key:'length_pref', label:'Length preference', type:'select', dependsOn:'platform',
+      // The UI can pick from optionsByPlatform; the template will also restate chosen logic explicitly.
+      optionsByPlatform: {
+        'X / Twitter': [
+          { label:'Micro (≤100 chars)', value:'Length: Micro (X) — ≤100 chars\nInstruction: single idea + hook; 0–1 hashtag.' },
+          { label:'Short (101–180 chars)', value:'Length: Short (X) — 101–180 chars\nInstruction: hook + payoff + CTA fragment.' },
+          { label:'Thread (3–7 tweets)', value:'Length: Thread (X)\nInstruction: 3–7 tweets; each line stands alone; include a summary close.' }
+        ],
+        'Facebook': [
+          { label:'Punchy (40–80 chars)', value:'Length: Punchy (FB) — 40–80 chars\nInstruction: crisp line + single visual.' },
+          { label:'Short (1–2 sentences)', value:'Length: Short (FB) — 1–2 sentences\nInstruction: front-load the value.' }
+        ],
+        'LinkedIn': [
+          { label:'Hook line + 80–120 words', value:'Length: Short (LI) — hook + 80–120 words\nInstruction: 1–2 paras + takeaway.' },
+          { label:'Standard (120–200 words)', value:'Length: Standard (LI) — 120–200 words\nInstruction: hook, value bullets, CTA.' },
+          { label:'Long (200–300 words)', value:'Length: Long (LI) — 200–300 words\nInstruction: mini-essay with whitespace.' }
+        ],
+        'Instagram': [
+          { label:'Hook line only (≤125 chars)', value:'Length: Hook-only (IG)\nInstruction: first line carries the message; rely on visual.' },
+          { label:'Short caption (1–2 lines)', value:'Length: Short (IG) — 1–2 lines\nInstruction: hook + benefit + CTA; hashtags at end.' },
+          { label:'Full caption (3–6 lines)', value:'Length: Full (IG)\nInstruction: story beat + CTA; hashtags grouped last.' }
+        ],
+        'Reddit': [
+          { label:'Title + TL;DR (2–3 lines)', value:'Length: TL;DR (Reddit)\nInstruction: clear title + short summary.' },
+          { label:'Short explainer (100–200 words)', value:'Length: Short (Reddit)\nInstruction: markdown bullets + links.' },
+          { label:'Long form (300–800 words)', value:'Length: Long (Reddit)\nInstruction: headings, lists, sources.' }
+        ],
+        'Pinterest': [
+          { label:'Pin title + 100–200-char desc', value:'Length: Pin short (Pinterest)\nInstruction: keyworded title + concise benefit.' },
+          { label:'Pin title + 200–300-char desc', value:'Length: Pin standard (Pinterest)\nInstruction: include 1–2 keywords + CTA.' }
+        ],
+        'TikTok': [
+          { label:'Short (≤80 chars)', value:'Length: Short (TikTok)\nInstruction: hook + keyword; 3–5 niche hashtags.' },
+          { label:'Standard (1–2 lines)', value:'Length: Standard (TikTok)\nInstruction: hook + payoff + CTA.' }
+        ],
+        'YouTube': [
+          { label:'Short (60–90 words)', value:'Length: Short (YT)\nInstruction: hook + value + CTA; 1–3 tags.' },
+          { label:'Standard (90–150 words)', value:'Length: Standard (YT)\nInstruction: who it’s for + benefit + CTA.' }
+        ],
+        'Threads': [
+          { label:'1–2 sentences', value:'Length: Short (Threads)\nInstruction: breezy, friendly; invite replies.' }
+        ]
+      },
+      options: [
+        // Fallback if platform not yet selected
+        { label:'Auto (platform-appropriate)', value:'Length: Auto\nInstruction: apply best-practice length for the chosen platform.' }
+      ]
+    },
+
+    // ===== 4) ROLE / PURPOSE (unchanged but platform-aware later) =====
+    { key:'role', label:'Account type / role', type:'select',
+      options:[
+        { label:'Influencer / Creator', value:'Role: Creator\nInstruction:\n- Authentic, first-person; disclose partnerships (#ad where required).\n- Experience-based claims only.' },
+        { label:'Casual individual', value:'Role: Casual individual\nInstruction:\n- Conversational; share a personal micro-story or image idea.' },
+        { label:'Professional (personal brand)', value:'Role: Professional\nInstruction:\n- Credibility via 1–2 specifics (metric, client type, method); crisp CTA.' },
+        { label:'Business / Brand account', value:'Role: Brand\nInstruction:\n- Align with style guide; add social proof or customer quote.' },
+        { label:'Nonprofit / NGO', value:'Role: Nonprofit\nInstruction:\n- Center beneficiaries; include impact stat and donate/volunteer CTA.' },
+        { label:'Government / Public agency', value:'Role: Public agency\nInstruction:\n- Clear, accessible, non-partisan; action steps and official link; ADA-friendly alt text.' },
+        { label:'Educator / Researcher', value:'Role: Educator/Researcher\nInstruction:\n- Plain-language framing + source link; invite questions.' },
+        { label:'Community organizer', value:'Role: Community organizer\nInstruction:\n- Local context, inclusivity, accessibility details; ways to help now.' }
+      ]
+    },
+
+    { key:'purpose', label:'Post purpose', type:'select',
+      options:[
+        { label:'Awareness — reach & memorability', value:'Purpose: Awareness\nInstruction:\n- Optimize for recall; simple, concrete idea with a sticky hook.\n- EAST: Easy to grasp at a glance; 1 key message, 1 image idea.\n- AIDA spine with lightweight CTA.' },
+        { label:'Engagement — replies, shares, saves', value:'Purpose: Engagement\nInstruction:\n- Ask a focused question or pose a poll-worthy dilemma.\n- Use curiosity gap or social proof; invite specific replies.' },
+        { label:'Click-through — traffic to link', value:'Purpose: Click-through\nInstruction:\n- Payoff-forward promise; place link once (platform-dependent).\n- Pre-qualify clicks with concrete benefit.' },
+        { label:'Lead gen — signups/demo', value:'Purpose: Lead gen\nInstruction:\n- FAB (Feature→Advantage→Benefit); use compliance-safe verbs (“may help”, “can reduce”).\n- Add a soft disqualifier to improve lead quality.' },
+        { label:'Launch/update — product news', value:'Purpose: Launch/Update\nInstruction:\n- BAB (Before→After→Bridge) with 1–2 killer specifics.\n- Add “What’s new vs. old” bullet.' },
+        { label:'Thought leadership — teach & frame', value:'Purpose: Thought leadership\nInstruction:\n- Feynman clarity + First Principles rationale; 1 actionable takeaway; invite dissent.' },
+        { label:'Event promo — register/attend', value:'Purpose: Event promo\nInstruction:\n- Who it’s for, what they’ll get, and by when; speaker/partner proof.' },
+        { label:'Hiring — recruiting & culture', value:'Purpose: Hiring\nInstruction:\n- Mission-first “Why” + 2–3 must-haves; inclusive language; link to JD.' },
+        { label:'Support/FAQ — reduce tickets', value:'Purpose: Support/FAQ\nInstruction:\n- Problem → steps → expected result; scannable bullets; alt text for UI refs.' },
+        { label:'Apology/issue comms — trust repair', value:'Purpose: Issue comms\nInstruction:\n- Acknowledge → Own → Fix → Timeline; factual, link to status page.' }
+      ]
+    },
+
+    // ===== 5) AUDIENCE + PERSONAS =====
+    { key:'audience', label:'Target audience', type:'text',
+      desc:'Who this is for (platform-specific phrasing encouraged).',
+      ph:'e.g., LinkedIn → “RevOps leaders at mid-market SaaS” | Instagram → “Home bakers starting out”'
+    },
+    { key:'personas', label:'Audience personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Stakeholder segments shaping tone, examples, objections.',
+      ph:'e.g., Busy PMs; RevOps leads; Indie hackers'
+    },
+
+    // ===== 6) TONE & VOICE =====
+    { key:'brand', label:'Brand voice (free text)', type:'text',
+      desc:'Describe the voice the platform expects (will be blended with “Role”).',
+      ph:'Plainspoken, playful, authoritative…'
+    },
+    { key:'tone_primary', label:'Tone — primary', type:'select',
+      options:[
+        { label:'Friendly & helpful', value:'Tone: Friendly helpful\nInstruction: approachable language, short sentences, warm verbs.' },
+        { label:'Authoritative & concise', value:'Tone: Authoritative concise\nInstruction: lead with facts, prune modifiers, active voice.' },
+        { label:'Playful & witty', value:'Tone: Playful witty\nInstruction: tasteful wordplay; 1–2 emojis max if platform-appropriate.' },
+        { label:'Inspirational', value:'Tone: Inspirational\nInstruction: future-positive framing; we/you language; avoid cliché.' },
+        { label:'Technical & precise', value:'Tone: Technical precise\nInstruction: define terms, concrete specs, scoped claims.' },
+        { label:'Empathetic & calming', value:'Tone: Empathetic calming\nInstruction: validate feelings; reduce urgency; clear next step.' }
+      ]
+    },
+    { key:'tone_secondary', label:'Tone — secondary (optional)', type:'select',
+      options:[
+        { label:'Confident', value:'Sub-tone: Confident\nInstruction: assert benefits with measured certainty; no absolutes.' },
+        { label:'Curious', value:'Sub-tone: Curious\nInstruction: ask a genuine question; invite replies for learning.' },
+        { label:'Urgent', value:'Sub-tone: Urgent\nInstruction: time-boxed CTA with clear reason; avoid alarmism.' },
+        { label:'Luxurious', value:'Sub-tone: Luxurious\nInstruction: sensory detail sparingly; focus on craft.' }
+      ]
+    },
+
+    // ===== 7) EMOJI / CTA STYLE (platform-aware later) =====
+    { key:'emoji_policy', label:'Emoji usage', type:'select',
+      options:[
+        { label:'None', value:'Emoji policy: None\nInstruction: no emojis; use punctuation/whitespace for rhythm.' },
+        { label:'Minimal (sparingly)', value:'Emoji policy: Minimal\nInstruction: 0–2 on-brand emojis for scannability, not decoration.' },
+        { label:'Expressive (platform-native)', value:'Emoji policy: Expressive\nInstruction: 2–5 emojis to chunk ideas; avoid generic dumps.' }
+      ]
+    },
+    { key:'cta_style', label:'CTA style', type:'select',
+      options:[
+        { label:'Direct (click/sign up/buy)', value:'CTA: Direct\nInstruction: explicit action verb + concrete benefit + low-friction step.' },
+        { label:'Conversational (ask a question)', value:'CTA: Conversational\nInstruction: 1 precise question inviting stories or tips.' },
+        { label:'Soft (learn more/explore)', value:'CTA: Soft\nInstruction: curiosity-driven close with value promise + link.' }
+      ]
+    },
+
+    // ===== 8) CORE CONTENT (platform-specific desc/ph guided) =====
+    { key:'goal',   label:'Goal / objective', type:'text',
+      desc:'Primary success (platform-aware phrasing).',
+      ph:'Drive saves (IG), comments (LinkedIn), CTR (X), subreddit discussion (Reddit)…'
+    },
+    { key:'topic',  label:'Topic / product / offer', type:'text',
+      desc:'What this post is about (use platform keywords where relevant).',
+      ph:'e.g., “New AI notes feature for creators”'
+    },
+    { key:'angle',  label:'Angle or hook idea', type:'text',
+      desc:'Platform-tuned hook style.',
+      ph:'X: sharp question | LinkedIn: insight + takeaway | IG: relatable moment + emoji beat'
+    },
+    { key:'key_points', label:'Key points (bullets)', type:'textarea',
+      desc:'Bullets prioritized for the platform (data for LinkedIn; visual cue for IG; TL;DR for Reddit).',
+      ph:'• Proof point\n• Benefit\n• Objection to address\n• Feature to highlight'
+    },
+    { key:'cta', label:'Call to action (specific)', type:'text',
+      desc:'CTA phrased to platform norms.',
+      ph:'LinkedIn: “What’s your take?” | IG: “Save this for later” | X: “Read the full guide →”'
+    },
+    { key:'link', label:'Link (optional)', type:'text',
+      desc:'Place once per platform norms; avoid multiple repeats.',
+      ph:'https://…'
+    },
+    { key:'hashtag_seeds', label:'Hashtag seeds (optional)', type:'text',
+      desc:'Platform-specific hashtag norms: X (0–2), LinkedIn (3–5), IG (10–15, end/first comment), FB (sparse), Reddit (avoid), Pinterest (3–5, keyworded).',
+      ph:'#AI #Productivity (comma or space separated)'
+    },
+
+    // ===== 9) EXAMPLES & ASSETS =====
+    { key:'examples', label:'Reference examples (your past posts or exemplars)', type:'textarea',
+      desc:'Paste 1–3 examples to emulate tone/structure (separate with blank lines). Avoid verbatim reuse.',
+      ph:'Example 1…\n\nExample 2…'
+    },
+    { key:'asset_hints', label:'Creative asset hints (image/video/alt text ideas)', type:'textarea',
+      desc:'Platform-aware assets: IG → portrait photo/reel; LinkedIn → chart/screenshot; Pinterest → vertical 2:3 with keyworded overlay; X → simple chart/meme; Reddit → diagrams sparingly.',
+      ph:'e.g., Dashboard screenshot; “Alt: Line chart showing +18% MoM growth.”'
+    },
+
+    // ===== 10) VARIANTS & CONSTRAINTS =====
+    { key:'variant_count', label:'Variants (number)', type:'text', ph:'3' },
+    { key:'constraints', label:'Constraints', type:'textarea',
+      desc:'Compliance or style rules (e.g., claims, emojis, disclosures).',
+      ph:'No emojis; avoid medical claims; include #ad on X and IG…'
+    },
+
+    // ===== 11) TAILOR / BRAINSTORM SPECIFICS =====
+    { key:'source_platform', label:'Source platform (for Tailor)', type:'text',
+      visibleIf:{ key:'task_mode', contains:'Tailor' },
+      desc:'Original platform → target platform adaptation.',
+      ph:'Instagram → LinkedIn'
+    },
+    { key:'source_post', label:'Source post to tailor (for Tailor)', type:'textarea',
+      visibleIf:{ key:'task_mode', contains:'Tailor' },
+      desc:'Paste the original caption/content.',
+      ph:'(Original post…)'
+    },
+    { key:'keep_elements', label:'Must-keep elements (for Tailor)', type:'textarea',
+      visibleIf:{ key:'task_mode', contains:'Tailor' },
+      desc:'Voice cues, phrases, disclaimers, brand names.',
+      ph:'Keep the “beta now open” line; keep @partner mention; keep legal disclaimer.'
+    },
+    { key:'improve_targets', label:'Improvement targets (for Tailor)', type:'textarea',
+      visibleIf:{ key:'task_mode', contains:'Tailor' },
+      desc:'What to improve when adapting.',
+      ph:'Stronger hook; reduce jargon; add concrete benefit; platform-appropriate hashtags.'
+    },
+
+    { key:'idea_count', label:'Idea count (for Brainstorm)', type:'text',
+      visibleIf:{ key:'task_mode', contains:'Brainstorm' },
+      ph:'5'
+    },
+    { key:'themes', label:'Themes / angles to explore (for Brainstorm)', type:'textarea',
+      visibleIf:{ key:'task_mode', contains:'Brainstorm' },
+      desc:'Prompt different creative directions.',
+      ph:'Counterintuitive lesson\nCustomer win\nBehind-the-scenes\nMyth-busting'
+    },
+    { key:'draft_depth', label:'Draft depth (for Brainstorm)', type:'select',
+      visibleIf:{ key:'task_mode', contains:'Brainstorm' },
+      options:[
+        { label:'Sketch (hooks + one-liners)', value:'Depth: Sketch\nInstruction: brief hooks + one-liners; no full captions.' },
+        { label:'Mini-drafts (2–3 sentences each)', value:'Depth: Mini-drafts\nInstruction: short caption drafts with CTA.' },
+        { label:'Mixed (sketches + 2 top mini-drafts)', value:'Depth: Mixed\nInstruction: list all ideas as sketches; fully draft top 2.' }
+      ]
+    }
+  ],
+
+  boosters: [
+    'Lead with the payoff; cut warm-up.',
+    'Use a strong hook: stat, question, bold claim, contrast, or tiny story.',
+    'Prefer concrete benefits over adjectives; show specifics (%, Δ, time saved).',
+    'Avoid hashtag walls; pick high-signal tags by platform norms.',
+    'Use accessible language and include alt-text suggestions when images are implied.',
+    'Offer at least one variant that flips the narrative angle (question → claim; problem → payoff).',
+    'Use compliance-safe phrasing (“may help”, “can reduce”) when making claims.'
+  ],
+
+  template: (f) => {
+    const lines = [];
+    const add = (x) => x && lines.push(x);
+
+    // Platform rules (2025 distilled)
+    const RULES = {
+      'X / Twitter': {
+        key: 'X',
+        limits: 'Char limit: 280 (free); premium up to 25k (collapsed). Best at 70–100 chars.',
+        hashtags: 'Use 0–2 highly relevant hashtags.',
+        visuals: 'Images/GIFs/polls do not consume characters; add alt text.',
+        style: 'Punchy verbs; single idea per post; use threads for depth.'
+      },
+      'Facebook': {
+        key: 'Facebook',
+        limits: 'Very long allowed; best at ~40–80 chars. Mobile truncates ~150 chars.',
+        hashtags: 'Hashtags optional; use sparingly.',
+        visuals: 'Pair with one clear visual for ~2× engagement.',
+        style: 'Conversational, front-load the point.'
+      },
+      'LinkedIn': {
+        key: 'LinkedIn',
+        limits: 'Up to 3,000 chars; first ~200 chars before “See more”. Best ~100–200 words.',
+        hashtags: '3–5 topic hashtags; use @mentions for people/companies.',
+        visuals: 'Charts/screenshots perform well; add brief context.',
+        style: 'Professional insights; takeaway and CTA to discuss.'
+      },
+      'Instagram': {
+        key: 'Instagram',
+        limits: 'Caption up to 2,200; first ~125 chars visible. Plan a strong first line.',
+        hashtags: 'Use 10–15 relevant hashtags at end or first comment.',
+        visuals: 'Visual is primary; captions support; emojis aid scannability.',
+        style: 'Relatable beats; “link in bio” if off-platform CTA.'
+      },
+      'Reddit': {
+        key: 'Reddit',
+        limits: 'Title + long text allowed; readers prefer concise value.',
+        hashtags: 'Avoid hashtags; use markdown; disclose affiliations.',
+        visuals: 'Use diagrams/screens sparingly; clarity first.',
+        style: 'Subreddit-native problem solving, sources if possible.'
+      },
+      'Pinterest': {
+        key: 'Pinterest',
+        limits: 'Keyworded title; 100–300-char description; evergreen topics.',
+        hashtags: '3–5 targeted hashtags in description.',
+        visuals: 'Vertical 2:3 image; readable text overlay with keywords.',
+        style: 'Search-oriented; benefit-led copy.'
+      },
+      'TikTok': {
+        key: 'TikTok',
+        limits: 'Short, keyword-rich; ride the video hook.',
+        hashtags: '3–5 niche hashtags.',
+        visuals: 'Video drives meaning; caption reinforces CTA.',
+        style: 'Native phrases; prompt interaction.'
+      },
+      'YouTube': {
+        key: 'YouTube',
+        limits: '60–150 words; hook sentence first.',
+        hashtags: '1–3 topic hashtags at end.',
+        visuals: 'Thumbnail/title synergy; caption names payoff.',
+        style: 'Who it’s for + value + next step.'
+      },
+      'Threads': {
+        key: 'Threads',
+        limits: '1–3 sentences; lightweight and personal.',
+        hashtags: '0–3 tasteful hashtags.',
+        visuals: 'Optional; conversational tone.',
+        style: 'Friendly, human voice.'
+      }
+    };
+
+    const platformLabel = Object.keys(RULES).find(k => (f.platform||'').includes(k)) || null;
+    const P = platformLabel ? RULES[platformLabel] : null;
+
+    add('Task: Create platform-native social content based on the selected **Task Mode** (Tailor / Write / Brainstorm). Include a strong first-line hook and a purpose-aligned CTA.');
+
+    // Mode
+    if (f.task_mode) add(String(f.task_mode));
+
+    // Platform brief
+    if (P) {
+      add(`Platform brief — ${P.key}:\n- ${P.limits}\n- Hashtags: ${P.hashtags}\n- Visuals: ${P.visuals}\n- Style: ${P.style}`);
+    } else if (f.platform) {
+      add(String(f.platform));
+    }
+
+    // Role / Purpose
+    if (f.role)    add(String(f.role));
+    if (f.purpose) add(String(f.purpose));
+
+    // Length preference (explicit restatement)
+    if (f.length_pref && (!platformLabel || !/Auto/.test(String(f.length_pref)))) {
+      add(String(f.length_pref));
+    } else if (platformLabel) {
+      add('Length: Auto\nInstruction: apply best-practice length for the chosen platform.');
+    }
+
+    // Core metadata
+    if (f.topic)    add('Topic: ' + f.topic);
+    if (f.goal)     add('Goal: ' + f.goal);
+    if (f.audience) add('Audience: ' + f.audience);
+
+    // Personas
+    if (f.personas && Array.isArray(f.personas) && f.personas.length) {
+      add('Audience personas:\n' + f.personas.map((p,i)=>`${i+1}. ${p}`).join('\n'));
+    }
+
+    // Tone & voice
+    if (f.brand) add('Brand voice: ' + f.brand);
+    if (f.tone_primary)   add(String(f.tone_primary));
+    if (f.tone_secondary) add(String(f.tone_secondary));
+    // Emoji policy & CTA style (previously not included in output)
+    // Defaults by platform (example; tweak to taste)
+if (!f.emoji_policy && P && P.key === 'Instagram') f.emoji_policy = 'Emoji policy: Expressive\nInstruction: 2–5 emojis to chunk ideas; avoid generic dumps.';
+if (!f.cta_style) f.cta_style = 'CTA: Conversational\nInstruction: ask 1 precise question inviting stories or tips.';
+
+if (f.emoji_policy) add(String(f.emoji_policy));   // e.g., "Emoji policy: Minimal\nInstruction: ..."
+if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstruction: ..."
+
+
+    // Content specifics (platform-aware nudges)
+    if (f.angle)      add('Angle/Hook idea: ' + f.angle);
+    if (f.key_points) add('Key points:\n' + f.key_points);
+    if (f.cta)        add('Call to action: ' + f.cta);
+    if (f.link)       add('Link: ' + f.link);
+
+    // Tailor mode extras
+    if ((f.task_mode||'').includes('Tailor')) {
+      if (f.source_platform) add('Source platform: ' + f.source_platform);
+      if (f.source_post)     add('Source post:\n' + f.source_post);
+      if (f.keep_elements)   add('Must-keep elements:\n' + f.keep_elements);
+      if (f.improve_targets) add('Improvement targets:\n' + f.improve_targets);
+    }
+
+    // Brainstorm extras
+    if ((f.task_mode||'').includes('Brainstorm')) {
+      if (f.themes)     add('Themes to explore:\n' + f.themes);
+      if (f.idea_count) add('Idea count: ' + f.idea_count);
+      if (f.draft_depth) add(String(f.draft_depth));
+    }
+
+    // Examples & assets
+    if (f.examples) {
+      add('Reference examples to emulate (tone/structure):\n' + f.examples);
+      add('Instruction: Mirror register, rhythm, and length from the examples while avoiding verbatim phrasing.');
+    }
+    if (f.asset_hints) add('Creative asset hints:\n' + f.asset_hints);
+
+    // Constraints
+    if (f.constraints) add('Constraints: ' + f.constraints);
+
+    // Hashtags guidance
+    if (f.hashtag_seeds) {
+      const seeds = String(f.hashtag_seeds).replace(/[, ]+/g, ' ').trim();
+      if (seeds) {
+        const platHash = P
+          ? P.key === 'X' ? 'Use 0–2 relevant tags.'
+          : P.key === 'LinkedIn' ? 'Use 3–5 topic tags.'
+          : P.key === 'Instagram' ? 'Use 10–15 relevant tags at end or first comment.'
+          : P.key === 'Facebook' ? 'Use hashtags sparingly or omit.'
+          : P.key === 'Reddit' ? 'Avoid hashtags; use subreddit flair if applicable.'
+          : P.key === 'Pinterest' ? 'Use 3–5 keyworded tags in description.'
+          : 'Match platform norms.'
+          : 'Match platform norms.';
+        add('Hashtag seeds: ' + seeds + `\nGuidance: ${platHash}`);
+      }
+    }
+
+    // Hook directive (always include)
+    add(
+      'Hook directive:\n' +
+      '- First line must stand alone before truncation.\n' +
+      '- Choose one hook pattern: surprising stat, sharp question, bold claim, contrast (before/after), or 1-sentence story beat.\n' +
+      '- ≤12 words if possible; no throat-clearing.'
+    );
+
+    // Behind-the-scenes frameworks
+    add(
+      'Framework assist:\n' +
+      '- AIDA: Attention → Interest → Desire → Action.\n' +
+      '- For launches: BAB (Before → After → Bridge) with one killer specific.\n' +
+      '- For features: FAB (Feature → Advantage → Benefit), keep benefit human.\n' +
+      '- EAST: make the desired action Easy, Attractive, Social, Timely.'
+    );
+
+    // Deliverables depend on mode
+    const n = Math.max(0, parseInt(f.variant_count, 10) || 0);
+    const hashtagLine = f.hashtag_seeds ? '\n- End with a "Hashtags" line (or skip on platforms that discourage them).' : '';
+    const altTextReq  = '\n- If referencing an image or thumbnail, add an "Alt text" suggestion (≤ 2 sentences).';
+
+    if ((f.task_mode||'').includes('Tailor')) {
+      add(
+        'Deliverables (Tailor mode):\n' +
+        '- Adapted primary caption for the chosen platform, preserving must-keep elements and improving the specified targets.\n' +
+        (n ? `- ${n} variant${n>1?'s':''} with distinct hooks (not mere synonym swaps).` : '- 2 alternative hooks if variants not requested.') + '\n' +
+        '- Rationale of changes (what was preserved and why; what changed and why).\n' +
+        '- Platform-native formatting (line breaks, emoji policy, link placement).' +
+        altTextReq + hashtagLine + '\n' +
+        '- No markdown fences. Plain text only.'
+      );
+    } else if ((f.task_mode||'').includes('Brainstorm')) {
+      const ideas = Math.max(3, parseInt(f.idea_count,10) || 5);
+      add(
+        'Deliverables (Brainstorm mode):\n' +
+        `- Idea board with ${ideas} distinct concepts. For each: Hook, 1-line value, suggested asset, 1–2 CTA options.` + '\n' +
+        (String(f.draft_depth||'').includes('Mini-drafts')
+          ? '- Provide 1–2 mini-drafts (2–3 sentences) for each idea.'
+          : String(f.draft_depth||'').includes('Mixed')
+            ? '- Provide sketches for all ideas and 2 mini-drafts for the top 2 ideas.'
+            : '- Provide sketches only (hooks + one-liners).') + '\n' +
+        '- Include hashtag seeds aligned to each idea and an alt-text hint for any visual.' + '\n' +
+        '- Keep formatting native to the chosen platform.' + '\n' +
+        '- No markdown fences. Plain text only.'
+      );
+    } else {
+      add(
+        'Deliverables (Write mode):\n' +
+        '- Primary caption tailored to the chosen platform.\n' +
+        (n ? `- ${n} variant${n>1?'s':''} with different hooks (not just synonyms).` : '- 2 alternative hooks if variants not requested.') + '\n' +
+        '- Platform-native formatting (line breaks, emoji policy, link placement).' +
+        altTextReq + hashtagLine + '\n' +
+        '- No markdown fences. Plain text only.'
+      );
+    }
+
+    return lines.filter(Boolean).join('\n\n');
+  }
 }
+
+
+
 
 
 
