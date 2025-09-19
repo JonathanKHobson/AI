@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prompt Builder — start</title>
   <meta name="color-scheme" content="light only">
@@ -323,16 +326,35 @@
 
   <!-- datasets -->
   <script src="./glossary/templates.data.js"></script>
-  <script>
-    // lazy-load tasks dataset
-    (function ensureTasksLoaded(){
-      if (Array.isArray(window.TASK_TEMPLATES)) return;
-      const s = document.createElement('script');
-      s.src = './glossary/templates.tasks.data.js';
-      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
-      document.head.appendChild(s);
-    })();
-  </script>
+<!-- datasets (cache-busted) -->
+<script>
+  // DEV: always bust cache so you see latest data even on a previously-open tab.
+  // For production, replace Date.now() with a fixed version string like '2025-09-18-01'.
+  const DATA_VERSION = Date.now(); // or '2025-09-18-01'
+
+  // Clear any stale globals before reloading
+  delete window.TEMPLATES;
+  delete window.FRAMEWORKS;
+  delete window.TASK_TEMPLATES;
+
+  function injectScript(src){
+    const s = document.createElement('script');
+    s.src = src + (src.includes('?') ? '&' : '?') + 'v=' + DATA_VERSION;
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+    return s;
+  }
+
+  // Always load from ./glossary/…
+  injectScript('./glossary/templates.data.js');
+
+  (function ensureTasksLoaded(){
+    if (Array.isArray(window.TASK_TEMPLATES)) return;
+    injectScript('./glossary/templates.tasks.data.js')
+      .onerror = () => console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
+  })();
+</script>
+
 
   <script>
 /* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
