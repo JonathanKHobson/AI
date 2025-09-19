@@ -1659,6 +1659,66 @@ window.FIND = function(id){
     // Use the new Action Modal for copy/open flows
 window.__USE_ACTION_MODAL__ = true;
 
+// --- LENS catalog (prompt-safe, no CoT leakage) ---
+window.__LENSES__ = [
+  {
+    lens_id: "analytical-algorithmic",
+    label: "Logic",
+    intent: "Plan before acting; produce verifiable steps.",
+    stack: ["plan-and-solve", "least-to-most", "question-decomposition", "micro-checks"],
+    interaction: {"clarify_threshold": "medium", "max_clarifying_questions": 1, "verification_cadence": "light"},
+    output_hints: ["numbered procedures when allowed", "explicit assumptions", "sanity-check notes"],
+    non_interference: ["yield_to_prior_format", "single_clarifying_question_max", "skip_ceremony_if_trivial", "do_not_reveal_chain_of_thought"],
+    evaluation_hooks: ["subgoal_validation", "recompute_key_numbers", "uncertainty_bounds"],
+    prompt: "LENS—Analytical-Algorithmic. Unless earlier instructions specify otherwise, do not change the requested format. Internally draft a short plan (subgoals → sequence), pick the simplest correct path, then execute. If ambiguity is material, ask one clarifying question; otherwise proceed and state any assumptions briefly. Keep detailed working private; present only the final result with tightly written numbered steps if allowed. For each major step, run a micro-sanity check (recompute key figures or confirm preconditions). If the task is trivial, skip ceremony and answer directly. Where relevant, report residual uncertainty in one short line."
+  },
+  {
+    lens_id: "divergent-inventive",
+    label: "Creative",
+    intent: "Broaden the idea space, then converge with criteria.",
+    stack: ["divergent-thinking", "lateral-reframing", "tree-of-thought-branching", "criteria-based-convergence"],
+    interaction: {"clarify_threshold": "low", "max_clarifying_questions": 0, "verification_cadence": "light"},
+    output_hints: ["shortlist of top options when allowed", "one explicit reframing", "trade-off micro-summary"],
+    non_interference: ["yield_to_prior_format", "internal_brainstorm_then_concise_output", "cap_ideas_to_avoid_bloat", "do_not_reveal_chain_of_thought"],
+    evaluation_hooks: ["distinctness_check_between_options", "selection_criteria_explicit", "why-these-win-over-nearby"],
+    prompt: "LENS—Divergent-Inventive. Keep the user’s requested format intact. Privately generate several distinct approaches (different frames, not superficial variants), then choose the best 1–2 using simple, stated criteria (e.g., feasibility, impact, risk). Show only: the chosen approach (final answer) plus, if permitted by format, a micro-shortlist (≤3 lines) and one sentence that reframes the problem. Avoid idea bloat; prioritize originality with plausibility. Do not reveal raw brainstorming."
+  },
+  {
+    lens_id: "skeptical-verifier",
+    label: "Verify",
+    intent: "Stress-test claims and minimize hallucinations.",
+    stack: ["question-summarization", "chain-of-verification", "counterexample-attempt", "evidence-grounding"],
+    interaction: {"clarify_threshold": "medium", "max_clarifying_questions": 1, "verification_cadence": "focused"},
+    output_hints: ["claim–evidence–uncertainty triples", "discrepancy notes if sources disagree"],
+    non_interference: ["yield_to_prior_format", "no_speculation", "admit_unknowns", "do_not_reveal_chain_of_thought"],
+    evaluation_hooks: ["attempt_falsification_on_key_point", "cite_or_flag_needs_verification", "state_assumptions"],
+    prompt: "LENS—Skeptical-Verifier. Preserve prior format. Silently restate the core question, then identify claims needing evidence or calculation. Try one concise falsification or counterexample where meaningful. Provide the final answer only if it survives the check; otherwise revise. When facts matter, ground key statements with concise citations if permitted, or clearly mark items as ‘needs verification’ rather than guessing. Include a one-line uncertainty note when appropriate. No speculation; do not fabricate sources."
+  },
+  {
+    lens_id: "systems-integrator",
+    label: "Systems",
+    intent: "Expose interdependencies and second-order effects.",
+    stack: ["systems-thinking", "causal-reasoning", "scenario-comparison", "boundary-setting"],
+    interaction: {"clarify_threshold": "high", "max_clarifying_questions": 0, "verification_cadence": "light"},
+    output_hints: ["concise causal notes", "two-scenario table when allowed", "explicit scope boundaries"],
+    non_interference: ["yield_to_prior_format", "keep_diagrams_textual_if_needed", "avoid_scope_creep", "do_not_reveal_chain_of_thought"],
+    evaluation_hooks: ["name_key_levers", "note_feedback_loops", "flag_unintended_consequences"],
+    prompt: "LENS—Systems-Integrator. Do not alter the requested output format. Frame the problem with explicit boundaries (what’s in vs out). Internally map primary components, key levers, and feedback loops; then deliver the final answer with a short note on likely second-order effects and trade-offs. Where allowed, add a tiny two-scenario comparison (baseline vs alternative) in ≤4 lines to surface interdependencies. Avoid scope creep; keep mechanisms clear and succinct."
+  },
+  {
+    lens_id: "human-centered-mediator",
+    label: "Empathy",
+    intent: "Preserve accuracy while optimizing for audience understanding and emotional safety.",
+    stack: ["plain-language-translation", "audience-alignment", "empathic-mirroring", "dialogic-bridge", "narrative-reasoning", "nvc-lite", "choice-architecture"],
+    interaction: {"clarify_threshold": "medium", "max_clarifying_questions": 1, "verification_cadence": "light"},
+    output_hints: ["one-line empathy preface when allowed", "plain-language companion line", "2-option next steps", "jargon audit"],
+    non_interference: ["yield_to_prior_format", "do_not_dilute_accuracy", "tone_respectful_succinct", "avoid_diagnosis_or_assumptions", "do_not_reveal_chain_of_thought"],
+    evaluation_hooks: ["empathy_first_line_check", "reader_comprehension_test", "nonjudgmental_language_scan", "actionability_check", "accuracy_guardrail"],
+    prompt: "LENS—Human-Centered Mediator (Empathy). Do not alter the requested output format. Empathy here means: briefly acknowledge the user’s situation or concern in neutral, nonjudgmental language; reflect likely feelings/needs without guessing facts; and choose wording that reduces blame and defensiveness. Maintain technical accuracy—do not soften or embellish facts. Use A→V→I→O micro-structure: Acknowledge (one line) → Validate relevance (why it matters) → Inform (the accurate content) → Offer options/next steps (1–2 items). Avoid diagnosing, platitudes, moralizing, or minimizing risk. If stakes are sensitive, prefer opt-in questions (e.g., “Would you like a quick summary or detailed steps?”). If the format disallows extra lines, integrate a single empathy phrase into the first sentence. Keep tone respectful, concise, and specific."
+  }
+];
+
+
 (function ensureThemeToggle(){
   const btn = document.getElementById('theme');
   if (!btn) return;
@@ -2788,6 +2848,70 @@ function sliceFieldsForStep(tab, all){
   return all.slice(start, start + size);
 }
 
+// === Dependent-field helpers ===============================================
+
+// Map a platform "value" to the human label key we use in optionsByPlatform.
+function platformKeyFromValue(raw, fw){
+  const s = String(raw || '').trim();
+
+  // Fast path: substring match for common labels
+  const KEYS = ['X / Twitter','Facebook','LinkedIn','Instagram','Reddit','Pinterest','TikTok','YouTube','Threads'];
+  for (const k of KEYS){ if (s.includes(k)) return k; }
+
+  // Try to read from the platform field's own options
+  const platField = (fw?.fields || []).find(x => x.key === 'platform');
+  if (platField && Array.isArray(platField.options)){
+    for (const opt of platField.options){
+      const val = (typeof opt === 'string') ? opt : (opt.value ?? '');
+      const lab = (typeof opt === 'string') ? opt : (opt.label || opt.value || '');
+      if (s === val) return lab;
+      if (s.includes(lab)) return lab;
+    }
+  }
+
+  // Last-chance parse: "Platform: NAME\n..."
+  const m = s.match(/Platform:\s*([^\n]+)/i);
+  if (m) return m[1].trim();
+
+  return s; // shrug: best effort
+}
+
+// Build option list for a <select>, honoring optionsByPlatform/dependsOn.
+function resolveSelectOptions(f, fw, tab){
+  let base = Array.isArray(f.options) ? f.options.slice() : [];
+
+  if (f.optionsByPlatform){
+    const depKey = f.dependsOn || 'platform';
+    const depVal = (tab?.fields && tab.fields[depKey]) || '';
+    const platKey = platformKeyFromValue(depVal, fw);
+
+    const extra = f.optionsByPlatform[platKey] || [];
+    base = base.concat(extra);
+  }
+  return base;
+}
+
+// Evaluate simple visibility rules:
+//   visibleIf: { key:'task_mode', equals:'Tailor' }  OR
+//   visibleIf: { key:'task_mode', contains:'Brainstorm' }
+function fieldIsVisible(visibleIf, tab){
+  if (!visibleIf) return true;
+  const val = String((tab?.fields || {})[visibleIf.key] || '');
+  if (visibleIf.equals != null)   return val === String(visibleIf.equals);
+  if (visibleIf.contains != null) return val.includes(String(visibleIf.contains));
+  return true;
+}
+
+// Do any fields depend on a given key? (used to decide re-render on change)
+function hasDependents(fw, key){
+  return !!(fw?.fields || []).some(x =>
+    x.dependsOn === key ||
+    (x.visibleIf && x.visibleIf.key === key) ||
+    (x.optionsByPlatform && (x.dependsOn || 'platform') === key)
+  );
+}
+
+
 function encouragement(pct){
   if (pct >= 100) return 'Ready to generate!';
   if (pct >= 80)  return 'Almost there — nice!';
@@ -3158,11 +3282,39 @@ function hideFwSuggestions(){
 function commitFwPick(id){
   const sel = document.getElementById('frameworkSel');
   if (!sel) return;
+
+  // 1) Switch the active template as before
   sel.value = id;
   if (typeof switchFramework === 'function') switchFramework(id);
   if (typeof updatePickerPreview === 'function') updatePickerPreview();
+
+  // 2) Reflect the choice back into the search input for clear feedback
+  const search = document.getElementById('fwSearch');
+  if (search){
+    // Resolve a friendly display name (label → slug → id)
+    let picked = id;
+    try{
+      const all = (typeof getAllTemplates === 'function') ? getAllTemplates() : [];
+      const hit = all.find(t =>
+        String(t.id||'').toLowerCase()   === String(id).toLowerCase() ||
+        String(t.slug||'').toLowerCase() === String(id).toLowerCase()
+      ) || (typeof FIND === 'function' ? FIND(id) : null);
+
+      picked = (hit && (hit.label || hit.slug || hit.id)) || id;
+    }catch(_){ /* noop */ }
+
+    search.value = picked;
+    // Optional: style cue that it’s populated
+    search.classList.toggle('filled', !!picked);
+  }
+
+  // 3) Recompute the dropdown + hint so users see “Showing 1 / M”
+  if (typeof refreshTemplateList === 'function') refreshTemplateList();
+
+  // 4) Close the suggestion popover
   hideFwSuggestions();
 }
+
 
 function renderFwSuggestions(q){
   if (!sug) return;
@@ -3516,6 +3668,7 @@ function estimateTokens(str){
   return approxTokens(str);
 }
 
+
 /* ==== Prompt totals: gather, compute, render ==== */
 function gatherPreviewText(){
   // If you render a deck of cards, concatenate all visible outputs.
@@ -3817,21 +3970,25 @@ function addTab(copyCurrent = false){
   const cur  = state.tabs?.[state.active];
 
   // Clone when explicitly duplicating; otherwise start truly blank
-  const next = (copyCurrent && cur) ? {
-    id:     cur.id,
-    fields: { ...(cur.fields || {}) },
-    extra:  cur.extra,
-    common: { ...(cur.common || {}) },
-    step:   0,
-    showAll:false
-  } : {
-    id:     (none?.id || null),
-    fields: {},
-    extra:  undefined,
-    common: { ctx:'', audience:'', style:'', tone:'' },   // NEW: per-tab
-    step:   0,
-    showAll:false
-  };
+const next = (copyCurrent && cur) ? {
+  id:     cur.id,
+  fields: { ...(cur.fields || {}) },
+  extra:  cur.extra,
+  common: { ...(cur.common || {}) },
+  modes:  { ...(cur.modes || {}) },           // ← keep toggle choices when duplicating
+  step:   0,
+  showAll:false
+} : {
+  id:     (none?.id || null),
+  fields: {},
+  extra:  undefined,
+  common: { ctx:'', audience:'', style:'', tone:'' },   // per-tab
+  modes:  { think:false, websearch:false, lens_on:false, lens_id:'' },
+             // ← default: both OFF
+  step:   0,
+  showAll:false
+};
+
 
 
   state.tabs.push(next);
@@ -4016,6 +4173,36 @@ const merged = {
   ...(t.fields || {})
 };
 
+// Normalize repeater/dynamic_tasks fields so task templates can iterate them.
+// We keep the original string at merged[f.key] (back-compat) and expose an array at merged[f.key + '_list'].
+try {
+  const defs = Array.isArray(fw.fields) ? fw.fields : [];
+  for (const f of defs) {
+    if (!f || !(f.key)) continue;
+    if (f.type === 'repeater' || f.type === 'dynamic_tasks') {
+      const raw = String((t.fields || {})[f.key] || '');
+      if (!raw) continue;
+
+      // Textarea blocks use a visible '---' divider; one-line items use simple newlines.
+      const isBlocky = (f.itemType === 'typeahead_textarea' || f.itemType === 'textarea' || f.blockJoin === '---');
+      const parts = isBlocky ? raw.split(/\n\s*---\s*\n/) : raw.split(/\n+/);
+      const list  = parts.map(s => s.trim()).filter(Boolean);
+
+      // Expose array variant(s)
+      merged[f.key + '_list']  = list;
+      merged[f.key + '_items'] = list;      // friendly alias
+      merged[f.key + '_arr']   = list;      // another alias
+
+      // Convenience: if key ends with 's' and there is exactly one entry, expose a singular too.
+      if (/_s$|s$/.test(f.key) && list.length === 1) {
+        const singular = f.key.replace(/s$/, '');
+        if (!(singular in merged)) merged[singular] = list[0];
+      }
+    }
+  }
+} catch (e) { /* no-op: defensive */ }
+
+
 // === Bias directives (from Common Context) ===
 let biasSection = '';
 {
@@ -4056,6 +4243,61 @@ const extraCombined =
   (extraMore)              ? `Additional instructions: ${extraMore}` :
                               '';
 
+// === Toggle-driven appended directives ===
+const thinkBlock = (t.modes?.think) ? `
+
+{
+DELIBERATIVE MODE (Reflective Pausing)
+- First, think hard & silently: plan multiple approaches, pick the best, and execute. 
+- Ensure you use chain-of-thought. Output only the final result plus concise justification.
+
+REASONING / SELF-REFINE (Maieutic)
+After producing a draft answer, silently critique it once, then revise. Use this checklist:
+- RACCCA: Relevance, Accuracy, Completeness, Clarity, Coherence, Appropriateness.
+- Assumptions & biases: identify hidden assumptions; note any bias risks.
+- Verification: 
+  - Math/logic: recompute key numbers; try a simple counterexample or alternative derivation.
+  - Code: dry-run on a small example; list expected I/O and edge cases.
+  - Facts: prefer citing 2–3 reputable sources if available; if not, mark as “needs verification.”
+
+AMBIGUITY
+- If information is missing, choose the most reasonable assumption and state it briefly before the answer.
+
+OUTPUT FORMAT (concise, no chain-of-thought)
+1) Final Answer: [the solution in the requested format].
+2) Rationale (3–6 tight bullets): key reasons/evidence and trade-offs.
+3) Assumptions & Constraints: [bulleted].
+4) Alternatives Considered: [1–3 very brief lines with why not chosen].
+5) Self-Check Results: [what you verified; any fixes from the critique].
+6) Residual Uncertainty & Next Steps: [what to verify, how].
+}
+` : '';
+
+const webBlock = (t.modes?.websearch) ? `
+{
+SEARCH ONLINE 
+You may not have the answer to this question in your internal knowledge, and I do NOT want speculation or made up facts. Please do a comprehensive search online for the most reliable and up-to-date information. Be accurate and factual.
+
+Provide:
+1) A direct summary of the factual findings.
+2) A citation to the original source (with link, author, and date if available).
+3) A note explaining whether multiple sources agree or if there are discrepancies.
+4) Provide your level of confidence in the information and your reasoning for that confidence.
+
+If you cannot find a trustworthy external source, say so clearly instead of inventing an answer. Do not rely only on your training data; confirmation from external evidence is required.
+}
+` : '';
+
+// Lens block (optional): appended after Extra/Think/Web, before Bias
+let lensBlock = '';
+try {
+  const on = !!(t.modes && t.modes.lens_on);
+  const id = t.modes?.lens_id || '';
+  const L  = on ? (window.__LENSES__ || []).find(x => x.lens_id === id) : null;
+  if (L && L.prompt) lensBlock = `\n${L.prompt}\n`;
+} catch(_) {}
+
+
 const header = meta.definition ? `Using ${meta.label}: ${meta.definition}` : `Using ${meta.label}.`;
 
 // If the template didn’t render a bias block, append a compact one at the end.
@@ -4063,12 +4305,13 @@ const biasAuto = merged.bias_directives || '';
 const biasTail = (biasAuto && !String(body).includes('Bias directives') && !String(extraText).includes('Bias directives'))
   ? biasAuto : '';
 
-// Assemble: Header → (optional persona section) → Body → Extra → (optional bias tail)
-return [header, personaSection, body, extraCombined, biasTail]
+// Assemble: Header → Persona → Body → Extra → (Think?) → (Search?) → (Bias?)
+return [header, personaSection, body, extraCombined, thinkBlock, webBlock, lensBlock, biasTail]
   .filter(Boolean)
   .join('\n')
   .replace(/\n{3,}/g,'\n\n')
   .trim();
+
 
 
 }
@@ -4172,6 +4415,10 @@ const visFields  = sliceFieldsForStep(tabNow, allFields);
       
 visFields.forEach(f=>{
 
+  // Skip fields hidden by a visibility rule (e.g., Tailor-only blocks)
+  if (!fieldIsVisible(f.visibleIf, tabNow)) return;
+
+
   const wrap = document.createElement('div');
   wrap.className = 'field';
 
@@ -4228,12 +4475,10 @@ visFields.forEach(f=>{
 
     // Seed from any saved value (newline-separated), else start with one empty
     const seed = (t.fields && t.fields[f.key]) ? String(t.fields[f.key]) : '';
-    const parts = seed
-  ? (itType === 'typeahead_textarea'
-      ? seed.split(/\n\s*---\s*\n/)
-      : seed.split(/\n+/)
-    ).map(s=>s.trim()).filter(Boolean)
-  : [''];
+const parts = seed
+  ? seed.split(/\n+/).map(s => s.trim()).filter(Boolean)
+  : [];
+
 
     parts.forEach(v => addTask(v));
     // Ensure state is synced even if initial values came from seed
@@ -4345,6 +4590,12 @@ if (itType === 'typeahead' || itType === 'typeahead_textarea'){
   listEl.className = 'taList';
   listEl.hidden = true;
   holder.appendChild(listEl);
+  
+  // Prevent input blur from closing menu before selection
+['pointerdown','mousedown'].forEach(evt=>{
+  listEl.addEventListener(evt, (e)=> e.preventDefault());
+});
+
 
   let activeIndex = -1;
 
@@ -4410,6 +4661,11 @@ if (source === 'bias'){
         listEl.hidden = true;
         sync();
       });
+      
+      // Make first click reliable across browsers
+it.addEventListener('pointerdown', (e)=>{ e.preventDefault(); it.click(); });
+it.addEventListener('mousedown',   (e)=>{ e.preventDefault(); it.click(); });
+
 
       listEl.appendChild(it);
     });
@@ -4487,8 +4743,9 @@ const parts = seed
     const sel = document.createElement('select');
     sel.id = f.key;
 
-    // Accept either [{value,label}, ...] or ["value", ...]
-    (f.options || []).forEach(opt => {
+    // Build options (supports optionsByPlatform + dependsOn)
+    const optList = resolveSelectOptions(f, fw, tabNow);
+    optList.forEach(opt => {
       const o = document.createElement('option');
       if (typeof opt === 'string'){
         o.value = opt; o.textContent = opt;
@@ -4499,15 +4756,27 @@ const parts = seed
       sel.appendChild(o);
     });
 
+
     // Initialize & wire state
     const current = (t.fields && t.fields[f.key]) || sel.options[0]?.value || '';
-    sel.value = current;
+    // If previous value vanished after a dependency change, fallback to first option
+    if (![...sel.options].some(o => o.value === current)){
+      sel.value = sel.options[0]?.value || '';
+    } else {
+      sel.value = current;
+    }
     (t.fields || (t.fields = {}))[f.key] = sel.value;
+
 
     sel.addEventListener('change', ()=>{
       (t.fields || (t.fields = {}))[f.key] = sel.value;
+      const needsRerender = hasDependents(fw, f.key);
+      if (needsRerender){
+        renderFields(); // rebuild dependents (like Length options) immediately
+      }
       emit();
     });
+
 
     holder.appendChild(sel);
     wrap.appendChild(holder);
@@ -4553,6 +4822,12 @@ if (f.type === 'typeahead' || f.type === 'typeahead_textarea'){
 
   holder.appendChild(input);
   holder.appendChild(list);
+  
+  // Keep focus while interacting with suggestions (prevents input blur race)
+['pointerdown','mousedown'].forEach(evt=>{
+  list.addEventListener(evt, (e)=> e.preventDefault());
+});
+
 
   let activeIndex = -1;
 
@@ -4657,6 +4932,11 @@ if (f.type === 'typeahead' || f.type === 'typeahead_textarea'){
         list.hidden = true;
         emit();
       });
+      
+      // Commit on pointerdown too; prevents first-click miss on some browsers
+item.addEventListener('pointerdown', (e)=>{ e.preventDefault(); item.click(); });
+item.addEventListener('mousedown',   (e)=>{ e.preventDefault(); item.click(); });
+
 
       list.appendChild(item);
     });
@@ -4881,6 +5161,115 @@ updateStepperUI(tabNow, allFields.length, visFields.length);
     tip2.className = 'help';
     tip2.textContent = 'This text will be appended after the default instructions (if any).';
     mount.appendChild(tip2);
+    
+    // 3) Reasoning & research toggles (per-tab)
+// Shows two yes/no checkboxes that append directive blocks into the output when enabled.
+{
+  // ensure bag exists
+  const modes = (t.modes ||= { think:false, websearch:false });
+
+  const wrap = document.createElement('div');
+  wrap.className = 'field';
+
+  const lab = document.createElement('label');
+  lab.textContent = 'Reasoning & research (optional)';
+  wrap.appendChild(lab);
+
+  const holder = document.createElement('div');
+  holder.className = 'fieldHolder';
+  holder.style.display = 'grid';
+  holder.style.gridTemplateColumns = '1fr 1fr';
+  holder.style.gap = '8px';
+
+  function makeToggle(id, labelText, checked, onChange){
+    const lbl = document.createElement('label');
+    lbl.className = 'check';
+    const inp = document.createElement('input');
+    inp.type = 'checkbox';
+    inp.id = id;
+    inp.checked = !!checked;
+    const span = document.createElement('span');
+    span.textContent = labelText;
+    lbl.appendChild(inp);
+    lbl.appendChild(span);
+    inp.addEventListener('change', ()=>{
+      onChange(inp.checked);
+      if (typeof scheduleSave === 'function') scheduleSave();
+      emit(); // refresh preview/deck
+    });
+    return lbl;
+  }
+
+  holder.appendChild(
+    makeToggle('toggleThink',
+      'Ask model to think (deliberative mode)',
+      modes.think,
+      v => { modes.think = v; }
+    )
+  );
+
+  holder.appendChild(
+    makeToggle('toggleWeb',
+      'Ask model to search online',
+      modes.websearch,
+      v => { modes.websearch = v; }
+    )
+  );
+  
+    // --- LENS: enable + picker (renders under the two toggles) ---
+  modes.lens_on = !!modes.lens_on;
+  modes.lens_id = modes.lens_id || '';
+
+  // 1) Enable toggle
+  holder.appendChild(
+    makeToggle('toggleLens',
+      'Add a reasoning lens',
+      modes.lens_on,
+      v => {
+        modes.lens_on = v;
+        selWrap.hidden = !v;
+        if (!v) modes.lens_id = '';
+        if (typeof scheduleSave === 'function') scheduleSave();
+        emit(); // refresh preview/deck
+      }
+    )
+  );
+
+  // 2) Full-width selector
+  const selWrap = document.createElement('div');
+  selWrap.style.gridColumn = '1 / -1';
+  selWrap.hidden = !modes.lens_on;
+
+  const lensSel = document.createElement('select');
+  lensSel.id = 'lensSel';
+  lensSel.innerHTML = [
+    '<option value="">— Select a lens —</option>',
+    ...(Array.isArray(window.__LENSES__) ? window.__LENSES__ : []).map(L =>
+      `<option value="${L.lens_id}" title="${(L.intent||'').replace(/"/g,'&quot;')}">${L.label}</option>`
+    )
+  ].join('');
+
+  lensSel.value = modes.lens_id || '';
+  lensSel.addEventListener('change', ()=>{
+    modes.lens_id = lensSel.value || '';
+    if (typeof scheduleSave === 'function') scheduleSave();
+    emit(); // refresh preview/deck
+  });
+
+  selWrap.appendChild(lensSel);
+  holder.appendChild(selWrap);
+  // -------------------------------------------------------------
+
+
+  // hint
+  const hint = document.createElement('div');
+  hint.className = 'help';
+  hint.textContent = 'These add instruction blocks to the end of your prompt. Toggle per template.';
+  wrap.appendChild(holder);
+  wrap.appendChild(hint);
+  mount.appendChild(wrap);
+}
+
 
     fieldInput(ta2, ()=>{
       t.extra_more = ta2.value;
