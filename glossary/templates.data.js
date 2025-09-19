@@ -10054,9 +10054,13 @@ Dissatisfaction ↓`;
         "use:recipe",
         "level:intermediate",
         "use:copywriting",
+        "use:value-prop",
+        "use:product-value",
         "use:ad-copy",
         "use:content",
         "topic:bias",
+        "topic:persuasive-language",
+        "topic:communicating-value",
         "use:scope-management"
       ],
       use_cases: [
