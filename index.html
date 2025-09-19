@@ -1,32 +1,792 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>Redirecting…</title>
-
-  <!-- Instant redirect (HTML fallback) -->
-  <meta http-equiv="refresh" content="0; url=https://jonathankhobson.github.io/AI/glossary/">
-
-  <!-- Help search engines update the URL -->
-  <link rel="canonical" href="https://jonathankhobson.github.io/AI/glossary/">
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-
-  <script>
-    (function () {
-      // Use replace() so the back button doesn’t bounce users back to the old URL
-      var dest = "https://jonathankhobson.github.io/AI/glossary/";
-      var q = window.location.search || "";
-      var h = window.location.hash || "";
-      window.location.replace(dest + q + h);
-    })();
-  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompt Builder — start</title>
+  <meta name="color-scheme" content="light only">
   <style>
-    html,body{height:100%} body{display:grid;place-items:center;font:16px/1.4 system-ui}
-    a{color:#2563eb}
+    :root{
+      --bg:#fafafa; --fg:#0f1720; --muted:#506070; --chip:#f3f6fa; --border:#e3e9f2;
+      --accent:#1e293b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.08);
+
+      /* layout */
+      --wrap-w: 1120px;
+      --header-h: 60px; /* result header height */
+
+      /* HERO slot timing + spacing */
+      --slot-slide:520ms;       /* slide duration per word */
+      --slot-hold:680ms;        /* dwell time per word */
+      --slot-pad:0.3ch;         /* left/right padding inside slot */
+      --slot-width:16ch;        /* will be overwritten by JS to “widest word” */
+      --slot-gap-r: .90ch; /* ← tune this: .32ch (tighter) … .48ch (roomier) */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    :focus-visible{ outline:2px solid #0ea5e9; outline-offset:2px }
+
+    /* --- rainbow glimmer from top-left --- */
+    body::before{
+      content:"";
+      position:fixed; inset:auto auto 40% 0; width:min(70vw,920px); height:min(70vh,680px);
+      pointer-events:none; z-index:-1; filter: blur(48px) saturate(115%);
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+        conic-gradient(
+          from 210deg at 0% 0%,
+          rgba(255,0,122,.22), rgba(255,141,0,.18),
+          rgba(255,214,0,.18), rgba(0,220,130,.20),
+          rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22)
+        );
+      opacity:.28;
+      animation: glimmer 14s linear infinite;
+      mask-image: radial-gradient(100% 100% at 0 0, #000 40%, transparent 80%);
+    }
+    @keyframes glimmer{
+      0%{ transform: translate3d(0,0,0) rotate(0deg); }
+      50%{ transform: translate3d(2%, -2%, 0) rotate(3deg); }
+      100%{ transform: translate3d(0,0,0) rotate(0deg); }
+    }
+
+    .wrap{ max-width:var(--wrap-w); margin:0 auto; padding:72px 20px 40px; display:grid; gap:24px; }
+
+    /* ====== RESULT HEADER (for details view) ====== */
+    .resultHeader[hidden]{ display:none }
+    .resultHeader{
+      position:sticky; top:0; z-index:120;
+      backdrop-filter: blur(10px) saturate(115%);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid var(--border);
+    }
+    .resultHeader .bar{
+      max-width:var(--wrap-w); margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:12px;
+    }
+    .resultHeader .spacer{ flex:1 }
+    .resultHeader .ctas{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .resultHeader .rainbowLine{ height:3px; width:100%;
+      background:linear-gradient(90deg,#ff007a,#ff8d00,#ffd600,#00dc82,#00d2ff,#7850ff,#ff007a);
+      filter:saturate(115%); opacity:.85;
+    }
+
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5ch; cursor:pointer;
+      border-radius:999px; padding:9px 14px; font-weight:600; text-decoration:none; text-transform:lowercase; user-select:none;
+      transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
+    }
+    .btn:active{ transform:translateY(1px) }
+    .btn.primary{ background:var(--fg); color:#fff; border:1px solid transparent; box-shadow:0 6px 16px rgba(15,23,32,.15); }
+    .btn.secondary{ background:#fff; color:var(--fg); border:1px solid var(--border); }
+    .btn.tertiary{ background:#fff; color:var(--muted); border:1px dashed var(--border); }
+    .btn.link{ background:transparent; border:none; color:var(--fg); padding:6px 8px; }
+
+    /* ----- hero ----- */
+    .hero{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:48px 16px 12px; }
+    .heroTitle{ margin:0; font-weight:600; letter-spacing:.3px; text-transform:lowercase; font-size: clamp(28px, 5.8vw, 56px); line-height:1.15; }
+
+    /* Slot (animated words) */
+    .slot{ display:inline-flex; position:relative; align-items:center; justify-content:center; height:var(--slot-h, 1.25em); line-height:1; vertical-align:-0.01em; width:var(--slot-width); padding:0 var(--slot-pad); overflow:hidden; }
+    .slot::after{ content:""; position:absolute; left:var(--slot-pad); right:var(--slot-pad); bottom:-0.07em; height:2px; border-radius:2px; background: linear-gradient(90deg, rgba(15,23,32,.10), rgba(15,23,32,.26), rgba(15,23,32,.10)); opacity:.38; pointer-events:none; }
+    .reel{ height:var(--slot-h, 1.25em); width:calc(100%); margin-left:-20px; overflow:hidden; mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+    .slot.final .reel{ mask-image:none; -webkit-mask-image:none; }
+    .reelList{ display:flex; flex-direction:column; transform:translate3d(0,0,0); transition:transform var(--slot-slide) cubic-bezier(.2,.9,.2,1); will-change:transform; }
+    .reelList .w{ display:block; line-height:var(--slot-h, 1.25em); text-align:center; white-space:nowrap; }
+    @keyframes slotBounce{ 0%{ transform:scale(1) } 38%{ transform:scale(1.035) } 72%{ transform:scale(1) } 88%{ transform:scale(1.015) } 100%{ transform:scale(1) } }
+    .slot.final{ animation: slotBounce .55s ease-out 1; }
+
+    /* ----- search ----- */
+    .searchWrap{ width:min(780px, 100%); margin: 6px auto 0; position:relative; transform-origin: center; animation: popIn .56s cubic-bezier(.2, .9, .2, 1.2) both; }
+    /* keep the suggestions above anything below the search */
+.searchWrap{ z-index: 10; }
+    @keyframes popIn{ 0%{ transform: scale(.88); opacity:0 } 60%{ transform: scale(1.03); opacity:1 } 100%{ transform: scale(1) } }
+    .search{ width:100%; display:flex; align-items:center; gap:8px; padding:8px; border-radius:999px; position:relative; background: #fff; border:2px solid transparent; background-image: linear-gradient(#fff,#fff), conic-gradient(from 90deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: var(--shadow); }
+    .search input{ flex:1; font:16px/1.2 inherit; border:none; outline:none; padding:12px 14px; background:transparent; color:var(--fg); }
+    .search button{ border:none; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:600; background: var(--fg); color:#fff; text-transform:lowercase; }
+
+/* subtle rainbow glow behind the search bar */
+.search{ position:relative } /* reinforce positioning */
+.search::before{
+  content:""; position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(22px) saturate(120%);
+  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  opacity:.16;
+}
+
+/* hint under search */
+.hint{
+  margin-top:10px; font-size:14px; color:var(--muted); opacity:.9; text-align:center;
+}
+
+/* quick link cards */
+.quickLinks{
+  width:min(980px,100%); margin:16px auto 0;
+  display:grid; gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.tile{
+  position:relative; display:block; padding:18px 16px 52px;
+  border-radius:20px; background:#fff; color:inherit; text-decoration:none;
+  border:1px solid var(--border); box-shadow: var(--shadow); overflow:hidden;
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.tile:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 12px 44px rgba(0,0,0,.10); }
+.tile::before{
+  content:""; position:absolute; inset:-12px; z-index:-1; border-radius:24px;
+  filter: blur(26px) saturate(120%);
+  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  opacity:.18; transition: opacity .2s ease;
+}
+.tile:hover::before{ opacity:.28 }
+.tile h4{ margin:0 0 6px; font-size:16px; font-weight:700; text-transform:lowercase; letter-spacing:.2px; }
+.tile p{ margin:0; font-size:14px; color:var(--muted); }
+.tile .cta{
+  position:absolute; right:12px; bottom:12px; padding:8px 12px;
+  border-radius:999px; border:1px solid var(--border); background:#fff;
+  font-weight:600; text-transform:lowercase;
+}
+.tile:hover .cta{ background:var(--fg); color:#fff; border-color:transparent; }
+
+
+.quickLinks{ position:relative; z-index:0; }
+
+    /* typeahead */
+    .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index:1000; /* was 50 */
+ }
+    .ta[hidden]{ display:none }
+    .ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid #f1f5fb; }
+    .ta .item:last-child{ border-bottom:none }
+    .ta .item:hover, .ta .item.active{ background:#f7fafc }
+    .ta .use{ font-size:14px }
+    .ta .sub{ font-size:12px; color:var(--muted); display:none }
+
+    /* ----- faux scanning ----- */
+    .scan{ position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; background:#fff; }
+    .scan .roll{ position:relative; width:100vw; height:100vh; overflow:hidden; background:#fff; mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); }
+    .scan ul{ position:absolute; inset:0; list-style:none; margin:0; padding:24px clamp(22px, 6vw, 90px) 24px clamp(34px, 9vw, 140px); display:flex; flex-direction:column; gap:10px; align-items:flex-start; text-align:left; font-family: ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif; font-weight:600; letter-spacing:.2px; text-transform:lowercase; font-stretch: condensed; will-change: transform; }
+    .scan li{ font-size: clamp(16px, 2.2vw, 26px); color:#0c1220; opacity:.45; transition:transform .18s ease, opacity .18s ease; max-width: 90vw; }
+    .scan li.hit{ color:#000; opacity:1; transform: scale(1.06); text-decoration:underline; text-underline-offset: .12em; will-change: transform; }
+    .scan .roll::before, .scan .roll::after{ content:""; position:absolute; top:50%; transform: translateY(-50%); height: 2.2em; width:2px; pointer-events:none; background: linear-gradient(to bottom, rgba(15,23,32,0), rgba(15,23,32,.28) 50%, rgba(15,23,32,0) ); filter: blur(.2px); }
+    .scan .roll::before{ left: 16%; }
+    .scan .roll::after{ right: 16%; }
+    .centerBand{ position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:3.0em; pointer-events:none; background: linear-gradient(90deg, rgba(255,0,122,.12), rgba(255,141,0,.10), rgba(255,214,0,.10), rgba(0,220,130,.12), rgba(0,210,255,.12), rgba(120,80,255,.14)); mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); filter: saturate(120%); }
+    .centerBand::after{ content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); mix-blend-mode: overlay; animation: centerSweep 2600ms ease-in-out infinite alternate; }
+    @keyframes centerSweep{ 0%{ transform: translateX(-10%) } 100%{ transform: translateX(10%) } }
+    .scan::before{ content:""; position:fixed; inset:auto auto 0 0; width:min(90vw,1200px); height:min(70vh,780px); pointer-events:none; opacity:.18; filter: blur(36px) saturate(125%); background: radial-gradient(110% 110% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%), conic-gradient( from 210deg at 0% 0%, rgba(255,0,122,.22), rgba(255,141,0,.18), rgba(255,214,0,.18), rgba(0,220,130,.20), rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22) ); animation: scanGlimmer 16s linear infinite; }
+    @keyframes scanGlimmer{ 0%{ transform: translate3d(0,0,0) rotate(0deg) } 50%{ transform: translate3d(2%,-1.5%,0) rotate(3deg) } 100%{ transform: translate3d(0,0,0) rotate(0deg) } }
+
+    /* ----- details card ----- */
+    .details[hidden]{ display:none }
+    .details{ position:relative; }
+    .details::before{ content:""; position:fixed; inset:auto -15vw 8% -15vw; height:52vh; background: conic-gradient(from 220deg, rgba(255,0,122,.10), rgba(255,141,0,.08), rgba(255,214,0,.08), rgba(0,220,130,.10), rgba(0,210,255,.10), rgba(120,80,255,.12), rgba(255,0,122,.10)); filter: blur(70px) saturate(115%); opacity:.32; pointer-events:none; z-index:-1; }
+
+    .card{ display:grid; grid-template-columns: 1.3fr .9fr; gap:28px; align-items:flex-start; border:1px solid var(--border); border-radius:24px; background:#fff; box-shadow: var(--shadow); padding:24px; }
+    @media (max-width: 900px){ .card{ grid-template-columns: 1fr; } }
+
+    .left h2{ margin:4px 0 6px; text-transform:lowercase; font-size: clamp(24px, 3.4vw, 34px); letter-spacing:.2px; }
+    .meta{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 16px; }
+    .chip{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:var(--chip); font-size:12px }
+
+    .block + .block{ margin-top:18px }
+    .block h3{ margin:.4rem 0 .4rem; font-size:14px; letter-spacing:.12px; color:#101828; text-transform:lowercase; }
+    .uc, .booster{ background:#f8fbff; border:1px dashed #e6eef8; padding:10px 12px; border-radius:12px; font-size:13px; }
+
+    .fields .row + .row{ margin-top:10px }
+    .row label{ display:block; font-size:12px; color:var(--muted); margin-bottom:4px; text-transform:lowercase }
+    .row .fake{ width:100%; padding:12px 14px; border-radius:12px; border:1px dashed var(--border); background:#f9fafb; color:#0f1720; font-size:14px; }
+
+    /* Right column stickiness for taller screens */
+    @media (min-width: 901px){ .right{ position:sticky; top: calc(var(--header-h) + 18px); } }
+
+    /* Footer actions inside card */
+    .actions.footer{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
+    .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
   </style>
 </head>
 <body>
-  <p>Forwarding to <a href="https://jonathankhobson.github.io/AI/glossary/">AI Glossary</a>…</p>
+
+  <!-- RESULTS HEADER (appears only on the results page) -->
+  <header id="resultHeader" class="resultHeader" hidden>
+    <div class="bar">
+      <button id="back" class="btn link" type="button">← back to search</button>
+      <div class="spacer"></div>
+      <nav class="ctas">
+        <a id="openGlossary" class="btn tertiary" href="#">open in templates glossary</a>
+        <a id="printWorksheet" class="btn secondary" href="#">open worksheet</a>
+        <a id="openBuilder" class="btn primary" href="#">open in prompt builder</a>
+      </nav>
+    </div>
+    <div class="rainbowLine"></div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <h1 class="heroTitle">
+        start building your 
+        <span id="slot" class="slot" aria-live="polite" aria-atomic="true">
+          <span id="reel" class="reel">
+            <span id="reelList" class="reelList"></span>
+          </span>
+       </span>  
+      </h1>
+
+      <div class="searchWrap">
+        <div class="search">
+          <input id="q" type="text" placeholder="type what you’re trying to build…" autocomplete="off" />
+          <button id="go" type="button" title="Search">search</button>
+        </div>
+        <div id="ta" class="ta" role="listbox" hidden></div>
+        <p class="hint">type what you want to make in everyday words — we’ll shape it into a clear ai prompt.</p>
+
+
+
+      </div>
+      
+      <div class="quickLinks">
+  <!-- If your full glossary lives on a different page than this index,
+       change the href below to that page. -->
+  <a class="tile" href="./index.html" aria-label="open full ai glossary">
+    <h4>full ai glossary</h4>
+    <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
+    <span class="cta">open glossary</span>
+  </a>
+
+  <a class="tile" href="./templates-glossary.html" aria-label="open template glossary">
+    <h4>template glossary</h4>
+    <p>browse prompt-making templates with one-line summaries and examples.</p>
+    <span class="cta">open templates</span>
+  </a>
+
+  <a class="tile" href="./prompt-builder.html" aria-label="open prompt builder config">
+    <h4>prompt builder config</h4>
+    <p>power-user controls for building and saving prompts with full options.</p>
+    <span class="cta">open builder</span>
+  </a>
+
+  <a class="tile" href="./startup-wizard.html" aria-label="start the setup wizard">
+    <h4>startup wizard (alpha)</h4>
+    <p>a lighter, guided flow to set things up without the overwhelm.</p>
+    <span class="cta">start wizard</span>
+  </a>
+</div>
+    </section>
+
+    <!-- FAUX SCANNING -->
+    <section class="scan" id="scan">
+      <div class="roll">
+        <ul id="rollList"></ul>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details" id="details" hidden>
+      <div class="card">
+        <div class="left">
+          <h2 id="tplTitle">template</h2>
+          <div class="meta" id="meta"></div>
+
+          <div class="block">
+            <h3>definition</h3>
+            <div id="def" class="uc"></div>
+          </div>
+
+          <div class="block">
+            <h3>use-cases</h3>
+            <div id="useCases"></div>
+          </div>
+
+          <div class="block" id="boostersBlock" hidden>
+            <h3>boosters</h3>
+            <div id="boosters"></div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="actions footer">
+            <button id="copyPrompt" class="btn secondary" type="button">copy prompt</button>
+            <button id="ask" class="btn primary" type="button">ask chatgpt</button>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="block">
+            <h3>fields</h3>
+            <div class="fields" id="fields"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- datasets -->
+  <script src="./glossary/templates.data.js"></script>
+  <script>
+    // lazy-load tasks dataset
+    (function ensureTasksLoaded(){
+      if (Array.isArray(window.TASK_TEMPLATES)) return;
+      const s = document.createElement('script');
+      s.src = './glossary/templates.tasks.data.js';
+      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
+      document.head.appendChild(s);
+    })();
+  </script>
+
+  <script>
+/* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
+(function heroSlot(){
+  const words = ['project.', 'life.', 'plan.', 'system.', 'idea.', 'prompt.'];
+
+  const slot = document.getElementById('slot');
+  const reel = document.getElementById('reel');
+  const list = document.getElementById('reelList');
+
+  list.innerHTML = words.map(w => `<span class="w">${w}</span>`).join('');
+
+  const cs = getComputedStyle(document.documentElement);
+  const holdMs  = parseFloat(cs.getPropertyValue('--slot-hold'))  || 680;
+  const dpr = window.devicePixelRatio || 1;
+
+  function widestWordPx(){
+    const slotEl = document.getElementById('slot');
+    const cs = getComputedStyle(slotEl);
+
+    const meas = document.createElement('span');
+    meas.style.position = 'absolute';
+    meas.style.visibility = 'hidden';
+    meas.style.whiteSpace = 'nowrap';
+    meas.style.left = '-9999px';
+    meas.style.top = '-9999px';
+
+    // copy all width-affecting text styles
+    meas.style.font = cs.font;
+    meas.style.letterSpacing = cs.letterSpacing;
+    meas.style.textTransform = cs.textTransform;
+    meas.style.fontKerning = cs.fontKerning;
+    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
+    meas.style.fontVariationSettings = cs.fontVariationSettings;
+    meas.style.fontStretch = cs.fontStretch;
+
+    document.body.appendChild(meas);
+
+    let max = 0;
+    for (const w of words){
+      meas.textContent = w;
+      const wpx = meas.getBoundingClientRect().width;
+      if (wpx > max) max = wpx;
+    }
+    meas.remove();
+
+    return Math.ceil(max + 20); // base guard; DPR fudge added separately
+  }
+
+  // Measure and lock the row height + slot width
+  let rowH = 0;
+  function lockMetrics(){
+    // Row height in pixels (use rendered metrics, not ems)
+    const first = list.firstElementChild;
+    let h = first ? first.getBoundingClientRect().height : 0;
+    if (!h){
+      // fallback to slot font-size if fonts not ready
+      h = parseFloat(getComputedStyle(slot).fontSize) || 32;
+    }
+    // Add a tiny cushion so mask never touches glyphs
+    rowH = Math.ceil(h + 2);
+    slot.style.setProperty('--slot-h', rowH + 'px');
+
+    // Lock the slot width to the widest word (prevents horizontal clipping)
+    const wpx = widestWordPx();
+    // add one physical pixel to dodge subpixel rounding on high-DPI
+    const fudge = Math.max(1, Math.round((window.devicePixelRatio || 1)));
+    slot.style.setProperty('--slot-width', (wpx + fudge) + 'px');
+  }
+
+  function translateToRow(idx){
+    // snap to device pixels so we never land on a half pixel under the mask
+    const y = Math.round((idx * rowH) * dpr) / dpr;
+    list.style.transform = `translate3d(0, ${-y}px, 0)`;
+  }
+
+  function run(){
+    lockMetrics();
+    let i = 0;
+
+    const advance = ()=>{
+      if (i < words.length - 1){
+        i++;
+        translateToRow(i);
+        setTimeout(advance, holdMs);
+      } else {
+        // Landed on "prompt": remove mask and bounce
+        slot.classList.add('final');
+      }
+    };
+
+    // initial dwell so the first word is readable
+    setTimeout(advance, holdMs);
+  }
+
+  // Wait for fonts so measurements are stable, then run
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(run);
+  } else {
+    window.addEventListener('load', run, { once:true });
+  }
+
+  // Re-lock on resize or zoom
+  window.addEventListener('resize', ()=>{ lockMetrics(); /* keep current row in view */ });
+})();
+
+
+    /* ===== Search + typeahead (use-cases + use: tags ONLY) ===== */
+    function allTemplates(){
+      const base = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
+               : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
+      const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
+                 : Array.isArray(window.tasks) ? window.tasks : [];
+      return [...base, ...tasks].map(t=>{
+        const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
+        return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
+      });
+    }
+
+    function buildIndex(){
+      const src = allTemplates();
+      return src.map(t=>{
+        const useTags = (t.tags || [])
+          .map(String)
+          .map(s => s.trim().toLowerCase())
+          .filter(s => s.startsWith('use:'))
+          .map(s => s.split(':',2)[1])
+          .filter(Boolean);
+        const uc = (t.use_cases || []).map(String);
+        return {
+          id: t.id || t.slug || t.label,
+          slug: t.slug || t.id,
+          label: t.label || t.name || t.slug || t.id || 'untitled',
+          use_cases: uc,
+          use_tags: useTags,
+          tags: (t.tags || []).slice(),
+          categories: t.categories || [],
+          boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
+          definition: t.definition || t.help || '',
+          fields: Array.isArray(t.fields) ? t.fields.slice() : []
+        };
+      });
+    }
+
+    function rankSuggestions(q, idx, limit=8){
+      const terms = String(q||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+      if (!terms.length) return [];
+      const hits = [];
+      for (const t of idx){
+        let bestUC = ''; let score = 0;
+
+        for (const uc of t.use_cases){
+          const l = uc.toLowerCase();
+          let s = 0;
+          for (const tok of terms){
+            if (l === tok) s += 60;
+            if (l.includes(tok)) s += 24;
+            if (l.startsWith(tok)) s += 10;
+          }
+          if (s > score){ score = s; bestUC = uc; }
+        }
+
+        if (score === 0 && t.use_tags.length){
+          for (const tag of t.use_tags){
+            for (const tok of terms){ if (tag.includes(tok)) score += 12; }
+          }
+          bestUC = bestUC || t.use_cases[0] || '';
+        }
+
+        if (score > 0 && bestUC){
+          hits.push({ id:t.id, slug:t.slug, label:t.label, use:bestUC, score, template:t });
+        }
+      }
+      hits.sort((a,b)=> b.score - a.score || a.use.localeCompare(b.use));
+      return hits.slice(0, limit);
+    }
+
+    const qEl  = document.getElementById('q');
+    const taEl = document.getElementById('ta');
+    const goEl = document.getElementById('go');
+
+    let INDEX = [];
+    let active = -1;
+    let picked = null;
+
+    function renderTA(list){
+      if (!list.length){ taEl.hidden = true; taEl.innerHTML = ''; active=-1; return; }
+      taEl.innerHTML = list.map((s,i)=>`
+        <div class="item${i===0?' active':''}" role="option" data-i="${i}">
+          <div class="use">${s.use}</div>
+          <div class="sub" aria-hidden="true">${s.label}</div>
+        </div>
+      `).join('');
+      taEl.hidden = false; active = 0;
+    }
+
+    let SUGS = [];
+    function onQuery(){
+      const q = qEl.value.trim();
+      SUGS = rankSuggestions(q, INDEX, 8);
+      renderTA(SUGS);
+    }
+
+    qEl.addEventListener('input', onQuery);
+    qEl.addEventListener('keydown', (e)=>{
+      const open = !taEl.hidden && taEl.children.length;
+      if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+        e.preventDefault();
+        active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
+        [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
+      } else if (e.key === 'Enter'){
+        e.preventDefault();
+        if (!picked){
+          if (open && active >= 0) choose(active);
+          else if (SUGS[0]) { picked = SUGS[0]; qEl.value = SUGS[0].use; }
+        }
+        if (qEl.value.trim()) startScan();
+      } else if (e.key === 'Escape'){
+        taEl.hidden = true; active=-1;
+      }
+    });
+    taEl.addEventListener('mousedown', (e)=>{
+      const el = e.target.closest('.item');
+      if (!el) return;
+      choose(parseInt(el.dataset.i,10) || 0);
+    });
+    goEl.addEventListener('click', ()=>{
+      if (!picked && SUGS[0]) { picked = SUGS[0]; qEl.value = SUGS[0].use; }
+      if (qEl.value.trim()) startScan();
+    });
+
+    function choose(i){
+      const items = Array.from(taEl.children);
+      const it = items[i]; if (!it) return;
+      const s = SUGS[i]; if (!s) return;
+      qEl.value = s.use;
+      picked = s;
+      taEl.hidden = true; active = -1;
+    }
+
+    /* ===== Faux scan to details ===== */
+    const hero = document.getElementById('hero');
+    const scan = document.getElementById('scan');
+    const details = document.getElementById('details');
+    const rollList = document.getElementById('rollList');
+    const resultHeader = document.getElementById('resultHeader');
+
+    function startScan(){
+      hero.style.display = 'none';
+      scan.style.display = 'flex';
+
+      // ensure the center rainbow band exists (added once)
+      const rollEl = document.querySelector('.scan .roll');
+      if (rollEl && !rollEl.querySelector('.centerBand')){
+        const band = document.createElement('div');
+        band.className = 'centerBand';
+        rollEl.appendChild(band);
+      }
+
+      const labels = allTemplates().map(t => t.label || t.slug || t.id).filter(Boolean);
+      const unique = Array.from(new Set(labels));
+      const chosenLabel = (picked && picked.label) || unique[0] || 'template';
+
+      // Plenty above and below so the center has neighbors to fade
+      const above = unique.sort(()=>Math.random()-.5).slice(0, 40);
+      const below = unique.sort(()=>Math.random()-.5).slice(0, 12);
+      const finalList = [...above, chosenLabel, ...below];
+
+      rollList.innerHTML = finalList.map(l => `<li${l===chosenLabel?' class="hit"':''}>${l}</li>`).join('');
+
+      // Skip fancy motion for reduced-motion users
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduce){
+        // Hard-center without animation
+        hardCenterHit();
+        // Move on almost immediately
+        setTimeout(()=> showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)), 250);
+      } else {
+        animateToCenterHit({ overshoot: 48, scrollMs: 2200, backMs: 420, fwdMs: 320, settleMs: 200, jiggleBack: 18, jiggleFwd: 9 })
+          .then(()=>{ showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)); });
+      }
+    }
+
+    function getHitGeometry(){
+      const roll = document.querySelector('.scan .roll');
+      const hit  = rollList.querySelector('.hit');
+      if (!roll || !hit) return null;
+
+      const ulRect  = rollList.getBoundingClientRect();
+      const hitRect = hit.getBoundingClientRect();
+      const viewportH = roll.clientHeight;
+
+      // Distance from UL top to place hit in the vertical center of the roll viewport
+      const target = (hitRect.top - ulRect.top) - (viewportH - hitRect.height)/2;
+
+      return { roll, hit, target: Math.max(0, target) };
+    }
+
+    function hardCenterHit(){
+      const g = getHitGeometry(); if (!g) return;
+      rollList.style.transition = 'none';
+      rollList.style.transform  = `translate3d(0, ${-g.target}px, 0)`;
+    }
+
+    function animateToCenterHit({ overshoot = 22, scrollMs = 1400, backMs = 300, fwdMs = 200, settleMs = 140, jiggleBack = 8, jiggleFwd = 4 } = {}){
+      const g = getHitGeometry();
+      if (!g) return Promise.resolve();
+
+      const yPast   = g.target - overshoot;
+      const yBack   = g.target + jiggleBack;
+      const yFwd    = g.target - jiggleFwd;
+      const yFinal  = g.target;
+
+      const easingMain = 'cubic-bezier(.2,.9,.2,1)';
+      const easingSnap = 'cubic-bezier(.15,.95,.2,1)';
+
+      const transitionTo = (y, ms, easing) => new Promise((resolve)=>{
+        const onEnd = (e)=> {
+          if (e.propertyName !== 'transform') return;
+          rollList.removeEventListener('transitionend', onEnd);
+          resolve();
+        };
+        const failSafe = setTimeout(()=>{ rollList.removeEventListener('transitionend', onEnd); resolve(); }, ms + 60);
+
+        rollList.addEventListener('transitionend', onEnd, { once:true });
+        rollList.style.transition = `transform ${ms}ms ${easing}`;
+        rollList.style.transform  = `translate3d(0, ${-y}px, 0)`;
+      });
+
+      rollList.style.transition = 'none';
+
+      return Promise.resolve()
+        .then(()=> transitionTo(yPast,  scrollMs, easingMain))
+        .then(()=> transitionTo(yBack,   backMs,  easingSnap))
+        .then(()=> transitionTo(yFwd,     fwdMs,  easingSnap))
+        .then(()=> transitionTo(yFinal, settleMs, easingSnap));
+    }
+
+
+    /* ===== Details page wiring ===== */
+    const tplTitle = document.getElementById('tplTitle');
+    const meta = document.getElementById('meta');
+    const def = document.getElementById('def');
+    const useCases = document.getElementById('useCases');
+    const boosters = document.getElementById('boosters');
+    const boostersBlock = document.getElementById('boostersBlock');
+    const fields = document.getElementById('fields');
+
+    const openBuilder = document.getElementById('openBuilder');
+    const openGlossary = document.getElementById('openGlossary');
+    const printWorksheet = document.getElementById('printWorksheet');
+    const copyPrompt = document.getElementById('copyPrompt');
+    const ask = document.getElementById('ask');
+    const back = document.getElementById('back');
+
+    function htmlEsc(s){ return String(s||'').replace(/[&<>"]/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m])); }
+
+    function showDetails(t){
+      scan.style.display = 'none';
+      details.hidden = false;
+      resultHeader.hidden = false;
+      if (!t){ tplTitle.textContent = 'template'; return; }
+
+      tplTitle.textContent = (t.label || t.slug || t.id || 'template').toLowerCase();
+      meta.innerHTML = [
+        ...(t.categories||[]).map(c => `<span class="chip">${htmlEsc(c)}</span>`),
+        ...(t.tags||[]).map(tag => `<span class="chip">${htmlEsc(tag)}</span>`)
+      ].join('');
+
+      def.textContent = t.definition || 'No definition provided yet.';
+      useCases.innerHTML = (t.use_cases||[]).map(u => `<div class="uc">${htmlEsc(u)}</div>`).join('') || '<div class="uc">No use-cases listed.</div>';
+
+      if (t.boosters && t.boosters.length){
+        boostersBlock.hidden = false;
+        boosters.innerHTML = t.boosters.map(b => `<div class="booster">${htmlEsc(b)}</div>`).join('');
+      } else {
+        boostersBlock.hidden = true;
+      }
+
+      fields.innerHTML = (t.fields||[]).map(f => `
+        <div class="row">
+          <label>${htmlEsc(f.label || f.key || 'field')}</label>
+          <div class="fake">${htmlEsc(f.ph || '')}</div>
+        </div>
+      `).join('') || '<div class="row"><div class="fake">No fields for this template.</div></div>';
+
+      const slug = (t.slug || t.id || '').toString();
+      openBuilder.href = './glossary/glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      openGlossary.href = './glossary/templates-glossary.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+
+      // Build the ChatGPT primer prompt from the template
+      const fullPrompt = buildChatGPTPrompt(normalizeTemplateForSummary(t));
+
+      copyPrompt.onclick = async ()=>{ try{ await navigator.clipboard.writeText(fullPrompt); }catch{} };
+      ask.onclick = async ()=>{
+        try{ await navigator.clipboard.writeText(fullPrompt); }catch{}
+        window.open('https://chat.openai.com/', '_blank', 'noopener');
+      };
+      back.onclick = ()=>{
+        details.hidden = true;
+        resultHeader.hidden = true;
+        hero.style.display = 'block';
+        qEl.focus();
+      };
+    }
+
+    function normalizeTemplateForSummary(t){
+      return { ...t, _displayKind: (t._displayKind || t.kind || t.type || 'framework') };
+    }
+    function buildTemplateSummary(t){
+      const lines = [];
+      lines.push(`Template: ${t.label || t.slug || t.id || 'untitled'}`);
+      lines.push(`Kind: ${t._displayKind || t.kind || 'framework'}`);
+      if (t.definition) lines.push(`Definition: ${t.definition}`);
+      if (t.categories?.length) lines.push(`Categories: ${t.categories.join(', ')}`);
+      if (t.tags?.length) lines.push(`Tags: ${t.tags.join(', ')}`);
+      if (t.use_cases?.length){ lines.push(`Use-cases:`); for (const u of t.use_cases) lines.push(`- ${u}`); }
+      if (t.fields?.length){
+        lines.push(`Fields:`); for (const f of t.fields){
+          const label = f.label || f.key || 'field';
+          const ph = f.ph ? ` — ${f.ph}` : '';
+          lines.push(`- ${label}${ph}`);
+        }
+      }
+      if (t.boosters?.length){ lines.push(`Boosters:`); for (const b of t.boosters) lines.push(`- ${b}`); }
+      return lines.join('\n');
+    }
+    function buildChatGPTPrompt(t){
+      const kind = (t._displayKind || 'framework').toLowerCase();
+      const summary = buildTemplateSummary(t);
+      return [
+        `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template and will share its full structure with you below to prime your understanding:`,
+        ``,
+        summary,
+        ``,
+        `Please begin by asking me what I would like to accomplish using this template. Then:`,
+        `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
+        `2) Contrast it with closely related terms (if any) and note common confusions.`,
+        `3) Offer pitfalls, best practices, and a short checklist.`,
+        `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
+        `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
+      ].join('\n');
+    }
+
+    /* ===== Boot index for search ===== */
+    function boot(){ INDEX = buildIndex(); onQuery(); }
+    (function waitDatasets(attempt=0){
+      const ready = (Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS));
+      if (ready){ boot(); return; }
+      if (attempt > 20) { boot(); return; }
+      setTimeout(()=> waitDatasets(attempt+1), 60);
+    })();
+  </script>
 </body>
 </html>
