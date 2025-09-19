@@ -100,6 +100,66 @@
     .reelList .w{ display:block; line-height:var(--slot-h, 1.25em); text-align:center; white-space:nowrap; }
     @keyframes slotBounce{ 0%{ transform:scale(1) } 38%{ transform:scale(1.035) } 72%{ transform:scale(1) } 88%{ transform:scale(1.015) } 100%{ transform:scale(1) } }
     .slot.final{ animation: slotBounce .55s ease-out 1; }
+    
+    
+    
+    /* ===== MANTRA REEL (below quickLinks) ===== */
+.mantra{
+  margin: clamp(36px, 6vh, 80px) auto 0;
+  max-width: var(--wrap-w);
+  padding: 0 20px;
+  text-align: center;
+}
+.mantraLine{
+  --mantra-shift-x: 0px;      /* ← tweak horizontal nudge; positive = right */
+  display: inline-flex;
+  align-items: baseline;
+  gap: .6ch;
+  transform: translateX(var(--mantra-shift-x));
+  font-weight: 300;
+  letter-spacing: .3px;
+  text-transform: lowercase;
+  font-size: clamp(26px, 5.2vw, 54px);
+  line-height: 1.16;
+}
+
+/* make the words hug a bit more */
+#mantra .mantraLine{ gap:.1ch; }  /* try .2ch → .1ch */
+
+/* tighten left/right padding inside the scrolling slot */
+#mantra #mantraSlot{ --slot-pad:.12ch; }  /* try .12ch → 0 */
+
+.mantraLine .prefix{ opacity: .85; }
+
+.mantraSlot{
+  display:inline-flex; position:relative; align-items:center; justify-content:center;
+  height: var(--mantra-slot-h, 1.2em); vertical-align: -0.03em;
+  width: var(--mantra-slot-w, 30ch);     /* JS will adjust to widest phrase */
+  padding: 0 var(--slot-pad, .3ch);
+  overflow:hidden;
+}
+.mantraReel{
+  height: var(--mantra-slot-h, 1.2em); width: 100%;
+  overflow:hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.mantraList{
+  display:flex; flex-direction:column;
+  transform: translate3d(0,0,0);
+  transition: transform var(--mantra-slide, 900ms) cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+.mantraList .w{
+  display:block; white-space:nowrap; text-align:center;
+  line-height: var(--mantra-slot-h, 1.2em);
+}
+
+/* keep it visually consistent on small screens */
+@media (max-width: 520px){
+  .mantraLine{ font-size: clamp(22px, 6vw, 34px); }
+  .mantraSlot{ width: var(--mantra-slot-w, 24ch); }
+}
 
     /* ----- search ----- */
     .searchWrap{ width:min(780px, 100%); margin: 6px auto 0; position:relative; transform-origin: center; animation: popIn .56s cubic-bezier(.2, .9, .2, 1.2) both; }
@@ -208,6 +268,8 @@
     .actions.footer{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
     .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
   </style>
+  
+  
 </head>
 <body>
 
@@ -276,6 +338,20 @@
     <span class="cta">start wizard</span>
   </a>
 </div>
+
+<!-- MANTRA REEL -->
+<section id="mantra" class="mantra" aria-label="prompting mantras">
+  <div class="mantraLine">
+<span class="prefix">prompting&nbsp;is,</span>
+    <span id="mantraSlot" class="mantraSlot" aria-live="polite" aria-atomic="true">
+      <span id="mantraReel" class="mantraReel">
+        <span id="mantraList" class="mantraList"></span>
+      </span>
+    </span>
+  </div>
+</section>
+
+
     </section>
 
     <!-- FAUX SCANNING -->
@@ -325,17 +401,34 @@
   </main>
 
   <!-- datasets -->
-  <script src="./glossary/templates.data.js"></script>
-<!-- datasets (cache-busted) -->
+  
+    <script src="./templates.data.js"></script>
+    
+     <script>
+    // lazy-load tasks dataset
+    (function ensureTasksLoaded(){
+      if (Array.isArray(window.TEMPLATES)) return;
+      const s = document.createElement('script');
+      s.src = './glossary/templates.data.js';
+      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.data.js');
+      document.head.appendChild(s);
+    })();
+  </script>
+  
+  <script>
+    // lazy-load tasks dataset
+    (function ensureTasksLoaded(){
+      if (Array.isArray(window.TASK_TEMPLATES)) return;
+      const s = document.createElement('script');
+      s.src = './glossary/templates.tasks.data.js';
+      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
+      document.head.appendChild(s);
+    })();
+  </script>
+  
 <script>
-  // DEV: always bust cache so you see latest data even on a previously-open tab.
-  // For production, replace Date.now() with a fixed version string like '2025-09-18-01'.
-  const DATA_VERSION = Date.now(); // or '2025-09-18-01'
-
-  // Clear any stale globals before reloading
-  delete window.TEMPLATES;
-  delete window.FRAMEWORKS;
-  delete window.TASK_TEMPLATES;
+  // Always bust cache in dev
+  const DATA_VERSION = Date.now();
 
   function injectScript(src){
     const s = document.createElement('script');
@@ -345,16 +438,12 @@
     return s;
   }
 
-  // Always load from ./glossary/…
-  injectScript('./glossary/templates.data.js');
+  // Rebuild the search index any time a dataset arrives
+  function rebuild(){ INDEX = buildIndex(); onQuery(); }
 
-  (function ensureTasksLoaded(){
-    if (Array.isArray(window.TASK_TEMPLATES)) return;
-    injectScript('./glossary/templates.tasks.data.js')
-      .onerror = () => console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
-  })();
+  injectScript('./glossary/templates.data.js').onload = rebuild;
+  injectScript('./glossary/templates.tasks.data.js').onload = rebuild;
 </script>
-
 
   <script>
 /* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
@@ -803,12 +892,154 @@
 
     /* ===== Boot index for search ===== */
     function boot(){ INDEX = buildIndex(); onQuery(); }
-    (function waitDatasets(attempt=0){
-      const ready = (Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS));
-      if (ready){ boot(); return; }
-      if (attempt > 20) { boot(); return; }
-      setTimeout(()=> waitDatasets(attempt+1), 60);
-    })();
+function boot(){ INDEX = buildIndex(); onQuery(); }
+
+(function watchDatasets(){
+  let lastSeen = '';
+  const timer = setInterval(()=>{
+    const haveTpl  = Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS);
+    const haveTask = Array.isArray(window.TASK_TEMPLATES) || Array.isArray(window.tasks);
+    const sig = (haveTpl ? 'T' : '_') + (haveTask ? 'K' : '_');
+    if (sig !== lastSeen){
+      lastSeen = sig;
+      boot();            // rebuild when either dataset changes readiness
+      if (haveTpl && haveTask) clearInterval(timer);  // stop once both are loaded
+    }
+  }, 80);
+})();
   </script>
+  
+  <script>
+/* ===== MANTRA REEL: slow, infinite, resize-safe vertical scroller ===== */
+(function mantraReel(){
+  // Tweakables
+  var HOLD_MS  = 2200;   // dwell time per line
+  var SLIDE_MS = 900;    // slide animation duration
+  var MANTRA_SHIFT_RIGHT = 0; // px; positive pushes the whole line to the right
+
+  var PHRASES = [
+    "clarity is kindness to the model.",
+    "context is half the answer.",
+    "easy for you, easy for it.",
+    "put smart, get smart.",
+    "the divergent intern.",
+    "the collaborative partner.",
+    "the 10,000 experts.",
+    "garbage in, garbage out.",
+    "precision paints the picture.",
+    "tone travels through tokens.",
+    "the model mirrors your mind.",
+    "examples are the skeleton key.",
+    "what you frame is what you get.",
+    "be the director, not the spectator.",
+    "define the stage, script the play.",
+    "a vague prompt breeds vague answers.",
+    "specificity is the superpower.",
+    "ask like a teacher, check like a scientist.",
+    "layer tasks, don’t overload.",
+    "persona shapes performance."
+  ];
+
+  var slot  = document.getElementById('mantraSlot');
+  var reel  = document.getElementById('mantraReel');
+  var list  = document.getElementById('mantraList');
+  var line  = document.querySelector('#mantra .mantraLine');
+
+  if (!slot || !reel || !list || !line) return;
+
+  // Apply shift control (matches your earlier SHIFT_RIGHT pattern)
+  line.style.setProperty('--mantra-shift-x', (MANTRA_SHIFT_RIGHT|0) + 'px');
+
+  // Build DOM
+  list.innerHTML = PHRASES.map(s => `<span class="w">${s}</span>`).join('');
+
+  // Adopt timing to CSS custom prop so transitions stay in sync
+  slot.style.setProperty('--mantra-slide', SLIDE_MS + 'ms');
+
+  var dpr = window.devicePixelRatio || 1;
+  var rowH = 0, i = 0, paused = false;
+
+  function widestWidthPx(){
+    // measure using the slot's computed font to avoid clipping
+    var cs = getComputedStyle(slot);
+    var meas = document.createElement('span');
+    meas.style.position='absolute'; meas.style.visibility='hidden';
+    meas.style.whiteSpace='nowrap'; meas.style.left='-9999px'; meas.style.top='-9999px';
+    meas.style.font = cs.font;
+    meas.style.letterSpacing = cs.letterSpacing;
+    meas.style.textTransform = cs.textTransform;
+    meas.style.fontKerning = cs.fontKerning;
+    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
+    meas.style.fontVariationSettings = cs.fontVariationSettings;
+    meas.style.fontStretch = cs.fontStretch;
+
+    document.body.appendChild(meas);
+    var max = 0;
+    for (var s of PHRASES){ meas.textContent = s; var w = meas.getBoundingClientRect().width; if (w > max) max = w; }
+    meas.remove();
+    // +1 physical pixel fudge to avoid subpixel mask grazing
+    var fudge = Math.max(1, Math.round(dpr));
+    return Math.ceil(max + 20 + fudge);
+  }
+
+  function lockMetrics(){
+    // lock row height from first child (rendered pixels, not ems)
+    var first = list.firstElementChild;
+    var h = first ? first.getBoundingClientRect().height : parseFloat(getComputedStyle(slot).fontSize) || 32;
+    rowH = Math.ceil(h + 2); // cushion
+    slot.style.setProperty('--mantra-slot-h', rowH + 'px');
+
+    // lock slot width to widest phrase so we never clip mid-line
+    var wpx = widestWidthPx();
+    slot.style.setProperty('--mantra-slot-w', wpx + 'px');
+  }
+
+  function translateTo(idx){
+    // snap to device pixels to prevent creeping drift under the mask
+    var y = Math.round((idx * rowH) * dpr) / dpr;
+    list.style.transform = 'translate3d(0,' + (-y) + 'px,0)';
+  }
+
+  function tick(){
+    if (paused) { schedule(); return; }
+    i = (i + 1) % PHRASES.length;
+    translateTo(i);
+    schedule();
+  }
+  function schedule(){ setTimeout(tick, HOLD_MS); }
+
+  // Reduced motion: render first line only
+  var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function start(){
+    lockMetrics();
+    translateTo(0);
+    if (!prefersReduce){ schedule(); }
+  }
+
+  // Pause when off-screen (saves CPU; also halts motion while not visible)
+  var mantraSection = document.getElementById('mantra');
+  if ('IntersectionObserver' in window && mantraSection){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ paused = !e.isIntersecting; });
+    }, { threshold: 0.1 });
+    io.observe(mantraSection);
+  }
+
+  // Wait for fonts for stable measurements, then run
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(start);
+  } else {
+    window.addEventListener('load', start, { once:true });
+  }
+
+  // On resize or zoom, re-lock metrics and keep current index visible
+  window.addEventListener('resize', function(){
+    var current = i;
+    lockMetrics();
+    translateTo(current);
+  });
+})();
+</script>
+  
 </body>
 </html>
