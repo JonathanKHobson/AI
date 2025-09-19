@@ -11,6 +11,7 @@
   use_cases: [
     'help me pick the best framework',
     'explain which framework fits my task',
+    'not sure where to start',
     'produce a ready-to-copy prompt using the chosen framework'
   ],
   boosters: [
@@ -108,6 +109,7 @@
     ],
     use_cases: [
       'cold outreach to a prospect or partner',
+      'send a email',
       'follow-up after a meeting or webinar',
       'warm intro / networking nudge',
       'customer support or service recovery',
@@ -271,7 +273,18 @@
   kind: 'task',
   categories: ['communication','writing'],
   tags: ['type:task','topic:writing','topic:dm','use:outreach','use:follow-up','use:networking'],
-
+use_cases: [
+  'cold outreach to a prospect or partner',
+  'follow-up after connecting at an event',
+  'reply to an inbound DM',
+  'remind about a pending request',
+  'schedule a quick call',
+  'share a resource or link',
+  'invite to a beta or demo',
+  'ask for quick feedback',
+  'nudge a stalled conversation',
+  'introduce two people'
+],
   definition: 'Compose a short, platform-aware direct message that earns a quick yes.',
   help: 'Keep it tight. Add context and a single, easy CTA. Leave “Constraints” empty to let boosters kick in.',
 
@@ -466,6 +479,18 @@
   kind: 'task',
   categories: ['communication','writing'],
   tags: ['type:task','topic:writing','topic:memo','use:internal','use:decision'],
+  use_cases: [
+  'propose a decision with tradeoffs',
+  'request resources or headcount',
+  'share a project update',
+  'document a policy change',
+  'summarize research or findings',
+  'capture risks and mitigations',
+  'write a postmortem summary',
+  'outline a plan with next steps',
+  'brief leadership before a meeting',
+  'set context for a cross-functional effort'
+],
   definition: 'Draft a crisp memo with TL;DR, background, analysis, recommendation, risks, and next steps.',
   help: 'Great memos are skimmable. Provide key points; the template will structure the rest.',
   fields: [
@@ -565,6 +590,20 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   categories: ['communication','writing'],
   tags: ['type:task','topic:writing',
       'use:outreach','topic:letter','use:formal','use:personal'],
+ // id: 'task_letter'
+use_cases: [
+  'cover letter for a job application',
+  'letter of recommendation',
+  'customer complaint letter',
+  'apology for a service issue',
+  'appreciation or thank-you letter',
+  'formal request letter',
+  'reference verification letter',
+  'termination or cancellation notice',
+  'appeal or dispute letter',
+  'general formal correspondence'
+],
+
   definition: 'Compose a well-structured letter (formal or personal) with appropriate salutation and sign-off.',
   fields: [
     { key:'recipient',     label:'Recipient', type:'text', ph:'Hiring Manager at Flux' },
@@ -651,6 +690,19 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   categories: ['communication','writing'],
   tags: ['type:task','topic:writing',
       'use:outreach','topic:announcement','use:internal','use:external'],
+      // id: 'task_announcement'
+use_cases: [
+  'product launch or feature update',
+  'maintenance window or downtime notice',
+  'policy or pricing change',
+  'organizational change or new hires',
+  'security or privacy update',
+  'event announcement or registration',
+  'deprecation or end-of-life notice',
+  'beta or early access program',
+  'incident resolution communication',
+  'regional availability or expansion'
+],
   definition: 'Announce a change with a clear headline, effective date, impact, and action required.',
   fields: [
     { key:'channel',    label:'Channel', type:'select',
@@ -736,6 +788,20 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
   categories: ['communication','writing'],
   tags: ['type:task','topic:writing',
       'use:outreach','topic:press-release','use:pr','use:launch'],
+      // id: 'task_press_release'
+use_cases: [
+  'new product or feature launch',
+  'funding announcement',
+  'partnership or integration',
+  'major customer milestone or case study',
+  'executive hire or board appointment',
+  'award or recognition',
+  'event participation or keynote',
+  'research report or data release',
+  'geographic expansion',
+  'open-source project release'
+],
+
   definition: 'Standard AP-style press release with headline, subhead, dateline, body, quotes, boilerplate, and media contact.',
   fields: [
     { key:'org',        label:'Organization', type:'text', ph:'Acme, Inc.' },
