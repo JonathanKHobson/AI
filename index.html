@@ -249,25 +249,25 @@
       <div class="quickLinks">
   <!-- If your full glossary lives on a different page than this index,
        change the href below to that page. -->
-  <a class="tile" href="./index.html" aria-label="open full ai glossary">
+  <a class="tile" href="./glossary/index.html" aria-label="open full ai glossary">
     <h4>full ai glossary</h4>
     <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
     <span class="cta">open glossary</span>
   </a>
 
-  <a class="tile" href="./templates-glossary.html" aria-label="open template glossary">
+  <a class="tile" href="./glossary/templates-glossary.html" aria-label="open template glossary">
     <h4>template glossary</h4>
     <p>browse prompt-making templates with one-line summaries and examples.</p>
     <span class="cta">open templates</span>
   </a>
 
-  <a class="tile" href="./prompt-builder.html" aria-label="open prompt builder config">
+  <a class="tile" href="./glossary/prompt-builder.html" aria-label="open prompt builder config">
     <h4>prompt builder config</h4>
     <p>power-user controls for building and saving prompts with full options.</p>
     <span class="cta">open builder</span>
   </a>
 
-  <a class="tile" href="./startup-wizard.html" aria-label="start the setup wizard">
+  <a class="tile" href="./glossary/startup-wizard.html" aria-label="start the setup wizard">
     <h4>startup wizard (alpha)</h4>
     <p>a lighter, guided flow to set things up without the overwhelm.</p>
     <span class="cta">start wizard</span>
@@ -721,7 +721,7 @@
       `).join('') || '<div class="row"><div class="fake">No fields for this template.</div></div>';
 
       const slug = (t.slug || t.id || '').toString();
-      openBuilder.href = './glossary/glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      openBuilder.href = './glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
       openGlossary.href = './glossary/templates-glossary.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
       printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
 
