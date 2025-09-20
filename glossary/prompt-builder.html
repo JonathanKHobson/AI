@@ -6,18 +6,158 @@
   <title>Prompt Template Builder (beta)</title>
   <style>
 :root{
-  --bg:#0b0f14; --panel:#121821; --card:#0f151d; --muted:#9db0c3; --text:#e7eff7;
-  --accent:#4ea1ff; --chip:#1b2533; --border:#1b2838; --radius:14px; --gap:14px;
-  --green:#2ecc71; --yellow:#f1c40f; --red:#e74c3c; --purple:#a78bfa;
-  /* new */
-  --border-strong:#2a3a4f; /* darker/lighter than --border for better separation in dark */
+  /* Neutrals */
+  --bg:      #fafafa;   /* page background */
+  --fg:      #0f1720;   /* primary text (deep navy-slate) */
+  --muted:   #506070;   /* secondary text */
+  --chip:    #f3f6fa;   /* quiet chip surface */
+  --border:  #e3e9f2;   /* hairline borders */
+  --accent:  #1e293b;   /* strong headings / accents */
+
+  /* Interaction + effects */
+  --focus:   #0ea5e9;   /* focus ring (2px, offset 2px) */
+  --shadow:  0 12px 40px rgba(0,0,0,.08); /* card/base shadow */
+  --radius:  16px;      /* default large radius */
+
+  /* Rainbow palette (for glimmer/hover)  */
+  --r1:#ff007a; --r2:#ff8d00; --r3:#ffd600;
+  --r4:#00dc82; --r5:#00d2ff; --r6:#7850ff;
+    /* Primary/CTA fill that stays dark in both themes */
+  --cta: #1e293b;
+  
+    /* Aliases to support existing rules in this file */
+  --text: var(--fg);
+  --card: #fff;
+  --panel:#fff;
+  --border-strong: var(--border);
+
+  /* simple status colors already referenced below */
+  --red:#ef4444; --green:#10b981; --yellow:#f59e0b; --purple:#8b5cf6;
 }
-:root[data-theme="light"]{
-  --bg:#f7fafc; --panel:#ffffff; --card:#ffffff; --muted:#5a6b7b; --text:#121621;
-  --accent:#2563eb; --chip:#f1f5f9; --border:#d8e0ea;
-  /* new: slightly stronger than light border for clear separation */
-  --border-strong:#b9c6d6;
+
+/* === Dark theme overrides (restores dark mode) === */
+html[data-theme="dark"]{
+  /* Neutrals */
+  --bg:     #0c1220;   /* deep navy background */
+  --fg:     #e6ebf2;   /* primary text */
+  --muted:  #9aa8b7;   /* secondary text */
+  --chip:   #111827;   /* quiet chip surface */
+   --border: #2f3f56;       /* a touch brighter than #233041 for visibility */
+  --shadow: 0 8px 28px rgba(0,0,0,.50); /* slightly less chalky */
+  --accent: #cbd5e1;   /* strong headings / accents */
+
+  /* Surfaces (used by our aliases) */
+  --card:   #0e1726;   /* card surfaces */
+  --panel:  #0b1322;   /* panel / preview surfaces */
+
+  /* Effects (slightly tighter shadow so it doesn't look chalky) */
+  --shadow: 0 8px 28px rgba(0,0,0,.55);
+  /* Keep --focus as-is; it reads well on dark. */
 }
+
+/* Slightly thicker borders in dark for readability */
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .tab,
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] #out,
+html[data-theme="dark"] .finder,
+/* Slight contrast lift for small UI bits in dark */
+html[data-theme="dark"] .finder,
+html[data-theme="dark"] .tinyLabel,
+html[data-theme="dark"] #tabContext,
+html[data-theme="dark"] .step-hint{
+  border-color: color-mix(in srgb, var(--border) 80%, var(--fg) 20%);
+}
+html[data-theme="dark"] .taList,
+html[data-theme="dark"] select,
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] textarea {
+  border-width: 1.25px;
+}
+
+/* === Dark-only surface fixes for legacy light styles === */
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] #previewPanel,
+html[data-theme="dark"] .outCard,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .modal-body,
+html[data-theme="dark"] .dropdown,
+html[data-theme="dark"] .taList,
+html[data-theme="dark"] .finder,
+html[data-theme="dark"] .input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] textarea {
+  background: var(--card) !important;
+  color: var(--fg) !important;
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow);
+}
+
+/* Title chip & tiny pills gain a touch more contrast in dark */
+html[data-theme="dark"] .block-title,
+html[data-theme="dark"] .tinyLabel{
+  border-color: color-mix(in srgb, var(--border) 70%, var(--fg) 30%);
+}
+
+/* Preview <pre> surface + border */
+html[data-theme="dark"] #out{
+  background: var(--panel) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Typeahead rows hover state (keep it subtle on dark) */
+html[data-theme="dark"] .taList .taItem:hover,
+html[data-theme="dark"] .dropdown__row:hover{
+  background: rgba(255,255,255,.04);
+}
+
+/* Chips, tabs, tiny pills — use dark chip surface + hairline border */
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .tabs .tab,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .areaLabel{
+  background: var(--chip);
+  color: var(--fg);
+  border-color: var(--border);
+}
+
+/* The little status dot inside .areaLabel — keep it visible on dark */
+html[data-theme="dark"] .areaLabel .dot{
+  background: var(--focus);
+}
+
+/* Headers/section titles keep readable contrast */
+html[data-theme="dark"] h1, 
+html[data-theme="dark"] h2, 
+html[data-theme="dark"] h3, 
+html[data-theme="dark"] .subhead, 
+html[data-theme="dark"] .areaLabel{
+  color: var(--fg);
+}
+
+
+/* Ambient rainbow glimmer (very subtle, behind everything) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: auto auto 40% 0;                   /* top-left */
+  width: min(70vw, 920px);
+  height: min(70vh, 680px);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(48px) saturate(115%);
+  opacity: .08;  /* light */
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+    conic-gradient(from 210deg at 0% 0%,
+      rgba(255,0,122,.22), rgba(255,141,0,.18),
+      rgba(255,214,0,.18), rgba(0,220,130,.20),
+      rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22));
+}
+html[data-theme="dark"] body::before{ opacity: .06; } /* slightly softer in dark */
 
 .modal::backdrop{ background: rgba(0,0,0,.4); }
 .modal-body{ width:min(880px, 96vw); padding:16px; background:var(--bg); color:var(--text);
@@ -59,20 +199,102 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
+    html, body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Section titles: lowercase vibe + subtle tracking */
+h1, h2, h3, .subhead, .areaLabel {
+  text-transform: lowercase;
+  letter-spacing: 0.25px; /* within the 0.2–0.3px guidance */
+  font-weight: 600;
+}
+    body{ margin:0; }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
+    /* Buttons should never show link underlines */
+a.btn,
+a.btn:hover,
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active{
+  text-decoration: none !important;
+}
 
-    header{
-      display:flex;align-items:center;gap:12px;padding:12px 16px;position:sticky;top:0;z-index:10;
-      background:linear-gradient(180deg,var(--panel),rgba(0,0,0,0));border-bottom:1px solid var(--border);
-      backdrop-filter: blur(8px);
-    }
+header{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px;
+  position:sticky; top:0; z-index:10;
+
+  /* translucent surface + blur, with hairline bottom border */
+  background: rgba(255,255,255,.78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* darker translucent header in dark mode */
+html[data-theme="dark"] header{
+  background: rgba(12,18,32,.65);
+}
+
+/* lowercase vibe for header labels/buttons only */
+header .btn,
+header strong,
+header .pill,
+header a{
+  text-transform: lowercase;
+  letter-spacing: .2px;
+  font-weight: 600; /* crisp, not shouty */
+}
+
+
     header .spacer{flex:1}
-    .btn{cursor:pointer;border:1px solid var(--border);background:var(--chip);color:var(--text);padding:8px 12px;border-radius:10px}
-    .btn.primary{background:var(--accent);color:#061422;border:none}
-    /* default (dark theme): keep dark text on light accent */
-.btn.primary{ color:#061422; }
+   .btn{
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5ch;
+
+  /* secondary by default (white surface) */
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+
+  /* new shape/feel */
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: lowercase;
+  text-decoration: none;
+  transition:
+    transform .06s ease,
+    box-shadow .12s ease,
+    background-color .12s ease,
+    color .12s ease,
+    border-color .12s ease;
+}
+
+/* hover/active behavior (soft lift) */
+.btn:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px -14px rgba(0,0,0,.35), 0 4px 10px -6px rgba(0,0,0,.25);
+}
+.btn:active{
+  transform: translateY(0);
+  box-shadow: none;
+}
+.btn.primary{
+  background: var(--cta);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: none; /* no extra default puff; hover lift handles emphasis */
+}
+
+
 
 /* Subheader that matches our h3 section look */
 .subhead{
@@ -84,18 +306,61 @@
 }
 
 
-/* light theme: white text on darker accent for AA contrast */
-:root[data-theme="light"] .btn.primary{ color:#ffffff; }
+.btn.sm{
+  padding: 6px 12px;
+  font-size: 14px;
+  min-height: 32px;     /* NEW: consistent height */
+}
 
-    .btn.sm{padding:6px 10px;font-size:14px;border-radius:8px}
+/* Base button line-height & min-height for visual parity */
+.btn{ min-height: 36px; line-height: 1.1; }
+    
+    /* Minimal, unobtrusive header toggles (Show/Hide beside section headers) */
+.btn.ghost-min{
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+}
+.btn.ghost-min:hover,
+.btn.ghost-min:focus-visible{
+  color: var(--fg);
+  border-style: solid;
+  box-shadow: none; /* global focus ring handles outline */
+}
+/* tiny chevron look for clarity */
+.btn.ghost-min .chev{
+  display:inline-block; transform: translateY(-1px);
+  margin-right: 4px; opacity: .85;
+}
     
     /* Danger button + helper text for save/reset */
 .btn.danger{ background:var(--red); color:#fff; border:none }
 
-/* Universal affordances */
-.btn:hover{ transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.18); }
-.btn:active{ transform: translateY(0); box-shadow:none; }
-.btn:focus-visible{ outline:none; box-shadow:0 0 0 2px rgba(78,161,255,.45); }
+
+
+/* Make Preview Show/Hide more visually distinct */
+.btn.preview-toggle{
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-weight: 600;
+}
+.btn.preview-toggle.primary{
+  background: var(--fg);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/* Motion language: springy ease for interactive bits */
+.btn, .chip, .tab, .panel, .outCard{
+  transition-timing-function: cubic-bezier(.2,.9,.2,1);
+}
+.btn:active, .chip:active, .tab:active{
+  transform: translateY(1px) scale(0.995);
+}
+
 
 /* Make chips and tabs feel interactive */
 .chip:hover, .tab:hover{ box-shadow:0 0 0 2px rgba(78,161,255,.20); }
@@ -117,17 +382,53 @@
     .dot{width:16px;height:16px;border-radius:50%;background:linear-gradient(180deg,#fdd835,#fbc02d);box-shadow:inset 0 -3px 6px rgba(0,0,0,.25)}
     :root[data-theme="light"] .dot{background:linear-gradient(180deg,#121621,#394554)}
 
-    .wrap{
+.wrap{
+  /* keep your 3-col grid exactly as-is */
   display:grid;
   grid-template-columns: var(--leftW, 360px) 6px 1fr; /* left | resizer | right */
-  gap:16px;
-  padding:16px;
+
+  /* new: airy container */
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 20px 36px;
+  gap: 24px;
+}
+
+/* Wide layout when Preview is visible (Show Preview clicked) */
+.wrap:not(.preview-hidden){
+  /* let the grid breathe across the viewport */
+  max-width: none;          /* full-width container */
+  margin-left: 0;
+  margin-right: 0;
+  /* keep comfortable page gutters */
+padding-top: 40px;
+padding-bottom: 28px;
+}
+
+/* Optional: cap extreme ultra-wide screens (comment out if you truly want 100% width) */
+/*
+@media (min-width: 1920px){
+  .wrap:not(.preview-hidden){ max-width: 1600px; margin: 0 auto; }
+}
+*/
+
+/* Slightly tighter vertical rhythm in wide mode */
+.wrap:not(.preview-hidden){
+  padding-top: 60px;   /* was 72px */
+  padding-bottom: 32px;/* was 40px */
 }
 
 /* When the preview is hidden, give the left panel the whole stage */
 .wrap.preview-hidden{ grid-template-columns: 1fr; }
 .wrap.preview-hidden #resizer{ display:none; }
 .wrap.preview-hidden #previewPanel{ display:none; }
+
+/* Symmetric mode: hide the config panel and resizer */
+.wrap.config-hidden{
+  grid-template-columns: 1fr;
+}
+.wrap.config-hidden #resizer{ display:none; }
+.wrap.config-hidden #configPanel{ display:none; }
 
 
 /* Add breathing room to the right of the resizer only */
@@ -139,7 +440,13 @@
 
 
 
-    .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius)}
+    /* Panels = white cards (token-driven), soft shadow, larger radius */
+.panel{
+  background: var(--card);                   /* #fff in light; dark token in dark */
+  border: 1px solid var(--border);
+  border-radius: 20px;                       /* ↑ from var(--radius) */
+  box-shadow: var(--shadow);
+}
     .panel h2{margin:0;padding:12px 14px;border-bottom:1px solid var(--border);font-size:18px}
     
     .panel h2{ display:flex; align-items:center; gap:10px; }
@@ -148,6 +455,83 @@
     .panel section{padding:14px}
 
     label{display:block;margin:10px 0 6px;color:var(--muted);font-size:16px; font-weight:600;}
+  
+  /* Sub-blocks inside Configure: boxed with a “legend” notch */
+.block{
+  position: relative;
+  margin: 12px 0;
+  padding: 16px 12px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.block:hover{
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 12px 44px rgba(0,0,0,.10);
+}
+
+/* Title row sits on the border to create a notch/gap */
+/* Curved header chip that sits in the block border notch */
+.block-title{
+  position: absolute;
+  top: -12px; left: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 3px 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;              /* ← curved edges */
+}
+.block-title h3{
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: .2px;
+  line-height: 1.1;
+}
+/* Make the Hide/Show fit neatly inside the chip */
+.block-title .btn.ghost-min{
+  padding: 2px 8px;
+  height: 22px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* A super-subtle complementary rainbow hairline on the chip itself */
+.block-title::after{
+  content:""; position:absolute; inset:-1px; border-radius:inherit;
+  --angle:0deg;
+  background: conic-gradient(from var(--angle),
+    color-mix(in srgb, var(--r1) 25%, transparent),
+    color-mix(in srgb, var(--r2) 20%, transparent),
+    color-mix(in srgb, var(--r3) 20%, transparent),
+    color-mix(in srgb, var(--r4) 22%, transparent),
+    color-mix(in srgb, var(--r5) 20%, transparent),
+    color-mix(in srgb, var(--r6) 22%, transparent),
+    color-mix(in srgb, var(--r1) 25%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  padding:1px; opacity:.35; pointer-events:none;
+}
+@media (prefers-reduced-motion: reduce){
+  .block-title::after{ animation:none; }
+}
+
+/* optional: a whisper of rainbow aura on hover */
+/* Minimal aura — whisper, not a shout */
+.block::before{
+  content:""; position:absolute; inset:-10px; z-index:-1; border-radius:22px;
+  filter: blur(22px) saturate(110%);
+  background: conic-gradient(from 200deg,
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.04; transition:opacity .2s ease;
+}
+.block:hover::before{ opacity:.08; }
+  
+  
+  
     
 .resizer{
   width:6px;
@@ -193,26 +577,44 @@
   box-shadow: 0 0 0 2px rgba(78,161,255,.25);
 }
 
-.finder{ margin-bottom:8px; }
-.finder input{ width:100%; }
-
-
-.finder{ position:relative; margin-bottom:8px; }
-.finder input{ width:100%; padding-right:64px; }
-.finder .btn.tiny{
-  position:absolute; right:6px; top:50%; transform:translateY(-50%);
-  padding:4px 8px; font-size:12px; border-radius:999px;
+/* Finder = pill container with shadow; input sits inside */
+.finder{
+  position: relative;
+  margin-bottom: 8px;
+  display: flex; align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0 6px; /* space for the tiny button on the right */
 }
 
-/* Hint: shows "Showing N/M" when filtered */
+/* Inner input borrows the container's surface; no extra border */
+.finder input{
+  width: 100%;
+  height: 44px;
+  padding: 0 64px 0 12px; /* room for All button + hint */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--fg);
+}
+
+/* Tiny "All" button remains absolutely positioned */
+.finder .btn.tiny{
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  padding: 4px 8px; font-size: 12px; border-radius: 999px;
+}
+
+/* "Showing N/M" hint in muted text, aligned inside pill */
 .finder .hint{
-  position:absolute;
-  right:56px;              /* sits just to the left of the All button */
-  top:50%; transform:translateY(-50%);
-  font-size:12px;
-  color:var(--muted);
-  opacity:.9;
-  pointer-events:none;     /* don't steal clicks from the input */
+  position: absolute;
+  right: 56px;
+  top: 50%; transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--muted);
+  opacity: .9;
+  pointer-events: none;
 }
 
 /* --- Finder: "More filters" disclosure --- */
@@ -308,18 +710,32 @@
 textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for multi-line */
 
 
-    input[type="text"], textarea, select{
-      width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);
-      background:var(--card);color:var(--text);outline:none;
-    }
-    
-    input.filled, textarea.filled{
-  box-shadow: 0 0 0 2px var(--accent) inset;
-  background: rgba(78,161,255,.08);
+/* Inputs = white surface, hairline border, crisp text */
+input[type="text"], textarea, select{
+  width: 100%;
+  height: 48px;                 /* roomy control height */
+  padding: 0 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  outline: none;                /* global :focus-visible ring handles a11y */
+  box-shadow: var(--shadow);
 }
-:root[data-theme="light"] input.filled,
-:root[data-theme="light"] textarea.filled{
-  background: rgba(37,99,235,.06);
+
+/* Textareas keep vertical space; override height */
+textarea{
+  min-height: 100px;
+  height: auto;
+  padding: 10px 12px;
+  resize: vertical;
+}
+    
+    /* Filled state: subtle border emphasis; no colored wash */
+input.filled, textarea.filled{
+  box-shadow: none;
+  border-color: var(--accent);
+  background: var(--card);
 }
 
     textarea{min-height:100px;resize:vertical}
@@ -357,8 +773,8 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   font-size:12px;
   color:var(--muted);
   font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.04em;
+  text-transform: lowercase;
+letter-spacing: .04em;
 }
 
 .metaGroup{
@@ -396,8 +812,8 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   font-size:12px;
   color:var(--muted);
   font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.04em;
+text-transform: lowercase;
+letter-spacing: .04em;
 }
 .metaPills{
   display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;
@@ -414,11 +830,29 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 .tabs{ display:flex; gap:6px; margin:6px 0 10px; flex-wrap:wrap; padding-left:12px; }
 
 .tab{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:6px 10px; border:1px solid var(--border); border-radius:999px;
-  background:var(--chip); cursor:pointer; font-size:12px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text);
+  text-transform: lowercase;                 /* NEW */
+  letter-spacing: .2px;                      /* NEW */
+  transition:
+    transform .12s cubic-bezier(.2,.9,.2,1),
+    border-color .15s ease,
+    box-shadow .15s ease,
+    color .15s ease,
+    background-color .15s ease;
 }
-.tab.active{ outline:2px solid var(--accent); }
+.tab:hover{ transform: translateY(-1px) scale(1.01); border-color: var(--accent); }
+.tab.active{
+  outline: 2px solid var(--accent);         /* keep outline (not heavy fill) */
+  outline-offset: 2px;
+  font-weight: 600;                          /* clearer active affordance */
+}
 .tab .x{
   border:none; background:transparent; cursor:pointer; font-size:14px; line-height:1;
   color:var(--muted);
@@ -437,10 +871,22 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 [hidden]{
   display: none !important;
 }
+/* Deck cards = same card look as panels */
 .outCard{
-  border:1px solid var(--border); border-radius:var(--radius); background:var(--card);
-  padding:10px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;                       /* ↑ larger radius */
+  box-shadow: var(--shadow);
+  padding: 12px 14px;                        /* a hair roomier */
 }
+
+.panel:hover, .outCard:hover{
+  transform: translateY(-1px) scale(1.01);
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: 0 12px 44px rgba(0,0,0,.10);
+}
+
+
 .outHead{
   display:flex; align-items:center; justify-content:space-between; gap:8px;
   margin-bottom:8px; font-size:13px; color:var(--muted);
@@ -481,16 +927,27 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 }
 
     .chips{display:flex;flex-wrap:wrap;gap:8px}
-   .chip{
-  background:var(--chip);
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:6px 10px;
-  font-size:12px;
-  line-height:1;
-  color:var(--text);           /* ← fixes black-on-black in dark mode */
-  cursor:pointer;              /* nicer affordance */
-  transition:background .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease;
+.chip{
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text);
+  cursor: pointer;
+  text-transform: lowercase;        /* NEW */
+  letter-spacing: .2px;             /* NEW */
+  transition:
+    transform .12s cubic-bezier(.2,.9,.2,1),
+    border-color .15s ease,
+    box-shadow .15s ease,
+    color .15s ease,
+    background-color .15s ease;
+}
+.chip:hover{
+  transform: translateY(-1px) scale(1.01);   /* NEW tiny lift */
+  border-color: var(--accent);               /* subtle tint */
 }
 
 /* Extra guards for common dark-theme toggles */
@@ -530,7 +987,16 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
     pre{margin:0;padding:14px;background:var(--card);border-top:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:auto;white-space:pre-wrap}
 
-    .pill{padding:4px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px}
+   .pill{
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--chip);
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: lowercase;               /* NEW */
+  letter-spacing: .2px;                    /* NEW */
+}
     .pill[data-val="framework"]{color:var(--green)}
     .pill[data-val="pattern"]{color:var(--yellow)}
     
@@ -617,7 +1083,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     /* Independent scroll for the left panel */
 #configPanel{
   position: sticky;
-  top: 60px; /* sits under the sticky header */
+  top: 48px; /* sits under the sticky header */
   max-height: calc(100vh - 60px - 16px); /* header + grid padding */
   overflow: auto; /* vertical & horizontal if needed */
 }
@@ -625,19 +1091,26 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 /* Area labels to distinguish preview vs deck */
 .areaLabel{
-  display:inline-flex; align-items:center; gap:6px;
-  padding:4px 8px; margin:8px 0 6px;
-  border:1px solid var(--border);
-  background:var(--chip);
-  border-radius:999px; font-size:12px; color:var(--muted);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 8px; margin: 8px 0 6px;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: lowercase;               /* NEW */
+  letter-spacing: .2px;                    /* NEW */
 }
 .areaLabel .dot{ width:6px; height:6px; border-radius:999px; background:var(--accent); }
 
 /* Stronger section separation (dark-friendly) */
+/* Preview content = card surface without gradients */
 #out{
-  border:1px solid var(--border-strong);
-  background:linear-gradient(180deg, rgba(78,161,255,.05), transparent 45%);
-  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 .outCard{
   border-color: var(--border-strong);
@@ -653,8 +1126,9 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   display:inline-flex; align-items:center; justify-content:center;
 }
 
-.tab .x:hover{ box-shadow: 0 0 0 2px rgba(78,161,255,.25); }
-.tab .x:focus-visible{ outline:none; box-shadow:0 0 0 2px rgba(78,161,255,.45); }
+.tab .x:hover{ border-color: var(--accent); }
+.tab .x:focus-visible,
+
 
 /* Deck Clear/Delete: danger pill */
 .outHead .x{
@@ -668,7 +1142,11 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   min-width: 0;
 }
 .outHead .x:hover{ filter: brightness(1.05); box-shadow:0 0 0 2px rgba(78,161,255,.20); }
-.outHead .x:focus-visible{ outline:none; box-shadow:0 0 0 2px rgba(78,161,255,.45); }
+.outHead .x:focus-visible{
+  box-shadow: none;
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
 
 /* Defensive: in light theme, never fall back to chip styles */
 :root[data-theme="light"] .outHead .x{
@@ -676,16 +1154,17 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   color: #fff;
 }
 
-/* Card "Clear/Delete" pill — let the text breathe */
+/* Card "Clear/Delete" (secondary pill): white surface + red outline/text */
 .outHead .actions .x{
   min-width: auto;
   height: auto;
   padding: 2px 10px;
   border-radius: 999px;
   line-height: 1.2;
-  background: var(--chip);
-  border: 1px solid var(--border);
-  cursor: pointer;                 /* 👈 make it a hand */
+  background: var(--card);
+  border: 1px solid var(--red);
+  color: var(--red);
+  cursor: pointer;
 }
 .outHead .actions .x:disabled{
   cursor: not-allowed; opacity: .6;
@@ -696,49 +1175,75 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   box-shadow: 0 0 0 2px rgba(78,161,255,.20);
 }
 .outHead .actions .x:focus-visible{
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(78,161,255,.45);
-}
-/* Explicitly pin in light theme too (avoid accidental white-on-white) */
-:root[data-theme="light"] .outHead .actions .x{
-  background: var(--red);
-  color: #fff;
+  box-shadow: none;
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
-
-/* === Typeahead (persona picker) === */
-.taWrap{ position:relative; }
+/* Typeahead dropdown = index-style dropdown panel */
+.taWrap{ position: relative; }
 .taList{
-  position:absolute; left:0; right:0; top:100%;
-  margin-top:6px; z-index:50;
-  background:var(--card); border:1px solid var(--border); border-radius:10px;
-  max-height:220px; overflow:auto;
-  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  position: absolute; left: 0; right: 0; top: 100%;
+  margin-top: 6px; z-index: 50;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-height: 260px; overflow: auto;
+  box-shadow: var(--shadow);
 }
-.taList[hidden]{ display:none; }
+.taList[hidden]{ display: none; }
+
 .taItem{
-  padding:8px 10px; cursor:pointer; border-bottom:1px solid var(--border);
-  font-size:13px; display:flex; flex-direction:column; gap:2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
 }
+.taItem:last-child{ border-bottom: none; }
+
+.taItem .name{
+  color: var(--text);
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: .2px;
+}
+.taItem .sub{
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Gentle hover (light); dark already has its own in your dark overrides */
+.taItem:hover{ background: #f8fbff; }
 .taItem:last-child{ border-bottom:none; }
 .taItem .name{ color:var(--text); font-weight:600; }
 .taItem .sub{ color:var(--muted); font-size:12px; }
-.taItem.active{ outline:2px solid var(--accent); outline-offset:-2px; }
+.taItem.active{
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  font-weight: 600;                 /* NEW: non-color cue */
+}
 
+/* Results <select> matches input styling */
 .panel select{
-  width:100%;
-  padding:8px 36px 8px 10px;      /* room for chevron */
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--card);
-  color:var(--text);
-  outline:none;
-  appearance:none;                /* show our chevron */
+  width: 100%;
+  height: 44px;
+  padding: 0 36px 0 10px;          /* room for chevron */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--fg);
+  outline: none;
+  appearance: none;
   background-image:
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M4 6l4 4 4-4' fill='none' stroke='%2399AABB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  background-repeat:no-repeat;
-  background-position:right 10px center;
-  cursor:pointer;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
 }
 
 /* Dropdown helper cluster */
@@ -790,12 +1295,12 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   color: var(--text);
   border: 1px solid var(--border);
 }
-#kindChips .chip[aria-pressed="true"] {
-  background: var(--accent);
-  color: #061422;
-}
-:root[data-theme="light"] #kindChips .chip[aria-pressed="true"]{
-  color: #fff;
+/* Kind chips active → outline, not fill */
+#kindChips .chip[aria-pressed="true"]{
+  background: var(--chip);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(78,161,255,.20) inset;
+  color: var(--text);
 }
 
 :root[data-theme="light"] .btn.danger{ background: var(--red); color:#fff; }
@@ -812,6 +1317,22 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 }
 
 /* Subhead without left padding (use with class="subhead no-pad") */
+/* === Slice 1: global focus ring (standardize across widgets) === */
+:focus-visible{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Neutralize legacy box-shadow focus styles so the ring is consistent */
+.btn:focus, .btn:focus-visible,
+input:focus, textarea:focus, select:focus,
+.chip:focus, .tab:focus,
+.tab .x:focus-visible,
+.outHead .x:focus-visible,
+.outHead .actions .x:focus-visible,
+.toggle:focus-visible {
+  box-shadow: none !important;
+}
 .subhead.no-pad { padding-left: 0; }
 
 
@@ -819,40 +1340,88 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     @media (max-width: 960px){
       .wrap{grid-template-columns:1fr}
     }
+    
+    
+    /* CTA clusters get a subtle rainbow border on hover/focus */
+.ctaGroup .btn{ position: relative; }
+
+/* Conic-gradient border that fades in and spins */
+.ctaGroup .btn::after{
+  content:"";
+  position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  --angle:0deg;
+  background: conic-gradient(from var(--angle),
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  /* punch out middle → border effect */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:0; transition: opacity .2s ease, filter .2s ease; pointer-events:none; z-index:-1;
+}
+@keyframes spinRainbow{ to { --angle:360deg; } }
+
+.ctaGroup .btn:hover,
+.ctaGroup .btn:focus-visible{
+  transform: translateY(-2px) scale(1.025);
+  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35), 0 4px 10px -6px rgba(0,0,0,.25);
+}
+.ctaGroup .btn:hover::after,
+.ctaGroup .btn:focus-visible::after{
+  opacity:1; filter:saturate(1.15); animation: spinRainbow 2.25s linear infinite;
+}
+
+/* motion safety */
+@media (prefers-reduced-motion: reduce){
+  .ctaGroup .btn, .ctaGroup .btn::after{ transition:none; animation:none; }
+}
+
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+  .btn, .chip, .tab, .panel, .outCard{ transform: none !important; }
+}
+    
   </style>
 </head>
 <body>
   <header>
-    <a class="btn sm" href="../glossary/index.html" target="_blank" rel="noopener">← Back to Full Glossary</a>
+  <span class="ctaGroup">
+    <a class="btn sm" href="../index.html" target="_blank" rel="noopener">← Back to Search</a>
     <a class="btn sm" href="./templates-glossary.html" target="_blank" rel="noopener">Open Template Glossary</a>
+    </span>
 
-    <strong>Prompt Framework Builder</strong>
-    <span class="pill" data-val="framework" title="Thinking Structures & Patterns">thinking structures + patterns</span>
+    <strong>Prompt Template Builder</strong>
     <span class="spacer"></span>
-    <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
-    <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
-
-<button id="copyBtn" class="btn sm">Copy Prompt</button>
-<button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
+<span class="ctaGroup">
+  <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
+  <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
+  <button id="copyBtn" class="btn sm">Copy Prompt</button>
+  <button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
+</span>
     <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
   </header>
 
-  <div class="wrap">
+ <div class="wrap preview-hidden" data-start="preview-hidden">
   <div class="panel" id="configPanel">
       <h2><span>Configure</span>
         <span class="spacer"></span>
-        <button id="showPreviewBtn" class="btn sm" title="Show the preview panel" hidden>Show Preview</button></h2>
+        <button id="hideConfigBtn" class="btn sm" title="Hide the config panel">Hide Config</button>
+        <button id="showPreviewBtn" class="btn sm preview-toggle primary" title="Show the preview panel" hidden>Show Preview</button>
+        </h2>
       
 <!-- Hidden until >1 template -->
-<h3 id="tabbarLabel" class="subhead" hidden>Active templates</h3>
-<div id="tabbar" class="tabs" hidden></div>
+<div class="block" id="activeTemplatesBlock" hidden>
+  <div class="block-title">
+    <h3 id="tabbarLabel" class="subhead no-pad">Active templates</h3>
+  </div>
+  <div id="tabbar" class="tabs" hidden></div>
+</div>
 
       
       <section>
-    
-    <div id="pickerHeader" style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
-    <h3 style="margin:0; font-size:14px">Pick a Template</h3>
-    <button id="pickerToggle" class="btn sm" type="button"
+    <div class="block" id="pickerBlock">
+<div id="pickerHeader" class="block-title" style="display:flex;align-items:center;gap:8px;margin:0">
+    <h3 id="pickerHeader">Pick a Template</h3>
+    <button id="pickerToggle" class="btn sm ghost-min" type="button"
           aria-expanded="true" aria-controls="pickerBody" title="Hide template picker">Hide</button>
 </div>
 <!-- Collapsible picker body (default: shown) -->
@@ -929,6 +1498,7 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
   <div id="fwHelp" class="help" aria-live="polite"></div>
 </div>
 </div>
+</div>
 
       </section>
       
@@ -938,15 +1508,16 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
       
  
       
-      <div class="help"><br>Fill in the template below. Only fill what helps. Empty fields are omitted in the prompt.</div>
+      
 
 
 
 
       <!-- Common context header + toggle -->
-<div id="commonCtxHeader" style="display:flex; align-items:center; gap:8px; margin:0 0 6px">
-  <h3 style="margin:0; font-size:14px">Common context (optional)</h3>
-  <button id="commonCtxToggle" class="btn sm" type="button" aria-expanded="false" aria-controls="commonCtxBody" title="Show common context">Show</button>
+      <div class="block" id="commonCtxBlock">
+  <div id="commonCtxHeader" class="block-title" style="display:flex; align-items:center; gap:8px; margin:0">
+  <h3 id="contextsHeader">Common context (optional)</h3>
+  <button id="commonCtxToggle" class="btn sm ghost-min" type="button" aria-expanded="false" aria-controls="commonCtxBody" title="Show common context">Show</button>
 </div>
 
 
@@ -999,16 +1570,20 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     </div>
   </div>
 </div>
-        
+    </div>    
       </section>
 
 <section>
 <!-- Fields header + toggle -->
-<div id="fieldsHeaderRow" style="display:flex;align-items:center;gap:8px;margin:0 0 6px">
-  <h3 id="fieldsHeader" style="margin:0;font-size:14px">Template fields</h3>
-  <button id="fieldsToggle" class="btn sm" type="button"
+<div class="block" id="fieldsBlock">
+  <div id="fieldsHeaderRow" class="block-title" style="display:flex;align-items:center;gap:8px;margin:0">
+  <h3 id="fieldsHeader">Template fields</h3>
+  <button id="fieldsToggle" class="btn sm ghost-min" type="button"
           aria-expanded="true" aria-controls="fieldsBody" title="Hide template fields">Hide</button>
 </div>
+
+<div class="desc" style="margin:10px 0 6px">Fill in the template below. Only fill what helps. Empty fields are omitted in the prompt.</div>
+
 
 <!-- Collapsible fields body (default: shown) -->
 <div id="fieldsBody">
@@ -1048,13 +1623,14 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
 
 
   <!-- Secondary quick actions: mirrors header actions -->
-  <div class="actionsRow actionsRow--secondary" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
+  <div class="actionsRow actionsRow--secondary ctaGroup" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px">
     <button id="copyBtn2" class="btn sm" title="Copy active tab">Copy Prompt</button>
     <button id="openBtn2" class="btn primary sm" title="Open active tab in ChatGPT">💬 Ask ChatGPT</button>
     <button id="worksheetBtn2" class="btn sm" title="Open a printable worksheet for the active template">Print Worksheet</button>
     <button id="clearBtn2" class="btn sm danger" title="Clear just this prompt">Clear</button>
   </div>
   
+  </div>
   </div>
 </section>
 
@@ -1069,7 +1645,8 @@ textarea.hasCounter{ padding-right:84px !important; } /* a tad more room for mul
     <h2>
     <span>Generated prompt</span>
     <span class="spacer"></span>
-    <button id="hidePreviewBtn" class="btn sm" title="Hide the preview panel">Hide Preview</button>
+     <button id="showConfigBtn" class="btn sm preview-toggle primary" title="Show the config panel" hidden>Show Config</button>
+    <button id="hidePreviewBtn" class="btn sm preview-toggle" title="Hide the preview panel">Hide Preview</button>
   </h2>
       <div id="masterPromptTotal" class="prompt-total prompt-total--master" aria-live="polite"></div>
 
@@ -1805,6 +2382,15 @@ function scheduleSave(){
 // UI (theme + left panel width)
 function applySavedUI(){
   const ui = _safeParse(localStorage.getItem(LS_KEYS.ui)) || {};
+  
+  // First-time defaults: preview hidden + LIGHT theme
+const isFirstTime = !localStorage.getItem(LS_KEYS.ui);
+if (isFirstTime){
+  ui.previewHidden = true;
+  ui.theme = 'light';
+  document.documentElement.setAttribute('data-theme', 'light'); // paint correctly now
+  try { localStorage.setItem(LS_KEYS.ui, JSON.stringify(ui)); } catch(_){}
+}
   if (ui.leftW){
     document.documentElement.style.setProperty('--leftW', ui.leftW);
   }
@@ -6480,8 +7066,97 @@ form.addEventListener('submit', async (e)=>{
 })();
 
 
+/* === Panel Show/Hide (mutually exclusive) =============================== */
+(function wirePanelToggles(){
+  const wrap = document.querySelector('.wrap');
+  if (!wrap) return;
+
+  // Buttons (guarded)
+  const btnHideConfig   = document.getElementById('hideConfigBtn');
+  const btnShowConfig   = document.getElementById('showConfigBtn');
+  const btnHidePreview  = document.getElementById('hidePreviewBtn');
+  const btnShowPreview  = document.getElementById('showPreviewBtn');
+
+  const UI_KEY = 'pb.v1.ui';
+  const readUI = ()=>{ try{ return JSON.parse(localStorage.getItem(UI_KEY)||'{}'); }catch(_){ return {}; } };
+  const saveUI = (patch)=>{ try{
+    const ui = readUI();
+    localStorage.setItem(UI_KEY, JSON.stringify({ ...ui, ...patch }));
+  }catch(_){} };
+
+  const isPreviewHidden = ()=> wrap.classList.contains('preview-hidden');
+  const isConfigHidden  = ()=> wrap.classList.contains('config-hidden');
+
+  function enforceAtLeastOneVisible(){
+    // Never allow both hidden. If both present, prefer preview hidden.
+    if (isPreviewHidden() && isConfigHidden()){
+      wrap.classList.remove('config-hidden');
+    }
+  }
+
+  function syncButtons(){
+    if (btnShowPreview) btnShowPreview.hidden = !isPreviewHidden();
+    if (btnHidePreview) btnHidePreview.hidden =  isPreviewHidden();
+
+    if (btnShowConfig)  btnShowConfig.hidden  = !isConfigHidden();
+    if (btnHideConfig)  btnHideConfig.hidden  =  isConfigHidden();
+  }
+
+  function showPreview(){
+    wrap.classList.remove('preview-hidden');
+    saveUI({ previewHidden:false });
+    enforceAtLeastOneVisible();
+    syncButtons();
+  }
+
+  function hidePreview(){
+    if (isConfigHidden()) wrap.classList.remove('config-hidden'); // can't hide both
+    wrap.classList.add('preview-hidden');
+    saveUI({ previewHidden:true, configHidden:false });
+    enforceAtLeastOneVisible();
+    syncButtons();
+  }
+
+  function showConfig(){
+    wrap.classList.remove('config-hidden');
+    saveUI({ configHidden:false });
+    enforceAtLeastOneVisible();
+    syncButtons();
+  }
+
+  function hideConfig(){
+    if (isPreviewHidden()) wrap.classList.remove('preview-hidden'); // can't hide both
+    wrap.classList.add('config-hidden');
+    saveUI({ configHidden:true, previewHidden:false });
+    enforceAtLeastOneVisible();
+    syncButtons();
+  }
+
+  // Wire events (only if buttons exist)
+  btnHideConfig  && btnHideConfig.addEventListener('click', hideConfig);
+  btnShowConfig  && btnShowConfig.addEventListener('click', showConfig);
+  btnHidePreview && btnHidePreview.addEventListener('click', hidePreview);
+  btnShowPreview && btnShowPreview.addEventListener('click', showPreview);
+
+  // --- Initial state on boot ---
+// --- Initial state on boot (authoritative default) ---
+(function init(){
+  // Always start with: Preview hidden, Config shown
+  wrap.classList.add('preview-hidden');
+  wrap.classList.remove('config-hidden');
+
+  // Persist this as the baseline so refreshes stay consistent
+  saveUI({ previewHidden: true, configHidden: false });
+
+  enforceAtLeastOneVisible();
+  syncButtons();
+})();
+})();
+
+
   })();
   </script>
+  
   
   <script>
 /* === Print Worksheet — full wiring (works with or without Action Modal) === */
@@ -6610,6 +7285,92 @@ function openWorksheet(){
     const templateId = window.currentTemplateId; // however you track it
     openPrintableWorksheet(templateId, 'patterns'); // or 'tasks'
   });
+</script>
+
+<script>
+// Preview/Config show–hide: bulletproof wiring
+(function(){
+  const wrap = document.querySelector('.wrap');
+  if (!wrap) return;
+
+  // Helpers
+  const isPreviewHidden = ()=> wrap.classList.contains('preview-hidden');
+  const isConfigHidden  = ()=> wrap.classList.contains('config-hidden');
+
+  const btnHidePreview = document.getElementById('hidePreviewBtn');
+  const btnShowPreview = document.getElementById('showPreviewBtn');
+  const btnHideConfig  = document.getElementById('hideConfigBtn');
+  const btnShowConfig  = document.getElementById('showConfigBtn');
+
+  function syncButtons(){
+    if (btnShowPreview) btnShowPreview.hidden = !isPreviewHidden();
+    if (btnHidePreview) btnHidePreview.hidden =  isPreviewHidden();
+    if (btnShowConfig)  btnShowConfig.hidden  = !isConfigHidden();
+    if (btnHideConfig)  btnHideConfig.hidden  =  isConfigHidden();
+  }
+
+  function showPreview(){
+    wrap.classList.remove('preview-hidden');
+    syncButtons();
+  }
+
+  function hidePreview(){
+    // never allow both hidden
+    if (isConfigHidden()) wrap.classList.remove('config-hidden');
+    wrap.classList.add('preview-hidden');
+    syncButtons();
+  }
+
+  function showConfig(){
+    wrap.classList.remove('config-hidden');
+    syncButtons();
+  }
+
+  function hideConfig(){
+    // never allow both hidden
+    if (isPreviewHidden()) wrap.classList.remove('preview-hidden');
+    wrap.classList.add('config-hidden');
+    syncButtons();
+  }
+
+  // De-dupe any old inline handlers
+  if (btnHidePreview) btnHidePreview.onclick = null;
+  if (btnShowPreview) btnShowPreview.onclick = null;
+  if (btnHideConfig)  btnHideConfig.onclick  = null;
+  if (btnShowConfig)  btnShowConfig.onclick  = null;
+
+  // Capture-phase listeners so nothing else can swallow the click
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('#hidePreviewBtn');
+    if (!t) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    hidePreview();
+  }, true);
+
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('#showPreviewBtn');
+    if (!t) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    showPreview();
+  }, true);
+
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('#hideConfigBtn');
+    if (!t) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    hideConfig();
+  }, true);
+
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('#showConfigBtn');
+    if (!t) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    showConfig();
+  }, true);
+
+  // Normalize initial state (honors the class we just added)
+  syncButtons();
+})();
 </script>
 
   
