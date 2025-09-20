@@ -1,1503 +1,1739 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>AI Prompting Glossary</title>
-<style>
-  /* THEME TOKENS */
-  :root{
-    /* Dark theme (default) */
-    --bg:#0b0f14;
-    --panel:#121821;
-    --card:#0f151d;
-    --muted:#9db0c3;
-    --text:#e7eff7;
-    --accent:#4ea1ff;
-    --chip:#1b2533;
-    --border:#1b2838;
-    --green:#2ecc71;
-    --yellow:#f1c40f;
-    --red:#e74c3c;
-    --purple:#a78bfa; /* duplicate_candidate */
-    --header-h:64px;
-    --sidebar-w:320px;
-    --radius:12px;
-    --gap:14px;
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompt Builder — start</title>
+  <meta name="color-scheme" content="light only">
+  <style>
+    :root{
+      --bg:#fafafa; --fg:#0f1720; --muted:#506070; --chip:#f3f6fa; --border:#e3e9f2;
+      --accent:#1e293b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.08); --focus-ring:#0284C7;
 
-    /* shared ui */
-    --control-bg:#0d131b;
-    --control-text:var(--text);
-    --control-border:var(--border);
-    --control-focus:var(--accent);
 
-    /* menu/dialog */
-    --menu-bg:#0d131b;
-    --menu-item-bg:#0f151d;
-    --menu-item-hover:#13202e;
-    --dialog-bg:#0c1117;
-  }
+      /* layout */
+      --wrap-w: 1120px;
+      --header-h: 60px; /* result header height */
 
-  /* Light theme overrides */
-  :root[data-theme="light"]{
-    --bg:#f7fafc;
-    --panel:#ffffff;
-    --card:#ffffff;
-    --muted:#5a6b7b;
-    --text:#121621;
-    --accent:#2563eb; /* brighter link */
-    --chip:#f1f5f9;
-    --border:#d8e0ea;
+      /* HERO slot timing + spacing */
+      --slot-slide:520ms;       /* slide duration per word */
+      --slot-hold:680ms;        /* dwell time per word */
+      --slot-pad:0.3ch;         /* left/right padding inside slot */
+      --slot-width:16ch;        /* will be overwritten by JS to “widest word” */
+      --slot-gap-r: .90ch; /* ← tune this: .32ch (tighter) … .48ch (roomier) */
+    }
 
-    --control-bg:#ffffff;
-    --control-text:#121621;
-    --control-border:#cfd8e3;
-    --control-focus:#2563eb;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    :focus-visible{ outline:2px solid var(--focus-ring, #0284C7); outline-offset:2px }
 
-    --menu-bg:#ffffff;
-    --menu-item-bg:#f8fafc;
-    --menu-item-hover:#eef2f7;
-    --dialog-bg:#ffffff;
+    /* --- rainbow glimmer from top-left --- */
+    body::before{
+      content:"";
+      position:fixed; inset:auto auto 40% 0; width:min(70vw,920px); height:min(70vh,680px);
+      pointer-events:none; z-index:-1; filter: blur(48px) saturate(115%);
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+        conic-gradient(
+          from 210deg at 0% 0%,
+          rgba(255,0,122,.22), rgba(255,141,0,.18),
+          rgba(255,214,0,.18), rgba(0,220,130,.20),
+          rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22)
+        );
+      opacity:.28;
+      animation: glimmer 14s linear infinite;
+      mask-image: radial-gradient(100% 100% at 0 0, #000 40%, transparent 80%);
+    }
+    @keyframes glimmer{
+      0%{ transform: translate3d(0,0,0) rotate(0deg); }
+      50%{ transform: translate3d(2%, -2%, 0) rotate(3deg); }
+      100%{ transform: translate3d(0,0,0) rotate(0deg); }
+    }
 
-    /* make status colors slightly darker so they stand out on light bg */
-    --green:#1e8e3e;
-    --yellow:#b38600;
-    --red:#c0392b;
-    --purple:#6c5ce7;
-  }
+    .wrap{ max-width:var(--wrap-w); margin:0 auto; padding:72px 20px 40px; display:grid; gap:24px; }
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;color:var(--text);
-    background:linear-gradient(180deg,var(--bg),var(--bg));
-    font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
-  }
+    /* ====== RESULT HEADER (for details view) ====== */
+    .resultHeader[hidden]{ display:none }
+    .resultHeader{
+      position:sticky; top:0; z-index:120;
+      backdrop-filter: blur(10px) saturate(115%);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid var(--border);
+    }
+    .resultHeader .bar{
+      max-width:var(--wrap-w); margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:12px;
+    }
+    .resultHeader .spacer{ flex:1 }
+    .resultHeader .ctas{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .resultHeader .rainbowLine{ height:3px; width:100%;
+      background:linear-gradient(90deg,#ff007a,#ff8d00,#ffd600,#00dc82,#00d2ff,#7850ff,#ff007a);
+      filter:saturate(115%); opacity:.85;
+    }
 
-  
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5ch; cursor:pointer;
+      border-radius:999px; padding:9px 14px; font-weight:600; text-decoration:none; text-transform:lowercase; user-select:none;
+      transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
+    }
+    .btn:active{ transform:translateY(1px) }
+    .btn.primary{ background:var(--fg); color:#fff; border:1px solid transparent; box-shadow:0 6px 16px rgba(15,23,32,.15); }
+    .btn.secondary{ background:#fff; color:var(--fg); border:1px solid var(--border); }
+    .btn.tertiary{ background:#fff; color:var(--muted); border:1px dashed var(--border); }
+    .btn.link{ background:transparent; border:none; color:var(--fg); padding:6px 8px; }
 
-  .app{display:grid;grid-template-rows:var(--header-h) 1fr;height:100%}
-  header{
-    display:flex;align-items:center;gap:12px;padding:0 16px;
-    background:color-mix(in srgb, var(--panel) 90%, transparent);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;
-  }
-  header h1{font-size:18px;margin:0 4px 0 0;font-weight:600;letter-spacing:.2px}
+    /* ----- hero ----- */
+    .hero{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:48px 16px 12px; }
+    .heroTitle{ margin:0; font-weight:600; letter-spacing:.3px; text-transform:lowercase; font-size: clamp(28px, 5.8vw, 56px); line-height:1.15; }
 
-  .search{flex:1;display:flex;gap:10px;align-items:center}
-  .search input[type="search"]{
-    width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--control-border);
-    background:var(--control-bg);color:var(--control-text);outline:none;
-  }
-  .search input[type="search"]:focus{border-color:var(--control-focus); box-shadow:0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent)}
-
-  /* SELECT (Sort) — now styled */
-  .select{
-    -webkit-appearance:none; appearance:none;
-    padding:10px 36px 10px 12px;
-    border-radius:10px;
-    border:1px solid var(--control-border);
-    background:var(--control-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="%23a0aec0" d="M7 10 0 0h14z"/></svg>') no-repeat right 10px center / 12px 12px;
-    color:var(--control-text);
-    font:inherit; cursor:pointer;
-  }
-  :root[data-theme="light"] .select{
-    background:var(--control-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="%232963eb" d="M7 10 0 0h14z"/></svg>') no-repeat right 10px center / 12px 12px;
-  }
-  .select:focus{border-color:var(--control-focus); box-shadow:0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent)}
-
-  .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;gap:0;height:calc(100vh - var(--header-h))}
-  .sidebar{border-right:1px solid var(--border);background:var(--panel);padding:14px;position:relative;overflow:auto}
-  .main{overflow:auto;position:relative}
-
-  .section-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:10px 0 8px}
-  .group-title{font-size:12px;color:var(--muted);margin:10px 0 6px}
-
-  .alpha-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
-  .alpha-btn{
-    border:1px solid var(--border);background:var(--chip);color:var(--text);
-    padding:6px 0;border-radius:10px;text-align:center;cursor:pointer;font-size:12px;user-select:none;
-  }
-  .alpha-btn[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 14%, transparent)}
-
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 10px;border-radius:999px;background:var(--chip);
-    border:1px solid var(--border);font-size:12px;color:var(--text);cursor:pointer;user-select:none
-  }
-  .chip .count{color:var(--muted)}
-  .chip[aria-pressed="true"]{outline:2px solid var(--accent)}
-
-  .status-row{display:flex;gap:8px;flex-wrap:wrap}
-  .pill{
-    padding:6px 10px;border-radius:999px;border:1px solid var(--border);
-    background:var(--chip);font-size:12px;color:var(--text);cursor:pointer
-  }
-  .pill[aria-pressed="true"]{outline:2px solid var(--accent);background:color-mix(in srgb, var(--accent) 14%, transparent)}
-  .pill[data-val="verified"]{color:var(--green)}
-  .pill[data-val="draft"]{color:var(--yellow)}
-  .pill[data-val="deprecated"]{color:var(--red)}
-  .pill[data-val="duplicate_candidate"]{color:var(--purple)}
-
-  .toolbar{
-    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
-    padding:12px;border-bottom:1px solid var(--border);
-    position:sticky;top:0;background:linear-gradient(180deg,var(--panel),var(--card));z-index:2;
-  }
-  .results-header{padding:10px 12px;color:var(--muted);font-size:13px;border-bottom:1px solid var(--border)}
-
-  .cards{padding:16px;display:grid;gap:12px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
-  .title-row{display:flex;gap:10px;align-items:center}
-  .title-row .spacer{flex:1}
-  .card h3{margin:0 0 4px;font-size:16px}
-  .card .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-  .mini{font-size:11px;color:var(--muted)}
-  .btn{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:8px;color:var(--text);cursor:pointer}
-  .btn-sm{padding:4px 8px;font-size:12px;border-radius:6px}
-
-  /* dialogs */
-  dialog{border:none;border-radius:14px;background:var(--dialog-bg);color:var(--text);width:min(760px,92vw);}
-  dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
-  .flex-spacer{flex:1}
-  .facet-search{width:100%;padding:8px 9px;border:1px solid var(--control-border);border-radius:8px;background:var(--control-bg);color:var(--control-text);margin-bottom:8px}
-  .facet-group{margin-bottom:18px}
-  .footer-note{color:var(--muted);font-size:12px;padding:10px 12px;border-top:1px solid var(--border)}
-
-  /* Download menu */
-  .menu{ position:relative }
-  .menu .btn{ background:var(--chip); border:1px solid var(--border); color:var(--text) }
-  .menu-pop{
-    position:absolute; right:0; top:calc(100% + 6px);
-    display:flex; flex-direction:column; gap:0;
-    background:var(--menu-bg); border:1px solid var(--border); border-radius:12px;
-    min-width:220px; padding:6px; box-shadow:0 16px 48px rgba(0,0,0,.15); z-index:50;
-  }
-  .menu-item{
-    text-align:left; background:var(--menu-item-bg); color:var(--text); border:1px solid transparent;
-    padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
-  }
-  .menu-item:hover{ background:var(--menu-item-hover); border-color:var(--border) }
-  .menu-pop[hidden]{ display:none !important } /* ensure hiding works everywhere */
-
-  /* Buttons */
-  .btn.primary{background:var(--accent);border-color:transparent;color:#061422}
-  .btn.primary:disabled{opacity:.6;cursor:not-allowed}
-
-  /* THEME TOGGLE */
-  .theme-toggle{
-    display:inline-flex; align-items:center; gap:8px; margin-left:6px;
-    border:1px solid var(--border); background:var(--chip); color:var(--text);
-    padding:6px 10px; border-radius:999px; cursor:pointer;
-  }
-  .theme-toggle .dot{
-    width:16px;height:16px;border-radius:50%;
-    background:linear-gradient(180deg,#fdd835,#fbc02d);
-    box-shadow:inset 0 -3px 6px rgba(0,0,0,.25);
-  }
-  :root[data-theme="light"] .theme-toggle .dot{ background:linear-gradient(180deg,#121621,#394554) }
-  
-/* Desktop default: hide the mobile-only toolbar */
-.mobile-topbar { display: none; }
-
-  
-  /* ======== MOBILE-ONLY LAYOUT (<= 768px) ======== */
-@media (max-width: 768px){
-  :root{
-    /* mobile top bar height; desktop --header-h remains for desktop */
-    --topbar-h: 56px;
-  }
-
-  /* Full-viewport behavior on mobile (fix iOS bottom gap) */
-  html, body { min-height: 100dvh; }
-  .app { min-height: 100dvh; display: flex; flex-direction: column; }
-
-  /* Make header a two-part sticky region: topbar (always), search row (toggle) */
-  header{
-    position: sticky; top: 0; z-index: 60;
-    background: var(--panel); border-bottom: 1px solid var(--border);
-  }
-  /* Hide desktop title and keep space clean on mobile */
-  header > h1{ display: none; }
-
-/* MOBILE TOP BAR */
-  #mobileTopBar,
-  .mobile-topbar{
-    display: flex !important; align-items: center; gap: 8px;
-    height: var(--topbar-h); padding: 0 8px;
-  }
-  .mobile-topbar .spacer{ flex: 1; }
-  .icon-btn{
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px; border-radius: 10px;
-    background: var(--chip); color: var(--text);
-    border: 1px solid var(--border); cursor: pointer;
-  }
-  .icon-btn:focus{ outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--control-focus) 25%, transparent); }
-  .icon-btn .icon{ font-size: 18px; line-height: 1; }
-
-  /* SEARCH ROW: reuse existing .search container, but default hidden on mobile */
-  header .search{
-    display: none; /* closed by default */
-    padding: 8px; gap: 8px;
-    border-top: 1px solid var(--border);
-  }
-  /* When search is open (we toggle data-search on <html>) */
-  :root[data-search="open"] header .search{ display: flex; }
-  /* Sort stays inline if room; will wrap under 360px */
-  header .search .select{ min-width: 140px; }
-
-  /* Hide “Add term” on mobile (desktop only) */
-  header a[href="./add-glossaryterm.html"]{ display: none !important; }
-
-  /* Download menu: hide the text button; keep wrapper to anchor the popover near the top bar */
-  #downloadMenuWrap{ position: fixed; right: 8px; top: calc(var(--topbar-h) - 4px); z-index: 70; }
-  #downloadBtn{ display: none; } /* icon triggers the same menu */
-
-  /* LAYOUT: collapse to 1 column; content fills remaining viewport */
-  .layout{
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-    min-height: calc(100dvh - var(--topbar-h));
-    flex: 1; /* allow the layout to grow and fill under the sticky header */
-  }
-  .main{ overflow: auto; position: relative; }
-
-  /* SIDEBAR becomes an off-canvas drawer */
-  .sidebar{
-    position: fixed; inset: 0 auto 0 0; /* top:0; left:0; height:100% */
-    width: min(86vw, 360px);
-    height: 100dvh;
-    transform: translateX(-100%);
-    transition: transform .25s ease;
-    z-index: 80;
-    box-shadow: 0 16px 48px rgba(0,0,0,.35);
-  }
-  
-  :root{ --sidebar-w-collapsed:0px; }
-
-/* Details-based facet sections */
-.facet{ border-top:1px solid var(--border); padding-top:8px; margin-top:12px; }
-.facet:first-child{ border-top:0; padding-top:0; margin-top:0; }
-.facet-summary{
-  list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
-  font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); padding:6px 0;
+    /* Slot (animated words) */
+    .slot{ display:inline-flex; position:relative; align-items:center; justify-content:center; height:var(--slot-h, 1.25em); line-height:1; vertical-align:-0.01em; width:var(--slot-width); padding:0 var(--slot-pad); overflow:hidden; }
+    .slot::after{ content:""; position:absolute; left:var(--slot-pad); right:var(--slot-pad); bottom:-0.07em; height:2px; border-radius:2px; background: linear-gradient(90deg, rgba(15,23,32,.10), rgba(15,23,32,.26), rgba(15,23,32,.10)); opacity:.38; pointer-events:none; }
+    .reel{ height:var(--slot-h, 1.25em); width:calc(100%); margin-left:-20px; overflow:hidden; mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); }
+    .slot.final .reel{ mask-image:none; -webkit-mask-image:none; }
+    .reelList{ display:flex; flex-direction:column; transform:translate3d(0,0,0); transition:transform var(--slot-slide) cubic-bezier(.2,.9,.2,1); will-change:transform; }
+    .reelList .w{ display:block; line-height:var(--slot-h, 1.25em); text-align:center; white-space:nowrap; }
+    @keyframes slotBounce{ 0%{ transform:scale(1) } 38%{ transform:scale(1.035) } 72%{ transform:scale(1) } 88%{ transform:scale(1.015) } 100%{ transform:scale(1) } }
+    .slot.final{ animation: slotBounce .55s ease-out 1; }
+    
+    
+    
+    /* ===== MANTRA REEL (below quickLinks) ===== */
+.mantra{
+  margin: clamp(36px, 6vh, 80px) auto 0;
+  max-width: var(--wrap-w);
+  padding: 0 20px;
+  text-align: center;
 }
-.facet[open] .facet-summary{ color:var(--text); }
-.facet-summary::-webkit-details-marker{ display:none; }
-.facet-count{ font-size:11px; color:var(--muted); margin-left:8px; }
-.facet-body{ margin-top:8px; }
-
-/* Sidebar collapse button */
-.sidebar-toggle{
-  position:sticky; top:0; z-index:3; width:100%;
-  margin:-14px -14px 8px; padding:10px 12px;
-  background:var(--chip); border:1px solid var(--border); border-left:0; border-right:0;
-  display:flex; align-items:center; gap:8px; cursor:pointer;
+.mantraLine{
+  --mantra-shift-x: 0px;      /* ← tweak horizontal nudge; positive = right */
+  display: inline-flex;
+  align-items: baseline;
+  gap: .6ch;
+  transform: translateX(var(--mantra-shift-x));
+  font-weight: 300;
+  letter-spacing: .3px;
+  text-transform: lowercase;
+  font-size: clamp(26px, 5.2vw, 54px);
+  line-height: 1.16;
 }
 
-/* Tiny segmented control for Tag Type */
-.seg{ display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
-.seg button{
-  border:1px solid var(--border); background:var(--chip); border-radius:999px;
-  padding:6px 10px; font-size:12px; cursor:pointer;
+/* make the words hug a bit more */
+#mantra .mantraLine{ gap:.1ch; }  /* try .2ch → .1ch */
+
+/* tighten left/right padding inside the scrolling slot */
+#mantra #mantraSlot{ --slot-pad:.12ch; }  /* try .12ch → 0 */
+
+.mantraLine .prefix{ opacity: .85; }
+
+.mantraSlot{
+  display:inline-flex; position:relative; align-items:center; justify-content:center;
+  height: var(--mantra-slot-h, 1.2em); vertical-align: -0.03em;
+  width: var(--mantra-slot-w, 30ch);     /* JS will adjust to widest phrase */
+  padding: 0 var(--slot-pad, .3ch);
+  overflow:hidden;
 }
-.seg button[aria-pressed="true"]{
-  outline:2px solid var(--accent);
-  background:color-mix(in srgb, var(--accent) 14%, transparent);
+.mantraReel{
+  height: var(--mantra-slot-h, 1.2em); width: 100%;
+  overflow:hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
-
-/* Ghost button for toolbar “Filters” */
-.btn.ghost{ background:transparent; border-color:var(--border); }
-
-  
-  :root[data-drawer="open"] .sidebar{ transform: translateX(0); }
-
-  /* Overlay to close the drawer */
-  .overlay{
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,.4);
-    z-index: 75;
-    display: none;
-  }
-  :root[data-drawer="open"] .overlay{ display: block; }
-
-  /* Prevent background scroll when drawer is open */
-  body.no-scroll{ overflow: hidden; }
-
-  /* A–Z grid: compact two rows (approximate 13+14 split) */
-  .alpha-grid{
-    display: grid;
-    grid-template-columns: repeat(13, minmax(0, 1fr));
-    gap: 6px;
-  }
-  .alpha-btn{ padding: 10px 0; }
-
-  /* Facets vertical already; ensure chips wrap comfortably */
-  .chips{ gap: 8px; }
-
-  /* Hide the desktop theme toggle button (we use an icon on mobile) */
-  #themeToggle{ display: none; }
-
-  /* Results header spacing tweaks (if present) */
-  #activeFilters{ padding: 8px; }
-}
-
-  }
-  
-  
-  /* --- Collapsible sidebar (scoped to .layout) --- */
-.layout.layout--collapsed { grid-template-columns: 0 minmax(0,1fr); }
-.layout.layout--collapsed .sidebar {
-  width: 0;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-}
-
-/* === Collapsible sidebar polish === */
-
-/* Animate the grid so main content expands smoothly */
-.layout {
-  transition: grid-template-columns 220ms ease;
-}
-
-/* Slide the sidebar itself when collapsing/expanding */
-.sidebar {
-  transition: transform 220ms ease, opacity 180ms ease;
+.mantraList{
+  display:flex; flex-direction:column;
+  transform: translate3d(0,0,0);
+  transition: transform var(--mantra-slide, 900ms) cubic-bezier(.2,.9,.2,1);
   will-change: transform;
 }
-
-/* Collapsed state:
-   - grid track shrinks
-   - sidebar slides off-screen
-   - no pointer hits while hidden */
-.layout.layout--collapsed { 
-  grid-template-columns: 0 minmax(0,1fr);
-}
-.layout.layout--collapsed .sidebar {
-  transform: translateX(-100%);
-  opacity: 0;
-  pointer-events: none;
+.mantraList .w{
+  display:block; white-space:nowrap; text-align:center;
+  line-height: var(--mantra-slot-h, 1.2em);
 }
 
-/* Prominent floating button to bring filters back.
-   Lives near where the sidebar used to be. */
-#openFiltersFloating {
+/* keep it visually consistent on small screens */
+@media (max-width: 520px){
+  .mantraLine{ font-size: clamp(22px, 6vw, 34px); }
+  .mantraSlot{ width: var(--mantra-slot-w, 24ch); }
+}
+
+    /* ----- search ----- */
+    .searchWrap{ width:min(780px, 100%); margin: 6px auto 0; position:relative; transform-origin: center; animation: popIn .56s cubic-bezier(.2, .9, .2, 1.2) both; }
+    /* keep the suggestions above anything below the search */
+.searchWrap{ z-index: 10; }
+    @keyframes popIn{ 0%{ transform: scale(.88); opacity:0 } 60%{ transform: scale(1.03); opacity:1 } 100%{ transform: scale(1) } }
+    .search{ width:100%; display:flex; align-items:center; gap:8px; padding:8px; border-radius:999px; position:relative; background: #fff; border:2px solid transparent; background-image: linear-gradient(#fff,#fff), conic-gradient(from 90deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: var(--shadow); }
+    .search input{ flex:1; font:16px/1.2 inherit; border:none; outline:none; padding:12px 14px; background:transparent; color:var(--fg); }
+    .search button{ border:none; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:600; background: var(--fg); color:#fff; text-transform:lowercase; }
+
+/* subtle rainbow glow behind the search bar */
+.search{ position:relative } /* reinforce positioning */
+.search::before{
+  content:""; position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(22px) saturate(120%);
+  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  opacity:.16;
+}
+
+.searchCtas{
+  display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px;
+}
+@media (max-width:480px){
+  .searchCtas .btn{ padding:8px 12px }
+}
+
+/* --- rainbow pop-out buttons (like quickLinks) --- */
+.searchCtas .btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5ch;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:600;
+  line-height:1;
+  background: var(--btn-bg, #fff);
+  color: var(--btn-fg, #111);
+  border: none; /* anchors will ignore this */
+  transform: translateZ(0);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    color .2s ease,
+    opacity .2s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  isolation:isolate; /* keeps pseudo ring crisp */
+}
+
+/* Animated rainbow ring on hover/focus */
+.searchCtas .btn::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  padding:2px;
+  /* animated conic rainbow */
+  --angle: 0deg;
+  background:
+    conic-gradient(from var(--angle),
+      #ff6b6b, #f8e71c, #7ed321, #50e3c2, #4a90e2, #bd10e0, #ff6b6b);
+  /* punch out the middle so it looks like a border */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity:0;
+  transition: opacity .2s ease, filter .2s ease;
+  pointer-events:none;
+  z-index:-1; /* sits behind button content but above the page */
+}
+
+/* subtle shine inside on hover */
+.searchCtas .btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background: radial-gradient(120% 120% at 50% -20%, rgba(255,255,255,.16), transparent 60%);
+  opacity:0;
+  transition: opacity .2s ease;
+  pointer-events:none;
+}
+
+@keyframes spinRainbow { to { --angle: 360deg; } }
+
+.searchCtas .btn:hover,
+.searchCtas .btn:focus-visible{
+  transform: translateY(-2px) scale(1.025);
+  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35),
+              0 4px 10px -6px rgba(0,0,0,.25);
+}
+
+.searchCtas .btn:hover::after,
+.searchCtas .btn:focus-visible::after{
+  opacity:1;
+  filter: saturate(1.15);
+  animation: spinRainbow 2.25s linear infinite;
+}
+
+.searchCtas .btn:hover::before,
+.searchCtas .btn:focus-visible::before{
+  opacity:1;
+}
+
+/* press feedback */
+.searchCtas .btn:active{
+  transform: translateY(0) scale(.99);
+  box-shadow: 0 8px 18px -12px rgba(0,0,0,.35);
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .searchCtas .btn,
+  .searchCtas .btn::after{
+    transition: none;
+    animation: none;
+  }
+}
+
+
+
+/* hint under search */
+.hint{
+  margin-top:10px; font-size:14px; color:var(--muted); opacity:.9; text-align:center;
+}
+
+/* quick link cards */
+.quickLinks{
+  width:min(980px,100%); margin:16px auto 0;
+  display:grid; gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.tile{
+  position:relative; display:block; padding:18px 16px 52px;
+  border-radius:20px; background:#fff; color:inherit; text-decoration:none;
+  border:1px solid var(--border); box-shadow: var(--shadow); overflow:hidden;
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.tile:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 12px 44px rgba(0,0,0,.10); }
+.tile::before{
+  content:""; position:absolute; inset:-12px; z-index:-1; border-radius:24px;
+  filter: blur(26px) saturate(120%);
+  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  opacity:.18; transition: opacity .2s ease;
+}
+.tile:hover::before{ opacity:.28 }
+.tile h4{ margin:0 0 6px; font-size:16px; font-weight:700; text-transform:lowercase; letter-spacing:.2px; }
+.tile p{ margin:0; font-size:14px; color:var(--muted); }
+.tile .cta{
+  position:absolute; right:12px; bottom:12px; padding:8px 12px;
+  border-radius:999px; border:1px solid var(--border); background:#fff;
+  font-weight:600; text-transform:lowercase;
+}
+.tile:hover .cta{ background:var(--fg); color:#fff; border-color:transparent; }
+
+
+.quickLinks{ position:relative; z-index:0; }
+
+    /* typeahead */
+    .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index:1000; /* was 50 */
+ }
+    .ta[hidden]{ display:none }
+    .ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid #f1f5fb; }
+    .ta .item:last-child{ border-bottom:none }
+    .ta .item:hover, .ta .item.active{ background:#f7fafc }
+    .ta .use{ font-size:14px }
+    .ta .sub{ font-size:12px; color:var(--muted); display:none }
+
+    /* ----- faux scanning ----- */
+    .scan{ position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; background:#fff; }
+    .scan .roll{ position:relative; width:100vw; height:100vh; overflow:hidden; background:#fff; mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); }
+    .scan ul{ position:absolute; inset:0; list-style:none; margin:0; padding:24px clamp(22px, 6vw, 90px) 24px clamp(34px, 9vw, 140px); display:flex; flex-direction:column; gap:10px; align-items:flex-start; text-align:left; font-family: ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif; font-weight:600; letter-spacing:.2px; text-transform:lowercase; font-stretch: condensed; will-change: transform; }
+    .scan li{ font-size: clamp(16px, 2.2vw, 26px); color:#0c1220; opacity:.45; transition:transform .18s ease, opacity .18s ease; max-width: 90vw; }
+    .scan li.hit{ color:#000; opacity:1; transform: scale(1.06); text-decoration:underline; text-underline-offset: .12em; will-change: transform; }
+    .scan .roll::before, .scan .roll::after{ content:""; position:absolute; top:50%; transform: translateY(-50%); height: 2.2em; width:2px; pointer-events:none; background: linear-gradient(to bottom, rgba(15,23,32,0), rgba(15,23,32,.28) 50%, rgba(15,23,32,0) ); filter: blur(.2px); }
+    .scan .roll::before{ left: 16%; }
+    .scan .roll::after{ right: 16%; }
+    .centerBand{ position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:3.0em; pointer-events:none; background: linear-gradient(90deg, rgba(255,0,122,.12), rgba(255,141,0,.10), rgba(255,214,0,.10), rgba(0,220,130,.12), rgba(0,210,255,.12), rgba(120,80,255,.14)); mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); filter: saturate(120%); }
+    .centerBand::after{ content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); mix-blend-mode: overlay; animation: centerSweep 2600ms ease-in-out infinite alternate; }
+    @keyframes centerSweep{ 0%{ transform: translateX(-10%) } 100%{ transform: translateX(10%) } }
+    .scan::before{ content:""; position:fixed; inset:auto auto 0 0; width:min(90vw,1200px); height:min(70vh,780px); pointer-events:none; opacity:.18; filter: blur(36px) saturate(125%); background: radial-gradient(110% 110% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%), conic-gradient( from 210deg at 0% 0%, rgba(255,0,122,.22), rgba(255,141,0,.18), rgba(255,214,0,.18), rgba(0,220,130,.20), rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22) ); animation: scanGlimmer 16s linear infinite; }
+    @keyframes scanGlimmer{ 0%{ transform: translate3d(0,0,0) rotate(0deg) } 50%{ transform: translate3d(2%,-1.5%,0) rotate(3deg) } 100%{ transform: translate3d(0,0,0) rotate(0deg) } }
+
+    /* ----- details card ----- */
+    .details[hidden]{ display:none }
+    .details{ position:relative; }
+    .details::before{ content:""; position:fixed; inset:auto -15vw 8% -15vw; height:52vh; background: conic-gradient(from 220deg, rgba(255,0,122,.10), rgba(255,141,0,.08), rgba(255,214,0,.08), rgba(0,220,130,.10), rgba(0,210,255,.10), rgba(120,80,255,.12), rgba(255,0,122,.10)); filter: blur(70px) saturate(115%); opacity:.32; pointer-events:none; z-index:-1; }
+
+    .card{ display:grid; grid-template-columns: 1.3fr .9fr; gap:28px; align-items:flex-start; border:1px solid var(--border); border-radius:24px; background:#fff; box-shadow: var(--shadow); padding:24px; }
+    @media (max-width: 900px){ .card{ grid-template-columns: 1fr; } }
+
+    .left h2{ margin:4px 0 6px; text-transform:lowercase; font-size: clamp(24px, 3.4vw, 34px); letter-spacing:.2px; }
+    .meta{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 16px; }
+    .chip{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:var(--chip); font-size:12px }
+
+    .block + .block{ margin-top:18px }
+    .block h3{ margin:.4rem 0 .4rem; font-size:14px; letter-spacing:.12px; color:#101828; text-transform:lowercase; }
+    .uc, .booster{ background:#f8fbff; border:1px dashed #e6eef8; padding:10px 12px; border-radius:12px; font-size:13px; }
+
+    .fields .row + .row{ margin-top:10px }
+    .row label{ display:block; font-size:12px; color:var(--muted); margin-bottom:4px; text-transform:lowercase }
+    .row .fake{ width:100%; padding:12px 14px; border-radius:12px; border:1px dashed var(--border); background:#f9fafb; color:#0f1720; font-size:14px; }
+
+    /* Right column stickiness for taller screens */
+    @media (min-width: 901px){ .right{ position:sticky; top: calc(var(--header-h) + 18px); } }
+
+    /* Footer actions inside card */
+    .actions.footer{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
+    .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
+  
+  
+  /* =========================
+   SLICE 1 — Mobile Layout Skeleton
+   ========================= */
+
+/* a) Skip link: visible when tabbed, hidden visually otherwise */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position:fixed; left:16px; top:14px; width:auto; height:auto; padding:10px 14px;
+  background:#fff; color:var(--fg); border:2px solid var(--focus-ring); border-radius:12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  z-index: 10000;
+}
+
+/* b) Mobile scaffold: search + hint + 3 primary buttons under the hint */
+
+/* Ensure input and button meet 44x44 min touch size */
+.search input{ min-height:48px; }
+.search button{ min-height:48px; }
+
+/* Buttons under the hint: grid rules per Slice 1 spec */
+@media (max-width:420px){
+  .searchCtas{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .searchCtas .btn{
+    width:100%;
+    min-height:48px;
+  }
+}
+
+@media (min-width:421px) and (max-width:720px){
+  .searchCtas{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .searchCtas .btn{
+    min-height:48px;
+  }
+}
+
+/* Keep overall mobile container padding sane */
+@media (max-width:720px){
+  .wrap{ padding-left:16px; padding-right:16px; }
+}
+
+/* c) Disable hover-only affordances on touch; prefer press/focus states */
+@media (hover: none) and (pointer: coarse){
+  /* Search CTA buttons: remove hover lift/animation; keep press/focus */
+  .searchCtas .btn:hover,
+  .searchCtas .btn:hover::before,
+  .searchCtas .btn:hover::after{
+    transform:none; box-shadow:none; opacity:1; animation:none;
+  }
+  /* Make press/focus clearly visible */
+  .searchCtas .btn:active{
+    transform: translateY(0) scale(.99);
+    box-shadow: 0 8px 18px -12px rgba(0,0,0,.28);
+  }
+  .searchCtas .btn:focus-visible{
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-ring) inset, 0 0 0 3px rgba(2,132,199,.15);
+  }
+
+  /* Quick-link tiles: kill heavy hover lifts on touch */
+  .tile:hover{ transform:none; box-shadow: var(--shadow); }
+  .tile:hover::before{ opacity:.18; }
+}
+
+/* d) Hint text remains readable and compact on XS screens */
+@media (max-width:360px){
+  .hint{ font-size:13px; }
+}
+
+/* e) Keep the search cluster centered and full-width within its max */
+@media (max-width:720px){
+  .searchWrap{ width:100%; max-width:780px; }
+}
+
+/* Slice 1: mobile spacing rhythm */
+@media (max-width: 720px){
+  .wrap{ padding-left:16px; padding-right:16px; }
+  .search input{ margin-bottom:16px; }
+  .hint{ margin-bottom:16px; }
+  .searchCtas{ margin-bottom:24px; }
+}
+
+/* =========================
+   SLICE 2 — Mobile Suggestions Overlay (desktop-safe)
+   Everything is gated under html.is-mobile
+   ========================= */
+
+/* Lock page scroll when overlay is open */
+html.is-mobile body.scroll-locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Dim background */
+html.is-mobile .suggestions-scrim {
   position: fixed;
-  left: 12px;
-  /* If your header is taller/shorter, tweak the top calc */
-  top: calc(64px + 12px);
-  z-index: 10;
-  display: none;          /* only shows when collapsed */
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  background: var(--chip);
-  border-radius: 999px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
-}
-.layout.layout--collapsed #openFiltersFloating {
-  display: inline-flex;
+  inset: 0;
+  background: rgba(15,23,32,.36);
+  backdrop-filter: saturate(120%) blur(1.5px);
+  z-index: 2000; /* above sticky header (120) and old .ta (1000) */
 }
 
-/* Optional: make the toolbar button read nicer too */
-#showSidebar { font-weight: 600; }
+/* Overlay box that will hold #ta */
+html.is-mobile .suggestions-overlay {
+  position: fixed; /* JS sets top/left/width/max-height */
+  background: var(--surface-1, #fff);
+  border-radius: var(--radius, 16px);
+  box-shadow: 0 24px 64px rgba(0,0,0,.18);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 2001;
+  max-height: 60vh; /* JS also sets this as a precise value */
+}
 
+/* When #ta is inside the overlay, neutralize its desktop absolute layout */
+html.is-mobile .suggestions-overlay #ta {
+  position: static;
+  left: auto; right: auto; top: auto; margin-top: 0;
+  max-height: inherit;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
 
-</style>
-
-
+  
+  </style>
+  
+  
 </head>
 <body>
-<div class="app">
-  <header>
-  
-      <!-- MOBILE TOP BAR (icons only, mobile-only via CSS) -->
-    <div id="mobileTopBar" class="mobile-topbar" role="toolbar" aria-label="Mobile actions">
-      <!-- Left: Hamburger to open filters drawer -->
-      <button id="hamburgerBtn" class="icon-btn" aria-label="Open filters" aria-controls="sidebar" aria-expanded="false">
-        <!-- simple hamburger icon -->
-        <span class="icon" aria-hidden="true">☰</span>
-      </button>
+<a class="skip-link" href="#main">skip to content</a>
 
-      <div class="spacer" aria-hidden="true"></div>
 
-      <!-- Center/Right: theme, search, download -->
-      <button id="themeIconBtn" class="icon-btn" aria-label="Toggle theme">
-        <span class="icon" aria-hidden="true">◐</span>
-      </button>
-
-      <button id="searchIconBtn" class="icon-btn" aria-label="Search">
-        <span class="icon" aria-hidden="true">🔍</span>
-      </button>
-
-      <button id="downloadIconBtn" class="icon-btn" aria-label="Download">
-        <span class="icon" aria-hidden="true">⬇</span>
-      </button>
+  <!-- RESULTS HEADER (appears only on the results page) -->
+  <header id="resultHeader" class="resultHeader" hidden>
+    <div class="bar">
+      <button id="back" class="btn link" type="button">← back to search</button>
+      <div class="spacer"></div>
+      <nav class="ctas">
+        <a id="openGlossary" class="btn tertiary" href="#">open in templates glossary</a>
+        <a id="printWorksheet" class="btn secondary" href="#">open worksheet</a>
+        <a id="openBuilder" class="btn primary" href="#">open in prompt builder</a>
+      </nav>
     </div>
-    <!-- /MOBILE TOP BAR -->
-
-    <h1>AI Prompting Glossary</h1>
-    <div class="search">
-      <input id="q" type="search" placeholder='Search… (try: tag:topic:prompting, category:"conversational design")'/>
-  <select id="sort" class="select" aria-label="Sort results">
-  <option value="az">Term (A → Z)</option>
-  <option value="za">Term (Z → A)</option>
-  <option value="status">Status → Term</option>
-  <option value="category">First category → Term</option>
-  <option value="slug">Slug (A → Z)</option>
-</select>
-
-    </div>
-    
-        <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-pressed="false">
-  <span class="dot" aria-hidden="true"></span>
-  <span class="label">Light</span>
-</button>
-    
-    <a class="btn" href="./add-glossaryterm.html">+ Add term</a>
-
-<a class="btn" href="./prompt-builder.html" title="Open Prompt Builder">Prompt Builder</a>
-
-
-
-    <!-- Download menu -->
-    <div class="menu" id="downloadMenuWrap">
-      <button id="downloadBtn" class="btn" aria-haspopup="true" aria-expanded="false">Download ▾</button>
-      <div id="downloadMenu" class="menu-pop" hidden>
-        <button class="menu-item" data-format="json">Download JSON</button>
-        <button class="menu-item" data-format="js">Download JS</button>
-        <button class="menu-item" data-format="csv">Download CSV</button>
-        <button class="menu-item" data-format="md">Download Markdown</button>
-        <button class="menu-item" data-format="txt">Download Text</button>
-      </div>
-    </div>
-
-    <!-- Export options dialog -->
-    <dialog id="exportDlg">
-      <form method="dialog" id="exportForm" style="margin:0;min-width:min(92vw,560px)">
-        <header style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #1b2838">
-          <h3 style="margin:0;font-size:18px">Download options</h3>
-          <span style="flex:1"></span>
-          <button class="btn" value="cancel">Cancel</button>
-        </header>
-
-        <section style="padding:16px;display:grid;gap:14px">
-          <div>
-            <div class="section-title">Scope</div>
-            <label style="display:flex;gap:8px;align-items:center;margin:.35rem 0">
-              <input type="radio" name="scope" value="current" checked>
-              <span>Current results (respect active filters/search)</span>
-            </label>
-            <label style="display:flex;gap:8px;align-items:center;margin:.35rem 0">
-              <input type="radio" name="scope" value="all">
-              <span>Entire glossary (ignore filters)</span>
-            </label>
-          </div>
-
-          <div>
-            <div class="section-title">Sort by</div>
-            <select id="sortMode" class="btn" style="width:100%">
-              <option value="term_az">Term (A → Z)</option>
-              <option value="term_za">Term (Z → A)</option>
-              <option value="status_term">Status → Term</option>
-              <option value="category_term">First category → Term</option>
-              <option value="slug">Slug</option>
-            </select>
-            <div class="mini" style="margin-top:6px;color:#9db0c3">Sorting applies to the downloaded file only; on-screen order is unchanged.</div>
-          </div>
-        </section>
-
-        <footer style="display:flex;gap:10px;justify-content:flex-end;padding:14px 16px;border-top:1px solid #1b2838">
-          <button class="btn" value="cancel">Cancel</button>
-          <button id="dlgExportBtn" class="btn primary" value="ok">Export</button>
-        </footer>
-      </form>
-    </dialog>
+    <div class="rainbowLine"></div>
   </header>
-  
-    <!-- Drawer overlay (click to close), mobile-only via CSS -->
-  <div id="drawerOverlay" class="overlay" hidden></div>
 
+  <main id="main" class="wrap">
 
-  <div class="layout">
-    <aside class="sidebar" id="sidebar">
-    <button id="toggleSidebar" class="btn" type="button" aria-expanded="true" aria-controls="sidebar">
-  ⟨ Collapse filters
-</button>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <h1 class="heroTitle">
+        start building your 
+        <span id="slot" class="slot" aria-live="polite" aria-atomic="true">
+          <span id="reel" class="reel">
+            <span id="reelList" class="reelList"></span>
+          </span>
+       </span>  
+      </h1>
 
-      <div class="facet-group">
-        <div class="section-title">A–Z</div>
-        <div id="alpha" class="alpha-grid"></div>
-      </div>
-
-      <div class="facet-group">
-        <div class="section-title">Status</div>
-        <div class="status-row" id="statusRow">
-          <button class="pill" data-val="all" aria-pressed="true">All</button>
-          <button class="pill" data-val="verified">Verified</button>
-          <button class="pill" data-val="draft">Draft</button>
-          <button class="pill" data-val="deprecated">Deprecated</button>
-          <button class="pill" data-val="duplicate_candidate">Duplicates</button>
+      <div class="searchWrap">
+        <div class="search">
+          <input id="q" type="text" placeholder="type what you’re trying to build…" autocomplete="off" />
+          <button id="go" type="button" title="Search">search</button>
         </div>
+        <div id="ta" class="ta" role="listbox" hidden></div>
+        <p class="hint">type what you want to make in everyday words — we’ll shape it into a clear ai prompt.</p>
       </div>
-
-      <div class="facet-group">
-        <div class="section-title">Categories</div>
-        <input class="facet-search" id="catFilter" placeholder="Filter categories…"/>
-        <div id="cats" class="chips"></div>
-      </div>
-
-      <div class="facet-group">
-        <div class="section-title">Tags</div>
-        <input class="facet-search" id="tagFilter" placeholder="Filter tags…"/>
-        <div id="tags"></div>
-      </div>
-
-      <div class="footer-note">Click chips on cards to filter by that category/tag.</div>
-    </aside>
-
-    <main class="main">
-    <!-- Floating restore button: only visible when the sidebar is collapsed -->
-<button id="openFiltersFloating" type="button">Open filters</button>
-
-      <div class="toolbar">
       
-        <div id="activeFilters" class="chips"></div>
-        <span class="flex-spacer"></span>
-        <button id="clear" class="btn">Clear filters</button>
-      </div>
-
-      <div class="results-header" id="resultInfo">Loading…</div>
-      <div class="cards" id="cards"></div>
-    </main>
-  </div>
+      <div class="searchCtas" aria-label="quick search actions">
+  <a id="btnAdv" class="btn tertiary" href="./glossary/templates-glossary.html">advanced search</a>
+  <!-- You can rename to “where do I start?” later; wiring stays the same -->
+  <button id="btnHelp" class="btn secondary" type="button" title="Pick a helper & use-case">help me</button>
+  <button id="btnLucky" class="btn secondary" type="button" title="Random use-case from everything">i’m feeling lucky</button>
 </div>
 
-<!-- Detail modal -->
-<dialog id="detail">
-  <article style="padding:16px 18px;">
-    <header style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-      <h2 id="dTitle" style="margin:0;font-size:20px;"></h2>
-      <span id="dStatus" class="pill" data-val=""></span>
-      <span class="flex-spacer"></span>
-      <form method="dialog"><button class="btn">Close</button></form>
-    </header>
-    <div id="dAliases" class="mini"></div>
-    <div id="dBody" style="margin-top:10px"></div>
-    <div id="dChips" class="meta"></div>
-    <div id="dSources" style="margin-top:12px"></div>
-  </article>
-</dialog>
+      
+      <div class="quickLinks">
+  <!-- If your full glossary lives on a different page than this index,
+       change the href below to that page. -->
+  <a class="tile" href="./glossary/index.html" aria-label="open full ai glossary">
+    <h4>full ai glossary</h4>
+    <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
+    <br>
+    <span class="cta">open glossary</span>
+  </a>
 
-<!-- Ask-ChatGPT helper modal -->
-<dialog id="gptHelp">
-  <form method="dialog" style="margin:0">
-    <h3 style="margin:0 0 8px;">Prompt copied ✓</h3>
-    <p style="margin:0 0 10px; color:var(--muted)">
-      A new tab opened with <strong>Prompt Engineering Educator</strong>. If the message isn’t prefilled there,
-      just <strong>paste</strong> (Ctrl/⌘+V) into the chat box.
-    </p>
-    <textarea id="gptHelpText" style="width:100%;height:140px;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;padding:10px" readonly></textarea>
-    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
-      <button type="button" class="btn" id="copyAgain">Copy again</button>
-      <button class="btn primary">Got it</button>
-    </div>
-  </form>
-</dialog>
+  <a class="tile" href="./glossary/templates-glossary.html" aria-label="open template glossary">
+    <h4>template glossary</h4>
+    <p>browse prompt-making templates with one-line summaries and examples.</p>
+    <span class="cta">open templates</span>
+  </a>
+
+  <a class="tile" href="./glossary/prompt-builder.html" aria-label="open prompt builder config">
+    <h4>prompt builder config</h4>
+    <p>power-user controls for building and saving prompts with full options.</p>
+    <span class="cta">open builder</span>
+  </a>
+
+  <a class="tile" href="./glossary/startup-wizard.html" aria-label="start the setup wizard">
+    <h4>startup wizard (alpha)</h4>
+    <p>a lighter, guided flow to set things up without the overwhelm.</p>
+    <span class="cta">start wizard</span>
+  </a>
+</div>
+
+<!-- MANTRA REEL -->
+<section id="mantra" class="mantra" aria-label="prompting mantras">
+  <div class="mantraLine">
+    <span id="mantraSlot" class="mantraSlot" aria-live="polite" aria-atomic="true">
+      <span id="mantraReel" class="mantraReel">
+        <span id="mantraList" class="mantraList"></span>
+      </span>
+    </span>
+  </div>
+</section>
 
 
-<!-- Ensure the global exists before loading data -->
-<script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
-<script src="glossary.data.js"></script>
+    </section>
 
-<script>
-/* ============= MAIN APP ============= */
-(function(){
-  const G = Array.isArray(globalThis.GLOSSARY)
-    ? globalThis.GLOSSARY
-    : (globalThis.GlossaryAPI?.all?.() ?? []);
+    <!-- FAUX SCANNING -->
+    <section class="scan" id="scan">
+      <div class="roll">
+        <ul id="rollList"></ul>
+      </div>
+    </section>
 
-  // helpers
-  const norm = s => (s||'').toString().trim().toLowerCase();
-  const by = (k,dir=1) => (a,b)=> (a[k]||'').localeCompare(b[k]||'')*dir;
-  const titleCase = s => s ? s.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase()) : s;
+    <!-- DETAILS -->
+    <section class="details" id="details" hidden>
+      <div class="card">
+        <div class="left">
+          <h2 id="tplTitle">template</h2>
+          <div class="meta" id="meta"></div>
 
-  // parse tag "prefix:value" -> friendly display
-  function splitTag(tag){
-    const raw = String(tag||'');
-    const i = raw.indexOf(':');
-    if(i===-1) return {prefix:'other', value:raw, displayValue:titleCase(raw), raw};
-    const prefix = raw.slice(0,i) || 'other';
-    const value = raw.slice(i+1) || '';
-    return {prefix:prefix.toLowerCase(), value, displayValue:titleCase(value), raw};
-  }
+          <div class="block">
+            <h3>definition</h3>
+            <div id="def" class="uc"></div>
+          </div>
+
+          <div class="block">
+            <h3>use-cases</h3>
+            <div id="useCases"></div>
+          </div>
+
+          <div class="block" id="boostersBlock" hidden>
+            <h3>boosters</h3>
+            <div id="boosters"></div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="actions footer">
+            <button id="copyPrompt" class="btn secondary" type="button">copy prompt</button>
+            <button id="ask" class="btn primary" type="button">ask chatgpt</button>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="block">
+            <h3>fields</h3>
+            <div class="fields" id="fields"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- datasets -->
   
-  // treat tags like "Template", "template", or "anything:template" as a template
-function hasTemplateTag(tags){
-  return (tags||[]).some(t=>{
-    const s = norm(t);
-    if (s === 'template') return true;
-    if (s.endsWith(':template')) return true; // supports key:value style tags
-    // fall back: "Template" as the value after the colon
-    const { value } = splitTag(t);
-    return norm(value) === 'template';
-  });
-}
-
-
-  // label + counts
-  const catLabelByKey = new Map(), tagLabelByKey = new Map();
-  const catCount = new Map(),       tagCount = new Map();
-  for (const it of G){
-    for (const c of (it.categories||[])){
-      const key = norm(c);
-      catLabelByKey.set(key, catLabelByKey.get(key)||c);
-      catCount.set(key,(catCount.get(key)||0)+1);
-    }
-    for (const t of (it.tags||[])){
-      const key = norm(t);
-      tagLabelByKey.set(key, tagLabelByKey.get(key)||t);
-      tagCount.set(key,(tagCount.get(key)||0)+1);
-    }
-  }
-
-  // state
-  const state = { q:'', sort:'az', alpha:'', status:'all', cats:new Set(), tags:new Set() };
-
-  // dom
-  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-  const cardsEl=$('#cards'), resultInfo=$('#resultInfo'), detail=$('#detail');
-  
-  // --- Collapsible sidebar (scoped to .layout) ---
-const layoutEl  = document.querySelector('.layout');
-const sidebarEl = document.getElementById('sidebar');
-const toggleBtn = document.getElementById('toggleSidebar');
-const showBtn   = document.getElementById('showSidebar');
-const openFloatBtn = document.getElementById('openFiltersFloating');
-const COLLAPSE_KEY = 'ui.sidebarCollapsed';
-
-function applyCollapsed(collapsed){
-  if (!layoutEl) return;
-  layoutEl.classList.toggle('layout--collapsed', collapsed);
-  if (toggleBtn) toggleBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-  if (showBtn) showBtn.hidden = !collapsed;
-  if (openFloatBtn) openFloatBtn.hidden = !collapsed;
-}
-
-// initial state from localStorage
-applyCollapsed(localStorage.getItem(COLLAPSE_KEY) === '1');
-
-// click handlers
-toggleBtn?.addEventListener('click', ()=>{
-  const collapsed = !layoutEl.classList.contains('layout--collapsed');
-  localStorage.setItem(COLLAPSE_KEY, collapsed ? '1' : '0');
-  applyCollapsed(collapsed);
-});
-
-showBtn?.addEventListener('click', ()=>{
-  localStorage.setItem(COLLAPSE_KEY, '0');
-  applyCollapsed(false);
-  // optional focus target; safe even if not focusable
-  sidebarEl?.focus();
-});
-
-openFloatBtn?.addEventListener('click', ()=>{
-  localStorage.setItem(COLLAPSE_KEY, '0');
-  applyCollapsed(false);
-  sidebarEl?.focus();
-});
-
-
-  
-  
-  const d={ title:$('#dTitle'), status:$('#dStatus'), aliases:$('#dAliases'), body:$('#dBody'), chips:$('#dChips'), sources:$('#dSources') };
-
-  // A–Z buttons
-  const alphaEl = $('#alpha'); ['#',...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].forEach(L=>{
-    const b=document.createElement('button');
-    b.className='alpha-btn'; b.textContent=L; b.dataset.alpha=L; b.setAttribute('aria-pressed','false');
-    b.addEventListener('click',()=>{
-      state.alpha = (state.alpha===L?'':L);
-      $$('#alpha .alpha-btn').forEach(x=>x.setAttribute('aria-pressed', x.dataset.alpha===state.alpha?'true':'false'));
-      render();
-    });
-    alphaEl.appendChild(b);
-  });
-
-  // Status filter
-  $('#statusRow').addEventListener('click', e=>{
-    const btn=e.target.closest('.pill'); if(!btn) return;
-    state.status = btn.dataset.val;
-    $$('#statusRow .pill').forEach(x=>x.setAttribute('aria-pressed', x===btn?'true':'false'));
-    render();
-  });
-
-  // Category & Tag facets
-  function renderFacetChips(container, itemsMap, selectedSet, filterText=''){
-    container.innerHTML='';
-    const entries=[...itemsMap.entries()]
-      .filter(([k])=>!filterText || itemsMap.get(k).toLowerCase().includes(filterText.toLowerCase()))
-      .sort((a,b)=> itemsMap.get(a[0]).localeCompare(itemsMap.get(b[0])));
-    for (const [key,label] of entries){
-      const count=catCount.get(key)||0;
-      const el=document.createElement('button'); el.className='chip';
-      el.setAttribute('aria-pressed', selectedSet.has(key)?'true':'false');
-      el.innerHTML=`<span>${label}</span><span class="count">(${count})</span>`;
-      el.addEventListener('click',()=>{
-        if(selectedSet.has(key)) selectedSet.delete(key); else selectedSet.add(key);
-        renderFacets(); render();
-      });
-      container.appendChild(el);
-    }
-  }
-
-  const TAG_GROUP_ORDER = ['phase','topic','status','other'];
-  function renderTagGroups(){
-    const wrap = $('#tags');
-    const filterText = ($('#tagFilter').value||'').toLowerCase();
-    wrap.innerHTML='';
-    const groups = new Map();
-    for(const [key, rawLabel] of tagLabelByKey.entries()){
-      const {prefix, displayValue} = splitTag(rawLabel);
-      if(filterText && !displayValue.toLowerCase().includes(filterText) && !prefix.includes(filterText)) continue;
-      const arr = groups.get(prefix) || [];
-      arr.push({ key, display: displayValue, count: tagCount.get(key)||0 });
-      groups.set(prefix, arr);
-    }
-    const sortedPrefixes = [...groups.keys()].sort((a,b)=>{
-      const ia = TAG_GROUP_ORDER.indexOf(a); const ib = TAG_GROUP_ORDER.indexOf(b);
-      return (ia===-1?999:ia) - (ib===-1?999:ib) || a.localeCompare(b);
-    });
-    for(const prefix of sortedPrefixes){
-      const items = groups.get(prefix).sort((a,b)=> a.display.localeCompare(b.display));
-      const title = document.createElement('div');
-      title.className='group-title';
-      title.textContent = titleCase(prefix);
-      wrap.appendChild(title);
-      const row = document.createElement('div'); row.className='chips';
-      for(const {key,display,count} of items){
-        const el=document.createElement('button'); el.className='chip';
-        el.setAttribute('aria-pressed', state.tags.has(key)?'true':'false');
-        el.title = tagLabelByKey.get(key) || display;
-        el.dataset.key = key;
-        el.innerHTML = `<span>${display}</span><span class="count">(${count})</span>`;
-        el.addEventListener('click',()=>{
-          if(state.tags.has(key)) state.tags.delete(key); else state.tags.add(key);
-          renderFacets(); render();
-        });
-        row.appendChild(el);
-      }
-      wrap.appendChild(row);
-    }
-  }
-
-  function renderFacets(){
-    renderFacetChips($('#cats'), catLabelByKey, state.cats, $('#catFilter').value);
-    renderTagGroups();
-
-    const wrap=$('#activeFilters'); wrap.innerHTML='';
-    const add=(kind,key,label)=>{
-      const b=document.createElement('span'); b.className='chip';
-      b.innerHTML=`${label} <span class="count mini">${kind}</span>`;
-      b.title=`Remove ${label}`;
-      b.addEventListener('click',()=>{
-        (kind==='category'?state.cats:state.tags).delete(key);
-        renderFacets(); render();
-      });
-      wrap.appendChild(b);
-    };
-
-    for(const k of state.cats) add('category',k,catLabelByKey.get(k)||k);
-    for(const k of state.tags){
-      const raw = tagLabelByKey.get(k) || k;
-      const {prefix, displayValue} = splitTag(raw);
-      add(titleCase(prefix), k, `${titleCase(prefix)}: ${displayValue}`);
-    }
-
-    if(!state.cats.size && !state.tags.size && !state.alpha && state.status==='all' && !state.q){
-      const span=document.createElement('span'); span.className='mini'; span.textContent='No filters active';
-      wrap.appendChild(span);
-    }
-  }
-
-  // Clear all filters
-  $('#catFilter').addEventListener('input', ()=>renderFacets());
-  $('#tagFilter').addEventListener('input', ()=>renderFacets());
-  $('#clear').addEventListener('click', ()=>{
-    state.q=''; $('#q').value='';
-    state.alpha=''; $$('#alpha .alpha-btn').forEach(b=>b.setAttribute('aria-pressed','false'));
-    state.status='all'; $$('#statusRow .pill').forEach((b,i)=>b.setAttribute('aria-pressed', i===0?'true':'false'));
-    state.cats.clear(); state.tags.clear();
-    renderFacets(); render();
-  });
-
-  // search/sort
-  $('#q').addEventListener('input', e=>{ state.q=e.target.value; render(); });
-  $('#sort').addEventListener('change', e=>{ state.sort=e.target.value; render(); });
-
-  // state & cached results
-  let lastResults = [];
-
-  // filtering
-  function passesFilters(it){
-    if(state.status!=='all' && norm(it.status)!==state.status) return false;
-    if(state.alpha){
-      const ch = it.term?.[0] || '';
-      if(state.alpha==='#'){ if(/[A-Za-z]/.test(ch)) return false; }
-      else if (norm(ch)!==norm(state.alpha)) return false;
-    }
-    if(state.cats.size){
-      const keys=(it.categories||[]).map(norm);
-      if(!keys.some(k=>state.cats.has(k))) return false;
-    }
-    if(state.tags.size){
-      const keys=(it.tags||[]).map(norm);
-      if(!keys.some(k=>state.tags.has(k))) return false;
-    }
-    if(state.q){
-      const q=state.q.trim();
-      const fieldRegex=/\b(category|tag|status):"([^"]+)"|\b(category|tag|status):([^ \t]+)\b/gi;
-      let m, ok=true; const reqCats=new Set(), reqTags=new Set(); let reqStatus=null;
-      while((m=fieldRegex.exec(q))){
-        const key=(m[1]||m[3])?.toLowerCase(); const val=norm(m[2]||m[4]||'');
-        if(key==='category') reqCats.add(val); else if(key==='tag') reqTags.add(val); else if(key==='status') reqStatus=val;
-      }
-      if(reqStatus && norm(it.status)!==reqStatus) ok=false;
-      if(reqCats.size){ const keys=(it.categories||[]).map(norm); if(![...reqCats].some(k=>keys.includes(k))) ok=false; }
-      if(reqTags.size){ const keys=(it.tags||[]).map(norm); if(![...reqTags].some(k=>keys.includes(k))) ok=false; }
-      const plain=q.replace(fieldRegex,' ').trim().toLowerCase();
-      if(plain){
-        const hay=[it.term,it.definition,(it.aliases||[]).join(' '),(it.categories||[]).join(' '),(it.tags||[]).join(' ')].join(' ').toLowerCase();
-        if(!hay.includes(plain)) ok=false;
-      }
-      if(!ok) return false;
-    }
-    return true;
-  }
-
-// --- sorting helpers (drop these directly above render) ---
-function safeStr(x){ return (x==null ? '' : String(x)); }
-function firstCategory(x){
-  return (Array.isArray(x?.categories) && x.categories.length) ? x.categories[0] : '';
-}
-function sortResults(list, mode){
-  switch(mode){
-    case 'az':       return list.sort((a,b)=> safeStr(a.term).localeCompare(safeStr(b.term)));
-    case 'za':       return list.sort((a,b)=> safeStr(b.term).localeCompare(safeStr(a.term)));
-    case 'slug':     return list.sort((a,b)=> safeStr(a.slug).localeCompare(safeStr(b.slug)));
-    case 'status':   return list.sort((a,b)=>{
-                       const s = safeStr(a.status).localeCompare(safeStr(b.status));
-                       return s!==0 ? s : safeStr(a.term).localeCompare(safeStr(b.term));
-                     });
-    case 'category': return list.sort((a,b)=>{
-                       const c = safeStr(firstCategory(a)).localeCompare(safeStr(firstCategory(b)));
-                       return c!==0 ? c : safeStr(a.term).localeCompare(safeStr(b.term));
-                     });
-    default:         return list;
-  }
-}
-
-// --- NEW render (drop-in replacement) ---
-function render(){
-  // 1) filter first, then sort by current mode
-  const filtered = G.filter(passesFilters);
-  const results  = sortResults(filtered, state.sort);
-
-  // 2) expose results (for export dialog, etc.)
-  lastResults = results;
-  window.lastResults = results;
-
-  // 3) update header info
-  resultInfo.textContent = `${results.length} result${results.length===1?'':'s'}`;
-
-  // 4) (re)paint cards in batches for perf
-  cardsEl.innerHTML='';
-  const batch=40; let i=0;
-  
-  
-    let hashHandledOnce = false;
-
-function getHashSlug(){
-  return (location.hash || '').replace(/^#/, '').trim();
-}
-
-function maybeOpenFromHash(){
-  const slug = getHashSlug();
-  if (!slug) return;
-
-  const el = document.getElementById(slug);
-  if (!el) return; // not painted yet; render() will call us again when done
-
-  if (hashHandledOnce) return;
-  hashHandledOnce = true;
-
-  // Scroll the card into view
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  // Open the detail drawer the same way clicking the title would
-  const a = el.querySelector('a.open');
-  if (a) a.click();
-}
-
-// If the hash changes (e.g., user pastes a link), try again
-window.addEventListener('hashchange', ()=>{
-  hashHandledOnce = false;
-  maybeOpenFromHash();
-});
-
-  function paint(){
-    const end=Math.min(i+batch,results.length);
-    for(; i<end; i++){
-      const it=results[i];
-      const statusColor =
-        it.status==='draft'?'var(--yellow)':
-        it.status==='deprecated'?'var(--red)':
-        it.status==='duplicate_candidate'?'var(--purple)':
-        'var(--green)';
-
-      const catChips = (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('');
-      const tagChips = (it.tags||[]).map(t=>{
-        const {displayValue} = splitTag(t);
-        return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
-      }).join('');
-
-      const card=document.createElement('div');
-      card.className='card';
-      card.id = it.slug;                  // <-- anchor target!
-  card.innerHTML = `
-  <div class="title-row">
-    <h3 style="margin:0;">
-      <a href="#" data-slug="${it.slug}" class="open" style="color:var(--accent)">${it.term}</a>
-    </h3>
-    <span class="spacer"></span>
+    <script src="./templates.data.js"></script>
     
-        ${hasTemplateTag(it.tags)
-      ? `<a class="btn btn-sm" href="prompt-builder.html?slug=${encodeURIComponent(it.slug)}" title="Open this template in Prompt Builder">Prompt Builder</a>`
-      : ``}
-    
-    <a class="btn btn-sm" href="editsuggestion.html?slug=${encodeURIComponent(it.slug)}">Edit</a>
-  </div>
-
-  <div class="mini">Status:
-    <span class="status-chip" data-status="${it.status||'verified'}">${it.status||'—'}</span>
-    ${it.aliases?.length ? ` • aka: ${it.aliases.join(', ')}` : ''}
-  </div>
-
-  <p class="mini" style="margin:8px 0 6px">
-    ${(it.definition||'').slice(0,220)}${(it.definition||'').length>220 ? '…' : ''}
-  </p>
-
-  <div class="meta">
-    ${(it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')}
-    ${(it.tags||[]).map(t=>{
-      const {displayValue} = splitTag(t);
-      return `<button class="chip card-tag" title="${t}" data-key="${norm(t)}">${displayValue}</button>`;
-    }).join('')}
-  </div>
-
-  <!-- NEW: Ask ChatGPT row -->
-  <div class="title-row" style="margin-top:10px">
-    <span class="spacer"></span>
-    <button class="btn btn-sm ask-chatgpt" data-slug="${it.slug}" title="Open ChatGPT preloaded with this term">
-      💬 Ask ChatGPT
-    </button>
-  </div>
-`;
-
-      cardsEl.appendChild(card);
-    }
-if (i < results.length){
-  (window.requestIdleCallback || window.requestAnimationFrame)(paint);
-} else {
-  // all cards are in the DOM; try to honor the URL hash
-  maybeOpenFromHash();
-}
-  }
-  paint();
-}
-
-
-  // open detail only when clicking the term title
-  cardsEl.addEventListener('click', e=>{
-    const a=e.target.closest('a.open');
-    if(!a) return;
-    e.preventDefault();
-    const slug=a.dataset.slug;
-    const it=G.find(x=>x.slug===slug);
-    if(!it) return;
-    d.title.textContent = it.term;
-    d.status.textContent = (it.status||'').toUpperCase();
-    d.status.dataset.val = norm(it.status||'');
-    d.aliases.textContent = it.aliases?.length ? `Also known as: ${it.aliases.join(', ')}` : '';
-    d.body.innerHTML = it.definition || '';
-    d.chips.innerHTML = ''
-      + (it.categories||[]).map(c=>`<button class="chip card-cat" data-key="${norm(c)}">${c}</button>`).join('')
-      + (it.tags||[]).map(t=>{ const {displayValue}=splitTag(t); return `<button class="chip card-tag" data-key="${norm(t)}" title="${t}">${displayValue}</button>`; }).join('');
-    d.sources.innerHTML = it.sources?.length
-      ? ('<div class="section-title">Sources</div><ul>'
-        + it.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${s.title || s.url}</a></li>`).join('')
-        + '</ul>')
-      : '';
-    if(!detail.open) detail.showModal();
-    
-    // reflect selection in URL without adding a new history entry
-history.replaceState(null, '', '#' + slug);
-
-  });
-
-  // clicking chips on cards -> add filter
-  function addFilter(kind,key){ (kind==='category'?state.cats:state.tags).add(key); renderFacets(); render(); }
-  document.addEventListener('click', e=>{
-    const c1 = e.target.closest('.card-cat'); if(c1){ addFilter('category', c1.dataset.key); }
-    const c2 = e.target.closest('.card-tag'); if(c2){ addFilter('tag', c2.dataset.key); }
-  });
-
-  // init
-  renderFacets();
-  render();
-})();
-</script>
-
-<script>
-
-// ---- Ask ChatGPT integration ----
-// Use your educator GPT link
-const EDUCATOR_GPT_URL = 'https://chatgpt.com/g/g-mW4xxm2uL-prompt-engineering-educator';
-const DEFAULT_CHATGPT_MODEL = 'gpt-4o'; // change later via a settings dialog if you like
-const MAX_URL_Q_LEN = 1800;             // keep URL safe; full prompt still copied to clipboard
-
-function buildAskPrompt(entry){
-  const lines = [];
-  lines.push(`You are an expert AI tutor. The user is viewing a glossary entry and wants more depth, examples, and comparisons.`);
-  lines.push('');
-  lines.push(`TERM: ${entry.term}`);
-  if(entry.aliases?.length)   lines.push(`ALIASES: ${entry.aliases.join(', ')}`);
-  if(entry.definition)        lines.push(`DEFINITION: ${entry.definition.replace(/\s+/g,' ').trim()}`);
-  if(entry.categories?.length)lines.push(`CATEGORIES: ${entry.categories.join(', ')}`);
-  if(entry.tags?.length)      lines.push(`TAGS: ${entry.tags.join(', ')}`);
-  if(entry.related?.length)   lines.push(`RELATED: ${entry.related.join(', ')}`);
-  if(entry.sources?.length){
-    const srcs = entry.sources.map(s=> s.url ? `${s.title||''} <${s.url}>` : (s.title||'')).filter(Boolean);
-    if(srcs.length) lines.push(`SOURCES: ${srcs.join(' | ')}`);
-  }
-  lines.push('');
-  lines.push(`Please:`);
-  lines.push(`1) Explain the term at a practitioner level with 1–2 concrete examples.`);
-  lines.push(`2) Contrast it with closely related terms (if any) and note common confusions.`);
-  lines.push(`3) Offer pitfalls, best practices, and a short checklist.`);
-  lines.push(`4) Suggest 3 reputable resources for deeper reading (link if possible).`);
-  return lines.join('\n');
-}
-
-async function openChatGPTWith(entry){
-  const prompt = buildAskPrompt(entry);
-
-  // Always copy the full prompt, so the user can paste if prefill doesn’t appear
-  try { await navigator.clipboard.writeText(prompt); toast('Opened ChatGPT • Prompt copied'); } catch {}
-
-  // Build short, URL-safe prefill
-  const q = encodeURIComponent(prompt.slice(0, MAX_URL_Q_LEN));
-
-  // Preferred: custom GPT deep link with prefilled query
-  // Note: if the user isn’t logged in, they'll see the login screen; after login, behavior may vary.
-  const educatorUrl = `${EDUCATOR_GPT_URL}?prompt=${q}`;
-
-  // Fallback: generic ChatGPT entry (keeps your previous behavior intact)
-  const fallbackUrl = `https://chatgpt.com/?model=${encodeURIComponent(DEFAULT_CHATGPT_MODEL)}&q=${q}`;
-
-  // Try educator GPT first; if the window fails to open (popup blockers), try the generic URL.
-  let win = window.open(educatorUrl, '_blank', 'noopener');
-  if (!win) { window.open(fallbackUrl, '_blank', 'noopener'); }
-// Show a small helper modal with the copied prompt + "Copy again" & instructions
-  const dlg = document.getElementById('gptHelp');
-  const ta  = document.getElementById('gptHelpText');
-  const copyBtn = document.getElementById('copyAgain');
-  if (dlg && ta) {
-    ta.value = prompt;
-    copyBtn?.addEventListener('click', async ()=> {
-      try { await navigator.clipboard.writeText(prompt); } catch {}
-    }, { once:true });
-    dlg.showModal();
-  } else {
-    toast('Opened Educator GPT — prompt copied. Paste into the chat if it’s blank.');
-  }
-}
-
-
-// Click handling for all Ask ChatGPT buttons
-document.addEventListener('click', (e)=>{
-  const btn = e.target.closest('.ask-chatgpt');
-  if(!btn) return;
-  e.preventDefault();
-  const slug = btn.dataset.slug;
-  const entry = (lastResults || []).find(x=> x.slug === slug) 
-             || (Array.isArray(window.GLOSSARY)? window.GLOSSARY.find(x=>x.slug===slug) : null);
-  if(!entry){ toast('Unable to load this term.'); return; }
-  openChatGPTWith(entry);
-});
-
-</script>
-
-<script>
-/* ============= DOWNLOADERS & EXPORT DIALOG ============= */
-(function(){
-  // --- sorting helpers for export dialog ---
-  const STATUS_ORDER = { verified:0, draft:1, duplicate_candidate:2, deprecated:3 };
-  function sortList(list, mode){
-    const safe = (s)=> (s||'').toString().toLowerCase();
-    const byTerm = (a,b)=> safe(a.term).localeCompare(safe(b.term));
-    switch(mode){
-      case 'term_az':       return list.slice().sort(byTerm);
-      case 'term_za':       return list.slice().sort((a,b)=> byTerm(b,a));
-      case 'status_term':   return list.slice().sort((a,b)=>{
-        const sa = STATUS_ORDER[safe(a.status)] ?? 9;
-        const sb = STATUS_ORDER[safe(b.status)] ?? 9;
-        return (sa - sb) || byTerm(a,b);
-      });
-      case 'category_term': return list.slice().sort((a,b)=>{
-        const ca = safe((a.categories||[])[0]);
-        const cb = safe((b.categories||[])[0]);
-        return ca.localeCompare(cb) || byTerm(a,b);
-      });
-      case 'slug':          return list.slice().sort((a,b)=> safe(a.slug).localeCompare(safe(b.slug)));
-      default:              return list.slice();
-    }
-  }
-
-  // --- helpers ---
-  function download(filename, mime, data){
-    const blob = new Blob([data], {type: mime});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
-  }
-  const escCSV = (v)=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
-  const escJS  = (s)=>String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"');
-  const escBT  = (s)=>String(s||'').replace(/`/g,'\\`');
-
-  function flatRow(t){
-    return {
-      slug: t.slug || '',
-      term: t.term || '',
-      aliases: (t.aliases||[]).join(' | '),
-      definition: t.definition || '',
-      sources: (t.sources||[]).map(s=> (s.title?`${s.title}`:'') + (s.url?` <${s.url}>`: '')).join(' || '),
-      categories: (t.categories||[]).join(' | '),
-      tags: (t.tags||[]).join(' | '),
-      related: (t.related||[]).join(' | '),
-      status: t.status || '',
-      notes: t.notes || ''
-    };
-  }
-
-  // exporters
-  function asJSON(list){ return JSON.stringify(list, null, 2); }
-  function asJS(list){
-    const blocks = list.map(t => {
-      const srcs = (t.sources||[]).map(s=>`{ title: "${escJS(s.title||'')}", url: "${escJS(s.url||'')}" }`).join(', ');
-      const arr = xs => (xs||[]).map(x=>`"${escJS(x)}"`).join(', ');
-      return `  {
-    slug: "${escJS(t.slug||'')}",
-    term: "${escJS(t.term||'')}",
-    aliases: [${arr(t.aliases)}],
-    definition: \`${escBT(t.definition||'')}\`,
-    sources: [${srcs}],
-    categories: [${arr(t.categories)}],
-    tags: [${arr(t.tags)}],
-    related: [${arr(t.related)}],
-    status: "${escJS(t.status||'')}",
-    notes: "${escJS(t.notes||'')}"
-  }`;
-    }).join(',\n');
-    return `/* Generated from the live glossary */
-window.GLOSSARY_EXPORT = [
-${blocks}
-];`;
-  }
-  function asCSV(list){
-    const headers = ['slug','term','aliases','definition','sources','categories','tags','related','status','notes'];
-    const rows = list.map(t => {
-      const r = flatRow(t);
-      return headers.map(h=>escCSV(r[h])).join(',');
-    });
-    return headers.join(',') + '\n' + rows.join('\n');
-  }
-  function asMarkdown(list){
-    const lines = [];
-    list.forEach(t=>{
-      lines.push(`### ${t.term || '(untitled)'}  \`status: ${t.status||''}\``);
-      if(t.definition) lines.push('', t.definition);
-      if((t.sources||[]).length){
-        lines.push('', '**Sources**');
-        t.sources.forEach(s=>lines.push(`- ${s.title?`**${s.title}**`:''}${s.url?` (${s.url})`:''}`));
-      }
-      const meta = [];
-      if((t.categories||[]).length) meta.push(`**Categories:** ${t.categories.join(', ')}`);
-      if((t.tags||[]).length)       meta.push(`**Tags:** ${t.tags.join(', ')}`);
-      if((t.related||[]).length)    meta.push(`**Related:** ${t.related.join(', ')}`);
-      if(meta.length) lines.push('', meta.join('  \n'));
-      if(t.notes) lines.push('', `> ${t.notes}`);
-      lines.push('', '---', '');
-    });
-    return lines.join('\n');
-  }
-  function asText(list){
-    const blocks = list.map(t=>{
-      const r = flatRow(t);
-      return [
-        `TERM: ${r.term}`,
-        `SLUG: ${r.slug}`,
-        r.definition ? `DEF: ${r.definition}` : '',
-        r.sources ? `SRC: ${r.sources}` : '',
-        r.categories ? `CATS: ${r.categories}` : '',
-        r.tags ? `TAGS: ${r.tags}` : '',
-        r.related ? `RELATED: ${r.related}` : '',
-        r.status ? `STATUS: ${r.status}` : '',
-        r.notes ? `NOTES: ${r.notes}` : '',
-      ].filter(Boolean).join('\n');
-    });
-    return blocks.join('\n\n-----\n\n');
-  }
-
-  // unified export entry (accepts optional {list})
-  function exportGlossary(fmt, opts = {}){
-    const data = (opts.list && Array.isArray(opts.list)) ? opts.list
-               : (Array.isArray(window.GLOSSARY) ? window.GLOSSARY
-                 : (window.GlossaryAPI?.all?.() ?? []));
-    if(!data.length){ alert('No glossary data found to export.'); return; }
-    const stamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
-    switch(fmt){
-      case 'json': return download(`glossary-${stamp}.json`, 'application/json;charset=utf-8', asJSON(data));
-      case 'js':   return download(`glossary-${stamp}.js`,   'application/javascript;charset=utf-8', asJS(data));
-      case 'csv':  return download(`glossary-${stamp}.csv`,  'text/csv;charset=utf-8', asCSV(data));
-      case 'md':   return download(`glossary-${stamp}.md`,   'text/markdown;charset=utf-8', asMarkdown(data));
-      case 'txt':  return download(`glossary-${stamp}.txt`,  'text/plain;charset=utf-8', asText(data));
-    }
-  }
-  window.__exportGlossary = exportGlossary; // optional debug
-
-  // menu toggle
-  const menuBtn = document.getElementById('downloadBtn');
-  const menu = document.getElementById('downloadMenu');
-  if(menuBtn && menu){
-    const close = (e)=>{ if(!menu.contains(e.target) && e.target!==menuBtn){ menu.hidden = true; document.removeEventListener('click', close); } };
-    menuBtn.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      menu.hidden = !menu.hidden;
-      if(!menu.hidden){ setTimeout(()=>document.addEventListener('click', close),0); }
-    });
-  }
-
-  // dialog wiring
-  const dlg = document.getElementById('exportDlg');
-  const form = document.getElementById('exportForm');
-  const sortSel = document.getElementById('sortMode');
-  const dlgExportBtn = document.getElementById('dlgExportBtn');
-  let pendingFmt = null;
-
-  document.querySelectorAll('#downloadMenu .menu-item').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      pendingFmt = btn.dataset.format;           // json | js | csv | md | txt
-      if(typeof dlg.showModal === 'function'){ dlg.showModal(); }
-      else { dlg.setAttribute('open',''); }
-      if(menu) menu.hidden = true;
-    });
-  });
-
-  dlgExportBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const scope = (new FormData(form)).get('scope') || 'current';
-    const mode  = sortSel.value || 'term_az';
-
-    // choose list based on scope
-    const list = (scope === 'current' && Array.isArray(window.lastResults) && window.lastResults.length)
-      ? window.lastResults
-      : (Array.isArray(window.GLOSSARY) ? window.GLOSSARY : (window.GlossaryAPI?.all?.() ?? []));
-
-    const sorted = sortList(list, mode);
-    exportGlossary(pendingFmt, { list: sorted });
-    if(dlg.open) dlg.close();
-  });
-})();
-</script>
+     <script>
+    // lazy-load tasks dataset
+    (function ensureTasksLoaded(){
+      if (Array.isArray(window.TEMPLATES)) return;
+      const s = document.createElement('script');
+      s.src = './glossary/templates.data.js';
+      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.data.js');
+      document.head.appendChild(s);
+    })();
+  </script>
+  
   <script>
-  (function(){
-    const KEY = 'glossary.theme';
-    const root = document.documentElement;
-    const btn = document.getElementById('themeToggle');
+    // lazy-load tasks dataset
+    (function ensureTasksLoaded(){
+      if (Array.isArray(window.TASK_TEMPLATES)) return;
+      const s = document.createElement('script');
+      s.src = './glossary/templates.tasks.data.js';
+      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
+      document.head.appendChild(s);
+    })();
+  </script>
+  
+<script>
+  // Always bust cache in dev
+  const DATA_VERSION = Date.now();
 
-    // Determine starting theme
-    const stored = localStorage.getItem(KEY);
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    const current = stored || (prefersLight ? 'light' : 'dark');
-    apply(current);
+  function injectScript(src){
+    const s = document.createElement('script');
+    s.src = src + (src.includes('?') ? '&' : '?') + 'v=' + DATA_VERSION;
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+    return s;
+  }
 
-    btn?.addEventListener('click', ()=>{
-      const next = (root.getAttribute('data-theme') === 'light') ? 'dark' : 'light';
-      apply(next);
-      localStorage.setItem(KEY, next);
-    });
+  // Rebuild the search index any time a dataset arrives
+  function rebuild(){ INDEX = buildIndex(); onQuery(); }
 
-    function apply(theme){
-      if(theme === 'light'){
-        root.setAttribute('data-theme','light');
-        setPressed(true);
-        setLabel('Dark');   // pressing again will go dark
-      }else{
-        root.setAttribute('data-theme','dark');
-        setPressed(false);
-        setLabel('Light');  // pressing again will go light
-      }
-    }
-    function setPressed(v){ btn?.setAttribute('aria-pressed', v ? 'true' : 'false'); }
-    function setLabel(s){ const L = btn?.querySelector('.label'); if(L) L.textContent = s; }
-  })();
+  injectScript('./glossary/templates.data.js').onload = rebuild;
+  injectScript('./glossary/templates.tasks.data.js').onload = rebuild;
 </script>
 
-<script>
-/* ======== Mobile UI helpers (desktop unaffected) ======== */
-(function(){
-  const root = document.documentElement;
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('drawerOverlay');
+  <script>
+/* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
+(function heroSlot(){
+  const words = ['project.', 'life.', 'plan.', 'system.', 'idea.', 'prompt.'];
 
-  const btnHamburger = document.getElementById('hamburgerBtn');
-  const btnSearch    = document.getElementById('searchIconBtn');
-  const btnDownload  = document.getElementById('downloadIconBtn');
-  const btnThemeIcon = document.getElementById('themeIconBtn');
+  const slot = document.getElementById('slot');
+  const reel = document.getElementById('reel');
+  const list = document.getElementById('reelList');
 
-  const searchInput  = document.getElementById('q');
-  const downloadBtn  = document.getElementById('downloadBtn');
-  const downloadMenu = document.getElementById('downloadMenu');
+  list.innerHTML = words.map(w => `<span class="w">${w}</span>`).join('');
 
-  const mql = window.matchMedia('(max-width: 768px)');
-  let prevFocus = null;
-  let trapHandler = null;
+  const cs = getComputedStyle(document.documentElement);
+  const holdMs  = parseFloat(cs.getPropertyValue('--slot-hold'))  || 680;
+  const dpr = window.devicePixelRatio || 1;
 
-  // Ensure default state
-  if(!root.hasAttribute('data-drawer')) root.setAttribute('data-drawer','closed');
-  if(!root.hasAttribute('data-search')) root.setAttribute('data-search','closed');
+  function widestWordPx(){
+    const slotEl = document.getElementById('slot');
+    const cs = getComputedStyle(slotEl);
 
-  function isMobile(){ return mql.matches; }
+    const meas = document.createElement('span');
+    meas.style.position = 'absolute';
+    meas.style.visibility = 'hidden';
+    meas.style.whiteSpace = 'nowrap';
+    meas.style.left = '-9999px';
+    meas.style.top = '-9999px';
 
-  /* Drawer open/close + focus trap */
-  function openDrawer(){
-    if(!isMobile()) return;
-    prevFocus = document.activeElement;
-    root.setAttribute('data-drawer','open');
-    btnHamburger?.setAttribute('aria-expanded','true');
-    document.body.classList.add('no-scroll');
-    overlay.hidden = false;
+    // copy all width-affecting text styles
+    meas.style.font = cs.font;
+    meas.style.letterSpacing = cs.letterSpacing;
+    meas.style.textTransform = cs.textTransform;
+    meas.style.fontKerning = cs.fontKerning;
+    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
+    meas.style.fontVariationSettings = cs.fontVariationSettings;
+    meas.style.fontStretch = cs.fontStretch;
 
-    // Accessibility roles; no markup edits required
-    sidebar.setAttribute('role','dialog');
-    sidebar.setAttribute('aria-modal','true');
-    sidebar.setAttribute('tabindex','-1');
+    document.body.appendChild(meas);
 
-    // Focus first focusable element
-    const focusables = sidebar.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])');
-    const first = focusables[0] || sidebar;
-    first.focus({preventScroll:true});
+    let max = 0;
+    for (const w of words){
+      meas.textContent = w;
+      const wpx = meas.getBoundingClientRect().width;
+      if (wpx > max) max = wpx;
+    }
+    meas.remove();
 
-    // Focus trap
-    trapHandler = (e)=>{
-      if(e.key !== 'Tab') return;
-      const els = Array.from(sidebar.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.disabled && el.offsetParent!==null);
-      if(els.length===0) return;
-      const firstEl = els[0], lastEl = els[els.length-1];
-      if(e.shiftKey && document.activeElement === firstEl){ e.preventDefault(); lastEl.focus(); }
-      else if(!e.shiftKey && document.activeElement === lastEl){ e.preventDefault(); firstEl.focus(); }
+    return Math.ceil(max + 20); // base guard; DPR fudge added separately
+  }
+
+  // Measure and lock the row height + slot width
+  let rowH = 0;
+  function lockMetrics(){
+    // Row height in pixels (use rendered metrics, not ems)
+    const first = list.firstElementChild;
+    let h = first ? first.getBoundingClientRect().height : 0;
+    if (!h){
+      // fallback to slot font-size if fonts not ready
+      h = parseFloat(getComputedStyle(slot).fontSize) || 32;
+    }
+    // Add a tiny cushion so mask never touches glyphs
+    rowH = Math.ceil(h + 2);
+    slot.style.setProperty('--slot-h', rowH + 'px');
+
+    // Lock the slot width to the widest word (prevents horizontal clipping)
+    const wpx = widestWordPx();
+    // add one physical pixel to dodge subpixel rounding on high-DPI
+    const fudge = Math.max(1, Math.round((window.devicePixelRatio || 1)));
+    slot.style.setProperty('--slot-width', (wpx + fudge) + 'px');
+  }
+
+  function translateToRow(idx){
+    // snap to device pixels so we never land on a half pixel under the mask
+    const y = Math.round((idx * rowH) * dpr) / dpr;
+    list.style.transform = `translate3d(0, ${-y}px, 0)`;
+  }
+
+  function run(){
+    lockMetrics();
+    let i = 0;
+
+    const advance = ()=>{
+      if (i < words.length - 1){
+        i++;
+        translateToRow(i);
+        setTimeout(advance, holdMs);
+      } else {
+        // Landed on "prompt": remove mask and bounce
+        slot.classList.add('final');
+      }
     };
-    document.addEventListener('keydown', trapHandler);
-  }
-  function closeDrawer(){
-    root.setAttribute('data-drawer','closed');
-    btnHamburger?.setAttribute('aria-expanded','false');
-    document.body.classList.remove('no-scroll');
-    overlay.hidden = true;
-    if(trapHandler){ document.removeEventListener('keydown', trapHandler); trapHandler = null; }
-    if(prevFocus && typeof prevFocus.focus === 'function'){ prevFocus.focus({preventScroll:true}); }
+
+    // initial dwell so the first word is readable
+    setTimeout(advance, holdMs);
   }
 
-  // Overlay click closes
-  overlay?.addEventListener('click', closeDrawer);
-
-  // Esc closes drawer or search
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape'){
-      if(root.getAttribute('data-drawer')==='open'){ closeDrawer(); return; }
-      if(root.getAttribute('data-search')==='open'){ toggleSearch(false); return; }
-    }
-  });
-
-  // Hamburger
-  btnHamburger?.addEventListener('click', ()=>{
-    if(root.getAttribute('data-drawer')==='open') closeDrawer(); else openDrawer();
-  });
-
-  // Search: toggles the row; focuses the input
-  function toggleSearch(forceOpen){
-    if(!isMobile()) return;
-    const willOpen = typeof forceOpen === 'boolean'
-      ? forceOpen
-      : root.getAttribute('data-search') !== 'open';
-    root.setAttribute('data-search', willOpen ? 'open' : 'closed');
-    if(willOpen){
-      // small delay to ensure row rendered before focusing
-      setTimeout(()=> searchInput?.focus({preventScroll:true}), 0);
-    }else{
-      // optional: clear query? We keep it.
-    }
+  // Wait for fonts so measurements are stable, then run
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(run);
+  } else {
+    window.addEventListener('load', run, { once:true });
   }
-  btnSearch?.addEventListener('click', ()=> toggleSearch());
 
-  // Download: reuse existing menu
-  btnDownload?.addEventListener('click', (e)=>{
-    e.preventDefault();
-    if(!downloadMenu || !downloadBtn) return;
-    // Toggle the menu the same way the desktop button does
-    downloadMenu.hidden = !downloadMenu.hidden;
-    if(!downloadMenu.hidden){
-      // click outside to close
-      const close = (evt)=>{
-        if(!downloadMenu.contains(evt.target)) { downloadMenu.hidden = true; document.removeEventListener('click', close); }
+  // Re-lock on resize or zoom
+  window.addEventListener('resize', ()=>{ lockMetrics(); /* keep current row in view */ });
+})();
+
+
+  /* ===== Search + typeahead (same API, updated ranking) ===== */
+  function allTemplates(){
+    const base  = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
+                : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
+    const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
+                : Array.isArray(window.tasks) ? window.tasks : [];
+
+    // Preserve everything; just tag the origin so we can prioritize “task” kind
+    const mark = (arr, isTask)=> arr.map(t => ({ ...t, __isTask:isTask }));
+
+    return [...mark(base,false), ...mark(tasks,true)].map(t=>{
+      const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
+      return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
+    });
+  }
+
+// Replace your buildIndex() with this (adds kind/isTask but keeps existing fields)
+  function buildIndex(){
+    const src = allTemplates();
+    return src.map(t=>{
+      const useTags = (t.tags || [])
+        .map(String).map(s => s.trim().toLowerCase())
+        .filter(s => s.startsWith('use:'))
+        .map(s => s.split(':',2)[1])
+        .filter(Boolean);
+
+      const uc    = (t.use_cases || []).map(String);
+      const kind  = String(t.kind || t.type || '').toLowerCase();
+      const isTask = (kind === 'task')
+        || /^task[_-]/.test(String(t.id||''))
+        || /^task[_-]/.test(String(t.slug||''));
+
+      return {
+        id: t.id || t.slug || t.label,
+        slug: t.slug || t.id,
+        label: t.label || t.name || t.slug || t.id || 'untitled',
+        use_cases: uc,
+        use_tags: useTags,
+        tags: (t.tags || []).slice(),
+        categories: t.categories || [],
+        boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
+        definition: t.definition || t.help || '',
+        fields: Array.isArray(t.fields) ? t.fields.slice() : [],
+        // NEW: metadata for ranking only
+        kind, isTask
       };
-      setTimeout(()=>document.addEventListener('click', close),0);
-    }
-  });
+    });
+  }
 
-  // Theme: forward to existing theme toggle (keeps logic unified)
-  btnThemeIcon?.addEventListener('click', ()=>{
-    const desktopBtn = document.getElementById('themeToggle');
-    if(desktopBtn){ desktopBtn.click(); }
-    else{
-      // fallback: simple flip on :root
-      const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', t);
-    }
-  });
+    function rankSuggestions(q, idx, limit = 8){
+  const rawQ  = String(q || '').trim().toLowerCase();
+  const terms = rawQ.split(/[^a-z0-9]+/).filter(Boolean);
+  if (!terms.length) return [];
 
-  // On resize up to desktop, ensure mobile states are closed
-  mql.addEventListener?.('change', ()=>{
-    if(!isMobile()){
-      root.setAttribute('data-drawer','closed');
-      root.setAttribute('data-search','closed');
-      document.body.classList.remove('no-scroll');
-      overlay.hidden = true;
-      if(trapHandler){ document.removeEventListener('keydown', trapHandler); trapHandler = null; }
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hits = [];
+
+  for (const t of idx){
+    let bestUC = '';
+    let ucScore = 0;
+
+    // ========= 1) USE-CASES (now gated on real lexical match) =========
+    for (const uc of t.use_cases){
+      const l = uc.toLowerCase();
+      let s = 0;
+      let matched = false;          // <-- NEW: track if any lexical match happened
+      let firstPos = Infinity;
+
+      // phrase / exact line
+      if (rawQ && l === rawQ){ s += 220; matched = true; }
+      else if (rawQ && l.includes(rawQ)){ s += 120; matched = true; }
+
+      // token scoring
+      for (const tok of terms){
+        if (l === tok){ s += 80; matched = true; }
+        const re = new RegExp(`\\b${esc(tok)}\\b`);
+        if (re.test(l)){ s += 40; matched = true; }
+        const pos = l.indexOf(tok);
+        if (pos >= 0){
+          s += 24;                   // substring
+          matched = true;
+          firstPos = Math.min(firstPos, pos);
+          if (pos === 0) s += 10;    // starts-with
+        }
+      }
+
+      // ⛔️ If nothing matched, this UC should NOT enter the pool
+      if (!matched) continue;
+
+      // position + brevity nudges only apply when there was a match
+      if (firstPos < Infinity){
+        s += Math.max(0, 30 - Math.min(30, firstPos));
+      }
+      s += Math.max(0, 18 - Math.min(18, Math.floor(l.length / 12)));
+
+      // gentle task nudge (ordering only) — only after a real match
+      if (t.isTask) s += 30;
+
+      // tiny kind-mention nudge
+      if (t.kind && terms.some(tok => t.kind.includes(tok))) s += 12;
+
+      if (s > ucScore){ ucScore = s; bestUC = uc; }
     }
+
+    // ========= 2) use: TAGS (fallback only if no UC hit) =========
+    let tagScore = 0;
+    if (ucScore === 0 && t.use_tags.length){
+      for (const tag of t.use_tags){
+        const tl = String(tag).toLowerCase();
+        for (const tok of terms){
+          if (tl === tok) tagScore += 20;
+          else if (tl.includes(tok)) tagScore += 12;
+        }
+      }
+      if (tagScore > 0){
+        if (t.isTask) tagScore += 12;
+        if (t.kind && terms.some(tok => t.kind.includes(tok))) tagScore += 8;
+      }
+    }
+
+    if (ucScore > 0){
+      hits.push({ bucket:'uc', score: ucScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
+    } else if (tagScore > 0){
+      hits.push({ bucket:'tag', score: tagScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
+    }
+  }
+
+  // primary sort (unchanged)
+  hits.sort((a,b)=>
+    (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
+    (b.score - a.score) ||
+    ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
+    (a.use.length - b.use.length) ||
+    a.use.localeCompare(b.use)
+  );
+
+  // ========= Wild-query fallback (now triggers correctly) =========
+  const TOP = hits[0]?.score || 0;
+  const WILD_MIN_HITS  = 2;
+  const WILD_TOP_SCORE = 60;
+  const isWild = (hits.length === 0) || (hits.length <= WILD_MIN_HITS && TOP < WILD_TOP_SCORE);
+
+  if (isWild){
+    const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+    const helperTemplates = idx.filter(t=>{
+      const lbl = String(t.label||'').trim();
+      const id  = String(t.id||'').trim().toLowerCase();
+      const kind= String(t.kind||'').trim().toLowerCase();
+      return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+    });
+
+    const helperBase = Math.max(TOP + 5, 240);
+    const seenUse = new Set(hits.map(h => h.use));
+    let step = 0;
+
+    for (const t of helperTemplates){
+      for (const uc of (t.use_cases || [])){
+        if (seenUse.has(uc)) continue;
+        hits.push({
+          bucket:'uc',
+          score: helperBase - (step++ * 0.5),
+          use: uc,
+          label: t.label,
+          template: t,
+          id: t.id,
+          slug: t.slug
+        });
+        seenUse.add(uc);
+      }
+    }
+
+    hits.sort((a,b)=>
+      (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
+      (b.score - a.score) ||
+      ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
+      (a.use.length - b.use.length) ||
+      a.use.localeCompare(b.use)
+    );
+  }
+
+  return hits.slice(0, limit);
+}
+
+
+// ===== Recent + idle helper suggestions =====
+const RECENT_KEY  = 'pb_recent_queries';
+const MAX_RECENT  = 12;
+
+function loadRecent(){
+  try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveRecent(q){
+  q = String(q||'').trim();
+  if (!q) return;
+  let list = loadRecent().filter(s => s && s.toLowerCase() !== q.toLowerCase());
+  list.unshift(q);
+  if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
+  localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+}
+
+function helperTemplates(idx){
+  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+  return idx.filter(t=>{
+    const lbl = String(t.label||'').trim();
+    const id  = String(t.id||'').trim().toLowerCase();
+    const kind= String(t.kind||'').trim().toLowerCase();
+    return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+  });
+}
+
+function helperUsecaseSuggestions(idx, limit, seen=new Set()){
+  const out = [];
+  for (const t of helperTemplates(idx)){
+    for (const uc of (t.use_cases || [])){
+      if (seen.has(uc)) continue;
+      out.push({
+        bucket:'uc', score: 999,
+        use: uc, label: t.label,
+        template: t, id: t.id, slug: t.slug,
+        origin:'helper'
+      });
+      seen.add(uc);
+      if (out.length >= limit) return out;
+    }
+  }
+  return out;
+}
+
+function buildIdleSuggestions(idx, limit=8){
+  const seen = new Set();
+  const out  = [];
+
+  // Recent searches first
+  const rec = loadRecent();
+  for (const r of rec){
+    if (!r || seen.has(r)) continue;
+    out.push({
+      bucket:'uc', score: 1000,
+      use: r, label:'recent',
+      template:null, id:null, slug:null,
+      origin:'recent'
+    });
+    seen.add(r);
+    if (out.length >= limit) return out;
+  }
+
+  // Then helper picker use-cases
+  return out.concat(helperUsecaseSuggestions(idx, Math.max(0, limit - out.length), seen));
+}
+
+    const qEl  = document.getElementById('q');
+    const taEl = document.getElementById('ta');
+    const goEl = document.getElementById('go');
+
+    let INDEX = [];
+    let active = -1;
+    let picked = null;
+
+    function renderTA(list){
+      if (!list.length){ taEl.hidden = true; taEl.innerHTML = ''; active=-1; return; }
+      taEl.innerHTML = list.map((s,i)=>`
+        <div class="item${i===0?' active':''}" role="option" data-i="${i}">
+          <div class="use">${s.use}</div>
+          <div class="sub" aria-hidden="true">${s.label}</div>
+        </div>
+      `).join('');
+      taEl.hidden = false; active = 0;
+    }
+
+    let SUGS = [];
+function onQuery(){
+  const q = qEl.value.trim();
+  const focused = document.activeElement === qEl;
+
+  if (!q){
+    if (focused){
+      SUGS = buildIdleSuggestions(INDEX, 8);
+      renderTA(SUGS);
+    } else {
+      hideTA(); // collapsed when not focused
+    }
+    return;
+  }
+
+  SUGS = rankSuggestions(q, INDEX, 8);
+  renderTA(SUGS);
+}
+    qEl.addEventListener('input', onQuery);
+    qEl.addEventListener('keydown', (e)=>{
+      const open = !taEl.hidden && taEl.children.length;
+      if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+        e.preventDefault();
+        active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
+        [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
+} else if (e.key === 'Enter'){
+  e.preventDefault();
+  if (!taEl.hidden && taEl.children.length){
+    // choose() will call startScan() for us
+    choose(active >= 0 ? active : 0);
+  } else {
+    if (!picked && SUGS[0]) picked = SUGS[0];
+    if (qEl.value.trim()) startScan();
+  }
+} else if (e.key === 'Escape'){
+        taEl.hidden = true; active=-1;
+      }
+    });
+    taEl.addEventListener('mousedown', (e)=>{
+      const el = e.target.closest('.item');
+      if (!el) return;
+      choose(parseInt(el.dataset.i,10) || 0);
+    });
+goEl.addEventListener('click', ()=>{
+  if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }  // choose() triggers start
+  else if (qEl.value.trim()) startScan();
+});
+
+// Show idle suggestions (recent → helper) the moment the field is focused & blank
+qEl.addEventListener('focus', ()=>{
+  if (!qEl.value.trim()){
+    SUGS = buildIdleSuggestions(INDEX, 8);
+    renderTA(SUGS);
+  } else {
+    onQuery(); // if user had text, refresh suggestions on focus
+  }
+});
+
+qEl.addEventListener('blur', ()=>{
+  // Let mousedown on a suggestion run first, then hide.
+  setTimeout(hideTA, 80);
+});
+
+// Click anywhere outside the search area → hide dropdown
+document.addEventListener('pointerdown', (e)=>{
+  if (!searchWrap.contains(e.target)) hideTA();
+});
+
+function choose(i){
+  const items = Array.from(taEl.children);
+  const it = items[i]; if (!it) return;
+  const s = SUGS[i];   if (!s) return;
+
+  qEl.value = s.use;
+  taEl.hidden = true; active = -1;
+
+  // If it's a "recent" chip, convert it to a real search:
+  if (s.origin === 'recent'){
+    picked = null;           // not a specific template yet
+    onQuery();               // recompute SUGS synchronously for this query
+    if (SUGS[0] && SUGS[0].origin !== 'recent'){ picked = SUGS[0]; } // auto-pick top result if present
+    if (qEl.value.trim()) startScan(); // run immediately
+    return;
+  }
+
+  // Normal/helper suggestion → lock and run immediately
+  picked = s;
+  if (qEl.value.trim()) startScan();
+}
+
+// --- quick buttons under the search ---
+const btnAdv   = document.getElementById('btnAdv');   // pure link, no JS needed
+const btnHelp  = document.getElementById('btnHelp');
+const btnLucky = document.getElementById('btnLucky');
+
+// Pick a helper template (— Task Picker — or — Pattern Picker — preferred),
+// otherwise anything with id:"none" or kind:"helper", then grab a random use-case.
+function pickHelperUC(){
+  const ALL = allTemplates();
+  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+  const helpers = ALL.filter(t=>{
+    const lbl  = String(t.label||'').trim();
+    const id   = String(t.id||'').trim().toLowerCase();
+    const kind = String(t.kind||t.type||'').trim().toLowerCase();
+    return HELPER_LABELS.has(lbl) || id === 'none' || kind === 'helper';
+  });
+  const pool = helpers.length ? helpers : ALL.filter(t => (t.use_cases||[]).length);
+  if (!pool.length) return null;
+  const t = pool[Math.floor(Math.random()*pool.length)];
+  const ucs = (t.use_cases || []);
+  if (!ucs.length) return null;
+  const uc = ucs[Math.floor(Math.random()*ucs.length)];
+  return { uc, t };
+}
+
+btnHelp?.addEventListener('click', ()=>{
+  const pick = pickHelperUC();
+  if (!pick){
+    // Fallback: use existing helper suggestion builder
+    const h = helperUsecaseSuggestions(INDEX, 1);
+    if (h[0]){
+      picked = h[0];
+      qEl.value = h[0].use;
+      startScan();
+    }
+    return;
+  }
+  picked = {
+    bucket:'uc', score:999,
+    use: pick.uc,
+    label: pick.t.label || pick.t.slug || pick.t.id,
+    template: pick.t, id: pick.t.id, slug: pick.t.slug
+  };
+  qEl.value = pick.uc;
+  startScan();
+});
+
+// Lucky: random use-case across ALL templates equally
+btnLucky?.addEventListener('click', ()=>{
+  const ALL = allTemplates();
+  const bag = [];
+  for (const t of ALL){
+    for (const uc of (t.use_cases || [])){
+      bag.push({ uc, t });
+    }
+  }
+  if (!bag.length){
+    // Fallback to helper if no use-cases exist yet
+    const h = helperUsecaseSuggestions(INDEX, 1);
+    if (h[0]){
+      picked = h[0]; qEl.value = h[0].use; startScan();
+    }
+    return;
+  }
+  const { uc, t } = bag[Math.floor(Math.random()*bag.length)];
+  picked = {
+    bucket:'uc', score:999,
+    use: uc,
+    label: t.label || t.slug || t.id,
+    template: t, id: t.id, slug: t.slug
+  };
+  qEl.value = uc;
+  startScan();
+});
+
+
+    /* ===== Faux scan to details ===== */
+    const hero = document.getElementById('hero');
+    const scan = document.getElementById('scan');
+    const details = document.getElementById('details');
+    const rollList = document.getElementById('rollList');
+    const resultHeader = document.getElementById('resultHeader');
+
+    function startScan(){
+    saveRecent(qEl.value.trim()); // ← NEW: remember it
+    
+      hero.style.display = 'none';
+      scan.style.display = 'flex';
+
+      // ensure the center rainbow band exists (added once)
+      const rollEl = document.querySelector('.scan .roll');
+      if (rollEl && !rollEl.querySelector('.centerBand')){
+        const band = document.createElement('div');
+        band.className = 'centerBand';
+        rollEl.appendChild(band);
+      }
+
+      const labels = allTemplates().map(t => t.label || t.slug || t.id).filter(Boolean);
+      const unique = Array.from(new Set(labels));
+      const chosenLabel = (picked && picked.label) || unique[0] || 'template';
+
+      // Plenty above and below so the center has neighbors to fade
+      const above = unique.sort(()=>Math.random()-.5).slice(0, 40);
+      const below = unique.sort(()=>Math.random()-.5).slice(0, 12);
+      const finalList = [...above, chosenLabel, ...below];
+
+      rollList.innerHTML = finalList.map(l => `<li${l===chosenLabel?' class="hit"':''}>${l}</li>`).join('');
+
+      // Skip fancy motion for reduced-motion users
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduce){
+        // Hard-center without animation
+        hardCenterHit();
+        // Move on almost immediately
+        setTimeout(()=> showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)), 250);
+      } else {
+        animateToCenterHit({ overshoot: 48, scrollMs: 2200, backMs: 420, fwdMs: 320, settleMs: 200, jiggleBack: 18, jiggleFwd: 9 })
+          .then(()=>{ showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)); });
+      }
+    }
+
+    function getHitGeometry(){
+      const roll = document.querySelector('.scan .roll');
+      const hit  = rollList.querySelector('.hit');
+      if (!roll || !hit) return null;
+
+      const ulRect  = rollList.getBoundingClientRect();
+      const hitRect = hit.getBoundingClientRect();
+      const viewportH = roll.clientHeight;
+
+      // Distance from UL top to place hit in the vertical center of the roll viewport
+      const target = (hitRect.top - ulRect.top) - (viewportH - hitRect.height)/2;
+
+      return { roll, hit, target: Math.max(0, target) };
+    }
+
+    function hardCenterHit(){
+      const g = getHitGeometry(); if (!g) return;
+      rollList.style.transition = 'none';
+      rollList.style.transform  = `translate3d(0, ${-g.target}px, 0)`;
+    }
+
+    function animateToCenterHit({ overshoot = 22, scrollMs = 1400, backMs = 300, fwdMs = 200, settleMs = 140, jiggleBack = 8, jiggleFwd = 4 } = {}){
+      const g = getHitGeometry();
+      if (!g) return Promise.resolve();
+
+      const yPast   = g.target - overshoot;
+      const yBack   = g.target + jiggleBack;
+      const yFwd    = g.target - jiggleFwd;
+      const yFinal  = g.target;
+
+      const easingMain = 'cubic-bezier(.2,.9,.2,1)';
+      const easingSnap = 'cubic-bezier(.15,.95,.2,1)';
+
+      const transitionTo = (y, ms, easing) => new Promise((resolve)=>{
+        const onEnd = (e)=> {
+          if (e.propertyName !== 'transform') return;
+          rollList.removeEventListener('transitionend', onEnd);
+          resolve();
+        };
+        const failSafe = setTimeout(()=>{ rollList.removeEventListener('transitionend', onEnd); resolve(); }, ms + 60);
+
+        rollList.addEventListener('transitionend', onEnd, { once:true });
+        rollList.style.transition = `transform ${ms}ms ${easing}`;
+        rollList.style.transform  = `translate3d(0, ${-y}px, 0)`;
+      });
+
+      rollList.style.transition = 'none';
+
+      return Promise.resolve()
+        .then(()=> transitionTo(yPast,  scrollMs, easingMain))
+        .then(()=> transitionTo(yBack,   backMs,  easingSnap))
+        .then(()=> transitionTo(yFwd,     fwdMs,  easingSnap))
+        .then(()=> transitionTo(yFinal, settleMs, easingSnap));
+    }
+
+
+    /* ===== Details page wiring ===== */
+    const tplTitle = document.getElementById('tplTitle');
+    const meta = document.getElementById('meta');
+    const def = document.getElementById('def');
+    const useCases = document.getElementById('useCases');
+    const boosters = document.getElementById('boosters');
+    const boostersBlock = document.getElementById('boostersBlock');
+    const fields = document.getElementById('fields');
+
+    const openBuilder = document.getElementById('openBuilder');
+    const openGlossary = document.getElementById('openGlossary');
+    const printWorksheet = document.getElementById('printWorksheet');
+    const copyPrompt = document.getElementById('copyPrompt');
+    const ask = document.getElementById('ask');
+    const back = document.getElementById('back');
+
+    function htmlEsc(s){ return String(s||'').replace(/[&<>"]/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m])); }
+
+    function showDetails(t){
+      scan.style.display = 'none';
+      details.hidden = false;
+      resultHeader.hidden = false;
+      if (!t){ tplTitle.textContent = 'template'; return; }
+
+      tplTitle.textContent = (t.label || t.slug || t.id || 'template').toLowerCase();
+      meta.innerHTML = [
+        ...(t.categories||[]).map(c => `<span class="chip">${htmlEsc(c)}</span>`),
+        ...(t.tags||[]).map(tag => `<span class="chip">${htmlEsc(tag)}</span>`)
+      ].join('');
+
+      def.textContent = t.definition || 'No definition provided yet.';
+      useCases.innerHTML = (t.use_cases||[]).map(u => `<div class="uc">${htmlEsc(u)}</div>`).join('') || '<div class="uc">No use-cases listed.</div>';
+
+      if (t.boosters && t.boosters.length){
+        boostersBlock.hidden = false;
+        boosters.innerHTML = t.boosters.map(b => `<div class="booster">${htmlEsc(b)}</div>`).join('');
+      } else {
+        boostersBlock.hidden = true;
+      }
+
+      fields.innerHTML = (t.fields||[]).map(f => `
+        <div class="row">
+          <label>${htmlEsc(f.label || f.key || 'field')}</label>
+          <div class="fake">${htmlEsc(f.ph || '')}</div>
+        </div>
+      `).join('') || '<div class="row"><div class="fake">No fields for this template.</div></div>';
+
+      const slug = (t.slug || t.id || '').toString();
+      openBuilder.href = './glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      openGlossary.href = './glossary/templates-glossary.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+
+      // Build the ChatGPT primer prompt from the template
+      const fullPrompt = buildChatGPTPrompt(normalizeTemplateForSummary(t));
+
+      copyPrompt.onclick = async ()=>{ try{ await navigator.clipboard.writeText(fullPrompt); }catch{} };
+      ask.onclick = async ()=>{
+        try{ await navigator.clipboard.writeText(fullPrompt); }catch{}
+        window.open('https://chat.openai.com/', '_blank', 'noopener');
+      };
+      back.onclick = ()=>{
+        details.hidden = true;
+        resultHeader.hidden = true;
+        hero.style.display = 'block';
+        qEl.focus();
+      };
+    }
+
+    function normalizeTemplateForSummary(t){
+      return { ...t, _displayKind: (t._displayKind || t.kind || t.type || 'framework') };
+    }
+    function buildTemplateSummary(t){
+      const lines = [];
+      lines.push(`Template: ${t.label || t.slug || t.id || 'untitled'}`);
+      lines.push(`Kind: ${t._displayKind || t.kind || 'framework'}`);
+      if (t.definition) lines.push(`Definition: ${t.definition}`);
+      if (t.categories?.length) lines.push(`Categories: ${t.categories.join(', ')}`);
+      if (t.tags?.length) lines.push(`Tags: ${t.tags.join(', ')}`);
+      if (t.use_cases?.length){ lines.push(`Use-cases:`); for (const u of t.use_cases) lines.push(`- ${u}`); }
+      if (t.fields?.length){
+        lines.push(`Fields:`); for (const f of t.fields){
+          const label = f.label || f.key || 'field';
+          const ph = f.ph ? ` — ${f.ph}` : '';
+          lines.push(`- ${label}${ph}`);
+        }
+      }
+      if (t.boosters?.length){ lines.push(`Boosters:`); for (const b of t.boosters) lines.push(`- ${b}`); }
+      return lines.join('\n');
+    }
+    function buildChatGPTPrompt(t){
+      const kind = (t._displayKind || 'framework').toLowerCase();
+      const summary = buildTemplateSummary(t);
+      return [
+        `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template and will share its full structure with you below to prime your understanding:`,
+        ``,
+        summary,
+        ``,
+        `Please begin by asking me what I would like to accomplish using this template. Then:`,
+        `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
+        `2) Contrast it with closely related terms (if any) and note common confusions.`,
+        `3) Offer pitfalls, best practices, and a short checklist.`,
+        `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
+        `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
+      ].join('\n');
+    }
+    
+    const searchWrap = document.querySelector('.searchWrap');
+
+function hideTA(){
+  taEl.hidden = true;
+  taEl.innerHTML = '';
+  active = -1;
+}
+
+    /* ===== Boot index for search ===== */
+    function boot(){ INDEX = buildIndex(); onQuery(); }
+function boot(){ INDEX = buildIndex(); onQuery(); }
+
+(function watchDatasets(){
+  let lastSeen = '';
+  const timer = setInterval(()=>{
+    const haveTpl  = Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS);
+    const haveTask = Array.isArray(window.TASK_TEMPLATES) || Array.isArray(window.tasks);
+    const sig = (haveTpl ? 'T' : '_') + (haveTask ? 'K' : '_');
+    if (sig !== lastSeen){
+      lastSeen = sig;
+      boot();            // rebuild when either dataset changes readiness
+      if (haveTpl && haveTask) clearInterval(timer);  // stop once both are loaded
+    }
+  }, 80);
+})();
+  </script>
+  
+  <script>
+/* ===== MANTRA REEL: slow, infinite, resize-safe vertical scroller ===== */
+(function mantraReel(){
+  // Tweakables
+  var HOLD_MS  = 2200;   // dwell time per line
+  var SLIDE_MS = 900;    // slide animation duration
+  var MANTRA_SHIFT_RIGHT = 0; // px; positive pushes the whole line to the right
+
+  var PHRASES = [
+    "clarity is kindness to the model.",
+    "context is half the answer.",
+    "easy for you, easy for it.",
+    "put smart, get smart.",
+    "the divergent intern.",
+    "the collaborative partner.",
+    "the 10,000 experts.",
+    "garbage in, garbage out.",
+    "precision paints the picture.",
+    "tone travels through tokens.",
+    "the model mirrors your mind.",
+    "examples are the skeleton key.",
+    "what you frame is what you get.",
+    "be the director, not the spectator.",
+    "define the stage, script the play.",
+    "a vague prompt breeds vague answers.",
+    "specificity is the superpower.",
+    "ask like a teacher, check like a scientist.",
+    "layer tasks, don’t overload.",
+    "persona shapes performance."
+  ];
+
+  var slot  = document.getElementById('mantraSlot');
+  var reel  = document.getElementById('mantraReel');
+  var list  = document.getElementById('mantraList');
+  var line  = document.querySelector('#mantra .mantraLine');
+
+  if (!slot || !reel || !list || !line) return;
+
+  // Apply shift control (matches your earlier SHIFT_RIGHT pattern)
+  line.style.setProperty('--mantra-shift-x', (MANTRA_SHIFT_RIGHT|0) + 'px');
+
+  // Build DOM
+  list.innerHTML = PHRASES.map(s => `<span class="w">${s}</span>`).join('');
+
+  // Adopt timing to CSS custom prop so transitions stay in sync
+  slot.style.setProperty('--mantra-slide', SLIDE_MS + 'ms');
+
+  var dpr = window.devicePixelRatio || 1;
+  var rowH = 0, i = 0, paused = false;
+
+  function widestWidthPx(){
+    // measure using the slot's computed font to avoid clipping
+    var cs = getComputedStyle(slot);
+    var meas = document.createElement('span');
+    meas.style.position='absolute'; meas.style.visibility='hidden';
+    meas.style.whiteSpace='nowrap'; meas.style.left='-9999px'; meas.style.top='-9999px';
+    meas.style.font = cs.font;
+    meas.style.letterSpacing = cs.letterSpacing;
+    meas.style.textTransform = cs.textTransform;
+    meas.style.fontKerning = cs.fontKerning;
+    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
+    meas.style.fontVariationSettings = cs.fontVariationSettings;
+    meas.style.fontStretch = cs.fontStretch;
+
+    document.body.appendChild(meas);
+    var max = 0;
+    for (var s of PHRASES){ meas.textContent = s; var w = meas.getBoundingClientRect().width; if (w > max) max = w; }
+    meas.remove();
+    // +1 physical pixel fudge to avoid subpixel mask grazing
+    var fudge = Math.max(1, Math.round(dpr));
+    return Math.ceil(max + 20 + fudge);
+  }
+
+  function lockMetrics(){
+    // lock row height from first child (rendered pixels, not ems)
+    var first = list.firstElementChild;
+    var h = first ? first.getBoundingClientRect().height : parseFloat(getComputedStyle(slot).fontSize) || 32;
+    rowH = Math.ceil(h + 2); // cushion
+    slot.style.setProperty('--mantra-slot-h', rowH + 'px');
+
+    // lock slot width to widest phrase so we never clip mid-line
+    var wpx = widestWidthPx();
+    slot.style.setProperty('--mantra-slot-w', wpx + 'px');
+  }
+
+  function translateTo(idx){
+    // snap to device pixels to prevent creeping drift under the mask
+    var y = Math.round((idx * rowH) * dpr) / dpr;
+    list.style.transform = 'translate3d(0,' + (-y) + 'px,0)';
+  }
+
+  function tick(){
+    if (paused) { schedule(); return; }
+    i = (i + 1) % PHRASES.length;
+    translateTo(i);
+    schedule();
+  }
+  function schedule(){ setTimeout(tick, HOLD_MS); }
+
+  // Reduced motion: render first line only
+  var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function start(){
+    lockMetrics();
+    translateTo(0);
+    if (!prefersReduce){ schedule(); }
+  }
+
+  // Pause when off-screen (saves CPU; also halts motion while not visible)
+  var mantraSection = document.getElementById('mantra');
+  if ('IntersectionObserver' in window && mantraSection){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ paused = !e.isIntersecting; });
+    }, { threshold: 0.1 });
+    io.observe(mantraSection);
+  }
+
+  // Wait for fonts for stable measurements, then run
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(start);
+  } else {
+    window.addEventListener('load', start, { once:true });
+  }
+
+  // On resize or zoom, re-lock metrics and keep current index visible
+  window.addEventListener('resize', function(){
+    var current = i;
+    lockMetrics();
+    translateTo(current);
   });
 })();
 </script>
 
+<script>
+/* ============ Slice 2 — Mobile-only suggestions overlay ============ */
 
+/* A) Mobile detection: toggles .is-mobile on <html> */
+(function mobileGate(){
+  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+  var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  function apply(){ document.documentElement.classList.toggle('is-mobile', mq.matches || uaMobile); }
+  try { mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply); } catch(e){}
+  apply();
+})();
+
+/* B) Overlay portal controller (uses #q and #ta that you already have) */
+(function portal(){
+  var input = document.getElementById('q');   // your search field
+  var ta    = document.getElementById('ta');  // your suggestions listbox
+  if (!input || !ta) return;
+
+  var portalRoot, scrim, overlay, origParent, origNext, observer;
+  var opened = false;
+
+  function isMobile(){ return document.documentElement.classList.contains('is-mobile'); }
+
+  function ensurePortal(){
+    if (portalRoot) return;
+    portalRoot = document.createElement('div');
+    portalRoot.id = 'suggestions-portal';
+    document.body.appendChild(portalRoot);
+
+    scrim = document.createElement('div');
+    scrim.className = 'suggestions-scrim';
+    scrim.hidden = true;
+    portalRoot.appendChild(scrim);
+
+    overlay = document.createElement('div');
+    overlay.className = 'suggestions-overlay';
+    overlay.hidden = true;
+    portalRoot.appendChild(overlay);
+
+    /* stop document pointerdown from hiding #ta when tapping suggestions */
+    overlay.addEventListener('pointerdown', function(e){ e.stopPropagation(); }, true);
+    scrim.addEventListener('click', function(){
+      // close and also hide #ta so your app state stays consistent
+      closeOverlay();
+      if (window.hideTA) window.hideTA(); else { ta.hidden = true; ta.innerHTML = ''; }
+    }, { passive: true });
+  }
+
+  function position(){
+    if (!opened) return;
+    var r  = input.getBoundingClientRect();
+    var vv = window.visualViewport || { offsetTop: 0, offsetLeft: 0, height: window.innerHeight };
+    var top  = r.bottom - (vv.offsetTop || 0);
+    var left = r.left   - (vv.offsetLeft || 0);
+    overlay.style.top  = top + 'px';
+    overlay.style.left = left + 'px';
+    overlay.style.width = r.width + 'px';
+    overlay.style.maxHeight = Math.round((vv.height || window.innerHeight) * 0.60) + 'px';
+  }
+
+  function openOverlay(){
+    if (!isMobile() || opened) { position(); return; }
+    ensurePortal();
+
+    // remember original slot to restore later
+    if (!origParent){ origParent = ta.parentNode; origNext = ta.nextSibling; }
+
+    overlay.appendChild(ta);
+    scrim.hidden = false;
+    overlay.hidden = false;
+    document.body.classList.add('scroll-locked');
+    input.setAttribute('aria-expanded','true');
+    position();
+
+    // keep it anchored on viewport/keyboard changes
+    window.addEventListener('resize', position, { passive: true });
+    window.addEventListener('scroll', position, { passive: true });
+    if (window.visualViewport){
+      visualViewport.addEventListener('resize', position, { passive: true });
+      visualViewport.addEventListener('scroll', position, { passive: true });
+    }
+    document.addEventListener('keydown', onKey, true);
+    opened = true;
+  }
+
+  function closeOverlay(){
+    if (!opened) return;
+    scrim.hidden = true;
+    overlay.hidden = true;
+
+    // restore #ta to original DOM so desktop is unchanged
+    try {
+      if (origParent) origParent.insertBefore(ta, origNext);
+    } catch(e){}
+
+    document.body.classList.remove('scroll-locked');
+    input.setAttribute('aria-expanded','false');
+
+    window.removeEventListener('resize', position, { passive: true });
+    window.removeEventListener('scroll', position, { passive: true });
+    if (window.visualViewport){
+      visualViewport.removeEventListener('resize', position, { passive: true });
+      visualViewport.removeEventListener('scroll', position, { passive: true });
+    }
+    document.removeEventListener('keydown', onKey, true);
+    opened = false;
+  }
+
+  function onKey(e){ if (e.key === 'Escape'){ e.preventDefault(); closeOverlay(); } }
+
+  /* C) Sync overlay with your existing show/hide logic via MutationObserver */
+  observer = new MutationObserver(function(){
+    if (!isMobile()) return;
+    // If app has shown #ta, open overlay; if it hid it, close overlay.
+    (!ta.hidden && ta.children.length) ? openOverlay() : closeOverlay();
+  });
+  observer.observe(ta, { attributes:true, attributeFilter:['hidden'], childList:true, subtree:false });
+
+  /* D) Also react to input focus (your code already renders idle suggestions on focus) */
+  input.addEventListener('focus', function(){ if (isMobile() && !ta.hidden) openOverlay(); });
+
+  /* E) If device flips to desktop midsession, close & restore */
+  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+  function maybeClose(){ if (!isMobile()) closeOverlay(); }
+  try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
+})();
+</script>
+
+  
 </body>
 </html>
