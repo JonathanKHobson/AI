@@ -8,100 +8,117 @@
   <style>
     /* ============ THEME TOKENS (kept your names; values aligned to index) ============ */
     :root{
-      /* Dark (default) */
-      --bg:#0b0f14;
-      --panel:#121821;
-      --panel-2:#0d131b;
-      --ink:#e7eff7;
-      --ink-2:#9db0c3;
-      --line:#1b2838;
+  /* Neutrals (light) */
+  --bg:#fafafa;      /* page */
+  --fg:#0f1720;      /* primary text */
+  --muted:#506070;   /* secondary text */
+  --chip:#f3f6fa;    /* quiet surface for chips */
+  --border:#e3e9f2;  /* hairline borders */
+  --accent:#1e293b;  /* headings/strong accents */
 
-      --accent:#4ea1ff;
-      --link:#4ea1ff;
+  /* Interaction/effects */
+  --focus:#0ea5e9;               /* global focus ring */
+  --shadow:0 12px 40px rgba(0,0,0,.08);
+  --radius:16px;
 
-      --chip:#1b2533;
-      --chipOn:#13202e;
+  /* Rainbow palette */
+  --r1:#ff007a; --r2:#ff8d00; --r3:#ffd600;
+  --r4:#00dc82; --r5:#00d2ff; --r6:#7850ff;
 
-      --br:12px;
-      --shadow:0 6px 18px rgba(0,0,0,.25);
+  /* ---------- Legacy bridge (so existing CSS keeps working) ---------- */
+  --ink:var(--fg);            /* text */
+  --ink-2:var(--muted);       /* secondary text */
+  --panel:#fff;               /* surfaces/panels/cards */
+  --panel-2:#fff;             /* inner surfaces */
+  --line:var(--border);       /* borders */
+  --br:var(--radius);         /* corner radius */
 
-      /* Buttons (dark) */
-      --btn-bg:#1b2533;
-      --btn-bg-hover:#13202e;
-      --btn-border:#1b2838;
-      --btn-text:#e7eff7;
+  /* Buttons (light) */
+  --btn-bg:#fff;
+  --btn-bg-hover:#f8fafc;
+  --btn-border:var(--border);
+  --btn-text:var(--fg);
+  --btn-ghost-border:var(--border);
+  --btn-ghost-text:var(--muted);
+    /* Primary button (e.g., search) */
+  --btn-primary-bg: var(--fg);
+  --btn-primary-text: #fff;
 
-      --btn-ghost-border:#1b2838;
-      --btn-ghost-text:#e7eff7;
+  /* Prompt Builder / Ask buttons (inherit button tokens) */
+  --pb-bg:var(--btn-bg);
+  --pb-bg-hover:var(--btn-bg-hover);
+  --pb-border:var(--btn-border);
+  --pb-text:var(--btn-text);
 
-      /* Prompt Builder / Ask buttons */
-      --pb-bg:#1b2533;
-      --pb-bg-hover:#13202e;
-      --pb-border:#1b2838;
-      --pb-text:#e7eff7;
-
-      /* Theme icon: dark = golden dot */
-      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
-    }
-    html[data-theme="light"]{
-      /* Light */
-      --bg:#f7fafc;
-      --panel:#ffffff;
-      --panel-2:#ffffff;
-      --ink:#121621;
-      --ink-2:#5a6b7b;
-      --line:#d8e0ea;
-
-      --accent:#2563eb;
-      --link:#2563eb;
-
-      --chip:#f1f5f9;
-      --chipOn:#eef2f7;
-
-      --shadow:0 6px 18px rgba(17, 38, 84, .10);
-
-      /* Buttons (light) */
-      --btn-bg:#f1f5f9;
-      --btn-bg-hover:#eef2f7;
-      --btn-border:#d8e0ea;
-      --btn-text:#121621;
-
-      --btn-ghost-border:#d8e0ea;
-      --btn-ghost-text:#121621;
-
-      --pb-bg:#f1f5f9;
-      --pb-bg-hover:#eef2f7;
-      --pb-border:#d8e0ea;
-      --pb-text:#121621;
-
-      /* Light = dark dot */
+ /* Light = dark dot */
       --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23121621'/></svg>");
+
+   
+    }
+  /* Optional dark mode mapping (your toggle will flip this) */
+html[data-theme="dark"]{
+  --bg:#0c1220; --fg:#e6ebf2; --muted:#9aa8b7; --chip:#111827; --border:#233041; --accent:#cbd5e1;
+  --shadow:0 12px 40px rgba(0,0,0,.24);
+
+  /* Bridge in dark */
+  --panel:#0f1726; --panel-2:#0b1320; --ink:var(--fg); --ink-2:var(--muted); --line:var(--border);
+
+  --btn-bg:#1b2533; --btn-bg-hover:#13202e; --btn-border:var(--border); --btn-text:var(--fg);
+  --btn-ghost-border:var(--border); --btn-ghost-text:var(--fg);
+
+  --pb-bg:var(--btn-bg); --pb-bg-hover:var(--btn-bg-hover); --pb-border:var(--btn-border); --pb-text:var(--btn-text);
+  
+    --btn-primary-bg: #1e293b;     /* deep slate background in dark */
+  --btn-primary-text: #e6ebf2;   /* readable light text */
+  
+       /* Theme icon: dark = golden dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
     }
 
     /* ============ GLOBAL ============ */
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      background:linear-gradient(180deg, var(--bg), var(--bg) 40%);
-      color:var(--ink);
-      font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
-    }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+:focus-visible{ outline:2px solid var(--focus); outline-offset:2px }
+    
+    /* Ambient rainbow glimmer (soft conic glow from top-left) */
+body::before{
+  content:""; position:fixed; inset:auto auto 40% 0;
+  width:min(70vw,920px); height:min(70vh,680px); pointer-events:none; z-index:-1;
+  filter: blur(48px) saturate(115%);
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+    conic-gradient(from 210deg at 0% 0%,
+      rgba(255,0,122,.22), rgba(255,141,0,.18),
+      rgba(255,214,0,.18), rgba(0,220,130,.20),
+      rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22));
+  opacity:.28;
+}
+
+
+@media (prefers-reduced-motion: reduce){
+  body::before{ animation:none; }
+}
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1200px; margin:0 auto; padding:24px}
+   .wrap{ max-width:1600px; width:100%; margin:0 auto; padding:48px 24px 40px; display:grid; gap:24px }   
     header{display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:12px}
+    .hdr-actions{ display:flex; gap:8px; align-items:center }
+#backToSearch{ text-transform:none } /* honor exact casing “Back to Search” */
+#hdrPB{ text-transform:none }        /* keep label crisp */
     h1{font-size:24px; margin:0}
     .sub{color:var(--ink-2); font-size:13px}
 
     /* ============ PANELS & LAYOUT (unchanged structure) ============ */
-    .pane{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--br);
-      padding:14px;
-      box-shadow:var(--shadow);
-    }
+.pane{
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px; box-shadow:var(--shadow);
+}
     .controls{
       display:grid;
       grid-template-columns: 1.3fr .9fr .9fr .9fr .9fr .9fr .9fr .9fr auto;
@@ -109,38 +126,35 @@
     }
     .filters{margin-top:10px}
 
-    /* ============ FORMS (unchanged) ============ */
-    label.sub{display:block; margin:0 0 6px 2px}
-    input, select, textarea{
-      width:100%; padding:10px 12px;
-      background:var(--panel-2); color:var(--ink);
-      border:1px solid #22304922; border-radius:10px; outline:none;
-      transition: border-color .15s ease, background-color .15s ease;
-    }
-    input::placeholder, textarea::placeholder{color:#8ea0be}
-    input:focus, select:focus, textarea:focus{border-color:#3b5ea8}
+/* ============ FORMS (light, airy) ============ */
+label.sub{display:block; margin:0 0 6px 2px; color:var(--muted); text-transform:lowercase; letter-spacing:.2px}
+input, select, textarea{
+  width:100%; height:auto; padding:12px 14px;
+  background:var(--panel); color:var(--fg);
+  border:1px solid var(--border); border-radius:var(--radius); outline:none;
+  box-shadow: var(--shadow);
+  transition: border-color .12s ease, background-color .12s ease, box-shadow .12s ease;
+}
+input::placeholder, textarea::placeholder{ color:var(--muted) }
+input:focus, select:focus, textarea:focus{ border-color: var(--focus) }
 
-    /* ============ BUTTONS (same classes; themed by tokens) ============ */
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px; border-radius:10px; cursor:pointer; user-select:none;
-      background:var(--btn-bg); color:var(--btn-text); border:1px solid var(--btn-border);
-      transition: transform .04s ease, background-color .12s ease, border-color .12s ease;
-      text-decoration:none;
-      font-size:14px;
-    }
-    .btn:hover{background:var(--btn-bg-hover)}
-    .btn:active{transform:translateY(1px)}
-    .btn-ghost{
-      background:transparent; color:var(--btn-ghost-text);
-      border:1px dashed var(--btn-ghost-border);
-    }
-    .btn-link{
-      background:transparent; border:none; padding:0; color:var(--link);
-      font-size:13px;
-    }
-    .btn-sm{ padding:6px 10px; font-size:13px; border-radius:8px }
-    .btn-xs{ padding:4px 10px;  font-size:12px; border-radius:6px }
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5ch;
+  padding:9px 14px; border-radius:999px; cursor:pointer; user-select:none;
+  font-weight:600; text-transform:lowercase; text-decoration:none;
+  background: var(--btn-bg); color: var(--btn-text); border:1px solid var(--btn-border);
+  transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease, border-color .12s ease;
+}
+.btn:hover{ background:var(--btn-bg-hover) }
+.btn:active{ transform:translateY(1px) }
+
+.btn-ghost{ background:var(--panel); color:var(--muted); border:1px dashed var(--btn-ghost-border) }
+.btn-link{ background:transparent; border:none; color:var(--fg); padding:6px 8px; font-size:13px }
+
+.btn-sm{ padding:8px 12px; font-size:13px; border-radius:999px }
+.btn-xs{ padding:6px 10px; font-size:12px; border-radius:999px }
+
 
     /* Theme button dot */
     #themeBtn::before{
@@ -150,36 +164,83 @@
       border-radius:50%;
     }
     
+.card .pb-btn, .card .ask-btn{
+  position:absolute; right:10px; border:none; isolation:isolate;
+}
+.card .pb-btn::after, .card .ask-btn::after{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  --angle:0deg;
+  background: conic-gradient(from var(--angle),
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:0; transition: opacity .2s ease, filter .2s ease; pointer-events:none; z-index:-1;
+}
+@keyframes spinRainbow{ to { --angle:360deg; } }
+.card .pb-btn:hover, .card .ask-btn:hover,
+.card .pb-btn:focus-visible, .card .ask-btn:focus-visible{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35), 0 4px 10px -6px rgba(0,0,0,.25);
+}
+.card .pb-btn:hover::after, .card .ask-btn:hover::after,
+.card .pb-btn:focus-visible::after, .card .ask-btn:focus-visible::after{
+  opacity:1; filter:saturate(1.15); animation: spinRainbow 2.25s linear infinite;
+}
+@media (prefers-reduced-motion: reduce){
+  .card .pb-btn, .card .ask-btn, .card .pb-btn::after, .card .ask-btn::after{ transition:none; animation:none; }
+}
 
+/* ============ CHIPS ============ */
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px;
+  border:1px solid var(--border); background:var(--chip);
+  color:var(--fg); font-size:12px; line-height:1;
+}
+.chip .x{ cursor:pointer; opacity:.9 }
+.chip-plain{ background:transparent; border:1px solid var(--border); color:var(--muted) }
 
-    /* ============ CHIPS ============ */
-    .chip{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:4px 10px; border-radius:999px; background:var(--chip);
-      border:1px solid var(--line); color:var(--ink); font-size:12px;
-    }
-    html[data-theme="light"] .chip{ color:var(--ink); border-color:var(--line) }
-    .chip .x{cursor:pointer; opacity:.9}
-    .chip-plain{ background:transparent; border:1px solid #3a4a6a66; color:var(--ink-2) }
+/* ============ CARDS ============ */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap:16px;
+  margin-top:12px;
+}
 
-    /* ============ GRID & CARDS ============ */
-    .grid{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px }
-    @media(min-width:860px){ .grid{ grid-template-columns:1fr 1fr } }
-    .card{
-      background:var(--panel); border:1px solid #212a3a; border-radius:var(--br);
-      padding:14px; display:flex; gap:12px; position:relative; overflow:hidden; box-shadow:var(--shadow);
-      cursor:pointer;
-      /* vertical layout so buttons can anchor to bottom */
-      flex-direction: column;
-      justify-content: flex-start;
-      padding-bottom: 80px;  /* room for two buttons */
-    }
-    .card h3{margin:0 0 6px 0; font-size:16px}
-    .muted{color:var(--ink-2)}
-    .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-    .pill{display:inline-flex; padding:4px 8px; border-radius:999px; background:#2b2a46; border:1px solid #3b3a66; color:#d6d2ff; font-size:12px}
-    html[data-theme="light"] .pill{ background:#eef1ff; border-color:#cfd8ff; color:#2a2b66 }
-    .right{margin-left:auto}
+/* Constrain only the results grid, keep header/pane full-width */
+#list.grid{
+  width: 100%;
+  max-width: 1120px;      /* cap like the old centered layout */
+  justify-self: center;   /* center this grid item inside .wrap (which is display:grid) */
+  padding-inline: 20px;   /* keep the same side breathing room */
+}
+
+.grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:12px }
+@media(min-width:860px){ .grid{ grid-template-columns:1fr 1fr } }
+
+.card{
+  position:relative; overflow:hidden;
+  background:var(--panel); border:1px solid var(--border); border-radius:20px;
+  padding:24px; display:flex; flex-direction:column; gap:12px;
+  box-shadow:var(--shadow);
+  padding-bottom:116px; /* room for anchored buttons */
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 12px 44px rgba(0,0,0,.10); }
+.card::before{
+  content:""; position:absolute; inset:-12px; z-index:-1; border-radius:24px;
+  filter: blur(26px) saturate(120%);
+  background: conic-gradient(from 200deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.14; transition: opacity .2s ease;
+}
+.card:hover::before, .card:focus-visible::before{ opacity:.22 }
+
+.card h3{ margin:0 0 6px 0; font-size:16px; font-weight:600; letter-spacing:.2px; text-transform:lowercase; color:var(--accent) }
+.muted{ color:var(--muted) }
+.meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+.pill{ display:inline-flex; padding:4px 8px; border-radius:999px; background:#eef1ff; border:1px solid #cfd8ff; color:#2a2b66; font-size:12px }
+html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#d6e2ff }
 
     /* Prompt Builder + Ask ChatGPT buttons, anchored bottom-right */
     .card .pb-btn{
@@ -192,6 +253,17 @@
       background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
       display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
     }
+    
+    /* NEW: stack the two CTAs with consistent spacing */
+.card .card-cta{
+  position:absolute; right:10px; bottom:10px;
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+}
+/* When inside the CTA stack, let buttons be flow-positioned (no absolute overlap) */
+.card .card-cta .pb-btn,
+.card .card-cta .ask-btn{
+  position:static; right:auto; bottom:auto;
+}
     
     /* More breathing room above the fixed buttons */
 #list .card{
@@ -271,6 +343,51 @@
       font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     }
     #copyDlg .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px }
+    
+    /* ===== Slice 2: master search bar (tokens-aware; refined in Slice 3) ===== */
+.searchWrap{ width:min(780px,100%); margin: 8px auto 16px; position:relative; z-index:10 }
+.search{
+  width:100%; display:flex; align-items:center; gap:8px; padding:8px;
+  border-radius:999px; position:relative;
+  background:var(--panel); border:2px solid transparent;
+  background-image: linear-gradient(var(--panel),var(--panel)),
+    conic-gradient(from 90deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  background-origin: border-box; background-clip: padding-box, border-box;
+  box-shadow: var(--shadow);
+}
+.search input{ flex:1; font:16px/1.2 inherit; border:none; outline:none; padding:12px 14px; background:transparent; color:var(--fg) }
+.search button{
+  border:none; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:600;
+  background: var(--btn-primary-bg); color: var(--btn-primary-text); text-transform:lowercase
+}
+
+/* subtle glow behind search */
+.search::before{
+  content:""; position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(22px) saturate(120%);
+  background: conic-gradient(from 200deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.16;
+}
+
+/* typeahead panel */
+/* Dropdown / suggestion panel */
+.ta{
+  position:absolute; left:10px; right:10px; top:100%;
+  background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  margin-top:8px; box-shadow: var(--shadow);
+  max-height:260px; overflow:auto; z-index:1000;
+}
+.ta[hidden]{ display:none }
+.ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid var(--border) }
+.ta .item:last-child{ border-bottom:none }
+.ta .item:hover, .ta .item.active{
+  /* subtle theme-aware wash */
+  background: color-mix(in oklab, var(--fg) 10%, transparent);
+}
+.ta .use{ font-size:14px; color:var(--fg) }
+.ta .sub{ font-size:12px; color:var(--muted); display:none }
+
+
   </style>
 </head>
 <body>
@@ -280,15 +397,29 @@
   <script src="templates.tasks.data.js"></script>
 
   <div class="wrap">
-    <header>
-      <div class="hdr-wrap">
-        <h1>Prompt Template Glossary</h1>
-        <div id="hdrCount" class="count">Showing …</div>
-      </div>
-      <div class="hdr-actions">
-        <button id="themeBtn" class="btn btn-sm" title="Toggle theme">Light</button>
-      </div>
-    </header>
+<header>
+  <div class="hdr-wrap">
+    <!-- NEW: back-to-search button (upper-left) -->
+    <a id="backToSearch" class="btn btn-sm" href="../index.html" aria-label="Back to Search">← Back to Search</a>
+
+    <h1>Prompt Template Glossary</h1>
+    <div id="hdrCount" class="count">Showing …</div>
+  </div>
+
+  <div class="hdr-actions">
+    <!-- NEW: prompt builder shortcut (upper-right) -->
+    <a id="hdrPB" class="btn btn-sm" href="prompt-builder.html">Prompt Builder</a>
+    <button id="themeBtn" class="btn btn-sm" title="Toggle theme">Light</button>
+  </div>
+</header>
+    
+    <section class="searchWrap" id="masterSearch">
+  <div class="search">
+    <input id="qMaster" type="text" placeholder="type what you’re trying to make…" autocomplete="off" />
+    <button id="goMaster" type="button" title="Search">search</button>
+  </div>
+  <div id="taMaster" class="ta" role="listbox" hidden></div>
+</section>
 
     <section class="pane">
       <div class="controls">
@@ -306,7 +437,7 @@
         </div>
         <div>
           <label class="sub">Tags</label>
-          <input id="tag" placeholder="Search cleaned tags (e.g., framework)"/>
+          <input id="tag" placeholder="Search tags (e.g., framework)"/>
         </div>
         
         <div>
@@ -442,12 +573,12 @@ async function copyText(txt){
 /* ========== Theme (label shows NEXT theme) ========== */
 const THEME_KEY='templates.theme';
 function applyTheme(){
-  const t = localStorage.getItem(THEME_KEY) || 'dark';
+  const t = localStorage.getItem(THEME_KEY) || 'light';
   document.documentElement.setAttribute('data-theme', t);
   $('#themeBtn').textContent = t === 'dark' ? 'Light' : 'Dark';
 }
 $('#themeBtn').addEventListener('click', ()=>{
-  const cur = localStorage.getItem(THEME_KEY) || 'dark';
+  const cur = localStorage.getItem(THEME_KEY) || 'light';
   const next = cur === 'dark' ? 'light' : 'dark';
   localStorage.setItem(THEME_KEY, next);
   applyTheme();
@@ -516,7 +647,8 @@ for(const t of DATA){
 }
 
 /* ========== Filters (kept) ========== */
-const state = { q:'', kind:'', cat:'', tag:'', topic:'', phase:'', level:'', use:'' };
+const state = { q:'', kind:'', cat:'', tag:'', topic:'', phase:'', level:'', use:'', slug: [] };
+
 const allKinds = unique(DATA.map(d=>d._displayKind || 'unknown'))
   .filter(k => k.toLowerCase() !== 'none').sort();
 const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
@@ -540,18 +672,33 @@ const ID_FOR_FIELD = {
 
 // One canonical "clear everything" helper
 function clearAll(){
-  // reset state
+  // reset state (including slug)
   state.q = state.kind = state.cat = state.tag =
   state.topic = state.phase = state.level = state.use = '';
+  state.slug = [];
 
   // reset controls (skip gracefully if an element doesn't exist)
   Object.values(ID_FOR_FIELD).forEach(id=>{
-    const el = $('#'+id);
+    const el = document.getElementById(id);
     if (el) el.value = '';
   });
 
+  // remove `slug` from the URL (don’t reload)
+  const params = new URLSearchParams(location.search);
+  params.delete('slug');
+  const qs = params.toString();
+  history.replaceState(null, '', location.pathname + (qs ? ('?'+qs) : ''));
+
+  // also clear master search UI (if present)
+  const qm = document.getElementById('qMaster'); if (qm) qm.value = '';
+  window.hideTAMaster?.();
+
+  // keep the one-shot slug init guard consistent
+  if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
+
   render();
 }
+
 
 
 function allTagValuesBy(ns){
@@ -581,16 +728,42 @@ $('#tagLevel').addEventListener('change', ()=>{ state.level=$('#tagLevel').value
 $('#tagUse').addEventListener('change',   ()=>{ state.use=$('#tagUse').value;   render(); });
 
 
-$('#reset').addEventListener('click', ()=>{
-state.q = state.kind = state.cat = state.tag = state.topic = state.phase = state.level = state.use = '';
-['q','kind','cat','tag','tagTopic','tagPhase','tagLevel','tagUse'].forEach(id => { const el=$('#'+id); if (el) el.value=''; });
-render();
+$('#reset').addEventListener('click', ()=>{ clearAll(); });
 
-});
+// --- Slice 1: one-time `?slug=` initialization ---
+function initSlugFromURL(){
+  const params = new URLSearchParams(location.search);
+  const raw = (params.get('slug') || '').trim();
+  if (!raw) return;
+
+  // normalize to slug form; allow comma-separated
+  const wanted = raw.split(',').map(s => slugify(s)).filter(Boolean);
+  if (!wanted.length) return;
+
+  // See if at least one template matches our normalized keys; otherwise ignore
+  const anyMatch = DATA.some(d => {
+    const keys = [
+      d.id, d.slug, slugify(d.label), safeLinkId(d)
+    ].map(x => String(x||'').toLowerCase());
+    return wanted.some(w => keys.includes(w));
+  });
+  if (!anyMatch) return;
+
+  state.slug = wanted; // adopt as pre-filter
+}
+
 
 function matches(d){
   const q = state.q.trim().toLowerCase();
   if (q && !d._search.includes(q)) return false;
+    // Slug pre-filter: match id, slug, label-slug, or safeLinkId
+  if (Array.isArray(state.slug) && state.slug.length){
+    const keys = [d.id, d.slug, slugify(d.label), safeLinkId(d)]
+      .map(x => String(x||'').toLowerCase());
+    const hit = state.slug.some(w => keys.includes(w));
+    if (!hit) return false;
+  }
+
   if (state.kind && (d._displayKind||'') !== state.kind) return false;
   if (state.cat && !(d._displayCats||[]).includes(state.cat)) return false;
   
@@ -621,25 +794,379 @@ function renderActiveFilters(rowsTotal){
   if(state.cat)  chips.push(['Category', state.cat, 'cat']);
   if(state.tag)  chips.push(['Tags', `"${state.tag}"`, 'tag']);
   if(state.topic) chips.push(['Topic', state.topic, 'topic']);
-if(state.phase) chips.push(['Phase', state.phase, 'phase']);
-if(state.level) chips.push(['Level', state.level, 'level']);
-if(state.use)   chips.push(['Use',   state.use,   'use']);
-
+  if(state.phase) chips.push(['Phase', state.phase, 'phase']);
+  if(state.level) chips.push(['Level', state.level, 'level']);
+  if(state.use)   chips.push(['Use',   state.use,   'use']);
 
   $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
 
-  if(chips.length===0){
+  // consider slug chips too — don’t early-return if only slug is active
+  const hasSlug = Array.isArray(state.slug) && state.slug.length > 0;
+  const hasAny = chips.length > 0 || hasSlug;
+
+  if(!hasAny){
     active.append(h('span',{class:'chip chip-plain'}, 'No active filters'));
     return;
   }
+
+  // normal chips
   for(const [k,v,field] of chips){
-    const chip = h('span',{class:'chip'}, `${k}: ${v} `, h('span',{class:'x', onclick:()=>{ state[field]=''; const el=$('#'+field); if(el) el.value=''; render(); }}, '✕'));
+    const chip = h('span',{class:'chip'},
+      `${k}: ${v} `,
+      h('span',{class:'x', onclick:()=>{ state[field]=''; const el=$('#'+field); if(el) el.value=''; render(); }}, '✕')
+    );
     active.append(chip);
   }
+
+  // slug chips
+  if (hasSlug){
+    for (const s of state.slug){
+      const chip = h('span',{class:'chip'},
+        `Slug: ${s} `,
+        h('span',{
+          class:'x',
+          onclick:()=>{
+            state.slug = state.slug.filter(x => x !== s);
+            if (!state.slug.length){
+              const params = new URLSearchParams(location.search);
+              params.delete('slug');
+              const qs = params.toString();
+              history.replaceState(null, '', location.pathname + (qs ? ('?'+qs) : ''));
+            }
+            render();
+          }
+        }, '✕')
+      );
+      active.append(chip);
+    }
+  }
+
+  // one clear-all that also clears slug
   active.append(
-    h('a', {href:'#', class:'btn-link', onclick:(e)=>{ e.preventDefault(); state.q=state.kind=state.cat=state.tag=''; ['q','kind','cat','tag'].forEach(id=>{$('#'+id).value=''}); render(); }}, 'Clear all')
+    h('a', {href:'#', class:'btn-link', onclick:(e)=>{ e.preventDefault(); clearAll(); }}, 'Clear all')
   );
 }
+
+/* ===== Slice 2: Use-case Master Search (portable) ===== */
+/* Data contract: uses window.TEMPLATES/FRAMEWORKS + window.TASK_TEMPLATES/tasks */
+
+(function masterSearch(){
+  // --- DOM handles
+  const qEl  = document.getElementById('qMaster');
+  const taEl = document.getElementById('taMaster');
+  const goEl = document.getElementById('goMaster');
+  const wrap = document.getElementById('masterSearch');
+  if (!qEl || !taEl || !goEl || !wrap) return;
+
+  // --- Recents
+  const RECENT_KEY = 'pb_recent_queries';
+  const MAX_RECENT = 12;
+  function loadRecent(){ try{ return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]'); }catch{ return []; } }
+  function saveRecent(q){
+    q = String(q||'').trim();
+    if (!q) return;
+    let list = loadRecent().filter(s => s && s.toLowerCase() !== q.toLowerCase());
+    list.unshift(q);
+    if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+  }
+
+  // --- Merge datasets (preserve origin)
+  function allTemplatesMS(){
+    const base  = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
+                : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
+    const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
+                : Array.isArray(window.tasks) ? window.tasks : [];
+    const mark = (arr,isTask)=> arr.map(t => ({ ...t, __isTask:isTask }));
+    return [...mark(base,false), ...mark(tasks,true)].map(t=>{
+      const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
+      return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
+    });
+  }
+
+  // --- Build index (compact projection)
+  function buildIndexMS(){
+    const src = allTemplatesMS();
+    return src.map(t=>{
+      const useTags = (t.tags||[])
+        .map(String).map(s=>s.trim().toLowerCase())
+        .filter(s=>s.startsWith('use:'))
+        .map(s=>s.split(':',2)[1]).filter(Boolean);
+      const kind   = String(t.kind || t.type || '').toLowerCase();
+      const isTask = (kind === 'task')
+        || /^task[_-]/.test(String(t.id||''))
+        || /^task[_-]/.test(String(t.slug||''));
+      return {
+        id: t.id || t.slug || t.label,
+        slug: t.slug || t.id,
+        label: t.label || t.name || t.slug || t.id || 'untitled',
+        use_cases: (t.use_cases||[]).map(String),
+        use_tags:  useTags,
+        tags: (t.tags||[]).slice(),
+        categories: t.categories || [],
+        definition: t.definition || t.help || '',
+        fields: Array.isArray(t.fields) ? t.fields.slice() : [],
+        boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
+        kind, isTask,
+        // keep original around for “open in …” if we need it later
+        __src: t
+      };
+    });
+  }
+
+  // --- Ranking
+  function rankSuggestionsMS(q, idx, limit=8){
+    const rawQ  = String(q||'').trim().toLowerCase();
+    const terms = rawQ.split(/[^a-z0-9]+/).filter(Boolean);
+    if (!terms.length) return [];
+
+    const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const hits = [];
+
+    for (const t of idx){
+      let bestUC = '';
+      let ucScore = 0;
+
+      for (const uc of t.use_cases){
+        const l = uc.toLowerCase();
+        let s=0, matched=false, firstPos=Infinity;
+
+        if (rawQ && l === rawQ){ s+=220; matched=true; }
+        else if (rawQ && l.includes(rawQ)){ s+=120; matched=true; }
+
+        for (const tok of terms){
+          if (l === tok){ s+=80; matched=true; }
+          const re = new RegExp(`\\b${esc(tok)}\\b`);
+          if (re.test(l)){ s+=40; matched=true; }
+          const pos = l.indexOf(tok);
+          if (pos>=0){ s+=24; matched=true; firstPos = Math.min(firstPos, pos); if (pos===0) s+=10; }
+        }
+        if (!matched) continue;
+
+        if (firstPos<Infinity){ s += Math.max(0, 30 - Math.min(30, firstPos)); }
+        s += Math.max(0, 18 - Math.min(18, Math.floor(l.length/12)));
+
+        if (t.isTask) s += 30;
+        if (t.kind && terms.some(tok=>t.kind.includes(tok))) s += 12;
+
+        if (s > ucScore){ ucScore = s; bestUC = uc; }
+      }
+
+      // tags fallback only if no UC hit
+      let tagScore = 0;
+      if (ucScore===0 && t.use_tags.length){
+        for (const tag of t.use_tags){
+          const tl = String(tag).toLowerCase();
+          for (const tok of terms){
+            if (tl === tok) tagScore += 20;
+            else if (tl.includes(tok)) tagScore += 12;
+          }
+        }
+        if (tagScore>0){
+          if (t.isTask) tagScore += 12;
+          if (t.kind && terms.some(tok=>t.kind.includes(tok))) tagScore += 8;
+        }
+      }
+
+      if (ucScore>0){
+        hits.push({ bucket:'uc', score:ucScore, use:bestUC||t.use_cases[0]||'', label:t.label, template:t, id:t.id, slug:t.slug });
+      } else if (tagScore>0){
+        hits.push({ bucket:'tag', score:tagScore, use:bestUC||t.use_cases[0]||'', label:t.label, template:t, id:t.id, slug:t.slug });
+      }
+    }
+
+    hits.sort((a,b)=>
+      (a.bucket===b.bucket?0:(a.bucket==='uc'?-1:1)) ||
+      (b.score - a.score) ||
+      ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
+      (a.use.length - b.use.length) ||
+      a.use.localeCompare(b.use)
+    );
+
+    // Wild-query helper injection
+    const TOP = hits[0]?.score || 0;
+    const isWild = (hits.length===0) || (hits.length<=2 && TOP<60);
+    if (isWild){
+      const helpers = helperUsecaseSuggestionsMS(idx, 8, new Set(hits.map(h=>h.use)));
+      const helperBase = Math.max(TOP + 5, 240);
+      let step=0;
+      for (const h of helpers){
+        h.score = helperBase - (step++ * 0.5);
+        hits.push(h);
+      }
+      hits.sort((a,b)=>
+        (a.bucket===b.bucket?0:(a.bucket==='uc'?-1:1)) ||
+        (b.score - a.score) ||
+        ((b.template?.isTask?1:0) - (a.template?.isTask?1:0)) ||
+        (a.use.length - b.use.length) ||
+        a.use.localeCompare(b.use)
+      );
+    }
+
+    return hits.slice(0, limit);
+  }
+
+  // Helpers & idle suggestions
+  function helperTemplatesMS(idx){
+    const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+    return idx.filter(t=>{
+      const lbl = String(t.label||'').trim();
+      const id  = String(t.id||'').trim().toLowerCase();
+      const kind= String(t.kind||'').trim().toLowerCase();
+      return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+    });
+  }
+  function helperUsecaseSuggestionsMS(idx, limit, seen=new Set()){
+    const out=[];
+    for (const t of helperTemplatesMS(idx)){
+      for (const uc of (t.use_cases||[])){
+        if (seen.has(uc)) continue;
+        out.push({ bucket:'uc', score:999, use:uc, label:t.label, template:t, id:t.id, slug:t.slug, origin:'helper' });
+        seen.add(uc);
+        if (out.length >= limit) return out;
+      }
+    }
+    return out;
+  }
+  function buildIdleSuggestionsMS(idx, limit=8){
+    const seen = new Set();
+    const out  = [];
+    for (const r of loadRecent()){
+      if (!r || seen.has(r)) continue;
+      out.push({ bucket:'uc', score:1000, use:r, label:'recent', template:null, id:null, slug:null, origin:'recent' });
+      seen.add(r);
+      if (out.length >= limit) return out;
+    }
+    return out.concat(helperUsecaseSuggestionsMS(idx, Math.max(0, limit - out.length), seen));
+  }
+
+  // UI: render list
+  function renderTA(list){
+    if (!list.length){ taEl.hidden = true; taEl.innerHTML=''; active=-1; return; }
+    taEl.innerHTML = list.map((s,i)=>`
+      <div class="item${i===0?' active':''}" role="option" data-i="${i}">
+        <div class="use">${s.use}</div>
+        <div class="sub" aria-hidden="true">${s.label}</div>
+      </div>
+    `).join('');
+    taEl.hidden = false; active = 0;
+  }
+  function hideTAMaster(){ taEl.hidden = true; taEl.innerHTML=''; active = -1; }
+
+  // Query plumbing
+  let INDEX_MS = [];
+  let SUGS_MS  = [];
+  let active   = -1;
+  let picked   = null;
+
+  function onQueryMS(){
+    const q = qEl.value.trim();
+    const focused = document.activeElement === qEl;
+    if (!q){
+      if (focused){
+        SUGS_MS = buildIdleSuggestionsMS(INDEX_MS, 8);
+        renderTA(SUGS_MS);
+      } else {
+        hideTAMaster();
+      }
+      return;
+    }
+    SUGS_MS = rankSuggestionsMS(q, INDEX_MS, 8);
+    renderTA(SUGS_MS);
+  }
+
+  // Choose & run: set your existing state.q and render results
+  function startScanMS(){
+    const q = qEl.value.trim();
+    if (!q) return;
+    saveRecent(q);
+    state.q = q;
+    const qFilter = document.getElementById('q');
+    if (qFilter) qFilter.value = q; // mirror into legacy field so chip shows
+    render();
+    // ensure dropdown is closed
+    hideTAMaster();
+    // scroll into view
+    document.getElementById('list')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function chooseMS(i){
+    const items = Array.from(taEl.children);
+    const it = items[i]; if (!it) return;
+    const s  = SUGS_MS[i]; if (!s) return;
+
+    qEl.value = s.use;
+    hideTAMaster();
+
+    if (s.origin === 'recent'){
+      picked = null;
+      onQueryMS();                // recompute for this query
+      if (SUGS_MS[0] && SUGS_MS[0].origin !== 'recent'){ picked = SUGS_MS[0]; }
+      startScanMS();
+      return;
+    }
+    picked = s;
+    startScanMS();
+  }
+
+  // Events
+  qEl.addEventListener('input', onQueryMS);
+  qEl.addEventListener('keydown', (e)=>{
+    const open = !taEl.hidden && taEl.children.length;
+    if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+      e.preventDefault();
+      active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
+      [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
+    } else if (e.key === 'Enter'){
+      e.preventDefault();
+      if (open){ chooseMS(active>=0 ? active : 0); }
+      else { if (!picked && SUGS_MS[0]) picked = SUGS_MS[0]; startScanMS(); }
+    } else if (e.key === 'Escape'){
+      hideTAMaster();
+    }
+  });
+  taEl.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.item'); if (!el) return;
+    chooseMS(parseInt(el.dataset.i,10) || 0);
+  });
+  goEl.addEventListener('click', ()=>{
+    if (!picked && SUGS_MS[0] && !taEl.hidden){ chooseMS(0); }
+    else startScanMS();
+  });
+  qEl.addEventListener('focus', ()=>{
+    if (!qEl.value.trim()){
+      SUGS_MS = buildIdleSuggestionsMS(INDEX_MS, 8);
+      renderTA(SUGS_MS);
+    } else onQueryMS();
+  });
+  qEl.addEventListener('blur', ()=> setTimeout(hideTAMaster, 80));
+
+  document.addEventListener('pointerdown', (e)=>{
+    if (!wrap.contains(e.target)) hideTAMaster();
+  });
+
+  // Boot index when datasets are ready (handles async script loads)
+  function bootMS(){ INDEX_MS = buildIndexMS(); onQueryMS(); }
+  (function watchDatasetsMS(){
+    let lastSeen = '';
+    const timer = setInterval(()=>{
+      const haveTpl  = Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS);
+      const haveTask = Array.isArray(window.TASK_TEMPLATES) || Array.isArray(window.tasks);
+      const sig = (haveTpl ? 'T' : '_') + (haveTask ? 'K' : '_');
+      if (sig !== lastSeen){
+        lastSeen = sig;
+        bootMS();
+        if (haveTpl && haveTask) clearInterval(timer);
+      }
+    }, 80);
+  })();
+
+  // Expose a tiny helper so clearAll() can close the dropdown
+  window.hideTAMaster = hideTAMaster;
+})();
+
+
+
 
 /* ========== Ask ChatGPT prompt builder ========== */
 function buildTemplateSummary(t){
@@ -678,11 +1205,11 @@ function buildChatGPTPrompt(t){
   const summary = buildTemplateSummary(t);
 
   return [
-    `You are an expert AI tutor. The user is viewing a "${kind}" entry and wants more depth, examples, and comparisons.`,
+    `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template and will share its full structure with you below to prime your understanding:`,
     ``,
     summary,
     ``,
-    `Please:`,
+    `Please begin by asking me what I would like to accomplish using this template. Then:`,
     `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
     `2) Contrast it with closely related terms (if any) and note common confusions.`,
     `3) Offer pitfalls, best practices, and a short checklist.`,
@@ -755,13 +1282,14 @@ function render(){
       tags
     );
 
-    const card = h('div',{
+const card = h('div',{
   class:'card',
   role:'button',
   tabIndex:'0',
   'aria-label': `Expand details for ${t.label || t.slug || t.id || 'template'}`
 });
-    card.append(cardBody, openPB, askBtn);
+const ctaWrap = h('div',{class:'card-cta'}, openPB, askBtn);
+card.append(cardBody, ctaWrap);
 
     // Click anywhere except PB/Ask opens preview modal
     card.addEventListener('click', (e)=>{
@@ -782,7 +1310,9 @@ function render(){
     listEl.append(card);
   }
 }
+if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
 render();
+
 
 /* ========== Detail modal (adds Ask ChatGPT in modal) ========== */
 const dlg = $('#dlg');
