@@ -89,164 +89,278 @@ GLOSSARY.push(
   {
     slug: "ai-human-research-and-analysis",
     term: "AI-Human Research and Analysis",
-    aliases: [],
-    definition: `Conducting in-depth studies of how people interact with AI systems to improve user experience (UX), trust, and overall efficacy. Includes formative research, usability testing, and behavioral analysis of human–AI collaboration.`,
+    aliases: ["human–AI research", "AI UX research", "HCI for AI", "AI usability studies", "AI trust & safety research"],
+    definition: `A human-centered discipline focused on how people perceive, use, and collaborate with AI systems. It blends UX research, behavioral science, HCI, and safety evaluation to uncover needs, pain points, mental models, and trust dynamics—then feeds those insights into product decisions, prompts, policies, and metrics so AI feels capable *and* respectful of users.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:discipline","topic:human-ai","topic:ux","phase:evaluation"],
-    related: ["ai-human-technical-communication","artificial-intelligence-ai"],
+    categories: ["human-centered AI", "evaluation", "ux & research"],
+    tags: [
+      "kind:term",
+      "type:discipline",
+      "topic:human-ai",
+      "phase:evaluation",
+      "use:research",
+      "level:intermediate"
+    ],
+    related: ["ai-human-technical-communication", "human-and-ai-behavior", "prompt-engineering-and-development", "alignment"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Discovery studies to map user goals and risks • Comparative UX tests across model versions or guardrails • Trust calibration experiments (confidence displays, citations) • Longitudinal field studies of assistants at work
+Boosters: • Triangulate qual + quant (think-aloud + logs/telemetry) • Pre-register success metrics (task success, satisfaction, error classes) • Include diverse users and contexts; sample edge cases • Close the loop: convert findings into prompts, policies, and KPIs
+Caveats: Lab results may not generalize—validate in real workflows and monitor drift over time.`
   },
   {
     slug: "ai-human-technical-communication",
     term: "AI-Human Technical Communication",
-    aliases: [],
-    definition: `Translating complex AI concepts and system behavior into language and structures accessible to both LLMs and diverse human audiences (including non-technical stakeholders). Covers documentation, prompt specs, and decision/rationale narratives.`,
+    aliases: ["AI documentation", "AI product narratives", "explainable AI comms", "LLM prompt specs", "model behavior guides"],
+    definition: `Translating model behavior, limits, and design choices into language that works for *both* experts and non-experts. Spans docs, quick-starts, prompt specs, change logs, and rationale write-ups so teams and users know what to expect, what to avoid, and how to get reliable results.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:discipline","topic:communication","topic:human-ai","phase:ideation"],
-    related: ["ai-human-research-and-analysis","prompt-engineering-and-development"],
+    categories: ["human-centered AI", "documentation", "governance"],
+    tags: [
+      "kind:term",
+      "type:discipline",
+      "topic:communication",
+      "phase:ideation",
+      "use:documentation",
+      "level:beginner"
+    ],
+    related: ["ai-human-research-and-analysis", "prompt-engineering-and-development", "rubric-approach", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Prompt specification and style guides • “Known limits & pitfalls” pages • Model update notes with behavior changes • Internal comms for risk reviews
+Boosters: • Write for tasks not tech: examples before internals • Surface guardrails and failure modes up front • Provide copy-pasteable patterns and checklists • Maintain a glossary with consistent tags
+Caveats: Overclaiming harms trust—mark uncertainty, cite sources, date assumptions.`
   },
   {
     slug: "alignment",
     term: "Alignment",
-    aliases: [],
-    definition: `The degree and process of steering an AI system to better reflect human preferences, values, and constraints (e.g., safety, helpfulness). Encompasses preference learning, instruction tuning, policy design, and evaluation.`,
+    aliases: ["AI alignment", "value alignment", "behavioral alignment", "safety alignment"],
+    definition: `The ongoing process of steering AI systems toward human goals and constraints (helpful, honest, harmless). Combines data/finetuning methods (instruction tuning, RLHF/RLAIF), policy and UX design, eval suites, and post-deployment monitoring to reduce harmful or misleading behavior while preserving capability.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:safety","topic:llm","phase:evaluation"],
-    related: ["artificial-intelligence-ai","artificial-general-intelligence-agi","artificial-superintelligence-asi"],
+    categories: ["safety & policy", "training & tuning", "evaluation"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:safety",
+      "phase:evaluation",
+      "use:governance",
+      "level:advanced"
+    ],
+    related: ["artificial-intelligence-ai", "artificial-general-intelligence-agi", "generative-ai", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Policy design for assistants • Preference data collection and reward modeling • Safety evals and red-teaming • Post-launch incident review
+Boosters: • Separate capability and safety metrics; track both • Use staged rollouts with kill switches • Pair automated checks with human review for high stakes • Iterate on prompts + policies + data
+Caveats: Alignment is context- and culture-dependent—document scope and values explicitly.`
   },
   {
     slug: "architecture",
     term: "Architecture",
-    aliases: [],
-    definition: `The structural design of a system or process—its components, parameters, and their relationships/operations—independent of specific parameter values.`,
+    aliases: ["system architecture", "solution architecture", "LLM stack design"],
+    definition: `The blueprint of components and relationships in a system: models, prompts, tools, data flows, policies, and storage. Good architecture makes behavior modular, testable, and evolvable—separating concerns like prompting, retrieval, tool calls, and safety layers.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:systems"],
-    related: ["prompt-engineering-and-development","prompt-architect"],
+    categories: ["systems", "design", "orchestration"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:systems",
+      "phase:plan",
+      "use:system-design",
+      "level:intermediate"
+    ],
+    related: ["prompt-architecture", "prompt-engineering-and-development", "peas-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Designing agent/tool pipelines • Selecting retrieval and memory layers • Isolation of safety filters and audits • Versioning prompts and models cleanly
+Boosters: • Define interfaces (contracts) between layers • Add observability (traces, eval hooks) • Plan rollback paths and A/B buckets
+Caveats: Overcoupling prompts to tools limits change—favor composable modules.`
   },
   {
     slug: "artificial-intelligence-ai",
     term: "Artificial Intelligence (AI)",
-    aliases: ["ai"],
-    definition: `A field of techniques for creating systems that perform tasks requiring forms of perception, reasoning, or decision-making; also used to refer to specific systems that simulate aspects of human cognition.`,
+    aliases: ["ai", "machine intelligence", "ai systems"],
+    definition: `The field and practice of building systems that perform tasks we associate with human cognition—perception, language, reasoning, decision-making. In products, “AI” broadly covers supervised/unsupervised learning, reinforcement learning, and generative models (LLMs, diffusion).`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:llm"],
-    related: ["artificial-general-intelligence-agi","artificial-narrow-intelligence-ani","artificial-superintelligence-asi","generative-ai"],
+    categories: ["foundations", "overview"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:llm",
+      "phase:ideation",
+      "use:education",
+      "level:beginner"
+    ],
+    related: ["artificial-general-intelligence-agi", "artificial-narrow-intelligence-ani", "generative-ai"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Orientation for stakeholders • Scoping AI vs. non-AI solutions • Terminology alignment in docs
+Boosters: • Clarify model classes with examples • Distinguish capabilities vs. deployment constraints • Maintain a living glossary
+Caveats: “AI” is overloaded—define what you mean per project.`
   },
   {
     slug: "artificial-general-intelligence-agi",
     term: "Artificial General Intelligence",
-    aliases: ["agi","strong ai"],
-    definition: `Hypothetical AI with the ability to learn, reason, and apply knowledge broadly across domains, at least as well as a human.`,
+    aliases: ["agi", "strong ai", "general intelligence"],
+    definition: `A hypothetical AI that can learn and apply knowledge broadly across domains at least as well as a human. Used as a planning horizon concept to discuss safety, governance, and capability generalization beyond narrow tasks.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:llm"],
-    related: ["artificial-intelligence-ai","artificial-superintelligence-asi","artificial-narrow-intelligence-ani","alignment"],
+    categories: ["foundations", "safety & policy"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:llm",
+      "phase:ideation",
+      "use:education",
+      "level:advanced"
+    ],
+    related: ["artificial-intelligence-ai", "artificial-superintelligence-asi", "artificial-narrow-intelligence-ani", "alignment"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Strategy and risk discussions • Long-term governance frameworks • Research roadmaps
+Boosters: • Separate speculative scenarios from present-day limits • Tie debates to measurable precursors
+Caveats: Highly speculative—avoid letting it derail near-term product safety work.`
   },
   {
     slug: "artificial-narrow-intelligence-ani",
     term: "Artificial Narrow Intelligence",
-    aliases: ["ani","weak ai"],
-    definition: `AI systems specialized for specific tasks or domains (the predominant form of AI in practical use).`,
+    aliases: ["ani", "weak ai", "narrow ai"],
+    definition: `Today’s dominant AI: systems specialized for a particular task or domain (translation, code assist, routing). Powerful when scoped, brittle when pushed beyond trained contexts.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:llm"],
-    related: ["artificial-intelligence-ai","artificial-general-intelligence-agi"],
+    categories: ["foundations", "product reality"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:llm",
+      "phase:apply",
+      "use:education",
+      "level:beginner"
+    ],
+    related: ["artificial-intelligence-ai", "artificial-general-intelligence-agi"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Scoping MVP capabilities • Choosing evaluation datasets • Communicating limits to users
+Boosters: • Design guardrails that enforce scope • Route unknowns to fallback flows
+Caveats: Overreach invites failure—prefer graceful refusal or handoff.`
   },
   {
     slug: "artificial-superintelligence-asi",
     term: "Artificial Superintelligence",
-    aliases: ["asi"],
-    definition: `A speculative form of AI that would surpass human capabilities across fields, including scientific creativity, general wisdom, and social skills.`,
+    aliases: ["asi", "superintelligence"],
+    definition: `A speculative system that surpasses human ability across cognitive tasks (science, strategy, social reasoning). A thought tool for governance discussions about control, risk, and societal impact.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:llm"],
-    related: ["artificial-general-intelligence-agi","alignment"],
+    categories: ["foundations", "safety & policy"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:llm",
+      "phase:ideation",
+      "use:education",
+      "level:advanced"
+    ],
+    related: ["artificial-general-intelligence-agi", "alignment"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Scenario planning • Policy conversations with stakeholders
+Boosters: • Anchor claims to current empirical trends • Separate hype from concrete governance needs
+Caveats: Speculation isn’t evidence—avoid policy by vibes.`
   },
   {
     slug: "generative-ai",
     term: "Generative AI",
-    aliases: ["genai","generative artificial intelligence"],
-    definition: `AI systems designed to generate content (text, images, audio, video, code) by modeling data distributions and sampling from them under guidance (e.g., prompts or conditions).`,
+    aliases: ["genai", "generative artificial intelligence", "content generation AI"],
+    definition: `Systems that learn data distributions to produce new text, images, audio, video, or code under guidance (prompts, conditions). Includes LLMs and diffusion models; power comes from pairing generation with constraints, tools, and feedback.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:generative","topic:llm","phase:prompting"],
-    related: ["artificial-intelligence-ai","prompt-engineering-and-development"],
+    categories: ["foundations", "applications"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:generative",
+      "phase:prompting",
+      "use:education",
+      "level:beginner"
+    ],
+    related: ["prompt-engineering-and-development", "artificial-intelligence-ai"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Creative drafting • Data transformation • Prototype UX flows
+Boosters: • Add structure (schemas, sections) • Use retrieval/tools for grounding
+Caveats: High fluency ≠ high accuracy—verify claims.`
   },
   {
     slug: "human-and-ai-behavior",
     term: "Human and AI Behavior",
-    aliases: [],
-    definition: `A lens for translating human needs and nuances into AI-amenable structures—and interpreting AI capabilities/limits into actionable, user-friendly experiences.`,
+    aliases: ["human–AI interaction patterns", "behavioral lenses for AI", "AI behavior & UX"],
+    definition: `A practical lens for translating human nuance into AI-friendly structures (roles, prompts, constraints) and for mapping AI strengths/limits back into humane, legible experiences. Bridges psychology with prompt and product design.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:discipline","topic:human-ai","topic:ux","phase:ideation"],
-    related: ["ai-human-research-and-analysis","ai-human-technical-communication"],
+    categories: ["human-centered AI", "behavior", "design"],
+    tags: [
+      "kind:term",
+      "type:discipline",
+      "topic:human-ai",
+      "phase:ideation",
+      "use:ux",
+      "level:intermediate"
+    ],
+    related: ["ai-human-research-and-analysis", "ai-human-technical-communication"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Behavior mapping for assistants • Tone, refusal, and escalation design • Feedback loops that teach users & models
+Boosters: • Write persona/behavior contracts • Instrument for friction points and delight
+Caveats: Beware anthropomorphism—communicate limits clearly.`
   },
   {
     slug: "prompt-engineering-and-development",
     term: "Prompt Engineering and Development",
-    aliases: ["prompt engineering","prompt design","prompt development"],
-    definition: `Designing, refining, and systematizing prompts, guardrails, and evaluation loops to guide AI behavior—maximizing desired outcomes while mitigating failure modes.`,
+    aliases: ["prompt engineering", "prompt design", "prompt development", "prompt ops"],
+    definition: `The craft of shaping model behavior with instructions, examples, constraints, tools, and eval loops. Treats prompts as first-class artifacts with versioning, tests, and governance so outputs are consistent, controllable, and improvable.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:discipline","topic:prompting","phase:prompting"],
-    related: ["prompt-architect","architecture","generative-ai"],
+    categories: ["orchestration", "quality", "development"],
+    tags: [
+      "kind:term",
+      "type:discipline",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["prompt-architect", "prompt-architecture", "raccca-framework", "rubric-approach"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Designing assistants and agents • Mitigating hallucinations via structured outputs • Multi-model content pipelines
+Boosters: • Keep a library of tested patterns • Add evaluation gates on critical paths
+Caveats: Prompt magic fades without measurement—invest in evals.`
   },
   {
     slug: "prompt-architect",
     term: "Prompt Architect",
-    aliases: [],
-    definition: `A role that extends “prompt engineering” into product/system design—framing behaviors, structures, and UX for prompt-driven systems by blending technical and humanistic disciplines (e.g., linguistics, psychology, philosophy).`,
+    aliases: ["prompt systems designer", "prompt strategist", "prompt lead"],
+    definition: `A role that extends prompt engineering into end-to-end product/system design: defines behaviors, chooses orchestration patterns, aligns UX and safety, and builds reusable prompt components with tests, docs, and versioning.`,
     sources: [],
-    categories: ["overarching"],
-    tags: ["type:role","topic:prompting","phase:ideation"],
-    related: ["prompt-engineering-and-development","architecture"],
+    categories: ["roles", "orchestration"],
+    tags: [
+      "kind:term",
+      "type:role",
+      "topic:prompting",
+      "phase:ideation",
+      "use:system-design",
+      "level:advanced"
+    ],
+    related: ["prompt-engineering-and-development", "architecture", "prompt-architecture"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Designing RAG/agent stacks • Establishing prompt libraries & governance • Cross-functional prompt reviews
+Boosters: • Maintain templates + rubrics • Separate concerns (policy vs. capability) • Instrument outputs for continuous learning
+Caveats: Role success depends on tight collaboration with UX, safety, and infra.`
   },
   {
     slug: "waves-of-ai-prompting-evolutions",
     term: "Waves of AI Prompting Evolutions",
-    aliases: ["three waves of ai","darpa three waves"],
-    definition: `A three-phase view of AI progress:  
-1) **Rule-based systems** with handcrafted knowledge;  
-2) **Statistical learning** (e.g., neural networks) that improves from data but has opaque reasoning;  
-3) **Contextual adaptation**, fusing structured knowledge with learning to reason within context and act as trusted assistants.`,
+    aliases: ["three waves of ai", "darpa three waves", "rule-based → learning → contextual"],
+    definition: `A high-level storyline for AI progress: (1) **Rule-based** expert systems with symbolic rules; (2) **Statistical learning** systems that learn from data but are opaque; (3) **Contextual adaptation**, blending knowledge, learning, and tool use to act in context like a helpful assistant.`,
     sources: [
       { title: "Futurism overview", url: "https://futurism.com/artificial-intelligence-tech-will-arrive-in-three-waves" },
       { title: "A DARPA Perspective on AI", url: "https://machinelearning.technicacuriosa.com/2017/03/19/a-darpa-perspective-on-artificial-intelligence/" }
     ],
-    categories: ["overarching"],
-    tags: ["type:concept","topic:llm","phase:ideation"],
-    related: ["artificial-intelligence-ai"],
+    categories: ["foundations", "history"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:llm",
+      "phase:ideation",
+      "use:education",
+      "level:beginner"
+    ],
+    related: ["artificial-intelligence-ai", "generative-ai"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Exec/partner education • Framing product roadmaps • Choosing evaluation styles per wave
+Boosters: • Add concrete examples per wave • Call out limits and transitions
+Caveats: A simplification—real systems mix elements from multiple waves.`
   }
 );
 
@@ -254,1938 +368,3341 @@ GLOSSARY.push(
   {
     slug: "prompt-architecture",
     term: "Prompt Architecture",
-    aliases: ["virtual brain"],
-    definition: `The specific arrangement and connections of prompts, strategies, and evaluation loops that produce consistent, modular behavior across tasks.`,
+    aliases: ["virtual brain", "prompt system design", "prompt pipeline architecture"],
+    definition: `The arrangement of prompts, tools, memory, and evaluators that produce predictable behavior. Emphasizes modular roles (system/user/tool), reusable templates, guardrails, and observability so teams can improve parts without breaking the whole.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","topic:prompting","phase:prompting"],
-    related: ["prompt-engineering-and-development","architecture","generative-ai","prompt-architect"],
+    categories: ["orchestration", "design patterns"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:prompting",
+      "phase:prompting",
+      "use:system-design",
+      "level:advanced"
+    ],
+    related: ["architecture", "prompt-engineering-and-development", "rtf-framework", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Building agent flows with tools • Multi-turn assistants with memory • Structured extraction pipelines
+Boosters: • Define contracts for each module • Version prompts and log deltas • Add offline/online evals before shipping
+Caveats: Hidden coupling between prompts can regress silently—test end-to-end.`
   },
   {
     slug: "clear-path-forward-framework",
     term: "CLEAR Path Forward Framework",
-    aliases: [],
-    definition: `An AI prompt-literacy framework: **Concise**, **Logical**, **Explicit**, **Adaptive**, **Reflective**—aimed at structuring effective, iterative interactions.`,
+    aliases: ["CLEAR path", "concise logical explicit adaptive reflective"],
+    definition: `A prompt-literacy framework: keep prompts **Concise**, **Logical**, **Explicit**, **Adaptive**, and **Reflective**. It nudges better structure, fit-to-task, and iterative improvement across sessions.`,
     sources: [
       { title: "ScienceDirect (Computers & Education)", url: "https://www.sciencedirect.com/science/article/abs/pii/S0099133323000599" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
-    related: ["raccca-framework","rubric-approach"],
+    categories: ["prompt patterns", "education"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:prompting",
+      "phase:ideation",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["raccca-framework", "rubric-approach", "clear-prompting-method"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Coaching non-experts to write better prompts • Team prompt reviews • Course materials on AI literacy
+Boosters: • Convert each letter into a checklist item • Keep examples per letter for quick reference
+Caveats: Frameworks guide, they don’t guarantee—validate with small tests.`
   },
   {
     slug: "clear-prompting-method",
     term: "CLEAR Prompting Method",
-    aliases: [],
-    definition: `A prompting checklist: **Clarity**, **Length**, **Empathy**, **Actionability**, **Relevance**—to improve instruction quality and fit.`,
+    aliases: ["clarity length empathy actionability relevance", "CLEAR checklist"],
+    definition: `A quick checklist—**Clarity**, **Length**, **Empathy**, **Actionability**, **Relevance**—for improving instruction quality and fit to audience/context before you hit Enter.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
-    related: ["clear-path-forward-framework","rubric-approach"],
+    categories: ["prompt patterns", "quality"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["clear-path-forward-framework", "rubric-approach"],
     status: "verified",
-    notes: "Needs source"
+    notes: `Use-cases: • Last-mile edits of prompts • Customer support tone checks • Educational prompts with sensitive audiences
+Boosters: • Annotate “who reads this” and “what they need” • Trim filler; promote verbs and constraints
+Caveats: Empathy ≠ overpromising—set boundaries explicitly.`
   },
   {
     slug: "clear-framework",
     term: "CLEAR Framework",
-    aliases: [],
-    definition: `A problem-framing tool: **Challenge**, **Limitation**, **Effect**, **Action**, **Result**—used to outline issues, constraints, and a path to outcomes.`,
+    aliases: ["challenge limitation effect action result", "CLEAR problem framing"],
+    definition: `A problem-framing scaffold: define the **Challenge** and **Limitations**, describe the **Effect** (impact), propose the **Action**, and state the desired **Result**. Helps align teams on constraints and outcomes before prompting.`,
     sources: [
       { title: "LinkedIn article", url: "https://www.linkedin.com/pulse/demystifying-prompt-engineering-unveiling-art-behind-effective" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
-    related: ["par-method","star-technique","aida-model","swot-analysis"],
+    categories: ["problem framing", "planning"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:ideation",
+      "use:decision-support",
+      "level:beginner"
+    ],
+    related: ["par-method", "star-technique", "aida-model", "swot-analysis"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Framing AI features or experiments • Writing crisp tickets/specs • Scoping risks and guardrails
+Boosters: • Keep each field to one or two lines • Add success metrics linked to Result
+Caveats: Don’t skip limitations—naming constraints reduces rework later.`
   },
   {
     slug: "swot-analysis",
     term: "SWOT Analysis",
-    aliases: [],
-    definition: `Strategic analysis of **Strengths**, **Weaknesses**, **Opportunities**, **Threats**—useful for scoping prompts, projects, or product bets.`,
+    aliases: ["strengths weaknesses opportunities threats", "SWOT matrix"],
+    definition: `A classic situational scan: list internal **Strengths/Weaknesses** and external **Opportunities/Threats** to guide strategy, eval prompts, or product bets.`,
     sources: [
       { title: "MindTools SWOT overview", url: "https://www.mindtools.com/amtbj63/swot-analysis" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
-    related: ["aida-model","par-method","star-technique","clear-framework"],
+    categories: ["analysis", "strategy"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:ideation",
+      "use:decision-support",
+      "level:beginner"
+    ],
+    related: ["aida-model", "par-method", "star-technique", "clear-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Choosing models/tools • Competitive scans • Prompt pattern trade-offs
+Boosters: • Convert each quadrant into an action • Revisit quarterly to catch drift
+Caveats: Lists without decisions waste time—end with a pick.`
   },
   {
     slug: "par-method",
     term: "PAR Method",
-    aliases: [],
-    definition: `Narrative structure for results: **Problem** → **Action** → **Result**—helps specify tasks and demonstrate impact.`,
+    aliases: ["problem action result", "PAR story"],
+    definition: `A concise narrative: state the **Problem**, the **Action** taken, and the **Result**. Useful for specs, case studies, and prompt examples that demonstrate impact.`,
     sources: [
       { title: "Indeed: PAR Method", url: "https://www.indeed.com/career-advice/interviewing/par-method" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
-    related: ["star-technique","clear-framework"],
+    categories: ["communication", "evidence"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:messaging",
+      "level:beginner"
+    ],
+    related: ["star-technique", "clear-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Prompt exemplars • Release notes and changelogs • Portfolio bullets
+Boosters: • Quantify results where possible • Keep one clear action per story
+Caveats: Avoid vague results—tie to metrics or user outcomes.`
   },
   {
     slug: "aida-model",
     term: "AIDA Model",
-    aliases: [],
-    definition: `Marketing flow: **Attention** → **Interest** → **Desire** → **Action**—useful for persuasive prompts and content planning.`,
+    aliases: ["attention interest desire action", "AIDA copy formula"],
+    definition: `A persuasion flow: capture **Attention**, build **Interest**, create **Desire**, and drive **Action**. Works for prompts that need to inform *and* motivate.`,
     sources: [
       { title: "Siege Media: AIDA", url: "https://www.siegemedia.com/creation/aida-model" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
-    related: ["swot-analysis","par-method"],
+    categories: ["messaging", "persuasion"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:ideation",
+      "use:messaging",
+      "level:beginner"
+    ],
+    related: ["swot-analysis", "par-method"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Landing pages and emails • Educational prompts that drive next steps
+Boosters: • Make actions explicit with constraints and deadlines
+Caveats: Don’t oversell—align claims with evidence.`
   },
   {
     slug: "star-technique",
     term: "STAR Technique",
-    aliases: [],
-    definition: `Response structure: **Situation**, **Task**, **Action**, **Result**—useful for clarifying context and expected outcomes in prompts.`,
+    aliases: ["situation task action result", "STAR response"],
+    definition: `A structured response: describe the **Situation**, define the **Task**, detail the **Action**, and report the **Result**. Helps prompts elicit complete, auditable answers.`,
     sources: [
       { title: "The Muse: STAR method", url: "https://www.themuse.com/advice/star-interview-method" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:prompting"],
-    related: ["par-method","clear-framework"],
+    categories: ["communication", "evaluation"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:messaging",
+      "level:beginner"
+    ],
+    related: ["par-method", "clear-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Interview sims • RCA/postmortems • Testimony-style summaries
+Boosters: • Limit each section to 2–3 lines • Attach metrics to Results
+Caveats: Story ≠ proof—link to evidence or logs.`
   },
   {
     slug: "peas-framework",
     term: "PEAS Framework",
-    aliases: [],
-    definition: `AI task spec: **Performance measure**, **Environment**, **Actuators**, **Sensors**—describes agents and evaluation environment.`,
+    aliases: ["performance environment actuators sensors", "PEAS agent spec"],
+    definition: `A compact agent spec: define **Performance** measures, **Environment**, **Actuators** (actions/tools), and **Sensors** (inputs). Clarifies scope, metrics, and interfaces before building.`,
     sources: [
       { title: "Analytics Vidhya: PEAS", url: "https://www.analyticsvidhya.com/blog/2022/08/simplifying-ai-models-with-the-peas-representation-system" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:llm","phase:ideation"],
-    related: ["alignment","architecture"],
+    categories: ["agent design", "planning"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:llm",
+      "phase:ideation",
+      "use:system-design",
+      "level:intermediate"
+    ],
+    related: ["architecture", "prompt-architecture"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Scoping agent capabilities • Tool/API interface planning • Evaluation setup
+Boosters: • List negative rewards/penalties • Add safety constraints and timeouts
+Caveats: Keep measures aligned with user value, not proxy gaming.`
   },
   {
     slug: "rtf-framework",
     term: "RTF Framework",
-    aliases: ["role-task-format"],
-    definition: `Prompt pattern: **Role** (who the model is), **Task** (what to do), **Format** (how to respond). A general-purpose scaffold for most requests.`,
+    aliases: ["role-task-format", "RTF prompt scaffold"],
+    definition: `A versatile scaffold: set the **Role** (persona/constraints), state the **Task** (goal and success criteria), and specify the **Format** (schema/sections). Useful default for most prompts.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
-    related: ["risen-framework","ratio-framework","rodes-framework","costar-framework"],
+    categories: ["prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["risen-framework", "ratio-framework", "rodes-framework", "costar-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Rapid prompt drafting • Constraining outputs to JSON/tables • Teaching newcomers a consistent style
+Boosters: • Add examples and edge cases under Format • Include refusal/safety notes in Role
+Caveats: Overlong roles can waste tokens—keep tight.`
   },
   {
     slug: "risen-framework",
     term: "RISEN Framework",
-    aliases: [],
-    definition: `Prompt scaffold for complex tasks: **Role**, **Instructions**, **Steps**, **End goal**, **Narrowing** (focus).`,
+    aliases: ["role instructions steps end-goal narrowing", "RISEN prompt scaffold"],
+    definition: `A scaffold for complex work: set **Role**, precise **Instructions**, enumerated **Steps**, the **End goal**, and **Narrowing** guidance to keep scope tight.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
-    related: ["rtf-framework","costar-framework","rodes-framework","ratio-framework"],
+    categories: ["prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["rtf-framework", "costar-framework", "rodes-framework", "ratio-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Multi-stage analyses • Complex content transformations • Guided coding tasks
+Boosters: • Add “ask to clarify when blocked” • Cap steps and require a final checklist
+Caveats: Too many steps can rigidify—allow deviations with justification.`
   },
   {
     slug: "ratio-framework",
     term: "RATIO Framework",
-    aliases: [],
-    definition: `Prompt elements: **ROLE**, **AUDIENCE**, **TASK**, **INSTRUCTIONS**, **OUTPUT**—centers audience and deliverable shape.`,
+    aliases: ["role audience task instructions output", "RATIO prompt scaffold"],
+    definition: `Centers the **Audience**: define **Role**, **Audience**, **Task**, **Instructions**, and **Output**. Ensures tone and content match the reader and destination.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
-    related: ["rtf-framework","risen-framework","rodes-framework"],
+    categories: ["prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["rtf-framework", "risen-framework", "rodes-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Marketing/education prompts • Support responses by tier • Exec vs. engineer versions of the same output
+Boosters: • Specify reading level and prior knowledge • Provide an example of “voice”
+Caveats: Audience drift happens—restate who you’re writing for.`
   },
   {
     slug: "rodes-framework",
     term: "RODES Framework",
-    aliases: [],
-    definition: `Prompt elements: **Role**, **Objective**, **Details**, **Examples**, **Sense Check**—useful when you have good exemplars.`,
+    aliases: ["role objective details examples sense-check", "RODES prompt scaffold"],
+    definition: `Specify **Role** and **Objective**, list essential **Details**, add **Examples**, and finish with a **Sense Check** that verifies requirements are met.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
-    related: ["ratio-framework","rtf-framework","costar-framework"],
+    categories: ["prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["ratio-framework", "rtf-framework", "costar-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Outputs with strict criteria • Compliance-heavy drafting • Technical how-tos
+Boosters: • Encode the sense-check as a short rubric • Require a pass/fail note before final output
+Caveats: Examples can anchor too strongly—vary them across runs.`
   },
   {
     slug: "costar-framework",
     term: "COSTAR Framework",
-    aliases: [],
-    definition: `Prompt fields: **Context**, **Objective**, **Style**, **Tone**, **Audience**, **Response** (format). Guides the model to target content and structure.`,
+    aliases: ["context objective style tone audience response", "COSTAR prompt scaffold"],
+    definition: `Guide the model with **Context**, **Objective**, **Style**, **Tone**, **Audience**, and **Response** format. Useful when tone and formatting matter as much as content.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","type:template","topic:prompting","phase:prompting"],
-    related: ["rtf-framework","risen-framework","ratio-framework","rodes-framework"],
+    categories: ["prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["rtf-framework", "risen-framework", "ratio-framework", "rodes-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Brand-consistent copy • Public announcements • UX microcopy
+Boosters: • Provide one on-brand example and one anti-example • Lock required sections under Response
+Caveats: Tone conflicts with objective can confuse—resolve priority explicitly.`
   },
   {
     slug: "golden-circle-framework",
     term: "Golden Circle Framework",
-    aliases: ["what-why-how"],
-    definition: `Purpose-first framing: **WHY** → **HOW** → **WHAT** (or variants). Useful for mission, messaging, and prompt framing.`,
+    aliases: ["what-why-how", "why-how-what framework"],
+    definition: `Purpose-first messaging: start with **WHY** (purpose), then **HOW** (approach), then **WHAT** (deliverable). Aligns prompts and outputs to mission and audience motivation.`,
     sources: [
       { title: "Business Model Ideas", url: "https://www.businessmodelideas.com/blog/why-how-what-the-golden-circle-as-a-leadership-tool" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:prompting","phase:ideation"],
-    related: ["aida-model","swot-analysis"],
+    categories: ["messaging", "strategy"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:ideation",
+      "use:messaging",
+      "level:beginner"
+    ],
+    related: ["aida-model", "swot-analysis"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Mission statements • Product one-pagers • Prompt headers that align teams
+Boosters: • Keep WHY to one sentence • Tie HOW to differentiators
+Caveats: Inspirational fluff is easy—ground WHY in user outcomes.`
   },
   {
     slug: "rubric-approach",
     term: "Rubric Approach",
-    aliases: [],
-    definition: `Guiding or evaluating an AI with predefined criteria and standards. Often paired with exemplars and scoring guidelines.`,
+    aliases: ["criteria-led prompting", "scored rubric"],
+    definition: `Use explicit criteria (a rubric) to guide or evaluate outputs. Encourages consistency, fairness, and faster iteration when paired with examples and pass/fail thresholds.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:evaluation","phase:evaluation"],
-    related: ["raccca-framework","prompt-fine-tuning"],
+    categories: ["evaluation", "quality"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:evaluation",
+      "phase:evaluation",
+      "use:review",
+      "level:intermediate"
+    ],
+    related: ["raccca-framework", "prompt-fine-tuning", "ai-human-technical-communication"],
     status: "verified",
-    notes: "Needs source"
+    notes: `Use-cases: • Grading generated answers • Enforcing formatting/style • Hiring and support quality bars
+Boosters: • Keep criteria few and observable • Pilot inter-rater reliability • Show exemplar good/bad outputs
+Caveats: Rubrics can encode bias—review periodically with diverse stakeholders.`
   },
   {
     slug: "prompt-template-engineering",
     term: "Prompt Template Engineering",
-    aliases: [],
-    definition: `Designing reusable prompt templates/functions to improve task performance and consistency.`,
+    aliases: ["prompt templating", "template libraries"],
+    definition: `Design reusable prompt templates/functions that capture proven patterns for a class of tasks. Increases consistency, speeds iteration, and reduces cognitive load for authors.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
-    related: ["manual-template-engineering","automated-template-learning"],
+    categories: ["orchestration", "quality"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["manual-template-engineering", "automated-template-learning", "prompt-architecture"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Standardizing support replies • Data extraction schemas • Agent tool-call wrappers
+Boosters: • Version and test templates • Provide slot-level guidance and defaults
+Caveats: Templates can fossilize—refresh with evals and user feedback.`
   },
   {
     slug: "manual-template-engineering",
     term: "Manual Template Engineering",
-    aliases: [],
-    definition: `Creating intuitive templates through human introspection and expert iteration.`,
+    aliases: ["hand-crafted templates", "expert-authored prompts"],
+    definition: `Create templates via expert iteration, qualitative testing, and targeted evals. Best when domain stakes are high or data is scarce.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
-    related: ["prompt-template-engineering","automated-template-learning"],
+    categories: ["orchestration"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["prompt-template-engineering", "automated-template-learning"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Regulated domains • Style-critical outputs • Small-data scenarios
+Boosters: • Pair with rubrics and examples • Capture rationale in docs
+Caveats: Slower coverage—combine with automation when safe.`
   },
   {
     slug: "automated-template-learning",
     term: "Automated Template Learning",
-    aliases: [],
-    definition: `Using search/optimization to discover high-performing prompts or templates automatically.`,
+    aliases: ["auto-prompt search", "prompt optimization"],
+    definition: `Use search/optimization (LLM rewriters, genetic edits, eval loops) to discover high-performing templates at scale. Great for broad intent catalogs.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
-    related: ["prompt-template-engineering","manual-template-engineering"],
+    categories: ["orchestration", "automation"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:advanced"
+    ],
+    related: ["prompt-template-engineering", "manual-template-engineering"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Large FAQ/intent libraries • Multi-lingual prompt sets • Rapid A/B exploration
+Boosters: • Hold out test sets to avoid overfitting • Blend human review for safety/brand
+Caveats: Optimizing for the wrong metric yields perverse outputs—choose carefully.`
   },
   {
     slug: "raccca-framework",
     term: "RACCCA Framework",
-    aliases: [],
-    definition: `Output quality lens: **Relevance**, **Accuracy**, **Completeness**, **Clarity**, **Coherence**, **Appropriateness**—helpful for review and self-critique.`,
+    aliases: ["relevance accuracy completeness clarity coherence appropriateness", "RACCCA checklist"],
+    definition: `A review lens: check **Relevance**, **Accuracy**, **Completeness**, **Clarity**, **Coherence**, and **Appropriateness**. Use as a self-critique or evaluation rubric for outputs.`,
     sources: [
       { title: "Andrew Maynard: Intro to Prompt Engineering", url: "https://andrewmaynard.net/an-introduction-to-basic-prompt-engineering-with-chatgpt/" }
     ],
-    categories: ["prompt development techniques"],
-    tags: ["type:framework","type:template","topic:evaluation","phase:evaluation"],
-    related: ["rubric-approach","clear-path-forward-framework"],
+    categories: ["evaluation", "quality"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:evaluation",
+      "phase:evaluation",
+      "use:review",
+      "level:beginner"
+    ],
+    related: ["rubric-approach", "clear-path-forward-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • QA before shipping • Peer reviews • Tuning prompts for reliability
+Boosters: • Convert to a 0–2 scoring scale • Require fixes for any 0s
+Caveats: Keep it fast—long checklists won’t be used.`
   },
   {
     slug: "prompt-fine-tuning",
     term: "Prompt Fine-Tuning",
-    aliases: ["iterative prompting"],
-    definition: `Making small, targeted adjustments (constraints, examples, formatting, steps) to improve output quality.`,
+    aliases: ["iterative prompting", "prompt tweaks"],
+    definition: `Make small, targeted changes—constraints, examples, steps, formatting—to lift output quality. Treat each change as a hypothesis and test against a tiny eval set.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:prompting","phase:debugging"],
-    related: ["raccca-framework","rubric-approach"],
+    categories: ["quality", "debugging"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:debugging",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["raccca-framework", "rubric-approach"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Reducing hallucinations • Fixing formatting drift • Improving tone/voice match
+Boosters: • Change one variable at a time • Keep before/after examples
+Caveats: Diminishing returns—revisit data, tools, or model when plateauing.`
   },
   {
     slug: "clarity-and-precision",
     term: "Clarity and Precision",
-    aliases: [],
-    definition: `Explicit, unambiguous instructions improve tokenization alignment and reduce misinterpretation—leading to more relevant outputs.`,
+    aliases: ["be explicit", "state requirements clearly"],
+    definition: `Explicit, unambiguous instructions align token-by-token behavior with your intent. More clarity → less model guessing → more stable outputs.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:prompting"],
-    related: ["desired-format","verbosity-control","contextual-information"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["desired-format", "verbosity-control", "contextual-information"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Regulated or high-stakes drafts • Structured extraction • Multi-author prompts
+Boosters: • Replace adjectives with criteria • Add acceptance tests/examples
+Caveats: Over-detailing can bloat tokens—prioritize constraints that matter.`
   },
   {
     slug: "contextual-information",
     term: "Contextual Information",
-    aliases: [],
-    definition: `Providing background, constraints, and examples to anchor the model’s understanding and improve fit to the situation.`,
+    aliases: ["provide context", "background + constraints"],
+    definition: `Give background, goals, constraints, and examples so the model can ground its choices. Context reduces ambiguity and mismatched assumptions.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:prompting"],
-    related: ["clarity-and-precision","scaffolding"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["clarity-and-precision", "scaffolding"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Domain-specific outputs • Cross-team collaborations • Long-running projects with drift
+Boosters: • Separate facts vs. preferences • Date volatile facts
+Caveats: Too much context can distract—front-load only essentials.`
   },
   {
     slug: "desired-format",
     term: "Desired Format",
-    aliases: [],
-    definition: `Specifying schemas, sections, or output types (e.g., JSON, table, bullet list) to match expectations and downstream consumption.`,
+    aliases: ["output schema", "target structure"],
+    definition: `Specify schemas/sections (JSON, tables, bullets) to shape outputs for readability or downstream parsing. Format is a constraint that improves reliability.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:prompting"],
-    related: ["verbosity-control","clarity-and-precision"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["verbosity-control", "clarity-and-precision"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • API-bound outputs • BI tables and summaries • Rubric-based reports
+Boosters: • Provide a minimal valid example • Validate JSON with a checker
+Caveats: Rigid schemas can fail on edge cases—allow optional fields.`
   },
   {
     slug: "verbosity-control",
     term: "Verbosity Control",
-    aliases: [],
-    definition: `Controlling response length and detail (brief, concise, elaborate) to suit the task and cognitive load.`,
+    aliases: ["set length", "concise vs. elaborate"],
+    definition: `Control response length and detail (brief, concise, detailed) to match cognitive load and channel. Saves tokens and attention while improving scanability.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:prompting"],
-    related: ["desired-format","clarity-and-precision"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["desired-format", "clarity-and-precision"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Executive briefs vs. deep dives • Chat vs. docs • SMS/email constraints
+Boosters: • Set explicit word/token caps • Ask for TL;DR + appendix patterns
+Caveats: Over-trimming can hide assumptions—offer expandable detail.`
   },
   {
     slug: "scaffolding",
     term: "Scaffolding",
-    aliases: ["decomposition","stepwise prompting"],
-    definition: `Breaking complex tasks into smaller, ordered instructions to maintain focus, reduce error, and enable self-checking.`,
+    aliases: ["decomposition", "stepwise prompting", "break down tasks"],
+    definition: `Split complex tasks into ordered steps with intermediate checks. Keeps focus tight, reduces errors, and supports self-verification before final output.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["fallback-pattern","contextual-information"],
+    categories: ["reasoning", "prompt patterns"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["fallback-pattern", "contextual-information"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Multi-hop analysis • Procedural code tasks • Data transformations
+Boosters: • Add checkpoints and criteria per step • Allow early stop on failure
+Caveats: Too many steps add latency—prune to essentials.`
   },
   {
     slug: "fallback-pattern",
     term: "Fallback Pattern",
-    aliases: [],
-    definition: `Including contingency steps (e.g., try alt method, ask a clarifying question, reduce scope) when the primary approach fails or confidence is low.`,
+    aliases: ["graceful degradation", "backup plan prompting"],
+    definition: `Plan contingencies when confidence is low or a method fails: try an alternate approach, ask a clarifying question, reduce scope, or route to a human/tool.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:pattern","topic:prompting","phase:debugging"],
-    related: ["scaffolding","prompt-fine-tuning"],
+    categories: ["resilience", "prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:method",
+      "topic:prompting",
+      "phase:debugging",
+      "use:reliability",
+      "level:intermediate"
+    ],
+    related: ["scaffolding", "prompt-fine-tuning"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Production assistants • Tool failures or timeouts • Ambiguous queries
+Boosters: • Define confidence thresholds • Log fallback decisions for learning
+Caveats: Infinite fallbacks loop—cap attempts and escalate.`
   },
   {
     slug: "easy-for-you-easy-for-it",
     term: "Easy for You, Easy for It",
-    aliases: [],
-    definition: `Heuristic: if a request is hard for a person to do in one pass, use layered outputs or multi-prompt strategies.`,
+    aliases: ["layer your asks", "human difficulty proxy"],
+    definition: `Heuristic: if a task is hard for a person in one pass, it’s probably hard for the model. Layer the work into stages/outputs or multiple prompts to match cognitive limits on both sides.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:ideation"],
-    related: ["scaffolding","fallback-pattern"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:ideation",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["scaffolding", "fallback-pattern"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Complex analyses • Long creative briefs • Data pipelines
+Boosters: • Add milestones and artifacts per stage • Review after each stage before proceeding
+Caveats: Too many stages increase overhead—strike a balance.`
   },
   {
     slug: "put-smart-get-smart",
     term: "Put Smart, Get Smart",
-    aliases: [],
-    definition: `Heuristic: well-structured, specific prompts generally yield higher-quality outputs.`,
+    aliases: ["garbage in, garbage out (prompting)", "be specific"],
+    definition: `Heuristic: the more specific, structured, and example-rich your prompt, the smarter the output appears. Invest upfront to reduce downstream cleanup.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:principle","topic:prompting","phase:prompting"],
-    related: ["clarity-and-precision","desired-format"],
+    categories: ["principles"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["clarity-and-precision", "desired-format"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • High-volume content generation • Strict formatting tasks • Cross-lingual prompts
+Boosters: • Provide one gold example and one near-miss • State success criteria explicitly
+Caveats: Overspecifying can overfit style—leave room for model strengths.`
   },
   {
     slug: "the-divergent-intern",
     term: "The Divergent Intern",
-    aliases: [],
-    definition: `A humanizing mental model: treat the AI like a bright but divergent intern—explain the **why**, provide context, and check work.`,
+    aliases: ["intern model", "bright but literal intern"],
+    definition: `A mental model: treat the AI like a bright, tireless, slightly literal intern. Explain *why*, give context, set boundaries, and check the work—then it shines.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:metaphor","topic:prompting","phase:ideation"],
-    related: ["the-collaborative-partner","the-10000-experts"],
+    categories: ["mental models", "education"],
+    tags: [
+      "kind:heuristic",
+      "type:metaphor",
+      "topic:prompting",
+      "phase:ideation",
+      "use:ux",
+      "level:beginner"
+    ],
+    related: ["the-collaborative-partner", "the-10000-experts", "rtf-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Teaching new users how to prompt • Setting tone for reviews and guardrails • Coaching expectations about errors
+Boosters: • Provide checklists and examples • Encourage asking clarifying questions
+Caveats: Don’t anthropomorphize—skills are statistical, not sentient.`
   },
   {
     slug: "the-collaborative-partner",
     term: "The Collaborative Partner",
-    aliases: [],
-    definition: `A mental model emphasizing back-and-forth iteration—prompting as a dialogue, not a one-way command.`,
+    aliases: ["dialogue with the model", "co-worker framing"],
+    definition: `A mental model that treats prompting as a back-and-forth collaboration, not a one-shot command. Encourages clarifications, drafts, and shared review criteria.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:metaphor","topic:prompting","phase:ideation"],
-    related: ["the-divergent-intern","the-10000-experts"],
+    categories: ["mental models", "workflow"],
+    tags: [
+      "kind:heuristic",
+      "type:metaphor",
+      "topic:prompting",
+      "phase:ideation",
+      "use:ux",
+      "level:beginner"
+    ],
+    related: ["the-divergent-intern", "the-10000-experts"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Co-writing and pair programming • Requirements gathering • Iterative design sprints
+Boosters: • Establish roles and check-ins • Keep a running issues list
+Caveats: Collaboration still needs ownership—assign decisions to humans.`
   },
   {
     slug: "the-10000-experts",
     term: "The 10,000 Experts",
-    aliases: ["ten-thousand-experts","10000-experts"],
-    definition: `A metaphor: think of the model as a room full of experts—be explicit about **which** expert (persona) you want.`,
+    aliases: ["ten-thousand-experts", "10000-experts", "expert persona selection"],
+    definition: `A metaphor: imagine a room of experts—be explicit about which expert you want (persona), with what constraints and evidence standards. Persona specificity reduces drift.`,
     sources: [],
-    categories: ["prompt development techniques"],
-    tags: ["type:metaphor","topic:prompting","phase:ideation"],
-    related: ["the-collaborative-partner","the-divergent-intern","rtf-framework","ratio-framework"],
+    categories: ["mental models", "prompt patterns"],
+    tags: [
+      "kind:heuristic",
+      "type:metaphor",
+      "topic:prompting",
+      "phase:ideation",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["rtf-framework", "ratio-framework", "the-collaborative-partner", "the-divergent-intern"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Role-based coaching/feedback • Legal/medical style constraints (with disclaimers) • Multi-perspective analyses
+Boosters: • Define the expert’s scope, sources, and refusal rules • Provide one mini bio to anchor tone
+Caveats: Personas can smuggle bias—audit and rotate perspectives.`
   }
 );
+
 
 GLOSSARY.push(
   {
     slug: "composition",
     term: "Composition",
-    aliases: [],
-    definition: `The elements of a prompt architecture—such as guiding questions, contextual info, and explicit instructions—that combine to shape model behavior.`,
+    aliases: ["prompt composition", "prompt elements", "prompt structure", "instruction mix"],
+    definition: `The mix of building blocks inside a prompt (role, goals, constraints, examples, schemas, safety notes, tool hints, evaluation criteria) and how they work together. Good composition clarifies *what matters* and *how to respond*, reducing guesswork and variance. It’s the “ingredient list” of a prompt architecture that shapes tone, scope, and reliability.`,
     sources: [],
-    categories: ["prompt architecture"],
-    tags: ["type:component","topic:prompting","phase:prompting"],
-    related: ["sequence","contextual-cues","master-prompts","prompt-architecture"],
+    categories: ["prompt architecture", "orchestration", "design patterns"],
+    tags: [
+      "kind:pattern",
+      "type:component",
+      "topic:prompting",
+      "topic:architecture",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["sequence", "contextual-cues", "master-prompts", "desired-format", "scaffolding", "rtf-framework", "prompt-architecture"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Designing a reusable prompt template • Turning messy asks into clear goals + constraints • Adding safety and formatting without bloating • Standardizing prompts across a product surface
+Boosters: • Separate *facts, rules, examples, format* into labeled sections • Put must-have constraints near the ask • Keep examples short and high-signal • Include a tiny acceptance checklist for the model to self-check
+Caveats: Too many ingredients cause token bloat and contradictions—favor essentials and link to external context when possible.`
   },
   {
     slug: "sequence",
     term: "Sequence",
-    aliases: [],
-    definition: `The ordering of elements or prompts within a prompt architecture, which affects how the model interprets and prioritizes information.`,
+    aliases: ["ordering", "prompt order", "instruction sequencing", "step ordering"],
+    definition: `The order in which prompt elements appear. Ordering changes what the model attends to: early content frames interpretation; late content benefits from recency. Effective sequences front-load goals and constraints, then examples, then the concrete request and output format.`,
     sources: [],
-    categories: ["prompt architecture"],
-    tags: ["type:component","topic:prompting","phase:prompting"],
-    related: ["composition","contextual-cues","master-prompts"],
+    categories: ["prompt architecture", "orchestration", "design patterns"],
+    tags: [
+      "kind:pattern",
+      "type:component",
+      "topic:prompting",
+      "topic:architecture",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["composition", "contextual-cues", "master-prompts", "verbosity-control", "rtf-framework", "rodes-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Moving format rules after the task to reduce verbosity • Placing safety/policy before creative guidance • Few-shot before the ask to anchor style • Tool hints just before the callable section
+Boosters: • Use a consistent section order across prompts • Put “do/don’t” right before the ask • End with a validation step (schema/rubric) • When in doubt: Role → Goal → Constraints → Examples → Ask → Format → Checks
+Caveats: Conflicting late instructions can override earlier ones—avoid re-stating rules with different wording.`
   },
   {
     slug: "contextual-cues",
     term: "Contextual Cues",
-    aliases: [],
-    definition: `Supplementary information (hints, examples, constraints, metadata) embedded in prompts to steer interpretation and ensure relevance.`,
+    aliases: ["hints", "metadata cues", "examples & constraints", "context hints", "task context"],
+    definition: `Small, targeted signals that steer interpretation: brief domain facts, constraints, positive/negative examples, audience, tone, and success criteria. Contextual cues act like soft rails—reducing ambiguity while keeping generation flexible.`,
     sources: [],
-    categories: ["prompt architecture"],
-    tags: ["type:component","topic:context","phase:prompting"],
-    related: ["composition","sequence","master-prompts"],
+    categories: ["prompt architecture", "orchestration", "design patterns"],
+    tags: [
+      "kind:pattern",
+      "type:component",
+      "topic:prompting",
+      "topic:architecture",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["composition", "sequence", "master-prompts", "few-shot-examples", "facts-expertise-primer", "clarity-and-precision", "desired-format"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Grounding responses with 3–5 key facts • Teaching style with one gold + one anti-example • Narrowing scope (audience, length, domain) • Reducing hallucinations with brief constraints
+Boosters: • Label cues explicitly (Facts:, Audience:, Don’ts:) • Keep each cue one line • Date volatile facts • Add 1–2 “anti-pattern” mini-examples to avoid common traps
+Caveats: Over-long context dilutes signal—prefer succinct, high-precision cues over encyclopedic dumps.`
   },
   {
     slug: "master-prompts",
     term: "Master Prompts",
-    aliases: ["overarching prompts"],
-    definition: `High-level or persistent prompts that define scope, goals, or role—providing an umbrella of guidance under which sub-prompts operate.`,
+    aliases: ["overarching prompts", "system prompts", "governing prompts", "root prompts"],
+    definition: `Persistent, high-level prompts that set role, scope, tone, policy, and success principles for a whole experience or agent. Sub-prompts inherit this umbrella, keeping behavior consistent across tasks while allowing local variation.`,
     sources: [],
-    categories: ["prompt architecture"],
-    tags: ["type:component","topic:prompting","phase:prompting"],
-    related: ["composition","sequence","contextual-cues","prompt-architecture"],
+    categories: ["prompt architecture", "orchestration", "governance"],
+    tags: [
+      "kind:pattern",
+      "type:component",
+      "topic:prompting",
+      "topic:architecture",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["composition", "sequence", "contextual-cues", "prompt-architecture", "system-prompt", "rubric-approach", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Defining an assistant’s durable persona and refusal policy • Brand/voice consistency across surfaces • Multi-agent systems that share common values and interfaces • Versioned policy updates without rewriting every prompt
+Boosters: • Keep the master short and principle-based; push details to local prompts • Version and changelog master prompts • Include a compact policy section and an escalation/refusal pattern • Add an “interpretation order” (policy > safety > user ask > style)
+Caveats: Overly prescriptive masters cause brittleness; hidden or conflicting masters cause drift—document and test inheritance explicitly.`
   }
 );
+
 
 GLOSSARY.push(
   // --- Art of Prompting ---
   {
     slug: "creativity",
     term: "Creativity",
-    aliases: [],
-    definition: `Applying innovative thinking, experimentation, and style adaptation in prompt crafting to enhance engagement and output quality.`,
+    aliases: ["creative prompting", "inventive prompting", "lateral prompting"],
+    definition: `A practice of exploring multiple approaches, styles, and constraints to unlock novel, engaging outputs. In prompting, creativity means mixing formats (lists, tables, scripts), switching lenses (audience, tone), and running safe experiments to discover higher-signal instructions that the model responds to consistently.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:prompting","phase:ideation"],
-    related: ["intuition","iterative-refinement","personalization-and-adaptation"],
+    categories: ["art of prompting", "skills", "ideation"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:ideation",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["intuition", "iterative-refinement", "personalization-and-adaptation", "strategic-thinking", "few-shot-examples"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Brainstorming many angles before selecting one • Reframing tasks with unusual formats to spark ideas • Turning dry instructions into vivid, audience-aware prompts
+Boosters: • Force variety with style/format lotteries • Pair one “wild” variant with one conservative baseline • Keep a swipe file of high-signal prompts and remix them
+Caveats: Novel ≠ useful—always tie experiments to a measurable goal (clarity, accuracy, engagement).`
   },
   {
     slug: "intuition",
     term: "Intuition",
-    aliases: [],
-    definition: `Leveraging observation, tacit knowledge, and experience to apply nuanced strategies that improve AI responses.`,
+    aliases: ["prompting intuition", "tacit prompting know-how", "pattern sense"],
+    definition: `Skill at reading the room: using tacit knowledge from prior runs, domain context, and user expectations to choose a promising structure quickly. Intuition narrows the search space so you test fewer, better prompts first.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:prompting","phase:ideation"],
-    related: ["creativity","experiential-knowledge","strategic-thinking"],
+    categories: ["art of prompting", "skills"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:prompting",
+      "phase:ideation",
+      "use:prompt-selection",
+      "level:intermediate"
+    ],
+    related: ["experiential-knowledge", "strategic-thinking", "iterative-refinement", "facts-expertise-primer"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Choosing between role-play vs. rubric-first prompts • Estimating example count for few-shot setups • Guessing where a format constraint will help most
+Boosters: • Write your intuition as a hypothesis and test it • Keep quick notes of wins/misses to train future instincts • Pair intuition with a tiny eval set to avoid bias
+Caveats: Intuition can fixate—schedule deliberate “anti-intuitive” trials to sanity-check.`
   },
   {
     slug: "iterative-refinement",
     term: "Iterative Refinement",
-    aliases: ["prompt iteration","iterative prompting"],
-    definition: `Process of continuously testing, analyzing, and adjusting prompts based on feedback and performance results.`,
+    aliases: ["prompt iteration", "iterative prompting", "prompt sanding"],
+    definition: `A tight loop of test → inspect → tweak. You adjust one variable at a time (constraint, example, order, format), compare outputs against a small rubric, and keep only changes that move the metric. This turns prompting from art into an evidence-guided craft.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:technique","topic:prompting","phase:debugging"],
-    related: ["creativity","strategic-thinking","prompt-fine-tuning"],
+    categories: ["art of prompting", "quality", "debugging"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:debugging",
+      "use:prompt-improvement",
+      "level:beginner"
+    ],
+    related: ["prompt-fine-tuning", "raccca-framework", "rubric-approach", "strategic-thinking"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Reducing hallucinations with tighter constraints • Fixing format drift for API-bound outputs • Improving tone/voice alignment across audiences
+Boosters: • Change one knob per run; label diffs • Keep before/after exemplars • Stop iterating when gains flatten—try data/tooling instead
+Caveats: Endless tinkering burns time—predefine a budget and exit criteria.`
   },
   {
     slug: "personalization-and-adaptation",
     term: "Personalization and Adaptation",
-    aliases: ["adaptive prompting","personalized prompting"],
-    definition: `Tailoring prompts to individual user preferences, language styles, and needs to create meaningful, customized interactions.`,
+    aliases: ["adaptive prompting", "personalized prompting", "audience-aware prompting"],
+    definition: `Tailor prompts to the person and the moment: reading level, tone, prior knowledge, domain norms, and channel. Adaptation keeps instructions relevant over time (e.g., updating context facts, shortening for mobile, or switching to checklists for experts).`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:human-ai","phase:prompting"],
-    related: ["creativity","collaboration-and-interdisciplinary-knowledge"],
+    categories: ["art of prompting", "ux", "communication"],
+    tags: [
+      "kind:strategy",
+      "type:technique",
+      "topic:human-ai",
+      "phase:prompting",
+      "use:audience-fit",
+      "level:intermediate"
+    ],
+    related: ["collaboration-and-interdisciplinary-knowledge", "few-shot-examples", "facts-expertise-primer", "verbosity-control"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Multiple audience versions of the same output • Accessibility-aware reformats • Localization and style transfer
+Boosters: • Add “Audience:” and “Prior knowledge:” fields • Provide one gold sample per audience • Store user prefs and reuse them
+Caveats: Personalization can leak bias—document defaults and provide opt-outs.`
   },
   {
     slug: "collaboration-and-interdisciplinary-knowledge",
     term: "Collaboration and Interdisciplinary Knowledge",
-    aliases: ["interdisciplinary prompting"],
-    definition: `Drawing on expertise from multiple domains (e.g., linguistics, psychology, design, philosophy) to craft context-rich, accurate prompts.`,
+    aliases: ["interdisciplinary prompting", "cross-domain prompting", "HCI-informed prompting"],
+    definition: `Borrow tools from linguistics, psychology, design, philosophy, and statistics to build richer prompts and better evaluations. Collaboration multiplies perspectives and catches blind spots early.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:human-ai","phase:ideation"],
-    related: ["personalization-and-adaptation","technical-knowledge"],
+    categories: ["art of prompting", "team process"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:human-ai",
+      "phase:ideation",
+      "use:prompt-design",
+      "level:intermediate"
+    ],
+    related: ["technical-knowledge", "personalization-and-adaptation", "rubric-approach", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Co-design workshops for assistant behaviors • Safety reviews with ethicists and domain experts • Usability tests that inform prompt changes
+Boosters: • Write shared rubrics; agree on success signals • Use paired “writer/reviewer” roles • Circulate prompt change logs with rationale
+Caveats: Committee design can stall—timebox and ship small improvements.`
   },
   {
     slug: "technical-knowledge",
     term: "Technical Knowledge",
-    aliases: [],
-    definition: `Applying understanding of AI architectures, tokenization, embeddings, and training dynamics to design effective prompts.`,
+    aliases: ["model know-how", "tokenization awareness", "embedding literacy"],
+    definition: `Understanding models, tokenization, context windows, sampling, embeddings, and tool-calling so prompts align with the machinery. Technical literacy prevents accidental failure modes (e.g., truncation, invalid JSON, or missing tool arguments).`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:llm","phase:prompting"],
-    related: ["experiential-knowledge","strategic-thinking"],
+    categories: ["art of prompting", "foundations"],
+    tags: [
+      "kind:term",
+      "type:principle",
+      "topic:llm",
+      "phase:prompting",
+      "use:reliability",
+      "level:intermediate"
+    ],
+    related: ["experiential-knowledge", "prompt-architecture", "desired-format", "clarity-and-precision"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Choosing context budgets and example counts • Designing tool schemas and validators • Setting temperature/top-p for stability vs. creativity
+Boosters: • Add JSON schema + example payloads • Validate outputs automatically • Monitor truncation and retries
+Caveats: Over-optimizing knobs can hide bigger issues like missing context or poor task framing.`
   },
   {
     slug: "experiential-knowledge",
     term: "Experiential Knowledge",
-    aliases: [],
-    definition: `Leveraging lessons and insights from lived experiences to improve prompt effectiveness and contextual fit.`,
+    aliases: ["practice wisdom", "prompting scars", "lived prompting experience"],
+    definition: `Lessons from real projects—what actually worked, what failed, and why. Capturing and sharing this experience (with examples and counterexamples) accelerates team learning and improves prompt reuse.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:human-ai","phase:prompting"],
-    related: ["intuition","technical-knowledge"],
+    categories: ["art of prompting", "skills", "knowledge management"],
+    tags: [
+      "kind:heuristic",
+      "type:principle",
+      "topic:human-ai",
+      "phase:prompting",
+      "use:prompt-reuse",
+      "level:beginner"
+    ],
+    related: ["intuition", "technical-knowledge", "iterative-refinement", "prompt-template-engineering"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Building a prompt pattern library • Postmortems on failures and regressions • Onboarding guides with do/don’t examples
+Boosters: • Save “gold” and “near-miss” cases • Tag examples by domain and goal • Record why a change helped or hurt
+Caveats: Anecdotes can mislead—pair stories with small eval sets.`
   },
   {
     slug: "strategic-thinking",
     term: "Strategic Thinking",
-    aliases: [],
-    definition: `Deliberate planning and structuring of prompts to achieve specific goals or interaction outcomes.`,
+    aliases: ["prompt strategy", "goal-driven prompting", "outcome-first prompting"],
+    definition: `Start with the outcome and constraints, then pick structures that maximize signal (roles, rubrics, examples, tools). Strategy ensures prompting choices serve goals—accuracy, tone, safety—rather than habit.`,
     sources: [],
-    categories: ["art of prompting"],
-    tags: ["type:principle","topic:prompting","phase:ideation"],
-    related: ["iterative-refinement","intuition","creativity"],
+    categories: ["art of prompting", "planning"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:prompting",
+      "phase:ideation",
+      "use:decision-support",
+      "level:intermediate"
+    ],
+    related: ["iterative-refinement", "clarity-and-precision", "scaffolding", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Selecting between CoT, rubric, or examples • Deciding when to split multi-step tasks • Allocating context budget where it matters
+Boosters: • Write success criteria first • Choose one primary and one secondary objective • Add a fallback path for low confidence
+Caveats: Strategy without measurement is theater—define metrics.`
   },
 
   // --- Types of Prompts ---
   {
     slug: "reductive-prompts",
     term: "Reductive Prompts",
-    aliases: ["summarization prompts"],
-    definition: `Prompts designed to summarize or condense information into shorter forms.`,
+    aliases: ["summarization prompts", "compression prompts", "condense prompts"],
+    definition: `Prompts that compress content while preserving key meaning. Often specify target length, must-include entities, and forbidden omissions to keep summaries faithful and dense.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:reduction","phase:prompting"],
-    related: ["extractive-prompting","evaluation-prompting"],
+    categories: ["types of prompts", "prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:reduction",
+      "phase:prompting",
+      "use:summarization",
+      "level:beginner"
+    ],
+    related: ["extractive-prompting", "evaluation-prompting", "chain-of-density-cod", "desired-format"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Executive briefs • Meeting minutes • TL;DR with entity guarantees
+Boosters: • Set inclusion lists (names, numbers) • Specify target length + tolerance • Ask for a final accuracy check against source
+Caveats: Extreme compression risks nuance—offer an expandable appendix.`
   },
   {
     slug: "transformative-prompts",
     term: "Transformative Prompts",
-    aliases: ["rewriting prompts"],
-    definition: `Prompts that request rewriting, rephrasing, or changing existing content into a new form.`,
+    aliases: ["rewriting prompts", "reframing prompts", "style transfer prompts"],
+    definition: `Prompts that rephrase, translate, or reshape existing content—changing voice, structure, or audience while preserving intent. Great for tone fixes, format conversions, or accessibility.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:transformation","phase:prompting"],
-    related: ["expansion-prompting","generative-prompts"],
+    categories: ["types of prompts", "prompt patterns"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:transformation",
+      "phase:prompting",
+      "use:rewriting",
+      "level:beginner"
+    ],
+    related: ["expansion-prompting", "generative-prompts", "desired-format", "verbosity-control"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Converting notes into a spec • Translating expert text for lay readers • Rewriting for brand voice
+Boosters: • Provide a style guide snippet • Include one gold output as a target • Lock required sections with a schema
+Caveats: Heavy style constraints can distort meaning—add a fidelity check.`
   },
   {
     slug: "generative-prompts",
     term: "Generative Prompts",
-    aliases: [],
-    definition: `Prompts that instruct the AI to create new content (text, images, ideas, or solutions).`,
+    aliases: ["greenfield prompts", "from-scratch prompts", "creative generation prompts"],
+    definition: `Prompts that create new content (ideas, drafts, plans, images) from instructions and constraints. Power increases when paired with examples, rubrics, and retrieval/tools for grounding.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:generative","phase:prompting"],
-    related: ["expansion-prompting","evaluation-prompting","transformative-prompts"],
+    categories: ["types of prompts", "content creation"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:generative",
+      "phase:prompting",
+      "use:creation",
+      "level:beginner"
+    ],
+    related: ["expansion-prompting", "evaluation-prompting", "few-shot-examples", "facts-expertise-primer"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Idea generation • First-draft copy • Outlines and plans
+Boosters: • Add constraints (audience, length, tone) • Provide one positive and one negative example • Use a rubric to score and iterate
+Caveats: Fluency can mask errors—route claims through verification.`
   },
   {
     slug: "extractive-prompting",
     term: "Extractive Prompting",
-    aliases: [],
-    definition: `A subtype of reductive/transformative prompting where specific pieces of information are isolated or extracted from a larger body of content.`,
+    aliases: ["targeted extraction", "span extraction prompts"],
+    definition: `A focused pattern that pulls specific items (entities, facts, fields) from longer text. Often paired with strict schemas for downstream parsing and audits.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:reduction","phase:prompting"],
-    related: ["reductive-prompts","transformative-prompts"],
+    categories: ["types of prompts", "information extraction"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:reduction",
+      "phase:prompting",
+      "use:information-extraction",
+      "level:beginner"
+    ],
+    related: ["reductive-prompts", "transformative-prompts", "desired-format", "rubric-approach"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Pulling totals, dates, names from reports • Contract clause extraction • Support ticket triage fields
+Boosters: • Provide a JSON schema + example • Require “unknown” when absent • Add a confidence field per item
+Caveats: Ambiguous spans need policy—define tie-breakers and “not found”.`
   },
   {
     slug: "evaluation-prompting",
     term: "Evaluation Prompting",
-    aliases: [],
-    definition: `A subtype of generative/reductive prompting where content is assessed or critiqued against criteria or standards.`,
+    aliases: ["critique prompting", "grading prompts", "rubric-led evaluation"],
+    definition: `Prompts that assess content against criteria (clarity, accuracy, policy, tone) and produce scores or pass/fail. Useful for QA, moderation, and auto-review loops.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:evaluation","phase:evaluation"],
-    related: ["generative-prompts","reductive-prompts"],
+    categories: ["types of prompts", "quality", "evaluation"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:evaluation",
+      "phase:evaluation",
+      "use:review",
+      "level:intermediate"
+    ],
+    related: ["generative-prompts", "reductive-prompts", "rubric-approach", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Pre-ship QA checks • Moderation triage • A/B testing outcome scoring
+Boosters: • Keep criteria observable and few • Calibrate with exemplars • Report rationales alongside scores
+Caveats: Evaluators inherit model bias—spot-check with humans, refresh samples.`
   },
   {
     slug: "expansion-prompting",
     term: "Expansion Prompting",
-    aliases: [],
-    definition: `A subtype of generative/transformative prompting where new material is added or elaborated on top of existing content.`,
+    aliases: ["elaboration prompts", "detail expansion", "depth prompts"],
+    definition: `Prompts that extend a seed with more detail, examples, or options—useful when breadth or depth is missing. Often specify scope, level, and number of additions.`,
     sources: [],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:transformation","phase:prompting"],
-    related: ["generative-prompts","transformative-prompts"],
+    categories: ["types of prompts", "content development"],
+    tags: [
+      "kind:pattern",
+      "type:prompt",
+      "topic:transformation",
+      "phase:prompting",
+      "use:elaboration",
+      "level:beginner"
+    ],
+    related: ["generative-prompts", "transformative-prompts", "few-shot-examples"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Turning bullets into paragraphs • Adding examples to docs • Generating alternatives or variants
+Boosters: • Specify N items and acceptance criteria • Ask for edge cases and counterexamples • Gate with a short quality check
+Caveats: Expansion can ramble—set length and relevance constraints.`
   },
   {
     slug: "discrete-prompts",
     term: "Discrete Prompts",
-    aliases: ["hard prompts"],
-    definition: `Prompts expressed in natural language templates (human-readable phrases) rather than embeddings.`,
+    aliases: ["hard prompts", "natural-language prompts", "handwritten prompts"],
+    definition: `Human-readable prompt templates expressed in natural language tokens. Easy to author and review, portable across models, and auditable—but less fine-grained than learned vectors.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:prompting","phase:prompting"],
-    related: ["continuous-prompts"],
+    categories: ["types of prompts", "foundations"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:prompting",
+      "phase:prompting",
+      "use:authoring",
+      "level:beginner"
+    ],
+    related: ["continuous-prompts", "prompt-template-engineering", "manual-template-engineering"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Rapid prototyping • Policy-auditable instructions • Cross-model experiments
+Boosters: • Keep sections labeled (Role/Task/Format) • Add minimal, crisp examples • Version templates and track diffs
+Caveats: Can underperform in narrow tasks vs. learned soft prompts—compensate with examples and structure.`
   },
   {
     slug: "continuous-prompts",
     term: "Continuous Prompts",
-    aliases: ["soft prompts"],
-    definition: `Prompts represented directly in the model’s embedding space (e.g., learned vectors) rather than natural language.`,
+    aliases: ["soft prompts", "learned prompts", "prompt tuning vectors"],
+    definition: `Prompt representations learned directly in embedding space (vectors) instead of natural language. They can be optimized to steer a model efficiently, often with small parameter budgets; great for stable, high-volume tasks.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["types of prompts"],
-    tags: ["type:prompt","topic:embedding","phase:training"],
-    related: ["discrete-prompts"],
+    categories: ["types of prompts", "training & tuning"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:embedding",
+      "phase:training",
+      "use:optimization",
+      "level:advanced"
+    ],
+    related: ["discrete-prompts", "automated-template-learning", "prompt-template-engineering"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • High-scale, repeatable tasks • Latency/cost-sensitive pipelines • Domains where natural language prompts plateau
+Boosters: • Hold out eval sets to avoid overfitting • Combine with lightweight adapters or LoRA when needed • Monitor drift across model updates
+Caveats: Opaque to non-experts and harder to audit—pair with documentation and guardrails.`
   }
 );
+
 
 GLOSSARY.push(
   // --- Multi-prompt Strategies ---
   {
     slug: "sequential-linear-prompting",
     term: "Sequential (Linear) Prompting",
-    aliases: ["linear prompting"],
-    definition: `Sending multiple prompts in a sequential or linear order, where each builds upon prior outputs.`,
+    aliases: ["linear prompting", "chained prompting", "stepwise prompting"],
+    definition: `A choreography of prompts where each message depends on the last. You decompose a task, pass forward key outputs (facts, decisions, JSON), and progressively refine until done. This reduces cognitive load per step and makes failures easier to isolate and fix.`,
     sources: [
       { title: "Jonathan Kyle Hobson – Intelligent User Experiences", url: "https://www.linkedin.com/pulse/intelligent-user-experiences-merging-ai-interaction-hobson" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["parallel-prompting","multi-step-interactions"],
+    categories: ["multi-prompt strategies", "orchestration"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:prompting",
+      "topic:orchestration",
+      "phase:prompting",
+      "use:multi-step",
+      "level:beginner"
+    ],
+    related: ["parallel-prompting", "multi-step-interactions", "output-layering", "prompt-decomposition", "scaffolding"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Break complex workflows into reliable stages • Move from research → outline → draft → polish • Tool-using agents that alternate plan/execute
+Boosters: • Pass small, typed artifacts (IDs, lists, JSON) between steps • Add a mini “done/next” checklist each hop • Log intermediate context for auditability
+Caveats: Over-long chains risk drift; cap hop count and add verification gates.`
   },
   {
     slug: "parallel-prompting",
     term: "Parallel Prompting",
-    aliases: [],
-    definition: `Sending multiple prompts simultaneously in parallel, either in the same input or in side-by-side inputs.`,
+    aliases: ["concurrent prompting", "fan-out prompting", "batch prompting"],
+    definition: `Run several prompts at once—same task with different styles, or different sub-tasks on the same input—and compare results. Parallelism increases exploration speed and provides natural ensembling options.`,
     sources: [
       { title: "Jonathan Kyle Hobson – Intelligent User Experiences", url: "https://www.linkedin.com/pulse/intelligent-user-experiences-merging-ai-interaction-hobson" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["sequential-linear-prompting","shotgun-generation"],
+    categories: ["multi-prompt strategies", "orchestration"],
+    tags: [
+      "kind:strategy",
+      "type:workflow",
+      "topic:prompting",
+      "topic:search",
+      "phase:prompting",
+      "use:divergence",
+      "level:intermediate"
+    ],
+    related: ["sequential-linear-prompting", "shotgun-generation", "prompt-ensembling", "multi-step-interactions"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Creative ideation across tones • Generating N variants for selection • Splitting a document into shards for speed
+Boosters: • Fix a selection rubric ahead of time • Tag each branch with parameters used • Merge with a judge/selector prompt
+Caveats: Costs scale with fan-out; set a hard cap and early-stop rules.`
   },
   {
     slug: "conditional-prompting",
     term: "Conditional Prompting",
-    aliases: [],
-    definition: `Triggering specific prompts only when certain conditions or rules are met.`,
+    aliases: ["branching prompts", "rule-based prompting", "guarded prompting"],
+    definition: `Trigger different prompts only when predicates are met (schema present, confidence low, red-flag terms found, user segment = X). Think “if-then-else” for conversations, tools, and safety flows.`,
     sources: [
       { title: "Jonathan Kyle Hobson – Intelligent User Experiences", url: "https://www.linkedin.com/pulse/intelligent-user-experiences-merging-ai-interaction-hobson" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["constraint-prompting","multi-step-interactions"],
+    categories: ["multi-prompt strategies", "governance"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:prompting",
+      "topic:control",
+      "phase:prompting",
+      "use:risk-mitigation",
+      "level:intermediate"
+    ],
+    related: ["constraint-prompting", "contextual-adjustment", "meta-prompting", "fallback-pattern", "rubric-approach"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Escalate to verification when confidence < threshold • Swap personas by audience • Invoke tool use only when fields are missing
+Boosters: • Centralize conditions as explicit rules • Log which branch fires and why • Add a default safe fallback path
+Caveats: Branch explosions get messy—review predicates quarterly.`
   },
   {
     slug: "contextual-prompting",
     term: "Contextual Prompting",
-    aliases: ["priming"],
-    definition: `Sending a dedicated prompt for fine-tuning or establishing context before delivering the main request.`,
+    aliases: ["priming", "context seeding", "context injection"],
+    definition: `Send a short, dedicated context (facts, constraints, audience, style) before the main request to anchor interpretation. This improves relevance, reduces hallucinations, and standardizes tone.`,
     sources: [
       { title: "Jonathan Kyle Hobson – Intelligent User Experiences", url: "https://www.linkedin.com/pulse/intelligent-user-experiences-merging-ai-interaction-hobson" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:context","phase:prompting"],
-    related: ["priming-prompt","domain-priming"],
+    categories: ["multi-prompt strategies", "grounding"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:context",
+      "phase:prompting",
+      "use:grounding",
+      "level:beginner"
+    ],
+    related: ["priming-prompt", "domain-priming", "facts-expertise-primer", "desired-format", "clarity-and-precision"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Domain briefs before tasks • Providing policy snippets • Establishing audience and tone
+Boosters: • Keep context < 10 lines, labeled • Date volatile facts • Include 1 “anti-example” to avoid common traps
+Caveats: Too much context dilutes signal—prefer crisp bullets over essays.`
   },
   {
     slug: "constraint-prompting",
     term: "Constraint Prompting",
-    aliases: [],
-    definition: `Providing prompts with explicit rules or constraints to control or limit output.`,
+    aliases: ["rules-first prompting", "guardrailed prompting"],
+    definition: `State explicit boundaries (formats, do/don’t lists, policies, budgets). Constraints shrink the search space so outputs are consistent and compliant—especially for API-bound or regulated tasks.`,
     sources: [
       { title: "Jonathan Kyle Hobson – Intelligent User Experiences", url: "https://www.linkedin.com/pulse/intelligent-user-experiences-merging-ai-interaction-hobson" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:constraints","phase:prompting"],
-    related: ["constraint-based-prompting","constraint-application"],
+    categories: ["multi-prompt strategies", "governance", "quality"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:constraints",
+      "phase:prompting",
+      "use:compliance",
+      "level:beginner"
+    ],
+    related: ["constraint-based-prompting", "prompt-composition", "rubric-approach", "desired-format"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Valid JSON/CSV generation • Safety-aligned responses • Brand/style enforcement
+Boosters: • Put constraints near the ask • Use schemas with examples • Add a final self-check checklist
+Caveats: Over-constraining can harm creativity—separate “musts” from “nice-to-haves”.`
   },
   {
     slug: "multi-shot-strategies",
     term: "Multi-shot Prompting",
-    aliases: ["multi-input strategies"],
-    definition: `Sending prompts across multiple inputs, often chaining outputs from one prompt as inputs to another.`,
+    aliases: ["multi-input strategies", "few-shot chaining", "shot-stacking"],
+    definition: `Use several inputs across turns: seed with examples, then chain outputs into subsequent prompts. This combines the anchoring power of examples with the control of stepwise execution.`,
     sources: [],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["sequential-linear-prompting","multi-step-interactions"],
+    categories: ["multi-prompt strategies", "learning-from-examples"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:prompting",
+      "phase:prompting",
+      "use:chaining",
+      "level:intermediate"
+    ],
+    related: ["sequential-linear-prompting", "few-shot-examples", "output-layering", "prompt-composition"],
     status: "verified",
-    notes: "Needs source"
+    notes: `Use-cases: • Train format/style then apply to new data • Progressive drafting with example-guided revisions • Multi-turn tutoring flows
+Boosters: • Keep examples short and diverse • Swap examples per audience • Cache good shots for reuse
+Caveats: Context windows fill fast—rotate or compress examples as you go.`
   },
   {
     slug: "output-layering",
     term: "Output Layering",
-    aliases: [],
-    definition: `Building upon prior outputs layer by layer to handle complex tasks.`,
+    aliases: ["progressive refinement", "layered drafting"],
+    definition: `Build a result in layers: outline → rough draft → detailed draft → polish → QA. Each layer has its own micro-rubric and acceptance criteria. Great for long-form or high-stakes outputs.`,
     sources: [],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:technique","topic:prompting","phase:prompting"],
-    related: ["multi-step-interactions","sequential-linear-prompting"],
+    categories: ["multi-prompt strategies", "quality"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:prompting",
+      "phase:prompting",
+      "use:refinement",
+      "level:intermediate"
+    ],
+    related: ["sequential-linear-prompting", "multi-step-interactions", "rubric-approach", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Reports, proposals, legal-style drafts • Code scaffolding then test writing • Lesson plans from outline to materials
+Boosters: • Freeze each approved layer • Add a short checklist per layer • Automate diff-based reviews
+Caveats: Too many layers add latency—pick the few that change quality.`
   },
   {
     slug: "shotgun-generation",
     term: "Shotgun Generation",
-    aliases: [],
-    definition: `Submitting a variety of prompts simultaneously and selecting the best response.`,
+    aliases: ["generate-and-select", "wide search prompting"],
+    definition: `Fire off many diverse variants at once (different seeds, temperatures, styles), then choose the best via rubric or a separate “judge” model. Useful when quality is spiky and exploration pays off.`,
     sources: [],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["parallel-prompting","infinite-generation"],
+    categories: ["multi-prompt strategies", "search"],
+    tags: [
+      "kind:strategy",
+      "type:workflow",
+      "topic:prompting",
+      "phase:prompting",
+      "use:divergence",
+      "level:intermediate"
+    ],
+    related: ["parallel-prompting", "prompt-ensembling", "evaluation-prompting", "raccca-framework"],
     status: "verified",
-    notes: "Needs source"
+    notes: `Use-cases: • Taglines, subject lines, UI microcopy • Creative brainstorming • Multiple SQL query candidates
+Boosters: • Fix N and sampling params • Score with a simple, observable rubric • Keep the top K and archive near-misses
+Caveats: Watch cost and bias toward flashy but wrong—include accuracy checks.`
   },
   {
     slug: "infinite-generation",
     term: "Infinite Generation",
-    aliases: [],
-    definition: `Designing a stable prompt set reusable across multiple inputs without modification.`,
+    aliases: ["templatized prompting", "reusable prompt set", "prompt pipeline"],
+    definition: `Design a stable prompt or pipeline that works across many inputs without editing. You parameterize fields (audience, length, schema) and feed new data indefinitely—a production-ready pattern.`,
     sources: [
       { title: "arXiv 2302.11382", url: "https://arxiv.org/abs/2302.11382" }
     ],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["shotgun-generation"],
+    categories: ["multi-prompt strategies", "productionization"],
+    tags: [
+      "kind:strategy",
+      "type:framework",
+      "topic:prompting",
+      "phase:prompting",
+      "use:scaling",
+      "level:advanced"
+    ],
+    related: ["shotgun-generation", "prompt-template-engineering", "manual-template-engineering", "automated-template-learning"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Ongoing newsletters/reports • Batch doc summarization • Programmatic SEO content with guardrails
+Boosters: • Lock schemas and validations • Version prompts and track drift • Add canary tests before full runs
+Caveats: Domain shifts break “infinite” patterns—schedule periodic re-tuning.`
   },
   {
     slug: "multi-step-interactions",
     term: "Multi-step Interactions",
-    aliases: [],
-    definition: `Using a series of back-and-forth prompts and responses to facilitate dynamic, conversational exchanges.`,
+    aliases: ["multi-turn orchestration", "dialog workflows"],
+    definition: `Back-and-forth exchanges where each turn advances the task (ask → clarify → propose → revise). This mirrors real collaboration and allows clarifying questions and course-corrections.`,
     sources: [],
-    categories: ["multi-prompt strategies"],
-    tags: ["type:strategy","topic:conversation","phase:prompting"],
-    related: ["sequential-linear-prompting","output-layering"],
+    categories: ["multi-prompt strategies", "conversation"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:conversation",
+      "phase:prompting",
+      "use:collaboration",
+      "level:beginner"
+    ],
+    related: ["sequential-linear-prompting", "output-layering", "contextual-prompting", "fallback-pattern"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Requirements elicitation • Coaching and tutoring • Code review and refactor sessions
+Boosters: • Limit each turn to one goal • Summarize state every 2–3 turns • Capture “open questions” explicitly
+Caveats: Wandering is common—pin a shared goal and stop when criteria met.`
   },
 
   // --- Meta-Prompt, Multi-input, Fine-tuning Strategies ---
   {
     slug: "self-discover-framework",
     term: "Self-discover Framework",
-    aliases: [],
-    definition: `Allows the AI to refine or modify its own prompt selection strategy to find the most effective approach.`,
+    aliases: ["SELF-DISCOVER", "self discover framework", "self-discover prompting"],
+    definition: `Let the model choose *how* to think before it thinks: SELECT useful reasoning modules, ADAPT them to the task, and IMPLEMENT a plan. This meta-step often improves reliability on complex problems by fitting the reasoning style to the instance.`,
     sources: [
       { title: "arXiv 2402.03620", url: "https://arxiv.org/abs/2402.03620" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:framework","topic:meta","phase:prompting"],
-    related: ["meta-prompting","prompt-ensembling"],
+    categories: ["meta-prompt strategies", "reasoning"],
+    tags: [
+      "kind:framework",
+      "type:method",
+      "topic:meta",
+      "phase:prompting",
+      "use:reasoning",
+      "level:advanced"
+    ],
+    related: ["meta-prompting", "prompt-ensembling", "prompt-decomposition", "graph-of-thought-got"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Hard math/logic problems • Multi-constraint planning • Choosing between CoT/GoT/AoT styles
+Boosters: • Ask for a brief “reasoning plan” before solving • Cap meta-tokens to control cost • Save successful plans for reuse
+Caveats: Meta-deliberation adds latency—use only when task complexity warrants.`
   },
   {
     slug: "domain-specific-language-creation",
     term: "Domain-Specific Language (DSL) Creation",
-    aliases: ["dsl creation"],
-    definition: `Enabling a model to create and use a domain-specific language for structuring concepts and interactions.`,
+    aliases: ["dsl creation", "ad-hoc DSL prompting", "mini-language prompting"],
+    definition: `Have the model define a compact vocabulary and syntax for a domain (slots, commands, tags), then use it to think and output consistently. DSLs reduce ambiguity and enable deterministic post-processing.`,
     sources: [
       { title: "arXiv 2303.07839", url: "https://arxiv.org/abs/2303.07839" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:strategy","topic:meta","phase:training"],
-    related: ["few-shot-code-example-generation"],
+    categories: ["meta-prompt strategies", "formalization"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:meta",
+      "phase:training",
+      "use:structure",
+      "level:advanced"
+    ],
+    related: ["few-shot-code-example-generation", "prompt-composition", "desired-format"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Test case specs • Incident taxonomies • Marketing brief schemas
+Boosters: • Define grammar + examples • Provide a validator • Map DSL → JSON for pipelines
+Caveats: Too-clever DSLs confuse collaborators—keep human-readable.`
   },
   {
     slug: "few-shot-code-example-generation",
     term: "Few-shot Code Example Generation",
-    aliases: [],
-    definition: `Creating small code examples (e.g., API usage) as demonstrations to teach the model correct application.`,
+    aliases: ["teaching by examples", "API demo prompting"],
+    definition: `Create small, high-signal code snippets (API calls, IO samples) that demonstrate correct usage. The model copies patterns and slot-fills reliably, cutting errors and format drift.`,
     sources: [
       { title: "arXiv 2303.07839", url: "https://arxiv.org/abs/2303.07839" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:code","phase:training"],
-    related: ["domain-specific-language-creation"],
+    categories: ["meta-prompt strategies", "learning-from-examples"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:code",
+      "phase:training",
+      "use:priming",
+      "level:beginner"
+    ],
+    related: ["domain-specific-language-creation", "few-shot-examples", "prompt-template-engineering"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Tool/Function calling • SDK quickstarts • Structured extraction demos
+Boosters: • Prefer minimal compilable examples • Show 1 success + 1 “don’t” • Label inputs/outputs explicitly
+Caveats: Overlong examples eat context—keep tight and scoped.`
   },
   {
     slug: "prompt-ensembling",
     term: "Prompt Ensembling",
-    aliases: [],
-    definition: `Using multiple prompts together and combining results to improve reliability and accuracy.`,
+    aliases: ["multi-prompt voting", "mixture-of-prompts"],
+    definition: `Combine outputs from multiple prompts—vote, average, or use a judge model—to boost robustness. Works like model ensembling but at the instruction level.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:ensemble","phase:training"],
-    related: ["prompt-augmentation","prompt-composition"],
+    categories: ["meta-prompt strategies", "evaluation"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:ensemble",
+      "phase:training",
+      "use:robustness",
+      "level:intermediate"
+    ],
+    related: ["prompt-augmentation", "shotgun-generation", "evaluation-prompting", "raccca-framework"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Fact checking via agreement • Style control by weighted votes • Safety screening with multiple perspectives
+Boosters: • Keep prompts diverse • Use a simple, observable judge rubric • Track tie-breaker rules
+Caveats: Can amplify shared biases—mix truly different prompts.`
   },
   {
     slug: "prompt-augmentation",
     term: "Prompt Augmentation",
-    aliases: ["demonstration learning"],
-    definition: `Adding answered prompts as demonstrations to strengthen model alignment and task adherence.`,
+    aliases: ["demonstration learning", "answer-conditioned prompting"],
+    definition: `Attach small, solved examples (Q→A) or partial solutions to the prompt so the model imitates desirable behavior. Especially effective for format fidelity and tricky edge cases.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:prompting","phase:training"],
-    related: ["prompt-ensembling","prompt-composition"],
+    categories: ["meta-prompt strategies", "learning-from-examples"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:prompting",
+      "phase:training",
+      "use:alignment",
+      "level:beginner"
+    ],
+    related: ["prompt-ensembling", "prompt-composition", "few-shot-examples"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Enforcing schema/format • Teaching tone/voice • Guarding against specific mistakes
+Boosters: • Curate few, high-signal examples • Rotate stale examples • Mark why each demo is “gold”
+Caveats: Examples can overfit—refresh and diversify routinely.`
   },
   {
     slug: "prompt-composition",
     term: "Prompt Composition",
-    aliases: [],
-    definition: `Constructing a complex prompt from multiple sub-prompts for modularity and clarity.`,
+    aliases: ["composed prompts", "modular prompts"],
+    definition: `Assemble a complex prompt from labeled sub-prompts (Role, Goals, Constraints, Examples, Format, Checks). Modularity improves reuse, testing, and version control.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","type:template","topic:prompting","phase:prompting"],
-    related: ["prompt-decomposition"],
+    categories: ["meta-prompt strategies", "architecture"],
+    tags: [
+      "kind:framework",
+      "type:template",
+      "topic:prompting",
+      "phase:prompting",
+      "use:prompt-design",
+      "level:beginner"
+    ],
+    related: ["prompt-decomposition", "rtf-framework", "risen-framework", "prompt-architecture"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Product-wide prompt systems • Compliance-heavy outputs • A/B testing prompt sections
+Boosters: • Keep sections short • Version each section • Validate with small eval sets
+Caveats: Duped rules across sections conflict—dedupe and centralize.`
   },
   {
     slug: "prompt-decomposition",
     term: "Prompt Decomposition",
-    aliases: [],
-    definition: `Breaking down a complex prompt into smaller, simpler sub-prompts.`,
+    aliases: ["split-and-solve prompts", "task decomposition prompting"],
+    definition: `Break a hard ask into simpler sub-prompts (collect facts, decide criteria, generate, verify). Improves control and enables parallelization.`,
     sources: [
       { title: "ACM (10.1145/3560815)", url: "https://doi.org/10.1145/3560815" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","type:template","topic:prompting","phase:prompting"],
-    related: ["prompt-composition","scaffolding"],
+    categories: ["meta-prompt strategies", "architecture"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:prompting",
+      "phase:prompting",
+      "use:problem-solving",
+      "level:intermediate"
+    ],
+    related: ["prompt-composition", "scaffolding", "sequential-linear-prompting", "contextual-prompting"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Research → synthesis → summary • Code plan → implement → test • Policy draft → critique → revise
+Boosters: • Define interfaces between steps • Add success criteria per sub-task • Log artifacts for reuse
+Caveats: Too many parts = overhead—merge low-value steps.`
   },
   {
     slug: "meta-prompting",
     term: "Meta-Prompting",
-    aliases: [],
-    definition: `Providing the AI with reasoning models, benchmarks, or knowledge of its own behavior so it can refine its prompting.`,
+    aliases: ["prompt about prompting", "reasoning-style selection"],
+    definition: `Tell the model about reasoning options, benchmarks, or failure modes so it can pick a fitting strategy (e.g., “choose CoT vs. outline-first, explain choice”). Makes the process explicit and improvable.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:strategy","topic:meta","phase:prompting"],
-    related: ["self-discover-framework","contextual-adjustment"],
+    categories: ["meta-prompt strategies", "reasoning"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:meta",
+      "phase:prompting",
+      "use:reasoning",
+      "level:advanced"
+    ],
+    related: ["self-discover-framework", "contextual-adjustment", "graph-of-thought-got", "chain-of-thought-cot"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Hard reasoning tasks • Choosing search vs. recall • Balancing speed vs. accuracy
+Boosters: • Ask for a brief strategy note • Limit meta length • Cache effective strategies
+Caveats: Meta chatter can bloat tokens—enforce a short plan.`
   },
   {
     slug: "contextual-adjustment",
     term: "Contextual Adjustment",
-    aliases: [],
-    definition: `Modifying prompts based on added or shifted context to better reach a desired outcome.`,
+    aliases: ["on-the-fly tuning", "context refreshing"],
+    definition: `Modify instructions when context changes (new constraints, user goals, data recency). Keeps responses aligned to reality instead of a stale initial brief.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:context","phase:prompting"],
-    related: ["meta-prompting"],
+    categories: ["meta-prompt strategies", "grounding"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:context",
+      "phase:prompting",
+      "use:adaptation",
+      "level:beginner"
+    ],
+    related: ["meta-prompting", "contextual-prompting", "facts-expertise-primer", "verbosity-control"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Live data updates • Role or audience switch mid-session • Policy change incorporation
+Boosters: • Summarize deltas explicitly • Reconfirm goals after big shifts • Re-run critical checks post-adjust
+Caveats: Frequent shifts cause thrash—batch updates when possible.`
   },
   {
     slug: "bias-mitigation",
     term: "Bias Mitigation or Awareness",
-    aliases: ["bias awareness"],
-    definition: `Applying strategies to reduce or highlight biases in outputs to promote fairness and inclusivity.`,
+    aliases: ["bias awareness", "fairness prompting", "bias checks"],
+    definition: `Embed fairness checks and prompts that surface sensitive attributes, request counterfactuals, or apply rubrics to reduce disparate errors. Awareness + mitigation reduces harm and increases trust.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:strategy","type:template","topic:safety","phase:evaluation"],
-    related: ["addressing-biases-and-ethical-concerns"],
+    categories: ["meta-prompt strategies", "safety"],
+    tags: [
+      "kind:strategy",
+      "type:template",
+      "topic:safety",
+      "phase:evaluation",
+      "use:fairness",
+      "level:intermediate"
+    ],
+    related: ["addressing-biases-and-ethical-concerns", "rubric-approach", "calibrated-confidence-prompting-ccp"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Hiring/credit summaries with bias flags • Counterfactual prompts (“if the name changed…”) • Balanced dataset sampling checks
+Boosters: • Add explicit protected-attribute guidance • Log flagged cases for review • Use diverse exemplars
+Caveats: Prompts can’t fix biased data alone—pair with dataset and policy work.`
   },
   {
     slug: "prompt-modification",
     term: "Prompt Modification or Poly-Prompting",
-    aliases: ["poly-prompting"],
-    definition: `Altering or expanding user prompts (e.g., for inclusivity or bias mitigation) before sending them to the AI system.`,
+    aliases: ["poly-prompting", "pre-flight rewriting", "prompt rewriting"],
+    definition: `Rewrite or augment a user’s prompt (for inclusivity, safety, clarity) before sending to the model. Think spell-check + bias-check + schema-fit pass ahead of generation.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:strategy","topic:prompting","phase:prompting"],
-    related: ["bias-mitigation","contextual-adjustment"],
+    categories: ["meta-prompt strategies", "governance"],
+    tags: [
+      "kind:strategy",
+      "type:method",
+      "topic:prompting",
+      "phase:prompting",
+      "use:normalization",
+      "level:intermediate"
+    ],
+    related: ["bias-mitigation", "contextual-adjustment", "desired-format", "clarity-and-precision"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Normalizing free-text into schemas • Softening exclusionary language • Expanding underspecified asks
+Boosters: • Keep an audit trail of changes • Ask consent for meaning-altering edits • Provide before/after previews
+Caveats: Over-editing harms intent—prefer minimally invasive rewrites.`
   },
   {
     slug: "temperature-topk-sampling",
     term: "Temperature and Top-k Sampling",
-    aliases: [],
-    definition: `Adjusting decoding parameters like *temperature* (randomness) or *top-k* (probability cutoff) to control variation in outputs.`,
+    aliases: ["decoding controls", "sampling parameters"],
+    definition: `Tune output diversity and determinism. Temperature controls randomness; top-k limits choices to the k most probable tokens. Together they shape creativity vs. stability for a task.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:parameter","topic:training","phase:prompting"],
-    related: [],
+    categories: ["meta-prompt strategies", "decoding"],
+    tags: [
+      "kind:technique",
+      "type:parameter",
+      "topic:training",
+      "phase:prompting",
+      "use:variance-control",
+      "level:beginner"
+    ],
+    related: ["shotgun-generation", "prompt-ensembling", "verbosity-control"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Creative writing (higher temp) • Deterministic APIs (lower temp, small top-k) • Generating alternatives quickly
+Boosters: • Record params with outputs • Use small grids to find sweet spots • Pair with a judge/QA for quality
+Caveats: Extreme settings cause babble (too high) or dullness (too low)—tune per task.`
   },
   {
     slug: "rat-retrieval-augmented-thoughts",
     term: "RAT (Retrieval Augmented Thoughts)",
-    aliases: [],
-    definition: `Combines RAG with CoT by retrieving relevant information at each reasoning step, ensuring every intermediate step is fact-informed.`,
+    aliases: ["retrieval-augmented chain-of-thought", "RAG + CoT"],
+    definition: `Fuse retrieval with reasoning: at each step, fetch evidence and let the chain-of-thought cite it. This keeps intermediate steps grounded and reduces error propagation.`,
     sources: [],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique","topic:rag","topic:reasoning","phase:prompting"],
-    related: ["reflection-or-reasoning-prompting","system-query"],
+    categories: ["meta-prompt strategies", "grounding", "reasoning"],
+    tags: [
+      "kind:technique",
+      "type:method",
+      "topic:rag",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:grounded-reasoning",
+      "level:advanced"
+    ],
+    related: ["reflection-or-reasoning-prompting", "system-query", "chain-of-verification", "agentic-rag"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Research with citations • Financial or legal analyses • Complex Q&A requiring sources
+Boosters: • Limit retrieval per step • De-duplicate evidence • Add a final citation check pass
+Caveats: Retrieval noise derails chains—tune queries and add quality filters.`
   },
 
   // --- Challenges and Opportunities ---
   {
     slug: "addressing-biases-and-ethical-concerns",
     term: "Addressing Biases and Ethical Concerns",
-    aliases: [],
-    definition: `Identifying, surfacing, and mitigating biases in AI outputs while embedding fairness and ethical standards.`,
+    aliases: ["ethical prompting", "fairness & safety"],
+    definition: `Identify, surface, and mitigate biased or harmful behavior across the prompt pipeline. Pair prompts with policies, audits, and human review to reduce disparate impact and build trust.`,
     sources: [],
-    categories: ["challenges and opportunities"],
-    tags: ["type:challenge","topic:safety","phase:evaluation"],
-    related: ["bias-mitigation"],
+    categories: ["challenges and opportunities", "safety"],
+    tags: [
+      "kind:task",
+      "type:challenge",
+      "topic:safety",
+      "phase:evaluation",
+      "use:governance",
+      "level:intermediate"
+    ],
+    related: ["bias-mitigation", "rubric-approach", "raccca-framework", "content-moderation"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Pre-launch risk reviews • Ongoing bias monitoring • Incident response and remediation
+Boosters: • Define measurable fairness metrics • Maintain red-team playbooks • Document decisions and trade-offs
+Caveats: This is socio-technical—tools help, but humans and policy are essential.`
   },
   {
     slug: "handling-specialized-domains",
     term: "Handling Specialized Domains",
-    aliases: [],
-    definition: `Improving prompt design for accuracy and safety in specialized fields (e.g., law, medicine) through expert collaboration.`,
+    aliases: ["domain-aware prompting", "expert-domain prompting"],
+    definition: `Adapt prompts for high-stakes fields (law, medicine, finance). Involve experts, ground with authoritative sources, and constrain outputs to safe, auditable formats.`,
     sources: [],
-    categories: ["challenges and opportunities"],
-    tags: ["type:challenge","topic:domain","phase:prompting"],
-    related: ["domain-priming","fact-check-prompting"],
+    categories: ["challenges and opportunities", "domain adaptation"],
+    tags: [
+      "kind:task",
+      "type:challenge",
+      "topic:domain",
+      "phase:prompting",
+      "use:accuracy",
+      "level:advanced"
+    ],
+    related: ["domain-priming", "fact-check-prompting", "chain-of-verification", "rat-retrieval-augmented-thoughts"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Clinical guideline summaries • Contract clause extraction • Risk disclosures with citations
+Boosters: • Cite sources inline • Use schemas and disclaimers • Add confidence and uncertainty notes
+Caveats: Don’t replace professional judgment—clearly label limitations.`
   },
   {
     slug: "adapting-to-evolving-ai-capabilities",
     term: "Adapting to Evolving AI Capabilities",
-    aliases: [],
-    definition: `Updating and adapting prompt strategies as AI capabilities advance, to ensure continued effectiveness and relevance.`,
+    aliases: ["prompt maintenance", "prompt drift management"],
+    definition: `As models, tools, and policies change, refresh prompts, examples, and evaluations so performance doesn’t silently degrade. Treat prompts like living code.`,
     sources: [],
-    categories: ["challenges and opportunities"],
-    tags: ["type:challenge","topic:prompting","phase:prompting"],
-    related: ["meta-prompting","contextual-adjustment"],
+    categories: ["challenges and opportunities", "operations"],
+    tags: [
+      "kind:task",
+      "type:challenge",
+      "topic:prompting",
+      "phase:prompting",
+      "use:maintenance",
+      "level:intermediate"
+    ],
+    related: ["infinite-generation", "prompt-template-engineering", "raccca-framework", "evaluation-prompting"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Post-model-update regression checks • Rotating example sets • Refreshing style guides and policies
+Boosters: • Add smoke tests and canaries • Track metrics across versions • Keep a rollback path
+Caveats: Silent regressions happen—schedule periodic audits even when users are happy.`
   }
 );
+
 
 GLOSSARY.push(
   // --- Conversational Design ---
   {
     slug: "conversational-design",
     term: "Conversational Design",
-    aliases: [],
-    definition: `The practice of crafting natural, interactive conversations between people and systems—designing both dialogue flow and the specific language/tone so computers communicate in human-like, goal-directed ways.`,
+    aliases: ["conversation design", "dialogue design", "CX conversation design"],
+    definition: `The end-to-end practice of shaping natural, goal-directed conversations between people and systems. It covers how turns flow, how intent and context are captured, what language and tone are used, and how errors, confirmations, and handoffs are handled—so interactions feel human, helpful, and efficient.`,
     sources: [
       { title: "Google: Intro to Conversational Design (YouTube #1)", url: "https://www.youtube.com/watch?v=OV3qmkVuLxk" },
       { title: "Google: Conversational Design (YouTube #2)", url: "https://www.youtube.com/watch?v=vafh50qmWMM" }
     ],
-    categories: ["conversational design"],
-    tags: ["type:discipline","topic:human-ai","phase:ideation"],
-    related: ["interaction-flows","conversational-ui","voice-user-interface-vui","brand-persona","inclusivity-in-conversation-design","ai-human-technical-communication"],
+    categories: ["conversational design", "ux", "linguistics"],
+    tags: [
+      "kind:strategy",
+      "type:discipline",
+      "topic:human-ai",
+      "topic:conversation",
+      "phase:ideation",
+      "use:dialog-flow",
+      "level:intermediate"
+    ],
+    related: ["interaction-flows","conversational-ui","voice-user-interface-vui","brand-persona","inclusivity-in-conversation-design","ai-human-technical-communication","cooperative-principle"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Design a task flow for booking, support, or onboarding • Reduce drop-offs by clarifying next actions • Standardize tone and safety across channels
+Boosters: Define success metrics per turn (task completion, latency, satisfaction). Maintain a language guide (voice, tone, escalation rules). Prototype with sample dialogues before building.
+Caveats: Over-scripted flows can feel rigid—balance guardrails with free text recovery.`
   },
   {
     slug: "socio-linguistics",
     term: "Socio-linguistics",
-    aliases: ["sociolinguistics"],
-    definition: `A subfield of linguistics that studies how language use varies across social contexts and how social factors shape interpretation.`,
+    aliases: ["sociolinguistics", "social linguistics"],
+    definition: `The study of how language varies with social context—region, class, culture, gender, age—and how those variables shape interpretation and trust. In conversation design it informs dialect support, register, politeness strategies, and equity.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:foundation","topic:linguistics","phase:ideation"],
-    related: ["linguistic-diversity","linguistic-bias","brand-persona"],
+    categories: ["conversational design", "linguistics"],
+    tags: [
+      "kind:term",
+      "type:foundation",
+      "topic:linguistics",
+      "phase:ideation",
+      "use:audience-fit",
+      "level:intermediate"
+    ],
+    related: ["linguistic-diversity","linguistic-bias","inclusivity-in-conversation-design","brand-persona"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Choose register and politeness norms for a locale • Audit prompts for dialect bias • Localize examples and error messages
+Boosters: Co-design with target users; include vernacular examples; avoid prescriptive grammar policing.
+Caveats: Over-generalizing cultural traits leads to stereotypes—validate with real users.`
   },
   {
     slug: "conversational-repair",
     term: "Conversational Repair",
-    aliases: [],
-    definition: `Strategies to detect and correct misunderstandings or ambiguities so both parties regain shared understanding.`,
+    aliases: ["repair strategies", "misunderstanding recovery", "dialog recovery"],
+    definition: `Design patterns that detect misunderstanding or ambiguity and steer back to shared meaning. Includes clarifying questions, rephrasing, explicit confirmations, and graceful handoffs when confidence is low.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:technique","topic:conversation","phase:debugging"],
-    related: ["ambiguity-reduction","explicit-instruction","escalated-errors"],
+    categories: ["conversational design", "quality"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:conversation",
+      "phase:debugging",
+      "use:error-recovery",
+      "level:beginner"
+    ],
+    related: ["ambiguity-reduction","escalated-errors","turn-taking","conversational-ui","maxim-of-relevance"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Low ASR/NLU confidence repair • Disambiguate multi-intent utterances • Recover after off-topic inputs
+Boosters: Set confidence thresholds; prefer single, specific clarifiers; summarize what’s known before asking.
+Caveats: Too many clarifiers feel like interrogation—cap retries and escalate.`
   },
   {
     slug: "conversational-ui",
     term: "Conversational UI",
-    aliases: [],
-    definition: `The visual/interaction layer of chat or voice systems (message layout, affordances, error states, confirmations) that supports dialogue.`,
+    aliases: ["chat UI", "voice UI surfaces", "dialog UI"],
+    definition: `The visual and interaction surfaces that scaffold conversation—message bubbles, chips, forms, confirmations, system hints, error states, and accessibility affordances—so users see what the system heard, can correct it, and know what to do next.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:ui","topic:design","phase:implementation"],
-    related: ["voice-user-interface-vui","smart-display","voice-forward-device","interaction-flows"],
+    categories: ["conversational design", "ui"],
+    tags: [
+      "kind:pattern",
+      "type:ui",
+      "topic:design",
+      "phase:implementation",
+      "use:affordance",
+      "level:beginner"
+    ],
+    related: ["voice-user-interface-vui","smart-display","interaction-flows","conversational-actions"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Show NLU parse for confirmation • Provide quick-reply chips for common intents • Visualize multi-turn progress
+Boosters: Mirror conversational state (heard/understood/next). Add inline “fix it” controls. Respect accessibility (contrast, screen readers).
+Caveats: Overloading UI with controls can distract from natural language.`
   },
   {
     slug: "linguistic-diversity",
     term: "Linguistic Diversity",
-    aliases: [],
-    definition: `Support for multiple languages, dialects, and vernaculars so systems understand and respond inclusively.`,
+    aliases: ["language diversity", "dialect inclusion"],
+    definition: `Designing for multiple languages, dialects, registers, and vernaculars so systems recognize and respond inclusively—not just “standard” forms.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:inclusion","phase:ideation"],
-    related: ["socio-linguistics","inclusivity-in-conversation-design","linguistic-bias"],
+    categories: ["conversational design", "inclusion"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:inclusion",
+      "phase:ideation",
+      "use:localization",
+      "level:intermediate"
+    ],
+    related: ["socio-linguistics","inclusivity-in-conversation-design","linguistic-bias","brand-persona"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Add dialect examples to training • Offer language choice with plain labels • Tune polite forms per culture
+Boosters: Include varied names, dates, honorifics. Test with code-switching. Provide fallback to human agent where appropriate.
+Caveats: Partial support can backfire—set expectations clearly.`
   },
   {
     slug: "interaction-flows",
     term: "Interaction Flows",
-    aliases: ["dialogue flows"],
-    definition: `The sequence/structure of conversational turns that guide users to complete tasks or goals.`,
+    aliases: ["dialogue flows", "conversation maps", "flowcharts"],
+    definition: `The planned sequence of turns that guide users from entry to goal, including prompts, validations, side paths, and exits. Good flows anticipate detours and bake in repair and escalation.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:artifact","topic:conversation","phase:design"],
-    related: ["turn-taking","conversational-design","sample-dialogue"],
+    categories: ["conversational design", "orchestration"],
+    tags: [
+      "kind:framework",
+      "type:artifact",
+      "topic:conversation",
+      "phase:design",
+      "use:task-completion",
+      "level:beginner"
+    ],
+    related: ["turn-taking","conversational-design","sample-dialogue","interaction-model","conversational-repair"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Map intents/entities to journeys • Design handoffs to tools/humans • Visualize confirmations and summaries
+Boosters: Keep flows shallow; add guardrails for loops; annotate with success metrics.
+Caveats: Real speech is messy—flows must allow out-of-band jumps.`
   },
   {
     slug: "discourse-markers",
     term: "Discourse Markers",
-    aliases: [],
-    definition: `Words/phrases (e.g., “um,” “well,” “so”) that structure discourse, signal cognition, or manage conversational flow.`,
+    aliases: ["connectives", "cue phrases", "discourse cues"],
+    definition: `Small words/phrases (e.g., “so,” “well,” “anyway”) that structure discourse, signal topic shifts, hedge claims, or manage turn transitions. Used thoughtfully, they make AI tone feel less robotic without adding fluff.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:linguistics","phase:ideation"],
-    related: ["pauses","turn-taking"],
+    categories: ["conversational design", "linguistics"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:linguistics",
+      "phase:ideation",
+      "use:tone",
+      "level:beginner"
+    ],
+    related: ["pauses","turn-taking","brand-persona","ambiguity-of-language"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Smooth topic transitions • Signal uncertainty before asking a clarifier • Reduce bluntness in refusals
+Boosters: Use sparingly; prefer short, plain cues; align with brand voice.
+Caveats: Overuse reads as filler—prioritize clarity over chit-chat.`
   },
   {
     slug: "brand-persona",
     term: "Brand Persona",
-    aliases: [],
-    definition: `A system’s consistent voice and tone that reflect brand values across interactions.`,
+    aliases: ["voice & tone", "brand voice", "system persona"],
+    definition: `A consistent voice/tone and set of linguistic choices that reflect brand values across channels. Defines how the agent greets, hedges, apologizes, and celebrates—without breaking clarity or safety.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:style","phase:design"],
-    related: ["conversational-design","inclusivity-in-conversation-design"],
+    categories: ["conversational design", "content design"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:style",
+      "phase:design",
+      "use:consistency",
+      "level:beginner"
+    ],
+    related: ["conversational-design","inclusivity-in-conversation-design","discourse-markers","cooperative-principle"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Style guides for responses • Calibration prompts and examples • Consistent escalation language
+Boosters: Provide do/don’t lists and exemplar snippets. Include “hard lines” (never do) to protect safety.
+Caveats: Persona cannot override compliance—safety first, style second.`
   },
   {
     slug: "action-driven-conversations",
     term: "Action-Driven Conversations",
-    aliases: [],
-    definition: `Dialogues structured to lead to specific user actions/outcomes (task completion, configuration, transactions).`,
+    aliases: ["goal-oriented dialogue", "task-oriented conversation"],
+    definition: `Conversations structured explicitly around user goals and the actions that accomplish them—collect inputs, confirm details, execute steps, and summarize results.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:conversation","phase:design"],
-    related: ["interaction-flows","intent","conversational-actions"],
+    categories: ["conversational design", "task design"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:conversation",
+      "phase:design",
+      "use:task-completion",
+      "level:beginner"
+    ],
+    related: ["interaction-flows","intent","conversational-actions","conversational-ui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Book/Buy/Build flows • Support troubleshooting • Form-filling by conversation
+Boosters: Write success criteria per task. Use confirmations with short paraphrases. Provide receipts/summaries.
+Caveats: Don’t bury actions under small talk—make the next step obvious.`
   },
   {
     slug: "linguistic-bias",
     term: "Linguistic Bias",
-    aliases: [],
-    definition: `The assumption that certain language forms are superior, which can influence design decisions and exclude users.`,
+    aliases: ["language bias", "dialect bias"],
+    definition: `The preferential treatment of certain language forms (e.g., “standard” dialects) over others, which can marginalize users and skew intent detection. Designers should detect, mitigate, and monitor such bias.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:risk","topic:safety","phase:evaluation"],
-    related: ["inclusivity-in-conversation-design","socio-linguistics","bias-mitigation"],
+    categories: ["conversational design", "safety"],
+    tags: [
+      "kind:term",
+      "type:risk",
+      "topic:safety",
+      "phase:evaluation",
+      "use:fairness",
+      "level:intermediate"
+    ],
+    related: ["inclusivity-in-conversation-design","socio-linguistics","bias-mitigation","linguistic-diversity"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Audit training data/regex for exclusion • Add dialectal synonyms/entities • Calibrate ASR for accents
+Boosters: Collect representative utterances; measure performance by subgroup; add counterfactual evaluations.
+Caveats: Eliminating bias requires policy + data + design—prompts alone aren’t enough.`
   },
   {
     slug: "turn-taking",
     term: "Turn-Taking",
-    aliases: [],
-    definition: `The alternation of speakers in dialogue—core to pacing, interruptions, and multi-party conversations.`,
+    aliases: ["turn management", "turn coordination"],
+    definition: `The rhythm of who speaks when: detecting end-of-turn, managing interruptions, allowing barge-in, and signaling when the system is “listening” or “thinking.” Crucial for natural pacing and reduced overlap.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:conversation","phase:design"],
-    related: ["interaction-flows","pauses"],
+    categories: ["conversational design", "interaction"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:conversation",
+      "phase:design",
+      "use:pacing",
+      "level:intermediate"
+    ],
+    related: ["interaction-flows","pauses","conversational-ui","voice-user-interface-vui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Voice barge-in and duplex modes • Multi-party meeting assistants • Rapid Q&A kiosks
+Boosters: Visual/aural cues (“listening…”, typing indicator). Tune end-pointer thresholds by context.
+Caveats: Aggressive end-pointing truncates users; conservative settings feel laggy—test with real speech.`
   },
   {
     slug: "multimodal-conversation-design",
     term: "Multimodal Conversation Design",
-    aliases: [],
-    definition: `Designing conversations that combine text, voice, visuals, gestures, or haptics for richer interactions.`,
+    aliases: ["multimodal dialog design", "text+voice+visual design"],
+    definition: `Designing conversations that blend text, voice, visuals, gestures, and haptics. Each modality supports the others: voice for speed, visuals for precision, touch for correction.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:discipline","topic:multimodal","phase:design"],
-    related: ["conversational-ui","smart-display","voice-forward-device"],
+    categories: ["conversational design", "multimodal"],
+    tags: [
+      "kind:strategy",
+      "type:discipline",
+      "topic:multimodal",
+      "phase:design",
+      "use:rich-feedback",
+      "level:advanced"
+    ],
+    related: ["conversational-ui","smart-display","voice-forward-device","interaction-model"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Map/route setup (voice + map taps) • Smart-home dashboards • Wearables with glanceable cards
+Boosters: Assign jobs to modalities; ensure parity (e.g., captions); provide cross-modal confirmations.
+Caveats: Don’t split critical info across modalities—repeat essentials.`
   },
   {
     slug: "inclusivity-in-conversation-design",
     term: "Inclusivity in Conversation Design",
-    aliases: ["inclusive conversation design"],
-    definition: `Ensuring conversational systems respect diverse languages, dialects, cultural norms, and accessibility needs.`,
+    aliases: ["inclusive conversation design", "inclusive dialog design"],
+    definition: `A commitment to language and interaction choices that respect diverse cultures, abilities, and identities—covering readability, accessibility, pronouns, dialects, and safety considerations.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:inclusion","phase:design"],
-    related: ["linguistic-diversity","linguistic-bias","brand-persona"],
+    categories: ["conversational design", "inclusion", "accessibility"],
+    tags: [
+      "kind:strategy",
+      "type:principle",
+      "topic:inclusion",
+      "phase:design",
+      "use:accessibility",
+      "level:intermediate"
+    ],
+    related: ["linguistic-diversity","linguistic-bias","brand-persona","conversational-repair"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Accessible confirmations and alternatives • Respectful name/pronoun handling • Low-literacy and ESL support
+Boosters: Plain-language checks; ARIA and captioning; cultural review by native speakers.
+Caveats: Inclusivity is ongoing—monitor feedback and iterate.`
   },
   {
     slug: "cooperative-principle",
     term: "Cooperative Principle",
-    aliases: [],
-    definition: `Grice’s idea that interlocutors generally aim to be informative, truthful, relevant, and clear to make conversation work.`,
+    aliases: ["gricean cooperative principle", "grice’s cooperative principle"],
+    definition: `Grice’s idea that conversation works because participants generally aim to be informative, truthful, relevant, and clear. Use it as a north star for how agents phrase, omit, or ask for info.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:pragmatics","phase:ideation"],
-    related: ["maxim-of-relevance","ambiguity-reduction"],
+    categories: ["conversational design", "pragmatics"],
+    tags: [
+      "kind:framework",
+      "type:principle",
+      "topic:pragmatics",
+      "phase:ideation",
+      "use:style-guidance",
+      "level:beginner"
+    ],
+    related: ["maxim-of-relevance","ambiguity-reduction","brand-persona"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Draft refusal language that remains cooperative • Tune clarifiers for relevance • Balance brevity with clarity
+Boosters: Translate each maxim into concrete writing rules and examples.
+Caveats: Real users sometimes violate maxims—design repair paths.`
   },
   {
     slug: "maxim-of-relevance",
     term: "Maxim of Relevance",
-    aliases: [],
-    definition: `A Gricean maxim: contributions should be relevant to the current topic/context.`,
+    aliases: ["gricean relevance maxim", "relevance maxim"],
+    definition: `One of Grice’s maxims: contribute only what’s relevant to the current context. For agents, it means trimming digressions, answering the actual question, and signaling when info is out of scope.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:principle","topic:pragmatics","phase:ideation"],
-    related: ["cooperative-principle"],
+    categories: ["conversational design", "pragmatics"],
+    tags: [
+      "kind:heustric",
+      "type:principle",
+      "topic:pragmatics",
+      "phase:ideation",
+      "use:focus",
+      "level:beginner"
+    ],
+    related: ["cooperative-principle","conversational-repair","verbosity-control"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Keep answers tight in support chats • Filter search snippets to the user’s ask • Write on-topic clarifiers
+Boosters: Add “out-of-scope” phrasing; provide links instead of tangents.
+Caveats: Over-trimming can hide caveats—reserve a brief “notes” section.`
   },
   {
     slug: "sample-dialogue",
     term: "Sample Dialogue",
-    aliases: ["sample conversation"],
-    definition: `A scripted exchange illustrating how a conversational system should handle a scenario or use case.`,
+    aliases: ["sample conversation", "dialogue script", "happy path script"],
+    definition: `A scripted exchange that demonstrates how the system should respond in a scenario, including edge cases and repair. Serves as a living spec for writers, PMs, and engineers.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:artifact","topic:conversation","phase:design"],
-    related: ["interaction-flows","utterance","intent","entity"],
+    categories: ["conversational design", "specification"],
+    tags: [
+      "kind:pattern",
+      "type:artifact",
+      "topic:conversation",
+      "phase:design",
+      "use:spec",
+      "level:beginner"
+    ],
+    related: ["interaction-flows","utterance","intent","entity","interaction-model"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Onboard new team members • Align tone/repair examples • Validate flows with stakeholders
+Boosters: Include annotations (confidence, entities, errors). Provide both happy and unhappy paths.
+Caveats: Scripts rot—review after model or policy changes.`
   },
   {
     slug: "ambiguity-of-language",
     term: "Ambiguity of Language",
-    aliases: [],
-    definition: `Many words/phrases have multiple meanings; interpretation depends on context, culture, and discourse.`,
+    aliases: ["language ambiguity", "polysemy & pragmatics"],
+    definition: `Many words/phrases have multiple meanings. Interpretation depends on context, world knowledge, and discourse cues. Good designs expect ambiguity and provide clarifiers.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:linguistics","phase:ideation"],
-    related: ["ambiguity-reduction","conversational-repair"],
+    categories: ["conversational design", "linguistics"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:linguistics",
+      "phase:ideation",
+      "use:risk-awareness",
+      "level:beginner"
+    ],
+    related: ["conversational-repair","ambiguity-reduction","discourse-markers","maxim-of-relevance"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Build clarifier lists for ambiguous slots • Disambiguate colloquialisms • Detect double meanings in safety reviews
+Boosters: Keep a “confusables” library; add examples; show parsed meaning to users.
+Caveats: Don’t guess silently—ask when stakes are high.`
   },
   {
     slug: "pauses",
     term: "Pauses",
-    aliases: [],
-    definition: `Intentional or natural breaks in conversation that signal hesitation, uncertainty, turn transitions, or processing time.`,
+    aliases: ["silence", "hesitations"],
+    definition: `Intentional or natural gaps in conversation that signal thinking, uncertainty, or turn transitions. In voice, timing and filler balance affect perceived competence and warmth.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:conversation","phase:design"],
-    related: ["turn-taking","discourse-markers"],
+    categories: ["conversational design", "paralinguistics"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:conversation",
+      "phase:design",
+      "use:pacing",
+      "level:beginner"
+    ],
+    related: ["turn-taking","discourse-markers","voice-user-interface-vui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Indicate “working…” during tool calls • Add micro-pauses before sensitive topics • Reduce over-talk in duplex voice
+Boosters: Use brief visual/aural cues during long operations.
+Caveats: Long silence feels broken—set max wait and offer to notify.`
   },
   {
     slug: "conversational-actions",
     term: "Conversational Actions",
-    aliases: [],
-    definition: `Custom voice/chat experiences (e.g., Google Assistant-era “Actions”) that let users invoke services through dialogue.`,
+    aliases: ["assistant actions", "voice app actions", "chat actions"],
+    definition: `Custom conversational experiences that invoke services via dialog (e.g., “actions” on voice platforms). They map intents/entities to APIs and present confirmations and results conversationally.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:artifact","topic:platform","phase:implementation"],
-    related: ["voice-user-interface-vui","intent","utterance","entity"],
+    categories: ["conversational design", "platform"],
+    tags: [
+      "kind:pattern",
+      "type:artifact",
+      "topic:platform",
+      "phase:implementation",
+      "use:service-integration",
+      "level:intermediate"
+    ],
+    related: ["voice-user-interface-vui","intent","utterance","entity","interaction-model","conversational-ui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Order/booking flows • Smart-home control • Account management tasks
+Boosters: Provide concise confirmations and undo options; log API errors as user-readable messages.
+Caveats: Platform policies change—monitor capabilities and privacy rules.`
   },
   {
     slug: "voice-user-interface-vui",
     term: "Voice User Interface (VUI)",
-    aliases: ["vui"],
-    definition: `Interfaces controlled via speech; users interact using voice commands instead of (or alongside) graphical UI.`,
+    aliases: ["vui", "voice interface"],
+    definition: `Interfaces controlled primarily via speech. Encompass wake-words, ASR, NLU, TTS, barge-in, and repair strategies so users can speak naturally and still complete tasks efficiently.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:ui","topic:voice","phase:implementation"],
-    related: ["smart-display","voice-forward-device","conversational-ui"],
+    categories: ["conversational design", "voice"],
+    tags: [
+      "kind:framework",
+      "type:ui",
+      "topic:voice",
+      "phase:implementation",
+      "use:voice-first",
+      "level:intermediate"
+    ],
+    related: ["smart-display","voice-forward-device","conversational-ui","turn-taking","pauses"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Hands-busy environments • Accessibility scenarios • In-car assistants
+Boosters: Tune wake word sensitivity; add earcons; support barge-in; expose what was heard.
+Caveats: Noise and accents challenge ASR—offer visual/text alternatives.`
   },
   {
     slug: "smart-display",
     term: "Smart Display",
-    aliases: [],
-    definition: `Voice-enabled devices with screens that show visual context, confirmations, or media alongside conversational responses.`,
+    aliases: ["voice display", "assistant display"],
+    definition: `Voice-enabled devices with screens that show visual context—cards, media, confirmations—augmenting what’s said and enabling touch corrections.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:device","topic:multimodal","phase:implementation"],
-    related: ["voice-user-interface-vui","conversational-ui"],
+    categories: ["conversational design", "devices"],
+    tags: [
+      "kind:term",
+      "type:device",
+      "topic:multimodal",
+      "phase:implementation",
+      "use:visual-support",
+      "level:beginner"
+    ],
+    related: ["voice-user-interface-vui","conversational-ui","voice-forward-device","multimodal-conversation-design"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Show options instead of reading lists • Visual confirmations for transactions • Map/image interactions
+Boosters: Keep glanceable layouts; support voice + touch parity.
+Caveats: Don’t rely solely on visuals—read essentials aloud for accessibility.`
   },
   {
     slug: "voice-forward-device",
     term: "Voice-forward Device",
-    aliases: [],
-    definition: `Devices primarily driven by voice input but capable of visual feedback or interactions.`,
+    aliases: ["voice-first device", "voice-led device"],
+    definition: `Devices primarily driven by voice input but capable of limited visual or haptic feedback. Optimize for quick commands, confirmations, and hands-free control.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:device","topic:voice","phase:implementation"],
-    related: ["voice-user-interface-vui","smart-display"],
+    categories: ["conversational design", "devices"],
+    tags: [
+      "kind:term",
+      "type:device",
+      "topic:voice",
+      "phase:implementation",
+      "use:hands-free",
+      "level:beginner"
+    ],
+    related: ["voice-user-interface-vui","smart-display","conversational-ui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Kitchen timers and controls • Car navigation • Wearable assistants
+Boosters: Short prompts, robust confirmations, offline fallbacks where possible.
+Caveats: Limited screen = limited disambiguation—design concise clarifiers.`
   },
   {
     slug: "subvocalization",
     term: "Subvocalization",
-    aliases: [],
-    definition: `Detection/interpretation of inaudible speech signals (e.g., throat/nerve sensing) to enable silent input.`,
+    aliases: ["silent articulation sensing", "non-audible speech sensing"],
+    definition: `Capturing inaudible speech signals (e.g., muscle/nerve or throat activity) to enable silent command input—useful for privacy or noisy environments.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:technology","topic:voice","phase:research"],
-    related: ["silent-speech"],
+    categories: ["conversational design", "emerging tech"],
+    tags: [
+      "kind:term",
+      "type:technology",
+      "topic:voice",
+      "phase:research",
+      "use:private-input",
+      "level:advanced"
+    ],
+    related: ["silent-speech","voice-user-interface-vui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Private control in public • Accessibility for speech impairments • Military/industrial comms
+Boosters: Pair with confirmation cues to prevent accidental triggers.
+Caveats: Early tech; calibration and privacy implications require care.`
   },
   {
     slug: "silent-speech",
     term: "Silent Speech",
-    aliases: [],
-    definition: `Interaction methods that allow communication/commands without audible sound to preserve privacy in public spaces.`,
+    aliases: ["non-audible speech", "silent command input"],
+    definition: `Interaction methods that allow users to communicate without audible sound—via lip, muscle, or neural signals—to protect privacy and reduce disturbance.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:technology","topic:voice","phase:research"],
-    related: ["subvocalization"],
+    categories: ["conversational design", "emerging tech"],
+    tags: [
+      "kind:term",
+      "type:technology",
+      "topic:voice",
+      "phase:research",
+      "use:privacy",
+      "level:advanced"
+    ],
+    related: ["subvocalization","voice-user-interface-vui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Commuting and shared spaces • Medical settings • High-noise workplaces
+Boosters: Clear feedback that input was captured; configurable sensitivity.
+Caveats: Risk of misreads; require safe undo and logs.`
   },
   {
     slug: "escalated-errors",
     term: "Escalated Errors",
-    aliases: [],
-    definition: `A progressive remediation pattern: the system offers increasingly specific prompts or recovery options as confusion persists.`,
+    aliases: ["progressive remediation", "tiered recovery"],
+    definition: `A remediation pattern: start with gentle clarifiers, then offer structured choices, then escalate to human/harder fallback as confusion persists. Each stage increases specificity and support.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:pattern","topic:ux","phase:debugging"],
-    related: ["conversational-repair","ambiguity-reduction"],
+    categories: ["conversational design", "quality"],
+    tags: [
+      "kind:pattern",
+      "type:technique",
+      "topic:ux",
+      "phase:debugging",
+      "use:recovery",
+      "level:beginner"
+    ],
+    related: ["conversational-repair","ambiguity-reduction","fallback-pattern","interaction-flows"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Payment/address failures • Repeated low-confidence parses • Tool/API outages
+Boosters: Define step thresholds; script empathetic language; log root causes for fixes.
+Caveats: Don’t loop users—hard-stop after N attempts and handoff.`
   },
   {
     slug: "utterance",
     term: "Utterance",
-    aliases: [],
-    definition: `A phrase/text a user might say or type to interact with an agent.`,
+    aliases: ["user phrase", "sample utterance", "training phrase"],
+    definition: `Any phrase or text a user says/types. Utterances train NLU and document real requests; they also seed clarifiers and examples in UX copy.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:nlu","phase:design"],
-    related: ["intent","entity","interaction-model"],
+    categories: ["conversational design", "nlu"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:nlu",
+      "phase:design",
+      "use:training",
+      "level:beginner"
+    ],
+    related: ["intent","entity","interaction-model","sample-dialogue"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Create training sets • Generate clarifier examples • Map paraphrases to intents
+Boosters: Collect real user data; include slang/misspellings; tag entities inline.
+Caveats: Synthetic-only utterances distort reality—refresh with live data.`
   },
   {
     slug: "intent",
     term: "Intent",
-    aliases: [],
-    definition: `An action or goal a user wants to achieve; defined by a set of training utterances that trigger it.`,
+    aliases: ["user intent", "action intent"],
+    definition: `A labeled goal the user wants to achieve (e.g., “pay bill”). It’s triggered by training utterances, may require entities/slots, and routes to fulfillment logic.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:nlu","phase:design"],
-    related: ["utterance","entity","interaction-model"],
+    categories: ["conversational design", "nlu"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:nlu",
+      "phase:design",
+      "use:routing",
+      "level:beginner"
+    ],
+    related: ["utterance","entity","interaction-model","interaction-flows"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Define scope of a skill • Map to APIs/workflows • Drive analytics on task success
+Boosters: Keep intents action-oriented; avoid overlaps; document required slots.
+Caveats: Too many granular intents hurt accuracy—merge where sensible.`
   },
   {
     slug: "entity",
     term: "Entity",
-    aliases: [],
-    definition: `A variable slot within an utterance (e.g., date, location) that captures dynamic values supplied by users.`,
+    aliases: ["slot", "parameter"],
+    definition: `A variable captured from an utterance (date, amount, location). Entities supply the parameters needed to fulfill an intent.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:concept","topic:nlu","phase:design"],
-    related: ["utterance","intent","interaction-model"],
+    categories: ["conversational design", "nlu"],
+    tags: [
+      "kind:term",
+      "type:concept",
+      "topic:nlu",
+      "phase:design",
+      "use:data-capture",
+      "level:beginner"
+    ],
+    related: ["utterance","intent","interaction-model","conversational-repair"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Fill forms conversationally • Validate inputs (format/range) • Disambiguate partial requests
+Boosters: Provide examples; confirm critical values; allow corrections.
+Caveats: Ambiguous entity types (e.g., “charge”) need clarifiers.`
   },
   {
     slug: "interaction-model",
     term: "Interaction Model",
-    aliases: [],
-    definition: `The overall model of a skill/agent: paths, intents, utterances, entities, and rules that define conversation behavior.`,
+    aliases: ["dialog model", "skill model", "NLU model schema"],
+    definition: `The spec that ties everything together: intents, training utterances, entities (slots), prompts, rules, and transitions. It defines how the agent understands and acts in conversations.`,
     sources: [],
-    categories: ["conversational design"],
-    tags: ["type:artifact","topic:nlu","phase:design"],
-    related: ["utterance","intent","entity","interaction-flows"],
+    categories: ["conversational design", "architecture"],
+    tags: [
+      "kind:framework",
+      "type:artifact",
+      "topic:nlu",
+      "phase:design",
+      "use:system-spec",
+      "level:intermediate"
+    ],
+    related: ["utterance","intent","entity","interaction-flows","conversational-ui","voice-user-interface-vui"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Platform skill/app definitions • Cross-team alignment on behavior • Regression testing of updates
+Boosters: Version control the model; add eval suites; annotate with confidence thresholds.
+Caveats: Drift happens—schedule periodic data refresh and re-evaluation.`
   },
 
   // --- Reasoning Models or Structures ---
   {
     slug: "reasoning-models-or-structures",
     term: "Reasoning Models or Structures",
-    aliases: [],
-    definition: `Patterns that organize a model’s intermediate reasoning—linear steps, branching search, planning, summarization, decomposition, or code generation.`,
+    aliases: ["reasoning structures", "reasoning patterns", "thought structures"],
+    definition: `An umbrella category for patterns that shape a model’s intermediate thinking: linear chains, branching searches, plan-first execution, outline→detail, decomposition, summarization, scratchpads, and code-as-reasoning. Choosing the right structure improves clarity, controllability, and reliability of answers.`,
     sources: [
       { title: "Self-Discover (arXiv 2402.03620)", url: "https://arxiv.org/abs/2402.03620" }
     ],
-    categories: ["reasoning models or structures"],
-    tags: ["type:category","topic:reasoning","phase:prompting"],
-    related: ["chain-of-thought-cot","tree-of-thought-tot","scratchpad-reasoning","question-summarization","question-decomposition","program-generation","plan-and-solve-p-s","least-to-most-ltm","decomposed-prompting"],
+    categories: ["reasoning models or structures", "prompting strategies", "problem solving"],
+    tags: [
+      "kind:term",
+      "type:category",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:organize-cognition",
+      "level:beginner"
+    ],
+    related: [
+      "chain-of-thought-cot",
+      "tree-of-thought-tot",
+      "graph-of-thought-got",
+      "algorithm-of-thought-aot",
+      "skeleton-of-thought-sot",
+      "plan-and-solve-p-s",
+      "least-to-most-ltm",
+      "question-decomposition",
+      "scratchpad-reasoning",
+      "program-generation"
+    ],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Pick a thought pattern for a task family (math proofs vs. product strategy) • Standardize internal “how to think” prompts across a team • Diagnose failure modes by mapping the structure that was (not) used
+Boosters: Start with a small “structure chooser” (If search space is large → ToT; if clarity is low → Summarize → Decompose; if procedure known → Plan & Solve). Log which structure you used to compare outcomes later.
+Caveats: For simple tasks, heavy structures can add latency without gains—prefer minimal scaffolding.`
   },
   {
     slug: "chain-of-thought-cot",
     term: "Chain of Thought (CoT)",
-    aliases: ["cot","chain-of-thought"],
-    definition: `A step-by-step reasoning trace that makes intermediate decisions explicit before the final answer.`,
+    aliases: ["cot","chain-of-thought","step-by-step reasoning"],
+    definition: `A linear, step-by-step explanation that surfaces intermediate decisions before giving the final answer. CoT improves transparency and often accuracy on multi-step problems by making the model spell out the path it’s taking.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["least-to-most-ltm","plan-and-solve-p-s","tree-of-thought-tot","scratchpad-reasoning"],
+    categories: ["reasoning models or structures", "prompting strategies"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:explain-steps",
+      "level:beginner"
+    ],
+    related: ["least-to-most-ltm","plan-and-solve-p-s","tree-of-thought-tot","chain-of-verification-cove","self-refine","rephrase-and-respond-rar"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Word problems and logic puzzles • Walkthroughs of troubleshooting steps • Transparent policy or rubric application
+Boosters: Prime with “show your working briefly, then answer.” Cap length to avoid rambling. Add a final “Answer:” line to separate result from reasoning.
+Caveats: Verbose CoT can drift—add a verification pass or summary check.`
   },
   {
     slug: "tree-of-thought-tot",
     term: "Tree of Thought (ToT)",
-    aliases: ["tot","tree-of-thought"],
-    definition: `Branching exploration of alternative reasoning paths, allowing backtracking and evaluation of candidate solutions.`,
+    aliases: ["tot","tree-of-thought","branch-and-bound reasoning"],
+    definition: `A branching search over multiple reasoning paths with the option to backtrack, score, and select the best candidate. Useful when solutions require exploration rather than a single straight line.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["chain-of-thought-cot","plan-and-solve-p-s","least-to-most-ltm"],
+    categories: ["reasoning models or structures", "search and planning"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:search-space",
+      "level:advanced"
+    ],
+    related: ["chain-of-thought-cot","plan-and-solve-p-s","least-to-most-ltm","graph-of-thought-got","algorithm-of-thought-aot"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Creative ideation with evaluation • Game/strategy lines of play • Decomposition with alternative subplans
+Boosters: Set breadth/depth limits; define a scoring rubric; periodically prune weak branches. Summarize the winning path at the end.
+Caveats: Cost grows quickly—control token budget and stop criteria.`
   },
   {
     slug: "scratchpad-reasoning",
     term: "Scratchpad Reasoning",
-    aliases: [],
-    definition: `Externalizing intermediate notes, tables, sketches, or symbolic work to aid systematic reasoning.`,
+    aliases: ["working memory", "notes-and-tables", "intermediate workspace"],
+    definition: `Externalizing interim notes—lists, tables, equations, variable bindings, or small diagrams—so the model can keep track of state. Scratchpads reduce cognitive load and make multi-constraint problems tractable.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["question-decomposition","program-generation"],
+    categories: ["reasoning models or structures", "working memory aids"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:state-tracking",
+      "level:intermediate"
+    ],
+    related: ["question-decomposition","program-generation","chain-of-symbol","skeleton-of-thought-sot"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Scheduling/packing with constraints • Data reconciliation and mini-calculations • Requirements mapping before writing
+Boosters: Provide a table schema; name variables; ask for a final clean answer after the scratchpad.
+Caveats: Don’t leak private CoT if outputs must be terse—request a final “short answer only” section.`
   },
   {
     slug: "question-summarization",
     term: "Question Summarization (Cognitive Verifier)",
-    aliases: ["cognitive verifier"],
-    definition: `Reducing a complex prompt to its core question(s) to improve clarity and alignment.`,
+    aliases: ["cognitive verifier","question distillation","core question extraction"],
+    definition: `Distills a long or messy prompt into the essential question(s) so the model knows exactly what to answer. Improves alignment, reduces scope creep, and sets up better downstream reasoning.`,
     sources: [
       { title: "arXiv 2302.11382", url: "https://arxiv.org/abs/2302.11382" }
     ],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:clarity","phase:prompting"],
-    related: ["question-decomposition","ambiguity-reduction"],
+    categories: ["reasoning models or structures", "clarification"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:clarity",
+      "phase:prompting",
+      "use:disambiguation",
+      "level:beginner"
+    ],
+    related: ["question-decomposition","ambiguity-reduction","rephrase-and-respond-rar","chain-of-verification-cove"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Clean up stakeholder walls-of-text • Extract key asks from email threads • Define acceptance criteria before solving
+Boosters: Ask for a 1–2 sentence “core ask,” plus explicit out-of-scope notes. Confirm with the user before proceeding.
+Caveats: Over-summarization can drop constraints—keep a “must include” list.`
   },
   {
     slug: "question-decomposition",
     term: "Question Decomposition",
-    aliases: [],
-    definition: `Breaking a complex prompt into smaller sub-questions to solve incrementally.`,
+    aliases: ["task decomposition","subquestioning","breakdown prompting"],
+    definition: `Splits a complex prompt into smaller sub-questions, answers each, and then synthesizes a coherent final response. Reduces error by tackling one bite at a time.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["scaffolding","least-to-most-ltm","plan-and-solve-p-s"],
+    categories: ["reasoning models or structures", "prompting strategies"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:divide-and-conquer",
+      "level:intermediate"
+    ],
+    related: ["scaffolding","least-to-most-ltm","plan-and-solve-p-s","context-aware-decomposition-cad"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Research briefs with many unknowns • Multi-criteria decisions • Long-document Q&A
+Boosters: Label sub-answers; track open assumptions; finish with a synthesis and confidence notes.
+Caveats: Fragmentation risk—maintain a “big picture” reminder at the top.`
   },
   {
     slug: "program-generation",
     term: "Program Generation",
-    aliases: [],
-    definition: `Generating code or algorithmic steps as an intermediate tool for reasoning or automation.`,
+    aliases: ["code-as-reasoning","algorithmic scratchpad","executable reasoning"],
+    definition: `Writes code or algorithmic steps as an intermediate tool—for precise math, data transformation, simulation, or validation—then uses the results to answer the original question.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:code","phase:prompting"],
-    related: ["scratchpad-reasoning","plan-and-solve-p-s"],
+    categories: ["reasoning models or structures", "tool use"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:code",
+      "phase:prompting",
+      "use:tool-use",
+      "level:advanced"
+    ],
+    related: ["scratchpad-reasoning","plan-and-solve-p-s","function-calling","toolformer"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Calculations and unit conversions • Parsing/transforming semi-structured data • Running small simulations
+Boosters: Specify the language, constraints, and tests. Ask for “show code + output + plain-English conclusion.”
+Caveats: Sandboxing and correctness matter—add checks and guardrails.`
   },
   {
     slug: "plan-and-solve-p-s",
     term: "Plan and Solve (P&S)",
-    aliases: ["plan-and-solve"],
-    definition: `Creating a plan (subgoals/steps) before executing to improve reliability and structure.`,
+    aliases: ["plan-and-solve","plan then act","plan→execute"],
+    definition: `First draft a plan of sub-goals/steps, then execute them in order (with occasional re-planning). This structure improves reliability by separating strategy from action.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["least-to-most-ltm","chain-of-thought-cot","tree-of-thought-tot"],
+    categories: ["reasoning models or structures", "planning"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:planning",
+      "level:intermediate"
+    ],
+    related: ["least-to-most-ltm","chain-of-thought-cot","tree-of-thought-tot","plan-and-execute-agent","react"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Project outlines before writing • Multi-tool agent tasks • Troubleshooting procedures
+Boosters: Require a brief plan with numbered steps and exit criteria. After execution, compare result to plan and note deviations.
+Caveats: Over-planning wastes tokens—keep plans lightweight.`
   },
   {
     slug: "least-to-most-ltm",
     term: "Least to Most (LtM)",
-    aliases: ["least-to-most"],
-    definition: `Starting with simpler components, progressively tackling more complex parts once groundwork is established.`,
+    aliases: ["least-to-most","curriculum-style solving","simple→complex"],
+    definition: `Tackle the simplest subproblems first, using those results to take on progressively harder pieces. Functions like a mini-curriculum the model builds for itself.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["plan-and-solve-p-s","question-decomposition"],
+    categories: ["reasoning models or structures", "prompting strategies"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:progressive-difficulty",
+      "level:beginner"
+    ],
+    related: ["plan-and-solve-p-s","question-decomposition","skeleton-of-thought-sot"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Proofs and derivations • Refactoring messy requirements • Building up from definitions to applications
+Boosters: Ask the model to list “prerequisite mini-questions,” then solve them in order. Summarize carry-over facts at each step.
+Caveats: Don’t stall on trivialities—limit the number of “least” steps.`
   },
   {
     slug: "decomposed-prompting",
     term: "Decomposed Prompting",
-    aliases: [],
-    definition: `General approach of splitting a task into smaller components to improve accuracy and controllability.`,
+    aliases: ["split-and-solve","modular prompting","pipeline prompting"],
+    definition: `A general approach that splits a task into modular parts (retrieve, analyze, draft, verify, finalize). Each part has a focused prompt, and outputs are composed into a final answer.`,
     sources: [],
-    categories: ["reasoning models or structures"],
-    tags: ["type:technique","topic:reasoning","phase:prompting"],
-    related: ["question-decomposition","scaffolding"],
+    categories: ["reasoning models or structures", "prompting pipelines"],
+    tags: [
+      "kind:strategy",
+      "type:technique",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:modularity",
+      "level:beginner"
+    ],
+    related: ["question-decomposition","scaffolding","prompt-composition","chain-of-verification-cove","corrective-rag-crag"],
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Long-form reports with citations • Complex tool workflows • Safety-critical answers with checks
+Boosters: Name each stage and its contract; cache intermediate artifacts; run a final “coherence & coverage” sweep.
+Caveats: Hand-offs can lose context—carry forward a brief state summary between stages.`
   }
 );
+
 
 GLOSSARY.push(
   // --- Additional Reasoning Models — Logical and Analytical Reasoning ---
   {
     slug: "analogical-reasoning",
     term: "Analogical Reasoning",
-    aliases: [],
-    definition: `Inferring new knowledge by mapping similarities between two situations or domains.`,
+    aliases: ["analogy mapping", "structure-mapping", "case-based analogy"],
+    definition: `Infers new insights by mapping relational similarities between a well-understood source situation and a target situation. By aligning roles, constraints, and causal relations—not just surface features—it transfers patterns (“A is to B as C is to D”) to generate hypotheses, designs, or explanations that fit the target.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:reasoning","phase:ideation"],
-    related: ["abductive-reasoning","inductive-reasoning","narrative-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "problem solving"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:reasoning",
+      "phase:ideation",
+      "use:transfer-insight",
+      "level:intermediate"
+    ],
+    related: ["abductive-reasoning","inductive-reasoning","narrative-reasoning","cross-domain-reasoning","design-thinking"],
     status: "verified",
-    notes: "Common in design, psychology, creative work."
+    notes: `Use-cases: • Borrow UX patterns from another industry • Generate novel product concepts by analogy • Explain unfamiliar ideas using familiar comparisons
+Boosters: Name the source domain explicitly; list structural correspondences; check for brittle, surface-only matches with a quick counterexample scan.
+Caveats: Superficial analogies mislead—prioritize relational structure over aesthetics.`
   },
   {
     slug: "counterfactual-reasoning",
     term: "Counterfactual Reasoning",
-    aliases: [],
-    definition: `Considering alternative realities—what would happen if antecedent conditions were different—to test causal hypotheses or plans.`,
+    aliases: ["what-if analysis", "contrary-to-fact reasoning", "but-for causation"],
+    definition: `Explores “what would have happened if X were different?” to test causal claims, stress-test plans, and estimate impact. Varies antecedents, holds controls fixed, and compares outcomes to infer plausible cause–effect links.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:reasoning","phase:ideation"],
-    related: ["causal-reasoning","probabilistic-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "causal analysis"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:causality",
+      "phase:ideation",
+      "use:hypothesis-test",
+      "level:advanced"
+    ],
+    related: ["causal-reasoning","probabilistic-reasoning","systems-thinking","abductive-reasoning"],
     status: "verified",
-    notes: "Used in philosophy, psychology, strategic planning."
+    notes: `Use-cases: • Policy alternatives evaluation • Incident postmortems (“if we’d throttled earlier…”) • Marketing lift estimation with pseudo-controls
+Boosters: State your factual baseline; vary one factor at a time; record assumptions; quantify expected direction and magnitude when possible.
+Caveats: Hidden confounders can break conclusions—pair with sensitivity checks.`
   },
   {
     slug: "narrative-reasoning",
     term: "Narrative Reasoning",
-    aliases: [],
-    definition: `Building and interpreting stories to make sense of events, motives, and outcomes.`,
+    aliases: ["story-based reasoning", "scenario reasoning", "narrative framing"],
+    definition: `Builds coherent stories (actors, goals, conflicts, arcs) to make sense of motives and outcomes. Turns scattered facts into cause-and-effect sequences that humans readily grasp, improving retention and meaning-making.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:reasoning","phase:ideation"],
-    related: ["analogical-reasoning","holistic-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "communication"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:narrative",
+      "phase:ideation",
+      "use:explanation",
+      "level:beginner"
+    ],
+    related: ["analogical-reasoning","holistic-reasoning","design-thinking","chain-of-thought-cot"],
     status: "verified",
-    notes: "Applied in literature, history, therapy, branding."
+    notes: `Use-cases: • Executive brief storytelling • Root-cause narratives for incidents • Brand and change-management narratives
+Boosters: Explicitly list assumptions; separate facts from invented connective tissue; end with “evidence check” bullets.
+Caveats: Good stories can seduce—verify claims against data.`
   },
   {
     slug: "holistic-reasoning",
     term: "Holistic Reasoning",
-    aliases: [],
-    definition: `Viewing problems as interconnected wholes, emphasizing relationships over isolated parts.`,
+    aliases: ["whole-system perspective", "context-first reasoning"],
+    definition: `Frames problems as interconnected wholes, emphasizing relationships, context, and side effects over isolated parts. Looks for patterns across boundaries before optimizing subcomponents.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:systems","phase:ideation"],
-    related: ["systems-thinking","ecological-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "systems"],
+    tags: [
+      "kind:strategy",
+      "type:reasoning",
+      "topic:systems",
+      "phase:ideation",
+      "use:big-picture",
+      "level:intermediate"
+    ],
+    related: ["systems-thinking","ecological-reasoning","complex-adaptive-systems-cas-thinking","strategic-reasoning"],
     status: "verified",
-    notes: "Used in global thinking, management, environmental analysis."
+    notes: `Use-cases: • Portfolio trade-offs • Policy with cross-sector effects • Product changes with ecosystem partners
+Boosters: Draw a quick influence diagram; list likely externalities; set guardrails to avoid local optimizations harming the whole.
+Caveats: Can become vague—anchor with measurable subsystem outcomes.`
   },
   {
     slug: "intuitive-reasoning",
     term: "Intuitive Reasoning",
-    aliases: [],
-    definition: `Making judgments rapidly without explicit stepwise logic, grounded in tacit expertise.`,
+    aliases: ["expert intuition", "fast heuristic judgment", "System-1 style"],
+    definition: `Leverages tacit patterns built from experience to make rapid, low-effort judgments. Useful under time pressure or when formal models are unavailable—best when calibrated with feedback.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:heuristics","phase:ideation"],
-    related: ["experiential-reasoning","reflective-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "heuristics"],
+    tags: [
+      "kind:pattern",
+      "type:reasoning",
+      "topic:heuristics",
+      "phase:ideation",
+      "use:rapid-judgment",
+      "level:intermediate"
+    ],
+    related: ["experiential-reasoning","reflective-reasoning","heuristic-systematic-model","probabilistic-reasoning"],
     status: "verified",
-    notes: "Seen in creative arts, emergency response, leadership."
+    notes: `Use-cases: • Triage decisions • Creative concept selection • Early anomaly spotting
+Boosters: Add a quick “calibration check” (confidence + prior hits/misses); pair with later systematic review.
+Caveats: Prone to bias—log reasons briefly to enable audit and learning.`
   },
   {
     slug: "deductive-reasoning",
     term: "Deductive Reasoning",
-    aliases: [],
-    definition: `Deriving specific conclusions from general premises; validity depends on logical form.`,
+    aliases: ["formal deduction", "rule-to-case reasoning"],
+    definition: `Applies general premises to derive specific conclusions that must be true if the premises and logic form are valid. Guarantees validity under sound structure (e.g., syllogisms, implications).`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:logic","phase:prompting"],
-    related: ["syllogistic-reasoning","inductive-reasoning","abductive-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "logic"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:logic",
+      "phase:prompting",
+      "use:prove",
+      "level:beginner"
+    ],
+    related: ["syllogistic-reasoning","inductive-reasoning","abductive-reasoning","chain-of-symbol"],
     status: "verified",
-    notes: "Used in mathematics, logic, programming."
+    notes: `Use-cases: • Policy compliance checks • Type and interface reasoning in code • Formal argument validation
+Boosters: State premises explicitly; test with counterexample search; separate validity (form) from soundness (premises true).
+Caveats: True form + false premises ⇒ false conclusions still possible.`
   },
   {
     slug: "inductive-reasoning",
     term: "Inductive Reasoning",
-    aliases: [],
-    definition: `Generalizing from specific observations to broader rules or trends; conclusions are probabilistic.`,
+    aliases: ["generalization from cases", "pattern induction"],
+    definition: `Generalizes from observations to candidate rules or trends. Conclusions are probabilistic and improve with representative, sufficient, and unbiased samples.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:inference","phase:prompting"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "inference"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:inference",
+      "phase:prompting",
+      "use:generalize",
+      "level:intermediate"
+    ],
     related: ["probabilistic-reasoning","abductive-reasoning","deductive-reasoning"],
     status: "verified",
-    notes: "Common in science, sociology, market analysis."
+    notes: `Use-cases: • User research patterning • Market trend spotting • Error log clustering
+Boosters: Document sampling frame; quantify uncertainty; validate on held-out cases.
+Caveats: Hasty generalization and survivorship bias distort results—triangulate.`
   },
   {
     slug: "abductive-reasoning",
     term: "Abductive Reasoning",
-    aliases: [],
-    definition: `Forming the most plausible hypothesis to explain observations (inference to the best explanation).`,
+    aliases: ["inference to best explanation", "IBE"],
+    definition: `Infers the most plausible hypothesis that would explain observed facts among competing candidates, balancing simplicity, scope, and fit.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:hypotheses","phase:prompting"],
-    related: ["inductive-reasoning","deductive-reasoning","counterfactual-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "diagnostics"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:hypothesis",
+      "phase:prompting",
+      "use:explain-observation",
+      "level:advanced"
+    ],
+    related: ["inductive-reasoning","deductive-reasoning","counterfactual-reasoning","causal-reasoning"],
     status: "verified",
-    notes: "Used in diagnostics, detective work, AI."
+    notes: `Use-cases: • Medical/ops diagnostics • Forensics and incident RCA • Product metric anomalies
+Boosters: List competing hypotheses; score against evidence; seek a “killer” disconfirming test.
+Caveats: “Best” explanation can still be wrong—keep updating with new evidence.`
   },
   {
     slug: "syllogistic-reasoning",
     term: "Syllogistic Reasoning",
-    aliases: ["syllogism"],
-    definition: `A deductive form combining major and minor premises to reach a conclusion.`,
+    aliases: ["syllogism", "categorical syllogism"],
+    definition: `A formal deductive pattern combining a major premise and a minor premise to reach a conclusion (e.g., All A are B; C is A; therefore C is B). Useful for clear, auditable argument structures.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:logic","phase:prompting"],
-    related: ["deductive-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "logic"],
+    tags: [
+      "kind:pattern",
+      "type:reasoning",
+      "topic:logic",
+      "phase:prompting",
+      "use:argument-structure",
+      "level:beginner"
+    ],
+    related: ["deductive-reasoning","chain-of-symbol","chain-of-thought-cot"],
     status: "verified",
-    notes: "Applied in logic, philosophy, mathematics."
+    notes: `Use-cases: • Policy and permission derivations • Knowledge base rule checks • Philosophy and logic instruction
+Boosters: Label each premise; verify term distribution; test with Venn/sets sketch.
+Caveats: Fallacies of undistributed middle or equivocation lurk—watch definitions.`
   },
   {
     slug: "probabilistic-reasoning",
     term: "Probabilistic Reasoning",
-    aliases: [],
-    definition: `Reasoning with uncertainty using probabilities to guide inference and decisions.`,
+    aliases: ["Bayesian reasoning", "uncertainty modeling"],
+    definition: `Represents uncertainty with probabilities and updates beliefs as evidence arrives. Supports decision-making under risk via expected value, likelihoods, and posterior updates.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:statistics","phase:prompting"],
-    related: ["inductive-reasoning","counterfactual-reasoning","computational-reasoning"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "statistics"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:statistics",
+      "phase:prompting",
+      "use:manage-uncertainty",
+      "level:advanced"
+    ],
+    related: ["inductive-reasoning","counterfactual-reasoning","causal-reasoning","calibrated-confidence-prompting-ccp"],
     status: "verified",
-    notes: "Used in risk analysis, statistics, AI."
+    notes: `Use-cases: • Risk analysis and prioritization • Experiment interpretation • Forecasting and decision graphs
+Boosters: State priors; show likelihood assumptions; report posterior and sensitivity; add confidence calibration.
+Caveats: Garbage priors/likelihoods ⇒ brittle outputs—document sources.`
   },
   {
     slug: "computational-reasoning",
     term: "Computational Reasoning",
-    aliases: [],
-    definition: `Applying algorithmic and data-structural thinking to solve problems and reason about processes.`,
+    aliases: ["algorithmic reasoning", "formal procedure reasoning"],
+    definition: `Thinks in algorithms, data structures, and invariants to solve problems precisely and repeatably. Ideal for tasks that benefit from stepwise procedures or executable checks.`,
     sources: [],
-    categories: ["additional reasoning models","logical and analytical reasoning"],
-    tags: ["type:reasoning","topic:computing","phase:prompting"],
-    related: ["computational-thinking","program-generation"],
+    categories: ["additional reasoning models", "logical and analytical reasoning", "computing"],
+    tags: [
+      "kind:strategy",
+      "type:reasoning",
+      "topic:computing",
+      "phase:prompting",
+      "use:algorithmize",
+      "level:intermediate"
+    ],
+    related: ["computational-thinking","program-generation","plan-and-solve-p-s","chain-of-symbol"],
     status: "verified",
-    notes: "Common in CS and data analysis."
+    notes: `Use-cases: • Workflow automation plans • Data transformation designs • Constraint satisfaction sketches
+Boosters: Specify inputs/outputs; define invariants; propose pseudocode or tests.
+Caveats: Over-formalization can slow creative tasks—blend with analogical or narrative when needed.`
   },
 
   // --- Additional Reasoning Models — Scientific and Empirical Reasoning ---
   {
     slug: "causal-reasoning",
     term: "Causal Reasoning",
-    aliases: [],
-    definition: `Identifying and validating cause–effect relationships to explain or predict outcomes.`,
+    aliases: ["cause-effect inference", "causal modeling"],
+    definition: `Identifies and validates cause→effect relationships to explain or predict outcomes. Uses interventions, counterfactuals, and DAGs/criteria to separate correlation from causation.`,
     sources: [],
-    categories: ["additional reasoning models","scientific and empirical reasoning"],
-    tags: ["type:reasoning","topic:causality","phase:prompting"],
-    related: ["counterfactual-reasoning","probabilistic-reasoning","systems-thinking"],
+    categories: ["additional reasoning models", "scientific and empirical reasoning", "causal analysis"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:causality",
+      "phase:prompting",
+      "use:explain-predict",
+      "level:advanced"
+    ],
+    related: ["counterfactual-reasoning","probabilistic-reasoning","systems-thinking","chain-of-verification-cove"],
     status: "verified",
-    notes: "Used in science, history, law, medicine."
+    notes: `Use-cases: • Feature impact on KPIs • Safety investigations • Policy evaluation
+Boosters: Draw a simple causal graph; state identifiability assumptions; consider back-doors and instruments if applicable.
+Caveats: Causal claims without testable assumptions risk pseudo-rigor.`
   },
   {
     slug: "systems-thinking",
     term: "Systems Thinking",
-    aliases: [],
-    definition: `Understanding complex systems via interactions, feedback loops, and emergent behavior.`,
+    aliases: ["system dynamics", "feedback-loop thinking"],
+    definition: `Understands behavior emerging from interacting parts, feedback loops, delays, and stocks/flows. Looks beyond linear chains to cyclical dynamics and leverage points.`,
     sources: [],
-    categories: ["additional reasoning models","scientific and empirical reasoning","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:systems","phase:ideation"],
-    related: ["holistic-reasoning","complex-adaptive-systems-cas-thinking","critical-systems-thinking-cst"],
+    categories: ["additional reasoning models", "scientific and empirical reasoning", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:systems",
+      "phase:ideation",
+      "use:map-system",
+      "level:intermediate"
+    ],
+    related: ["holistic-reasoning","complex-adaptive-systems-cas-thinking","critical-systems-thinking-cst","strategic-reasoning"],
     status: "verified",
-    notes: "Used in management, environmental analysis, policy design."
+    notes: `Use-cases: • Churn and growth loop analysis • Environmental policy effects • Org change ripple mapping
+Boosters: Sketch causal loop diagrams; identify balancing vs reinforcing loops; test small leverage experiments.
+Caveats: Diagrams can look right yet be wrong—validate with data or simulation.`
   },
   {
     slug: "ecological-reasoning",
     term: "Ecological Reasoning",
-    aliases: [],
-    definition: `Reasoning grounded in ecological relationships, constraints, and dynamics.`,
+    aliases: ["ecosystem reasoning", "environmental constraints framing"],
+    definition: `Centers ecological relationships, carrying capacities, and constraints to reason about sustainable actions and impacts across time and space.`,
     sources: [],
-    categories: ["additional reasoning models","scientific and empirical reasoning","social and ethical reasoning"],
-    tags: ["type:reasoning","topic:environment","phase:ideation"],
-    related: ["systems-thinking","holistic-reasoning"],
+    categories: ["additional reasoning models", "scientific and empirical reasoning", "social and ethical reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:environment",
+      "phase:ideation",
+      "use:impact-assessment",
+      "level:intermediate"
+    ],
+    related: ["systems-thinking","holistic-reasoning","complex-adaptive-systems-cas-thinking"],
     status: "verified",
-    notes: "Used in environmental science and sustainability planning."
+    notes: `Use-cases: • Sustainability trade-off analysis • Supply-chain footprinting • Land-use planning
+Boosters: Include spatial/temporal scales; list externalities; add precautionary constraints.
+Caveats: Data gaps are common—flag uncertainty and monitor.`
   },
   {
     slug: "evolutionary-reasoning",
     term: "Evolutionary Reasoning",
-    aliases: [],
-    definition: `Explaining or predicting behavior using evolutionary principles (e.g., selection, adaptation, fitness).`,
+    aliases: ["selection-based reasoning", "adaptation framing"],
+    definition: `Explains or predicts behavior via selection, variation, and retention dynamics (fitness). Applies beyond biology to markets, ideas, and design search.`,
     sources: [],
-    categories: ["additional reasoning models","scientific and empirical reasoning"],
-    tags: ["type:reasoning","topic:biology","phase:ideation"],
-    related: ["causal-reasoning","probabilistic-reasoning"],
+    categories: ["additional reasoning models", "scientific and empirical reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:biology",
+      "phase:ideation",
+      "use:explain-adaptation",
+      "level:intermediate"
+    ],
+    related: ["causal-reasoning","probabilistic-reasoning","complex-adaptive-systems-cas-thinking"],
     status: "verified",
-    notes: "Applied in biology, anthropology, behavioral econ."
+    notes: `Use-cases: • Competitive strategy narratives • Feature evolution roadmaps • Cultural/idea diffusion analysis
+Boosters: Define fitness criteria; track selection pressures; explore mutation (variation) operators in design.
+Caveats: Beware “just-so” stories—seek falsifiable predictions.`
   },
   {
     slug: "experiential-reasoning",
     term: "Experiential Reasoning",
-    aliases: [],
-    definition: `Using first-hand experiences and observations to inform judgments and decisions.`,
+    aliases: ["practice-based reasoning", "case experiential learning"],
+    definition: `Uses first-hand observations and accumulated practice to inform judgments. Converts experience into heuristics and patterns, ideally recorded and tested over time.`,
     sources: [],
-    categories: ["additional reasoning models","scientific and empirical reasoning"],
-    tags: ["type:reasoning","topic:experience","phase:prompting"],
+    categories: ["additional reasoning models", "scientific and empirical reasoning"],
+    tags: [
+      "kind:strategy",
+      "type:reasoning",
+      "topic:experience",
+      "phase:prompting",
+      "use:ground-truth",
+      "level:beginner"
+    ],
     related: ["intuitive-reasoning","reflective-reasoning","reflective-practice"],
     status: "verified",
-    notes: "Seen in clinical work, diagnosis, arts."
+    notes: `Use-cases: • Clinician diagnostic cues • Operator runbooks • Field ethnography summaries
+Boosters: Capture cases and outcomes; convert into checklists; periodically retire stale heuristics.
+Caveats: Anecdotes are not evidence—seek triangulation.`
   },
 
   // --- Additional Reasoning Models — Temporal and Spatial Reasoning ---
   {
     slug: "spatial-reasoning",
     term: "Spatial Reasoning",
-    aliases: [],
-    definition: `Understanding spatial relations among objects and mentally transforming shapes and layouts.`,
+    aliases: ["mental rotation", "layout reasoning", "geometric reasoning"],
+    definition: `Manipulates shapes, positions, and relations in space to plan layouts, routes, assemblies, or interfaces. Supports visualization, collision checks, and fit testing.`,
     sources: [],
-    categories: ["additional reasoning models","temporal and spatial reasoning"],
-    tags: ["type:reasoning","topic:spatial","phase:prompting"],
-    related: ["computational-reasoning","program-generation"],
+    categories: ["additional reasoning models", "temporal and spatial reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:spatial",
+      "phase:prompting",
+      "use:layout",
+      "level:intermediate"
+    ],
+    related: ["computational-reasoning","program-generation","multimodal-reasoning"],
     status: "verified",
-    notes: "Used in architecture, engineering, navigation."
+    notes: `Use-cases: • Architecture and UI layout • Packaging/knapsack planning • Robotics path previews
+Boosters: Ask for sketches/tables of coordinates; define constraints (bounds, clearances); run sanity checks on dimensions.
+Caveats: Text-only can be ambiguous—prefer diagrams when possible.`
   },
   {
     slug: "temporal-reasoning",
     term: "Temporal Reasoning",
-    aliases: [],
-    definition: `Reasoning about time, event order, duration, and temporal dependencies.`,
+    aliases: ["timeline reasoning", "event calculus (informal)"],
+    definition: `Reasons about order, duration, and dependencies among events. Useful for scheduling, narratives, and causal timelines with lags.`,
     sources: [],
-    categories: ["additional reasoning models","temporal and spatial reasoning"],
-    tags: ["type:reasoning","topic:time","phase:prompting"],
-    related: ["plan-and-solve-p-s","least-to-most-ltm"],
+    categories: ["additional reasoning models", "temporal and spatial reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:time",
+      "phase:prompting",
+      "use:scheduling",
+      "level:intermediate"
+    ],
+    related: ["plan-and-solve-p-s","least-to-most-ltm","causal-reasoning"],
     status: "verified",
-    notes: "Used in history, planning, project management."
+    notes: `Use-cases: • Project plans and Gantt outlines • Incident chronicles • Historical analyses
+Boosters: Use explicit timestamps/durations; mark critical path; note assumptions about concurrency.
+Caveats: Off-by-one and timezone errors lurk—standardize units.`
   },
 
   // --- Additional Reasoning Models — Social and Ethical Reasoning ---
   {
     slug: "normative-reasoning",
     term: "Normative Reasoning",
-    aliases: [],
-    definition: `Evaluating actions or policies against moral principles or norms to judge rightness/wrongness.`,
+    aliases: ["ethical reasoning", "moral evaluation", "principle-based assessment"],
+    definition: `Evaluates actions or policies against norms and ethical principles (rights, duties, consequences, virtues). Clarifies trade-offs and justifies choices beyond technical feasibility.`,
     sources: [],
-    categories: ["additional reasoning models","social and ethical reasoning"],
-    tags: ["type:reasoning","topic:ethics","phase:evaluation"],
-    related: ["bias-mitigation","addressing-biases-and-ethical-concerns"],
+    categories: ["additional reasoning models", "social and ethical reasoning"],
+    tags: [
+      "kind:framework",
+      "type:reasoning",
+      "topic:ethics",
+      "phase:evaluation",
+      "use:policy-judgment",
+      "level:advanced"
+    ],
+    related: ["bias-mitigation","addressing-biases-and-ethical-concerns","critical-systems-thinking-cst","reflective-reasoning"],
     status: "verified",
-    notes: "Used in ethics, law, moral philosophy."
+    notes: `Use-cases: • Safety policy decisions • Content moderation rationales • Clinical and legal dilemmas
+Boosters: State the principle set; present pro/cons explicitly; document stakeholder impacts and reversibility.
+Caveats: Competing principles collide—record the reasoning trail for accountability.`
   },
 
   // --- Additional Reasoning Models — Interdisciplinary and Complex Reasoning ---
   {
     slug: "transactive-reasoning",
     term: "Transactive Reasoning",
-    aliases: [],
-    definition: `Reasoning that emerges through interaction and knowledge exchange among people or agents.`,
+    aliases: ["collaborative reasoning", "knowledge-sharing inference"],
+    definition: `Emerges through interaction among people or agents—participants specialize, reference each other’s expertise, and co-construct conclusions.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:collaboration","phase:prompting"],
-    related: ["parallel-reasoning","dialectical-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:pattern",
+      "type:reasoning",
+      "topic:collaboration",
+      "phase:prompting",
+      "use:co-reasoning",
+      "level:intermediate"
+    ],
+    related: ["parallel-reasoning","dialectical-reasoning","multi-perspective-simulation-mps","prompt-ensembling"],
     status: "verified",
-    notes: "Used in education and collaborative work."
+    notes: `Use-cases: • Panel-style analyses • Agent teams with tool specialization • Cross-functional design reviews
+Boosters: Assign roles and hand-offs; request citations per role; end with a synthesis pass.
+Caveats: Coordination overhead—keep interfaces and artifacts simple.`
   },
   {
     slug: "multimodal-reasoning",
     term: "Multimodal Reasoning",
-    aliases: [],
-    definition: `Integrating signals across modalities (text, vision, audio) to improve inference and decisions.`,
+    aliases: ["cross-modal reasoning", "vision-language-audio integration"],
+    definition: `Combines signals from multiple modalities (text, images, audio, etc.) so evidence in one channel constrains interpretations in another, improving robustness and grounding.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:multimodal","phase:prompting"],
-    related: ["computational-reasoning","spatial-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:multimodal",
+      "phase:prompting",
+      "use:fuse-modalities",
+      "level:intermediate"
+    ],
+    related: ["spatial-reasoning","computational-reasoning","multimodal-prompting","multimodal-chain-of-thought-mm-cot"],
     status: "verified",
-    notes: "Seen in robotics, HCI, AI."
+    notes: `Use-cases: • Chart/diagram question answering • Scene understanding with instructions • Audio-transcript alignment
+Boosters: Specify modality order of operations; summarize cross-modal conflicts; include a final cross-check.
+Caveats: Missing modality metadata can derail alignment—label inputs clearly.`
   },
   {
     slug: "quantum-reasoning",
     term: "Quantum Reasoning",
-    aliases: [],
-    definition: `Applying quantum-mechanical principles (e.g., superposition, interference) to model or solve problems.`,
+    aliases: ["quantum-inspired reasoning", "superposition inference (conceptual)"],
+    definition: `Applies quantum-mechanical ideas (superposition, interference) to model ambiguity and context effects, or to design quantum algorithms for certain problem classes.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:quantum","phase:research"],
-    related: ["computational-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning", "research"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:quantum",
+      "phase:research",
+      "use:model-uncertainty",
+      "level:advanced"
+    ],
+    related: ["computational-reasoning","probabilistic-reasoning"],
     status: "verified",
-    notes: "Applied in quantum computing and theoretical physics."
+    notes: `Use-cases: • Quantum algorithm planning • Cognitive modeling of order effects • Complex search heuristics
+Boosters: Clarify whether you mean literal quantum computation or metaphor; define state spaces and measurement rules.
+Caveats: Avoid buzzword inflation—tie claims to concrete advantages.`
   },
   {
     slug: "interdisciplinary-reasoning",
     term: "Interdisciplinary Reasoning",
-    aliases: [],
-    definition: `Combining methods and perspectives from multiple disciplines to tackle complex problems.`,
+    aliases: ["cross-disciplinary reasoning", "transdisciplinary synthesis"],
+    definition: `Combines methods, evidence, and lenses from multiple fields to address complex problems that defy single-discipline solutions.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:integration","phase:ideation"],
-    related: ["systems-thinking","design-thinking","cross-domain-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:strategy",
+      "type:reasoning",
+      "topic:integration",
+      "phase:ideation",
+      "use:combine-methods",
+      "level:intermediate"
+    ],
+    related: ["systems-thinking","design-thinking","cross-domain-reasoning","holistic-reasoning"],
     status: "verified",
-    notes: "Used in research, innovation, policy analysis."
+    notes: `Use-cases: • Health + economics + policy analyses • Climate adaptation planning • Responsible AI reviews
+Boosters: Map disciplines to sub-questions; define hand-offs; reconcile conflicting standards explicitly.
+Caveats: Method clashes happen—document compromises.`
   },
   {
     slug: "reflective-reasoning",
     term: "Reflective Reasoning",
-    aliases: [],
-    definition: `Deliberately examining one’s own thinking and assumptions to improve judgments.`,
+    aliases: ["metacognitive review", "think-about-thinking"],
+    definition: `Examines and revises one’s own reasoning process—checking assumptions, evidence, and strategy choice—to improve judgment quality.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:metacognition","phase:evaluation"],
-    related: ["meta-reasoning","reflective-practice"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:metacognition",
+      "phase:evaluation",
+      "use:self-critique",
+      "level:beginner"
+    ],
+    related: ["meta-reasoning","reflective-practice","chain-of-verification-cove","self-refine"],
     status: "verified",
-    notes: "Used in education, philosophy, personal development."
+    notes: `Use-cases: • Pre-mortems and postmortems • Research self-checks • Editorial review of arguments
+Boosters: Add a brief assumptions log; run CoVe (verification chain); capture “what I’d do differently next time.”
+Caveats: Can stall into analysis-paralysis—timebox the reflection.`
   },
   {
     slug: "parallel-reasoning",
     term: "Parallel Reasoning",
-    aliases: [],
-    definition: `Handling multiple information streams or subproblems concurrently to accelerate or diversify inference.`,
+    aliases: ["concurrent subproblem solving", "branch parallelization"],
+    definition: `Explores multiple subproblems or solution paths concurrently, then merges results. Increases diversity and can reduce time to a good solution.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:computation","phase:prompting"],
-    related: ["transactive-reasoning","computational-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:technique",
+      "type:reasoning",
+      "topic:computation",
+      "phase:prompting",
+      "use:concurrent-explore",
+      "level:advanced"
+    ],
+    related: ["transactive-reasoning","tree-of-thought-tot","shotgun-generation","skeleton-of-thought-sot"],
     status: "verified",
-    notes: "Relevant in computing and multitasking contexts."
+    notes: `Use-cases: • Candidate solution exploration • Model ensembling across prompts • Design alternatives generation
+Boosters: Define merge criteria; cap parallel width; deduplicate similar paths before synthesis.
+Caveats: Coordination overhead and redundancy can waste tokens—prune early.`
   },
   {
     slug: "dialectical-reasoning",
     term: "Dialectical Reasoning",
-    aliases: [],
-    definition: `Resolving contradictions via thesis–antithesis–synthesis cycles (structured debate).`,
+    aliases: ["thesis–antithesis–synthesis", "structured debate"],
+    definition: `Resolves tensions by articulating opposing positions, testing them against evidence, and synthesizing a higher-order view that preserves strengths while addressing weaknesses.`,
     sources: [],
-    categories: ["additional reasoning models","interdisciplinary and complex reasoning"],
-    tags: ["type:reasoning","topic:debate","phase:prompting"],
-    related: ["reflective-reasoning","transactive-reasoning"],
+    categories: ["additional reasoning models", "interdisciplinary and complex reasoning"],
+    tags: [
+      "kind:pattern",
+      "type:reasoning",
+      "topic:debate",
+      "phase:prompting",
+      "use:resolve-conflict",
+      "level:intermediate"
+    ],
+    related: ["reflective-reasoning","transactive-reasoning","multi-perspective-simulation-mps"],
     status: "verified",
-    notes: "Used in philosophy, critical thinking."
+    notes: `Use-cases: • Policy trade-off analysis • Architecture debates • Ethics discussions
+Boosters: Assign steel-man roles; require evidence per side; end with synthesis + decision rules.
+Caveats: False balance risk—weight positions by evidence quality.`
   },
 
   // --- Additional Thinking Systems / Structures ---
   {
     slug: "integrated-reasoning",
     term: "Integrated Reasoning",
-    aliases: [],
-    definition: `Combining quantitative, verbal, and analytical reasoning concurrently to solve problems.`,
+    aliases: ["blended reasoning", "quant+qual synthesis"],
+    definition: `Combines quantitative, verbal, and analytical lenses in one workflow so numbers, narratives, and logic cross-check each other.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:reasoning","phase:prompting"],
-    related: ["computational-thinking","meta-reasoning"],
+    categories: ["additional thinking systems/structures", "problem solving"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:reasoning",
+      "phase:prompting",
+      "use:balanced-approach",
+      "level:intermediate"
+    ],
+    related: ["computational-thinking","meta-reasoning","narrative-reasoning","probabilistic-reasoning"],
     status: "verified",
-    notes: "Used in business, management, education."
+    notes: `Use-cases: • Executive briefs with data + story • Strategy docs with metrics and hypotheses • Mixed-methods research
+Boosters: Structure outputs into “Data / Logic / Narrative” sections; reconcile contradictions explicitly.
+Caveats: Don’t let one mode dominate—track evidence provenance.`
   },
   {
     slug: "critical-systems-thinking-cst",
     term: "Critical Systems Thinking (CST)",
-    aliases: ["cst"],
-    definition: `A systems approach informed by critical theory—surfacing boundaries, power, and values while designing interventions.`,
+    aliases: ["CST", "critical systems"],
+    definition: `A systems approach informed by critical theory that surfaces boundaries, values, and power dynamics while designing interventions. Seeks improvement for multiple stakeholders, not just efficiency.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:systems","phase:ideation"],
-    related: ["systems-thinking","complex-adaptive-systems-cas-thinking"],
+    categories: ["additional thinking systems/structures", "systems", "ethics"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:systems",
+      "phase:ideation",
+      "use:boundary-critique",
+      "level:advanced"
+    ],
+    related: ["systems-thinking","complex-adaptive-systems-cas-thinking","normative-reasoning"],
     status: "verified",
-    notes: "Applied to policy analysis and organizational change."
+    notes: `Use-cases: • Public policy design • Org change with disparate stakeholders • Tech governance
+Boosters: Perform boundary critique; map winners/losers; include deliberation mechanisms.
+Caveats: Can be process-heavy—timebox and prioritize decisions.`
   },
   {
     slug: "meta-reasoning",
     term: "Meta-Reasoning",
-    aliases: [],
-    definition: `Monitoring and controlling one’s own reasoning process (planning, checking, revising strategies).`,
+    aliases: ["reasoning about reasoning", "strategy control"],
+    definition: `Monitors and controls the reasoning process itself—choosing structures (CoT, ToT), setting stop criteria, verifying, and revising plans.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:metacognition","phase:evaluation"],
-    related: ["reflective-reasoning","self-discover-framework"],
+    categories: ["additional thinking systems/structures", "metacognition"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:metacognition",
+      "phase:evaluation",
+      "use:monitor-process",
+      "level:advanced"
+    ],
+    related: ["reflective-reasoning","self-discover-framework","chain-of-verification-cove","plan-and-solve-p-s"],
     status: "verified",
-    notes: "Used in AI, cognitive science, personal development."
+    notes: `Use-cases: • Agent controllers • High-stakes analysis reviews • Research protocols
+Boosters: Add a “structure selector” step; log decisions and confidence; include verification and fallback patterns.
+Caveats: Overhead must pay for itself—apply proportionally to risk.`
   },
   {
     slug: "cross-domain-reasoning",
     term: "Cross-Domain Reasoning",
-    aliases: [],
-    definition: `Applying models/strategies from one field to another to generate insights or solutions.`,
+    aliases: ["cross-pollination", "inter-domain mapping"],
+    definition: `Applies models and strategies from one field to another (e.g., epidemiology to misinformation) to unlock fresh angles on stubborn problems.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:integration","phase:ideation"],
+    categories: ["additional thinking systems/structures", "innovation"],
+    tags: [
+      "kind:strategy",
+      "type:framework",
+      "topic:integration",
+      "phase:ideation",
+      "use:analog-transfer",
+      "level:intermediate"
+    ],
     related: ["interdisciplinary-reasoning","analogical-reasoning","design-thinking"],
     status: "verified",
-    notes: "Useful in interdisciplinary research and innovation."
+    notes: `Use-cases: • Import queueing theory into support • Apply ecology to marketplace health • Use control theory for growth loops
+Boosters: Map term equivalences; test limits of transfer; involve domain experts in review.
+Caveats: Domain assumptions may not hold—validate with small pilots.`
   },
   {
     slug: "complex-adaptive-systems-cas-thinking",
     term: "Complex Adaptive Systems (CAS) Thinking",
-    aliases: ["cas thinking"],
-    definition: `Understanding systems of interacting agents that adapt over time, producing emergent dynamics.`,
+    aliases: ["CAS", "agent-based perspective"],
+    definition: `Models systems as interacting agents that adapt, producing emergent patterns. Focuses on local rules, adaptation, and path dependence rather than top-down control.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:systems","phase:ideation"],
-    related: ["systems-thinking","critical-systems-thinking-cst"],
+    categories: ["additional thinking systems/structures", "systems"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:systems",
+      "phase:ideation",
+      "use:emergence-analysis",
+      "level:advanced"
+    ],
+    related: ["systems-thinking","critical-systems-thinking-cst","evolutionary-reasoning"],
     status: "verified",
-    notes: "Used in ecology, economics, org behavior."
+    notes: `Use-cases: • Simulation of markets/ecosystems • Epidemic spread sketches • Network effects exploration
+Boosters: Specify agent rules; run simple simulations; watch for tipping points and lock-in.
+Caveats: Simplicity vs realism trade-off—don’t over-interpret toy worlds.`
   },
   {
     slug: "design-thinking",
     term: "Design Thinking",
-    aliases: [],
-    definition: `A solution-focused, iterative approach: empathize → define → ideate → prototype → test.`,
+    aliases: ["human-centered design", "double diamond (informal)"],
+    definition: `Iterative, user-centered approach—empathize, define, ideate, prototype, test—to reduce risk and converge on solutions that fit human needs.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:design","phase:ideation"],
-    related: ["cross-domain-reasoning","integrated-reasoning","strategic-reasoning"],
+    categories: ["additional thinking systems/structures", "innovation", "product"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:design",
+      "phase:ideation",
+      "use:problem-framing",
+      "level:beginner"
+    ],
+    related: ["cross-domain-reasoning","integrated-reasoning","strategic-reasoning","prompt-architecture"],
     status: "verified",
-    notes: "Used in product design, strategy, education."
+    notes: `Use-cases: • New feature discovery • Service blueprinting • Prototype-driven learning
+Boosters: Capture JTBD (jobs-to-be-done); test smallest risky assumptions first; keep research artifacts lightweight.
+Caveats: Don’t skip the “define” step—teams often jump to solutions.`
   },
   {
     slug: "strategic-reasoning",
     term: "Strategic Reasoning",
-    aliases: [],
-    definition: `Planning and decision-making that accounts for long-term outcomes, incentives, and interactions.`,
+    aliases: ["long-horizon planning", "game-theoretic framing"],
+    definition: `Plans over long horizons considering incentives, constraints, and interactions with other actors. Balances goals, risks, and optionality.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:strategy","phase:ideation"],
-    related: ["design-thinking","probabilistic-reasoning"],
+    categories: ["additional thinking systems/structures", "strategy"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:strategy",
+      "phase:ideation",
+      "use:plan-long-term",
+      "level:intermediate"
+    ],
+    related: ["probabilistic-reasoning","systems-thinking","causal-reasoning","design-thinking"],
     status: "verified",
-    notes: "Used in business strategy, military, game theory."
+    notes: `Use-cases: • Product roadmaps • Market entry decisions • Security posture planning
+Boosters: Articulate assumptions; define leading indicators; build decision trees with option values.
+Caveats: Beware narrative certainty—revisit plans with fresh signals.`
   },
   {
     slug: "heuristic-systematic-model",
     term: "Heuristic-Systematic Model",
-    aliases: ["hsm"],
-    definition: `Dual-process account: fast heuristic processing vs. slower systematic analysis.`,
+    aliases: ["HSM", "dual-process persuasion model"],
+    definition: `A dual-process account where quick heuristic judgments coexist with slower systematic analysis. Predicts when people rely on cues vs. deep processing—useful for communication strategy and bias checks.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:model","topic:cognition","phase:ideation"],
-    related: ["intuitive-reasoning","reflective-reasoning"],
+    categories: ["additional thinking systems/structures", "cognition"],
+    tags: [
+      "kind:framework",
+      "type:model",
+      "topic:cognition",
+      "phase:ideation",
+      "use:communication-design",
+      "level:intermediate"
+    ],
+    related: ["intuitive-reasoning","reflective-reasoning","probabilistic-reasoning"],
     status: "verified",
-    notes: "Used in psychology, advertising, decision-making."
+    notes: `Use-cases: • Message design and testing • UX microcopy choices • Debiasing prompts (cue vs evidence)
+Boosters: Identify likely processing route; pair heuristic cues with easy access to evidence; invite user to switch routes.
+Caveats: Route isn’t binary—expect mixtures; measure outcomes.`
   },
   {
     slug: "computational-thinking",
     term: "Computational Thinking",
-    aliases: [],
-    definition: `Formulating problems and solutions in computable terms (decomposition, abstraction, algorithms, evaluation).`,
+    aliases: ["decomposition & abstraction", "algorithm design mindset"],
+    definition: `Frames problems in computable terms: decompose, abstract, design algorithms, and evaluate. A transferable skill for structuring tasks the model can execute or check.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:framework","topic:computing","phase:prompting"],
-    related: ["computational-reasoning","program-generation"],
+    categories: ["additional thinking systems/structures", "education", "computing"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:computing",
+      "phase:prompting",
+      "use:algorithm-design",
+      "level:beginner"
+    ],
+    related: ["computational-reasoning","program-generation","plan-and-solve-p-s","question-decomposition"],
     status: "verified",
-    notes: "Used in CS, education, data analysis."
+    notes: `Use-cases: • Turning briefs into stepwise specs • Designing repeatable pipelines • Writing testable acceptance criteria
+Boosters: Specify inputs/outputs/contracts; include edge cases; design simple tests first.
+Caveats: Don’t over-engineer exploratory tasks—mix with analogical/narrative.`
   },
   {
     slug: "reflective-practice",
     term: "Reflective Practice",
-    aliases: [],
-    definition: `A continuous cycle of action and reflection to learn from experience and improve performance.`,
+    aliases: ["after-action reflection", "learning loop"],
+    definition: `A deliberate cycle of doing, reflecting, and adjusting. Converts experience into improved practice via journals, debriefs, and small experiments.`,
     sources: [],
-    categories: ["additional thinking systems/structures"],
-    tags: ["type:practice","topic:metacognition","phase:evaluation"],
+    categories: ["additional thinking systems/structures", "professional development"],
+    tags: [
+      "kind:framework",
+      "type:practice",
+      "topic:metacognition",
+      "phase:evaluation",
+      "use:learning-loop",
+      "level:beginner"
+    ],
     related: ["experiential-reasoning","reflective-reasoning","meta-reasoning"],
     status: "verified",
-    notes: "Used in professional development, education, healthcare."
+    notes: `Use-cases: • Team postmortems • Personal growth plans • Craft skill development
+Boosters: Keep a lightweight reflection template (what/so-what/now-what); schedule reviews; pick one change per cycle.
+Caveats: Reflection without action is wheel-spinning—close the loop with commitments.`
   }
 );
+
 
 GLOSSARY.push(
   // --- Thinking Frameworks ---
@@ -6713,850 +8230,1227 @@ GLOSSARY.push(
   {
     slug: "deliberative-alignment",
     term: "Deliberative Alignment",
-    aliases: ["deliberate alignment", "spec-based alignment"],
-    definition: `Training procedure for reasoning models that explicitly reads safety specifications and reasons about them *before* answering—aimed at safer, policy-aware outputs.`,
+    aliases: ["deliberate alignment", "spec-based alignment", "spec-reading alignment", "premortem safety reasoning"],
+    definition: `A training and runtime pattern for reasoning models where the system explicitly reads relevant safety or policy specifications, performs a short internal “compliance deliberation” (identify risks, applicable rules, trade-offs, allowed actions), then produces a user-facing answer. The hidden deliberation is kept separate from the response, improving policy adherence while preserving clarity and usefulness.`,
     sources: [
       { title: "OpenAI: Deliberative alignment (Dec 20, 2024)", url: "https://openai.com/index/deliberative-alignment/" }
     ],
-    categories: ["safety and security"],
-    tags: ["type:method", "topic:alignment", "topic:reasoning", "phase:training"],
-    related: ["reflection-or-reasoning-prompting", "fact-check-prompting", "bias-mitigation"],
+    categories: ["safety and security", "alignment", "reasoning"],
+    tags: ["kind:pattern", "type:method", "topic:alignment", "topic:reasoning", "topic:safety", "phase:training", "phase:inference"],
+    related: ["self-critique-prompting", "chain-of-verification-cove", "llm-guardrails", "helpful-honest-harmless-hhh", "constitutional-ai"],
+    use: "When outputs must be explicitly policy-aware or compliant without over-refusing.",
+    level: "intermediate",
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Regulated domains (health, finance, legal) • Tool-using agents that must check authorization • Enterprise chat with org-specific compliance rules • Safety-critical creative tasks (red-teaming, jailbreak resistance)
+Boosters: • Keep a hidden “safety scratchpad” citing the exact rule invoked • Add a checklist: risks → mitigations → decision • Include few-shots where policy reasoning corrected a draft • Pair with CoVe for claim verification
+Caveats: Excess deliberation can slow responses—cap tokens and summarize; stale specs can misguide outputs—version and audit policies regularly.`
   },
   {
     slug: "reasoning-tokens-o1-style",
     term: "Reasoning Tokens (o1-style)",
-    aliases: ["private thoughts", "deliberate tokens"],
-    definition: `Hidden intermediate “thinking” steps (token budget reserved for reasoning) that enable more deliberate problem solving; they count against context but are not surfaced to users.`,
+    aliases: ["private thoughts", "deliberate tokens", "hidden chain-of-thought", "internal scratchpad"],
+    definition: `A reserved token budget for hidden intermediate reasoning that lets the model plan, check sub-goals, and prune dead ends before emitting a concise public answer. These tokens count toward context but are not surfaced to users, enabling more deliberate problem solving with fewer visible tangents.`,
     sources: [
       { title: "Explainer on o1 reasoning tokens (Oct 8, 2024)", url: "https://leehanchung.github.io/blogs/2024/10/08/reasoning-understanding-o1/" },
       { title: "Press/analysis coverage (Dec 2024)", url: "https://www.theatlantic.com/technology/archive/2024/12/openai-o1-reasoning-models/680906/" }
     ],
-    categories: ["reasoning models or structures"],
-    tags: ["type:component", "topic:reasoning", "phase:inference"],
-    related: ["tree-of-thought-tot", "plan-and-solve-p-s", "scratchpad-reasoning"],
+    categories: ["reasoning models or structures", "inference behavior"],
+    tags: ["kind:term", "type:component", "topic:reasoning", "topic:robustness", "phase:inference"],
+    related: ["tree-of-thought-tot", "graph-of-thoughts-got", "plan-and-solve-p-s", "scratchpad-reasoning", "chain-of-thought-cot"],
+    use: "When tasks need private planning/analysis but public answers should be terse and policy-safe.",
+    level: "advanced",
     status: "verified",
-    notes: "User-hidden chain-of-thought; influences prompt budgeting and eval."
+    notes: `Use-cases: • Math/logic/coding steps • Multi-constraint writing (tone, audience, length) • Tool-augmented queries where strategy matters • Reducing leakage of intermediate steps
+Boosters: • Encourage brief hidden planning then a crisp final • Set explicit step limits and summarization checkpoints • Combine with CoVe to self-check key claims
+Caveats: Hidden steps aren’t auditable; add post-hoc checks for high-stakes contexts.`
   },
   // --- RAG robustness pattern that wasn’t in your file ---
   {
     slug: "corrective-rag-crag",
     term: "Corrective RAG (CRAG)",
-    aliases: ["corrective retrieval augmented generation"],
-    definition: `A RAG variant that evaluates retrieval quality and conditionally triggers alternate actions (e.g., web search, re-query, decompose-recompose) to reduce hallucinations.`,
+    aliases: ["corrective retrieval augmented generation", "corrective RAG", "fallback-aware RAG"],
+    definition: `A robustness-oriented RAG pattern that monitors retrieval quality (coverage, relevance, confidence) and conditionally takes corrective actions—re-query, alternate index, live web search, or decompose/recompose—before generating the final answer. By refusing or repairing on weak evidence, it reduces hallucinations and improves faithfulness.`,
     sources: [
       { title: "CRAG (Jan 29, 2024)", url: "https://arxiv.org/abs/2401.15884" },
       { title: "CRAG HTML (updated Oct 2024)", url: "https://arxiv.org/html/2401.15884v3" }
     ],
-    categories: ["meta-prompt strategies"],
-    tags: ["type:technique", "topic:rag", "topic:robustness", "phase:prompting"],
-    related: ["agentic-rag", "fact-check-prompting", "system-query"],
+    categories: ["meta-prompt strategies", "retrieval", "robustness"],
+    tags: ["kind:pattern", "type:technique", "topic:rag", "topic:robustness", "topic:verification", "phase:prompting", "phase:inference"],
+    related: ["agentic-rag", "chain-of-verification-cove", "fact-check-prompting", "prompt-brittleness", "system-query"],
+    use: "When retrieval quality is uneven and answers must adapt or abstain based on evidence.",
+    level: "intermediate",
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Enterprise QA over messy KBs • Scientific/medical answers requiring citations • Support over heterogeneous docs • Long-tail search with low recall
+Boosters: • Add score thresholds with “answer/repair/refuse” branching • Use query decomposition + recomposition with citations • Log retrieval diagnostics to improve corpora • Teach the model to admit gaps and ask clarifying questions
+Caveats: Fallbacks increase latency; tune thresholds and cap steps.`
   },
   // --- Watermarking (text output provenance moved fast in late 2024) ---
   {
     slug: "text-watermarking-synthid-text",
     term: "Text Watermarking (SynthID-Text)",
-    aliases: ["synthid text", "output watermarking"],
-    definition: `A production-oriented watermarking scheme that modifies sampling to embed detectable signals in generated text—supporting provenance checks with limited latency hit.`,
+    aliases: ["synthid text", "output watermarking", "LLM text provenance watermark"],
+    definition: `A provenance technique that slightly biases token sampling to embed a detectable signal in generated text. Later, detectors estimate whether a passage is model-generated. Properly tuned, it adds low latency overhead and supports platform-scale provenance workflows; robustness varies with editing/paraphrasing and language shifts.`,
     sources: [
       { title: "Nature paper (2024): SynthID-Text", url: "https://www.nature.com/articles/s41586-024-08025-4" },
       { title: "CMU ML blog: watermarking trade-offs (Sep 27, 2024)", url: "https://blog.ml.cmu.edu/2024/09/27/no-free-lunch-in-llm-watermarking-trade-offs-in-watermarking-design-choices/" }
     ],
-    categories: ["safety and security"],
-    tags: ["type:technique", "topic:provenance", "topic:safety", "phase:inference"],
-    related: ["prompt-leakage", "content-authentication", "safety-alignment"],
+    categories: ["safety and security", "provenance", "governance"],
+    tags: ["kind:technique", "type:technique", "topic:provenance", "topic:safety", "topic:governance", "phase:inference"],
+    related: ["content-authentication", "prompt-leakage", "llm-guardrails"],
+    use: "When platforms need scalable signals to estimate whether text was AI-generated.",
+    level: "intermediate",
     status: "verified",
-    notes: ""
+    notes: `Use-cases: • Platform/content provenance checks • Classroom/exam policy workflows • Newsroom/marketplace authenticity • Forensic auditing and trend estimation
+Boosters: • Pair with C2PA-style metadata/cryptographic signing • Publish detector evals (false positives/negatives) • Educate stakeholders on limits (not DRM/ownership)
+Caveats: Edits/paraphrases reduce detectability; treat detections probabilistically, not as proof.`
   }
 );
 
+// --- Prompting, architectures, training, and evaluation glossary ---
 GLOSSARY.push(
   {
     slug: "method-actors",
     term: "Method Actors",
-    aliases: [],
-    definition: `A prompt engineering mental model likening LLMs to actors, prompts to scripts, and outputs to performances. Under this approach, an LLM “method acts” a role via its prompt, which significantly improved puzzle-solving performance in experiments:contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}.`,
+    aliases: ["method-acting prompts", "role-immersion prompting"],
+    definition: `A prompting mental model: treat the LLM like an actor, the prompt like a script, and the output like a performance. Immersing the model in a well-specified role (motivation, constraints, voice) often improves puzzle solving, creativity, and consistency versus generic instructions.`,
     sources: [
       { title: "LLMs as Method Actors (arXiv Nov 2024)", url: "https://arxiv.org/abs/2411.05778" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:prompting","type:mental-model"],
-    related: ["chain-of-thought-cot","prompt-architect"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "reasoning"],
+    tags: ["kind:technique", "type:mental-model", "topic:prompting", "topic:reasoning", "phase:prompting"],
+    related: ["role-playing-prompting", "system-prompt", "prompt-architect", "steerability"],
+    use: "When you want sustained style/behavior tied to a persona to guide outputs.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Creative writing in a sustained voice • Tutoring with a defined persona • Debugging by “acting” as a linter/reviewer • Stakeholder simulations
+Boosters: • Provide backstory + constraints + objectives • Include forbidden moves to bound the role • Add exemplar replies to anchor tone
+Caveats: Overly theatrical prompts can drift; anchor with goals and quality criteria.`
   },
   {
     slug: "multi-objective-directional-prompting-modp",
     term: "Multi-Objective Directional Prompting (MODP)",
-    aliases: ["modp"],
-    definition: `A prompt optimization framework that treats prompt design as a multi-objective, metrics-driven problem:contentReference[oaicite:2]{index=2}. MODP considers not only task accuracy but also a model’s intrinsic behavior and other goals (e.g. safety), then iteratively adjusts prompts to balance these objectives:contentReference[oaicite:3]{index=3}.`,
+    aliases: ["modp", "directional multi-metric prompting"],
+    definition: `A prompt optimization framework that treats design as a multi-objective problem (accuracy, safety, style fidelity, latency). Prompts are iteratively adjusted in the “direction” that improves a weighted objective, using small edits and quick evaluations.`,
     sources: [
       { title: "MODP: Multi Objective Directional Prompting (arXiv Apr 2025)", url: "https://arxiv.org/abs/2504.18722" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:prompting","type:framework"],
-    related: ["mixture-of-formats-mof","greedy-prompt-engineering-strategy-greedy-pes"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "evaluation"],
+    tags: ["kind:framework", "type:framework", "topic:prompting", "topic:optimization", "phase:evaluation"],
+    related: ["greedy-prompt-engineering-strategy-greedy-pes", "self-refine", "chain-of-verification-cove", "prompt-ensembling"],
+    use: "When balancing competing goals and needing an auditable path to a tuned prompt.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Balancing safety/utility • Marketing copy tuned for tone + compliance • Coding helpers optimized for correctness + brevity • Education prompts for rigor + friendliness
+Boosters: • Define measurable sub-metrics and weights • Use single-edit A/B trials • Record wins/losses to avoid cycling
+Caveats: Objectives can conflict; make trade-offs explicit and documented.`
   },
   {
     slug: "mixture-of-formats-mof",
     term: "Mixture of Formats (MOF)",
-    aliases: [],
-    definition: `A robustness technique where prompts are shown to the model in diverse style formats during few-shot examples:contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}. By training or prompting with varied styles (e.g. different wording or ordering), MOF reduces prompt brittleness and sensitivity to superficial prompt changes:contentReference[oaicite:6]{index=6}.`,
+    aliases: ["prompt format ensembling", "style diversification"],
+    definition: `A robustness technique: expose the model to varied prompt styles (ordering, wording, headers) across examples or trials. Diversity in formats reduces brittleness to superficial changes and stabilizes performance.`,
     sources: [
       { title: "Towards LLMs Robustness to Prompt Format Styles (NAACL 2025)", url: "https://aclanthology.org/2025.naacl-srw.51/" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:robustness","type:technique"],
-    related: ["prompt-brittleness","few-shot-learning"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "robustness"],
+    tags: ["kind:technique", "type:technique", "topic:robustness", "topic:prompting", "phase:prompting"],
+    related: ["prompt-brittleness", "prompt-ensembling", "few-shot-learning"],
+    use: "When prompts face diverse user phrasing, locales, or formatting quirks.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Production prompts exposed to many users • RAG where question phrasing varies • Prompt-sensitive evaluation benches
+Boosters: • Keep semantics constant; vary structure • Track which styles win on which tasks • Combine with CoVe to catch style-induced errors
+Caveats: Too much diversity can dilute signal; curate a small strong set.`
   },
   {
     slug: "greedy-prompt-engineering-strategy-greedy-pes",
     term: "Greedy Prompt Engineering Strategy (Greedy PES)",
-    aliases: ["greedy pes"],
-    definition: `An approach to systematically optimize prompts by exhaustively searching and scoring variations:contentReference[oaicite:7]{index=7}:contentReference[oaicite:8]{index=8}. Greedy PES adjusts prompt phrasing and structure in iterations, selecting changes that improve multi-metric performance (e.g. accuracy, coherence, safety) on evaluation data:contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}.`,
+    aliases: ["greedy pes", "greedy search prompting"],
+    definition: `A systematic strategy that explores prompt variants via small edits, scores each on a validation set, and keeps only improving edits—continuing until no measurable gain remains across chosen metrics.`,
     sources: [
       { title: "Advancing Multimodal LLMs: Optimizing Prompts (Appl. Sci. 2025)", url: "https://www.mdpi.com/2076-3417/15/7/3992" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:optimization","type:technique"],
-    related: ["multi-objective-directional-prompting-modp","self-refine"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "evaluation"],
+    tags: ["kind:strategy", "type:technique", "topic:optimization", "topic:prompting", "phase:evaluation"],
+    related: ["multi-objective-directional-prompting-modp", "automatic-prompt-engineer-ape", "self-refine"],
+    use: "When quick, data-driven prompt hill-climbing is acceptable and compute is modest.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • QA/Code bench tuning • Headline/copy optimization • Safety phrasing that minimizes refusals while staying compliant
+Boosters: • Freeze data splits; avoid test leakage • Limit edits per round to isolate effects • Log deltas and rationales
+Caveats: Can get stuck in local optima; try larger edits or random restarts periodically.`
   },
   {
     slug: "mixture-of-prompt-experts-mope",
     term: "Mixture of Prompt Experts (MoPE)",
-    aliases: [],
-    definition: `A multimodal prompting technique that divides input features among multiple specialized “prompt experts”:contentReference[oaicite:11]{index=11}. Each prompt expert handles a different modality or aspect, and their outputs are fused, which improved performance and adaptiveness in multimodal tasks compared to a single unified prompt:contentReference[oaicite:12]{index=12}.`,
+    aliases: ["prompt expert routing", "multi-expert prompting"],
+    definition: `A multimodal/multi-skill prompting pattern that splits inputs among specialized “prompt experts,” each optimized for a facet (e.g., vision details, OCR, math). Their outputs are fused into a final answer, improving adaptability versus a single monolithic prompt.`,
     sources: [
       { title: "MoPE: Mixture of Prompt Experts (arXiv Jan 2025)", url: "https://arxiv.org/abs/2403.10568" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:multimodal","type:framework"],
-    related: ["mixture-of-formats-mof","visual-prompting"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "architectures"],
+    tags: ["kind:framework", "type:framework", "topic:multimodal", "topic:prompting", "phase:inference"],
+    related: ["mixture-of-formats-mof", "visual-prompting", "multimodal-chain-of-thought-mm-cot"],
+    use: "When tasks benefit from specialty sub-prompts and a lightweight router/fuser.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • VQA with diagrams • Wearables/sensor fusion • Complex forms (layout + text + math)
+Boosters: • Define clear expert scopes and handoffs • Add a simple router (keywords/scores) • Validate fusion on adversarial cases
+Caveats: Orchestration adds latency; cap experts for real-time needs.`
   },
   {
     slug: "context-aware-decomposition-cad",
     term: "Context-Aware Decomposition (CAD)",
-    aliases: [],
-    definition: `A prompting technique that breaks a complex problem into sub-tasks while keeping the big-picture context in mind:contentReference[oaicite:13]{index=13}:contentReference[oaicite:14]{index=14}. The AI is instructed to maintain a “reasoning journal” of the overall goal and relationships between parts as it solves each piece, which avoids losing context that simple decomposition might cause:contentReference[oaicite:15]{index=15}:contentReference[oaicite:16]{index=16}.`,
+    aliases: ["context-preserving decomposition", "reasoning journal"],
+    definition: `Break a complex problem into sub-tasks while maintaining a persistent “reasoning journal” of goals, assumptions, dependencies, and decisions. CAD avoids the failure of losing the big picture during stepwise work.`,
     sources: [
       { title: "Context-Aware Decomposition (Prompt-On, Aug 2025)", url: "https://prompton.wordpress.com/2025/08/03/%F0%9F%9A%80-context-aware-decomposition-supercharge-ai-for-complex-problems-%F0%9F%A7%A9/" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:reasoning","type:technique"],
-    related: ["chain-of-thought-cot","chain-of-verification-cove"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "reasoning"],
+    tags: ["kind:technique", "type:technique", "topic:reasoning", "topic:planning", "phase:prompting"],
+    related: ["chain-of-thought-cot", "graph-of-thoughts-got", "chain-of-verification-cove"],
+    use: "When solving multi-stage tasks that risk context loss across steps.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Specs → implementation plans • Long proofs/multi-hop analysis • Casework with interdependent constraints
+Boosters: • Start with mission + constraints • Keep a “Knowns/Unknowns/Decisions” log • Periodically restate the global objective
+Caveats: Journals can bloat; summarize and prune after each stage.`
   },
   {
     slug: "automatic-prompt-engineer-ape",
     term: "Automatic Prompt Engineer (APE)",
-    aliases: ["automatic prompt engineer"],
-    definition: `A method where an LLM itself generates and evaluates a large pool of candidate instructions to find the most effective prompt for a task:contentReference[oaicite:17]{index=17}. In APE, one model proposes many possible prompts and another model scores their performance, achieving human-level prompt design on numerous tasks without human prompt writers:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}.`,
+    aliases: ["automatic prompt engineer", "auto prompt search"],
+    definition: `An automated method where one model proposes many candidate instructions and another model scores them on target tasks. Top-performing prompts are retained, reducing manual trial-and-error and often matching human-designed prompts.`,
     sources: [
       { title: "Large Language Models are Human-Level Prompt Engineers (arXiv 2023)", url: "https://arxiv.org/abs/2211.01910" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:prompting","type:automation"],
-    related: ["self-refine","greedy-prompt-engineering-strategy-greedy-pes"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "automation"],
+    tags: ["kind:framework", "type:automation", "topic:prompting", "topic:optimization", "phase:evaluation"],
+    related: ["greedy-prompt-engineering-strategy-greedy-pes", "multi-objective-directional-prompting-modp", "self-refine"],
+    use: "When you need scalable prompt search across many tasks or audiences.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Bootstrapping prompts for new tasks • Personalizing prompts per locale/audience • Large FAQ/intent catalogs
+Boosters: • Constrain search space (sections, tone) • Use small, reliable eval sets • Keep humans in the loop for sanity checks
+Caveats: Risk of overfitting to eval set; refresh test items and rotate judges.`
   },
   {
     slug: "recursive-self-improvement-prompting-rsip",
     term: "Recursive Self-Improvement Prompting (RSIP)",
-    aliases: ["recursive self-improvement"],
-    definition: `An iterative refinement approach where the AI generates an answer, then critiques its own output and attempts a revised answer, repeating this cycle:contentReference[oaicite:20]{index=20}. By serving as its own reviewer and editor in each round, an LLM can significantly improve the quality of its solution or writing over multiple iterations:contentReference[oaicite:21]{index=21}.`,
+    aliases: ["recursive self-improvement", "multi-round self-review"],
+    definition: `An iterative refinement loop: the model drafts an answer, critiques it against a rubric, revises, and repeats for a fixed number of rounds. By serving as its own reviewer, quality improves across clarity, correctness, and structure without external feedback.`,
     sources: [
       { title: "Advances in LLM Prompting (Reddit r/PromptEngineering, 2025)", url: "https://www.reddit.com/r/PromptEngineering/comments/1ki9qwb/advances_in_llm_prompting_and_model_capabilities/" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:iterative","type:technique"],
-    related: ["self-refine","chain-of-verification-cove"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "editing"],
+    tags: ["kind:technique", "type:technique", "topic:iterative", "topic:editing", "phase:inference"],
+    related: ["self-refine", "chain-of-verification-cove", "self-critique-prompting"],
+    use: "When you can spend extra turns to raise answer quality via self-review.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Polishing essays/reports • Code fixes with tests between rounds • Analytical writing that benefits from second thoughts
+Boosters: • Cap iterations (e.g., 2–3) • Provide critique rubrics (accuracy, evidence, style) • Save diffs to avoid reintroducing errors
+Caveats: Can drift or over-edit; lock key facts and constraints early.`
   },
   {
     slug: "self-refine",
     term: "Self-Refine",
-    aliases: ["self-refinement"],
-    definition: `An approach where an LLM is prompted to refine its initial answer using feedback it generates itself:contentReference[oaicite:22]{index=22}. For example, the model produces an answer, then (possibly under a new prompt) identifies flaws or areas to improve, and produces a revised answer. This loop can repeat, enabling the model to improve its output without external feedback:contentReference[oaicite:23]{index=23}:contentReference[oaicite:24]{index=24}.`,
+    aliases: ["self-refinement", "self-edit prompting"],
+    definition: `A prompting loop where the model first answers, then generates feedback about its output, and finally produces a revised answer. It improves structure, examples, and coverage with minimal extra guidance.`,
     sources: [
       { title: "Self-Refine: Iterative Refinement with Self-Feedback (arXiv 2023)", url: "https://arxiv.org/abs/2303.17651" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:iterative","type:technique"],
-    related: ["recursive-self-improvement-prompting-rsip","chain-of-thought-cot"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "editing"],
+    tags: ["kind:technique", "type:technique", "topic:iterative", "topic:editing", "phase:inference"],
+    related: ["recursive-self-improvement-prompting-rsip", "chain-of-thought-cot", "self-critique-prompting"],
+    use: "When a single pass is rough and a quick revise can fix clarity/coverage.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Improve clarity/formatting • Expand thin sections with examples • Reduce logical gaps and contradictions
+Boosters: • Provide a structured critique checklist • Ask for diffs or tracked changes • Freeze correct parts with “do-not-change” notes
+Caveats: Adds latency; reserve for tasks where quality gains matter.`
   },
   {
     slug: "graph-of-thoughts-got",
     term: "Graph of Thoughts (GoT)",
-    aliases: ["graph-of-thought"],
-    definition: `A prompting paradigm where the model explores multiple reasoning paths in a graph structure (with branches merging or intersecting) rather than a single chain:contentReference[oaicite:25]{index=25}:contentReference[oaicite:26]{index=26}. This allows backtracking and combining of different solution paths. Graph-of-Thoughts was proposed to improve complex problem solving by searching a network of reasoning steps, outperforming strictly linear chain-of-thought in some cases:contentReference[oaicite:27]{index=27}:contentReference[oaicite:28]{index=28}.`,
+    aliases: ["graph-of-thought", "graph-structured reasoning"],
+    definition: `A reasoning paradigm where the model explores multiple branches and merges ideas in a graph rather than a single linear chain. Enables parallel exploration, backtracking, and synthesis across paths—often improving complex problem solving.`,
     sources: [
       { title: "Graph of Thoughts: Solving Elaborate Problems with LLMs (NeurIPS 2023)", url: "https://arxiv.org/abs/2308.09687" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:reasoning","type:framework"],
-    related: ["chain-of-thought-cot","tree-of-thought-tot"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "reasoning"],
+    tags: ["kind:framework", "type:framework", "topic:reasoning", "topic:planning", "phase:inference"],
+    related: ["chain-of-thought-cot", "tree-of-thought-tot", "plan-and-solve-p-s"],
+    use: "When multiple solution paths must be explored and later merged.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Design trade-studies • Multi-path math proofs • Product brainstorming with convergent synthesis
+Boosters: • Limit branch width/depth to control cost • Label nodes (claim/evidence/assumption) • Periodically merge to consolidate
+Caveats: Graph search costs tokens; prune aggressively.`
   },
   {
     slug: "prompt-layered-architecture-pla",
     term: "Prompt-Layered Architecture (PLA)",
-    aliases: [],
-    definition: `A software design pattern that treats prompts as first-class modules in a system’s architecture:contentReference[oaicite:29]{index=29}:contentReference[oaicite:30]{index=30}. In PLA, an application is built in layered stages (prompt composition, prompt orchestration, response handling, memory management, etc.), allowing systematic reuse, versioning, and testing of prompts similar to software components:contentReference[oaicite:31]{index=31}:contentReference[oaicite:32]{index=32}.`,
+    aliases: ["prompt modules", "prompt pipelines"],
+    definition: `A software pattern that treats prompts as first-class components (composition, orchestration, memory, testing). Prompts are versioned, reused, and integrated like code, enabling CI, A/B testing, and safer releases.`,
     sources: [
       { title: "Prompt-Layered Architecture: AI-First Product Design (IJSRM 2024)", url: "https://ijsrm.net/index.php/ijsrm/article/view/5670" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:systems","type:framework"],
-    related: ["langchain","llama-index"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "engineering practices"],
+    tags: ["kind:framework", "type:framework", "topic:systems", "topic:orchestration", "phase:orchestration"],
+    related: ["langchain", "llama-index", "guidance-library", "function-calling"],
+    use: "When building multi-prompt applications that need traceability and reuse.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Strictly formatted multi-prompt apps • Enterprise releases needing traceability • Experiment-heavy teams
+Boosters: • Semantic version prompts • Unit tests + golden examples • Log prompt→output→metric lineage
+Caveats: Requires product discipline; treat prompts as code.`
   },
   {
     slug: "langgpt-dual-layer-framework",
     term: "LangGPT Dual-Layer Framework",
-    aliases: ["langgpt"],
-    definition: `A structured prompt design methodology treating prompts like a programming language:contentReference[oaicite:33]{index=33}. LangGPT introduces a two-layer prompt format: a normative, easy-to-read structure for users, and an extended layer for model consumption, enabling reusable and modular prompt components:contentReference[oaicite:34]{index=34}:contentReference[oaicite:35]{index=35}. It aims to reduce trial-and-error by bringing consistency and reusability to prompt construction.`,
+    aliases: ["langgpt", "dual-layer prompts"],
+    definition: `A structured prompt design that separates a human-readable layer (for clarity/editing) from a model-oriented layer (for formatting/control). Encourages reuse, consistency, and reduced trial-and-error.`,
     sources: [
       { title: "LangGPT: Structured Reusable Prompt Design (arXiv Jun 2024)", url: "https://arxiv.org/abs/2402.16929" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:prompting","type:framework"],
-    related: ["prompt-layered-architecture-pla","prompt-templates"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "engineering practices"],
+    tags: ["kind:framework", "type:framework", "topic:prompting", "topic:templates", "phase:prompting"],
+    related: ["prompt-layered-architecture-pla", "prompt-templates", "system-prompt"],
+    use: "When teams collaborate on prompt libraries and need consistency at scale.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Team prompt libraries • Teaching prompt literacy • Regulated outputs needing consistent sections
+Boosters: • Keep diff-friendly plain text • Use placeholders/validators • Document invariants vs tunable knobs
+Caveats: Over-templating can reduce creativity; keep escape hatches.`
   },
   {
     slug: "mega-prompt",
     term: "Mega-Prompt",
-    aliases: [],
-    definition: `A very large, detailed prompt that attempts to pack in all relevant instructions, context, and information for a complex task in one go:contentReference[oaicite:36]{index=36}:contentReference[oaicite:37]{index=37}. Mega-prompts can span hundreds or thousands of tokens (for models with extended context windows) to try to achieve a task in a single prompt, as opposed to breaking it into multiple steps. While fast for simple cases, they can hit context length limits and be hard to debug for very complex tasks:contentReference[oaicite:38]{index=38}:contentReference[oaicite:39]{index=39}.`,
+    aliases: ["giant prompt", "all-in-one prompt"],
+    definition: `A large, detailed prompt that packs all instructions, constraints, and context into one shot. Useful when the model lacks tools or memory; harder to debug and prone to context limits.`,
     sources: [
       { title: "From Mega-Prompts to Prompt Pipelines (Medium Aug 2025)", url: "https://medium.com/@chris.xg.wang/mega-prompts-prompt-pipeline-agentic-team-235e3a794c0d" }
     ],
     categories: ["prompting strategies"],
-    tags: ["topic:context","type:technique"],
-    related: ["multi-turn-conversation","prompt-brittleness"],
-    status: "draft",
-    notes: ""
+    tags: ["kind:technique", "type:technique", "topic:context", "topic:prompting", "phase:prompting"],
+    related: ["multi-turn-conversation", "prompt-layered-architecture-pla", "context-aware-decomposition-cad"],
+    use: "When you must deliver a single self-contained prompt artifact (no tools/memory).",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • One-off complex tasks • Cold-start instructions for constrained models • Sharing a portable prompt recipe
+Boosters: • TL;DR summary up top • Clear sections and delimiters • Examples near the rules they illustrate
+Caveats: Brittle and token-hungry; prefer pipelines for recurring tasks.`
   },
   {
     slug: "real-time-adaptive-prompting",
     term: "Real-Time Adaptive Prompting",
-    aliases: ["dynamic prompting"],
-    definition: `A technique where prompts are adjusted on-the-fly as new input arrives or the context changes during a live session:contentReference[oaicite:40]{index=40}. Often used in streaming data or edge cases (e.g. wearable sensors or live feeds), the prompt includes modular slots or instructions that update continuously based on the latest information, allowing the LLM to adapt its responses moment-to-moment:contentReference[oaicite:41]{index=41}.`,
+    aliases: ["dynamic prompting", "stream-adaptive prompting"],
+    definition: `Prompts with slots/constraints that update on-the-fly as new signals arrive (user actions, sensors, streaming data). The model adapts strategy and formatting as a session evolves.`,
     sources: [
       { title: "Multimodal Prompt Engineering Trends (GoCodeo Oct 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:dynamic","type:technique"],
-    related: ["adaptive-prompting","multi-turn-conversation"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "orchestration"],
+    tags: ["kind:technique", "type:technique", "topic:dynamic", "topic:prompting", "phase:inference"],
+    related: ["adaptive-prompting", "multi-turn-conversation", "mixture-of-prompt-experts-mope"],
+    use: "When inputs evolve during a session and responses must reflect fresh state.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Live dashboards/analyst copilots • Wearables/IoT assistants • Support that reacts to latest events
+Boosters: • Define update cadence/priorities • Cache stable context vs volatile slots • Guardrails to prevent thrashing
+Caveats: State drift is real; periodically restate goals/constraints.`
   },
   {
     slug: "multimodal-prompting",
     term: "Multimodal Prompting",
-    aliases: [],
-    definition: `Prompting that involves inputs (and possibly outputs) beyond just text, such as images, audio, or other data streams:contentReference[oaicite:42]{index=42}:contentReference[oaicite:43]{index=43}. For example, a single prompt might include a text instruction alongside an image. Multimodal prompting strategies address how to fuse these inputs (e.g. describing an image in text before asking a question about it) so that LLMs can reason across modalities:contentReference[oaicite:44]{index=44}:contentReference[oaicite:45]{index=45}.`,
+    aliases: ["cross-modal prompting", "vision-text prompting"],
+    definition: `Prompting that combines text with images, audio, or other signals and asks the model to reason across them. Works best with explicit fusion instructions (what to attend to and how).`,
     sources: [
       { title: "The Future of Prompt Engineering: Multimodal Prompts (GoCodeo 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:multimodal","type:technique"],
-    related: ["visual-prompting","multimodal-chain-of-thought-mm-cot"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "multimodal"],
+    tags: ["kind:technique", "type:technique", "topic:multimodal", "topic:prompting", "phase:prompting"],
+    related: ["visual-prompting", "multimodal-chain-of-thought-mm-cot", "mixture-of-prompt-experts-mope"],
+    use: "When tasks require grounded reasoning across images/audio/text.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Chart/table Q&A • Document triage (layout + text) • Scene understanding and grounded captioning
+Boosters: • Specify attention per modality • Ask for cross-references (cite regions/timestamps) • Provide annotated few-shots
+Caveats: Weak fusion risks spurious links; force grounding steps.`
   },
   {
     slug: "multimodal-chain-of-thought-mm-cot",
     term: "Multimodal Chain-of-Thought (MM-CoT)",
-    aliases: ["mm-cot"],
-    definition: `A reasoning approach extending *chain-of-thought* prompting to multimodal inputs:contentReference[oaicite:46]{index=46}. The model is guided to produce step-by-step reasoning that references each modality in sequence (e.g. *“Analyze the image… now relate it to this audio… now draw a conclusion”*), thereby making its cross-modal reasoning explicit and interpretable:contentReference[oaicite:47]{index=47}:contentReference[oaicite:48]{index=48}. MM-CoT helps ensure the model properly uses both visual and textual context in tasks like image-question answering.`,
+    aliases: ["mm-cot", "cross-modal CoT"],
+    definition: `Extends chain-of-thought to multiple modalities. The model reasons step-by-step, explicitly referencing how each modality informs the next, making cross-modal logic more transparent and checkable.`,
     sources: [
       { title: "Key Trends Shaping Multimodal Prompting (GoCodeo 2023)", url: "https://www.gocodeo.com/post/the-future-of-prompt-engineering-towards-multimodal-prompts" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:multimodal","type:technique"],
-    related: ["chain-of-thought-cot","multimodal-prompting"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "multimodal", "reasoning"],
+    tags: ["kind:technique", "type:technique", "topic:multimodal", "topic:reasoning", "phase:inference"],
+    related: ["chain-of-thought-cot", "multimodal-prompting", "graph-of-thoughts-got"],
+    use: "When stepwise, auditable reasoning across modalities is needed.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Image+text math/physics • Medical imaging with textual context • UI understanding from screenshots + logs
+Boosters: • Number steps per modality • Include “evidence → inference” pairs • Force a brief final summary independent of steps
+Caveats: For safety, prefer summarized rationales over raw hidden CoT.`
   },
   {
     slug: "role-playing-prompting",
     term: "Role-Playing Prompting",
-    aliases: ["role prompting","persona prompting"],
-    definition: `Instructing an LLM to adopt a specific role or persona as it responds:contentReference[oaicite:49]{index=49}:contentReference[oaicite:50]{index=50}. By prefacing a prompt with a role (e.g. “You are a veteran software engineer advising a novice” or “Act as a Shakespearean poet”), the model’s style, tone, and allowed knowledge are shaped by that persona. This can yield more contextually appropriate or creative outputs and is often used to guide an AI assistant’s behavior in dialogues.`,
+    aliases: ["role prompting", "persona prompting", "act-as prompting"],
+    definition: `Instruct the model to adopt a specific role (e.g., “senior SWE mentor,” “Socratic tutor”). The role constrains tone, scope, and heuristics, improving relevance and style control.`,
     sources: [
       { title: "Role-playing Prompt Framework (arXiv Dec 2024)", url: "https://arxiv.org/abs/2406.00627" }
     ],
     categories: ["prompting strategies"],
-    tags: ["topic:context","type:technique"],
-    related: ["system-prompt","persona"],
-    status: "draft",
-    notes: ""
+    tags: ["kind:technique", "type:technique", "topic:context", "topic:prompting", "phase:prompting"],
+    related: ["system-prompt", "steerability", "method-actors"],
+    use: "When tone, expertise, and boundaries must be consistently enforced.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Scaffolding instruction • Policy advisors with strict guardrails • Creative genre emulation
+Boosters: • Define expertise, boundaries, non-goals • Provide 2–3 exemplar replies • Add a success/failure rubric
+Caveats: Role conflicts with system prompts cause drift; keep hierarchy explicit.`
   },
   {
     slug: "llm-guardrails",
     term: "LLM Guardrails",
-    aliases: ["guardrails"],
-    definition: `Any agent, rule, or filtering system that monitors or adjusts an LLM’s inputs/outputs to ensure they stay safe, accurate, and on-policy:contentReference[oaicite:51]{index=51}:contentReference[oaicite:52]{index=52}. Guardrails can be as simple as regex filters or as complex as additional AI moderators. They aim to prevent harmful, biased, or disallowed content by constraining the model’s behavior via post-processing, or even by altering prompts in real-time:contentReference[oaicite:53]{index=53}:contentReference[oaicite:54]{index=54}.`,
+    aliases: ["guardrails", "safety filters", "policy moderators"],
+    definition: `Systems that monitor or shape inputs/outputs to keep them safe, accurate, and on-policy—ranging from regex filters and classifiers to AI moderators or policy transformers that rewrite risky prompts before execution.`,
     sources: [
       { title: "LLM guardrails guide AI outputs (K2View May 2025)", url: "https://www.k2view.com/blog/llm-guardrails/" }
     ],
-    categories: ["safety"],
-    tags: ["topic:safety","type:tool"],
-    related: ["jailbreaking-jailbreak-attack","content-moderation"],
-    status: "draft",
-    notes: ""
+    categories: ["safety", "governance", "orchestration"],
+    tags: ["kind:framework", "type:tool", "topic:safety", "topic:governance", "phase:inference"],
+    related: ["jailbreaking-jailbreak-attack", "content-moderation", "deliberative-alignment", "text-watermarking-synthid-text"],
+    use: "When deploying assistants at scale with explicit safety/policy requirements.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Consumer chat platforms • Enterprise assistants with sensitive data • Model routing (safe vs expert modes)
+Boosters: • Layer lightweight rules + AI checks • Log violations for continuous improvement • Provide respectful refusal templates
+Caveats: Over-filtering harms usefulness; tune thresholds and add appeal paths.`
   },
   {
     slug: "plan-and-execute-agent",
     term: "Plan-and-Execute Agent",
-    aliases: [],
-    definition: `An LLM-based agent architecture that separates the problem-solving process into two phases: first **planning** a sequence of steps or sub-goals given a complex task, then **executing** each step with the LLM (possibly using tools) in turn:contentReference[oaicite:55]{index=55}:contentReference[oaicite:56]{index=56}. This contrasts with prompting the model to solve it in one shot or with a fixed chain. Plan-and-Execute agents have been shown to handle complex, multi-step tasks more reliably by allowing re-planning and focusing on one sub-task at a time.`,
+    aliases: ["plan/execute architecture", "planner–executor"],
+    definition: `An agent pattern that separates high-level planning from stepwise execution (with optional tools). The plan can be revised as new evidence arrives, increasing reliability on multi-step tasks.`,
     sources: [
       { title: "LangChain Blog: Plan-and-Execute Agents (2023)", url: "https://blog.langchain.com/plan-and-execute/" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:agents","type:framework"],
-    related: ["react","auto-gpt"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "agents"],
+    tags: ["kind:framework", "type:framework", "topic:agents", "topic:planning", "phase:orchestration"],
+    related: ["react", "auto-gpt", "function-calling", "context-aware-decomposition-cad"],
+    use: "When tasks require tool use and dynamic replanning to reach a goal.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Search/code/DB workflows • Data pipelines with checkpoints • Complex support flows
+Boosters: • Keep plans concise with milestones • Add success criteria per step • Enable re-planning on failure signals
+Caveats: Planning overhead adds cost; cache plans for repeated tasks.`
   },
   {
     slug: "guidance-library",
     term: "Guidance (Prompting Library)",
-    aliases: ["microsoft guidance"],
-    definition: `An open-source library by Microsoft that provides a specialized syntax to intermix templating, control flow, and LLM generation calls in one prompt program:contentReference[oaicite:57]{index=57}. Guidance allows developers to guide LLM output structure (e.g., “gen” to generate text, “select” to choose options) and incorporate logic (like loops or conditionals) in prompts, yielding more deterministic and formatted outputs with fewer API calls:contentReference[oaicite:58]{index=58}:contentReference[oaicite:59]{index=59}.`,
+    aliases: ["microsoft guidance", "guidance.js syntax"],
+    definition: `An open-source library that intermixes templating, control flow, and LLM calls in a single “prompt program.” Enables structured outputs, deterministic choices, and fewer round trips via directives for generation, selection, and looping.`,
     sources: [
       { title: "Microsoft Guidance GitHub README", url: "https://github.com/microsoft/guidance" }
     ],
-    categories: ["tools"],
-    tags: ["topic:orchestration","type:library"],
-    related: ["prompt-layered-architecture-pla","langchain"],
-    status: "draft",
-    notes: ""
+    categories: ["tools", "orchestration"],
+    tags: ["kind:tool", "type:library", "topic:orchestration", "topic:templates", "phase:inference"],
+    related: ["prompt-layered-architecture-pla", "langchain", "function-calling"],
+    use: "When you need precise output schemas and control-flow inside prompts.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • JSON-constrained generation • Interactive forms/branching flows • Multi-turn extraction with schemas
+Boosters: • Start with minimal templates; add control gradually • Validate with JSON schemas • Unit-test prompt programs
+Caveats: DSL coupling can confuse teams; document conventions thoroughly.`
   },
   {
     slug: "function-calling",
     term: "Function Calling",
-    aliases: [],
-    definition: `A capability of some LLMs (introduced by OpenAI in 2023) to output a structured JSON object calling a developer-defined function when appropriate:contentReference[oaicite:60]{index=60}:contentReference[oaicite:61]{index=61}. Instead of replying in text, the model decides a certain user query would be best handled by an external tool/API and returns a JSON with arguments. The calling application can then execute the function (e.g. a web search or database query) and return the result to the model. This mechanism bridges LLMs with external tools more reliably than prompting alone:contentReference[oaicite:62]{index=62}:contentReference[oaicite:63]{index=63}.`,
+    aliases: ["tool use JSON", "structured tool invocation"],
+    definition: `A capability where the model returns a structured JSON “call” to a developer-defined function when a tool would help. The app executes the function and returns results for the model to incorporate into the final answer.`,
     sources: [
       { title: "OpenAI API introduction of function calling (June 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:tools","type:integration"],
-    related: ["automatic-prompt-engineer-ape","toolformer"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "tools"],
+    tags: ["kind:pattern", "type:integration", "topic:tools", "topic:orchestration", "phase:orchestration"],
+    related: ["toolformer", "plan-and-execute-agent", "guidance-library"],
+    use: "When bridging the LLM to external APIs/databases deterministically.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Retrieval, calculators, databases, APIs • Safely executing side-effectful actions • Deterministic integrations (weather, stocks)
+Boosters: • Provide clear schemas and examples • Add tool-selection policies and safety checks • Log tool inputs/outputs for debugging
+Caveats: Poorly validated arguments cause errors; add guards and fallbacks.`
   },
   {
     slug: "instruction-tuning",
     term: "Instruction Tuning",
-    aliases: [],
-    definition: `Fine-tuning a model on a dataset of many different tasks described in natural language instructions, with the outputs demonstrating the desired behavior:contentReference[oaicite:64]{index=64}. By training on diverse instruction–response pairs (possibly across hundreds of tasks), an LLM becomes much better at following novel instructions zero-shot. This technique (pioneered by FLAN and T0) underpins modern “instruction-following” models and makes them more aligned with user intentions:contentReference[oaicite:65]{index=65}.`,
+    aliases: ["instruction-following fine-tuning", "FLAN-style tuning"],
+    definition: `Fine-tuning on diverse instruction–response pairs so the model better follows novel instructions. Improves steerability and helpfulness across many tasks without task-specific training.`,
     sources: [
       { title: "Sebastian Ruder’s NLP Newsletter: Instruction Tuning (Oct 2023)", url: "https://newsletter.ruder.io/p/instruction-tuning-vol-1" }
     ],
-    categories: ["training techniques"],
-    tags: ["topic:alignment","type:fine-tuning"],
-    related: ["reinforcement-learning-from-human-feedback-rlhf","few-shot-learning"],
-    status: "draft",
-    notes: ""
+    categories: ["training techniques", "alignment"],
+    tags: ["kind:training", "type:fine-tuning", "topic:alignment", "topic:instructions", "phase:training"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf", "reinforcement-learning-from-ai-feedback-rlaif", "steerability"],
+    use: "When improving generic instruction-following behavior of a base model.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • General assistants for broad tasks • Domain adaptation with curated instructions • Improving refusals and tone
+Boosters: • Balance task variety and quality • Include safety/style instructions • Track holdout generalization
+Caveats: Can dilute raw task skills; consider mixed objectives or adapters.`
   },
   {
     slug: "reinforcement-learning-from-human-feedback-rlhf",
     term: "Reinforcement Learning from Human Feedback (RLHF)",
-    aliases: ["rlhf"],
-    definition: `A fine-tuning strategy where human preference data is used as the reward signal to train the model’s behavior:contentReference[oaicite:66]{index=66}:contentReference[oaicite:67]{index=67}. Typically, human labelers rank or choose better model outputs; a reward model is trained on this, and then the base model is further optimized (often via PPO) to generate outputs that maximize this learned reward. RLHF was critical in training helpful, aligned assistants (like InstructGPT) by incorporating human judgment of safety and quality into the model’s objectives:contentReference[oaicite:68]{index=68}:contentReference[oaicite:69]{index=69}.`,
+    aliases: ["rlhf", "preference optimization with humans"],
+    definition: `A fine-tuning strategy that trains a reward model on human preference judgments, then optimizes the base model (e.g., PPO/DPO) to produce outputs that humans prefer. Foundational for helpful, harmless assistants.`,
     sources: [
       { title: "OpenAI: Aligning Language Models to Follow Instructions (Jan 2022)", url: "https://openai.com/research/instruction-following" }
     ],
-    categories: ["training techniques"],
-    tags: ["topic:alignment","type:fine-tuning"],
-    related: ["instruction-tuning","reinforcement-learning-from-ai-feedback-rlaif"],
-    status: "draft",
-    notes: ""
+    categories: ["training techniques", "alignment"],
+    tags: ["kind:training", "type:fine-tuning", "topic:alignment", "topic:preferences", "phase:training"],
+    related: ["instruction-tuning", "reinforcement-learning-from-ai-feedback-rlaif", "alignment-tax"],
+    use: "When aligning a model to human preferences and safety policies.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Helpful/harmless assistants • Safety tuning for refusals and tone • Enterprise preference-tailored models
+Boosters: • Diverse raters and clear rubrics • Calibrate for honesty (admit limits) • Audit reward hacking/regressions
+Caveats: Preference data can encode bias; monitor fairness and drift.`
   },
   {
     slug: "chain-of-verification-cove",
     term: "Chain-of-Verification (CoVe)",
-    aliases: [],
-    definition: `A self-checking prompting technique where after producing an initial answer, the model generates a series of verification questions about its answer, answers those, and then uses those answers to correct or refine the final output:contentReference[oaicite:70]{index=70}:contentReference[oaicite:71]{index=71}. CoVe effectively has the model double-check its work (especially factual assertions) with targeted sub-queries, significantly reducing factual errors (hallucinations) compared to a standard chain-of-thought approach:contentReference[oaicite:72]{index=72}:contentReference[oaicite:73]{index=73}.`,
+    aliases: ["self-check prompting", "verification chain"],
+    definition: `After a first-pass answer, the model generates targeted verification questions, answers them, and revises the final output accordingly. This structured double-check reduces factual errors compared to unverified CoT.`,
     sources: [
       { title: "Chain-of-Verification Prompting (LearnPrompting Sep 2024)", url: "https://learnprompting.org/docs/advanced/self_criticism/chain_of_verification" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:verification","type:technique"],
-    related: ["chain-of-thought-cot","self-refine"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "evaluation"],
+    tags: ["kind:technique", "type:technique", "topic:verification", "topic:robustness", "phase:inference"],
+    related: ["self-refine", "chain-of-thought-cot", "corrective-rag-crag"],
+    use: "When claims must be checked explicitly before finalizing an answer.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Long answers with many claims • RAG answers that must cite sources • Summaries that require key fact checks
+Boosters: • Cap verification Qs (e.g., 3–5) • Require citations/evidence notes • Keep verification scratchpad separate
+Caveats: Adds latency; reserve for material claims.`
   },
   {
     slug: "self-critique-prompting",
     term: "Self-Critique Prompting",
-    aliases: ["self-criticism prompting"],
-    definition: `Any prompt strategy that explicitly asks an LLM to review or criticize its own draft output before finalizing an answer:contentReference[oaicite:74]{index=74}. For example, after an initial response, the assistant might be prompted: *“Identify any errors or biases above.”* The model’s critique is then used to revise the answer. This approach leverages the model’s strengths in proofreading and analysis to improve accuracy or safety without external feedback:contentReference[oaicite:75]{index=75}.`,
+    aliases: ["self-criticism prompting", "self-review prompting"],
+    definition: `Prompts that ask the model to critique its own draft (errors, biases, gaps) before finalizing. The critique guides a revised answer and surfaces hidden issues.`,
     sources: [
       { title: "Introduction to Self-Criticism Prompting (LearnPrompting 2023)", url: "https://learnprompting.org/docs/intermediate/self_criticism" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:iterative","type:technique"],
-    related: ["self-refine","chain-of-verification-cove"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "editing"],
+    tags: ["kind:technique", "type:technique", "topic:iterative", "topic:editing", "phase:inference"],
+    related: ["self-refine", "chain-of-verification-cove", "recursive-self-improvement-prompting-rsip"],
+    use: "When a quick self-review can catch errors, bias, or missing details.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Sensitive communications • Balanced arguments • Code/doc linting
+Boosters: • Provide a short critique rubric • Ask for concrete fixes, not just flags • Require a final “clean copy”
+Caveats: Models can invent issues; ground critiques with examples.`
   },
   {
     slug: "system-prompt",
     term: "System Prompt",
-    aliases: ["system message"],
-    definition: `A hidden or initial prompt that defines the AI’s role, style, and boundaries in chat-based LLMs:contentReference[oaicite:76]{index=76}. It’s provided by the developer (not the end-user) to steer the model’s behavior consistently (for example: *“You are a helpful assistant who only speaks in a formal tone…”*). The user’s prompts are then interpreted in context of this system-level instruction. System prompts are key to “steerability,” allowing constraints like refusals or personas to be enforced across interactions:contentReference[oaicite:77]{index=77}:contentReference[oaicite:78]{index=78}.`,
+    aliases: ["system message", "developer message"],
+    definition: `A hidden/initial instruction that defines the AI’s role, priorities, tone, and boundaries. It frames all conversation and is the most powerful lever for steerability and safety.`,
     sources: [
       { title: "ChatGPT System Message Example (Product Growth, 2025)", url: "https://www.news.aakashg.com/p/prompt-engineering" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:conversation","type:instruction"],
-    related: ["role-playing-prompting","steerability"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "governance"],
+    tags: ["kind:term", "type:instruction", "topic:conversation", "topic:governance", "phase:orchestration"],
+    related: ["role-playing-prompting", "steerability", "prompt-layered-architecture-pla"],
+    use: "When you need consistent behavior across an entire chat/application.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Branded assistants with consistent style • Safety-bound educational tutors • Multi-tenant apps with different house rules
+Boosters: • Keep it short, testable, and versioned • State invariant principles and escalation paths • Include refusal templates and honesty norms
+Caveats: Conflicts with user prompts cause instability; make hierarchy explicit.`
   },
   {
     slug: "steerability",
     term: "Steerability",
-    aliases: [],
-    definition: `An LLM’s amenability to control via prompts or instructions without retraining. A model with high steerability reliably changes style or behavior when given different system or user directives (e.g. “reply tersely” or adopting a persona):contentReference[oaicite:79]{index=79}. Achieving steerability is a goal of alignment work — for instance, OpenAI’s 2023 updates explicitly improved GPT-3.5’s steerability through system messages, meaning developers can more easily guide the model’s tone and responses:contentReference[oaicite:80]{index=80}.`,
+    aliases: ["controllability", "instruction-following sensitivity"],
+    definition: `How reliably a model changes behavior when given new instructions (style, persona, constraints) without retraining. High steerability enables safer, more personalized assistants via prompts alone.`,
     sources: [
       { title: "OpenAI on new model steerability (June 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
     ],
-    categories: ["alignment"],
-    tags: ["topic:alignment","type:property"],
-    related: ["system-prompt","helpful-honest-harmless-hhh"],
-    status: "draft",
-    notes: ""
+    categories: ["alignment", "properties"],
+    tags: ["kind:term", "type:property", "topic:alignment", "topic:instructions", "phase:inference"],
+    related: ["system-prompt", "helpful-honest-harmless-hhh", "instruction-tuning"],
+    use: "When selecting models or designing prompts that must reliably change behavior.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Enterprise tone/style alignment • Accessibility modes (plain language) • Region-specific legal phrasing
+Boosters: • Use explicit constraints and examples • Prefer short, assertive directives • Test across diverse prompts
+Caveats: Steerability varies by model/task; measure rather than assume.`
   },
   {
     slug: "alignment-tax",
     term: "Alignment Tax",
-    aliases: [],
-    definition: `The trade-off where aligning an LLM to be safer or follow instructions can slightly reduce its performance on other tasks:contentReference[oaicite:81]{index=81}. For example, fine-tuning a model with RLHF for harmlessness might make it worse at certain academic benchmarks – a “tax” paid in capability for better alignment. Researchers try to minimize this tax (OpenAI found mixing in some original pre-training data during RLHF could maintain performance while still improving alignment):contentReference[oaicite:82]{index=82}:contentReference[oaicite:83]{index=83}.`,
+    aliases: ["safety tax", "preference-tuning tradeoff"],
+    definition: `The observed trade-off where aligning a model for safety/helpfulness may reduce performance on some raw capability benchmarks. Good design tries to minimize this tax through data mixing and careful objectives.`,
     sources: [
       { title: "OpenAI: Aligning Models, potential alignment tax (Jan 2022)", url: "https://openai.com/research/instruction-following" }
     ],
-    categories: ["alignment"],
-    tags: ["topic:alignment","type:concept"],
-    related: ["reinforcement-learning-from-human-feedback-rlhf","helpful-honest-harmless-hhh"],
-    status: "draft",
-    notes: ""
+    categories: ["alignment", "trade-offs"],
+    tags: ["kind:term", "type:concept", "topic:alignment", "topic:tradeoffs", "phase:training"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf", "helpful-honest-harmless-hhh", "instruction-tuning"],
+    use: "When communicating or measuring the costs of alignment interventions.",
+    level: "intermediate",
+    status: "verified",
+    notes: `Use-cases: • Model selection/policy decisions • Stakeholder discussions of safety vs capability • Designing balanced eval suites
+Boosters: • Track safety and capability metrics jointly • Try hybrid data (instruction + pretrain mix) • Use adapters to preserve skills
+Caveats: Goodhart’s law—optimizing one metric may degrade others.`
   },
   {
     slug: "helpful-honest-harmless-hhh",
     term: "Helpful, Honest, Harmless (HHH)",
-    aliases: ["hhh"],
-    definition: `A trio of goals for aligned AI assistants: being **Helpful** (useful and following user intent), **Honest** (truthful and transparent about uncertainty), and **Harmless** (not producing dangerous or toxic outputs). The HHH principles were highlighted by Anthropic for training their Claude models, using a “constitution” of values to achieve them:contentReference[oaicite:84]{index=84}:contentReference[oaicite:85]{index=85}. Essentially, an HHH-aligned AI tries to effectively solve user requests (and admit limits), while refusing or safe-completing anything that could cause harm.`,
+    aliases: ["hhh", "helpful-honest-harmless"],
+    definition: `A set of goals for aligned assistants: be useful (helpful), truthful and transparent about uncertainty (honest), and avoid causing harm or violating policies (harmless). Often operationalized via constitutions and preference training.`,
     sources: [
       { title: "Constitutional AI (Anthropic Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
     ],
-    categories: ["alignment"],
-    tags: ["topic:alignment","type:principle"],
-    related: ["constitutional-ai","reinforcement-learning-from-human-feedback-rlhf"],
-    status: "draft",
-    notes: ""
+    categories: ["alignment", "principles"],
+    tags: ["kind:term", "type:principle", "topic:alignment", "topic:principles", "phase:training"],
+    related: ["constitutional-ai", "reinforcement-learning-from-human-feedback-rlhf", "steerability"],
+    use: "When defining acceptance criteria and behaviors for assistants.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Safety reviews and red-teaming • Public-facing policy docs • Evaluating assistants on real user tasks
+Boosters: • Concrete examples per principle • Honesty about limits and sources • Balanced datasets reflecting values
+Caveats: Principles can conflict; define tie-breakers and escalation.`
   },
   {
     slug: "constitutional-ai",
     term: "Constitutional AI",
-    aliases: [],
-    definition: `An alignment technique where an AI model is guided by a set of explicit written principles (a “constitution”) and uses them to critique and improve its outputs:contentReference[oaicite:86]{index=86}:contentReference[oaicite:87]{index=87}. For example, the model might have a rule like “avoid hate speech,” and when generating a response, it checks and revises its output according to that rule. This approach, used by Anthropic for Claude, involves the model generating self-critiques based on the constitution and fine-tuning on those revisions, a process known as *reinforcement learning from AI feedback (RLAIF)*:contentReference[oaicite:88]{index=88}:contentReference[oaicite:89]{index=89}.`,
+    aliases: ["constitution-guided alignment", "RLAIF with principles"],
+    definition: `An alignment approach where a written “constitution” of principles guides the model to critique and revise its outputs. Feedback can be AI-generated (RLAIF) and used to optimize toward stated values.`,
     sources: [
       { title: "Anthropic: Constitutional AI (Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
     ],
-    categories: ["alignment"],
-    tags: ["topic:alignment","type:training"],
-    related: ["reinforcement-learning-from-ai-feedback-rlaif","helpful-honest-harmless-hhh"],
-    status: "draft",
-    notes: ""
+    categories: ["alignment", "training techniques"],
+    tags: ["kind:framework", "type:training", "topic:alignment", "topic:principles", "phase:training"],
+    related: ["reinforcement-learning-from-ai-feedback-rlaif", "helpful-honest-harmless-hhh", "self-critique-prompting"],
+    use: "When scaling value-aligned behavior using explicit principles and AI feedback.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Safety-first assistants • Domain-specific codes of conduct • Multi-lingual value alignment
+Boosters: • Keep principles short/testable • Include counterexamples/edge cases • Re-audit periodically for drift
+Caveats: Constitutions embed value choices; document provenance and stakeholder input.`
   },
   {
     slug: "reinforcement-learning-from-ai-feedback-rlaif",
     term: "Reinforcement Learning from AI Feedback (RLAIF)",
-    aliases: [],
-    definition: `An alignment training method similar to RLHF but where the feedback on outputs comes from an AI model (or the trained model itself) rather than human annotators:contentReference[oaicite:90]{index=90}. In practice, an AI model is used to judge or vote on which of two outputs is better according to a set of principles, and that “AI preference” trains the policy model. RLAIF was demonstrated in Constitutional AI, where the model’s self-critiquing (per a fixed constitution) served as the feedback signal to refine the assistant:contentReference[oaicite:91]{index=91}:contentReference[oaicite:92]{index=92}.`,
+    aliases: ["AI preference learning", "AI-feedback alignment"],
+    definition: `A training method akin to RLHF, but feedback comes from an AI judge (or the model itself) rather than human annotators. Useful for scaling preference data when human labels are scarce, often seeded by a constitution or rubric.`,
     sources: [
       { title: "Anthropic: Constitutional AI (Dec 2022)", url: "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback" }
     ],
-    categories: ["alignment"],
-    tags: ["topic:alignment","type:training"],
-    related: ["reinforcement-learning-from-human-feedback-rlhf","constitutional-ai"],
-    status: "draft",
-    notes: ""
+    categories: ["alignment", "training techniques"],
+    tags: ["kind:training", "type:training", "topic:alignment", "topic:preferences", "phase:training"],
+    related: ["reinforcement-learning-from-human-feedback-rlhf", "constitutional-ai", "instruction-tuning"],
+    use: "When scaling preference optimization beyond what human labeling can support.",
+    level: "advanced",
+    status: "verified",
+    notes: `Use-cases: • Rapid iteration on safety rubrics • Bootstrapping preference models • Large-scale preference alignment
+Boosters: • Calibrate AI judges to human judgments • Adversarial tests for shortcutting • Mix in human gold labels to reduce drift
+Caveats: AI judges can amplify bias; monitor with fairness audits.`
   },
   {
     slug: "prompt-brittleness",
     term: "Prompt Brittleness",
-    aliases: [],
-    definition: `The phenomenon where an LLM’s performance or output changes dramatically with small, semantically irrelevant changes in the prompt wording or format:contentReference[oaicite:93]{index=93}:contentReference[oaicite:94]{index=94}. For example, rephrasing a question or adding innocuous phrases might cause a correct answer to turn into an incorrect one (and vice-versa). Prompt brittleness makes LLM behavior unpredictable and is a motivation for techniques like Mixture of Formats and prompt robustness training:contentReference[oaicite:95]{index=95}:contentReference[oaicite:96]{index=96}.`,
+    aliases: ["prompt sensitivity", "format fragility"],
+    definition: `A failure mode where small, semantically irrelevant changes in prompt wording/layout cause large swings in output quality. Motivates robustness techniques like MOF, ensembling, and style-insensitive training.`,
     sources: [
       { title: "Prompt Brittleness and MOF (NAACL 2025)", url: "https://aclanthology.org/2025.naacl-srw.51/" }
     ],
-    categories: ["challenges"],
-    tags: ["topic:robustness","type:issue"],
-    related: ["mixture-of-formats-mof","prompt-ensembling"],
-    status: "draft",
-    notes: ""
+    categories: ["challenges", "robustness"],
+    tags: ["kind:term", "type:issue", "topic:robustness", "topic:prompting", "phase:prompting"],
+    related: ["mixture-of-formats-mof", "prompt-ensembling", "chain-of-verification-cove"],
+    use: "When diagnosing failures or hardening prompts for varied user phrasing.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • Cross-locale/style evaluations • Production prompts exposed to user rewrites • Safety prompts vulnerable to adversarial phrasing
+Boosters: • Test with paraphrase banks • Add explicit structure (sections, bullets) • Provide multiple style exemplars
+Caveats: Don’t overfit to one style; measure across variations.`
   },
   {
     slug: "eliza-effect",
     term: "ELIZA Effect",
-    aliases: ["eliza"],
-    definition: `The tendency of people to ascribe human-like understanding or intent to AI outputs, even when the AI is just blindly generating text:contentReference[oaicite:97]{index=97}. Named after the 1960s ELIZA chatbot (which used simple pattern matching yet often convinced users it understood them), this effect leads users to anthropomorphize chatbots and assume a level of intelligence or empathy that isn’t really there:contentReference[oaicite:98]{index=98}:contentReference[oaicite:99]{index=99}. It’s a caution in prompt engineering and user experience design to remind users that the AI’s knowledge and reasoning are limited to its training data and algorithms.`,
+    aliases: ["eliza", "anthropomorphic fallacy in AI"],
+    definition: `The human tendency to attribute genuine understanding or intent to an AI’s outputs. Named after the 1960s ELIZA chatbot, which used simple pattern matching yet appeared human to users. Designers should counteract misplaced trust.`,
     sources: [
       { title: "Wikipedia: ELIZA effect", url: "https://en.wikipedia.org/wiki/ELIZA_effect" }
     ],
-    categories: ["challenges"],
-    tags: ["topic:human-ai","type:cognitive-bias"],
-    related: ["hallucinations","anthropomorphism"],
-    status: "draft",
-    notes: ""
+    categories: ["challenges", "human–AI interaction"],
+    tags: ["kind:term", "type:cognitive-bias", "topic:human-ai", "topic:trust", "phase:usage"],
+    related: ["hallucinations", "anthropomorphism", "llm-guardrails"],
+    use: "When educating users/teams about model limits and preventing over-trust.",
+    level: "beginner",
+    status: "verified",
+    notes: `Use-cases: • UX copy warning users about limits • Onboarding/training materials • Transparency and consent features
+Boosters: • Encourage citations/evidence • Use uncertainty language and limitations • Provide model cards/behavior summaries
+Caveats: Over-trust leads to misuse; add friction for high-stakes claims.`
   },
-  {
+   {
     slug: "chatgpt",
     term: "ChatGPT",
-    aliases: [],
-    definition: `OpenAI’s AI chatbot interface, launched publicly in Nov 2022, which popularized LLM-based conversations:contentReference[oaicite:100]{index=100}:contentReference[oaicite:101]{index=101}. ChatGPT is powered by GPT-3.5 and GPT-4 models (as of 2023) and fine-tuned for dialogue. Its release demonstrated the versatility of prompt engineering to elicit coding help, writing drafts, Q&A, etc., and led to widespread interest in conversational AI. Many prompt engineering techniques were first widely explored through ChatGPT prompts.`,
+    aliases: ["openai chat", "chat gpt", "chatgpt ui", "chatgpt assistant"],
+    definition: `OpenAI’s conversational AI product (public launch Nov 2022) that popularized LLM-based dialogue. ChatGPT wraps instruction-tuned GPT models behind a chat interface with system/user/assistant roles, safety guardrails, and optional tools (e.g., web browsing, code execution). It demonstrated how careful prompting enables coding help, drafting, Q&A, tutoring, and creative work—making prompt design a mainstream skill.`,
     sources: [
       { title: "History of ChatGPT (SearchEngineJournal)", url: "https://www.searchenginejournal.com/history-of-chatgpt/484476/" }
     ],
-    categories: ["systems"],
-    tags: ["topic:chatbot","type:product"],
-    related: ["gpt-4","bard"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "interfaces", "assistants"],
+    tags: [
+      "kind:term",
+      "type:product",
+      "topic:chatbot",
+      "topic:llm",
+      "phase:usage",
+      "use:conversational-assistant",
+      "level:beginner"
+    ],
+    related: ["gpt-4", "gpt-3-5-turbo", "function-calling", "system-prompt", "role-playing-prompting"],
+    status: "verified",
+    notes: `Use-cases: • Everyday Q&A and research drafting • Code explanation, debugging, and quick prototypes • Structured writing (emails, briefs, outlines) • Tutoring with step-by-step scaffolding • Brainstorming and style exploration
+Boosters: • Provide clear role, goal, constraints at the top • Give input data as bullet lists or JSON for clarity • Ask for sources, assumptions, and next steps • Use follow-ups to iteratively refine tone and scope
+Caveats: Model knowledge lags real time unless browsing/tools are enabled; avoid over-trust (ELIZA effect) and request citations for factual claims.`
   },
   {
     slug: "gpt-4",
     term: "GPT-4",
-    aliases: [],
-    definition: `OpenAI’s flagship large language model announced in March 2023, succeeding GPT-3. It is multimodal (can accept text and images as input) and demonstrated substantially improved reasoning, creativity, and instruction-following abilities. GPT-4 has a larger knowledge base and more advanced skills than previous models; for example, it performs well on academic and professional exams and introduced features like function calling and a longer 32K token context window:contentReference[oaicite:102]{index=102}:contentReference[oaicite:103]{index=103}. Many prompt engineering techniques that worked on GPT-3 still apply, but GPT-4 generally handles complex prompts and subtle instructions more reliably.`,
+    aliases: ["gpt4", "openai gpt-4", "gpt-4 turbo"],
+    definition: `OpenAI’s flagship large language model (announced Mar 2023). Multimodal (accepts text and images), stronger reasoning and adherence to instructions than prior generations, long context variants, and support for features like function calling and tool use. Widely used for complex analysis, coding, and domain-specific assistants.`,
     sources: [
-      { title: "OpenAI API Release Notes (Mar 2023)", url: "https://openai.com/research/gpt-4" }
+      { title: "OpenAI: GPT-4", url: "https://openai.com/research/gpt-4" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["chatgpt","gpt-3-5-turbo"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:llm",
+      "topic:multimodal",
+      "phase:inference",
+      "use:general-reasoning",
+      "level:advanced"
+    ],
+    related: ["chatgpt", "gpt-3-5-turbo", "function-calling", "plan-and-execute-agent"],
+    status: "verified",
+    notes: `Use-cases: • Complex coding and algorithmic tasks • Legal/finance/style-constrained drafting • Data extraction and transformation with schemas • Multimodal reasoning over images + text
+Boosters: • Provide schemas/examples for structured outputs • Constrain temperature and specify step limits • Use tool calling for retrieval/math • Add verification passes (CoVe) for important claims
+Caveats: Cost/latency higher than smaller models; still susceptible to hallucinations without grounding.`
   },
   {
     slug: "claude-2",
     term: "Claude 2",
-    aliases: ["anthropic claude"],
-    definition: `Anthropic’s second-generation LLM (released July 2023) designed to be a helpful, harmless, and honest AI assistant. Claude 2 can handle very long inputs (up to 100K tokens) and is trained with Constitutional AI techniques for alignment. It often excels at tasks requiring extended reasoning or summarization of long documents due to its context length. Prompt engineers note that Claude tends to follow explicit formatting instructions closely and may be less likely to refuse borderline requests compared to ChatGPT (though it still has guardrails).`,
+    aliases: ["anthropic claude", "claude2"],
+    definition: `Anthropic’s second-generation assistant (Jul 2023) emphasizing the Helpful-Honest-Harmless (HHH) alignment philosophy. Known for long context handling, careful formatting, and strong summarization and reasoning on lengthy documents; trained with Constitutional AI techniques.`,
     sources: [
       { title: "Anthropic Claude 2 Announcement (July 2023)", url: "https://www.anthropic.com/index/claude-2" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["helpful-honest-harmless-hhh","constitutional-ai"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "assistants"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:llm",
+      "topic:alignment",
+      "phase:inference",
+      "use:long-context-assistant",
+      "level:advanced"
+    ],
+    related: ["helpful-honest-harmless-hhh", "constitutional-ai", "rlaif", "system-prompt"],
+    status: "verified",
+    notes: `Use-cases: • Summarizing and analyzing long PDFs • Polite, structured customer support • Brainstorming with clear sectioning • Safer content generation aligned to principles
+Boosters: • Provide headings and checklists to guide output • Specify tone and refusal rules explicitly • Supply exemplar responses to anchor formatting
+Caveats: Conservative refusals in some domains; still requires citations/grounding for factual reliability.`
   },
   {
     slug: "llama-2",
     term: "LLaMA 2",
-    aliases: [],
-    definition: `A family of open-source LLMs (7B, 13B, 70B parameters) released by Meta in July 2023 as the successor to LLaMA. LLaMA 2 models were trained on 2 trillion tokens and come in both a base version and a fine-tuned chat version. They are widely used in the community for custom applications because of their openness. Many instruction-following tricks and prompt patterns that work for ChatGPT also work for LLaMA 2-chat, though its quality is roughly on par with earlier GPT-3.5 models in many areas. Being open, it allows on-premises use and further fine-tuning by anyone (subject to its license).`,
+    aliases: ["llama2", "meta llama 2", "llama-2-chat"],
+    definition: `Meta’s open family of 7B/13B/70B models (Jul 2023) with base and chat variants. Popular for on-prem and custom deployments due to permissive licensing, strong community tooling, and fine-tuning options. Instruction-tuned chat versions aim for safer dialogue while remaining adaptable.`,
     sources: [
       { title: "Meta AI: LLaMA 2 (July 2023)", url: "https://ai.meta.com/llama/" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["alpaca","vicuna"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:llm",
+      "phase:inference",
+      "use:on-prem-customization",
+      "level:intermediate"
+    ],
+    related: ["alpaca", "vicuna", "mistral-7b", "falcon-llm", "wizardlm"],
+    status: "verified",
+    notes: `Use-cases: • Private deployments with custom data • Lightweight chatbots and RAG systems • Domain fine-tuning (LoRA/QLoRA) • Edge or cost-sensitive workloads
+Boosters: • Use high-quality instruction data for tuning • Add retrieval grounding to reduce hallucinations • Evaluate with domain-specific benchmarks
+Caveats: Smaller variants trail frontier models on complex reasoning; safety behavior depends on fine-tuning data.`
   },
   {
     slug: "gpt-3-5-turbo",
-    term: "GPT-3.5 Turbo",
-    aliases: ["gpt-3-5","gpt3-5"],
-    definition: `The model behind the original ChatGPT (2022) – essentially an improved, chat-optimized version of GPT-3. It was the first widely deployed instruction-tuned LLM. GPT-3.5 Turbo can handle about 4K tokens (there is also a 16K version) and serves as the default for many API applications due to its speed and cost. Prompt-wise, it is less capable than GPT-4 on complex tasks, so prompt engineers often find they must use more explicit or structured prompts to get the desired output from GPT-3.5. It introduced features like the system message to steer behavior and, later, function calling support.`,
+    term: "GPT-3.5 Turbo",
+    aliases: ["gpt-3-5", "gpt3-5", "gpt-3.5 turbo"],
+    definition: `Chat-optimized successor to GPT-3 that powered the initial ChatGPT launch. Favored for speed and cost; handles everyday tasks well but is less reliable than GPT-4 on complex, multi-step reasoning. Strong when prompts are explicit, structured, and example-rich.`,
     sources: [
       { title: "OpenAI Model Index (2023)", url: "https://platform.openai.com/docs/models/gpt-3-5" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["chatgpt","gpt-4"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:llm",
+      "phase:inference",
+      "use:cost-efficient-assistant",
+      "level:intermediate"
+    ],
+    related: ["chatgpt", "gpt-4", "system-prompt", "role-playing-prompting"],
+    status: "verified",
+    notes: `Use-cases: • Drafting and summarization • Simple coding tasks • Customer replies and templates • Data cleanup and reformatting
+Boosters: • Provide stepwise instructions and examples • Constrain output formats tightly • Lower temperature for consistency
+Caveats: Prone to shallow reasoning; add verification or switch to larger models for critical tasks.`
   },
   {
     slug: "bard",
     term: "Bard",
-    aliases: ["google bard"],
-    definition: `Google’s conversational LLM interface (opened to public in 2023) built on its Pathways Language Model (PaLM and later PaLM 2). Bard is integrated with Google’s search and can access up-to-date information. For prompt engineers, Bard initially had more limitations (e.g. shorter outputs, more refusals) but has been rapidly improving. It allows some unique interactions like image uploads with prompts. While Bard generally follows user instructions, it may apply Google’s stricter content policies. It serves as Google’s answer to ChatGPT, and many prompts that work in ChatGPT can be tried on Bard, though the style and formatting of responses differ.`,
+    aliases: ["google bard", "bard ai", "google conversational ai"],
+    definition: `Google’s conversational interface (2023) initially built on PaLM/PaLM-2 and integrated with Google services. Emphasizes up-to-date answers via search integration and image input support in some modes. Response style and policy boundaries differ from OpenAI offerings.`,
     sources: [
       { title: "Google Blog: Bard Expansion (May 2023)", url: "https://blog.google/technology/ai/updates-to-bard/" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:product"],
-    related: ["chatgpt","bing-chat"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "interfaces", "assistants"],
+    tags: [
+      "kind:term",
+      "type:product",
+      "topic:llm",
+      "topic:search",
+      "phase:usage",
+      "use:search-grounded-assistant",
+      "level:beginner"
+    ],
+    related: ["chatgpt", "bing-chat", "function-calling", "multimodal-prompting"],
+    status: "verified",
+    notes: `Use-cases: • Web-grounded Q&A • Image-assisted prompts (where available) • Travel and local info lookups • Quick ideation with links
+Boosters: • Ask for citations and “compare sources” • Provide clear constraints and required data points • Use bullet prompts to reduce drift
+Caveats: Policies and output formats differ; expect variation vs other assistants.`
   },
   {
     slug: "ernie-bot",
     term: "ERNIE Bot",
-    aliases: ["ernie bot"],
-    definition: `A Chinese LLM-based chatbot launched by Baidu in March 2023. ERNIE Bot is based on Baidu’s ERNIE large model and was one of the first major Chinese competitors to ChatGPT. It supports multi-turn dialogue in Chinese (and some English) and handles tasks like code, calculation, and generative writing. Prompt-wise, ERNIE Bot is tuned for the Chinese language and cultural context; many prompting techniques carry over, but it may have different refusal triggers and knowledge gaps due to training on Chinese-centric data and complying with local regulations. It marked a significant step in China’s AI development, similar to how Bard did for Google.`,
+    aliases: ["ernie bot", "baidu ernie", "wenxin yiyan"],
+    definition: `Baidu’s LLM-based chatbot (Mar 2023) tuned primarily for Chinese language and cultural context. Supports multi-turn dialogue, code, and knowledge tasks; alignment and refusal behavior reflect local regulations and datasets.`,
     sources: [
       { title: "Reuters: Baidu ERNIE Bot Launch News (Mar 2023)", url: "https://www.reuters.com/technology/baidus-chatgpt-equivalent-ernie-bot-falls-short-expectations-2023-03-16/" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:product"],
-    related: ["chatgpt","vicuna"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "assistants", "regional"],
+    tags: [
+      "kind:term",
+      "type:product",
+      "topic:llm",
+      "topic:regional",
+      "phase:usage",
+      "use:zh-focused-assistant",
+      "level:intermediate"
+    ],
+    related: ["chatgpt", "vicuna", "llama-2"],
+    status: "verified",
+    notes: `Use-cases: • Chinese language Q&A and writing • Code and data tasks localized to Chinese content • Enterprise integrations in the CN ecosystem
+Boosters: • Provide precise Chinese prompts and examples • Use domain vocabulary to disambiguate • Request citations where possible
+Caveats: Cross-language queries may underperform; regulatory constraints affect outputs.`
   },
   {
     slug: "bing-chat",
     term: "Bing Chat",
-    aliases: ["bing ai"],
-    definition: `Microsoft’s AI chat integrated into Bing search (launched Feb 2023) powered by OpenAI’s GPT-4. It combines a search engine with a chat interface, using web results to ground its answers. Bing Chat introduced many users to prompt engineering via its modes (e.g. “Creative” vs “Precise”) and revealed how slight prompt tweaks could alter an AI’s style and correctness. Early on, users discovered the system prompt (“Sydney”) and prompt-leaked it, showing the importance of hidden instructions. Bing Chat will cite sources for factual statements, so a prompt engineer working with it may focus on queries that encourage factual, source-supported responses. It is a prominent example of an LLM augmented with tool use (web search) via prompt integration.`,
+    aliases: ["bing ai", "microsoft bing chat", "bing copilot (early)"],
+    definition: `Microsoft’s GPT-4-powered chat integrated with Bing search (Feb 2023). Pioneered grounded answers with inline citations, distinct response modes, and visible effects of hidden system prompts—showcasing prompt leakage risks and the value of tool-augmented chat.`,
     sources: [
       { title: "Microsoft: Next-Gen Bing Announcement (Feb 2023)", url: "https://blogs.microsoft.com/blog/2023/02/07/bing-chatgpt/amp/" }
     ],
-    categories: ["systems"],
-    tags: ["topic:search","type:product"],
-    related: ["chatgpt","function-calling"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "search", "assistants"],
+    tags: [
+      "kind:term",
+      "type:product",
+      "topic:search",
+      "topic:llm",
+      "phase:usage",
+      "use:cited-web-answers",
+      "level:beginner"
+    ],
+    related: ["chatgpt", "function-calling", "react", "prompt-leakage", "llm-guardrails"],
+    status: "verified",
+    notes: `Use-cases: • Source-backed answers • Comparison shopping or spec lookups • News digests with links • Research starting points
+Boosters: • Ask for numbered sources and quotes • Request pros/cons and uncertainty • Use “compare X vs Y” patterns
+Caveats: Grounding reduces but does not eliminate hallucinations; verify links and dates.`
   },
   {
     slug: "wizardlm",
     term: "WizardLM",
-    aliases: [],
-    definition: `A series of open fine-tuned LLMs (2023) known for being trained on “evol-Instruct” data (instructions that increase in complexity) to push model capability. For example, WizardLM-13B was one model that demonstrated surprisingly strong performance after being fine-tuned on instructions that gradually evolve. In practice, WizardLM variants follow instructions better than base LLaMA models. As a term, “WizardLM” often implies an improved instruction-following open model (many derivatives like Wizard-Vicuna, etc.). It highlights how iterative instruction tuning (simulating a tutor guiding complexity) can yield more robust prompt following. Prompt engineers using WizardLM find it generally more responsive to complex multi-step prompts than the base model.`,
+    aliases: ["wizard lm", "wizard-vicuna (family)"],
+    definition: `Open fine-tuned models trained with Evol-Instruct (progressively harder instructions). Noted for strong instruction following relative to base LLaMA, making small/medium models more capable at complex multi-step prompts.`,
     sources: [
       { title: "WizardLM GitHub (2023)", url: "https://github.com/nlpxucan/WizardLM" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["vicuna","llama-2"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:instruction-tuning",
+      "phase:inference",
+      "use:strong-instruction-following",
+      "level:intermediate"
+    ],
+    related: ["llama-2", "vicuna", "alpaca", "instruction-tuning"],
+    status: "verified",
+    notes: `Use-cases: • Budget chat assistants • Educational/stepwise explanations • Synthetic data generation via instructions
+Boosters: • Provide explicit step lists and examples • Constrain output format to reduce drift • Add retrieval grounding for factuality
+Caveats: Still trails frontier models on deep reasoning; safety depends on tuning data.`
   },
   {
     slug: "vicuna",
     term: "Vicuna",
-    aliases: [],
-    definition: `An influential 13B-parameter chat model released in March 2023, created by fine-tuning LLaMA on user-shared ChatGPT conversations. Vicuna demonstrated that relatively small models (13B) could reach ~90% of ChatGPT quality by leveraging high-quality instruction data. It sparked a wave of open chat model development. Vicuna is often used as a reference open model; prompt engineering on Vicuna is similar to ChatGPT (since that’s what it was trained on) – it responds to system/user/assistant role format and follows instructions well, albeit with less factual accuracy at times. The Vicuna project also released evaluation benchmarks like GPT-4 scoring, establishing a template for comparing chat models via prompts.`,
+    aliases: ["vicuna-13b", "lmsys vicuna"],
+    definition: `Influential 13B chat model (Mar 2023) fine-tuned from LLaMA on user-shared ChatGPT conversations. Showed small models can reach a large fraction of commercial quality with high-quality instruction data and evaluation via GPT-4 judging.`,
     sources: [
       { title: "Vicuna: An Open Chatbot Impressing GPT-4 (LMSYS 2023)", url: "https://vicuna.lmsys.org" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["alpaca","llama-2"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:instruction-tuning",
+      "phase:inference",
+      "use:open-chat-model",
+      "level:intermediate"
+    ],
+    related: ["alpaca", "llama-2", "wizardlm", "instruction-tuning"],
+    status: "verified",
+    notes: `Use-cases: • Community chatbots • Prompt experiments mirroring ChatGPT style • Educational demos of instruction tuning
+Boosters: • Use role formatting (system/user/assistant) • Provide few-shot dialogues • Add guardrails via prompts and filters
+Caveats: Training data provenance matters; evaluate for data leakage and bias.`
   },
   {
     slug: "alpaca",
     term: "Alpaca",
-    aliases: [],
-    definition: `A 7B-parameter model fine-tuned by Stanford (Mar 2023) on 52K instruction-following demonstrations generated by OpenAI’s text-davinci-003. Alpaca was an early example of academia using OpenAI to bootstrap an instruction-tuned model from LLaMA. Its release (and replication instructions) kickstarted the hobbyist LLM fine-tuning trend. Alpaca is relatively lightweight; it follows basic prompts and questions decently but struggles with complex instructions due to its size. Still, the “Alpaca formula” (using a strong model to generate training prompts & outputs) became a paradigm for cheaply improving LLM behavior – a prompt engineering success at dataset creation. The name and model are frequently referenced in open-source AI discussions about cheap instruct-tuning.`,
+    aliases: ["stanford alpaca", "alpaca-7b"],
+    definition: `7B instruction-tuned model (Mar 2023) from Stanford CRFM using 52K demonstrations generated by a stronger model (Self-Instruct). Sparked the hobbyist wave of low-cost instruction tuning from base LLaMA checkpoints.`,
     sources: [
       { title: "Stanford CRFM: Alpaca Blog (2023)", url: "https://crfm.stanford.edu/2023/03/13/alpaca.html" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["llama-2","self-instruct"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:instruction-tuning",
+      "phase:inference",
+      "use:lightweight-instruct-model",
+      "level:beginner"
+    ],
+    related: ["self-instruct", "vicuna", "llama-2", "wizardlm"],
+    status: "verified",
+    notes: `Use-cases: • Entry-level assistants • Local/on-device experiments • Educational demos of instruction-tuning
+Boosters: • Keep prompts simple and explicit • Use retrieval for factual tasks • Evaluate carefully on safety and bias
+Caveats: Limited capacity; expect lower reliability on complex reasoning.`
   },
   {
     slug: "stablelm",
     term: "StableLM",
-    aliases: [],
-    definition: `A series of open-source LLMs released by Stability AI (in April 2023) with model sizes ranging up to 7B and 15B. StableLM was trained on a new dataset built from scratch (The Pile and others). While StableLM’s initial versions were less polished than LLaMA or GPT-3, they are fully open under a permissive license. Stability also fine-tuned some StableLM models for chat/instructions. In prompt engineering terms, StableLM responds to basic prompts but may require more guided prompting since it wasn’t as extensively instruction-tuned as Alpaca/Vicuna. It’s noteworthy as part of the movement toward fully open model alternatives and demonstrates the trade-off between openness and out-of-the-box capability (where careful prompts can still extract reasonable results).`,
+    aliases: ["stability ai stablelm", "stablelm-instruct"],
+    definition: `Open models from Stability AI (2023) with permissive licensing in several sizes. Early versions required stronger prompting but provided an open alternative suitable for customization and research.`,
     sources: [
       { title: "Stability AI StableLM Announcement (2023)", url: "https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["llama-2","gpt-3-5-turbo"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "phase:inference",
+      "use:open-permissive-base",
+      "level:beginner"
+    ],
+    related: ["llama-2", "falcon-llm", "mistral-7b"],
+    status: "verified",
+    notes: `Use-cases: • Open research and benchmarks • Domain adaptation experiments • Lightweight chat after fine-tuning
+Boosters: • Add instruction data and guardrails • Use schema constraints for extraction • Combine with retrieval for accuracy
+Caveats: Out-of-box quality trails newer open bases; plan for tuning.`
   },
   {
     slug: "mistral-7b",
     term: "Mistral 7B",
-    aliases: [],
-    definition: `A 7-billion-parameter open model released in Sept 2023 by Mistral AI that set a new state-of-the-art for its size. Mistral 7B was trained on a large diverse corpus and introduced architectural tweaks. The result is a model that, when properly prompt-tuned (via fine-tuning or clever prompting), can sometimes rival larger 13B+ models on certain tasks. For the prompt engineer, Mistral 7B is an attractive small model that still responds well to instruction prompts. Many community fine-tunes quickly adopted Mistral as a base. It highlights that model size isn’t everything – data quality and training matter – meaning that with the right prompt or fine-tuning, a 7B model can punch above its weight class.`,
+    aliases: ["mistral ai 7b", "mistral-instruct 7b"],
+    definition: `High-performing 7B open model (Sept 2023) demonstrating strong efficiency for its size due to data/architecture choices. Popular as a compact base for chat and code after instruction tuning.`,
     sources: [
       { title: "Mistral AI Technical Card (2023)", url: "https://mistral.ai/blog/mistral-7b" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["llama-2","vicuna"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:efficiency",
+      "phase:inference",
+      "use:small-but-strong-base",
+      "level:intermediate"
+    ],
+    related: ["llama-2", "vicuna", "falcon-llm"],
+    status: "verified",
+    notes: `Use-cases: • Edge and cost-sensitive deployments • Chat/code copilots on modest hardware • Fine-tuned domain assistants
+Boosters: • Prefer high-quality instruction sets • Add RL/RLAIF for safety • Quantize carefully to preserve reasoning
+Caveats: Smaller context/reasoning ceiling vs frontier models; design tasks accordingly.`
   },
   {
     slug: "falcon-llm",
     term: "Falcon LLM",
-    aliases: ["falcon-40b","falcon-7b"],
-    definition: `A family of large language models released by the Technology Innovation Institute (UAE) in 2023 that achieved top rankings among open models. Falcon 40B (and the smaller Falcon 7B) were trained on high-quality refined web data. Falcon models are known to be especially good at coding tasks out-of-the-box. They have been widely adopted and further fine-tuned (the Falcon 40B-Instruct is the chat optimized version). In prompt use, Falcon-Instruct follows instructions well and tends to produce coherent, on-topic responses. Its availability under a permissive license (for Falcon 7B, and Falcon 40B under royalty-free license) made it popular for commercial use. Essentially, Falcon demonstrated that non-big-tech groups could train competitive LLMs, giving prompt engineers another powerful base model to work with.`,
+    aliases: ["falcon-40b", "falcon-7b", "tii falcon"],
+    definition: `Open models from TII (UAE) trained on refined web corpora; known for good coding ability and commercial-friendly licensing (variant dependent). Instruct versions provide strong baseline chat behavior.`,
     sources: [
       { title: "TII Falcon LLM Release Notes (2023)", url: "https://huggingface.co/tiiuae" }
     ],
-    categories: ["systems"],
-    tags: ["topic:llm","type:model"],
-    related: ["llama-2","stablelm"],
-    status: "draft",
-    notes: ""
+    categories: ["systems", "models", "open-source"],
+    tags: [
+      "kind:term",
+      "type:model",
+      "topic:open-llm",
+      "topic:coding",
+      "phase:inference",
+      "use:code-friendly-open-model",
+      "level:intermediate"
+    ],
+    related: ["mistral-7b", "llama-2", "stablelm"],
+    status: "verified",
+    notes: `Use-cases: • Coding copilots • General open chat assistants • Commercial deployments with permissive terms
+Boosters: • Provide unit tests/examples for code tasks • Use deterministic decoding for reproducibility • Add retrieval for docs/specs
+Caveats: Evaluate license details per variant; ensure guardrails for production.`
   },
   {
     slug: "toolformer",
     term: "Toolformer",
-    aliases: [],
-    definition: `A proof-of-concept model (introduced by Meta AI in early 2023) that taught itself to use external tools (like a calculator, search engine, etc.) via API calls embedded in its output:contentReference[oaicite:104]{index=104}:contentReference[oaicite:105]{index=105}. Toolformer was trained to decide *when* and *how* to call a tool and incorporate the result into its text generation, all in a single forward pass. For example, it might insert a call \`<calc>(23*7)\` and then continue the sentence with the returned result. This was achieved with a handful of API usage examples and then letting the model practice on unlabeled data. Toolformer showed that even without explicit fine-tuning on tool use via RL, a model can learn to invoke tools via prompting. It inspired later production features like function calling. In essence, it’s an early example of an LLM augmenting itself with tools in a *self-supervised* way:contentReference[oaicite:106]{index=106}.`,
+    aliases: ["self-taught tool use", "toolformer model"],
+    definition: `Research prototype where a model learns when/how to call external tools by inserting API calls during generation (e.g., calculator, search) and training on self-labeled data. Anticipated later production patterns like function calling and tool-augmented reasoning.`,
     sources: [
       { title: "Toolformer: Language Models Can Teach Themselves to Use Tools (Feb 2023)", url: "https://arxiv.org/abs/2302.04761" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:tools","type:research"],
-    related: ["function-calling","automatic-prompt-engineer-ape"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "research", "tool-use"],
+    tags: [
+      "kind:pattern",
+      "type:research",
+      "topic:tools",
+      "topic:reasoning",
+      "phase:orchestration",
+      "use:auto-learned-tool-calls",
+      "level:advanced"
+    ],
+    related: ["function-calling", "react", "plan-and-execute-agent", "tool-augmentation"],
+    status: "verified",
+    notes: `Use-cases: • Prototype agents requiring calculators/search • Training pipelines that seed tool skills • Inspiration for structured tool APIs
+Boosters: • Provide minimal tool examples, then scale self-supervision • Validate arguments/outputs strictly • Log tool success/failure for feedback
+Caveats: Self-labeled data can encode shortcuts; keep human evals in the loop.`
   },
   {
     slug: "tool-augmentation",
     term: "Tool Augmentation",
-    aliases: ["tool-use"],
-    definition: `Broadly, any approach that extends an LLM’s capabilities by integrating external tools or APIs into its prompting loop:contentReference[oaicite:107]{index=107}. Instead of relying only on the model’s internal knowledge, tool-augmented systems prompt the model to decide when to use tools (calculators, web search, databases) and to incorporate the results into its answer:contentReference[oaicite:108]{index=108}. This can be done with special prompt tokens (as in ReAct, Toolformer) or via structured outputs (as in function calling). Tool augmentation is a key method to overcome LLM limitations in arithmetic, up-to-date info, or interacting with external environments.`,
+    aliases: ["tool-use", "tool-integrated prompting", "tool-augmented llm"],
+    definition: `General pattern where an LLM decides to call external tools/APIs to overcome weaknesses (math, retrieval, actions). Tools return structured results the model weaves into its answer, improving accuracy, freshness, and capabilities.`,
     sources: [
       { title: "OpenAI on function calling (Jun 2023)", url: "https://openai.com/blog/function-calling-and-other-api-updates" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:tools","type:concept"],
-    related: ["react","toolformer"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "patterns", "tool-use"],
+    tags: [
+      "kind:pattern",
+      "type:concept",
+      "topic:tools",
+      "topic:retrieval",
+      "phase:orchestration",
+      "use:extend-capabilities",
+      "level:intermediate"
+    ],
+    related: ["function-calling", "react", "plan-and-execute-agent", "corrective-rag-crag"],
+    status: "verified",
+    notes: `Use-cases: • Grounded Q&A with citations • Numerical/logic tasks via calculators/solvers • Workflow automation (database, email, tickets)
+Boosters: • Define clear schemas and safety checks • Route to the right tool with policies • Cache tool results and handle failures gracefully
+Caveats: Tool misuse can amplify errors; add argument validation, rate limits, and auditing.`
   },
   {
     slug: "ai-text-detection",
     term: "AI Text Detection",
-    aliases: ["ai-generated text detection"],
-    definition: `Techniques and tools for determining whether a given text was written by a human or generated by an AI. AI text detection methods include classifier models trained on human vs AI text, as well as statistical watermarks inserted into AI outputs:contentReference[oaicite:109]{index=109}. In 2023, several AI detectors (like GPTZero) emerged, but they proved unreliable on large models and often misflag human text. OpenAI’s own detector was discontinued due to poor accuracy. The most promising approach remains watermarking: subtly biasing an LLM’s word choices so that an algorithm can later spot the signature. For prompt engineers, understanding detection is important if trying to avoid plagiarism or test whether a model’s output can be trusted as original. However, as of 2024, detection is not fully solved.`,
+    aliases: ["ai-generated text detection", "llm output detection", "ai authorship detection"],
+    definition: `Methods to estimate whether text was written by a human or an AI, including classifiers and embedded signals (e.g., watermarks). Accuracy is variable; paraphrasing and translation can defeat naïve detectors. Best used as probabilistic signals within larger provenance systems.`,
     sources: [
-      { title: "BuiltIn: The Eliza Effect (2023) – describes anthropomorphism and detection", url: "https://builtin.com/hardware/eliza-effect-anthropomorphizing-ai" }
+      { title: "BuiltIn: The Eliza Effect (context)", url: "https://builtin.com/hardware/eliza-effect-anthropomorphizing-ai" }
     ],
-    categories: ["safety"],
-    tags: ["topic:misuse","type:tool"],
-    related: ["watermarking","eliza-effect"],
-    status: "draft",
-    notes: ""
+    categories: ["safety", "provenance", "governance"],
+    tags: [
+      "kind:technique",
+      "type:tool",
+      "topic:misuse",
+      "topic:provenance",
+      "phase:post-processing",
+      "use:probabilistic-authorship-signal",
+      "level:intermediate"
+    ],
+    related: ["watermarking", "text-watermarking-synthid-text", "content-authentication", "llm-guardrails"],
+    status: "verified",
+    notes: `Use-cases: • Classroom policy workflows • Platform triage and review queues • Authorship audits in publishing
+Boosters: • Combine multiple signals (metadata, C2PA, watermark, stylometry) • Publish false-positive/negative rates • Use thresholds and human review for decisions
+Caveats: Do not treat detection as proof; avoid punitive use without corroboration.`
   },
   {
     slug: "watermarking",
     term: "Watermarking",
-    aliases: [],
-    definition: `In the context of LLMs, the embedding of a hidden pattern into generated text to signal it was machine-produced. For example, a watermarking algorithm might bias the model to prefer certain synonyms or sentence structures such that, statistically, the distribution of word n-grams has a secret signature. A detector can later pick up that signature with high probability, while a human reader wouldn’t notice a difference in style:contentReference[oaicite:110]{index=110}. Watermarking is seen as a way to enable AI text detection without requiring external classifiers. However, it can be defeated by paraphrasing and isn’t yet widely implemented in public models. It remains a proposed solution to help identify AI-generated content for misuse prevention (like academic cheating or disinformation).`,
+    aliases: ["text watermarking", "ai output watermarking", "llm watermarking"],
+    definition: `Embedding detectable statistical patterns into generated text (via sampling bias) so later checks can estimate AI authorship. Helps with provenance but is sensitive to editing/paraphrase and must balance detectability, robustness, and false alarms.`,
     sources: [
-      { title: "Anthropomorphism in AI – mentions Eliza effect & detection (AI and Ethics 2023)", url: "https://link.springer.com/article/10.1007/s43681-023-00259-0" }
+      { title: "AI & Ethics article (context)", url: "https://link.springer.com/article/10.1007/s43681-023-00259-0" }
     ],
-    categories: ["safety"],
-    tags: ["topic:misuse","type:technique"],
-    related: ["ai-text-detection","zero-width-prompt-injection"],
-    status: "draft",
-    notes: ""
+    categories: ["safety", "provenance", "techniques"],
+    tags: [
+      "kind:technique",
+      "type:technique",
+      "topic:provenance",
+      "topic:safety",
+      "phase:inference",
+      "use:mark-ai-generated-text",
+      "level:intermediate"
+    ],
+    related: ["ai-text-detection", "text-watermarking-synthid-text", "content-authentication", "llm-guardrails"],
+    status: "verified",
+    notes: `Use-cases: • Platform-scale provenance checking • Classroom and exam integrity • Media authenticity pipelines
+Boosters: • Pair with cryptographic signing/metadata (C2PA) • Publicly evaluate robustness and FP/FN rates • Educate stakeholders on limits
+Caveats: Not tamper-proof; paraphrasing/translation degrade signals. Treat outputs as probabilistic evidence.`
   },
   {
     slug: "chainforge",
     term: "ChainForge",
-    aliases: [],
-    definition: `A research tool (Harvard, 2023) for prompt engineers to systematically test and visualize prompts across different LLMs and settings. ChainForge provides a GUI to enter a base prompt and automatically generate variations or chains of prompts, then call the models and display all the outputs side by side. It supports A/B testing of prompts, as well as applying transformations (like paraphrasing or adding context) to prompts in bulk. The goal is to treat prompt design scientifically – one can see which phrasing yields the preferred result under controlled conditions. It’s useful for prompt debugging and benchmarking model behavior. ChainForge’s development highlights the emergence of dedicated prompt engineering IDEs or studios to streamline the prompt iteration process.`,
+    aliases: ["chain forge", "prompt testing workbench"],
+    definition: `A research/engineering workbench (Harvard, 2023) for systematically testing prompts across models and parameters. Provides GUI-driven A/B testing, prompt transformations, and side-by-side outputs to study sensitivity and robustness.`,
     sources: [
       { title: "Liu et al., CHI 2023: ChainForge Paper", url: "https://arxiv.org/abs/2212.08794" }
     ],
-    categories: ["tools"],
-    tags: ["topic:analysis","type:software"],
-    related: ["guidance-library","prompt-perfect"],
-    status: "draft",
-    notes: ""
+    categories: ["tools", "evaluation", "prompt engineering"],
+    tags: [
+      "kind:framework",
+      "type:software",
+      "topic:evaluation",
+      "topic:prompting",
+      "phase:evaluation",
+      "use:prompt-benchmarking",
+      "level:intermediate"
+    ],
+    related: ["guidance-library", "promptperfect", "mixture-of-formats-mof", "prompt-brittleness"],
+    status: "verified",
+    notes: `Use-cases: • Compare prompt variants at scale • Sensitivity testing to wording/format • Cross-model behavior studies
+Boosters: • Control datasets and seeds • Track metrics (accuracy, style, refusals) • Use templating to generate systematic variants
+Caveats: Bench overfitting is common; rotate data and include out-of-distribution samples.`
   },
   {
     slug: "promptperfect",
     term: "PromptPerfect",
-    aliases: [],
-    definition: `A commercial prompt optimization service (launched 2023) that takes an input prompt and returns a refined version aimed at getting better results from LLMs. PromptPerfect’s algorithms perform operations like rephrasing, adding context, adjusting specificity, and removing ambiguity – essentially an automated prompt engineering assistant. For example, given a rough prompt, it might add explicit instructions or break it into steps if it knows the target model prefers that. It supports multiple languages and models. While tools like this can save time, they also demonstrate that prompt engineering has heuristics that can be learned – and even AI can attempt to optimize prompts for other AI. Some users reported mixed success: it often improves clarity, but not always model accuracy. Nonetheless, PromptPerfect represents the trend of tooling that encapsulates community best practices for prompts and applies them automatically.`,
+    aliases: ["prompt perfect", "prompt optimization service"],
+    definition: `Commercial service (2023) that rewrites prompts to increase clarity, specificity, and model-compatibility. Automates common heuristics (adding constraints, examples, steps) and can localize to target models and languages.`,
     sources: [
       { title: "PromptPerfect website and documentation", url: "https://promptperfect.jina.ai/" }
     ],
-    categories: ["tools"],
-    tags: ["topic:automation","type:service"],
-    related: ["automatic-prompt-engineer-ape","greedy-prompt-engineering-strategy-greedy-pes"],
-    status: "draft",
-    notes: ""
+    categories: ["tools", "automation", "prompt engineering"],
+    tags: [
+      "kind:framework",
+      "type:service",
+      "topic:optimization",
+      "topic:prompting",
+      "phase:design",
+      "use:auto-prompt-rewrite",
+      "level:beginner"
+    ],
+    related: ["automatic-prompt-engineer-ape", "greedy-prompt-engineering-strategy-greedy-pes", "chainforge"],
+    status: "verified",
+    notes: `Use-cases: • Rapidly improving rough prompts • Non-experts seeking better outputs • Multilingual prompt adaptation
+Boosters: • Provide task specs and target model • Review diffs and keep a style guide • Validate gains on holdout tasks
+Caveats: Automated rewrites can overfit vendor quirks; human review improves reliability.`
   },
   {
     slug: "voyager-agent",
     term: "Voyager (Autonomous Agent)",
-    aliases: [],
-    definition: `An experimental GPT-4-powered agent introduced in 2023 that learned to play Minecraft autonomously, making it one of the first lifelong learning LLM agents. Voyager used GPT-4 prompts to generate and execute Minecraft code, collected feedback from the game environment, and iteratively improved its skills without human intervention. It notably stored discovered skills in a prompt library and reused them (a form of self-memory). The project demonstrated that an LLM can explore and adapt in an open-ended world, writing its own prompts for new goals. It’s an early showcase of an autonomous AI “player” and is often referenced as a step toward agents that can continuously learn. In prompt engineering, Voyager highlights concepts like skill libraries (storing prompts/results for later) and environment feedback loops as extensions beyond static prompting.`,
+    aliases: ["minecraft voyager", "open-ended voyager"],
+    definition: `GPT-4-powered agent (2023) that learned in Minecraft via iterative skill discovery, code generation, and environment feedback. Maintained a skill library and reused learned behaviors—an early example of open-ended, tool-using LLM agents with self-memory.`,
     sources: [
       { title: "Voyager: An Open-Ended Embodied Agent (ArXiv 2023)", url: "https://arxiv.org/abs/2305.16291" }
     ],
-    categories: ["architectures"],
-    tags: ["topic:agents","type:research"],
-    related: ["auto-gpt","react"],
-    status: "draft",
-    notes: ""
+    categories: ["architectures", "agents", "research"],
+    tags: [
+      "kind:framework",
+      "type:research",
+      "topic:agents",
+      "topic:learning",
+      "phase:orchestration",
+      "use:open-ended-skill-learning",
+      "level:advanced"
+    ],
+    related: ["auto-gpt", "react", "plan-and-execute-agent", "tool-augmentation"],
+    status: "verified",
+    notes: `Use-cases: • Long-horizon task exploration • Skill library construction • Environment-in-the-loop learning demos
+Boosters: • Store reusable skills with metadata • Gate risky actions via simulators/tests • Periodically distill skills into cleaner abstractions
+Caveats: Exploration can be costly/unsafe without sandboxes; require monitoring and rollback.`
   },
   {
     slug: "promptomatix",
     term: "Promptomatix",
-    aliases: [],
-    definition: `A proposed automated prompt-generation framework (2024) that builds on prompt evaluation tools (like PromptBench or PromptFoo) by adding optimization loops:contentReference[oaicite:111]{index=111}. While prior tools could evaluate prompts, Promptomatix also suggests new candidate prompts (using techniques like genetic algorithms or LLM-based rewriters) and tests them, iteratively improving a prompt for a given task. The system can integrate human-in-the-loop feedback or run fully autonomously. Promptomatix is emblematic of the next generation of prompt engineering tools that not only assist in evaluation but actively generate better prompts – effectively partial automation of a prompt engineer’s job. It’s often discussed alongside other automated prompting efforts like AutoPrompt or APE, highlighting how prompt engineering is becoming a target for optimization algorithms.`,
+    aliases: ["automated prompt optimizer", "prompt generation framework"],
+    definition: `Proposed framework (2024) that couples evaluation harnesses with automated prompt search (LLM rewriters, genetic edits, scoring loops). Aims to iteratively improve prompts toward multi-metric objectives with optional human oversight.`,
     sources: [
       { title: "Li et al., Promptomatix framework (ArXiv 2024)", url: "https://arxiv.org/abs/2306.07311" }
     ],
-    categories: ["tools"],
-    tags: ["topic:automation","type:research"],
-    related: ["greedy-prompt-engineering-strategy-greedy-pes","promptperfect"],
-    status: "draft",
-    notes: ""
+    categories: ["tools", "automation", "evaluation"],
+    tags: [
+      "kind:framework",
+      "type:research",
+      "topic:optimization",
+      "topic:prompting",
+      "phase:evaluation",
+      "use:auto-prompt-search",
+      "level:advanced"
+    ],
+    related: ["greedy-prompt-engineering-strategy-greedy-pes", "automatic-prompt-engineer-ape", "promptperfect"],
+    status: "verified",
+    notes: `Use-cases: • Multi-objective prompt tuning (accuracy/safety/style) • Large catalog optimization across intents • Rapid exploration of prompt spaces
+Boosters: • Define clear metrics/weights • Maintain train/validation/test splits • Keep human review loops for sanity checks
+Caveats: Search can overfit to benchmarks; rotate datasets and test generalization.`
   },
   {
     slug: "conversation-routines-cr",
     term: "Conversation Routines (CR)",
-    aliases: [],
-    definition: `A structured prompt engineering framework for task-oriented dialogues (proposed 2024):contentReference[oaicite:112]{index=112}. Conversation Routines break down typical dialog flows (like those in customer service or booking systems) into reusable prompt templates for each part of the interaction (greeting, collecting info, confirming, closing, etc.). By defining these routines, developers can systematically prompt an LLM through a complex transaction. CR was introduced to make LLM-driven dialog systems more modular and reliable, by providing a scaffold of mini-prompts for each “routine” instead of one giant prompt. It reflects how prompt patterns can be standardized for particular domains (like requirements elicitation or support chats) so that the conversation stays on track.`,
+    aliases: ["dialog routines", "routine-based prompting", "task-oriented dialog scaffolds"],
+    definition: `Framework for task-oriented dialogue that decomposes flows (greeting, info collection, verification, confirmation, closing) into reusable prompt templates. Encourages modularity, reliability, and analytics across conversation stages instead of one mega-prompt.`,
     sources: [
       { title: "Prompt Engineering for Dialog Systems (ArXiv 2024)", url: "https://arxiv.org/abs/2308.10826" }
     ],
-    categories: ["prompting strategies"],
-    tags: ["topic:dialog","type:framework"],
-    related: ["role-playing-prompting","prompt-templates"],
-    status: "draft",
-    notes: ""
+    categories: ["prompting strategies", "frameworks", "conversational design"],
+    tags: [
+      "kind:framework",
+      "type:framework",
+      "topic:dialog",
+      "topic:prompting",
+      "phase:orchestration",
+      "use:modular-task-dialog",
+      "level:intermediate"
+    ],
+    related: ["role-playing-prompting", "system-prompt", "prompt-templates", "plan-and-execute-agent"],
+    status: "verified",
+    notes: `Use-cases: • Customer support and booking flows • Intake forms and eligibility checks • Sales discovery calls with compliance
+Boosters: • Define slots, validations, and fallbacks per routine • Add success criteria and escalation rules • Log routine outcomes for continuous improvement
+Caveats: Over-templating can feel robotic; allow free-form clarifications and summaries between routines.`
   }
 );
 
@@ -7825,30 +9719,27 @@ GLOSSARY.push(
       "2-Minute Rule (David Allen)",
       "2-Minute Rule",
       "MR",
-      "2-minute rule"
-  ],
-    definition: `If it takes ≤2 minutes, do it now. Otherwise, define a 2-minute starter.`,
+      "2-minute rule",
+      "two minute rule",
+      "do it now rule"
+    ],
+    definition: `A friction-cutting technique: if a task will take ~2 minutes or less, do it immediately to avoid tracking overhead. If it’s longer, define a tiny “2-minute starter” (the smallest physical first step) and schedule it. This keeps momentum high, shrinks procrastination, and prevents small tasks from clogging your system.`,
     sources: [],
-    categories: [
-      "productivity",
-      "behavior"
-  ],
+    categories: ["productivity", "behavior", "time-management"],
     tags: [
-      "type:pattern",
-      "topic:two-minute",
-      "use:starter",
-      "level:beginner",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:task — what am i avoiding?",
-      "field:can i do a 2-minute version? (yes/no)",
-      "field:if no → 2-minute starter step"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: reduce friction by doing a tiny version now • convert avoidance into a first motion
-  Boosters: If “No,” schedule the starter step on your calendar. Write the starter so it’s purely mechanical.`
+      "kind:technique",
+      "type:method",
+      "topic:productivity",
+      "topic:friction-reduction",
+      "phase:apply",
+      "use:quick-win",
+      "level:beginner"
+    ],
+    related: ["eisenhower-priority-matrix", "constraint-flip", "comparative-analysis", "facts-expertise-primer"],
+    status: "verified",
+    notes: `Use-cases: • Inbox triage (reply, archive, forward) • Micro-chores (file, rename, move) • Calendar hygiene (accept/decline, add location) • Creating “starter” actions for bigger work (open doc, outline 3 bullets)
+Boosters: • Timebox strictly; if it won’t fit, write a 2-minute starter and schedule • Batch similar 2-minute items between larger blocks • Keep a visible “2-minute lane” list for spare moments
+Caveats: Constant context switching can hurt deep work—protect focus blocks and run 2-minute bursts at boundaries.`
   },
   {
     slug: "abcde-cbt-framework",
@@ -7856,33 +9747,27 @@ GLOSSARY.push(
     aliases: [
       "ABCDE — Activating event · Belief · Consequence · Dispute · Effect",
       "ABCDE",
-      "abcde"
-  ],
-    definition: `A cognitive restructuring tool to challenge a belief by examining an event, the belief, its consequence, disputing the belief, and envisioning a positive effect.`,
+      "abcde",
+      "ABCDE model",
+      "CBT ABCDE"
+    ],
+    definition: `A cognitive restructuring framework from CBT: identify the Activating event, surface the Belief about it, note the Consequence (feelings/behavior), Dispute the belief with evidence and alternatives, and choose a new, constructive Effect. It externalizes negative self-talk and replaces it with grounded interpretations.`,
     sources: [],
-    categories: [
-      "psychology",
-      "self-reflection"
-  ],
+    categories: ["psychology", "self-reflection", "mental-models"],
     tags: [
-      "type:framework",
+      "kind:framework",
+      "type:method",
       "topic:cbt",
       "topic:reframing",
-      "level:intermediate",
-      "use:cognitive-bias",
-      "use:personal-coaching",
+      "phase:analyze",
       "use:thought-challenge",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:activating event",
-      "field:belief or thought",
-      "field:consequence (feelings/behavior)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: reframe negative thoughts or assumptions • self-coaching through emotional situations • cognitive bias or stress analysis
-  Boosters: Keep a calm, supportive tone when disputing the belief. Cite evidence or alternative viewpoints that challenge the negative belief.`
+      "level:intermediate"
+    ],
+    related: ["cognitive-debiasing", "facione-core-skills", "calibrated-confidence-prompting-ccp", "chain-of-explanation"],
+    status: "verified",
+    notes: `Use-cases: • Reframing harsh self-judgments • Preparing for difficult conversations • Managing anxiety about ambiguous events • Journaling for perspective-taking
+Boosters: • Write beliefs verbatim, then rate belief strength (0–100%) • Gather for/against evidence from credible sources • Draft a replacement belief that is specific, testable, and compassionate
+Caveats: Not a substitute for clinical care; escalate to professionals for acute distress or risk.`
   },
   {
     slug: "addie-instructional-design",
@@ -7890,33 +9775,27 @@ GLOSSARY.push(
     aliases: [
       "ADDIE — Analyze · Design · Develop · Implement · Evaluate",
       "ADDIE",
-      "addie"
-  ],
-    definition: `An instructional design model outlining five phases for creating effective learning experiences.`,
+      "addie",
+      "ADDIE model",
+      "ADDIE framework"
+    ],
+    definition: `A staple instructional design framework that moves from Analyze (learners, goals, constraints) to Design (objectives, assessments, modalities), Develop (materials, assets), Implement (delivery), and Evaluate (formative + summative). It ensures training ties directly to measurable outcomes.`,
     sources: [],
-    categories: [
-      "education",
-      "planning"
-  ],
+    categories: ["education", "planning", "instructional-design"],
     tags: [
+      "kind:framework",
       "type:framework",
       "topic:instructional-design",
+      "topic:curriculum",
       "phase:plan",
-      "level:beginner",
       "use:course-development",
-      "use:lesson-planning",
-      "use:training-strategy",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:training topic",
-      "field:learner audience",
-      "field:learning objectives (optional)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: plan and structure an educational course or program • develop training materials systematically • review and improve learning content
-  Boosters: In Analyze, identify learner needs and constraints; in Evaluate, include metrics or feedback methods. Ensure each development step ties back to the learning objectives.`
+      "level:beginner"
+    ],
+    related: ["facts-expertise-primer", "few-shot-examples", "facione-core-skills", "comparative-analysis"],
+    status: "verified",
+    notes: `Use-cases: • Building courses and workshops • Converting SME knowledge into lessons • Designing onboarding/training paths • Continuous improvement of existing curricula
+Boosters: • Write SMART objectives linked to assessments • Map each activity to an objective (“objective coverage matrix”) • Pilot with a small cohort; collect rubrics + feedback
+Caveats: Beware waterfall rigidity—iterate between phases as you learn.`
   },
   {
     slug: "before-after-bridge-formula",
@@ -7925,33 +9804,27 @@ GLOSSARY.push(
       "Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)",
       "Before-After-Bridge (BAB)",
       "BABBAB",
-      "before-after-bridge (bab)"
-  ],
-    definition: `A persuasion formula that contrasts the audience’s world before and after a solution, then positions the solution as the bridge to get from before to after.`,
+      "before-after-bridge (bab)",
+      "BAB copy formula",
+      "before/after/bridge"
+    ],
+    definition: `A persuasive structure: paint the unsatisfying “Before,” envision the desirable “After,” and present your offer as the “Bridge” that credibly connects them. It focuses attention on desired outcomes, not just features.`,
     sources: [],
-    categories: [
-      "messaging frameworks",
-      "marketing"
-  ],
+    categories: ["messaging frameworks", "marketing", "persuasion"],
     tags: [
+      "kind:framework",
       "type:framework",
       "topic:copywriting",
+      "topic:positioning",
       "phase:compose",
-      "level:beginner",
       "use:value-proposition",
-      "use:ad-copy",
-      "use:pitch",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:before — current pain point",
-      "field:after — desired outcome",
-      "field:bridge — solution/offering"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: highlight a product’s impact by contrasting life before vs. after its use • craft persuasive marketing copy or landing page sections • explain change by showing the transformation a solution provides
-  Boosters: Make the "Before" scenario relatable and painful; make the "After" state clearly desirable. Present the solution (Bridge) as the unique link that makes the positive after-state possible.`
+      "level:beginner"
+    ],
+    related: ["feature-advantage-benefit", "comparative-analysis", "facts-expertise-primer"],
+    status: "verified",
+    notes: `Use-cases: • Landing page hero sections • Sales emails and pitches • Internal change proposals
+Boosters: • Make “Before” visceral with 1–2 sharp pains • Quantify “After” (time saved, risk reduced) • Ensure the Bridge names proof (demo, case study, mechanism)
+Caveats: Avoid overpromising—bridge claims must be testable and specific.`
   },
   {
     slug: "bias-impact-assessment",
@@ -7960,38 +9833,26 @@ GLOSSARY.push(
       "Bias Impact Assessment (AI/tech)",
       "Bias Impact Assessment",
       "BIA",
-      "bias impact assessment"
-  ],
-    definition: `Pre-launch assessment modeled on impact reports to surface stakeholders, risks, mitigations, and monitoring.`,
+      "bias impact assessment",
+      "algorithmic impact assessment (bias focus)"
+    ],
+    definition: `A pre-launch governance framework that maps stakeholders, surfaces bias risks, documents mitigations, and sets a monitoring plan. Similar to impact assessments, it creates traceability for fairness choices and trade-offs.`,
     sources: [],
-    categories: [
-      "ai",
-      "ethics",
-      "risk"
-  ],
+    categories: ["ai", "ethics", "risk", "governance"],
     tags: [
-      "type:pattern",
-      "topic:impact-assessment",
+      "kind:framework",
+      "type:method",
+      "topic:bias",
       "topic:transparency",
-      "level:advanced",
-      "use:pre-launch",
-      "use:model-review",
-      "use:policy",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:system / algorithm / product name",
-      "field:intended purpose",
-      "field:stakeholders affected (one per line)",
-      "field:bias risks identified",
-      "field:mitigation steps",
-      "field:transparency / explainability measures",
-      "field:follow-up monitoring plan"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: assess bias risks for systems before launch • define mitigations and transparency steps • plan follow-up monitoring
-  Boosters: Include an explainability note (e.g., model cards/datasheets). Propose a drift/impact monitoring threshold and response path.`
+      "phase:plan",
+      "use:pre-launch-review",
+      "level:advanced"
+    ],
+    related: ["bias-interrupters", "facione-core-skills", "chain-of-explanation", "facts-expertise-primer"],
+    status: "verified",
+    notes: `Use-cases: • Reviewing ML/LLM features before release • Procurement/vendor due-diligence • Regulatory documentation and audits
+Boosters: • Add model/data cards; list sensitive attributes and proxies • Define fairness metrics and alert thresholds • Create a rollback/appeal path for harmed users
+Caveats: Paperwork without enforcement is theater—assign owners and dates.`
   },
   {
     slug: "bias-interrupters",
@@ -8000,36 +9861,26 @@ GLOSSARY.push(
       "Bias Interrupters (process checks)",
       "Bias Interrupters",
       "BI",
-      "bias interrupters"
-  ],
-    definition: `System-level checks to interrupt bias in hiring, evaluation, and promotion using measurable tweaks.`,
+      "bias interrupters",
+      "process-level bias checks"
+    ],
+    definition: `Operational tweaks that detect and interrupt bias in hiring, evaluation, promotion, and everyday processes. They’re small, testable changes (structured rubrics, blind reviews, diverse panels) measured with clear metrics over time.`,
     sources: [],
-    categories: [
-      "people",
-      "ethics",
-      "operations"
-  ],
+    categories: ["people", "ethics", "operations", "hr"],
     tags: [
-      "type:pattern",
-      "topic:bias-interrupters",
-      "topic:rubrics",
-      "level:intermediate",
-      "use:hiring",
-      "use:evaluation",
-      "use:promotion",
-      "type:template",
       "kind:pattern",
-      "has:boosters",
-      "field:process step",
-      "field:bias risk(s)",
-      "field:interrupter strategy",
-      "field:metric to track",
-      "field:iteration plan"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: add measurable process tweaks to interrupt bias • operationalize fair evaluation • track change over time
-  Boosters: Force a named owner per metric. Define success and a review cadence (e.g., quarterly).`
+      "type:method",
+      "topic:fairness",
+      "topic:rubrics",
+      "phase:apply",
+      "use:hiring-evaluation-promotion",
+      "level:intermediate"
+    ],
+    related: ["bias-impact-assessment", "comparative-analysis", "facione-core-skills"],
+    status: "verified",
+    notes: `Use-cases: • Resume and portfolio screening • Performance calibration meetings • Promotions and compensation reviews
+Boosters: • Name a metric owner and review cadence • Use structured criteria before seeing candidates • Capture exceptions and require written rationale
+Caveats: Metrics can be gamed; triangulate with qualitative audits.`
   },
   {
     slug: "cognitive-debiasing",
@@ -8037,37 +9888,27 @@ GLOSSARY.push(
     aliases: [
       "Cognitive Debiasing",
       "CD",
-      "cognitive debiasing"
-  ],
-    definition: `A light-weight scaffold combining “consider the opposite,” disconfirming evidence, and pre-mortem moves.`,
+      "cognitive debiasing",
+      "consider-the-opposite",
+      "premortem check"
+    ],
+    definition: `A light-weight reasoning scaffold combining “consider the opposite,” a hunt for disconfirming evidence, and a brief pre-mortem. It forces perspective shifts and reduces confidence illusions before decisions.`,
     sources: [],
-    categories: [
-      "ethics",
-      "bias",
-      "critical thinking"
-  ],
+    categories: ["ethics", "bias", "critical thinking", "decision-making"],
     tags: [
-      "type:pattern",
+      "kind:technique",
+      "type:method",
       "topic:debiasing",
-      "topic:consider-the-opposite",
-      "level:beginner",
+      "topic:metacognition",
+      "phase:review",
       "use:analysis",
-      "use:strategy",
-      "use:review",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:bias in question",
-      "field:my initial assumption",
-      "field:opposite scenario — what if the opposite is true?",
-      "field:disconfirming evidence (≥2, one per line)",
-      "field:pre-mortem (optional) — if this failed, why?",
-      "field:next step decision — what will i adjust?"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: document a current assumption and actively seek disconfirming evidence • run a quick pre-mortem on a plan • decide next adjustment with rationale
-  Boosters: Cite at least 2 credible, independent sources that challenge your assumption. Add a one-line pre-mortem: “If this failed in 6 weeks, it would be because…”`
+      "level:beginner"
+    ],
+    related: ["facione-core-skills", "abcde-cbt-framework", "calibrated-confidence-prompting-ccp", "comparative-analysis"],
+    status: "verified",
+    notes: `Use-cases: • Pre-read critiques for strategy docs • Feature launch go/no-go reviews • Personal assumptions in research/analysis
+Boosters: • Write your initial hypothesis, then draft its plausible opposite • List ≥2 credible disconfirming sources • One-line pre-mortem: “If this fails in 6 weeks, it’s because…”
+Caveats: Don’t straw-man the “opposite”; make it as strong as your own case.`
   },
   {
     slug: "comparative-analysis",
@@ -8076,34 +9917,26 @@ GLOSSARY.push(
       "Comparative Analysis — rank • pros/cons • matrix",
       "Comparative Analysis",
       "CA",
-      "comparative analysis"
-  ],
-    definition: `Compare multiple options using a selected comparison style (ranking, pros/cons, table, weighted matrix, etc.).`,
+      "comparative analysis",
+      "weighted decision matrix"
+    ],
+    definition: `A decision framework for comparing options using a chosen style: ranked list, pros/cons, side-by-side table, or weighted matrix. It makes trade-offs explicit and produces a defendable recommendation.`,
     sources: [],
-    categories: [
-      "analysis frameworks",
-      "decision support"
-  ],
+    categories: ["analysis frameworks", "decision support", "product strategy"],
     tags: [
-      "type:framework",
-      "topic:comparison",
-      "topic:evaluation",
-      "phase:apply",
-      "level:intermediate",
-      "type:template",
       "kind:framework",
-      "has:boosters",
-      "field:topic / decision context",
-      "field:comparison style",
-      "field:options to compare (one per line)",
-      "field:criteria (one per line, optional weights)",
-      "field:rating scale max (only for rating scale)",
-      "field:output rules / format preferences (optional)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: choose between options • competitive analysis • tool selection • feature trade-offs
-  Boosters: End with a concise recommendation and next steps. Surface key trade-offs in one short line per option. If criteria are provided with weights, show the score math simply (no long reasoning).`
+      "type:framework",
+      "topic:evaluation",
+      "topic:comparison",
+      "phase:analyze",
+      "use:choose-between-options",
+      "level:intermediate"
+    ],
+    related: ["feature-advantage-benefit", "before-after-bridge-formula", "eisenhower-priority-matrix", "bias-interrupters"],
+    status: "verified",
+    notes: `Use-cases: • Vendor or tool selection • Feature prioritization • Go-to-market channel choice • Policy alternatives
+Boosters: • Define criteria up front; add weights only if stakeholders agree • Show the math simply; avoid hidden scoring • End with a clear pick, risks, and next steps
+Caveats: Weights can encode bias—share assumptions and test sensitivity.`
   },
   {
     slug: "constraint-flip",
@@ -8112,30 +9945,26 @@ GLOSSARY.push(
       "Constraint Flip (play with edges)",
       "Constraint Flip",
       "CF",
-      "constraint flip"
-  ],
-    definition: `Treat a constraint as a lever: exaggerate it to find new ideas; remove it to find alternatives.`,
+      "constraint flip",
+      "constraint inversion"
+    ],
+    definition: `An ideation technique that treats constraints as creative levers: exaggerate a constraint to spark novel approaches, then remove it entirely to find alternative solutions. Flipping boundaries reveals hidden possibilities.`,
     sources: [],
-    categories: [
-      "creativity",
-      "strategy"
-  ],
+    categories: ["creativity", "strategy", "innovation"],
     tags: [
-      "type:pattern",
+      "kind:technique",
+      "type:method",
       "topic:constraints",
-      "use:ideation",
-      "level:beginner",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:what’s limiting me right now?",
-      "field:if i exaggerated that constraint, what new idea emerges?",
-      "field:if i removed it entirely, what could i try?"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: turn constraints into generators of ideas • explore exaggerated and removed constraint states
-  Boosters: Write at least 3 ideas in each direction. Pick one idea to prototype this week.`
+      "topic:ideation",
+      "phase:explore",
+      "use:idea-generation",
+      "level:beginner"
+    ],
+    related: ["two-minute-rule", "comparative-analysis", "feynman-technique"],
+    status: "verified",
+    notes: `Use-cases: • Designing MVPs under extreme limits • Cost/latency/UX trade-off exploration • Breaking stale patterns in product or process
+Boosters: • Write ≥3 ideas for “exaggerate” and ≥3 for “remove” • Pick one to prototype in 1 week • Capture assumptions you broke and what stayed resilient
+Caveats: Wild ideas still need feasibility checks—bring them back to constraints.`
   },
   {
     slug: "eisenhower-priority-matrix",
@@ -8144,32 +9973,26 @@ GLOSSARY.push(
       "Eisenhower Matrix — Urgent/Important Prioritization",
       "Eisenhower Matrix",
       "EM",
-      "eisenhower matrix"
-  ],
-    definition: `A time-management framework that sorts tasks into four categories: Do (urgent & important), Schedule (important but not urgent), Delegate (urgent but not important), and Eliminate (neither).`,
+      "eisenhower matrix",
+      "urgent/important matrix"
+    ],
+    definition: `A prioritization framework sorting tasks into four quadrants: Do (urgent+important), Schedule (important, not urgent), Delegate (urgent, not important), and Eliminate (neither). It clarifies where to invest attention right now.`,
     sources: [],
-    categories: [
-      "productivity",
-      "prioritization"
-  ],
+    categories: ["productivity", "prioritization", "time-management"],
     tags: [
+      "kind:framework",
       "type:framework",
+      "topic:prioritization",
       "topic:time-management",
       "phase:plan",
-      "level:beginner",
       "use:task-prioritization",
-      "use:time-management",
-      "use:workflow",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:tasks (one per line)",
-      "field:context (optional)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: categorize tasks by urgency and importance • decide what to do now, schedule for later, delegate, or drop • improve personal productivity or team task management
-  Boosters: Include a brief justification for why each task falls into its category. If multiple tasks land in one category, rank them or suggest which to tackle first.`
+      "level:beginner"
+    ],
+    related: ["two-minute-rule", "comparative-analysis", "constraint-flip"],
+    status: "verified",
+    notes: `Use-cases: • Weekly planning and daily triage • Team standup backlogs • Personal task reset after overwhelm
+Boosters: • Limit “Do” to 1–3 items • Move quadrant decisions to calendar or owner immediately • Revisit weekly to prevent urgency creep
+Caveats: “Urgent” often masquerades as important—challenge the label.`
   },
   {
     slug: "few-shot-examples",
@@ -8177,35 +10000,27 @@ GLOSSARY.push(
     aliases: [
       "Examples / Few-Shot Prompting",
       "EFSP",
-      "examples / few-shot prompting"
-  ],
-    definition: `Guide the model by supplying one or more example outputs (“shots”) to anchor format and tone.`,
+      "examples / few-shot prompting",
+      "few-shot prompting",
+      "shot-based prompting"
+    ],
+    definition: `A prompting technique that supplies one or more concise examples (“shots”) to anchor the model’s format, tone, and boundaries. Good shots act like templates the model imitates, improving consistency with minimal rules.`,
     sources: [],
-    categories: [
-      "prompt development techniques",
-      "prompt literacy"
-  ],
+    categories: ["prompt development techniques", "prompt literacy", "llm"],
     tags: [
-      "type:pattern",
+      "kind:technique",
+      "type:prompting",
       "topic:examples",
       "topic:few-shot",
-      "phase:apply",
-      "level:beginner",
-      "use:format-guidance",
-      "use:style-transfer",
+      "phase:setup",
       "use:output-shaping",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:main brief / goal",
-      "field:examples / shots (one per line)",
-      "field:do's (must do)",
-      "field:don'ts / constraints"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: show ideal output format with 1+ shots • demonstrate style/voice to imitate • constrain outputs to examples
-  Boosters: Begin with a short description of the desired format before listing examples. Number the examples and refer back to them explicitly. Prefer short, high-signal examples over long rambles.`
+      "level:beginner"
+    ],
+    related: ["facts-expertise-primer", "feynman-technique", "feature-advantage-benefit", "before-after-bridge-formula"],
+    status: "verified",
+    notes: `Use-cases: • Enforcing output schemas • Style transfer (tone/voice) • Teaching do/don’t boundaries • Rapid prototyping of formats
+Boosters: • Keep examples short and high-signal • Number shots and reference them in instructions • Vary content, not structure, to avoid overfitting
+Caveats: Too many shots can crowd context—favor 1–3 great ones.`
   },
   {
     slug: "feature-advantage-benefit",
@@ -8213,32 +10028,26 @@ GLOSSARY.push(
     aliases: [
       "FAB — Feature · Advantage · Benefit",
       "FAB",
-      "fab"
-  ],
-    definition: `A classic product messaging formula that starts with a Feature of a product, explains the Advantage (what it does), and concludes with the Benefit (why it matters to the user).`,
+      "fab",
+      "feature advantage benefit"
+    ],
+    definition: `A classic messaging framework: state the Feature, explain the Advantage (how it works/why it’s better), and translate it into the user-centric Benefit (why it matters). Shifts from specs to outcomes.`,
     sources: [],
-    categories: [
-      "messaging frameworks",
-      "marketing"
-  ],
+    categories: ["messaging frameworks", "marketing", "sales"],
     tags: [
+      "kind:framework",
       "type:framework",
       "topic:copywriting",
+      "topic:positioning",
       "phase:apply",
-      "level:beginner",
-      "use:product-marketing",
-      "use:sales-copy",
       "use:value-messaging",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:product feature",
-      "field:constraints (optional)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: turn product features into user-focused benefits for marketing copy • train a model to articulate why a feature matters to customers • create sales bullets or product descriptions emphasizing value
-  Boosters: Translate technical features into plain advantages and user benefits. Ensure the benefit addresses a specific customer need or pain point.`
+      "level:beginner"
+    ],
+    related: ["before-after-bridge-formula", "comparative-analysis"],
+    status: "verified",
+    notes: `Use-cases: • Product pages and datasheets • Sales decks and one-pagers • Release notes that highlight user value
+Boosters: • Write the benefit in the customer’s language • Tie benefits to a measurable KPI • Avoid stacking too many advantages per feature
+Caveats: Don’t stop at features—ensure at least one clear, testable benefit.`
   },
   {
     slug: "facione-core-skills",
@@ -8246,32 +10055,26 @@ GLOSSARY.push(
     aliases: [
       "Facione — Interpret · Analyze · Evaluate · Infer · Explain · Self-regulate",
       "Facione",
-      "facione"
-  ],
-    definition: `Operationalize the six core skills of critical thinking on a target claim/problem.`,
+      "facione",
+      "Facione six skills"
+    ],
+    definition: `A critical-thinking framework operationalizing six skills: Interpret, Analyze, Evaluate, Infer, Explain, and Self-regulate. It provides a common language and checklist for reasoning quality.`,
     sources: [],
-    categories: [
-      "critical thinking frameworks"
-  ],
+    categories: ["critical thinking frameworks", "analysis", "education"],
     tags: [
+      "kind:framework",
       "type:framework",
       "topic:critical-thinking",
+      "topic:evaluation",
       "phase:analyze",
-      "level:intermediate",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:topic/claim/problem",
-      "field:evidence for",
-      "field:evidence against",
-      "field:alternative hypotheses",
-      "field:explanation audience",
-      "field:self-regulation checks"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: Evidence appraisal • Research summaries • Root cause analysis • Design/ethics reviews
-  Boosters: Finish with a 2-line “Because-Therefore” justification and 1 actionable next test.`
+      "use:reasoning-audit",
+      "level:intermediate"
+    ],
+    related: ["cognitive-debiasing", "abcde-cbt-framework", "comparative-analysis"],
+    status: "verified",
+    notes: `Use-cases: • Research synthesis and literature reviews • Design/ethics reviews • Postmortems and RCAs
+Boosters: • For each skill, ask one concrete question (e.g., “What’s the unstated assumption?”) • End with a two-line “Because → Therefore” justification and one next test
+Caveats: Checklists can lull you—seek disconfirming evidence actively.`
   },
   {
     slug: "facts-expertise-primer",
@@ -8279,34 +10082,26 @@ GLOSSARY.push(
     aliases: [
       "Facts & Expertise Primer",
       "FEP",
-      "facts & expertise primer"
-  ],
-    definition: `Prime the model with verified facts, role, and scope constraints before asking for an output.`,
+      "facts & expertise primer",
+      "role-and-facts priming"
+    ],
+    definition: `A prompt-quality framework: set the role/scope, list verified facts and known pitfalls, and only then ask for the output. Priming with constraints and truths reduces drift and hallucinations.`,
     sources: [],
-    categories: [
-      "prompt development techniques",
-      "quality scaffolds"
-  ],
+    categories: ["prompt development techniques", "quality scaffolds", "reliability"],
     tags: [
-      "type:framework",
+      "kind:framework",
+      "type:prompting",
       "topic:priming",
       "topic:fact-checking",
       "phase:setup",
-      "level:beginner",
-      "type:template",
-      "kind:framework",
-      "has:boosters",
-      "field:role to embody (optional)",
-      "field:domain / scope",
-      "field:facts / known truths (one per line)",
-      "field:known pitfalls / myths to avoid",
-      "field:initial task or question",
-      "field:rigor / citation expectations (optional)"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: prime a conversation with domain facts • reduce hallucinations • scope an expert role before a task
-  Boosters: Explicitly mark unknowns and ask up to 3 clarifying questions if needed. Prefer verifiable facts over speculation. Keep rationales to one short sentence unless asked to elaborate.`
+      "use:reduce-hallucination",
+      "level:beginner"
+    ],
+    related: ["few-shot-examples", "comparative-analysis", "chain-of-verification"],
+    status: "verified",
+    notes: `Use-cases: • High-stakes answers needing citations • Domain-specific assistants • Multi-author collaboration where context drifts
+Boosters: • Separate facts from assumptions; mark unknowns • Ask up to 3 clarifying questions before answering • Specify citation/rigor expectations explicitly
+Caveats: Stale facts mislead—date your facts and refresh when context changes.`
   },
   {
     slug: "feynman-technique",
@@ -8315,31 +10110,26 @@ GLOSSARY.push(
       "Feynman Technique — Explain Like I’m 5",
       "Feynman Technique",
       "FT",
-      "feynman technique"
-  ],
-    definition: `A learning strategy where you try to explain a concept in simple terms (as if to a child), revealing gaps in understanding to address.`,
+      "feynman technique",
+      "ELI5 (Feynman)"
+    ],
+    definition: `A learning technique: explain the concept as if to a novice, spot gaps, study to fill them, and re-explain more clearly. Simplicity exposes missing understanding and builds durable mental models.`,
     sources: [],
-    categories: [
-      "education",
-      "learning"
-  ],
+    categories: ["education", "learning", "communication"],
     tags: [
-      "type:pattern",
+      "kind:technique",
+      "type:method",
       "topic:simplification",
       "topic:teaching",
-      "level:beginner",
-      "use:explanation",
+      "phase:analyze",
       "use:knowledge-check",
-      "use:debug-understanding",
-      "type:template",
-      "kind:pattern",
-      "has:boosters",
-      "field:concept or topic"
-  ],
-    related: [],
-    status: "draft",
-    notes: `Use-cases: simplify complex concepts for a broader audience • identify gaps in understanding by attempting a simple explanation • learn or teach a new topic by breaking it down
-  Boosters: Use analogies a child would understand to explain difficult concepts. Identify any technical terms in the explanation and immediately clarify them in simpler words.`
+      "level:beginner"
+    ],
+    related: ["facione-core-skills", "few-shot-examples", "rephrase-and-respond-rar"],
+    status: "verified",
+    notes: `Use-cases: • Self-study of new topics • Onboarding teammates • User-facing documentation drafts
+Boosters: • Ban jargon; define any term in plain language • Use analogies then test their limits • End with 3 quiz questions to verify transfer
+Caveats: Oversimplification can hide nuance—append a short “for experts” note when needed.`
   },
   {
     slug: "first-principles-analysis",
