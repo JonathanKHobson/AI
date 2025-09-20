@@ -19,9 +19,13 @@
         "topic:meta"
       ],
       use_cases: [
-        "help me pick the best framework",
-        "explain which framework fits my task",
-        "produce a ready-to-copy prompt using the chosen framework"
+        "help me pick the best framework or pattern",
+        "which template should I do",
+        "pick for me",
+        "explain which framework or pattern fits my task",
+        "what is this",
+        "helping you find out where to start",
+        "produce a ready-to-copy prompt for choosing the best framework"
       ],
       boosters: [
         "Ask up to 3 clarifying questions before recommending.",
@@ -174,6 +178,8 @@
         "convert avoidance into a first motion",
         "empty inboxes quickly",
         "chip away at procrastination",
+        "help me get moving",
+        "help me do my to-do list",
         "prime focus for deeper work"
       ],
       boosters: [
