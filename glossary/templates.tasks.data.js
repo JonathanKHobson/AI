@@ -9,10 +9,11 @@
   categories: ['template-picker'],
   tags: ['type:helper','use:framework-picker', 'use:template-picker','topic:meta'],
   use_cases: [
-    'help me pick the best framework',
-    'explain which framework fits my task',
+    'help me pick the best template for my task',
+    'explain which template fits my task',
     'not sure where to start',
-    'produce a ready-to-copy prompt using the chosen framework'
+    'helping you find out what template best suits you',
+    'produce a ready-to-copy prompt for choosing the best template'
   ],
   boosters: [
     'Ask up to 3 clarifying questions before recommending.',
@@ -1918,6 +1919,3779 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     }
 
     return lines.filter(Boolean).join('\n\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   Research, UX, and Product Planning
+--------------------------------------------------------- */
+
+
+
+{
+  id: 'task_survey_plan',
+  slug: 'survey-plan',
+  label: 'Survey — Plan — Design',
+  kind: 'task',
+  categories: ['research','planning'],
+  tags: [
+    'type:task','topic:survey','topic:survey-design','topic:sampling','topic:ethics',
+    'use:plan','use:design','use:edit','use:qa','stage:plan','stage:design'
+  ],
+  use_cases: [
+    'scope a new survey with goals, audience, and logistics',
+    'align stakeholders on sampling and timing',
+    'choose tools and define success criteria',
+    'pressure-test objectives and translate them into questions or tasks',
+    'decide mode (in-product, panel, email) and recruiting strategy for representativeness',
+    'estimate sample size, incidence rate, and margin of error/power tradeoffs',
+    'design pilots/cognitive interviews and quality gates (speeders, straightliners, fraud)',
+    'plan analysis (key cuts, weighting, stats) and reporting artifacts',
+    'set up accessibility, localization, consent/PII handling, and incentives',
+    'refine or edit a single question (bias, wording, scale design)',
+    'convert qualitative findings into a quant module (themes → items)',
+    'run split-sample wording/scale experiments and A/B concept tests',
+    'plan a longitudinal tracker (wave management, continuity, change rules)',
+    'localize instruments across languages (scale labels, cultural nuance)',
+    'price or feature-prioritization studies (Van Westendorp, Gabor–Granger, MaxDiff, Conjoint)',
+    'diagnose/repair low IR, low completion, or poor data quality in existing surveys',
+    'align survey outputs with product analytics and business KPIs',
+    'create an item bank and codebook for reuse'
+  ],
+  definition: 'Plan and (optionally) refine a survey end-to-end: decisions, objectives, hypotheses, audience, sampling, mode, instrument strategy, ethics/privacy, accessibility/localization, field ops, analysis/weighting/reporting, timeline, risks, and success criteria.',
+  help: 'Paste prior briefs, drafts, or artifacts. Reference saved personas/segments to prefill audience and quotas. Note any legal/privacy constraints, localization needs, or tooling preferences. This task can scope a full survey, a module, or a single question.',
+  fields: [
+    { key:'objective',        label:'Research objective(s)', type:'textarea', ph:'What you want to learn', desc:'Keep each objective decision-linked. If it won’t change a decision, cut it.' },
+    { key:'decision',         label:'Decision to inform', type:'text', ph:'What decision will this survey help make?', desc:'Design backwards from the decision to avoid “nice-to-know” creep.' },
+    { key:'hypotheses',       label:'Hypotheses / assumptions', type:'textarea', ph:'H1, H2… What you currently believe', desc:'Assumptions to test; informs power, subgroups, and item design.' },
+
+    { key:'work_scope', label:'Scope of work', type:'select',
+      options:['full survey','module/section','single question','tracker wave update'],
+      desc:'Controls how broad the deliverable is.',
+      ph:'full survey' },
+
+    { key:'audience',         label:'Target audience', type:'textarea', ph:'Segments, personas, markets', desc:'Who the results should represent. Include markets/regions and exclusions.' },
+    { key:'persona_context',  label:'Persona / segment refs (optional)', type:'textarea', ph:'@Persona: Admin Alice; @Segment: SMB Paid', desc:'Reference your saved personas/segments to align language and quotas.' },
+    { key:'audience_persona', label:'Audience personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Who you are addressing; select one or more personas.',
+      ph:'e.g., VP Operations; Solo founder; Nonprofit ED' },
+
+    { key:'method',           label:'Survey mode', type:'select',
+      options:['email','in-product','panel','social','intercept','sms','phone','mail','mixed'],
+      desc:'Mode affects coverage, speed, bias, and cost.' },
+
+    { key:'sample_frame',     label:'Sampling frame', type:'textarea', ph:'Lists, sources, coverage, exclusions', desc:'Where the sample comes from (CRM, panel, web/app traffic). Call out coverage gaps.' },
+    { key:'sampling_method',  label:'Sampling method', type:'select',
+      options:['random','stratified','quota','convenience','snowball','cluster'],
+      desc:'Match representativeness and feasibility.' },
+
+    { key:'incidence_rate',   label:'Incidence rate (IR)', type:'text', ph:'≈18% qualify', desc:'Low IR ⇒ more invites/time. Use screeners or soft launch to estimate.' },
+    { key:'response_rate',    label:'Expected response rate', type:'text', ph:'e.g., 12–25%', desc:'Helps back-calc required invites and timeline.' },
+    { key:'sample_size',      label:'Target sample size', type:'text', ph:'e.g., n=200 completes', desc:'Provide completes target; we’ll back-calc invitations from IR & response rate.' },
+    { key:'power_conf',       label:'Confidence / power target', type:'select',
+      options:['95% CI','90% CI','80% CI','custom'],
+      desc:'Sets rigor for margin of error and subgroup analysis.' },
+
+    { key:'segments',         label:'Segments / quotas', type:'textarea', ph:'e.g., 50% free, 50% paid; 60/40 new vs. existing', desc:'Quota by role, plan, region, tenure, etc. Keep it decision-driven.' },
+    { key:'subgroups',        label:'Critical subgroups (for analysis)', type:'textarea', ph:'e.g., region, plan tier, tenure, device', desc:'Name the cuts you must power and report.' },
+
+    { key:'length_target',    label:'Length (LOI) target', type:'select',
+      options:['≤5 min','6–10 min','11–15 min','>15 min'],
+      desc:'Controls burden/drop-off. Shorter is better.' },
+
+    { key:'instrument_strategy', label:'Instrument strategy', type:'textarea', ph:'Sections, question types, logic, randomization', desc:'High-level blueprint for question design and flow.' },
+    { key:'question_type_prefs', label:'Question type preferences', type:'textarea', ph:'rating, single-select, open text, MaxDiff…', desc:'If advanced modules (MaxDiff/Conjoint) are in play, note constraints.' },
+    { key:'scale_prefs',      label:'Scale preferences', type:'textarea', ph:'e.g., item-specific 5-pt; 0–10 for NPS; label endpoints', desc:'Direction consistency, labeling, and midpoints.' },
+
+    { key:'privacy_mode',     label:'Privacy mode', type:'select',
+      options:['anonymous','confidential','identified'],
+      desc:'Identity handling affects consent text and storage.' },
+    { key:'consent',          label:'Consent & data handling', type:'textarea', ph:'PII handling, retention window, GDPR/CCPA/IRB notes', desc:'Say what you’ll collect, how you’ll use/store it, and for how long.' },
+    { key:'accessibility',    label:'Accessibility considerations', type:'textarea', ph:'Mobile-first, keyboard nav, language level, contrast, SR labels', desc:'Design for inclusivity; list must-haves and constraints.' },
+    { key:'localization',     label:'Localization scope', type:'select',
+      options:['none','1–3 languages','4–10 languages','>10 languages'],
+      desc:'Impacts copy style, scale labels, QA plan, and schedule.' },
+
+   { key:'bias_checks',      label:'Bias/ethics checks (optional)',         label: "Biases (from library)",
+          autofill: "bias->inline",
+          dataset: "bias",
+          key: "risks_picks",
+          itemType: "typeahead",
+          type: "repeater",
+          unit: "bias",
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity' },
+
+    { key:'incentive',        label:'Incentive plan', type:'text', ph:'e.g., $20 gift card or raffle', desc:'Align with effort and audience norms.' },
+    { key:'incentive_fulfillment', label:'Incentive fulfillment', type:'text', ph:'e.g., Tremendous, manual codes, post-study email', desc:'Fulfillment channel, timing, and fraud prevention.' },
+
+    { key:'qa_checks',        label:'Quality gates', type:'textarea', ph:'speeders, straightliners, attention checks, duplicate/IP rules', desc:'Pre-register criteria; apply consistently.' },
+    { key:'pilot_plan',       label:'Pilot / cognitive testing plan', type:'textarea', ph:'soft launch %, # interviews, success gates', desc:'Test the instrument before full release.' },
+    { key:'field_ops',        label:'Field ops / distribution', type:'textarea', ph:'release waves, reminders cadence, panel guardrails, fraud checks', desc:'How you’ll run the study day-to-day.' },
+    { key:'reminders',        label:'Reminder strategy', type:'text', ph:'e.g., 2 reminders at 48h and 5d', desc:'Avoid spamming; suppress completes.' },
+
+    { key:'analysis_plan',    label:'Analysis plan', type:'textarea', ph:'key cuts, metrics, tests, visuals', desc:'Name primary tables/graphs and stats; define decision thresholds.' },
+    { key:'weighting_targets',label:'Weighting / post-strat targets', type:'textarea', ph:'e.g., region, plan, tenure margins', desc:'State margins and sources for weighting (if any).' },
+    { key:'reporting',        label:'Reporting artifact', type:'select',
+      options:['executive readout','dashboard','one-pager','raw export + codebook'],
+      desc:'Primary deliverable to shape the final output.' },
+    { key:'reporting_breakouts', label:'Required reporting breakouts', type:'textarea', ph:'e.g., by plan tier and region', desc:'Guarantee the cuts stakeholders expect.' },
+
+    { key:'timeline',         label:'Timeline', type:'text', ph:'Fielding window & milestones', desc:'Include pilot, full launch, close, analysis, and readout dates.' },
+    { key:'stakeholders',     label:'Stakeholders & roles', type:'textarea', ph:'Sponsor, research, design, PM, data, legal', desc:'Owners, approvers, and reviewers.' },
+    { key:'budget',           label:'Budget (optional)', type:'text', ph:'Panel cost, incentives, tooling', desc:'Rough cost envelope and constraints.' },
+    { key:'risks',            label:'Risks & mitigations', type:'textarea', ph:'coverage gaps, low IR, sensitive topics, timeline risk', desc:'Name risks early and how you’ll handle them.' },
+
+    { key:'metrics',          label:'Success criteria / field KPIs', type:'textarea', ph:'Completion rate, MoE, representativeness, LOI, drop-off', desc:'Define measurable success to avoid post-hoc shifting.' },
+    { key:'tools',            label:'Tools', type:'text', ph:'e.g., Typeform, Qualtrics, GSheets, Dovetail', desc:'Survey, analysis, and reporting tools.' },
+    { key:'attachments',      label:'Links & artifacts', type:'textarea', ph:'briefs, drafts, Figma, prior waves', desc:'Context for continuity and reuse.' },
+    { key:'constraints',      label:'Constraints', type:'textarea', ph:'Legal/privacy, brand tone, data residency, customer fatigue', desc:'Anything that narrows scope or method.' }
+  ],
+  boosters: [
+    'Write the decision first; design backwards from it.',
+    'Limit to 1–3 sharp objectives; park “nice-to-know” in a backlog.',
+    'Choose mode for coverage and bias, not just speed.',
+    'Estimate IR and response rate; back-calc invites and schedule.',
+    'Quota only what you’ll analyze; power critical subgroups up front.',
+    'Prefer item-specific questions over agree/disagree to curb acquiescence bias.',
+    'Commit to accessibility and localization early; it changes copy and QA.',
+    'Pilot (soft launch or cognitive interviews) before full release.',
+    'Pre-register quality rules (speeders, straightliners, dedupe) and follow them.',
+    'Keep LOI ≤10 min unless value exchange is clear and communicated.',
+    'Pre-plan tables/graphs and decision thresholds to avoid fishing expeditions.',
+    'Map findings → owners → next steps in the reporting plan.'
+  ],
+  template: (f) => {
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const scopeNote = {
+      'full survey': 'Scope: Produce an end-to-end plan AND instrument blueprint. Include goals→items mapping, sample math (IR/RR→invites), draft sections with example items & scales, logic/randomization plan, field ops, QA rules, and analysis/reporting plan.',
+      'module/section': 'Scope: Focus on one module. Define the module’s decision-link, write items & scales, flow/logic for this section, and how it integrates with the broader instrument without inflating LOI.',
+      'single question': 'Scope: Surgical edit/design of ONE item. Provide 2–3 alternative phrasings, scale options (with anchors), and bias checks; include rationale and recommended version.',
+      'tracker wave update': 'Scope: Optimize continuity. Propose minimal edits to preserve trend; document any breaks-in-series, provide bridge items if necessary, and update wave schedule/quotas.'
+    }[f.work_scope];
+
+    const modeNote = {
+      'email': 'Mode guidance: Use personalized invites + 1–2 reminders; mobile-first layout; expect moderate response rate; higher self-selection—mitigate with weighting/quotas.',
+      'in-product': 'Mode guidance: Trigger contextually (just-in-time) with throttling; excellent coverage of active users; risk of recency/context bias—keep items short and specific.',
+      'panel': 'Mode guidance: Faster completes; manage quality via fraud checks, attention items, and consistency rules; ensure quotas mirror your target audience.',
+      'social': 'Mode guidance: Broad reach but biased sample; use screening questions and caution in generalization; consider raking to known benchmarks.',
+      'intercept': 'Mode guidance: On-site/in-app intercepts capture in-the-moment feedback; keep LOI short; rotate invites to reduce annoyance.',
+      'sms': 'Mode guidance: Ultra-short surveys; limit to ≤5 questions; use tap-friendly options; ensure consent per carrier policy.',
+      'phone': 'Mode guidance: Higher cost; better for complex/senior audiences; script carefully to reduce interviewer effects.',
+      'mail': 'Mode guidance: Slow but inclusive for offline populations; requires clear visual design and return incentives.',
+      'mixed': 'Mode guidance: Combine modes intentionally; document mode-specific wording/layout and plan for mode effects in analysis.'
+    }[f.method];
+
+    const sampNote = {
+      'random': 'Sampling guidance: Simple random sampling; straightforward MOE; ensure de-duplication and frame coverage.',
+      'stratified': 'Sampling guidance: Stratify on key subgroups (e.g., region, plan tier); allocate proportionally or by minimum n to power comparisons; weight back to population.',
+      'quota': 'Sampling guidance: Non-probability with quotas to mimic population margins; document selection bias; use post-stratification/raking.',
+      'convenience': 'Sampling guidance: Fast but biased; be explicit about limits; supplement with targeted recruiting if stakes are high.',
+      'snowball': 'Sampling guidance: Useful for hard-to-reach populations; monitor cluster bias; cap referrals per seed.',
+      'cluster': 'Sampling guidance: Sample groups first (e.g., stores), then units; account for design effect (DEFF) in n/power.'
+    }[f.sampling_method];
+
+    const confNote = {
+      '95% CI': 'Rigor: Target 95% confidence; report margins of error and use survey-aware estimators for weighted data.',
+      '90% CI': 'Rigor: Target 90% confidence; useful for directional decisions with tighter timelines.',
+      '80% CI': 'Rigor: Target 80% confidence; exploratory; pair with strong effect sizes and follow-up testing.',
+      'custom': 'Rigor: Specify your desired confidence/power explicitly and align n and analysis accordingly.'
+    }[f.power_conf];
+
+    const loiNote = {
+      '≤5 min': 'LOI guidance: Keep to micro-survey length; prioritize 1–2 objectives; avoid grids; one open-end max.',
+      '6–10 min': 'LOI guidance: Standard length; group items by topic; randomize within blocks; limit matrices.',
+      '11–15 min': 'LOI guidance: Higher burden; ensure clear value exchange and incentive; consider save-and-resume.',
+      '>15 min': 'LOI guidance: Long form; expect drop-off; split into modules/waves or adopt diary design.'
+    }[f.length_target];
+
+    const privacyNote = {
+      'anonymous': 'Privacy: Do not collect identifiers; remove metadata; use aggregate reporting only.',
+      'confidential': 'Privacy: Collect identifiers separately from responses; restrict access; report de-identified cuts.',
+      'identified': 'Privacy: Make PII purpose explicit; offer opt-outs; secure storage; consider legal/IRB review.'
+    }[f.privacy_mode];
+
+    const locNote = {
+      'none': 'Localization: Single-language instrument; write plainly (grade 7–8 reading level) and avoid idioms.',
+      '1–3 languages': 'Localization: Use forward–back translation; harmonize scale labels; run small cognitive checks per language.',
+      '4–10 languages': 'Localization: Add centralized glossary, term lock, and in-market reviewers; budget for layout QA.',
+      '>10 languages': 'Localization: Industrialize pipeline (TMS); test measurement invariance for key scales across languages.'
+    }[f.localization];
+
+    const reportNote = {
+      'executive readout': 'Reporting: 6–10 slides with decisions, 3–5 key findings, clear callouts, and next steps.',
+      'dashboard': 'Reporting: Live filters for key cuts; trend views if tracker; annotate with field dates and base sizes.',
+      'one-pager': 'Reporting: Single-page brief with objective, highlights, and 3 actions; perfect for async leadership updates.',
+      'raw export + codebook': 'Reporting: Deliver clean data, weights, and a codebook (variables, labels, scales, skip logic); include README for analysis.'
+    }[f.reporting];
+
+    return [
+      'Create a comprehensive survey plan and (if applicable) instrument guidance.',
+      f.objective && `Objectives:\n${f.objective}`,
+      f.decision && `Decision to inform:\n${f.decision}`,
+      f.hypotheses && `Hypotheses:\n${f.hypotheses}`,
+
+      f.work_scope && `Scope of work: ${f.work_scope}\n${scopeNote}`,
+
+      f.audience && `Audience:\n${f.audience}`,
+      f.persona_context && `Persona/segment refs:\n${f.persona_context}`,
+      f.audience_persona && `Audience personas: ${list(f.audience_persona)}`,
+
+      f.method && `Mode: ${f.method}\n${modeNote}`,
+      f.sample_frame && `Sampling frame:\n${f.sample_frame}`,
+      f.sampling_method && `Sampling method: ${f.sampling_method}\n${sampNote}`,
+      f.incidence_rate && `Incidence rate (IR): ${f.incidence_rate}`,
+      f.response_rate && `Expected response rate: ${f.response_rate}`,
+      f.sample_size && `Target sample size: ${f.sample_size}`,
+      f.power_conf && `Confidence/power target: ${f.power_conf}\n${confNote}`,
+      f.segments && `Segments / quotas:\n${f.segments}`,
+      f.subgroups && `Critical subgroups:\n${f.subgroups}`,
+      f.length_target && `LOI target: ${f.length_target}\n${loiNote}`,
+
+      f.instrument_strategy && `Instrument strategy:\n${f.instrument_strategy}`,
+      f.question_type_prefs && `Question type prefs:\n${f.question_type_prefs}`,
+      f.scale_prefs && `Scale prefs:\n${f.scale_prefs}`,
+
+      f.privacy_mode && `Privacy mode: ${f.privacy_mode}\n${privacyNote}`,
+      f.consent && `Consent & data handling:\n${f.consent}`,
+      f.accessibility && `Accessibility:\n${f.accessibility}`,
+      f.localization && `Localization: ${f.localization}\n${locNote}`,
+      f.bias_checks && `Bias/ethics checks: ${list(f.bias_checks)}`,
+
+      f.incentive && `Incentive: ${f.incentive}`,
+      f.incentive_fulfillment && `Incentive fulfillment: ${f.incentive_fulfillment}`,
+
+      f.qa_checks && `Quality gates:\n${f.qa_checks}`,
+      f.pilot_plan && `Pilot / cognitive testing:\n${f.pilot_plan}`,
+      f.field_ops && `Field ops / distribution:\n${f.field_ops}`,
+      f.reminders && `Reminders: ${f.reminders}`,
+
+      f.analysis_plan && `Analysis plan:\n${f.analysis_plan}`,
+      f.weighting_targets && `Weighting/post-strat targets:\n${f.weighting_targets}`,
+      f.reporting && `Reporting artifact: ${f.reporting}\n${reportNote}`,
+      f.reporting_breakouts && `Required reporting breakouts:\n${f.reporting_breakouts}`,
+
+      f.timeline && `Timeline: ${f.timeline}`,
+      f.stakeholders && `Stakeholders & roles:\n${f.stakeholders}`,
+      f.budget && `Budget: ${f.budget}`,
+      f.risks && `Risks & mitigations:\n${f.risks}`,
+
+      f.metrics && `Success metrics:\n${f.metrics}`,
+      f.tools && `Tools: ${f.tools}`,
+      f.attachments && `Links & artifacts:\n${f.attachments}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Title: Survey Plan',
+        '- Goals & Decision (bullets)',
+        '- Audience & Sampling (frame, method, size, quotas, IR, CI, response rate)',
+        '- Mode, LOI target, Incentives (incl. fulfillment)',
+        '- Ethics (privacy mode, consent/PII), Accessibility, Localization (+ bias checks)',
+        '- Instrument Strategy (sections, question types, scales, logic/randomization)',
+        '- Pilot & Field Ops (waves, reminders, panel guardrails, fraud checks)',
+        '- Quality Rules (speeders, straightliners, dedupe, attention checks)',
+        '- Analysis Plan (key cuts, weighting targets, statistical tests)',
+        '- Reporting (artifact, required breakouts, owners)',
+        '- Timeline, Budget, Tools',
+        '- Success Criteria',
+        '- Risks & Mitigations'
+      ].join('\\n')
+    ].filter(Boolean).join('\\n');
+  }
+},
+
+
+
+/* ---------------------------------------------------------
+   TASK: Questionnaire — Write (enhanced)
+--------------------------------------------------------- */
+{
+  id: 'task_questionnaire_write',
+  slug: 'questionnaire-write',
+  label: 'Questionnaire — Write',
+  kind: 'task',
+  categories: ['research','writing'],
+  tags: [
+    'type:task',
+    'topic:survey',
+    'topic:questionnaire',
+    'topic:question-design',
+    'use:write',
+    'use:design',
+    'use:edit',
+    'stage:design'
+  ],
+  use_cases: [
+    'turn objectives into clear, unbiased questions',
+    'structure sections and logic for flow',
+    'reduce length while maximizing insight',
+    'convert constructs into item banks and scales',
+    'rewrite leading/double-barreled/loaded items',
+    'design item-specific scales to reduce acquiescence bias',
+    'configure skip/display logic, piping, and randomization',
+    'replace long rankings with MaxDiff or concise alternatives',
+    'design targeted open-ends that elicit actionable reasons',
+    'localize items and scale labels across markets',
+    'add split-sample tests for wording or scale choices',
+    'enforce accessibility and mobile-first matrix guardrails',
+    'prepare validation rules (numeric bounds, required, masks)',
+    'shrink a bloated instrument while preserving decision power',
+    'draft instructions and section primers in brand voice',
+    'refactor a single question for clarity and bias reduction',
+    'produce platform-ready exports (outline, CSV item bank, platform JSON/QSF-like)'
+  ],
+  definition: 'Draft or refine a questionnaire (the instrument): sections, items, response options, scales, order, logic, and wording that measure the right constructs with minimal bias and burden.',
+  help: 'Paste objectives and any drafts or item lists. Indicate constructs, required sections, and scale preferences. Select scope, reading level, and accessibility/localization needs. Use personas/bias typeahead to guide language choices. Choose an output format and platform so the deliverable is immediately usable.',
+  fields: [
+    { key:'work_scope', label:'Scope of work', type:'select',
+      options:['full instrument','module/section','single question','tracker wave update'],
+      desc:'Sets the depth and deliverable. “Full instrument” = end-to-end sections, logic, and exports. “Module/section” = add/edit a focused block. “Single question” = precision rewrite and options/scale. “Tracker wave update” = continuity + change control.',
+      ph:'full instrument' },
+
+    { key:'audience', label:'Audience', type:'text', ph:'e.g., paid SMB admins in US',
+      desc:'Primary respondent group the instrument is written for.' },
+    { key:'audience_persona', label:'Audience personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select one or more personas to tune tone, examples, and option wording.',
+      ph:'e.g., VP Operations; Solo founder; Nonprofit ED' },
+
+    { key:'objectives', label:'Research objectives', type:'textarea',
+      ph:'What decisions should this questionnaire inform?',
+      desc:'Each objective should map to one or more items/sections.' },
+    { key:'decision', label:'Decision to inform', type:'text',
+      ph:'What will this questionnaire help decide?',
+      desc:'Design backwards from the decision to choose question types and depth.' },
+    { key:'constructs', label:'Key constructs', type:'textarea',
+      ph:'e.g., awareness, satisfaction, perceived value, barriers',
+      desc:'Latent ideas to measure; informs scale choice and item count.' },
+
+    { key:'sections', label:'Section plan', type:'textarea',
+      ph:'Consent → Screener → Context → Core topics → Diagnostics → Demographics',
+      desc:'High-level outline with titles and purposes.' },
+
+    { key:'length', label:'Length target', type:'select',
+      options:['micro (≤5 Qs)','short (≤10 Qs)','medium (11–20 Qs)','long (21–35 Qs)','xl (36–50 Qs)','tracker (≤10 core + ≤10 rotating)','custom'],
+      desc:'Controls burden and drop-off; shorter is better on mobile.',
+      ph:'short (≤10 Qs)' },
+
+    { key:'reading_level', label:'Reading level', type:'select',
+      options:['6th grade','8th grade','10th grade','12th grade','professional'],
+      desc:'Target clarity and accessibility; simplifies stems and options.',
+      ph:'8th grade' },
+
+    { key:'formats', label:'Preferred formats', type:'textarea',
+      ph:'item-specific ratings; single-select; multi-select; MaxDiff; open text; short matrix',
+      desc:'Pick formats suited to constructs and analysis (avoid agree/disagree when possible).' },
+    { key:'scale_prefs', label:'Scale preferences', type:'textarea',
+      ph:'5-pt item-specific; 0–10 intent; label endpoints; consistent direction',
+      desc:'Document labels, direction, midpoints, and anchors.' },
+
+    { key:'logic', label:'Skip/branching logic', type:'textarea',
+      ph:'Who sees what? Define gates and conditions.',
+      desc:'Keep only relevant questions visible to each respondent.' },
+    { key:'piping', label:'Piping & substitutions', type:'textarea',
+      ph:'Pipe product name or earlier choices into later items',
+      desc:'Personalize items with earlier answers to increase relevance.' },
+    { key:'randomization', label:'Randomization & rotation', type:'textarea',
+      ph:'Randomize option order; rotate concept blocks; pin “Other/None” to bottom',
+      desc:'Mitigate order effects while keeping referenced items fixed.' },
+    { key:'matrix_policy', label:'Matrix guardrails', type:'select',
+      options:['avoid matrices','short matrices only (≤5 items)','allow with mobile safeguards'],
+      desc:'Matrices are fatiguing—set policy explicitly.',
+      ph:'short matrices only (≤5 items)' },
+
+    { key:'validation', label:'Validation rules', type:'textarea',
+      ph:'required; numeric bounds; regex; masks; in-range checks',
+      desc:'Prevent junk data and clarify expectations.' },
+    { key:'open_end_policy', label:'Open-ends policy', type:'select',
+      options:['none','1 targeted open','2–3 targeted opens','topic-specific probe'],
+      desc:'Use few, focused opens that ask for reasons/examples.',
+      ph:'1 targeted open' },
+
+    { key:'sensitive', label:'Sensitive topics (handle carefully)', type:'textarea',
+      ph:'e.g., health, income, security practices',
+      desc:'Plan neutral wording, time anchors, and “Prefer not to say”.' },
+
+    { key:'bias_checks', label:'Biases (from library)', type:'repeater',
+      itemType:'typeahead', itemLabel:'bias', autofill:'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion, leading/loaded terms, or fear appeals.',
+      ph:'e.g., Accessibility; Social desirability; Cultural sensitivity' },
+
+    { key:'accessibility', label:'Accessibility notes', type:'textarea',
+      ph:'Mobile-first, keyboard nav, SR labels, contrast, plain language',
+      desc:'Guardrails for inclusive item writing and layouts.' },
+    { key:'localization', label:'Localization scope', type:'select',
+      options:['none','1–3 languages','4–10 languages','>10 languages'],
+      desc:'Impacts copy style, scale labels, QA plan, and timeline.',
+      ph:'1–3 languages' },
+
+    { key:'tone', label:'Tone / voice', type:'select',
+      options:['clear','neutral','friendly','confident','reassuring','formal','playful'],
+      desc:'Guides instructions, section intros, and open-end prompts.',
+      ph:'neutral' },
+
+    { key:'platform', label:'Target platform', type:'select',
+      options:['generic','Qualtrics','SurveyMonkey','Typeform','Google Forms','Alchemer','REDCap','Other'],
+      desc:'Adds platform-specific syntax notes (e.g., QSF-like blocks, choice IDs).',
+      ph:'generic' },
+
+    { key:'output_format', label:'Output format', type:'select',
+      options:[
+        'structured outline (Markdown)',
+        'platform JSON (generic)',
+        'CSV item bank (Item, Stem, Type, Options, Required, Logic)',
+        'QSF-like pseudo export (Qualtrics-style)',
+        'Google Forms import (CSV-like)',
+        'plain text bullets'
+      ],
+      desc:'Choose the deliverable. CSV/QSF-like options include columns/blocks ready for import/transform.',
+      ph:'structured outline (Markdown)' },
+
+    { key:'examples', label:'Examples & primers', type:'textarea',
+      ph:'Draft instructions, example responses, or scenario intros',
+      desc:'Use sparingly to reduce ambiguity—avoid nudging answers.' },
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'Brand style, legal/privacy, max time, data residency',
+      desc:'Anything that narrows question wording or options.' }
+  ],
+  boosters: [
+    'Design to the decision; every item must earn its keep.',
+    'Map each objective to ≥1 item; delete or defer nice-to-know topics.',
+    'Favor item-specific questions over agree/disagree to reduce acquiescence bias.',
+    'Use behavioral specificity and time anchors (“in the past 30 days”).',
+    'Keep scales consistent in direction and labeled at least at endpoints.',
+    'Randomize option order; pin “None of the above” and “Other (specify)” at the bottom.',
+    'Gate deep dives via logic; show only relevant items per respondent.',
+    'Replace long rankings with MaxDiff when prioritization is the goal.',
+    'Limit matrices or keep them short (≤5 items) with mobile safeguards.',
+    'Use 1–2 targeted open-ends for reasons/examples instead of many vague ones.',
+    'Pilot via cognitive interviews or soft launch; fix misinterpretations before full field.',
+    'Write for accessibility and localization from the start; avoid idioms and jargon.',
+    'Predefine validation and attention checks; apply sparingly and transparently.'
+  ],
+  template: (f)=>{
+    const lenMap = {
+      'micro (≤5 Qs)':'Deliver ≤5 essential questions (mobile-first).',
+      'short (≤10 Qs)':'Keep under 10 questions; prioritize behavior-first items.',
+      'medium (11–20 Qs)':'Allow moderate depth with clear sectioning and logic.',
+      'long (21–35 Qs)':'Use strong skip logic; guard against fatigue.',
+      'xl (36–50 Qs)':'Only for specialized studies; include rest cues and progress.',
+      'tracker (≤10 core + ≤10 rotating)':'Maintain core continuity; rotate experiments carefully.',
+      'custom':'Match item count to decision power; justify exceptions.'
+    };
+    const scopeMap = {
+      'full instrument':'Produce an end-to-end questionnaire: sections, numbered items, response options/scales, logic, randomization, and export in the requested format.',
+      'module/section':'Create or revise a focused section with clean interfaces to the rest of the instrument and clear entry/exit logic.',
+      'single question':'Rewrite/design one question with unbiased stem, MECE options, scale spec, and validation, plus 1–2 alternates.',
+      'tracker wave update':'Propose wave-safe edits with continuity notes and change-control justifications.'
+    };
+    const matrixMap = {
+      'avoid matrices':'Replace grids with single items or short item batteries; optimize for mobile and reduce straightlining.',
+      'short matrices only (≤5 items)':'Allow brief matrices with full labels, randomized rows, and mobile-friendly rendering.',
+      'allow with mobile safeguards':'Permit matrices if necessary; add row limits, randomization, and mobile transformations.'
+    };
+    const openMap = {
+      'none':'Exclude open-ends to minimize burden.',
+      '1 targeted open':'Include exactly one reason/probe open-end tied to a key decision.',
+      '2–3 targeted opens':'Include a small set of focused open-ends, each with a clear purpose.',
+      'topic-specific probe':'Add conditional probes only when certain answers appear.'
+    };
+    const readMap = {
+      '6th grade':'Use very simple sentences, common words, and concrete examples.',
+      '8th grade':'Plain language with short clauses and minimal jargon.',
+      '10th grade':'General audience prose; define any necessary terms inline.',
+      '12th grade':'More technical phrasing allowed; still avoid needless complexity.',
+      'professional':'Domain-specific terminology acceptable; add definitions where needed.'
+    };
+    const platMap = {
+      'generic':'No platform-specific syntax; keep exports broadly portable.',
+      'Qualtrics':'Add QSF-like block/choice annotations and display logic notes.',
+      'SurveyMonkey':'Use page breaks and collector-friendly settings guidance.',
+      'Typeform':'Favor conversational, one-question-per-screen phrasing.',
+      'Google Forms':'Use section breaks and simple validation compatible with import.',
+      'Alchemer':'Note piping/merging and logic in Alchemer-friendly terms.',
+      'REDCap':'Prefer field types with code values; flag required fields and branching logic.',
+      'Other':'Keep structure generic; call out any assumptions.'
+    };
+    const outMap = {
+      'structured outline (Markdown)':'Return a Markdown outline with sections, numbered items, options, and inline notes for logic/randomization.',
+      'platform JSON (generic)':'Return a generic JSON schema: sections[], items[] {id, stem, type, options[], required, validation, logic}.',
+      'CSV item bank (Item, Stem, Type, Options, Required, Logic)':'Return a CSV (pipe-delimited options) with columns: ItemID, Section, Stem, Type, Options, Required, Validation, Logic, Randomization.',
+      'QSF-like pseudo export (Qualtrics-style)':'Return a QSF-like pseudo export with Blocks, Questions (QuestionText, DataExportTag, Choices, Validation, Logic).',
+      'Google Forms import (CSV-like)':'Return a CSV compatible with Forms import (Title, Question, Type, Options, Required, GoToSection).',
+      'plain text bullets':'Return concise bullets per question with options and any logic.'
+    };
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    return [
+      'Write or refine a survey questionnaire.',
+      f.work_scope && `Scope of work: ${f.work_scope} — ${scopeMap[f.work_scope]||''}`,
+      f.audience && `Audience: ${f.audience}`,
+      f.audience_persona && `Audience personas: ${list(f.audience_persona)}`,
+
+      f.objectives && `Objectives:\n${f.objectives}`,
+      f.decision && `Decision to inform:\n${f.decision}`,
+      f.constructs && `Key constructs:\n${f.constructs}`,
+
+      f.sections && `Section plan:\n${f.sections}`,
+      f.length && `Length guidance: ${lenMap[f.length]||f.length}`,
+      f.reading_level && `Reading level guidance: ${readMap[f.reading_level]||f.reading_level}`,
+
+      f.formats && `Preferred formats:\n${f.formats}`,
+      f.scale_prefs && `Scale preferences:\n${f.scale_prefs}`,
+
+      f.logic && `Skip/branching logic:\n${f.logic}`,
+      f.piping && `Piping & substitutions:\n${f.piping}`,
+      f.randomization && `Randomization & rotation:\n${f.randomization}`,
+      f.matrix_policy && `Matrix policy: ${matrixMap[f.matrix_policy]||f.matrix_policy}`,
+
+      f.validation && `Validation rules:\n${f.validation}`,
+      f.open_end_policy && `Open-ends policy: ${openMap[f.open_end_policy]||f.open_end_policy}`,
+
+      f.sensitive && `Handle with care:\n${f.sensitive}`,
+      f.bias_checks && `Bias/ethics checks: ${list(f.bias_checks)}`,
+
+      f.accessibility && `Accessibility:\n${f.accessibility}`,
+      f.localization && `Localization scope: ${f.localization}`,
+      f.tone && `Tone/voice: ${f.tone}`,
+
+      f.examples && `Examples & primers:\n${f.examples}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      f.platform && `Platform guidance: ${platMap[f.platform]||f.platform}`,
+      f.output_format && `Deliverable: ${f.output_format} — ${outMap[f.output_format]||''}`,
+
+      [
+        'Output format (structure to produce regardless of selected export):',
+        '- Section list (title · purpose)',
+        '- Numbered questions with response options and scale specs',
+        '- Validation & input masks (where relevant)',
+        '- Notes: randomization, piping, skip/display logic',
+        '- Matrix guardrails and mobile guidance',
+        '- Bias/ethics checks applied per section',
+        '- Accessibility/localization notes'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Screener — Create Criteria — Write (enhanced+contextual)
+   Purpose: Help the AI design or refine a screener/screening survey
+   with explicit criteria, quotas, eligibility logic, ethics, and ops.
+--------------------------------------------------------- */
+{
+  id: 'task_screener_criteria',
+  slug: 'screener-criteria',
+  label: 'Screener — Create Criteria',
+  kind: 'task',
+  categories: ['research','recruiting'],
+  tags: [
+    'type:task',
+    'topic:screener',
+    'topic:recruiting',
+    'topic:eligibility',
+    'topic:fraud-prevention',
+    'use:recruit',
+    'use:design',
+    'use:edit',
+    'stage:plan'
+  ],
+  use_cases: [
+    'recruit qualified participants for interviews or usability tests',
+    'define must-have, nice-to-have, and exclude criteria',
+    'prevent misrecruits with disqualifiers and soft/hard quotas',
+    'convert study objectives into behavioral screeners',
+    'estimate incidence rate (IR) and plan quotas before full launch',
+    'design screening surveys that capture baseline context for later analysis',
+    'auto-generate pass/fail logic and termination messages',
+    'set device, locale, and accessibility eligibility for usability sessions',
+    'configure fraud checks (speeders, duplicates, geo/device)',
+    'route qualified participants to scheduling and incentive flows',
+    'localize screener items and ensure inclusive demographic options',
+    'adapt a screener for panel vs. CRM vs. intercept recruitment',
+    'refine a single eligibility item without rewriting the full screener'
+  ],
+  definition: 'Create or refine a screener (or screening survey) with explicit must/should/exclude criteria, quotas, pass/fail logic, fraud checks, and ethics/accessibility guardrails. Outputs a tight instrument plus eligibility rules and operational guidance.',
+  help: 'Paste your study brief and any prior screeners. Select study type, screener scope, channels, and quota strategy so the instructions fit your context. Use personas/bias libraries to tighten language and avoid exclusionary criteria. This task supports full screeners or single-item edits.',
+  fields: [
+    { key:'study',   label:'Study name', type:'text', ph:'e.g., Mobile onboarding usability' },
+
+    { key:'screening_objectives', label:'Screening objective(s)', type:'textarea',
+      ph:'Admit weekly mobile users; exclude competitors; balance regions; collect contact slots',
+      desc:'Decision-linked goals for the screener; keeps criteria purposeful.' },
+
+    { key:'profile', label:'Target participant profile', type:'textarea',
+      ph:'role, experience, tools, region',
+      desc:'Describe who this screener should admit (in plain, behavioral terms).' },
+
+    {
+      key:'audience_persona',
+      label:'Audience personas (optional)',
+      type:'repeater',
+      itemType:'typeahead',
+      itemLabel:'persona',
+      autofill:'persona->inline',
+      desc:'Who you are recruiting; select one or more personas to guide wording and quotas.',
+      ph:'e.g., Admin Alice (SMB); Security Lead; Procurement Manager'
+    },
+
+    { key:'study_type', label:'Study type', type:'select',
+      options:[
+        'interviews (moderated)',
+        'usability test (moderated)',
+        'usability test (unmoderated)',
+        'diary/longitudinal',
+        'survey (quant)',
+        'field/ethnographic',
+        'beta/early access'
+      ],
+      desc:'Alters eligibility focus (e.g., device/setup for usability; breadth for quant).' },
+
+    { key:'screener_scope', label:'Screener scope', type:'select',
+      options:['short screener (≤10 items)','screening survey (11–20 items)','single eligibility question'],
+      desc:'Determines depth and whether baseline metrics are captured.' },
+
+    { key:'channels', label:'Recruiting channels', type:'textarea',
+      ph:'panel, intercept, CRM, community',
+      desc:'Source mix influences coverage and fraud risk; list all that apply.' },
+
+    { key:'disqualify_first', label:'Put disqualifiers first?', type:'select', options:['yes','no'],
+      desc:'Saves participant time by front-loading high-signal fail gates.' },
+
+    { key:'must', label:'Must-have', type:'textarea',
+      ph:'Non-negotiables (behavioral, situational, setup)',
+      desc:'Phrase behaviorally with time anchors (e.g., “used X in past 30 days”).' },
+
+    { key:'nice', label:'Nice-to-have', type:'textarea',
+      ph:'Priorities used for quotas',
+      desc:'Supports diversity of experience without excluding; use for quota balance.' },
+
+    { key:'exclude', label:'Exclude / disqualify', type:'textarea',
+      ph:'Conflicts, competitors, age limits, region out-of-scope',
+      desc:'Keep clear, fair, and justified. Avoid proxy exclusions that bias the sample.' },
+
+    { key:'verification_items', label:'Behavioral verification items', type:'textarea',
+      ph:'Tasks/feature checks (include plausible fakes sparingly)',
+      desc:'Validate true users without trick questions; avoid punitive “gotchas”.' },
+
+    { key:'device_requirements', label:'Device / environment requirements', type:'textarea',
+      ph:'desktop + webcam; iOS 16+; Chrome only; stable Wi-Fi',
+      desc:'Critical for usability tests or recordings; be explicit and testable.' },
+
+    { key:'accessibility_needs', label:'Accessibility eligibility/needs (if relevant)', type:'textarea',
+      ph:'screen reader users; captions required; high-contrast UI',
+      desc:'Ensure respectful inclusion and accommodations; do not tokenise.' },
+
+    { key:'localization', label:'Localization scope', type:'select',
+      options:['none','1–3 languages','4–10 languages','>10 languages'],
+      desc:'Impacts copy, QA, and feasibility per market (and demographic labels).' },
+
+    { key:'demographic_policy', label:'Demographic module policy', type:'select',
+      options:['none','end-only (optional)','end-only (optional + self-describe)','quota-gated (minimize & justify)'],
+      desc:'Where/how to ask identity questions; prefer end-only & optional unless gating quotas.' },
+
+    { key:'quotas', label:'Quotas', type:'textarea',
+      ph:'40% SMB / 60% Enterprise; ≥30% EMEA; 50/50 new vs. existing',
+      desc:'Quota only what you will analyze; avoid micro-quotas that stall fielding.' },
+
+    { key:'quota_strategy', label:'Quota strategy', type:'select',
+      options:['hard gates (terminate overflow)','soft targets (allow slight drift)','monitor-only (no enforcement)'],
+      desc:'Controls termination behavior when a cell fills and how strictly balance is enforced.' },
+
+    { key:'incidence_rate', label:'Estimated incidence rate (IR)', type:'text', ph:'~18% qualify',
+      desc:'Lower IR → more invites and cost; plan a soft launch to validate.' },
+
+    { key:'expected_show_rate', label:'Expected show/completion rate', type:'text',
+      ph:'e.g., 70% show to sessions; 85% complete survey',
+      desc:'Back-calc invites and over-recruit buffer.' },
+
+    { key:'length', label:'Screener length', type:'select', options:['≤5 Qs','6–10 Qs','>10 Qs'],
+      desc:'Keep it short and decisive; longer flows increase abandonment and cost.' },
+
+    { key:'pass_fail_style', label:'Pass/fail logic style', type:'select',
+      options:['question-level gates','score-based composite','quota-based only'],
+      desc:'Choose how eligibility is computed and communicated to the participant.' },
+
+    { key:'terminate_message', label:'Terminate message', type:'text',
+      ph:'Thanks—this study needs a different profile.',
+      desc:'Respectful, short, and transparent—no blame; avoid implying failure.' },
+
+    { key:'qualified_message', label:'Qualified message', type:'text',
+      ph:'You qualify! Next, pick a time…',
+      desc:'Set expectations for next steps (scheduling, consent, incentive).' },
+
+    { key:'scheduling', label:'Scheduling & contact collection', type:'textarea',
+      ph:'Calendly link, time zones, minimal PII, privacy note',
+      desc:'Collect only what’s needed; surface time-zone conversion if global.' },
+
+    { key:'incentive_type', label:'Incentive type', type:'select',
+      options:['cash','gift card','voucher/credit','charity donation','sweepstakes/raffle','none'],
+      desc:'Match effort and norms; avoid coercion.' },
+
+    { key:'incentive', label:'Incentive amount/details', type:'text',
+      ph:'$75 for 60 min; $10 survey',
+      desc:'Clarity reduces no-shows and disputes.' },
+
+    { key:'incentive_delivery', label:'Incentive delivery', type:'text',
+      ph:'Tremendous; manual codes; via email in 5–7 days',
+      desc:'State method, timing, and eligibility requirements.' },
+
+    { key:'fraud_checks', label:'Fraud & quality checks', type:'textarea',
+      ph:'reCAPTCHA; IP/device dedupe; speeders/straightliners; geo checks',
+      desc:'Pre-register thresholds; apply consistently; keep burden low.' },
+
+    { key:'geo_policy', label:'Geo/IP policy', type:'textarea',
+      ph:'VPN handling; country restrictions; OFAC compliance',
+      desc:'Avoid unfair exclusion; explain rationale if restricting.' },
+
+    { key:'consent', label:'Consent & privacy notes', type:'textarea',
+      ph:'Anonymity vs. confidentiality; retention window; withdrawal rights',
+      desc:'Explain what’s collected, why, who sees it, and for how long.' },
+
+    { key:'pii_handling', label:'PII handling', type:'textarea',
+      ph:'storage, access controls, deletion policy, separate vault',
+      desc:'Store PII separately; minimize retention and access.' },
+
+    /* Bias library typeahead (use this exact shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    { key:'soft_launch', label:'Soft launch & IR monitoring plan', type:'textarea',
+      ph:'10% sample; check IR, quota fill, drop-off; fix ambiguous items',
+      desc:'Plan an initial wave to validate IR and logic before full field.' },
+
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'privacy, exclusions, brand/voice limits, legal/IRB',
+      desc:'Anything that narrows criteria or wording.' }
+  ],
+  boosters: [
+    'Lead with high-signal disqualifiers to save time and reduce fatigue.',
+    'Phrase criteria behaviorally with time anchors (e.g., “used X in the past 30 days”).',
+    'Quota only variables you will analyze; otherwise you’ll stall fielding.',
+    'Prefer role/behavior over demographics unless truly decision-relevant.',
+    'Soft launch to estimate IR and fix ambiguous items before full release.',
+    'Write terminate messages that are respectful and brief; never blame the participant.',
+    'For usability: specify device/OS/browser and recording requirements early.',
+    'For panel recruits: add fraud checks (dup/IP/device) and simple verification items.',
+    'For CRM recruits: suppress recent invitees; cap reminders; respect fatigue.',
+    'Keep screener ≤10 items; use a screening survey only when baseline metrics matter.',
+    'Document consent, PII handling, and incentive delivery to build trust.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    // Context-expanding notes that change instructions based on select choices
+    const studyTypeGuide = ({
+      'interviews (moderated)':
+        'Guidance for moderated interviews: include availability windows, consent for recording, and environment checks (quiet space, mic/camera test). Over-recruit 2–3× to cover no-shows.',
+      'usability test (moderated)':
+        'Guidance for moderated usability: gate by required device/OS/browser, screen size, and stable bandwidth; add task familiarity checks; collect tech check link.',
+      'usability test (unmoderated)':
+        'Guidance for unmoderated usability: specify compatible platforms and recorder permissions; include single-device requirement and silent environment note.',
+      'diary/longitudinal':
+        'Guidance for diary/longitudinal: screen for reliability (past completion, motivation), consent for repeated contact, and notification preferences; plan incentives per entry + completion bonus.',
+      'survey (quant)':
+        'Guidance for quant survey: optimize for breadth and representativeness; avoid over-screening; emphasize quotas and soft gates; keep to ≤3 minutes.',
+      'field/ethnographic':
+        'Guidance for field/ethnographic: verify site access, safety considerations, and consent for photos/video; include travel radius and availability windows.',
+      'beta/early access':
+        'Guidance for beta/early access: verify device compatibility, update cadence, and willingness to share logs; include NDA and rollback plan.'
+    })[f.study_type];
+
+    const scopeGuide = ({
+      'short screener (≤10 items)':
+        'Scope note: produce a compact, decisive screener (≤10 items). Prioritize high-signal gates and quotas; defer nice-to-know items.',
+      'screening survey (11–20 items)':
+        'Scope note: include baseline profiling items (e.g., stack, context, satisfaction) alongside eligibility. Keep total time ≤4 minutes.',
+      'single eligibility question':
+        'Scope note: craft a single, high-precision eligibility item with unambiguous, behavior-anchored options and clear pass/fail mapping.'
+    })[f.screener_scope];
+
+    const dqGuide = f.disqualify_first === 'yes'
+      ? 'Placement rule: place high-signal disqualifiers at S1–S3 to minimize burden; route to a respectful terminate message immediately on fail.'
+      : (f.disqualify_first === 'no'
+          ? 'Placement rule: do not front-load disqualifiers; instead, collect minimal context first, then apply gates just before quotas.'
+          : null);
+
+    const logicGuide = ({
+      'question-level gates':
+        'Eligibility logic: attach pass/fail criteria to individual items; terminate immediately on fail; expose minimal context in messages.',
+      'score-based composite':
+        'Eligibility logic: compute a composite score from multiple items (e.g., behavior + tenure); set threshold and explain rationale internally; avoid exposing score to participants.',
+      'quota-based only':
+        'Eligibility logic: admit all scoped respondents until quotas fill; once a cell is full, terminate overflow with a neutral message.'
+    })[f.pass_fail_style];
+
+    const quotaGuide = ({
+      'hard gates (terminate overflow)':
+        'Quota enforcement: treat full cells as hard gates—terminate overflow respondents once the cell target is met.',
+      'soft targets (allow slight drift)':
+        'Quota enforcement: allow controlled drift (±5–10%) to maintain pace while monitoring balance.',
+      'monitor-only (no enforcement)':
+        'Quota enforcement: monitor only; do not enforce during field—rebalance via targeted outreach if needed.'
+    })[f.quota_strategy];
+
+    const demoGuide = ({
+      'none':
+        'Demographics: omit identity items entirely unless essential to the decision.',
+      'end-only (optional)':
+        'Demographics: place at end, optional with “Prefer not to say”; use inclusive, locally appropriate categories.',
+      'end-only (optional + self-describe)':
+        'Demographics: place at end, optional; include self-describe text fields and multi-select where appropriate.',
+      'quota-gated (minimize & justify)':
+        'Demographics: include only items that directly drive quotas; justify necessity; keep optional where possible and explain purpose.'
+    })[f.demographic_policy];
+
+    const locGuide = ({
+      '1–3 languages':
+        'Localization: provide parallel copy with shared IDs; verify label parity; plan small pilot per language.',
+      '4–10 languages':
+        'Localization: use a TMS; freeze English strings; schedule linguistic QA and cognitive checks in high-variance locales.',
+      '>10 languages':
+        'Localization: prioritize locales by traffic; stagger rollout; maintain a terminology glossary and translation memory.'
+    })[f.localization];
+
+    const lenGuide = ({
+      '≤5 Qs':'Length: ultra-short; every item must be a gate or routing hook.',
+      '6–10 Qs':'Length: short; include 1–2 verification items; avoid matrices.',
+      '>10 Qs':'Length: longer flow; justify each item; expect higher abandonment—use only for screening surveys.'
+    })[f.length];
+
+    const irGuide = f.incidence_rate
+      ? 'IR planning: use a 10% soft launch to validate incidence rate; adjust quotas or gates if IR deviates by >±5 pts.'
+      : null;
+
+    return [
+      'Draft a participant screener with explicit, testable eligibility and humane operations.',
+      f.study && `Study: ${f.study}`,
+      f.screening_objectives && `Screening objectives:\n${f.screening_objectives}`,
+      f.profile && `Target profile (behavioral):\n${f.profile}`,
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+      f.study_type && `Study type: ${f.study_type}`,
+      studyTypeGuide && `— ${studyTypeGuide}`,
+      f.screener_scope && `Screener scope: ${f.screener_scope}`,
+      scopeGuide && `— ${scopeGuide}`,
+      f.channels && `Recruiting channels:\n${f.channels}`,
+      f.disqualify_first && dqGuide,
+
+      f.must && `Must-have criteria:\n${f.must}`,
+      f.nice && `Nice-to-have (for quota balance):\n${f.nice}`,
+      f.exclude && `Exclude / Disqualify:\n${f.exclude}`,
+      f.verification_items && `Behavioral verification items:\n${f.verification_items}`,
+
+      f.device_requirements && `Device / Environment:\n${f.device_requirements}`,
+      f.accessibility_needs && `Accessibility eligibility/needs:\n${f.accessibility_needs}`,
+
+      f.localization && `Localization: ${f.localization}`,
+      locGuide && `— ${locGuide}`,
+      f.demographic_policy && `Demographic module: ${f.demographic_policy}`,
+      demoGuide && `— ${demoGuide}`,
+
+      f.quotas && `Quotas:\n${f.quotas}`,
+      f.quota_strategy && quotaGuide,
+      f.incidence_rate && `Estimated IR: ${f.incidence_rate}`,
+      irGuide,
+      f.expected_show_rate && `Expected show/completion: ${f.expected_show_rate}`,
+      f.length && lenGuide,
+
+      f.pass_fail_style && logicGuide,
+
+      f.terminate_message && `Terminate message (exact copy): ${f.terminate_message}`,
+      f.qualified_message && `Qualified message (exact copy): ${f.qualified_message}`,
+      f.scheduling && `Scheduling & contact collection:\n${f.scheduling}`,
+
+      f.incentive_type && `Incentive type: ${f.incentive_type}`,
+      f.incentive && `Incentive details: ${f.incentive}`,
+      f.incentive_delivery && `Incentive delivery: ${f.incentive_delivery}`,
+
+      f.fraud_checks && `Fraud & quality checks:\n${f.fraud_checks}`,
+      f.geo_policy && `Geo/IP policy:\n${f.geo_policy}`,
+
+      f.consent && `Consent & privacy notes:\n${f.consent}`,
+      f.pii_handling && `PII handling:\n${f.pii_handling}`,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+      f.soft_launch && `Soft launch plan:\n${f.soft_launch}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Eligibility summary (must/nice/exclude + rationale)',
+        '- Screener instrument (ordered items with explicit pass/fail/route logic)',
+        '- Terminate and Qualified messages (exact copy)',
+        '- Quotas table (cells, targets, enforcement policy)',
+        '- Fraud & Quality checks (rules and thresholds)',
+        '- Consent/PII notes and data retention',
+        '- Scheduling & Incentives plan',
+        '- Soft-launch plan and IR monitoring checkpoints'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Interviews — Plan & Questions — Write (enhanced)
+   Purpose: One task that can scope a full interview study,
+   draft/refine a complete guide, or help craft a single question.
+--------------------------------------------------------- */
+{
+  id: 'task_interviews_plan',
+  slug: 'interviews-plan',
+  label: 'Interviews — Plan & Questions — Write',
+  kind: 'task',
+  categories: ['research','planning'],
+  tags: [
+    'type:task',
+    'topic:interviews',
+    'topic:discussion-guide',
+    'topic:moderation',
+    'topic:ethics',
+    'use:plan',
+    'use:design',
+    'use:write',
+    'use:edit',
+    'stage:plan'
+  ],
+  use_cases: [
+    'plan moderated 1:1 interviews',
+    'align on protocol, schedule, consent, and logistics',
+    'establish incentives and risk mitigations',
+    'convert research goals into a timed discussion guide',
+    'draft specific-open prompts and probing sequences',
+    'configure frameworks (BEI, JTBD switch, contextual inquiry, cognitive interviewing)',
+    'set up recording/transcription and privacy modes',
+    'define observer roles and note-taking workflow',
+    'prepare pilot sessions and debrief templates',
+    'localize guides and plan accessibility accommodations',
+    'adapt for expert/stakeholder/churn interviews',
+    'tune guide length to timebox while preserving depth',
+    'author a single question or refine a tricky prompt',
+    'design group sessions (focus groups) with speaking-order safeguards',
+    'plan analysis & coding schema (themes, tags, decision links)',
+    'create multilingual guides with culturally appropriate examples'
+  ],
+  definition: 'Plan user/stakeholder interviews and author/refine the discussion guide: objectives, participant profile, method/framework, sections, prompts, probes, logic, ethics/consent, accessibility, logistics, roles, incentives, and analysis plan. Also supports crafting or rewriting a single high-impact question.',
+  help: 'Paste any brief, prior guides, or themes. Pick interview scope, method, and framework so instructions adapt. Use personas and the bias library to shape language. This can plan a full study, produce a complete guide, or help you craft one question.',
+  fields: [
+    /* Scope & intent */
+    { key:'interview_scope', label:'Scope of work', type:'select',
+      options:[
+        'full study plan + guide (end-to-end)',
+        'guide only (discussion guide with timing & probes)',
+        'single question (craft/refine one prompt)'
+      ],
+      desc:'Sets depth and deliverables.',
+      ph:'full study plan + guide (end-to-end)'
+    },
+    { key:'decision', label:'Decision to inform', type:'text',
+      ph:'What decision will these interviews help make?',
+      desc:'Design backwards from the decision to keep the guide tight.'
+    },
+    { key:'goals', label:'Research goals', type:'textarea',
+      ph:'2–4 goals tied to the decision',
+      desc:'Each goal should map to 1–2 guide sections.'
+    },
+    { key:'constructs', label:'Key constructs', type:'textarea',
+      ph:'e.g., triggers, barriers, mental model, value perception',
+      desc:'Latent ideas to probe; informs prompts and probes.'
+    },
+
+    /* Who & how */
+    { key:'profile', label:'Participant profile', type:'textarea',
+      ph:'role, experience, tools, region',
+      desc:'Who must be represented (include edge cases if relevant).'
+    },
+    { key:'audience_persona', label:'Audience personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select one or more personas to align tone and depth.',
+      ph:'e.g., Admin Alice (SMB); Security Lead; Procurement Manager'
+    },
+    { key:'modality', label:'Interview modality', type:'select',
+      options:['remote (moderated)','in-person','unmoderated','diary follow-up'],
+      desc:'Affects logistics, consent, and observation options.',
+      ph:'remote (moderated)'
+    },
+    { key:'method', label:'Interview method', type:'select',
+      options:[
+        'semi-structured',
+        'structured',
+        'unstructured (listening session)',
+        'contextual inquiry',
+        'behavioral event interview (BEI)',
+        'JTBD switch interview',
+        'cognitive interview (question testing)',
+        'stakeholder/expert',
+        'churn/exit'
+      ],
+      desc:'Select to tailor the guide structure and prompts.',
+      ph:'semi-structured'
+    },
+    { key:'framework', label:'Guide framework', type:'select',
+      options:[
+        'Funnel (broad→narrow)',
+        'Inverted funnel (specific→general)',
+        'Critical Incident Technique',
+        'JTBD forces & timeline',
+        'Means-end laddering (attributes→values)',
+        'Think-aloud (usability)'
+      ],
+      desc:'Shapes the order and style of prompts.',
+      ph:'Funnel (broad→narrow)'
+    },
+
+    /* Timing & scope */
+    { key:'length', label:'Session length', type:'select',
+      options:['20–30 min','45–60 min','90 min'],
+      desc:'Allocate time to sections; leave ~10% buffer.',
+      ph:'45–60 min'
+    },
+    { key:'participants', label:'# of participants (target)', type:'text',
+      ph:'e.g., 8–12 total; 3–5 per segment',
+      desc:'Plan enough for pattern-finding while respecting feasibility.'
+    },
+
+    /* Guide & questions */
+    { key:'sections', label:'Guide sections', type:'textarea',
+      ph:'Warm-up & context; Trigger & timeline; Evaluation & decision; First-run; Value & outcomes; Wrap',
+      desc:'Outline sections in order; add time budgets per section.'
+    },
+    { key:'prompts', label:'Core prompts (specific-open)', type:'textarea',
+      ph:'“Tell me about the last time you…”, “Walk me through… step by step”',
+      desc:'Intent-based prompts; avoid leading wording.'
+    },
+    { key:'probes', label:'Probe toolkit', type:'textarea',
+      ph:'silence; echo; example ask; laddering (“What made that important?”); contrast (“best/worst”); quantify (“how many/long?”)',
+      desc:'Reusable probes to deepen answers across sections.'
+    },
+    { key:'single_question', label:'Single question to craft/refine (optional)', type:'textarea',
+      ph:'Paste the tricky question to improve',
+      desc:'We’ll rewrite for specificity, neutrality, and clarity.'
+    },
+    { key:'avoid', label:'Topics/wording to avoid', type:'textarea',
+      ph:'leading claims, brand-loaded terms, double-barreled phrasing',
+      desc:'Guardrails for neutral interviewing.'
+    },
+
+    /* Ethics, privacy, inclusion */
+    { key:'privacy_mode', label:'Privacy mode', type:'select',
+      options:['anonymous','confidential','identified'],
+      desc:'Impacts consent language and storage.',
+      ph:'confidential'
+    },
+    { key:'consent', label:'Consent / Recording policy', type:'textarea',
+      ph:'Recording permission text, retention window',
+      desc:'Be explicit about purpose, use, retention, and right to withdraw.'
+    },
+    { key:'accessibility', label:'Accessibility accommodations', type:'textarea',
+      ph:'ASL/captions, breaks, screen reader awareness, plain language',
+      desc:'Plan accommodations and pace.'
+    },
+    { key:'localization', label:'Localization scope', type:'select',
+      options:['none','1–3 languages','4–10 languages','>10 languages'],
+      desc:'Impacts wording, examples, and scheduling.',
+      ph:'1–3 languages'
+    },
+
+    /* Bias library (exact shape for typeahead) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Logistics & ops */
+    { key:'roles', label:'Team & roles', type:'textarea',
+      ph:'moderator, note-taker, observer(s) and etiquette',
+      desc:'Define who does what; include observer rules (no coaching).'
+    },
+    { key:'tools', label:'Tools', type:'text',
+      ph:'e.g., Zoom, Lookback, Calendly, Otter/Dovetail',
+      desc:'Video/recording/scheduling/transcription stack.'
+    },
+    { key:'logistics', label:'Logistics', type:'textarea',
+      ph:'scheduling, time zones, backups, stimulus management',
+      desc:'Add backups for tech failures; share materials early.'
+    },
+
+    /* Incentives & scheduling */
+    { key:'incentive_type', label:'Incentive type', type:'select',
+      options:['cash','gift card','voucher/credit','charity donation','sweepstakes/raffle','none'],
+      desc:'Match effort and norms; avoid coercion.',
+      ph:'gift card'
+    },
+    { key:'incentive', label:'Incentive amount/details', type:'text',
+      ph:'e.g., $75 for 60 min',
+      desc:'Set expectations up front.'
+    },
+    { key:'incentive_delivery', label:'Incentive delivery', type:'text',
+      ph:'e.g., Tremendous, manual codes, 5–7 days',
+      desc:'Method, timing, eligibility.'
+    },
+    { key:'scheduling', label:'Scheduling flow', type:'textarea',
+      ph:'Calendly link, buffer rules, reminders cadence',
+      desc:'Respect time zones; provide reschedule policy.'
+    },
+
+    /* Pilot, debrief, analysis */
+    { key:'pilot', label:'Pilot plan', type:'textarea',
+      ph:'# pilot interviews, success criteria, changes log',
+      desc:'Dry-run your guide and fix ambiguous prompts.'
+    },
+    { key:'debrief', label:'Debrief plan', type:'textarea',
+      ph:'10-min post-call notes, tags, hypotheses to test next',
+      desc:'Immediate capture of insights and uncertainties.'
+    },
+    { key:'analysis_plan', label:'Analysis & coding plan', type:'textarea',
+      ph:'tag schema, affinity mapping plan, decision links',
+      desc:'Pre-plan how notes become decisions; reduces bias and drift.'
+    },
+
+    /* Constraints */
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'legal/privacy, brand tone, scheduling limits',
+      desc:'Anything that narrows method or wording.'
+    }
+  ],
+  boosters: [
+    'Design to the decision; every section earns its time.',
+    'Open with rapport, then broad→narrow; timebox deep dives.',
+    'Write specific-open prompts anchored in recent, real events.',
+    'Probe with silence, echoing, examples, contrast, and laddering.',
+    'Avoid leading or double-barreled wording; one construct per question.',
+    'Choose method/framework deliberately (BEI for incidents, JTBD for switching, contextual when environment matters).',
+    'Script consent and privacy; set expectations about recording and PII.',
+    'Plan accessibility and localization up front; avoid idioms and jargon.',
+    'Define observer etiquette and note-taking roles before sessions.',
+    'Pilot the guide; fix timing and comprehension issues before full run.',
+    'Debrief immediately; tag quotes and uncertainties while fresh.',
+    'Triangulate interview findings with analytics/surveys before big bets.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    /* Explainer maps so select choices inject rich, actionable guidance */
+    const scopeExplainer = {
+      'full study plan + guide (end-to-end)':
+        'Scope: Full study — produce protocol, recruiting notes, consent, complete timed guide with probes, logistics, and analysis plan.',
+      'guide only (discussion guide with timing & probes)':
+        'Scope: Guide only — produce a ready-to-run discussion guide with minute budgets, prompts, probes, and observer notes.',
+      'single question (craft/refine one prompt)':
+        'Scope: Single-question — rewrite one prompt for specificity, neutrality, and accessibility; include 3 probe variants.'
+    };
+
+    const modalityExplainer = {
+      'remote (moderated)':
+        'Modality note: Remote — plan recording, backup dial-in, screen-share etiquette, observer backchannel, and timezone-friendly slots.',
+      'in-person':
+        'Modality note: In-person — plan room setup, consent printouts, stimulus access, travel time, and privacy for sensitive topics.',
+      'unmoderated':
+        'Modality note: Unmoderated — script tasks and prompts precisely; require on-screen instructions and robust consent screens.',
+      'diary follow-up':
+        'Modality note: Diary — define cadence, prompts, media uploads, and check-ins; plan incentive split for sustained participation.'
+    };
+
+    const methodExplainer = {
+      'semi-structured':
+        'Method note: Semi-structured — fixed sections with flexible probes; optimize for comparability + depth.',
+      'structured':
+        'Method note: Structured — fixed questions/order for comparability; limit ad-hoc probes.',
+      'unstructured (listening session)':
+        'Method note: Unstructured — exploratory rapport-first conversation; keep a light scaffold to avoid drift.',
+      'contextual inquiry':
+        'Method note: Contextual inquiry — observe real tasks in-situ; use a master–apprentice stance and capture artifacts.',
+      'behavioral event interview (BEI)':
+        'Method note: BEI — focus on a real incident; reconstruct Situation → Task → Action → Result (STAR) with evidence.',
+      'JTBD switch interview':
+        'Method note: JTBD — map the switching timeline: triggers, pushes, pulls, anxieties, and habit forces leading to the decision.',
+      'cognitive interview (question testing)':
+        'Method note: Cognitive interview — test items via comprehension, retrieval, judgment, and response probes; think-aloud protocol.',
+      'stakeholder/expert':
+        'Method note: Stakeholder/expert — elicit constraints, success metrics, and hidden assumptions; guard against solutioneering.',
+      'churn/exit':
+        'Method note: Exit — trauma-informed approach; reconstruct precipitating events, alternatives considered, and thresholds.'
+    };
+
+    const frameworkExplainer = {
+      'Funnel (broad→narrow)':
+        'Framework: Funnel — start with context stories, then narrow to decisions, criteria, and exceptions.',
+      'Inverted funnel (specific→general)':
+        'Framework: Inverted — begin with a concrete case, then generalize patterns and values.',
+      'Critical Incident Technique':
+        'Framework: CIT — collect extreme success/failure incidents to extract conditions, behaviors, and outcomes.',
+      'JTBD forces & timeline':
+        'Framework: JTBD — chart progress sought, competing alternatives, forces, and the moment of commitment.',
+      'Means-end laddering (attributes→values)':
+        'Framework: Laddering — probe attribute → consequence → personal value links using “What made that important?”',
+      'Think-aloud (usability)':
+        'Framework: Think-aloud — avoid intervening during tasks; debrief after each task with targeted probes.'
+    };
+
+    const lengthExplainer = {
+      '20–30 min':'Timing: Short session — prioritize 2–3 modules; limit probes per topic.',
+      '45–60 min':'Timing: Standard session — 3–5 modules with depth; reserve ~6–8 min for wrap.',
+      '90 min':'Timing: Extended session — advanced or in-situ workflows; plan break and vigilance for fatigue.'
+    };
+
+    const privacyExplainer = {
+      'anonymous':'Privacy: Anonymous — avoid collecting PII; aggregate quotes; no recontact.',
+      'confidential':'Privacy: Confidential — separate PII from notes; limited team access; recontact allowed with consent.',
+      'identified':'Privacy: Identified — explicit consent for named quotes or internal sharing; strict storage controls.'
+    };
+
+    /* Compose instruction lines from selected options */
+    const explainers = [];
+    if (scopeExplainer[f.interview_scope]) explainers.push(scopeExplainer[f.interview_scope]);
+    if (modalityExplainer[f.modality]) explainers.push(modalityExplainer[f.modality]);
+    if (methodExplainer[f.method]) explainers.push(methodExplainer[f.method]);
+    if (frameworkExplainer[f.framework]) explainers.push(frameworkExplainer[f.framework]);
+    if (lengthExplainer[f.length]) explainers.push(lengthExplainer[f.length]);
+    if (privacyExplainer[f.privacy_mode]) explainers.push(privacyExplainer[f.privacy_mode]);
+
+    return [
+      'Create an interview plan and draft/refine the discussion guide.',
+      f.interview_scope && explainers[0] ? explainers[0] : (scopeExplainer['full study plan + guide (end-to-end)']),
+      explainers.slice(1).join('\n'),
+
+      f.decision && `Decision to inform:\n${f.decision}`,
+      f.goals && `Goals:\n${f.goals}`,
+      f.constructs && `Key constructs:\n${f.constructs}`,
+
+      f.profile && `Participant profile:\n${f.profile}`,
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+
+      f.modality && `Modality: ${f.modality}`,
+      f.method && `Method: ${f.method}`,
+      f.framework && `Framework: ${f.framework}`,
+
+      f.length && `Session length: ${f.length}`,
+      f.participants && `Target participants: ${f.participants}`,
+
+      f.sections && `Guide sections:\n${f.sections}`,
+      f.prompts && `Core prompts:\n${f.prompts}`,
+      f.probes && `Probe toolkit:\n${f.probes}`,
+      f.single_question && `Single question to craft/refine:\n${f.single_question}`,
+      f.avoid && `Topics/wording to avoid:\n${f.avoid}`,
+
+      f.privacy_mode && `Privacy mode: ${f.privacy_mode}`,
+      f.consent && `Consent / Recording:\n${f.consent}`,
+      f.accessibility && `Accessibility:\n${f.accessibility}`,
+      f.localization && `Localization: ${f.localization}`,
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+      f.roles && `Team & roles:\n${f.roles}`,
+      f.tools && `Tools: ${f.tools}`,
+      f.logistics && `Logistics:\n${f.logistics}`,
+
+      f.incentive_type && `Incentive type: ${f.incentive_type}`,
+      f.incentive && `Incentive: ${f.incentive}`,
+      f.incentive_delivery && `Incentive delivery: ${f.incentive_delivery}`,
+      f.scheduling && `Scheduling:\n${f.scheduling}`,
+
+      f.pilot && `Pilot plan:\n${f.pilot}`,
+      f.debrief && `Debrief plan:\n${f.debrief}`,
+      f.analysis_plan && `Analysis & coding plan:\n${f.analysis_plan}`,
+
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Overview (scope, decision, goals, constructs, participants)',
+        '- Method & Framework notes (tailored guidance from selections)',
+        '- Session Plan (sections + timing budget; moderator & observer notes)',
+        '- Discussion Guide (prompts + probes; specific-open wording)',
+        '- Single Question rewrite (if provided, with 3 probe variants)',
+        '- Consent & Privacy (recording text, retention; privacy mode practices)',
+        '- Accessibility & Localization notes',
+        '- Team & Logistics (tools, roles, observer etiquette)',
+        '- Incentives & Scheduling',
+        '- Pilot & Debrief plans',
+        '- Analysis & Coding plan (tags, synthesis approach, decision links)'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Transcripts — Analyze (enhanced+context-aware)
+--------------------------------------------------------- */
+{
+  id: 'task_transcripts_analyze',
+  slug: 'transcripts-analyze',
+  label: 'Transcripts — Analyze',
+  kind: 'task',
+  categories: ['research','analysis'],
+  tags: [
+    'type:task',
+    'topic:analysis',
+    'topic:transcripts',
+    'topic:codebook',
+    'topic:sentiment',
+    'topic:journey-mapping',
+    'use:synthesize',
+    'use:prioritize',
+    'use:edit',
+    'stage:analyze'
+  ],
+  use_cases: [
+    'code interview transcripts to themes',
+    'identify patterns, contradictions, and outliers',
+    'extract verbatim quotes and evidence',
+    'score pain points by severity, frequency, and impact',
+    'analyze sentiment/emotion (valence, arousal, discrete labels)',
+    'map themes to journeys (stages, triggers, moments of truth)',
+    'compare cohorts (personas, roles, regions) and find divergences',
+    'run co-occurrence and contradiction/tension analysis',
+    'produce insight cards with confidence and next steps',
+    'build a reusable codebook and tagged export for auditability',
+    'shrink a noisy corpus to a crisp executive summary',
+    'triangulate with surveys/tickets/analytics for stronger confidence',
+    'track saturation and reliability (κ/α) across coders/waves',
+    'create quote banks and rights-safe excerpts for storytelling'
+  ],
+  definition: 'Analyze transcripts end-to-end: pick an approach (inductive/deductive/abductive), design/refine a codebook, tag excerpts (incl. sentiment/emotion), surface themes and tensions, call out contradictions and outliers, curate quotes of impact, and deliver evidence-backed insights with priorities and owners.',
+  help: 'Paste or link transcripts (folder, URLs, or inline). State your research questions, analysis approach, and whether a seed codebook exists. Select sentiment/emotion lens, priority model, deliverables, and visuals so the instructions adapt. Use personas/segments to enable subgroup analysis. Include privacy/redaction rules for quotes.',
+  fields: [
+    /* Scope & inputs */
+    { key:'analysis_scope', label:'Scope of analysis', type:'select',
+      options:['full corpus','subset (by time/segment)','single transcript','top highlights only'],
+      desc:'Sets depth and breadth; full corpus = comprehensive pass; subset = targeted slices.' },
+    { key:'corpus', label:'Corpus source', type:'textarea', ph:'Paste text or link a folder/drive; note formats (DOCX, TXT, VTT, JSON)', desc:'Links to transcripts, folder paths, or inline text. Include diarization if available.' },
+    { key:'time_window', label:'Time window (optional)', type:'text', ph:'e.g., 2025-01-01 → 2025-02-15; or “last 30 days”', desc:'Restrict analysis by date if needed.' },
+    { key:'questions', label:'Research questions', type:'textarea', ph:'Which decisions should this analysis inform?', desc:'Keep questions decision-linked to avoid theme sprawl.' },
+
+    /* Approach & method */
+    { key:'coding_approach', label:'Coding approach', type:'select',
+      options:['inductive (bottom-up)','deductive (top-down)','abductive (mixed)'],
+      desc:'How strictly to follow a seed codebook vs. let codes emerge.' },
+    { key:'method', label:'Primary method', type:'select',
+      options:[
+        'thematic analysis',
+        'affinity mapping',
+        'grounded theory (open→axial)',
+        'content analysis (counts)',
+        'journey mapping (stage × theme)',
+        'matrix coding (co-occurrence)',
+        'JTBD timeline mapping'
+      ],
+      desc:'We tailor instructions to the selected lens.' },
+    { key:'unit_of_analysis', label:'Unit of analysis', type:'select',
+      options:['excerpt (span)','utterance','turn','episode (story)','session'],
+      desc:'Granularity of coding; “excerpt” is most flexible.' },
+
+    /* Personas & segments */
+    { key:'audience_persona', label:'Personas/segments (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Tag with personas/segments to unlock subgroup patterns.',
+      ph:'e.g., Admin Alice; New user; Enterprise buyer' },
+    { key:'segments', label:'Cohorts to compare', type:'textarea',
+      ph:'role, plan tier, region, tenure, device, language',
+      desc:'Name the cuts you must analyze and power in counts.' },
+
+    /* Codebook & rules */
+    { key:'codebook_seed', label:'Seed codebook (optional)', type:'textarea',
+      ph:'One per line: Code — short definition',
+      desc:'Start list; we refine during open coding.' },
+    { key:'inclusion_rules', label:'Inclusion/Exclusion rules', type:'textarea',
+      ph:'Define boundaries for tricky codes + examples',
+      desc:'Prevents overlap and drift; speeds agreement.' },
+    { key:'code_styles', label:'Code styles', type:'textarea',
+      ph:'structural, descriptive, in-vivo, process (gerunds), emotion, causation',
+      desc:'Name styles you want to employ.' },
+    { key:'codebook_policy', label:'Codebook policy', type:'select',
+      options:['lock after pilot (v1.0)','evolving with change log','strict (no additions)'],
+      desc:'Controls stability vs. discovery during analysis.' },
+
+    /* Sentiment & emotion */
+    { key:'sentiment_model', label:'Sentiment lens', type:'select',
+      options:['none','valence (positive↔negative)','valence + arousal','discrete emotions (set below)'],
+      desc:'Choose how to capture affect; discrete labels require a list.' },
+    { key:'emotion_labels', label:'Discrete emotion set (optional)', type:'textarea',
+      ph:'frustration, anxiety, relief, excitement, delight…',
+      desc:'Define taxonomy if using discrete emotions.' },
+
+    /* Pain scoring & priority */
+    { key:'severity_scale', label:'Severity scale', type:'select',
+      options:['Blocker/High/Med/Low','1–5','custom'],
+      desc:'How bad it is when the issue occurs.' },
+    { key:'impact_domains', label:'Impact domains', type:'textarea',
+      ph:'conversion, retention, trust, cost to serve, risk',
+      desc:'Where the theme moves outcomes.' },
+    { key:'priority_model', label:'Priority model', type:'select',
+      options:['Severity × Frequency × Impact','ICE (Impact, Confidence, Ease)','RICE-like (Reach, Impact, Confidence, Effort)'],
+      desc:'Ranking logic for opportunities/recommendations.' },
+    { key:'theme_threshold', label:'Theme evidence threshold', type:'text',
+      ph:'e.g., mention in ≥5 interviews or ≥15 excerpts',
+      desc:'Guard against over-claiming from thin evidence.' },
+
+    /* Reliability & quality */
+    { key:'reliability_metric', label:'Reliability plan', type:'select',
+      options:['consensus only','Cohen’s κ (subset)','Krippendorff’s α (subset)','none'],
+      desc:'How to check inter-coder agreement.' },
+    { key:'double_code_pct', label:'Double-code % (optional)', type:'text',
+      ph:'e.g., 20%',
+      desc:'Portion of excerpts to dual-code for agreement.' },
+    { key:'saturation_check', label:'Saturation tracking', type:'select',
+      options:['yes (plot new codes/interview)','no'],
+      desc:'Whether to visualize when themes stop emerging.' },
+
+    /* Journey context */
+    { key:'journey_stages', label:'Journey stages (optional)', type:'textarea',
+      ph:'Onboard → First value → Routines → Renewal; or your map',
+      desc:'Enables stage × theme heatmaps.' },
+
+    /* Quotes & ethics */
+    { key:'quotes', label:'Include verbatim quotes?', type:'select', options:['yes','no'] },
+    { key:'quote_length', label:'Quote length policy', type:'select',
+      options:['≤25 words (slide-ready)','≤40 words','no limit'],
+      desc:'Shorter quotes are more reusable.' },
+    { key:'quote_criteria', label:'Quote selection criteria', type:'textarea',
+      ph:'Concrete, decision-linked, self-contained, memorable',
+      desc:'Define “quotes of impact”.' },
+    { key:'quote_rights', label:'Quote rights', type:'select',
+      options:['internal only','external allowed with consent','redacted for external use'],
+      desc:'Controls where quotes may be shared.' },
+    { key:'redaction_policy', label:'Redaction & anonymity', type:'textarea',
+      ph:'Remove PII; use IDs/timestamps; consent notes',
+      desc:'Quote safely and ethically.' },
+
+    /* Outputs, visuals, tools */
+    { key:'deliverable', label:'Primary deliverable', type:'select',
+      options:[
+        'themes + evidence',
+        'insight cards',
+        'journey tensions',
+        'executive summary',
+        'quote bank + codebook export',
+        'tagged CSV/JSON (for audit)'
+      ],
+      desc:'Pick the main artifact; others can be add-ons.' },
+    { key:'visuals', label:'Visuals', type:'select',
+      options:['theme map','journey heatmap','co-occurrence graph','sentiment timeline','saturation curve','none'],
+      desc:'Choose visuals to support the story.' },
+    { key:'export_format', label:'Export format', type:'select',
+      options:['CSV','JSON','Airtable-ready CSV','Excel'],
+      desc:'Format for tagged excerpts and codebook export.' },
+    { key:'tools', label:'Tools', type:'text', ph:'e.g., Dovetail, Airtable, Miro, NVivo', desc:'Where coding and synthesis will happen.' },
+    { key:'llm_assist', label:'LLM assist level', type:'select',
+      options:['none (manual only)','suggest codes (review required)','auto-tag then human review','summarize themes only'],
+      desc:'Sets expectations for model involvement and human oversight.' },
+
+    /* Bias & ethics library (exact shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Constraints */
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'privacy, confidentiality, timeline, team availability',
+      desc:'Anything that limits analysis approach or outputs.' }
+  ],
+  boosters: [
+    'Open coding first (even if deductive) to catch surprises; then converge and lock the codebook.',
+    'Write include/exclude rules with examples for ambiguous codes; update the change log when codes shift.',
+    'Tag sentiment/emotion with context (stage, task) to avoid false reads from polite language or sarcasm.',
+    'Rank pains by severity × frequency × impact and temper with confidence; rare blockers can outrank common papercuts.',
+    'Call out contradictions explicitly; investigate conditions (time pressure, environment, role) before judging.',
+    'Curate quotes that are concrete, decision-linked, and self-contained; pair a hero quote with a balancing quote.',
+    'Use co-occurrence to find compound problems (e.g., “billing” + “mobile” + “confusion”).',
+    'Dual-code 10–20% early for κ/α; adjudicate, then freeze v1.0 codebook.',
+    'Close with insight cards tied to owners, effort, and measurable outcomes.',
+    'Document limitations, evidence thresholds, and confidence to build trust.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const scopeNote = (() => {
+      switch (f.analysis_scope) {
+        case 'full corpus': return 'Scope: Full corpus — comprehensive pass with codebook finalization and full deliverables.';
+        case 'subset (by time/segment)': return 'Scope: Subset — analyze specified slices; report limits vs. full population.';
+        case 'single transcript': return 'Scope: Single transcript — deep pass with quotes and micro-themes; caution on generalization.';
+        case 'top highlights only': return 'Scope: Highlights — skim for top pains/delights and 3–5 quotes of impact.';
+        default: return null;
+      }
+    })();
+
+    const approachNote = (() => {
+      switch (f.coding_approach) {
+        case 'inductive (bottom-up)': return 'Approach: Inductive — begin with open coding; let codes emerge; group into themes; finalize definitions.';
+        case 'deductive (top-down)':  return 'Approach: Deductive — start from the seed codebook; permit additions only with evidence and change-log entries.';
+        case 'abductive (mixed)':     return 'Approach: Abductive — blend seed codes with emergent ones; maintain a visible change log.';
+        default: return null;
+      }
+    })();
+
+    const methodNote = (() => {
+      switch (f.method) {
+        case 'thematic analysis': return 'Method note: Thematic analysis — code → cluster → name themes with boundaries and exemplars.';
+        case 'affinity mapping':  return 'Method note: Affinity mapping — spatially group excerpts; iterate labels until clusters stabilize.';
+        case 'grounded theory (open→axial)': return 'Method note: Grounded — open coding → axial links (conditions/causes/consequences) → integrate around a core story.';
+        case 'content analysis (counts)':   return 'Method note: Content analysis — categorize consistently; report distributions with caveats.';
+        case 'journey mapping (stage × theme)': return 'Method note: Journey mapping — index by stage; produce stage × theme heatmaps and moments of truth.';
+        case 'matrix coding (co-occurrence)':   return 'Method note: Matrix coding — examine code co-occurrence for compound pains/enablers.';
+        case 'JTBD timeline mapping':           return 'Method note: JTBD timeline — reconstruct triggers, pushes/pulls, anxieties, and habits over time.';
+        default: return null;
+      }
+    })();
+
+    const sentimentNote = (() => {
+      switch (f.sentiment_model) {
+        case 'valence (positive↔negative)': return 'Sentiment lens: valence — tag positive↔negative tone per excerpt.';
+        case 'valence + arousal':           return 'Sentiment lens: valence + arousal — add calm↔excited to capture intensity.';
+        case 'discrete emotions (set below)':return `Emotion set: ${f.emotion_labels ? f.emotion_labels : 'define labels to proceed'}.`;
+        default: return null;
+      }
+    })();
+
+    const reliabilityNote = (() => {
+      switch (f.reliability_metric) {
+        case 'Cohen’s κ (subset)':       return `Reliability: compute Cohen’s κ on ${f.double_code_pct || 'a subset'} to assess agreement; adjudicate mismatches.`;
+        case 'Krippendorff’s α (subset)':return `Reliability: compute Krippendorff’s α on ${f.double_code_pct || 'a subset'}; revise ambiguous definitions.`;
+        case 'consensus only':           return 'Reliability: consensus-based review; document disagreements and final rules.';
+        default: return null;
+      }
+    })();
+
+    const priorityNote = (() => {
+      switch (f.priority_model) {
+        case 'Severity × Frequency × Impact': return 'Priority model: S×F×I — score pains by severity, frequency, and business/user impact; temper with confidence.';
+        case 'ICE (Impact, Confidence, Ease)': return 'Priority model: ICE — rank opportunities by impact, confidence, and ease of implementation.';
+        case 'RICE-like (Reach, Impact, Confidence, Effort)': return 'Priority model: RICE-like — include reach (affected users) and effort; document assumptions.';
+        default: return null;
+      }
+    })();
+
+    const codebookNote = (() => {
+      switch (f.codebook_policy) {
+        case 'lock after pilot (v1.0)': return 'Codebook policy: Lock after pilot — freeze v1.0 before scaling to ensure consistency.';
+        case 'evolving with change log': return 'Codebook policy: Evolving — allow additions/merges with a rigorous change log and retro-coding as needed.';
+        case 'strict (no additions)': return 'Codebook policy: Strict — no new codes; use “notes” for anomalies and report limitations.';
+        default: return null;
+      }
+    })();
+
+    const visualsNote = (() => {
+      switch (f.visuals) {
+        case 'theme map': return 'Visual: Theme map — clusters with representative quotes and code counts.';
+        case 'journey heatmap': return 'Visual: Journey heatmap — stage × theme matrix with intensity by frequency/severity.';
+        case 'co-occurrence graph': return 'Visual: Co-occurrence graph — network of codes that frequently appear together.';
+        case 'sentiment timeline': return 'Visual: Sentiment timeline — valence/arousal over session time or journey stages.';
+        case 'saturation curve': return 'Visual: Saturation curve — new codes discovered per interview over time.';
+        default: return null;
+      }
+    })();
+
+    return [
+      'Analyze the following transcripts for decision-useful insights.',
+      scopeNote,
+      f.corpus && `Corpus:\n${f.corpus}`,
+      f.time_window && `Time window: ${f.time_window}`,
+      f.questions && `Research questions:\n${f.questions}`,
+
+      approachNote,
+      methodNote,
+      codebookNote,
+      f.unit_of_analysis && `Unit of analysis: ${f.unit_of_analysis}`,
+
+      f.audience_persona && `Personas/segments (from library): ${list(f.audience_persona)}`,
+      f.segments && `Cohorts to compare:\n${f.segments}`,
+
+      f.codebook_seed && `Seed codebook:\n${f.codebook_seed}`,
+      f.inclusion_rules && `Inclusion/Exclusion rules:\n${f.inclusion_rules}`,
+      f.code_styles && `Code styles:\n${f.code_styles}`,
+
+      sentimentNote,
+
+      f.severity_scale && `Severity scale: ${f.severity_scale}`,
+      f.impact_domains && `Impact domains:\n${f.impact_domains}`,
+      f.theme_threshold && `Theme evidence threshold: ${f.theme_threshold}`,
+      priorityNote,
+
+      reliabilityNote,
+      f.saturation_check && `Saturation tracking: ${f.saturation_check}`,
+
+      f.journey_stages && `Journey stages:\n${f.journey_stages}`,
+
+      f.quotes && `Include quotes: ${f.quotes}`,
+      f.quote_length && `Quote length policy: ${f.quote_length}`,
+      f.quote_criteria && `Quote criteria:\n${f.quote_criteria}`,
+      f.quote_rights && `Quote rights: ${f.quote_rights}`,
+      f.redaction_policy && `Redaction & anonymity:\n${f.redaction_policy}`,
+
+      f.deliverable && `Primary deliverable: ${f.deliverable}`,
+      visualsNote,
+      f.export_format && `Export format: ${f.export_format}`,
+      f.tools && `Tools: ${f.tools}`,
+      f.llm_assist && `LLM assist level: ${f.llm_assist}`,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Codebook (final): name · definition · include/exclude · examples · relationships',
+        '- Tagged excerpts export: id · timestamp · codes · sentiment/emotion · persona/segment · stage',
+        '- Themes: name · description · evidence (quotes with IDs/time) · frequency · severity · impact',
+        '- Tensions & Contradictions: statement · linked excerpts · hypothesized conditions',
+        '- Pain Prioritization: scored list (per chosen model) with confidence and assumptions',
+        '- Visuals (if selected): theme map / journey heatmap / co-occurrence graph / sentiment timeline / saturation curve',
+        '- Insight Cards: insight · evidence · so-what · recommendation · owner · metric · effort · confidence',
+        '- Executive TL;DR: top 3–5 takeaways with one quote of impact each',
+        '- Appendix: reliability stats (if any), change log, limitations'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  },
+  meta: {
+    search_text: "transcripts analyze codebook coding sentiment emotion themes contradictions outliers quotes journey heatmap co-occurrence reliability saturation inductive deductive abductive insight cards priority S×F×I ICE RICE export CSV JSON Airtable quote rights redaction personas segments llm assist"
+  }
+},
+
+
+/* ---------------------------------------------------------
+TASK: Findings — Synthesize (enhanced+context-aware)
+--------------------------------------------------------- */
+{
+id: 'task_findings_synthesize',
+slug: 'findings-synthesize',
+label: 'Findings — Synthesize',
+kind: 'task',
+categories: ['research','analysis'],
+tags: [
+'type:task',
+'topic:insights',
+'topic:prioritization',
+'topic:storytelling',
+'use:synthesize',
+'use:present',
+'use:edit',
+'stage:summarize'
+],
+use_cases: [
+'turn raw notes into a crisp readout',
+'translate themes into decisions and next steps',
+'tailor messaging to execs or builders',
+'prioritize pains/opportunities by severity, frequency, and impact',
+'create insight cards with evidence, so-what, and recommendations',
+'map themes to journey stages and segments for clarity',
+'produce stakeholder-specific artifacts (exec TL;DR, builder tickets)',
+'triangulate qualitative + quant signals for confidence',
+'assemble quote banks and visuals (heatmaps, co-occurrence graphs)',
+'convert insights into roadmap slices or OKR candidates',
+'summarize limits, confidence, and follow-ups for transparency',
+'align insights to objectives/OKRs and define acceptance criteria for change',
+'create counterfindings & risks register for balanced decision-making'
+],
+definition: 'Synthesize research into a small set of decision-ready insights. Cluster evidence into themes and tensions, prioritize by impact and severity (tempered by confidence), tailor the readout to each audience, and attach owners, metrics, and next steps.',
+help: 'Paste inputs (themes, notes, coded excerpts, survey cuts, analytics links). Choose a synthesis framework, priority model, narrative tone, and artifact so guidance adapts. Add personas/segments for targeted breakouts and a bias checklist to keep value-inclusive framing.',
+fields: [
+
+{ key:'decision', label:'Decision to inform', type:'text', ph:'What will this synthesis help decide?', desc:'Design backwards from the decision to keep focus.' },
+{ key:'goals', label:'Project goals (for context)', type:'textarea', ph:'2–4 goals tied to the decision', desc:'Why this study exists and what success looks like.' },
+
+/* Audience & tailoring */
+{ key:'audience',      label:'Audience', type:'select',
+  options:['product team','leadership','marketing','engineering','design','sales','success/support','data/analytics','compliance/legal','company-wide','board'],
+  desc:'Tailors tone, depth, and artifact guidance.' },
+{ key:'audience_persona', label:'Audience personas (optional)', type:'repeater',
+  itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+  desc:'Stakeholder archetypes to tune language and emphasis.',
+  ph:'e.g., Growth PM; Staff Engineer; VP Marketing' },
+
+/* Inputs */
+{ key:'inputs',        label:'Inputs (themes/notes links)', type:'textarea',
+  ph:'Links to coded excerpts, surveys, analytics, screenshots',
+  desc:'Evidence sources to synthesize; include IDs if possible.' },
+{ key:'triangulation', label:'Triangulation sources', type:'textarea',
+  ph:'Qual interviews, survey cuts, product logs, support tickets',
+  desc:'Signals to cross-reference; boosts confidence.' },
+
+/* Framework & lens */
+{ key:'framework',     label:'Synthesis lens', type:'select',
+  options:['JTBD','5 Whys','AARRR','Heuristics','Goal→Signal→Decision','Thematic clusters','Journey map (stage × theme)','Opportunity-Solution Tree','Tensions mapping'],
+  desc:'Organizing logic that shapes theme definitions and narrative.' },
+
+/* Narrative & tone */
+{ key:'narrative_tone', label:'Narrative tone', type:'select',
+  options:['neutral-analytical','urgent-exec','user-voice storytelling','risk-focused','opportunity-focused'],
+  desc:'Controls voice and emphasis in the readout.' },
+
+/* Prioritization */
+{ key:'priority_model',label:'Priority model', type:'select',
+  options:['Severity × Frequency × Impact (tempered by Confidence)','ICE (Impact, Confidence, Ease)','RICE-like (Reach, Impact, Confidence, Effort)','MoSCoW (Must/Should/Could/Won’t)'],
+  desc:'How recommendations will be ranked.' },
+{ key:'severity_scale',label:'Severity scale', type:'select',
+  options:['Blocker/High/Medium/Low','1–5','custom'],
+  desc:'How “bad” a pain is at the moment of use.' },
+{ key:'impact_domains',label:'Impact domains', type:'textarea',
+  ph:'conversion, retention, activation, adoption, trust, cost to serve, risk',
+  desc:'Business levers each insight potentially moves.' },
+
+/* Metrics & scope */
+{ key:'kpis',          label:'Target KPI(s)', type:'textarea',
+  ph:'e.g., step-3 drop-off, Day-7 retention, CSAT, NPS',
+  desc:'The metric each recommendation should influence.' },
+{ key:'okrs',          label:'OKR linkage (optional)', type:'textarea',
+  ph:'Objective → KR(s) the insight supports',
+  desc:'Map insights to objectives & KRs to drive adoption.' },
+{ key:'insight_threshold', label:'Evidence threshold', type:'text',
+  ph:'e.g., ≥5 excerpts across ≥3 participants or strong extreme case',
+  desc:'Minimum evidence needed to promote a theme to an insight.' },
+{ key:'confidence_rubric', label:'Confidence rubric', type:'select',
+  options:['H/M/L','1–5 numeric','traffic-light'],
+  desc:'How you will express confidence/limitations.' },
+{ key:'insights_cap',  label:'Insights cap', type:'select',
+  options:['3–5','5–7','8–10'],
+  desc:'Keeps the readout tight and memorable.' },
+
+/* Artifacts & visuals */
+{ key:'artifact',      label:'Artifact', type:'select',
+  options:['executive readout','insight cards','recommendations list','PR/FAQ style summary','one-pager TL;DR','roadmap slice','design brief(s)','ticket bundle'],
+  desc:'Primary deliverable to generate (we can bundle others).' },
+{ key:'visuals',       label:'Visuals', type:'select',
+  options:['theme map','journey heatmap','severity × frequency bubble chart','co-occurrence graph','before/after storyboard','none'],
+  desc:'Optional visual aids that strengthen the story.' },
+
+/* Quotes & ethics */
+{ key:'include_quotes',label:'Include verbatim quotes?', type:'select', options:['yes','no'] },
+{ key:'quote_criteria',label:'Quote selection criteria', type:'textarea',
+  ph:'Concrete · decision-linked · self-contained · memorable · ethical',
+  desc:'How to select “quotes of impact” (IDs + timestamps).' },
+{ key:'quote_length',  label:'Max quote length (words)', type:'text', ph:'e.g., 30–40', desc:'Keeps quotes sharp and readable.' },
+{ key:'include_counterfindings', label:'Include counterfindings?', type:'select', options:['yes','no'], desc:'Surfaces contradictions and scope limits for balance.' },
+
+/* Bias & framing — exact library shape */
+{
+  key: 'risks_picks',
+  label: 'Biases (from library)',
+  type: 'repeater',
+  itemType: 'typeahead',
+  unit: 'bias',
+  dataset: 'bias',
+  autofill: 'bias->inline',
+  desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+  ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+},
+
+/* Ownership, delivery & constraints */
+{ key:'owners_map',    label:'Owner mapping (teams/people)', type:'textarea',
+  ph:'e.g., Payments PM; Design Systems; Growth Eng',
+  desc:'Who will own top recommendations.' },
+{ key:'acceptance_criteria', label:'Acceptance criteria for recommendations', type:'textarea',
+  ph:'Definition of done, constraints, non-goals',
+  desc:'Clarifies what “shipped” means for each action.' },
+{ key:'timeline',      label:'Timeline (delivery/use window)', type:'text',
+  ph:'e.g., Q3 release; 6-week sprint window',
+  desc:'When recommendations must land to matter.' },
+{ key:'distribution',  label:'Distribution plan', type:'textarea',
+  ph:'Channels & formats: all-hands, Slack, Confluence, email',
+  desc:'How and where the artifact will be shared and consumed.' },
+{ key:'constraints',   label:'Constraints', type:'textarea',
+  ph:'legal/privacy, brand, data access, bandwidth',
+  desc:'Anything that limits scope or shapes messaging.' },
+{ key:'limits',        label:'Confidence & limitations', type:'textarea',
+  ph:'sample caveats, known biases, open questions',
+  desc:'State uncertainties to build credibility.' },
+{ key:'followups',     label:'Follow-ups & experiments', type:'textarea',
+  ph:'Next tests, guardrail metrics, learning goals',
+  desc:'Turn insights into a learning/action plan.' }
+
+
+],
+boosters: [
+'Write the decision first; select a framework that naturally answers it.',
+'Name themes with boundaries (what’s in/out) and 2–3 exemplars.',
+'Prioritize with a simple, consistent model; highlight low-frequency/high-severity risks.',
+'Translate user harm to business impact; attach a target KPI/OKR for each insight.',
+'Cap insights to keep signal sharp; move extras to an appendix or backlog.',
+'Tailor for audience: execs want trajectory/risks; builders want crisp problems + DoD.',
+'Use visuals to clarify (heatmaps, bubbles, co-occurrence), not decorate.',
+'Choose quotes that are concrete and self-contained; include IDs/timestamps; respect redaction.',
+'Be explicit about confidence and limits; triangulate when possible.',
+'End with owners, acceptance criteria, and dates—insights die without accountability.'
+],
+template: (f)=>{
+const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+// Audience angle
+const audienceNote = (() => {
+  switch (f.audience) {
+    case 'leadership':
+    case 'board':
+      return 'Angle: Executive — lead with trajectory, risk, and business levers. TL;DR first.';
+    case 'product team':
+    case 'engineering':
+    case 'design':
+      return 'Angle: Builders — frame crisp problem statements, acceptance criteria, and evidence links.';
+    case 'marketing':
+    case 'sales':
+      return 'Angle: GTM — emphasize segments, messages, objections, and proof points.';
+    case 'success/support':
+      return 'Angle: CS — playbooks for “what to say/do,” early-warning signals, and deflection levers.';
+    case 'data/analytics':
+      return 'Angle: Analytics — define metrics moved, required instrumentation, and hypotheses to test.';
+    case 'compliance/legal':
+      return 'Angle: Compliance — call out risk, consent, and data-handling implications.';
+    case 'company-wide':
+      return 'Angle: Company-wide — simple narrative, 3–5 insights, clear wins, and how to help.';
+    default:
+      return null;
+  }
+})();
+
+// Framework guidance
+const frameworkNote = (() => {
+  switch (f.framework) {
+    case 'JTBD': return 'Framework: JTBD — organize by jobs/outcomes, not features; show forces and progress.';
+    case '5 Whys': return 'Framework: 5 Whys — ladder causes until root problems emerge; avoid blame-y phrasing.';
+    case 'AARRR': return 'Framework: AARRR — tie insights to Acquisition, Activation, Retention, Referral, Revenue.';
+    case 'Heuristics': return 'Framework: Heuristics — rate findings against clarity, control, consistency, feedback, error prevention.';
+    case 'Goal→Signal→Decision': return 'Framework: Goal→Signal→Decision — for each goal, pick signals, then state the decision.';
+    case 'Thematic clusters': return 'Framework: Thematic clusters — cluster codes; name themes with in/out rules and exemplars.';
+    case 'Journey map (stage × theme)': return 'Framework: Journey — plot themes by stage; highlight moments of truth.';
+    case 'Opportunity-Solution Tree': return 'Framework: OST — outcome → opportunities → solution ideas; keep evidence attached.';
+    case 'Tensions mapping': return 'Framework: Tensions — articulate tradeoffs (e.g., Flexibility ↔ Learnability) and where to set the dial.';
+    default: return null;
+  }
+})();
+
+// Prioritization guidance
+const priorityNote = (() => {
+  switch (f.priority_model) {
+    case 'Severity × Frequency × Impact (tempered by Confidence)':
+      return 'Priority: Score severity × frequency × impact; temper with confidence.';
+    case 'ICE (Impact, Confidence, Ease)':
+      return 'Priority: ICE — favor high-impact, high-confidence, low-effort recommendations.';
+    case 'RICE-like (Reach, Impact, Confidence, Effort)':
+      return 'Priority: RICE-like — include reach/coverage and engineering effort.';
+    case 'MoSCoW (Must/Should/Could/Won’t)':
+      return 'Priority: MoSCoW — align stakeholders on scope bands instead of exact ranks.';
+    default:
+      return null;
+  }
+})();
+
+// Narrative tone
+const toneNote = (() => {
+  switch (f.narrative_tone) {
+    case 'neutral-analytical': return 'Tone: Neutral-analytical — precise, evidence-led, minimal rhetoric.';
+    case 'urgent-exec': return 'Tone: Urgent-exec — risk/impact forward, clear asks and dates.';
+    case 'user-voice storytelling': return 'Tone: User-voice — thread narrative through emblematic quotes and journeys.';
+    case 'risk-focused': return 'Tone: Risk-focused — emphasize failure modes and mitigations.';
+    case 'opportunity-focused': return 'Tone: Opportunity-focused — highlight upside and quick wins.';
+    default: return null;
+  }
+})();
+
+// Artifact note
+const artifactNote = (() => {
+  switch (f.artifact) {
+    case 'executive readout': return 'Artifact: Executive readout — 1-slide TL;DR, 5–7 insights, priority list with owners/dates.';
+    case 'insight cards': return 'Artifact: Insight cards — per-insight unit: claim, evidence, so-what, recommendation, owner, metric, confidence.';
+    case 'recommendations list': return 'Artifact: Recommendations list — ranked table with rationale and effort estimates.';
+    case 'PR/FAQ style summary': return 'Artifact: PR/FAQ — narrative announcement + anticipated questions with data-backed answers.';
+    case 'one-pager TL;DR': return 'Artifact: One-pager — condensed narrative and top 3 actions.';
+    case 'roadmap slice': return 'Artifact: Roadmap slice — convert insights to epics/streams with timing and capacity hints.';
+    case 'design brief(s)': return 'Artifact: Design brief — problem statement, constraints, acceptance criteria, risks, and measures.';
+    case 'ticket bundle': return 'Artifact: Ticket bundle — ready-to-file issues with DoD and links to evidence.';
+    default: return null;
+  }
+})();
+
+// Confidence rubric note
+const confNote = (() => {
+  switch (f.confidence_rubric) {
+    case 'H/M/L': return 'Confidence rubric: H/M/L with rationale per insight.';
+    case '1–5 numeric': return 'Confidence rubric: 1–5 numeric; include what would raise/lower confidence.';
+    case 'traffic-light': return 'Confidence rubric: traffic-light (green/amber/red) with criteria.';
+    default: return null;
+  }
+})();
+
+return [
+  'Synthesize research findings into a crisp, decision-ready artifact.',
+  f.decision && `Decision to inform:\n${f.decision}`,
+  f.goals && `Project goals:\n${f.goals}`,
+
+  f.audience && `Audience: ${f.audience}`,
+  f.audience_persona && `Stakeholder personas: ${list(f.audience_persona)}`,
+  audienceNote,
+
+  f.inputs && `Inputs:\n${f.inputs}`,
+  f.triangulation && `Triangulation sources:\n${f.triangulation}`,
+
+  f.framework && frameworkNote,
+  toneNote,
+
+  f.priority_model && priorityNote,
+  f.severity_scale && `Severity scale: ${f.severity_scale}`,
+  f.impact_domains && `Impact domains:\n${f.impact_domains}`,
+
+  f.kpis && `Target KPI(s):\n${f.kpis}`,
+  f.okrs && `OKR linkage:\n${f.okrs}`,
+  f.insight_threshold && `Evidence threshold for promoting themes:\n${f.insight_threshold}`,
+  confNote,
+  f.insights_cap && `Insights cap: ${f.insights_cap}`,
+
+  f.artifact && artifactNote,
+  f.visuals && `Visuals: ${f.visuals}`,
+
+  f.include_quotes && `Include quotes: ${f.include_quotes}`,
+  f.quote_criteria && `Quote criteria:\n${f.quote_criteria}`,
+  f.quote_length && `Max quote length: ${f.quote_length} words`,
+  f.include_counterfindings && `Include counterfindings: ${f.include_counterfindings}`,
+
+  f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+  f.owners_map && `Owner mapping:\n${f.owners_map}`,
+  f.acceptance_criteria && `Acceptance criteria:\n${f.acceptance_criteria}`,
+  f.timeline && `Timeline: ${f.timeline}`,
+  f.distribution && `Distribution plan:\n${f.distribution}`,
+  f.constraints && `Constraints:\n${f.constraints}`,
+  f.limits && `Confidence & limitations:\n${f.limits}`,
+  f.followups && `Follow-ups & experiments:\n${f.followups}`,
+
+  [
+    'Output format:',
+    '- TL;DR (3 bullets tailored to audience & tone)',
+    '- Top Insights (name · why it matters · evidence with IDs/timestamps)',
+    '- Counterfindings & Scope (where it doesn’t hold; conditions)',
+    '- Prioritization (model + ranked list; severity × frequency × impact · confidence)',
+    '- Recommendations (owner · acceptance criteria · effort/when · KPI/OKR to move)',
+    '- Visuals (if selected): heatmap / bubbles / co-occurrence / storyboard',
+    '- Risks, Limits, and Confidence (what could be wrong; data gaps; rubric applied)',
+    '- Distribution & Adoption plan (where/who/when)',
+    '- Next Steps (owners, dates) and Follow-up experiments',
+    '- Appendix: Codebook/links to evidence, quote bank'
+  ].join('\n')
+].filter(Boolean).join('\n');
+
+
+}
+},
+
+/* ---------------------------------------------------------
+   TASK: Usability Test — Plan (enhanced+)
+--------------------------------------------------------- */
+{
+  id: 'task_ut_plan',
+  slug: 'usability-test-plan',
+  label: 'Usability Test — Plan',
+  kind: 'task',
+  categories: ['research','planning','evaluation'],
+  tags: [
+    'type:task',
+    'topic:usability-test',
+    'topic:benchmarking',
+    'topic:accessibility',
+    'use:plan',
+    'use:design',
+    'use:edit',
+    'stage:plan'
+  ],
+  use_cases: [
+    'define objectives and tasks for moderated/unmoderated testing',
+    'set success criteria and metrics',
+    'align recruiting and logistics',
+    'plan formative (diagnostic) studies to fix friction fast',
+    'run summative/benchmark tests (task success/time/errors, SUS/SEQ/UMUX-Lite)',
+    'compare versions (A/B) or competitors under the same tasks',
+    'design accessibility sessions with assistive tech and accommodations',
+    'plan navigation tests (first-click, tree testing) and content comprehension',
+    'specify hint/assistance policy and observer etiquette',
+    'counterbalance task order and manage pilot/soft-launch',
+    'tie findings to KPIs and acceptance criteria for fixes',
+    'set stop rules/rescue policy to avoid participant frustration',
+    'document RITE policy (what can be fixed between sessions)',
+    'plan data handling (PII, redaction, retention) for recordings'
+  ],
+  definition: 'Plan a usability study end-to-end: objectives, tasks and scenarios, participants/quotas, devices & environments, moderation style, assistance policy, success metrics/benchmarks, accessibility, logistics, consent, and pilot plan.',
+  help: 'Paste prototype links, flows, or stress areas. Select study type, environment, metrics, and accessibility notes so instructions adapt. Use persona and bias libraries for realistic, inclusive tasks and recruiting.',
+  fields: [
+    /* Strategy & scope */
+    { key:'product_area',  label:'Product / area under test', type:'text', ph:'e.g., Billing → Export Invoices', desc:'Name the feature/flow you’ll evaluate.' },
+    { key:'decision',      label:'Decision to inform', type:'text', ph:'What decision will this test help make?', desc:'Design backwards from the decision to pick tasks and metrics.' },
+    { key:'objectives',    label:'Objectives', type:'textarea', ph:'2–3 goals tied to the decision', desc:'What you must learn or validate.' },
+    { key:'hypotheses',    label:'Hypotheses (optional)', type:'textarea', ph:'We believe… This will be true if…', desc:'Testable statements to focus observation.' },
+
+    /* Study design */
+    { key:'study_type',    label:'Study type', type:'select',
+      options:['formative (diagnostic)','summative (benchmark)','comparative (A/B)','competitive','accessibility-focused','first-click','tree test','prototype (lo/hi-fi)'],
+      desc:'Alters tasks, metrics, and success criteria.' },
+    { key:'environment',   label:'Environment', type:'select',
+      options:['remote moderated','remote unmoderated','in-person lab','in-field'],
+      desc:'Where and how the session runs.' },
+    { key:'moderation',    label:'Moderation style', type:'select',
+      options:['think-aloud (concurrent)','retrospective think-aloud','no think-aloud (silent observation)'],
+      desc:'Impacts script and probing guidance.' },
+    { key:'session_length',label:'Session length', type:'select',
+      options:['20–30 min','45–60 min','90 min'],
+      desc:'Pick time budget; shorter sessions need fewer tasks.' },
+
+    /* Participants */
+    { key:'users',         label:'Target users', type:'textarea', ph:'roles, experience, markets, devices', desc:'Describe who must be represented (include edge cases).' },
+    { key:'audience_persona', label:'Participant personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Pick personas/segments to guide recruiting and scenarios.',
+      ph:'e.g., New Admin; Mobile-first Seller; Screen reader user' },
+    { key:'sample_size',   label:'Participants (target)', type:'text', ph:'e.g., 6–8 total or 5/user type', desc:'Formative ≈5–8 per user type; summative needs larger n.' },
+    { key:'quotas',        label:'Quotas (optional)', type:'textarea', ph:'e.g., 40% SMB / 60% Enterprise; 50/50 new vs existing', desc:'Quota only what you’ll analyze.' },
+    { key:'recruit_channels', label:'Recruiting channels', type:'textarea', ph:'panel, CRM, intercept, community', desc:'Source mix influences coverage and speed.' },
+    { key:'screener_ref',  label:'Screener link/ref (optional)', type:'text', ph:'URL or ID', desc:'Keep eligibility consistent with your screener.' },
+
+    /* Accessibility & devices */
+    { key:'devices',       label:'Devices / OS / browsers', type:'textarea', ph:'Desktop (Chrome 123), iOS 16 Safari, Android 13 Chrome', desc:'Specify required setups and variants.' },
+    { key:'assistive_tech',label:'Assistive tech (if any)', type:'textarea', ph:'screen reader, keyboard-only, voice control', desc:'Plan accommodations and success criteria.' },
+
+    /* Tasks & scenarios (high level in plan; details in scenarios task) */
+    { key:'tasks_count',   label:'# of tasks', type:'select', options:['3–5','6–8','9–12'], desc:'Aim for depth over breadth; trim after pilot.' },
+    { key:'task_themes',   label:'Task themes', type:'textarea', ph:'e.g., discoverability, setup, error recovery, export', desc:'High-level buckets to ensure coverage.' },
+    { key:'counterbalance',label:'Task ordering strategy', type:'select', options:['fixed order','counterbalanced','randomized (independent)'], desc:'Reduce order effects where tasks are independent.' },
+    { key:'assist_policy', label:'Assistance (hint ladder)', type:'select', options:['no assistance','ladder: restate goal → point region → reveal path','custom'], desc:'Define when/how to help; mark assisted completions.' },
+    { key:'stop_rules',    label:'Stop rules', type:'textarea', ph:'e.g., rescue after 3 min stuck or 3 failed attempts', desc:'When to intervene or move on to protect participant well-being.' },
+    { key:'rite_policy',   label:'RITE policy (between sessions)', type:'textarea', ph:'What fixes are allowed between sessions? How to verify?', desc:'Rapid Iterative Testing & Evaluation guidance.' },
+
+    /* Prototypes & data */
+    { key:'prototype_links',label:'Prototype / build links', type:'textarea', ph:'Figma link(s), staging URLs, test accounts', desc:'Provide stable links and test data.' },
+    { key:'data_setup',    label:'Test data & states', type:'textarea', ph:'preloaded records, roles, flags, seeded errors', desc:'Ensure each task is actually completable.' },
+
+    /* Metrics & success criteria */
+    { key:'metrics',       label:'Metrics', type:'textarea', ph:'task success, time on task, errors, path deviations, SEQ, SUS/UMUX-Lite', desc:'Pick measures appropriate to study type.' },
+    { key:'include_seq',   label:'Per-task SEQ?', type:'select', options:['yes','no'], desc:'1–7 Single Ease Question after each task.' },
+    { key:'include_sus',   label:'Post-session SUS/UMUX-Lite?', type:'select', options:['none','SUS','UMUX-Lite'], desc:'Overall usability rating for benchmarks.' },
+    { key:'benchmarks',    label:'Targets (if summative)', type:'textarea', ph:'e.g., success ≥85%, median time ≤90s, SUS ≥80', desc:'Define pass/fail up front; avoid post-hoc shifting.' },
+    { key:'success',       label:'Success criteria', type:'textarea', ph:'Binary/partial pass definitions per task; error thresholds', desc:'Observable end-states and fail conditions.' },
+    { key:'severity_scale',label:'Issue severity scale', type:'select', options:['0–4 (cosmetic→catastrophic)','Blocker/High/Medium/Low','custom'], desc:'Standardize scoring for issues.' },
+
+    /* Ops, observers, incentives */
+    { key:'observers',     label:'Observers & etiquette', type:'textarea', ph:'who attends + backchannel; no coaching', desc:'Avoid contaminating sessions; set rules.' },
+    { key:'observer_backchannel', label:'Observer backchannel', type:'text', ph:'e.g., #usability-observe (no coaching)', desc:'Where observers talk to each other—not to the moderator.' },
+    { key:'logistics',     label:'Logistics', type:'textarea', ph:'scheduling, time zones, backups, consent flow', desc:'Plan reminders and recovery for tech issues.' },
+    { key:'privacy_mode',  label:'Privacy mode', type:'select', options:['anonymous','confidential','identified'], desc:'Impacts consent language and storage.' },
+    { key:'consent',       label:'Consent / Recording policy', type:'textarea', ph:'recording text, redaction, retention window, PII handling', desc:'Get explicit permission and set expectations.' },
+    { key:'incentive_type', label:'Incentive type', type:'select',
+      options:['cash','gift card','voucher/credit','charity donation','sweepstakes/raffle','none'],
+      desc:'Match effort and norms; avoid coercion.' },
+    { key:'incentive',     label:'Incentive amount/details', type:'text', ph:'e.g., $75 for 60 min', desc:'Set expectations up front.' },
+    { key:'incentive_delivery', label:'Incentive delivery', type:'text', ph:'e.g., Tremendous, manual codes, 5–7 days', desc:'Method, timing, eligibility.' },
+
+    /* Bias & ethics library (exact shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Pilot, notes, reporting */
+    { key:'pilot',         label:'Pilot plan', type:'textarea', ph:'run 1–2 pilots; fix timing/prototype issues', desc:'Dry-run to de-risk sessions.' },
+    { key:'notes_schema',  label:'Notes/coding schema', type:'textarea', ph:'issue severity, frequency, location; SEQ; quotes', desc:'Define how you’ll capture evidence.' },
+    { key:'reporting',     label:'Reporting artifact', type:'select',
+      options:['issues list (severity×frequency×impact)','insight cards','executive readout','design brief/ticket bundle'],
+      desc:'Primary output that teams will act on.' },
+
+    /* Constraints & risks */
+    { key:'risks',         label:'Known risks / hypotheses', type:'textarea', ph:'fragile prototype areas; outage windows', desc:'Call out sharp edges and what you expect to break.' },
+    { key:'constraints',   label:'Constraints', type:'textarea', ph:'privacy, device limits, bandwidth, legal', desc:'Anything that narrows scope or method.' }
+  ],
+  boosters: [
+    'Write the decision first; choose study type and metrics that answer it.',
+    'Test red routes first; fewer, deeper tasks beat many shallow ones.',
+    'Describe goals in user language; never embed UI labels in scenarios.',
+    'Define binary/partial success and error types before testing.',
+    'Counterbalance or randomize task order where tasks are independent.',
+    'Set an assistance policy and mark assisted vs. unassisted completions.',
+    'Include accessibility from the start (AT, keyboard-only, captions).',
+    'Pilot the whole flow (links, data, recording); trim after timing the pilot.',
+    'Capture SEQ per task and SUS/UMUX-Lite only when benchmarking makes sense.',
+    'Debrief 10 minutes after each session; log issues with severity×frequency×impact and concrete evidence.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const typeNote = (() => {
+      switch (f.study_type) {
+        case 'formative (diagnostic)':
+          return 'Study note: Formative — focus on finding and fixing friction; smaller n; prioritize severity over precision.';
+        case 'summative (benchmark)':
+          return 'Study note: Summative — predefine targets (success/time/errors, SUS/UMUX-Lite); larger n; control for variance.';
+        case 'comparative (A/B)':
+          return 'Study note: Comparative — counterbalance versions; keep tasks and prompts identical.';
+        case 'competitive':
+          return 'Study note: Competitive — same tasks across products; report task-level winners and tradeoffs.';
+        case 'accessibility-focused':
+          return 'Study note: Accessibility — include assistive tech; success = independent completion with accommodations respected.';
+        case 'first-click':
+          return 'Study note: First-click — measure first interaction accuracy and time; predicts task success.';
+        case 'tree test':
+          return 'Study note: Tree test — text-only IA; success and time; no UI chrome.';
+        case 'prototype (lo/hi-fi)':
+          return 'Study note: Prototype — watch for fidelity limits; script around dead ends; mark prototype-driven failures.';
+        default:
+          return null;
+      }
+    })();
+
+    const envNote = (() => {
+      switch (f.environment) {
+        case 'remote moderated': return 'Environment: Remote moderated — prepare conferencing, backups, and observer backchannel.';
+        case 'remote unmoderated': return 'Environment: Remote unmoderated — write self-contained tasks and auto-capture metrics; include attention checks sparingly.';
+        case 'in-person lab': return 'Environment: Lab — manage room setup, screen/audio capture, and observer glass etiquette.';
+        case 'in-field': return 'Environment: Field — plan for noise, connectivity, and contextual constraints; prioritize critical tasks.';
+        default: return null;
+      }
+    })();
+
+    const modNote = (() => {
+      switch (f.moderation) {
+        case 'think-aloud (concurrent)':
+          return 'Moderation: Think-aloud — remind participants to narrate; avoid leading; accept pauses.';
+        case 'retrospective think-aloud':
+          return 'Moderation: Retrospective — record silently; replay and probe after each task to reduce interference.';
+        case 'no think-aloud (silent observation)':
+          return 'Moderation: Silent — rely on behavioral evidence; use brief neutral probes only after completion.';
+        default:
+          return null;
+      }
+    })();
+
+    const seqNote = f.include_seq === 'yes' ? 'Per-task SEQ enabled (1–7 ease + “What made it a [score]?”).' : null;
+    const susNote = (() => {
+      switch (f.include_sus) {
+        case 'SUS': return 'Post-session SUS enabled (overall usability index).';
+        case 'UMUX-Lite': return 'Post-session UMUX-Lite enabled (usefulness + ease short scale).';
+        default: return null;
+      }
+    })();
+
+    const assistNote = (() => {
+      switch (f.assist_policy) {
+        case 'no assistance': return 'Assistance policy: none — mark only independent outcomes.';
+        case 'ladder: restate goal → point region → reveal path': return 'Assistance policy: laddered hints — log level used and mark as assisted completion.';
+        case 'custom': return 'Assistance policy: custom — specify hint levels in the protocol.';
+        default: return null;
+      }
+    })();
+
+    const privacyNote = (() => {
+      switch (f.privacy_mode) {
+        case 'anonymous': return 'Privacy: Anonymous — avoid collecting PII; redact identifiers in recordings and notes.';
+        case 'confidential': return 'Privacy: Confidential — store PII separately; restrict access; specify retention.';
+        case 'identified': return 'Privacy: Identified — explain purpose and safeguards; confirm consent for any internal sharing.';
+        default: return null;
+      }
+    })();
+
+    return [
+      'Draft a usability test plan.',
+      f.product_area && `Product area: ${f.product_area}`,
+      f.decision && `Decision to inform:\n${f.decision}`,
+      f.objectives && `Objectives:\n${f.objectives}`,
+      f.hypotheses && `Hypotheses:\n${f.hypotheses}`,
+
+      f.study_type && typeNote,
+      f.environment && envNote,
+      f.moderation && modNote,
+      f.session_length && `Session length: ${f.session_length}`,
+
+      f.users && `Target users:\n${f.users}`,
+      f.audience_persona && `Personas/segments: ${list(f.audience_persona)}`,
+      f.sample_size && `Participants (target): ${f.sample_size}`,
+      f.quotas && `Quotas:\n${f.quotas}`,
+      f.recruit_channels && `Recruiting channels:\n${f.recruit_channels}`,
+      f.screener_ref && `Screener: ${f.screener_ref}`,
+
+      f.devices && `Devices/OS/browsers:\n${f.devices}`,
+      f.assistive_tech && `Assistive tech:\n${f.assistive_tech}`,
+
+      f.tasks_count && `Tasks planned: ${f.tasks_count}`,
+      f.task_themes && `Task themes:\n${f.task_themes}`,
+      f.counterbalance && `Task ordering: ${f.counterbalance}`,
+      assistNote,
+      f.stop_rules && `Stop rules:\n${f.stop_rules}`,
+      f.rite_policy && `RITE policy:\n${f.rite_policy}`,
+
+      f.prototype_links && `Prototype/build links:\n${f.prototype_links}`,
+      f.data_setup && `Test data & states:\n${f.data_setup}`,
+
+      f.metrics && `Metrics:\n${f.metrics}`,
+      seqNote,
+      susNote,
+      f.benchmarks && `Targets (if summative):\n${f.benchmarks}`,
+      f.success && `Success criteria:\n${f.success}`,
+      f.severity_scale && `Issue severity scale: ${f.severity_scale}`,
+
+      f.observers && `Observers & etiquette:\n${f.observers}`,
+      f.observer_backchannel && `Observer backchannel: ${f.observer_backchannel}`,
+      f.logistics && `Logistics:\n${f.logistics}`,
+      privacyNote,
+      f.consent && `Consent / Recording:\n${f.consent}`,
+
+      f.incentive_type && `Incentive type: ${f.incentive_type}`,
+      f.incentive && `Incentive: ${f.incentive}`,
+      f.incentive_delivery && `Incentive delivery: ${f.incentive_delivery}`,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+      f.pilot && `Pilot plan:\n${f.pilot}`,
+      f.notes_schema && `Notes/coding schema:\n${f.notes_schema}`,
+      f.reporting && `Reporting artifact: ${f.reporting}`,
+
+      f.risks && `Known risks / hypotheses:\n${f.risks}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Overview (decision, objectives, study type, environment, moderation)',
+        '- Participants & Recruiting (personas, quotas, channels, sample size)',
+        '- Tasks Plan (themes, ordering, stop rules, assistance policy, RITE policy)',
+        '- Prototype & Data Setup (links, seeded states)',
+        '- Metrics & Success Criteria (SEQ/SUS/UMUX-Lite, targets if benchmarking; severity scale)',
+        '- Accessibility & Devices (AT, setups)',
+        '- Logistics (observers, backchannel, scheduling, consent/recording, privacy mode)',
+        '- Pilot & Notes Schema',
+        '- Reporting Plan',
+        '- Risks & Constraints'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+
+/* ---------------------------------------------------------
+   TASK: Task Scenarios — Write (enhanced v2)
+--------------------------------------------------------- */
+{
+  id: 'task_scenarios_write',
+  slug: 'task-scenarios-write',
+  label: 'Task Scenarios — Write',
+  kind: 'task',
+  categories: ['research','writing','evaluation'],
+  tags: [
+    'type:task',
+    'topic:usability-test',
+    'topic:task-scenarios',
+    'topic:hta',
+    'topic:klm',
+    'topic:accessibility',
+    'use:write',
+    'use:design',
+    'use:edit',
+    'stage:design'
+  ],
+  use_cases: [
+    'write realistic, bias-free scenarios for usability tasks',
+    'define acceptance criteria per task',
+    'ensure coverage of critical paths',
+    'author recovery/edge-case scenarios that test resilience',
+    'create step and micro-action breakdowns (HTA/KLM-lite)',
+    'tailor scenarios for digital, physical, or hybrid workflows',
+    'add accessibility paths (keyboard-only, screen reader) and device variants',
+    'counterbalance task order and set assistance (hint) policy',
+    'embed per-task success/partial/fail gates and SEQ/Confidence prompts',
+    'localize scenario language by market/reading level',
+    'design comparable scenarios for A/B or competitive studies',
+    'seed realistic data/states so tasks are actually completable',
+    'attach observation targets and evidence logging (events, timestamps)'
+  ],
+  definition: 'Write and refine usability task scenarios with realistic context, prerequisites, starting states, constraints, success/partial/fail criteria, recovery variants, and observation targets. Includes step/micro-action breakdown (HTA, optional KLM timing) and accessibility/device paths.',
+  help: 'Name the product area and user objectives in user language. Select modality, scenario style, complexity mix, ordering, and assistance policy so guidance adapts. Provide any seeded data, states, devices/AT, and constraints. Use personas and the bias library to keep language inclusive and avoid path giveaways.',
+  fields: [
+    /* Scope & context */
+    { key:'product_area',  label:'Product / area', type:'text', ph:'e.g., Billing → Export Invoices', desc:'Feature or flow under test.' },
+    { key:'objectives',    label:'User objectives (jobs to test)', type:'textarea', ph:'Outcomes in user words (not features)', desc:'Each objective should map to ≥1 scenario.' },
+
+    /* Audience */
+    { key:'persona_context', label:'Persona/segment refs (optional)', type:'textarea', ph:'@Persona: Admin Alice; @Segment: SMB Paid', desc:'References to existing personas or segments.' },
+    { key:'audience_persona', label:'Personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select one or more personas to guide language and data.',
+      ph:'e.g., New Admin; Mobile-first Seller; Finance Manager' },
+
+    /* Modality & environment */
+    { key:'modality',      label:'Modality', type:'select',
+      options:['digital','physical','hybrid'],
+      desc:'Alters observation targets and constraints.' },
+    { key:'environment',   label:'Environment', type:'select',
+      options:['remote','in-person','field'],
+      desc:'Where the scenario occurs; changes constraints and data needs.' },
+    { key:'devices',       label:'Devices / OS / browsers (optional)', type:'textarea',
+      ph:'Desktop Chrome 123; iOS 16 Safari; Android 13 Chrome; barcode scanner',
+      desc:'Specify setups relevant to the scenario(s).' },
+
+    /* Scenario style & controls */
+    { key:'scenario_style', label:'Primary scenario style', type:'select',
+      options:['transaction (happy path)','discovery (find/figure-out)','recovery (error/edge)','configuration/setup','comprehension/navigation','cross-channel (physical↔digital)'],
+      desc:'Shapes the goal framing and observation targets.' },
+    { key:'tasks_count',   label:'# of scenarios to generate', type:'select',
+      options:['3','4','5','6','7','8','custom'],
+      desc:'Target count for output.' },
+    { key:'complexity_mix',label:'Complexity mix', type:'select',
+      options:['mixed (default)','mostly easy','mostly medium','mostly hard'],
+      desc:'Overall difficulty balance across scenarios.' },
+    { key:'counterbalance',label:'Task ordering strategy', type:'select',
+      options:['fixed order','counterbalanced','randomized (independent)'],
+      desc:'Reduce order effects where tasks are independent.' },
+
+    /* Comparability options */
+    { key:'comparison_mode', label:'Comparability', type:'select',
+      options:['none','A/B versions','competitive benchmark'],
+      desc:'Generates comparable wording and shared success metrics.' },
+
+    /* Scenario ingredients */
+    { key:'starting_state',label:'Starting state', type:'text', ph:'e.g., Logged in on Dashboard; cart has 2 items', desc:'Where the participant begins.' },
+    { key:'prereqs',       label:'Prerequisites / test data', type:'textarea',
+      ph:'accounts, permissions, seeded records, mock payment card',
+      desc:'Ensure each scenario is actually completable.' },
+    { key:'constraints',   label:'Constraints', type:'textarea',
+      ph:'time/budget/device rules; do not use search; no external help',
+      desc:'Realistic guardrails that surface risk.' },
+
+    /* Acceptance gates */
+    { key:'success',       label:'Success criteria (pass)', type:'textarea',
+      ph:'Observable end-states; files created; state changed',
+      desc:'Binary pass definition per scenario.' },
+    { key:'partial',       label:'Partial success (optional)', type:'textarea',
+      ph:'e.g., draft saved but wrong format/date',
+      desc:'Acceptable-but-imperfect outcomes.' },
+    { key:'fail',          label:'Fail conditions', type:'textarea',
+      ph:'e.g., cannot submit; ends in loop; error with no recovery',
+      desc:'Explicit fail states remove ambiguity.' },
+
+    /* Variants & accessibility */
+    { key:'recovery_variant', label:'Recovery/edge-case variant (optional)', type:'textarea',
+      ph:'invalid input; empty state; offline; permission denied',
+      desc:'Plan at least one resilience test.' },
+    { key:'accessibility_path', label:'Accessibility path (optional)', type:'select',
+      options:['none','keyboard-only','screen reader','high zoom/contrast'],
+      desc:'Add an inclusive path to the scenario(s).' },
+    { key:'reading_level', label:'Reading level', type:'select',
+      options:['6th grade','8th grade','10th grade','12th grade','professional'],
+      desc:'Target clarity for scenario copy.' },
+    { key:'localization',  label:'Localization scope', type:'select',
+      options:['none','1–3 languages','4–10 languages','>10 languages'],
+      desc:'Impacts copy style and QA plan.' },
+
+    /* Observation & policy */
+    { key:'assist_policy', label:'Assistance (hint ladder)', type:'select',
+      options:['no assistance','ladder: restate goal → point region → reveal path','custom'],
+      desc:'Define when/how to help; assisted passes must be logged.' },
+    { key:'observation_focus', label:'Observation targets', type:'textarea',
+      ph:'first-click, label interpretation, path deviations, error/recovery, confidence cues',
+      desc:'What to watch closely during each scenario.' },
+    { key:'timebox',       label:'Timebox (optional)', type:'text',
+      ph:'e.g., ~2 min per task if realistic',
+      desc:'Only add if time pressure is true to life.' },
+
+    /* Measurement & analysis */
+    { key:'include_seq',   label:'Add SEQ (1–7) after each task?', type:'select', options:['yes','no'] },
+    { key:'include_confidence', label:'Ask confidence (0–10)?', type:'select', options:['yes','no'] },
+    { key:'klm_detail',    label:'Micro-timing detail', type:'select',
+      options:['none','KLM-lite (major operators)','full KLM cues (K/P/H/M/R)'],
+      desc:'Adds time-estimation prompts per step when selected.' },
+    { key:'first_click',   label:'Track first-click accuracy/time?', type:'select', options:['yes','no'] },
+
+    /* Language guardrails */
+    { key:'avoid_ui_terms',label:'UI terms to avoid (path giveaways)', type:'textarea',
+      ph:'gear icon; “Export” menu; “Settings” tab',
+      desc:'Keeps scenarios neutral and outcome-focused.' },
+
+    /* Pre/Post prompts (optional text the AI will include verbatim) */
+    { key:'pre_task_prompts',  label:'Pre-task questions (optional)', type:'textarea', ph:'recent use; mental model; expectations', desc:'Short warm-ups before first task.' },
+    { key:'post_task_prompts', label:'Post-task questions (optional)', type:'textarea', ph:'What were you expecting? What made it a [SEQ]?', desc:'Keep neutral; avoid blame.' },
+
+    /* Evidence logging */
+    { key:'logging_notes', label:'Evidence logging', type:'textarea',
+      ph:'events, timestamps, screenshots, quotes schema',
+      desc:'How note-takers should capture evidence.' },
+
+    /* Bias & ethics (library shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    }
+  ],
+  boosters: [
+    'Describe outcomes, not clicks; avoid UI labels and brand-loaded terms.',
+    'Anchor tasks in real context and constraints; short scenario text, long prep behind the scenes.',
+    'Seed data/permissions/states so success is possible; script edge states intentionally.',
+    'Define pass/partial/fail before testing; no vibe-based judgment.',
+    'Include at least one recovery/edge-case path to test resilience.',
+    'Plan accessibility paths (keyboard-only or screen reader) when relevant.',
+    'Use HTA to break tasks into steps; tag micro-actions and decisions (add KLM cues if selected).',
+    'Counterbalance task order where independent; otherwise justify fixed order.',
+    'Set a clear assistance policy and mark assisted vs. unassisted passes.',
+    'Keep language at the chosen reading level; localize idiom-free.',
+    'For A/B or competitive modes, keep scenario wording and metrics identical across conditions.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const modalityMap = {
+      'digital': 'Modality: Digital — emphasize first-click, navigation, labels, and error/recovery states.',
+      'physical': 'Modality: Physical — include device handling, reach/visibility, handoffs, and environmental constraints.',
+      'hybrid': 'Modality: Hybrid — plan for physical→digital handoffs (e.g., scanning, Bluetooth, camera permissions).'
+    };
+    const styleMap = {
+      'transaction (happy path)': 'Scenario style: Transaction — straightforward completion on a realistic “happy path.”',
+      'discovery (find/figure-out)': 'Scenario style: Discovery — avoid hinting that a specific feature exists; watch wayfinding.',
+      'recovery (error/edge)': 'Scenario style: Recovery — inject an error or ambiguous state; observe diagnosis and recovery.',
+      'configuration/setup': 'Scenario style: Configuration — multi-step setup with prerequisites and confirmation.',
+      'comprehension/navigation': 'Scenario style: Comprehension/Navigation — read-to-answer or first-click navigation goals.',
+      'cross-channel (physical↔digital)': 'Scenario style: Cross-channel — cover physical→digital handoffs (codes, pairing, signage).'
+    };
+    const orderMap = {
+      'fixed order': 'Ordering: Fixed — order is intentional due to narrative or dependencies.',
+      'counterbalanced': 'Ordering: Counterbalanced — alternate task sequences across participants.',
+      'randomized (independent)': 'Ordering: Randomized — shuffle independent tasks to reduce order effects.'
+    };
+    const assistMap = {
+      'no assistance': 'Assistance policy: none — only independent outcomes are passes.',
+      'ladder: restate goal → point region → reveal path': 'Assistance policy: laddered hints — log level used (L1 restate, L2 point, L3 reveal).',
+      'custom': 'Assistance policy: custom — specify hint levels in the protocol.'
+    };
+    const accMap = {
+      'keyboard-only': 'Accessibility path: keyboard-only — ensure focus order, visible focus, and no trap states.',
+      'screen reader': 'Accessibility path: screen reader — rely on landmarks, names, roles, and proper announcements.',
+      'high zoom/contrast': 'Accessibility path: high zoom/contrast — verify reflow, contrast, and color independence.'
+    };
+    const compareMap = {
+      'A/B versions': 'Comparability: A/B — keep identical scenario wording, data, and success metrics across versions.',
+      'competitive benchmark': 'Comparability: Competitive — run identical tasks across products; report task-level winners and tradeoffs.'
+    };
+    const klmMap = {
+      'KLM-lite (major operators)': 'Micro-timing: KLM-lite — estimate time for major operators and note latency thresholds.',
+      'full KLM cues (K/P/H/M/R)': 'Micro-timing: Full KLM — include K/P/H/M/R cues and expected bounds.'
+    };
+
+    const lines = [
+      'Create 3–8 usability task scenarios with step and micro-action breakdowns.',
+      f.product_area && `Product area: ${f.product_area}`,
+      f.objectives && `User objectives:\n${f.objectives}`,
+      f.persona_context && `Persona/segment refs:\n${f.persona_context}`,
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+
+      f.modality && modalityMap[f.modality],
+      f.environment && `Environment: ${f.environment}`,
+      f.devices && `Devices/OS/browsers:\n${f.devices}`,
+
+      f.scenario_style && styleMap[f.scenario_style],
+      f.tasks_count && `Scenarios to generate: ${f.tasks_count}`,
+      f.complexity_mix && `Complexity mix: ${f.complexity_mix}`,
+      f.counterbalance && orderMap[f.counterbalance],
+      f.comparison_mode && compareMap[f.comparison_mode],
+
+      f.starting_state && `Starting state: ${f.starting_state}`,
+      f.prereqs && `Prerequisites / test data:\n${f.prereqs}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      f.success && `Success criteria (pass):\n${f.success}`,
+      f.partial && `Partial success:\n${f.partial}`,
+      f.fail && `Fail conditions:\n${f.fail}`,
+
+      f.recovery_variant && `Recovery/edge-case variant:\n${f.recovery_variant}`,
+      (f.accessibility_path && f.accessibility_path !== 'none') && accMap[f.accessibility_path],
+      f.reading_level && `Reading level: ${f.reading_level}`,
+      f.localization && `Localization: ${f.localization}`,
+
+      f.assist_policy && assistMap[f.assist_policy],
+      f.observation_focus && `Observation targets:\n${f.observation_focus}`,
+      f.timebox && `Timebox: ${f.timebox}`,
+      (f.include_seq === 'yes') && 'Measurement: Add SEQ (1–7) after each task with “What made it a [score]?”',
+      (f.include_confidence === 'yes') && 'Measurement: Ask perceived confidence (0–10) after each task.',
+      (f.first_click === 'yes') && 'Measurement: Track first-click accuracy and time to first interaction.',
+      (f.klm_detail && f.klm_detail !== 'none') && klmMap[f.klm_detail],
+
+      f.avoid_ui_terms && `Avoid UI terms:\n${f.avoid_ui_terms}`,
+      f.pre_task_prompts && `Pre-task questions:\n${f.pre_task_prompts}`,
+      f.post_task_prompts && `Post-task questions:\n${f.post_task_prompts}`,
+      f.logging_notes && `Evidence logging:\n${f.logging_notes}`,
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+      [
+        'Output format (for each scenario):',
+        '- Title',
+        '- Scenario text (2–3 sentences, user language, no UI labels)',
+        '- Starting state · Prereqs/Test data · Constraints',
+        '- Success / Partial / Fail criteria',
+        '- Recovery/Edge-case variant (if provided)',
+        '- Accessibility path notes (if selected)',
+        '- Step breakdown (HTA): Step 1… Step 2… Step 3…',
+        '- Micro-actions & cognition to watch (scan → decide → act → evaluate)',
+        '- (If KLM selected) Operator cues and expected latency bounds',
+        '- Observation targets (first-click, errors, recovery, confidence cues)',
+        '- Assistance note (if hints used: level L1/L2/L3)',
+        '- Post-task prompts (SEQ/Confidence if enabled) and notes'
+      ].join('\n')
+    ];
+
+    return lines.filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: User Flow — Audit — Design (enhanced)
+--------------------------------------------------------- */
+{
+  id: 'task_user_flow_audit',
+  slug: 'user-flow-audit',
+  label: 'User Flow — Audit — Design',
+  kind: 'task',
+  categories: ['design','evaluation','analysis'],
+  tags: [
+    'type:task',
+    'topic:user-flow',
+    'topic:journey',
+    'topic:task-flow',
+    'topic:service-blueprint',
+    'use:audit',
+    'use:design',
+    'use:edit',
+    'stage:review'
+  ],
+  use_cases: [
+    'identify friction and drop-off in a key flow',
+    'map steps, states, decisions, and detours (incl. empty/error states)',
+    'flag usability, content, and accessibility issues',
+    'design an ideal-state flow with recovery paths and acceptance criteria',
+    'create a service-blueprint view (front-stage/back-stage)',
+    'define an event map and instrumentation gaps',
+    'prioritize fixes by severity × reach × business impact',
+    'localize copy/flows and plan accessibility-first paths',
+    'package recommendations for execs, PM/Design/Eng, and CX',
+    'align story slices (user stories) to flow states and acceptance criteria',
+    'compare current vs. proposed flow performance against KPIs/guardrails',
+    'plan experiments (copy/order/component) tied to flow instrumentation'
+  ],
+  definition: 'Audit and redesign a user flow. Produce a current-state map with annotated pain points and evidence, then propose an ideal-state design with acceptance criteria, event instrumentation, accessibility/localization notes, and ranked recommendations that tie to KPIs.',
+  help: 'Link the flow (Figma, video, live) and add current metrics. Pick frameworks (heuristics, journey lens, blueprint), journey scope (before/during/after or end-to-end), notation, priority model, and deliverables so guidance adapts. Use personas and bias checks to keep language inclusive and decisions user-centered.',
+  fields: [
+    /* Scope & links */
+    { key:'flow',             label:'Flow name / link', type:'text', ph:'e.g., Sign up → Verify → Create workspace (Figma/URL)' },
+    { key:'goal',             label:'Primary user goal', type:'text', ph:'What the user is trying to achieve, in their words' },
+    { key:'decision',         label:'Decision to inform', type:'text', ph:'What will this audit/design help decide?', desc:'Design backwards from the decision to focus the work.' },
+
+    /* Journey breadth */
+    { key:'journey_scope',    label:'Journey scope', type:'select',
+      options:['before (pre-product)','during (in-product)','after (post-product/support)','end-to-end'],
+      desc:'Sets lanes and channels to include in the mapping.' },
+
+    /* Audience & segments */
+    { key:'audience_persona', label:'Personas / segments (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Who this flow must serve; informs language, defaults, and paths.',
+      ph:'e.g., New Admin; Power User; Procurement' },
+
+    /* Channels & platforms */
+    { key:'channels',         label:'Channels', type:'textarea', ph:'web, app, email, SMS, support, docs, sales', desc:'Cross-channel touchpoints relevant to this flow.' },
+    { key:'platforms',        label:'Platforms / devices', type:'textarea', ph:'Web (Chrome/Safari), iOS/Android, Email, Support portal', desc:'Where the flow lives; affects constraints.' },
+
+    /* Flow shape */
+    { key:'entry',            label:'Entry points', type:'textarea', ph:'deep link, email CTA, search, navigation path', desc:'Where users arrive from (multi-channel included).' },
+    { key:'exits',            label:'Exits', type:'textarea', ph:'success states, cancel/save, external handoffs', desc:'All ways out, good or bad.' },
+    { key:'scope',            label:'Scope / variants', type:'textarea', ph:'happy path + key branches; platform variants', desc:'Name what’s in/out to avoid map sprawl.' },
+
+    /* Current-state evidence */
+    { key:'metrics',          label:'Current metrics', type:'textarea', ph:'conversion %, step drop-off, avg time, error rates', desc:'Add segment cuts if available.' },
+    { key:'kpis',             label:'Target KPIs / guardrails', type:'textarea', ph:'activation %, step-3 drop-off, chargeback rate, CSAT', desc:'What success must move or protect.' },
+    { key:'friction',         label:'Hypothesized friction', type:'textarea', ph:'where and why users get stuck', desc:'Seed hypotheses to confirm/refute.' },
+    { key:'evidence',         label:'Evidence links (optional)', type:'textarea', ph:'session replays, support tickets, research notes' },
+
+    /* Map ingredients */
+    { key:'state_inventory',  label:'State inventory (screens/states)', type:'textarea', ph:'screen list incl. loading, empty, error, success', desc:'Name every state that appears in the flow.' },
+    { key:'decision_rules',   label:'Decision points & rules', type:'textarea', ph:'conditions, branching logic, validation gates' },
+    { key:'edge_paths',       label:'Edge & recovery paths', type:'textarea', ph:'undo, retry, offline, permissions, expired links' },
+    { key:'backstage',        label:'Back-stage processes', type:'textarea', ph:'emails, webhooks, queues, verification services', desc:'For blueprinting (system/ops lanes).' },
+    { key:'dependencies',     label:'Dependencies', type:'textarea', ph:'integrations, feature flags, rate limits', desc:'Systems and toggles that affect the flow.' },
+
+    /* Copy & a11y */
+    { key:'copy_notes',       label:'Copy & content notes', type:'textarea', ph:'labels, help, error messages, tone risks' },
+    { key:'a11y_scope',       label:'Accessibility scope', type:'select', options:['keyboard-only','screen reader','high contrast/zoom','multi-language inputs','none'], desc:'Which inclusive paths to design/audit now.' },
+    { key:'localization',     label:'Localization scope', type:'select', options:['none','1–3 languages','4–10 languages','>10 languages'], desc:'Impacts copy length, formats, date/number.' },
+
+    /* Frameworks & notation */
+    { key:'framework',        label:'Evaluation framework', type:'select',
+      options:['Nielsen/Norman heuristics','Gov.UK/USWDS heuristics','ISO 9241-110 (dialog principles)','Cognitive walkthrough','Journey lens (stage × emotion)','Service blueprint (swimlanes)'],
+      desc:'Choose the primary lens for the audit.' },
+    { key:'notation',         label:'Notation', type:'select',
+      options:['FSM (states/transitions)','BPMN-lite','Journey map lanes','Service blueprint'],
+      desc:'Shapes the map structure and labels.' },
+
+    /* Instrumentation */
+    { key:'events_tracked',   label:'Events tracked (today)', type:'textarea', ph:'signup_start, email_sent, verify_success, billing_error' },
+    { key:'instrument_gaps',  label:'Instrumentation gaps', type:'textarea', ph:'missing events, indistinguishable errors, no step IDs' },
+    { key:'experiment_hooks', label:'Experiment hooks (optional)', type:'textarea', ph:'copy variants, component swaps, order tests', desc:'Where to A/B and how you’ll detect outcomes.' },
+
+    /* Acceptance & stories */
+    { key:'acceptance_style', label:'Acceptance style', type:'select',
+      options:['Gherkin (Given/When/Then)','Checklist (per step)','Quant guardrails (targets/thresholds)'],
+      desc:'How acceptance will be expressed in the deliverable.' },
+    { key:'story_slices',     label:'User stories (optional)', type:'textarea', ph:'As a [persona], I want [goal], so that [value]', desc:'Story seeds tied to flow states.' },
+
+    /* Prioritization */
+    { key:'severity_scale',   label:'Severity scale', type:'select', options:['Blocker/High/Medium/Low','1–5','custom'] },
+    { key:'priority_model',   label:'Priority model', type:'select',
+      options:['Severity × Reach × Impact (tempered by Confidence)','ICE (Impact, Confidence, Ease)','RICE-like (Reach, Impact, Confidence, Effort)'] },
+    { key:'impact_domains',   label:'Impact domains', type:'textarea', ph:'activation, conversion, retention, trust, cost to serve, risk' },
+{
+  key: 'effort_scale',
+  label: 'Effort estimate scale',
+  type: 'select',
+  options: [
+    't-shirt (S/M/L/XL)',
+    't-shirt (XS/S/M/L/XL)',
+    'three-point (S/M/L)',
+    '1–5',
+    'story points - Fibonacci',
+    'story points - modified Fibonacci',
+    'powers of 2 (1,2,4,8)',
+    'bucketed hours',
+    'ideal hours',
+    'rough eng-days',
+    'full-time weeks',
+    'complexity bands (low/med/high)'
+  ],
+  desc: 'Pick one sizing scheme so recommendations can be ranked and compared consistently across items.',
+  ph: 'Select a sizing scheme'
+},
+
+    /* Deliverables */
+    { key:'deliverables',     label:'Deliverables', type:'select',
+      options:[
+        'current-state map (annotated)',
+        'issues list (severity, heuristic, evidence)',
+        'ideal-state flow (proposed)',
+        'service blueprint view',
+        'state inventory (with empty/error variants)',
+        'event map (with gaps)',
+        'acceptance criteria per step',
+        'executive TL;DR + roadmap slice'
+      ],
+      desc:'Pick the main artifact to emphasize.' },
+
+    /* Ownership & timing */
+    { key:'owners',           label:'Owner teams / people', type:'textarea', ph:'e.g., Growth PM; Billing Eng; Design Systems', desc:'Who will act on recommendations.' },
+    { key:'timeline',         label:'Timeline', type:'text', ph:'e.g., Q3 release; 2-sprint implementation window' },
+
+    /* Bias & ethics library (exact shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Constraints */
+    { key:'constraints',      label:'Constraints', type:'textarea', ph:'tech/legal limits, timelines, brand rules' }
+  ],
+  boosters: [
+    'Map every state, including loading, empty, and error; real flows fail in the margins.',
+    'Name decisions in user language and show rules; vague diamonds hide work.',
+    'Design recovery: undo, retry, drafts, and safe exits reduce risk and support load.',
+    'Pair quant (drop-off, time) with qual (replays, quotes); prioritize by severity × reach × business impact.',
+    'Draft microcopy with tone and next-step guidance; error text is a design surface.',
+    'Instrument the flow: unique step IDs, success/fail pairs, and error classes.',
+    'Blueprint backstage: emails/queues/3rd-party calls and their failure modes.',
+    'Localize early; budget for longer strings and different formats.',
+    'Accessibility-first: keyboard path, SR announcements, contrast/zoom; recruit users with AT for validation.',
+    'Package recommendations with effort and owner; convert top items to tickets with acceptance criteria.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const frameworkNote = (() => {
+      switch (f.framework) {
+        case 'Nielsen/Norman heuristics':
+          return 'Framework: Heuristics — rate clarity, control, consistency, feedback, error prevention, recognition vs. recall.';
+        case 'Gov.UK/USWDS heuristics':
+          return 'Framework: GOV/USWDS — plain language, task-based journeys, inclusive design, resilience.';
+        case 'ISO 9241-110 (dialog principles)':
+          return 'Framework: ISO 9241-110 — suitability for the task, self-descriptiveness, controllability, conformity with expectations, error tolerance, suitability for learning.';
+        case 'Cognitive walkthrough':
+          return 'Framework: Cognitive walkthrough — ask: will first-time users know what to do, see how to do it, and understand the outcome?';
+        case 'Journey lens (stage × emotion)':
+          return 'Framework: Journey lens — map stages, moments of truth, and emotions; fix the worst moments first.';
+        case 'Service blueprint (swimlanes)':
+          return 'Framework: Blueprint — front-stage steps aligned with back-stage systems and policies; highlight handoff risks.';
+        default:
+          return null;
+      }
+    })();
+
+    const journeyNote = (() => {
+      switch (f.journey_scope) {
+        case 'before (pre-product)': return 'Journey scope: Pre-product — include acquisition/expectation setting (ads, sales, docs) and eligibility gates.';
+        case 'during (in-product)': return 'Journey scope: In-product — focus on on-screen states, decisions, and recovery inside the app.';
+        case 'after (post-product/support)': return 'Journey scope: Post-product — include confirmations, emails, fulfillment, billing/support, and churn loops.';
+        case 'end-to-end': return 'Journey scope: End-to-end — stitch pre/during/post across channels; call out moments of truth and handoffs.';
+        default: return null;
+      }
+    })();
+
+    const notationNote = (() => {
+      switch (f.notation) {
+        case 'FSM (states/transitions)': return 'Notation: FSM — list states and transitions; include empty/loading/error variants and retry loops.';
+        case 'BPMN-lite': return 'Notation: BPMN-lite — swimlanes for user/system, gateways for decisions, and events for handoffs.';
+        case 'Journey map lanes': return 'Notation: Journey lanes — stages × channels × emotions; evidence pins per lane.';
+        case 'Service blueprint': return 'Notation: Service blueprint — front-stage vs. back-stage lanes; policies and SLAs as constraints.';
+        default: return null;
+      }
+    })();
+
+    const a11yNote = (() => {
+      switch (f.a11y_scope) {
+        case 'keyboard-only': return 'A11y: Verify complete keyboard path, logical focus order, visible focus, no traps.';
+        case 'screen reader': return 'A11y: Check names/roles/states, landmarks, announcements, and error messaging.';
+        case 'high contrast/zoom': return 'A11y: Test 200% zoom/reflow, contrast ratios, and color independence.';
+        case 'multi-language inputs': return 'A11y: Validate input masks, RTL/LTR handling, date/number locale formats.';
+        default: return null;
+      }
+    })();
+
+    const priorityNote = (() => {
+      switch (f.priority_model) {
+        case 'Severity × Reach × Impact (tempered by Confidence)':
+          return 'Priority: Score issues by severity × reach × business impact; temper by confidence.';
+        case 'ICE (Impact, Confidence, Ease)':
+          return 'Priority: ICE — rank recommendations by impact, confidence, and ease of implementation.';
+        case 'RICE-like (Reach, Impact, Confidence, Effort)':
+          return 'Priority: RICE-like — include reach and effort for roadmap balance.';
+        default: return null;
+      }
+    })();
+
+    const acceptanceNote = (() => {
+      switch (f.acceptance_style) {
+        case 'Gherkin (Given/When/Then)': return 'Acceptance: Use Given/When/Then per step/state transition with success and error outcomes.';
+        case 'Checklist (per step)': return 'Acceptance: Checklist — per step criteria for success, error messaging, and recovery availability.';
+        case 'Quant guardrails (targets/thresholds)': return 'Acceptance: Quant guardrails — targets for success %, time on step, and error rate with alert thresholds.';
+        default: return null;
+      }
+    })();
+    
+// One-sentence “how to apply it” note per scale
+const effortNote = (() => {
+  switch (f.effort_scale) {
+    case 't-shirt (S/M/L/XL)':
+      return 'Effort Scale: Use relative sizes (S, M, L, XL) to compare scope quickly and split L or XL into smaller pieces.';
+    case 't-shirt (XS/S/M/L/XL)':
+      return 'Effort Scale: Use XS for trivial tasks and S through XL for larger ones, keeping sizing strictly relative rather than time-based.';
+    case 'three-point (S/M/L)':
+      return 'Effort Scale: Triage fast with S, M, or L using clear team examples for each band to keep sizing consistent.';
+    case '1–5':
+      return 'Effort Scale: Score 1 (trivial) to 5 (very high) using a shared rubric and apply it consistently across the backlog.';
+    case 'story points - Fibonacci':
+      return 'Effort Scale: Assign 1, 2, 3, 5, 8, or 13 as relative complexity after discussion, avoiding direct time mapping.';
+    case 'story points - modified Fibonacci':
+      return 'Effort Scale: Use 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100 to surface very large items that likely need breaking down.';
+    case 'powers of 2 (1,2,4,8)':
+      return 'Effort Scale: Choose 1, 2, 4, or 8 where each step roughly doubles effort, discouraging false precision.';
+    case 'bucketed hours':
+      return 'Effort Scale: Pick a bucket like 1–2h, half-day, 1d, 2–3d, or 1w based on focused work time only.';
+    case 'ideal hours':
+      return 'Effort Scale: Estimate hands-on work hours excluding meetings and blockers, then round to simple values.';
+    case 'rough eng-days':
+      return 'Effort Scale: Estimate approximate engineer-days of focused work per item and round to halves for comparability.';
+    case 'full-time weeks':
+      return 'Effort Scale: Size in 0.5w, 1w, 2w, or 3w+ at your team’s typical pace to highlight epics versus stories.';
+    case 'complexity bands (low/med/high)':
+      return 'Effort Scale: Mark Low, Medium, or High based on integrations, ambiguity, and unknowns to flag where spikes may be needed.';
+    default:
+      return null;
+  }
+})();
+
+
+    return [
+      'Audit and redesign the specified user flow.',
+      f.flow && `Flow: ${f.flow}`,
+      f.goal && `Primary user goal: ${f.goal}`,
+      f.decision && `Decision to inform: ${f.decision}`,
+
+      f.journey_scope && journeyNote,
+      f.channels && `Channels:\n${f.channels}`,
+      f.platforms && `Platforms/devices:\n${f.platforms}`,
+      f.audience_persona && `Personas/segments: ${list(f.audience_persona)}`,
+
+      f.entry && `Entry points:\n${f.entry}`,
+      f.exits && `Exits:\n${f.exits}`,
+      f.scope && `Scope / variants:\n${f.scope}`,
+
+      f.metrics && `Current metrics:\n${f.metrics}`,
+      f.kpis && `Target KPIs / guardrails:\n${f.kpis}`,
+      f.friction && `Hypothesized friction:\n${f.friction}`,
+      f.evidence && `Evidence links:\n${f.evidence}`,
+
+      f.state_inventory && `State inventory:\n${f.state_inventory}`,
+      f.decision_rules && `Decision points & rules:\n${f.decision_rules}`,
+      f.edge_paths && `Edge & recovery paths:\n${f.edge_paths}`,
+      f.backstage && `Back-stage processes:\n${f.backstage}`,
+      f.dependencies && `Dependencies:\n${f.dependencies}`,
+
+      f.copy_notes && `Copy/content notes:\n${f.copy_notes}`,
+      f.a11y_scope && a11yNote,
+      f.localization && `Localization: ${f.localization}`,
+
+      f.framework && frameworkNote,
+      f.notation && notationNote,
+
+      f.events_tracked && `Events tracked (today):\n${f.events_tracked}`,
+      f.instrument_gaps && `Instrumentation gaps:\n${f.instrument_gaps}`,
+      f.experiment_hooks && `Experiment hooks:\n${f.experiment_hooks}`,
+
+      f.acceptance_style && acceptanceNote,
+      f.story_slices && `User stories:\n${f.story_slices}`,
+
+      f.severity_scale && `Severity scale: ${f.severity_scale}`,
+      f.priority_model && priorityNote,
+      f.impact_domains && `Impact domains:\n${f.impact_domains}`,
+      f.effort_scale && `Effort estimate scale: ${f.effort_scale}`,
+
+      f.deliverables && `Deliverables: ${f.deliverables}`,
+      f.owners && `Owner teams/people:\n${f.owners}`,
+      f.timeline && `Timeline: ${f.timeline}`,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Current-state map (steps · states · decisions · evidence annotations)',
+        '- Issues list (severity · reach · impact · heuristic · links)',
+        '- Ideal-state flow (screens/states, decision rules, recovery paths)',
+        '- Service blueprint view (front-stage/back-stage) if selected',
+        '- Copy & A11y notes (errors, labels, announcements, contrast/zoom)',
+        '- Event map (tracked vs. gaps, step IDs, success/fail pairs)',
+        '- Acceptance (per selected style) tied to KPIs/guardrails',
+        '- Recommendations (ranked with effort scale; owners & next steps)',
+        '- Executive TL;DR + roadmap slice (if selected)'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: UX Microcopy — Write (enhanced)
+--------------------------------------------------------- */
+{
+  id: 'task_microcopy_write',
+  slug: 'ux-microcopy-write',
+  label: 'UX Microcopy — Write',
+  kind: 'task',
+  categories: ['content','writing','design'],
+  tags: [
+    'type:task',
+    'topic:microcopy',
+    'topic:content-design',
+    'topic:accessibility',
+    'topic:localization',
+    'use:write',
+    'use:design',
+    'use:edit',
+    'use:critique',
+    'stage:design'
+  ],
+  use_cases: [
+    'write buttons, labels, help text, errors, empty states, tooltips, toasts, permissions, notifications, upgrade/paywall copy',
+    'improve clarity, confidence, and conversion with ethical persuasion',
+    'align microcopy with brand voice, value prop, and the user’s moment',
+    'produce alt variants for A/B testing with constraints (tokens, char limits, localization)',
+    'tailor copy for personas/segments and accessibility paths (keyboard/screen reader)',
+    'rewrite confusing or long strings to reduce error/abandon rates',
+    'localize-ready copy with variables and ICU notes',
+    'critique existing copy against heuristics (clarity, actionability, honesty, a11y)'
+  ],
+  definition: 'Draft and refine user-focused microcopy with clear intent, value-forward messaging, and ethical persuasion. Outputs variant options with rationale, accessibility/localization notes, experiment hypotheses, and acceptance criteria for implementation.',
+  help: 'Paste screenshots or DOM snippets and describe the user moment. Select surface, platform, tone, target action, and constraints (tokens, char limits, locales). Use personas and the bias library to keep language inclusive and avoid dark patterns.',
+  fields: [
+    /* Mode & objective */
+    { key:'editor_mode',   label:'Mode', type:'select', options:['write net-new','edit existing','critique-only'], desc:'Choose how the AI should engage with your copy.' },
+    { key:'existing_copy', label:'Existing copy (if editing/critique)', type:'textarea', ph:'Paste current strings and where they appear', desc:'Used when editing or critiquing.' },
+
+    /* Context & objective */
+    { key:'context',        label:'Context / screenshot link', type:'textarea', ph:'URL(s), screenshots, DOM snippet, where this appears', desc:'Give enough context to understand the moment and constraints.' },
+    { key:'moment',         label:'User moment & goal', type:'textarea', ph:'What the user is trying to do; risks/concerns; urgency', desc:'User language shapes tone and message priority.' },
+    { key:'desired_action', label:'Desired user action (CTA outcome)', type:'text', ph:'e.g., Start free trial (14 days), Send invoice, Confirm email', desc:'The concrete behavior this copy should cause.' },
+
+    /* Audience */
+    { key:'persona_context', label:'Persona/segment refs (optional)', type:'textarea', ph:'@Persona: Admin Alice; @Segment: SMB Paid', desc:'Short references to existing personas/segments.' },
+    { key:'audience_persona', label:'Personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select personas to tune vocabulary and risk messaging.',
+      ph:'e.g., New Admin; Finance Manager; Mobile-first Seller' },
+
+    /* Platform & surface */
+    { key:'platform',      label:'Platform', type:'select', options:['web','iOS','Android','desktop app','email','SMS/push'], desc:'Alters constraints (length, tone, link styles).' },
+    { key:'surface',        label:'Surface', type:'select',
+      options:['buttons','CTAs (primary)','links','labels','helper text','errors','empty states','tooltips','toasts','banners','modals','confirmation','permissions','notifications','forms','upgrade/paywall'],
+      desc:'Surface type changes patterns, constraints, and acceptance criteria.' },
+    { key:'state',          label:'UI state (optional)', type:'select',
+      options:['default','loading','disabled','success','warning','error','info'],
+      desc:'State can alter copy and ARIA announcements.' },
+
+    /* Message architecture */
+    { key:'value_prop',     label:'Value prop (this moment)', type:'textarea', ph:'Who it’s for • What it does • Why better • What changes', desc:'One or two lines max; keep it concrete and specific.' },
+    { key:'proof_points',   label:'Proof points / risk reversal (optional)', type:'textarea', ph:'numbers, guarantees, no-CC, cancel anytime', desc:'Only what’s relevant to this surface.' },
+
+    /* Tone & style */
+    { key:'tone_primary',   label:'Tone', type:'select',
+      options:['clear','friendly','confident','reassuring','neutral','playful','formal','trustworthy','urgent (ethical)'] },
+    { key:'tone_secondary', label:'Tone (2nd, optional)', type:'select',
+      options:['— none —','clear','friendly','confident','reassuring','neutral','playful','formal','trustworthy','urgent (ethical)'] },
+    { key:'reading_level',  label:'Reading level', type:'select', options:['6th grade','8th grade','10th grade','12th grade','professional'], desc:'Keep simple unless a specialized audience requires otherwise.' },
+
+    /* Variables & constraints */
+    { key:'variables',      label:'Variables/placeholders (optional)', type:'textarea', ph:'{first_name}, {count}, {date}, {price}', desc:'List tokens and intended formats; we’ll protect grammar and spacing.' },
+    { key:'string_key',     label:'i18n string key (optional)', type:'text', ph:'e.g., cta.start_trial', desc:'If you maintain a string table.' },
+    { key:'limit',          label:'Character/line limit', type:'text', ph:'e.g., ≤28 chars on primary button; 2 lines max', desc:'Implementation tokens and truncation rules.' },
+
+    /* Localization & intl */
+    { key:'localization',   label:'Localization scope', type:'select', options:['none','1–3 languages','4–10 languages','>10 languages'], desc:'Affects idioms, lengths, date/number formats.' },
+    { key:'reading_direction', label:'Reading direction (if localized)', type:'select', options:['LTR','RTL','BiDi (mixed)'], desc:'Impacts punctuation, ordering, and iconography.' },
+    { key:'icu_notes',      label:'ICU/pluralization notes (optional)', type:'textarea', ph:'{count, plural, one {item} other {items}}', desc:'Indicate plural/gender/ordinal needs.' },
+
+    /* Do/Dont language */
+    { key:'do_words',       label:'Words to include', type:'textarea', ph:'canonical terms, product names, user vocabulary', desc:'Consistency improves comprehension and trust.' },
+    { key:'dont_words',     label:'Words to avoid', type:'textarea', ph:'banned or risky terms, internal jargon', desc:'Prevent confusion or legal risk.' },
+
+    /* Accessibility & implementation */
+    { key:'a11y_notes',     label:'Accessibility notes (optional)', type:'textarea', ph:'ARIA-live for toasts; keyboard path; focus order; SR text', desc:'State how dynamic changes are announced; avoid color-only signals.' },
+    { key:'sr_only',        label:'Screen-reader only text (optional)', type:'textarea', ph:'Additional context not visible to sighted users', desc:'Use for clarifying icon-only or stateful actions.' },
+    { key:'aria_role',      label:'ARIA role/landmark (optional)', type:'text', ph:'role="alertdialog", aria-live="polite"', desc:'For implementers to wire correctly.' },
+
+    /* Ethics, compliance & bias */
+    { key:'regulatory_region', label:'Compliance region (if applicable)', type:'select', options:['none','US','EU (GDPR)','UK','CA','AU','Other'], desc:'May change consent/claims tone and disclosures.' },
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+    { key:'dark_pattern_check', label:'Dark-pattern guard', type:'select', options:['on','off'], desc:'When “on”, enforce ethical persuasion and call out risks.' },
+
+    /* Experimentation & measurement */
+    { key:'variant_count',  label:'How many variants?', type:'select', options:['3','5'], desc:'Number of options to generate (A/B/C…).' },
+    { key:'rationale_depth',label:'Rationale depth', type:'select', options:['brief (1 line)','standard (2–3 lines)'], desc:'Controls explanation length per option.' },
+    { key:'ab_hypothesis',  label:'A/B hypothesis (optional)', type:'text', ph:'If we [change], [metric] will improve because [reason]', desc:'Pre-register intent to avoid p-hacking.' },
+    { key:'success_metric', label:'Success metric (optional)', type:'text', ph:'e.g., task success, form errors ↓, CTR→conversion', desc:'Tie copy to a measurable outcome.' },
+    { key:'event_keys',     label:'Instrumentation keys (optional)', type:'textarea', ph:'events: cta_click, form_error; props: variant_id', desc:'So variants are trackable post-implementation.' },
+
+    /* Fallbacks & governance */
+    { key:'fallback_copy',  label:'Fallback state copy (optional)', type:'textarea', ph:'What to show if service fails or data is missing', desc:'Resilience text for degraded modes.' },
+    { key:'brand_voice',    label:'Brand voice notes (optional)', type:'textarea', ph:'Voice & tone matrix, term dictionary, capitalization rules' },
+    { key:'constraints',    label:'Other constraints', type:'textarea', ph:'compliance/legal, privacy, platform tokens, banned claims' }
+  ],
+  boosters: [
+    'Write for the user’s moment and desired outcome; the element is incidental.',
+    'Use verb + object for CTAs; say what happens next.',
+    'Replace adjectives with specifics (numbers, timeframes, guarantees).',
+    'For errors: state what happened, why (if known), and how to fix it.',
+    'For empty states: explain value, first step, and show an example.',
+    'Respect a11y: announce state changes, avoid color-only cues, keep focus logical.',
+    'Plan for localization: avoid idioms, allow longer strings, and design for ICU variables.',
+    'Test variants qualitatively first; A/B only once comprehension is solid.',
+    'Never use dark patterns (confirmshaming, obstruction); trust compounds.',
+    'Map every string to an owner and key; version and instrument variants.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+
+    // Tones
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '— none —') ? f.tone_secondary : ''
+    );
+
+    // Notes that adapt to select options
+    const surfaceNote = (() => {
+      switch (f.surface) {
+        case 'buttons':
+        case 'CTAs (primary)':
+          return 'Surface guidance: Use verb + object; include specific outcome or time window if relevant. One primary action per view.';
+        case 'links':
+          return 'Surface guidance: Links should describe the destination (“View billing settings”), not “Click here.”';
+        case 'labels':
+          return 'Surface guidance: Labels must be nouns or noun phrases; avoid placeholders-as-labels. Pair with clear help text only when needed.';
+        case 'helper text':
+          return 'Surface guidance: Put instructions before interaction; be specific (examples/formats). Keep it short.';
+        case 'errors':
+          return 'Surface guidance: Error = What happened + Why (if known) + How to fix. Tone is calm and accountable. Place inline and summarize if needed.';
+        case 'empty states':
+          return 'Surface guidance: Explain value, give first step, and provide an example. Avoid “nothing here yet.”';
+        case 'tooltips':
+          return 'Surface guidance: Define the unknown term in ≤1 sentence; link to learn more for depth.';
+        case 'toasts':
+          return 'Surface guidance: Confirm outcome + next-best action. Ensure ARIA-live announcement and auto-dismiss timing.';
+        case 'banners':
+          return 'Surface guidance: Use for global/system info with clear action or dismissal. Avoid persistent clutter.';
+        case 'modals':
+          return 'Surface guidance: One primary decision. Support escape routes and keyboard focus-trap handling.';
+        case 'confirmation':
+          return 'Surface guidance: Restate the exact action/outcome; offer undo when safe instead of “Are you sure?” prompts.';
+        case 'permissions':
+          return 'Surface guidance: Explain why access is needed, what the user gets, and that it’s controllable later.';
+        case 'notifications':
+          return 'Surface guidance: Be concise; lead with the event outcome and include a targeted next step.';
+        case 'forms':
+          return 'Surface guidance: Labels above fields; examples for tricky inputs; validation copy shows fix steps.';
+        case 'upgrade/paywall':
+          return 'Surface guidance: State the benefit unlocked, honest limits, trial terms, and clear pricing deltas.';
+        default:
+          return null;
+      }
+    })();
+
+    const platformNote = (() => {
+      switch (f.platform) {
+        case 'iOS': return 'Platform: iOS — Observe Apple HIG for capitalization and permission language.';
+        case 'Android': return 'Platform: Android — Follow Material guidelines; avoid title case in body text.';
+        case 'email': return 'Platform: Email — Subject and preheader clarity; actionable first line; plain-text fallback.';
+        case 'SMS/push': return 'Platform: SMS/Push — Keep to one purpose; include clear opt-out and rate limits.';
+        default: return null;
+      }
+    })();
+
+    const localeNote = (() => {
+      switch (f.localization) {
+        case '1–3 languages': return 'Localization: Keep idiom-free and allow 30–50% length growth.';
+        case '4–10 languages': return 'Localization: Avoid metaphors; ensure variables are translatable and gender/number-aware.';
+        case '>10 languages': return 'Localization: Provide screenshots/keys for translators; avoid concatenated strings.';
+        default: return null;
+      }
+    })();
+
+    const rdNote = f.reading_direction ? `Reading direction: ${f.reading_direction} — design punctuation, ordering, and mirroring accordingly.` : null;
+    const levelNote = f.reading_level ? `Reading level: ${f.reading_level} — use short sentences, concrete nouns, and strong verbs.` : null;
+    const ethicsNote = f.dark_pattern_check === 'on' ? 'Ethics: Dark-pattern guard ON — enforce neutral declines, explicit terms, and no confirmshaming.' : null;
+
+    const variants = (() => {
+      const n = parseInt(f.variant_count || '3', 10);
+      return isNaN(n) ? 3 : Math.max(3, Math.min(n, 5));
+    })();
+
+    const rationaleNote = (() => {
+      switch (f.rationale_depth) {
+        case 'brief (1 line)': return 'Rationale depth: 1 line per option.';
+        case 'standard (2–3 lines)': return 'Rationale depth: 2–3 lines per option with tradeoffs.';
+        default: return null;
+      }
+    })();
+
+    const modeNote = (() => {
+      switch (f.editor_mode) {
+        case 'edit existing': return 'Mode: Edit — rewrite to improve clarity, actionability, a11y, and ethics while preserving intent.';
+        case 'critique-only': return 'Mode: Critique — evaluate against heuristics and suggest targeted improvements without rewriting.';
+        default: return 'Mode: Net-new — produce fresh copy aligned to the moment and constraints.';
+      }
+    })();
+
+    return [
+      'Write UX microcopy tailored to the user’s moment and desired action.',
+      modeNote,
+      f.context && `Context:\n${f.context}`,
+      f.moment && `User moment & goal:\n${f.moment}`,
+      f.desired_action && `Desired action: ${f.desired_action}`,
+
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+      f.platform && platformNote,
+      f.surface && surfaceNote,
+      f.state && `UI state: ${f.state}`,
+
+      f.value_prop && `Value prop (this moment):\n${f.value_prop}`,
+      f.proof_points && `Proof points / risk reversal:\n${f.proof_points}`,
+
+      (tones) && `Tone: ${tones}`,
+      levelNote,
+
+      f.variables && `Variables/placeholders:\n${f.variables}`,
+      f.string_key && `i18n key: ${f.string_key}`,
+      f.limit && `Limit: ${f.limit}`,
+
+      f.localization && `Localization scope: ${f.localization}`,
+      localeNote,
+      rdNote,
+      f.icu_notes && `ICU/pluralization:\n${f.icu_notes}`,
+
+      f.do_words && `Prefer: ${f.do_words}`,
+      f.dont_words && `Avoid: ${f.dont_words}`,
+
+      f.a11y_notes && `Accessibility notes:\n${f.a11y_notes}`,
+      f.sr_only && `Screen-reader only text:\n${f.sr_only}`,
+      f.aria_role && `ARIA role/landmark:\n${f.aria_role}`,
+
+      f.regulatory_region && `Compliance region: ${f.regulatory_region}`,
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+      ethicsNote,
+
+      f.ab_hypothesis && `A/B hypothesis: ${f.ab_hypothesis}`,
+      f.success_metric && `Success metric: ${f.success_metric}`,
+      f.event_keys && `Instrumentation keys:\n${f.event_keys}`,
+
+      f.fallback_copy && `Fallback copy:\n${f.fallback_copy}`,
+      f.brand_voice && `Brand voice notes:\n${f.brand_voice}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      rationaleNote,
+
+      [
+        'Output format:',
+        `- ${variants} Options (A, B, C${variants>3?', D':''}${variants>4?', E':''}) respecting tone, limits, variables, and platform`,
+        '- If editor_mode=critique-only: Heuristic critique (clarity • actionability • honesty • a11y • localization) + concrete fixes',
+        '- Rationale per option (clarity • confidence • compassion); note tradeoffs',
+        '- If errors: (1) What happened (2) Why (if known) (3) How to fix',
+        '- If empty state: value + first step + example',
+        '- If permission: why needed + what you get + control later',
+        '- Accessibility notes (ARIA-live, focus handling, color independence) as needed',
+        '- Implementation tokens: variables, length/line limits, localization flags, i18n keys',
+        '- Acceptance criteria: when this copy appears, success signals, and fallback states'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: PRD — Write (enhanced)
+--------------------------------------------------------- */
+{
+  id: 'task_prd_write',
+  slug: 'prd-write',
+  label: 'PRD — Write',
+  kind: 'task',
+  categories: ['product','planning','writing'],
+  tags: [
+    'type:task',
+    'topic:prd',
+    'topic:requirements',
+    'topic:roadmap',
+    'topic:traceability',
+    'topic:telemetry',
+    'topic:accessibility',
+    'topic:localization',
+    'topic:security',
+    'use:plan',
+    'use:spec',
+    'use:write',
+    'use:governance',
+    'stage:plan'
+  ],
+  use_cases: [
+    'align teams on problem, scope, and requirements',
+    'capture functional and nonfunctional requirements with acceptance criteria',
+    'define success metrics, guardrails, and instrumentation',
+    'slice delivery into phases (alpha/beta/GA) and vertical value slices',
+    'document risks, dependencies, and rollback plans',
+    'create traceability from goals → requirements → stories → tests → telemetry',
+    'produce developer-ready implementation notes (APIs, data model, flags)',
+    'prepare ops/readiness (runbooks, alerts, support playbooks)',
+    'harmonize a11y and localization requirements with UX/content',
+    'plan experiments (flag ramps, A/B/holdouts) with ethical guardrails',
+    'maintain change control (status, versioning, decision log, ADR links)'
+  ],
+  definition: 'Author a testable, traceable Product Requirements Document: problem, users, scope (incl. non-goals), functional & nonfunctional requirements with acceptance criteria, slices/phases, metrics & telemetry, risks/dependencies, rollout/rollback, and stakeholder ownership. Includes governance (status/version), experimentation, a11y/i18n, and ops readiness.',
+  help: 'Paste discovery evidence and links (research, market, analytics). Select phase, a11y/i18n scope, and experimentation/rollout style so guidance adapts. Use personas and the bias library to keep the PRD user-centered and inclusive. Choose a deliverable style (full PRD vs exec summary vs ticket bundle).',
+  fields: [
+    /* Governance & overview */
+    { key:'status',            label:'Doc status', type:'select', options:['Draft','Review','Approved','In development','Released','Archived'], desc:'Communicates maturity and expectations.' },
+    { key:'version',           label:'Version', type:'text', ph:'e.g., 0.4 (semver-like for docs)', desc:'Update with every material change.' },
+    { key:'owner',             label:'Doc owner', type:'text', ph:'Name · role · team' },
+    { key:'reviewers',         label:'Reviewers/approvers', type:'textarea', ph:'Design, Eng, Data, Legal, Support' },
+    { key:'title',             label:'Title', type:'text', ph:'Concise name users understand' },
+    { key:'one_liner',         label:'One-liner', type:'text', ph:'What this is and for whom', desc:'Single-sentence elevator pitch.' },
+    { key:'decision',          label:'Decision to inform', type:'text', ph:'What decision will this PRD enable?', desc:'Keeps doc outcome-focused.' },
+    { key:'background',        label:'Background & evidence', type:'textarea', ph:'Problem context, links to research/market, constraints' },
+
+    /* Goals & scope */
+    { key:'goals',             label:'Goals (outcomes)', type:'textarea', ph:'Business/user outcomes; tie to KPIs' },
+    { key:'okr_alignment',     label:'OKR alignment (optional)', type:'text', ph:'e.g., O: Improve retention · KR: Day-30 +3 pts' },
+    { key:'non_goals',         label:'Non-goals (out of scope)', type:'textarea', ph:'Explicit exclusions to prevent creep' },
+    { key:'use_cases',         label:'Use cases / scenarios', type:'textarea', ph:'Short “as a… I want… so that…” scenarios' },
+    { key:'scope_in',          label:'In-scope capabilities', type:'textarea', ph:'What will ship (features, surfaces, platforms)' },
+
+    /* Audience & personas */
+    { key:'persona_context',   label:'User/segment notes (optional)', type:'textarea', ph:'Relevant personas, segments, devices' },
+    { key:'audience_persona',  label:'Personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select personas to align value, scope, and acceptance criteria.',
+      ph:'e.g., Finance Manager; New Admin; Field Rep' },
+
+    /* Requirements */
+    { key:'requirements_func', label:'Functional requirements', type:'textarea', ph:'One per line with IDs (F-1, F-2…) + short description' },
+    { key:'requirements_nfr',  label:'Nonfunctional (NFRs)', type:'textarea', ph:'Performance, reliability, a11y, security, privacy, i18n, observability… with IDs (NFR-1…)' },
+    { key:'acceptance',        label:'Acceptance criteria', type:'textarea', ph:'Gherkin-style: Given/When/Then for each requirement' },
+    { key:'stories',           label:'User stories', type:'textarea', ph:'As a <role>, I want <goal> so that <value>… (link AC IDs)' },
+    { key:'ux_artifacts',      label:'UX artifacts', type:'textarea', ph:'Flows, wireframes/prototypes, content guidelines' },
+
+    /* Compliance, a11y, i18n */
+    { key:'a11y_level',        label:'Accessibility scope', type:'select', options:['WCAG 2.2 AA','AA (critical surfaces)','AAA (selected surfaces)','platform-native only'], desc:'Minimum bar to meet for this release.' },
+    { key:'localization',      label:'Localization scope', type:'select', options:['none','1–3 languages','4–10 languages','>10 languages'], desc:'Impacts copy, formats, time/currency, RTL.' },
+    { key:'data_classification',label:'Data classification', type:'select', options:['Public','Internal','Confidential','Restricted'], desc:'Sets handling & logging constraints.' },
+    { key:'privacy_security',  label:'Privacy & security notes', type:'textarea', ph:'PII, lawful basis, retention, encryption, permissions/roles' },
+
+    /* Metrics & telemetry */
+    { key:'success_metrics',   label:'Success metrics (targets)', type:'textarea', ph:'Leading/lagging (e.g., success ≥85%, P95 <1s)' },
+    { key:'guardrails',        label:'Guardrail metrics', type:'textarea', ph:'Error rate, support tickets, perf budgets' },
+    { key:'events',            label:'Event taxonomy', type:'textarea', ph:'event_name, properties, IDs (step_id, error_code, role)' },
+    { key:'dashboards',        label:'Dashboards/alerts', type:'textarea', ph:'Where metrics will be monitored; thresholds' },
+
+    /* Release plan (slices & phases) */
+    { key:'release_phase',     label:'Phase', type:'select', options:['alpha','beta','GA'], desc:'Phase sets expectations for quality/support.' },
+    { key:'slice_strategy',    label:'Slices (vertical value)', type:'textarea', ph:'Deliver complete outcomes to a subset (who/what/where)' },
+    { key:'experimentation',   label:'Experimentation style', type:'select', options:['none','feature-flag ramp','A/B test','holdout cohort'], desc:'Shapes rollout, ethics, and telemetry.' },
+    { key:'feature_flags',     label:'Feature flags', type:'textarea', ph:'Flag names, owners, default state, kill switch' },
+    { key:'rollout',           label:'Rollout plan', type:'textarea', ph:'Rings (internal→% cohorts), schedule, comms' },
+    { key:'rollback',          label:'Rollback plan', type:'textarea', ph:'Triggers, steps, data migration reversal' },
+
+    /* Implementation outline */
+    { key:'api_plan',          label:'APIs & contracts', type:'textarea', ph:'Endpoints, payloads, auth, rate limits, idempotency' },
+    { key:'data_model',        label:'Data model/migrations', type:'textarea', ph:'Tables, columns, indexes, online migration strategy' },
+    { key:'perf_targets',      label:'Performance targets', type:'textarea', ph:'P95 latency, throughput, budgets by surface' },
+    { key:'observability',     label:'Observability', type:'textarea', ph:'Logs, traces, error classes, alert thresholds' },
+    { key:'dependencies',      label:'Dependencies', type:'textarea', ph:'Upstream services, vendors, approvals' },
+
+    /* Ops & readiness */
+    { key:'runbooks',          label:'Runbooks & on-call', type:'textarea', ph:'Ownership, escalation, SLO/SLA, paging' },
+    { key:'support_playbook',  label:'Support playbook', type:'textarea', ph:'Macro, triage, known issues, comms templates' },
+    { key:'training_enablement',label:'Training/enablement', type:'textarea', ph:'Docs, videos, internal launch notes' },
+
+    /* Risks & assumptions */
+    { key:'risk_model',        label:'Risk scoring model', type:'select', options:['likelihood × impact','FMEA (S×O×D)','custom'] },
+    { key:'risks_register',    label:'Risks & mitigations', type:'textarea', ph:'ID · description · owner · score · mitigation · watch metric' },
+    { key:'assumptions',       label:'Assumptions / open questions', type:'textarea', ph:'Items to validate; closure plan' },
+
+    /* People & timing */
+    { key:'stakeholders',      label:'Stakeholders & RACI', type:'textarea', ph:'Responsible, Accountable, Consulted, Informed' },
+    { key:'timeline',          label:'Timeline / milestones', type:'textarea', ph:'Key dates; criteria to advance phases' },
+    { key:'capacity',          label:'Capacity window (optional)', type:'text', ph:'e.g., 2 sprints or 40 eng-days' },
+
+    /* Testing & QA */
+    { key:'qa_plan',           label:'Testing & QA plan', type:'textarea', ph:'Unit/integration/E2E, a11y, perf, security, UAT; environments' },
+    { key:'test_data',         label:'Test data/fixtures', type:'textarea', ph:'Accounts, roles, seeded records, sample files' },
+
+    /* ADRs & change control */
+    { key:'decision_log',      label:'Decision log (summary)', type:'textarea', ph:'Date · decision · rationale · approvers' },
+    { key:'adr_links',         label:'ADR links (optional)', type:'textarea', ph:'Architecture Decision Records URLs' },
+    { key:'change_log',        label:'Change log', type:'textarea', ph:'v0.4 — what changed, why, by whom' },
+
+    /* Ethics & bias (library shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Constraints & links */
+    { key:'constraints',       label:'Constraints', type:'textarea', ph:'Tech/legal limits, brand rules, SLAs' },
+    { key:'links',             label:'Related docs/links', type:'textarea', ph:'Designs, research, tickets, prior PRDs' },
+
+    /* Deliverable style & traceability */
+    { key:'deliverable',       label:'Primary output', type:'select',
+      options:['full PRD document','insight-to-ticket bundle','one-pager executive summary','traceability matrix + ticket bundle'],
+      desc:'Format to emphasize in the output.' },
+    { key:'include_traceability', label:'Include traceability matrix?', type:'select', options:['yes','no'], desc:'Maps Goal → Req → Story → Test → Event.' }
+  ],
+  boosters: [
+    'Write the decision first; every requirement should help answer it.',
+    'Each requirement (F/NFR) must have acceptance criteria and a metric trace.',
+    'Define vertical slices that deliver complete user outcomes to a subset.',
+    'Set targets and guardrails before coding; instrument events with queryable IDs.',
+    'Add feature flags + rollback triggers; pre-plan comms and support macros.',
+    'A11y and localization are NFRs—treat them as first-class requirements.',
+    'Maintain status, version, and a decision/change log to avoid stale docs.'
+  ],
+  template: (f)=>{
+    const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
+
+    const phaseNote = (() => {
+      switch (f.release_phase) {
+        case 'alpha': return 'Phase: Alpha — limited scope, faster iteration, explicit caveats; support via PM/Eng on-call.';
+        case 'beta':  return 'Phase: Beta — broader cohort behind flags; success + guardrails monitored; ready-to-rollback.';
+        case 'GA':    return 'Phase: GA — fully supported, SLOs enforced, documentation and enablement complete.';
+        default: return null;
+      }
+    })();
+
+    const a11yNote = (() => {
+      switch (f.a11y_level) {
+        case 'WCAG 2.2 AA': return 'A11y: Meet WCAG 2.2 AA across all surfaces (keyboard, SR, contrast, errors).';
+        case 'AA (critical surfaces)': return 'A11y: Prioritize AA on critical flows now; backlog non-critical with dates.';
+        case 'AAA (selected surfaces)': return 'A11y: AAA on selected surfaces (list in NFRs); AA elsewhere.';
+        case 'platform-native only': return 'A11y: Rely on platform standards; document gaps and compensations.';
+        default: return null;
+      }
+    })();
+
+    const l10nNote = (() => {
+      switch (f.localization) {
+        case '1–3 languages': return 'Localization: keep idiom-free; allow 30–50% length growth; date/number formats.';
+        case '4–10 languages': return 'Localization: provide screenshots/keys to translators; avoid concatenated strings.';
+        case '>10 languages': return 'Localization: invest in terminology and pseudo-localization QA before ship.';
+        default: return null;
+      }
+    })();
+
+    const riskNote = (() => {
+      switch (f.risk_model) {
+        case 'likelihood × impact': return 'Risk model: score by Likelihood (1–5) × Impact (1–5); treat ≥12 as high.';
+        case 'FMEA (S×O×D)': return 'Risk model: FMEA — Severity × Occurrence × Detectability; reduce highest RPN first.';
+        default: return null;
+      }
+    })();
+
+    const expNote = (() => {
+      switch (f.experimentation) {
+        case 'feature-flag ramp': return 'Experimentation: Ramp exposure by cohort; monitor success + guardrails each step; define kill-switch triggers.';
+        case 'A/B test': return 'Experimentation: Randomized assignment; pre-register primary metric and MDE; respect ethics and eligibility rules.';
+        case 'holdout cohort': return 'Experimentation: Maintain a holdout for baseline drift; document duration and re-entry policy.';
+        default: return null;
+      }
+    })();
+
+    const traceNote = f.include_traceability === 'yes'
+      ? 'Traceability: Provide matrix Goal → Requirement (ID) → Story (ID) → Test (ID) → Event (name).'
+      : null;
+
+    return [
+      'Draft a Product Requirements Document (PRD) with testable, traceable requirements.',
+      f.status && `Status: ${f.status}`,
+      f.version && `Version: ${f.version}`,
+      f.owner && `Owner: ${f.owner}`,
+      f.reviewers && `Reviewers/Approvers:\n${f.reviewers}`,
+      f.title && `Title: ${f.title}`,
+      f.one_liner && `One-liner: ${f.one_liner}`,
+      f.decision && `Decision to inform: ${f.decision}`,
+      f.background && `Background & evidence:\n${f.background}`,
+
+      f.goals && `Goals:\n${f.goals}`,
+      f.okr_alignment && `OKR alignment: ${f.okr_alignment}`,
+      f.non_goals && `Non-goals (Out of scope):\n${f.non_goals}`,
+      f.use_cases && `Use cases / scenarios:\n${f.use_cases}`,
+      f.scope_in && `In-scope capabilities:\n${f.scope_in}`,
+
+      f.persona_context && `User/segment notes:\n${f.persona_context}`,
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+
+      f.requirements_func && `Functional requirements:\n${f.requirements_func}`,
+      f.requirements_nfr && `Nonfunctional requirements:\n${f.requirements_nfr}`,
+      f.acceptance && `Acceptance criteria:\n${f.acceptance}`,
+      f.stories && `User stories:\n${f.stories}`,
+      f.ux_artifacts && `UX artifacts:\n${f.ux_artifacts}`,
+
+      f.a11y_level && a11yNote,
+      f.localization && l10nNote,
+      f.data_classification && `Data classification: ${f.data_classification}`,
+      f.privacy_security && `Privacy & security:\n${f.privacy_security}`,
+
+      f.success_metrics && `Success metrics (targets):\n${f.success_metrics}`,
+      f.guardrails && `Guardrail metrics:\n${f.guardrails}`,
+      f.events && `Event taxonomy:\n${f.events}`,
+      f.dashboards && `Dashboards/alerts:\n${f.dashboards}`,
+
+      f.release_phase && phaseNote,
+      f.slice_strategy && `Slices (vertical value):\n${f.slice_strategy}`,
+      expNote,
+      f.feature_flags && `Feature flags:\n${f.feature_flags}`,
+      f.rollout && `Rollout plan:\n${f.rollout}`,
+      f.rollback && `Rollback plan:\n${f.rollback}`,
+
+      f.api_plan && `APIs & contracts:\n${f.api_plan}`,
+      f.data_model && `Data model/migrations:\n${f.data_model}`,
+      f.perf_targets && `Performance targets:\n${f.perf_targets}`,
+      f.observability && `Observability:\n${f.observability}`,
+      f.dependencies && `Dependencies:\n${f.dependencies}`,
+
+      f.runbooks && `Runbooks & on-call:\n${f.runbooks}`,
+      f.support_playbook && `Support playbook:\n${f.support_playbook}`,
+      f.training_enablement && `Training/enablement:\n${f.training_enablement}`,
+
+      f.risk_model && riskNote,
+      f.risks_register && `Risks & mitigations:\n${f.risks_register}`,
+      f.assumptions && `Assumptions / open questions:\n${f.assumptions}`,
+
+      f.stakeholders && `Stakeholders & RACI:\n${f.stakeholders}`,
+      f.timeline && `Timeline / milestones:\n${f.timeline}`,
+      f.capacity && `Capacity window: ${f.capacity}`,
+
+      f.qa_plan && `Testing & QA plan:\n${f.qa_plan}`,
+      f.test_data && `Test data/fixtures:\n${f.test_data}`,
+
+      f.decision_log && `Decision log:\n${f.decision_log}`,
+      f.adr_links && `ADR links:\n${f.adr_links}`,
+      f.change_log && `Change log:\n${f.change_log}`,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+      f.constraints && `Constraints:\n${f.constraints}`,
+      f.links && `Related docs/links:\n${f.links}`,
+
+      f.deliverable && `Primary output: ${f.deliverable}`,
+      traceNote,
+
+      [
+        'Output format:',
+        '- One-liner, Background, Decision to inform',
+        '- Goals & Non-goals (explicit out of scope) + OKR alignment',
+        '- Users & Use Cases',
+        '- Requirements: Functional + NFRs (each with Acceptance Criteria)',
+        '- UX Artifacts (flows, content), A11y & Localization notes',
+        '- Metrics & Telemetry (targets, events, dashboards, guardrails)',
+        '- Slices & Phases (experimentation, flags, rollout, rollback)',
+        '- Implementation Outline (APIs, data model, perf, observability, dependencies)',
+        '- Ops Readiness (runbooks, support playbook, training/enablement)',
+        '- Risks/Assumptions (model, owners, mitigations)',
+        '- Stakeholders & RACI, Timeline/Capacity',
+        '- Testing & QA plan + Test data',
+        '- Governance (status, version, decision/ADR/change logs)',
+        '- Links & Constraints',
+        '- Traceability matrix (if selected): Goal → Req → Story → Test → Event'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Backlog — Prioritize (enhanced+)
+--------------------------------------------------------- */
+{
+  id: 'task_backlog_prioritize',
+  slug: 'backlog-prioritize',
+  label: 'Backlog — Prioritize',
+  kind: 'task',
+  categories: ['product','prioritization','planning'],
+  tags: [
+    'type:task',
+    'topic:prioritization',
+    'topic:roadmap',
+    'topic:capacity',
+    'topic:traceability',
+    'topic:portfolio',
+    'use:rank',
+    'use:plan',
+    'use:edit',
+    'stage:decide'
+  ],
+  use_cases: [
+    'rank backlog items using a consistent framework',
+    'frame tradeoffs with capacity limits',
+    'produce a shareable roadmap slice',
+    'run tie-breakers transparently and document rationale',
+    'stress-test ranking with sensitivity checks (alt methods/assumptions)',
+    'group by themes/OKRs and surface dependencies',
+    'rebalance portfolio across value buckets (growth/reliability/debt/a11y)',
+    'sequence fixed-date and compliance work without derailing capacity',
+    'turn ranked list into a Now/Next/Later or 2-sprint executable plan',
+    'facilitate scoring workshops with anchors and exemplars',
+    'trace items to KPIs and owners for accountability'
+  ],
+  definition: 'Prioritize a backlog with anchored scoring (RICE/ICE/WSJF/Weighted/Opportunity Gap, plus MoSCoW buckets), explicit tie-breakers, portfolio allocation, and real capacity. Output a ranked list and a shareable roadmap slice (Now/Next/Later or 2-sprint plan) with rationale, risks, and owners.',
+  help: 'Paste items (one per line). You can append quick metadata like [feature], [bug], [infra], {effort:L}, {reach:12k/mo}, {impact:2}, {confidence:0.8}, {due:2025-Q3}, {deps:ID-123}. Select a method, define anchored scales, pick normalization and confidence weighting, set capacity/buffer and allocation policy, then choose an output style. Include deadlines and dependencies so sequencing reflects reality.',
+  fields: [
+    /* Inputs */
+    { key:'items', label:'Backlog items', type:'textarea',
+      ph:'One per line; support tags [bug]/[infra]/[feature]/[debt]/[a11y], and inline {reach:12k/mo} {impact:2} {confidence:0.8} {effort:M} {due:Q3} {deps:ABC→XYZ}',
+      desc:'Titles should be problem-centric. Inline hints can override defaults for specific items.' },
+
+    /* Audience / personas (optional, for Reach/Impact reasoning) */
+    { key:'persona_context', label:'Persona/segment refs (optional)', type:'textarea',
+      ph:'@Persona: Admin Alice; @Segment: SMB Paid',
+      desc:'Short references to target users most affected by this backlog.' },
+    { key:'audience_persona', label:'Personas (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      desc:'Select personas to tune Reach/Impact reasoning.',
+      ph:'e.g., New Admin; Finance Manager; Field Rep' },
+
+    /* Method & anchors */
+    { key:'method', label:'Method', type:'select',
+      options:['RICE','ICE','WSJF','Weighted matrix','Opportunity Gap (Imp–Sat)','MoSCoW'],
+      desc:'Alters scoring inputs and output columns.' },
+    { key:'reach_window', label:'Reach window (for RICE)', type:'select',
+      options:['per week','per month','per quarter','custom'],
+      desc:'Time basis for Reach counts.' },
+    { key:'impact_scale', label:'Impact scale', type:'select',
+      options:['anchored: 0.25, 0.5, 1, 2, 3','anchored: 0.5, 1, 2, 3, 5','custom'],
+      desc:'Pick anchors so “1” means a meaningful, noticeable effect.' },
+    { key:'confidence_scale', label:'Confidence scale', type:'select',
+      options:['anchored: 0.5 / 0.8 / 1.0','percent (0–100%)','custom'],
+      desc:'Encourage evidence-weighted scoring.' },
+    { key:'effort_scale', label:'Effort scale', type:'select',
+      options:['t-shirt (S=1, M=2, L=4, XL=8)','story points (1–13 mapped)','eng-days (numeric)'],
+      desc:'How effort maps to a numeric denominator/size.' },
+
+    /* WSJF / Weighted / Opportunity anchors */
+    { key:'wsjf_anchors', label:'WSJF anchors (if WSJF)', type:'textarea',
+      ph:'Value: 1–10 (anchors)… Time Criticality: 1–10… Risk Reduction: 1–10… Job Size mapping…',
+      desc:'State anchor definitions so the team scores consistently.' },
+    { key:'weights', label:'Weighted matrix weights (if Weighted)', type:'textarea',
+      ph:'Impact:0.35; Reach:0.20; StrategicFit:0.20; RiskReduction:0.15; TimeCriticality:0.10',
+      desc:'3–5 criteria only; weights sum to 1.00.' },
+    { key:'opportunity_inputs', label:'Opportunity Gap inputs (if Imp–Sat)', type:'textarea',
+      ph:'Item | importance (1–5) | satisfaction (1–5)',
+      desc:'High importance + low satisfaction ⇒ top opportunities.' },
+
+    /* Normalization & confidence handling */
+    { key:'normalization', label:'Normalization', type:'select',
+      options:['none','min–max (0–100)','z-score'],
+      desc:'Use when teams’ scales differ or items mix units.' },
+    { key:'confidence_weighting', label:'Confidence weighting', type:'select',
+      options:['multiply by Confidence','subtract uncertainty penalty','list Confidence separately'],
+      desc:'How to reflect uncertainty in scores.' },
+
+    /* Themes & dependencies */
+    { key:'themes', label:'Themes / OKRs', type:'textarea',
+      ph:'Activation; Reliability; Monetization',
+      desc:'Use themes to group ranked items for storytelling.' },
+    { key:'dependencies', label:'Dependencies (global)', type:'textarea',
+      ph:'Item A → Item C; Vendor review; Security sign-off',
+      desc:'High-level dependency notes. Item-level deps can be inline in items.' },
+    { key:'deadlines', label:'Deadlines / windows (optional)', type:'textarea',
+      ph:'Compliance date, partner launch window',
+      desc:'Time constraints that influence sequencing.' },
+
+    /* Portfolio allocation & classes of service */
+    { key:'allocation_policy', label:'Portfolio allocation', type:'textarea',
+      ph:'Growth 60% · Reliability 20% · Debt/A11y 15% · Compliance 5%',
+      desc:'Capacity split across buckets; helps resist crowding out essentials.' },
+    { key:'class_policy', label:'Classes of service', type:'select',
+      options:['standard + expedite + fixed-date + intangible','custom'],
+      desc:'Make expedite/fixed-date explicit to expose tradeoffs.' },
+
+    /* Capacity & slicing */
+    { key:'timeframe', label:'Time frame', type:'text', ph:'e.g., Q4 or next 6 weeks' },
+    { key:'capacity', label:'Capacity', type:'text', ph:'e.g., 2 sprints or 40 eng-days' },
+    { key:'buffer_percent', label:'Buffer (%)', type:'select', options:['0%','10%','20%','30%'],
+      desc:'Reserve for interrupts/incidents to keep WIP sane.' },
+    { key:'capacity_by_lane', label:'Capacity by lane (optional)', type:'textarea',
+      ph:'Frontend: 6 units; Backend: 8; iOS: 3',
+      desc:'Model skill bottlenecks if relevant.' },
+    { key:'wip_limits', label:'WIP limits (optional)', type:'textarea',
+      ph:'Design: 2; Backend: 3; QA: 2',
+      desc:'Encourage finishing over starting and reduce thrash.' },
+
+    /* Tie-breakers & sensitivity */
+    { key:'tie_breakers', label:'Tie-breakers', type:'textarea',
+      ph:'strategic fit, risk burn-down, learning value, UX debt, team flow',
+      desc:'Apply in order when scores tie.' },
+    { key:'alt_method', label:'Sensitivity check (alt method)', type:'select',
+      options:['none','ICE','RICE','WSJF','Weighted matrix','Opportunity Gap (Imp–Sat)','MoSCoW'],
+      desc:'Compute a second ranking to see if the top items are robust.' },
+
+    /* Evidence & owners */
+    { key:'evidence_links', label:'Evidence links (optional)', type:'textarea',
+      ph:'funnels, support tickets, research, revenue models',
+      desc:'Ground claims; boosts Confidence anchors.' },
+    { key:'owners_map', label:'Owner mapping (optional)', type:'textarea',
+      ph:'Item → PM/Eng/Design owner',
+      desc:'Attach accountable owners for top picks.' },
+
+    /* Output */
+    { key:'output', label:'Output format', type:'select',
+      options:['ranked table','now/next/later','2-sprint plan','one-pager summary','exec + builder bundle'],
+      desc:'Choose the primary artifact; we’ll tailor columns accordingly.' },
+
+    /* Ethics & bias library (exact shape) */
+    {
+      key: 'risks_picks',
+      label: 'Biases (from library)',
+      type: 'repeater',
+      itemType: 'typeahead',
+      unit: 'bias',
+      dataset: 'bias',
+      autofill: 'bias->inline',
+      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
+      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
+    },
+
+    /* Constraints */
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'platform freezes, legal, privacy, partner SLAs',
+      desc:'Hard limits that affect sequence or feasibility.' }
+  ],
+  boosters: [
+    'Use anchored scales (write them down); score in silence, discuss outliers, then lock.',
+    'Convert t-shirt sizes to units (S=1, M=2, L=4, XL=8) or set a clear mapping before scoring.',
+    'Normalize when inputs mix scales; otherwise avoid unnecessary math.',
+    'Cut with a hard capacity line and a 20–30% buffer; WIP is a queueing system, not a mood.',
+    'Prefer vertical slices that deliver user value each step; avoid horizontal scaffolding.',
+    'Document the tie-breaker used when scores tie; future-you will thank you.',
+    'Run a sensitivity check (alt method or pessimistic/optimistic effort) on the top 5.',
+    'Sequence risk early if it burns down uncertainty for bigger bets.',
+    'Make classes of service explicit (standard/expedite/fixed-date); show what gets displaced.',
+    'Show dependencies and deadlines on the roadmap slice; no hidden dragons.'
+  ],
+  template: (f)=>{
+    const list = (v)=>Array.isArray(v)?v.filter(Boolean).join(', '):v;
+
+    // Method guidance
+    const methodNote = (() => {
+      switch (f.method) {
+        case 'RICE':
+          return `Method: RICE — Reach (${f.reach_window||'per period'}) × Impact (${f.impact_scale||'anchored'}) × Confidence (${f.confidence_scale||'anchored'}) ÷ Effort (${f.effort_scale||'chosen'}).`;
+        case 'ICE':
+          return `Method: ICE — Impact × Confidence ÷ Effort (${f.effort_scale||'chosen'}). Use when Reach is similar across items.`;
+        case 'WSJF':
+          return 'Method: WSJF — (User/Business Value + Time Criticality + Risk Reduction/Opportunity Enablement) ÷ Job Size. Use anchored 1–10 scales.';
+        case 'Weighted matrix':
+          return 'Method: Weighted matrix — weighted sum of 3–5 criteria (weights sum to 1.0); optionally divide by Effort.';
+        case 'Opportunity Gap (Imp–Sat)':
+          return 'Method: Opportunity Gap — rank by high importance and low satisfaction; prioritize largest gaps.';
+        case 'MoSCoW':
+          return 'Method: MoSCoW — Must/Should/Could/Won’t. Order within buckets with a secondary rule.';
+        default:
+          return null;
+      }
+    })();
+
+    // Normalization & confidence
+    const normNote = (() => {
+      switch (f.normalization) {
+        case 'min–max (0–100)': return 'Normalization: scale criteria to 0–100 for comparability.';
+        case 'z-score': return 'Normalization: z-score; centers/standardizes criteria before combining.';
+        default: return null;
+      }
+    })();
+    const confNote = (() => {
+      switch (f.confidence_weighting) {
+        case 'multiply by Confidence': return 'Confidence handling: multiply scores by Confidence (0.5/0.8/1.0).';
+        case 'subtract uncertainty penalty': return 'Confidence handling: subtract an uncertainty penalty from scores.';
+        case 'list Confidence separately': return 'Confidence handling: list Confidence alongside scores (no math).';
+        default: return null;
+      }
+    })();
+
+    // Output guidance
+    const outputNote = (() => {
+      switch (f.output) {
+        case 'ranked table':
+          return 'Output: Ranked table — include method inputs/score, dependencies, owner, size, risk, rationale.';
+        case 'now/next/later':
+          return 'Output: Now/Next/Later — communicates direction without overpromising dates; show capacity line and allocation buckets.';
+        case '2-sprint plan':
+          return 'Output: 2-sprint plan — list items per sprint with sizes, buffer, risks, and sequencing notes.';
+        case 'one-pager summary':
+          return 'Output: One-pager — problem → goals → top bets → capacity slice → risks → decision log link.';
+        case 'exec + builder bundle':
+          return 'Output: Exec + builder bundle — one TL;DR for leaders plus a detailed ranked table for implementers.';
+        default:
+          return null;
+      }
+    })();
+
+    // Capacity & policy notes
+    const bufferNote = f.buffer_percent && f.buffer_percent!=='0%' ?
+      `Capacity buffer: Reserve ${f.buffer_percent} for interrupts/incidents.` : null;
+    const allocationNote = f.allocation_policy ? `Portfolio allocation:\n${f.allocation_policy}` : null;
+    const classNote = f.class_policy ? `Classes of service: ${f.class_policy}` : null;
+    const wipNote = f.wip_limits ? `WIP limits:\n${f.wip_limits}` : null;
+    const altNote = f.alt_method && f.alt_method!=='none'
+      ? `Sensitivity: Also produce an ${f.alt_method} ranking to cross-check the top items.`
+      : null;
+
+    return [
+      'Prioritize the backlog with anchored scoring and a capacity-aware slice.',
+      f.items && `Items:\n${f.items}`,
+
+      f.persona_context && `Persona/segment refs:\n${f.persona_context}`,
+      f.audience_persona && `Personas: ${list(f.audience_persona)}`,
+
+      f.method && methodNote,
+      f.reach_window && `Reach window: ${f.reach_window}`,
+      f.impact_scale && `Impact scale: ${f.impact_scale}`,
+      f.confidence_scale && `Confidence scale: ${f.confidence_scale}`,
+      f.effort_scale && `Effort scale: ${f.effort_scale}`,
+      f.wsjf_anchors && `WSJF anchors:\n${f.wsjf_anchors}`,
+      f.weights && `Weighted matrix weights:\n${f.weights}`,
+      f.opportunity_inputs && `Opportunity inputs:\n${f.opportunity_inputs}`,
+
+      normNote,
+      confNote,
+
+      f.themes && `Themes / OKRs:\n${f.themes}`,
+      f.dependencies && `Dependencies:\n${f.dependencies}`,
+      f.deadlines && `Deadlines/windows:\n${f.deadlines}`,
+
+      f.timeframe && `Time frame: ${f.timeframe}`,
+      f.capacity && `Capacity: ${f.capacity}`,
+      bufferNote,
+      f.capacity_by_lane && `Capacity by lane:\n${f.capacity_by_lane}`,
+      allocationNote,
+      classNote,
+      wipNote,
+
+      f.tie_breakers && `Tie-breakers (apply in order):\n${f.tie_breakers}`,
+      f.evidence_links && `Evidence links:\n${f.evidence_links}`,
+      f.owners_map && `Owner mapping:\n${f.owners_map}`,
+      altNote,
+
+      f.output && outputNote,
+
+      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+
+      f.constraints && `Constraints:\n${f.constraints}`,
+
+      [
+        'Output format:',
+        '- Ranked list/table with method-specific columns (and anchor notes)',
+        '- Top 5: short rationale + evidence + tie-breaker (if applied)',
+        '- Roadmap slice cut at capacity line (show buffer, lane limits, and allocation buckets)',
+        '- Dependencies, deadlines, and risk/CoS notes on selected items',
+        '- Sensitivity section: alt-method or assumption shift results',
+        '- Now/Next/Later or 2-sprint plan (if selected) with owners',
+        '- Decision log: method, date, participants, anchors, and capacity math'
+      ].join('\n')
+    ].filter(Boolean).join('\n');
   }
 }
 
