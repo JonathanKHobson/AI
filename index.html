@@ -11,7 +11,8 @@
   <style>
     :root{
       --bg:#fafafa; --fg:#0f1720; --muted:#506070; --chip:#f3f6fa; --border:#e3e9f2;
-      --accent:#1e293b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.08);
+      --accent:#1e293b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.08); --focus-ring:#0284C7;
+
 
       /* layout */
       --wrap-w: 1120px;
@@ -31,7 +32,7 @@
       margin:0; background:var(--bg); color:var(--fg);
       font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     }
-    :focus-visible{ outline:2px solid #0ea5e9; outline-offset:2px }
+    :focus-visible{ outline:2px solid var(--focus-ring, #0284C7); outline-offset:2px }
 
     /* --- rainbow glimmer from top-left --- */
     body::before{
@@ -373,11 +374,150 @@
     /* Footer actions inside card */
     .actions.footer{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
     .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
+  
+  
+  /* =========================
+   SLICE 1 — Mobile Layout Skeleton
+   ========================= */
+
+/* a) Skip link: visible when tabbed, hidden visually otherwise */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position:fixed; left:16px; top:14px; width:auto; height:auto; padding:10px 14px;
+  background:#fff; color:var(--fg); border:2px solid var(--focus-ring); border-radius:12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  z-index: 10000;
+}
+
+/* b) Mobile scaffold: search + hint + 3 primary buttons under the hint */
+
+/* Ensure input and button meet 44x44 min touch size */
+.search input{ min-height:48px; }
+.search button{ min-height:48px; }
+
+/* Buttons under the hint: grid rules per Slice 1 spec */
+@media (max-width:420px){
+  .searchCtas{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .searchCtas .btn{
+    width:100%;
+    min-height:48px;
+  }
+}
+
+@media (min-width:421px) and (max-width:720px){
+  .searchCtas{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .searchCtas .btn{
+    min-height:48px;
+  }
+}
+
+/* Keep overall mobile container padding sane */
+@media (max-width:720px){
+  .wrap{ padding-left:16px; padding-right:16px; }
+}
+
+/* c) Disable hover-only affordances on touch; prefer press/focus states */
+@media (hover: none) and (pointer: coarse){
+  /* Search CTA buttons: remove hover lift/animation; keep press/focus */
+  .searchCtas .btn:hover,
+  .searchCtas .btn:hover::before,
+  .searchCtas .btn:hover::after{
+    transform:none; box-shadow:none; opacity:1; animation:none;
+  }
+  /* Make press/focus clearly visible */
+  .searchCtas .btn:active{
+    transform: translateY(0) scale(.99);
+    box-shadow: 0 8px 18px -12px rgba(0,0,0,.28);
+  }
+  .searchCtas .btn:focus-visible{
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-ring) inset, 0 0 0 3px rgba(2,132,199,.15);
+  }
+
+  /* Quick-link tiles: kill heavy hover lifts on touch */
+  .tile:hover{ transform:none; box-shadow: var(--shadow); }
+  .tile:hover::before{ opacity:.18; }
+}
+
+/* d) Hint text remains readable and compact on XS screens */
+@media (max-width:360px){
+  .hint{ font-size:13px; }
+}
+
+/* e) Keep the search cluster centered and full-width within its max */
+@media (max-width:720px){
+  .searchWrap{ width:100%; max-width:780px; }
+}
+
+/* Slice 1: mobile spacing rhythm */
+@media (max-width: 720px){
+  .wrap{ padding-left:16px; padding-right:16px; }
+  .search input{ margin-bottom:16px; }
+  .hint{ margin-bottom:16px; }
+  .searchCtas{ margin-bottom:24px; }
+}
+
+/* =========================
+   SLICE 2 — Mobile Suggestions Overlay (desktop-safe)
+   Everything is gated under html.is-mobile
+   ========================= */
+
+/* Lock page scroll when overlay is open */
+html.is-mobile body.scroll-locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Dim background */
+html.is-mobile .suggestions-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,32,.36);
+  backdrop-filter: saturate(120%) blur(1.5px);
+  z-index: 2000; /* above sticky header (120) and old .ta (1000) */
+}
+
+/* Overlay box that will hold #ta */
+html.is-mobile .suggestions-overlay {
+  position: fixed; /* JS sets top/left/width/max-height */
+  background: var(--surface-1, #fff);
+  border-radius: var(--radius, 16px);
+  box-shadow: 0 24px 64px rgba(0,0,0,.18);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 2001;
+  max-height: 60vh; /* JS also sets this as a precise value */
+}
+
+/* When #ta is inside the overlay, neutralize its desktop absolute layout */
+html.is-mobile .suggestions-overlay #ta {
+  position: static;
+  left: auto; right: auto; top: auto; margin-top: 0;
+  max-height: inherit;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+  
   </style>
   
   
 </head>
 <body>
+<a class="skip-link" href="#main">skip to content</a>
+
 
   <!-- RESULTS HEADER (appears only on the results page) -->
   <header id="resultHeader" class="resultHeader" hidden>
@@ -393,7 +533,8 @@
     <div class="rainbowLine"></div>
   </header>
 
-  <main class="wrap">
+  <main id="main" class="wrap">
+
     <!-- HERO -->
     <section class="hero" id="hero">
       <h1 class="heroTitle">
@@ -454,7 +595,6 @@
 <!-- MANTRA REEL -->
 <section id="mantra" class="mantra" aria-label="prompting mantras">
   <div class="mantraLine">
-<span class="prefix">prompting&nbsp;is,</span>
     <span id="mantraSlot" class="mantraSlot" aria-live="polite" aria-atomic="true">
       <span id="mantraReel" class="mantraReel">
         <span id="mantraList" class="mantraList"></span>
@@ -1465,6 +1605,135 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
   });
 })();
 </script>
+
+<script>
+/* ============ Slice 2 — Mobile-only suggestions overlay ============ */
+
+/* A) Mobile detection: toggles .is-mobile on <html> */
+(function mobileGate(){
+  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+  var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  function apply(){ document.documentElement.classList.toggle('is-mobile', mq.matches || uaMobile); }
+  try { mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply); } catch(e){}
+  apply();
+})();
+
+/* B) Overlay portal controller (uses #q and #ta that you already have) */
+(function portal(){
+  var input = document.getElementById('q');   // your search field
+  var ta    = document.getElementById('ta');  // your suggestions listbox
+  if (!input || !ta) return;
+
+  var portalRoot, scrim, overlay, origParent, origNext, observer;
+  var opened = false;
+
+  function isMobile(){ return document.documentElement.classList.contains('is-mobile'); }
+
+  function ensurePortal(){
+    if (portalRoot) return;
+    portalRoot = document.createElement('div');
+    portalRoot.id = 'suggestions-portal';
+    document.body.appendChild(portalRoot);
+
+    scrim = document.createElement('div');
+    scrim.className = 'suggestions-scrim';
+    scrim.hidden = true;
+    portalRoot.appendChild(scrim);
+
+    overlay = document.createElement('div');
+    overlay.className = 'suggestions-overlay';
+    overlay.hidden = true;
+    portalRoot.appendChild(overlay);
+
+    /* stop document pointerdown from hiding #ta when tapping suggestions */
+    overlay.addEventListener('pointerdown', function(e){ e.stopPropagation(); }, true);
+    scrim.addEventListener('click', function(){
+      // close and also hide #ta so your app state stays consistent
+      closeOverlay();
+      if (window.hideTA) window.hideTA(); else { ta.hidden = true; ta.innerHTML = ''; }
+    }, { passive: true });
+  }
+
+  function position(){
+    if (!opened) return;
+    var r  = input.getBoundingClientRect();
+    var vv = window.visualViewport || { offsetTop: 0, offsetLeft: 0, height: window.innerHeight };
+    var top  = r.bottom - (vv.offsetTop || 0);
+    var left = r.left   - (vv.offsetLeft || 0);
+    overlay.style.top  = top + 'px';
+    overlay.style.left = left + 'px';
+    overlay.style.width = r.width + 'px';
+    overlay.style.maxHeight = Math.round((vv.height || window.innerHeight) * 0.60) + 'px';
+  }
+
+  function openOverlay(){
+    if (!isMobile() || opened) { position(); return; }
+    ensurePortal();
+
+    // remember original slot to restore later
+    if (!origParent){ origParent = ta.parentNode; origNext = ta.nextSibling; }
+
+    overlay.appendChild(ta);
+    scrim.hidden = false;
+    overlay.hidden = false;
+    document.body.classList.add('scroll-locked');
+    input.setAttribute('aria-expanded','true');
+    position();
+
+    // keep it anchored on viewport/keyboard changes
+    window.addEventListener('resize', position, { passive: true });
+    window.addEventListener('scroll', position, { passive: true });
+    if (window.visualViewport){
+      visualViewport.addEventListener('resize', position, { passive: true });
+      visualViewport.addEventListener('scroll', position, { passive: true });
+    }
+    document.addEventListener('keydown', onKey, true);
+    opened = true;
+  }
+
+  function closeOverlay(){
+    if (!opened) return;
+    scrim.hidden = true;
+    overlay.hidden = true;
+
+    // restore #ta to original DOM so desktop is unchanged
+    try {
+      if (origParent) origParent.insertBefore(ta, origNext);
+    } catch(e){}
+
+    document.body.classList.remove('scroll-locked');
+    input.setAttribute('aria-expanded','false');
+
+    window.removeEventListener('resize', position, { passive: true });
+    window.removeEventListener('scroll', position, { passive: true });
+    if (window.visualViewport){
+      visualViewport.removeEventListener('resize', position, { passive: true });
+      visualViewport.removeEventListener('scroll', position, { passive: true });
+    }
+    document.removeEventListener('keydown', onKey, true);
+    opened = false;
+  }
+
+  function onKey(e){ if (e.key === 'Escape'){ e.preventDefault(); closeOverlay(); } }
+
+  /* C) Sync overlay with your existing show/hide logic via MutationObserver */
+  observer = new MutationObserver(function(){
+    if (!isMobile()) return;
+    // If app has shown #ta, open overlay; if it hid it, close overlay.
+    (!ta.hidden && ta.children.length) ? openOverlay() : closeOverlay();
+  });
+  observer.observe(ta, { attributes:true, attributeFilter:['hidden'], childList:true, subtree:false });
+
+  /* D) Also react to input focus (your code already renders idle suggestions on focus) */
+  input.addEventListener('focus', function(){ if (isMobile() && !ta.hidden) openOverlay(); });
+
+  /* E) If device flips to desktop midsession, close & restore */
+  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+  function maybeClose(){ if (!isMobile()) closeOverlay(); }
+  try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
+})();
+</script>
+
   
 </body>
 </html>
