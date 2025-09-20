@@ -25,6 +25,182 @@
       --slot-width:16ch;        /* will be overwritten by JS to “widest word” */
       --slot-gap-r: .90ch; /* ← tune this: .32ch (tighter) … .48ch (roomier) */
     }
+    
+
+/* Make wrappers and the search row respect the viewport width */
+html.is-mobile .wrap,
+html.is-mobile .searchWrap,
+html.is-mobile .search,
+html.is-mobile .searchRow { 
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* The search input itself (your #q) – full bleed with safe padding */
+html.is-mobile #q {
+  display:block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 16px; /* or var(--radius-md) if defined */
+}
+
+/* Kill any overflow from fixed pixel widths in siblings */
+html.is-mobile img, 
+html.is-mobile video { max-width: 100%; height: auto; }
+
+/* Avoid 100vw traps (where body padding causes sideways scroll) */
+html.is-mobile [style*="width:100vw"] { width: 100% !important; }
+
+/* =========================
+   Mobile overflow guardrails (desktop-safe)
+   ========================= */
+
+/* 2.1 Clamp common containers to the viewport width */
+@media (max-width: 720px){
+  html.is-mobile .wrap,
+  html.is-mobile .searchWrap,
+  html.is-mobile .search,
+  html.is-mobile .searchRow {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Search input should never be wider than the viewport */
+  html.is-mobile #q{
+    display:block;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    min-height:48px;
+    padding:12px 16px;
+    border-radius:16px; /* or var(--radius-md) */
+  }
+
+  /* 2.2 Make long content scrollable inside its own box instead of the whole page */
+  html.is-mobile pre,
+  html.is-mobile code,
+  html.is-mobile .code,
+  html.is-mobile table {
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* 2.3 Let really long words/URLs wrap instead of expanding the layout */
+  html.is-mobile .title,
+  html.is-mobile .hint,
+  html.is-mobile .card-title,
+  html.is-mobile .card .title,
+  html.is-mobile .desc,
+  html.is-mobile .copy {
+    overflow-wrap:anywhere; /* modern */
+    word-break:break-word;  /* fallback */
+  }
+
+  /* 2.4 Media should shrink to fit */
+  html.is-mobile img,
+  html.is-mobile video,
+  html.is-mobile svg {
+    max-width:100%;
+    height:auto;
+  }
+
+  /* 2.5 Fix 100vw traps: replace with 100% on mobile */
+  html.is-mobile [style*="width:100vw"],
+  html.is-mobile .full-bleed,
+  html.is-mobile .edge-to-edge {
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  /* 2.6 Quick search buttons: compact and non-overflowing */
+  html.is-mobile .searchCtas{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr)); /* minmax(0) prevents overflow */
+    gap:8px;
+    margin-top:10px;
+  }
+  html.is-mobile .searchCtas .btn{
+    min-height:40px; padding:8px 10px; font-size:14px; line-height:1.2;
+    border-radius:12px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+
+  /* 2.7 If you use a horizontal chip rail, make that area scroll, not the page */
+  html.is-mobile .chip-rail {
+    display:flex; gap:8px;
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+  }
+
+  /* 2.8 Neutralize any accidental horizontal transforms that can push width */
+  html.is-mobile .searchWrap [style*="translateX"],
+  html.is-mobile .searchWrap [style*="left:"],
+  html.is-mobile .searchWrap [style*="right:"]{
+    /* Only neutralize if you see a culprit; uncomment if needed */
+    /* transform:none !important; left:auto !important; right:auto !important; */
+  }
+}
+
+/* ===== Mobile-only details header tweaks (safe for desktop) ===== */
+html.is-mobile .resultHeader .bar{
+  position: relative; /* anchor the menu dropdown */
+  gap: 8px;
+}
+
+/* Back button: show only the arrow on mobile, keep label for SR */
+html.is-mobile #back.backBtn{
+  min-width: 40px; min-height: 40px;
+  padding: 6px 8px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+html.is-mobile #back.backBtn .label{
+  position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0; /* visually hidden */
+}
+html.is-mobile #back.backBtn .icon{
+  font-size: 18px; line-height: 1;
+}
+
+/* Hide the inline CTAs on mobile; hamburger will expose them */
+html.is-mobile .resultHeader .ctas{ display: none; }
+
+/* Show hamburger on mobile, keep desktop unchanged */
+html.is-mobile #resultMenuBtn.menuBtn{
+  margin-left: auto; /* push to the right */
+  min-width: 40px; min-height: 40px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:12px;
+}
+
+/* The mobile dropdown menu */
+html.is-mobile #resultMenu.resultMenu{
+  position: absolute;
+  right: 12px;
+  top: calc(100% + 8px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0,0,0,.18);
+  padding: 6px;
+  z-index: 3000;
+  min-width: 200px;
+}
+html.is-mobile #resultMenu.resultMenu [role="menuitem"]{
+  display: block; width: 100%; text-align:left;
+  padding: 10px 12px; border-radius: 10px;
+}
+html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
+  outline: 2px solid var(--focus-ring, #0284C7);
+  outline-offset: 1px;
+}
+
+
+
+
 
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -32,6 +208,7 @@
       margin:0; background:var(--bg); color:var(--fg);
       font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     }
+
     :focus-visible{ outline:2px solid var(--focus-ring, #0284C7); outline-offset:2px }
 
     /* --- rainbow glimmer from top-left --- */
@@ -397,30 +574,7 @@
 .search input{ min-height:48px; }
 .search button{ min-height:48px; }
 
-/* Buttons under the hint: grid rules per Slice 1 spec */
-@media (max-width:420px){
-  .searchCtas{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 12px;
-  }
-  .searchCtas .btn{
-    width:100%;
-    min-height:48px;
-  }
-}
 
-@media (min-width:421px) and (max-width:720px){
-  .searchCtas{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .searchCtas .btn{
-    min-height:48px;
-  }
-}
 
 /* Keep overall mobile container padding sane */
 @media (max-width:720px){
@@ -510,6 +664,160 @@ html.is-mobile .suggestions-overlay #ta {
   background: transparent;
 }
 
+
+/* =========================
+   MOBILE SHRINK KIT (desktop-safe)
+   Tightens sizes, kills sideways scroll, keeps CTAs horizontal & compact
+   ========================= */
+
+
+/* Avoid Safari “bump up” and weird zoom behavior */
+html.is-mobile html, 
+html.is-mobile body { -webkit-text-size-adjust: 100%; }
+
+/* 1) Global spacing + type on mobile */
+@media (max-width: 720px){
+  html.is-mobile .wrap{ padding: 40px 16px 24px; }     /* was 72/20/40 */
+  html.is-mobile .hero{ padding: 28px 12px 8px; gap: 12px; }
+  html.is-mobile .heroTitle{ font-size: clamp(22px, 6.2vw, 32px); } /* smaller hero */
+  html.is-mobile .hint{ font-size: 13px; margin-top: 8px; }
+}
+
+/* 2) Search: make sure it never exceeds viewport and trim padding */
+@media (max-width: 720px){
+  html.is-mobile .searchWrap,
+  html.is-mobile .search,
+  html.is-mobile .searchRow{ width:100%; max-width:100%; box-sizing:border-box; }
+
+  html.is-mobile #q{
+    display:block; width:100%; max-width:100%; box-sizing:border-box;
+    min-height:48px; padding:10px 12px; border-radius:16px;
+    font-size:16px; /* keeps iOS from zooming on focus */
+  }
+  html.is-mobile .search{ padding:6px; }  /* tighter than desktop’s 8px */
+}
+
+/* 3) CTAs: compact, horizontal (single row that can scroll if needed) */
+@media (max-width: 720px){
+  html.is-mobile .searchCtas{
+    display:flex; align-items:stretch; justify-content:center;
+    gap:8px; margin-top:10px;
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+    padding-bottom: 2px; scroll-snap-type:x proximity;
+  }
+  html.is-mobile .searchCtas .btn{
+    flex:0 0 auto; scroll-snap-align:start;
+    min-height:40px; padding:8px 12px; border-radius:12px;
+    font-size:14px; line-height:1.2;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+}
+
+/* 4) QuickLinks: vertical stack (1 per row) + smaller tiles */
+@media (max-width: 720px){
+  html.is-mobile .quickLinks{
+    display:grid; grid-template-columns:1fr; gap:10px; width:100%;
+    margin:12px auto 0;
+  }
+  html.is-mobile .quickLinks > *{ width:100%; box-sizing:border-box; }
+  html.is-mobile .tile{
+    padding:14px 12px 44px; border-radius:16px;
+    box-shadow: var(--shadow);
+    transform:none !important;  /* no hover pop on touch */
+  }
+  html.is-mobile .tile h4{ font-size:15px; }
+  html.is-mobile .tile p{ font-size:13px; }
+  html.is-mobile .tile .cta{ padding:6px 10px; }
+}
+
+/* 5) Mantra: slightly smaller on tight screens to reduce scroll */
+@media (max-width: 520px){
+  html.is-mobile .mantra{ margin: clamp(24px, 5vh, 48px) auto 0; padding:0 12px; }
+  html.is-mobile .mantraLine{ font-size: clamp(20px, 5.4vw, 30px); }
+  html.is-mobile #mantraSlot{ --slot-pad:.12ch; }
+}
+
+/* 6) Details view: compress paddings and grid */
+@media (max-width: 720px){
+  html.is-mobile .resultHeader .bar{ padding:8px 12px; gap:8px; }
+  html.is-mobile .card{
+    grid-template-columns:1fr !important; gap:16px; padding:16px; border-radius:18px;
+  }
+  html.is-mobile .left h2{ font-size: clamp(20px, 4.8vw, 26px); }
+}
+
+/* 7) Common overflow guards */
+@media (max-width: 720px){
+  /* Anything trying to be wider than the viewport gets clamped */
+  html.is-mobile [style*="width:100vw"],
+  html.is-mobile .full-bleed,
+  html.is-mobile .edge-to-edge{
+    width:100% !important; max-width:100% !important;
+  }
+  /* Long content scrolls inside itself instead of the page */
+  html.is-mobile pre,
+  html.is-mobile code,
+  html.is-mobile .code,
+  html.is-mobile table{
+    max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;
+  }
+  /* Media fits the container */
+  html.is-mobile img, html.is-mobile video, html.is-mobile svg{ max-width:100%; height:auto; }
+  /* Let long words/URLs wrap */
+  html.is-mobile .title,
+  html.is-mobile .hint,
+  html.is-mobile .card-title,
+  html.is-mobile .desc,
+  html.is-mobile .copy{
+    overflow-wrap:anywhere; word-break:break-word;
+  }
+}
+
+html.is-mobile .tile{ padding:12px 10px 40px; }
+html.is-mobile .tile h4{ font-size:14px; }
+html.is-mobile .tile p{ font-size:12.5px; }
+
+html.is-mobile .wrap{ padding-top:28px; }
+html.is-mobile .hero{ padding-top:18px; }
+
+/* Mobile: allow the search input to shrink inside the flex row */
+@media (max-width: 720px){
+  html.is-mobile .search{ min-width: 0; }   /* the container can shrink */
+  html.is-mobile .search input{ min-width: 0; } /* the field can shrink */
+  html.is-mobile .searchWrap{ padding-left:12px; padding-right:12px; } /* safe gutter */
+  html.is-mobile #q{ width:100%; max-width:100%; box-sizing:border-box; }
+}
+
+/* Keep hero “slot” and mantra bounded on small screens */
+@media (max-width: 720px){
+  html.is-mobile .slot,
+  html.is-mobile .mantraSlot{
+    max-width: 100%;
+    overflow: hidden;   /* if a word is mismeasured, it won't push the page */
+  }
+
+  /* Long words/URLs wrap instead of expanding layout */
+  html.is-mobile .heroTitle,
+  html.is-mobile .hint,
+  html.is-mobile .tile h4,
+  html.is-mobile .tile p{
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+
+  /* Tables/code blocks scroll inside themselves, not the whole page */
+  html.is-mobile table,
+  html.is-mobile pre,
+  html.is-mobile code,
+  html.is-mobile .code{
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+}
+
+
+
   
   </style>
   
@@ -522,8 +830,20 @@ html.is-mobile .suggestions-overlay #ta {
   <!-- RESULTS HEADER (appears only on the results page) -->
   <header id="resultHeader" class="resultHeader" hidden>
     <div class="bar">
-      <button id="back" class="btn link" type="button">← back to search</button>
+      <button id="back" class="btn link backBtn" type="button" aria-label="Back to search">
+  <span class="icon" aria-hidden="true">←</span>
+  <span class="label">back to search</span>
+</button>
       <div class="spacer"></div>
+      <button id="resultMenuBtn" class="btn link menuBtn" type="button"
+        aria-label="More options" aria-haspopup="menu" aria-expanded="false">
+  <!-- hamburger icon -->
+  <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+  </svg>
+</button>
+<div id="resultMenu" class="resultMenu" role="menu" hidden></div>
+
       <nav class="ctas">
         <a id="openGlossary" class="btn tertiary" href="#">open in templates glossary</a>
         <a id="printWorksheet" class="btn secondary" href="#">open worksheet</a>
@@ -1655,17 +1975,32 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
   }
 
   function position(){
-    if (!opened) return;
-    var r  = input.getBoundingClientRect();
-    var vv = window.visualViewport || { offsetTop: 0, offsetLeft: 0, height: window.innerHeight };
-    var top  = r.bottom - (vv.offsetTop || 0);
-    var left = r.left   - (vv.offsetLeft || 0);
-    overlay.style.top  = top + 'px';
-    overlay.style.left = left + 'px';
-    overlay.style.width = r.width + 'px';
-    overlay.style.maxHeight = Math.round((vv.height || window.innerHeight) * 0.60) + 'px';
-  }
+  if (!opened) return;
 
+  var r  = input.getBoundingClientRect();
+  var vv = window.visualViewport || { offsetTop: 0, offsetLeft: 0, width: window.innerWidth, height: window.innerHeight };
+
+  var gutter = 8;                                  // keep a small left/right padding
+  var vLeft  = vv.offsetLeft || 0;
+  var vTop   = vv.offsetTop  || 0;
+  var vWidth = vv.width || window.innerWidth;
+  var vHeight= vv.height|| window.innerHeight;
+
+  // Start by aligning to the input
+  var left = r.left - vLeft;
+  var top  = r.bottom - vTop;
+  var width= r.width;
+
+  // Clamp to viewport so the overlay never goes off-screen
+  if (left < gutter) left = gutter;
+  var maxWidth = Math.max(140, vWidth - left - gutter);
+  if (width > maxWidth) width = maxWidth;
+
+  overlay.style.top  = Math.round(top)  + 'px';
+  overlay.style.left = Math.round(left) + 'px';
+  overlay.style.width= Math.round(width)+ 'px';
+  overlay.style.maxHeight = Math.round(vHeight * 0.60) + 'px';
+}
   function openOverlay(){
     if (!isMobile() || opened) { position(); return; }
     ensurePortal();
@@ -1733,6 +2068,93 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
   try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
 })();
 </script>
+
+<script>
+(function findWidest(){
+  if (!document.documentElement.classList.contains('is-mobile')) return;
+  var widest = { el:null, w:0 };
+  document.querySelectorAll('body *').forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if (r.width > widest.w) widest = { el: el, w: r.width };
+  });
+  console.log('Widest element:', widest.el, 'width:', widest.w, 'viewport:', window.innerWidth);
+})();
+</script>
+
+<script>
+(function detailsHeaderMobile(){
+  var root   = document.getElementById('resultHeader');
+  if (!root) return;
+
+  var btn    = document.getElementById('resultMenuBtn');
+  var menu   = document.getElementById('resultMenu');
+  var ctas   = root.querySelector('.ctas');
+
+  function isMobile(){ return document.documentElement.classList.contains('is-mobile'); }
+  function open(){ if (!isMobile()) return; ensureMenu(); menu.hidden = false; btn.setAttribute('aria-expanded','true'); trapOutsideOnce(); }
+  function close(){ if (!menu || menu.hidden) return; menu.hidden = true; btn.setAttribute('aria-expanded','false'); }
+
+  // Build the menu exactly once by cloning the existing desktop CTAs
+  function ensureMenu(){
+    if (!menu || !ctas || menu.dataset.built === '1') return;
+    Array.from(ctas.children).forEach(function(node){
+      if (!(node instanceof HTMLElement)) return;
+
+      // Create a menuitem (button or link)
+      var isLink = node.tagName.toLowerCase() === 'a';
+      var item = document.createElement(isLink ? 'a' : 'button');
+      item.setAttribute('role', 'menuitem');
+      item.className = 'menuItem';
+      item.textContent = (node.getAttribute('aria-label') || node.textContent || 'Action').trim();
+
+      if (isLink && node.getAttribute('href')) {
+        // Copy href so middle-click works; still proxy click to keep behavior
+        item.href = node.getAttribute('href');
+      }
+
+      // Proxy click to the original CTA so existing logic continues to run
+      item.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        close();
+        // If link, honor target behavior
+        if (isLink && node.href) { window.location.href = node.href; return; }
+        // Otherwise trigger original click
+        node.click();
+      });
+
+      menu.appendChild(item);
+    });
+    menu.dataset.built = '1';
+  }
+
+  function trapOutsideOnce(){
+    // Close when clicking outside or pressing Escape
+    var onDoc = function(e){
+      if (!menu.contains(e.target) && e.target !== btn) { close(); document.removeEventListener('click', onDoc, true); }
+    };
+    document.addEventListener('click', onDoc, true);
+
+    var onKey = function(e){
+      if (e.key === 'Escape'){ e.preventDefault(); close(); document.removeEventListener('keydown', onKey, true); }
+    };
+    document.addEventListener('keydown', onKey, true);
+  }
+
+  if (btn){
+    btn.addEventListener('click', function(e){
+      if (!isMobile()) return;
+      e.preventDefault(); e.stopPropagation();
+      menu.hidden ? open() : close();
+    });
+  }
+
+  // If the device context flips back to desktop, ensure the menu is closed
+  var mq = matchMedia('(hover: none) and (pointer: coarse)');
+  function maybeClose(){ if (!isMobile()) close(); }
+  try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
+})();
+</script>
+
 
   
 </body>
