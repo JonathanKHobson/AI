@@ -179,6 +179,112 @@
   opacity:.16;
 }
 
+.searchCtas{
+  display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px;
+}
+@media (max-width:480px){
+  .searchCtas .btn{ padding:8px 12px }
+}
+
+/* --- rainbow pop-out buttons (like quickLinks) --- */
+.searchCtas .btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5ch;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:600;
+  line-height:1;
+  background: var(--btn-bg, #fff);
+  color: var(--btn-fg, #111);
+  border: none; /* anchors will ignore this */
+  transform: translateZ(0);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    color .2s ease,
+    opacity .2s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  isolation:isolate; /* keeps pseudo ring crisp */
+}
+
+/* Animated rainbow ring on hover/focus */
+.searchCtas .btn::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  padding:2px;
+  /* animated conic rainbow */
+  --angle: 0deg;
+  background:
+    conic-gradient(from var(--angle),
+      #ff6b6b, #f8e71c, #7ed321, #50e3c2, #4a90e2, #bd10e0, #ff6b6b);
+  /* punch out the middle so it looks like a border */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity:0;
+  transition: opacity .2s ease, filter .2s ease;
+  pointer-events:none;
+  z-index:-1; /* sits behind button content but above the page */
+}
+
+/* subtle shine inside on hover */
+.searchCtas .btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background: radial-gradient(120% 120% at 50% -20%, rgba(255,255,255,.16), transparent 60%);
+  opacity:0;
+  transition: opacity .2s ease;
+  pointer-events:none;
+}
+
+@keyframes spinRainbow { to { --angle: 360deg; } }
+
+.searchCtas .btn:hover,
+.searchCtas .btn:focus-visible{
+  transform: translateY(-2px) scale(1.025);
+  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35),
+              0 4px 10px -6px rgba(0,0,0,.25);
+}
+
+.searchCtas .btn:hover::after,
+.searchCtas .btn:focus-visible::after{
+  opacity:1;
+  filter: saturate(1.15);
+  animation: spinRainbow 2.25s linear infinite;
+}
+
+.searchCtas .btn:hover::before,
+.searchCtas .btn:focus-visible::before{
+  opacity:1;
+}
+
+/* press feedback */
+.searchCtas .btn:active{
+  transform: translateY(0) scale(.99);
+  box-shadow: 0 8px 18px -12px rgba(0,0,0,.35);
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .searchCtas .btn,
+  .searchCtas .btn::after{
+    transition: none;
+    animation: none;
+  }
+}
+
+
+
 /* hint under search */
 .hint{
   margin-top:10px; font-size:14px; color:var(--muted); opacity:.9; text-align:center;
@@ -306,10 +412,15 @@
         </div>
         <div id="ta" class="ta" role="listbox" hidden></div>
         <p class="hint">type what you want to make in everyday words — we’ll shape it into a clear ai prompt.</p>
-
-
-
       </div>
+      
+      <div class="searchCtas" aria-label="quick search actions">
+  <a id="btnAdv" class="btn tertiary" href="./glossary/templates-glossary.html">advanced search</a>
+  <!-- You can rename to “where do I start?” later; wiring stays the same -->
+  <button id="btnHelp" class="btn secondary" type="button" title="Pick a helper & use-case">help me</button>
+  <button id="btnLucky" class="btn secondary" type="button" title="Random use-case from everything">i’m feeling lucky</button>
+</div>
+
       
       <div class="quickLinks">
   <!-- If your full glossary lives on a different page than this index,
@@ -317,6 +428,7 @@
   <a class="tile" href="./glossary/index.html" aria-label="open full ai glossary">
     <h4>full ai glossary</h4>
     <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
+    <br>
     <span class="cta">open glossary</span>
   </a>
 
@@ -551,75 +663,256 @@
 })();
 
 
-    /* ===== Search + typeahead (use-cases + use: tags ONLY) ===== */
-    function allTemplates(){
-      const base = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
-               : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
-      const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
-                 : Array.isArray(window.tasks) ? window.tasks : [];
-      return [...base, ...tasks].map(t=>{
-        const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
-        return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
-      });
-    }
+  /* ===== Search + typeahead (same API, updated ranking) ===== */
+  function allTemplates(){
+    const base  = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
+                : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
+    const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
+                : Array.isArray(window.tasks) ? window.tasks : [];
 
-    function buildIndex(){
-      const src = allTemplates();
-      return src.map(t=>{
-        const useTags = (t.tags || [])
-          .map(String)
-          .map(s => s.trim().toLowerCase())
-          .filter(s => s.startsWith('use:'))
-          .map(s => s.split(':',2)[1])
-          .filter(Boolean);
-        const uc = (t.use_cases || []).map(String);
-        return {
-          id: t.id || t.slug || t.label,
-          slug: t.slug || t.id,
-          label: t.label || t.name || t.slug || t.id || 'untitled',
-          use_cases: uc,
-          use_tags: useTags,
-          tags: (t.tags || []).slice(),
-          categories: t.categories || [],
-          boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
-          definition: t.definition || t.help || '',
-          fields: Array.isArray(t.fields) ? t.fields.slice() : []
-        };
-      });
-    }
+    // Preserve everything; just tag the origin so we can prioritize “task” kind
+    const mark = (arr, isTask)=> arr.map(t => ({ ...t, __isTask:isTask }));
 
-    function rankSuggestions(q, idx, limit=8){
-      const terms = String(q||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-      if (!terms.length) return [];
-      const hits = [];
-      for (const t of idx){
-        let bestUC = ''; let score = 0;
+    return [...mark(base,false), ...mark(tasks,true)].map(t=>{
+      const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
+      return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
+    });
+  }
 
-        for (const uc of t.use_cases){
-          const l = uc.toLowerCase();
-          let s = 0;
-          for (const tok of terms){
-            if (l === tok) s += 60;
-            if (l.includes(tok)) s += 24;
-            if (l.startsWith(tok)) s += 10;
-          }
-          if (s > score){ score = s; bestUC = uc; }
-        }
+// Replace your buildIndex() with this (adds kind/isTask but keeps existing fields)
+  function buildIndex(){
+    const src = allTemplates();
+    return src.map(t=>{
+      const useTags = (t.tags || [])
+        .map(String).map(s => s.trim().toLowerCase())
+        .filter(s => s.startsWith('use:'))
+        .map(s => s.split(':',2)[1])
+        .filter(Boolean);
 
-        if (score === 0 && t.use_tags.length){
-          for (const tag of t.use_tags){
-            for (const tok of terms){ if (tag.includes(tok)) score += 12; }
-          }
-          bestUC = bestUC || t.use_cases[0] || '';
-        }
+      const uc    = (t.use_cases || []).map(String);
+      const kind  = String(t.kind || t.type || '').toLowerCase();
+      const isTask = (kind === 'task')
+        || /^task[_-]/.test(String(t.id||''))
+        || /^task[_-]/.test(String(t.slug||''));
 
-        if (score > 0 && bestUC){
-          hits.push({ id:t.id, slug:t.slug, label:t.label, use:bestUC, score, template:t });
+      return {
+        id: t.id || t.slug || t.label,
+        slug: t.slug || t.id,
+        label: t.label || t.name || t.slug || t.id || 'untitled',
+        use_cases: uc,
+        use_tags: useTags,
+        tags: (t.tags || []).slice(),
+        categories: t.categories || [],
+        boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
+        definition: t.definition || t.help || '',
+        fields: Array.isArray(t.fields) ? t.fields.slice() : [],
+        // NEW: metadata for ranking only
+        kind, isTask
+      };
+    });
+  }
+
+    function rankSuggestions(q, idx, limit = 8){
+  const rawQ  = String(q || '').trim().toLowerCase();
+  const terms = rawQ.split(/[^a-z0-9]+/).filter(Boolean);
+  if (!terms.length) return [];
+
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hits = [];
+
+  for (const t of idx){
+    let bestUC = '';
+    let ucScore = 0;
+
+    // ========= 1) USE-CASES (now gated on real lexical match) =========
+    for (const uc of t.use_cases){
+      const l = uc.toLowerCase();
+      let s = 0;
+      let matched = false;          // <-- NEW: track if any lexical match happened
+      let firstPos = Infinity;
+
+      // phrase / exact line
+      if (rawQ && l === rawQ){ s += 220; matched = true; }
+      else if (rawQ && l.includes(rawQ)){ s += 120; matched = true; }
+
+      // token scoring
+      for (const tok of terms){
+        if (l === tok){ s += 80; matched = true; }
+        const re = new RegExp(`\\b${esc(tok)}\\b`);
+        if (re.test(l)){ s += 40; matched = true; }
+        const pos = l.indexOf(tok);
+        if (pos >= 0){
+          s += 24;                   // substring
+          matched = true;
+          firstPos = Math.min(firstPos, pos);
+          if (pos === 0) s += 10;    // starts-with
         }
       }
-      hits.sort((a,b)=> b.score - a.score || a.use.localeCompare(b.use));
-      return hits.slice(0, limit);
+
+      // ⛔️ If nothing matched, this UC should NOT enter the pool
+      if (!matched) continue;
+
+      // position + brevity nudges only apply when there was a match
+      if (firstPos < Infinity){
+        s += Math.max(0, 30 - Math.min(30, firstPos));
+      }
+      s += Math.max(0, 18 - Math.min(18, Math.floor(l.length / 12)));
+
+      // gentle task nudge (ordering only) — only after a real match
+      if (t.isTask) s += 30;
+
+      // tiny kind-mention nudge
+      if (t.kind && terms.some(tok => t.kind.includes(tok))) s += 12;
+
+      if (s > ucScore){ ucScore = s; bestUC = uc; }
     }
+
+    // ========= 2) use: TAGS (fallback only if no UC hit) =========
+    let tagScore = 0;
+    if (ucScore === 0 && t.use_tags.length){
+      for (const tag of t.use_tags){
+        const tl = String(tag).toLowerCase();
+        for (const tok of terms){
+          if (tl === tok) tagScore += 20;
+          else if (tl.includes(tok)) tagScore += 12;
+        }
+      }
+      if (tagScore > 0){
+        if (t.isTask) tagScore += 12;
+        if (t.kind && terms.some(tok => t.kind.includes(tok))) tagScore += 8;
+      }
+    }
+
+    if (ucScore > 0){
+      hits.push({ bucket:'uc', score: ucScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
+    } else if (tagScore > 0){
+      hits.push({ bucket:'tag', score: tagScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
+    }
+  }
+
+  // primary sort (unchanged)
+  hits.sort((a,b)=>
+    (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
+    (b.score - a.score) ||
+    ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
+    (a.use.length - b.use.length) ||
+    a.use.localeCompare(b.use)
+  );
+
+  // ========= Wild-query fallback (now triggers correctly) =========
+  const TOP = hits[0]?.score || 0;
+  const WILD_MIN_HITS  = 2;
+  const WILD_TOP_SCORE = 60;
+  const isWild = (hits.length === 0) || (hits.length <= WILD_MIN_HITS && TOP < WILD_TOP_SCORE);
+
+  if (isWild){
+    const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+    const helperTemplates = idx.filter(t=>{
+      const lbl = String(t.label||'').trim();
+      const id  = String(t.id||'').trim().toLowerCase();
+      const kind= String(t.kind||'').trim().toLowerCase();
+      return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+    });
+
+    const helperBase = Math.max(TOP + 5, 240);
+    const seenUse = new Set(hits.map(h => h.use));
+    let step = 0;
+
+    for (const t of helperTemplates){
+      for (const uc of (t.use_cases || [])){
+        if (seenUse.has(uc)) continue;
+        hits.push({
+          bucket:'uc',
+          score: helperBase - (step++ * 0.5),
+          use: uc,
+          label: t.label,
+          template: t,
+          id: t.id,
+          slug: t.slug
+        });
+        seenUse.add(uc);
+      }
+    }
+
+    hits.sort((a,b)=>
+      (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
+      (b.score - a.score) ||
+      ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
+      (a.use.length - b.use.length) ||
+      a.use.localeCompare(b.use)
+    );
+  }
+
+  return hits.slice(0, limit);
+}
+
+
+// ===== Recent + idle helper suggestions =====
+const RECENT_KEY  = 'pb_recent_queries';
+const MAX_RECENT  = 12;
+
+function loadRecent(){
+  try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveRecent(q){
+  q = String(q||'').trim();
+  if (!q) return;
+  let list = loadRecent().filter(s => s && s.toLowerCase() !== q.toLowerCase());
+  list.unshift(q);
+  if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
+  localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+}
+
+function helperTemplates(idx){
+  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+  return idx.filter(t=>{
+    const lbl = String(t.label||'').trim();
+    const id  = String(t.id||'').trim().toLowerCase();
+    const kind= String(t.kind||'').trim().toLowerCase();
+    return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+  });
+}
+
+function helperUsecaseSuggestions(idx, limit, seen=new Set()){
+  const out = [];
+  for (const t of helperTemplates(idx)){
+    for (const uc of (t.use_cases || [])){
+      if (seen.has(uc)) continue;
+      out.push({
+        bucket:'uc', score: 999,
+        use: uc, label: t.label,
+        template: t, id: t.id, slug: t.slug,
+        origin:'helper'
+      });
+      seen.add(uc);
+      if (out.length >= limit) return out;
+    }
+  }
+  return out;
+}
+
+function buildIdleSuggestions(idx, limit=8){
+  const seen = new Set();
+  const out  = [];
+
+  // Recent searches first
+  const rec = loadRecent();
+  for (const r of rec){
+    if (!r || seen.has(r)) continue;
+    out.push({
+      bucket:'uc', score: 1000,
+      use: r, label:'recent',
+      template:null, id:null, slug:null,
+      origin:'recent'
+    });
+    seen.add(r);
+    if (out.length >= limit) return out;
+  }
+
+  // Then helper picker use-cases
+  return out.concat(helperUsecaseSuggestions(idx, Math.max(0, limit - out.length), seen));
+}
 
     const qEl  = document.getElementById('q');
     const taEl = document.getElementById('ta');
@@ -641,12 +934,23 @@
     }
 
     let SUGS = [];
-    function onQuery(){
-      const q = qEl.value.trim();
-      SUGS = rankSuggestions(q, INDEX, 8);
-      renderTA(SUGS);
-    }
+function onQuery(){
+  const q = qEl.value.trim();
+  const focused = document.activeElement === qEl;
 
+  if (!q){
+    if (focused){
+      SUGS = buildIdleSuggestions(INDEX, 8);
+      renderTA(SUGS);
+    } else {
+      hideTA(); // collapsed when not focused
+    }
+    return;
+  }
+
+  SUGS = rankSuggestions(q, INDEX, 8);
+  renderTA(SUGS);
+}
     qEl.addEventListener('input', onQuery);
     qEl.addEventListener('keydown', (e)=>{
       const open = !taEl.hidden && taEl.children.length;
@@ -654,14 +958,16 @@
         e.preventDefault();
         active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
         [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
-      } else if (e.key === 'Enter'){
-        e.preventDefault();
-        if (!picked){
-          if (open && active >= 0) choose(active);
-          else if (SUGS[0]) { picked = SUGS[0]; qEl.value = SUGS[0].use; }
-        }
-        if (qEl.value.trim()) startScan();
-      } else if (e.key === 'Escape'){
+} else if (e.key === 'Enter'){
+  e.preventDefault();
+  if (!taEl.hidden && taEl.children.length){
+    // choose() will call startScan() for us
+    choose(active >= 0 ? active : 0);
+  } else {
+    if (!picked && SUGS[0]) picked = SUGS[0];
+    if (qEl.value.trim()) startScan();
+  }
+} else if (e.key === 'Escape'){
         taEl.hidden = true; active=-1;
       }
     });
@@ -670,19 +976,128 @@
       if (!el) return;
       choose(parseInt(el.dataset.i,10) || 0);
     });
-    goEl.addEventListener('click', ()=>{
-      if (!picked && SUGS[0]) { picked = SUGS[0]; qEl.value = SUGS[0].use; }
-      if (qEl.value.trim()) startScan();
-    });
+goEl.addEventListener('click', ()=>{
+  if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }  // choose() triggers start
+  else if (qEl.value.trim()) startScan();
+});
 
-    function choose(i){
-      const items = Array.from(taEl.children);
-      const it = items[i]; if (!it) return;
-      const s = SUGS[i]; if (!s) return;
-      qEl.value = s.use;
-      picked = s;
-      taEl.hidden = true; active = -1;
+// Show idle suggestions (recent → helper) the moment the field is focused & blank
+qEl.addEventListener('focus', ()=>{
+  if (!qEl.value.trim()){
+    SUGS = buildIdleSuggestions(INDEX, 8);
+    renderTA(SUGS);
+  } else {
+    onQuery(); // if user had text, refresh suggestions on focus
+  }
+});
+
+qEl.addEventListener('blur', ()=>{
+  // Let mousedown on a suggestion run first, then hide.
+  setTimeout(hideTA, 80);
+});
+
+// Click anywhere outside the search area → hide dropdown
+document.addEventListener('pointerdown', (e)=>{
+  if (!searchWrap.contains(e.target)) hideTA();
+});
+
+function choose(i){
+  const items = Array.from(taEl.children);
+  const it = items[i]; if (!it) return;
+  const s = SUGS[i];   if (!s) return;
+
+  qEl.value = s.use;
+  taEl.hidden = true; active = -1;
+
+  // If it's a "recent" chip, convert it to a real search:
+  if (s.origin === 'recent'){
+    picked = null;           // not a specific template yet
+    onQuery();               // recompute SUGS synchronously for this query
+    if (SUGS[0] && SUGS[0].origin !== 'recent'){ picked = SUGS[0]; } // auto-pick top result if present
+    if (qEl.value.trim()) startScan(); // run immediately
+    return;
+  }
+
+  // Normal/helper suggestion → lock and run immediately
+  picked = s;
+  if (qEl.value.trim()) startScan();
+}
+
+// --- quick buttons under the search ---
+const btnAdv   = document.getElementById('btnAdv');   // pure link, no JS needed
+const btnHelp  = document.getElementById('btnHelp');
+const btnLucky = document.getElementById('btnLucky');
+
+// Pick a helper template (— Task Picker — or — Pattern Picker — preferred),
+// otherwise anything with id:"none" or kind:"helper", then grab a random use-case.
+function pickHelperUC(){
+  const ALL = allTemplates();
+  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
+  const helpers = ALL.filter(t=>{
+    const lbl  = String(t.label||'').trim();
+    const id   = String(t.id||'').trim().toLowerCase();
+    const kind = String(t.kind||t.type||'').trim().toLowerCase();
+    return HELPER_LABELS.has(lbl) || id === 'none' || kind === 'helper';
+  });
+  const pool = helpers.length ? helpers : ALL.filter(t => (t.use_cases||[]).length);
+  if (!pool.length) return null;
+  const t = pool[Math.floor(Math.random()*pool.length)];
+  const ucs = (t.use_cases || []);
+  if (!ucs.length) return null;
+  const uc = ucs[Math.floor(Math.random()*ucs.length)];
+  return { uc, t };
+}
+
+btnHelp?.addEventListener('click', ()=>{
+  const pick = pickHelperUC();
+  if (!pick){
+    // Fallback: use existing helper suggestion builder
+    const h = helperUsecaseSuggestions(INDEX, 1);
+    if (h[0]){
+      picked = h[0];
+      qEl.value = h[0].use;
+      startScan();
     }
+    return;
+  }
+  picked = {
+    bucket:'uc', score:999,
+    use: pick.uc,
+    label: pick.t.label || pick.t.slug || pick.t.id,
+    template: pick.t, id: pick.t.id, slug: pick.t.slug
+  };
+  qEl.value = pick.uc;
+  startScan();
+});
+
+// Lucky: random use-case across ALL templates equally
+btnLucky?.addEventListener('click', ()=>{
+  const ALL = allTemplates();
+  const bag = [];
+  for (const t of ALL){
+    for (const uc of (t.use_cases || [])){
+      bag.push({ uc, t });
+    }
+  }
+  if (!bag.length){
+    // Fallback to helper if no use-cases exist yet
+    const h = helperUsecaseSuggestions(INDEX, 1);
+    if (h[0]){
+      picked = h[0]; qEl.value = h[0].use; startScan();
+    }
+    return;
+  }
+  const { uc, t } = bag[Math.floor(Math.random()*bag.length)];
+  picked = {
+    bucket:'uc', score:999,
+    use: uc,
+    label: t.label || t.slug || t.id,
+    template: t, id: t.id, slug: t.slug
+  };
+  qEl.value = uc;
+  startScan();
+});
+
 
     /* ===== Faux scan to details ===== */
     const hero = document.getElementById('hero');
@@ -692,6 +1107,8 @@
     const resultHeader = document.getElementById('resultHeader');
 
     function startScan(){
+    saveRecent(qEl.value.trim()); // ← NEW: remember it
+    
       hero.style.display = 'none';
       scan.style.display = 'flex';
 
@@ -889,6 +1306,14 @@
         `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
       ].join('\n');
     }
+    
+    const searchWrap = document.querySelector('.searchWrap');
+
+function hideTA(){
+  taEl.hidden = true;
+  taEl.innerHTML = '';
+  active = -1;
+}
 
     /* ===== Boot index for search ===== */
     function boot(){ INDEX = buildIndex(); onQuery(); }
