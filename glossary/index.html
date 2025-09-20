@@ -1,1739 +1,1564 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prompt Builder — start</title>
-  <meta name="color-scheme" content="light only">
+  <meta charset="utf-8"/>
+  <title>AI Glossary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
   <style>
+    /* ============ THEME TOKENS (kept your names; values aligned to index) ============ */
     :root{
-      --bg:#fafafa; --fg:#0f1720; --muted:#506070; --chip:#f3f6fa; --border:#e3e9f2;
-      --accent:#1e293b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.08); --focus-ring:#0284C7;
+  /* Neutrals (light) */
+  --bg:#fafafa;      /* page */
+  --fg:#0f1720;      /* primary text */
+  --muted:#506070;   /* secondary text */
+  --chip:#f3f6fa;    /* quiet surface for chips */
+  --border:#e3e9f2;  /* hairline borders */
+  --accent:#1e293b;  /* headings/strong accents */
 
+  /* Interaction/effects */
+  --focus:#0ea5e9;               /* global focus ring */
+  --shadow:0 12px 40px rgba(0,0,0,.08);
+  --radius:16px;
 
-      /* layout */
-      --wrap-w: 1120px;
-      --header-h: 60px; /* result header height */
+  /* Rainbow palette */
+  --r1:#ff007a; --r2:#ff8d00; --r3:#ffd600;
+  --r4:#00dc82; --r5:#00d2ff; --r6:#7850ff;
 
-      /* HERO slot timing + spacing */
-      --slot-slide:520ms;       /* slide duration per word */
-      --slot-hold:680ms;        /* dwell time per word */
-      --slot-pad:0.3ch;         /* left/right padding inside slot */
-      --slot-width:16ch;        /* will be overwritten by JS to “widest word” */
-      --slot-gap-r: .90ch; /* ← tune this: .32ch (tighter) … .48ch (roomier) */
+  /* ---------- Legacy bridge (so existing CSS keeps working) ---------- */
+  --ink:var(--fg);            /* text */
+  --ink-2:var(--muted);       /* secondary text */
+  --panel:#fff;               /* surfaces/panels/cards */
+  --panel-2:#fff;             /* inner surfaces */
+  --line:var(--border);       /* borders */
+  --br:var(--radius);         /* corner radius */
+
+  /* Buttons (light) */
+  --btn-bg:#fff;
+  --btn-bg-hover:#f8fafc;
+  --btn-border:var(--border);
+  --btn-text:var(--fg);
+  --btn-ghost-border:var(--border);
+  --btn-ghost-text:var(--muted);
+    /* Primary button (e.g., search) */
+  --btn-primary-bg: var(--fg);
+  --btn-primary-text: #fff;
+
+  /* Prompt Builder / Ask buttons (inherit button tokens) */
+  --pb-bg:var(--btn-bg);
+  --pb-bg-hover:var(--btn-bg-hover);
+  --pb-border:var(--btn-border);
+  --pb-text:var(--btn-text);
+
+ /* Light = dark dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23121621'/></svg>");
+
+   
+    }
+  /* Optional dark mode mapping (your toggle will flip this) */
+html[data-theme="dark"]{
+  --bg:#0c1220; --fg:#e6ebf2; --muted:#9aa8b7; --chip:#111827; --border:#233041; --accent:#cbd5e1;
+  --shadow:0 12px 40px rgba(0,0,0,.24);
+
+  /* Bridge in dark */
+  --panel:#0f1726; --panel-2:#0b1320; --ink:var(--fg); --ink-2:var(--muted); --line:var(--border);
+
+  --btn-bg:#1b2533; --btn-bg-hover:#13202e; --btn-border:var(--border); --btn-text:var(--fg);
+  --btn-ghost-border:var(--border); --btn-ghost-text:var(--fg);
+
+  --pb-bg:var(--btn-bg); --pb-bg-hover:var(--btn-bg-hover); --pb-border:var(--btn-border); --pb-text:var(--btn-text);
+  
+    --btn-primary-bg: #1e293b;     /* deep slate background in dark */
+  --btn-primary-text: #e6ebf2;   /* readable light text */
+  
+       /* Theme icon: dark = golden dot */
+      --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
     }
 
+    /* ============ GLOBAL ============ */
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0; background:var(--bg); color:var(--fg);
-      font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    }
-    :focus-visible{ outline:2px solid var(--focus-ring, #0284C7); outline-offset:2px }
-
-    /* --- rainbow glimmer from top-left --- */
-    body::before{
-      content:"";
-      position:fixed; inset:auto auto 40% 0; width:min(70vw,920px); height:min(70vh,680px);
-      pointer-events:none; z-index:-1; filter: blur(48px) saturate(115%);
-      background:
-        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
-        conic-gradient(
-          from 210deg at 0% 0%,
-          rgba(255,0,122,.22), rgba(255,141,0,.18),
-          rgba(255,214,0,.18), rgba(0,220,130,.20),
-          rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22)
-        );
-      opacity:.28;
-      animation: glimmer 14s linear infinite;
-      mask-image: radial-gradient(100% 100% at 0 0, #000 40%, transparent 80%);
-    }
-    @keyframes glimmer{
-      0%{ transform: translate3d(0,0,0) rotate(0deg); }
-      50%{ transform: translate3d(2%, -2%, 0) rotate(3deg); }
-      100%{ transform: translate3d(0,0,0) rotate(0deg); }
-    }
-
-    .wrap{ max-width:var(--wrap-w); margin:0 auto; padding:72px 20px 40px; display:grid; gap:24px; }
-
-    /* ====== RESULT HEADER (for details view) ====== */
-    .resultHeader[hidden]{ display:none }
-    .resultHeader{
-      position:sticky; top:0; z-index:120;
-      backdrop-filter: blur(10px) saturate(115%);
-      background:rgba(255,255,255,.82);
-      border-bottom:1px solid var(--border);
-    }
-    .resultHeader .bar{
-      max-width:var(--wrap-w); margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:12px;
-    }
-    .resultHeader .spacer{ flex:1 }
-    .resultHeader .ctas{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-    .resultHeader .rainbowLine{ height:3px; width:100%;
-      background:linear-gradient(90deg,#ff007a,#ff8d00,#ffd600,#00dc82,#00d2ff,#7850ff,#ff007a);
-      filter:saturate(115%); opacity:.85;
-    }
-
-    /* Buttons */
-    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5ch; cursor:pointer;
-      border-radius:999px; padding:9px 14px; font-weight:600; text-decoration:none; text-transform:lowercase; user-select:none;
-      transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
-    }
-    .btn:active{ transform:translateY(1px) }
-    .btn.primary{ background:var(--fg); color:#fff; border:1px solid transparent; box-shadow:0 6px 16px rgba(15,23,32,.15); }
-    .btn.secondary{ background:#fff; color:var(--fg); border:1px solid var(--border); }
-    .btn.tertiary{ background:#fff; color:var(--muted); border:1px dashed var(--border); }
-    .btn.link{ background:transparent; border:none; color:var(--fg); padding:6px 8px; }
-
-    /* ----- hero ----- */
-    .hero{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:48px 16px 12px; }
-    .heroTitle{ margin:0; font-weight:600; letter-spacing:.3px; text-transform:lowercase; font-size: clamp(28px, 5.8vw, 56px); line-height:1.15; }
-
-    /* Slot (animated words) */
-    .slot{ display:inline-flex; position:relative; align-items:center; justify-content:center; height:var(--slot-h, 1.25em); line-height:1; vertical-align:-0.01em; width:var(--slot-width); padding:0 var(--slot-pad); overflow:hidden; }
-    .slot::after{ content:""; position:absolute; left:var(--slot-pad); right:var(--slot-pad); bottom:-0.07em; height:2px; border-radius:2px; background: linear-gradient(90deg, rgba(15,23,32,.10), rgba(15,23,32,.26), rgba(15,23,32,.10)); opacity:.38; pointer-events:none; }
-    .reel{ height:var(--slot-h, 1.25em); width:calc(100%); margin-left:-20px; overflow:hidden; mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); }
-    .slot.final .reel{ mask-image:none; -webkit-mask-image:none; }
-    .reelList{ display:flex; flex-direction:column; transform:translate3d(0,0,0); transition:transform var(--slot-slide) cubic-bezier(.2,.9,.2,1); will-change:transform; }
-    .reelList .w{ display:block; line-height:var(--slot-h, 1.25em); text-align:center; white-space:nowrap; }
-    @keyframes slotBounce{ 0%{ transform:scale(1) } 38%{ transform:scale(1.035) } 72%{ transform:scale(1) } 88%{ transform:scale(1.015) } 100%{ transform:scale(1) } }
-    .slot.final{ animation: slotBounce .55s ease-out 1; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+:focus-visible{ outline:2px solid var(--focus); outline-offset:2px }
     
+    /* Ambient rainbow glimmer (soft conic glow from top-left) */
+body::before{
+  content:""; position:fixed; inset:auto auto 40% 0;
+  width:min(70vw,920px); height:min(70vh,680px); pointer-events:none; z-index:-1;
+  filter: blur(48px) saturate(115%);
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+    conic-gradient(from 210deg at 0% 0%,
+      rgba(255,0,122,.22), rgba(255,141,0,.18),
+      rgba(255,214,0,.18), rgba(0,220,130,.20),
+      rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22));
+  opacity:.28;
+}
+
+
+@media (prefers-reduced-motion: reduce){
+  body::before{ animation:none; }
+}
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+   .wrap{ max-width:1600px; width:100%; margin:0 auto; padding:48px 24px 40px; display:grid; gap:24px }   
+    header{display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:12px}
+    .hdr-actions{ display:flex; gap:8px; align-items:center }
+#backToSearch{ text-transform:none } /* honor exact casing “Back to Search” */
+#hdrPB{ text-transform:none }        /* keep label crisp */
+    h1{font-size:24px; margin:0}
+    .sub{color:var(--ink-2); font-size:13px}
+
+    /* ============ PANELS & LAYOUT (unchanged structure) ============ */
+.pane{
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px; box-shadow:var(--shadow);
+}
+.controls{
+  display:grid;
+  grid-template-columns: 1.3fr .9fr .9fr .9fr .9fr .9fr .9fr .9fr .9fr auto;
+  gap:10px; align-items:end;
+}
+
+.filters.alpha{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:10px }
+.filters.alpha label.sub{ margin:0 8px 0 2px }
+.filters.alpha .chip{ cursor:pointer; user-select:none }
+.filters.alpha .chip.active{ outline:2px solid var(--accent) }
+    .filters{margin-top:10px}
+
+/* ============ FORMS (light, airy) ============ */
+label.sub{display:block; margin:0 0 6px 2px; color:var(--muted); text-transform:lowercase; letter-spacing:.2px}
+input, select, textarea{
+  width:100%; height:auto; padding:12px 14px;
+  background:var(--panel); color:var(--fg);
+  border:1px solid var(--border); border-radius:var(--radius); outline:none;
+  box-shadow: var(--shadow);
+  transition: border-color .12s ease, background-color .12s ease, box-shadow .12s ease;
+}
+input::placeholder, textarea::placeholder{ color:var(--muted) }
+input:focus, select:focus, textarea:focus{ border-color: var(--focus) }
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5ch;
+  padding:9px 14px; border-radius:999px; cursor:pointer; user-select:none;
+  font-weight:600; text-transform:lowercase; text-decoration:none;
+  background: var(--btn-bg); color: var(--btn-text); border:1px solid var(--btn-border);
+  transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease, border-color .12s ease;
+}
+.btn:hover{ background:var(--btn-bg-hover) }
+.btn:active{ transform:translateY(1px) }
+
+.btn-ghost{ background:var(--panel); color:var(--muted); border:1px dashed var(--btn-ghost-border) }
+.btn-link{ background:transparent; border:none; color:var(--fg); padding:6px 8px; font-size:13px }
+
+.btn-sm{ padding:8px 12px; font-size:13px; border-radius:999px }
+.btn-xs{ padding:6px 10px; font-size:12px; border-radius:999px }
+
+
+    /* Theme button dot */
+    #themeBtn::before{
+      content:""; width:14px; height:14px; display:inline-block;
+      background-image:var(--theme-icon);
+      background-size:14px 14px; background-repeat:no-repeat;
+      border-radius:50%;
+    }
     
+.card .pb-btn, .card .ask-btn{
+  position:absolute; right:10px; border:none; isolation:isolate;
+}
+.card .pb-btn::after, .card .ask-btn::after{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  --angle:0deg;
+  background: conic-gradient(from var(--angle),
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:0; transition: opacity .2s ease, filter .2s ease; pointer-events:none; z-index:-1;
+}
+@keyframes spinRainbow{ to { --angle:360deg; } }
+.card .pb-btn:hover, .card .ask-btn:hover,
+.card .pb-btn:focus-visible, .card .ask-btn:focus-visible{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35), 0 4px 10px -6px rgba(0,0,0,.25);
+}
+.card .pb-btn:hover::after, .card .ask-btn:hover::after,
+.card .pb-btn:focus-visible::after, .card .ask-btn:focus-visible::after{
+  opacity:1; filter:saturate(1.15); animation: spinRainbow 2.25s linear infinite;
+}
+@media (prefers-reduced-motion: reduce){
+  .card .pb-btn, .card .ask-btn, .card .pb-btn::after, .card .ask-btn::after{ transition:none; animation:none; }
+}
+
+
+/* --- Card status badge (bottom-left) --- */
+.card .status-badge{
+  position:absolute;
+  left:14px;
+  bottom:10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2px;
+  opacity:.95;
+  background:transparent;
+  border:none;
+  padding:0;
+}
+
+/* Colors per status */
+.card .status-verified{   color:#0f766e; }  /* green-teal */
+.card .status-draft{      color:#8b5e34; }  /* brownish */
+.card .status-deprecated{ color:#b91c1c; }  /* red */
+.card .status-duplicate{  color:#2563eb; }  /* blue */
+
+/* Dark mode nudge (slightly brighter) */
+html[data-theme="dark"] .card .status-verified{   color:#34d399; }
+html[data-theme="dark"] .card .status-draft{      color:#d1a374; }
+html[data-theme="dark"] .card .status-deprecated{ color:#f87171; }
+html[data-theme="dark"] .card .status-duplicate{  color:#60a5fa; }
+
+/* ============ CHIPS ============ */
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px;
+  border:1px solid var(--border); background:var(--chip);
+  color:var(--fg); font-size:12px; line-height:1;
+}
+.chip .x{ cursor:pointer; opacity:.9 }
+.chip-plain{ background:transparent; border:1px solid var(--border); color:var(--muted) }
+
+/* ============ CARDS ============ */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap:16px;
+  margin-top:12px;
+}
+
+/* Constrain only the results grid, keep header/pane full-width */
+#list.grid{
+  width: 100%;
+  max-width: 1120px;      /* cap like the old centered layout */
+  justify-self: center;   /* center this grid item inside .wrap (which is display:grid) */
+  padding-inline: 20px;   /* keep the same side breathing room */
+}
+
+.grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:12px }
+@media(min-width:860px){ .grid{ grid-template-columns:1fr 1fr } }
+
+.card{
+  position:relative; overflow:hidden;
+  background:var(--panel); border:1px solid var(--border); border-radius:20px;
+  padding:24px; display:flex; flex-direction:column; gap:12px;
+  box-shadow:var(--shadow);
+  padding-bottom:116px; /* room for anchored buttons */
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 12px 44px rgba(0,0,0,.10); }
+.card::before{
+  content:""; position:absolute; inset:-12px; z-index:-1; border-radius:24px;
+  filter: blur(26px) saturate(120%);
+  background: conic-gradient(from 200deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.14; transition: opacity .2s ease;
+}
+.card:hover::before, .card:focus-visible::before{ opacity:.22 }
+
+.card h3{ margin:0 0 6px 0; font-size:16px; font-weight:600; letter-spacing:.2px; text-transform:lowercase; color:var(--accent) }
+.muted{ color:var(--muted) }
+.meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+.pill{ display:inline-flex; padding:4px 8px; border-radius:999px; background:#eef1ff; border:1px solid #cfd8ff; color:#2a2b66; font-size:12px }
+html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#d6e2ff }
+
+    /* Prompt Builder + Ask ChatGPT buttons, anchored bottom-right */
+    .card .pb-btn{
+      position:absolute; right:10px; bottom:48px;
+      background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
+      display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
+    }
+    .card .ask-btn{
+      position:absolute; right:10px; bottom:10px;
+      background:var(--pb-bg); color:var(--pb-text); border:1px solid var(--pb-border);
+      display:inline-flex; flex:0 0 auto; width:auto; max-width:max-content; white-space:nowrap;
+    }
     
-    /* ===== MANTRA REEL (below quickLinks) ===== */
-.mantra{
-  margin: clamp(36px, 6vh, 80px) auto 0;
-  max-width: var(--wrap-w);
-  padding: 0 20px;
-  text-align: center;
+    /* NEW: stack the two CTAs with consistent spacing */
+.card .card-cta{
+  position:absolute; right:10px; bottom:10px;
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px;
 }
-.mantraLine{
-  --mantra-shift-x: 0px;      /* ← tweak horizontal nudge; positive = right */
-  display: inline-flex;
-  align-items: baseline;
-  gap: .6ch;
-  transform: translateX(var(--mantra-shift-x));
-  font-weight: 300;
-  letter-spacing: .3px;
-  text-transform: lowercase;
-  font-size: clamp(26px, 5.2vw, 54px);
-  line-height: 1.16;
+/* When inside the CTA stack, let buttons be flow-positioned (no absolute overlap) */
+.card .card-cta .pb-btn,
+.card .card-cta .ask-btn{
+  position:static; right:auto; bottom:auto;
+}
+    
+    /* More breathing room above the fixed buttons */
+#list .card{
+  /* give the buttons more headroom */
+  padding-bottom: 116px; /* was 80px */
+  transition: box-shadow .18s ease, transform .06s ease, border-color .18s ease;
 }
 
-/* make the words hug a bit more */
-#mantra .mantraLine{ gap:.1ch; }  /* try .2ch → .1ch */
+/* Add vertical space after the chips/tags stack inside cards */
+#list .card .meta{ margin-bottom: 8px; }
+#list .card .meta:last-child{ margin-bottom: 16px; }
 
-/* tighten left/right padding inside the scrolling slot */
-#mantra #mantraSlot{ --slot-pad:.12ch; }  /* try .12ch → 0 */
-
-.mantraLine .prefix{ opacity: .85; }
-
-.mantraSlot{
-  display:inline-flex; position:relative; align-items:center; justify-content:center;
-  height: var(--mantra-slot-h, 1.2em); vertical-align: -0.03em;
-  width: var(--mantra-slot-w, 30ch);     /* JS will adjust to widest phrase */
-  padding: 0 var(--slot-pad, .3ch);
-  overflow:hidden;
-}
-.mantraReel{
-  height: var(--mantra-slot-h, 1.2em); width: 100%;
-  overflow:hidden;
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-}
-.mantraList{
-  display:flex; flex-direction:column;
-  transform: translate3d(0,0,0);
-  transition: transform var(--mantra-slide, 900ms) cubic-bezier(.2,.9,.2,1);
-  will-change: transform;
-}
-.mantraList .w{
-  display:block; white-space:nowrap; text-align:center;
-  line-height: var(--mantra-slot-h, 1.2em);
+/* Hover & focus affordance: lift, highlight border */
+#list .card:hover,
+#list .card:focus-visible{
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 2px color-mix(in oklab, var(--accent) 35%, transparent);
+  transform: translateY(-1px);
+  outline: none; /* rely on the custom ring below */
 }
 
-/* keep it visually consistent on small screens */
-@media (max-width: 520px){
-  .mantraLine{ font-size: clamp(22px, 6vw, 34px); }
-  .mantraSlot{ width: var(--mantra-slot-w, 24ch); }
+/* Clear, lightweight focus ring for keyboard users */
+#list .card:focus-visible{
+  box-shadow: var(--shadow), 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
 }
 
-    /* ----- search ----- */
-    .searchWrap{ width:min(780px, 100%); margin: 6px auto 0; position:relative; transform-origin: center; animation: popIn .56s cubic-bezier(.2, .9, .2, 1.2) both; }
-    /* keep the suggestions above anything below the search */
-.searchWrap{ z-index: 10; }
-    @keyframes popIn{ 0%{ transform: scale(.88); opacity:0 } 60%{ transform: scale(1.03); opacity:1 } 100%{ transform: scale(1) } }
-    .search{ width:100%; display:flex; align-items:center; gap:8px; padding:8px; border-radius:999px; position:relative; background: #fff; border:2px solid transparent; background-image: linear-gradient(#fff,#fff), conic-gradient(from 90deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: var(--shadow); }
-    .search input{ flex:1; font:16px/1.2 inherit; border:none; outline:none; padding:12px 14px; background:transparent; color:var(--fg); }
-    .search button{ border:none; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:600; background: var(--fg); color:#fff; text-transform:lowercase; }
+/* Optional: tiny “Click to expand” hint badge (top-right) */
+#list .card::after{
+  content: "Click to expand";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--chip);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;
+}
+#list .card:hover::after,
+#list .card:focus-visible::after{ opacity: .9; transform: translateY(0); }
 
-/* subtle rainbow glow behind the search bar */
-.search{ position:relative } /* reinforce positioning */
+    
+    .pb-btn:hover, .ask-btn:hover{ background:var(--pb-bg-hover) }
+
+    /* COUNT */
+    .hdr-wrap{display:flex; gap:12px; align-items:baseline}
+    .count{color:var(--ink-2); font-size:13px}
+
+    /* ============ MODALS ============ */
+    dialog{ border:none; border-radius:16px; padding:0; width:min(920px, 96vw); color:var(--ink) }
+    dialog::backdrop{ background:rgba(2,8,21,.55) }
+    .modal{ display:grid; grid-template-columns:1.1fr .9fr; gap:0 }
+    @media(max-width:900px){ .modal{ grid-template-columns:1fr } }
+    .m-left{ padding:18px; background:var(--panel); border-right:1px solid #212a3a }
+    .m-right{ padding:18px; background:var(--panel-2) }
+    .close{ position:absolute; right:10px; top:10px }
+
+    .field{margin:10px 0}
+    .field label{display:block; font-size:13px; color:var(--ink-2); margin-bottom:6px}
+    pre.out{background:#0c0f14; border:1px solid #223049; border-radius:10px; padding:12px; white-space:pre-wrap; word-break:break-word; max-height:42vh; overflow:auto}
+    html[data-theme="light"] pre.out{ background:#f3f6fb; border-color:#d9e2f0 }
+
+    /* Ask ChatGPT helper dialog */
+    #copyDlg .content{ padding:16px; background:var(--panel); border-radius:16px }
+    #copyDlg h3{ margin:0 0 8px 0; font-size:18px }
+    #copyDlg p{ margin:0 0 10px 0; color:var(--ink-2) }
+    #copyDlg textarea{
+      width:100%; height:220px; resize:vertical;
+      background:var(--panel-2); color:var(--ink);
+      border:1px solid var(--line); border-radius:10px; padding:10px;
+      font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    #copyDlg .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px }
+    
+    /* ===== Slice 2: master search bar (tokens-aware; refined in Slice 3) ===== */
+.searchWrap{ width:min(780px,100%); margin: 8px auto 16px; position:relative; z-index:10 }
+.search{
+  width:100%; display:flex; align-items:center; gap:8px; padding:8px;
+  border-radius:999px; position:relative;
+  background:var(--panel); border:2px solid transparent;
+  background-image: linear-gradient(var(--panel),var(--panel)),
+    conic-gradient(from 90deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  background-origin: border-box; background-clip: padding-box, border-box;
+  box-shadow: var(--shadow);
+}
+.search input{ flex:1; font:16px/1.2 inherit; border:none; outline:none; padding:12px 14px; background:transparent; color:var(--fg) }
+.search button{
+  border:none; border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:600;
+  background: var(--btn-primary-bg); color: var(--btn-primary-text); text-transform:lowercase
+}
+
+/* subtle glow behind search */
 .search::before{
   content:""; position:absolute; inset:-10px; border-radius:999px; z-index:-1;
   filter: blur(22px) saturate(120%);
-  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  background: conic-gradient(from 200deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
   opacity:.16;
 }
 
-.searchCtas{
-  display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px;
+/* typeahead panel */
+/* Dropdown / suggestion panel */
+.ta{
+  position:absolute; left:10px; right:10px; top:100%;
+  background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  margin-top:8px; box-shadow: var(--shadow);
+  max-height:260px; overflow:auto; z-index:1000;
 }
-@media (max-width:480px){
-  .searchCtas .btn{ padding:8px 12px }
+.ta[hidden]{ display:none }
+.ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid var(--border) }
+.ta .item:last-child{ border-bottom:none }
+.ta .item:hover, .ta .item.active{
+  /* subtle theme-aware wash */
+  background: color-mix(in oklab, var(--fg) 10%, transparent);
 }
-
-/* --- rainbow pop-out buttons (like quickLinks) --- */
-.searchCtas .btn{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.5ch;
-  padding:10px 16px;
-  border-radius:999px;
-  font-weight:600;
-  line-height:1;
-  background: var(--btn-bg, #fff);
-  color: var(--btn-fg, #111);
-  border: none; /* anchors will ignore this */
-  transform: translateZ(0);
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    background-color .2s ease,
-    color .2s ease,
-    opacity .2s ease;
-  box-shadow: 0 0 0 0 rgba(0,0,0,0);
-  isolation:isolate; /* keeps pseudo ring crisp */
-}
-
-/* Animated rainbow ring on hover/focus */
-.searchCtas .btn::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:inherit;
-  padding:2px;
-  /* animated conic rainbow */
-  --angle: 0deg;
-  background:
-    conic-gradient(from var(--angle),
-      #ff6b6b, #f8e71c, #7ed321, #50e3c2, #4a90e2, #bd10e0, #ff6b6b);
-  /* punch out the middle so it looks like a border */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity:0;
-  transition: opacity .2s ease, filter .2s ease;
-  pointer-events:none;
-  z-index:-1; /* sits behind button content but above the page */
-}
-
-/* subtle shine inside on hover */
-.searchCtas .btn::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background: radial-gradient(120% 120% at 50% -20%, rgba(255,255,255,.16), transparent 60%);
-  opacity:0;
-  transition: opacity .2s ease;
-  pointer-events:none;
-}
-
-@keyframes spinRainbow { to { --angle: 360deg; } }
-
-.searchCtas .btn:hover,
-.searchCtas .btn:focus-visible{
-  transform: translateY(-2px) scale(1.025);
-  box-shadow: 0 16px 28px -14px rgba(0,0,0,.35),
-              0 4px 10px -6px rgba(0,0,0,.25);
-}
-
-.searchCtas .btn:hover::after,
-.searchCtas .btn:focus-visible::after{
-  opacity:1;
-  filter: saturate(1.15);
-  animation: spinRainbow 2.25s linear infinite;
-}
-
-.searchCtas .btn:hover::before,
-.searchCtas .btn:focus-visible::before{
-  opacity:1;
-}
-
-/* press feedback */
-.searchCtas .btn:active{
-  transform: translateY(0) scale(.99);
-  box-shadow: 0 8px 18px -12px rgba(0,0,0,.35);
-}
-
-/* respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .searchCtas .btn,
-  .searchCtas .btn::after{
-    transition: none;
-    animation: none;
-  }
-}
+.ta .use{ font-size:14px; color:var(--fg) }
+.ta .sub{ font-size:12px; color:var(--muted); display:none }
 
 
-
-/* hint under search */
-.hint{
-  margin-top:10px; font-size:14px; color:var(--muted); opacity:.9; text-align:center;
-}
-
-/* quick link cards */
-.quickLinks{
-  width:min(980px,100%); margin:16px auto 0;
-  display:grid; gap:14px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-}
-.tile{
-  position:relative; display:block; padding:18px 16px 52px;
-  border-radius:20px; background:#fff; color:inherit; text-decoration:none;
-  border:1px solid var(--border); box-shadow: var(--shadow); overflow:hidden;
-  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.tile:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 12px 44px rgba(0,0,0,.10); }
-.tile::before{
-  content:""; position:absolute; inset:-12px; z-index:-1; border-radius:24px;
-  filter: blur(26px) saturate(120%);
-  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
-  opacity:.18; transition: opacity .2s ease;
-}
-.tile:hover::before{ opacity:.28 }
-.tile h4{ margin:0 0 6px; font-size:16px; font-weight:700; text-transform:lowercase; letter-spacing:.2px; }
-.tile p{ margin:0; font-size:14px; color:var(--muted); }
-.tile .cta{
-  position:absolute; right:12px; bottom:12px; padding:8px 12px;
-  border-radius:999px; border:1px solid var(--border); background:#fff;
-  font-weight:600; text-transform:lowercase;
-}
-.tile:hover .cta{ background:var(--fg); color:#fff; border-color:transparent; }
-
-
-.quickLinks{ position:relative; z-index:0; }
-
-    /* typeahead */
-    .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index:1000; /* was 50 */
- }
-    .ta[hidden]{ display:none }
-    .ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid #f1f5fb; }
-    .ta .item:last-child{ border-bottom:none }
-    .ta .item:hover, .ta .item.active{ background:#f7fafc }
-    .ta .use{ font-size:14px }
-    .ta .sub{ font-size:12px; color:var(--muted); display:none }
-
-    /* ----- faux scanning ----- */
-    .scan{ position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; background:#fff; }
-    .scan .roll{ position:relative; width:100vw; height:100vh; overflow:hidden; background:#fff; mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); }
-    .scan ul{ position:absolute; inset:0; list-style:none; margin:0; padding:24px clamp(22px, 6vw, 90px) 24px clamp(34px, 9vw, 140px); display:flex; flex-direction:column; gap:10px; align-items:flex-start; text-align:left; font-family: ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif; font-weight:600; letter-spacing:.2px; text-transform:lowercase; font-stretch: condensed; will-change: transform; }
-    .scan li{ font-size: clamp(16px, 2.2vw, 26px); color:#0c1220; opacity:.45; transition:transform .18s ease, opacity .18s ease; max-width: 90vw; }
-    .scan li.hit{ color:#000; opacity:1; transform: scale(1.06); text-decoration:underline; text-underline-offset: .12em; will-change: transform; }
-    .scan .roll::before, .scan .roll::after{ content:""; position:absolute; top:50%; transform: translateY(-50%); height: 2.2em; width:2px; pointer-events:none; background: linear-gradient(to bottom, rgba(15,23,32,0), rgba(15,23,32,.28) 50%, rgba(15,23,32,0) ); filter: blur(.2px); }
-    .scan .roll::before{ left: 16%; }
-    .scan .roll::after{ right: 16%; }
-    .centerBand{ position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:3.0em; pointer-events:none; background: linear-gradient(90deg, rgba(255,0,122,.12), rgba(255,141,0,.10), rgba(255,214,0,.10), rgba(0,220,130,.12), rgba(0,210,255,.12), rgba(120,80,255,.14)); mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%); filter: saturate(120%); }
-    .centerBand::after{ content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); mix-blend-mode: overlay; animation: centerSweep 2600ms ease-in-out infinite alternate; }
-    @keyframes centerSweep{ 0%{ transform: translateX(-10%) } 100%{ transform: translateX(10%) } }
-    .scan::before{ content:""; position:fixed; inset:auto auto 0 0; width:min(90vw,1200px); height:min(70vh,780px); pointer-events:none; opacity:.18; filter: blur(36px) saturate(125%); background: radial-gradient(110% 110% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%), conic-gradient( from 210deg at 0% 0%, rgba(255,0,122,.22), rgba(255,141,0,.18), rgba(255,214,0,.18), rgba(0,220,130,.20), rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22) ); animation: scanGlimmer 16s linear infinite; }
-    @keyframes scanGlimmer{ 0%{ transform: translate3d(0,0,0) rotate(0deg) } 50%{ transform: translate3d(2%,-1.5%,0) rotate(3deg) } 100%{ transform: translate3d(0,0,0) rotate(0deg) } }
-
-    /* ----- details card ----- */
-    .details[hidden]{ display:none }
-    .details{ position:relative; }
-    .details::before{ content:""; position:fixed; inset:auto -15vw 8% -15vw; height:52vh; background: conic-gradient(from 220deg, rgba(255,0,122,.10), rgba(255,141,0,.08), rgba(255,214,0,.08), rgba(0,220,130,.10), rgba(0,210,255,.10), rgba(120,80,255,.12), rgba(255,0,122,.10)); filter: blur(70px) saturate(115%); opacity:.32; pointer-events:none; z-index:-1; }
-
-    .card{ display:grid; grid-template-columns: 1.3fr .9fr; gap:28px; align-items:flex-start; border:1px solid var(--border); border-radius:24px; background:#fff; box-shadow: var(--shadow); padding:24px; }
-    @media (max-width: 900px){ .card{ grid-template-columns: 1fr; } }
-
-    .left h2{ margin:4px 0 6px; text-transform:lowercase; font-size: clamp(24px, 3.4vw, 34px); letter-spacing:.2px; }
-    .meta{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 16px; }
-    .chip{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:var(--chip); font-size:12px }
-
-    .block + .block{ margin-top:18px }
-    .block h3{ margin:.4rem 0 .4rem; font-size:14px; letter-spacing:.12px; color:#101828; text-transform:lowercase; }
-    .uc, .booster{ background:#f8fbff; border:1px dashed #e6eef8; padding:10px 12px; border-radius:12px; font-size:13px; }
-
-    .fields .row + .row{ margin-top:10px }
-    .row label{ display:block; font-size:12px; color:var(--muted); margin-bottom:4px; text-transform:lowercase }
-    .row .fake{ width:100%; padding:12px 14px; border-radius:12px; border:1px dashed var(--border); background:#f9fafb; color:#0f1720; font-size:14px; }
-
-    /* Right column stickiness for taller screens */
-    @media (min-width: 901px){ .right{ position:sticky; top: calc(var(--header-h) + 18px); } }
-
-    /* Footer actions inside card */
-    .actions.footer{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
-    .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
-  
-  
-  /* =========================
-   SLICE 1 — Mobile Layout Skeleton
-   ========================= */
-
-/* a) Skip link: visible when tabbed, hidden visually otherwise */
-.skip-link{
-  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
-}
-.skip-link:focus{
-  position:fixed; left:16px; top:14px; width:auto; height:auto; padding:10px 14px;
-  background:#fff; color:var(--fg); border:2px solid var(--focus-ring); border-radius:12px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.12);
-  z-index: 10000;
-}
-
-/* b) Mobile scaffold: search + hint + 3 primary buttons under the hint */
-
-/* Ensure input and button meet 44x44 min touch size */
-.search input{ min-height:48px; }
-.search button{ min-height:48px; }
-
-/* Buttons under the hint: grid rules per Slice 1 spec */
-@media (max-width:420px){
-  .searchCtas{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 12px;
-  }
-  .searchCtas .btn{
-    width:100%;
-    min-height:48px;
-  }
-}
-
-@media (min-width:421px) and (max-width:720px){
-  .searchCtas{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .searchCtas .btn{
-    min-height:48px;
-  }
-}
-
-/* Keep overall mobile container padding sane */
-@media (max-width:720px){
-  .wrap{ padding-left:16px; padding-right:16px; }
-}
-
-/* c) Disable hover-only affordances on touch; prefer press/focus states */
-@media (hover: none) and (pointer: coarse){
-  /* Search CTA buttons: remove hover lift/animation; keep press/focus */
-  .searchCtas .btn:hover,
-  .searchCtas .btn:hover::before,
-  .searchCtas .btn:hover::after{
-    transform:none; box-shadow:none; opacity:1; animation:none;
-  }
-  /* Make press/focus clearly visible */
-  .searchCtas .btn:active{
-    transform: translateY(0) scale(.99);
-    box-shadow: 0 8px 18px -12px rgba(0,0,0,.28);
-  }
-  .searchCtas .btn:focus-visible{
-    outline: none;
-    box-shadow: 0 0 0 2px var(--focus-ring) inset, 0 0 0 3px rgba(2,132,199,.15);
-  }
-
-  /* Quick-link tiles: kill heavy hover lifts on touch */
-  .tile:hover{ transform:none; box-shadow: var(--shadow); }
-  .tile:hover::before{ opacity:.18; }
-}
-
-/* d) Hint text remains readable and compact on XS screens */
-@media (max-width:360px){
-  .hint{ font-size:13px; }
-}
-
-/* e) Keep the search cluster centered and full-width within its max */
-@media (max-width:720px){
-  .searchWrap{ width:100%; max-width:780px; }
-}
-
-/* Slice 1: mobile spacing rhythm */
-@media (max-width: 720px){
-  .wrap{ padding-left:16px; padding-right:16px; }
-  .search input{ margin-bottom:16px; }
-  .hint{ margin-bottom:16px; }
-  .searchCtas{ margin-bottom:24px; }
-}
-
-/* =========================
-   SLICE 2 — Mobile Suggestions Overlay (desktop-safe)
-   Everything is gated under html.is-mobile
-   ========================= */
-
-/* Lock page scroll when overlay is open */
-html.is-mobile body.scroll-locked {
-  overflow: hidden;
-  touch-action: none;
-}
-
-/* Dim background */
-html.is-mobile .suggestions-scrim {
-  position: fixed;
-  inset: 0;
-  background: rgba(15,23,32,.36);
-  backdrop-filter: saturate(120%) blur(1.5px);
-  z-index: 2000; /* above sticky header (120) and old .ta (1000) */
-}
-
-/* Overlay box that will hold #ta */
-html.is-mobile .suggestions-overlay {
-  position: fixed; /* JS sets top/left/width/max-height */
-  background: var(--surface-1, #fff);
-  border-radius: var(--radius, 16px);
-  box-shadow: 0 24px 64px rgba(0,0,0,.18);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 2001;
-  max-height: 60vh; /* JS also sets this as a precise value */
-}
-
-/* When #ta is inside the overlay, neutralize its desktop absolute layout */
-html.is-mobile .suggestions-overlay #ta {
-  position: static;
-  left: auto; right: auto; top: auto; margin-top: 0;
-  max-height: inherit;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-}
-
-  
   </style>
-  
-  
 </head>
 <body>
-<a class="skip-link" href="#main">skip to content</a>
 
+  <!-- Data files -->
+  <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
+  <script src="glossary.data.js"></script>
 
-  <!-- RESULTS HEADER (appears only on the results page) -->
-  <header id="resultHeader" class="resultHeader" hidden>
-    <div class="bar">
-      <button id="back" class="btn link" type="button">← back to search</button>
-      <div class="spacer"></div>
-      <nav class="ctas">
-        <a id="openGlossary" class="btn tertiary" href="#">open in templates glossary</a>
-        <a id="printWorksheet" class="btn secondary" href="#">open worksheet</a>
-        <a id="openBuilder" class="btn primary" href="#">open in prompt builder</a>
-      </nav>
-    </div>
-    <div class="rainbowLine"></div>
-  </header>
-
-  <main id="main" class="wrap">
-
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <h1 class="heroTitle">
-        start building your 
-        <span id="slot" class="slot" aria-live="polite" aria-atomic="true">
-          <span id="reel" class="reel">
-            <span id="reelList" class="reelList"></span>
-          </span>
-       </span>  
-      </h1>
-
-      <div class="searchWrap">
-        <div class="search">
-          <input id="q" type="text" placeholder="type what you’re trying to build…" autocomplete="off" />
-          <button id="go" type="button" title="Search">search</button>
-        </div>
-        <div id="ta" class="ta" role="listbox" hidden></div>
-        <p class="hint">type what you want to make in everyday words — we’ll shape it into a clear ai prompt.</p>
+  <div class="wrap">
+    <header>
+      <div class="hdr-wrap">
+        <a id="backToSearch" class="btn btn-sm" href="../index.html" aria-label="Back to Search">← Back to Search</a>
+        <h1>AI Glossary</h1>
+        <div id="hdrCount" class="count">Showing …</div>
       </div>
-      
-      <div class="searchCtas" aria-label="quick search actions">
-  <a id="btnAdv" class="btn tertiary" href="./glossary/templates-glossary.html">advanced search</a>
-  <!-- You can rename to “where do I start?” later; wiring stays the same -->
-  <button id="btnHelp" class="btn secondary" type="button" title="Pick a helper & use-case">help me</button>
-  <button id="btnLucky" class="btn secondary" type="button" title="Random use-case from everything">i’m feeling lucky</button>
-</div>
+      <div class="hdr-actions">
+        <a id="hdrPB" class="btn btn-sm" href="prompt-builder.html">Prompt Builder</a>
+        <a id="hdrAdd" class="btn btn-sm" href="add-glossaryterm.html">+ Add Term</a>
+        <button id="themeBtn" class="btn btn-sm" title="Toggle theme">Light</button>
+      </div>
+    </header>
 
-      
-      <div class="quickLinks">
-  <!-- If your full glossary lives on a different page than this index,
-       change the href below to that page. -->
-  <a class="tile" href="./glossary/index.html" aria-label="open full ai glossary">
-    <h4>full ai glossary</h4>
-    <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
-    <br>
-    <span class="cta">open glossary</span>
-  </a>
-
-  <a class="tile" href="./glossary/templates-glossary.html" aria-label="open template glossary">
-    <h4>template glossary</h4>
-    <p>browse prompt-making templates with one-line summaries and examples.</p>
-    <span class="cta">open templates</span>
-  </a>
-
-  <a class="tile" href="./glossary/prompt-builder.html" aria-label="open prompt builder config">
-    <h4>prompt builder config</h4>
-    <p>power-user controls for building and saving prompts with full options.</p>
-    <span class="cta">open builder</span>
-  </a>
-
-  <a class="tile" href="./glossary/startup-wizard.html" aria-label="start the setup wizard">
-    <h4>startup wizard (alpha)</h4>
-    <p>a lighter, guided flow to set things up without the overwhelm.</p>
-    <span class="cta">start wizard</span>
-  </a>
-</div>
-
-<!-- MANTRA REEL -->
-<section id="mantra" class="mantra" aria-label="prompting mantras">
-  <div class="mantraLine">
-    <span id="mantraSlot" class="mantraSlot" aria-live="polite" aria-atomic="true">
-      <span id="mantraReel" class="mantraReel">
-        <span id="mantraList" class="mantraList"></span>
-      </span>
-    </span>
+    <!-- Keep the pretty master search bar visible; it’s inert in this slice -->
+<section class="searchWrap" id="masterSearch">
+  <div class="search">
+    <input id="qMaster" type="text" placeholder="Search uses, definitions, tags…" autocomplete="off" />
+    <button id="goMaster" type="button" title="Search">search</button>
   </div>
+  <div id="taMaster" class="ta" role="listbox" hidden></div>
 </section>
 
+<section class="pane">
+  <div class="controls">
+    <div><label class="sub">Search</label><input id="q" placeholder="Search label, definition, tags, notes"/></div>
+    <div><label class="sub">Category</label><select id="cat"></select></div>
+    <div><label class="sub">Tags</label><input id="tag" placeholder="Search tags"/></div>
+    <div><label class="sub">Kind</label><select id="kind"></select></div>
+    <div><label class="sub">Topic</label><select id="tagTopic"></select></div>
+    <div><label class="sub">Phase</label><select id="tagPhase"></select></div>
+    <div><label class="sub">Level</label><select id="tagLevel"></select></div>
+    <div><label class="sub">Use</label><select id="tagUse"></select></div>
+    <div><label class="sub">Sort</label>
+      <select id="sort">
+        <option value="term_az">A → Z</option>
+        <option value="term_za">Z → A</option>
+        <option value="slug">Slug</option>
+        <option value="status_term">Status → Term</option>
+        <option value="category_term">Category → Term</option>
+      </select>
+    </div>
+    <div><label class="sub">&nbsp;</label><button id="reset" class="btn btn-ghost btn-sm">Reset</button></div>
+  </div>
 
-    </section>
+  <!-- A–Z bar -->
+  <div id="alpha" class="filters alpha"></div>
 
-    <!-- FAUX SCANNING -->
-    <section class="scan" id="scan">
-      <div class="roll">
-        <ul id="rollList"></ul>
-      </div>
-    </section>
+  <!-- Active chips -->
+  <div id="active" class="filters"></div>
+</section>
 
-    <!-- DETAILS -->
-    <section class="details" id="details" hidden>
-      <div class="card">
-        <div class="left">
-          <h2 id="tplTitle">template</h2>
-          <div class="meta" id="meta"></div>
+    <!-- ✅ Cards render here from GLOSSARY -->
+    <section id="list" class="grid" aria-live="polite"></section>
 
-          <div class="block">
-            <h3>definition</h3>
-            <div id="def" class="uc"></div>
+    <!-- ✅ Detail modal (rewired for glossary schema) -->
+    <dialog id="dlg">
+      <button class="btn btn-sm close" id="dlgClose" aria-label="Close">Close ✕</button>
+      <div class="modal">
+        <div class="m-left">
+          <h2 id="dlgTitle" style="margin:0 0 6px 0; font-size:18px"></h2>
+          <div class="meta" id="dlgMeta"></div>
+
+          <!-- Definition: larger, primary content -->
+          <div id="dlgDef" style="margin:14px 0 14px 0; line-height:1.6"></div>
+
+          <!-- Notes (replaces Use cases/Boosters) -->
+          <div id="dlgNotesWrap" style="margin-top:10px">
+            <div class="sub">Notes</div>
+            <div id="dlgNotes" class="muted" style="margin-top:6px; white-space:pre-wrap"></div>
           </div>
 
-          <div class="block">
-            <h3>use-cases</h3>
-            <div id="useCases"></div>
-          </div>
-
-          <div class="block" id="boostersBlock" hidden>
-            <h3>boosters</h3>
-            <div id="boosters"></div>
-          </div>
-
-          <div class="divider"></div>
-          <div class="actions footer">
-            <button id="copyPrompt" class="btn secondary" type="button">copy prompt</button>
-            <button id="ask" class="btn primary" type="button">ask chatgpt</button>
+          <!-- Related -->
+          <div id="dlgRelatedWrap" style="margin-top:14px">
+            <div class="sub">Related</div>
+            <div id="dlgRelated" class="meta"></div>
           </div>
         </div>
 
-        <div class="right">
-          <div class="block">
-            <h3>fields</h3>
-            <div class="fields" id="fields"></div>
+        <div class="m-right">
+          <!-- Sources -->
+          <div id="dlgSourcesWrap">
+            <div class="sub" style="margin-bottom:6px">Sources</div>
+            <ul id="dlgSources" style="margin:6px 0 0 18px; padding:0"></ul>
+          </div>
+
+          <!-- CTA stack (Prompt Builder only if type:template) + Ask ChatGPT -->
+          <div class="meta" style="margin-top:14px; gap:8px">
+            <a id="openPB" class="btn btn-sm pb-btn" href="#" target="_blank" rel="noopener" hidden>Open in Prompt Builder</a>
+            <a id="askBtnModal" class="btn btn-sm ask-btn" href="#" target="_blank" rel="noopener">💬 Ask ChatGPT</a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </dialog>
 
-  <!-- datasets -->
-  
-    <script src="./templates.data.js"></script>
-    
-     <script>
-    // lazy-load tasks dataset
-    (function ensureTasksLoaded(){
-      if (Array.isArray(window.TEMPLATES)) return;
-      const s = document.createElement('script');
-      s.src = './glossary/templates.data.js';
-      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.data.js');
-      document.head.appendChild(s);
-    })();
-  </script>
-  
-  <script>
-    // lazy-load tasks dataset
-    (function ensureTasksLoaded(){
-      if (Array.isArray(window.TASK_TEMPLATES)) return;
-      const s = document.createElement('script');
-      s.src = './glossary/templates.tasks.data.js';
-      s.onerror = ()=> console.info('tasks dataset not found at ./glossary/templates.tasks.data.js');
-      document.head.appendChild(s);
-    })();
-  </script>
-  
+    <!-- Ask ChatGPT helper dialog (clipboard confirm) -->
+    <dialog id="copyDlg">
+      <div class="content">
+        <h3 id="copyTitle">Prompt copied ✓</h3>
+        <p>A new tab opened with ChatGPT. If the message isn’t prefilled there, just paste (Ctrl/⌘+V) into the chat box.</p>
+        <textarea id="copyText" readonly></textarea>
+        <div class="actions">
+          <button id="copyAgain" class="btn btn-sm">Copy again</button>
+          <button id="copyClose" class="btn btn-sm btn-ghost">Got it</button>
+        </div>
+      </div>
+    </dialog>
+  </div>
+
 <script>
-  // Always bust cache in dev
-  const DATA_VERSION = Date.now();
-
-  function injectScript(src){
-    const s = document.createElement('script');
-    s.src = src + (src.includes('?') ? '&' : '?') + 'v=' + DATA_VERSION;
-    s.crossOrigin = 'anonymous';
-    document.head.appendChild(s);
-    return s;
+/* ========== Utilities (kept) ========== */
+const $=(s,e=document)=>e.querySelector(s);
+const $$=(s,e=document)=>Array.from(e.querySelectorAll(s));
+const h=(t,p={},...kids)=>{
+  const el=document.createElement(t);
+  for(const[k,v] of Object.entries(p)){
+    if(k==='class') el.className=v;
+    else if(k==='text') el.textContent=v;
+    else if(k==='dataset') for(const[dk,dv] of Object.entries(v)) el.dataset[dk]=dv;
+    else if(k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if(v!=null) el.setAttribute(k,v);
   }
-
-  // Rebuild the search index any time a dataset arrives
-  function rebuild(){ INDEX = buildIndex(); onQuery(); }
-
-  injectScript('./glossary/templates.data.js').onload = rebuild;
-  injectScript('./glossary/templates.tasks.data.js').onload = rebuild;
-</script>
-
-  <script>
-/* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
-(function heroSlot(){
-  const words = ['project.', 'life.', 'plan.', 'system.', 'idea.', 'prompt.'];
-
-  const slot = document.getElementById('slot');
-  const reel = document.getElementById('reel');
-  const list = document.getElementById('reelList');
-
-  list.innerHTML = words.map(w => `<span class="w">${w}</span>`).join('');
-
-  const cs = getComputedStyle(document.documentElement);
-  const holdMs  = parseFloat(cs.getPropertyValue('--slot-hold'))  || 680;
-  const dpr = window.devicePixelRatio || 1;
-
-  function widestWordPx(){
-    const slotEl = document.getElementById('slot');
-    const cs = getComputedStyle(slotEl);
-
-    const meas = document.createElement('span');
-    meas.style.position = 'absolute';
-    meas.style.visibility = 'hidden';
-    meas.style.whiteSpace = 'nowrap';
-    meas.style.left = '-9999px';
-    meas.style.top = '-9999px';
-
-    // copy all width-affecting text styles
-    meas.style.font = cs.font;
-    meas.style.letterSpacing = cs.letterSpacing;
-    meas.style.textTransform = cs.textTransform;
-    meas.style.fontKerning = cs.fontKerning;
-    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
-    meas.style.fontVariationSettings = cs.fontVariationSettings;
-    meas.style.fontStretch = cs.fontStretch;
-
-    document.body.appendChild(meas);
-
-    let max = 0;
-    for (const w of words){
-      meas.textContent = w;
-      const wpx = meas.getBoundingClientRect().width;
-      if (wpx > max) max = wpx;
-    }
-    meas.remove();
-
-    return Math.ceil(max + 20); // base guard; DPR fudge added separately
+  for(const kid of kids.flat()){
+    if(kid==null) continue;
+    el.appendChild(typeof kid==='string' ? document.createTextNode(kid) : kid);
   }
-
-  // Measure and lock the row height + slot width
-  let rowH = 0;
-  function lockMetrics(){
-    // Row height in pixels (use rendered metrics, not ems)
-    const first = list.firstElementChild;
-    let h = first ? first.getBoundingClientRect().height : 0;
-    if (!h){
-      // fallback to slot font-size if fonts not ready
-      h = parseFloat(getComputedStyle(slot).fontSize) || 32;
-    }
-    // Add a tiny cushion so mask never touches glyphs
-    rowH = Math.ceil(h + 2);
-    slot.style.setProperty('--slot-h', rowH + 'px');
-
-    // Lock the slot width to the widest word (prevents horizontal clipping)
-    const wpx = widestWordPx();
-    // add one physical pixel to dodge subpixel rounding on high-DPI
-    const fudge = Math.max(1, Math.round((window.devicePixelRatio || 1)));
-    slot.style.setProperty('--slot-width', (wpx + fudge) + 'px');
-  }
-
-  function translateToRow(idx){
-    // snap to device pixels so we never land on a half pixel under the mask
-    const y = Math.round((idx * rowH) * dpr) / dpr;
-    list.style.transform = `translate3d(0, ${-y}px, 0)`;
-  }
-
-  function run(){
-    lockMetrics();
-    let i = 0;
-
-    const advance = ()=>{
-      if (i < words.length - 1){
-        i++;
-        translateToRow(i);
-        setTimeout(advance, holdMs);
-      } else {
-        // Landed on "prompt": remove mask and bounce
-        slot.classList.add('final');
-      }
-    };
-
-    // initial dwell so the first word is readable
-    setTimeout(advance, holdMs);
-  }
-
-  // Wait for fonts so measurements are stable, then run
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(run);
-  } else {
-    window.addEventListener('load', run, { once:true });
-  }
-
-  // Re-lock on resize or zoom
-  window.addEventListener('resize', ()=>{ lockMetrics(); /* keep current row in view */ });
-})();
-
-
-  /* ===== Search + typeahead (same API, updated ranking) ===== */
-  function allTemplates(){
-    const base  = Array.isArray(window.TEMPLATES) ? window.TEMPLATES
-                : Array.isArray(window.FRAMEWORKS) ? window.FRAMEWORKS : [];
-    const tasks = Array.isArray(window.TASK_TEMPLATES) ? window.TASK_TEMPLATES
-                : Array.isArray(window.tasks) ? window.tasks : [];
-
-    // Preserve everything; just tag the origin so we can prioritize “task” kind
-    const mark = (arr, isTask)=> arr.map(t => ({ ...t, __isTask:isTask }));
-
-    return [...mark(base,false), ...mark(tasks,true)].map(t=>{
-      const cats = Array.isArray(t.categories) ? t.categories : (t.category ? [t.category] : []);
-      return { ...t, categories: cats, use_cases: Array.isArray(t.use_cases)? t.use_cases : [] };
-    });
-  }
-
-// Replace your buildIndex() with this (adds kind/isTask but keeps existing fields)
-  function buildIndex(){
-    const src = allTemplates();
-    return src.map(t=>{
-      const useTags = (t.tags || [])
-        .map(String).map(s => s.trim().toLowerCase())
-        .filter(s => s.startsWith('use:'))
-        .map(s => s.split(':',2)[1])
-        .filter(Boolean);
-
-      const uc    = (t.use_cases || []).map(String);
-      const kind  = String(t.kind || t.type || '').toLowerCase();
-      const isTask = (kind === 'task')
-        || /^task[_-]/.test(String(t.id||''))
-        || /^task[_-]/.test(String(t.slug||''));
-
-      return {
-        id: t.id || t.slug || t.label,
-        slug: t.slug || t.id,
-        label: t.label || t.name || t.slug || t.id || 'untitled',
-        use_cases: uc,
-        use_tags: useTags,
-        tags: (t.tags || []).slice(),
-        categories: t.categories || [],
-        boosters: Array.isArray(t.boosters) ? t.boosters.slice() : [],
-        definition: t.definition || t.help || '',
-        fields: Array.isArray(t.fields) ? t.fields.slice() : [],
-        // NEW: metadata for ranking only
-        kind, isTask
-      };
-    });
-  }
-
-    function rankSuggestions(q, idx, limit = 8){
-  const rawQ  = String(q || '').trim().toLowerCase();
-  const terms = rawQ.split(/[^a-z0-9]+/).filter(Boolean);
-  if (!terms.length) return [];
-
-  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const hits = [];
-
-  for (const t of idx){
-    let bestUC = '';
-    let ucScore = 0;
-
-    // ========= 1) USE-CASES (now gated on real lexical match) =========
-    for (const uc of t.use_cases){
-      const l = uc.toLowerCase();
-      let s = 0;
-      let matched = false;          // <-- NEW: track if any lexical match happened
-      let firstPos = Infinity;
-
-      // phrase / exact line
-      if (rawQ && l === rawQ){ s += 220; matched = true; }
-      else if (rawQ && l.includes(rawQ)){ s += 120; matched = true; }
-
-      // token scoring
-      for (const tok of terms){
-        if (l === tok){ s += 80; matched = true; }
-        const re = new RegExp(`\\b${esc(tok)}\\b`);
-        if (re.test(l)){ s += 40; matched = true; }
-        const pos = l.indexOf(tok);
-        if (pos >= 0){
-          s += 24;                   // substring
-          matched = true;
-          firstPos = Math.min(firstPos, pos);
-          if (pos === 0) s += 10;    // starts-with
-        }
-      }
-
-      // ⛔️ If nothing matched, this UC should NOT enter the pool
-      if (!matched) continue;
-
-      // position + brevity nudges only apply when there was a match
-      if (firstPos < Infinity){
-        s += Math.max(0, 30 - Math.min(30, firstPos));
-      }
-      s += Math.max(0, 18 - Math.min(18, Math.floor(l.length / 12)));
-
-      // gentle task nudge (ordering only) — only after a real match
-      if (t.isTask) s += 30;
-
-      // tiny kind-mention nudge
-      if (t.kind && terms.some(tok => t.kind.includes(tok))) s += 12;
-
-      if (s > ucScore){ ucScore = s; bestUC = uc; }
-    }
-
-    // ========= 2) use: TAGS (fallback only if no UC hit) =========
-    let tagScore = 0;
-    if (ucScore === 0 && t.use_tags.length){
-      for (const tag of t.use_tags){
-        const tl = String(tag).toLowerCase();
-        for (const tok of terms){
-          if (tl === tok) tagScore += 20;
-          else if (tl.includes(tok)) tagScore += 12;
-        }
-      }
-      if (tagScore > 0){
-        if (t.isTask) tagScore += 12;
-        if (t.kind && terms.some(tok => t.kind.includes(tok))) tagScore += 8;
-      }
-    }
-
-    if (ucScore > 0){
-      hits.push({ bucket:'uc', score: ucScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
-    } else if (tagScore > 0){
-      hits.push({ bucket:'tag', score: tagScore, use: bestUC || (t.use_cases[0] || ''), label:t.label, template:t, id:t.id, slug:t.slug });
-    }
-  }
-
-  // primary sort (unchanged)
-  hits.sort((a,b)=>
-    (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
-    (b.score - a.score) ||
-    ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
-    (a.use.length - b.use.length) ||
-    a.use.localeCompare(b.use)
-  );
-
-  // ========= Wild-query fallback (now triggers correctly) =========
-  const TOP = hits[0]?.score || 0;
-  const WILD_MIN_HITS  = 2;
-  const WILD_TOP_SCORE = 60;
-  const isWild = (hits.length === 0) || (hits.length <= WILD_MIN_HITS && TOP < WILD_TOP_SCORE);
-
-  if (isWild){
-    const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
-    const helperTemplates = idx.filter(t=>{
-      const lbl = String(t.label||'').trim();
-      const id  = String(t.id||'').trim().toLowerCase();
-      const kind= String(t.kind||'').trim().toLowerCase();
-      return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
-    });
-
-    const helperBase = Math.max(TOP + 5, 240);
-    const seenUse = new Set(hits.map(h => h.use));
-    let step = 0;
-
-    for (const t of helperTemplates){
-      for (const uc of (t.use_cases || [])){
-        if (seenUse.has(uc)) continue;
-        hits.push({
-          bucket:'uc',
-          score: helperBase - (step++ * 0.5),
-          use: uc,
-          label: t.label,
-          template: t,
-          id: t.id,
-          slug: t.slug
-        });
-        seenUse.add(uc);
-      }
-    }
-
-    hits.sort((a,b)=>
-      (a.bucket === b.bucket ? 0 : (a.bucket === 'uc' ? -1 : 1)) ||
-      (b.score - a.score) ||
-      ((b.template.isTask?1:0) - (a.template.isTask?1:0)) ||
-      (a.use.length - b.use.length) ||
-      a.use.localeCompare(b.use)
-    );
-  }
-
-  return hits.slice(0, limit);
-}
-
-
-// ===== Recent + idle helper suggestions =====
-const RECENT_KEY  = 'pb_recent_queries';
-const MAX_RECENT  = 12;
-
-function loadRecent(){
-  try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
-  catch { return []; }
-}
-function saveRecent(q){
-  q = String(q||'').trim();
-  if (!q) return;
-  let list = loadRecent().filter(s => s && s.toLowerCase() !== q.toLowerCase());
-  list.unshift(q);
-  if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
-  localStorage.setItem(RECENT_KEY, JSON.stringify(list));
-}
-
-function helperTemplates(idx){
-  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
-  return idx.filter(t=>{
-    const lbl = String(t.label||'').trim();
-    const id  = String(t.id||'').trim().toLowerCase();
-    const kind= String(t.kind||'').trim().toLowerCase();
-    return HELPER_LABELS.has(lbl) && (id === 'none' || kind === 'helper');
+  return el;
+};
+const unique = a => Array.from(new Set(a));
+const cleanTag = t => {
+  if (typeof t !== 'string') return '';
+  const i = t.indexOf(':');
+  return i >= 0 ? t.slice(i+1).trim() : t.trim();
+};
+const slugify = s => String(s||'').toLowerCase().trim()
+  .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  
+  function hasTypeTemplateTag(tags){
+  const arr = Array.isArray(tags) ? tags : [];
+  return arr.some(t => {
+    const s = String(t||'').toLowerCase().trim();
+    if (s === 'type:template') return true;
+    const i = s.indexOf(':');
+    const val = i >= 0 ? s.slice(i+1).trim() : s;
+    return val === 'template';
   });
 }
 
-function helperUsecaseSuggestions(idx, limit, seen=new Set()){
+function safeKey(t){
+  const cands=[t.id,t.slug,t.label].map(x=>String(x||'').trim().toLowerCase()).filter(Boolean);
+  const nonNone=cands.find(k=>k!=='none');
+  return nonNone || cands[0] || Math.random().toString(36).slice(2);
+}
+function safeLinkId(t){
+  const cand = (t.id && t.id.toLowerCase()!=='none') ? t.id
+             : (t.slug && t.slug.toLowerCase()!=='none') ? t.slug
+             : slugify(t.label)||'template';
+  return cand;
+}
+function cleanCategories(arr){
+  const inArr = Array.isArray(arr) ? arr : [];
+  return unique(inArr.map(c => (String(c).toLowerCase()==='none' ? 'Framework' : c)));
+}
+async function copyText(txt){
+  try { await navigator.clipboard.writeText(txt); return true; }
+  catch {
+    const ta = document.createElement('textarea');
+    ta.style.position='fixed'; ta.style.left='-9999px'; ta.value=txt;
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+    return true;
+  }
+}
+
+/* ========== Theme (label shows NEXT theme) ========== */
+const THEME_KEY='templates.theme';
+function applyTheme(){
+  const t = localStorage.getItem(THEME_KEY) || 'light';
+  document.documentElement.setAttribute('data-theme', t);
+  $('#themeBtn').textContent = t === 'dark' ? 'Light' : 'Dark';
+}
+$('#themeBtn').addEventListener('click', ()=>{
+  const cur = localStorage.getItem(THEME_KEY) || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme();
+});
+applyTheme();
+
+/* ========== Data aggregation (kept) ========== */
+function aggregateGlossary(){
+  const src = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];
   const out = [];
-  for (const t of helperTemplates(idx)){
-    for (const uc of (t.use_cases || [])){
-      if (seen.has(uc)) continue;
-      out.push({
-        bucket:'uc', score: 999,
-        use: uc, label: t.label,
-        template: t, id: t.id, slug: t.slug,
-        origin:'helper'
-      });
-      seen.add(uc);
-      if (out.length >= limit) return out;
+  const seen = new Set();
+
+  for (const g of src){
+    if (!g) continue;
+    const slug = g.slug || slugify(g.term||'');
+    if (!slug || seen.has(slug)) continue;
+    seen.add(slug);
+
+    const cleanedTags = (Array.isArray(g.tags) ? g.tags : []).map(t=>{
+      if (typeof t !== 'string') return '';
+      const i = t.indexOf(':');
+      return i >= 0 ? t.slice(i+1).trim() : t.trim();
+    }).filter(Boolean);
+    
+        // Namespace split: { topic:[...], phase:[...], level:[...], ... }
+    const ns = {};
+    for (const raw of (g.tags || [])) {
+      const s = String(raw || '');
+      const i = s.indexOf(':');
+      if (i > -1) {
+        const k = s.slice(0, i).trim().toLowerCase();
+        const v = s.slice(i + 1).trim();
+        if (k && v) (ns[k] ||= []).push(v);
+      }
     }
+    
+    // ---- Slice 2 additions: aliases + Notes→use
+// 1) Merge `type:` into the Kind facet (present to the user as “Kind”)
+if (ns.type && ns.type.length) {
+  ns.kind = (ns.kind || []).concat(ns.type);
+}
+
+// 2) Treat `difficulty:` as an alias of Level
+if (ns.difficulty && ns.difficulty.length) {
+  ns.level = (ns.level || []).concat(ns.difficulty);
+}
+
+// 3) Build synthetic `use:` from notes.
+//    Supports lines like:
+//      - "Use cases: X, Y, Z"
+//      - "Used in X, Y, Z."
+//      - "Common in A and B."
+//      - "Applied in …" / "Seen in …"
+if (g.notes) {
+  const raw = String(g.notes);
+
+  // Helper: split a phrase list into tokens
+  const splitList = (s) => {
+    return s
+      .split(/[,;/]|(?:\s+and\s+)/i)
+      .map(x => x.replace(/\betc\.?$/i,'').trim())
+      .filter(Boolean);
+  };
+
+  // A) Classic "Use cases:" line (same line only)
+  const mUC = raw.match(/(^|\n)\s*Use\s*(?:cases?)?\s*:\s*([^\n]+)/i);
+  if (mUC && mUC[2]) {
+    ns.use = (ns.use || []).concat(splitList(mUC[2]));
+  }
+
+  // B) “Used/Common/Applied/Seen in …” sentences (capture until period or line end)
+  const reIn = /(Used in|Common in|Applied in|Seen in)\s+([^.]+)(?:\.|$)/ig;
+  let m;
+  while ((m = reIn.exec(raw)) !== null) {
+    ns.use = (ns.use || []).concat(splitList(m[2]));
+  }
+}
+
+// 4) De-dup values in each namespace
+for (const k of Object.keys(ns)) {
+  ns[k] = Array.from(new Set(ns[k]));
+}
+
+    out.push({
+      // Core identity
+      label: g.term || slug,
+      id: slug,
+      slug,
+      _tagsByNs: ns,
+
+      // Display content
+      definition: g.definition || '',
+      notes: g.notes || '',
+
+      // Vocab & metadata
+      status: g.status || '',
+      categories: Array.isArray(g.categories) ? g.categories : [],
+      tags: Array.isArray(g.tags) ? g.tags : [],
+      aliases: Array.isArray(g.aliases) ? g.aliases : [],
+      related: Array.isArray(g.related) ? g.related : [],
+      sources: Array.isArray(g.sources) ? g.sources : [],
+
+      // Derived (so existing render/search code doesn’t explode)
+      _cleanedTags: cleanedTags,
+      _displayKind: g.status || 'Glossary',
+      _displayCats: Array.isArray(g.categories) ? g.categories : []
+    });
   }
   return out;
 }
+const DATA = aggregateGlossary();
 
-function buildIdleSuggestions(idx, limit=8){
-  const seen = new Set();
-  const out  = [];
-
-  // Recent searches first
-  const rec = loadRecent();
-  for (const r of rec){
-    if (!r || seen.has(r)) continue;
-    out.push({
-      bucket:'uc', score: 1000,
-      use: r, label:'recent',
-      template:null, id:null, slug:null,
-      origin:'recent'
-    });
-    seen.add(r);
-    if (out.length >= limit) return out;
-  }
-
-  // Then helper picker use-cases
-  return out.concat(helperUsecaseSuggestions(idx, Math.max(0, limit - out.length), seen));
+/* search index */
+for(const t of DATA){
+  const bits = [
+    t.label, t.slug, t.id, t._displayKind, t.definition, t.notes,
+    ...(t.aliases||[]),
+    ...(t._displayCats||[]),
+    ...(t.tags||[]),
+    ...(t._cleanedTags||[])
+  ].filter(Boolean).join(' ').toLowerCase();
+  t._search = bits;
 }
 
-    const qEl  = document.getElementById('q');
-    const taEl = document.getElementById('ta');
-    const goEl = document.getElementById('go');
+/* ========== Filters (kept) ========== */
+const state = {
+  q:'', kind:'', cat:'', tag:'',
+  topic:'', phase:'', level:'', use:'',
+  sort:'term_az',    // default sort
+  alpha:'',          // A–Z filter ('' means off)
+  slug: []
+};
 
-    let INDEX = [];
-    let active = -1;
-    let picked = null;
 
-    function renderTA(list){
-      if (!list.length){ taEl.hidden = true; taEl.innerHTML = ''; active=-1; return; }
-      taEl.innerHTML = list.map((s,i)=>`
-        <div class="item${i===0?' active':''}" role="option" data-i="${i}">
-          <div class="use">${s.use}</div>
-          <div class="sub" aria-hidden="true">${s.label}</div>
-        </div>
-      `).join('');
-      taEl.hidden = false; active = 0;
-    }
-
-    let SUGS = [];
-function onQuery(){
-  const q = qEl.value.trim();
-  const focused = document.activeElement === qEl;
-
-  if (!q){
-    if (focused){
-      SUGS = buildIdleSuggestions(INDEX, 8);
-      renderTA(SUGS);
-    } else {
-      hideTA(); // collapsed when not focused
-    }
-    return;
-  }
-
-  SUGS = rankSuggestions(q, INDEX, 8);
-  renderTA(SUGS);
-}
-    qEl.addEventListener('input', onQuery);
-    qEl.addEventListener('keydown', (e)=>{
-      const open = !taEl.hidden && taEl.children.length;
-      if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
-        e.preventDefault();
-        active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
-        [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
-} else if (e.key === 'Enter'){
-  e.preventDefault();
-  if (!taEl.hidden && taEl.children.length){
-    // choose() will call startScan() for us
-    choose(active >= 0 ? active : 0);
-  } else {
-    if (!picked && SUGS[0]) picked = SUGS[0];
-    if (qEl.value.trim()) startScan();
-  }
-} else if (e.key === 'Escape'){
-        taEl.hidden = true; active=-1;
-      }
-    });
-    taEl.addEventListener('mousedown', (e)=>{
-      const el = e.target.closest('.item');
-      if (!el) return;
-      choose(parseInt(el.dataset.i,10) || 0);
-    });
-goEl.addEventListener('click', ()=>{
-  if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }  // choose() triggers start
-  else if (qEl.value.trim()) startScan();
-});
-
-// Show idle suggestions (recent → helper) the moment the field is focused & blank
-qEl.addEventListener('focus', ()=>{
-  if (!qEl.value.trim()){
-    SUGS = buildIdleSuggestions(INDEX, 8);
-    renderTA(SUGS);
-  } else {
-    onQuery(); // if user had text, refresh suggestions on focus
-  }
-});
-
-qEl.addEventListener('blur', ()=>{
-  // Let mousedown on a suggestion run first, then hide.
-  setTimeout(hideTA, 80);
-});
-
-// Click anywhere outside the search area → hide dropdown
-document.addEventListener('pointerdown', (e)=>{
-  if (!searchWrap.contains(e.target)) hideTA();
-});
-
-function choose(i){
-  const items = Array.from(taEl.children);
-  const it = items[i]; if (!it) return;
-  const s = SUGS[i];   if (!s) return;
-
-  qEl.value = s.use;
-  taEl.hidden = true; active = -1;
-
-  // If it's a "recent" chip, convert it to a real search:
-  if (s.origin === 'recent'){
-    picked = null;           // not a specific template yet
-    onQuery();               // recompute SUGS synchronously for this query
-    if (SUGS[0] && SUGS[0].origin !== 'recent'){ picked = SUGS[0]; } // auto-pick top result if present
-    if (qEl.value.trim()) startScan(); // run immediately
-    return;
-  }
-
-  // Normal/helper suggestion → lock and run immediately
-  picked = s;
-  if (qEl.value.trim()) startScan();
+function fillSelect(sel, list, labelAll='All'){
+  sel.innerHTML = '';
+  sel.append(h('option', {value:''}, labelAll));
+  for(const v of list){ sel.append(h('option', {value:v}, v)); }
 }
 
-// --- quick buttons under the search ---
-const btnAdv   = document.getElementById('btnAdv');   // pure link, no JS needed
-const btnHelp  = document.getElementById('btnHelp');
-const btnLucky = document.getElementById('btnLucky');
+function setControlVisible(selectId, visible){
+  const el = document.getElementById(selectId);
+  if (!el) return;
+  const wrapper = el.closest('div');
+  if (wrapper) wrapper.style.display = visible ? '' : 'none';
+}
 
-// Pick a helper template (— Task Picker — or — Pattern Picker — preferred),
-// otherwise anything with id:"none" or kind:"helper", then grab a random use-case.
-function pickHelperUC(){
-  const ALL = allTemplates();
-  const HELPER_LABELS = new Set(['— Task Picker —','— Pattern Picker —']);
-  const helpers = ALL.filter(t=>{
-    const lbl  = String(t.label||'').trim();
-    const id   = String(t.id||'').trim().toLowerCase();
-    const kind = String(t.kind||t.type||'').trim().toLowerCase();
-    return HELPER_LABELS.has(lbl) || id === 'none' || kind === 'helper';
+
+// Namespaced tag helpers
+const TAG_NAMESPACES = ['topic','phase','level','use'];
+
+// Map state fields -> control IDs (so we can clear UI + state in sync)
+const ID_FOR_FIELD = {
+  q:'q', kind:'kind', cat:'cat', tag:'tag',
+  topic:'tagTopic', phase:'tagPhase', level:'tagLevel', use:'tagUse',
+  sort:'sort'
+};
+
+// One canonical "clear everything" helper
+function clearAll(){
+// reset state (including slug, alpha, sort)
+state.q = state.kind = state.cat = state.tag =
+state.topic = state.phase = state.level = state.use = '';
+state.alpha = '';
+state.sort = 'term_az';
+state.slug = [];
+
+  // reset controls (skip gracefully if an element doesn't exist)
+  Object.values(ID_FOR_FIELD).forEach(id=>{
+    const el = document.getElementById(id);
+    if (el) el.value = '';
   });
-  const pool = helpers.length ? helpers : ALL.filter(t => (t.use_cases||[]).length);
-  if (!pool.length) return null;
-  const t = pool[Math.floor(Math.random()*pool.length)];
-  const ucs = (t.use_cases || []);
-  if (!ucs.length) return null;
-  const uc = ucs[Math.floor(Math.random()*ucs.length)];
-  return { uc, t };
+
+  // remove `slug` from the URL (don’t reload)
+  const params = new URLSearchParams(location.search);
+  params.delete('slug');
+  const qs = params.toString();
+  history.replaceState(null, '', location.pathname + (qs ? ('?'+qs) : ''));
+
+  // also clear master search UI (if present)
+  const qm = document.getElementById('qMaster'); if (qm) qm.value = '';
+  window.hideTAMaster?.();
+
+  // keep the one-shot slug init guard consistent
+  if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
+
+  renderAlphaBar(); render();
 }
 
-btnHelp?.addEventListener('click', ()=>{
-  const pick = pickHelperUC();
-  if (!pick){
-    // Fallback: use existing helper suggestion builder
-    const h = helperUsecaseSuggestions(INDEX, 1);
-    if (h[0]){
-      picked = h[0];
-      qEl.value = h[0].use;
-      startScan();
-    }
-    return;
-  }
-  picked = {
-    bucket:'uc', score:999,
-    use: pick.uc,
-    label: pick.t.label || pick.t.slug || pick.t.id,
-    template: pick.t, id: pick.t.id, slug: pick.t.slug
-  };
-  qEl.value = pick.uc;
-  startScan();
-});
-
-// Lucky: random use-case across ALL templates equally
-btnLucky?.addEventListener('click', ()=>{
-  const ALL = allTemplates();
-  const bag = [];
-  for (const t of ALL){
-    for (const uc of (t.use_cases || [])){
-      bag.push({ uc, t });
-    }
-  }
-  if (!bag.length){
-    // Fallback to helper if no use-cases exist yet
-    const h = helperUsecaseSuggestions(INDEX, 1);
-    if (h[0]){
-      picked = h[0]; qEl.value = h[0].use; startScan();
-    }
-    return;
-  }
-  const { uc, t } = bag[Math.floor(Math.random()*bag.length)];
-  picked = {
-    bucket:'uc', score:999,
-    use: uc,
-    label: t.label || t.slug || t.id,
-    template: t, id: t.id, slug: t.slug
-  };
-  qEl.value = uc;
-  startScan();
-});
 
 
-    /* ===== Faux scan to details ===== */
-    const hero = document.getElementById('hero');
-    const scan = document.getElementById('scan');
-    const details = document.getElementById('details');
-    const rollList = document.getElementById('rollList');
-    const resultHeader = document.getElementById('resultHeader');
+// Namespace aliases for facets the user expects
+const NS_ALIASES = {
+  kind: ['kind','type'],
+  level: ['level','difficulty'],
+  use: ['use'],
+  topic: ['topic'],
+  phase: ['phase']
+};
 
-    function startScan(){
-    saveRecent(qEl.value.trim()); // ← NEW: remember it
-    
-      hero.style.display = 'none';
-      scan.style.display = 'flex';
+function allTagValuesBy(ns){
+  const keys = NS_ALIASES[ns] || [ns];
+  const vals = [];
 
-      // ensure the center rainbow band exists (added once)
-      const rollEl = document.querySelector('.scan .roll');
-      if (rollEl && !rollEl.querySelector('.centerBand')){
-        const band = document.createElement('div');
-        band.className = 'centerBand';
-        rollEl.appendChild(band);
-      }
-
-      const labels = allTemplates().map(t => t.label || t.slug || t.id).filter(Boolean);
-      const unique = Array.from(new Set(labels));
-      const chosenLabel = (picked && picked.label) || unique[0] || 'template';
-
-      // Plenty above and below so the center has neighbors to fade
-      const above = unique.sort(()=>Math.random()-.5).slice(0, 40);
-      const below = unique.sort(()=>Math.random()-.5).slice(0, 12);
-      const finalList = [...above, chosenLabel, ...below];
-
-      rollList.innerHTML = finalList.map(l => `<li${l===chosenLabel?' class="hit"':''}>${l}</li>`).join('');
-
-      // Skip fancy motion for reduced-motion users
-      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (prefersReduce){
-        // Hard-center without animation
-        hardCenterHit();
-        // Move on almost immediately
-        setTimeout(()=> showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)), 250);
-      } else {
-        animateToCenterHit({ overshoot: 48, scrollMs: 2200, backMs: 420, fwdMs: 320, settleMs: 200, jiggleBack: 18, jiggleFwd: 9 })
-          .then(()=>{ showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)); });
+  for (const d of DATA){
+    // Prefer the pre-split namespaces (includes our synthetic `use`)
+    for (const k of keys){
+      if (d._tagsByNs && Array.isArray(d._tagsByNs[k])) {
+        vals.push(...d._tagsByNs[k]);
       }
     }
 
-    function getHitGeometry(){
-      const roll = document.querySelector('.scan .roll');
-      const hit  = rollList.querySelector('.hit');
-      if (!roll || !hit) return null;
-
-      const ulRect  = rollList.getBoundingClientRect();
-      const hitRect = hit.getBoundingClientRect();
-      const viewportH = roll.clientHeight;
-
-      // Distance from UL top to place hit in the vertical center of the roll viewport
-      const target = (hitRect.top - ulRect.top) - (viewportH - hitRect.height)/2;
-
-      return { roll, hit, target: Math.max(0, target) };
-    }
-
-    function hardCenterHit(){
-      const g = getHitGeometry(); if (!g) return;
-      rollList.style.transition = 'none';
-      rollList.style.transform  = `translate3d(0, ${-g.target}px, 0)`;
-    }
-
-    function animateToCenterHit({ overshoot = 22, scrollMs = 1400, backMs = 300, fwdMs = 200, settleMs = 140, jiggleBack = 8, jiggleFwd = 4 } = {}){
-      const g = getHitGeometry();
-      if (!g) return Promise.resolve();
-
-      const yPast   = g.target - overshoot;
-      const yBack   = g.target + jiggleBack;
-      const yFwd    = g.target - jiggleFwd;
-      const yFinal  = g.target;
-
-      const easingMain = 'cubic-bezier(.2,.9,.2,1)';
-      const easingSnap = 'cubic-bezier(.15,.95,.2,1)';
-
-      const transitionTo = (y, ms, easing) => new Promise((resolve)=>{
-        const onEnd = (e)=> {
-          if (e.propertyName !== 'transform') return;
-          rollList.removeEventListener('transitionend', onEnd);
-          resolve();
-        };
-        const failSafe = setTimeout(()=>{ rollList.removeEventListener('transitionend', onEnd); resolve(); }, ms + 60);
-
-        rollList.addEventListener('transitionend', onEnd, { once:true });
-        rollList.style.transition = `transform ${ms}ms ${easing}`;
-        rollList.style.transform  = `translate3d(0, ${-y}px, 0)`;
-      });
-
-      rollList.style.transition = 'none';
-
-      return Promise.resolve()
-        .then(()=> transitionTo(yPast,  scrollMs, easingMain))
-        .then(()=> transitionTo(yBack,   backMs,  easingSnap))
-        .then(()=> transitionTo(yFwd,     fwdMs,  easingSnap))
-        .then(()=> transitionTo(yFinal, settleMs, easingSnap));
-    }
-
-
-    /* ===== Details page wiring ===== */
-    const tplTitle = document.getElementById('tplTitle');
-    const meta = document.getElementById('meta');
-    const def = document.getElementById('def');
-    const useCases = document.getElementById('useCases');
-    const boosters = document.getElementById('boosters');
-    const boostersBlock = document.getElementById('boostersBlock');
-    const fields = document.getElementById('fields');
-
-    const openBuilder = document.getElementById('openBuilder');
-    const openGlossary = document.getElementById('openGlossary');
-    const printWorksheet = document.getElementById('printWorksheet');
-    const copyPrompt = document.getElementById('copyPrompt');
-    const ask = document.getElementById('ask');
-    const back = document.getElementById('back');
-
-    function htmlEsc(s){ return String(s||'').replace(/[&<>"]/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m])); }
-
-    function showDetails(t){
-      scan.style.display = 'none';
-      details.hidden = false;
-      resultHeader.hidden = false;
-      if (!t){ tplTitle.textContent = 'template'; return; }
-
-      tplTitle.textContent = (t.label || t.slug || t.id || 'template').toLowerCase();
-      meta.innerHTML = [
-        ...(t.categories||[]).map(c => `<span class="chip">${htmlEsc(c)}</span>`),
-        ...(t.tags||[]).map(tag => `<span class="chip">${htmlEsc(tag)}</span>`)
-      ].join('');
-
-      def.textContent = t.definition || 'No definition provided yet.';
-      useCases.innerHTML = (t.use_cases||[]).map(u => `<div class="uc">${htmlEsc(u)}</div>`).join('') || '<div class="uc">No use-cases listed.</div>';
-
-      if (t.boosters && t.boosters.length){
-        boostersBlock.hidden = false;
-        boosters.innerHTML = t.boosters.map(b => `<div class="booster">${htmlEsc(b)}</div>`).join('');
-      } else {
-        boostersBlock.hidden = true;
-      }
-
-      fields.innerHTML = (t.fields||[]).map(f => `
-        <div class="row">
-          <label>${htmlEsc(f.label || f.key || 'field')}</label>
-          <div class="fake">${htmlEsc(f.ph || '')}</div>
-        </div>
-      `).join('') || '<div class="row"><div class="fake">No fields for this template.</div></div>';
-
-      const slug = (t.slug || t.id || '').toString();
-      openBuilder.href = './glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
-      openGlossary.href = './glossary/templates-glossary.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
-      printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
-
-      // Build the ChatGPT primer prompt from the template
-      const fullPrompt = buildChatGPTPrompt(normalizeTemplateForSummary(t));
-
-      copyPrompt.onclick = async ()=>{ try{ await navigator.clipboard.writeText(fullPrompt); }catch{} };
-      ask.onclick = async ()=>{
-        try{ await navigator.clipboard.writeText(fullPrompt); }catch{}
-        window.open('https://chat.openai.com/', '_blank', 'noopener');
-      };
-      back.onclick = ()=>{
-        details.hidden = true;
-        resultHeader.hidden = true;
-        hero.style.display = 'block';
-        qEl.focus();
-      };
-    }
-
-    function normalizeTemplateForSummary(t){
-      return { ...t, _displayKind: (t._displayKind || t.kind || t.type || 'framework') };
-    }
-    function buildTemplateSummary(t){
-      const lines = [];
-      lines.push(`Template: ${t.label || t.slug || t.id || 'untitled'}`);
-      lines.push(`Kind: ${t._displayKind || t.kind || 'framework'}`);
-      if (t.definition) lines.push(`Definition: ${t.definition}`);
-      if (t.categories?.length) lines.push(`Categories: ${t.categories.join(', ')}`);
-      if (t.tags?.length) lines.push(`Tags: ${t.tags.join(', ')}`);
-      if (t.use_cases?.length){ lines.push(`Use-cases:`); for (const u of t.use_cases) lines.push(`- ${u}`); }
-      if (t.fields?.length){
-        lines.push(`Fields:`); for (const f of t.fields){
-          const label = f.label || f.key || 'field';
-          const ph = f.ph ? ` — ${f.ph}` : '';
-          lines.push(`- ${label}${ph}`);
+    // Fallback: scan raw tags if _tagsByNs was missing this key
+    if (d.tags && d.tags.length){
+      for (const raw of d.tags){
+        const s = String(raw||'');
+        const i = s.indexOf(':');
+        if (i > -1){
+          const k = s.slice(0,i).trim().toLowerCase();
+          const v = s.slice(i+1).trim();
+          if (keys.includes(k) && v) vals.push(v);
         }
       }
-      if (t.boosters?.length){ lines.push(`Boosters:`); for (const b of t.boosters) lines.push(`- ${b}`); }
-      return lines.join('\n');
     }
-    function buildChatGPTPrompt(t){
-      const kind = (t._displayKind || 'framework').toLowerCase();
-      const summary = buildTemplateSummary(t);
-      return [
-        `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template and will share its full structure with you below to prime your understanding:`,
-        ``,
-        summary,
-        ``,
-        `Please begin by asking me what I would like to accomplish using this template. Then:`,
-        `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
-        `2) Contrast it with closely related terms (if any) and note common confusions.`,
-        `3) Offer pitfalls, best practices, and a short checklist.`,
-        `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
-        `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
-      ].join('\n');
-    }
-    
-    const searchWrap = document.querySelector('.searchWrap');
-
-function hideTA(){
-  taEl.hidden = true;
-  taEl.innerHTML = '';
-  active = -1;
+  }
+  return Array.from(new Set(vals)).sort();
 }
 
-    /* ===== Boot index for search ===== */
-    function boot(){ INDEX = buildIndex(); onQuery(); }
-function boot(){ INDEX = buildIndex(); onQuery(); }
+// NOW it’s safe to compute:
+const allKinds = allTagValuesBy('kind');
+const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
 
-(function watchDatasets(){
-  let lastSeen = '';
-  const timer = setInterval(()=>{
-    const haveTpl  = Array.isArray(window.TEMPLATES) || Array.isArray(window.FRAMEWORKS);
-    const haveTask = Array.isArray(window.TASK_TEMPLATES) || Array.isArray(window.tasks);
-    const sig = (haveTpl ? 'T' : '_') + (haveTask ? 'K' : '_');
-    if (sig !== lastSeen){
-      lastSeen = sig;
-      boot();            // rebuild when either dataset changes readiness
-      if (haveTpl && haveTask) clearInterval(timer);  // stop once both are loaded
-    }
-  }, 80);
-})();
-  </script>
+fillSelect($('#kind'), allKinds);
+fillSelect($('#cat'), allCats);
+
+// Fill the four dropdowns
+const topics = allTagValuesBy('topic');
+const phases = allTagValuesBy('phase');
+const levels = allTagValuesBy('level');   // level + difficulty
+const uses   = allTagValuesBy('use');     // from notes or tags
+
+fillSelect($('#tagTopic'), topics, 'All Topics');
+fillSelect($('#tagPhase'), phases, 'All Phases');
+fillSelect($('#tagLevel'), levels, 'All Levels');
+fillSelect($('#tagUse'),   uses,   'All Uses');
+
+setControlVisible('tagLevel', levels.length > 0);
+setControlVisible('tagUse',   uses.length   > 0);
+
+// ----- Sorts
+const STATUS_ORDER = ['verified','draft','duplicate_candidate','deprecated'];
+const statusRank = s => {
+  const i = STATUS_ORDER.indexOf(String(s||'').toLowerCase());
+  return i === -1 ? 999 : i;
+};
+const cmp = (a,b) => String(a||'').localeCompare(String(b||''));
+
+const SORTS = {
+  term_az: (a,b)=> cmp(a.label, b.label) || cmp(a.slug, b.slug),
+  term_za: (a,b)=> cmp(b.label, a.label) || cmp(a.slug, b.slug),
+  slug:    (a,b)=> cmp(a.slug, b.slug)   || cmp(a.label, b.label),
+  status_term: (a,b)=> (statusRank(a.status)-statusRank(b.status)) || cmp(a.label, b.label),
+  category_term: (a,b)=> cmp((a._displayCats?.[0]||''), (b._displayCats?.[0]||'')) || cmp(a.label, b.label)
+};
+
+
+$('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); });
+$('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); });
+$('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); });
+$('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); });
+
+$('#tagTopic').addEventListener('change', ()=>{ state.topic=$('#tagTopic').value; render(); });
+$('#tagPhase').addEventListener('change', ()=>{ state.phase=$('#tagPhase').value; render(); });
+$('#tagLevel').addEventListener('change', ()=>{ state.level=$('#tagLevel').value; render(); });
+$('#tagUse').addEventListener('change',   ()=>{ state.use=$('#tagUse').value;   render(); });
+$('#sort').addEventListener('change', ()=>{ state.sort=$('#sort').value; render(); });
+
+
+$('#reset').addEventListener('click', ()=>{ clearAll(); });
+
+// ----- A–Z filter bar
+const ALPH = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); // '#' = non-letter
+
+function renderAlphaBar(){
+  const el = document.getElementById('alpha');
+  if (!el) return;
+  el.innerHTML = '';
+
+  // label
+  el.append(h('label', { class:'sub' }, 'A–Z'));
+
+  for (const ch of ALPH){
+    const chip = h('span', {
+      class: 'chip' + (state.alpha===ch ? ' active' : ''),
+      onclick: (e)=>{ 
+        e.preventDefault();
+        state.alpha = (state.alpha===ch ? '' : ch);
+        render();
+      },
+      title: ch === '#' ? 'Non-letter' : `Starts with ${ch}`
+    }, ch);
+    el.append(chip);
+  }
+}
+
+// --- Slice 1: one-time `?slug=` initialization ---
+function initSlugFromURL(){
+  const params = new URLSearchParams(location.search);
+  const raw = (params.get('slug') || '').trim();
+  if (!raw) return;
+
+  // normalize to slug form; allow comma-separated
+  const wanted = raw.split(',').map(s => slugify(s)).filter(Boolean);
+  if (!wanted.length) return;
+
+  // See if at least one template matches our normalized keys; otherwise ignore
+  const anyMatch = DATA.some(d => {
+    const keys = [
+      d.id, d.slug, slugify(d.label), safeLinkId(d)
+    ].map(x => String(x||'').toLowerCase());
+    return wanted.some(w => keys.includes(w));
+  });
+  if (!anyMatch) return;
+
+  state.slug = wanted; // adopt as pre-filter
+}
+
+
+function matches(d){
+  const q = state.q.trim().toLowerCase();
+  if (q && !d._search.includes(q)) return false;
+    // Slug pre-filter: match id, slug, label-slug, or safeLinkId
+  if (Array.isArray(state.slug) && state.slug.length){
+    const keys = [d.id, d.slug, slugify(d.label), safeLinkId(d)]
+      .map(x => String(x||'').toLowerCase());
+    const hit = state.slug.some(w => keys.includes(w));
+    if (!hit) return false;
+  }
+
+  function hasNsValue(d, ns, value){
+  const keys = (NS_ALIASES && NS_ALIASES[ns]) || [ns];
+  const want = String(value||'').toLowerCase();
+  for (const k of keys){
+    const arr = (d._tagsByNs?.[k] || []);
+    if (arr.some(x => String(x).toLowerCase() === want)) return true;
+  }
+  return false;
+}
+
+// ...
+if (state.kind && !hasNsValue(d, 'kind', state.kind)) return false;
+  if (state.cat && !(d._displayCats||[]).includes(state.cat)) return false;
   
-  <script>
-/* ===== MANTRA REEL: slow, infinite, resize-safe vertical scroller ===== */
-(function mantraReel(){
-  // Tweakables
-  var HOLD_MS  = 2200;   // dwell time per line
-  var SLIDE_MS = 900;    // slide animation duration
-  var MANTRA_SHIFT_RIGHT = 0; // px; positive pushes the whole line to the right
+  const tg = state.tag.trim().toLowerCase();
+  if (tg){
+    const cleaned=(d._cleanedTags||[]).map(x=>x.toLowerCase());
+    if (!cleaned.some(x => x.includes(tg))) return false;
+  }
+  
+  // Namespaced tag filters (exact match against values, case-insensitive)
+const want = (ns) => (state[ns]||'').trim().toLowerCase();
+if (want('topic') && !(d._tagsByNs?.topic||[]).some(x => x.toLowerCase() === want('topic'))) return false;
+if (want('phase') && !(d._tagsByNs?.phase||[]).some(x => x.toLowerCase() === want('phase'))) return false;
+if (want('level') && !hasNsValue(d, 'level', want('level'))) return false;
+if (want('use')   && !hasNsValue(d, 'use',   want('use')))   return false;
 
-  var PHRASES = [
-    "clarity is kindness to the model.",
-    "context is half the answer.",
-    "easy for you, easy for it.",
-    "put smart, get smart.",
-    "the divergent intern.",
-    "the collaborative partner.",
-    "the 10,000 experts.",
-    "garbage in, garbage out.",
-    "precision paints the picture.",
-    "tone travels through tokens.",
-    "the model mirrors your mind.",
-    "examples are the skeleton key.",
-    "what you frame is what you get.",
-    "be the director, not the spectator.",
-    "define the stage, script the play.",
-    "a vague prompt breeds vague answers.",
-    "specificity is the superpower.",
-    "ask like a teacher, check like a scientist.",
-    "layer tasks, don’t overload.",
-    "persona shapes performance."
-  ];
 
-  var slot  = document.getElementById('mantraSlot');
-  var reel  = document.getElementById('mantraReel');
-  var list  = document.getElementById('mantraList');
-  var line  = document.querySelector('#mantra .mantraLine');
+// A–Z filter on label (first character), non-letters bucketed to '#'
+if (state.alpha){
+  const first = (String(d.label||'').trim()[0] || '').toUpperCase();
+  const bucket = /^[A-Z]$/.test(first) ? first : '#';
+  if (bucket !== state.alpha) return false;
+}
+  
+  return true;
+}
 
-  if (!slot || !reel || !list || !line) return;
+function renderActiveFilters(rowsTotal){
+  const all = DATA.length;
+  const active = $('#active'); active.innerHTML = '';
 
-  // Apply shift control (matches your earlier SHIFT_RIGHT pattern)
-  line.style.setProperty('--mantra-shift-x', (MANTRA_SHIFT_RIGHT|0) + 'px');
+  const chips=[];
+  if(state.q)    chips.push(['Search', `"${state.q}"`, 'q']);
+  if(state.kind) chips.push(['Kind', state.kind, 'kind']);
+  if(state.cat)  chips.push(['Category', state.cat, 'cat']);
+  if(state.tag)  chips.push(['Tags', `"${state.tag}"`, 'tag']);
+  if(state.topic) chips.push(['Topic', state.topic, 'topic']);
+  if(state.phase) chips.push(['Phase', state.phase, 'phase']);
+  if(state.level) chips.push(['Level', state.level, 'level']);
+  if(state.use)   chips.push(['Use',   state.use,   'use']);
+    if(state.alpha) chips.push(['A–Z', state.alpha, 'alpha']);
 
-  // Build DOM
-  list.innerHTML = PHRASES.map(s => `<span class="w">${s}</span>`).join('');
+  $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
 
-  // Adopt timing to CSS custom prop so transitions stay in sync
-  slot.style.setProperty('--mantra-slide', SLIDE_MS + 'ms');
+  // consider slug chips too — don’t early-return if only slug is active
+  const hasSlug = Array.isArray(state.slug) && state.slug.length > 0;
+  const hasAny = chips.length > 0 || hasSlug;
 
-  var dpr = window.devicePixelRatio || 1;
-  var rowH = 0, i = 0, paused = false;
-
-  function widestWidthPx(){
-    // measure using the slot's computed font to avoid clipping
-    var cs = getComputedStyle(slot);
-    var meas = document.createElement('span');
-    meas.style.position='absolute'; meas.style.visibility='hidden';
-    meas.style.whiteSpace='nowrap'; meas.style.left='-9999px'; meas.style.top='-9999px';
-    meas.style.font = cs.font;
-    meas.style.letterSpacing = cs.letterSpacing;
-    meas.style.textTransform = cs.textTransform;
-    meas.style.fontKerning = cs.fontKerning;
-    meas.style.fontFeatureSettings = cs.fontFeatureSettings;
-    meas.style.fontVariationSettings = cs.fontVariationSettings;
-    meas.style.fontStretch = cs.fontStretch;
-
-    document.body.appendChild(meas);
-    var max = 0;
-    for (var s of PHRASES){ meas.textContent = s; var w = meas.getBoundingClientRect().width; if (w > max) max = w; }
-    meas.remove();
-    // +1 physical pixel fudge to avoid subpixel mask grazing
-    var fudge = Math.max(1, Math.round(dpr));
-    return Math.ceil(max + 20 + fudge);
+  if(!hasAny){
+    active.append(h('span',{class:'chip chip-plain'}, 'No active filters'));
+    return;
   }
 
-  function lockMetrics(){
-    // lock row height from first child (rendered pixels, not ems)
-    var first = list.firstElementChild;
-    var h = first ? first.getBoundingClientRect().height : parseFloat(getComputedStyle(slot).fontSize) || 32;
-    rowH = Math.ceil(h + 2); // cushion
-    slot.style.setProperty('--mantra-slot-h', rowH + 'px');
-
-    // lock slot width to widest phrase so we never clip mid-line
-    var wpx = widestWidthPx();
-    slot.style.setProperty('--mantra-slot-w', wpx + 'px');
+  // normal chips
+  for(const [k,v,field] of chips){
+    const chip = h('span',{class:'chip'},
+      `${k}: ${v} `,
+      h('span',{class:'x', onclick:()=>{ 
+  state[field]=''; 
+  const el=$('#'+field); 
+  if(el) el.value=''; 
+  render(); 
+}}, '✕')
+    );
+    active.append(chip);
   }
 
-  function translateTo(idx){
-    // snap to device pixels to prevent creeping drift under the mask
-    var y = Math.round((idx * rowH) * dpr) / dpr;
-    list.style.transform = 'translate3d(0,' + (-y) + 'px,0)';
+  // slug chips
+  if (hasSlug){
+    for (const s of state.slug){
+      const chip = h('span',{class:'chip'},
+        `Slug: ${s} `,
+        h('span',{
+          class:'x',
+          onclick:()=>{
+            state.slug = state.slug.filter(x => x !== s);
+            if (!state.slug.length){
+              const params = new URLSearchParams(location.search);
+              params.delete('slug');
+              const qs = params.toString();
+              history.replaceState(null, '', location.pathname + (qs ? ('?'+qs) : ''));
+            }
+            render();
+          }
+        }, '✕')
+      );
+      active.append(chip);
+    }
   }
 
-  function tick(){
-    if (paused) { schedule(); return; }
-    i = (i + 1) % PHRASES.length;
-    translateTo(i);
-    schedule();
-  }
-  function schedule(){ setTimeout(tick, HOLD_MS); }
+  // one clear-all that also clears slug
+  active.append(
+    h('a', {href:'#', class:'btn-link', onclick:(e)=>{ e.preventDefault(); clearAll(); }}, 'Clear all')
+  );
+}
 
-  // Reduced motion: render first line only
-  var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function start(){
-    lockMetrics();
-    translateTo(0);
-    if (!prefersReduce){ schedule(); }
+/* ===== Slice 2: Use-case Master Search (portable) ===== */
+/* Data contract: uses window.TEMPLATES/FRAMEWORKS + window.TASK_TEMPLATES/tasks */
+
+/* ===== Slice 3: Glossary Master Search (uses DATA built from glossary.data.js) ===== */
+(function masterSearchGlossary(){
+  // --- DOM
+  const qEl  = document.getElementById('qMaster');
+  const taEl = document.getElementById('taMaster');
+  const goEl = document.getElementById('goMaster');
+  const wrap = document.getElementById('masterSearch');
+  if (!qEl || !taEl || !goEl || !wrap) return;
+
+  // --- Recents
+  const RECENT_KEY = 'glossary_recent_queries';
+  const MAX_RECENT = 12;
+  const loadRecent = () => { try{ return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]'); }catch{ return []; } };
+  const saveRecent = (q) => {
+    q = String(q||'').trim(); if (!q) return;
+    let list = loadRecent().filter(s => s && s.toLowerCase() !== q.toLowerCase());
+    list.unshift(q); if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+  };
+
+  // --- Helpers
+  const plain = (html) => String(html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  const clip  = (s, n=160) => (s.length>n ? s.slice(0,n-1)+'…' : s);
+  const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+  // pull `use` list from our Slice-2 aggregator (_tagsByNs.use already includes parsed Notes)
+  const usesOf = (d) => Array.isArray(d._tagsByNs?.use) ? d._tagsByNs.use : [];
+
+  // Build a lightweight index from DATA (already available)
+  function buildIndex(){
+    return DATA.map(d=>{
+      const def = plain(d.definition||'');
+      const nts = plain(d.notes||'');
+      const uzz = usesOf(d);
+      const tagsRaw = (d.tags||[]).map(String);
+      const tagsClean = (d._cleanedTags||[]).map(String);
+      const cats = (d._displayCats||[]).map(String);
+      const aliases = (d.aliases||[]).map(String);
+      const related = (d.related||[]).map(String);
+
+      return {
+        id: d.id, slug: d.slug, label: d.label,
+        // display candidates (prefer use, else definition)
+        uses: uzz,
+        def,
+        notes: nts,
+        // rankable fields
+        label_l: String(d.label||'').toLowerCase(),
+        def_l: def.toLowerCase(),
+        notes_l: nts.toLowerCase(),
+        uses_l: uzz.map(u=>String(u).toLowerCase()),
+        aliases_l: aliases.map(a=>a.toLowerCase()),
+        cats_l: cats.map(c=>c.toLowerCase()),
+        related_l: related.map(r=>r.toLowerCase()),
+        tags_l: tagsClean.map(t=>t.toLowerCase()),
+        tagsRaw_l: tagsRaw.map(t=>t.toLowerCase())
+      };
+    });
   }
 
-  // Pause when off-screen (saves CPU; also halts motion while not visible)
-  var mantraSection = document.getElementById('mantra');
-  if ('IntersectionObserver' in window && mantraSection){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ paused = !e.isIntersecting; });
-    }, { threshold: 0.1 });
-    io.observe(mantraSection);
+  function rankSuggestions(q, idx, limit=8){
+    const raw = String(q||'').trim().toLowerCase();
+    const toks = raw.split(/[^a-z0-9]+/).filter(Boolean);
+    if (!toks.length) return []; // we show recents on focus when empty
+
+    const hits = [];
+
+    for (const t of idx){
+      let bestType = '';
+      let bestText = '';
+      let bestScore = 0;
+
+      // field-weighted scoring
+      const scoreField = (text, base)=> {
+        const l = String(text||'').toLowerCase();
+        if (!l) return 0;
+        let s = 0;
+        if (raw && l === raw) s += base + 120;          // exact
+        else if (raw && l.includes(raw)) s += base + 60; // substring
+        for (const tok of toks){
+          if (!tok) continue;
+          const re = new RegExp(`\\b${escRe(tok)}\\b`, 'i');
+          if (re.test(l)) s += 30;
+          const pos = l.indexOf(tok);
+          if (pos >= 0){ s += 18; if (pos === 0) s += 8; }
+        }
+        // length bonus for succinct phrases
+        s += Math.max(0, 18 - Math.min(18, Math.floor(l.length/12)));
+        return s;
+      };
+
+      // 1) use-cases (highest priority)
+      for (const u of (t.uses||[])){
+        const s = scoreField(u, 200);
+        if (s > bestScore){ bestScore = s; bestType='use'; bestText=u; }
+      }
+
+      // 2) definition (fallback if no good use match)
+      const sDef = scoreField(t.def, 140);
+      if (sDef > bestScore){ bestScore = sDef; bestType='def'; bestText=t.def; }
+
+      // 3) other notes (slightly lower than def)
+      const sNotes = scoreField(t.notes, 120);
+      if (sNotes > bestScore){ bestScore = sNotes; bestType='note'; bestText=t.notes; }
+
+      // 4) additional boosts from metadata (do not replace display text)
+      const boost = (
+          // use tags (again) but as booster
+          (t.uses_l.some(u => toks.some(tok=>u.includes(tok))) ? 24 : 0)
+        + (t.aliases_l.some(a => toks.some(tok=>a.includes(tok))) ? 18 : 0)
+        + (t.cats_l.some(c => toks.some(tok=>c.includes(tok))) ? 14 : 0)
+        + (t.related_l.some(r => toks.some(tok=>r.includes(tok))) ? 12 : 0)
+        + (t.label_l.includes(raw) ? 22 : 0)
+        + (t.tags_l.some(tag => toks.some(tok=>tag.includes(tok))) ? 8 : 0)
+      );
+      bestScore += boost;
+
+      if (bestScore > 0){
+        hits.push({
+          score: bestScore,
+          type: bestType,
+          text: bestText,
+          label: t.label,
+          id: t.id, slug: t.slug
+        });
+      }
+    }
+
+    hits.sort((a,b)=> (b.score - a.score) || a.text.length - b.text.length || a.label.localeCompare(b.label));
+    return hits.slice(0, limit).map(h => ({
+      ...h,
+      // Presentation: show "use phrase" (no prefix) or clipped definition/notes
+      show: clip(h.text || '')
+    }));
   }
 
-  // Wait for fonts for stable measurements, then run
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(start);
+  // Idle/recents suggestions
+  function buildIdleSuggestions(idx, limit=8){
+    const out = [];
+    for (const r of loadRecent()){
+      if (!r) continue;
+      out.push({ score:1000, type:'recent', text:r, show:r, label:'recent' });
+      if (out.length >= limit) break;
+    }
+    return out;
+  }
+
+  // UI: render dropdown
+  function renderTA(list){
+    if (!list.length){ taEl.hidden = true; taEl.innerHTML=''; active=-1; return; }
+    taEl.innerHTML = list.map((s,i)=>`
+      <div class="item${i===0?' active':''}" role="option" data-i="${i}">
+        <div class="use">${s.show || ''}</div>
+        <div class="sub" aria-hidden="true">${s.label || ''}</div>
+      </div>
+    `).join('');
+    taEl.hidden = false; active = 0;
+  }
+  function hideTA(){ taEl.hidden = true; taEl.innerHTML=''; active=-1; }
+
+  // Query plumbing
+  const INDEX = buildIndex();
+  let SUGS = [];
+  let active = -1;
+  let picked = null;
+
+  function onQuery(){
+    const q = qEl.value.trim();
+    const focused = document.activeElement === qEl;
+    if (!q){
+      if (focused){ SUGS = buildIdleSuggestions(INDEX, 8); renderTA(SUGS); }
+      else hideTA();
+      return;
+    }
+    SUGS = rankSuggestions(q, INDEX, 8);
+    renderTA(SUGS);
+  }
+
+  function runSearch(){
+    const q = qEl.value.trim();
+    if (!q) return;
+    saveRecent(q);
+    // mirror into pane search + render
+    state.q = q;
+    const qFilter = document.getElementById('q');
+    if (qFilter) qFilter.value = q;
+    render();
+    hideTA();
+    document.getElementById('list')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function choose(i){
+    const items = Array.from(taEl.children);
+    const it = items[i]; if (!it) return;
+    const s  = SUGS[i];  if (!s)  return;
+    // put suggestion text into the box and run
+    qEl.value = s.text || s.show || '';
+    runSearch();
+  }
+
+  // Events
+  qEl.addEventListener('input', onQuery);
+  qEl.addEventListener('keydown', (e)=>{
+    const open = !taEl.hidden && taEl.children.length;
+    if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+      e.preventDefault();
+      active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
+      [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
+    } else if (e.key === 'Enter'){
+      e.preventDefault();
+      if (open){ choose(active>=0 ? active : 0); }
+      else { if (!picked && SUGS[0]) picked = SUGS[0]; runSearch(); }
+    } else if (e.key === 'Escape'){
+      hideTA();
+    }
+  });
+  taEl.addEventListener('mousedown', (e)=>{
+    const el = e.target.closest('.item'); if (!el) return;
+    const i = parseInt(el.dataset.i,10) || 0;
+    choose(i);
+  });
+  goEl.addEventListener('click', ()=>{
+    if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }
+    else runSearch();
+  });
+  qEl.addEventListener('focus', ()=>{
+    if (!qEl.value.trim()){ SUGS = buildIdleSuggestions(INDEX, 8); renderTA(SUGS); }
+    else onQuery();
+  });
+  qEl.addEventListener('blur', ()=> setTimeout(hideTA, 80));
+  document.addEventListener('pointerdown', (e)=>{ if (!wrap.contains(e.target)) hideTA(); });
+
+  // expose so clearAll() can close it
+  window.hideTAMaster = hideTA;
+})();
+
+
+
+
+/* ========== Ask ChatGPT prompt builder ========== */
+function buildTemplateSummary(t){
+  const parts = [];
+  const line = (k,v)=> v ? parts.push(`${k}: ${v}`) : null;
+
+  line('Label', t.label || '');
+  line('Kind', t._displayKind || '');
+  if (t._displayCats?.length) line('Categories', t._displayCats.join(', '));
+  if (t._cleanedTags?.length) line('Tags', t._cleanedTags.join(', '));
+  if (t.definition) parts.push('\nDefinition:\n' + t.definition);
+  if (t.help)       parts.push('\nHelp:\n' + t.help);
+  if (t.use_cases?.length) parts.push('\nUse cases:\n- ' + t.use_cases.join('\n- '));
+  if (t.boosters?.length) parts.push('\nBoosters:\n- ' + t.boosters.join('\n- '));
+
+  const fields = Array.isArray(t.fields) ? t.fields : [];
+  if (fields.length){
+    parts.push('\nFields:');
+    for (const f of fields){
+      const bits=[];
+      if (f.desc) bits.push(f.desc);
+      if (f.placeholder||f.ph) bits.push('Hint: '+(f.placeholder||f.ph));
+      if (f.type) bits.push('Type: '+f.type);
+      if (Array.isArray(f.options) && f.options.length){
+        const opts = f.options.map(o => typeof o==='object' ? (o.label||o.value) : o).filter(Boolean).join(', ');
+        if (opts) bits.push('Options: '+opts);
+      }
+      parts.push(`- ${f.label || f.key || '(field)'}${bits.length? ' — ' + bits.join(' · ') : ''}`);
+    }
+  }
+  return parts.join('\n');
+}
+
+function buildChatGPTPrompt(t){
+  const kind = (t._displayKind || 'framework').toLowerCase();
+  const summary = buildTemplateSummary(t);
+
+  return [
+    `You are an expert AI tutor specializing in prompt engineering. I am reviewing "${t.label}" in an AI glossary and I will share its full structure with you below to prime your understanding:`,
+    ``,
+    summary,
+    ``,
+    `Please begin by asking me what I would like to accomplish using this term. Then:`,
+    `1) Explain the $${t.label} at a practitioner level with 1–2 concrete examples.`,
+    `2) Contrast it with closely related terms (if any) and note common confusions.`,
+    `3) Offer pitfalls, best practices, and a short checklist.`,
+    `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
+    `5) Guide the user through the term "${t.label || t.slug || t.id || ''}".`
+  ].join('\n');
+}
+
+function openChatGPTWithPrompt(prompt){
+  const MAX_Q = 4000; // keep URL tolerable; full text still on clipboard
+  const q = encodeURIComponent(prompt.slice(0, MAX_Q));
+  const url = `https://chat.openai.com/?q=${q}`;
+  window.open(url, '_blank', 'noopener');
+}
+
+function showCopyDialog(text, title='Prompt copied ✓'){
+  $('#copyTitle').textContent = title;
+  $('#copyText').value = text;
+  $('#copyDlg').showModal();
+}
+
+$('#copyAgain').addEventListener('click', async ()=>{
+  await copyText($('#copyText').value);
+});
+$('#copyClose').addEventListener('click', ()=> $('#copyDlg').close());
+$('#copyDlg').addEventListener('click', (e)=>{
+  const box = $('.content', $('#copyDlg'));
+  if (!box.contains(e.target)) $('#copyDlg').close();
+});
+
+/* ========== List rendering (adds Ask ChatGPT button on cards) ========== */
+const listEl = $('#list');
+
+function render(){
+  renderAlphaBar();
+  const rows = DATA.filter(matches).sort(SORTS[state.sort] || SORTS.term_az);
+  renderActiveFilters(rows.length);
+  listEl.innerHTML='';
+
+  for(const t of rows){
+const meta = h('div',{class:'meta'},
+  ...(t._displayCats||[]).map(c=>h('span',{class:'pill'}, c))
+);
+    const tags = h('div',{class:'meta'}, ...(t._cleanedTags||[]).map(tag=>h('span',{class:'chip'}, tag)));
+    const def  = h('div',{class:'muted'}, t.definition || '');
+
+    const linkId = safeLinkId(t);
+    const pbUrl = `prompt-builder.html#${encodeURIComponent(linkId)}`;
+
+    const openPB = h('a',{
+      class:'btn pb-btn btn-xs right',
+      href: pbUrl, target: "_blank", rel: "noopener"
+    }, 'Open in Prompt Builder');
+
+    const askBtn = h('a',{
+      class:'btn ask-btn btn-xs right',
+      href: '#',
+      onclick: async (e)=>{ e.preventDefault();
+        const prompt = buildChatGPTPrompt(t);
+        await copyText(prompt);
+        openChatGPTWithPrompt(prompt);
+        showCopyDialog(prompt);
+      }
+    }, '💬 Ask ChatGPT');
+
+    const cardBody = h('div',{style:'flex:1'},
+      h('h3',{}, t.label),
+      def,
+      meta,
+      tags
+    );
+
+const card = h('div',{
+  class:'card',
+  role:'button',
+  tabIndex:'0',
+  'aria-label': `Expand details for ${t.label || t.slug || t.id || 'template'}`
+});
+const ctaWrap = h('div', { class: 'card-cta' });
+
+if (hasTypeTemplateTag(t.tags)) {
+  ctaWrap.append(
+    h('a', {
+      class: 'btn pb-btn btn-xs right',
+      href: pbUrl, target: '_blank', rel: 'noopener'
+    }, 'Open in Prompt Builder')
+  );
+}
+ctaWrap.append(askBtn);
+card.append(cardBody, ctaWrap);
+
+// Bottom-left status badge
+const status = String(t.status||'').toLowerCase();
+const statusMap = {
+  verified: ['Verified','status-verified'],
+  draft: ['Draft','status-draft'],
+  deprecated: ['Deprecated','status-deprecated'],
+  duplicate_candidate: ['Duplicate','status-duplicate'],
+  duplicate: ['Duplicate','status-duplicate'] // safety alias
+};
+if (status && statusMap[status]) {
+  const [label, cls] = statusMap[status];
+  const statusEl = h('div', { class: `status-badge ${cls}` }, label);
+  card.append(statusEl);
+}
+
+    // Click anywhere except PB/Ask opens preview modal
+    card.addEventListener('click', (e)=>{
+      if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+      openModal(t, pbUrl);
+    });
+    
+    card.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter' || e.key === ' '){
+    // don’t fire when the user is focusing the buttons
+    if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+    e.preventDefault();
+    openModal(t, pbUrl);
+  }
+});
+
+
+    listEl.append(card);
+  }
+}
+if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
+renderAlphaBar();
+render();
+
+
+/* ========== Detail modal (adds Ask ChatGPT in modal) ========== */
+const dlg = $('#dlg');
+const modalContent = ()=> $('.modal', dlg);
+
+$('#dlgClose').addEventListener('click', ()=> dlg.close());
+dlg.addEventListener('click', (e)=>{
+  const m = modalContent();
+  if(!m) return;
+  if(!m.contains(e.target)) dlg.close();
+});
+dlg.addEventListener('keydown', (e)=>{ if(e.key==='Escape') dlg.close(); });
+
+function openModal(t, pbUrl){
+  // Title & meta
+  $('#dlgTitle').textContent = t.label || t.slug || t.id || 'Template';
+
+  const meta = $('#dlgMeta'); 
+  meta.innerHTML = '';
+  meta.append(h('span', { class:'pill' }, t._displayKind || '—'));
+  for (const c of (t._displayCats || [])) meta.append(h('span', { class:'pill' }, c));
+  for (const tag of (t._cleanedTags || [])) meta.append(h('span', { class:'chip' }, tag));
+
+  // Definition (allow basic markup)
+  $('#dlgDef').innerHTML = t.definition || '';
+
+  // Notes (show only if present)
+  const notesWrap = $('#dlgNotesWrap');
+  const notesEl   = $('#dlgNotes');
+  if (t.notes) {
+    notesEl.textContent = t.notes;
+    notesWrap.style.display = 'block';
   } else {
-    window.addEventListener('load', start, { once:true });
+    notesEl.textContent = '';
+    notesWrap.style.display = 'none';
   }
 
-  // On resize or zoom, re-lock metrics and keep current index visible
-  window.addEventListener('resize', function(){
-    var current = i;
-    lockMetrics();
-    translateTo(current);
-  });
-})();
-</script>
-
-<script>
-/* ============ Slice 2 — Mobile-only suggestions overlay ============ */
-
-/* A) Mobile detection: toggles .is-mobile on <html> */
-(function mobileGate(){
-  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
-  var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
-  function apply(){ document.documentElement.classList.toggle('is-mobile', mq.matches || uaMobile); }
-  try { mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply); } catch(e){}
-  apply();
-})();
-
-/* B) Overlay portal controller (uses #q and #ta that you already have) */
-(function portal(){
-  var input = document.getElementById('q');   // your search field
-  var ta    = document.getElementById('ta');  // your suggestions listbox
-  if (!input || !ta) return;
-
-  var portalRoot, scrim, overlay, origParent, origNext, observer;
-  var opened = false;
-
-  function isMobile(){ return document.documentElement.classList.contains('is-mobile'); }
-
-  function ensurePortal(){
-    if (portalRoot) return;
-    portalRoot = document.createElement('div');
-    portalRoot.id = 'suggestions-portal';
-    document.body.appendChild(portalRoot);
-
-    scrim = document.createElement('div');
-    scrim.className = 'suggestions-scrim';
-    scrim.hidden = true;
-    portalRoot.appendChild(scrim);
-
-    overlay = document.createElement('div');
-    overlay.className = 'suggestions-overlay';
-    overlay.hidden = true;
-    portalRoot.appendChild(overlay);
-
-    /* stop document pointerdown from hiding #ta when tapping suggestions */
-    overlay.addEventListener('pointerdown', function(e){ e.stopPropagation(); }, true);
-    scrim.addEventListener('click', function(){
-      // close and also hide #ta so your app state stays consistent
-      closeOverlay();
-      if (window.hideTA) window.hideTA(); else { ta.hidden = true; ta.innerHTML = ''; }
-    }, { passive: true });
+  // Related
+  const relWrap = $('#dlgRelatedWrap');
+  const rel     = $('#dlgRelated'); 
+  rel.innerHTML = '';
+  if ((t.related || []).length) {
+    for (const r of t.related) rel.append(h('span', { class:'chip' }, r));
+    relWrap.style.display = 'block';
+  } else {
+    relWrap.style.display = 'none';
   }
 
-  function position(){
-    if (!opened) return;
-    var r  = input.getBoundingClientRect();
-    var vv = window.visualViewport || { offsetTop: 0, offsetLeft: 0, height: window.innerHeight };
-    var top  = r.bottom - (vv.offsetTop || 0);
-    var left = r.left   - (vv.offsetLeft || 0);
-    overlay.style.top  = top + 'px';
-    overlay.style.left = left + 'px';
-    overlay.style.width = r.width + 'px';
-    overlay.style.maxHeight = Math.round((vv.height || window.innerHeight) * 0.60) + 'px';
-  }
-
-  function openOverlay(){
-    if (!isMobile() || opened) { position(); return; }
-    ensurePortal();
-
-    // remember original slot to restore later
-    if (!origParent){ origParent = ta.parentNode; origNext = ta.nextSibling; }
-
-    overlay.appendChild(ta);
-    scrim.hidden = false;
-    overlay.hidden = false;
-    document.body.classList.add('scroll-locked');
-    input.setAttribute('aria-expanded','true');
-    position();
-
-    // keep it anchored on viewport/keyboard changes
-    window.addEventListener('resize', position, { passive: true });
-    window.addEventListener('scroll', position, { passive: true });
-    if (window.visualViewport){
-      visualViewport.addEventListener('resize', position, { passive: true });
-      visualViewport.addEventListener('scroll', position, { passive: true });
+  // Sources
+  const srcWrap = $('#dlgSourcesWrap');
+  const src     = $('#dlgSources'); 
+  src.innerHTML = '';
+  if ((t.sources || []).length) {
+    for (const s of t.sources) {
+      const lbl = s.title || s.url || 'source';
+      src.append(
+        h('li', {}, h('a', { href: s.url || '#', target: '_blank', rel: 'noopener' }, lbl))
+      );
     }
-    document.addEventListener('keydown', onKey, true);
-    opened = true;
+    srcWrap.style.display = 'block';
+  } else {
+    srcWrap.style.display = 'none';
   }
 
-  function closeOverlay(){
-    if (!opened) return;
-    scrim.hidden = true;
-    overlay.hidden = true;
+  // Modal Ask ChatGPT
+  const askBtnModal = $('#askBtnModal');
+  askBtnModal.onclick = async (e) => {
+    e.preventDefault();
+    const prompt = buildChatGPTPrompt(t);
+    await copyText(prompt);
+    openChatGPTWithPrompt(prompt);
+    showCopyDialog(prompt);
+  };
 
-    // restore #ta to original DOM so desktop is unchanged
-    try {
-      if (origParent) origParent.insertBefore(ta, origNext);
-    } catch(e){}
-
-    document.body.classList.remove('scroll-locked');
-    input.setAttribute('aria-expanded','false');
-
-    window.removeEventListener('resize', position, { passive: true });
-    window.removeEventListener('scroll', position, { passive: true });
-    if (window.visualViewport){
-      visualViewport.removeEventListener('resize', position, { passive: true });
-      visualViewport.removeEventListener('scroll', position, { passive: true });
-    }
-    document.removeEventListener('keydown', onKey, true);
-    opened = false;
+  // Prompt Builder visibility (only if tag indicates template)
+  const pbEl   = $('#openPB');
+  const linkId = safeLinkId(t);
+  if (hasTypeTemplateTag(t.tags)) {
+    pbEl.hidden = false;
+    pbEl.href = `prompt-builder.html#${encodeURIComponent(linkId)}`;
+  } else {
+    pbEl.hidden = true;
+    pbEl.removeAttribute('href');
   }
 
-  function onKey(e){ if (e.key === 'Escape'){ e.preventDefault(); closeOverlay(); } }
+  dlg.showModal();
+}
 
-  /* C) Sync overlay with your existing show/hide logic via MutationObserver */
-  observer = new MutationObserver(function(){
-    if (!isMobile()) return;
-    // If app has shown #ta, open overlay; if it hid it, close overlay.
-    (!ta.hidden && ta.children.length) ? openOverlay() : closeOverlay();
-  });
-  observer.observe(ta, { attributes:true, attributeFilter:['hidden'], childList:true, subtree:false });
-
-  /* D) Also react to input focus (your code already renders idle suggestions on focus) */
-  input.addEventListener('focus', function(){ if (isMobile() && !ta.hidden) openOverlay(); });
-
-  /* E) If device flips to desktop midsession, close & restore */
-  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
-  function maybeClose(){ if (!isMobile()) closeOverlay(); }
-  try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
-})();
+/* Initial theme label */
+applyTheme();
 </script>
-
-  
 </body>
 </html>
