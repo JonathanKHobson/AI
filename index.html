@@ -166,14 +166,22 @@ html.is-mobile #back.backBtn .icon{
 }
 
 /* Hide the inline CTAs on mobile; hamburger will expose them */
-html.is-mobile .resultHeader .ctas{ display: none; }
+
 
 /* Show hamburger on mobile, keep desktop unchanged */
 html.is-mobile #resultMenuBtn.menuBtn{
-  margin-left: auto; /* push to the right */
-  min-width: 40px; min-height: 40px;
-  display:inline-flex; align-items:center; justify-content:center;
+  display: inline-flex;        /* ← make sure this line exists */
+  margin-left: auto;
+  min-width: 40px; 
+  min-height: 40px;
+  align-items:center; 
+  justify-content:center;
   border-radius:12px;
+}
+
+/* If the viewport is wide, never show the hamburger */
+@media (min-width: 921px){
+  #resultMenuBtn.menuBtn { display: none !important; }
 }
 
 /* The mobile dropdown menu */
@@ -249,6 +257,8 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
     }
     .resultHeader .spacer{ flex:1 }
     .resultHeader .ctas{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    /* Always hide inline header CTAs; actions live under mini bar + mobile hamburger */
+.resultHeader .ctas{ display:none !important; }
     .resultHeader .rainbowLine{ height:3px; width:100%;
       background:linear-gradient(90deg,#ff007a,#ff8d00,#ffd600,#00dc82,#00d2ff,#7850ff,#ff007a);
       filter:saturate(115%); opacity:.85;
@@ -362,6 +372,137 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
 }
 @media (max-width:480px){
   .searchCtas .btn{ padding:8px 12px }
+}
+
+
+/* ===== Mini redo search (details header area) ===== */
+.detailSearchWrap{
+  position: relative;
+  max-width: var(--wrap-w);
+  margin: 12px auto 12px;   /* equal top/bottom spacing */
+  padding: 0 2px;
+  z-index: 40;
+}
+
+@media (max-width: 720px){
+  .detailSearchWrap{ margin: 10px auto 10px; }
+}
+
+/* Mini search: rainbow border, soft glow, micro-motion */
+.detailSearch{
+  position: relative;                           /* anchors the glow */
+  display:flex; align-items:center; gap:8px;
+  border-radius: 999px; padding:6px;
+  background: #fff;
+  border: 2px solid transparent;                /* gradient border like .search */
+  background-image:
+    linear-gradient(#fff, #fff),
+    conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+/* subtle rainbow glow behind (same idea as .search::before) */
+.detailSearch::before{
+  content:"";
+  position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(20px) saturate(118%);
+  background: conic-gradient(from 200deg, #ff007a, #ff8d00, #ffd600, #00dc82, #00d2ff, #7850ff, #ff007a);
+  opacity:.14;
+  transition: opacity .18s ease, filter .18s ease;
+}
+
+/* hover/focus lift */
+.detailSearch:hover,
+.detailSearch:focus-within{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.10);
+}
+.detailSearch:hover::before,
+.detailSearch:focus-within::before{
+  opacity:.20;
+  filter: blur(22px) saturate(125%);
+}
+
+
+
+.detailSearch input{
+  flex:1; border:none; outline:none; padding:10px 12px;
+  background:transparent; color:var(--fg); min-height:40px;
+}
+.detailSearch button{
+  border:none; border-radius:999px; padding:8px 12px;
+  font-weight:600; text-transform:lowercase; cursor:pointer;
+}
+
+/* mini input/button polish */
+.detailSearch input{
+  flex:1; border:none; outline:none; padding:10px 12px;
+  background:transparent; color:var(--fg); min-height:40px;
+}
+
+/* buttons: small lift & clarity */
+.detailSearch button{
+  border:none; border-radius:999px; padding:8px 12px;
+  font-weight:600; text-transform:lowercase; cursor:pointer;
+  transition: transform .06s ease, box-shadow .18s ease, background-color .12s ease, color .12s ease;
+}
+.detailSearch button:hover{ transform: translateY(-1px); }
+.detailSearch button:active{ transform: translateY(0); }
+
+.detailSearch .go{
+  background:var(--fg); color:#fff;
+  box-shadow: 0 6px 16px rgba(15,23,32,.15);
+}
+.detailSearch .go:hover{ box-shadow: 0 10px 24px rgba(15,23,32,.18); }
+
+.detailSearch .retry{
+  background:#fff; color:var(--muted);
+  border:1px dashed var(--border);
+}
+.detailSearch .retry:hover{
+  color:var(--fg);
+  border-color: color-mix(in lab, var(--border), var(--fg) 24%);
+}
+
+
+.detailSearch .go{ background:var(--fg); color:#fff; }
+.detailSearch .retry{ background:#fff; color:var(--muted); border:1px dashed var(--border); }
+
+
+/* ===== Centered CTA row under mini redo search ===== */
+.detailCtas{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin: 8px auto 6px;           /* tight to the mini bar */
+  max-width: var(--wrap-w);
+  padding: 0 4px;
+}
+
+/* visual hierarchy:
+   - primary: ask, prompt builder
+   - secondary: copy, worksheet
+   - tertiary: all templates (lowest prominence) */
+.detailCtas .btn{ min-height:40px; padding:8px 12px; }
+.detailCtas .btn.primary{ order: 3; }   /* keep primaries toward the right */
+.detailCtas .btn.secondary{ order: 2; }
+.detailCtas .btn.tertiary{ order: 1; opacity:.92; }
+
+/* mobile: slightly tighter & ensure wrap looks good */
+@media (max-width:720px){
+  .detailCtas{ gap:8px; margin: 6px auto 6px; }
+  .detailCtas .btn{ min-height:38px; padding:8px 10px; font-size:14px; }
+}
+
+/* smaller dropdown tied to the mini search */
+.ta.ta--mini{
+  left:8px; right:8px; top:calc(100% + 6px);
+  max-height:220px; z-index: 400;    /* above card content */
 }
 
 /* --- rainbow pop-out buttons (like quickLinks) --- */
@@ -501,7 +642,7 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
 .quickLinks{ position:relative; z-index:0; }
 
     /* typeahead */
-    .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index:1000; /* was 50 */
+    .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index: 300; /* was 50 */
  }
     .ta[hidden]{ display:none }
     .ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid #f1f5fb; }
@@ -553,9 +694,293 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
     .divider{ height:1px; background:linear-gradient(90deg, transparent, #e7edf6, transparent); margin:8px 0 4px }
   
   
+  /* Desktop/default: hide the hamburger unless we explicitly show it on mobile */
+#resultMenuBtn.menuBtn { display: none; }
+
+
+
+
+/* === COPY DIALOG (Slice 1a–1i final) — canonical skin, desktop-safe === */
+/* Backdrop: simple dim — no blur */
+#actionModal::backdrop {
+  background: rgba(0,0,0,.45);
+}
+
+/* Centered card */
+#actionModal {
+  /* native dialog defaults removed */
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg, #fff);
+  color: var(--fg, #0f1720);
+  box-shadow: var(--shadow);
+  width: min(880px, 92vw);
+  max-height: 90vh;
+  margin: 8vh auto;
+  overflow: visible; /* inner grid controls scroll */
+}
+
+/* 3-row card: header / body / footer */
+#actionForm.modal-body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  border-radius: inherit;
+  overflow: hidden; /* keeps hairlines crisp */
+}
+
+/* Header: title left, × right (inline, not stacked) */
+#actionModal .modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+#actionModal .modal-header h3 {
+  margin: 0;
+  font: 600 1.05rem/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  text-transform: lowercase;
+  letter-spacing: .2px;
+}
+#actionModal .modal-header .icon.close {
+  margin-left: auto;
+  inline-size: 34px;
+  block-size: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+#actionModal .modal-header .icon.close:hover {
+  background: rgba(0,0,0,.06);
+}
+#actionModal .modal-header .icon.close:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Body: tidy spacing + full-width preview */
+#actionModal .modal-section {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+#actionModal .modal-section .field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: lowercase;
+}
+#actionPreview {
+  width: 100%;
+  min-height: min(54vh, 520px);
+  resize: vertical;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  color: inherit;
+  font: 500 0.94rem/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  tab-size: 2;
+}
+#actionPreview:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(2,132,199,.18) inset; /* matches site focus ring */
+}
+
+/* Inline note under preview (length warnings, copied msg, etc.) */
+#actionNote.note {
+  margin: 8px 2px 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* Footer: right-aligned actions, re-using your .btn look */
+#actionModal .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 16px 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* Buttons inherit your global .btn styles; keep overrides minimal and scoped */
+#actionModal .btn {
+  text-decoration: none;                  /* never show underlines in the dialog */
+  border-radius: 10px;                    /* match header close’s radius */
+}
+#actionModal .btn:hover { background: rgba(0,0,0,.06); }
+#actionModal .btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+#actionModal .btn.primary {
+  /* rely on your existing .btn.primary colors; only small nudge */
+  filter: saturate(1.02);
+}
+
+
+/* === Slice 4C: Details CTAs — cluster centered, one line (final) === */
+/* Goal: three columns sized to content (left group | builder | right group),
+   the entire cluster centered under the mini search, on a single baseline. */
+
+.detailCtas{
+  /* hard override the older flex/full-width row */
+  display: grid !important;
+  grid-auto-flow: column;
+  grid-template-columns: auto auto auto;   /* content-sized columns */
+  column-gap: 12px;
+  align-items: center;                      /* same baseline */
+  justify-content: center;                  /* center the 3 columns as a cluster */
+
+  /* shrink to fit its contents and center under the mini search */
+  width: fit-content;
+  max-width: none;                          /* neutralize earlier max-width */
+  margin: 8px auto 6px;                     /* center horizontally */
+  padding: 0;                               /* no extra padding from old rules */
+  white-space: nowrap;                      /* keep one line on desktop */
+}
+
+/* left/right groups are small inline rows */
+.detailCtas .ctaGroup{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* explicit column placement (DOM order already matches) */
+.detailCtas .ctaGroup.left  { grid-column: 1; justify-content: flex-end; }
+.detailCtas #openBuilder     { grid-column: 2; justify-self: center; }
+.detailCtas .ctaGroup.right { grid-column: 3; justify-content: flex-start; }
+
+/* unify button visuals in this row (only Builder stays primary) */
+.detailCtas .btn{
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform .06s ease, box-shadow .18s ease, background-color .12s ease, color .12s ease;
+}
+.detailCtas .btn.secondary{
+  background:#fff; color:var(--fg); border:1px solid var(--border); box-shadow:none;
+}
+.detailCtas .btn.tertiary{ border-style: solid; color: var(--fg); }
+
+/* Builder is the only primary */
+.detailCtas #openBuilder.btn.primary{
+  background: var(--fg); color:#fff; border-color: transparent;
+  box-shadow: 0 6px 16px rgba(15,23,32,.15);
+}
+
+/* hover “bump” and focus clarity, scoped to this row */
+.detailCtas .btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15,23,32,.12);
+}
+.detailCtas .btn:active{ transform: translateY(0); }
+.detailCtas .btn:focus-visible{ outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Mobile: stack to 3 centered rows (left group, builder, right group) */
+@media (max-width: 720px){
+  .detailCtas{
+    grid-template-columns: 1fr;       /* single column */
+    grid-auto-flow: row;
+    row-gap: 8px;
+    width: 100%;                      /* allow full width on small screens */
+    white-space: normal;              /* permit wrapping on narrow devices */
+    justify-content: center;
+    justify-items: center;
+  }
+  .detailCtas .ctaGroup.left,
+  .detailCtas .ctaGroup.right{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .detailCtas #openBuilder{ justify-self: center; }
+  .detailCtas .btn{ min-height:38px; padding:8px 10px; font-size:14px; }
+}
+
+
+/* Mobile polish */
+@media (max-width: 720px){
+  #actionModal {
+    width: min(520px, 92vw);
+    margin: 6vh auto;
+    border-radius: 16px;
+  }
+  #actionPreview { min-height: 220px; }
+  #actionModal .modal-footer { flex-wrap: wrap; gap: 8px; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  #actionModal { transition: none; }
+}
+
+
+
+
+
+
+
+
+  
+  
   /* =========================
    SLICE 1 — Mobile Layout Skeleton
    ========================= */
+   
+   /* === MOBILE HEADER MENU (Slice 4) — scoped & desktop-safe === */
+
+/* Make the header bar a positioned anchor so the menu can be absolutely placed */
+.resultHeader .bar { position: relative; }
+
+/* Desktop: we already hide the hamburger. On mobile, show it. */
+@media (max-width: 720px){
+  html.is-mobile #resultMenuBtn.menuBtn{
+    display: inline-flex;
+    align-items: center; justify-content: center;
+  }
+  /* Hide the desktop CTAs row on mobile; the menu replaces it */
+  html.is-mobile #resultHeader .ctas{ display: none; }
+}
+
+/* Menu panel */
+#resultHeader .resultMenu[hidden]{ display:none !important; }
+#resultHeader .resultMenu{
+  position: absolute;
+  right: 12px;
+  top: calc(100% + 8px);             /* just below the header bar */
+  min-width: 220px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+  z-index: 3000;
+}
+
+/* Menu items */
+#resultHeader .resultMenu .menuItem{
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 10px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  text-decoration: none;           /* anchors look like buttons */
+}
+#resultHeader .resultMenu .menuItem:hover{ background: rgba(0,0,0,.06); }
+#resultHeader .resultMenu .menuItem:focus-visible{
+  outline: 2px solid var(--focus-ring); outline-offset: 2px;
+}
+#resultHeader .resultMenu .menuItem[aria-disabled="true"]{
+  opacity: .45; cursor: default; pointer-events: none;
+}
+   
 
 /* a) Skip link: visible when tabbed, hidden visually otherwise */
 .skip-link{
@@ -568,11 +993,14 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
   z-index: 10000;
 }
 
+
+
 /* b) Mobile scaffold: search + hint + 3 primary buttons under the hint */
 
 /* Ensure input and button meet 44x44 min touch size */
 .search input{ min-height:48px; }
 .search button{ min-height:48px; }
+
 
 
 
@@ -620,7 +1048,13 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
   .search input{ margin-bottom:16px; }
   .hint{ margin-bottom:16px; }
   .searchCtas{ margin-bottom:24px; }
+  
+  
+  /* Details mode: reduce top padding so content sits closer under the sticky header */
+body.is-details .wrap{
+  padding-top: 14px;   /* was 72px; tweak 10–18px to taste */
 }
+
 
 /* =========================
    SLICE 2 — Mobile Suggestions Overlay (desktop-safe)
@@ -637,10 +1071,18 @@ html.is-mobile body.scroll-locked {
 html.is-mobile .suggestions-scrim {
   position: fixed;
   inset: 0;
-  background: rgba(15,23,32,.36);
-  backdrop-filter: saturate(120%) blur(1.5px);
-  z-index: 2000; /* above sticky header (120) and old .ta (1000) */
+  background: rgba(15,23,32,.20);  /* lighter, not opaque, and no blur */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  z-index: 2100;
 }
+
+/* Keep the search field above the scrim when overlay is open */
+html.is-mobile.overlay-open .searchWrap{
+  position: relative;
+  z-index: 2150; /* above scrim (2100), below overlay (2200) */
+}
+
 
 /* Overlay box that will hold #ta */
 html.is-mobile .suggestions-overlay {
@@ -650,7 +1092,7 @@ html.is-mobile .suggestions-overlay {
   box-shadow: 0 24px 64px rgba(0,0,0,.18);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  z-index: 2001;
+  z-index: 2200;
   max-height: 60vh; /* JS also sets this as a precise value */
 }
 
@@ -844,11 +1286,11 @@ html.is-mobile .hero{ padding-top:18px; }
 </button>
 <div id="resultMenu" class="resultMenu" role="menu" hidden></div>
 
-      <nav class="ctas">
-        <a id="openGlossary" class="btn tertiary" href="#">open in templates glossary</a>
-        <a id="printWorksheet" class="btn secondary" href="#">open worksheet</a>
-        <a id="openBuilder" class="btn primary" href="#">open in prompt builder</a>
-      </nav>
+<nav class="ctas" aria-hidden="true">
+  <a class="btn tertiary"  href="#">all templates</a>
+  <a class="btn secondary" href="#">worksheet</a>
+  <a class="btn primary"   href="#">prompt builder</a>
+</nav>
     </div>
     <div class="rainbowLine"></div>
   </header>
@@ -935,10 +1377,35 @@ html.is-mobile .hero{ padding-top:18px; }
 
     <!-- DETAILS -->
     <section class="details" id="details" hidden>
+    
+    <!-- MINI SEARCH (redo) -->
+<div class="detailSearchWrap" aria-label="redo search">
+  <div class="detailSearch">
+    <input id="q2" type="text" placeholder="tweak or redo your search…" autocomplete="off" />
+    <button id="go2" class="go" type="button" title="run search">search</button>
+    <button id="retry" class="retry" type="button" title="try a different close match">re-roll</button>
+  </div>
+  <div id="ta2" class="ta ta--mini" role="listbox" hidden></div>
+
+  <!-- DETAILS CTAs (centered row under mini search) -->
+<div class="detailCtas" role="group" aria-label="actions">
+  <div class="ctaGroup left">
+    <a id="openGlossary"   class="btn secondary" href="#">all templates</a>
+    <a id="printWorksheet" class="btn secondary" href="#">worksheet</a>
+  </div>
+
+  <a id="openBuilder" class="btn primary" href="#">prompt builder</a>
+
+  <div class="ctaGroup right">
+    <button id="copyPrompt" class="btn secondary" type="button">copy</button>
+    <button id="ask"        class="btn secondary" type="button">ask</button>
+  </div>
+</div>
+    
+    
       <div class="card">
         <div class="left">
           <h2 id="tplTitle">template</h2>
-          <div class="meta" id="meta"></div>
 
           <div class="block">
             <h3>definition</h3>
@@ -954,12 +1421,13 @@ html.is-mobile .hero{ padding-top:18px; }
             <h3>boosters</h3>
             <div id="boosters"></div>
           </div>
+          
+          <div class="meta" id="meta"></div>
 
           <div class="divider"></div>
-          <div class="actions footer">
-            <button id="copyPrompt" class="btn secondary" type="button">copy prompt</button>
-            <button id="ask" class="btn primary" type="button">ask chatgpt</button>
-          </div>
+        
+
+         
         </div>
 
         <div class="right">
@@ -971,6 +1439,30 @@ html.is-mobile .hero{ padding-top:18px; }
       </div>
     </section>
   </main>
+  
+  
+  <!-- Action modal (shared by Copy + Ask) -->
+<dialog id="actionModal" class="modal" aria-modal="true">
+  <form method="dialog" class="modal-body" id="actionForm" aria-labelledby="actionTitle">
+    <header class="modal-header">
+      <h3 id="actionTitle">Action</h3>
+      <button type="button" class="icon close" aria-label="Close" id="actionClose">×</button>
+    </header>
+
+    <section class="modal-section">
+      <div class="field">
+        <label for="actionPreview">Preview (you can edit before confirming)</label>
+        <textarea id="actionPreview" rows="14" spellcheck="false"></textarea>
+      </div>
+      <p id="actionNote" class="note" hidden></p>
+    </section>
+
+    <footer class="modal-footer">
+      <button type="submit" class="btn primary" id="actionConfirm">confirm</button>
+      <button type="button" class="btn" id="actionCancel">cancel</button>
+    </footer>
+  </form>
+</dialog>
 
   <!-- datasets -->
   
@@ -1381,6 +1873,8 @@ function buildIdleSuggestions(idx, limit=8){
     let INDEX = [];
     let active = -1;
     let picked = null;
+    // remember last search + last shown template so "try another" can exclude it
+let LAST_CTX = { q:'', slug:null };
 
     function renderTA(list){
       if (!list.length){ taEl.hidden = true; taEl.innerHTML = ''; active=-1; return; }
@@ -1431,11 +1925,32 @@ function onQuery(){
         taEl.hidden = true; active=-1;
       }
     });
-    taEl.addEventListener('mousedown', (e)=>{
-      const el = e.target.closest('.item');
-      if (!el) return;
-      choose(parseInt(el.dataset.i,10) || 0);
-    });
+// Only stop propagation when the MOBILE overlay is open
+taEl.addEventListener('pointerdown', function(e){
+  if (document.documentElement.classList.contains('overlay-open')) {
+    e.stopPropagation();
+  }
+}, true);
+
+let __lastPickTs = 0;
+function handlePick(e){
+  const el = e.target.closest('.item');
+  if (!el) return;
+
+  // De-dupe across pointerdown/mousedown/click within 200ms
+  const now = Date.now();
+  if (now - __lastPickTs < 200) { e.preventDefault(); e.stopPropagation(); return; }
+  __lastPickTs = now;
+
+  e.preventDefault();   // avoid focus/blur races
+  e.stopPropagation();  // don't bubble to any outside closers
+  choose(parseInt(el.dataset.i,10) || 0);
+}
+
+// Fire on all common pathways
+taEl.addEventListener('pointerdown', handlePick, { passive:false });
+taEl.addEventListener('mousedown',  handlePick);
+taEl.addEventListener('click',      handlePick);
 goEl.addEventListener('click', ()=>{
   if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }  // choose() triggers start
   else if (qEl.value.trim()) startScan();
@@ -1458,6 +1973,13 @@ qEl.addEventListener('blur', ()=>{
 
 // Click anywhere outside the search area → hide dropdown
 document.addEventListener('pointerdown', (e)=>{
+  // If the mobile overlay is open, let the scrim/overlay manage closing.
+  if (document.documentElement.classList.contains('overlay-open')) return;
+
+  // Defensive: if the event is inside the mobile portal, ignore it here.
+  var portal = document.getElementById('suggestions-portal');
+  if (portal && portal.contains(e.target)) return;
+
   if (!searchWrap.contains(e.target)) hideTA();
 });
 
@@ -1559,6 +2081,143 @@ btnLucky?.addEventListener('click', ()=>{
 });
 
 
+/* ===== Mini redo search under details header ===== */
+(function miniSearch(){
+  const q2   = document.getElementById('q2');
+  const ta2  = document.getElementById('ta2');
+  const go2  = document.getElementById('go2');
+  const retryBtn = document.getElementById('retry');
+  const wrap = document.querySelector('.detailSearchWrap');
+
+  if (!q2 || !ta2 || !go2 || !retryBtn || !wrap) return;
+
+  let SUGS2 = [];
+  let active2 = -1;
+  let __lastPickTs2 = 0;
+
+  function hideTA2(){
+    ta2.hidden = true;
+    ta2.innerHTML = '';
+    active2 = -1;
+  }
+  function renderTA2(list){
+    if (!list.length){ hideTA2(); return; }
+    ta2.innerHTML = list.map((s,i)=>`
+      <div class="item${i===0?' active':''}" role="option" data-i="${i}">
+        <div class="use">${s.use}</div>
+        <div class="sub" aria-hidden="true">${s.label}</div>
+      </div>
+    `).join('');
+    ta2.hidden = false; active2 = 0;
+  }
+
+  q2.addEventListener('input', ()=>{
+    SUGS2 = q2.value.trim()
+      ? rankSuggestions(q2.value.trim(), INDEX, 8)
+      : buildIdleSuggestions(INDEX, 6);
+    renderTA2(SUGS2);
+  });
+
+  q2.addEventListener('keydown', (e)=>{
+    const open = !ta2.hidden && ta2.children.length;
+    if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+      e.preventDefault();
+      active2 = Math.max(0, Math.min(ta2.children.length-1, active2 + (e.key==='ArrowDown'?1:-1)));
+      [...ta2.children].forEach((n,i)=> n.classList.toggle('active', i===active2));
+    } else if (e.key === 'Enter'){
+      e.preventDefault();
+      if (open && SUGS2[0]) choose2(active2 >= 0 ? active2 : 0);
+      else if (q2.value.trim()){
+        picked = null;
+        qEl.value = q2.value.trim();
+        startScan();
+      }
+    } else if (e.key === 'Escape'){ hideTA2(); }
+  });
+
+  function choose2(i){
+    const el = ta2.children[i]; if (!el) return;
+    const s  = SUGS2[i];        if (!s)  return;
+
+    qEl.value = s.use;
+    picked = s;
+    hideTA2();
+    startScan();
+  }
+
+  function handlePick2(e){
+    const el = e.target.closest('.item'); if (!el) return;
+    const now = Date.now();
+    if (now - __lastPickTs2 < 200){ e.preventDefault(); e.stopPropagation(); return; }
+    __lastPickTs2 = now;
+
+    e.preventDefault(); e.stopPropagation();
+    choose2(parseInt(el.dataset.i,10) || 0);
+  }
+
+  ta2.addEventListener('pointerdown', handlePick2, { passive:false });
+  ta2.addEventListener('mousedown',  handlePick2);
+  ta2.addEventListener('click',      handlePick2);
+
+  // click-away close for the mini list
+  document.addEventListener('pointerdown', (e)=>{
+    if (!wrap.contains(e.target)) hideTA2();
+  }, true);
+
+  // run search when pressing the mini "search" button
+  go2.addEventListener('click', ()=>{
+    if (!ta2.hidden && SUGS2[0]) choose2(0);
+    else if (q2.value.trim()){
+      picked = null;
+      qEl.value = q2.value.trim();
+      startScan();
+    }
+  });
+
+  // "Try another" — same query, different closest template
+  function tryAnother(){
+    const q = (q2.value.trim() || LAST_CTX.q || '').trim();
+    if (!q) return;
+
+    const currentSlug = LAST_CTX.slug;
+    const ranked = rankSuggestions(q, INDEX, 24);
+    const alt = ranked.find(r=>{
+      const slug = (r?.template?.slug || r?.template?.id || '').toString();
+      return slug && slug !== currentSlug;
+    });
+
+    if (alt){
+      picked = alt;
+      qEl.value = alt.use;
+      startScan();
+      return;
+    }
+
+    // fallback: similar tags/cats, else any different template
+    const current = INDEX.find(t => (t.slug || t.id) === currentSlug);
+    let pool = INDEX.filter(t=>{
+      const slug = (t.slug || t.id);
+      if (!slug || slug === currentSlug) return false;
+      const shareTag = (t.tags||[]).some(tag => (current?.tags||[]).includes(tag));
+      const shareCat = (t.categories||[]).some(cat => (current?.categories||[]).includes(cat));
+      return shareTag || shareCat;
+    });
+    if (!pool.length) pool = INDEX.filter(t => (t.slug||t.id) && (t.slug||t.id)!==currentSlug);
+
+    if (pool.length){
+      const t = pool[0];
+      const uc = (t.use_cases && t.use_cases[0]) || (LAST_CTX.q || 'prompt');
+      picked = { bucket:'uc', score:999, use: uc, label: t.label, template: t, id: t.id, slug: t.slug };
+      qEl.value = uc;
+      startScan();
+    }
+  }
+  retryBtn.addEventListener('click', tryAnother);
+
+  // Prefill when details open (also set in showDetails for freshness)
+  try { q2.value = LAST_CTX.q; } catch(e){}
+})();
+
     /* ===== Faux scan to details ===== */
     const hero = document.getElementById('hero');
     const scan = document.getElementById('scan');
@@ -1568,6 +2227,7 @@ btnLucky?.addEventListener('click', ()=>{
 
     function startScan(){
     saveRecent(qEl.value.trim()); // ← NEW: remember it
+    LAST_CTX.q = qEl.value.trim(); 
     
       hero.style.display = 'none';
       scan.style.display = 'flex';
@@ -1659,6 +2319,184 @@ btnLucky?.addEventListener('click', ()=>{
         .then(()=> transitionTo(yFwd,     fwdMs,  easingSnap))
         .then(()=> transitionTo(yFinal, settleMs, easingSnap));
     }
+    
+    
+    /* ===== Slice 0: Flags + routing helper (SAFE, inert) ===== */
+(function initFlagsAndRouting(){
+  // Feature flags (all OFF by default; turn on per-slice during testing)
+  window.PB_FLAGS = window.PB_FLAGS || {
+    newActionModal:   false,  // Slice 1
+    newWorksheetUrl:  false,  // later
+    askUrlPrompt:     false,  // later
+    mobileMenuParity: false   // later
+  };
+
+  // Compute stable routing bits for a template (not used yet in Slice 1)
+  window.getRoutingFromTemplate = window.getRoutingFromTemplate || function(t){
+    t = t || {};
+    const id   = String(t.id   || t.slug || '').trim();
+    const slug = String(t.slug || t.id   || '').trim();
+    const kindRaw = String(t._displayKind || t.kind || t.type || 'framework').toLowerCase();
+
+    // pluralization map (falls back to naive “+s”)
+    const PLURALS = {
+      pattern:'patterns',
+      strategy:'strategies',
+      framework:'frameworks',
+      task:'tasks',
+      heuristic:'heuristics',
+      term:'terms',
+      helper:'helpers'
+    };
+    const kindPlural =
+      PLURALS[kindRaw] ||
+      (kindRaw ? (kindRaw.endsWith('s') ? kindRaw : kindRaw + 's') : 'frameworks');
+
+    const xfer = id ? `pb.v1.xfer.${kindPlural}.${id}` : '';
+    return { id, slug, kindRaw, kindPlural, xfer };
+  };
+})();
+
+// TEMP: enable Slice 1 during testing
+window.PB_FLAGS.newActionModal = true;
+window.PB_FLAGS.askUrlPrompt = true;
+window.PB_FLAGS.newWorksheetUrl = true;
+window.PB_FLAGS.mobileMenuParity = true;
+
+/* ===== Slice 1: Modal manager (copy only) ===== */
+/* ===== Slice 1: Modal manager (copy only) — FINAL UI/UX ===== */
+/* ===== Slice 1+3: Modal manager (copy + ask) — FINAL UI/UX ===== */
+function openAction({ mode='copy', prompt='', routing=null } = {}){
+  const dlg        = document.getElementById('actionModal');
+  const form       = document.getElementById('actionForm');
+  const titleEl    = document.getElementById('actionTitle');
+  const previewEl  = document.getElementById('actionPreview');
+  const noteEl     = document.getElementById('actionNote');
+  const confirmBtn = document.getElementById('actionConfirm');
+  const cancelBtn  = document.getElementById('actionCancel');
+  const closeBtn   = document.getElementById('actionClose');
+
+  if (!dlg || !form || !titleEl || !previewEl || !confirmBtn) return;
+
+  // Remember the opener to restore focus later
+  const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+  // --- Configure per mode ---
+  if (mode === 'ask'){
+    titleEl.textContent = 'ask chatgpt';
+    confirmBtn.textContent = 'open in chatgpt';
+  } else {
+    titleEl.textContent = 'copy prompt';
+    confirmBtn.textContent = 'copy';
+  }
+
+  // Seed editable preview
+  previewEl.value = String(prompt || '');
+
+  // Notes differ by mode: show "already copied" only for copy mode
+  if (noteEl){
+    if (mode === 'copy'){
+      noteEl.textContent = 'copied to clipboard. you can edit and copy again.';
+      noteEl.hidden = false;
+      form.setAttribute('aria-describedby', noteEl.id);
+    } else {
+      noteEl.hidden = true;
+      form.removeAttribute('aria-describedby');
+    }
+  }
+
+  // Submit behaviors
+  const onSubmit = async (e)=>{
+    e.preventDefault();
+
+    if (mode === 'ask'){
+      // Always copy the preview text as a fallback
+      try { await navigator.clipboard.writeText(previewEl.value); } catch {}
+
+      // Build ChatGPT URL with ?prompt=
+      let url = 'https://chat.openai.com/?prompt=' + encodeURIComponent(previewEl.value);
+
+      // Try to open in a new tab; detect block
+      let win = null;
+      try { win = window.open(url, '_blank', 'noopener'); } catch {}
+
+      // If blocked or failed, keep dialog open and instruct the user
+      if (!win || win.closed){
+        if (noteEl){
+          noteEl.textContent = 'popup blocked — prompt is copied. open chat.openai.com and paste with ⌘/Ctrl+V.';
+          noteEl.hidden = false;
+          form.setAttribute('aria-describedby', noteEl.id);
+        }
+        return; // keep dialog open so they can read/copy again
+      }
+
+      // Success → close dialog
+      closeDialog();
+      return;
+    }
+
+    // mode === 'copy'
+    try {
+      await navigator.clipboard.writeText(previewEl.value);
+      if (noteEl){ noteEl.textContent = 'copied!'; noteEl.hidden = false; }
+    } catch {
+      if (noteEl){
+        noteEl.textContent = 'could not copy automatically — select all and press ⌘/Ctrl+C.';
+        noteEl.hidden = false;
+      }
+    }
+    // keep open so they can tweak/copy again
+  };
+
+  // Cmd/Ctrl+Enter submits (opens ChatGPT in ask mode; copies in copy mode)
+  const onKeyPreview = (e)=>{
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)){
+      e.preventDefault();
+      onSubmit(e);
+    }
+  };
+
+  // Click-outside close — ignore while actively resizing the textarea
+  const onBackdropClick = (e)=>{
+    const r = form.getBoundingClientRect();
+    const inside =
+      e.clientX >= r.left && e.clientX <= r.right &&
+      e.clientY >= r.top  && e.clientY <= r.bottom;
+    if (inside) return;
+    if (e.target === previewEl && previewEl.matches(':active')) return;
+    closeDialog();
+  };
+
+  const closeDialog = ()=>{
+    try { dlg.close(); } catch {}
+    form.removeEventListener('submit', onSubmit);
+    previewEl.removeEventListener('keydown', onKeyPreview);
+    cancelBtn && cancelBtn.removeEventListener('click', closeDialog);
+    closeBtn  && closeBtn.removeEventListener('click', closeDialog);
+    dlg.removeEventListener('cancel', closeDialog);
+    dlg.removeEventListener('click', onBackdropClick);
+    if (opener && typeof opener.focus === 'function'){
+      setTimeout(()=>{ try{ opener.focus({ preventScroll:true }); }catch{} }, 0);
+    }
+  };
+
+  // Fresh bindings
+  form.addEventListener('submit', onSubmit);
+  previewEl.addEventListener('keydown', onKeyPreview);
+  cancelBtn && cancelBtn.addEventListener('click', closeDialog);
+  closeBtn  && closeBtn.addEventListener('click', closeDialog);
+  dlg.addEventListener('cancel', closeDialog);
+  dlg.addEventListener('click', onBackdropClick);
+
+  // Open and focus the preview so users can edit immediately
+  try { dlg.showModal(); } catch {}
+  setTimeout(()=>{
+    try {
+      previewEl.focus({ preventScroll: true });
+      previewEl.setSelectionRange(0, previewEl.value.length);
+    } catch {}
+  }, 0);
+}
 
 
     /* ===== Details page wiring ===== */
@@ -1683,6 +2521,7 @@ btnLucky?.addEventListener('click', ()=>{
       scan.style.display = 'none';
       details.hidden = false;
       resultHeader.hidden = false;
+      document.body.classList.add('is-details');
       if (!t){ tplTitle.textContent = 'template'; return; }
 
       tplTitle.textContent = (t.label || t.slug || t.id || 'template').toLowerCase();
@@ -1711,22 +2550,63 @@ btnLucky?.addEventListener('click', ()=>{
       const slug = (t.slug || t.id || '').toString();
       openBuilder.href = './glossary/prompt-builder.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
       openGlossary.href = './glossary/templates-glossary.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
-      printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+      // Slice 2: Worksheet URL — prefer ?kind=<plural>&id=<id>&xfer=pb.v1.xfer.<plural>.<id>
+if (window.PB_FLAGS && window.PB_FLAGS.newWorksheetUrl){
+  const r = getRoutingFromTemplate(t); // uses _displayKind || kind || type
+  if (r && r.id && r.kindPlural){
+    const params = new URLSearchParams();
+    params.set('kind', r.kindPlural);
+    params.set('id',   r.id);
+    if (r.xfer) params.set('xfer', r.xfer);
+    printWorksheet.href = './glossary/prompt-worksheet.html?' + params.toString();
+  } else {
+    // Safety fallback: keep legacy slug behavior if we somehow lack id/kind
+    printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+  }
+} else {
+  // Rollback path (flag off): legacy slug behavior
+  printWorksheet.href = './glossary/prompt-worksheet.html' + (slug ? ('?slug=' + encodeURIComponent(slug)) : '');
+}
+      // remember what we just opened, so "try another" can exclude it
+  LAST_CTX.slug = slug;
+  LAST_CTX.q = qEl.value.trim() || LAST_CTX.q;
 
+  // keep the mini search prefilled with the last query
+  try { document.getElementById('q2').value = LAST_CTX.q; } catch(e){}  
+    
       // Build the ChatGPT primer prompt from the template
       const fullPrompt = buildChatGPTPrompt(normalizeTemplateForSummary(t));
+      // Expose for mobile menu parity
+window.__lastRouting = getRoutingFromTemplate(t);
+window.__lastFullPrompt = fullPrompt;
 
-      copyPrompt.onclick = async ()=>{ try{ await navigator.clipboard.writeText(fullPrompt); }catch{} };
-      ask.onclick = async ()=>{
-        try{ await navigator.clipboard.writeText(fullPrompt); }catch{}
-        window.open('https://chat.openai.com/', '_blank', 'noopener');
-      };
+      // Slice 1: copy to clipboard, then (if enabled) open confirmation modal
+copyPrompt.onclick = async ()=>{
+  try { await navigator.clipboard.writeText(fullPrompt); } catch {}
+  if (window.PB_FLAGS && window.PB_FLAGS.newActionModal){
+    // routing not used in Slice 1, but passed for future slices
+    openAction({ mode:'copy', prompt: fullPrompt, routing: getRoutingFromTemplate(t) });
+  }
+};
+// Slice 3: Ask → open modal (edit), then open ChatGPT with ?prompt= on confirm
+ask.onclick = async ()=>{
+  if (window.PB_FLAGS && window.PB_FLAGS.askUrlPrompt){
+    openAction({ mode:'ask', prompt: fullPrompt, routing: getRoutingFromTemplate(t) });
+  } else {
+    // Rollback path: legacy behavior if flag is off
+    try { await navigator.clipboard.writeText(fullPrompt); } catch {}
+    window.open('https://chat.openai.com/', '_blank', 'noopener');
+  }
+};
       back.onclick = ()=>{
         details.hidden = true;
         resultHeader.hidden = true;
+        document.body.classList.remove('is-details');
         hero.style.display = 'block';
         qEl.focus();
       };
+      
+      window.__pushDetailsState(String(t.slug || t.id || ''));
     }
 
     function normalizeTemplateForSummary(t){
@@ -1931,10 +2811,21 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
 
 /* A) Mobile detection: toggles .is-mobile on <html> */
 (function mobileGate(){
-  var mq = window.matchMedia('(hover: none) and (pointer: coarse)');
-  var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
-  function apply(){ document.documentElement.classList.toggle('is-mobile', mq.matches || uaMobile); }
-  try { mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply); } catch(e){}
+  var mq = matchMedia('(hover: none) and (pointer: coarse)');
+  var ua = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i;
+
+  function compute(){
+    var touchy = mq.matches;                 // real touch (no hover + coarse pointer)
+    var uaMobile = ua.test(navigator.userAgent);
+    var narrow = Math.min(window.innerWidth, window.innerHeight) <= 920; // phones/tablets
+    return (touchy || uaMobile) && narrow;
+  }
+  function apply(){
+    document.documentElement.classList.toggle('is-mobile', compute());
+  }
+  try{ mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);}catch(e){}
+  window.addEventListener('resize', apply, {passive:true});
+  window.addEventListener('orientationchange', apply, {passive:true});
   apply();
 })();
 
@@ -1966,7 +2857,13 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
     portalRoot.appendChild(overlay);
 
     /* stop document pointerdown from hiding #ta when tapping suggestions */
-    overlay.addEventListener('pointerdown', function(e){ e.stopPropagation(); }, true);
+    overlay.addEventListener('pointerdown', function(e){
+  // Allow taps on the actual suggestion items (#ta descendants) to reach their handlers
+  var taInOverlay = overlay.querySelector('#ta');
+  if (taInOverlay && taInOverlay.contains(e.target)) return;
+  // Otherwise, prevent document’s global pointerdown from hiding the list prematurely
+  e.stopPropagation();
+}, true);
     scrim.addEventListener('click', function(){
       // close and also hide #ta so your app state stays consistent
       closeOverlay();
@@ -2012,6 +2909,7 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
     scrim.hidden = false;
     overlay.hidden = false;
     document.body.classList.add('scroll-locked');
+    document.documentElement.classList.add('overlay-open');
     input.setAttribute('aria-expanded','true');
     position();
 
@@ -2037,6 +2935,7 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
     } catch(e){}
 
     document.body.classList.remove('scroll-locked');
+    document.documentElement.classList.remove('overlay-open');
     input.setAttribute('aria-expanded','false');
 
     window.removeEventListener('resize', position, { passive: true });
@@ -2083,78 +2982,236 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
 
 <script>
 (function detailsHeaderMobile(){
-  var root   = document.getElementById('resultHeader');
+  var root = document.getElementById('resultHeader');
   if (!root) return;
 
-  var btn    = document.getElementById('resultMenuBtn');
-  var menu   = document.getElementById('resultMenu');
-  var ctas   = root.querySelector('.ctas');
+  var btn  = document.getElementById('resultMenuBtn');
+  var menu = document.getElementById('resultMenu');
 
-  function isMobile(){ return document.documentElement.classList.contains('is-mobile'); }
-  function open(){ if (!isMobile()) return; ensureMenu(); menu.hidden = false; btn.setAttribute('aria-expanded','true'); trapOutsideOnce(); }
-  function close(){ if (!menu || menu.hidden) return; menu.hidden = true; btn.setAttribute('aria-expanded','false'); }
+  // Desktop safety: do nothing if pieces are missing
+  if (!btn || !menu) return;
 
-  // Build the menu exactly once by cloning the existing desktop CTAs
-  function ensureMenu(){
-    if (!menu || !ctas || menu.dataset.built === '1') return;
+  function isMobile(){
+    return document.documentElement.classList.contains('is-mobile');
+  }
+  function haveDetails(){
+    return document.body.classList.contains('is-details') &&
+           !!window.__lastRouting && !!window.__lastFullPrompt;
+  }
+
+  function clearMenu(){
+    while (menu.firstChild) menu.removeChild(menu.firstChild);
+  }
+
+  // Build an item that can be a button or link depending on href
+  function addItem(label, opts){
+    opts = opts || {};
+    var href = opts.href || '';
+    var onClick = opts.onClick || null;
+    var disabled = !!opts.disabled;
+
+    var el = document.createElement(href ? 'a' : 'button');
+    el.className = 'menuItem';
+    el.setAttribute('role','menuitem');
+    el.textContent = label;
+
+    if (href) el.href = href;
+
+    if (disabled){
+      el.setAttribute('aria-disabled','true');
+    } else if (onClick){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        close();
+        onClick();
+      });
+    } else if (href){
+      // Navigate via href on click (close first for tidiness)
+      el.addEventListener('click', function(e){
+        // Allow normal link behavior, just close menu visually
+        close();
+      });
+    }
+
+    menu.appendChild(el);
+    return el;
+  }
+
+  function buildParityMenu(){
+    clearMenu();
+
+    // Defensive lookups so we mirror the same links desktop uses
+    var openGlossary = document.getElementById('openGlossary');
+    var printWorksheet = document.getElementById('printWorksheet');
+    var openBuilder = document.getElementById('openBuilder');
+
+    var routing = window.__lastRouting || {};
+    var fullPrompt = String(window.__lastFullPrompt || '');
+
+    // 1) all templates — unchanged link
+    var glossHref = (openGlossary && openGlossary.href) || './glossary/templates-glossary.html';
+    addItem('all templates', { href: glossHref });
+
+    // 2) worksheet — kind/id/xfer when available; else disabled
+    var canWorksheet = !!(routing.id && routing.kindPlural);
+    var wsHref = (printWorksheet && printWorksheet.href) || '';
+    addItem('worksheet', {
+      href: canWorksheet ? wsHref : '',
+      disabled: !canWorksheet,
+      onClick: canWorksheet ? function(){ window.location.href = wsHref; } : null
+    });
+
+    // 3) prompt builder — existing ?slug
+    var pbHref = (openBuilder && openBuilder.href) || './glossary/prompt-builder.html';
+    addItem('prompt builder', { href: pbHref });
+
+    // 4) ask — open the same action modal as desktop
+    addItem('ask', {
+      disabled: !haveDetails(),
+      onClick: function(){
+        if (!haveDetails()) return;
+        if (window.PB_FLAGS && window.PB_FLAGS.askUrlPrompt){
+          openAction({ mode:'ask', prompt: fullPrompt, routing: routing });
+        } else {
+          // rollback path if flag off
+          try { navigator.clipboard.writeText(fullPrompt); } catch(e){}
+          window.open('https://chat.openai.com/', '_blank', 'noopener');
+        }
+      }
+    });
+
+    // 5) copy — open the same action modal as desktop
+    addItem('copy', {
+      disabled: !haveDetails(),
+      onClick: function(){
+        if (!haveDetails()) return;
+        // keep initial quick copy for parity with desktop flow
+        (async function(){
+          try { await navigator.clipboard.writeText(fullPrompt); } catch(e){}
+          if (window.PB_FLAGS && window.PB_FLAGS.newActionModal){
+            openAction({ mode:'copy', prompt: fullPrompt, routing: routing });
+          }
+        })();
+      }
+    });
+  }
+
+  // Legacy fallback: clone the header CTAs if parity flag is OFF
+  function buildLegacyMenu(){
+    clearMenu();
+    var ctas = root.querySelector('.ctas');
+    if (!ctas) return;
     Array.from(ctas.children).forEach(function(node){
       if (!(node instanceof HTMLElement)) return;
-
-      // Create a menuitem (button or link)
       var isLink = node.tagName.toLowerCase() === 'a';
       var item = document.createElement(isLink ? 'a' : 'button');
-      item.setAttribute('role', 'menuitem');
+      item.setAttribute('role','menuitem');
       item.className = 'menuItem';
       item.textContent = (node.getAttribute('aria-label') || node.textContent || 'Action').trim();
-
       if (isLink && node.getAttribute('href')) {
-        // Copy href so middle-click works; still proxy click to keep behavior
         item.href = node.getAttribute('href');
       }
-
-      // Proxy click to the original CTA so existing logic continues to run
       item.addEventListener('click', function(e){
         e.preventDefault(); e.stopPropagation();
         close();
-        // If link, honor target behavior
         if (isLink && node.href) { window.location.href = node.href; return; }
-        // Otherwise trigger original click
         node.click();
       });
-
       menu.appendChild(item);
     });
-    menu.dataset.built = '1';
+  }
+
+  function ensureMenu(){
+    if (!isMobile()) return;
+    if (window.PB_FLAGS && window.PB_FLAGS.mobileMenuParity) buildParityMenu();
+    else buildLegacyMenu();
+  }
+
+  function open(){
+    if (!isMobile()) return;
+    ensureMenu();
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded','true');
+    trapOutsideOnce();
+  }
+  function close(){
+    if (menu.hidden) return;
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded','false');
   }
 
   function trapOutsideOnce(){
-    // Close when clicking outside or pressing Escape
     var onDoc = function(e){
-      if (!menu.contains(e.target) && e.target !== btn) { close(); document.removeEventListener('click', onDoc, true); }
+      if (!menu.contains(e.target) && e.target !== btn) {
+        close();
+        document.removeEventListener('click', onDoc, true);
+      }
     };
     document.addEventListener('click', onDoc, true);
 
     var onKey = function(e){
-      if (e.key === 'Escape'){ e.preventDefault(); close(); document.removeEventListener('keydown', onKey, true); }
+      if (e.key === 'Escape') { e.preventDefault(); close(); document.removeEventListener('keydown', onKey, true); }
     };
     document.addEventListener('keydown', onKey, true);
   }
 
-  if (btn){
-    btn.addEventListener('click', function(e){
-      if (!isMobile()) return;
-      e.preventDefault(); e.stopPropagation();
-      menu.hidden ? open() : close();
-    });
-  }
+  btn.addEventListener('click', function(e){
+    if (!isMobile()) return;
+    e.preventDefault(); e.stopPropagation();
+    menu.hidden ? open() : close();
+  });
 
-  // If the device context flips back to desktop, ensure the menu is closed
+  // If device context flips to desktop, ensure the menu is closed
   var mq = matchMedia('(hover: none) and (pointer: coarse)');
   function maybeClose(){ if (!isMobile()) close(); }
   try { mq.addEventListener ? mq.addEventListener('change', maybeClose) : mq.addListener(maybeClose); } catch(e){}
 })();
 </script>
 
+<script>
+// === 1) History wiring: add near your other top-level refs (after hero/scan/details/resultHeader are defined) ===
+(function wireHistory(){
+  // Make sure we have an initial "home" state
+  try {
+    if (!(history.state && history.state.view)) {
+      history.replaceState({ view: 'home' }, '', location.pathname + location.search);
+    }
+  } catch(e){}
+
+  // Respond to browser back/forward
+  window.addEventListener('popstate', function(e){
+    var st = e.state || { view: 'home' };
+
+    if (st.view === 'home'){
+      // Show hero; hide details/scan/header
+      try { scan.style.display = 'none'; } catch(e){}
+      try { details.hidden = true; } catch(e){}
+      try { resultHeader.hidden = true; } catch(e){}
+      try { hero.style.display = 'block'; } catch(e){}
+      try { qEl && qEl.focus(); } catch(e){}
+    } else if (st.view === 'details'){
+      // Optional: restore details by slug if present; otherwise fall back to hero
+      var slug = st.slug;
+      var t = slug && Array.isArray(INDEX) ? INDEX.find(function(x){
+        return String(x.slug || x.id) === String(slug);
+      }) : null;
+      if (t) { showDetails(t); }
+      else {
+        try { scan.style.display = 'none'; } catch(e){}
+        try { details.hidden = true; } catch(e){}
+        try { resultHeader.hidden = true; } catch(e){}
+        try { hero.style.display = 'block'; } catch(e){}
+      }
+    }
+  });
+
+  // Helper we’ll call when entering details
+  window.__pushDetailsState = function(slug){
+    try { history.pushState({ view:'details', slug: slug || null }, '', '#details'); } catch(e){}
+  };
+})();
+</script>
 
   
 </body>
