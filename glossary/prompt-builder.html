@@ -2234,23 +2234,28 @@ if (countEl) {
 }
 
 
-  sel.innerHTML = hits.map(t => {
-const label = t.label || t.name || t.slug || t.id || 'Untitled';
-const kindBadge = t.kind ? ` • ${t.kind}` : '';
+// Sort A→Z by a friendly label (case-insensitive) before rendering
+const sorted = hits.slice().sort((a, b) => {
+  const aa = String(a.label || a.name || a.slug || a.id || '').trim();
+  const bb = String(b.label || b.name || b.slug || b.id || '').trim();
+  return aa.localeCompare(bb, 'en', { sensitivity: 'base' });
+});
 
-const u0 = firstUseTag(t);
-const useBadge = u0 ? ` • ${friendlyUseTag(u0)}` : '';
+sel.innerHTML = sorted.map(t => {
+  const label = t.label || t.name || t.slug || t.id || 'Untitled';
+  const kindBadge = t.kind ? ` • ${t.kind}` : '';
 
-let suffix = kindBadge;              // default: keep existing behavior
-if (FW_OPTION_BADGE_MODE === 'use')  suffix = useBadge || kindBadge;     // prefer use; fallback to kind
-if (FW_OPTION_BADGE_MODE === 'both') suffix = `${kindBadge}${useBadge}`; // show both if available
+  const u0 = firstUseTag(t);
+  const useBadge = u0 ? ` • ${friendlyUseTag(u0)}` : '';
 
-const val = t.id || t.slug || label;
-return `<option value="${val}">${label}${suffix}</option>`;
+  let suffix = kindBadge;
+  if (FW_OPTION_BADGE_MODE === 'use')  suffix = useBadge || kindBadge;
+  if (FW_OPTION_BADGE_MODE === 'both') suffix = `${kindBadge}${useBadge}`;
 
-  })
-  
-  .join('');
+  const val = t.id || t.slug || label;
+  return `<option value="${val}">${label}${suffix}</option>`;
+}).join('');
+
 
   if (!sel.innerHTML){
     sel.innerHTML = `<option disabled>(No matches)</option>`;
