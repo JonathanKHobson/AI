@@ -2279,6 +2279,188 @@ window.FIND = function(id){
 };
 </script>
 
+<script>
+// === Slice 3: Resolver + apply-once guard ===================================
+function resolveTemplate(value){
+  if (!value) return null;
+  // Use your unified FIND() first (id/slug/label-aware)
+  const hit = (typeof window.FIND === 'function') ? window.FIND(value) : null;
+  if (hit) return hit;
+  // Fallback: exact label match if FIND changed
+  const all = (typeof getAllTemplates === 'function') ? getAllTemplates() : [];
+  const v = String(value).toLowerCase();
+  return all.find(t => String(t.label||'').toLowerCase() === v) || null;
+}
+
+function isTabEmpty(tab){
+  if (!tab) return true;
+  const hasFields = tab.fields && Object.values(tab.fields).some(v => String(v||'').trim());
+  const hasExtra  = !!String(tab.extra||'').trim();
+  const hasCtx    = tab.common && Object.values(tab.common).some(v => String(v||'').trim());
+  return !(hasFields || hasExtra || hasCtx);
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.hidden = false;
+  // auto-hide after ~2.4s
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(()=>{ t.hidden = true; }, 2400);
+}
+
+const DL_FLAG = 'pb.v1.deeplink_applied';
+
+function applyDeeplinkIfAny(){
+  const dl = window.__DEEPLINK__;
+  if (!dl || sessionStorage.getItem(DL_FLAG)) return;
+
+  const hit = resolveTemplate(dl.value);
+  if (!hit){
+    // Graceful failure: prime search and notify
+    const q = document.getElementById('fwSearch');
+    if (q) { q.value = dl.raw; q.focus(); }
+    showToast(`Template “${dl.raw}” not found. Showing your last session.`);
+    sessionStorage.setItem(DL_FLAG, '1');
+    console.info('[deeplink] not found →', dl);
+    return;
+  }
+
+  // Determine active tab and reuse/add per rule
+  let tab = null, reused = false;
+  try {
+    tab = (window.state && Array.isArray(window.state.tabs))
+      ? window.state.tabs[window.state.active || 0]
+      : null;
+  } catch(_) {}
+
+  if (!tab || !isTabEmpty(tab)){
+    // Add a new tab and activate it
+    reused = false;
+    if (typeof window.addTab === 'function'){
+      window.addTab(false); // your addTab should switch active for us
+      try { tab = window.state.tabs[window.state.active]; } catch(_) { tab = null; }
+    } else if (window.state && Array.isArray(window.state.tabs)) {
+      // Fallback safety: minimal tab object
+      window.state.tabs.push({ id:'', fields:{}, extra:'', common:{} });
+      window.state.active = window.state.tabs.length - 1;
+      tab = window.state.tabs[window.state.active];
+    }
+  } else {
+    reused = true;
+  }
+
+  // Apply the template to the chosen tab
+  if (tab){
+    tab.id     = hit.id || hit.slug || dl.value;
+    tab.slug   = hit.slug || '';
+    tab.kind   = hit.kind || tab.kind || 'framework';
+    tab.fields = {};         // clear fields so boosters/UX are deterministic
+    tab.extra  = '';         // use boosters unless user types later
+  }
+
+  // Minimal UI sync
+  const sel = document.getElementById('frameworkSel');
+  if (sel) {
+    sel.value = (hit.id || hit.slug || '');
+  }
+  const q = document.getElementById('fwSearch');
+  if (q) q.value = dl.raw;
+
+  // Re-render panels
+  try { if (typeof renderFields        === 'function') renderFields(); }        catch(_){}
+  try { if (typeof emit               === 'function') emit(); else if (typeof emitAll === 'function') emitAll(); } catch(_){}
+  try { if (typeof refreshTemplateList === 'function') refreshTemplateList(); } catch(_){}
+
+  // Mark as applied (one-shot per load)
+  sessionStorage.setItem(DL_FLAG, '1');
+
+  console.info(`[deeplink] applying "${dl.raw}" → "${hit.id||hit.slug}" (${reused?'reuseTab':'newTab'})`);
+}
+</script>
+
+
+<script>
+// === Slice 2: Data-ready barrier ============================================
+let __DATA_READY_PROMISE = null;
+
+function whenDataReady(fn){
+  if (!__DATA_READY_PROMISE){
+    __DATA_READY_PROMISE = new Promise((resolve)=>{
+      // A) DOMContentLoaded
+      const domReady = (document.readyState === 'interactive' || document.readyState === 'complete')
+        ? Promise.resolve()
+        : new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));
+
+      // B) Core templates present (FRAMEWORKS/TEMPLATES/templates)
+      const coreReady = new Promise(r=>{
+        let tries = 0;
+        (function tick(){
+          tries++;
+          const hasCore =
+            Array.isArray(window.FRAMEWORKS) ||
+            Array.isArray(window.TEMPLATES)  ||
+            Array.isArray(window.templates);
+          if (hasCore) return r();
+          if (tries < 200) { setTimeout(tick, 20); } // ~4s max
+          else r(); // give up gracefully; we'll still proceed
+        })();
+      });
+
+      // C) Tasks loader has fired its onready (even if file missing)
+      const tasksReady = new Promise(r=>{
+        try {
+          // ensureTasksLoaded is defined earlier in this file
+          ensureTasksLoaded(()=> r());
+        } catch(_) {
+          r(); // if missing, don't block boot
+        }
+      });
+
+      Promise.all([domReady, coreReady, tasksReady]).then(resolve);
+    });
+  }
+
+  return __DATA_READY_PROMISE.then(()=>{
+    if (typeof fn === 'function') {
+      try { fn(); } catch (e) { console.warn('[deeplink] handler error:', e); }
+    }
+  });
+}
+</script>
+
+
+<script>
+// === Slice 1: Deep-link parser (no side effects) ============================
+function parseLinkTarget(){
+  // 1) Prefer explicit search params (?id=.. or ?slug=..)
+  const url   = new URL(location.href);
+  const rawId = url.searchParams.get('id');
+  const rawSl = url.searchParams.get('slug');
+
+  // 2) Fallback to hash (#<id-or-slug>)
+  const rawHash = (location.hash || '').replace(/^#/, '');
+
+  // Resolve precedence: id > slug > hash
+  const raw = (rawId || rawSl || rawHash || '').trim();
+  if (!raw) return null;
+
+  // Normalize & label the source
+  const value = raw.toLowerCase();
+  const type  = rawId ? 'id' : (rawSl ? 'slug' : 'hash');
+
+  return { raw, value, type };
+}
+
+// Expose for devtools inspection (no side effects here)
+window.__DEEPLINK__ = parseLinkTarget();
+if (window.__DEEPLINK__) {
+  console.info('[deeplink] detected →', window.__DEEPLINK__);
+}
+</script>
+
+
   <script>
   (function(){
     const $ = s=>document.querySelector(s);
@@ -2692,6 +2874,7 @@ ensureTasksLoaded(()=>{
   try{
     updateFilterOptions();   // will rewrite below
     refreshTemplateList();   // will add below
+    whenDataReady(applyDeeplinkIfAny);
   }catch(_){}
 });
   
