@@ -1185,6 +1185,189 @@
         search_text: "argument mapping — claim · premises · objections · rejoinders argument-mapping argument mapping lays out claims, supporting premises, objections, and rebuttals as a tree. it surfaces hidden assumptions, clarifies logical structure, and reveals weaknesses. toulmin elements (grounds, warrant, backing, qualifier, rebuttal) can be layered in for depth. provide a thesis, premises, objections, and rejoinders. optionally add warrants, backing, qualifiers, and a counter-thesis. the output includes a structured ascii tree, an assessment of strengths/weaknesses, and suggestions for refinement. type:framework use:presentations use:teaching topic:future-self phase:apply level:beginner phase:premortem use:pattern use:iteration use:copywriting reasoning critical-thinking design psychology ethics debate preparation and rebuttal planning design trade-offs and product decisions policy briefs and litigation memos essay planning and thesis testing negotiation strategy ethical reasoning and value debates teaching logic and critical thinking debiasing reasoning by mapping assumptions always generate at least one objection, even if the input is one-sided. map each rejoinder directly to its objection for clarity. highlight the warrant if provided; if missing, suggest one. return a 1–5 confidence score and note which missing element would strengthen the argument most. flag if the claim relies heavily on assumptions rather than evidence. include both empirical (fact-based) and normative (value-based) premises if possible. identify any logical fallacies that weaken the argument. thesis / main claim premises (one per line) evidence / grounds warrant (optional) backing (optional) qualifier (optional) counter-thesis (optional) objections (one per line) rejoinders (one per line) implications (optional) standard of proof"
       }
     },
+    
+   {
+  id: "avm_framework",
+  slug: "amor-vita-memoria-avm",
+  label: "Amor–Vita–Memoria (AVM)",
+  kind: "framework",
+
+  // Discovery taxonomy tuned for grief-aware reflection & journaling
+  categories: [
+    "self-reflection",
+    "wellbeing",
+    "personal-development",
+    "mental-health",
+    "grief"
+  ],
+  tags: [
+    "type:framework",
+    "use:reflection",
+    "use:journaling",
+    "use:gratitude-journaling",
+    "use:self-care",
+    "topic:values",
+    "topic:gratitude",
+    "topic:grief",
+    "topic:bereavement",
+    "origin:original",
+    "level:beginner"
+  ],
+
+  // Grief, gratitude, and continuing-bonds forward use-cases
+  use_cases: [
+    "mourning journal — name who you hold love for (amāre), how you will live today (vīvere), and who/what you remember (mortuōrum)",
+    "daily gratitude in grief — one thank-you to a person, place, pet, mentor, or prior self",
+    "continuing bonds — write to the deceased or to a past self; keep the thread",
+    "tiny act of living — choose one small, reversible step done in honor/memory",
+    "anniversary & hard-day ritual — light touch ritual + one memory vignette",
+    "values-under-pressure — choose what to protect when energy is low",
+    "evening close — name a loss, record a lesson, thank an ancestor/mentor"
+  ],
+
+  // Gentle grief-aware nudges
+  boosters: [
+    "Write AVM as three questions first: Mementō amāre (who to love/protect?), Mementō vīvere (how to live today?), Mementō mortuōrum (who/what to remember?).",
+    "Name one real person (living or dead) or part of self to protect today (amāre).",
+    "Pick one tiny, preferably reversible step (≤10 minutes) done in honor or care (vīvere).",
+    "Tell a short memory vignette with one sensory detail; add one line of gratitude (mortuōrum).",
+    "Write in second person if helpful (“I miss you…”, “You taught me…”).",
+    "If you get stuck, make it smaller and more reversible; tears are data, not failure.",
+    "If any lens feels red, stop and soften the plan; yellow means adjust the scope."
+  ],
+
+  // Concise description with provenance note
+  definition:
+    "AVM is a three-lens journaling scaffold for grief, gratitude, and gentle momentum: Mementō amāre (remember to love/protect), Mementō vīvere (remember to live—one tiny act), Mementō mortuōrum (remember the dead—carry the story). Use it to keep bonds, act softly, and honor limits. Professional note: AVM is a user-originated working pattern (non-canonical) presented here for practical use.",
+
+  help:
+    "Walk the triangle each day. Amāre: who/what you’ll actively love or protect. Vīvere: one reversible act of living you can finish now. Mortuōrum: a memory vignette + one gratitude line. Green/green/green → proceed; yellow → adjust; red → soften or rest. Use letter-writing to a loved one or past self if it helps.",
+
+  // Fields: journaling-first AVM + legacy AVM action-planning (kept for backward compat)
+  fields: [
+    // Situation
+    { label: "What’s happening (one sentence)", key: "situation", type: "textarea", ph: "State the decision, mood, or moment plainly." },
+
+    // ——— Mementō Trio (journaling-first) ———
+    { label: "Dedication (optional)", key: "dedication", type: "text", ph: "For __ (name, role, pet, place, or prior self)" },
+    { label: "Loss or tenderness you’re holding", key: "loss_kind", type: "select",
+      options: ["a loved one", "a former self", "the life I once had", "a pet", "other"], ph: "Name the shape of the ache." },
+
+    // Mementō amāre — remember to love/protect
+    { label: "Mementō amāre — Who/what will you actively love/protect today?", key: "amare_who", type: "text", ph: "Name them (or a part of you)." },
+
+    // Mementō vīvere — remember to live (tiny, reversible)
+    { label: "Mementō vīvere — Tiny act of living (≤10 min)", key: "vivere_act", type: "textarea", ph: "One concrete act done in honor/care, preferably reversible." },
+
+    // Mementō mortuōrum — remember the dead (or what was)
+    { label: "Mementō mortuōrum — Who/what are you remembering?", key: "mortuorum_name", type: "text", ph: "A person, place, season, or prior self." },
+    { label: "Memory vignette (1–3 sentences, include one sensory detail)", key: "mortuorum_memory", type: "textarea", ph: "“The way their laugh sounded in the kitchen…”" },
+    { label: "Gratitude line (optional)", key: "mortuorum_gratitude", type: "text", ph: "“Thank you for teaching me __.”" },
+
+    // ——— Legacy AVM (advanced/optional action-planning) ———
+    // AMOR — care/values
+    { label: "Amor — Value to honor today", key: "amor_value", type: "text", ph: "Trust, kindness, stability, creativity, health…" },
+    { label: "Amor — Protected person/relationship", key: "amor_protected", type: "text", ph: "Who or what you’ll actively care for today (name them)." },
+    { label: "Amor — Harm to avoid (be specific)", key: "amor_harm", type: "textarea", ph: "E.g., ‘snapping at <name>’, ‘skipping meds’, ‘doomscrolling past bedtime’." },
+
+    // VITA — action/energy
+    { label: "Vita — Next tiny step (≤10 min)", key: "vita_action", type: "textarea", ph: "One concrete, finishable action you can start now." },
+    { label: "Vita — Reversibility", key: "vita_reversibility", type: "select", options: ["high", "low"], ph: "If it goes poorly, can you undo it?" },
+    { label: "Vita — Today’s energy ask", key: "vita_energy", type: "select", options: ["low", "high"], ph: "Be honest about your current bandwidth." },
+
+    // MEMORIA — lineage/limits/gratitude
+    { label: "Memoria — Promises/rituals to respect", key: "memoria_commitments", type: "textarea", ph: "Medication, bedtime, therapy, movement, prayer, weekly call…" },
+    { label: "Memoria — Precedent this sets (habit formed)", key: "memoria_precedent", type: "textarea", ph: "If repeated, what will this teach future-you is ‘normal’?" },
+    { label: "Memoria — Long-tail risk (name the non-obvious)", key: "memoria_long_tail", type: "textarea", ph: "What’s the subtle cost if this drifts for months?" },
+
+    // Additive helpers for wellbeing (optional)
+    { label: "Gratitude — Who/what I’m thankful for (optional)", key: "gratitude_to", type: "text", ph: "Name a person, place, mentor, or prior self." },
+    { label: "Support — Small ask I can make (optional)", key: "support_ask", type: "text", ph: "A lightweight request that would help today." },
+    { label: "Body check-in (optional)", key: "body_signal", type: "text", ph: "Tense jaw? shallow breath? need water? note it." },
+
+    // Decision & Debrief
+    { label: "Decision", key: "decision", type: "select", options: ["do", "delay", "redesign"], ph: "Choose your path." },
+    { label: "Debrief (one sentence after action)", key: "debrief", type: "textarea", ph: "What changed in you or the situation?" },
+
+    // Optional “keep it honest” scores (reframed)
+    { label: "Amor score 1–5 (reduced suffering / increased trust)", key: "amor_score", type: "text", ph: "Optional" },
+    { label: "Vita score 1–5 (visible movement today)", key: "vita_score", type: "text", ph: "Optional" },
+    { label: "Memoria score 1–5 (promises honored / gratitude named)", key: "memoria_score", type: "text", ph: "Optional" }
+  ],
+
+  // Rendered prompt text
+  template: ({
+    situation, dedication, loss_kind,
+    amare_who, vivere_act, mortuorum_name, mortuorum_memory, mortuorum_gratitude,
+    // legacy fields (kept for compat / optional action-planning)
+    amor_value, amor_protected, amor_harm,
+    vita_action, vita_reversibility, vita_energy,
+    memoria_commitments, memoria_precedent, memoria_long_tail,
+    gratitude_to, support_ask, body_signal,
+    decision, debrief, amor_score, vita_score, memoria_score,
+    ctx, audience, style, tone
+  }) => [
+    "Amor–Vita–Memoria — grief & gratitude journaling",
+    "Note: AVM is a user-originated, non-canonical working pattern shared professionally.",
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    situation && `What’s happening: ${situation}`,
+    dedication && `Dedication: ${dedication}`,
+    loss_kind && `Holding: ${loss_kind}`,
+    "",
+    "Mementō amāre — remember to love/protect",
+    amare_who && `• Who/what I’ll love/protect today: ${amare_who}`,
+    "",
+    "Mementō vīvere — remember to live",
+    vivere_act && `• Tiny, reversible act (≤10 min):\n${vivere_act}`,
+    "",
+    "Mementō mortuōrum — remember the dead (or what was)",
+    mortuorum_name && `• Remembering: ${mortuorum_name}`,
+    mortuorum_memory && `• Memory vignette:\n${mortuorum_memory}`,
+    (mortuorum_gratitude || gratitude_to) && `• Gratitude: ${mortuorum_gratitude || gratitude_to}`,
+    "",
+    body_signal && `Body check-in: ${body_signal}`,
+    support_ask && `Support ask: ${support_ask}`,
+    "",
+    // — Optional legacy AVM (action-planning) —
+    (amor_value || amor_protected || amor_harm || vita_action || vita_reversibility || vita_energy ||
+     memoria_commitments || memoria_precedent || memoria_long_tail) && "— Optional action-planning (classic AVM) —",
+    amor_value && `Amor — value to honor: ${amor_value}`,
+    amor_protected && `Amor — protected person/relationship: ${amor_protected}`,
+    amor_harm && `Amor — harm to avoid:\n${amor_harm}`,
+    vita_action && `Vita — next tiny step (≤10 min):\n${vita_action}`,
+    vita_reversibility && `Vita — reversibility: ${vita_reversibility}`,
+    vita_energy && `Vita — today’s energy ask: ${vita_energy}`,
+    memoria_commitments && `Memoria — promises/rituals to respect:\n${memoria_commitments}`,
+    memoria_precedent && `Memoria — precedent (habit formed):\n${memoria_precedent}`,
+    memoria_long_tail && `Memoria — long-tail risk (non-obvious):\n${memoria_long_tail}`,
+    "",
+    "Decision logic:",
+    "- If any lens is red, soften or redesign. Yellow → adjust. Three greens → proceed.",
+    decision && `Decision: ${decision}`,
+    debrief && `Debrief (after action): ${debrief}`,
+    (amor_score || vita_score || memoria_score) && [
+      "",
+      "Scores (optional, 1–5):",
+      amor_score && `- Amor: ${amor_score}`,
+      vita_score && `- Vita: ${vita_score}`,
+      memoria_score && `- Memoria: ${memoria_score}`
+    ].filter(Boolean).join("\n"),
+    "",
+    "Cadence suggestion:",
+    "- Morning — Amāre: name who/what you’ll protect; send a gentle message.",
+    "- Midday — Vīvere: ship one tiny, reversible act in honor or care.",
+    "- Evening — Mortuōrum: a vignette + a gratitude line; close the loop."
+  ].filter(Boolean).join("\n"),
+
+  meta: {
+    search_text:
+      "amor–vita–memoria avm grief mourning bereavement gratitude journaling continuing bonds memento amare vivere mortuorum remember to love remember to live remember the dead tiny reversible step values care lineage limits memory vignette dedication letter writing protected person body check-in support ask ritual anniversary"
+  }
+},
+
 
     {
       id: "bab",
@@ -16671,6 +16854,149 @@ Dissatisfaction ↓`;
         search_text: "task prompt breakdown — task/recipe + do/don’t (cot) task-recipe-cot decompose a goal into explicit steps (tasks), with optional do/don’t constraints, then produce the deliverable. provide a main brief, enumerate tasks (add as many as needed), then add do/don’t guardrails. use:pattern use:teaching use:healing level:beginner use:process-improvement use:recipe use:brainstorming use:iteration prompt-development-techniques planning break a goal into concrete steps write a procedural recipe handoff a task with crisp do/don’t guardrails guide short “explain-your-steps” reasoning show the step plan as a numbered list before the final deliverable. keep reasoning concise and procedural (no hidden chain-of-thought). list assumptions in one line if any are required. main brief / goal tasks (one per line) do’s (must do) don’ts / constraints"
       }
     },
+    
+    {
+  id: "three_vaults_practice",
+  slug: "three-vaults-practice",
+  label: "Three Vaults — Facts → Stories → Essence",
+  kind: "framework",
+
+  // Discovery taxonomy
+  categories: [
+    "self-reflection",
+    "wellbeing",
+    "personal-development",
+    "communication",
+    "facilitation",
+    "coaching"
+  ],
+  tags: [
+    "type:practice",
+    "use:check-in",
+    "use:facilitation",
+    "use:coaching",
+    "use:journaling",
+    "topic:vulnerability",
+    "topic:communication",
+    "topic:mindfulness",
+    "origin:MEA",
+    "level:beginner"
+  ],
+
+  // Why to use it
+  use_cases: [
+    "1:1 or team check-ins that move beyond small talk (with consent)",
+    "group kickoffs and retreats to build trust progressively",
+    "coaching conversations that honor safety and depth",
+    "personal journaling: ladder from facts to essence",
+    "conflict repair or post-mortems with careful pacing"
+  ],
+
+  // Helpful nudges
+  boosters: [
+    "Ladder up, don’t teleport: V1 (facts, 2 minutes) → V2 (one short story) → V3 (one sentence of embodied essence).",
+    "Ask for consent before V3: “Are you open to going past facts into what’s true for me right now?”",
+    "Timebox V1 and V2; keep V2 to one story to avoid identity armor.",
+    "In V3 use present tense and body sense: “What feels most true in my body right now is…”",
+    "Deep listening: no fixing, no advising, no rescuing; reflect words, not diagnoses.",
+    "If trust wobbles, stop at V2 today. You can always return later.",
+    "Clarify confidentiality separately (BRAVING’s ‘Vault’) so people know how what’s shared is held."
+  ],
+
+  // Short, professional description + origin note
+  definition:
+    "A paced conversation practice that climbs through three ‘vaults’: V1 Facts (mind, low vulnerability), V2 Stories (heart, medium vulnerability), V3 Essence (soul, present-moment truth, high vulnerability). Adapted for facilitation and self-reflection.",
+  help:
+    "Set the container (consent, purpose, time). Run V1→V2→V3 in order, never jumping straight to V3. Use clear consent language and timeboxes. Important: Brené Brown’s BRAVING ‘Vault’ = keeping confidences; this Three Vaults practice (taught at Modern Elder Academy) = depth of sharing. Different concepts; similar metaphor.",
+
+  notice:
+    "Attribution: The ‘Three Vaults’ framing is taught at Modern Elder Academy (MEA). This template adapts the practice for facilitation and journaling. Disambiguation: BRAVING’s ‘Vault’ (Brené Brown) refers to confidentiality—distinct from this depth-of-sharing ladder.",
+
+  // Fields
+  fields: [
+    // Container & safety
+    { label: "Purpose (why we’re doing this)", key: "purpose", type: "text",
+      ph: "e.g., ‘Deeper check-in for today’s retreat’" },
+    { label: "Timebox (minutes total)", key: "timebox_total", type: "text",
+      ph: "e.g., 10" },
+    { label: "Consent language you’ll use", key: "consent_script", type: "textarea",
+      ph: "“Are you open to going past facts into what’s true for me right now?”" },
+    { label: "Confidentiality agreement (if any)", key: "confidentiality_note", type: "textarea",
+      ph: "State how shares will be held. (This covers BRAVING’s ‘Vault’. )" },
+    { label: "Roles / participants", key: "roles", type: "text",
+      ph: "e.g., ‘Speaker: A; Listener: B’ or ‘Circle of 6’" },
+
+    // Vault 1 — Facts (mind)
+    { label: "V1 — Facts (2 minutes, polite surface facts)", key: "v1_facts", type: "textarea",
+      ph: "Bullet points: résumé facts, headlines, current status. Keep it clean and short." },
+
+    // Vault 2 — Stories (heart)
+    { label: "V2 — One short story behind the facts", key: "v2_story", type: "textarea",
+      ph: "Why these facts matter; what’s the personal meaning or motivation?" },
+
+    // Vault 3 — Essence (soul, right now)
+    { label: "V3 — Essence (one sentence, present tense)", key: "v3_essence", type: "text",
+      ph: "“What feels most true in my body right now is…”" },
+
+    // Guardrails & support
+    { label: "If V3 consent isn’t there, stop at…", key: "v3_boundary", type: "select",
+      options: ["V1", "V2"], ph: "Choose the safe stopping point" },
+    { label: "Support request (optional)", key: "support_ask", type: "text",
+      ph: "A small, concrete ask from listeners/teammates" },
+    { label: "Facilitator notes (optional)", key: "fac_notes", type: "textarea",
+      ph: "Timing, order, who goes first, reflection prompts…" },
+
+    // Reflection/closure
+    { label: "Close-out: gratitude or takeaway (one sentence)", key: "close_note", type: "text",
+      ph: "Name one thing you’re thankful for or learned" }
+  ],
+
+  // Rendered output
+  template: ({
+    purpose, timebox_total, consent_script, confidentiality_note, roles,
+    v1_facts, v2_story, v3_essence, v3_boundary, support_ask, fac_notes, close_note,
+    ctx, audience, style, tone
+  }) => [
+    "Three Vaults — Facilitation Card",
+    "— Adapted for safe, paced depth: V1 Facts → V2 Stories → V3 Essence —",
+    "Attribution: practice taught at Modern Elder Academy (MEA).",
+    "Note: BRAVING’s ‘Vault’ (Brené Brown) = confidentiality; distinct from this depth ladder.",
+    "",
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    purpose && `Purpose: ${purpose}`,
+    timebox_total && `Timebox: ${timebox_total} min`,
+    roles && `Participants/Roles: ${roles}`,
+    confidentiality_note && `Confidentiality: ${confidentiality_note}`,
+    consent_script && `Consent: ${consent_script}`,
+    "",
+    "Run it in order — ladder up, don’t teleport:",
+    "",
+    "V1 — Facts (mind; low vulnerability; ~2 min)",
+    v1_facts && `• Facts:\n${v1_facts}`,
+    "",
+    "V2 — Stories (heart; medium vulnerability; one short story)",
+    v2_story && `• Story behind the facts:\n${v2_story}`,
+    "",
+    "V3 — Essence (soul; present-moment truth; high vulnerability)",
+    v3_essence && `• Essence (present tense): ${v3_essence}`,
+    "",
+    v3_boundary && `Boundary: If consent/trust wobbles, stop at ${v3_boundary}.`,
+    support_ask && `Support request: ${support_ask}`,
+    fac_notes && `Facilitator notes:\n${fac_notes}`,
+    close_note && `Close-out (gratitude/takeaway): ${close_note}`,
+    "",
+    "Listener stance: no fixing, no advising, no rescuing. Reflect words and thank the share."
+  ].filter(Boolean).join("\n"),
+
+  meta: {
+    search_text:
+      "three vaults practice facts stories essence modern elder academy MEA braving vault confidentiality consent vulnerability facilitation check-in coaching deep listening ladder up not therapy present-moment truth"
+  }
+},
+
 
     {
       id: "time_machine",
@@ -17936,7 +18262,4442 @@ Dissatisfaction ↓`;
       meta: {
         search_text: "zhongyong — doctrine of the mean (confucian moderation) zhongyong-doctrine-of-the-mean a practical method for finding a context-appropriate middle path between harmful extremes. list extremes, principles guiding the mean, adjustment steps, and acceptance criteria. type:framework use:iteration use:content use:pattern level:intermediate use:communication ethics reasoning cultural-frameworks avoid extremes by calibrating to context craft proportionate responses and tone name the two extremes explicitly, then the principled middle. set acceptance criteria for “balanced enough”. harmful extremes (a and b) principles for the mean adjustment steps acceptance criteria"
       }
-    }
+    },
+    
+    /* ──────────────────────────────────────────────────────────────────────────
+   Focusing (felt-sense check) — Eugene Gendlin–inspired, secular framing
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "focusing_felt_sense",
+  slug: "focusing-felt-sense",
+  label: "Focusing — Felt-Sense Check",
+  kind: "framework",
+  categories: ["self-reflection","wellbeing","personal-development","mental-health","mindfulness"],
+  tags: [
+    "type:practice","use:check-in","use:journaling","use:decision-making",
+    "topic:embodiment","topic:feelings","topic:creativity","origin:gendlin","level:beginner"
+  ],
+  use_cases: [
+    "name the ‘aboutness’ of a knotty situation without forcing clarity",
+    "move from mental fog to a small next step",
+    "check boundaries/fit when ambivalent",
+    "unblock creative work by listening to the body"
+  ],
+  boosters: [
+    "Go slow. Let a vague, more-than-words feel form. Don’t force it.",
+    "Use handles (small words/metaphors) that match the feel: ‘dense’, ‘static’, ‘citrus-bright’.",
+    "Test/adjust the handle until your body says ‘yes, that’.",
+    "Wait for a felt shift (a small easing, breath, or warmth) before deciding.",
+    "Keep it present-tense and concrete; skip analysis."
+  ],
+  definition:
+    "A short, embodied inquiry: sense the fuzzy ‘aboutness’ of a situation and find a word/imagery handle for it. When the handle fits, a small felt shift often appears.",
+  help:
+    "1) Name the situation. 2) Sense where you feel it in the body. 3) Let a handle (word/image) come; test it. 4) Ask what it wants you to know. 5) Note any felt shift; pick one tiny, kind action.",
+  notice:
+    "Attribution: Inspired by Eugene Gendlin’s Focusing. This is a secular, self-care adaptation; not therapy.",
+  fields: [
+    { label: "Situation (one line)", key: "situation", type: "text", ph: "What’s up, in plain words?" },
+    { label: "Body location (where you sense it)", key: "body_spot", type: "text", ph: "Chest, throat, belly, jaw…" },
+    { label: "Handle (word or image)", key: "handle", type: "text", ph: "‘tight ring’, ‘static’, ‘heavy blanket’…" },
+    { label: "Message from the felt-sense", key: "message", type: "textarea", ph: "If it could speak, it would say…" },
+    { label: "Felt shift?", key: "felt_shift", type: "select", options: ["no","maybe","yes"], ph: "Did anything ease/soften?" },
+    { label: "Tiny next step (≤10 min)", key: "next_step", type: "textarea", ph: "What kind, concrete action follows?" },
+    { label: "Support (optional)", key: "support", type: "text", ph: "Water, short walk, text a friend…" },
+    { label: "Debrief (one sentence)", key: "debrief", type: "text", ph: "What changed?" }
+  ],
+  template: ({
+    situation, body_spot, handle, message, felt_shift, next_step, support, debrief,
+    ctx, audience, style, tone
+  }) => [
+    "Focusing — Felt-Sense Check (secular)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    situation && `Situation: ${situation}`,
+    body_spot && `Body location: ${body_spot}`,
+    handle && `Handle (word/image that fits): ${handle}`,
+    message && `What it wants known:\n${message}`,
+    felt_shift && `Felt shift: ${felt_shift}`,
+    next_step && `Tiny next step (≤10 min):\n${next_step}`,
+    support && `Support: ${support}`,
+    debrief && `Debrief: ${debrief}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "focusing felt-sense gendlin embodiment handle felt shift decision fog body awareness creativity secular practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   RAIN — Recognize • Allow • Investigate • Nurture (Tara Brach popularization)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "rain_self_inquiry",
+  slug: "rain-recognize-allow-investigate-nurture",
+  label: "RAIN — Recognize · Allow · Investigate · Nurture",
+  kind: "framework",
+  categories: ["wellbeing","mental-health","mindfulness","self-reflection","personal-development"],
+  tags: [
+    "type:practice","use:check-in","use:journaling","use:emotion-regulation",
+    "topic:mindfulness","topic:self-compassion","origin:tara-brach","level:beginner"
+  ],
+  use_cases: [
+    "gentle self-inquiry when emotions spike",
+    "name what’s here without fixing",
+    "de-escalate before a hard conversation",
+    "close a loop after being triggered"
+  ],
+  boosters: [
+    "Short is fine (2–10 minutes).",
+    "Use simple, kind language; avoid analysis.",
+    "During Nurture, add a physical gesture (hand to heart, softened jaw).",
+    "If overwhelmed, open eyes, feel feet, lengthen exhale."
+  ],
+  definition:
+    "A four-step mindfulness flow for hot emotions: Recognize what’s here, Allow it to be here, Investigate with curiosity, Nurture with care.",
+  help:
+    "Prompt: “What’s here; can it be here; what’s it asking; how do I tend to it?” Keep it concrete and kind.",
+  notice:
+    "Attribution: RAIN is widely taught; popularized by Tara Brach. This template is a secular self-care aid; not therapy.",
+  fields: [
+    { label: "Trigger/situation (one line)", key: "situation", type: "text", ph: "What set this off?" },
+    { label: "R — Recognize (name what’s here)", key: "r_recognize", type: "textarea", ph: "E.g., anger, shame, grief; body sensations" },
+    { label: "A — Allow (exact phrase)", key: "a_allow", type: "text", ph: "“This too belongs.” / “You’re allowed to be here.”" },
+    { label: "I — Investigate (curious questions)", key: "i_investigate", type: "textarea", ph: "What is it asking for? What hurts? What protects?" },
+    { label: "N — Nurture (care action/words)", key: "n_nurture", type: "textarea", ph: "Kind gesture, tone, or boundary to apply now" },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 5" },
+    { label: "Aftercare (optional)", key: "aftercare", type: "text", ph: "Water, step outside, text a friend…" }
+  ],
+  template: ({
+    situation, r_recognize, a_allow, i_investigate, n_nurture, timebox, aftercare,
+    ctx, audience, style, tone
+  }) => [
+    "RAIN — Recognize · Allow · Investigate · Nurture",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    timebox && `Timebox: ${timebox} min`,
+    situation && `Trigger/situation: ${situation}`,
+    r_recognize && `R — Recognize:\n${r_recognize}`,
+    a_allow && `A — Allow: ${a_allow}`,
+    i_investigate && `I — Investigate:\n${i_investigate}`,
+    n_nurture && `N — Nurture:\n${n_nurture}`,
+    aftercare && `Aftercare: ${aftercare}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "rain recognize allow investigate nurture tara brach emotions spike mindfulness compassion secular practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Parts check-in — IFS-inspired (Richard Schwartz), gentle & secular
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "parts_check_in_ifs",
+  slug: "parts-check-in-ifs-inspired",
+  label: "Parts Check-In — IFS-Inspired",
+  kind: "framework",
+  categories: ["wellbeing","mental-health","self-reflection","communication","coaching"],
+  tags: [
+    "type:practice","use:check-in","use:journaling","use:coaching",
+    "topic:parts-work","topic:self-leadership","origin:ifs-inspired","level:beginner"
+  ],
+  use_cases: [
+    "let different inner voices speak without judgment",
+    "unblend before deciding or replying",
+    "map protectors/exiles and what they need witnessed"
+  ],
+  boosters: [
+    "Name parts with friendly handles (e.g., ‘Driver’, ‘Caretaker’, ‘Teen Me’).",
+    "Ask each part: What do you fear would happen if you didn’t do your job?",
+    "Invite Self qualities (calm, curiosity, compassion) to lead.",
+    "If blended, pause outward action until some space returns."
+  ],
+  definition:
+    "A brief inventory of inner ‘parts’ so each can be heard, reducing reactivity and increasing Self-led choice.",
+  help:
+    "Prompt: “Who in me is activated, and what do they need witnessed?” No fixing; just accurate witnessing.",
+  notice:
+    "Attribution: Inspired by Internal Family Systems (Richard Schwartz). This is a secular self-check, not therapy.",
+  fields: [
+    { label: "Scenario (one line)", key: "situation", type: "text", ph: "What’s happening?" },
+    { label: "Parts present (one per line)", key: "parts_list", type: "textarea", ph: "Name each voice briefly." },
+    { label: "What each part wants witnessed", key: "parts_wants", type: "textarea", ph: "Fears, needs, positive intent." },
+    { label: "Blending state", key: "blending", type: "select", options: ["blended","partly unblended","unblended"], ph: "How fused are you right now?" },
+    { label: "Self qualities available", key: "self_qualities", type: "textarea", ph: "Calm, curiosity, compassion, clarity…" },
+    { label: "One Self-led step", key: "self_step", type: "textarea", ph: "A kind action that honors all parts." },
+    { label: "Boundary (if needed)", key: "boundary", type: "text", ph: "A limit that keeps everyone safe." }
+  ],
+  template: ({
+    situation, parts_list, parts_wants, blending, self_qualities, self_step, boundary,
+    ctx, audience, style, tone
+  }) => [
+    "Parts Check-In — IFS-Inspired",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    situation && `Scenario: ${situation}`,
+    parts_list && `Parts present:\n${parts_list}`,
+    parts_wants && `What each part wants witnessed:\n${parts_wants}`,
+    blending && `Blending state: ${blending}`,
+    self_qualities && `Self qualities available:\n${self_qualities}`,
+    self_step && `One Self-led step:\n${self_step}`,
+    boundary && `Boundary:\n${boundary}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "ifs parts check-in inner voices self leadership blended unblended protectors exiles witnessing secular practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Noting — simple mindfulness label stream (vipassanā-inspired, secular)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "noting_mindfulness",
+  slug: "noting-mindfulness",
+  label: "Noting — Mindfulness Labels",
+  kind: "framework",
+  categories: ["mindfulness","wellbeing","self-reflection","personal-development"],
+  tags: [
+    "type:practice","use:check-in","use:focus","use:sleep-winddown",
+    "topic:awareness","topic:meditation","origin:vipassana-inspired","level:beginner"
+  ],
+  use_cases: [
+    "label raw experience in real time",
+    "ground during overthinking or craving",
+    "wind down before sleep"
+  ],
+  boosters: [
+    "One label every 1–3 seconds. Keep it light.",
+    "Say it softly in your mind: ‘tightness’, ‘heat’, ‘worry’, ‘softening’.",
+    "If lost, note ‘lost’ or ‘thinking’, then resume.",
+    "No chasing calm; accuracy over outcome."
+  ],
+  definition:
+    "A light mental label stream that names sensations, feelings, and thoughts as they arise, building clarity and non-reactivity.",
+  help:
+    "Pick an anchor (breath/body/sounds). Label what’s present, simply and briefly. Return to anchor if swept away.",
+  notice:
+    "Attribution: Inspired by vipassanā noting. Secular adaptation; not a substitute for medical care.",
+  fields: [
+    { label: "Duration (minutes)", key: "duration", type: "text", ph: "e.g., 5" },
+    { label: "Anchor", key: "anchor", type: "select", options: ["breath","body","sounds","open awareness"], ph: "Choose one" },
+    { label: "Starter labels (comma-separated)", key: "labels", type: "text", ph: "tightness, warmth, tingling, worry…" },
+    { label: "Pace", key: "pace", type: "select", options: ["~1s","~2s","~3s"], ph: "Approx. cadence" },
+    { label: "After-note (optional)", key: "after_note", type: "text", ph: "One takeaway or gratitude line" }
+  ],
+  template: ({ duration, anchor, labels, pace, after_note, ctx, audience, style, tone }) => [
+    "Noting — Mindfulness Labels (secular)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    duration && `Duration: ${duration} min`, anchor && `Anchor: ${anchor}`, pace && `Pace: ${pace}`,
+    labels && `Starter labels: ${labels}`,
+    "If lost: note ‘lost/thinking’, return to anchor.",
+    after_note && `After-note: ${after_note}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "noting mindfulness labels vipassana sensations thoughts feelings craving sleep wind down secular practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Tonglen-lite — breathe in difficulty, breathe out care (secular)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "tonglen_lite_secular",
+  slug: "tonglen-lite-secular",
+  label: "Tonglen-Lite — Breathe With Suffering",
+  kind: "framework",
+  categories: ["wellbeing","compassion","mindfulness","self-reflection"],
+  tags: [
+    "type:practice","use:emotion-regulation","use:compassion","use:check-in",
+    "topic:breath","topic:empathy","origin:tibetan-inspired","level:beginner"
+  ],
+  use_cases: [
+    "meet pain with compassion (self/others)",
+    "transform aversion into care in the moment",
+    "reset before re-engaging a hard task"
+  ],
+  boosters: [
+    "Keep breath natural; don’t strain.",
+    "Use plain words: ‘Breathing in this pain as it is; breathing out relief for anyone who feels this.’",
+    "Scope can be self → one person → many; choose what’s workable.",
+    "If overwhelmed, narrow scope or pause and ground."
+  ],
+  definition:
+    "A secular compassion breath: gently include difficulty on the inhale; offer care on the exhale.",
+  help:
+    "Prompt: “Breathing in this pain as it is; breathing out relief for anyone who feels this.”",
+  notice:
+    "Attribution: Inspired by the Tibetan Buddhist tonglen practice, adapted here in secular language.",
+  fields: [
+    { label: "Focus (self / someone / many)", key: "scope", type: "select", options: ["self","one person","many"], ph: "Choose scope" },
+    { label: "Difficulty (one line)", key: "difficulty", type: "text", ph: "Name the pain/stress without drama" },
+    { label: "Inhale phrase", key: "inhale", type: "text", ph: "“Breathing in this pain as it is.”" },
+    { label: "Exhale phrase", key: "exhale", type: "text", ph: "“Breathing out relief/care for all who feel this.”" },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 3" },
+    { label: "Aftercare (optional)", key: "aftercare", type: "text", ph: "Tea, stretch, step outside…" }
+  ],
+  template: ({ scope, difficulty, inhale, exhale, timebox, aftercare, ctx, audience, style, tone }) => [
+    "Tonglen-Lite — Compassionate Breathing (secular)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    timebox && `Timebox: ${timebox} min`,
+    scope && `Focus: ${scope}`,
+    difficulty && `Difficulty: ${difficulty}`,
+    inhale && `Inhale: ${inhale}`,
+    exhale && `Exhale: ${exhale}`,
+    aftercare && `Aftercare: ${aftercare}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "tonglen lite compassion breath suffering relief secular tibetan inspired empathy scope self others practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Memento mori micro-sit — mortality as clarity tonic (stoic-inspired)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "memento_mori_micro",
+  slug: "memento-mori-micro-sit",
+  label: "Memento Mori — Micro-Sit",
+  kind: "framework",
+  categories: ["self-reflection","wellbeing","personal-development","decision"],
+  tags: [
+    "type:practice","use:prioritization","use:motivation","use:gratitude",
+    "topic:mortality","topic:values","origin:stoic-inspired","level:beginner"
+  ],
+  use_cases: [
+    "recenter priorities in 1–3 minutes",
+    "choose the one thing that actually matters today",
+    "add a gratitude/repair line before closing work"
+  ],
+  boosters: [
+    "Sit upright; soften jaw; lengthen exhale.",
+    "Ask the question once, then wait.",
+    "Pick one tiny act that fits the answer.",
+    "Close by thanking someone (living or gone)."
+  ],
+  definition:
+    "A brief contemplation of mortality to surface what is unmistakably true right now and act accordingly.",
+  help:
+    "Prompt: “If time were short, what becomes unmistakably true right now?” Then choose one tiny aligned action.",
+  notice:
+    "Attribution: Inspired by memento mori reflections (Stoic and cross-cultural). Secular framing.",
+  fields: [
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "1–3" },
+    { label: "Truth that appears (one sentence)", key: "truth", type: "text", ph: "What’s unmistakably true right now?" },
+    { label: "Tiny aligned step (≤10 min)", key: "step", type: "textarea", ph: "Concrete, reversible if possible." },
+    { label: "Gratitude / repair (optional)", key: "gratitude", type: "text", ph: "Name a person to thank or repair with." },
+    { label: "Risk of neglect (name it)", key: "risk", type: "textarea", ph: "What is the cost if you don’t act?" }
+  ],
+  template: ({ timebox, truth, step, gratitude, risk, ctx, audience, style, tone }) => [
+    "Memento Mori — Micro-Sit (secular)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    timebox && `Timebox: ${timebox} min`,
+    truth && `If time were short, the truth is: ${truth}`,
+    step && `Tiny aligned step (≤10 min):\n${step}`,
+    gratitude && `Gratitude/repair: ${gratitude}`,
+    risk && `Risk of neglect:\n${risk}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "memento mori micro sit mortality priorities stoic gratitude repair tiny step secular practice" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Last 2% Round — after alignment, share the unsaid edge
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "last_2_percent_round",
+  slug: "last-2-percent-round",
+  label: "Last 2% Round — Share the Unsaid Edge",
+  kind: "framework",
+  categories: ["communication","facilitation","teamwork","decision","wellbeing"],
+  tags: [
+    "type:practice","use:retrospective","use:alignment","use:conflict-prevention",
+    "topic:feedback","topic:psychological-safety","level:beginner"
+  ],
+  use_cases: [
+    "after alignment, surface what’s still unsaid",
+    "reduce lingering risk from politeness or fear",
+    "avoid surprises by naming edge concerns"
+  ],
+  boosters: [
+    "Timebox to 1–2 minutes per person.",
+    "Speak from ‘I’, own impact; avoid diagnoses.",
+    "Name the risk of not saying it.",
+    "End with a clear request or next step.",
+    "Opt-out is allowed; consent first."
+  ],
+  definition:
+    "A brief, consent-based round where each person speaks the last unsaid edge that would make the plan honest.",
+  help:
+    "Prompt: “What’s the last 2% I haven’t said that would make this honest?” Name impact and a concrete request.",
+  notice:
+    "This is a communication practice, not therapy. Use consent and timeboxes in sensitive settings.",
+  fields: [
+    { label: "Topic / decision", key: "topic", type: "text", ph: "What are we aligning on?" },
+    { label: "Baseline alignment (one line)", key: "baseline", type: "text", ph: "State the shared yes so far." },
+    { label: "Consent script", key: "consent", type: "text", ph: "“Open to a quick last-2% round?”" },
+    { label: "My last 2% (one or two sentences)", key: "edge", type: "textarea", ph: "Say the unsaid edge plainly." },
+    { label: "Impact if unsaid", key: "impact", type: "textarea", ph: "Risk or cost of staying silent." },
+    { label: "Request / next step", key: "request", type: "textarea", ph: "What would make this workable?" },
+    { label: "Opt-out phrase (optional)", key: "optout", type: "text", ph: "“Pass for now.” is valid." },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 10" }
+  ],
+  template: ({
+    topic, baseline, consent, edge, impact, request, optout, timebox,
+    ctx, audience, style, tone
+  }) => [
+    "Last 2% Round — Share the Unsaid Edge",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    topic && `Topic/decision: ${topic}`,
+    baseline && `Baseline alignment: ${baseline}`,
+    timebox && `Timebox: ${timebox} min`,
+    consent && `Consent: ${consent}`,
+    edge && `My last 2%: ${edge}`,
+    impact && `Impact if unsaid:\n${impact}`,
+    request && `Request / next step:\n${request}`,
+    optout && `Opt-out honored: ${optout}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "last 2% round unsaid edge alignment feedback psychological safety request impact timebox consent" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   AAR with Feelings First — After-Action Review that starts in the body
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "aar_feelings_first",
+  slug: "aar-feelings-first",
+  label: "AAR — Feelings First",
+  kind: "framework",
+  categories: ["retrospective","teamwork","learning","wellbeing","facilitation"],
+  tags: [
+    "type:practice","use:retro","use:learning-loop","use:debrief",
+    "topic:embodiment","topic:needs","level:beginner"
+  ],
+  use_cases: [
+    "debrief with body truth before facts",
+    "reduce defensiveness and speed up learning",
+    "surface needs that data alone misses"
+  ],
+  boosters: [
+    "60–120 seconds body truth per person before facts.",
+    "Use concrete sensations (tightness, heat, shaky).",
+    "Name the need that surfaced (stability, clarity, care).",
+    "Only then list facts, wins, breaks, next step."
+  ],
+  definition:
+    "An After-Action Review that begins with where it landed in the body and what need surfaced, then moves to facts and improvements.",
+  help:
+    "Prompt: “Before facts: where did this land in your body, and what need surfaced?” Then run a tight AAR.",
+  notice:
+    "Adapted AAR structure for psychological safety. Keep it concise; not therapy.",
+  fields: [
+    { label: "Event / action reviewed", key: "event", type: "text", ph: "Name the thing we did." },
+    { label: "Body location", key: "body_spot", type: "text", ph: "Chest, gut, throat, jaw…" },
+    { label: "Sensations (raw words)", key: "sensations", type: "text", ph: "Tightness, heat, jittery, softening…" },
+    { label: "Need that surfaced", key: "need", type: "text", ph: "Clarity, rest, support, time, repair…" },
+    { label: "What worked", key: "worked", type: "textarea", ph: "Bullets." },
+    { label: "What broke / confused", key: "broke", type: "textarea", ph: "Bullets." },
+    { label: "Most important improvement", key: "improve", type: "textarea", ph: "One concrete change." },
+    { label: "Owner + timeline", key: "owner", type: "text", ph: "Who will do what by when?" },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 12" }
+  ],
+  template: ({
+    event, body_spot, sensations, need, worked, broke, improve, owner, timebox,
+    ctx, audience, style, tone
+  }) => [
+    "AAR — Feelings First",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    event && `Event: ${event}`,
+    timebox && `Timebox: ${timebox} min`,
+    "Feelings first:",
+    (body_spot || sensations) && `• Body: ${[body_spot, sensations].filter(Boolean).join(" — ")}`,
+    need && `• Need surfaced: ${need}`,
+    "",
+    "Facts next:",
+    worked && `• Worked:\n${worked}`,
+    broke && `• Broke/confused:\n${broke}`,
+    improve && `• Improvement:\n${improve}`,
+    owner && `• Owner & timeline: ${owner}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "after action review aar feelings first body truth needs debrief retro learning improvement psychological safety" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Pre-Mortem + Pre-Grief — imagine failure and name the human cost
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "premortem_pregrief",
+  slug: "pre-mortem-pre-grief",
+  label: "Pre-Mortem + Pre-Grief",
+  kind: "framework",
+  categories: ["risk","strategy","ethics","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:planning","use:risk-review","use:ethics-review",
+    "topic:failure-modes","topic:human-impact","level:intermediate"
+  ],
+  use_cases: [
+    "imagine failure to reveal risks and safeguards",
+    "name the human cost early",
+    "write clear stop conditions and exit ramps"
+  ],
+  boosters: [
+    "Describe a vivid failure headline first.",
+    "List who would be hurt and how (humans first).",
+    "Add safeguards and early warning signals.",
+    "Write exact stop/exit conditions now.",
+    "Close with one reversible experiment."
+  ],
+  definition:
+    "A planning ritual that imagines failure, names who gets hurt, and installs safeguards and exit ramps before starting.",
+  help:
+    "Prompt: “If this failed, who would be hurt and what would we wish we’d said now?”",
+  notice:
+    "Ethics-forward planning aid; not legal advice.",
+  fields: [
+    { label: "Initiative / decision", key: "initiative", type: "text", ph: "Name the plan." },
+    { label: "Failure headline (vivid, one line)", key: "headline", type: "text", ph: "If this failed badly, the headline reads…" },
+    { label: "Who is hurt & how (humans first)", key: "human_cost", type: "textarea", ph: "People, relationships, trust, time…" },
+    { label: "Regret we’d feel / words we wish we’d said", key: "regret", type: "textarea", ph: "Say it now, not later." },
+    { label: "Safeguards (technical & social)", key: "safeguards", type: "textarea", ph: "Rate limits, reviews, dry-runs, buddy checks…" },
+    { label: "Early warning signals", key: "signals", type: "textarea", ph: "Leading indicators to watch." },
+    { label: "Stop / exit conditions", key: "stops", type: "textarea", ph: "Exactly when we pause/roll back." },
+    { label: "One reversible experiment", key: "experiment", type: "textarea", ph: "Smallest safe test to run first." },
+    { label: "Owner & date", key: "owner", type: "text", ph: "Who holds this, by when." }
+  ],
+  template: ({
+    initiative, headline, human_cost, regret, safeguards, signals, stops, experiment, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Pre-Mortem + Pre-Grief",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    initiative && `Initiative: ${initiative}`,
+    headline && `Failure headline: ${headline}`,
+    human_cost && `Human cost:\n${human_cost}`,
+    regret && `We’d regret not saying:\n${regret}`,
+    safeguards && `Safeguards:\n${safeguards}`,
+    signals && `Early warning signals:\n${signals}`,
+    stops && `Stop / exit conditions:\n${stops}`,
+    experiment && `Reversible experiment:\n${experiment}`,
+    owner && `Owner & date: ${owner}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "pre mortem pre grief failure human cost safeguards exit ramps stop conditions reversible experiment ethics" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Working Out Loud (Truth Edition) — reveal uncertainty live
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "working_out_loud_truth",
+  slug: "working-out-loud-truth-edition",
+  label: "Working Out Loud — Truth Edition",
+  kind: "framework",
+  categories: ["communication","teamwork","learning","facilitation"],
+  tags: [
+    "type:practice","use:status","use:design-review","use:risk-review",
+    "topic:uncertainty","topic:transparency","level:beginner"
+  ],
+  use_cases: [
+    "real-time sharing of knowns/unknowns",
+    "reduce posturing; speed clarity",
+    "invite help with specific asks"
+  ],
+  boosters: [
+    "Keep sections short; use bullets.",
+    "State what you fear to admit, kindly and concretely.",
+    "End with a precise help request and owner.",
+    "Prefer a working doc or thread for follow-ups."
+  ],
+  definition:
+    "A lightweight status pattern that names what you know, don’t know, and fear to admit—so the right help can land fast.",
+  help:
+    "Prompt: “Here’s what I know, don’t know, and am afraid to admit publicly.”",
+  notice:
+    "Use good judgment with sensitive data; agree on audience and channel first.",
+  fields: [
+    { label: "Topic / scope", key: "topic", type: "text", ph: "What this covers." },
+    { label: "Audience & channel", key: "audience_channel", type: "text", ph: "e.g., Team A in #design-review" },
+    { label: "Knowns (bullets)", key: "knowns", type: "textarea", ph: "What’s stable, verified, decided." },
+    { label: "Unknowns (bullets)", key: "unknowns", type: "textarea", ph: "What’s unclear or risky." },
+    { label: "Afraid to admit (one or two bullets)", key: "afraid", type: "textarea", ph: "What’s hard to say but useful to know." },
+    { label: "Help wanted (specific asks)", key: "asks", type: "textarea", ph: "Exact feedback/decisions/data needed." },
+    { label: "Owner & next review time", key: "owner", type: "text", ph: "Who’s driving and when we sync again." }
+  ],
+  template: ({
+    topic, audience_channel, knowns, unknowns, afraid, asks, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Working Out Loud — Truth Edition",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    topic && `Topic/scope: ${topic}`,
+    audience_channel && `Audience/channel: ${audience_channel}`,
+    knowns && `Knowns:\n${knowns}`,
+    unknowns && `Unknowns:\n${unknowns}`,
+    afraid && `Afraid to admit:\n${afraid}`,
+    asks && `Help wanted:\n${asks}`,
+    owner && `Owner & next review: ${owner}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "working out loud uncertainty transparency knowns unknowns afraid to admit help wanted status truth edition" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Clear Contracts + Exit Ramps — permission to stop when it’s too much
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "clear_contracts_exit_ramps",
+  slug: "clear-contracts-exit-ramps",
+  label: "Clear Contracts + Exit Ramps",
+  kind: "framework",
+  categories: ["facilitation","communication","ethics","wellbeing","teamwork"],
+  tags: [
+    "type:practice","use:session-setup","use:conflict-prevention","use:psychological-safety",
+    "topic:consent","topic:boundaries","level:beginner"
+  ],
+  use_cases: [
+    "set consent and boundaries explicitly",
+    "create shared stop/slow-down protocols",
+    "reduce harm in hard conversations"
+  ],
+  boosters: [
+    "Name purpose, timebox, roles.",
+    "Write today’s consent boundary in plain language.",
+    "Define red/yellow signals and exact pause phrase.",
+    "Agree how to re-enter after a pause.",
+    "Anyone can call a pause; no justification required."
+  ],
+  definition:
+    "A short contracting ritual that clarifies consent, boundaries, signals, and how to pause or stop safely.",
+  help:
+    "Prompt: “My consent boundary today is __; if crossed, I will pause us.” Make exit ramps explicit.",
+  notice:
+    "Safety practice for meetings and 1:1s; not legal advice.",
+  fields: [
+    { label: "Purpose", key: "purpose", type: "text", ph: "Why we’re meeting." },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 45" },
+    { label: "Roles / participants", key: "roles", type: "text", ph: "Who’s here and how we’ll interact." },
+    { label: "Consent boundary (today)", key: "boundary", type: "textarea", ph: "What’s in/out for you today." },
+    { label: "Yellow signals (slow down)", key: "yellow", type: "textarea", ph: "Signs we’re approaching limits." },
+    { label: "Red signals (stop)", key: "red", type: "textarea", ph: "Clear indicators we must pause/stop." },
+    { label: "Pause phrase", key: "phrase", type: "text", ph: "Exact words anyone can use to pause." },
+    { label: "Re-entry protocol", key: "reentry", type: "textarea", ph: "How we resume after a pause." },
+    { label: "Accountability (who can call it)", key: "accountability", type: "text", ph: "Usually: anyone, anytime." },
+    { label: "Notes (optional)", key: "notes", type: "textarea", ph: "Anything else to hold." }
+  ],
+  template: ({
+    purpose, timebox, roles, boundary, yellow, red, phrase, reentry, accountability, notes,
+    ctx, audience, style, tone
+  }) => [
+    "Clear Contracts + Exit Ramps",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    purpose && `Purpose: ${purpose}`,
+    timebox && `Timebox: ${timebox} min`,
+    roles && `Roles/participants: ${roles}`,
+    boundary && `Consent boundary (today):\n${boundary}`,
+    yellow && `Yellow signals (slow down):\n${yellow}`,
+    red && `Red signals (stop):\n${red}`,
+    phrase && `Pause phrase: ${phrase}`,
+    reentry && `Re-entry protocol:\n${reentry}`,
+    accountability && `Accountability: ${accountability}`,
+    notes && `Notes:\n${notes}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "clear contracts exit ramps consent boundaries pause phrase reentry protocol psychological safety facilitation" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Positionality Statement — own your standpoint before you analyze
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "positionality_statement",
+  slug: "positionality-statement",
+  label: "Positionality Statement",
+  kind: "framework",
+  categories: ["analysis","research","ethics","communication","education"],
+  tags: [
+    "type:practice","use:analysis-preface","use:research-methods","use:brief",
+    "topic:standpoint","topic:bias","topic:reflexivity","level:beginner","origin:reflective-practice"
+  ],
+  use_cases: [
+    "preface a report or analysis with standpoint and limits",
+    "name potential blind spots and stakes",
+    "state conflicts of interest and scope of competence"
+  ],
+  boosters: [
+    "Name context, role, and audience first.",
+    "State identities/experiences that are salient to this topic (optional).",
+    "Name privileges and blind spots relevant here.",
+    "Declare stake and boundary of competence.",
+    "Say how your standpoint bends interpretation and what you’re doing to counterbalance it."
+  ],
+  definition:
+    "A concise preface that makes your standpoint, stakes, privileges, blind spots, and competence boundaries explicit before analysis.",
+  help:
+    "Prompt: “Here’s where I’m standing and how it bends my seeing.” Keep it professional, specific, and actionably honest.",
+  fields: [
+    { label: "Context / project", key: "context", type: "text", ph: "What this analysis is about." },
+    { label: "Role & audience", key: "role_audience", type: "text", ph: "Researcher to stakeholders, student to instructor, etc." },
+    { label: "Salient identity/experience (optional)", key: "identity", type: "textarea", ph: "Only what matters for this topic." },
+    { label: "Privileges / access", key: "privileges", type: "textarea", ph: "What advantages shape what you can see." },
+    { label: "Likely blind spots", key: "blind_spots", type: "textarea", ph: "Where you might miss or misread." },
+    { label: "Stake (why you care / potential bias)", key: "stake", type: "textarea", ph: "What outcome matters to you and why." },
+    { label: "Boundary of competence", key: "competence", type: "textarea", ph: "What you can/can’t credibly claim here." },
+    { label: "Counterbalances", key: "counterbalances", type: "textarea", ph: "Steps to mitigate bias (sources, advisors, methods)." }
+  ],
+  template: ({
+    context, role_audience, identity, privileges, blind_spots, stake, competence, counterbalances,
+    ctx, audience, style, tone
+  }) => [
+    "Positionality Statement",
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience (app-level): ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    context && `Project: ${context}`,
+    role_audience && `Role & audience: ${role_audience}`,
+    identity && `Salient identity/experience:\n${identity}`,
+    privileges && `Privileges/access shaping view:\n${privileges}`,
+    blind_spots && `Likely blind spots:\n${blind_spots}`,
+    stake && `Stake (why I care):\n${stake}`,
+    competence && `Boundary of competence:\n${competence}`,
+    counterbalances && `Counterbalances in play:\n${counterbalances}`,
+    "",
+    "Prompt anchor: “Here’s where I’m standing and how it bends my seeing.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "positionality standpoint bias privilege blind spots competence boundary reflexivity research analysis brief" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Reflexive Memo — write what the data is doing to you
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "reflexive_memo",
+  slug: "reflexive-memo",
+  label: "Reflexive Memo",
+  kind: "framework",
+  categories: ["research","learning","analysis","education","wellbeing"],
+  tags: [
+    "type:practice","use:field-notes","use:learning-journal","use:analysis",
+    "topic:reflexivity","topic:affect","topic:method","level:beginner","origin:qualitative-methods"
+  ],
+  use_cases: [
+    "capture affective reactions during analysis",
+    "surface assumptions/biases being activated",
+    "steer next data collection or coding choices"
+  ],
+  boosters: [
+    "Write in first person; timebox 5–10 minutes.",
+    "Note surprises, irritations, and movements (what shifted).",
+    "Flag any identity/bias hooks explicitly.",
+    "End with 1–3 next methodological moves."
+  ],
+  definition:
+    "A short memo that records how the material is affecting you—surprises, irritations, movements—and how that should shape your next steps.",
+  help:
+    "Prompt: “What surprised, irritated, or moved me as I engaged this material?” Then note assumptions and next moves.",
+  fields: [
+    { label: "Material engaged", key: "material", type: "text", ph: "Interview #3, dataset v2, article XYZ…" },
+    { label: "Surprised me…", key: "surprise", type: "textarea", ph: "What I didn’t expect." },
+    { label: "Irritated me…", key: "irritation", type: "textarea", ph: "What rubbed, bored, or triggered me." },
+    { label: "Moved me…", key: "movement", type: "textarea", ph: "What felt meaningful or shifted my view." },
+    { label: "Assumptions/bias flagged", key: "bias", type: "textarea", ph: "Which filters showed up?" },
+    { label: "Method notes", key: "method", type: "textarea", ph: "Coding ideas, probes to add, artifacts to collect…" },
+    { label: "Next moves (bullets)", key: "next_moves", type: "textarea", ph: "1–3 concrete steps for the work." },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 7" }
+  ],
+  template: ({
+    material, surprise, irritation, movement, bias, method, next_moves, timebox,
+    ctx, audience, style, tone
+  }) => [
+    "Reflexive Memo",
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience (app-level): ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    material && `Material: ${material}`,
+    timebox && `Timebox: ${timebox} min`,
+    surprise && `Surprised me:\n${surprise}`,
+    irritation && `Irritated me:\n${irritation}`,
+    movement && `Moved me:\n${movement}`,
+    bias && `Assumptions/bias flagged:\n${bias}`,
+    method && `Method notes:\n${method}`,
+    next_moves && `Next moves:\n${next_moves}`,
+    "",
+    "Prompt anchor: “What surprised, irritated, or moved me as I engaged this material?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "reflexive memo qualitative methods affect surprise irritation movement bias next steps field notes" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Critical Incident Analysis — one charged moment, slow-motion replay
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "critical_incident_analysis",
+  slug: "critical-incident-analysis",
+  label: "Critical Incident Analysis",
+  kind: "framework",
+  categories: ["learning","education","teamwork","ethics","communication"],
+  tags: [
+    "type:practice","use:debrief","use:retro","use:training",
+    "topic:incident","topic:reflection","topic:ethics","level:intermediate","origin:education"
+  ],
+  use_cases: [
+    "deep-dive a charged moment to extract learning",
+    "separate raw data from interpretation",
+    "plan repair and prevention steps"
+  ],
+  boosters: [
+    "Freeze one frame only—don’t analyze the whole movie.",
+    "Write the undeniable facts as if on camera.",
+    "Add body sensations and needs before interpretation.",
+    "Offer 2–3 alternative readings; avoid single-story traps.",
+    "Close with one repair and one prevention move."
+  ],
+  definition:
+    "A structured replay of a single high-intensity moment to separate observation from interpretation, then derive repair and prevention steps.",
+  help:
+    "Prompt: “Freeze the frame at peak intensity—what was undeniably true then?”",
+  fields: [
+    { label: "Title of incident", key: "title", type: "text", ph: "Short handle for the moment." },
+    { label: "When/where", key: "when_where", type: "text", ph: "Timestamp, location." },
+    { label: "Cast (roles only)", key: "cast", type: "text", ph: "You, counterpart, observers…" },
+    { label: "Undeniable facts (camera view)", key: "facts", type: "textarea", ph: "What the camera would record, no adjectives." },
+    { label: "Body sensations & needs", key: "body_needs", type: "textarea", ph: "Tight chest; need for clarity/space/care…" },
+    { label: "Interpretations (yours/others)", key: "interpretations", type: "textarea", ph: "Competing readings of what it meant." },
+    { label: "Ethical stakes / risks", key: "stakes", type: "textarea", ph: "Who could be harmed; power dynamics." },
+    { label: "Repair step (one)", key: "repair", type: "textarea", ph: "Apology, check-in, make-right action." },
+    { label: "Prevention step (one)", key: "prevention", type: "textarea", ph: "Protocol, boundary, training, redesign." }
+  ],
+  template: ({
+    title, when_where, cast, facts, body_needs, interpretations, stakes, repair, prevention,
+    ctx, audience, style, tone
+  }) => [
+    "Critical Incident Analysis",
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience (app-level): ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    title && `Incident: ${title}`,
+    when_where && `When/where: ${when_where}`,
+    cast && `Cast: ${cast}`,
+    facts && `Undeniable facts (camera):\n${facts}`,
+    body_needs && `Body & needs:\n${body_needs}`,
+    interpretations && `Interpretations (plural):\n${interpretations}`,
+    stakes && `Ethical stakes/risks:\n${stakes}`,
+    repair && `Repair (one step):\n${repair}`,
+    prevention && `Prevention (one step):\n${prevention}`,
+    "",
+    "Prompt anchor: “Freeze the frame at peak intensity—what was undeniably true then?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "critical incident analysis camera view interpretation repair prevention ethics body sensations needs education" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Rose · Thorn · Bud + Weather — simple affect + hope check
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "rose_thorn_bud_weather",
+  slug: "rose-thorn-bud-weather",
+  label: "Rose · Thorn · Bud + Weather",
+  kind: "framework",
+  categories: ["check-in","teamwork","education","wellbeing","facilitation"],
+  tags: [
+    "type:practice","use:standup","use:retro-warmup","use:daily-journal",
+    "topic:affect","topic:hope","topic:status","level:beginner","origin:classroom-practice"
+  ],
+  use_cases: [
+    "fast emotional temperature check",
+    "daily journal opener that includes hope",
+    "warm-up for retros, classes, or group starts"
+  ],
+  boosters: [
+    "Keep each item to a sentence or phrase.",
+    "Weather = a quick metaphor; let intensity carry nuance.",
+    "Invite pass option; no pressure to share details.",
+    "Close with one tiny hopeful step if desired."
+  ],
+  definition:
+    "A quick check-in that names a positive (rose), a pain point (thorn), a possibility (bud), and a simple ‘weather report’ for your inner climate.",
+  help:
+    "Prompt: “My rose, thorn, bud; my inner weather right now is __.”",
+  fields: [
+    { label: "Rose (what’s good)", key: "rose", type: "text", ph: "One bright spot." },
+    { label: "Thorn (what hurts)", key: "thorn", type: "text", ph: "One friction or pain point." },
+    { label: "Bud (what’s budding)", key: "bud", type: "text", ph: "One possibility or hope." },
+    { label: "Weather", key: "weather", type: "select",
+      options: ["sunny","partly cloudy","overcast","drizzle","rain","stormy","windy","foggy","mixed"], ph: "Pick one" },
+    { label: "Intensity (0–10)", key: "intensity", type: "text", ph: "Optional number" },
+    { label: "Tiny hopeful step (optional)", key: "tiny_step", type: "text", ph: "One <10 min action you could take." }
+  ],
+  template: ({
+    rose, thorn, bud, weather, intensity, tiny_step,
+    ctx, audience, style, tone
+  }) => [
+    "Rose · Thorn · Bud + Weather",
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience (app-level): ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    rose && `Rose: ${rose}`,
+    thorn && `Thorn: ${thorn}`,
+    bud && `Bud: ${bud}`,
+    (weather || intensity) && `Weather: ${[weather, intensity && `(intensity ${intensity}/10)`].filter(Boolean).join(" ")}`,
+    tiny_step && `Tiny hopeful step: ${tiny_step}`,
+    "",
+    "Prompt anchor: “My rose, thorn, bud; my inner weather right now is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "rose thorn bud weather check in affect hope status intensity classroom practice team warm up daily journal" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Goals of Care — “What matters most?” (values before treatments)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "goals_of_care_values_first",
+  slug: "goals-of-care-what-matters-most",
+  label: "Goals of Care — What Matters Most",
+  kind: "framework",
+  categories: ["ethics","communication","planning","wellbeing","healthcare"],
+  tags: [
+    "type:practice","use:conversation","use:values-clarification","use:advance-care-planning",
+    "topic:mortality","topic:quality-of-life","origin:palliative-inspired","level:beginner"
+  ],
+  use_cases: [
+    "prepare for a serious-illness or life-priorities conversation",
+    "align family/caregivers around values before options",
+    "document non-negotiables and a proxy decision-maker",
+    "guide choices when trade-offs appear under pressure"
+  ],
+  boosters: [
+    "Say values in plain language before naming any treatment.",
+    "Name both ‘to protect’ and ‘to avoid’ so care teams can steer.",
+    "Write a trade-off stance (quality vs. time) you can revise later.",
+    "Pick one next step: share with a clinician or loved one.",
+    "Revisit after any big health or life change."
+  ],
+  definition:
+    "A short, values-first brief: name what matters most to protect or experience, the harms to avoid, key trade-offs, and who should help decide when it’s hard.",
+  help:
+    "Prompt: “Given your life now, what matters most to protect or experience?” Keep it specific and human; this is guidance, not a medical directive.",
+  notice:
+    "Not medical or legal advice. Consider discussing with your clinician and completing formal advance-care planning documents.",
+  fields: [
+    { label: "Life snapshot (one line)", key: "snapshot", type: "text", ph: "What your life looks like right now." },
+    { label: "What I must protect (values/activities)", key: "protect", type: "textarea", ph: "Relationships, roles, abilities, rituals…" },
+    { label: "Experiences to prioritize", key: "prioritize", type: "textarea", ph: "What you still want to experience, if possible." },
+    { label: "Harms to avoid", key: "avoid", type: "textarea", ph: "Pain, isolation, burdens on others, loss of… (be concrete)" },
+    { label: "Trade-off stance", key: "tradeoff", type: "select",
+      options: ["quality-of-life over time","more time even if quality is low","unsure/decide with my proxy"], ph: "Choose one" },
+    { label: "Independence & function that matters", key: "function", type: "textarea", ph: "Mobility, communication, cognition, privacy…" },
+    { label: "Place of care preference", key: "place", type: "select",
+      options: ["home","hospital","hospice","no strong preference"], ph: "Pick one" },
+    { label: "People to involve in decisions", key: "people", type: "text", ph: "Names/roles to be in the room." },
+    { label: "Proxy decision-maker (if any)", key: "proxy", type: "text", ph: "Name + contact (if chosen)." },
+    { label: "Non-negotiables / red lines", key: "redlines", type: "textarea", ph: "Treatments or states you would refuse." },
+    { label: "Next conversation (where/with whom)", key: "next_step", type: "text", ph: "Clinician, family meeting, note in chart…" },
+    { label: "Review cadence", key: "review", type: "text", ph: "e.g., “On birthdays” or “after health changes.”" }
+  ],
+  template: ({
+    snapshot, protect, prioritize, avoid, tradeoff, function: fn, place, people, proxy, redlines, next_step, review,
+    ctx, audience, style, tone
+  }) => [
+    "Goals of Care — What Matters Most",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    snapshot && `Life snapshot: ${snapshot}`,
+    protect && `Must protect (values/activities):\n${protect}`,
+    prioritize && `Experiences to prioritize:\n${prioritize}`,
+    avoid && `Harms to avoid:\n${avoid}`,
+    tradeoff && `Trade-off stance: ${tradeoff}`,
+    fn && `Independence/function that matters:\n${fn}`,
+    place && `Place of care preference: ${place}`,
+    people && `People to involve: ${people}`,
+    proxy && `Proxy decision-maker: ${proxy}`,
+    redlines && `Non-negotiables / red lines:\n${redlines}`,
+    next_step && `Next conversation: ${next_step}`,
+    review && `Review cadence: ${review}`,
+    "",
+    "Prompt anchor: “Given your life now, what matters most to protect or experience?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "goals of care what matters most values first advance care planning quality of life proxy red lines place of care palliative inspired" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Dignity Questions — witness identity, meaning, and legacy
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "dignity_questions_legacy",
+  slug: "dignity-questions-legacy",
+  label: "Dignity Questions — Identity · Meaning · Legacy",
+  kind: "framework",
+  categories: ["ethics","wellbeing","storytelling","communication","reflection"],
+  tags: [
+    "type:practice","use:legacy","use:family-conversation","use:journaling",
+    "topic:identity","topic:meaning","topic:gratitude","origin:dignity-inspired","level:beginner"
+  ],
+  use_cases: [
+    "capture what you want remembered in this season",
+    "shape a letter, audio, or eulogy seed",
+    "facilitate family storytelling and gratitude"
+  ],
+  boosters: [
+    "Use names and concrete moments—make it carry your voice.",
+    "It’s okay to be brief; one honest line beats a paragraph.",
+    "Add one thanks and (if needed) one repair.",
+    "Decide who can hold this and how it’s shared."
+  ],
+  definition:
+    "A short set of prompts to witness identity, meaning, and legacy—what you want remembered now, in your words.",
+  help:
+    "Prompt: “What do you want remembered about you in this season?” Write for someone specific, even if you keep it private.",
+  notice:
+    "Inspired by dignity-focused practices; secular adaptation. Not therapy.",
+  fields: [
+    { label: "This season (context)", key: "season", type: "text", ph: "What chapter are you in?" },
+    { label: "What I want remembered (core)", key: "remembered", type: "textarea", ph: "Say it plainly, in your voice." },
+    { label: "Roles I cherish", key: "roles", type: "text", ph: "Parent, friend, maker, neighbor…" },
+    { label: "Stories to carry forward", key: "stories", type: "textarea", ph: "One or two moments that show who you are." },
+    { label: "Lessons I’d pass on", key: "lessons", type: "textarea", ph: "Short, specific, true." },
+    { label: "People to thank", key: "thanks", type: "textarea", ph: "Name them." },
+    { label: "Repairs to attempt (optional)", key: "repairs", type: "textarea", ph: "Apology, closure, boundary, blessing." },
+    { label: "Artifact & recipients", key: "artifact", type: "text", ph: "Letter, audio, video; who it’s for." },
+    { label: "How/when to share", key: "sharing", type: "text", ph: "Now, later, on a date, or after an event." }
+  ],
+  template: ({
+    season, remembered, roles, stories, lessons, thanks, repairs, artifact, sharing,
+    ctx, audience, style, tone
+  }) => [
+    "Dignity Questions — Identity · Meaning · Legacy",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    season && `This season: ${season}`,
+    remembered && `What I want remembered:\n${remembered}`,
+    roles && `Roles I cherish: ${roles}`,
+    stories && `Stories to carry forward:\n${stories}`,
+    lessons && `Lessons I’d pass on:\n${lessons}`,
+    thanks && `People to thank:\n${thanks}`,
+    repairs && `Repairs to attempt:\n${repairs}`,
+    artifact && `Artifact & recipients: ${artifact}`,
+    sharing && `How/when to share: ${sharing}`,
+    "",
+    "Prompt anchor: “What do you want remembered about you in this season?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "dignity questions legacy identity meaning remembered stories lessons gratitude repair artifact recipients season" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Mortal Message — letter/audio to past or future self or a loved one
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "mortal_message_letter_audio",
+  slug: "mortal-letter-audio",
+  label: "Mortal Message — Letter/Audio",
+  kind: "framework",
+  categories: ["wellbeing","ethics","storytelling","communication","reflection"],
+  tags: [
+    "type:practice","use:legacy","use:goodbye","use:gratitude",
+    "topic:mortality","topic:truth-telling","topic:repair","origin:contemplative","level:beginner"
+  ],
+  use_cases: [
+    "say the true thing now (even if brief)",
+    "record a message you’d want kept if this were the only one",
+    "offer gratitude, repair, and blessing in your voice"
+  ],
+  boosters: [
+    "Write/speak to one real person (even if it’s you).",
+    "Start with the truth line, then add thanks, repair, request.",
+    "Decide when/how to deliver—or where to safely store.",
+    "Have a simple aftercare plan if big feelings arise."
+  ],
+  definition:
+    "A simple container to capture the one message you’d record today—truth, gratitude, repair, blessing—addressed to a real recipient.",
+  help:
+    "Prompt: “If this were the only message, what truth would you record today?”",
+  notice:
+    "Emotional safety matters. Consider a trusted person to share with and support afterward.",
+  fields: [
+    { label: "Recipient", key: "recipient", type: "text", ph: "Past self, future self, a loved one, a team…" },
+    { label: "Direction", key: "direction", type: "select",
+      options: ["past self","future self","loved one","team/community"], ph: "Pick one" },
+    { label: "Medium", key: "medium", type: "select",
+      options: ["letter","audio","video"], ph: "Choose format" },
+    { label: "Truth (core message)", key: "truth", type: "textarea", ph: "Say the true thing first." },
+    { label: "Gratitude line", key: "gratitude", type: "text", ph: "One real thank-you." },
+    { label: "Apology / repair line (optional)", key: "repair", type: "text", ph: "If needed, name it plainly." },
+    { label: "Blessing / wish", key: "blessing", type: "text", ph: "What you hope for them/you." },
+    { label: "One request or permission", key: "request", type: "text", ph: "What you ask or allow." },
+    { label: "One story to preserve (optional)", key: "story", type: "textarea", ph: "Short memory that carries the feeling." },
+    { label: "Delivery plan", key: "delivery", type: "text", ph: "Share now, schedule later, or store with instructions." },
+    { label: "Aftercare plan", key: "aftercare", type: "text", ph: "A small support step post-recording." },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 5" }
+  ],
+  template: ({
+    recipient, direction, medium, truth, gratitude, repair, blessing, request, story, delivery, aftercare, timebox,
+    ctx, audience, style, tone
+  }) => [
+    "Mortal Message — Letter/Audio",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    timebox && `Timebox: ${timebox} min`,
+    recipient && `Recipient: ${recipient}`,
+    direction && `Direction: ${direction}`,
+    medium && `Medium: ${medium}`,
+    truth && `Truth (core message):\n${truth}`,
+    gratitude && `Gratitude: ${gratitude}`,
+    repair && `Apology/repair: ${repair}`,
+    blessing && `Blessing/wish: ${blessing}`,
+    request && `Request/permission: ${request}`,
+    story && `Story to preserve:\n${story}`,
+    delivery && `Delivery plan: ${delivery}`,
+    aftercare && `Aftercare plan: ${aftercare}`,
+    "",
+    "Prompt anchor: “If this were the only message, what truth would you record today?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "mortal message letter audio truth gratitude repair blessing request delivery aftercare mortality season legacy" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Automatic Writing — Truth Sprint (timed, uncensored pages)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "automatic_writing_truth_sprint",
+  slug: "automatic-writing-truth-sprint",
+  label: "Automatic Writing — Truth Sprint",
+  kind: "framework",
+  categories: ["creativity","wellbeing","self-reflection","writing"],
+  tags: [
+    "type:practice","use:journaling","use:creative-warmup","use:clarity",
+    "topic:truth-telling","topic:flow","level:beginner","origin:automatic-writing"
+  ],
+  use_cases: [
+    "break perfectionism; get to emotional truth fast",
+    "warm up before hard writing or a conversation",
+    "surface ‘the line I’m avoiding’ without editing"
+  ],
+  boosters: [
+    "Set a visible timer; stop when it ends.",
+    "Keep the pen moving / no backspace. If stuck, write the stuckness.",
+    "Use the starter line verbatim once, then keep going.",
+    "After, underline any sentence with charge. One tiny action is enough.",
+    "If overwhelmed, pause, drink water, look around and name 5 objects."
+  ],
+  definition:
+    "A short, timed writing burst to bypass self-censorship and touch an honest line, without editing.",
+  help:
+    "Prompt: “For 5 minutes: ‘The thing I don’t want to admit is…’ Keep the pen moving.”",
+  notice:
+    "Self-care practice; not therapy. Skip details you don’t want recorded.",
+  fields: [
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 5" },
+    { label: "Starter line", key: "starter", type: "text", ph: "The thing I don’t want to admit is…" },
+    { label: "Topic (optional)", key: "topic", type: "text", ph: "Work, relationship, decision, habit…" },
+    { label: "No-edit rule (auto-filled)", key: "rule", type: "text", ph: "Keep pen moving / no backspace." },
+    { label: "Aftercare (optional)", key: "aftercare", type: "text", ph: "Water, walk, text a friend…" }
+  ],
+  template: ({ timebox, starter, topic, rule, aftercare, ctx, audience, style, tone }) => [
+    "Automatic Writing — Truth Sprint",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    (timebox || starter) && `Timer: ${timebox || "5"} min · Starter: ${starter || "The thing I don’t want to admit is…"}`,
+    topic && `Topic: ${topic}`,
+    `Rules: ${rule || "Keep pen moving / no backspace. If stuck, write the stuckness."}`,
+    "Write until the timer ends. Do not edit. Underline any charged sentence, then choose one tiny kind step.",
+    aftercare && `Aftercare: ${aftercare}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "automatic writing truth sprint timed freewriting keep pen moving no backspace perfectionism warmup journaling" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Playback Theatre — Confession Line (offer a moment; see it mirrored)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "playback_confession_line",
+  slug: "playback-theatre-confession-line",
+  label: "Playback Theatre — Confession Line",
+  kind: "framework",
+  categories: ["facilitation","storytelling","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:check-in","use:group-story","use:ritual",
+    "topic:witnessing","topic:vulnerability","origin:playback-theatre","level:intermediate"
+  ],
+  use_cases: [
+    "surface the heart of a story in one line",
+    "create quick empathy loops in a group",
+    "warm up for deeper sharing with consent"
+  ],
+  boosters: [
+    "Consent first. Teller can pass.",
+    "Keep the line short; actors mirror tone not facts.",
+    "Listeners: reflect, don’t fix. Brief, respectful playback.",
+    "Close each share with “Was something true there?” from the teller."
+  ],
+  definition:
+    "A micro-ritual: one line from a teller is mirrored back by others to witness the emotional truth succinctly.",
+  help:
+    "Prompt: “The heart of my story in one line is…” Keep it brief; allow a short playback.",
+  notice:
+    "Group witnessing practice; not therapy. Set confidentiality norms.",
+  fields: [
+    { label: "Session purpose", key: "purpose", type: "text", ph: "Why we’re doing this." },
+    { label: "Consent script", key: "consent", type: "text", ph: "“Open to a one-line playback round?”" },
+    { label: "Teller’s one line", key: "one_line", type: "text", ph: "The heart of my story in one line is…" },
+    { label: "Tone / feeling", key: "tone_word", type: "text", ph: "Tender, proud, shaky, relieved…" },
+    { label: "Playback roles", key: "roles", type: "text", ph: "Who mirrors? (2 actors? whole group?)" },
+    { label: "Confidentiality note", key: "confidentiality", type: "textarea", ph: "What stays in the room?" }
+  ],
+  template: ({ purpose, consent, one_line, tone_word, roles, confidentiality, ctx, audience, style, tone }) => [
+    "Playback Theatre — Confession Line",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    purpose && `Purpose: ${purpose}`,
+    consent && `Consent: ${consent}`,
+    one_line && `Teller’s line: ${one_line}`,
+    tone_word && `Tone: ${tone_word}`,
+    roles && `Playback roles: ${roles}`,
+    confidentiality && `Confidentiality: ${confidentiality}`,
+    "Close with: Teller confirms if something true was mirrored."
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "playback theatre confession line one line mirror witness tone consent confidentiality group ritual" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Clown ‘Flop’ — Share Failure; Let the Room See You Feel It
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "clown_flop_exercise",
+  slug: "clown-flop-exercise",
+  label: "Clown ‘Flop’ — Failure Seen Safely",
+  kind: "framework",
+  categories: ["facilitation","creativity","teamwork","storytelling"],
+  tags: [
+    "type:practice","use:warmup","use:bravery-rep","use:retrospective",
+    "topic:failure","topic:shame-resilience","origin:clowning","level:intermediate"
+  ],
+  use_cases: [
+    "normalize naming failure in teams",
+    "build shame-resilience and play",
+    "prepare for feedback with less armor"
+  ],
+  boosters: [
+    "Keep it small and specific; 60–90 seconds max.",
+    "Show the ‘inner face’ you made when it happened.",
+    "Audience: respond with kind applause or “we see you.”",
+    "Facilitator names learning, not fixes."
+  ],
+  definition:
+    "A playful, bounded share: name a recent flop and let the group witness the feeling safely.",
+  help:
+    "Prompt: “Here’s where I flopped, and here’s the face I made inside.”",
+  notice:
+    "Psychological safety first; opt-outs valid. Not therapy.",
+  fields: [
+    { label: "Flop title (short)", key: "title", type: "text", ph: "Two-word handle for the fail." },
+    { label: "What happened (one or two lines)", key: "what", type: "textarea", ph: "Keep it factual and brief." },
+    { label: "Inner face (describe/gesture)", key: "inner_face", type: "text", ph: "What you felt in your body/face." },
+    { label: "One learning", key: "learning", type: "text", ph: "What shifted or what you’ll try next." },
+    { label: "Applause line (how audience responds)", key: "applause", type: "text", ph: "“We see you” / snaps / claps" },
+    { label: "Timebox (minutes)", key: "timebox", type: "text", ph: "e.g., 2" }
+  ],
+  template: ({ title, what, inner_face, learning, applause, timebox, ctx, audience, style, tone }) => [
+    "Clown ‘Flop’ — Failure Seen Safely",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    timebox && `Timebox: ${timebox} min`,
+    title && `Flop: ${title}`,
+    what && `What happened:\n${what}`,
+    inner_face && `Inner face (felt expression): ${inner_face}`,
+    learning && `One learning: ${learning}`,
+    applause && `Audience response: ${applause}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "clown flop failure share inner face shame resilience applause learning playful warmup team" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Contact Improv — Listening Duet (felt-sense led movement)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "contact_improv_listening_duet",
+  slug: "contact-improv-listening-duet",
+  label: "Contact Improv — Listening Duet",
+  kind: "framework",
+  categories: ["embodiment","creativity","wellbeing","teamwork"],
+  tags: [
+    "type:practice","use:warmup","use:trust-building","use:somatic-attunement",
+    "topic:felt-sense","topic:listening","origin:contact-improv","level:intermediate"
+  ],
+  use_cases: [
+    "co-regulate attention through movement",
+    "practice nonverbal listening and consent",
+    "reset a team’s nervous system before hard work"
+  ],
+  boosters: [
+    "Consent and boundaries explicit. Touch is optional.",
+    "Pick a mode: no-touch mirroring or light-contact.",
+    "Agree on a clear stop signal and space constraints.",
+    "Move slowly; let impulse and gravity lead; no lifts."
+  ],
+  definition:
+    "A duo movement practice led by felt sense, with explicit consent and slow pacing; can be done no-touch.",
+  help:
+    "Prompt: “Attend to impulse and gravity; let one honest movement lead.”",
+  notice:
+    "Safety first. If in pain or unsure, choose no-touch mirroring. Not instruction for acrobatics.",
+  fields: [
+    { label: "Partner", key: "partner", type: "text", ph: "Who you’re moving with." },
+    { label: "Mode", key: "mode", type: "select", options: ["no-touch mirroring","light-contact"], ph: "Choose one" },
+    { label: "Duration (minutes)", key: "duration", type: "text", ph: "e.g., 5" },
+    { label: "Stop signal (exact words/gesture)", key: "stop_signal", type: "text", ph: "“Pause” + hand open, etc." },
+    { label: "Space constraints", key: "space", type: "text", ph: "Area size; obstacles; footwear." },
+    { label: "Accessibility notes (optional)", key: "access", type: "textarea", ph: "Seated, standing, aids, pace…" }
+  ],
+  template: ({ partner, mode, duration, stop_signal, space, access, ctx, audience, style, tone }) => [
+    "Contact Improv — Listening Duet",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    partner && `Partner: ${partner}`,
+    mode && `Mode: ${mode}`,
+    duration && `Duration: ${duration} min`,
+    stop_signal && `Stop signal: ${stop_signal}`,
+    space && `Space constraints: ${space}`,
+    access && `Accessibility: ${access}`,
+    "Move from felt sense only. Slow is good. End at the stop signal."
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "contact improv listening duet felt sense mirroring light contact consent stop signal embodiment accessibility" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Story Spine + One Naked Sentence — classic arc with a V3 reveal
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "story_spine_naked_sentence",
+  slug: "story-spine-naked-sentence",
+  label: "Story Spine + One Naked Sentence",
+  kind: "framework",
+  categories: ["storytelling","creativity","communication","education"],
+  tags: [
+    "type:practice","use:story-draft","use:pitch","use:talk-outline",
+    "topic:arc","topic:truth-line","origin:story-spine-inspired","level:beginner"
+  ],
+  use_cases: [
+    "draft a talk or story with emotional truth inside",
+    "align a team narrative with one honest V3 line",
+    "prep for demo/pitch with clarity + heart"
+  ],
+  boosters: [
+    "Keep each beat to a single sentence.",
+    "Write the naked sentence last, then weave it back in.",
+    "If the naked sentence contradicts the arc, trust it and adjust.",
+    "Read aloud once; trim any fluff."
+  ],
+  definition:
+    "A compact plotting scaffold (story spine) paired with one present-tense, vulnerable line that tells the real truth (V3).",
+  help:
+    "Prompt: “Amid the plot, the sentence I’m scared to include is __.”",
+  notice:
+    "Inspired by popular story spine exercises; this is a lightweight, fair-use scaffold.",
+  fields: [
+    { label: "Title", key: "title", type: "text", ph: "Working title." },
+    { label: "Once upon a time…", key: "once", type: "text", ph: "Establish the world." },
+    { label: "Every day…", key: "every_day", type: "text", ph: "Normal pattern." },
+    { label: "One day…", key: "one_day", type: "text", ph: "Inciting change." },
+    { label: "Because of that… (1)", key: "because1", type: "text", ph: "Consequence." },
+    { label: "Because of that… (2) (optional)", key: "because2", type: "text", ph: "Another consequence." },
+    { label: "Until finally…", key: "until_finally", type: "text", ph: "Climax/turn." },
+    { label: "Ever since then…", key: "ever_since", type: "text", ph: "New normal." },
+    { label: "Naked sentence (present-tense truth)", key: "naked", type: "textarea", ph: "The line you’re scared to include." },
+    { label: "Audience (optional)", key: "aud", type: "text", ph: "Who this is for." }
+  ],
+  template: ({
+    title, once, every_day, one_day, because1, because2, until_finally, ever_since, naked, aud,
+    ctx, audience, style, tone
+  }) => [
+    "Story Spine + One Naked Sentence",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    title && `Title: ${title}`,
+    aud && `Audience: ${aud}`,
+    once && `Once upon a time… ${once}`,
+    every_day && `Every day… ${every_day}`,
+    one_day && `One day… ${one_day}`,
+    because1 && `Because of that… ${because1}`,
+    because2 && `Because of that… ${because2}`,
+    until_finally && `Until finally… ${until_finally}`,
+    ever_since && `Ever since then… ${ever_since}`,
+    naked && `Naked sentence (present truth):\n${naked}`,
+    "",
+    "Prompt anchor: “Amid the plot, the sentence I’m scared to include is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "story spine classic arc once upon a time because of that until finally ever since then naked sentence v3 reveal truth" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Truth & Reconciliation — Micro-Format (harm named; dignity affirmed)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "truth_reconciliation_micro",
+  slug: "truth-reconciliation-micro",
+  label: "Truth & Reconciliation — Micro-Format",
+  kind: "framework",
+  categories: ["ethics","communication","conflict","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:repair","use:apology","use:conflict-resolution",
+    "topic:dignity","topic:amends","topic:accountability","level:intermediate"
+  ],
+  use_cases: [
+    "name harm succinctly and affirm dignity",
+    "propose concrete amends with timelines",
+    "set safeguards and accountability for future behavior"
+  ],
+  boosters: [
+    "Say the harm first, in their terms; invite correction.",
+    "Own your role plainly; avoid justification or ‘context that excuses’.",
+    "Affirm the other’s dignity with specific language (not generic).",
+    "Propose amends with dates and verification, then ask consent.",
+    "Install safeguards and check-ins to prevent recurrence."
+  ],
+  definition:
+    "A compact repair script: name the harm as understood, affirm dignity, propose amends with timelines, and install safeguards with consent.",
+  help:
+    "Prompt: “Here’s the harm as I understand it; here’s what your dignity calls me to do.”",
+  notice:
+    "Relational repair tool; not legal advice. Power dynamics matter—consider a neutral facilitator in high-stakes settings.",
+  fields: [
+    { label: "Parties (you/them)", key: "parties", type: "text", ph: "Me (name/role) and You (name/role)" },
+    { label: "Harm (as I understand it)", key: "harm_understood", type: "textarea", ph: "State their experience; invite correction." },
+    { label: "My role / agency", key: "my_role", type: "textarea", ph: "Behavioral description, no excuses." },
+    { label: "Dignity affirmation (specific)", key: "dignity_affirm", type: "textarea", ph: "Name the value you honor (privacy, safety, respect…)." },
+    { label: "Amends (concrete actions + dates)", key: "amends", type: "textarea", ph: "What I will do, by when, how verified." },
+    { label: "Safeguards (prevent recurrence)", key: "safeguards", type: "textarea", ph: "Protocols, boundaries, training, oversight…" },
+    { label: "Accountability (check-ins, who/how)", key: "accountability", type: "textarea", ph: "Cadence, owner, visibility." },
+    { label: "Consent / invitation to adjust", key: "consent_invite", type: "text", ph: "“Does this meet you? What would you change?”" },
+    { label: "Follow-up date", key: "follow_up", type: "text", ph: "e.g., Review on 2025-10-15" }
+  ],
+  template: ({
+    parties, harm_understood, my_role, dignity_affirm, amends, safeguards, accountability, consent_invite, follow_up,
+    ctx, audience, style, tone
+  }) => [
+    "Truth & Reconciliation — Micro-Format",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    parties && `Parties: ${parties}`,
+    harm_understood && `Harm (as I understand it):\n${harm_understood}`,
+    my_role && `My role / agency:\n${my_role}`,
+    dignity_affirm && `Dignity affirmed:\n${dignity_affirm}`,
+    amends && `Amends (actions + dates):\n${amends}`,
+    safeguards && `Safeguards:\n${safeguards}`,
+    accountability && `Accountability:\n${accountability}`,
+    follow_up && `Follow-up: ${follow_up}`,
+    consent_invite && `Consent/request: ${consent_invite}`,
+    "",
+    "Prompt anchor: “Here’s the harm as I understand it; here’s what your dignity calls me to do.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "truth reconciliation harm dignity amends safeguards accountability consent repair conflict resolution micro format" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   LARA / CRI-Style Dialogue — listen · affirm · respond · add
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "lara_cri_dialogue",
+  slug: "lara-cri-dialogue",
+  label: "LARA / CRI — Dialogue Scaffold",
+  kind: "framework",
+  categories: ["communication","conflict","education","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:dialogue","use:de-escalation","use:feedback",
+    "topic:listening","topic:affirmation","topic:needs","level:beginner","origin:dialogue-tools-inspired"
+  ],
+  use_cases: [
+    "structure a hard conversation in four short moves",
+    "reduce defensiveness and center essence",
+    "name your need/impact without erasing theirs"
+  ],
+  boosters: [
+    "Ask consent to use the scaffold; honor a pass.",
+    "Paraphrase first with their key words; check accuracy.",
+    "Affirm the sense-making (‘it makes sense because…’).",
+    "Respond with your impact/need in first person.",
+    "Add one thing that matters to you; keep it brief; avoid ‘but’—use ‘and’."
+  ],
+  definition:
+    "A four-step micro-script—Listen, Affirm, Respond, Add—that centers the other’s essence while naming your own need/impact.",
+  help:
+    "Prompt: “I’m hearing __; it makes sense because __; can I add __ that matters to me?”",
+  notice:
+    "Inspired by dialogue tools used in inclusive facilitation (attributions vary across orgs). Use with care and consent.",
+  fields: [
+    { label: "Topic/scope", key: "topic", type: "text", ph: "What this is about." },
+    { label: "Consent script", key: "consent", type: "text", ph: "“Can we use a quick LARA-style pass?”" },
+    { label: "L — Listen (paraphrase in their words)", key: "listen", type: "textarea", ph: "“I’m hearing…” then check: “Did I get that?”" },
+    { label: "A — Affirm (why it makes sense)", key: "affirm", type: "textarea", ph: "Name the logic/feeling that’s valid." },
+    { label: "R — Respond (impact/need/I-statement)", key: "respond", type: "textarea", ph: "What landed for you; what you need now." },
+    { label: "A — Add (what matters to me)", key: "add", type: "textarea", ph: "One thing to include going forward." },
+    { label: "Check understanding phrase", key: "check", type: "text", ph: "“Does that land?” / “What did I miss?”" },
+    { label: "Next step / request", key: "next_step", type: "textarea", ph: "Concrete ask; small and testable." },
+    { label: "Stop/timeout boundary (optional)", key: "boundary", type: "text", ph: "How to pause if heat rises." }
+  ],
+  template: ({
+    topic, consent, listen, affirm, respond, add, check, next_step, boundary,
+    ctx, audience, style, tone
+  }) => [
+    "LARA / CRI — Dialogue Scaffold",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    topic && `Topic: ${topic}`,
+    consent && `Consent: ${consent}`,
+    listen && `L — Listen:\n${listen}`,
+    affirm && `A — Affirm:\n${affirm}`,
+    respond && `R — Respond (impact/need):\n${respond}`,
+    add && `A — Add (what matters to me):\n${add}`,
+    check && `Check understanding: ${check}`,
+    next_step && `Next step/request:\n${next_step}`,
+    boundary && `Stop/timeout boundary: ${boundary}`,
+    "",
+    "Prompt anchor: “I’m hearing __; it makes sense because __; can I add __ that matters to me?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "lara cri listen affirm respond add dialogue scaffold consent paraphrase impact need essence de escalation" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Accountability Letter — no excuses; name impact & commitment
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "accountability_letter",
+  slug: "accountability-letter",
+  label: "Accountability Letter",
+  kind: "framework",
+  categories: ["ethics","communication","conflict","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:apology","use:repair","use:commitment",
+    "topic:impact","topic:amends","topic:values","level:beginner"
+  ],
+  use_cases: [
+    "offer a no-excuses apology with concrete commitments",
+    "document amends and timelines for shared visibility",
+    "close a loop with clear follow-up dates"
+  ],
+  boosters: [
+    "Name behavior in observable terms; skip intent/defense.",
+    "Describe impact on people and trust, not just outcomes.",
+    "State values violated and why that matters to you.",
+    "List commitments with who/what/when/how verified.",
+    "Invite correction; include follow-up date and channel."
+  ],
+  definition:
+    "A structured letter that names behavior and impact without excuses, then commits to specific amends and verification.",
+  help:
+    "Prompt: “What I did; how it landed; what I’m committed to now, concretely.”",
+  notice:
+    "For interpersonal repair and team trust; not legal advice. Share appropriately.",
+  fields: [
+    { label: "Recipient", key: "recipient", type: "text", ph: "Name/role (or ‘team’)." },
+    { label: "What I did (behavior only)", key: "behavior", type: "textarea", ph: "Facts; no motive speculation." },
+    { label: "Impact (on people/trust)", key: "impact", type: "textarea", ph: "Effects felt by others; name names with care." },
+    { label: "Values violated (mine/ours)", key: "values", type: "textarea", ph: "Which standard I fell short of." },
+    { label: "Commitments (specific; dated)", key: "commitments", type: "textarea", ph: "Bulleted amends w/ deadlines + verification." },
+    { label: "Safeguards (prevent recurrence)", key: "safeguards", type: "textarea", ph: "Process, boundary, training, oversight." },
+    { label: "Verification (who/how)", key: "verification", type: "text", ph: "Who will confirm and how (public/private)." },
+    { label: "Follow-up date/time", key: "follow_up", type: "text", ph: "e.g., 2025-10-01 10:00" },
+    { label: "Invitation to reply (optional)", key: "invite", type: "text", ph: "“What did I miss? What would help repair?”" },
+    { label: "Signature", key: "signature", type: "text", ph: "Name + contact" }
+  ],
+  template: ({
+    recipient, behavior, impact, values, commitments, safeguards, verification, follow_up, invite, signature,
+    ctx, audience, style, tone
+  }) => [
+    "Accountability Letter",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    recipient && `To: ${recipient}`,
+    behavior && `What I did:\n${behavior}`,
+    impact && `How it landed:\n${impact}`,
+    values && `Values I violated:\n${values}`,
+    commitments && `What I’m committed to now (concrete):\n${commitments}`,
+    safeguards && `Safeguards to prevent recurrence:\n${safeguards}`,
+    verification && `Verification: ${verification}`,
+    follow_up && `Follow-up: ${follow_up}`,
+    invite && `Invitation to reply: ${invite}`,
+    signature && `— ${signature}`,
+    "",
+    "Prompt anchor: “What I did; how it landed; what I’m committed to now, concretely.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "accountability letter no excuses impact values commitments amends safeguards verification follow up apology repair" }
+},
+
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Ofrenda / Remembrance Board — speak to the dead in present tense
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "ofrenda_remembrance_board",
+  slug: "ofrenda-remembrance-board",
+  label: "Ofrenda / Remembrance Board",
+  kind: "framework",
+  categories: ["ritual","wellbeing","storytelling","family","reflection"],
+  tags: [
+    "type:practice","use:memorial","use:gratitude","use:legacy",
+    "topic:grief","topic:remembrance","topic:values","origin:ofrenda-inspired","level:beginner"
+  ],
+  use_cases: [
+    "mark a day or season by speaking to the dead in the present tense",
+    "create a simple altar/board entry with words and artifacts",
+    "name an ongoing relationship of guidance and care"
+  ],
+  boosters: [
+    "Use present tense: speak as if they can hear you now.",
+    "Name one concrete way you’re carrying them today.",
+    "Include a small offering (photo, food, symbol) even if purely symbolic.",
+    "Close with a kind action you’ll take in their honor.",
+    "Honor cultural roots if relevant; adapt respectfully."
+  ],
+  definition:
+    "A secular, ofrenda-inspired remembrance: speak to the dead in the present tense, name what you carry forward, and note one honoring action.",
+  help:
+    "Prompt: “I’m carrying you today in __; what would you ask of me now?” Keep it simple and specific; one truth line beats a paragraph.",
+  notice:
+    "Cultural respect matters. This is an ofrenda-inspired, secular template; adapt to your tradition and boundaries.",
+  fields: [
+    { label: "Who I’m addressing (name/relationship)", key: "who", type: "text", ph: "e.g., ‘Grandma Elena’, ‘Mentor Sam’" },
+    { label: "What I’m carrying today (specific)", key: "carrying", type: "text", ph: "A trait, lesson, phrase, recipe, laugh…" },
+    { label: "Present-tense message to them", key: "message", type: "textarea", ph: "Speak directly, now." },
+    { label: "What they’d ask of me (as I imagine it)", key: "ask", type: "text", ph: "One line." },
+    { label: "Offering / symbol", key: "offering", type: "text", ph: "Photo, candle, bread, flower, tool…" },
+    { label: "One honoring action (≤10 min)", key: "action", type: "textarea", ph: "Call someone, cook a dish, fix a thing…" },
+    { label: "Share/hold", key: "share", type: "select", options: ["private","share with one person","share with family/community"], ph: "Choose how to hold this" },
+    { label: "Cultural/tradition note (optional)", key: "tradition", type: "text", ph: "How you’re adapting with respect." }
+  ],
+  template: ({
+    who, carrying, message, ask, offering, action, share, tradition,
+    ctx, audience, style, tone
+  }) => [
+    "Ofrenda / Remembrance Board",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    who && `To: ${who} (present tense)`,
+    carrying && `I’m carrying you today in: ${carrying}`,
+    message && `Message:\n${message}`,
+    ask && `What you’d ask of me now (as I imagine it): ${ask}`,
+    offering && `Offering/symbol: ${offering}`,
+    action && `Honoring action (≤10 min):\n${action}`,
+    share && `Share/hold: ${share}`,
+    tradition && `Tradition/cultural note: ${tradition}`,
+    "",
+    "Prompt anchor: “I’m carrying you today in __; what would you ask of me now?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "ofrenda remembrance board speak to the dead present tense carrying offering honoring action cultural respect grief legacy" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Gratitude Under Duress — name thanks without bypassing pain
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "gratitude_under_duress",
+  slug: "gratitude-under-duress",
+  label: "Gratitude Under Duress",
+  kind: "framework",
+  categories: ["wellbeing","resilience","reflection","mental-health"],
+  tags: [
+    "type:practice","use:journaling","use:check-in","use:repair",
+    "topic:gratitude","topic:pain","topic:non-bypass","level:beginner"
+  ],
+  use_cases: [
+    "acknowledge pain honestly while naming one trustworthy thing",
+    "stabilize before a hard task or conversation",
+    "end the day without pretending it was fine"
+  ],
+  boosters: [
+    "Start by naming the pain plainly; no spin.",
+    "Pick one specific, trustworthy thing (person, place, practice).",
+    "Explain why it’s trustworthy to you today (evidence, pattern).",
+    "Choose a tiny supportive step that doesn’t erase the pain.",
+    "Optional: define a boundary—what you’re not ready to be grateful for."
+  ],
+  definition:
+    "A two-handed check-in: hold what hurts and identify one trustworthy thing, without minimizing or bypassing the pain.",
+  help:
+    "Prompt: “I’m not okay—and here is one thing still trustworthy.” Let both lines be true.",
+  fields: [
+    { label: "What’s hard (one line)", key: "hard", type: "text", ph: "Name the pain without drama." },
+    { label: "Pain words (raw list)", key: "pain_words", type: "text", ph: "Tired, scared, angry, brittle…" },
+    { label: "One thing trustworthy", key: "trustworthy", type: "text", ph: "A person, practice, place, promise." },
+    { label: "Why it’s trustworthy (today)", key: "why", type: "textarea", ph: "Evidence/pattern that makes it solid." },
+    { label: "Tiny supportive step (≤10 min)", key: "step", type: "textarea", ph: "Concrete care that doesn’t erase the pain." },
+    { label: "Boundary (not grateful for…)", key: "boundary", type: "text", ph: "What you refuse to sugarcoat." },
+    { label: "Who (if anyone) to share with", key: "share_with", type: "text", ph: "Name or ‘private’." }
+  ],
+  template: ({
+    hard, pain_words, trustworthy, why, step, boundary, share_with,
+    ctx, audience, style, tone
+  }) => [
+    "Gratitude Under Duress",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    hard && `What’s hard: ${hard}`,
+    pain_words && `Pain words: ${pain_words}`,
+    trustworthy && `One thing trustworthy: ${trustworthy}`,
+    why && `Why trustworthy (today):\n${why}`,
+    step && `Tiny supportive step (≤10 min):\n${step}`,
+    boundary && `Boundary (not grateful for): ${boundary}`,
+    share_with && `Share with: ${share_with}`,
+    "",
+    "Prompt anchor: “I’m not okay—and here is one thing still trustworthy.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "gratitude under duress not okay trustworthy thing non bypass pain honesty resilience tiny step boundary journaling" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Vow-and-Witness — make a vow with a living witness
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "vow_and_witness",
+  slug: "vow-and-witness",
+  label: "Vow-and-Witness",
+  kind: "framework",
+  categories: ["ritual","commitment","teamwork","ethics","wellbeing"],
+  tags: [
+    "type:practice","use:commitment","use:ceremony","use:accountability",
+    "topic:witness","topic:vow","topic:integrity","level:beginner"
+  ],
+  use_cases: [
+    "make a small public vow with one trusted witness",
+    "increase follow-through via check-in and mirroring",
+    "mark a transition or intention with dignity"
+  ],
+  boosters: [
+    "Keep the vow small, specific, and time-bounded.",
+    "Ask witness to mirror back exactly what they heard.",
+    "Write one exit/repair clause for when life happens.",
+    "Schedule a concrete check-in time and channel.",
+    "Close with thanks; optional token or gesture."
+  ],
+  definition:
+    "A brief commitment ritual: state a specific vow before a living witness, hear it mirrored back, and set check-ins and repair.",
+  help:
+    "Prompt: “Before you, I vow __; please mirror back what you heard.”",
+  notice:
+    "This is a personal/relational ritual, not a legal contract. Choose a witness you trust.",
+  fields: [
+    { label: "Vower (you)", key: "vower", type: "text", ph: "Your name" },
+    { label: "Witness (name)", key: "witness", type: "text", ph: "Who is present to hear this?" },
+    { label: "Vow (specific, time-bounded)", key: "vow", type: "textarea", ph: "One behavior, scope, and timeframe." },
+    { label: "Why it matters (value/benefit)", key: "why", type: "text", ph: "What this protects or grows." },
+    { label: "Start date/time", key: "start", type: "text", ph: "e.g., 2025-09-22 09:00" },
+    { label: "Check-in (date/time + channel)", key: "checkin", type: "text", ph: "e.g., 2025-09-29 DM / call" },
+    { label: "Repair if missed (clause)", key: "repair", type: "textarea", ph: "What happens if you slip (make-right plan)." },
+    { label: "Witness mirror-back (their words)", key: "mirror", type: "textarea", ph: "They repeat what they heard." },
+    { label: "Token/gesture (optional)", key: "token", type: "text", ph: "Handshake, object, emoji, bell…" }
+  ],
+  template: ({
+    vower, witness, vow, why, start, checkin, repair, mirror, token,
+    ctx, audience, style, tone
+  }) => [
+    "Vow-and-Witness",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    vower && `Vower: ${vower}`,
+    witness && `Witness: ${witness}`,
+    vow && `Vow:\n${vow}`,
+    why && `Why it matters: ${why}`,
+    start && `Start: ${start}`,
+    checkin && `Check-in: ${checkin}`,
+    repair && `Repair if missed:\n${repair}`,
+    mirror && `Witness mirror-back:\n${mirror}`,
+    token && `Token/gesture: ${token}`,
+    "",
+    "Prompt anchor: “Before you, I vow __; please mirror back what you heard.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "vow and witness commitment ritual mirror back check in repair clause integrity token gesture ceremony" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Stars & Wishes + Bleed Check — celebrate, request, separate self/character
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "stars_wishes_bleed_check",
+  slug: "stars-wishes-bleed-check",
+  label: "Stars & Wishes + Bleed Check",
+  kind: "framework",
+  categories: ["ttrpg","facilitation","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:debrief","use:feedback","use:safety",
+    "topic:celebration","topic:requests","topic:bleed","origin:ttrpg-safety","level:beginner"
+  ],
+  use_cases: [
+    "end-of-session debrief that stays kind and useful",
+    "name one concrete wish/request for next time",
+    "check for ‘bleed’ and separate player/character"
+  ],
+  boosters: [
+    "Keep ‘Stars’ specific and about behaviors you can repeat.",
+    "Make ‘Wishes’ a single, doable request; avoid design-by-committee.",
+    "Bleed check: name one thing that belonged to you (player) or didn’t.",
+    "Offer a consent tweak if the edge moved tonight.",
+    "Allow private submission if helpful."
+  ],
+  definition:
+    "A quick closer that surfaces a star (celebration), a wish (request), and a bleed check to separate player feelings from character fiction.",
+  help:
+    "Prompt: “Star, wish, and one thing that belonged to me (or didn’t) tonight.”",
+  notice:
+    "Group safety practice; not therapy. Honor pass/opt-out.",
+  fields: [
+    { label: "Session / episode", key: "session", type: "text", ph: "e.g., ‘Arc 2, Ep 4’" },
+    { label: "Star (celebrate a moment/person)", key: "star", type: "textarea", ph: "Specific behavior you appreciated." },
+    { label: "Wish (one concrete request)", key: "wish", type: "textarea", ph: "Small, testable change for next time." },
+    { label: "Bleed — belonged to me (player) (one line)", key: "bleed_mine", type: "text", ph: "A feeling/thought that was truly mine." },
+    { label: "Bleed — did NOT belong to me (one line)", key: "bleed_not_mine", type: "text", ph: "Something I’ll hand back to the character." },
+    { label: "Self/character separation note (optional)", key: "separation", type: "textarea", ph: "How I can keep a healthy boundary." },
+    { label: "Consent tweak for next session (optional)", key: "consent_tweak", type: "textarea", ph: "Any small update you’d like (lines/veils/pacing)." },
+    { label: "Share mode", key: "share_mode", type: "select", options: ["group","GM only","private"], ph: "Choose one" }
+  ],
+  template: ({
+    session, star, wish, bleed_mine, bleed_not_mine, separation, consent_tweak, share_mode,
+    ctx, audience, style, tone
+  }) => [
+    "Stars & Wishes + Bleed Check",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    session && `Session: ${session}`,
+    star && `Star:\n${star}`,
+    wish && `Wish (next time):\n${wish}`,
+    (bleed_mine || bleed_not_mine) && "Bleed check:",
+    bleed_mine && `• Belonged to me: ${bleed_mine}`,
+    bleed_not_mine && `• Did not belong to me: ${bleed_not_mine}`,
+    separation && `Self/character separation:\n${separation}`,
+    consent_tweak && `Consent tweak (next session):\n${consent_tweak}`,
+    share_mode && `Share mode: ${share_mode}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "stars and wishes bleed check ttrpg debrief feedback consent separation player character safety" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Lines/Veils Revisit (Mid-Campaign) — update consent at the edge
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "lines_veils_revisit",
+  slug: "lines-veils-revisit",
+  label: "Lines/Veils Revisit — Mid-Campaign",
+  kind: "framework",
+  categories: ["ttrpg","facilitation","ethics","teamwork","wellbeing"],
+  tags: [
+    "type:practice","use:session-setup","use:consent-refresh","use:safety",
+    "topic:lines","topic:veils","topic:trust","origin:ttrpg-safety","level:beginner"
+  ],
+  use_cases: [
+    "refresh consent midway through a campaign/arc",
+    "capture new lines/veils as stakes shift",
+    "agree on signals and a pause phrase"
+  ],
+  boosters: [
+    "Name the current arc’s tone first; align expectations.",
+    "Use clear examples for new lines/veils.",
+    "Decide how to signal yellow/red in play (words or gesture).",
+    "Set a next review date; consent is living, not one-and-done.",
+    "Private channels are valid; no one owes disclosure."
+  ],
+  definition:
+    "A mid-campaign consent refresh that updates lines (hard no), veils (fade/skip), signals, and the pause phrase.",
+  help:
+    "Prompt: “Given where we are, what new lines/veils keep this brave and fun?”",
+  notice:
+    "Safety tool; not a substitute for professional support.",
+  fields: [
+    { label: "Campaign / arc", key: "campaign", type: "text", ph: "Name of game/arc." },
+    { label: "Tone / themes (now)", key: "tone_now", type: "textarea", ph: "What the story currently plays like." },
+    { label: "Lines (hard no; examples)", key: "lines", type: "textarea", ph: "List topics/scenes off-limits." },
+    { label: "Veils (fade/skip; examples)", key: "veils", type: "textarea", ph: "Allowed but off-camera / summarized." },
+    { label: "Green/Okay (explicitly welcome themes)", key: "greens", type: "textarea", ph: "Fun levers we *do* want." },
+    { label: "Signals (yellow/red & how to use)", key: "signals", type: "textarea", ph: "Words/gestures, who acts, what happens." },
+    { label: "Pause phrase", key: "pause_phrase", type: "text", ph: "Exact words to stop (e.g., “Pause”)." },
+    { label: "Private notes to GM (optional)", key: "private_gm", type: "textarea", ph: "Anything to hold privately." },
+    { label: "Next consent review (date)", key: "next_review", type: "text", ph: "e.g., 2025-10-15" }
+  ],
+  template: ({
+    campaign, tone_now, lines, veils, greens, signals, pause_phrase, private_gm, next_review,
+    ctx, audience, style, tone
+  }) => [
+    "Lines/Veils Revisit — Mid-Campaign",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    campaign && `Campaign/arc: ${campaign}`,
+    tone_now && `Tone/themes (now):\n${tone_now}`,
+    lines && `Lines (hard no):\n${lines}`,
+    veils && `Veils (fade/skip):\n${veils}`,
+    greens && `Green/Okay themes:\n${greens}`,
+    signals && `Signals (yellow/red):\n${signals}`,
+    pause_phrase && `Pause phrase: ${pause_phrase}`,
+    private_gm && `Private notes to GM:\n${private_gm}`,
+    next_review && `Next consent review: ${next_review}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "lines veils revisit mid campaign consent refresh ttrpg safety pause phrase signals themes" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Safety Pause with Essence — call time-out and tell the present truth
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "safety_pause_with_essence",
+  slug: "safety-pause-with-essence",
+  label: "Safety Pause with Essence",
+  kind: "framework",
+  categories: ["ttrpg","facilitation","wellbeing","communication"],
+  tags: [
+    "type:practice","use:time-out","use:repair","use:safety",
+    "topic:present-truth","topic:needs","origin:ttrpg-safety","level:beginner"
+  ],
+  use_cases: [
+    "stop play to share a body-truth and a need",
+    "agree on what must change to continue",
+    "document re-entry protocol and follow-up"
+  ],
+  boosters: [
+    "Say the pause phrase first; breathe; slow down.",
+    "Name the present-tense truth in one sentence.",
+    "State one need/request to continue or a stop for today.",
+    "GM names options; group decides kindly.",
+    "Schedule a short follow-up if heat stays high."
+  ],
+  definition:
+    "A structured time-out to name present-moment truth (essence) and the need to continue safely, plus re-entry steps.",
+  help:
+    "Prompt: “Pause: the truth in my body right now is __; I need __ to continue.”",
+  notice:
+    "Safety tool; opt-out honored. Not therapy.",
+  fields: [
+    { label: "Pause phrase used", key: "pause_phrase", type: "text", ph: "e.g., “Pause” or card signal" },
+    { label: "Situation (one line)", key: "situation", type: "text", ph: "What was happening when you paused?" },
+    { label: "Essence (present-tense body truth)", key: "essence", type: "textarea", ph: "One sentence in ‘I’ language." },
+    { label: "Need to continue (request)", key: "need", type: "textarea", ph: "Boundary, change, break, content shift…" },
+    { label: "Decision", key: "decision", type: "select", options: ["continue with change","take a break","stop for today","switch scene"], ph: "Choose one" },
+    { label: "Re-entry protocol", key: "reentry", type: "textarea", ph: "How we resume; who checks in; what changes." },
+    { label: "Follow-up (date/time)", key: "follow_up", type: "text", ph: "If needed, e.g., 2025-09-25 17:00" },
+    { label: "Who’s informed (optional)", key: "who_informed", type: "text", ph: "GM only / whole group / other" }
+  ],
+  template: ({
+    pause_phrase, situation, essence, need, decision, reentry, follow_up, who_informed,
+    ctx, audience, style, tone
+  }) => [
+    "Safety Pause with Essence",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    pause_phrase && `Pause phrase: ${pause_phrase}`,
+    situation && `Situation: ${situation}`,
+    essence && `Present truth:\n${essence}`,
+    need && `Need to continue:\n${need}`,
+    decision && `Decision: ${decision}`,
+    reentry && `Re-entry protocol:\n${reentry}`,
+    follow_up && `Follow-up: ${follow_up}`,
+    who_informed && `Who’s informed: ${who_informed}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "safety pause essence present truth need re entry protocol time out ttrpg consent repair" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Working Backwards PRFAQ — with Truths & Tradeoffs (V3 move)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "working_backwards_prfaq_v3",
+  slug: "working-backwards-prfaq-v3",
+  label: "Working Backwards PRFAQ — Truths & Tradeoffs",
+  kind: "framework",
+  categories: ["product-management","strategy","communication","research"],
+  tags: [
+    "type:framework","use:press-release","use:faq","use:alignment",
+    "topic:working-backwards","topic:tradeoffs","origin:amazon-inspired","level:intermediate"
+  ],
+  use_cases: [
+    "align a team on customer value before building",
+    "stress-test launch with FAQs and uncomfortable truths",
+    "set public-facing narrative + measurable gates"
+  ],
+  boosters: [
+    "Write the press release as if launching today—no future tense.",
+    "Include at least 5 FAQs: objections, risks, pricing, privacy, support.",
+    "Name one uncomfortable truth and the tradeoff you’re choosing, in first person.",
+    "Define launch criteria and success metrics before work starts."
+  ],
+  definition:
+    "A press release + FAQ drafted before building, with a candid ‘Truths & Tradeoffs’ section to surface realities early.",
+  help:
+    "Prompt: “One uncomfortable truth about this launch is __. The tradeoff I am choosing is __ because __.”",
+  notice:
+    "Inspired by Amazon’s Working Backwards method (fair-use adaptation).",
+  fields: [
+    // Press release top
+    { label: "Product name", key: "product", type: "text", ph: "Working title" },
+    { label: "Release date", key: "date", type: "text", ph: "YYYY-MM-DD" },
+    { label: "Headline", key: "headline", type: "text", ph: "Customer-facing benefit in one line" },
+    { label: "Subhead", key: "subhead", type: "text", ph: "Who it’s for + core outcome" },
+    { label: "Summary paragraph", key: "summary", type: "textarea", ph: "Short press-paragraph in plain language" },
+
+    // Body & quote
+    { label: "Customer problem (plain)", key: "problem", type: "textarea", ph: "What hurts today, for whom" },
+    { label: "Solution description", key: "solution", type: "textarea", ph: "What exists at launch; skip roadmap" },
+    { label: "Customer quote (imagined)", key: "cust_quote", type: "text", ph: "“Since using X, I can Y…”" },
+    { label: "Call to action", key: "cta", type: "text", ph: "What users do on day 1" },
+
+    // V3 move — truths & tradeoffs
+    { label: "Uncomfortable truth (first person)", key: "truth", type: "textarea", ph: "What’s true that might sting" },
+    { label: "Tradeoff I’m choosing", key: "tradeoff", type: "text", ph: "Speed over breadth / privacy over personalisation…" },
+    { label: "Because (reasoning)", key: "because", type: "textarea", ph: "Why this tradeoff is justified now" },
+
+    // Metrics & gates
+    { label: "Launch criteria (gates)", key: "gates", type: "textarea", ph: "Must-meet conditions to ship" },
+    { label: "Success metrics (first 90 days)", key: "metrics", type: "textarea", ph: "North-star + guardrails" },
+
+    // FAQ
+    { label: "FAQs (Q→A, one per line or block)", key: "faqs", type: "textarea", ph: "Q: … A: …" },
+
+    // Risks & owner
+    { label: "Risks (top 3)", key: "risks", type: "textarea", ph: "What could burn us, realistically" },
+    { label: "Owner", key: "owner", type: "text", ph: "Name/role" }
+  ],
+  template: ({
+    product, date, headline, subhead, summary, problem, solution, cust_quote, cta,
+    truth, tradeoff, because, gates, metrics, faqs, risks, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Press Release",
+    product && `Product: ${product}`,
+    date && `Date: ${date}`,
+    headline && `Headline: ${headline}`,
+    subhead && `Subhead: ${subhead}`,
+    "",
+    summary && `${summary}`,
+    "",
+    problem && `Customer problem:\n${problem}`,
+    solution && `Solution at launch:\n${solution}`,
+    cust_quote && `Customer quote: “${cust_quote}”`,
+    cta && `Call to action: ${cta}`,
+    "",
+    "Truths & Tradeoffs (first person)",
+    truth && `Uncomfortable truth: ${truth}`,
+    (tradeoff || because) && `Tradeoff: ${tradeoff}${because ? ` — because ${because}` : ""}`,
+    "",
+    gates && `Launch criteria (gates):\n${gates}`,
+    metrics && `Success metrics (first 90 days):\n${metrics}`,
+    faqs && `FAQs:\n${faqs}`,
+    risks && `Risks (top 3):\n${risks}`,
+    owner && `Owner: ${owner}`,
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "working backwards prfaq press release faq truths tradeoffs launch criteria metrics amazon inspired" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   JTBD Interviews — with Felt-Sense Friction (V3 move)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "jtbd_interviews_v3",
+  slug: "jtbd-interviews-v3",
+  label: "JTBD Interviews — Felt-Sense Friction",
+  kind: "framework",
+  categories: ["research","product-management","ux","strategy"],
+  tags: [
+    "type:framework","use:interview","use:discovery","use:insight-capture",
+    "topic:jtbd","topic:struggles","topic:progress","origin:jtbd-inspired","level:intermediate"
+  ],
+  use_cases: [
+    "map jobs, struggles, and progress moments",
+    "replace opinions with timelines and triggers",
+    "trace the body’s highest-friction moment (V3 move)"
+  ],
+  boosters: [
+    "Reconstruct timeline: trigger → search → solution → use → outcome.",
+    "Ask for specifics (numbers, times, tools used).",
+    "At the peak-friction moment, ask ‘where in your body?’ then ‘what did you do next?’",
+    "Capture push/pull/anxieties/habits (forces) explicitly."
+  ],
+  definition:
+    "A Jobs To Be Done interview scaffold that adds a felt-sense probe at the moment of highest friction.",
+  help:
+    "Prompt: “Where did this task live in your body when it went wrong, and what did you do next?”",
+  notice:
+    "Inspired by JTBD research (Christensen/Ulwick lineage). Field-adapted.",
+  fields: [
+    { label: "Participant / role", key: "who", type: "text", ph: "Job performer" },
+    { label: "Job to be done (plain)", key: "job", type: "text", ph: "“When I… I want to… so I can…”" },
+    { label: "Context (situation/trigger)", key: "context", type: "textarea", ph: "Where/when did this start?" },
+    { label: "Desired progress", key: "progress", type: "text", ph: "Outcome they sought" },
+    { label: "Alternatives tried", key: "alts", type: "textarea", ph: "Competing solutions / workarounds" },
+    { label: "Peak friction — body location", key: "body_spot", type: "text", ph: "Chest, gut, jaw… (their words)" },
+    { label: "What happened next (after friction)", key: "after", type: "textarea", ph: "Concrete action taken" },
+    { label: "Forces — Push", key: "push", type: "textarea", ph: "Why change now?" },
+    { label: "Forces — Pull", key: "pull", type: "textarea", ph: "What drew them to a solution?" },
+    { label: "Forces — Anxieties", key: "anx", type: "textarea", ph: "Worries/risks" },
+    { label: "Forces — Habits", key: "habit", type: "textarea", ph: "Old patterns anchoring status quo" },
+    { label: "Quote snippets (verbatim)", key: "quotes", type: "textarea", ph: "Exact words to keep" },
+    { label: "Next research moves", key: "next_moves", type: "textarea", ph: "Who else; what artifact; what test?" }
+  ],
+  template: ({
+    who, job, context, progress, alts, body_spot, after, push, pull, anx, habit, quotes, next_moves,
+    ctx, audience, style, tone
+  }) => [
+    "JTBD Interview — Felt-Sense Friction",
+    who && `Participant/role: ${who}`,
+    job && `Job to be done: ${job}`,
+    context && `Context/trigger:\n${context}`,
+    progress && `Desired progress: ${progress}`,
+    alts && `Alternatives/workarounds:\n${alts}`,
+    (body_spot || after) && "Peak friction:",
+    body_spot && `• Body location: ${body_spot}`,
+    after && `• Next action taken: ${after}`,
+    push && `Forces — Push:\n${push}`,
+    pull && `Forces — Pull:\n${pull}`,
+    anx && `Forces — Anxieties:\n${anx}`,
+    habit && `Forces — Habits:\n${habit}`,
+    quotes && `Quotes (verbatim):\n${quotes}`,
+    next_moves && `Next research moves:\n${next_moves}`,
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "jtbd jobs to be done struggles progress forces felt sense friction timeline trigger quotes research" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Lean Startup Loop — Build · Measure · Learn (with Stop & Harm rules)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "lean_loop_stop_harm_v3",
+  slug: "lean-startup-loop-stop-harm-v3",
+  label: "Lean Startup Loop — Stop & Harm Rules",
+  kind: "framework",
+  categories: ["experimentation","product-management","strategy","analytics"],
+  tags: [
+    "type:framework","use:experiment","use:hypothesis","use:decision",
+    "topic:metrics","topic:ethics","origin:lean-startup-inspired","level:beginner"
+  ],
+  use_cases: [
+    "run small, rapid hypothesis cycles",
+    "pre-commit to stop rules and repair rules",
+    "document the decision after learning"
+  ],
+  boosters: [
+    "One hypothesis per loop; keep scope tiny.",
+    "Define metric, threshold, and duration up front.",
+    "Write a harm rule: what you repair and how.",
+    "End with a crisp decision: pivot, persevere, or stop."
+  ],
+  definition:
+    "A compact build–measure–learn card that adds explicit stop and harm rules to keep experiments honest and safe.",
+  help:
+    "Prompt: “We stop if metric X falls below Y for Z days, and we repair by __.”",
+  fields: [
+    { label: "Hypothesis (falsifiable)", key: "hypothesis", type: "textarea", ph: "We believe… users will… as measured by…" },
+    { label: "Cohort / segment", key: "cohort", type: "text", ph: "Who’s in the test" },
+    { label: "Experiment (what you’ll build)", key: "experiment", type: "textarea", ph: "Smallest thing to learn" },
+    { label: "Metric (X)", key: "metric", type: "text", ph: "e.g., D1 activation rate" },
+    { label: "Threshold (Y)", key: "threshold", type: "text", ph: "e.g., ≥ 25%" },
+    { label: "Duration (Z days)", key: "duration", type: "text", ph: "e.g., 7" },
+    { label: "Stop rule (auto)", key: "stop_rule", type: "text", ph: "If X < Y for Z days → stop" },
+    { label: "Harm rule (repair by…)", key: "harm_rule", type: "textarea", ph: "Refund, notify, revert, delete data, etc." },
+    { label: "Measure plan", key: "measure", type: "textarea", ph: "Instrumentation, sample size, analysis" },
+    { label: "Result (data summary)", key: "result", type: "textarea", ph: "What happened" },
+    { label: "Decision", key: "decision", type: "select", options: ["pivot","persevere","stop"], ph: "Choose one" },
+    { label: "Next step", key: "next_step", type: "text", ph: "What happens now" }
+  ],
+  template: ({
+    hypothesis, cohort, experiment, metric, threshold, duration, stop_rule, harm_rule,
+    measure, result, decision, next_step,
+    ctx, audience, style, tone
+  }) => [
+    "Lean Startup Loop — Stop & Harm Rules",
+    hypothesis && `Hypothesis:\n${hypothesis}`,
+    cohort && `Cohort/segment: ${cohort}`,
+    experiment && `Experiment:\n${experiment}`,
+    (metric || threshold || duration) && `Metric/threshold/duration: ${[metric, threshold, duration && `${duration}d`].filter(Boolean).join(" · ")}`,
+    stop_rule && `Stop rule: ${stop_rule}`,
+    harm_rule && `Harm rule (repair):\n${harm_rule}`,
+    measure && `Measure plan:\n${measure}`,
+    result && `Result:\n${result}`,
+    decision && `Decision: ${decision}`,
+    next_step && `Next step: ${next_step}`,
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "lean startup loop build measure learn stop rule harm rule hypothesis metric threshold duration decision" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Pre-Mortem with Red Team — include the embarrassing sentence (V3)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "premortem_redteam_v3",
+  slug: "pre-mortem-red-team-v3",
+  label: "Pre-Mortem + Red Team — Embarrassing Sentence",
+  kind: "framework",
+  categories: ["risk","strategy","ethics","teamwork","product-management"],
+  tags: [
+    "type:framework","use:planning","use:risk-review","use:ethics-review",
+    "topic:red-team","topic:failure-modes","level:intermediate"
+  ],
+  use_cases: [
+    "imagine the failure and invite dissent",
+    "install safeguards and stop conditions",
+    "name the line you’d hate to say later"
+  ],
+  boosters: [
+    "Let a neutral red-team write the first attack memo.",
+    "Write the failure headline in bold, then the embarrassing sentence.",
+    "Add leading indicators and explicit stop criteria.",
+    "Close with one reversible experiment."
+  ],
+  definition:
+    "A pre-mortem that brings in a red-team critique and forces an ‘embarrassing sentence’ to expose hidden risks.",
+  help:
+    "Prompt: “If this flops, the sentence I will hate saying out loud is __.”",
+  fields: [
+    { label: "Initiative", key: "initiative", type: "text", ph: "Name the effort" },
+    { label: "Failure headline (vivid, one line)", key: "headline", type: "text", ph: "If it failed badly…" },
+    { label: "Embarrassing sentence", key: "embarrassing", type: "textarea", ph: "The truth you'd hate to say later" },
+    { label: "Red-team reviewers", key: "redteam", type: "text", ph: "Names/roles" },
+    { label: "Attack vectors", key: "vectors", type: "textarea", ph: "How it fails technically/socially/legally" },
+    { label: "Unsafe assumptions", key: "assumptions", type: "textarea", ph: "What we’re treating as true without proof" },
+    { label: "Safeguards", key: "safeguards", type: "textarea", ph: "Gates, limits, audits, reviews" },
+    { label: "Early warning signals", key: "signals", type: "textarea", ph: "Leading indicators" },
+    { label: "Stop conditions", key: "stops", type: "textarea", ph: "Exactly when to halt/pivot" },
+    { label: "Reversible experiment", key: "experiment", type: "textarea", ph: "Smallest safe test" },
+    { label: "Owner & date", key: "owner", type: "text", ph: "Who/when" }
+  ],
+  template: ({
+    initiative, headline, embarrassing, redteam, vectors, assumptions, safeguards, signals, stops, experiment, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Pre-Mortem + Red Team",
+    initiative && `Initiative: ${initiative}`,
+    headline && `Failure headline: ${headline}`,
+    embarrassing && `Embarrassing sentence: ${embarrassing}`,
+    redteam && `Red-team reviewers: ${redteam}`,
+    vectors && `Attack vectors:\n${vectors}`,
+    assumptions && `Unsafe assumptions:\n${assumptions}`,
+    safeguards && `Safeguards:\n${safeguards}`,
+    signals && `Early warning signals:\n${signals}`,
+    stops && `Stop conditions:\n${stops}`,
+    experiment && `Reversible experiment:\n${experiment}`,
+    owner && `Owner & date: ${owner}`,
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "premortem pre mortem red team embarrassing sentence attack vectors safeguards early warning stop conditions" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Decision Record (PRD note / ADR) — with Dissent & Kill Criteria (V3)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "decision_record_v3",
+  slug: "decision-record-v3",
+  label: "Decision Record — Dissent & Kill Criteria",
+  kind: "framework",
+  categories: ["product-management","engineering","strategy","communication"],
+  tags: [
+    "type:framework","use:adr","use:prd-note","use:alignment",
+    "topic:dissent","topic:kill-criteria","level:beginner"
+  ],
+  use_cases: [
+    "document why we chose X over Y",
+    "record dissent and reversal conditions",
+    "make decisions legible to future teams"
+  ],
+  boosters: [
+    "Keep the decision statement one sentence, active voice.",
+    "List options considered and why the winner beat the runner-up.",
+    "Write dissent in the dissenters’ own words (brief).",
+    "Define kill criteria as observable conditions."
+  ],
+  definition:
+    "A compact architecture/product decision note that includes dissent and explicit reversal (kill) criteria.",
+  help:
+    "Prompt: “We reverse this decision if __ becomes true.”",
+  fields: [
+    { label: "Title", key: "title", type: "text", ph: "Short handle (ADR-### if used)" },
+    { label: "Date", key: "date", type: "text", ph: "YYYY-MM-DD" },
+    { label: "Status", key: "status", type: "select", options: ["proposed","accepted","deprecated","superseded"], ph: "Pick one" },
+    { label: "Context", key: "context", type: "textarea", ph: "Problem, constraints, stakeholders" },
+    { label: "Decision (one sentence)", key: "decision", type: "text", ph: "We will…" },
+    { label: "Options considered", key: "options", type: "textarea", ph: "X, Y, Z with brief pros/cons" },
+    { label: "Rationale", key: "rationale", type: "textarea", ph: "Why X over Y right now" },
+    { label: "Dissent note", key: "dissent", type: "textarea", ph: "Concise minority view" },
+    { label: "Kill/Reversal criteria", key: "kill", type: "textarea", ph: "If __ becomes true → reconsider" },
+    { label: "Owners", key: "owners", type: "text", ph: "Names/roles" }
+  ],
+  template: ({
+    title, date, status, context, decision, options, rationale, dissent, kill, owners,
+    ctx, audience, style, tone
+  }) => [
+    "Decision Record (PRD/ADR)",
+    title && `Title: ${title}`,
+    (date || status) && `Date/Status: ${[date, status].filter(Boolean).join(" · ")}`,
+    context && `Context:\n${context}`,
+    decision && `Decision: ${decision}`,
+    options && `Options considered:\n${options}`,
+    rationale && `Rationale:\n${rationale}`,
+    dissent && `Dissent note:\n${dissent}`,
+    kill && `Kill/Reversal criteria:\n${kill}`,
+    owners && `Owners: ${owners}`,
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "decision record adr prd dissent kill criteria reversal options rationale status owners" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   OKRs with Kill Criteria — attach an explicit “when to stop” (V3)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "okrs_kill_criteria_v3",
+  slug: "okrs-with-kill-criteria-v3",
+  label: "OKRs — With Kill Criteria",
+  kind: "framework",
+  categories: ["strategy","product-management","teamwork","analytics"],
+  tags: [
+    "type:framework","use:planning","use:goal-setting","use:review",
+    "topic:okrs","topic:kill-criteria","level:beginner"
+  ],
+  use_cases: [
+    "set quarterly OKRs with explicit stop conditions",
+    "avoid zombie goals; renegotiate scope on time",
+    "tie KRs to owners and cadence"
+  ],
+  boosters: [
+    "One objective; 2–4 KRs max; each KR measurable.",
+    "Record baseline and cadence (weekly/biweekly).",
+    "Write the kill rule in plain language with a date.",
+    "Decide in advance who can pause/renegotiate."
+  ],
+  definition:
+    "A standard OKR card with an explicit rule for when to pause and renegotiate if results lag.",
+  help:
+    "Prompt: “If KRs are under N by date D, we pause and renegotiate scope.”",
+  fields: [
+    { label: "Objective (one sentence)", key: "objective", type: "text", ph: "Qualitative aim" },
+    { label: "Quarter / period", key: "period", type: "text", ph: "e.g., 2025 Q4" },
+    { label: "Key results (bullets w/ targets)", key: "krs", type: "textarea", ph: "KR1: … target … owner …" },
+    { label: "Baseline (current state)", key: "baseline", type: "textarea", ph: "Starting numbers" },
+    { label: "Cadence (check-ins)", key: "cadence", type: "text", ph: "Weekly / biweekly" },
+    { label: "Kill criteria (rule)", key: "kill_rule", type: "textarea", ph: "If KR<… by D → pause/renegotiate" },
+    { label: "Owners", key: "owners", type: "text", ph: "Names/roles" },
+    { label: "Notes (optional)", key: "notes", type: "textarea", ph: "Risks, dependencies, assumptions" }
+  ],
+  template: ({
+    objective, period, krs, baseline, cadence, kill_rule, owners, notes,
+    ctx, audience, style, tone
+  }) => [
+    "OKRs — With Kill Criteria",
+    objective && `Objective: ${objective}`,
+    period && `Period: ${period}`,
+    krs && `Key results:\n${krs}`,
+    baseline && `Baseline:\n${baseline}`,
+    cadence && `Cadence: ${cadence}`,
+    kill_rule && `Kill criteria:\n${kill_rule}`,
+    owners && `Owners: ${owners}`,
+    notes && `Notes:\n${notes}`,
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "okrs objective key results kill criteria pause renegotiate cadence baseline owners quarterly goals" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Design Doc — with “Scariest Change” Box
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "design_doc_scariest_change",
+  slug: "design-doc-scariest-change",
+  label: "Design Doc — Scariest Change",
+  kind: "framework",
+  categories: ["engineering","architecture","reliability","ethics"],
+  tags: [
+    "type:practice","use:design-proposal","use:risk-review","use:alignment",
+    "topic:tradeoffs","topic:blast-radius","level:intermediate"
+  ],
+  use_cases: [
+    "write upfront design proposals with explicit risk surfacing",
+    "reduce pager pain via mitigations and rollbacks",
+    "align reviewers on goals, constraints, and open questions"
+  ],
+  boosters: [
+    "Write ‘Scariest change’ before ‘Fancy diagram’.",
+    "Name who could be hurt (users or on-call) and how.",
+    "Include rollback path, kill switch, and observability.",
+    "Keep non-goals and constraints crisp; no wish-casting."
+  ],
+  definition:
+    "A design doc template that forces the riskiest change into daylight and pairs it with mitigations and rollback.",
+  help:
+    "Prompt: “The change most likely to hurt people or pager load is __ because __.”",
+  fields: [
+    { label: "Title", key: "title", type: "text", ph: "Short handle" },
+    { label: "Context", key: "context", type: "textarea", ph: "Problem statement, scope, stakeholders" },
+    { label: "Goals", key: "goals", type: "textarea", ph: "Measurable outcomes" },
+    { label: "Non-goals", key: "non_goals", type: "textarea", ph: "Out of scope" },
+    { label: "Constraints", key: "constraints", type: "textarea", ph: "Tech, org, time, privacy" },
+    { label: "Design overview", key: "design", type: "textarea", ph: "Approach + key components" },
+    { label: "Scariest change — what", key: "scary_change", type: "text", ph: "The change most likely to hurt…" },
+    { label: "Scariest change — because", key: "scary_because", type: "textarea", ph: "Why this is dangerous" },
+    { label: "Who’s affected (users/on-call)", key: "affected", type: "textarea", ph: "People and pager surface area" },
+    { label: "Mitigations", key: "mitigations", type: "textarea", ph: "Rate limits, caps, isolation, retries…" },
+    { label: "Blast-radius limiters", key: "blast_limiters", type: "textarea", ph: "Shard, guard, circuit-breakers" },
+    { label: "Rollback plan", key: "rollback", type: "textarea", ph: "How to revert safely and quickly" },
+    { label: "Observability/SLO impact", key: "observability", type: "textarea", ph: "SLIs, dashboards, alerts" },
+    { label: "Rollout plan", key: "rollout", type: "textarea", ph: "Flag, canary, blue/green" },
+    { label: "Open questions", key: "open_qs", type: "textarea", ph: "Unknowns to resolve" },
+    { label: "Owner", key: "owner", type: "text", ph: "Name/role" },
+    { label: "Reviewers", key: "reviewers", type: "text", ph: "Names/roles" }
+  ],
+  template: ({
+    title, context, goals, non_goals, constraints, design,
+    scary_change, scary_because, affected, mitigations, blast_limiters,
+    rollback, observability, rollout, open_qs, owner, reviewers,
+    ctx, audience, style, tone
+  }) => [
+    "Design Doc — Scariest Change",
+    title && `Title: ${title}`,
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    context && `Context:\n${context}`,
+    goals && `Goals:\n${goals}`,
+    non_goals && `Non-goals:\n${non_goals}`,
+    constraints && `Constraints:\n${constraints}`,
+    design && `Design overview:\n${design}`,
+    (scary_change || scary_because) && "Scariest change:",
+    scary_change && `• What: ${scary_change}`,
+    scary_because && `• Because: ${scary_because}`,
+    affected && `Who’s affected:\n${affected}`,
+    mitigations && `Mitigations:\n${mitigations}`,
+    blast_limiters && `Blast-radius limiters:\n${blast_limiters}`,
+    observability && `Observability/SLO impact:\n${observability}`,
+    rollout && `Rollout plan:\n${rollout}`,
+    rollback && `Rollback plan:\n${rollback}`,
+    open_qs && `Open questions:\n${open_qs}`,
+    (owner || reviewers) && `Owner/Reviewers: ${[owner, reviewers].filter(Boolean).join(" — ")}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "design doc scariest change pager load mitigations rollback observability goals constraints reviewers risk" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   RFC Process — with Unsaid Objection
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "rfc_process_unsaid_objection",
+  slug: "rfc-process-unsaid-objection",
+  label: "RFC — Unsaid Objection",
+  kind: "framework",
+  categories: ["engineering","architecture","communication","teamwork"],
+  tags: [
+    "type:practice","use:rfc","use:alignment","use:decision",
+    "topic:dissent","topic:feedback","level:beginner"
+  ],
+  use_cases: [
+    "request comments before work begins",
+    "surface dissent early and concretely",
+    "document decision date and channels"
+  ],
+  boosters: [
+    "Invite specific reviewers and a clear close date.",
+    "Ask for the unsaid objection explicitly.",
+    "Record alternatives and migration/rollback.",
+    "Summarize decision in one sentence."
+  ],
+  definition:
+    "An RFC scaffold that explicitly asks for the unsaid objection to make the review honest.",
+  help:
+    "Prompt: “What is the unsaid objection that would make this honest?”",
+  fields: [
+    { label: "RFC title", key: "title", type: "text", ph: "Short handle" },
+    { label: "Summary", key: "summary", type: "textarea", ph: "One-paragraph overview" },
+    { label: "Motivation/problem", key: "motivation", type: "textarea", ph: "Why now" },
+    { label: "Proposal", key: "proposal", type: "textarea", ph: "What you plan to do" },
+    { label: "Alternatives considered", key: "alternatives", type: "textarea", ph: "X vs Y" },
+    { label: "Risks", key: "risks", type: "textarea", ph: "Top concerns" },
+    { label: "Unsaid objection", key: "unsaid", type: "textarea", ph: "Name the objection that would make this honest" },
+    { label: "Migration/rollback", key: "migration", type: "textarea", ph: "How to unroll safely" },
+    { label: "Stakeholders/reviewers", key: "stakeholders", type: "text", ph: "Names/roles" },
+    { label: "Review channels", key: "channels", type: "text", ph: "Doc link, thread, meeting" },
+    { label: "Decision date", key: "decision_date", type: "text", ph: "YYYY-MM-DD" },
+    { label: "Status", key: "status", type: "select", options: ["draft","reviewing","accepted","rejected","superseded"], ph: "Pick one" }
+  ],
+  template: ({
+    title, summary, motivation, proposal, alternatives, risks, unsaid,
+    migration, stakeholders, channels, decision_date, status,
+    ctx, audience, style, tone
+  }) => [
+    "RFC — Unsaid Objection",
+    title && `Title: ${title}`,
+    (status || decision_date) && `Status/Decision date: ${[status, decision_date].filter(Boolean).join(" · ")}`,
+    summary && `Summary:\n${summary}`,
+    motivation && `Motivation:\n${motivation}`,
+    proposal && `Proposal:\n${proposal}`,
+    alternatives && `Alternatives considered:\n${alternatives}`,
+    risks && `Risks:\n${risks}`,
+    unsaid && `Unsaid objection:\n${unsaid}`,
+    migration && `Migration/rollback:\n${migration}`,
+    stakeholders && `Stakeholders: ${stakeholders}`,
+    channels && `Review channels: ${channels}`,
+    ctx && `Context (app-level): ${ctx}`, audience && `Audience: ${audience}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "rfc request for comments unsaid objection dissent alternatives risks decision date channels migration rollback" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   TDD + Property-Based Testing — with Invariants
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "tdd_property_based_testing",
+  slug: "tdd-property-based-testing",
+  label: "TDD + Property-Based Testing — Invariants",
+  kind: "framework",
+  categories: ["engineering","testing","quality","reliability"],
+  tags: [
+    "type:practice","use:tdd","use:properties","use:edge-cases",
+    "topic:invariants","topic:generators","level:beginner"
+  ],
+  use_cases: [
+    "write failing tests first; drive design by tests",
+    "capture invariants that must hold for any input",
+    "generate edge cases and shrink minimal failures"
+  ],
+  boosters: [
+    "Red → Green → Refactor; keep cycles tiny.",
+    "Properties use simple language and cover the unhappy path.",
+    "Add generators/strategies for tricky domains (dates, unicode).",
+    "Document forbidden behaviors as ‘must never’ lines."
+  ],
+  definition:
+    "A testing card that blends TDD with property/invariant thinking and explicit ‘must never’ constraints.",
+  help:
+    "Prompt: “For any input, it must never __.”",
+  fields: [
+    { label: "Requirement/user story", key: "story", type: "textarea", ph: "As a…, I want…, so that…" },
+    { label: "Test list (red)", key: "tests_red", type: "textarea", ph: "Short failing tests to start" },
+    { label: "Green notes/refactor plan", key: "refactor", type: "textarea", ph: "After green, cleanup ideas" },
+    { label: "Properties/invariants (bullets)", key: "properties", type: "textarea", ph: "For any input… must hold…" },
+    { label: "Must-never constraints (bullets)", key: "must_never", type: "textarea", ph: "For any input, it must never…" },
+    { label: "Generators/strategies", key: "generators", type: "textarea", ph: "How you produce random inputs" },
+    { label: "Edge cases to hit", key: "edges", type: "textarea", ph: "NaN, nulls, empty, huge, unicode, timezones…" },
+    { label: "Coverage/quality target", key: "coverage", type: "text", ph: "e.g., 80% lines/branches + mutation score" },
+    { label: "Tooling", key: "tooling", type: "text", ph: "JUnit/pytest + hypothesis/fast-check…" }
+  ],
+  template: ({
+    story, tests_red, refactor, properties, must_never, generators, edges, coverage, tooling,
+    ctx, audience, style, tone
+  }) => [
+    "TDD + Property-Based Testing — Invariants",
+    story && `User story:\n${story}`,
+    tests_red && `Test list (red):\n${tests_red}`,
+    refactor && `Refactor plan:\n${refactor}`,
+    properties && `Properties/invariants:\n${properties}`,
+    must_never && `Must-never constraints:\n${must_never}`,
+    generators && `Generators/strategies:\n${generators}`,
+    edges && `Edge cases:\n${edges}`,
+    coverage && `Coverage/quality target: ${coverage}`,
+    tooling && `Tooling: ${tooling}`,
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "tdd property based testing invariants must never generators strategies edge cases red green refactor coverage" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Fuzzing + Mutation Testing — Replay the Outage Shape
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "fuzz_mutation_outage_shape",
+  slug: "fuzzing-mutation-outage-shape",
+  label: "Fuzzing + Mutation — Outage Shape",
+  kind: "framework",
+  categories: ["testing","reliability","security","quality"],
+  tags: [
+    "type:practice","use:fuzz","use:mutation","use:regression",
+    "topic:inputs","topic:edge-cases","level:intermediate"
+  ],
+  use_cases: [
+    "generate randomized or mutated inputs to catch edge cases",
+    "reproduce the last outage’s shape and prevent recurrence",
+    "define stop conditions and triage flow"
+  ],
+  boosters: [
+    "Start with a seed corpus from prod-like cases.",
+    "Record the outage’s shape (symptoms, rates, sequences).",
+    "Define an oracle/assertions; crashes aren’t the only failures.",
+    "Set runtime budget and stop conditions; avoid runaway tests."
+  ],
+  definition:
+    "A fuzzing/mutation card focused on replicating the last outage’s shape and catching similar failures early.",
+  help:
+    "Prompt: “Generate inputs that replicate the last outage’s shape.”",
+  fields: [
+    { label: "Target (service/module)", key: "target", type: "text", ph: "What you’re fuzzing" },
+    { label: "Last outage — shape", key: "outage_shape", type: "textarea", ph: "Error codes, rates, sequences, payload traits" },
+    { label: "Seed corpus", key: "seed", type: "textarea", ph: "Inputs to mutate" },
+    { label: "Mutation operators/strategies", key: "mut_ops", type: "textarea", ph: "Bit flips, truncation, unicode, schema drift…" },
+    { label: "Fuzz config (rate/duration)", key: "config", type: "textarea", ph: "Budget, concurrency" },
+    { label: "Oracle/assertions", key: "oracle", type: "textarea", ph: "What counts as failure" },
+    { label: "Stop conditions", key: "stop", type: "textarea", ph: "Time, crashes, unique bugs found…" },
+    { label: "Triage process", key: "triage", type: "textarea", ph: "Repro, minimize, file, fix, verify" },
+    { label: "Owner", key: "owner", type: "text", ph: "Name/role" }
+  ],
+  template: ({
+    target, outage_shape, seed, mut_ops, config, oracle, stop, triage, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Fuzzing + Mutation — Outage Shape",
+    target && `Target: ${target}`,
+    outage_shape && `Last outage — shape:\n${outage_shape}`,
+    seed && `Seed corpus:\n${seed}`,
+    mut_ops && `Mutation operators/strategies:\n${mut_ops}`,
+    config && `Fuzz config:\n${config}`,
+    oracle && `Oracle/assertions:\n${oracle}`,
+    stop && `Stop conditions:\n${stop}`,
+    triage && `Triage process:\n${triage}`,
+    owner && `Owner: ${owner}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "fuzzing mutation testing inputs outage shape seed corpus oracle stop conditions triage reliability" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Trunk-Based Development — with Feature Flags
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "trunk_feature_flags",
+  slug: "trunk-based-feature-flags",
+  label: "Trunk-Based Dev — Feature Flags",
+  kind: "framework",
+  categories: ["engineering","delivery","reliability","experimentation"],
+  tags: [
+    "type:practice","use:rollout","use:flagging","use:experiment",
+    "topic:release-strategy","topic:segmentation","level:beginner"
+  ],
+  use_cases: [
+    "ship small commits behind flags",
+    "target features safely by audience",
+    "plan cleanup and data collection"
+  ],
+  boosters: [
+    "Default deny: who must never see this by default, and why.",
+    "Add kill switch and telemetry before merging.",
+    "Decide removal date; don’t let flags rot.",
+    "Write comms for internal users if toggled."
+  ],
+  definition:
+    "A trunk-based rollout card that centers audience safety and cleanup via feature flags.",
+  help:
+    "Prompt: “Who should never see this by default and why?”",
+  fields: [
+    { label: "Flag name", key: "flag", type: "text", ph: "e.g., feature.profile_v2" },
+    { label: "Purpose", key: "purpose", type: "textarea", ph: "Why this exists" },
+    { label: "Default state", key: "default_state", type: "select", options: ["off","on","percent roll-out","internal only"], ph: "Pick one" },
+    { label: "Must-not-see (segments) + why", key: "must_not_see", type: "textarea", ph: "Who is excluded by default and rationale" },
+    { label: "Risk if exposed", key: "risk", type: "textarea", ph: "Safety, privacy, trust, revenue…" },
+    { label: "Kill switch path", key: "kill", type: "text", ph: "Exactly how to turn it off" },
+    { label: "Telemetry/events", key: "telemetry", type: "textarea", ph: "What you’ll log and alert on" },
+    { label: "Rollout plan", key: "rollout", type: "textarea", ph: "Percentages, cohorts, dates" },
+    { label: "Cleanup/removal date", key: "cleanup", type: "text", ph: "YYYY-MM-DD" },
+    { label: "Reviewers", key: "reviewers", type: "text", ph: "Names/roles" }
+  ],
+  template: ({
+    flag, purpose, default_state, must_not_see, risk, kill, telemetry, rollout, cleanup, reviewers,
+    ctx, audience, style, tone
+  }) => [
+    "Trunk-Based Dev — Feature Flags",
+    flag && `Flag: ${flag}`,
+    default_state && `Default: ${default_state}`,
+    purpose && `Purpose:\n${purpose}`,
+    must_not_see && `Must-not-see + why:\n${must_not_see}`,
+    risk && `Risk if exposed:\n${risk}`,
+    kill && `Kill switch: ${kill}`,
+    telemetry && `Telemetry:\n${telemetry}`,
+    rollout && `Rollout plan:\n${rollout}`,
+    cleanup && `Cleanup/removal date: ${cleanup}`,
+    reviewers && `Reviewers: ${reviewers}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "trunk based development feature flags default deny segmentation kill switch telemetry cleanup rollout" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Canary + Blue-Green Deploys — with Honest Revert Comms
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "canary_blue_green_deploys",
+  slug: "canary-blue-green-deploys",
+  label: "Canary + Blue-Green — Revert Comms",
+  kind: "framework",
+  categories: ["reliability","delivery","operations","customer-support"],
+  tags: [
+    "type:practice","use:deploy","use:rollback","use:comms",
+    "topic:guardrails","topic:compensation","level:beginner"
+  ],
+  use_cases: [
+    "limit blast radius via canaries/blue-green",
+    "prewrite rollback steps and user comms",
+    "define success criteria and on-call ownership"
+  ],
+  boosters: [
+    "Define guardrail metrics and hold-backs.",
+    "Pre-bake revert message and compensation path.",
+    "Traffic shift steps are reversible at each hop.",
+    "Name the on-call and comms channels."
+  ],
+  definition:
+    "A rollout card that pairs canary/blue-green mechanics with prewritten revert messaging and compensation.",
+  help:
+    "Prompt: “If we revert, we tell users __ and we compensate by __.”",
+  fields: [
+    { label: "Service/app", key: "service", type: "text", ph: "Name" },
+    { label: "Strategy", key: "strategy", type: "select", options: ["canary","blue-green","both"], ph: "Pick one" },
+    { label: "Canary scope / traffic split", key: "canary_scope", type: "text", ph: "e.g., 1%, 5%, 25%" },
+    { label: "Guardrails (metrics + thresholds)", key: "guardrails", type: "textarea", ph: "Error rate, latency, crash-free…" },
+    { label: "Traffic shift plan", key: "shift", type: "textarea", ph: "Step-by-step changes" },
+    { label: "Revert message to users", key: "revert_msg", type: "textarea", ph: "Plain-language apology/explanation" },
+    { label: "Compensation plan", key: "comp_plan", type: "textarea", ph: "Credit, extension, refund…" },
+    { label: "Success criteria to complete rollout", key: "success", type: "textarea", ph: "What ‘good’ looks like" },
+    { label: "On-call / responders", key: "oncall", type: "text", ph: "Names/rotation" },
+    { label: "Comms channels", key: "comms", type: "text", ph: "Status page, email, in-app" }
+  ],
+  template: ({
+    service, strategy, canary_scope, guardrails, shift, revert_msg, comp_plan, success, oncall, comms,
+    ctx, audience, style, tone
+  }) => [
+    "Canary + Blue-Green — Revert Comms",
+    service && `Service: ${service}`,
+    strategy && `Strategy: ${strategy}`,
+    canary_scope && `Canary scope: ${canary_scope}`,
+    guardrails && `Guardrails:\n${guardrails}`,
+    shift && `Traffic shift plan:\n${shift}`,
+    revert_msg && `Revert message:\n${revert_msg}`,
+    comp_plan && `Compensation plan:\n${comp_plan}`,
+    success && `Success criteria:\n${success}`,
+    (oncall || comms) && `On-call/Comms: ${[oncall, comms].filter(Boolean).join(" — ")}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "canary blue green deploy rollback revert message compensation guardrails traffic shift on call status page" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Observability — SLOs, SLIs, Error Budgets
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "observability_slos_error_budgets",
+  slug: "observability-slos-slis-error-budgets",
+  label: "Observability — SLOs · SLIs · Error Budgets",
+  kind: "framework",
+  categories: ["reliability","analytics","operations","product-management"],
+  tags: [
+    "type:practice","use:slo","use:monitoring","use:review",
+    "topic:error-budget","topic:burn-rate","level:intermediate"
+  ],
+  use_cases: [
+    "define user-visible reliability with budgets",
+    "connect burn to pause/renegotiate rules",
+    "decide who owns the pain of overspend"
+  ],
+  boosters: [
+    "Write SLIs as user journeys, not server metrics.",
+    "Set SLO targets and measurement windows explicitly.",
+    "Define error budget policy and burn alerts.",
+    "Name which team absorbs pain if you overspend (be honest)."
+  ],
+  definition:
+    "An SLO/SLI card that ties error budgets to policy, alerts, and a candid owner of the pain when budgets burn.",
+  help:
+    "Prompt: “If we overspend, which team’s nights and weekends get hit first?”",
+  fields: [
+    { label: "Service/journey", key: "service", type: "text", ph: "User-visible scope" },
+    { label: "SLI definition", key: "sli", type: "textarea", ph: "What you measure (from the user’s view)" },
+    { label: "SLO target(s)", key: "slo", type: "textarea", ph: "e.g., 99.9% in 30d; 95th p95<300ms" },
+    { label: "Measurement window", key: "window", type: "text", ph: "e.g., rolling 30 days" },
+    { label: "Error budget amount", key: "budget", type: "text", ph: "e.g., 43m downtime / 30d" },
+    { label: "Burn alerts", key: "alerts", type: "textarea", ph: "2%/h, 5%/h; who’s paged" },
+    { label: "Budget policy", key: "policy", type: "textarea", ph: "What pauses when budget burns" },
+    { label: "Who eats the pain on overspend", key: "pain_owner", type: "text", ph: "Which team’s nights/weekends?" },
+    { label: "Mitigation playbook", key: "playbook", type: "textarea", ph: "Rollback, degrade, cache, feature off" },
+    { label: "Owners", key: "owners", type: "text", ph: "Names/roles" }
+  ],
+  template: ({
+    service, sli, slo, window, budget, alerts, policy, pain_owner, playbook, owners,
+    ctx, audience, style, tone
+  }) => [
+    "Observability — SLOs · SLIs · Error Budgets",
+    service && `Service/journey: ${service}`,
+    sli && `SLI:\n${sli}`,
+    slo && `SLO target(s):\n${slo}`,
+    (window || budget) && `Window/Budget: ${[window, budget].filter(Boolean).join(" · ")}`,
+    alerts && `Burn alerts:\n${alerts}`,
+    policy && `Budget policy:\n${policy}`,
+    pain_owner && `Pain owner on overspend: ${pain_owner}`,
+    playbook && `Mitigation playbook:\n${playbook}`,
+    owners && `Owners: ${owners}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "observability slos slis error budgets burn rate policy alerts who pays reliability user journey" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Blameless Postmortem — Essence First, Then Facts
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "blameless_postmortem_essence",
+  slug: "blameless-postmortem-essence",
+  label: "Blameless Postmortem — Essence First",
+  kind: "framework",
+  categories: ["reliability","learning","operations","teamwork"],
+  tags: [
+    "type:practice","use:postmortem","use:retro","use:repair",
+    "topic:incident","topic:learning","level:beginner"
+  ],
+  use_cases: [
+    "analyze incidents without blame",
+    "start with a one-line body-truth to defuse shame",
+    "produce actionable corrections and owners"
+  ],
+  boosters: [
+    "One sentence of essence from each primary, then facts.",
+    "Timeline in camera-facts; avoid speculation.",
+    "Name contributing factors (technical + social).",
+    "Write corrective actions with owners and due dates."
+  ],
+  definition:
+    "A postmortem card that begins with one embodied truth line and then documents facts, factors, and fixes—without blame.",
+  help:
+    "Prompt: “One sentence on where this landed in your body. Then facts.”",
+  fields: [
+    { label: "Incident summary", key: "summary", type: "textarea", ph: "Short synopsis" },
+    { label: "Essence (one sentence)", key: "essence", type: "text", ph: "Where this landed in my body…" },
+    { label: "Impact (users/scope/duration)", key: "impact", type: "textarea", ph: "Who/what/for how long" },
+    { label: "Timeline (camera facts)", key: "timeline", type: "textarea", ph: "Timestamps and events" },
+    { label: "Detection", key: "detection", type: "textarea", ph: "How we noticed" },
+    { label: "Response", key: "response", type: "textarea", ph: "What we did" },
+    { label: "Contributing factors", key: "factors", type: "textarea", ph: "Tech + org contributors" },
+    { label: "What went well", key: "well", type: "textarea", ph: "Keeps to repeat" },
+    { label: "What was harder than it should be", key: "hard", type: "textarea", ph: "Friction to remove" },
+    { label: "Corrective actions (w/ owners & due)", key: "actions", type: "textarea", ph: "Bullets with names/dates" },
+    { label: "Follow-up reviews", key: "followups", type: "textarea", ph: "30/90 day checks" },
+    { label: "Visibility/recipients", key: "recipients", type: "text", ph: "Where this is shared" }
+  ],
+  template: ({
+    summary, essence, impact, timeline, detection, response, factors, well, hard, actions, followups, recipients,
+    ctx, audience, style, tone
+  }) => [
+    "Blameless Postmortem — Essence First",
+    summary && `Incident summary:\n${summary}`,
+    essence && `Essence (one line): ${essence}`,
+    impact && `Impact:\n${impact}`,
+    timeline && `Timeline (facts):\n${timeline}`,
+    detection && `Detection:\n${detection}`,
+    response && `Response:\n${response}`,
+    factors && `Contributing factors:\n${factors}`,
+    well && `What went well:\n${well}`,
+    hard && `What was harder than it should be:\n${hard}`,
+    actions && `Corrective actions (owners & due):\n${actions}`,
+    followups && `Follow-up reviews:\n${followups}`,
+    recipients && `Visibility/recipients: ${recipients}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "blameless postmortem essence first facts timeline impact contributing factors corrective actions learning" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Threat Modeling — STRIDE/LINDDUN with Malicious Narrative
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "threat_model_stride_linddun",
+  slug: "threat-model-stride-linddun",
+  label: "Threat Modeling — STRIDE/LINDDUN",
+  kind: "framework",
+  categories: ["security","privacy","architecture","ethics"],
+  tags: [
+    "type:practice","use:threat-model","use:design-review","use:risk-register",
+    "topic:stride","topic:linddun","level:intermediate"
+  ],
+  use_cases: [
+    "map security and privacy risks with structured categories",
+    "write malicious-user narratives and misuse cases",
+    "define mitigations, residual risk, and verification"
+  ],
+  boosters: [
+    "Draw the DFD (data-flow diagram) and mark trust boundaries.",
+    "Write a first-person attacker narrative (‘as a malicious user…’).",
+    "Tag findings with STRIDE and/or LINDDUN categories.",
+    "Document mitigations and how you’ll verify them."
+  ],
+  definition:
+    "A threat-model card that pairs structured categories (STRIDE/LINDDUN) with a concrete malicious-user narrative.",
+  help:
+    "Prompt: “As a malicious user, here is how I would hurt someone with this.”",
+  notice:
+    "Security work may require specialist review. Handle sensitive details appropriately.",
+  fields: [
+    { label: "System/scope", key: "scope", type: "text", ph: "What’s in/out" },
+    { label: "Assets/data at risk", key: "assets", type: "textarea", ph: "Secrets, PII, money, availability…" },
+    { label: "Actors (users/services)", key: "actors", type: "textarea", ph: "Legit + adversarial" },
+    { label: "Trust boundaries", key: "boundaries", type: "textarea", ph: "Where assumptions change" },
+    { label: "Data flows (DFD link/notes)", key: "flows", type: "textarea", ph: "Major flows + stores" },
+    { label: "Misuse case — malicious narrative", key: "malicious", type: "textarea", ph: "As an attacker, I would…" },
+    { label: "STRIDE findings", key: "stride", type: "textarea", ph: "Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Elevation" },
+    { label: "LINDDUN findings (privacy)", key: "linddun", type: "textarea", ph: "Linkability, Identifiability, Non-repudiation, Detectability, Disclosure, Unawareness, Non-compliance" },
+    { label: "Mitigations", key: "mitigations", type: "textarea", ph: "Design/controls to address risks" },
+    { label: "Residual risk", key: "residual", type: "textarea", ph: "What remains and why acceptable" },
+    { label: "Verification plan", key: "verify", type: "textarea", ph: "Pentest, unit/integration tests, scanning" },
+    { label: "Owners", key: "owners", type: "text", ph: "Names/roles" }
+  ],
+  template: ({
+    scope, assets, actors, boundaries, flows, malicious, stride, linddun, mitigations, residual, verify, owners,
+    ctx, audience, style, tone
+  }) => [
+    "Threat Modeling — STRIDE/LINDDUN",
+    scope && `System/scope: ${scope}`,
+    assets && `Assets/data at risk:\n${assets}`,
+    actors && `Actors:\n${actors}`,
+    boundaries && `Trust boundaries:\n${boundaries}`,
+    flows && `Data flows:\n${flows}`,
+    malicious && `Misuse case — malicious narrative:\n${malicious}`,
+    stride && `STRIDE findings:\n${stride}`,
+    linddun && `LINDDUN findings (privacy):\n${linddun}`,
+    mitigations && `Mitigations:\n${mitigations}`,
+    residual && `Residual risk:\n${residual}`,
+    verify && `Verification plan:\n${verify}`,
+    owners && `Owners: ${owners}`,
+    ctx && `Context: ${ctx}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "threat modeling stride linddun attacker narrative misuse case trust boundaries data flow mitigations residual risk" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   V-Model / MBSE — with Assumption Ledger & Traceability
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "vmodel_mbse_assumption_ledger",
+  slug: "v-model-mbse-assumption-ledger",
+  label: "V-Model / MBSE — Assumption Ledger",
+  kind: "framework",
+  categories: ["systems-engineering","architecture","reliability","safety"],
+  tags: [
+    "type:framework","use:design-review","use:traceability","use:risk-register",
+    "topic:mbse","topic:v-model","topic:assumptions","level:intermediate"
+  ],
+  use_cases: [
+    "trace requirements to verification/validation with explicit assumptions",
+    "surface falsifiable assumptions with dates and owners",
+    "link assumptions to hazards, tests, and model elements"
+  ],
+  boosters: [
+    "Write assumptions as falsifiable statements with a due date.",
+    "Link each assumption to specific requirements, blocks, and tests.",
+    "If high-risk and near deadline, design a mitigation now (Plan B).",
+    "Review the ledger at each V&V gate; close or convert to requirement."
+  ],
+  definition:
+    "A V-model/MBSE scaffold that keeps an explicit assumption ledger with trace links to requirements, model elements, tests, and hazards.",
+  help:
+    "Prompt: “Assumption A will be false if __ by date D.” Capture owner, evidence to gather, and links.",
+  fields: [
+    { label: "System / scope", key: "system", type: "text", ph: "Project or subsystem" },
+    { label: "Model links (SysML/URIs)", key: "model_links", type: "text", ph: "Block/req diagrams, element IDs…" },
+    { label: "Key requirements (bullets)", key: "requirements", type: "textarea", ph: "REQ-001 … REQ-00N" },
+    { label: "Verification map (req → test/analysis/inspection)", key: "verification", type: "textarea", ph: "REQ-001 → T-12 (analysis)…" },
+    { label: "Validation plan (user/ops scenarios)", key: "validation", type: "textarea", ph: "How we prove it matters" },
+    { label: "Assumption ledger — rows (one per line/table-ish)", key: "ledger_rows", type: "textarea",
+      ph: "[A-01] statement | falsified-if | date D | owner | evidence | risk-if-false | mitigation | trace(REQs/Blocks/Tests)" },
+    { label: "Highest-risk items (IDs)", key: "hotlist", type: "text", ph: "A-01, A-04…" },
+    { label: "Change impact notes (optional)", key: "impact", type: "textarea", ph: "What shifts if an assumption fails?" }
+  ],
+  template: ({
+    system, model_links, requirements, verification, validation, ledger_rows, hotlist, impact,
+    ctx, audience, style, tone
+  }) => [
+    "V-Model / MBSE — Assumption Ledger",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    system && `System/scope: ${system}`,
+    model_links && `Model links: ${model_links}`,
+    requirements && `Key requirements:\n${requirements}`,
+    verification && `Verification map:\n${verification}`,
+    validation && `Validation plan:\n${validation}`,
+    ledger_rows && `Assumption ledger:\n${ledger_rows}`,
+    hotlist && `Highest-risk assumptions: ${hotlist}`,
+    impact && `Change impact notes:\n${impact}`,
+    "",
+    "Prompt anchor: “Assumption A will be false if __ by date D.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "v model mbse assumption ledger falsifiable traceability requirements verification validation sysml hazards risk owner date" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   FMEA / HAZOP / Fault Tree — Failure Modes & Consequences
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "fmea_hazop_fta_unified",
+  slug: "fmea-hazop-fta-unified",
+  label: "FMEA · HAZOP · Fault Tree — Unified Card",
+  kind: "framework",
+  categories: ["reliability","safety","systems-engineering","risk"],
+  tags: [
+    "type:framework","use:hazard-analysis","use:risk-review","use:design-out",
+    "topic:fmea","topic:hazop","topic:fta","level:intermediate"
+  ],
+  use_cases: [
+    "identify failure modes, causes, effects, and design them out",
+    "run HAZOP guidewords or model a fault tree top event",
+    "prioritize mitigations with RPN/criticality and owners"
+  ],
+  boosters: [
+    "Describe behavior that increases failure likelihood—make it observable.",
+    "Prefer design-out and passive safety over warnings/procedures.",
+    "For FMEA: keep S/O/D scales consistent; compute RPN/criticality.",
+    "For HAZOP: use guidewords (No/More/Less/As well as/Part of/Reverse…).",
+    "For FTA: define the top event and logic (AND/OR) clearly."
+  ],
+  definition:
+    "A unified risk-analysis card for FMEA, HAZOP, or Fault Tree work, focused on behaviors that increase failure likelihood and how to design them out.",
+  help:
+    "Prompt: “What behavior makes this failure more likely and how do we design it out?”",
+  fields: [
+    { label: "System/process", key: "system", type: "text", ph: "Scope" },
+    { label: "Method", key: "method", type: "select", options: ["FMEA","HAZOP","Fault Tree"], ph: "Pick one" },
+    { label: "Function / node / block", key: "function", type: "text", ph: "What this part is supposed to do" },
+    { label: "Failure mode / deviation / top event", key: "mode", type: "text", ph: "What goes wrong" },
+    { label: "Cause(s)", key: "causes", type: "textarea", ph: "Upstream contributors" },
+    { label: "Effect(s) on user/system", key: "effects", type: "textarea", ph: "Downstream impact" },
+    { label: "Behavior that increases likelihood", key: "behavior", type: "textarea", ph: "Operator/system behavior to design out" },
+    { label: "Existing controls/safeguards", key: "controls", type: "textarea", ph: "What’s in place now" },
+    { label: "Mitigation (design-out preferred)", key: "mitigation", type: "textarea", ph: "Change to remove/limit risk" },
+    { label: "Severity (S)", key: "sev", type: "text", ph: "1–10 or A–E" },
+    { label: "Occurrence (O)", key: "occ", type: "text", ph: "1–10 or per hour" },
+    { label: "Detection (D)", key: "det", type: "text", ph: "1–10 or coverage %" },
+    { label: "RPN / Criticality", key: "rpn", type: "text", ph: "S×O×D or other index" },
+    { label: "Owner & due", key: "owner", type: "text", ph: "Name + date" },
+    { label: "Notes", key: "notes", type: "textarea", ph: "HAZOP guidewords, FTA gates, assumptions…" }
+  ],
+  template: ({
+    system, method, function: fn, mode, causes, effects, behavior, controls, mitigation,
+    sev, occ, det, rpn, owner, notes, ctx, audience, style, tone
+  }) => [
+    "FMEA · HAZOP · Fault Tree — Unified Card",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    system && `System/process: ${system}`,
+    method && `Method: ${method}`,
+    fn && `Function/node/block: ${fn}`,
+    mode && `Failure mode/deviation/top event: ${mode}`,
+    causes && `Causes:\n${causes}`,
+    effects && `Effects:\n${effects}`,
+    behavior && `Behavior increasing likelihood:\n${behavior}`,
+    controls && `Existing controls:\n${controls}`,
+    mitigation && `Mitigation (design-out preferred):\n${mitigation}`,
+    (sev || occ || det || rpn) && `S/O/D/RPN: ${[sev && `S=${sev}`, occ && `O=${occ}`, det && `D=${det}`, rpn && `RPN=${rpn}`].filter(Boolean).join(" · ")}`,
+    owner && `Owner & due: ${owner}`,
+    notes && `Notes:\n${notes}`,
+    "",
+    "Prompt anchor: “What behavior makes this failure more likely and how do we design it out?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "fmea hazop fault tree analysis failure modes effects causes behavior design out severity occurrence detection rpn guidewords top event" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Reliability Growth & Burn-In — MTBF Targets and Stop Rules
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "reliability_growth_burn_in",
+  slug: "reliability-growth-burn-in",
+  label: "Reliability Growth & Burn-In",
+  kind: "framework",
+  categories: ["reliability","testing","operations","systems-engineering"],
+  tags: [
+    "type:framework","use:test-plan","use:acceptance","use:stop-rule",
+    "topic:mtbf","topic:burn-in","topic:growth-model","level:intermediate"
+  ],
+  use_cases: [
+    "plan test–fix–test cycles with explicit acceptance targets",
+    "declare acceptable failure rate at week 2 and why",
+    "set stop/repair rules and data capture for growth analysis"
+  ],
+  boosters: [
+    "Choose a growth model (Crow-AMSAA/Duane) only if you’ll fit it honestly.",
+    "State acceptable failure rate early; explain the rationale.",
+    "Define burn-in stresses and screening criteria.",
+    "Write stop rules tied to user harm and budget, not vibes."
+  ],
+  definition:
+    "A reliability growth/burn-in card to declare acceptable early failure rates, growth targets, and stop rules with rationale.",
+  help:
+    "Prompt: “What failure rate can we live with at week 2 and why?”",
+  fields: [
+    { label: "Program/assembly", key: "program", type: "text", ph: "Subsystem or SKU" },
+    { label: "Environment/stress profile", key: "env", type: "textarea", ph: "Thermal, vibration, duty cycle…" },
+    { label: "Test duration & cycles", key: "duration", type: "text", ph: "e.g., 2 weeks, 3 cycles/day" },
+    { label: "Acceptable failure rate at week 2", key: "fail_rate_w2", type: "text", ph: "e.g., ≤ 1 per 500 hr" },
+    { label: "Why we can live with this (rationale)", key: "why", type: "textarea", ph: "Volume, redundancy, service model…" },
+    { label: "Target MTBF by date", key: "mtbf_target", type: "text", ph: "e.g., ≥ 2000 hr by 2025-12-01" },
+    { label: "Growth model (optional)", key: "growth_model", type: "select", options: ["none","Crow-AMSAA","Duane-like"], ph: "Pick one" },
+    { label: "Burn-in plan (duration/stress)", key: "burnin", type: "textarea", ph: "Screening prior to ship" },
+    { label: "Stop/repair rules", key: "stop_rules", type: "textarea", ph: "If rate > X for Y hrs → pause/repair…" },
+    { label: "Sample size & allocation", key: "n", type: "text", ph: "Units under test" },
+    { label: "Data capture & analysis", key: "data", type: "textarea", ph: "Telemetry, censoring, confidence bounds" },
+    { label: "Owner & next review", key: "owner", type: "text", ph: "Name + date" }
+  ],
+  template: ({
+    program, env, duration, fail_rate_w2, why, mtbf_target, growth_model, burnin, stop_rules, n, data, owner,
+    ctx, audience, style, tone
+  }) => [
+    "Reliability Growth & Burn-In",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    program && `Program/assembly: ${program}`,
+    env && `Environment/stress profile:\n${env}`,
+    duration && `Test duration & cycles: ${duration}`,
+    fail_rate_w2 && `Acceptable failure rate at week 2: ${fail_rate_w2}`,
+    why && `Why we can live with this:\n${why}`,
+    mtbf_target && `Target MTBF by date: ${mtbf_target}`,
+    growth_model && `Growth model: ${growth_model}`,
+    burnin && `Burn-in plan:\n${burnin}`,
+    stop_rules && `Stop/repair rules:\n${stop_rules}`,
+    n && `Sample size: ${n}`,
+    data && `Data capture & analysis:\n${data}`,
+    owner && `Owner & next review: ${owner}`,
+    "",
+    "Prompt anchor: “What failure rate can we live with at week 2 and why?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "reliability growth burn in mtbf acceptable failure rate week 2 crow amsaa duane stop rules telemetry screening" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Design of Experiments + Tolerance Stacks — CI & Power Gates
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "doe_tolerance_stacks",
+  slug: "design-of-experiments-tolerance-stacks",
+  label: "DOE + Tolerance Stacks — CI & Power",
+  kind: "framework",
+  categories: ["experiment","manufacturing","analytics","systems-engineering"],
+  tags: [
+    "type:framework","use:experiment-design","use:analysis","use:acceptance",
+    "topic:doe","topic:tolerance-stack","level:intermediate"
+  ],
+  use_cases: [
+    "plan structured experiments with clear acceptance gates",
+    "analyze variation contributors and stack tolerances",
+    "precommit to CI width and statistical power"
+  ],
+  boosters: [
+    "State effect size of interest; pick design to detect it.",
+    "Randomize and block; pre-register analysis if stakes are high.",
+    "For stacks, compare worst-case, RSS, and (if possible) Monte Carlo.",
+    "Acceptance requires CI width and power thresholds met."
+  ],
+  definition:
+    "A combined DOE and tolerance-stack card with explicit confidence-interval and power gates, plus stack acceptance criteria.",
+  help:
+    "Prompt: “We accept result R only if CI is within __ and power is __.”",
+  fields: [
+    { label: "Problem / response variable", key: "response", type: "text", ph: "What you measure" },
+    { label: "Factors & levels", key: "factors", type: "textarea", ph: "A,B,C with levels…" },
+    { label: "Design type", key: "design", type: "select", options: ["full factorial","fractional","Taguchi","RSM","custom"], ph: "Pick one" },
+    { label: "Randomization / blocking", key: "rand_block", type: "textarea", ph: "Order, blocks, nuisance factors" },
+    { label: "Effect size of interest", key: "effect", type: "text", ph: "Δ you care about" },
+    { label: "CI width threshold", key: "ci", type: "text", ph: "e.g., 95% CI half-width ≤ 1.0" },
+    { label: "Power threshold", key: "power", type: "text", ph: "e.g., ≥ 0.8" },
+    { label: "Tolerance contributors (stack)", key: "contributors", type: "textarea", ph: "Dim A, Dim B, torque, temp…" },
+    { label: "Stack method", key: "stack_method", type: "select", options: ["worst-case","RSS","Monte Carlo"], ph: "Pick one" },
+    { label: "Stack acceptance criterion", key: "stack_accept", type: "text", ph: "Spec limit vs. predicted distribution" },
+    { label: "Analysis plan", key: "analysis", type: "textarea", ph: "ANOVA/mixed model; simulation steps" },
+    { label: "Result summary (when done)", key: "result", type: "textarea", ph: "Findings, effects, intervals" },
+    { label: "Owner & dates", key: "owner", type: "text", ph: "Name + run/analysis dates" }
+  ],
+  template: ({
+    response, factors, design, rand_block, effect, ci, power, contributors, stack_method, stack_accept,
+    analysis, result, owner, ctx, audience, style, tone
+  }) => [
+    "DOE + Tolerance Stacks — CI & Power",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    response && `Response: ${response}`,
+    factors && `Factors & levels:\n${factors}`,
+    design && `Design: ${design}`,
+    rand_block && `Randomization/blocking:\n${rand_block}`,
+    effect && `Effect size of interest: ${effect}`,
+    (ci || power) && `Acceptance gates: ${[ci && `CI ${ci}`, power && `Power ${power}`].filter(Boolean).join(" · ")}`,
+    contributors && `Tolerance contributors:\n${contributors}`,
+    stack_method && `Stack method: ${stack_method}`,
+    stack_accept && `Stack acceptance: ${stack_accept}`,
+    analysis && `Analysis plan:\n${analysis}`,
+    result && `Result summary:\n${result}`,
+    owner && `Owner & dates: ${owner}`,
+    "",
+    "Prompt anchor: “We accept result R only if CI is within __ and power is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "design of experiments tolerance stack ci width power worst case rss monte carlo anova effect size acceptance" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Technology Readiness Levels — with Exit Ramps
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "trl_with_exit_ramps",
+  slug: "technology-readiness-levels-exit-ramps",
+  label: "TRLs — With Exit Ramps",
+  kind: "framework",
+  categories: ["systems-engineering","strategy","program-management","risk"],
+  tags: [
+    "type:framework","use:maturity-gates","use:go-no-go","use:salvage",
+    "topic:trl","topic:exit-ramp","level:beginner"
+  ],
+  use_cases: [
+    "track technology maturity (TRL 1→9) with explicit stop/salvage rules",
+    "define evidence required at each gate",
+    "avoid escalation of commitment via prewritten exit ramps"
+  ],
+  boosters: [
+    "State TRL definitions up front for your org; keep evidence concrete.",
+    "Write kill/exit ramps before work; name salvage paths.",
+    "At TRL 5 (relevant environment), define a specific failure condition.",
+    "Record owners and next review dates per gate."
+  ],
+  definition:
+    "A TRL tracker with explicit exit ramps and salvage plans; adds a concrete failure condition at TRL 5.",
+  help:
+    "Prompt: “If condition C fails at TRL 5, we stop and salvage by __.”",
+  fields: [
+    { label: "Program/tech", key: "program", type: "text", ph: "Name" },
+    { label: "Current TRL", key: "trl_now", type: "select", options: ["1","2","3","4","5","6","7","8","9"], ph: "Pick one" },
+    { label: "Target TRL", key: "trl_target", type: "select", options: ["2","3","4","5","6","7","8","9"], ph: "Pick one" },
+    { label: "Gate evidence (per next TRL)", key: "gate_evidence", type: "textarea", ph: "What proof is required?" },
+    { label: "TRL 5 — condition C (must pass)", key: "trl5_condition", type: "text", ph: "If this fails, we stop" },
+    { label: "Salvage plan if TRL 5 fails", key: "salvage", type: "textarea", ph: "Reuse, pivot, license, archive…" },
+    { label: "Exit/kill criteria (all gates)", key: "kill_criteria", type: "textarea", ph: "Observable conditions to stop" },
+    { label: "Risks & mitigations", key: "risks", type: "textarea", ph: "Top risks and counters" },
+    { label: "Owners & next review", key: "owners", type: "text", ph: "Names + date" },
+    { label: "Notes", key: "notes", type: "textarea", ph: "Dependencies, budgets, partners" }
+  ],
+  template: ({
+    program, trl_now, trl_target, gate_evidence, trl5_condition, salvage, kill_criteria, risks, owners, notes,
+    ctx, audience, style, tone
+  }) => [
+    "TRLs — With Exit Ramps",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    program && `Program/tech: ${program}`,
+    (trl_now || trl_target) && `TRL now/target: ${[trl_now, trl_target].filter(Boolean).join(" → ")}`,
+    gate_evidence && `Gate evidence (next TRL):\n${gate_evidence}`,
+    trl5_condition && `TRL 5 condition C (must pass): ${trl5_condition}`,
+    salvage && `Salvage plan if TRL 5 fails:\n${salvage}`,
+    kill_criteria && `Exit/kill criteria (all gates):\n${kill_criteria}`,
+    risks && `Risks & mitigations:\n${risks}`,
+    owners && `Owners & next review: ${owners}`,
+    notes && `Notes:\n${notes}`,
+    "",
+    "Prompt anchor: “If condition C fails at TRL 5, we stop and salvage by __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "technology readiness levels trl exit ramps kill criteria salvage gates evidence owners review program" }
+},
+
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Registered Reports & Preregistration — guardrails against p-hacking
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "registered_report_prereg",
+  slug: "registered-report-prereg",
+  label: "Registered Reports & Preregistration",
+  kind: "framework",
+  categories: ["research","statistics","ethics","education"],
+  tags: [
+    "type:framework","use:prereg","use:peer-review","use:analysis-plan",
+    "topic:p-hacking","topic:forging-paths","origin:open-science","level:intermediate"
+  ],
+  use_cases: [
+    "lock a design and analysis plan before data collection",
+    "reduce researcher degrees of freedom and HARKing",
+    "clarify outcomes, power, and deviations policy"
+  ],
+  boosters: [
+    "Commit to one primary outcome and one primary test.",
+    "State exclusion, stopping, and missing-data rules up front.",
+    "Separate confirmatory from exploratory clearly in the write-up.",
+    "Add a replication/robustness section with exact specs.",
+    "Share a read-only prereg link and archive a copy (DOI)."
+  ],
+  definition:
+    "A preregistration/Registered Report scaffold to precommit hypotheses, design, and analysis—plus explicit guardrails against p-hacking.",
+  help:
+    "Prompt: “The p-hacking path most tempting here is __. My guardrail is __.”",
+  notice:
+    "Not IRB/ethics approval. Coordinate with your board and journal policies.",
+  fields: [
+    { label: "Title", key: "title", type: "text", ph: "Study handle" },
+    { label: "Outlet / registry", key: "outlet", type: "text", ph: "Journal, OSF, AsPredicted…" },
+    { label: "Stage", key: "stage", type: "select", options: ["prereg only","Registered Report — Stage 1","Registered Report — Stage 2"], ph: "Pick one" },
+    { label: "Research question", key: "rq", type: "textarea", ph: "What are you testing?" },
+    { label: "Hypotheses (confirmatory)", key: "hypotheses", type: "textarea", ph: "H1, H2… falsifiable" },
+    { label: "Primary outcome(s)", key: "primary_outcomes", type: "textarea", ph: "Exactly what and how computed" },
+    { label: "Secondary outcomes", key: "secondary_outcomes", type: "textarea", ph: "Optional" },
+    { label: "Constructs & measures", key: "measures", type: "textarea", ph: "Instruments, validity, timing" },
+    { label: "Sample frame & size", key: "sample", type: "textarea", ph: "Recruitment, N, power rationale" },
+    { label: "Randomization / blinding", key: "rand_blind", type: "textarea", ph: "Unit, seed, concealment" },
+    { label: "Exclusion criteria", key: "exclusion", type: "textarea", ph: "Predefined drop rules" },
+    { label: "Stopping rules", key: "stopping", type: "textarea", ph: "Time/N-based; no peeking policy" },
+    { label: "Analysis plan (primary)", key: "analysis", type: "textarea", ph: "Model, covariates, contrasts" },
+    { label: "Multiple-comparison control", key: "mcc", type: "textarea", ph: "FWER/FDR strategy" },
+    { label: "Robustness & sensitivity", key: "robust", type: "textarea", ph: "Alt specs, resampling, E-values…" },
+    { label: "Missing-data handling", key: "missing", type: "textarea", ph: "MAR/MNAR assumptions, imputation" },
+    { label: "Tempting p-hack", key: "p_hack", type: "text", ph: "The path most tempting…" },
+    { label: "Guardrail", key: "guardrail", type: "textarea", ph: "Precommitment that blocks it" },
+    { label: "Deviations policy", key: "deviations", type: "textarea", ph: "How you’ll label any changes" },
+    { label: "Ethics/IRB", key: "ethics", type: "text", ph: "Protocol/approval #" },
+    { label: "Prereg link / DOI", key: "link", type: "text", ph: "URL/DOI" },
+    { label: "Sharing plan (data/code)", key: "sharing", type: "textarea", ph: "Anonymization, timeline, license" }
+  ],
+  template: ({
+    title, outlet, stage, rq, hypotheses, primary_outcomes, secondary_outcomes, measures, sample,
+    rand_blind, exclusion, stopping, analysis, mcc, robust, missing, p_hack, guardrail,
+    deviations, ethics, link, sharing, ctx, audience, style, tone
+  }) => [
+    "Registered Reports & Preregistration",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    title && `Title: ${title}`,
+    (outlet || stage) && `Outlet/Stage: ${[outlet, stage].filter(Boolean).join(" · ")}`,
+    rq && `Research question:\n${rq}`,
+    hypotheses && `Hypotheses (confirmatory):\n${hypotheses}`,
+    primary_outcomes && `Primary outcome(s):\n${primary_outcomes}`,
+    secondary_outcomes && `Secondary outcomes:\n${secondary_outcomes}`,
+    measures && `Constructs & measures:\n${measures}`,
+    sample && `Sample frame & size:\n${sample}`,
+    rand_blind && `Randomization/blinding:\n${rand_blind}`,
+    exclusion && `Exclusion criteria:\n${exclusion}`,
+    stopping && `Stopping rules:\n${stopping}`,
+    analysis && `Analysis plan (primary):\n${analysis}`,
+    mcc && `Multiple-comparison control:\n${mcc}`,
+    robust && `Robustness & sensitivity:\n${robust}`,
+    missing && `Missing-data handling:\n${missing}`,
+    (p_hack || guardrail) && `Guarding against p-hacking:\n• Temptation: ${p_hack || ""}\n• Guardrail: ${guardrail || ""}`,
+    deviations && `Deviations policy:\n${deviations}`,
+    ethics && `Ethics/IRB: ${ethics}`,
+    link && `Prereg link/DOI: ${link}`,
+    sharing && `Sharing plan:\n${sharing}`,
+    "",
+    "Prompt anchor: “The p-hacking path most tempting here is __. My guardrail is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "registered report preregistration prereg analysis plan p hacking harking outcomes power missing data robustness open science" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Adversarial Collaboration — co-design across disagreement
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "adversarial_collaboration",
+  slug: "adversarial-collaboration",
+  label: "Adversarial Collaboration",
+  kind: "framework",
+  categories: ["research","ethics","education","communication"],
+  tags: [
+    "type:framework","use:study-design","use:disagreement","use:adjudication",
+    "topic:priors","topic:precommitment","origin:debate-to-data","level:intermediate"
+  ],
+  use_cases: [
+    "co-design a test with someone who disagrees",
+    "precommit to adjudication rules and stopping conditions",
+    "write ‘change-my-mind’ evidence in advance"
+  ],
+  boosters: [
+    "Record each side’s priors and the exact claim boundary.",
+    "Define success/falsification criteria both parties accept.",
+    "Use a neutral arbiter for disputes; document tie-break rules.",
+    "Publish a joint pre-analysis plan before seeing the data."
+  ],
+  definition:
+    "A scaffold for collaborative tests across disagreement with precommitted success criteria and joint analysis.",
+  help:
+    "Prompt: “Evidence that would change my mind is __.”",
+  fields: [
+    { label: "Topic / claim", key: "claim", type: "text", ph: "What are we testing?" },
+    { label: "Team A (names/roles)", key: "team_a", type: "text", ph: "Stakeholders/experts" },
+    { label: "Team B (names/roles)", key: "team_b", type: "text", ph: "Stakeholders/experts" },
+    { label: "Claim boundary (operationalized)", key: "boundary", type: "textarea", ph: "Exactly what counts as true/false" },
+    { label: "Priors — Team A", key: "prior_a", type: "textarea", ph: "Beliefs + confidence" },
+    { label: "Priors — Team B", key: "prior_b", type: "textarea", ph: "Beliefs + confidence" },
+    { label: "Design sketch (data & methods)", key: "design", type: "textarea", ph: "Experiment, survey, natural test…" },
+    { label: "Measurement & outcomes", key: "measures", type: "textarea", ph: "Primary/secondary" },
+    { label: "Pre-analysis plan link", key: "pap", type: "text", ph: "URL/DOI" },
+    { label: "Adjudication criteria (both sides)", key: "criteria", type: "textarea", ph: "What counts as change" },
+    { label: "Evidence that changes my mind — A", key: "change_a", type: "textarea", ph: "Specific thresholds/patterns" },
+    { label: "Evidence that changes my mind — B", key: "change_b", type: "textarea", ph: "Specific thresholds/patterns" },
+    { label: "Arbiter & tie-break protocol", key: "arbiter", type: "text", ph: "Name/committee + rules" },
+    { label: "Stopping/ethics rules", key: "stop_rules", type: "textarea", ph: "Harm or futility rules" },
+    { label: "Publication/communication plan", key: "comms", type: "textarea", ph: "Where/when/how results are shared" }
+  ],
+  template: ({
+    claim, team_a, team_b, boundary, prior_a, prior_b, design, measures, pap, criteria, change_a, change_b,
+    arbiter, stop_rules, comms, ctx, audience, style, tone
+  }) => [
+    "Adversarial Collaboration",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    claim && `Topic/claim: ${claim}`,
+    (team_a || team_b) && `Teams: ${[team_a, team_b].filter(Boolean).join(" vs ")} `,
+    boundary && `Claim boundary (operationalized):\n${boundary}`,
+    prior_a && `Priors — Team A:\n${prior_a}`,
+    prior_b && `Priors — Team B:\n${prior_b}`,
+    design && `Design sketch:\n${design}`,
+    measures && `Measurement & outcomes:\n${measures}`,
+    pap && `Pre-analysis plan: ${pap}`,
+    criteria && `Adjudication criteria:\n${criteria}`,
+    (change_a || change_b) && `Change-my-mind evidence:\n• A: ${change_a || ""}\n• B: ${change_b || ""}`,
+    arbiter && `Arbiter/tie-break: ${arbiter}`,
+    stop_rules && `Stopping/ethics rules:\n${stop_rules}`,
+    comms && `Publication/communication plan:\n${comms}`,
+    "",
+    "Prompt anchor: “Evidence that would change my mind is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "adversarial collaboration priors pre analysis plan adjudication criteria change my mind arbiter stopping communication" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Systematic Review & Meta-Analysis — explicit criteria and limits
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "systematic_review_meta",
+  slug: "systematic-review-meta-analysis",
+  label: "Systematic Review & Meta-Analysis",
+  kind: "framework",
+  categories: ["research","statistics","policy","education"],
+  tags: [
+    "type:framework","use:protocol","use:evidence-synthesis","use:policy-brief",
+    "topic:inclusion-criteria","topic:heterogeneity","origin:prisma-inspired","level:intermediate"
+  ],
+  use_cases: [
+    "register a protocol with transparent criteria",
+    "synthesize effect sizes and quantify heterogeneity",
+    "make limits legible to policymakers"
+  ],
+  boosters: [
+    "Define PICO/PECO precisely and preregister the protocol.",
+    "Search multiple databases + grey literature with full strings.",
+    "Double-screen, double-extract; resolve conflicts.",
+    "Quantify heterogeneity; examine moderators; test small-study bias.",
+    "Write a ‘what this cannot tell you’ section up front."
+  ],
+  definition:
+    "A PRISMA-flavored synthesis template: explicit criteria, thorough search, bias assessment, model choice, and policy-facing limits.",
+  help:
+    "Prompt: “What this cannot tell a policymaker is __.”",
+  fields: [
+    { label: "Question (PICO/PECO)", key: "pico", type: "textarea", ph: "Population, Intervention/Exposure, Comparator, Outcomes" },
+    { label: "Protocol/prereg (PROSPERO/OSF)", key: "protocol", type: "text", ph: "ID or link" },
+    { label: "Inclusion criteria", key: "inclusion", type: "textarea", ph: "Study designs, languages, dates…" },
+    { label: "Exclusion criteria", key: "exclusion", type: "textarea", ph: "Reasons to exclude" },
+    { label: "Databases & search strings", key: "search", type: "textarea", ph: "Full strings for each source" },
+    { label: "Screening process", key: "screen", type: "textarea", ph: "Two reviewers? Tools?" },
+    { label: "Data extraction items", key: "extract", type: "textarea", ph: "Fields, effect sizes, covariates" },
+    { label: "Risk of bias tool", key: "rob", type: "text", ph: "RoB2, ROBINS-I, QUIPS…" },
+    { label: "Effect size metric", key: "es", type: "text", ph: "OR, SMD, RR, r, Hedges g…" },
+    { label: "Model", key: "model", type: "select", options: ["fixed","random","hierarchical"], ph: "Pick one" },
+    { label: "Heterogeneity plan", key: "hetero", type: "textarea", ph: "I², τ², Cochran’s Q; moderators" },
+    { label: "Publication bias checks", key: "pub_bias", type: "textarea", ph: "Funnel, Egger, trim-and-fill…" },
+    { label: "Sensitivity/subgroup analyses", key: "sensitivity", type: "textarea", ph: "Influence, leave-one-out" },
+    { label: "Cannot tell policymakers (limits)", key: "cannot", type: "textarea", ph: "Boundaries & cautions" },
+    { label: "Update plan", key: "update", type: "text", ph: "When to refresh" }
+  ],
+  template: ({
+    pico, protocol, inclusion, exclusion, search, screen, extract, rob, es, model, hetero, pub_bias, sensitivity, cannot, update,
+    ctx, audience, style, tone
+  }) => [
+    "Systematic Review & Meta-Analysis",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    pico && `Question (PICO/PECO):\n${pico}`,
+    protocol && `Protocol/prereg: ${protocol}`,
+    inclusion && `Inclusion criteria:\n${inclusion}`,
+    exclusion && `Exclusion criteria:\n${exclusion}`,
+    search && `Databases & search strings:\n${search}`,
+    screen && `Screening process:\n${screen}`,
+    extract && `Data extraction items:\n${extract}`,
+    (rob || es || model) && `Bias/Metric/Model: ${[rob && `RoB=${rob}`, es && `ES=${es}`, model && `Model=${model}`].filter(Boolean).join(" · ")}`,
+    hetero && `Heterogeneity plan:\n${hetero}`,
+    pub_bias && `Publication bias checks:\n${pub_bias}`,
+    sensitivity && `Sensitivity/subgroup analyses:\n${sensitivity}`,
+    cannot && `What this cannot tell policymakers:\n${cannot}`,
+    update && `Update plan: ${update}`,
+    "",
+    "Prompt anchor: “What this cannot tell a policymaker is __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "systematic review meta analysis prisma inclusion exclusion heterogeneity publication bias effect size model policymakers limits" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Causal Inference Framework — DAGs · Identification · Assumptions
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "causal_inference_framework",
+  slug: "causal-inference-framework",
+  label: "Causal Inference — DAGs & Identification",
+  kind: "framework",
+  categories: ["research","statistics","education","policy"],
+  tags: [
+    "type:framework","use:causal","use:identification","use:robustness",
+    "topic:dag","topic:iv-did-rdd","origin:potential-outcomes","level:intermediate"
+  ],
+  use_cases: [
+    "state the estimand and identification strategy",
+    "document assumptions and their plausibility",
+    "pre-specify diagnostics, falsification, and sensitivity"
+  ],
+  boosters: [
+    "Draw a DAG; write the causal story in words too.",
+    "Pick one identification path (backdoor/IV/DiD/RD) and commit.",
+    "Write threats to identification and how you’ll probe them.",
+    "Include sensitivity (e.g., E-value, Rosenbaum bounds)."
+  ],
+  definition:
+    "A causal card: estimand, DAG, identification plan, assumptions, diagnostics, and plausibility checks.",
+  help:
+    "Prompt: “This conclusion depends on __ not existing. How plausible is that here?”",
+  fields: [
+    { label: "Estimand", key: "estimand", type: "text", ph: "ATE, LATE, ATT…" },
+    { label: "DAG (link/description)", key: "dag", type: "textarea", ph: "Nodes/edges; backdoor paths" },
+    { label: "Identification strategy", key: "id_strategy", type: "select",
+      options: ["backdoor (selection on observables)","instrumental variables","difference-in-differences","regression discontinuity","front-door","other"], ph: "Pick one" },
+    { label: "Key assumptions", key: "assumptions", type: "textarea", ph: "Unconfoundedness, exclusion, monotonicity, SUTVA, positivity…" },
+    { label: "Plausibility notes", key: "plausibility", type: "textarea", ph: "Substantive arguments, prior evidence" },
+    { label: "Data & measurement", key: "data", type: "textarea", ph: "Sources, timing, quality, proxies" },
+    { label: "Estimator & SEs", key: "estimator", type: "textarea", ph: "OLS, 2SLS, TWFE, local linear, robust/clustered" },
+    { label: "Diagnostics & falsification", key: "diagnostics", type: "textarea", ph: "Pre-trends, balance, placebo, over-id…" },
+    { label: "Sensitivity analysis", key: "sensitivity", type: "textarea", ph: "E-value, bounds, tipping point" },
+    { label: "This conclusion depends on (nonexistence of…)", key: "depends", type: "text", ph: "The thing that must not exist" },
+    { label: "Policy/decision relevance", key: "policy", type: "textarea", ph: "External validity, target population" }
+  ],
+  template: ({
+    estimand, dag, id_strategy, assumptions, plausibility, data, estimator,
+    diagnostics, sensitivity, depends, policy, ctx, audience, style, tone
+  }) => [
+    "Causal Inference — DAGs & Identification",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    estimand && `Estimand: ${estimand}`,
+    dag && `DAG (link/description):\n${dag}`,
+    id_strategy && `Identification strategy: ${id_strategy}`,
+    assumptions && `Key assumptions:\n${assumptions}`,
+    depends && `This conclusion depends on __ not existing:\n${depends}`,
+    plausibility && `Plausibility notes:\n${plausibility}`,
+    data && `Data & measurement:\n${data}`,
+    estimator && `Estimator & SEs:\n${estimator}`,
+    diagnostics && `Diagnostics & falsification:\n${diagnostics}`,
+    sensitivity && `Sensitivity analysis:\n${sensitivity}`,
+    policy && `Policy/decision relevance:\n${policy}`,
+    "",
+    "Prompt anchor: “This conclusion depends on __ not existing. How plausible is that here?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "causal inference dag identification backdoor iv did rdd assumptions plausibility diagnostics falsification sensitivity policy" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Mixed Methods with Triangulation — where numbers & stories disagree
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "mixed_methods_triangulation",
+  slug: "mixed-methods-triangulation",
+  label: "Mixed Methods — Triangulation",
+  kind: "framework",
+  categories: ["research","education","statistics","storytelling"],
+  tags: [
+    "type:framework","use:integration","use:design","use:quality",
+    "topic:triangulation","topic:discrepant-cases","origin:mixed-methods","level:beginner"
+  ],
+  use_cases: [
+    "plan qual+quant designs with explicit integration points",
+    "surface and learn from discrepancies",
+    "document validity/trustworthiness procedures"
+  ],
+  boosters: [
+    "Choose a design (convergent/explanatory/exploratory/embedded).",
+    "Mark ‘interface’ points: where methods meet.",
+    "Create a simple triangulation matrix (agree/partial/discordant).",
+    "Hunt discrepant cases; treat them as data, not errors."
+  ],
+  definition:
+    "A mixed-methods card to design, integrate, and reconcile qual+quant evidence—especially where they disagree.",
+  help:
+    "Prompt: “Where do the numbers and the stories disagree and what does that teach us?”",
+  fields: [
+    { label: "Purpose", key: "purpose", type: "text", ph: "Why mix methods?" },
+    { label: "Design", key: "design", type: "select", options: ["convergent","explanatory (quant→qual)","exploratory (qual→quant)","embedded"], ph: "Pick one" },
+    { label: "Qual component", key: "qual", type: "textarea", ph: "Methods, sample, instruments" },
+    { label: "Quant component", key: "quant", type: "textarea", ph: "Data, measures, models" },
+    { label: "Interface points", key: "interfaces", type: "textarea", ph: "Where/how they connect" },
+    { label: "Triangulation matrix", key: "matrix", type: "textarea", ph: "Agree/partial/discordant notes" },
+    { label: "Discrepant cases", key: "discrepant", type: "textarea", ph: "What the disagreements reveal" },
+    { label: "Validity/trustworthiness", key: "validity", type: "textarea", ph: "Member checks, audit, reliability…" },
+    { label: "Integration product", key: "product", type: "textarea", ph: "Joint display, narrative weave" }
+  ],
+  template: ({
+    purpose, design, qual, quant, interfaces, matrix, discrepant, validity, product,
+    ctx, audience, style, tone
+  }) => [
+    "Mixed Methods — Triangulation",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    purpose && `Purpose: ${purpose}`,
+    design && `Design: ${design}`,
+    qual && `Qual component:\n${qual}`,
+    quant && `Quant component:\n${quant}`,
+    interfaces && `Interface points:\n${interfaces}`,
+    matrix && `Triangulation matrix:\n${matrix}`,
+    discrepant && `Discrepant cases (learning):\n${discrepant}`,
+    validity && `Validity/trustworthiness:\n${validity}`,
+    product && `Integration product:\n${product}`,
+    "",
+    "Prompt anchor: “Where do the numbers and the stories disagree and what does that teach us?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "mixed methods triangulation convergent explanatory exploratory embedded interface discrepant cases validity joint display" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Grounded Theory — with Reflexive Memos
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "grounded_theory_reflexive_memos",
+  slug: "grounded-theory-reflexive-memos",
+  label: "Grounded Theory — Reflexive Memos",
+  kind: "framework",
+  categories: ["research","education","storytelling","ethics"],
+  tags: [
+    "type:framework","use:qualitative","use:coding","use:theory-building",
+    "topic:constant-comparison","topic:reflexivity","origin:grounded-theory","level:beginner"
+  ],
+  use_cases: [
+    "structure open/axial/selective coding with memos",
+    "track theoretical sampling and saturation",
+    "document reflexivity and audit trail"
+  ],
+  boosters: [
+    "Memo while coding; don’t wait for end-of-day.",
+    "Use constant comparison across cases/incidents.",
+    "Define saturation criteria before you start.",
+    "Keep an audit trail that another coder could follow."
+  ],
+  definition:
+    "A grounded-theory card for coding cycles, reflexive memoing, sampling decisions, and saturation declarations.",
+  help:
+    "Prompt: “During coding, I noticed my bias when __.”",
+  fields: [
+    { label: "Setting & participants", key: "setting", type: "textarea", ph: "Context snapshot" },
+    { label: "Sampling (theoretical)", key: "sampling", type: "textarea", ph: "How new cases are chosen" },
+    { label: "Data sources", key: "sources", type: "textarea", ph: "Interviews, obs, docs…" },
+    { label: "Open coding notes", key: "open", type: "textarea", ph: "Line-by-line ideas" },
+    { label: "Axial coding notes", key: "axial", type: "textarea", ph: "Categories/relationships" },
+    { label: "Selective coding / core category", key: "selective", type: "textarea", ph: "Story that ties it together" },
+    { label: "Reflexive memos", key: "memos", type: "textarea", ph: "Bias noticed when…" },
+    { label: "Saturation criteria & status", key: "saturation", type: "textarea", ph: "Definition and whether met" },
+    { label: "Audit trail (decisions)", key: "audit", type: "textarea", ph: "What changed and why" }
+  ],
+  template: ({
+    setting, sampling, sources, open, axial, selective, memos, saturation, audit,
+    ctx, audience, style, tone
+  }) => [
+    "Grounded Theory — Reflexive Memos",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    setting && `Setting & participants:\n${setting}`,
+    sampling && `Sampling (theoretical):\n${sampling}`,
+    sources && `Data sources:\n${sources}`,
+    open && `Open coding notes:\n${open}`,
+    axial && `Axial coding notes:\n${axial}`,
+    selective && `Selective coding / core category:\n${selective}`,
+    memos && `Reflexive memos:\n${memos}`,
+    saturation && `Saturation criteria & status:\n${saturation}`,
+    audit && `Audit trail:\n${audit}`,
+    "",
+    "Prompt anchor: “During coding, I noticed my bias when __.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "grounded theory open axial selective coding constant comparison reflexive memos saturation audit trail" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Participatory Action Research — decision rights & co-governance
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "participatory_action_research",
+  slug: "participatory-action-research",
+  label: "Participatory Action Research (PAR)",
+  kind: "framework",
+  categories: ["research","ethics","community","education"],
+  tags: [
+    "type:framework","use:co-design","use:governance","use:dissemination",
+    "topic:decision-rights","topic:benefit-sharing","origin:par","level:intermediate"
+  ],
+  use_cases: [
+    "co-create questions and methods with participants",
+    "clarify decision rights, compensation, and data ownership",
+    "plan action cycles and accessible dissemination"
+  ],
+  boosters: [
+    "Name who decides what—explicit decision rights.",
+    "Budget for compensation and capacity-building.",
+    "Co-author outputs; return results in accessible forms.",
+    "Plan an action cycle (plan–act–observe–reflect)."
+  ],
+  definition:
+    "A PAR card centering participant co-governance, benefit sharing, and practical action cycles.",
+  help:
+    "Prompt: “What decision should be yours, not mine, in this study?”",
+  fields: [
+    { label: "Community/partners", key: "partners", type: "textarea", ph: "Who’s at the table" },
+    { label: "Co-owned research question(s)", key: "questions", type: "textarea", ph: "Draft together" },
+    { label: "Decision rights (RACI-like)", key: "rights", type: "textarea", ph: "Who decides/consults/informs" },
+    { label: "Roles & capacity-building", key: "roles", type: "textarea", ph: "Training, mentorship, tasks" },
+    { label: "Compensation/benefits", key: "benefits", type: "textarea", ph: "Stipends, credits, services" },
+    { label: "Data ownership & stewardship", key: "ownership", type: "textarea", ph: "Licensing, storage, access" },
+    { label: "Ethics/consent notes", key: "ethics", type: "textarea", ph: "Safeguards, risks" },
+    { label: "Action cycles", key: "cycles", type: "textarea", ph: "Plan–act–observe–reflect plan" },
+    { label: "Accessible dissemination", key: "dissemination", type: "textarea", ph: "Community briefs, events, languages" }
+  ],
+  template: ({
+    partners, questions, rights, roles, benefits, ownership, ethics, cycles, dissemination,
+    ctx, audience, style, tone
+  }) => [
+    "Participatory Action Research (PAR)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    partners && `Community/partners:\n${partners}`,
+    questions && `Co-owned research question(s):\n${questions}`,
+    rights && `Decision rights:\n${rights}`,
+    roles && `Roles & capacity-building:\n${roles}`,
+    benefits && `Compensation/benefits:\n${benefits}`,
+    ownership && `Data ownership & stewardship:\n${ownership}`,
+    ethics && `Ethics/consent notes:\n${ethics}`,
+    cycles && `Action cycles:\n${cycles}`,
+    dissemination && `Accessible dissemination:\n${dissemination}`,
+    "",
+    "Prompt anchor: “What decision should be yours, not mine, in this study?”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "participatory action research co governance decision rights benefit sharing data ownership action cycles dissemination" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Open Science Checklist — code, data, protocols by default
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "open_science_checklist",
+  slug: "open-science-checklist",
+  label: "Open Science Checklist",
+  kind: "framework",
+  categories: ["research","ethics","statistics","education"],
+  tags: [
+    "type:framework","use:checklist","use:reproducibility","use:sharing",
+    "topic:licensing","topic:privacy","origin:open-practices","level:beginner"
+  ],
+  use_cases: [
+    "make materials, data, and code findable, accessible, reusable",
+    "document exactly what cannot be shared and why",
+    "package a replication capsule with environment"
+  ],
+  boosters: [
+    "Assign DOIs for prereg, data, and code.",
+    "Capture computational environment (container, versions).",
+    "Use a permissive license where possible; state exceptions.",
+    "Redact/de-identify with a documented risk assessment."
+  ],
+  definition:
+    "A share-by-default checklist covering code, data, protocols, licensing, identifiers, and non-shareable items with reasons.",
+  help:
+    "Prompt: “Here is exactly what we cannot share and the reason.”",
+  fields: [
+    { label: "Prereg/Registered Report (DOI/link)", key: "prereg", type: "text", ph: "URL/DOI" },
+    { label: "Protocol/materials repo", key: "protocols", type: "text", ph: "Repo/OSF link" },
+    { label: "Data availability", key: "data", type: "textarea", ph: "Open, restricted, or request-based" },
+    { label: "Code repository & license", key: "code", type: "textarea", ph: "Repo URL, license, CITATION.cff" },
+    { label: "Computational environment", key: "env", type: "textarea", ph: "Docker/Conda; manifest" },
+    { label: "Non-shareable items (and reasons)", key: "cannot_share", type: "textarea", ph: "Exactly what and why" },
+    { label: "De-identification steps", key: "deid", type: "textarea", ph: "Techniques, risk notes" },
+    { label: "Persistent identifiers", key: "ids", type: "textarea", ph: "DOIs, ORCID, RRIDs" },
+    { label: "Replication package link", key: "repl", type: "text", ph: "Archive link" },
+    { label: "Embargo/availability dates", key: "embargo", type: "text", ph: "If applicable" }
+  ],
+  template: ({
+    prereg, protocols, data, code, env, cannot_share, deid, ids, repl, embargo,
+    ctx, audience, style, tone
+  }) => [
+    "Open Science Checklist",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    prereg && `Prereg/RR: ${prereg}`,
+    protocols && `Protocols/materials: ${protocols}`,
+    data && `Data availability:\n${data}`,
+    code && `Code repository & license:\n${code}`,
+    env && `Computational environment:\n${env}`,
+    cannot_share && `Non-shareable (with reasons):\n${cannot_share}`,
+    deid && `De-identification steps:\n${deid}`,
+    ids && `Persistent identifiers:\n${ids}`,
+    repl && `Replication package:\n${repl}`,
+    embargo && `Embargo/availability: ${embargo}`,
+    "",
+    "Prompt anchor: “Here is exactly what we cannot share and the reason.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "open science checklist data code protocols license computational environment doi rrid de identification cannot share reason replication" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Agent-Based Models & System Dynamics — where the model lies
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "abm_system_dynamics_truth",
+  slug: "agent-based-models-system-dynamics",
+  label: "Agent-Based Models & System Dynamics",
+  kind: "framework",
+  categories: ["simulation","research","education","policy"],
+  tags: [
+    "type:framework","use:modeling","use:scenario","use:sensitivity",
+    "topic:abm","topic:system-dynamics","origin:complex-systems","level:intermediate"
+  ],
+  use_cases: [
+    "specify agents/stocks, rules/equations, and calibration",
+    "declare validation strategy and failing regimes",
+    "package experiments, seeds, and reproducibility"
+  ],
+  boosters: [
+    "Bound the model: what’s in, what’s out (no shame).",
+    "Calibrate with real data; cross-validate if possible.",
+    "Run global sensitivity; report brittle parameters.",
+    "List regimes where the model lies and how to detect it."
+  ],
+  definition:
+    "A simulation card for ABM and system dynamics: scope, rules, calibration, validation, sensitivity, failing regimes, and reproducibility.",
+  help:
+    "Prompt: “In these regimes the model lies. Here is how you can tell.”",
+  fields: [
+    { label: "Purpose/questions", key: "purpose", type: "textarea", ph: "What the model is for" },
+    { label: "Scope & boundary", key: "boundary", type: "textarea", ph: "Included/excluded processes" },
+    { label: "Approach", key: "approach", type: "select", options: ["agent-based","system dynamics","hybrid"], ph: "Pick one" },
+    { label: "Entities (agents / stocks & flows)", key: "entities", type: "textarea", ph: "Actors, states, resources" },
+    { label: "Rules/equations", key: "rules", type: "textarea", ph: "Behavioral rules or ODEs/flows" },
+    { label: "Parameters & sources", key: "params", type: "textarea", ph: "Calibrated, assumed, literature" },
+    { label: "Initialization & timestep", key: "init", type: "textarea", ph: "Seeding, time step" },
+    { label: "Calibration/validation", key: "validation", type: "textarea", ph: "Fit targets, out-of-sample checks" },
+    { label: "Experiments/scenarios", key: "experiments", type: "textarea", ph: "What you’ll vary & observe" },
+    { label: "Sensitivity/uncertainty", key: "sensitivity", type: "textarea", ph: "One-at-a-time, global, Sobol, PRCC…" },
+    { label: "Failing regimes (model lies)", key: "regimes", type: "textarea", ph: "Where outputs are unreliable" },
+    { label: "Detection signals", key: "signals", type: "textarea", ph: "Diagnostics that trigger a warning" },
+    { label: "Reproducibility (seed/code/pkg)", key: "repro", type: "textarea", ph: "Random seeds, repos, env" }
+  ],
+  template: ({
+    purpose, boundary, approach, entities, rules, params, init, validation, experiments, sensitivity, regimes, signals, repro,
+    ctx, audience, style, tone
+  }) => [
+    "Agent-Based Models & System Dynamics",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    purpose && `Purpose/questions:\n${purpose}`,
+    boundary && `Scope & boundary:\n${boundary}`,
+    approach && `Approach: ${approach}`,
+    entities && `Entities:\n${entities}`,
+    rules && `Rules/equations:\n${rules}`,
+    params && `Parameters & sources:\n${params}`,
+    init && `Initialization & timestep:\n${init}`,
+    validation && `Calibration/validation:\n${validation}`,
+    experiments && `Experiments/scenarios:\n${experiments}`,
+    sensitivity && `Sensitivity/uncertainty:\n${sensitivity}`,
+    regimes && `Failing regimes (model lies):\n${regimes}`,
+    signals && `Detection signals:\n${signals}`,
+    repro && `Reproducibility:\n${repro}`,
+    "",
+    "Prompt anchor: “In these regimes the model lies. Here is how you can tell.”"
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "agent based models system dynamics calibration validation sensitivity regimes where model lies detection reproducibility" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Popperian Falsification — Bold Conjectures, Risky Tests
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "popperian_falsification",
+  slug: "popperian-falsification",
+  label: "Popperian Falsification",
+  kind: "framework",
+  categories: ["philosophy-of-science","research","methodology"],
+  tags: [
+    "type:framework","use:hypothesis","use:test-design","topic:risky-predictions",
+    "origin:popper","level:beginner"
+  ],
+  use_cases: [
+    "turn vague beliefs into falsifiable conjectures",
+    "design risky predictions that could refute",
+    "separate ‘stop’ rules from post-hoc stories"
+  ],
+  boosters: [
+    "Write at least one prediction your allies would fear to publish.",
+    "List potential falsifiers as observable events.",
+    "Pre-commit a stop rule triggered by a falsifier.",
+    "Invite a ‘hostile’ reviewer to vet the test."
+  ],
+  definition:
+    "A falsification card: frame a bold conjecture, name risky predictions, predefine potential falsifiers and stop rules.",
+  help:
+    "Prompt: “Try to kill this hypothesis; if it survives, it’s earned a round.”",
+  fields: [
+    { label: "Conjecture (one sentence, falsifiable)", key: "conjecture", type: "text", ph: "A bold claim that could be false" },
+    { label: "Risky prediction(s)", key: "predictions", type: "textarea", ph: "Specific outcomes that would strongly test it" },
+    { label: "Potential falsifiers (observable)", key: "falsifiers", type: "textarea", ph: "What observations would refute it?" },
+    { label: "Crucial test design", key: "test", type: "textarea", ph: "Protocol, sample, measures" },
+    { label: "Stop rule (if falsified)", key: "stop_rule", type: "text", ph: "Exactly when to halt/abandon" },
+    { label: "Replication plan", key: "replication", type: "textarea", ph: "Independent rerun, prereg, data/code share" }
+  ],
+  template: ({ conjecture, predictions, falsifiers, test, stop_rule, replication, ctx, audience, style, tone }) => [
+    "Popperian Falsification",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    conjecture && `Conjecture: ${conjecture}`,
+    predictions && `Risky predictions:\n${predictions}`,
+    falsifiers && `Potential falsifiers:\n${falsifiers}`,
+    test && `Crucial test:\n${test}`,
+    stop_rule && `Stop rule: ${stop_rule}`,
+    replication && `Replication plan:\n${replication}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "popper falsification bold conjecture risky prediction potential falsifier crucial test stop rule replication" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Bayesian Science — Priors, Likelihood, Posterior, Decision
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "bayesian_science",
+  slug: "bayesian-science",
+  label: "Bayesian Science — Posterior Odds",
+  kind: "framework",
+  categories: ["statistics","research","methodology"],
+  tags: [
+    "type:framework","use:analysis-plan","use:decision","topic:priors",
+    "topic:bayes-factor","level:intermediate"
+  ],
+  use_cases: [
+    "declare priors and likelihoods before data",
+    "report posterior odds/intervals and decisions",
+    "separate estimation from value-based action"
+  ],
+  boosters: [
+    "State prior in parameter units readers understand.",
+    "Simulate prior predictive to sanity-check.",
+    "Predefine decision loss/utility; act on posterior risk.",
+    "Report Bayes factors or posterior odds if relevant."
+  ],
+  definition:
+    "A Bayesian card to preregister priors/likelihoods, simulate prior predictive, and report posterior odds with decision criteria.",
+  help:
+    "Prompt: “Update prior beliefs with data; report the posterior and the decision rule.”",
+  fields: [
+    { label: "Parameter(s) of interest", key: "params", type: "text", ph: "θ, β, risk difference…" },
+    { label: "Prior(s)", key: "priors", type: "textarea", ph: "Distributions + rationale" },
+    { label: "Likelihood/data model", key: "likelihood", type: "textarea", ph: "GLM, hierarchical, measurement model…" },
+    { label: "Prior predictive checks", key: "ppc", type: "textarea", ph: "What would draws look like?" },
+    { label: "Decision rule / loss", key: "decision", type: "textarea", ph: "Thresholds, cost matrix, utility" },
+    { label: "Posterior summary to report", key: "posterior", type: "textarea", ph: "Intervals, probabilities, BF, odds" },
+    { label: "Sensitivity to priors", key: "sensitivity", type: "textarea", ph: "Robust/weakly-informative alt priors" }
+  ],
+  template: ({ params, priors, likelihood, ppc, decision, posterior, sensitivity, ctx, audience, style, tone }) => [
+    "Bayesian Science — Posterior Odds",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    params && `Parameters: ${params}`,
+    priors && `Priors:\n${priors}`,
+    likelihood && `Likelihood/data model:\n${likelihood}`,
+    ppc && `Prior predictive checks:\n${ppc}`,
+    decision && `Decision rule / loss:\n${decision}`,
+    posterior && `Posterior summary:\n${posterior}`,
+    sensitivity && `Sensitivity to priors:\n${sensitivity}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "bayesian prior likelihood posterior odds bayes factor prior predictive decision rule loss utility sensitivity" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Lakatos — Research Programs (Hard Core & Protective Belt)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "lakatos_research_programs",
+  slug: "lakatos-research-programs",
+  label: "Lakatos — Research Programs",
+  kind: "framework",
+  categories: ["philosophy-of-science","research","strategy"],
+  tags: [
+    "type:framework","use:program-review","use:theory-maintenance",
+    "topic:hard-core","topic:protective-belt","origin:lakatos","level:intermediate"
+  ],
+  use_cases: [
+    "separate a theory’s untouchable ‘hard core’ from testable belt",
+    "decide if a program is progressive or degenerating",
+    "record problemshifts and novel predictions"
+  ],
+  boosters: [
+    "Keep the hard core short and clear.",
+    "List auxiliary hypotheses in the protective belt.",
+    "Track novel success vs ad-hoc patching over time."
+  ],
+  definition:
+    "A program-level ledger: define the hard core, protective belt, heuristics, and decide if the research program is progressive.",
+  help:
+    "Prompt: “Protect the hard core; test the belt; judge progress honestly.”",
+  fields: [
+    { label: "Program/theory", key: "program", type: "text", ph: "Name" },
+    { label: "Hard core (untouchable)", key: "hard_core", type: "textarea", ph: "Core commitments" },
+    { label: "Protective belt (auxiliaries)", key: "belt", type: "textarea", ph: "Testable auxiliaries" },
+    { label: "Positive/negative heuristics", key: "heuristics", type: "textarea", ph: "What to try/avoid" },
+    { label: "Novel predictions & tests", key: "novel", type: "textarea", ph: "Claims that risk refutation" },
+    { label: "Problemshifts (record)", key: "shifts", type: "textarea", ph: "Adjustments made + why" },
+    { label: "Progress score (why)", key: "progress", type: "textarea", ph: "Progressive vs degenerating, evidence" }
+  ],
+  template: ({ program, hard_core, belt, heuristics, novel, shifts, progress, ctx, audience, style, tone }) => [
+    "Lakatos — Research Programs",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    program && `Program: ${program}`,
+    hard_core && `Hard core:\n${hard_core}`,
+    belt && `Protective belt:\n${belt}`,
+    heuristics && `Heuristics:\n${heuristics}`,
+    novel && `Novel predictions & tests:\n${novel}`,
+    shifts && `Problemshifts:\n${shifts}`,
+    progress && `Progress assessment:\n${progress}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "lakatos research program hard core protective belt problemshift progressive degenerating heuristics novel prediction" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Kuhn — Paradigms, Anomalies, Revolutions
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "kuhn_paradigms",
+  slug: "kuhn-paradigms",
+  label: "Kuhn — Paradigms & Revolutions",
+  kind: "framework",
+  categories: ["philosophy-of-science","research","education"],
+  tags: [
+    "type:framework","use:state-of-field","use:roadmapping",
+    "topic:paradigm","topic:anomalies","origin:kuhn","level:beginner"
+  ],
+  use_cases: [
+    "map normal science puzzles vs anomalies",
+    "track crisis signals and theory choice",
+    "plan communications across paradigms"
+  ],
+  boosters: [
+    "Name exemplar problems that define the paradigm.",
+    "List accumulating anomalies with dates/sources.",
+    "Write criteria for crisis and for paradigm choice."
+  ],
+  definition:
+    "A field-scan card: define the paradigm, record puzzles and anomalies, set crisis criteria, and note revolutionary contenders.",
+  help:
+    "Prompt: “Are anomalies stacking? What would trigger a crisis or shift?”",
+  fields: [
+    { label: "Field/subfield", key: "field", type: "text", ph: "Scope" },
+    { label: "Paradigm (exemplars, standards)", key: "paradigm", type: "textarea", ph: "Models, tools, exemplars" },
+    { label: "Normal puzzles", key: "puzzles", type: "textarea", ph: "What counts as solvable work" },
+    { label: "Anomalies (with sources)", key: "anomalies", type: "textarea", ph: "Findings that don’t fit" },
+    { label: "Crisis criteria", key: "crisis", type: "textarea", ph: "When confidence collapses" },
+    { label: "Revolutionary contenders", key: "contenders", type: "textarea", ph: "Rival frames/paradigms" }
+  ],
+  template: ({ field, paradigm, puzzles, anomalies, crisis, contenders, ctx, audience, style, tone }) => [
+    "Kuhn — Paradigms & Revolutions",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    field && `Field: ${field}`,
+    paradigm && `Paradigm:\n${paradigm}`,
+    puzzles && `Normal puzzles:\n${puzzles}`,
+    anomalies && `Anomalies:\n${anomalies}`,
+    crisis && `Crisis criteria:\n${crisis}`,
+    contenders && `Revolutionary contenders:\n${contenders}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "kuhn paradigm normal science anomalies crisis revolution contenders exemplars standards" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Feyerabend — Pluralism & Methodological Anarchy (Ethical!)
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "feyerabend_pluralism",
+  slug: "feyerabend-pluralism",
+  label: "Feyerabend — Pluralism",
+  kind: "framework",
+  categories: ["philosophy-of-science","research","methodology"],
+  tags: [
+    "type:framework","use:method-mix","use:innovation","topic:pluralism",
+    "origin:feyerabend","level:intermediate"
+  ],
+  use_cases: [
+    "design pluralistic method sets for stubborn problems",
+    "stress-test orthodoxy with respectful heterodoxy",
+    "document ethics and guardrails while exploring"
+  ],
+  boosters: [
+    "Pair at least two conflicting methods deliberately.",
+    "Write how you’ll judge progress without a single metric.",
+    "Set ethics boundaries first; curiosity doesn’t trump consent."
+  ],
+  definition:
+    "A pluralist design card: intentionally combine divergent methods, define progress criteria, and set ethics guardrails.",
+  help:
+    "Prompt: “Use many methods and let progress be messy—safely.”",
+  fields: [
+    { label: "Problem", key: "problem", type: "text", ph: "Stubborn question" },
+    { label: "Method set (diverse)", key: "methods", type: "textarea", ph: "Orthodox + heterodox side-by-side" },
+    { label: "Progress criteria (plural)", key: "criteria", type: "textarea", ph: "Multiple yardsticks" },
+    { label: "Ethics guardrails", key: "ethics", type: "textarea", ph: "Consent, harm checks, boundaries" },
+    { label: "Integration plan", key: "integration", type: "textarea", ph: "How findings talk to each other" }
+  ],
+  template: ({ problem, methods, criteria, ethics, integration, ctx, audience, style, tone }) => [
+    "Feyerabend — Pluralism",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    problem && `Problem: ${problem}`,
+    methods && `Method set (diverse):\n${methods}`,
+    criteria && `Progress criteria:\n${criteria}`,
+    ethics && `Ethics guardrails:\n${ethics}`,
+    integration && `Integration plan:\n${integration}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "feyerabend pluralism method heterodoxy progress criteria ethics guardrails integration" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Engineering Method — Define, Design, Build, Test, Iterate
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "engineering_method",
+  slug: "engineering-method",
+  label: "Engineering Method — Iterate to Standard",
+  kind: "framework",
+  categories: ["engineering","product","research","quality"],
+  tags: [
+    "type:framework","use:design-cycle","use:acceptance","topic:standards",
+    "topic:requirements","level:beginner"
+  ],
+  use_cases: [
+    "turn fuzzy problems into specs and acceptance tests",
+    "iterate builds to pass standards and SLOs",
+    "capture lessons per cycle"
+  ],
+  boosters: [
+    "Write acceptance tests with measurable criteria.",
+    "Map standards/regulations explicitly to requirements.",
+    "Keep iterations small with go/no-go gates."
+  ],
+  definition:
+    "A pragmatic engineering cycle: define requirements and constraints, design, build, test to standards, iterate.",
+  help:
+    "Prompt: “Define → design → build → test → iterate to standards.”",
+  fields: [
+    { label: "Problem statement", key: "problem", type: "textarea", ph: "Need, context, stakeholders" },
+    { label: "Requirements (measurable)", key: "requirements", type: "textarea", ph: "What must be true" },
+    { label: "Constraints", key: "constraints", type: "textarea", ph: "Budget, power, safety, policy…" },
+    { label: "Standards/regulations", key: "standards", type: "textarea", ph: "Refs and clauses" },
+    { label: "Design concept", key: "design", type: "textarea", ph: "Architecture/sketch" },
+    { label: "Build notes", key: "build", type: "textarea", ph: "Materials, tools, versions" },
+    { label: "Test plan & acceptance", key: "test", type: "textarea", ph: "Protocols, metrics, pass/fail" },
+    { label: "Iteration outcome & next changes", key: "iterate", type: "textarea", ph: "Keep/change/kill" }
+  ],
+  template: ({ problem, requirements, constraints, standards, design, build, test, iterate, ctx, audience, style, tone }) => [
+    "Engineering Method — Iterate to Standard",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    problem && `Problem:\n${problem}`,
+    requirements && `Requirements:\n${requirements}`,
+    constraints && `Constraints:\n${constraints}`,
+    standards && `Standards/regulations:\n${standards}`,
+    design && `Design concept:\n${design}`,
+    build && `Build:\n${build}`,
+    test && `Test & acceptance:\n${test}`,
+    iterate && `Iteration outcome:\n${iterate}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "engineering method define design build test iterate standards acceptance requirements constraints" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Design Science Research — Build Artifact to Learn What Works
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "design_science_research",
+  slug: "design-science-research",
+  label: "Design Science Research (DSR)",
+  kind: "framework",
+  categories: ["research","design","product","education"],
+  tags: [
+    "type:framework","use:artifact","use:evaluation","topic:utility",
+    "origin:dsr","level:intermediate"
+  ],
+  use_cases: [
+    "build artifacts to produce prescriptive knowledge",
+    "evaluate utility/rigor with explicit criteria",
+    "document contribution type (construct, model, method, instantiation)"
+  ],
+  boosters: [
+    "Define the relevance cycle (problem/stakeholders).",
+    "Define the rigor cycle (theory/priors).",
+    "Choose evaluation: analytical, experimental, observational, descriptive."
+  ],
+  definition:
+    "A DSR scaffold: problem relevance, design objectives, artifact, evaluation, contribution, and knowledge dissemination.",
+  help:
+    "Prompt: “Build to learn—what worked, for whom, under what constraints?”",
+  fields: [
+    { label: "Problem relevance", key: "relevance", type: "textarea", ph: "Stakeholders, context" },
+    { label: "Design objectives", key: "objectives", type: "textarea", ph: "Performance/constraints" },
+    { label: "Artifact description", key: "artifact", type: "textarea", ph: "Construct/model/method/instantiation" },
+    { label: "Evaluation strategy", key: "evaluation", type: "textarea", ph: "Analytical/experimental/field…" },
+    { label: "Metrics & evidence", key: "metrics", type: "textarea", ph: "Utility, rigor, generality" },
+    { label: "Contribution type", key: "contrib", type: "text", ph: "What knowledge you add" },
+    { label: "Dissemination plan", key: "dissemination", type: "textarea", ph: "Papers, artifacts, datasets" }
+  ],
+  template: ({ relevance, objectives, artifact, evaluation, metrics, contrib, dissemination, ctx, audience, style, tone }) => [
+    "Design Science Research (DSR)",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    relevance && `Problem relevance:\n${relevance}`,
+    objectives && `Design objectives:\n${objectives}`,
+    artifact && `Artifact:\n${artifact}`,
+    evaluation && `Evaluation strategy:\n${evaluation}`,
+    metrics && `Metrics & evidence:\n${metrics}`,
+    contrib && `Contribution type: ${contrib}`,
+    dissemination && `Dissemination plan:\n${dissemination}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "design science research artifact utility evaluation rigor relevance cycle contribution dissemination" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Causal Inference Playbook — Identification Before Estimation
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "causal_inference_playbook",
+  slug: "causal-inference-playbook",
+  label: "Causal Inference Playbook",
+  kind: "framework",
+  categories: ["statistics","research","policy"],
+  tags: [
+    "type:framework","use:design-first","use:identification","topic:dag",
+    "topic:natural-experiments","level:intermediate"
+  ],
+  use_cases: [
+    "choose a design-based strategy before modeling",
+    "draw and reason with DAGs to block bias",
+    "predefine tests and falsification for assumptions"
+  ],
+  boosters: [
+    "Pick a design path: RCT, IV, DiD, RD, matching, front-door.",
+    "Write threats and diagnostics specific to that path.",
+    "Define the estimand and target population explicitly."
+  ],
+  definition:
+    "A quick-start causal card: pick a design path, state the estimand, document assumptions, and predefine diagnostics.",
+  help:
+    "Prompt: “Identification first. Estimation second.”",
+  fields: [
+    { label: "Estimand/target population", key: "estimand", type: "text", ph: "ATE/ATT/LATE, who" },
+    { label: "Design path", key: "design_path", type: "select", options: ["RCT","instrumental variables","difference-in-differences","regression discontinuity","matching","front-door","other"], ph: "Pick one" },
+    { label: "DAG (sketch/link)", key: "dag", type: "textarea", ph: "Nodes/edges; backdoor/front-door" },
+    { label: "Key assumptions", key: "assumptions", type: "textarea", ph: "Exclusion, parallel trends, continuity…" },
+    { label: "Diagnostics/falsification", key: "diagnostics", type: "textarea", ph: "Placebos, balance, pretrends…" },
+    { label: "Estimator & SEs", key: "estimator", type: "textarea", ph: "2SLS, TWFE, local linear…" }
+  ],
+  template: ({ estimand, design_path, dag, assumptions, diagnostics, estimator, ctx, audience, style, tone }) => [
+    "Causal Inference Playbook",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    estimand && `Estimand/target: ${estimand}`,
+    design_path && `Design path: ${design_path}`,
+    dag && `DAG:\n${dag}`,
+    assumptions && `Assumptions:\n${assumptions}`,
+    diagnostics && `Diagnostics/falsification:\n${diagnostics}`,
+    estimator && `Estimator & SEs:\n${estimator}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "causal inference identification estimation dag design based rct iv did rdd matching diagnostics falsification" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Exploratory vs Confirmatory — Clean Forks, Clean Labels
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "exploratory_confirmatory_paths",
+  slug: "exploratory-confirmatory-paths",
+  label: "Exploratory vs Confirmatory Paths",
+  kind: "framework",
+  categories: ["statistics","research","education"],
+  tags: [
+    "type:framework","use:eda","use:cda","topic:prereg","topic:replication",
+    "level:beginner"
+  ],
+  use_cases: [
+    "fork EDA and CDA with different rules and labels",
+    "avoid HARKing and garden-of-forking paths",
+    "stage a confirmatory rerun of exploratory findings"
+  ],
+  boosters: [
+    "EDA: visualize freely; record every fork.",
+    "CDA: preregister tests; no peeking/retuning.",
+    "Mark outputs E (exploratory) vs C (confirmatory) in the report."
+  ],
+  definition:
+    "A two-lane scaffold: exploratory discovery documented honestly, then a clean confirmatory test.",
+  help:
+    "Prompt: “EDA for discovery; preregistered CDA for tests.”",
+  fields: [
+    { label: "Question (broad)", key: "q", type: "text", ph: "Curiosity focus" },
+    { label: "EDA plan", key: "eda", type: "textarea", ph: "Visuals, features, heuristics" },
+    { label: "Forking-path log", key: "forks", type: "textarea", ph: "What you tried" },
+    { label: "Hypotheses promoted to CDA", key: "promoted", type: "textarea", ph: "Which patterns graduate" },
+    { label: "CDA prereg/test plan", key: "cda", type: "textarea", ph: "Registered tests, alpha, power" }
+  ],
+  template: ({ q, eda, forks, promoted, cda, ctx, audience, style, tone }) => [
+    "Exploratory vs Confirmatory Paths",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    q && `Question: ${q}`,
+    eda && `EDA plan:\n${eda}`,
+    forks && `Forking-path log:\n${forks}`,
+    promoted && `Promoted to CDA:\n${promoted}`,
+    cda && `CDA prereg/test plan:\n${cda}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "exploratory confirmatory eda cda prereg harking garden of forking paths promotion clean labels" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Ethnographic & Interpretivist Methods — Thick Description
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "ethnographic_interpretivist",
+  slug: "ethnographic-interpretivist",
+  label: "Ethnographic & Interpretivist Methods",
+  kind: "framework",
+  categories: ["qualitative","research","ethics","education"],
+  tags: [
+    "type:framework","use:fieldwork","use:analysis","topic:thick-description",
+    "topic:reflexivity","level:intermediate"
+  ],
+  use_cases: [
+    "plan fieldwork and thick description with reflexivity",
+    "track roles, access, consent, and interpretation",
+    "link memos to codes and meaning-making"
+  ],
+  boosters: [
+    "Write role/positionality; renegotiate access ethically.",
+    "Use reflexive memos during—not after—fieldwork.",
+    "Triangulate across people/times/spaces."
+  ],
+  definition:
+    "A qualitative scaffold for ethnographic/interpretivist work: access, consent, fieldnotes, coding, reflexivity, thick description.",
+  help:
+    "Prompt: “Systematically understand meanings and contexts, and show your interpretive moves.”",
+  fields: [
+    { label: "Setting & access", key: "setting", type: "textarea", ph: "Where and how you’re present" },
+    { label: "Positionality/role", key: "role", type: "textarea", ph: "Standpoint; power; obligations" },
+    { label: "Consent & ethics", key: "ethics", type: "textarea", ph: "How consent is earned and maintained" },
+    { label: "Fieldnote plan", key: "fieldnotes", type: "textarea", ph: "What/when/how to capture" },
+    { label: "Coding/analytic approach", key: "coding", type: "textarea", ph: "Grounded, thematic, narrative…" },
+    { label: "Reflexive memos", key: "memos", type: "textarea", ph: "Biases noticed; interpretive moves" },
+    { label: "Thick description excerpt", key: "thick", type: "textarea", ph: "Scene with sensory detail" }
+  ],
+  template: ({ setting, role, ethics, fieldnotes, coding, memos, thick, ctx, audience, style, tone }) => [
+    "Ethnographic & Interpretivist Methods",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    setting && `Setting & access:\n${setting}`,
+    role && `Positionality/role:\n${role}`,
+    ethics && `Consent & ethics:\n${ethics}`,
+    fieldnotes && `Fieldnote plan:\n${fieldnotes}`,
+    coding && `Coding/analytic approach:\n${coding}`,
+    memos && `Reflexive memos:\n${memos}`,
+    thick && `Thick description:\n${thick}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "ethnography interpretivist thick description fieldwork positionality access consent reflexive memos coding" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Participatory & Decolonial — Two-Eyed Seeing / Data Sovereignty
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "participatory_decolonial",
+  slug: "participatory-decolonial",
+  label: "Participatory & Decolonial Approaches",
+  kind: "framework",
+  categories: ["research","ethics","community","policy"],
+  tags: [
+    "type:framework","use:co-governance","use:data-stewardship",
+    "topic:two-eyed-seeing","topic:data-sovereignty","level:intermediate"
+  ],
+  use_cases: [
+    "pair local/Indigenous knowledge with scientific tools respectfully",
+    "clarify decision rights, benefit-sharing, and data sovereignty",
+    "co-design consent, methods, and dissemination"
+  ],
+  boosters: [
+    "Honor community protocols; co-author agreements.",
+    "Use data sovereignty principles (e.g., CARE/OCAP) as guardrails.",
+    "Budget for compensation and long-term stewardship."
+  ],
+  definition:
+    "A co-governance scaffold centering Two-Eyed Seeing: community protocols, decision rights, benefit-sharing, and data sovereignty.",
+  help:
+    "Prompt: “What decision should be yours, not mine—and how is data governed?”",
+  notice:
+    "Adapt language with your partners; follow local protocols and legal requirements.",
+  fields: [
+    { label: "Communities/partners", key: "partners", type: "textarea", ph: "Who leads with you" },
+    { label: "Protocols & agreements", key: "protocols", type: "textarea", ph: "Cultural, legal, MoUs" },
+    { label: "Decision rights/co-governance", key: "rights", type: "textarea", ph: "Who decides what" },
+    { label: "Benefit-sharing/compensation", key: "benefits", type: "textarea", ph: "Material and non-material returns" },
+    { label: "Data sovereignty & access", key: "sovereignty", type: "textarea", ph: "CARE/OCAP-like rules, storage, access" },
+    { label: "Methods pairing (Two-Eyed Seeing)", key: "methods", type: "textarea", ph: "Local knowledge + tools" },
+    { label: "Dissemination (accessible)", key: "dissemination", type: "textarea", ph: "Formats, languages, venues" }
+  ],
+  template: ({ partners, protocols, rights, benefits, sovereignty, methods, dissemination, ctx, audience, style, tone }) => [
+    "Participatory & Decolonial Approaches",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    partners && `Communities/partners:\n${partners}`,
+    protocols && `Protocols & agreements:\n${protocols}`,
+    rights && `Decision rights/co-governance:\n${rights}`,
+    benefits && `Benefit-sharing/compensation:\n${benefits}`,
+    sovereignty && `Data sovereignty & access:\n${sovereignty}`,
+    methods && `Methods pairing (Two-Eyed Seeing):\n${methods}`,
+    dissemination && `Dissemination (accessible):\n${dissemination}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "participatory decolonial two eyed seeing indigenous data sovereignty care ocap co governance benefit sharing protocols" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Computational Science — Simulation as a Third Pillar
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "computational_science",
+  slug: "computational-science",
+  label: "Computational Science — Simulation",
+  kind: "framework",
+  categories: ["simulation","statistics","research","engineering"],
+  tags: [
+    "type:framework","use:reproducibility","use:validation","topic:numerics",
+    "topic:replication","level:intermediate"
+  ],
+  use_cases: [
+    "specify simulation experiments and validation",
+    "capture environment, seeds, and reproducibility",
+    "report numerical stability and verification"
+  ],
+  boosters: [
+    "Separate numerical verification from empirical validation.",
+    "Publish seeds, environment, and full config.",
+    "Bound known failure regimes and precision limits."
+  ],
+  definition:
+    "A simulation card to design computational experiments, verify/validate, and ship a reproducible capsule.",
+  help:
+    "Prompt: “Simulation alongside theory and experiment—show your numerics.”",
+  fields: [
+    { label: "Phenomenon & purpose", key: "purpose", type: "textarea", ph: "What/why simulate" },
+    { label: "Model class", key: "model", type: "text", ph: "ABM, PDE, Monte Carlo…" },
+    { label: "Experiment plan", key: "plan", type: "textarea", ph: "Parameters, sweeps, scenarios" },
+    { label: "Verification (numerical)", key: "verification", type: "textarea", ph: "Convergence, unit tests" },
+    { label: "Validation (empirical)", key: "validation", type: "textarea", ph: "Against data or theory" },
+    { label: "Repro capsule (env+seeds)", key: "repro", type: "textarea", ph: "Docker/env, seeds, config files" },
+    { label: "Failure regimes & precision", key: "regimes", type: "textarea", ph: "Where it lies; error bounds" }
+  ],
+  template: ({ purpose, model, plan, verification, validation, repro, regimes, ctx, audience, style, tone }) => [
+    "Computational Science — Simulation",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`,
+    style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    purpose && `Phenomenon & purpose:\n${purpose}`,
+    model && `Model class: ${model}`,
+    plan && `Experiment plan:\n${plan}`,
+    verification && `Verification (numerical):\n${verification}`,
+    validation && `Validation (empirical):\n${validation}`,
+    repro && `Repro capsule:\n${repro}`,
+    regimes && `Failure regimes & precision:\n${regimes}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "computational science simulation verification validation reproducibility seeds environment failure regimes precision" }
+},
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Abductive Reasoning — Best Explanation, Then Try to Break It
+   ────────────────────────────────────────────────────────────────────────── */
+{
+  id: "abductive_reasoning",
+  slug: "abductive-reasoning",
+  label: "Abductive Reasoning — Best Explanation",
+  kind: "framework",
+  categories: ["philosophy-of-science","research","analysis"],
+  tags: [
+    "type:framework","use:hypothesis-generation","use:model-choice",
+    "topic:ibe","topic:risky-predictions","level:beginner"
+  ],
+  use_cases: [
+    "generate competing explanations and rank them",
+    "derive risky predictions from the leading account",
+    "run decisive tests and update ranks"
+  ],
+  boosters: [
+    "Score explanations on simplicity, scope, fit, fruitfulness.",
+    "Make at least one risky prediction per explanation.",
+    "Prefer tests that discriminate, not confirm."
+  ],
+  definition:
+    "An inference-to-best-explanation card: list candidates, rank on clear criteria, derive risky predictions, then try to break the winner.",
+  help:
+    "Prompt: “Infer the best explanation, then design the test most likely to break it.”",
+  fields: [
+    { label: "Question/phenomenon", key: "question", type: "text", ph: "What needs explaining?" },
+    { label: "Candidate explanations (A, B, C…)", key: "candidates", type: "textarea", ph: "Short list with notes" },
+    { label: "Ranking criteria", key: "criteria", type: "textarea", ph: "Simplicity, scope, fit, fruitfulness…" },
+    { label: "Current ranking (why)", key: "ranking", type: "textarea", ph: "Order + rationale" },
+    { label: "Risky predictions (per candidate)", key: "risky", type: "textarea", ph: "A: …; B: …" },
+    { label: "Decisive test design", key: "test", type: "textarea", ph: "How to discriminate between candidates" }
+  ],
+  template: ({ question, candidates, criteria, ranking, risky, test, ctx, audience, style, tone }) => [
+    "Abductive Reasoning — Best Explanation",
+    ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
+    question && `Question/phenomenon: ${question}`,
+    candidates && `Candidates:\n${candidates}`,
+    criteria && `Ranking criteria:\n${criteria}`,
+    ranking && `Current ranking:\n${ranking}`,
+    risky && `Risky predictions:\n${risky}`,
+    test && `Decisive test design:\n${test}`
+  ].filter(Boolean).join("\n"),
+  meta: { search_text: "abductive reasoning inference to best explanation risky predictions decisive test simplicity scope fit fruitfulness" }
+}
+
+
+
+
+
+
+    
   ];
   
   
