@@ -1,1196 +1,1551 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Startup Wizard — Prompt Builder</title>
-  <style>
-  /* ========= Brand-aligned variables ========= */
-  :root{
-    --paper:#fff; --ink:#0b0f14; --muted:#4a5568; --line:#dbe3ef; --accent:#185adb;
-    --bg:#f6f8fb; --chip:#eef2f7; --radius:16px; --pad:14px;
-    --shadow:0 1px 1px rgba(0,0,0,.03), 0 8px 24px rgba(0,0,0,.06);
+<style>
+/* ===== Design tokens ===== */
+:root{
+  --bg:#fafafa; --fg:#0f1720; --muted:#506070; --chip:#f3f6fa; --border:#e3e9f2; --accent:#1e293b;
+  --focus:#0ea5e9; --shadow:0 12px 40px rgba(0,0,0,.08); --radius:16px; --cta:#1e293b;
+  --r1:#ff007a; --r2:#ff8d00; --r3:#ffd600; --r4:#00dc82; --r5:#00d2ff; --r6:#7850ff;
+  --text:var(--fg); --card:#fff; --panel:#fff; --border-strong:var(--border);
+  --red:#ef4444; --green:#10b981; --yellow:#f59e0b; --purple:#8b5cf6;
+}
+html[data-theme="dark"]{
+  --bg:#0c1220; --fg:#e6ebf2; --muted:#9aa8b7; --chip:#111827; --border:#2f3f56;
+  --shadow:0 8px 28px rgba(0,0,0,.55); --accent:#cbd5e1; --card:#0e1726; --panel:#0b1322;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  color:var(--fg); background:var(--bg); line-height:1.5; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,.subhead,.areaLabel{ text-transform:lowercase; letter-spacing:.25px; font-weight:600; }
 
-    /* Light = dark dot */
-    --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23121621'/></svg>");
-  }
-  :root[data-theme="dark"]{
-    --paper:#0f151d; --ink:#e7eff7; --muted:#9db0c3; --line:#1b2838; --accent:#4ea1ff;
-    --bg:#0b0f14; --chip:#111a25; --shadow:0 1px 1px rgba(0,0,0,.3), 0 12px 28px rgba(0,0,0,.35);
+/* Header */
+header{
+  display:flex; align-items:center; gap:12px; padding:12px 16px; position:sticky; top:0; z-index:10;
+  background:rgba(255,255,255,.78); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+html[data-theme="dark"] header{ background:rgba(12,18,32,.76); }
+header .spacer{flex:1}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
 
-    /* Theme icon: dark = golden dot */
-    --theme-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='5' fill='%23fdd835'/></svg>");
-  }
+/* Buttons (no underline ever) */
+a.btn,a.btn:hover,.btn,.btn:hover,.btn:focus,.btn:active{ text-decoration:none!important }
+.btn{
+  cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:.5ch;
+  background:var(--card); color:var(--fg); border:1px solid var(--border);
+  padding:9px 14px; border-radius:999px; font-weight:600; text-transform:lowercase;
+  transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease, border-color .12s ease;
+}
+.btn:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 12px 28px -14px rgba(0,0,0,.35),0 4px 10px -6px rgba(0,0,0,.25) }
+.btn.primary{ background:var(--cta); color:#fff; border:1px solid transparent; box-shadow:none }
+.btn.sm{ padding:6px 12px; font-size:14px; min-height:32px }
+.pill{ display:inline-flex; gap:.5ch; align-items:center; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:var(--chip); font-size:12px }
+.muted{ color:var(--muted) }
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  }
-  a{color:inherit; text-decoration:none}
-  .app{max-width:1160px; margin:0 auto; padding:12px}
+/* Rainbow border utility (subtle) */
+.rainbow{
+  border:1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(from 210deg,
+      color-mix(in srgb, var(--r1), transparent 75%),
+      color-mix(in srgb, var(--r2), transparent 78%),
+      color-mix(in srgb, var(--r3), transparent 82%),
+      color-mix(in srgb, var(--r4), transparent 80%),
+      color-mix(in srgb, var(--r5), transparent 78%),
+      color-mix(in srgb, var(--r6), transparent 75%),
+      color-mix(in srgb, var(--r1), transparent 75%)
+    ) border-box;
+}
+.rainbow:hover{ background:
+  linear-gradient(color-mix(in srgb, var(--card), white 2%), color-mix(in srgb, var(--card), white 2%)) padding-box,
+  conic-gradient(from 210deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1)) border-box;
+}
 
-  /* ========= Appbar ========= */
-  header.appbar{
-    display:flex; align-items:center; gap:10px;
-    padding:10px 12px; margin:8px 0 16px;
-    background:var(--paper); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow);
-  }
-  .spacer{flex:1}
-  .btn{
-    border:1px solid var(--line); background:transparent; color:inherit;
-    border-radius:10px; padding:8px 12px; cursor:pointer; transition:.15s ease;
-  }
-  .btn:hover{transform:translateY(-1px); box-shadow:0 3px 12px rgba(0,0,0,.08)}
-  .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
-  .btn.tiny{padding:6px 10px; font-size:12px}
-  .btn.ghost{background:transparent}
-  .btn .ico{
-    width:14px; height:14px; margin-right:8px; display:inline-block; vertical-align:-2px;
-    background-repeat:no-repeat; background-size:14px 14px; background-image:var(--theme-icon);
-    content:"";
-  }
-  .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--line);
-    background:var(--chip); border-radius:999px; font-size:12px}
+/* Inputs */
+input[type="text"], textarea, select{
+  width:100%; height:48px; padding:0 12px; border-radius:var(--radius); border:1px solid var(--border);
+  background:var(--card); color:var(--fg); outline:none; box-shadow:var(--shadow);
+}
+textarea{ min-height:100px; height:auto; padding:10px 12px; resize:vertical }
 
-  /* ========= Layout ========= */
-  main.grid{display:grid; grid-template-columns:300px 1fr; gap:18px}
-  @media (max-width:900px){ main.grid{grid-template-columns:1fr} aside{order:2} section.stage{order:1} }
-  .panel{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
-    box-shadow:var(--shadow);
-  }
-  .sidebar{padding:16px; position:sticky; top:74px; align-self:start}
-  .stage{padding:16px 18px; display:flex; flex-direction:column; min-height:58vh}
-  
-  /* ===== Setup-only layout tweaks (full-width, no sidebar) ===== */
-.is-setup main.grid{ grid-template-columns: 1fr; }
-.is-setup aside{ display:none; }
+/* Ambient rainbow glimmer (very subtle) */
+body::before{
+  content:""; position:fixed; inset:auto auto 40% 0; width:min(70vw,920px); height:min(70vh,680px);
+  pointer-events:none; z-index:-1; filter:blur(48px) saturate(115%); opacity:.08;
+  background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+              conic-gradient(from 210deg at 0% 0%, rgba(255,0,122,.22), rgba(255,141,0,.18), rgba(255,214,0,.18), rgba(0,220,130,.20), rgba(0,210,255,.18), rgba(120,80,255,.22), rgba(255,0,122,.22));
+}
 
-/* Tighten spacing on Setup */
-.setupHead{ margin-bottom: 4px; }
-.resultsHeader{ margin-top: 8px; }
+/* Page shell */
+.wiz-root{ max-width:1120px; margin:18px auto; padding:0 16px; }
 
-/* Remove the extra grid cell we used before for the reset button */
-.controls .reset-cell{ display:none; }
+/* Centered search region */
+.wiz-header-search{ display:flex; justify-content:center; margin:8px 0 18px }
+.searchCenter{ width:min(880px, 100%); display:flex; flex-direction:column; align-items:center; gap:10px }
+.wiz-searchShell{
+  width:100%; display:flex; align-items:center; gap:8px; padding:6px;
+  background:var(--card); border-radius:999px; position:relative; /* anchors typeahead */
+}
+.wiz-searchShell input{ flex:1; height:38px; border:none; box-shadow:none; background:transparent; padding:0 8px }
+.wiz-clear{ border:none; background:transparent; color:var(--muted); cursor:pointer }
+.quickRow{ display:flex; gap:10px; align-items:center; justify-content:center; width:100% }
+
+/* Typeahead (absolute so it never shifts layout) */
+#taSug{
+  position:absolute; left:8px; right:8px; top:calc(100% + 8px); z-index:20;
+}
+#taSug[hidden]{ display:none }
+#taSug .box{
+  border:1px solid var(--border); background:var(--card); border-radius:12px; box-shadow:var(--shadow);
+  max-height:320px; overflow-y:auto;
+}
+#taSug .row{ padding:10px 12px; display:flex; gap:8px; align-items:flex-start; cursor:pointer }
+#taSug .row:hover, #taSug .row[aria-selected="true"]{ background:color-mix(in srgb, var(--chip), white 30%) }
+#taSug .lbl{ font-weight:600 }
+
+/* Startup */
+.wiz-startup{ display:grid; grid-template-columns:1fr; gap:12px }
+.wiz-row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap }
+.wiz-cards{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
+@media (max-width:900px){ .wiz-cards{ grid-template-columns:1fr } }
+.card{ border:1px solid var(--border); background:var(--card); border-radius:16px; padding:12px; box-shadow:var(--shadow) }
+.card h4{ margin:0 0 4px; font-size:16px }
+.card p{ margin:0 0 10px; color:var(--muted); font-size:13px; line-height:1.35 }
+.card .foot{ display:flex; align-items:center; justify-content:space-between; gap:8px }
+
+/* Step 0 */
+.wiz-step0 .title{ font-size:20px; margin:0 0 6px }
+.wiz-step0 .def{ color:var(--muted); margin:0 0 10px }
+.wiz-step0 ul.meta{ display:flex; flex-wrap:wrap; gap:12px; margin:8px 0; padding:0; list-style:none }
+.wiz-step0 .uses{ margin-top:10px }
+.wiz-step0 .uses li{ margin:6px 0; color:var(--fg) }
+
+/* Steps layout */
+.wiz-stepsWrap{ display:grid; grid-template-columns:260px 1fr; gap:14px; align-items:start }
+@media (max-width:860px){ .wiz-stepsWrap{ grid-template-columns:1fr } }
+.wiz-rail{ position:sticky; top:76px; border:1px solid var(--border); background:var(--card); border-radius:16px; padding:12px; box-shadow:var(--shadow) }
+.wiz-rail ul{ list-style:none; margin:0; padding:0; }
+.wiz-rail li{ display:flex; gap:8px; align-items:center; padding:8px; border-radius:10px; cursor:pointer }
+.wiz-rail li[aria-current="true"]{ background:var(--chip); border:1px dashed var(--border) }
+.wiz-prog{ height:6px; background:var(--chip); border-radius:999px; overflow:hidden; margin:8px 0 12px }
+.wiz-prog > i{ display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--r5),var(--r6)) }
+.wiz-pane{ border:1px solid var(--border); background:var(--card); border-radius:16px; padding:12px; box-shadow:var(--shadow) }
+.wiz-foot{ position:sticky; bottom:12px; display:flex; gap:8px; justify-content:flex-end; padding-top:10px; background:transparent }
+
+/* utilities */
+.hide{ display:none!important }
+.right{ margin-left:auto }
+.mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace }
+.block-title{ display:flex; align-items:center; gap:10px; }
 
 
-  /* ========= Progress ========= */
-  .progressWrap{display:flex; align-items:center; gap:10px; margin:8px 0 16px}
-  .progress{flex:1; height:10px; background:var(--line); border-radius:999px; overflow:hidden}
-  .progress > div{height:100%; width:0%; background:var(--accent); transition:width .25s ease}
-  .progMeta{font-size:12px; color:var(--muted); white-space:nowrap}
+/* === Brand patch: Rainbow Enhancements (index → wizard) =================== */
+@keyframes spinRainbow { to { --angle: 360deg; } }
 
-  /* ========= Sidebar steps ========= */
-  #fwName{margin:6px 0 10px; font-size:14px; opacity:.85}
-  .step-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; max-height:60vh; overflow:auto}
-  .step-list li{
-    display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; cursor:pointer;
-    border:1px solid transparent;
-  }
-  .step-list li:hover{background:var(--chip)}
-  .step-list li.active{background:color-mix(in lch, var(--accent) 14%, transparent); border-color:var(--accent)}
-  .step-list .num{
-    width:26px; height:26px; border-radius:8px; display:grid; place-items:center;
-    background:#e5e7eb; font-weight:700; color:#111;
-  }
-  :root[data-theme="dark"] .step-list .num{ background:#1f2a37; color:#e7eff7 }
-  .step-list li.done .num{ background:#d1fae5; color:#065f46 }
-  :root[data-theme="dark"] .step-list li.done .num{ background:#0b3b2e; color:#9ff0c2 }
+/* Search pill: stronger rainbow border, soft halo, “hanging” underline */
+.wiz-searchShell{
+  position: relative;            /* anchor pseudo-elements */
+  border: 2px solid transparent; /* gradient border layer */
+  background-image:
+    linear-gradient(var(--card), var(--card)),
+    conic-gradient(from 200deg,
+      var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, box-shadow .18s ease, filter .18s ease;
+}
+.wiz-searchShell::before{
+  content:"";
+  position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(20px) saturate(118%);
+  background: conic-gradient(from 200deg,
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.14;
+  transition: opacity .18s ease, filter .18s ease;
+}
+/* “Hanging rainbow” underline */
+.wiz-searchShell::after{
+  content:"";
+  position:absolute; left:10%; right:10%; bottom:-6px; height:4px; border-radius:999px;
+  background: linear-gradient(90deg,
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:0; transform: translateY(0);
+  transition: opacity .20s ease, transform .20s ease;
+  pointer-events:none;
+}
+/* Micro-motion + brighter halo + drop the underline on hover/focus */
+.wiz-searchShell:hover,
+.wiz-searchShell:focus-within{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.10);
+}
+.wiz-searchShell:hover::before,
+.wiz-searchShell:focus-within::before{
+  opacity:.20; filter: blur(22px) saturate(125%);
+}
+.wiz-searchShell:hover::after,
+.wiz-searchShell:focus-within::after{
+  opacity:.95; transform: translateY(2px);
+}
 
-  /* ========= Stage group ========= */
-  .stageWrap{flex:1; display:grid; align-content:flex-start; justify-items:stretch; padding:6px 4px}
-  .stageWrap.centered{align-content:center}
-  .stageHeader{margin:0 0 8px; font-weight:700}
-  .stageInner{max-width:820px; margin:0 auto; width:100%}
-  .help{color:var(--muted); font-size:12px}
+/* Primary buttons: animated rainbow “ring” on hover/focus */
+.btn.primary.rainbow-hover{ position:relative; overflow:hidden; }
+.btn.primary.rainbow-hover::after{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  --angle: 0deg;
+  background: conic-gradient(from var(--angle),
+    var(--r1), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; /* punch out center */
+  opacity:0; transition: opacity .2s ease; pointer-events:none;
+}
+.btn.primary.rainbow-hover::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background: radial-gradient(120% 120% at 50% -20%, rgba(255,255,255,.16), transparent 60%);
+  opacity:0; transition: opacity .2s ease; pointer-events:none;
+}
+.btn.primary.rainbow-hover:hover::after,
+.btn.primary.rainbow-hover:focus-visible::after{
+  opacity:1; animation: spinRainbow 2.25s linear infinite;
+}
+.btn.primary.rainbow-hover:hover::before,
+.btn.primary.rainbow-hover:focus-visible::before{ opacity:1; }
 
-  /* ========= Fields ========= */
-  .field{margin:12px 0}
-  .field label{display:block; font-weight:600; margin-bottom:8px}
-  .fieldHolder{position:relative}
-  input[type="text"], textarea, select{
-    width:100%; background:var(--chip); color:inherit; border:1px solid var(--line);
-    border-radius:12px; padding:12px 14px; outline:none
-  }
-  textarea{min-height:140px}
-  pre.output{
-    white-space:pre-wrap; background:var(--chip); border:1px solid var(--line);
-    border-radius:12px; padding:12px; margin:8px 0 0;
-  }
+/* Reduced-motion respect */
+@media (prefers-reduced-motion: reduce){
+  .wiz-searchShell{ transition:none }
+  .wiz-searchShell::before, .wiz-searchShell::after{ transition:none }
+  .btn.primary.rainbow-hover::after{ animation:none; }
+}
 
-  /* ========= Footer actions ========= */
-  footer.actions{display:flex; gap:8px; justify-content:space-between; margin-top:12px; flex-wrap:wrap}
-  footer.actions .btn{min-width:96px}
-  .actionRow{display:flex; gap:8px; flex-wrap:wrap}
+/* Optional utilities */
+.rainbowLine{
+  height:3px; width:100%;
+  background: linear-gradient(90deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  filter: saturate(115%); opacity:.85; border-radius:999px;
+}
+.rainbow-border{
+  border:1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(from 210deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1)) border-box;
+}
 
-  /* ========= Setup (Step 0) ========= */
-  .setupHead{display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+/* --- Top Card typography (title / subtitle / definition) --- */
+.card .card-title{ font-weight:600; margin-bottom:2px; }
+.card .card-sub{ color:var(--muted); font-size:12.5px; margin-bottom:6px; font-weight:500; }
+.card .card-def{ font-size:12.5px; line-height:1.45; }
+.card .card-def .full[hidden]{ display:none!important; }
+.card .card-def .short[hidden]{ display:none!important; }
+.card .card-def .btn{ padding:2px 8px; font-size:12px; }
 
-  /* Elastic 12-col grid that never overflows */
-  .controls{
-    display:grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap:12px;
-    align-items:end; /* bottoms line up */
-  }
-  /* allow grid children to shrink instead of forcing overflow */
-  .controls > div{ min-width:0; }
 
-  /* Column spans (desktop) */
-  .controls .cell-search{ grid-column: span 6; } /* big */
-  .controls .cell-kind{   grid-column: span 2; }
-  .controls .cell-cat{    grid-column: span 2; }
-  .controls .cell-tags{   grid-column: span 2; } /* compact by default */
-  .controls .reset-cell{  grid-column: 12 / -1; justify-self:end; }
+/* Soften the search-bar rainbow hover */
+.wiz-searchShell::before{
+  /* base halo */
+  opacity:.10;              /* was .14 */
+  filter: blur(16px) saturate(110%);  /* was blur(20px) saturate(118%) */
+}
+.wiz-searchShell:hover::before,
+.wiz-searchShell:focus-within::before{
+  /* hover halo */
+  opacity:.05;              /* was .20 */
+  filter: blur(18px) saturate(112%);  /* was blur(22px) saturate(125%) */
+}
+.wiz-searchShell:hover,
+.wiz-searchShell:focus-within{
+  /* lift + shadow */
+  transform: translateY(-0.5px);      /* was -1px */
+  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.08); /* softer */
+}
+.wiz-searchShell:hover::after,
+.wiz-searchShell:focus-within::after{
+  /* “hanging rainbow” underline */
+  opacity:.0;              /* was .95 */
+  transform: translateY(1px);         /* was 2px */
+}
 
-  /* Roomier inputs/selects */
-  .controls .sub{font-size:12px; color:var(--muted); display:block; margin-bottom:6px}
-  .controls input,
-  .controls select{
-    height:44px; padding:10px 14px; font-size:14px; width:100%; min-width:0;
-    background:var(--chip); border:1px solid var(--line); border-radius:12px; outline:none;
-  }
-  .controls input:focus,
-  .controls select:focus{
-    border-color: color-mix(in lch, var(--accent) 45%, var(--line));
-    box-shadow: 0 0 0 3px color-mix(in lch, var(--accent) 18%, transparent);
-  }
+/* Pin "use this template" buttons bottom-right on every card */
+.wiz-cards .card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
 
-  /* Search icon + custom caret */
-  :root{
-    --search-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%234a5568' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='7' cy='7' r='4.5'/><path d='M10.6 10.6L15 15'/></svg>");
-    --select-caret: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='%234a5568'><path d='M5 7l5 6 5-6z'/></svg>");
-  }
-  :root[data-theme="dark"]{
-    --search-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239db0c3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='7' cy='7' r='4.5'/><path d='M10.6 10.6L15 15'/></svg>");
-    --select-caret: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='%239db0c3'><path d='M5 7l5 6 5-6z'/></svg>");
-  }
-  .controls .ta-menu{ position:relative; overflow:visible; }
-  .controls .ta-menu input{
-    padding-left:36px;
-    background-image: var(--search-icon);
-    background-repeat:no-repeat;
-    background-position:10px center;
-    background-size:16px 16px;
-  }
+.wiz-cards .card .foot{
+  /* override inline margin-top from renderer so the footer can stick to bottom */
+  margin-top:auto !important;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end; /* right align the CTA cluster */
+  gap:8px;
+}
 
-  /* Custom caret for selects */
-  .controls select{
-    appearance:none; -webkit-appearance:none;
-    background-image: var(--select-caret);
-    background-repeat:no-repeat;
-    background-position: calc(100% - 10px) center;
-    padding-right:32px; max-width:100%;
-  }
+/* (optional) if any cards have an empty leading spacer element, hide it */
+.wiz-cards .card .foot > span:empty{ display:none; }
 
-  /* Active filters */
-  .filters{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
-  .chip{display:inline-flex; align-items:center; gap:6px; padding:6px 8px; border:1px solid var(--line); border-radius:999px; background:var(--chip); font-size:12px}
-  .chip button{border:none; background:transparent; cursor:pointer; font-weight:700}
+/* ---- Step status colors (rail) ---- */
+.wiz-rail .wiz-prog{ display:none } /* we’re moving progress to the top bar */
+.wiz-rail li{ border:1px solid transparent; }
+.wiz-rail li.done{
+  background: color-mix(in srgb, var(--green), var(--chip) 68%);
+  border-color: color-mix(in srgb, var(--green), transparent 70%);
+}
+.wiz-rail li.warn{
+  background: color-mix(in srgb, var(--yellow), var(--chip) 72%);
+  border-color: color-mix(in srgb, var(--yellow), transparent 70%);
+}
 
-  /* Result metadata + top list */
-  .resultMeta{font-size:12px; color:var(--muted); margin:8px 0}
-  .resultsHeader{display:flex; align-items:baseline; gap:10px; margin-top:14px}
-  .resultsHeader h4{margin:0; font-size:14px}
-  .resultsHeader .dim{color:var(--muted)}
-  .cardList{display:grid; grid-template-columns:1fr; gap:10px; margin-top:8px}
-  .bestCard{border:1px solid var(--line); border-radius:12px; padding:12px; background:var(--paper); box-shadow:var(--shadow)}
-  .bestTitle{margin:0 0 4px; font-weight:700}
-  .dim{color:var(--muted)}
-  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-
-  /* Responsive tweaks */
-  @media (max-width: 1100px){
-    .controls .cell-search{ grid-column: 1 / -1; }
-    .controls .cell-kind,
-    .controls .cell-cat{ grid-column: span 6; }
-    .controls .cell-tags{ grid-column: 1 / -1; }
-    .controls .reset-cell{ grid-column: 1 / -1; justify-self:start; }
-  }
-
-  /* Typeahead */
-  .ta-menu{position:relative}
-  .ta-list{position:absolute; z-index:25; inset:auto 0 auto 0; margin-top:4px; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); max-height:280px; overflow:auto}
-  .ta-item{padding:8px 10px; border-bottom:1px solid var(--line); cursor:pointer}
-  .ta-item:last-child{border-bottom:none}
-  .ta-item strong{display:block}
-  .ta-item small{display:block; color:var(--muted)}
-
-  /* ========= NEW: Toast + Modal (minimal) ========= */
-  #toast{
-    position:fixed; right:14px; bottom:14px; z-index:1000;
-    background:var(--paper); color:var(--ink);
-    border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow);
-    padding:10px 12px; font-size:12px; opacity:0; transform:translateY(6px);
-    transition:opacity .18s ease, transform .18s ease;
-    max-width:48ch; pointer-events:none;
-  }
-  #toast.show{ opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion: reduce){
-    #toast{ transition:none; }
-  }
-
-  dialog#actionModal{
-    border:none; border-radius:12px; padding:0; max-width:720px; width:min(94vw, 720px);
-    background:var(--paper); color:var(--ink); box-shadow:var(--shadow);
-  }
-  dialog#actionModal::backdrop{ background:rgba(0,0,0,.25); }
-  .modal-body{ padding:16px; }
-  .modal-body h4{ margin:0 0 8px; }
-  .modal-body .help{ margin-top:6px; }
-  .modal-body textarea{
-    width:100%; min-height:180px; white-space:pre-wrap; margin-top:10px;
-    background:var(--chip); border:1px solid var(--line); border-radius:12px; padding:10px 12px;
-  }
-  .modal-actions{
-    display:flex; gap:8px; justify-content:flex-end; padding:12px 16px;
-    border-top:1px solid var(--line); background:color-mix(in lch, var(--paper) 92%, transparent);
-  }
-  .warn{ color:#b45309; }
-  :root[data-theme="dark"] .warn{ color:#fbbf24; }
-  
-  /* Visually hide while keeping for accessibility */
-.sr-only{
-  position:absolute !important;
-  width:1px !important; height:1px !important;
-  padding:0 !important; margin:-1px !important;
-  overflow:hidden !important; clip:rect(0,0,0,0) !important;
-  white-space:nowrap !important; border:0 !important;
+/* ---- Top progress bar (under search) ---- */
+.wiz-topprog{ margin:6px auto 14px; width:100%; max-width:1120px; padding:0 16px; }
+.wiz-topprog .wiz-topprog-bar{
+  height:8px; border-radius:999px; background:var(--chip); overflow:hidden;
+  border:1px solid var(--border);
+}
+.wiz-topprog .wiz-topprog-bar > i{
+  display:block; height:100%; width:0%;
+  background: linear-gradient(90deg, var(--r5), var(--r6));
+  transition: width .25s ease;
+}
+.wiz-topprog .wiz-topprog-meta{
+  display:flex; gap:8px; align-items:center; justify-content:space-between;
+  margin-top:6px; font-size:12.5px; color:var(--muted);
+}
+.wiz-topprog .wiz-topprog-meta > span[aria-hidden="true"]{ opacity:.5; }
+.wiz-output{
+  border:1px solid var(--border); background:var(--card); border-radius:12px;
+  padding:10px; font: 12.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  white-space:pre-wrap;
 }
 
 </style>
-
 </head>
 <body>
-  <div class="app">
-    <header class="appbar">
-      <a class="btn tiny" href="./prompt-builder.html" title="Back to Prompt Builder">← Back to Prompt Builder</a>
-      <strong>Startup Wizard</strong>
-      <span class="pill"><span>One field at a time</span></span>
-      <div class="spacer"></div>
-      <button id="setupBtn" class="btn tiny" type="button" title="Back to Setup">Setup</button>
-      <button id="themeBtn" class="btn tiny" type="button" aria-pressed="false" aria-label="Switch theme">
-        <span class="ico" aria-hidden="true"></span>Light
-      </button>
-      <a id="builderLink" class="btn tiny" href="./prompt-builder.html">Prompt Builder</a>
-    </header>
 
-    <div class="progressWrap">
-      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-live="polite">
-        <div id="bar" aria-hidden="true"></div>
-      </div>
-      <div class="progMeta">
-        <span id="progPct">0%</span> • <span id="progStep">0 / 0</span> • <span id="progMsg">Setup</span>
-      </div>
+  <header>
+<a class="btn sm" href="../index.html">← back to home</a>
+<div class="spacer"></div>
+<button class="btn sm hide" id="btnExitSearch">search</button>
+<button class="btn sm" id="btnAdvanced">exit to advanced layout</button>
+  </header>
+
+  <main class="wiz-root">
+    <!-- Header strip: search pill -->
+<div class="wiz-header-search" id="wizHdr">
+  <div class="searchCenter">
+    <div class="wiz-searchShell rainbow">
+      <input id="wizQ" type="text" placeholder="search use-cases, labels, tags…" autocomplete="off" />
+      <button id="wizClear" class="wiz-clear" title="clear">×</button>
+     <button id="wizGo" class="btn sm">search</button>
+      <div id="taSug" hidden><div class="box" role="listbox" aria-label="suggestions"></div></div>
     </div>
-
-    <main class="grid">
-      <!-- Sidebar (steps) -->
-      <aside class="panel sidebar">
-        <h3 id="fwName">Setup</h3>
-        <ol id="stepList" class="step-list"></ol>
-      </aside>
-
-      <!-- Stage -->
-      <section class="panel stage">
-        <div id="stageWrap" class="stageWrap">
-          <h3 id="stepTitle" class="stageHeader"></h3>
-          <div id="stepPane" class="stageInner"></div>
-        </div>
-        
-               <div class="actionRow">
-            <button id="copyBtn" class="btn tiny" hidden>Copy Prompt</button>
-            <button id="chatBtn" class="btn tiny" hidden>Ask ChatGPT</button>
-            <a id="openPB" class="btn tiny" href="./prompt-builder.html" target="_blank" rel="noopener" hidden>Prompt Builder</a>
-            <button id="printBtn" class="btn tiny" hidden>Print Worksheet</button>
-          </div>
-
-        <footer class="actions">
-          <div class="actionRow">
-            <button id="prevBtn" class="btn">Back</button>
-            <button id="nextBtn" class="btn">Next</button>
-            <button id="backToSetupBtn" class="btn ghost">Back to Setup</button>
-          </div>
-          
-        </footer>
-      </section>
-    </main>
+    
+    
+    <div id="wizTopProgress" class="wiz-topprog hide">
+  <div class="wiz-topprog-bar" aria-hidden="true"><i id="tpBar"></i></div>
+  <div class="wiz-topprog-meta">
+    <span id="tpStep">step 1 of 1</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpPct">0%</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpEnc">let’s get rolling</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpTime">~0 min left</span>
   </div>
-
-  <!-- Toast (screen-reader friendly) -->
-  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-  <!-- Minimal action modal for copy/ask fallbacks -->
-  <dialog id="actionModal" aria-labelledby="amTitle">
-    <div class="modal-body">
-      <h4 id="amTitle">Prompt</h4>
-      <div id="amNote" class="help"></div>
-      <textarea id="amText" readonly></textarea>
+</div>
+    
+    
+    <div class="quickRow">
+      <button id="btnHelp"  class="btn sm rainbow">help</button>
+      <button id="btnLucky" class="btn sm rainbow">i’m feeling lucky</button>
     </div>
-    <div class="modal-actions">
-      <button id="amCopy" class="btn tiny" type="button">Copy Prompt</button>
-      <button id="amOpen" class="btn tiny" type="button">Open ChatGPT</button>
-      <button id="amClose" class="btn tiny ghost" type="button">Understood</button>
-    </div>
-  </dialog>
-
-
-  <!-- Templates dataset -->
-  <script src="./templates.data.js"></script>
-
- <script>
-/* ========= Theme ========= */
-(function themeInit(){
-  const key='pb_theme';
-  const btn = document.getElementById('themeBtn');
-
-  function apply(theme){
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(key, theme);
-    const next = (theme === 'dark') ? 'Light' : 'Dark';
-    btn.innerHTML = '<span class="ico" aria-hidden="true"></span>' + next;
-    btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-    btn.setAttribute('aria-pressed', theme === 'dark' ? 'false' : 'true');
-  }
-
-  const saved = localStorage.getItem(key) || 'dark';
-  apply(saved);
-  btn?.addEventListener('click', ()=>{
-    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    apply(cur === 'dark' ? 'light' : 'dark');
-  });
-})();
-
-/* ========= Data & helpers ========= */
-const ALL = (window.TEMPLATES || window.FRAMEWORKS || []).slice();
-const byId = id => ALL.find(f=>String(f.id).toLowerCase()===String(id).toLowerCase());
-const bySlug = slug => ALL.find(f=>String(f.slug||'').toLowerCase()===String(slug).toLowerCase());
-const TEMPLATE_PICKER = byId('none') || ALL.find(f=>f.id==='none') || ALL[0];
-
-const norm = s => (s||'').toLowerCase();
-const tok = s => norm(s).split(/[^a-z0-9]+/).filter(Boolean);
-
-function builderURL(slug, prefill){
-  const base = './prompt-builder.html';
-  const u = new URL(base, location.href);
-  if (slug) u.searchParams.set('slug', slug);
-  if (prefill) u.searchParams.set('prefill', btoa(unescape(encodeURIComponent(JSON.stringify(prefill)))));
-  return u.toString();
-}
-
-function composePrompt(fw, fields){
-  try{
-    const body = fw.template(fields || {});
-    if (Array.isArray(body)) return body.filter(Boolean).join('\n\n');
-    return String(body||'');
-  }catch(e){ return ''; }
-}
-
-// index for filtering/scoring
-const INDEX = ALL.map(f=>{
-  // Normalize "none" values for kind & categories at index time.
-  const rawKind = (f.kind || '').toLowerCase();
-  const normKind = rawKind === 'none' ? 'framework' : rawKind;
-
-  const rawCats = (f.categories || []).map(s => (s || '').toLowerCase());
-  const normCats = rawCats.map(c => c === 'none' ? 'coaching' : c);
-
-  const text = [
-    f.label, f.slug, f.definition, f.help,
-    ...(f.use_cases||[]), ...(f.tags||[]), ...normCats
-  ].filter(Boolean).join(' ').toLowerCase();
-
-  return {
-    id:f.id, slug:f.slug, label:f.label,
-    kind:normKind,
-    tags:(f.tags||[]).map(s => (s||'').toLowerCase()),
-    cats:normCats,
-    text
-  };
-});
-
-
-const KINDS = Array.from(new Set(INDEX.map(x=>x.kind).filter(Boolean))).sort();
-const CATS  = Array.from(new Set(INDEX.flatMap(x=>x.cats).filter(Boolean))).sort();
-
-function filterAndScore(q, kind, cat, tags){
-  const qTokens = tok(q);
-  const tagSet = new Set((tags||[]).map(norm).filter(Boolean));
-  return INDEX.filter(x=>{
-    if (kind && x.kind!==norm(kind)) return false;
-    if (cat && !x.cats.includes(norm(cat))) return false;
-    if (tagSet.size){
-      let hit=false;
-      for (const t of tagSet){ if (x.tags.includes(t)) { hit=true; break; } }
-      if (!hit) return false;
-    }
-    if (qTokens.length){
-      return qTokens.every(t => x.text.includes(t));
-    }
-    return true;
-  }).map(x=>{
-    let s=0;
-    qTokens.forEach(t=>{
-      if (tok(x.label).some(l=>l.startsWith(t))) s+=3;
-      if (x.tags.includes(t)) s+=2;
-      if (x.text.includes(t)) s+=1;
-    });
-    return {ref:x, score:s};
-  }).sort((a,b)=> b.score - a.score || a.ref.label.localeCompare(b.ref.label,'en',{sensitivity:'base'}));
-}
-
-/* ========= State ========= */
-const state = {
-  mode:'setup',            // 'setup' | 'flow'
-  fw:TEMPLATE_PICKER,      // current framework when in 'flow'
-  steps:[], idx:0, maxVisited:0,
-  answers:{},              // field answers for current fw
-  // setup filters
-  setup:{
-    q:'', kind:'', cat:'', tags:[], selectedId:(TEMPLATE_PICKER?.id||'none')
-  }
-};
-
-/* ========= DOM refs ========= */
-const fwName   = document.getElementById('fwName');
-const stepList = document.getElementById('stepList');
-const stepTitle= document.getElementById('stepTitle');
-const stepPane = document.getElementById('stepPane');
-const stageWrap= document.getElementById('stageWrap');
-const bar      = document.getElementById('bar');
-
-const btnPrev  = document.getElementById('prevBtn');
-const btnNext  = document.getElementById('nextBtn');
-const btnSetup = document.getElementById('setupBtn');
-const btnBackSetup = document.getElementById('backToSetupBtn');
-const btnCopy  = document.getElementById('copyBtn');
-const btnChat  = document.getElementById('chatBtn');
-const btnPrint = document.getElementById('printBtn');
-const linkPB   = document.getElementById('openPB');
-
-/* ========= NEW refs: toast + modal ========= */
-const toastEl = document.getElementById('toast');
-const modal   = document.getElementById('actionModal');
-const amTitle = document.getElementById('amTitle');
-const amNote  = document.getElementById('amNote');
-const amText  = document.getElementById('amText');
-const amCopy  = document.getElementById('amCopy');
-const amOpen  = document.getElementById('amOpen');
-const amClose = document.getElementById('amClose');
-
-/* ========= NEW helpers: UX + Ask/Copy behaviors ========= */
-function showToast(msg){
-  if (!toastEl) return;
-  toastEl.textContent = msg;
-  toastEl.classList.add('show');
-  const t = setTimeout(()=> toastEl.classList.remove('show'), 2000);
-  // prevent overlaps resetting the timer
-  toastEl.onmouseenter = ()=> clearTimeout(t);
-}
-
-function chatBase(){
-  return localStorage.getItem('chatgpt_target') || 'https://chat.openai.com/';
-}
-
-function openChatBase(){
-  const base = chatBase();
-  try{
-    window.open(base, '_blank', 'noopener,noreferrer');
-  }catch(e){}
-}
-
-function buildChatURL(prompt){
-  let base = chatBase();
-  try {
-    const u = new URL(base, location.href);
-    u.searchParams.set('q', prompt);
-    return u.toString();
-  } catch(e){
-    return 'https://chat.openai.com/?q=' + encodeURIComponent(prompt);
-  }
-}
-
-function urlTooLong(url){
-  // conservative guard for query-string based handoff
-  return url.length > 2000;
-}
-
-// Simple modal controller
-function showActionModal({ mode, note, promptText }){
-  if (!modal) return;
-  amTitle.textContent = (mode === 'ask') ? 'Ask ChatGPT' : 'Copy Prompt';
-  amNote.innerHTML = note ? `<span class="warn">${note}</span>` : '';
-  amText.value = promptText || '';
-
-  // Buttons: Ask mode shows Open; Copy mode hides Open
-  amOpen.style.display = (mode === 'ask') ? '' : 'none';
-
-  // Wire buttons fresh each time
-  amCopy.onclick = async ()=>{
-    try{
-      await navigator.clipboard.writeText(amText.value);
-      showToast('Copied!');
-    }catch(e){
-      // ignore — user can still select & copy manually
-    }
-  };
-  amOpen.onclick = ()=> openChatBase();
-  amClose.onclick = ()=> modal.close();
-
-  try { modal.showModal(); } catch(e) { /* older browsers */ }
-}
-
-async function handleCopy(prompt){
-  try{
-    await navigator.clipboard.writeText(prompt);
-    showToast('Copied!');
-  }catch(e){
-    showActionModal({
-      mode:'copy',
-      note:'Clipboard not available. You can copy the prompt manually.',
-      promptText: prompt
-    });
-  }
-}
-
-async function handleAsk(prompt){
-  // Best-effort copy so user can paste in ChatGPT if needed
-  try{ await navigator.clipboard.writeText(prompt); }catch(e){}
-
-  const url = buildChatURL(prompt);
-  let opened = null;
-
-  if (urlTooLong(url)){
-    openChatBase();
-    showActionModal({
-      mode:'ask',
-      note:'Prompt too long to prefill via URL. Copy it below, then paste in ChatGPT.',
-      promptText: prompt
-    });
-    return;
-  }
-
-  try{
-    opened = window.open(url, '_blank', 'noopener,noreferrer');
-  }catch(e){ opened = null; }
-
-  // Always present alternative copy modal per your UX decision.
-  showActionModal({
-    mode:'ask',
-    note: opened ? 'ChatGPT opened in a new tab. If you don’t see the prompt, paste it.' :
-                   'Popup was blocked or failed. Copy below and open ChatGPT.',
-    promptText: prompt
-  });
-
-  if (opened){
-    showToast('ChatGPT opened. Prompt copied—paste if it didn’t auto-appear.');
-  }
-}
-
-/* ========= Progress ========= */
-function setProgress(i,n){
-  if (state.mode==='setup'){
-    bar.style.width = '0%';
-    document.getElementById('progPct').textContent = '0%';
-    document.getElementById('progStep').textContent = 'Setup';
-    document.getElementById('progMsg').textContent = 'Choose a template';
-    return;
-  }
-  const pct = Math.max(0, Math.min(100, Math.round(((i+1)/Math.max(1,n))*100)));
-  bar.style.width = pct + '%';
-  document.getElementById('progPct').textContent = pct + '%';
-  document.getElementById('progStep').textContent = (i+1) + ' / ' + n;
-  const cheers = [
-    {max:10,  text:'Let’s start'},
-    {max:30,  text:'Nice momentum'},
-    {max:55,  text:'You’re rolling'},
-    {max:80,  text:'Over halfway'},
-    {max:95,  text:'Almost there'},
-    {max:100, text:'Finish strong'}
-  ];
-  const pick = cheers.find(c => pct <= c.max) || cheers[cheers.length-1];
-  document.getElementById('progMsg').textContent = pick.text;
-}
-
-/* ========= Setup (Step 0) UI ========= */
-function renderSetup(){
-  const TOTAL = ALL.length;
-
-  fwName.textContent = 'Setup';
-  stepList.innerHTML = ''; // no steps in setup
-  stepTitle.textContent = 'Choose a template';
-  stageWrap.classList.remove('centered');
-  stepPane.innerHTML = '';
-
-  // header row: totals + glossary
-  const head = document.createElement('div');
-  head.className = 'setupHead';
-  head.innerHTML = `
-  <div class="resultMeta" id="resultMeta" aria-live="polite"></div>
-  <div class="spacer"></div>
-  <button id="resetTop" class="btn tiny" type="button" title="Clear filters">Reset</button>
-  <a class="btn tiny" href="./templates-glossary.html#my-slug" target="_blank" rel="noopener">Open Template Glossary</a>
-`;
-  stepPane.appendChild(head);
-
-  // controls
-  const pane = document.createElement('section');
-  pane.className = 'pane';
-  pane.innerHTML = `
-<div class="controls">
-  <div class="ta-menu cell-search">
-    <label class="sub" for="q">Search</label>
-    <input id="q" placeholder="Search label, definition, fields, tags…" autocomplete="off"/>
-    <div id="qList" class="ta-list" hidden></div>
   </div>
-
-  <div class="cell-kind">
-    <label class="sub" for="kind">Kind</label>
-    <select id="kind"><option value="">All</option></select>
-  </div>
-
-  <div class="cell-cat">
-    <label class="sub" for="cat">Category</label>
-    <select id="cat"><option value="">All</option></select>
-  </div>
-
-  <div class="cell-tags">
-    <label class="sub" for="tag">Tags</label>
-    <input id="tag" placeholder="Search cleaned tags (e.g., framework)" autocomplete="off"/>
-  </div>
-
 </div>
 
-
-    <!-- Active Filters -->
-    <div id="active" class="filters" aria-live="polite"></div>
-
-    <!-- All matches control (moved ABOVE Top matches) -->
-    <div class="resultsHeader" style="margin-top:8px">
-      <h4>All matches</h4>
-      <span class="dim">Type to filter or pick a template</span>
-      <div class="spacer"></div>
-      <span class="dim">Count: <span id="matchCount">0</span></span>
+    <!-- Startup view -->
+    <section id="wizViewStartup" class="wiz-startup">
+<div class="wiz-row">
+  <label for="wizAllSelect" class="muted">all matches</label>
+  <span id="wizMatchMeta" class="muted" style="margin-left:8px">0 matches of 0 total</span>
+</div>
+<select id="wizAllSelect" style="min-width:280px">
+  <option value="" disabled selected>— choose a template —</option>
+</select>
+<div id="wizTop" class="block">
+  <div class="block-title">
+    <h3>top matches</h3>
+    <div class="right" style="display:flex; align-items:center; gap:10px">
+      <button id="btnNext3" class="btn sm">next 3</button>
+      <span id="wizTopMeta" class="muted">showing 0 of 0 (out of 0)</span>
     </div>
-    <div style="margin-top:6px">
-      <label class="sr-only" for="matchSel">All matches</label>
-      <select id="matchSel" style="width:100%"></select>
-    </div>
+  </div>
+  <div id="wizTopCards" class="wiz-cards" style="margin-top:8px"></div>
+</div>
+    </section>
 
-    <!-- Top results header -->
-    <div class="resultsHeader">
-      <h4>Top matches</h4>
-      <span class="dim" id="topMeta">Showing top 3 of 0</span>
-      <div class="spacer"></div>
-    </div>
-    <div class="help">Refine with filters. For full details, open the Template Glossary.</div>
+    <!-- Step 0 view -->
+    <section id="wizViewStep0" class="wiz-step0 hide">
+      <h2 class="title" id="wizStep0Title">template</h2>
+      <p class="def" id="wizStep0Def"></p>
+      <ul class="meta" id="wizStep0Stats"></ul>
+      <div class="uses">
+        <div class="subhead">use-cases</div>
+        <ul id="wizStep0Uses"></ul>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px">
+        <button id="wizStep0Start" class="btn primary">start guided setup →</button>
+        <button id="wizExitSearch" class="btn">back to search</button>
+      </div>
+    </section>
 
-    <!-- Top 3 cards -->
-    <div id="topList" class="cardList"></div>
-
-  `;
-  stepPane.appendChild(pane);
-
-  // populate dropdowns
-  const kindSel = pane.querySelector('#kind');
-  KINDS.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=k||'—'; kindSel.appendChild(o); });
-  const catSel = pane.querySelector('#cat');
-  CATS.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o); });
-
-  // refs
-const q      = pane.querySelector('#q');
-const qList  = pane.querySelector('#qList');
-const tag    = pane.querySelector('#tag');
-const active = pane.querySelector('#active');
-const resetTop = head.querySelector('#resetTop');  // ← the new top reset button
-const meta   = head.querySelector('#resultMeta');
-const topMeta= pane.querySelector('#topMeta');
-const topList= pane.querySelector('#topList');
-const matchSel = pane.querySelector('#matchSel');
-const matchCount = pane.querySelector('#matchCount');
-
-
-// new Reset handler (top-right button in the setup head)
-resetTop.addEventListener('click', ()=>{
-  state.setup = { q:'', kind:'', cat:'', tags:[], selectedId:(TEMPLATE_PICKER?.id||'none') };
-  q.value=''; kindSel.value=''; catSel.value=''; tag.value='';
-  renderActiveChips(); recompute();
-});
-
-
-  // init values
-  q.value = state.setup.q || '';
-  kindSel.value = state.setup.kind || '';
-  catSel.value  = state.setup.cat || '';
-  renderActiveChips();
-  recompute();
-
-  // chips
-  function renderActiveChips(){
-    active.innerHTML = '';
-    if (state.setup.q){
-      chip('Search: '+state.setup.q, ()=>{ state.setup.q=''; q.value=''; recompute(); });
-    }
-    if (state.setup.kind){
-      chip('Kind: '+state.setup.kind, ()=>{ state.setup.kind=''; kindSel.value=''; recompute(); });
-    }
-    if (state.setup.cat){
-      chip('Category: '+state.setup.cat, ()=>{ state.setup.cat=''; catSel.value=''; recompute(); });
-    }
-    state.setup.tags.forEach(t=> chip('#'+t, ()=>{ state.setup.tags = state.setup.tags.filter(x=>x!==t); recompute(); }));
-    function chip(text, onX){
-      const c=document.createElement('span'); c.className='chip'; c.innerHTML = `${text} <button type="button" aria-label="Remove filter">×</button>`;
-      c.querySelector('button').addEventListener('click', onX);
-      active.appendChild(c);
-    }
-  }
-
-  // recompute everything (counts, top3, dropdown, typeahead)
-  function recompute(){
-    const list = filterAndScore(state.setup.q, state.setup.kind, state.setup.cat, state.setup.tags);
-    const matches = list.map(x=>x.ref);
-
-    // meta lines
-    meta.textContent = `${TOTAL} total templates • ${matches.length} match your filters`;
-    topMeta.textContent = `Showing top 3 of ${matches.length} (out of ${TOTAL})`;
-
-    // Top 3 cards (default to Template Picker if empty)
-    topList.innerHTML = '';
-    const top = matches.slice(0,3);
-    const show = top.length ? top : [ { id: TEMPLATE_PICKER.id, slug: TEMPLATE_PICKER.slug, label: TEMPLATE_PICKER.label, kind: TEMPLATE_PICKER.kind||'template', cats: TEMPLATE_PICKER.categories||[], def: TEMPLATE_PICKER.definition||TEMPLATE_PICKER.help||'' } ];
-    show.forEach(ref=>{
-      const f = byId(ref.id) || TEMPLATE_PICKER;
-// prefer normalized values from INDEX (none → framework/coaching)
-const idx = INDEX.find(ix => ix.id === f.id);
-const metaBits = [
-  (idx?.kind || f.kind || 'template'),
-  ...(idx?.cats || f.categories || []).slice(0,2)
-].filter(Boolean).join(' • ');
-      const card = document.createElement('div');
-      card.className = 'bestCard';
-      card.innerHTML = `
-        <div class="row">
-          <h4 class="bestTitle">${f.label}</h4>
-          <span class="pill dim">${metaBits}</span>
+    <!-- Steps view -->
+    <section id="wizViewSteps" class="hide">
+      <div class="wiz-stepsWrap">
+        <aside class="wiz-rail">
+          <div class="wiz-prog" aria-hidden="true"><i id="wizProgBar"></i></div>
+          <ul id="wizStepList"></ul>
+        </aside>
+        <div class="wiz-pane">
+          <div id="wizStepBody"></div>
+          <div class="wiz-foot">
+            <button id="wizShowAll" class="btn">show all</button>
+            <div class="spacer"></div>
+            <button id="wizStepBack" class="btn">← back</button>
+            <button id="wizStepNext" class="btn primary rainbow-hover">next →</button>
+          </div>
         </div>
-        <div class="help">${(f.definition||f.help||'').toString().slice(0,220)}</div>
-        <div class="row" style="margin-top:8px">
-          <button class="btn primary tiny" type="button" data-use="${f.id}">Use this template</button>
-          <a class="btn tiny" href="./templates-glossary.html${f.slug ? ('#'+encodeURIComponent(f.slug)) : ''}" target="_blank" rel="noopener">View in Glossary</a>
-          <a class="btn tiny" href="${builderURL(f.slug||f.id)}" target="_blank" rel="noopener">Prompt Builder</a>
-        </div>
-      `;
-      topList.appendChild(card);
-    });
+      </div>
+    </section>
+  </main>
 
-    // wire "Use this template" (delegate to topList)
-    topList.onclick = (ev)=>{
-      const b = ev.target.closest('[data-use]');
-      if (!b) return;
-      const id = b.getAttribute('data-use');
-      const f = byId(id);
-      if (f){ state.mode='flow'; state.fw=f; state.answers={}; buildFlow(); render(); }
-    };
+  <script>
+  // Tiny UI state (theme, mode preference)
+  function readUI(){ try{ return JSON.parse(localStorage.getItem('pb.v1.ui')||'{}'); }catch(_){ return {}; } }
+  function writeUI(x){ localStorage.setItem('pb.v1.ui', JSON.stringify(Object.assign(readUI(), x))); }
 
-    // matches dropdown
-    matchSel.innerHTML = '';
-    matches.forEach(ref=>{
-      const f = byId(ref.id);
-      const o=document.createElement('option');
-      o.value=f.id;
-      const idx2 = INDEX.find(ix => ix.id === f.id);
-o.textContent = `${f.label} • ${idx2?.kind || f.kind || 'template'}`;
-      matchSel.appendChild(o);
-    });
-    matchCount.textContent = String(matches.length);
-    matchSel.disabled = !matches.length;
-
-    // default selection stays on first match or Template Picker if none
-    const selected = matches[0]?.id || (TEMPLATE_PICKER?.id||'none');
-    matchSel.value = selected;
-    state.setup.selectedId = selected;
-
-    // typeahead suggestions
-    renderSuggestions(matches.slice(0,10));
+  // ===== Data access: dedupe across FRAMEWORKS/TEMPLATES/TASK_TEMPLATES =====
+  function allTemplates(){
+    const A = [];
+    const seen = new Set();
+    const sources = [window.FRAMEWORKS, window.TEMPLATES, window.TASK_TEMPLATES, window.TASKS, window.templates, window.tasks]
+      .filter(Boolean);
+    for (const src of sources){
+      for (const t of src){
+        const kind = (t.kind||t.type||'framework').toLowerCase();
+        const id   = (t.id||t.slug||t.key||t.label||'').toString().toLowerCase().trim();
+        const slug = (t.slug||id).toLowerCase();
+        const key  = kind+':'+(slug||id);
+        if (!id) continue;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        A.push(Object.assign({ kind, slug }, t));
+      }
+    }
+    return A;
   }
 
-  // typeahead helpers
-  function renderSuggestions(refs){
-    const qval = q.value.trim();
-    if (!qval){ qList.hidden=true; qList.innerHTML=''; return; }
-    qList.innerHTML='';
-    refs.forEach(r=>{
-      const f = byId(r.id);
-      const item=document.createElement('div');
-      item.className='ta-item';
-      item.setAttribute('role','option');
-      item.innerHTML = `<strong>${f.label}</strong><small>${(f.definition||f.help||'').toString().slice(0,100)}</small>`;
-      item.addEventListener('click', ()=>{
-        q.value = f.label;
-        state.setup.q = f.label;
-        qList.hidden=true; renderActiveChips(); recompute();
-      });
-      qList.appendChild(item);
-    });
-    qList.hidden = !qList.children.length;
+  // ===== Ranking: prioritize full-phrase, whole-word, starts-with =====
+// ===== Index & Ranking (use-case first, tags second; task-nudged) =====
+const REC_KEY = 'pb_recent_queries';
+
+function getRecents(){
+  try{
+    const arr = JSON.parse(localStorage.getItem(REC_KEY) || '[]');
+    return Array.isArray(arr) ? arr : [];
+  }catch(_){ return []; }
+}
+function saveRecent(q){
+  const s = (q||'').trim(); if (!s) return;
+  const cur = getRecents();
+  const idx = cur.findIndex(x => x.toLowerCase() === s.toLowerCase());
+  if (idx >= 0) cur.splice(idx,1);
+  cur.unshift(s);
+  localStorage.setItem(REC_KEY, JSON.stringify(cur.slice(0,12)));
+}
+
+function isTaskKind(kind){ return (kind||'').toLowerCase()==='task'; }
+function isHelperTemplate(t){
+  const lab = (t.label||'').toLowerCase();
+  const tags = ((t.tags||[]).join(' ')||'').toLowerCase();
+  return /helper|picker|guide|wizard/.test(lab+' '+tags);
+}
+
+// Build a compact index of searchables from templates & tasks.
+let SEARCH_INDEX = [];
+function buildIndex(){
+  const T = allTemplates(); // already merges framework+tasks
+  const idx = [];
+  for (const t of T){
+    const kind = (t.kind||'framework').toLowerCase();
+    const id   = (t.id||t.slug||t.key||t.label||'').toString();
+    const slug = (t.slug||'').toString();
+    const isTask = isTaskKind(kind) || /^task[_:\-]/i.test(id) || /^task[_:\-]/i.test(slug);
+    const uses = Array.isArray(t.use_cases) ? t.use_cases : [];
+    const tags = Array.isArray(t.tags) ? t.tags : [];
+    const cats = Array.isArray(t.categories) ? t.categories : (t.category? [t.category] : []);
+
+    // extract "use:" tags as dedicated use-tags (lightweight)
+    const useTags = tags
+      .map(x=> String(x||'').trim().toLowerCase())
+      .filter(x=> x.startsWith('use:'))
+      .map(x=> x.replace(/^use:\s*/,'').trim())
+      .filter(Boolean);
+
+    // index each use-case as a suggestion candidate
+    for (const u of uses){
+      const text = String(u||'').trim();
+      if (!text) continue;
+      idx.push({ bucket:'uc', text, t, kind, isTask });
+    }
+    // index "use:" tags as lighter suggestions
+    for (const tag of useTags){
+      idx.push({ bucket:'tag', text: tag, t, kind, isTask });
+    }
+  }
+  SEARCH_INDEX = idx;
+}
+
+function tokenize(s){ return (s||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean); }
+
+// Scoring tuned for use-cases (UCs first), then use: tags; gentle task nudge.
+function scoreOne(q, entry){
+  const Q = (q||'').trim().toLowerCase();
+  const T = entry.text.toLowerCase();
+  if (!Q || !T) return 0;
+
+  let s = 0;
+  // Phrase & substring bonuses
+  if (T.includes(Q)) s += 220;                 // exact phrase
+  if (Q.includes(T) && T.length>2) s += 120;   // entry is substring of the full query
+  // Token scoring
+  const qTok = tokenize(Q);
+  for (const w of qTok){
+    if (T === w) s += 80;                       // exact token equals use
+    if (new RegExp(`\\b${w}\\b`).test(T)) s += 40; // word-boundary hit
+    if (T.indexOf(w) >= 0) s += 24;             // substring
+    if (T.startsWith(w)) s += 10;               // starts-with nudge
+  }
+  // Kind nudges
+  if (entry.isTask) s += 30;                    // tasks up-weighted
+  if (qTok.some(w => (entry.kind||'').includes(w))) s += 12; // kind-token overlap
+  // Brevity & position nudges (mild; only if matched)
+  if (s>0){
+    s += Math.max(0, 20 - Math.min(20, T.length/6)); // shorter use-cases get tiny lift
+  }
+  return s;
+}
+
+// Build idle suggestions: recents first, then helpers (use-cases)
+function helperUsecaseSuggestions(limit=8){
+  const out = [];
+  for (const e of SEARCH_INDEX){
+    if (e.bucket!=='uc') continue;
+    if (!isHelperTemplate(e.t)) continue;
+    out.push({ kind:e.kind, isTask:e.isTask, bucket:'uc', text:e.text, t:e.t, idle:true });
+    if (out.length>=limit) break;
+  }
+  return out;
+}
+function buildIdleSuggestions(limit=8){
+  const rec = getRecents().slice(0,limit).map(q => ({ bucket:'recent', text:q }));
+  if (rec.length>=limit) return rec;
+  const need = limit - rec.length;
+  return rec.concat(helperUsecaseSuggestions(need));
+}
+
+function rankSuggestions(q, limit=8){
+  const list = SEARCH_INDEX.map(e => ({
+    e, score: scoreOne(q, e),
+  })).filter(x => x.score>0);
+
+  // If too few or weak, inject helpers near the top to keep UX friendly
+  let suggestions = list.sort((a,b)=> b.score - a.score);
+  if (suggestions.length < 3){
+    const inject = helperUsecaseSuggestions(Math.max(3, limit));
+    const maxScore = suggestions[0]?.score || 200;
+    suggestions = inject.map((h,i)=>({ e:h, score:maxScore + 5 - i })).concat(suggestions);
   }
 
-  // events
-  let qDebounce;
-  q.addEventListener('input', ()=>{
-    state.setup.q = q.value.trim();
-    clearTimeout(qDebounce);
-    qDebounce = setTimeout(()=>{ renderActiveChips(); recompute(); }, 160);
-  });
-  q.addEventListener('keydown', (e)=>{ if (e.key==='Escape'){ qList.hidden=true; } });
-  kindSel.addEventListener('change', ()=>{ state.setup.kind = kindSel.value; renderActiveChips(); recompute(); });
-  catSel.addEventListener('change',  ()=>{ state.setup.cat  = catSel.value;  renderActiveChips(); recompute(); });
-
-  // tags: on Enter/Comma add
-  tag.addEventListener('keydown', (e)=>{
-    if (e.key==='Enter' || e.key===',' ){
-      e.preventDefault();
-      const v = tag.value.trim().replace(/[, ]+$/,'');
-      if (v && !state.setup.tags.includes(v.toLowerCase())){
-        state.setup.tags.push(v.toLowerCase());
-        tag.value='';
-        renderActiveChips(); recompute();
-      }
-    }
+  // Sort: bucket (uc > tag), score desc, isTask desc, use-length asc, alpha
+  suggestions.sort((A,B)=>{
+    const a=A.e, b=B.e;
+    const bucketOrder = (a.bucket==='uc'?0:1) - (b.bucket==='uc'?0:1);
+    if (bucketOrder!==0) return bucketOrder;
+    if (B.score!==A.score) return B.score - A.score;
+    if ((b.isTask?1:0)!==(a.isTask?1:0)) return (b.isTask?1:0)-(a.isTask?1:0);
+    const la=a.text.length, lb=b.text.length; if (la!==lb) return la-lb;
+    return a.text.localeCompare(b.text);
   });
 
-  // selecting from All matches dropdown also moves the top list focus (first card stays first; CTA still works)
- matchSel.addEventListener('change', ()=>{
-  const id = matchSel.value;
-  const f  = byId(id);
-  if (!f) return;
-  // Put the chosen label into the search box and filter by it
-  const label = f.label || f.slug || String(f.id);
-  q.value = label;
-  state.setup.q = label;
-  state.setup.selectedId = id;
-  renderActiveChips();
-  recompute();
-
-  // Keep the chosen card in view if it’s one of the Top 3
-  const chosenCard = topList.querySelector(`[data-use="${id}"]`);
-  if (chosenCard) chosenCard.scrollIntoView({behavior:'smooth', block:'nearest'});
-});
-
+  // map to plain suggestion entries and cap
+  return suggestions.slice(0, limit).map(x => x.e);
 }
 
-/* ========= Flow steps ========= */
-function introStepFor(fw){
-  return {
-    id:'intro',
-    title: (fw.id==='none') ? 'Orientation — Template Picker' : `${fw.label} — Orientation`,
-    render: el=>{
-      el.innerHTML = '';
-      const p = document.createElement('p');
-      const def = fw.definition || fw.help || '';
-      const n = Array.isArray(fw.fields) ? fw.fields.length : 0;
-      p.className='help'; p.textContent = (fw.id==='none')
-        ? 'Tell us your goal and context. We’ll suggest top frameworks and give you a ready-made prompt to ask ChatGPT directly.'
-        : `${def}  Steps: ${n} field${n===1?'':'s'} + output.`;
-      el.appendChild(p);
+  // ===== Renderers =====
+  const el = id => document.getElementById(id);
+  const qs = sel => document.querySelector(sel);
 
-      if (fw.id!=='none'){
-        const meta = document.createElement('div');
-        meta.className='help';
-        meta.innerHTML = [
-          fw.use_cases?.length ? `<div>Common uses: ${fw.use_cases.slice(0,3).join(' • ')}</div>` : '',
-          fw.tags?.length ? `<div>Tags: ${fw.tags.slice(0,6).join(', ')}</div>` : ''
-        ].join('');
-        el.appendChild(meta);
-      }
-    }
-  };
-}
+  function estimateTimeByFields(n){
+    const approx = Math.max(1, Math.min(60, Math.ceil((n||0)*0.75))); // ~minutes   [oai_citation:14‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
+    return `~${approx} min`;
+  }
 
-function fieldStep(f){
-  return {
-    id:'f_'+(f.key||Math.random().toString(36).slice(2)),
-    title: f.label || f.key,
-    render: el=>{
-      el.innerHTML='';
-      const wrap = document.createElement('div'); 
-      wrap.className='field';
-
-      // Keep a label for a11y but hide it (step header already shows the name)
-      const label = document.createElement('label'); 
-      label.textContent = f.label || f.key;
-      label.className = 'sr-only';
-
-      const holder = document.createElement('div'); 
-      holder.className = 'fieldHolder';
-
-      let input;
-      if (f.type === 'select' && Array.isArray(f.options)){
-        // Preserve selects as selects
-        input = document.createElement('select');
-        f.options.forEach(opt=>{
-          const o=document.createElement('option'); 
-          o.value=opt; o.textContent=opt; 
-          input.appendChild(o);
-        });
-      } else {
-        // Everything else becomes a textarea (including previous "text" types)
-        input = document.createElement('textarea');
-        input.rows = Math.max(4, Number(f.rows||6));
-      }
-
-      input.placeholder = f.ph || '';
-      input.value = state.answers[f.key] || '';
-      input.setAttribute('aria-labelledby', 'stepTitle'); // tie to visible step header
-
-      // wire state
-      input.addEventListener('input', ()=>{ state.answers[f.key] = input.value; });
-
-      holder.appendChild(input);
-      wrap.append(label, holder);
-
-      if (f.desc){
-        const descId = 'desc_'+(f.key||Math.random().toString(36).slice(2));
-        const d = document.createElement('div'); 
-        d.className='help'; 
-        d.id = descId; 
-        d.textContent = f.desc;
-        input.setAttribute('aria-describedby', descId);
-        wrap.appendChild(d);
-      }
-
-      el.appendChild(wrap);
-    }
-  };
-}
-
-
-function finishStepFor(fw){
-  return {
-    id:'output',
-    title:'Output',
-    render: el=>{
-      el.innerHTML='';
-      const text = composePrompt(fw, { ...state.answers });
-      const pre = document.createElement('pre'); pre.className='output'; pre.textContent = text || '(answer steps to generate a prompt)';
-      el.appendChild(pre);
-
-      // enable actions when we have text
-      const has = !!text.trim();
-      btnCopy.hidden = !has;
-      btnChat.hidden = !has;
-      linkPB.hidden  = false;  // always visible; opens selected fw in PB
-      btnPrint.hidden= !has;
-
-      // wire actions (NEW wrappers)
-      btnCopy.onclick = ()=> handleCopy(text);
-      btnChat.onclick = ()=> handleAsk(text);
-      linkPB.href = builderURL(fw.slug || fw.id);
-      btnPrint.onclick = ()=>{
-        const u = new URL('./prompt-worksheet.html', location.href);
-        u.searchParams.set('slug', fw.slug || fw.id);
-        u.searchParams.set('text', text);
-        window.open(u.toString(), '_blank', 'noopener,noreferrer');
+  function rowsFromTemplates(T){
+    return T.map(t=>{
+      const useText = Array.isArray(t.use_cases) && t.use_cases.length ? t.use_cases.join(' • ') : (t.label||t.slug||t.id||'');
+      return {
+        id:t.id, slug:t.slug, key:t.key, label:(t.label||t.slug||t.id||'template'),
+        definition:(t.definition||t.help||''), useText, kind:(t.kind||'framework'), ref:t
       };
-    }
-  };
+    });
+  }
+
+  function renderAllSelect(rows){
+    const sel = el('wizAllSelect');
+    const cur = sel.value;
+    const opts = [`<option value="" disabled ${!cur?'selected':''}>— choose a template —</option>`]
+      .concat(rows.map(r=> `<option value="${r.slug||r.id}" data-id="${r.id||''}" data-slug="${r.slug||''}">${r.label}</option>`));
+    sel.innerHTML = opts.join('');
+  }
+
+function cardHTML(r){
+  // Title = first use-case on the template (fallback: suggestion text or label)
+  const firstUse = (r.ref && Array.isArray(r.ref.use_cases) && r.ref.use_cases[0])
+    || r.useText || r.label;
+
+  // Subtitle = the template label
+  const sub = r.label;
+
+  // Definition with truncation + “more”
+  const defFull = String(r.definition||'').trim();
+  const LIMIT = 180; // tweak as desired
+  const needsMore = defFull.length > LIMIT;
+  const defShort = needsMore ? (defFull.slice(0, LIMIT - 1) + '…') : defFull;
+
+  // Unique id per card’s definition container (based on slug/id)
+  const defId = 'def_' + (r.slug || r.id || Math.random().toString(36).slice(2));
+
+  return `
+    <article class="card" data-id="${r.id||''}" data-slug="${r.slug||''}">
+      <div class="card-title">${firstUse}</div>
+      <div class="card-sub">${sub}</div>
+
+      <div class="card-def" id="${defId}">
+        <span class="short">${defShort}</span>
+        ${needsMore
+          ? `<button class="btn sm js-more" type="button" data-target="${defId}">more</button>
+             <span class="full" hidden>${defFull.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
+          : ''}
+      </div>
+
+      <div class="foot" style="margin-top:8px">
+        <span></span>
+        <button class="btn sm primary rainbow-hover js-use" type="button">use this template</button>
+      </div>
+    </article>`;
 }
 
-function pickerFlow(){
-  // intro → goal → context → keywords → recommendations → ask (output)
-  const sGoal = {
-    id:'goal', title:'Your goal',
-    render: el=>{
-      el.innerHTML='';
-      const ta=document.createElement('textarea'); ta.placeholder='What are you trying to accomplish?'; ta.value=state.answers.pb_goal||''; ta.rows=6;
-      ta.addEventListener('input', ()=>{ state.answers.pb_goal = ta.value; });
-      el.appendChild(ta);
-      el.insertAdjacentHTML('beforeend','<div class="help">Be specific (action, audience, constraints).</div>');
-    }
-  };
-  const sCtx = {
-    id:'ctx', title:'Context (optional)',
-    render: el=>{
-      el.innerHTML='';
-      const ta=document.createElement('textarea'); ta.placeholder='Audience, constraints, domain, style, tone… (optional)'; ta.value=state.answers.pb_ctx||''; ta.rows=5;
-      ta.addEventListener('input', ()=>{ state.answers.pb_ctx = ta.value; });
-      el.appendChild(ta);
-    }
-  };
-  const sKw = {
-    id:'kw', title:'Keywords (optional)',
-    render: el=>{
-      el.innerHTML='';
-      const input=document.createElement('input'); input.type='text'; input.placeholder='e.g., summarize, compare, AIDA, interview…'; input.value=state.answers.pb_kw||'';
-      input.addEventListener('input', ()=>{ state.answers.pb_kw = input.value; });
-      el.appendChild(input);
-    }
-  };
-  const sRec = {
-    id:'rec', title:'Recommended frameworks',
-    render: el=>{
-      el.innerHTML='';
-      const q=[state.answers.pb_goal,state.answers.pb_ctx,state.answers.pb_kw].filter(Boolean).join(' ');
-      const ranked = filterAndScore(q, '', '', []).map(x=>x.ref);
-      const top = ranked.filter(f=>f.id!=='none').slice(0,3).map(r => byId(r.id));
-      if (!top.length){
-        el.insertAdjacentHTML('beforeend','<div class="help">Type a goal/context to see matches.</div>');
-        return;
-      }
-      top.forEach(f=>{
-        const row=document.createElement('div'); row.className='panel'; row.style.padding='10px';
-        row.innerHTML = `
-          <div>
-            <div><strong>${f.label}</strong></div>
-            <div class="help">${(f.use_cases||[]).slice(0,2).join(' • ') || (f.definition||'')}</div>
-            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn tiny" href="${builderURL(f.slug||f.id)}" target="_blank" rel="noopener">Prompt Builder</a>
-              <button class="btn tiny" type="button" data-use="${f.id}">Use here</button>
-            </div>
-          </div>`;
-        el.appendChild(row);
-      });
-      el.addEventListener('click', ev=>{
-        const b = ev.target.closest('[data-use]');
-        if (!b) return;
-        const id = b.getAttribute('data-use');
-        const f = byId(id);
-        if (f){ state.fw = f; state.answers={}; buildFlow(); render(); }
-      }, { once:true });
-    }
-  };
-  const sAsk = {
-    id:'ask', title:'Ask ChatGPT directly',
-    render: el=>{
-      el.innerHTML='';
-      const lines=[];
-      if (state.answers.pb_goal) lines.push('Goal: '+state.answers.pb_goal);
-      if (state.answers.pb_ctx)  lines.push('Context: '+state.answers.pb_ctx);
-      if (state.answers.pb_kw)   lines.push('Keywords: '+state.answers.pb_kw);
-      const prompt = [
-        'You are a prompt-framework recommender.',
-        'Recommend the 3 best frameworks/patterns for my task.',
-        'For each: name, when to use it, and how it helps.',
-        'Then give me a single prompt applying the best one.'
-      ].join(' ');
-      const text = [prompt, ...lines].join('\n');
-      const pre=document.createElement('pre'); pre.className='output'; pre.textContent=text;
-      el.appendChild(pre);
+let topIndex = 0; // rotating window start
 
-      const has = !!text.trim();
-      btnCopy.hidden = !has;
-      btnChat.hidden = !has;
-      linkPB.hidden  = false;
-      btnPrint.hidden= !has;
-
-      // NEW wrappers
-      btnCopy.onclick = ()=> handleCopy(text);
-      btnChat.onclick = ()=> handleAsk(text);
-      linkPB.href = builderURL('none');
-      btnPrint.onclick = ()=>{
-        const u = new URL('./prompt-worksheet.html', location.href);
-        u.searchParams.set('slug', 'none');
-        u.searchParams.set('text', text);
-        window.open(u.toString(), '_blank', 'noopener,noreferrer');
-      };
-    }
-  };
-  return [introStepFor(state.fw), sGoal, sCtx, sKw, sRec, sAsk];
-}
-
-function genericFlow(fw){
-  const steps=[introStepFor(fw)];
-  (Array.isArray(fw.fields) ? fw.fields : []).forEach(f => steps.push(fieldStep(f)));
-  steps.push(finishStepFor(fw));
-  return steps;
-}
-
-function buildFlow(){
-  state.idx = 0;
-  state.maxVisited = 0;
-  state.steps = (state.fw.id==='none') ? pickerFlow() : genericFlow(state.fw);
-}
-
-/* ========= Render ========= */
-function render(){
-  if (state.mode==='setup'){
-  document.body.classList.add('is-setup');
-    // header & controls state
-    document.getElementById('builderLink').href = builderURL();
-    btnPrev.hidden = true;
-    btnNext.hidden = true;
-    btnBackSetup.hidden = true;
-    btnCopy.hidden = true; btnChat.hidden = true; btnPrint.hidden = true; linkPB.hidden = true;
-
-    renderSetup();
-    setProgress(0,0);
+function renderTop(rows){
+  const top = el('wizTopCards');
+  if (!rows.length){
+    top.innerHTML = `<div class="muted">no matches yet — try a different search</div>`;
+    el('wizTopMeta').textContent = `showing 0 of 0 (out of ${allRows.length||0})`;
     return;
   }
-
-  // FLOW mode
-  document.body.classList.remove('is-setup'); 
-  fwName.textContent = (state.fw.id==='none') ? 'Template Picker' : state.fw.label;
-
-  // steps list
-  stepList.innerHTML='';
-  state.steps.forEach((s,i)=>{
-    const li = document.createElement('li');
-    const done = i <= state.maxVisited;
-    li.className = (done ? 'done ' : '') + (i===state.idx ? 'active' : '');
-    li.innerHTML = `<span class="num">${i+1}</span><span>${s.title}</span>`;
-    li.addEventListener('click', ()=>{ state.idx=i; state.maxVisited=Math.max(state.maxVisited, i); render(); });
-    stepList.appendChild(li);
-  });
-
-  // stage
-  const cur = state.steps[state.idx];
-  stepTitle.textContent = cur.title;
-  stepPane.innerHTML='';
-  // reset action buttons BEFORE rendering the step;
-// step renderers will unhide them when appropriate
-btnCopy.hidden = true;
-btnChat.hidden = true;
-btnPrint.hidden = true;
-
-  cur.render(stepPane);
-
-  // center header+field only if there is a field
-  const hasField = !!stepPane.querySelector('input, textarea, select, .field');
-  stageWrap.classList.toggle('centered', hasField);
-
-  // nav visibility
-  const atFirst = state.idx===0, atLast = state.idx>=state.steps.length-1;
-  btnPrev.hidden = false; btnNext.hidden = false; btnBackSetup.hidden = false;
-  btnPrev.disabled = atFirst;
-  btnNext.disabled = atLast;
-
-  // PB link always points to chosen fw
-  linkPB.href = builderURL(state.fw.slug || state.fw.id);
-  linkPB.hidden = false; // keep Prompt Builder link visible during flow
-
-
-
-  setProgress(state.idx, state.steps.length);
+  // compute current window [topIndex, topIndex+3)
+  const start = topIndex % rows.length;
+  const slice = [rows[start], rows[(start+1)%rows.length], rows[(start+2)%rows.length]].filter(Boolean);
+  top.innerHTML = slice.map(cardHTML).join('');
+  el('wizTopMeta').textContent = `showing ${Math.min(3, rows.length)} of ${rows.length} (out of ${allRows.length||0})`;
 }
 
-/* ========= Wire controls ========= */
-btnPrev.addEventListener('click', ()=>{ if (state.idx>0){ state.idx--; render(); } });
-btnNext.addEventListener('click', ()=>{ if (state.idx<state.steps.length-1){ state.idx++; state.maxVisited=Math.max(state.maxVisited, state.idx); render(); } });
-btnBackSetup.addEventListener('click', ()=>{ state.mode='setup'; render(); });
-btnSetup.addEventListener('click', ()=>{ state.mode='setup'; render(); });
 
-// Deep link ?slug=
-(function boot(){
-  const p = new URLSearchParams(location.search);
-  const slug = (p.get('slug')||'').trim().toLowerCase();
-  const initial = slug ? (bySlug(slug) || byId(slug) || TEMPLATE_PICKER) : TEMPLATE_PICKER;
-  state.mode = 'setup';       // show Setup first
-  state.fw = initial;
-  render();                   // initial render is setup
+
+  // ===== Startup compute =====
+  let allRows = [];       // every template row
+  let matchRows = [];     // current filtered rows
+function recompute(query=''){
+  // delegate to the unified scanner; do not save history on incidental recomputes
+  if (typeof window.__startScan === 'function'){
+    window.__startScan(String(query||''), { saveHistory:false });
+  }
+}
+
+  // ===== Typeahead =====
+// ===== Typeahead (use-cases + recents) =====
+(function wireTypeahead(){
+  const qEl  = el('wizQ');
+  const sug  = el('taSug');
+  const box  = qs('#taSug .box');
+
+  let idx = -1, open = false, curList = []; // curList items: {bucket:'uc'|'tag'|'recent', text, t?, kind?, isTask?}
+
+  function renderRows(list){
+    box.innerHTML = list.map((r,i)=>`
+      <div class="row" role="option" data-i="${i}">
+        <div style="display:flex; flex-direction:column; gap:2px; width:100%">
+          <div class="lbl">${r.text}</div>
+          <div class="muted" style="font-size:12px; display:flex; gap:8px; align-items:center;">
+            ${r.t ? `<span>${r.t.label||r.t.slug||'template'}</span>` : `<span>recent</span>`}
+            ${r.bucket!=='recent' ? `<span class="pill" style="padding:2px 8px">${r.bucket}${r.isTask?' · task':''}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+  function openSug(list){
+    curList = list.slice(0,8);
+    if (curList.length===0){ hideSug(); return; }
+    renderRows(curList);
+    sug.hidden = false; open = true; idx = 0; highlight(idx);
+  }
+  function hideSug(){ sug.hidden = true; open = false; idx = -1; curList = []; }
+  function highlight(i){
+    [...box.querySelectorAll('.row')].forEach((r,k)=> r.setAttribute('aria-selected', k===i?'true':'false'));
+  }
+
+  function startScan(query, opts={}){
+    // Update top-3 + all-matches based on ranked suggestions; do not navigate.
+    const q = String(query||'').trim();
+    if (opts.saveHistory) saveRecent(q);
+
+    // Rank suggestions, then collapse to unique templates by order
+    const ranked = q ? rankSuggestions(q, 64) : [];
+    const seen = new Set();
+    const dedupRows = [];
+    for (const s of ranked){
+      const t = s.t; if (!t) continue;
+      const slug = (t.slug||t.id||t.label||'').toLowerCase();
+      if (seen.has(slug)) continue;
+      seen.add(slug);
+      dedupRows.push({ // row used by Top/All renders
+        id:t.id, slug:t.slug, key:t.key, label:(t.label||t.slug||t.id||'template'),
+        definition:(t.definition||t.help||''), useText: s.text, kind:(t.kind||'framework'), ref:t
+      });
+    }
+
+    matchRows = dedupRows.length ? dedupRows : rowsFromTemplates(allTemplates()).sort((a,b)=> a.label.localeCompare(b.label));
+    el('wizMatchMeta').textContent = `${matchRows.length} matches of ${rowsFromTemplates(allTemplates()).length} total`;
+
+    topIndex = 0;
+    renderAllSelect(matchRows);
+    renderTop(matchRows);
+  }
+
+  function choose(i){
+    const r = curList[i]; if (!r) return;
+    qEl.value = r.text;
+    hideSug();
+    if (r.bucket==='recent'){
+      // Re-rank for this query, then show top-3; save to history again
+      startScan(r.text, { saveHistory:true });
+    }else{
+      startScan(r.text, { saveHistory:true });
+    }
+  }
+
+  qEl.addEventListener('focus', ()=>{
+    const val = qEl.value.trim();
+    if (!val) openSug(buildIdleSuggestions(8));
+  });
+  qEl.addEventListener('blur', ()=>{
+    // Delay to allow click selection
+    setTimeout(()=> hideSug(), 120);
+  });
+
+  qEl.addEventListener('input', ()=>{
+    const val = qEl.value;
+    if (!val.trim()){
+      openSug(buildIdleSuggestions(8));
+      // optional: keep Top-3 as last “run”; don’t overwrite
+      return;
+    }
+    // Live suggestions; also update Top-3 live without writing history
+    openSug(rankSuggestions(val, 8));
+    // Live top refresh (no history write)
+    startScan(val, { saveHistory:false });
+  });
+
+  qEl.addEventListener('keydown', (e)=>{
+    if (!open){
+      if (e.key==='Enter'){
+        e.preventDefault();
+        startScan(qEl.value, { saveHistory:true }); // run typed query
+      }
+      return;
+    }
+    if (e.key==='ArrowDown'){ idx = Math.min(curList.length-1, idx+1); highlight(idx); e.preventDefault(); }
+    else if (e.key==='ArrowUp'){ idx = Math.max(0, idx-1); highlight(idx); e.preventDefault(); }
+    else if (e.key==='Enter'){ e.preventDefault(); choose(idx>=0?idx:0); }
+    else if (e.key==='Escape'){ hideSug(); }
+  });
+
+  box.addEventListener('mousedown', (e)=>{
+    // mousedown so blur doesn’t cancel
+    const row = e.target.closest('.row'); if (!row) return;
+    choose(+row.dataset.i);
+  });
+
+  // expose for other buttons
+  window.__startScan = startScan;
 })();
-</script>
 
+  // ===== Header search router: if not on Startup, bounce back then replay =====
+  (function headerSearchRouter(){
+    const qEl  = el('wizQ'), goEl = el('wizGo');
+    let reenter = false; // guard so native handler runs once   [oai_citation:15‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
+    function currentView(){ return !el('wizViewStartup').classList.contains('hide') ? 'startup' :
+                                   !el('wizViewStep0').classList.contains('hide') ? 'step0' : 'steps'; }
+    function gotoStartup(){ if (currentView()!=='startup'){ showView('startup'); } }
+
+    goEl.addEventListener('click', (e)=>{
+      if (reenter || currentView()==='startup') return;
+      e.preventDefault(); e.stopPropagation();
+      gotoStartup();
+      setTimeout(()=>{ reenter=true; try{ goEl.click(); } finally{ reenter=false; } }, 0);  /*  [oai_citation:16‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV) */
+    }, true);
+
+    qEl.addEventListener('keydown', (e)=>{
+      if (e.key!=='Enter' || currentView()==='startup') return;
+      e.preventDefault(); e.stopPropagation();
+      const ev = new KeyboardEvent('keydown', { key:'Enter', bubbles:true, cancelable:true });
+      gotoStartup();
+      setTimeout(()=>{ reenter=true; try{ qEl.dispatchEvent(ev);} finally{ reenter=false; } }, 0);  /*  [oai_citation:17‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV) */
+    }, true);
+  })();
+
+// ===== Startup actions =====
+el('wizGo').addEventListener('click', ()=>{
+  const val = el('wizQ').value;
+  if (document.getElementById('taSug') && !document.getElementById('taSug').hidden){
+    // dropdown is open → choose top suggestion
+    if (typeof window.__startScan === 'function'){
+      window.__startScan(val, { saveHistory:true });
+    }
+  }else{
+    // no dropdown → run typed query
+    if (typeof window.__startScan === 'function'){
+      window.__startScan(val, { saveHistory:true });
+    }
+  }
+});
+
+
+  el('wizClear').addEventListener('click', ()=>{ el('wizQ').value=''; recompute(''); });
+
+  document.addEventListener('change', (ev)=>{
+    const elx = ev.target;
+    if (elx && elx.id==='wizAllSelect'){
+      const opt = elx.selectedOptions && elx.selectedOptions[0]; if (!opt) return;
+      const slug = opt.getAttribute('data-slug')||''; const id = opt.getAttribute('data-id')||'';
+      const t = (allTemplates().find(x => (x.slug||'')===slug || (x.id||'')===id) || {}).ref || allTemplates().find(x => (x.slug||'')===slug || (x.id||'')===id) || null;
+      if (!t) return;
+      openStep0(t);  // delegated select → step0   [oai_citation:18‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
+    }
+  }, true);
+
+
+
+
+  // Quick actions
+  el('btnLucky').addEventListener('click', ()=>{
+    const T = [...allTemplates()];
+    for (let i=T.length-1;i>0;i--){ const j=(Math.random()* (i+1))|0; [T[i],T[j]]=[T[j],T[i]]; }
+    const rows = rowsFromTemplates(T).slice(0,3);
+    el('wizTopCards').innerHTML = rows.map(cardHTML).join('');
+  });
+  el('btnHelp').addEventListener('click', ()=>{
+    const rows = matchRows.filter(r => /picker|helper|guide|wizard/i.test(r.label + ' ' + r.useText)).slice(0,3);
+    el('wizTopCards').innerHTML = (rows.length? rows: matchRows.slice(0,3)).map(cardHTML).join('');
+  });
+
+  // Click “Use this template” on any card → Step 0 (delegated)
+  document.addEventListener('click', (ev)=>{
+    const btn = ev.target.closest('.js-use'); if (!btn) return;
+    const card = btn.closest('.card'); if (!card) return;
+    const slug = card.getAttribute('data-slug')||''; const id = card.getAttribute('data-id')||'';
+    const t = allTemplates().find(x => (x.slug||'')===slug || (x.id||'')===id) || null;
+    if (t) openStep0(t);   // delegated button → step0   [oai_citation:19‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
+  }, true);
+
+  // ===== View switching (page version of your controller) =====
+function showView(name){
+  const s0 = el('wizViewStartup'), s1 = el('wizViewStep0'), s2 = el('wizViewSteps');
+  s0.classList.toggle('hide', name!=='startup');
+  s1.classList.toggle('hide', name!=='step0');
+  s2.classList.toggle('hide', name!=='steps');
+
+  // header affordances: show "exit to search" when not on main page
+  const isStartup = name === 'startup';
+  const exitSearch = el('btnExitSearch');
+  if (exitSearch) exitSearch.classList.toggle('hide', isStartup);
+
+  // NEW: Only show quick action buttons on Startup
+  ['btnHelp','btnLucky'].forEach(id=>{
+    const btn = el(id);
+    if (btn) btn.classList.toggle('hide', !isStartup);
+  });
+
+  // Optional: collapse the row entirely so there’s no extra gap
+  const quickRow = document.querySelector('.quickRow');
+  if (quickRow) quickRow.classList.toggle('hide', !isStartup);
+}
+
+  
+  
+  // Next 3 — cycle the rotating window
+el('btnNext3').addEventListener('click', ()=>{
+  if (!matchRows.length) return;
+  topIndex = (topIndex + 3) % Math.max(1, matchRows.length);
+  renderTop(matchRows);
+});
+
+  // ===== Step 0 =====
+  let CURRENT = null;
+  function renderStep0Meta(t){
+    el('wizStep0Title').textContent = String(t.label||t.slug||t.id||'template');
+    const def = String(t.definition||t.help||'').trim();
+    el('wizStep0Def').textContent = def;
+    const fields = Array.isArray(t.fields) ? t.fields.length : 0;
+    const useCount = Array.isArray(t.use_cases) ? t.use_cases.length : 0;
+    el('wizStep0Stats').innerHTML =
+      `<li><strong>${useCount}</strong> use-cases</li>
+       <li><strong>${fields}</strong> fields</li>
+       <li><strong>${estimateTimeByFields(fields)}</strong> to complete</li>`;
+    el('wizStep0Uses').innerHTML = (t.use_cases||[]).map(u=>`<li>${u}</li>`).join('') || `<li class="muted">no use-cases listed</li>`;
+  }
+
+  function openStep0(t){
+    CURRENT = t;
+    renderStep0Meta(t);
+    showView('step0');
+    el('wizTopProgress').classList.add('hide'); // add this
+  }
+
+
+// Expand long definitions: reveal full text, hide short + button
+document.addEventListener('click', (ev)=>{
+  const more = ev.target.closest('.js-more'); if (!more) return;
+  const id = more.getAttribute('data-target'); const def = document.getElementById(id);
+  if (!def) return;
+  const short = def.querySelector('.short');
+  const full  = def.querySelector('.full');
+  if (full){ if (short) short.hidden = true; full.hidden = false; }
+  more.remove();
+}, true);
+
+// ---- Field state tracking (touched & values) ----
+const TOUCH = new Set();           // field ids user interacted with
+const VALUES = new Map();          // field id -> current value text
+
+function computeFieldId(f){
+  const base = (f.id||f.key||f.slug||f.label||('x_'+Math.random().toString(36).slice(2))).toString();
+  return 'fld_'+base.toLowerCase().replace(/[^a-z0-9]+/g,'_');
+}
+function isTextAreaOrRepeater(f){
+  const t = String(f.type||'').toLowerCase();
+  return /textarea|repeater/.test(t);
+}
+function fieldFilled(fid){
+  const el = document.getElementById(fid);
+  const v = el ? (el.value||'').trim() : (VALUES.get(fid)||'').trim();
+  return v.length>0;
+}
+// Read a field by id; prefer the VALUES map (survives step unmounts)
+function wiz_getVal(id){
+  const v = (VALUES.get(id) ?? '').toString().trim();
+  if (v) return v;
+  const el = document.getElementById(id);
+  return ((el && el.value) ? String(el.value).trim() : '');
+}
+function encouragement(p){
+  if (p>=100) return 'ready to ship';
+  if (p>=90)  return 'final polish';
+  if (p>=75)  return 'home stretch';
+  if (p>=50)  return 'over halfway';
+  if (p>=25)  return 'nice pace';
+  if (p>0)    return 'good start';
+  return 'let’s get rolling';
+}
+
+// collect remaining work for time estimate (template-only steps)
+function remainingFieldCount(){
+  if (!Array.isArray(STEPS)||!STEPS.length) return 0;
+  let total = 0;
+  for (const g of STEPS){
+    if (g.special) continue; // skip overview/extra/output from ETA
+    for (const fid of (g.fids||[])) total += fieldFilled(fid)?0:1;
+  }
+  return total;
+}
+
+
+
+function stepStatusFor(i){
+  const S = STEPS[i]; if (!S) return '';
+  if (S.special) return ''; // overview/extra/output are informational
+  const fids = S.fids||[];
+  if (!fids.length) return 'done';
+  const allFilled = fids.every(fieldFilled);
+  if (allFilled) return 'done';
+  const anyTouched = fids.some(fid => TOUCH.has(fid) || (VALUES.get(fid)||'').trim().length>0);
+  return anyTouched ? 'warn' : '';
+}
+
+function updateStepStates(prevIndex){
+  const items = document.querySelectorAll('#wizStepList li');
+  items.forEach((li, i)=>{
+    li.classList.remove('done','warn');
+    const s = stepStatusFor(i);
+    if (s) li.classList.add(s);
+    li.setAttribute('aria-current', i===STEP_INDEX ? 'true' : 'false');
+  });
+  if (typeof prevIndex==='number'){
+    const li = items[prevIndex];
+    if (li){
+      li.classList.remove('done','warn');
+      const s = stepStatusFor(prevIndex);
+      if (s) li.classList.add(s);
+    }
+  }
+}
+
+function updateTopProgress(){
+  const bar = el('tpBar'), stepTxt = el('tpStep'), pctTxt = el('tpPct'), encTxt = el('tpEnc'), timeTxt = el('tpTime');
+  const totalSteps = STEPS.length||1;
+  const cur = STEP_INDEX+1;
+  stepTxt.textContent = `step ${cur} of ${totalSteps}`;
+
+  const req = (STEPS.filter(s=>!s.special).flatMap(s=> s.fids||[])).length || 1;
+  const filled = STEPS.filter(s=>!s.special).flatMap(s=> s.fids||[]).reduce((n,fid)=> n + (fieldFilled(fid)?1:0), 0);
+  const pct = Math.round((filled/req)*100);
+  bar.style.width = pct+'%';
+  pctTxt.textContent = `${pct}%`;
+  encTxt.textContent = encouragement(pct);
+
+  const rem = remainingFieldCount();
+  timeTxt.textContent = `${estimateTimeByFields(rem)} left`;
+}
+
+/* ==== Slice 2: Extras parity — helpers =================================== */
+
+/* Get the joined boosters string for the current framework (or '') */
+function wiz_defaultBooster(fw){
+  const boosters = Array.isArray(fw?.boosters) ? fw.boosters : [];
+  return boosters.join(' ').trim();
+}
+
+/* Update a small char counter next to a textarea */
+function wiz_updateCounter(textareaEl, counterEl){
+  if (!textareaEl || !counterEl) return;
+  const n = (textareaEl.value || '').length;
+  counterEl.textContent = `${n} chars`;
+}
+
+// Set input/textarea/select values from VALUES so edits persist across step switches
+function wiz_hydrateFields(container){
+  if (!container) return;
+  container.querySelectorAll('input[type="text"], textarea, select').forEach(ctrl=>{
+    const id = ctrl.id; if (!id) return;
+    const saved = VALUES.get(id);
+    if (typeof saved === 'string') ctrl.value = saved;
+  });
+}
+
+/* Wire Extras UI: placeholder, optional prefill, counters, and Restore */
+function wiz_bindExtrasUI(fw){
+  const extra   = document.getElementById('extra');
+  const extraCt = document.getElementById('extraCnt');
+  const more    = document.getElementById('extraMore');
+  const moreCt  = document.getElementById('extraMoreCnt');
+  const restore = document.getElementById('extraRestore');
+
+  if (!extra || !more) return;
+
+  const boosters = wiz_defaultBooster(fw);
+
+  // 1) Hydrate from saved VALUES first (so user text persists across step changes)
+  const savedExtra = wiz_getVal('extra');
+  const savedMore  = wiz_getVal('extraMore');
+  if (savedExtra){ extra.value = savedExtra; }
+  if (savedMore){  more.value  = savedMore;  }
+
+  // 2) If still empty and boosters exist, seed boosters as initial value (default shows in Output)
+  if (!extra.value && boosters){
+    extra.value = boosters;
+    VALUES.set('extra', boosters);
+  }
+
+  // 3) Always show boosters as placeholder (visual hint)
+  extra.placeholder = boosters || 'Write instructions to replace the template’s boosters (optional)';
+
+  // 4) Counters (initial paint)
+  wiz_updateCounter(extra, extraCt);
+  wiz_updateCounter(more,  moreCt);
+
+  // 5) Input listeners keep VALUES map & preview in sync
+  const onInput = (ev)=>{
+    const t = ev.target;
+    if (!t || !t.id) return;
+    VALUES.set(t.id, t.value || '');
+    if (t.id === 'extra') wiz_updateCounter(extra, extraCt);
+    if (t.id === 'extraMore') wiz_updateCounter(more,  moreCt);
+    renderPreviewMaybe();
+  };
+  extra.addEventListener('input', onInput);
+  more.addEventListener('input', onInput);
+
+  // 6) Restore button → boosters as current value (+ preview)
+  if (restore){
+    restore.disabled = !boosters;
+    restore.addEventListener('click', ()=>{
+      if (!boosters) return;
+      extra.value = boosters;
+      VALUES.set('extra', boosters);
+      wiz_updateCounter(extra, extraCt);
+      renderPreviewMaybe();
+      extra.focus();
+    });
+  }
+
+  // 7) Ensure preview matches hydrated/seeded values even if user never types here
+  renderPreviewMaybe();
+}
+
+
+/* ==== Wizard → Prompt composer (Slice 1 shim) ============================= */
+/* Collect Common Context (Step 1) safely from DOM */
+function wiz_collectCommonContext(){
+  const use   = wiz_getVal('ctx_use');
+  const aud   = wiz_getVal('ctx_aud');
+  const style = wiz_getVal('ctx_style');
+  const tone  = wiz_getVal('ctx_tone');
+
+  const bits = [];
+  if (use)   bits.push(`Use-case: ${use}`);
+  if (aud)   bits.push(`Audience: ${aud}`);
+  if (style) bits.push(`Style: ${style}`);
+  if (tone)  bits.push(`Tone: ${tone}`);
+  const ctx = bits.join(' | ');
+
+  const persona = aud ? `Persona/Audience: ${aud}${style?` | Style: ${style}`:''}${tone?` | Tone: ${tone}`:''}` : '';
+
+  return { ctx, persona, raw:{ use, aud, style, tone } };
+}
+
+/* Split textareas/repeaters into list items (— or newline separated) */
+function wiz_toItems(s){
+  const txt = String(s||'').trim();
+  if (!txt) return [];
+  // Support '---' dividers, bullet-like lines, and plain newlines
+  return txt
+    .split(/\n-{3,}\n|^- |\n- |\n• |\n· |\r?\n/gm)
+    .flatMap(x => String(x).split(/\r?\n/g))
+    .map(x => x.trim())
+    .filter(Boolean);
+}
+
+/* Collect template field values keyed by the template’s own keys */
+function wiz_collectTemplateFields(fw){
+  const bag = {}; // key -> string value
+  const lists = {}; // key -> array value
+  const fields = Array.isArray(fw?.fields) ? fw.fields : [];
+
+  for (const f of fields){
+    const key = (f.key || f.id || f.slug || f.label || '').toString().trim();
+    if (!key) continue;
+    const fid = computeFieldId(f);
+    const el  = document.getElementById(fid);
+    const raw = (el ? el.value : (VALUES.get(fid)||'')).trim();
+
+    if (!raw){ continue; } // omit empty fields entirely
+
+    const type = String(f.type||'').toLowerCase();
+    const isListish = /textarea|repeater/.test(type);
+
+    if (isListish){
+      const arr = wiz_toItems(raw);
+      if (arr.length){ lists[key] = arr; }
+    }else{
+      bag[key] = raw;
+    }
+  }
+
+  // add list aliases and singular convenience keys
+  for (const [k,arr] of Object.entries(lists)){
+    bag[k] = arr.join('\n');         // keep a joined string for template convenience
+    bag[`${k}_list`]  = arr;
+    bag[`${k}_items`] = arr;
+    bag[`${k}_arr`]   = arr;
+    if (k.endsWith('s') && arr.length===1){
+      const singular = k.replace(/s$/, '');
+      if (singular && !(singular in bag)) bag[singular] = arr[0];
+    }
+  }
+
+  return bag;
+}
+
+/* Extras — user text wins; otherwise boosters from the framework */
+function wiz_extras(fw){
+  // Has the user ever edited #extra this session?
+  var userTouchedExtra = VALUES.has('extra');
+
+  // Current values (survive when Extras step is unmounted)
+  var rawExtra  = wiz_getVal('extra');      // user's text if any
+  var extraMore = wiz_getVal('extraMore');  // appended after the labeled block
+
+  // Default boosters (string; may be empty)
+  var boosters = wiz_defaultBooster(fw);
+
+  // Semantics:
+  // - If user NEVER touched #extra: show boosters by default (even if the box is empty).
+  // - If user HAS touched #extra:
+  //     - use their text;
+  //     - if they cleared it, omit the boosters (no "Additional instructions" unless extraMore exists).
+  var chosen = userTouchedExtra
+    ? (rawExtra ? rawExtra.trim() : '')                  // touched → user text wins; empty means "none"
+    : ((rawExtra ? rawExtra.trim() : '') || boosters);   // untouched → boosters by default
+
+  var hasChosen = !!chosen;
+  var hasMore   = !!extraMore;
+
+  var extraCombined = '';
+  if (hasChosen && hasMore){
+    extraCombined = 'Additional instructions: ' + chosen + '\n\n' + extraMore;
+  } else if (hasChosen){
+    extraCombined = 'Additional instructions: ' + chosen;
+  } else if (hasMore){
+    // Keep the label even if only extraMore exists
+    extraCombined = 'Additional instructions: ' + extraMore;
+  }
+
+  return {
+    boosterFallback: boosters,
+    extraChosen:     chosen,
+    extraMore:       extraMore,
+    extraCombined:   extraCombined
+  };
+}
+
+/* Compose final text in PB order: Header → Persona → Body → Extra */
+function wiz_composePrompt(){
+  const fw = CURRENT || {};                            // active template
+  const label = String(fw.label || fw.slug || fw.id || 'template').trim();
+  const def   = String(fw.definition || fw.help || '').trim();
+
+  // 1) Common Context
+  const CC  = wiz_collectCommonContext();
+
+  // 2) Template data bag (fields + CC for templates that use it)
+  const bag = Object.assign({ ctx: CC.ctx }, wiz_collectTemplateFields(fw));
+
+  // 3) Template body — prefer framework.template(bag); fallback to simple echo
+  let body = '';
+  try{
+    if (typeof fw.template === 'function'){
+      body = String(fw.template(bag) || '').trim();
+    }
+  }catch(_){}
+  if (!body){
+    // Safe fallback: print filled fields in a friendly way
+    const lines = [];
+    for (const [k,v] of Object.entries(bag)){
+      if (!v) continue;
+      if (Array.isArray(v)) continue; // aliases handled above; we printed joined string on k
+      lines.push(`${k}: ${v}`);
+    }
+    body = lines.join('\n');
+  }
+
+  // 4) Extras logic
+  const EX = wiz_extras(fw);
+
+  // 5) Header — self-describing
+  const header = def ? `Using ${label}: ${def}` : `Using ${label}`;
+
+  // 6) Persona fallback (only if body doesn’t already include persona markers)
+  const personaNeeded = !!CC.persona && !/persona|audience/i.test(body);
+  const personaBlock  = personaNeeded ? CC.persona : '';
+
+  // 7) Assemble in fixed order; collapse excess blank lines
+  const parts = [header, personaBlock, body, EX.extraCombined].filter(Boolean);
+  const txt = parts.join('\n\n')
+    .replace(/\n{3,}/g, '\n\n') // tidy
+    .trim();
+
+  return txt || '(no content yet)';
+}
+
+// Preview writer (Slice 1): always compose from wizard state
+function renderPreviewMaybe(){
+  const out = document.getElementById('out'); if (!out) return;
+
+  // Compose our final text using CURRENT + field values + common context + extras
+  const txt = wiz_composePrompt();
+
+  // If the page later ships PB's official makePromptForTab and you want to prefer it,
+  // you can gate it here, but for Slice 1 we rely on the shim for determinism.
+  out.textContent = txt;
+}
+
+  // ===== Steps (standalone renderer — uses template.fields directly) =====
+// ===== Steps (guided wizard with shared first/penultimate/final) =====
+function fieldInput(f){
+  const fid = computeFieldId(f);
+  const label = f.label||f.name||f.key||'field';
+  const desc  = f.desc||f.description||'';
+  const ph    = f.ph||f.placeholder||'';
+  const isLong = isTextAreaOrRepeater(f) || (ph&&ph.length>60) || (desc&&desc.length>80);
+
+  const control = isLong
+    ? `<label for="${fid}">${label}</label>
+       <textarea id="${fid}" name="${fid}" placeholder="${ph}"></textarea>
+       ${desc?`<div class="desc muted" style="margin-top:4px">${desc}</div>`:''}`
+    : `<label for="${fid}">${label}</label>
+       <input type="text" id="${fid}" name="${fid}" placeholder="${ph}">
+       ${desc?`<div class="desc muted" style="margin-top:4px">${desc}</div>`:''}`;
+
+  return `<div class="field" data-field-id="${fid}">${control}</div>`;
+}
+
+let SHOW_ALL = false, STEP_INDEX = 0, STEPS = [], REQUIRED_FIDS = [];
+
+// Build steps:
+// 1) Overview (shared): label + full definition + Common Context block (#commonCtxBody)
+// 2..N-2) Template-specific: textarea/repeater = own step; others batched up to 3; title = first field label
+// N-1) Extra (shared): #extra and #extraMore together
+// N) Output (shared): #out preview
+function buildSteps(t){
+  const fields = Array.isArray(t.fields)? t.fields : [];
+
+  // 1) Overview
+  const steps = [{ title:'overview', special:'overview', fields:[], fids:[] }];
+
+  // 2) Template-specific grouping
+  let bucket = [];
+  let bucketTitle = null;
+  function flushBucket(){
+    if (!bucket.length) return;
+    const fids = bucket.map(f => computeFieldId(f));
+    steps.push({ title: bucketTitle || (bucket[0]?.label||'fields'), fields:[...bucket], fids });
+    bucket = []; bucketTitle = null;
+  }
+  for (const f of fields){
+    if (isTextAreaOrRepeater(f)){
+      flushBucket();
+      const fid = computeFieldId(f);
+      steps.push({ title: (f.label||'section'), fields:[f], fids:[fid] });
+    }else{
+      if (!bucket.length) bucketTitle = f.label||'fields';
+      bucket.push(f);
+      if (bucket.length>=3) flushBucket();
+    }
+  }
+  flushBucket();
+
+  // 3) Extras (shared)
+  steps.push({ title:'extra instructions', special:'extra', fields:[], fids:['extra','extraMore'] });
+
+  // 4) Output (shared)
+  steps.push({ title:'output', special:'output', fields:[], fids:[] });
+
+  STEPS = steps;
+  STEP_INDEX = 0;
+  REQUIRED_FIDS = steps.filter(s=>!s.special).flatMap(s=> s.fids||[]);
+  
+    // --- Seed boosters into state so Output shows default instructions by default
+  if (!VALUES.has('extra') || (VALUES.get('extra')||'').trim()===''){
+    const b = wiz_defaultBooster(t);
+    if (b){ VALUES.set('extra', b); }
+  }
+
+  
+  renderSteps(t);
+  updateStepStates();
+  updateTopProgress();
+}
+
+function renderSteps(t){
+  // Rail
+  const list = el('wizStepList');
+  list.innerHTML = STEPS.map((s,i)=> `
+    <li data-i="${i}" ${i===STEP_INDEX?'aria-current="true"':''}>
+      <span class="pill">${i+1}</span>
+      <span>${s.special ? s.title : (s.title||('step '+(i+1)))}</span>
+    </li>`).join('');
+  list.querySelectorAll('li').forEach(li=>{
+    li.addEventListener('click', ()=>{
+      const prev = STEP_INDEX;
+      STEP_INDEX = +li.getAttribute('data-i');
+      updateStepStates(prev);
+      renderSteps(t);
+      updateTopProgress();
+    });
+  });
+
+  // Body
+  const S = STEPS[STEP_INDEX]||{fields:[]};
+  const body = el('wizStepBody');
+
+  if (S.special === 'overview'){
+    const lab = String((t && (t.label||t.slug||t.id)) || 'template');
+    const def = String((t && (t.definition||t.help)) || '').trim();
+    body.innerHTML = `
+      <h3 class="subhead" style="margin-bottom:6px">${lab}</h3>
+      <div class="muted" style="margin:0 0 10px">${def||'<em>no definition provided</em>'}</div>
+      <div class="subhead" style="margin:8px 0 6px">common context <span class="muted">(optional; same across templates)</span></div>
+      <div id="commonCtxBody">
+        <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
+        <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
+        <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
+        <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
+      </div>
+    `;
+} else if (S.special === 'extra'){
+  // HTML only; placeholder/prefill will be set by wiz_bindExtrasUI(t)
+  body.innerHTML = `
+    <h3 class="subhead">extra instructions</h3>
+
+    <div class="field" data-field-id="extra" style="margin-bottom:10px">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <label for="extra">Default included instructions</label>
+        <div class="muted" id="extraCnt" style="font-size:12px"></div>
+      </div>
+      <textarea id="extra" placeholder="Write instructions to replace the template’s boosters (optional)"></textarea>
+      <div class="desc muted" style="margin-top:6px; display:flex; gap:8px; align-items:center;">
+        <button type="button" id="extraRestore" class="btn sm">Restore recommended text</button>
+        <span class="muted" style="font-size:12px">Your text replaces the recommended boosters.</span>
+      </div>
+    </div>
+
+    <div class="field" data-field-id="extraMore" style="margin-top:8px">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <label for="extraMore">Anything else to include (optional)</label>
+        <div class="muted" id="extraMoreCnt" style="font-size:12px"></div>
+      </div>
+      <textarea id="extraMore" placeholder="Append any final details or constraints"></textarea>
+    </div>
+  `;
+  // Wire counters, placeholder/prefill, and Restore behavior
+   wiz_hydrateFields(body);
+  wiz_bindExtrasUI(t);
+  } else if (S.special === 'output'){
+    body.innerHTML = `
+      <h3 class="subhead">output</h3>
+      <pre id="out" class="wiz-output" aria-live="polite">(your generated prompt will appear here)</pre>
+    `;
+    renderPreviewMaybe();
+  } else {
+    // Template fields step
+    body.innerHTML = `<h3 class="subhead">${S.title||('step '+(STEP_INDEX+1))}</h3>` + S.fields.map(fieldInput).join('');
+     wiz_hydrateFields(body);
+  }
+  
+    // In "show all" mode, always append the Extras block below (unless already on extras/output)
+  if (SHOW_ALL && S.special !== 'extra' && S.special !== 'output'){
+    const boosters = wiz_defaultBooster(t);
+    const extrasBlock = `
+    <h3 class="subhead">extra instructions</h3>
+
+    <div class="field" data-field-id="extra" style="margin-bottom:10px">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <label for="extra">Default included instructions</label>
+        <div class="muted" id="extraCnt" style="font-size:12px"></div>
+      </div>
+      <textarea id="extra" placeholder="Write instructions to replace the template’s boosters (optional)"></textarea>
+      <div class="desc muted" style="margin-top:6px; display:flex; gap:8px; align-items:center;">
+        <button type="button" id="extraRestore" class="btn sm">Restore recommended text</button>
+        <span class="muted" style="font-size:12px">Your text replaces the recommended boosters.</span>
+      </div>
+    </div>
+
+    <div class="field" data-field-id="extraMore" style="margin-top:8px">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <label for="extraMore">Anything else to include (optional)</label>
+        <div class="muted" id="extraMoreCnt" style="font-size:12px"></div>
+      </div>
+      <textarea id="extraMore" placeholder="Append any final details or constraints"></textarea>
+    </div>
+  `;
+  // Wire counters, placeholder/prefill, and Restore behavior
+  wiz_hydrateFields(body);
+  wiz_bindExtrasUI(t);
+  }
+
+  // Nav buttons (hide vs. disable)
+  const isFirst = STEP_INDEX<=0, isLast = STEP_INDEX>=STEPS.length-1;
+  el('wizStepBack').style.display = isFirst ? 'none' : '';
+  el('wizStepNext').style.display = isLast  ? 'none' : '';
+  el('wizStepBack').disabled = isFirst;
+  el('wizStepNext').disabled = isLast;
+
+  // Delegate inputs → track TOUCH/VALUES, update states + progress + preview
+  const bodyEl = el('wizStepBody');
+  bodyEl.oninput = bodyEl.onchange = (ev)=>{
+    const t = ev.target;
+    if (!t || !t.id) return;
+    VALUES.set(t.id, t.value||'');
+    const wrapper = t.closest('[data-field-id]');
+    if (wrapper){ TOUCH.add(wrapper.getAttribute('data-field-id')); }
+    updateStepStates();
+    updateTopProgress();
+    renderPreviewMaybe();
+  };
+  bodyEl.onfocusin = (ev)=>{
+    const w = ev.target.closest('[data-field-id]');
+    if (w) TOUCH.add(w.getAttribute('data-field-id'));
+  };
+
+  updateStepStates();
+}
+
+// Step nav + show/hide top progress
+el('wizStep0Start').addEventListener('click', ()=>{
+  if (!CURRENT) return;
+  buildSteps(CURRENT);
+  showView('steps');
+  el('wizTopProgress').classList.remove('hide');
+  updateTopProgress();
+});
+el('wizExitSearch').addEventListener('click', ()=> { showView('startup'); el('wizTopProgress').classList.add('hide'); });
+el('wizShowAll').addEventListener('click', ()=>{ SHOW_ALL=!SHOW_ALL; renderSteps(CURRENT); updateTopProgress(); });
+el('wizStepBack').addEventListener('click', ()=>{
+  if (STEP_INDEX>0){ const prev=STEP_INDEX; STEP_INDEX--; updateStepStates(prev); renderSteps(CURRENT); updateTopProgress(); }
+});
+el('wizStepNext').addEventListener('click', ()=>{
+  if (STEP_INDEX<STEPS.length-1){ const prev=STEP_INDEX; STEP_INDEX++; updateStepStates(prev); renderSteps(CURRENT); updateTopProgress(); }
+});
+
+  // Advanced layout exit (just persist preference)
+  el('btnAdvanced').addEventListener('click', ()=> writeUI({ preferredMode:'classic' }));
+  
+  
+  
+  el('btnExitSearch').addEventListener('click', ()=> showView('startup'));
+
+// ===== Boot =====
+buildIndex();
+recompute('');                   // prime UI
+setTimeout(()=>{ buildIndex(); recompute(el('wizQ').value); }, 300); // pick up late dataset
+  </script>
+
+  <!-- ===== Only external deps (datasets) ===== -->
+  <script src="./templates.data.js"></script>
+  <script src="./templates.tasks.data.js"></script>
 </body>
 </html>
