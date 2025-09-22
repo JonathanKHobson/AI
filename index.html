@@ -1001,6 +1001,22 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
 .search input{ min-height:48px; }
 .search button{ min-height:48px; }
 
+/* Make each bar the positioning context */
+.search, .detailSearch { position: relative; }
+
+/* Dropdown spans the bar width and sits just below it */
+.search > .ta{
+  left: 0; right: 0;
+  top: calc(100% + 8px);
+  margin-top: 0;          /* override the old margin trick */
+  z-index: 300;           /* already above nearby content */
+}
+.detailSearch > .ta{
+  left: 0; right: 0;
+  top: calc(100% + 6px);
+  margin-top: 0;
+  z-index: 400;           /* above the details card */
+}
 
 
 
@@ -1274,7 +1290,7 @@ html.is-mobile .hero{ padding-top:18px; }
     <div class="bar">
       <button id="back" class="btn link backBtn" type="button" aria-label="Back to search">
   <span class="icon" aria-hidden="true">←</span>
-  <span class="label">back to search</span>
+  <span class="label">back to home</span>
 </button>
       <div class="spacer"></div>
       <button id="resultMenuBtn" class="btn link menuBtn" type="button"
@@ -3210,6 +3226,19 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
   window.__pushDetailsState = function(slug){
     try { history.pushState({ view:'details', slug: slug || null }, '', '#details'); } catch(e){}
   };
+})();
+</script>
+
+<script>
+// Anchor both dropdowns under their respective bars
+(function anchorTypeaheads(){
+  var ta  = document.getElementById('ta');
+  var bar = document.querySelector('.searchWrap .search');
+  if (ta && bar && ta.parentNode !== bar) bar.appendChild(ta);
+
+  var ta2  = document.getElementById('ta2');
+  var bar2 = document.querySelector('.detailSearchWrap .detailSearch');
+  if (ta2 && bar2 && ta2.parentNode !== bar2) bar2.appendChild(ta2);
 })();
 </script>
 
