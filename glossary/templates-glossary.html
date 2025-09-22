@@ -109,7 +109,7 @@ body::before{
    .wrap{ max-width:1600px; width:100%; margin:0 auto; padding:48px 24px 40px; display:grid; gap:24px }   
     header{display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:12px}
     .hdr-actions{ display:flex; gap:8px; align-items:center }
-#backToSearch{ text-transform:none } /* honor exact casing “Back to Search” */
+#backToSearch{ text-transform:none } /* honor exact casing “back to home” */
 #hdrPB{ text-transform:none }        /* keep label crisp */
     h1{font-size:24px; margin:0}
     .sub{color:var(--ink-2); font-size:13px}
@@ -400,7 +400,7 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
 <header>
   <div class="hdr-wrap">
     <!-- NEW: back-to-search button (upper-left) -->
-    <a id="backToSearch" class="btn btn-sm" href="../index.html" aria-label="Back to Search">← Back to Search</a>
+    <a id="backToSearch" class="btn btn-sm" href="../index.html" aria-label="back to home">← back to home</a>
 
     <h1>Prompt Template Glossary</h1>
     <div id="hdrCount" class="count">Showing …</div>
@@ -1205,13 +1205,13 @@ function buildChatGPTPrompt(t){
   const summary = buildTemplateSummary(t);
 
   return [
-    `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template and will share its full structure with you below to prime your understanding:`,
+    `You are an expert AI tutor specializing in prompt engineering. I am reviewing a "${kind}"-type prompt template called "${t.label}" and will share its full structure with you below to prime your understanding:`,
     ``,
     summary,
     ``,
     `Please begin by asking me what I would like to accomplish using this template. Then:`,
     `1) Explain the ${kind} at a practitioner level with 1–2 concrete examples.`,
-    `2) Contrast it with closely related terms (if any) and note common confusions.`,
+    `2) Contrast it with closely related templates (methods/techniques) and note common confusions.`,
     `3) Offer pitfalls, best practices, and a short checklist.`,
     `4) Suggest 3 reputable resources for deeper reading (link if possible).`,
     `5) Guide the user through the template provided for "${t.label || t.slug || t.id || ''}" (${kind}).`
@@ -1257,7 +1257,10 @@ function render(){
     const def  = h('div',{class:'muted'}, t.definition || '');
 
     const linkId = safeLinkId(t);
-    const pbUrl = `prompt-builder.html#${encodeURIComponent(linkId)}`;
+   // prefer the real slug; fall back to a safe, deterministic slug
+const pbSlug = (t.slug && String(t.slug).trim()) || slugify(t.label || t.id || 'template');
+const pbUrl  = `prompt-builder.html?slug=${encodeURIComponent(pbSlug)}`;
+
 
     const openPB = h('a',{
       class:'btn pb-btn btn-xs right',
