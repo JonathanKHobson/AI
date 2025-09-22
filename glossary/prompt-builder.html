@@ -347,11 +347,27 @@ header a{
   background: var(--card);
   font-weight: 600;
 }
-.btn.preview-toggle.primary{
+/* Light-only: inverted look works fine here */
+:root[data-theme="light"] .btn.preview-toggle.primary{
   background: var(--fg);
   color: #fff;
   border: 1px solid transparent;
 }
+
+/* Dark mode contrast fix for "Show Config" and "Show Preview" */
+html[data-theme="dark"] .btn.preview-toggle.primary{
+  background: var(--cta);   /* stays dark across themes */
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/* (optional) Slight hover lift that reads well on dark */
+html[data-theme="dark"] .btn.preview-toggle.primary:hover,
+html[data-theme="dark"] .btn.preview-toggle.primary:focus-visible{
+  filter: brightness(1.05);
+}
+
+
 
 /* Motion language: springy ease for interactive bits */
 .btn, .chip, .tab, .panel, .outCard{
@@ -821,6 +837,21 @@ letter-spacing: .04em;
 .metaLink{
   display:inline-flex; margin-bottom:4px;
 }
+
+/* Results header row (All Matches + live count) */
+#resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+#fwCount {
+  font: 12px/1.2 system-ui;
+  opacity: .85; /* harmonizes with your UI chrome */
+}
+
+
+
 .tinyLabel{
   font-size:11px; color:var(--muted); opacity:.85;
   padding:2px 8px; border:1px solid var(--border); border-radius:999px; background:var(--chip);
@@ -1486,9 +1517,12 @@ input:focus, textarea:focus, select:focus,
 
 
 
- <div id="setstHelp" class=".titledesc">
-    All Matches
-   <div id="fwListHelp" class="desc">
+<div id="setstHelp" class="titledesc">
+  <div id="resultsHeader" class="metaRow">
+    <span>All Matches</span>
+    <span id="fwCount" class="tinyLabel" aria-live="polite" title="Filtered result count">Showing 0 of 0</span>
+  </div>
+  <div id="fwListHelp" class="desc">
     This dropdown shows matching templates. Click to open it, then pick one.
   </div>
   </div>
@@ -2185,11 +2219,20 @@ const hits = base.filter(t => templateMatchesCompat(t, q, kind, tag, cat));
 
 
   // “Showing N / M” hint
-  const hint = document.getElementById('fwHint');
-  if (hint){
-    hint.hidden = false;
-    hint.textContent = `Showing ${hits.length} / ${all.length}`;
-  }
+// Move the counter out of the search bar:
+// 1) Silence the old inline hint inside the finder
+const hint = document.getElementById('fwHint');
+if (hint) {
+  hint.hidden = true;
+  hint.textContent = '';
+}
+
+// 2) Update the new counter next to "All Matches"
+const countEl = document.getElementById('fwCount');
+if (countEl) {
+  countEl.textContent = `Showing ${hits.length} of ${all.length}`;
+}
+
 
   sel.innerHTML = hits.map(t => {
 const label = t.label || t.name || t.slug || t.id || 'Untitled';
@@ -2216,6 +2259,7 @@ return `<option value="${val}">${label}${suffix}</option>`;
 
 
 
+document.getElementById('fwHint')?.setAttribute('hidden','');
 
 
 // Replace the older FIND with the unified one
