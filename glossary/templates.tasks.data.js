@@ -1426,6 +1426,11 @@ ph:'e.g., “Helpful PM”, “Curious analyst”',
 
   use_cases: [
     // Cross-platform + platform-specific scenarios
+    'Write a social media post',
+    'Social media post',
+    'Posting on social media',
+    'Sharing on social media',
+    'Crafting a social media post',
     'tailor an existing post across platforms while preserving intent',
     'write a net-new post optimized to a platform’s best practices',
     'brainstorm multiple campaign angles with mini-drafts per platform',
