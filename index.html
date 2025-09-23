@@ -3242,6 +3242,33 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
 })();
 </script>
 
+
+<script>
+  // --- redirect helper ---
+  function gotoWizard(t) {
+    if (!t) return;
+    const slug = t.slug || (t.label || '').toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9\-]/g, '')
+      .replace(/\-+/g, '-')
+      .replace(/^\-|\-$/g, '');
+    // If your wizard lives under /glossary/, swap to './glossary/startup-wizard.html'
+    const base = './glossary/startup-wizard.html';
+    window.location.assign(`${base}?slug=${encodeURIComponent(slug)}`);
+  }
+
+  // --- hijack details to route to the wizard ---
+  (function hijackShowDetails(){
+    const prev = window.showDetails;  // keep a reference just in case
+    window.showDetails = function(t){
+      gotoWizard(t);
+      // If you ever need to fall back to the old behavior for debugging,
+      // comment the line above and uncomment the line below:
+      // return prev ? prev(t) : undefined;
+    };
+  })();
+</script>
+
   
 </body>
 </html>
