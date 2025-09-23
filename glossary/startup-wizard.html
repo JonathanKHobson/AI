@@ -309,7 +309,15 @@ body::before{
 }
 
 /* ---- Top progress bar (under search) ---- */
-.wiz-topprog{ margin:6px auto 14px; width:100%; max-width:1120px; padding:0 16px; }
+/* container now stacks children with meta ON TOP of the bar */
+.wiz-topprog{
+  display:flex; 
+  flex-direction:column-reverse;  /* moves meta above the bar without touching HTML */
+  gap:8px;                         /* space between meta and bar */
+  margin:16px auto 14px;           /* extra top margin for separation from search */
+  width:100%; max-width:1120px; padding:0 16px;
+}
+
 .wiz-topprog .wiz-topprog-bar{
   height:8px; border-radius:999px; background:var(--chip); overflow:hidden;
   border:1px solid var(--border);
@@ -321,7 +329,8 @@ body::before{
 }
 .wiz-topprog .wiz-topprog-meta{
   display:flex; gap:8px; align-items:center; justify-content:space-between;
-  margin-top:6px; font-size:12.5px; color:var(--muted);
+  margin:0;                        /* let the container’s gap handle spacing */
+  font-size:12.5px; color:var(--muted);
 }
 .wiz-topprog .wiz-topprog-meta > span[aria-hidden="true"]{ opacity:.5; }
 .wiz-output{
@@ -329,6 +338,15 @@ body::before{
   padding:10px; font: 12.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   white-space:pre-wrap;
 }
+
+/* Typeahead: render above all app layers when portaled */
+#taSug.ta-portal{
+  position: fixed;         /* viewport-based, not limited by parents */
+  left: 0; top: 0;         /* real position set via JS */
+  width: auto;             /* real width set via JS */
+  z-index: 9999;           /* top of the app */
+}
+
 
 </style>
 </head>
@@ -338,7 +356,7 @@ body::before{
 <a class="btn sm" href="../index.html">← back to home</a>
 <div class="spacer"></div>
 <button class="btn sm hide" id="btnExitSearch">search</button>
-<a class="btn sm" href="./prompt-builder.html">exit to advanced layout</a>
+<button class="btn sm" id="btnAdvanced">exit to advanced layout</button>
   </header>
 
   <main class="wiz-root">
@@ -691,6 +709,26 @@ function recompute(query=''){
   const qEl  = el('wizQ');
   const sug  = el('taSug');
   const box  = qs('#taSug .box');
+  
+    const shell = qEl.closest('.wiz-searchShell'); // the pill that anchors the dropdown
+  let portalized = false;
+
+  function ensurePortal(){
+    if (!portalized){
+      sug.classList.add('ta-portal');
+      document.body.appendChild(sug); // move out of lower stacking contexts
+      portalized = true;
+    }
+  }
+  function positionSug(){
+    const r = shell.getBoundingClientRect();
+    // mirror the original left/right 8px padding of the search shell
+    const left  = Math.round(r.left + 8);
+    const top   = Math.round(r.bottom + 8);          // was calc(100% + 8px)
+    const width = Math.max(240, Math.round(r.width - 16));
+    Object.assign(sug.style, { left: left+'px', top: top+'px', width: width+'px' });
+  }
+
 
   let idx = -1, open = false, curList = []; // curList items: {bucket:'uc'|'tag'|'recent', text, t?, kind?, isTask?}
 
@@ -707,11 +745,16 @@ function recompute(query=''){
       </div>
     `).join('');
   }
-  function openSug(list){
+ function openSug(list){
     curList = list.slice(0,8);
-    if (curList.length===0){ hideSug(); return; }
+    if (curList.length === 0){ hideSug(); return; }
     renderRows(curList);
+    ensurePortal();
+    positionSug();
     sug.hidden = false; open = true; idx = 0; highlight(idx);
+  }
+  function hideSug(){
+    sug.hidden = true; open = false; idx = -1; curList = [];
   }
   function hideSug(){ sug.hidden = true; open = false; idx = -1; curList = []; }
   function highlight(i){
@@ -799,6 +842,12 @@ function recompute(query=''){
     const row = e.target.closest('.row'); if (!row) return;
     choose(+row.dataset.i);
   });
+  
+    // keep the portal aligned as the page moves/resizes
+  window.addEventListener('resize', ()=>{ if (!sug.hidden) positionSug(); });
+  // capture scrolls from any ancestor (left rail, main pane, window)
+  window.addEventListener('scroll', ()=>{ if (!sug.hidden) positionSug(); }, true);
+
 
   // expose for other buttons
   window.__startScan = startScan;
@@ -1416,7 +1465,12 @@ function renderSteps(t){
         <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
       </div>
     `;
-} else if (S.special === 'extra'){
+      // 🔧 Repaint saved values for use/audience/style/tone
+  wiz_hydrateFields(body);
+  
+} 
+
+else if (S.special === 'extra'){
   // HTML only; placeholder/prefill will be set by wiz_bindExtrasUI(t)
   body.innerHTML = `
     <h3 class="subhead">extra instructions</h3>
@@ -1456,10 +1510,35 @@ function renderSteps(t){
      wiz_hydrateFields(body);
   }
   
-    // In "show all" mode, always append the Extras block below (unless already on extras/output)
-  if (SHOW_ALL && S.special !== 'extra' && S.special !== 'output'){
-    const boosters = wiz_defaultBooster(t);
-    const extrasBlock = `
+// In "show all" mode, render the entire flow in one page
+if (SHOW_ALL){
+  const lab = String((t && (t.label||t.slug||t.id)) || 'template');
+  const def = String((t && (t.definition||t.help)) || '').trim();
+
+  // 1) Overview
+  let html = `
+    <h3 class="subhead" style="margin-bottom:6px">${lab}</h3>
+    <div class="muted" style="margin:0 0 10px">${def||'<em>no definition provided</em>'}</div>
+
+    <div class="subhead" style="margin:8px 0 6px">
+      common context <span class="muted">(optional; same across templates)</span>
+    </div>
+    <div id="commonCtxBody">
+      <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
+      <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
+      <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
+      <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
+    </div>
+  `;
+
+  // 2) All template-specific fields (each step’s fields, in order)
+  for (const s of STEPS){
+    if (s.special || !Array.isArray(s.fields)) continue;
+    html += `<h3 class="subhead">${s.title||'fields'}</h3>` + s.fields.map(fieldInput).join('');
+  }
+
+  // 3) Extras (same UI as the single-step version)
+  html += `
     <h3 class="subhead">extra instructions</h3>
 
     <div class="field" data-field-id="extra" style="margin-bottom:10px">
@@ -1482,10 +1561,20 @@ function renderSteps(t){
       <textarea id="extraMore" placeholder="Append any final details or constraints"></textarea>
     </div>
   `;
-  // Wire counters, placeholder/prefill, and Restore behavior
+
+  // 4) Output preview (same preview hook)
+  html += `
+    <h3 class="subhead" style="margin-top:12px">output</h3>
+    <pre id="out" class="wiz-output" aria-live="polite">(your generated prompt will appear here)</pre>
+  `;
+
+  body.innerHTML = html;
+
+  // Hydrate saved values + wire extras helpers + render preview
   wiz_hydrateFields(body);
   wiz_bindExtrasUI(t);
-  }
+  renderPreviewMaybe();
+}
 
   // Nav buttons (hide vs. disable)
   const isFirst = STEP_INDEX<=0, isLast = STEP_INDEX>=STEPS.length-1;
@@ -1493,6 +1582,10 @@ function renderSteps(t){
   el('wizStepNext').style.display = isLast  ? 'none' : '';
   el('wizStepBack').disabled = isFirst;
   el('wizStepNext').disabled = isLast;
+  // Toggle label and hide nav when in "show all"
+el('wizShowAll').textContent = SHOW_ALL ? 'step-by-step' : 'show all';
+if (SHOW_ALL){ el('wizStepBack').style.display='none'; el('wizStepNext').style.display='none'; }
+
 
   // Delegate inputs → track TOUCH/VALUES, update states + progress + preview
   const bodyEl = el('wizStepBody');
