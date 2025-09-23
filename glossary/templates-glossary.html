@@ -200,6 +200,103 @@ input:focus, select:focus, textarea:focus{ border-color: var(--focus) }
 .chip .x{ cursor:pointer; opacity:.9 }
 .chip-plain{ background:transparent; border:1px solid var(--border); color:var(--muted) }
 
+/* theme chips */
+.chip.theme { cursor:pointer; user-select:none; }
+.chip.theme.is-active{
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 24%, transparent);
+}
+
+/* 1) Bar: no box, centered to match master search width */
+#themeBar{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: .25rem 0 .5rem;
+  max-width: var(--content-width, 960px); /* match your master search container */
+  margin: 0 auto;                         /* centers the whole bar */
+}
+
+/* 2) Row: centered chips, wrap on small screens */
+#themeChips{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem .75rem;
+}
+
+/* 3) Chips: bring back individual “button” styling */
+.chip.theme{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+  background: var(--chip-bg, #f3f4f6);              /* light gray by default */
+  color: var(--chip-fg, inherit);
+  border: 1px solid var(--chip-border, #e5e7eb);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+/* Hover/active/focus states */
+.chip.theme:hover{
+  background: var(--chip-bg-hover, #eef2f7);
+  border-color: var(--chip-border-hover, #d1d5db);
+  transform: translateY(-0.5px);
+}
+.chip.theme.is-active{
+  background: var(--chip-bg-active, #e0f2fe);       /* subtle tint */
+  color: var(--chip-fg-active, var(--accent, #0369a1));
+  border-color: var(--chip-border-active, var(--accent, #0284c7));
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.chip.theme:focus-visible{
+  outline: 2px solid var(--accent, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Make the theme bar a positioning context */
+#themeBar { position: relative; }
+
+/* Subtle circular refresh button */
+#abToggle {
+  position: absolute;
+  right: 0;
+  bottom: 4px;               /* sits near the chip row baseline */
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--chip-border, #e5e7eb);
+  background: color-mix(in oklab, var(--chip-bg, #f3f4f6) 75%, transparent);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+  opacity: .45;              /* discreet by default */
+  transition: opacity .15s ease, transform .15s ease, background .15s ease;
+}
+#abToggle:hover,
+#abToggle:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  outline: 2px solid var(--accent, #3b82f6);
+  outline-offset: 2px;
+}
+#abToggle:active { transform: translateY(0); }
+#abToggle .icon {
+  font-size: 16px;           /* Unicode refresh glyph */
+  pointer-events: none;
+}
+
+
+
 /* ============ CARDS ============ */
 .grid{
   display:grid;
@@ -395,6 +492,56 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
   <!-- Data files -->
   <script src="templates.data.js"></script>
   <script src="templates.tasks.data.js"></script>
+  
+<script>
+/* A/B loader for theme helper (per-refresh random, URL override supported) */
+(function(){
+  // Allow URL forcing: ?themeVariant=v1 or ?themeVariant=v2
+  const params = new URLSearchParams(location.search);
+  const forced = params.get('themeVariant'); // 'v1' or 'v2'
+  
+
+  // Per-refresh random choice
+  function choose(){
+    if (forced === 'v1' || forced === 'v2') return forced;
+    if (window.crypto && crypto.getRandomValues){
+      const b = new Uint8Array(1); crypto.getRandomValues(b);
+      return b[0] < 128 ? 'v1' : 'v2';
+    }
+    return Math.random() < 0.5 ? 'v1' : 'v2';
+  }
+  const variant = choose();
+
+  // Map to the new filenames
+  const file = (variant === 'v2') ? 'themes-helperv2.js' : 'themes-helperv1.js';
+
+  function loadScript(src){
+    return new Promise((resolve, reject)=>{
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = src + '?ab=' + Date.now(); // cache buster
+      s.onload = () => resolve(src);
+      s.onerror = () => reject(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  loadScript(file)
+    .then(() => {
+      if (window.THEME_HELPER && typeof THEME_HELPER.buildThemeMap === 'function'){
+        THEME_HELPER.buildThemeMap(window.TEMPLATES, window.TASK_TEMPLATES);
+      }
+      // Repaint UI. Safe no-ops if functions are absent.
+      try { if (typeof renderThemeChips === 'function') renderThemeChips(); } catch {}
+      try { if (typeof render === 'function') render(); } catch {}
+      console.info('[themes] variant:', variant, 'file:', file);
+      window.__AB_THEME_VARIANT__ = variant; // for quick debugging in console
+    })
+    .catch(err => console.error('[themes] helper failed to load', err));
+})();
+</script>
+
+
 
   <div class="wrap">
 <header>
@@ -420,6 +567,12 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
   </div>
   <div id="taMaster" class="ta" role="listbox" hidden></div>
 </section>
+
+<!-- NEW: Theme chips under the main search -->
+<section id="themeBar" aria-label="Theme filters">
+  <div id="themeChips" role="group" aria-label="Themes"></div>
+</section>
+
 
     <section class="pane">
       <div class="controls">
@@ -556,6 +709,31 @@ function safeLinkId(t){
              : slugify(t.label)||'template';
   return cand;
 }
+function primaryId(d){
+  // Prefer real id; fallback to slug or label slug
+  return (d.id && String(d.id).toLowerCase()!=='none') ? d.id
+       : (d.slug || slugify(d.label) || 'template');
+}
+function getHomeThemeKey(d){
+  if (!(window.THEME_HELPER && typeof THEME_HELPER.getHomeOf === 'function')) return undefined;
+  const kebab = s => String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+
+  const cand = [];
+  const idRaw    = d.id && String(d.id).trim();
+  const slugRaw  = d.slug && String(d.slug).trim();
+  const labelRaw = d.label && String(d.label).trim();
+
+  if (idRaw)   cand.push(idRaw, idRaw.toLowerCase(), kebab(idRaw));
+  if (slugRaw) cand.push(slugRaw, slugRaw.toLowerCase(), kebab(slugRaw));
+  if (labelRaw) cand.push(kebab(labelRaw));
+
+  for (const k of cand){
+    const hit = THEME_HELPER.getHomeOf(k);
+    if (hit) return hit;
+  }
+  return undefined;
+}
+
 function cleanCategories(arr){
   const inArr = Array.isArray(arr) ? arr : [];
   return unique(inArr.map(c => (String(c).toLowerCase()==='none' ? 'Framework' : c)));
@@ -649,6 +827,9 @@ for(const t of DATA){
 /* ========== Filters (kept) ========== */
 const state = { q:'', kind:'', cat:'', tag:'', topic:'', phase:'', level:'', use:'', slug: [] };
 
+state.themeKey = ''; // NEW: selected theme (e.g., 'RESEARCH_ANALYZE')
+
+
 const allKinds = unique(DATA.map(d=>d._displayKind || 'unknown'))
   .filter(k => k.toLowerCase() !== 'none').sort();
 const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
@@ -676,6 +857,7 @@ function clearAll(){
   state.q = state.kind = state.cat = state.tag =
   state.topic = state.phase = state.level = state.use = '';
   state.slug = [];
+  state.themeKey = '';
 
   // reset controls (skip gracefully if an element doesn't exist)
   Object.values(ID_FOR_FIELD).forEach(id=>{
@@ -696,6 +878,7 @@ function clearAll(){
   // keep the one-shot slug init guard consistent
   if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
 
+  renderThemeChips();
   render();
 }
 
@@ -779,6 +962,11 @@ if (want('topic') && !(d._tagsByNs?.topic||[]).some(x => x.toLowerCase() === wan
 if (want('phase') && !(d._tagsByNs?.phase||[]).some(x => x.toLowerCase() === want('phase'))) return false;
 if (want('level') && !(d._tagsByNs?.level||[]).some(x => x.toLowerCase() === want('level'))) return false;
 if (want('use')   && !(d._tagsByNs?.use||[]).some(x => x.toLowerCase() === want('use')))   return false;
+// Theme filter (single-home assignment via Theme Helper)
+if (state.themeKey){
+  const home = getHomeThemeKey(d);
+  if (home !== state.themeKey) return false;
+}
 
   
   return true;
@@ -797,6 +985,15 @@ function renderActiveFilters(rowsTotal){
   if(state.phase) chips.push(['Phase', state.phase, 'phase']);
   if(state.level) chips.push(['Level', state.level, 'level']);
   if(state.use)   chips.push(['Use',   state.use,   'use']);
+  if (state.themeKey){
+  const name = THEME_HELPER.getThemes()[state.themeKey]?.name || state.themeKey;
+  const chip = h('span',{class:'chip'},
+    `Theme: ${name} `,
+    h('span',{class:'x', onclick:()=>{ state.themeKey=''; renderThemeChips(); render(); }}, '✕')
+  );
+  active.append(chip);
+}
+
 
   $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
 
@@ -1309,10 +1506,20 @@ card.append(cardBody, ctaWrap);
   }
 });
 
-
     listEl.append(card);
+}
+
+  // Update chips once after the list is built. Use RAF to avoid layout thrash.
+  try {
+    requestAnimationFrame(()=> {
+      try { renderThemeChips(); } catch(e){ console.warn('renderThemeChips failed', e); }
+    });
+  } catch(e){
+    // fallback if requestAnimationFrame not available
+    try { renderThemeChips(); } catch(e){ console.warn('renderThemeChips failed', e); }
   }
 }
+
 if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
 render();
 
@@ -1381,8 +1588,133 @@ function openModal(t, pbUrl){
   dlg.showModal();
 }
 
+function renderThemeChips(){
+  const host = document.getElementById('themeChips');
+  if (!host || !window.THEME_HELPER) return;
+  host.innerHTML = '';
+
+  // 1) "All" chip (no count)
+  host.append(
+    h('span', {
+      class: 'chip theme' + (state.themeKey ? '' : ' is-active'),
+      title: 'Show everything',
+      onclick: ()=>{ state.themeKey=''; renderThemeChips(); render(); }
+    }, 'All')
+  );
+
+  // 2) INSERT THE UNCATEGORIZED CHIP RIGHT HERE
+// Show items that are NOT in any theme's membership (unassigned or de-duped collisions)
+const memberSet = themeMemberKeySet();
+const unindexed = (window.DATA || []).filter(d => !isIndexedByThemes(d, memberSet));
+
+if (unindexed.length){
+  host.append(
+    h('span', {
+      class: 'chip theme',
+      title: 'Items with no theme entry (unassigned or de-duped)',
+      onclick: ()=>{
+        state.themeKey = '';
+        const savedMatches = window.matches;
+        window.matches = (d)=> !isIndexedByThemes(d, themeMemberKeySet());
+        renderThemeChips();
+        render();
+        window.matches = savedMatches;
+      }
+    }, `Uncategorized (${unindexed.length})`)
+  );
+}
+
+  // 3) Then your normal theme chips loop
+  const counts = THEME_HELPER.getCounts();
+  for (const row of counts){
+    const key = row.key;
+    const name = THEME_HELPER.getThemes()[key].name;
+    const count = row.count || 0;
+
+    host.append(
+      h('span', {
+        class: 'chip theme' + (state.themeKey===key ? ' is-active' : ''),
+        title: `Filter to ${name}`,
+        onclick: ()=>{
+          state.themeKey = (state.themeKey === key) ? '' : key;
+          renderThemeChips();
+          render();
+        }
+      }, `${name} (${count})`)
+    );
+  }
+}
+
+// Build a Set of all keys that the chosen Theme Helper actually indexed
+function themeMemberKeySet(){
+  if (!window.THEME_HELPER || typeof THEME_HELPER.getThemes !== 'function') return new Set();
+  const set = new Set();
+  for (const k of Object.keys(THEME_HELPER.getThemes())){
+    const ids = THEME_HELPER.getMembers(k) || [];
+    for (const id of ids) set.add(String(id).trim());
+  }
+  return set;
+}
+
+// Generate all reasonable lookup keys for a data item (covers v1 raw ids & v2 kebabs)
+function candidateKeysFor(d){
+  const kebab = s => String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  const out = new Set();
+  const idRaw    = d.id && String(d.id).trim();
+  const slugRaw  = d.slug && String(d.slug).trim();
+  const labelRaw = d.label && String(d.label).trim();
+  if (idRaw){ out.add(idRaw); out.add(idRaw.toLowerCase()); out.add(kebab(idRaw)); }
+  if (slugRaw){ out.add(slugRaw); out.add(slugRaw.toLowerCase()); out.add(kebab(slugRaw)); }
+  if (labelRaw){ out.add(kebab(labelRaw)); }
+  return Array.from(out);
+}
+
+// True if THIS item appears in any theme's member list (even after de-dupe)
+function isIndexedByThemes(d, memberSet){
+  const keys = candidateKeysFor(d);
+  for (const k of keys) if (memberSet.has(k)) return true;
+  return false;
+}
+
+
 /* Initial theme label */
 applyTheme();
 </script>
+
+<script>
+(function addABToggle(){
+  // Run once after DOM is ready
+  const ready = (fn)=> (document.readyState !== 'loading') ? fn() : document.addEventListener('DOMContentLoaded', fn);
+  ready(()=>{
+    const bar = document.getElementById('themeBar');
+    if (!bar || document.getElementById('abToggle')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'abToggle';
+    btn.type = 'button';
+    const current = (window.__AB_THEME_VARIANT__ === 'v2') ? 'v2' : 'v1';
+    btn.setAttribute('aria-label', 'Switch theme model');
+    btn.setAttribute('title', `Switch themes helper (currently ${current.toUpperCase()})`);
+    btn.innerHTML = '<span class="icon" aria-hidden="true">⟳</span>';
+
+    btn.addEventListener('click', ()=>{
+      // Determine current and next variant
+      const cur = (window.__AB_THEME_VARIANT__ === 'v2') ? 'v2' : 'v1';
+      const next = (cur === 'v1') ? 'v2' : 'v1';
+
+      // Update URL param and reload (fast, robust)
+      const url = new URL(location.href);
+      url.searchParams.set('themeVariant', next);
+      // Replace so back button doesn't bounce between variants
+      location.replace(url.toString());
+    });
+
+    // Append as a sibling to chips so it won't get wiped by chip re-renders
+    bar.appendChild(btn);
+  });
+})();
+</script>
+
+
 </body>
 </html>
