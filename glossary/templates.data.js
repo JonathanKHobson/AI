@@ -5,8 +5,8 @@
   const TEMPLATES = [
 
 {
-      id: "none",
-      slug: "none",
+      id: "pattern-picker",
+      slug: "pattern-picker",
       label: "— Pattern Picker —",
       kind: "helper",
       categories: [
