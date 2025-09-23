@@ -4906,6 +4906,12 @@ bar.hidden = !many;
 const lab = document.getElementById('tabbarLabel');
 if (lab) lab.hidden = !many;
 if (!many) return;
+// Ensure the outer “Active templates” block follows the same rule
+const block = document.getElementById('activeTemplatesBlock');
+if (block){
+  block.hidden = !many;
+  block.setAttribute('aria-hidden', String(!many));
+}
 
 
 
@@ -7605,6 +7611,6 @@ function openWorksheet(){
 })();
 </script>
 
-  
+
 </body>
 </html>
