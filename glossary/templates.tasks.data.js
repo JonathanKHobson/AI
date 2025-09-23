@@ -3243,10 +3243,11 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
      expanded deliverables with guidance, new export formats, and LLM assist modes.
    - Removes the "quote rights" dropdown per request (use redaction policy instead).
 --------------------------------------------------------- */
-{
+
+  {
   id: 'task_transcripts_analyze',
   slug: 'transcripts-analyze',
-  label: 'Transcripts — Analyze',
+  label: 'Transcripts - Analyze',
   kind: 'task',
   categories: ['ux','research','analysis'],
   tags: [
@@ -3255,179 +3256,214 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     'use:synthesize','use:prioritize','use:edit','stage:analyze'
   ],
   use_cases: [
-    'code interview and usability transcripts to themes',
+    'code interview and usability transcripts into themes',
     'identify patterns, contradictions, and outliers',
     'extract verbatim quotes and evidence',
     'score pain points by severity, frequency, and impact',
-    'analyze sentiment/emotion (valence, arousal, discrete labels)',
+    'analyze sentiment and emotion (valence, arousal, discrete labels)',
     'map themes to journeys (stages, triggers, moments of truth)',
     'compare cohorts (personas, roles, regions) and find divergences',
-    'co-occurrence and contradiction/tension analysis',
-    'produce insight cards and an executive readout from transcripts',
-    'full-report synthesis with visuals and decision-linked recommendations',
-    'run co-occurrence and contradiction/tension analysis',
-'with confidence from transcripts produce next steps',
-'build a reusable codebook for transcripts and tagged export for auditability',
-'shrink a noisy corpus (transcripts) to a crisp executive summary',
-'triangulate with surveys/tickets/analytics for stronger confidence',
-'track saturation and reliability (κ/α) across coders/waves',
-'create quote banks and rights-safe excerpts for storytelling'
+    'run co-occurrence and tension analysis',
+    'produce insight cards and an executive readout',
+    'deliver a full report with visuals and decision-linked recommendations',
+    'build a reusable codebook with tagged exports for auditability',
+    'shrink a noisy corpus to a crisp executive summary',
+    'triangulate with surveys, tickets, and analytics to strengthen confidence',
+    'track saturation and reliability (kappa/alpha) across coders and waves',
+    'create quote banks and rights-safe excerpts for storytelling'
   ],
-  definition: 'Analyze transcripts end-to-end: set source and purpose, define scope, choose method and codebook policy, tag sentiment/emotion, surface themes and tensions, curate quotes, and deliver evidence-backed insights with priorities, visuals, and exports.',
-  help: 'Paste links or text, or indicate that you are uploading files. Select source and purpose, describe speakers and anonymization, add unique terms, pick method/priority models, and choose deliverables/exports. Include privacy/redaction rules.',
+  definition: 'Analyze a corpus end to end: set source and purpose, define scope, choose method and codebook policy, tag sentiment and emotion, surface themes and tensions, curate quotes, and deliver evidence-backed insights with priorities, visuals, and exports.',
+  help: 'Paste links or text, or indicate you will upload files. Pick the source and purpose, describe speakers and privacy/redaction, add domain terms, choose methods and priority models, then select deliverables and exports. Every field includes short helper text.',
   fields: [
-    /* Source & purpose */
-    { key:'source_type',   label:'Where is the transcript from?', type:'select',
+    /* Source and purpose */
+    { key:'source_type', label:'Where is the corpus from?', type:'select',
       options:[
-        'usability test — moderated',
-        'usability test — unmoderated',
-        'interview — 1:1',
+        'none',
+        'usability test - moderated',
+        'usability test - unmoderated',
+        'interview - 1:1',
         'focus group',
-        'call center / support',
-        'sales / discovery call',
+        'call center or support',
+        'sales or discovery call',
         'research self-audit',
-        'research diary/think-aloud (rubberducky)',
-        'workshop/session',
+        'research diary or think-aloud (rubberducky)',
+        'workshop or session',
         'open-ended survey responses',
         'public hearing',
-        'netography: social media discussions, messages, or written open online forum',
-        'netography: social media posts & comment discussions',
-        'user feedback forum/community',
-        'internal meeting/standup',
+        'netnography: discussions, messages, or forums',
+        'netnography: social posts with comment threads',
+        'user feedback forum or community',
+        'internal meeting or standup',
         'other (specify below)'
       ],
-      desc:'Sets expectations for structure, probing depth, and artifact style.'
+      desc:'Choose the main source. Corpus can be transcripts, forum text, or other written records.'
     },
-    
-    { key:'source_other', label:'Other / additional source context (optional)', type:'text',
-  ph:'e.g., roundtable with exec sponsors; mixed English/Spanish' },
-    
+    { key:'source_other', label:'Other or additional source context (optional)', type:'text',
+      ph:'e.g., exec roundtable; mixed English/Spanish; Zoom VTT',
+      desc:'Describe anything about the source you want the AI to know.' },
+
     { key:'source_reason', label:'Main reason for analysis', type:'select',
       options:[
-        'diagnose friction/pain points',
-        'define the problem(s)',
-        'discover opportunities/solutions',
+        'none',
+        'diagnose friction and pain points',
+        'define the problem',
+        'discover opportunities and solution directions',
         'prioritize backlog',
-        'inform roadmap/OKRs',
-        'evaluate a feature/release',
-        'craft messaging/positioning',
+        'inform roadmap and OKRs',
+        'evaluate a feature or release',
+        'craft messaging and positioning',
         'measure change vs baseline',
-        'generate insights for roadmap',
         'curate quotes for storytelling',
-        'compliance/legal audit',
-        'training/enablement',
-        'train support/sales',
+        'compliance or legal audit',
+        'training and enablement',
+        'train support or sales',
         'other (specify below)'
       ],
-      desc:'Why this analysis matters; helps target outputs.'
-    },
-    { key:'reason_other',  label:'Other/extra source context (optional)', type:'textarea',
-      ph:'Add details that don’t fit the dropdowns' },
-    { key:'org',           label:'Organization / client (optional)', type:'text',
-      ph:'Company/team the work is for' },
+      desc:'Why this analysis matters. Guides tone, depth, and outputs.' },
 
-    /* Scope & inputs */
+    { key:'org', label:'Organization or client (optional)', type:'text',
+      ph:'Company or team the work is for',
+      desc:'Add the audience or sponsor so outputs speak to them.' },
+
+    /* Research questions and audience (moved up) */
+    { key:'questions', label:'Research questions', type:'textarea',
+      ph:'Which decisions should this analysis inform?',
+      desc:'List the questions or decisions that matter. Use bullets if helpful.' },
+
+    { key:'audience_persona', label:'Audience personas or segments (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph:'e.g., Admin Alice; New user; Enterprise buyer',
+      desc:'Tag personas or segments to unlock subgroup comparisons.' },
+
+    { key:'segments', label:'Cohorts to compare (optional)', type:'textarea',
+      ph:'role, plan tier, region, tenure, device, language',
+      desc:'Comma or line separated. Used for splits, not for access control.' },
+
+    /* Scope and inputs */
     { key:'analysis_scope', label:'Scope of analysis', type:'select',
       options:[
+        'none',
         'full corpus',
-        'subset (by time/segment)',
+        'subset by time or segment',
         'single transcript',
         'top highlights only',
-        'only pull quotes for storytelling',
+        'quotes only for storytelling',
         'qualitative analysis',
         'quantitative analysis',
         'rapid scan (timeboxed)',
-        'comparative (A/B groups)',
+        'comparative groups (A/B)',
         'multi-session comparison',
         'longitudinal (waves)',
-        'delta analysis (before/after change)',
+        'delta analysis (before vs after)',
         'exhaustive deep dive',
-        'incident deep-dive',
+        'incident deep dive',
         'other (specify below)'
       ],
-      desc:'Choose depth/breadth. Comparison/longitudinal adds consistency checks.'
-    },
-    { key:'corpus',        label:'Corpus source', type:'textarea',
-      ph:'Paste text or link a folder/drive; note formats (DOCX, TXT, VTT, JSON)',
-      desc:'If uploading files, say so below; summarize major content or value in this area.' },
-    { key:'uploading',     label:'Are you uploading files?', type:'select',
-      options:['no','yes'],
-      desc:'If yes, we will instruct the model to read attached files.' },
-    { key:'upload_context',label:'Upload notes (optional)', type:'textarea',
-      ph:'What’s in the attachments? Any must-read sections or context?' },
-    { key:'time_window',   label:'Time window (optional)', type:'text',
-      ph:'e.g., 2025-01-01 → 2025-02-15; or “last 30 days”' },
+      desc:'Depth and breadth. Comparison and longitudinal scopes add consistency checks.' },
 
-    /* Speaker metadata & privacy */
-    { key:'speaker_count', label:'# of speakers', type:'text', ph:'e.g., 2' },
-    { key:'user_count',    label:'# of users/customers', type:'text', ph:'e.g., 1' },
-    { key:'diarization',   label:'Diarization provided?', type:'select', options:['yes','no','unknown'] },
-    { key:'speaker_names', label:'Speaker names/IDs (optional)', type:'textarea',
-      ph:'One per line (e.g., Moderator; P1; P2). Use IDs if known.' },
-    { key:'anonymization', label:'Name handling', type:'select',
+    { key:'time_window', label:'Time window (optional)', type:'text',
+      ph:'2025-01-01 to 2025-02-15, or "last 30 days"',
+      desc:'Limit to a date range if needed for deltas or waves.' },
+
+    { key:'corpus', label:'Corpus source', type:'textarea',
+      ph:'Paste text or link a folder/drive. Note formats (DOCX, TXT, VTT, JSON).',
+      desc:'Briefly describe what is in scope. If the corpus spans multiple sources, list them.' },
+
+    { key:'uploading', label:'Are you uploading files?', type:'select',
+      options:['no','yes'],
+      desc:'Choose yes if you will attach files in this chat. The AI will read them.' },
+
+    { key:'upload_context', label:'Upload file description (optional)', type:'textarea',
+      ph:'What is in the attachments? Any must-read sections or filenames?',
+      desc:'Describe the attachments. You are not uploading here, only describing.' },
+
+    /* Speaker metadata and privacy */
+    { key:'speaker_count', label:'Number of speakers', type:'text',
+      ph:'e.g., 2',
+      desc:'Total distinct voices in a given session.' },
+
+    { key:'user_count', label:'Number of users or customers', type:'text',
+      ph:'e.g., 1',
+      desc:'How many participants are end users or customers.' },
+
+    { key:'diarization', label:'Diarization provided?', type:'select',
+      options:['yes','no','unknown'],
+      desc:'Diarization is who spoke when, with speaker turns labeled.' },
+
+    { key:'speaker_names', label:'Speaker names or IDs (optional)', type:'textarea',
+      ph:'One per line (Moderator; P1; P2). Prefer IDs if privacy is required.',
+      desc:'Provide known labels to improve quote attribution.' },
+
+    { key:'name_redaction_policy', label:'Name and role redaction', type:'select',
       options:[
         'redact completely',
         'code as IDs (P1/P2/Mod)',
-        'keep as provided (internal)',
+        'pseudonyms (consistent per speaker)',
+        'roles only (no names)',
+        'keep names as provided',
+        'does not apply here',
         'other (specify below)'
       ],
-      desc:'Controls how names appear in quotes and tags.' },
-      
-      { key:'redaction_pref', label:'Redaction / naming policy', type:'select',
-options:['redact names (IDs only)','pseudonyms (consistent per speaker)','roles only (no names)','keep names as provided'],
-desc:'Controls anonymity in quotes and exhibits.' },
-{ key:'domain_dictionary', label:'Domain dictionary / special terms', type:'textarea',
-ph:'Brand names, acronyms, product codenames, jargon, homophones, known misspellings',
-desc:'Improves tagging accuracy; avoids mis-hears/mistranslations.' },
-{ key:'transcript_quality', label:'Transcript quality flags (optional)', type:'textarea',
-ph:'e.g., [inaudible] tags present; overlapping speech; machine-transcribed; language mix',
-desc:'Call out anything that may affect coding accuracy.' },
+      desc:'How names should appear in quotes and exhibits.' },
+
+    { key:'redact_terms', label:'Terms to redact (optional)', type:'textarea',
+      ph:'Specific names, places, account IDs, internal codenames',
+      desc:'List any terms that are not obvious PII but must be removed or masked.' },
+
+    { key:'privacy_notes', label:'Other privacy and anonymity notes (optional)', type:'textarea',
+      ph:'Consent notes, timestamp policy, storage limits',
+      desc:'Anything else the AI should honor about privacy or consent.' },
 
     /* Vocabulary and language */
-    { key:'language',      label:'Primary language/dialect', type:'text', ph:'e.g., en-US, en-GB, es-MX' },
-    { key:'unique_terms',  label:'Unique terms / dictionary', type:'textarea',
-      ph:'Brand names, product terms, acronyms' },
-    { key:'misheard_terms',label:'Likely mis-said/misspelled terms (optional)', type:'textarea',
-      ph:'Words that ASR often mangles; provide intended forms' },
+    { key:'language', label:'Primary language and dialect', type:'text',
+      ph:'e.g., en-US, en-GB, es-MX',
+      desc:'Set detection and examples to the correct variant.' },
 
-    /* Research questions & lens */
-    { key:'questions',     label:'Research questions', type:'textarea',
-      ph:'Which decisions should this analysis inform?' },
+    { key:'domain_dictionary', label:'Domain dictionary and special terms', type:'textarea',
+      ph:'Brand names, acronyms, product codenames, jargon, homophones',
+      desc:'Improves tagging accuracy and avoids mis-hears or mistranslations.' },
+
+    { key:'transcript_quality', label:'Quality flags and likely mis-hears (optional)', type:'textarea',
+      ph:'[inaudible] tags; overlapping speech; machine-transcribed; language mix; ASR often hears X as Y',
+      desc:'Call out issues that affect coding. Add common mis-hear pairs like login vs log-in.' },
+
+    /* Approach and method */
     { key:'coding_approach', label:'Coding approach', type:'select',
-      options:['inductive (bottom-up)','deductive (top-down)','abductive (mixed)', 'other (specify below)'],
-      desc:'Emergent vs seeded codebook balance.' },
-    { key:'method',        label:'Primary method', type:'select',
+      options:['none','inductive (bottom-up)','deductive (top-down)','abductive (mixed)','other (specify below)'],
+      desc:'Inductive means emergent codes. Deductive means seeded codes. Abductive blends both.' },
+
+    { key:'method', label:'Primary method', type:'select',
       options:[
+        'none',
         'thematic analysis',
         'affinity mapping',
-        'grounded theory (open→axial)',
+        'grounded theory (open to axial)',
         'content analysis (counts)',
-        'journey mapping (stage × theme)',
+        'journey mapping (stage x theme)',
         'matrix coding (co-occurrence)',
         'JTBD timeline mapping',
         'rapid thematic synthesis',
         'other (specify below)'
       ],
-      desc:'We tailor instructions to the selected lens.'
-    },
+      desc:'We tailor instructions to the selected lens.' },
+
     { key:'unit_of_analysis', label:'Unit of analysis', type:'select',
-      options:['excerpt (span)','utterance','turn','episode (story)','session'] },
+      options:['none','excerpt (span)','utterance','turn','episode (story)','session','other (specify below)'],
+      desc:'The atomic item you will tag and count.' },
 
-    /* Personas & segments */
-    { key:'audience_persona', label:'Personas/segments (optional)', type:'repeater',
-      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
-      desc:'Tag with personas/segments to unlock subgroup patterns.',
-      ph:'e.g., Admin Alice; New user; Enterprise buyer' },
-    { key:'segments', label:'Cohorts to compare', type:'textarea',
-      ph:'role, plan tier, region, tenure, device, language' },
-
-    /* Codebook & rules */
+    /* Codebook and rules */
     { key:'codebook_seed', label:'Seed codebook (optional)', type:'textarea',
-      ph:'One per line: Code — short definition' },
-    { key:'inclusion_rules', label:'Inclusion/Exclusion rules', type:'textarea',
-      ph:'Define boundaries for tricky codes + examples' },
-    { key:'code_styles',  label:'Code styles', type:'textarea',
-      ph:'structural, descriptive, in-vivo, process (gerunds), emotion, causation' },
+      ph:'One per line: Code - short definition',
+      desc:'Provide a starting set. The AI can expand or refine it.' },
+
+    { key:'inclusion_rules', label:'Inclusion and exclusion rules', type:'textarea',
+      ph:'Define boundaries for tricky codes, with short examples',
+      desc:'Rules reduce overlap and improve reliability.' },
+
+    { key:'code_styles', label:'Code styles to use', type:'textarea',
+      ph:'structural, descriptive, in-vivo, process (gerunds), emotion, causation',
+      desc:'Name any preferred styles so the AI mirrors your approach.' },
+
     { key:'codebook_policy', label:'Codebook policy', type:'select',
       options:[
         'none',
@@ -3438,242 +3474,263 @@ desc:'Call out anything that may affect coding accuracy.' },
         'fork by cohort then reconcile',
         'other (specify below)'
       ],
-      desc:'Stability vs discovery and how to manage changes.'
-    },
+      desc:'Stability vs discovery, and how changes are managed.' },
 
-    /* Sentiment & emotion */
+    /* Sentiment and emotion */
     { key:'sentiment_model', label:'Sentiment lens', type:'select',
-        options: [
-    'none',
-    'valence (positive↔negative)',
-    'valence + arousal',
-    'valence + arousal + dominance (VAD/PAD)',
-    'aspect-based sentiment (targeted)',
-    'stance (pro/neutral/anti/uncertain)',
-    'subjectivity (objective↔subjective)',
-    'emotion intensity (0–1)',
-    'discrete emotions (set below)',
-    'Plutchik (8 emotions)',
-    'Ekman (basic emotions)',
-    'OCC appraisal families',
-    'moral sentiment (foundations)',
-    'toxicity/politeness',
-    'hedging & certainty',
-    'sarcasm/irony flag',
-    'power/agency connotation',
-    'directed sentiment (speaker→target)',
-    'sentiment dynamics (shift over time)',
-    /* added, generic but useful choices */
-    'lexicon-based (VADER/NRC/AFINN)',
-    'LIWC affect categories',
-    'transformer classifier (domain-tuned)',
-    'multi-label emotions (27+ set)',
-    'other (specify below)'
-  ] },
-    { key:'emotion_labels',  label:'Discrete emotion set (optional)', type:'textarea',
-      ph:'frustration, anxiety, relief, excitement, delight…' },
-      
-      { key:'sentiment_modifiers', label:'Modifiers', type:'multiselect',
-  options:['intensity','sarcasm','toxicity','hedging','politeness'],
-  desc:'Extra pragmatic signals to detect and annotate per excerpt.' },
+      options:[
+        'none',
+        'valence (positive to negative)',
+        'valence + arousal',
+        'valence + arousal + dominance (VAD or PAD)',
+        'aspect-based sentiment (targeted)',
+        'stance (pro, neutral, anti, uncertain)',
+        'subjectivity (objective to subjective)',
+        'emotion intensity (0 to 1)',
+        'discrete emotions (set below)',
+        'Plutchik (8 emotions)',
+        'Ekman (basic emotions)',
+        'OCC appraisal families',
+        'moral sentiment (foundations)',
+        'toxicity or politeness',
+        'hedging and certainty',
+        'sarcasm or irony flag',
+        'power or agency connotation',
+        'directed sentiment (speaker to target)',
+        'sentiment dynamics (shift over time)',
+        'lexicon-based (VADER, NRC, AFINN)',
+        'LIWC affect categories',
+        'transformer classifier (domain tuned)',
+        'multi-label emotions (27+ set)',
+        'other (specify below)'
+      ],
+      desc:'Pick one lens. Add labels below if using discrete emotions.' },
 
-{ key:'sentiment_units', label:'Scale', type:'select',
-  options:['none','−1..+1','0..1','0..100','other (specify below)'],
-  desc:'Numeric range used for model outputs (scores/probabilities).' },
+    { key:'emotion_labels', label:'Discrete emotion set (optional)', type:'textarea',
+      ph:'frustration, anxiety, relief, excitement, delight',
+      desc:'Comma or line separated labels to detect.' },
 
-    /* Pain scoring & prioritization */
-{ key:'severity_scale', label:'Severity scale', type:'select',
-  options:[
-    'none',
-    'Nielsen 0–4 (cosmetic→catastrophe)',
-    'Heuristic 1–5 (pass→catastrophe)',
-    'High–Medium–Low (HML)',
-    'Task criticality (1–4)',
-    'Time/effort penalty (0–4)',
-    'Frequency × Impact grid',
-    'Accessibility impact (WCAG 0–4)',
-    'Ethical/harm severity (0–4)',
-    'Sentiment intensity (−3 to +3)',
-    'Likelihood × Impact (risk matrix)',
-    'Likert 1–5 (very low→very high)',
-    'Mean Opinion Score (MOS) 1–5',
-    'Qualitative risk matrix (1–5 × 1–5)',
-    'Bug/incident severities (S1–S5 or P0–P4)',
-    'SEV1–SEV4 (ops: critical→minor)',
-    '1–10 (granular, anchored)',
-    'FMEA RPN (1–10 scales)',
-    'CVSS 0.0–10.0',
-    'Numeric Rating Scale (NRS) 0–10',
-    'Borg CR10 0–10',
-    'DREAD (0–10 per factor)',
-    'Rubrics letter grade scale (A–F)',
-    'other (specify below)'
-  ],
-      desc:'Use anchored scales to reduce gaming.' },
-     { key:'severity_anchors', label:'Severity anchors (if 1–10 or custom)', type:'textarea',
-  ph:'Define each level in one line (e.g., 1 — cosmetic; 10 — total blocker)',
-  desc:'One per line: level — label; anchors keep ratings consistent.' },
+    { key:'sentiment_modifiers', label:'Modifier tags', type:'multiselect',
+      options:['intensity','sarcasm','toxicity','hedging','politeness','none','other (specify below)'],
+      desc:'Extra pragmatic signals to detect and annotate per excerpt.' },
+
+    { key:'sentiment_units', label:'Sentiment score scale', type:'select',
+      options:['none','-1..+1','0..1','0..100','other (specify below)'],
+      desc:'Numeric range for any sentiment or emotion scores.' },
+
+    /* Pain scoring and prioritization */
+    { key:'severity_scale', label:'Severity scale', type:'select',
+      options:[
+        'none',
+        'Nielsen 0..4 (cosmetic to catastrophe)',
+        'Heuristic 1..5 (pass to catastrophe)',
+        'High, Medium, Low',
+        'Task criticality 1..4',
+        'Time or effort penalty 0..4',
+        'Frequency x Impact grid',
+        'Accessibility impact 0..4 (WCAG)',
+        'Ethical or harm severity 0..4',
+        'Sentiment intensity -3..+3',
+        'Likelihood x Impact (risk matrix)',
+        'Likert 1..5 (very low to very high)',
+        'Mean Opinion Score 1..5',
+        'Qualitative risk matrix 1..5 x 1..5',
+        'Bug or incident severities (S1..S5 or P0..P4)',
+        'Ops SEV1..SEV4',
+        '1..10 (anchored)',
+        'FMEA RPN (1..10 factors)',
+        'CVSS 0.0..10.0',
+        'Numeric Rating Scale 0..10',
+        'Borg CR10 0..10',
+        'DREAD (0..10 per factor)',
+        'Letter grades A..F',
+        'other (specify below)'
+      ],
+      desc:'Pick a scale and anchor it so ratings stay consistent.' },
+
+    { key:'severity_anchors', label:'Severity anchors (if 1..10 or custom)', type:'textarea',
+      ph:'1 - cosmetic; 5 - moderate; 8 - severe; 10 - total blocker',
+      desc:'One per line: level - label. Add brief examples if helpful.' },
+
     { key:'impact_domains', label:'Impact domains', type:'textarea',
-      ph:'conversion, retention, trust, cost to serve, risk' },
-    { key:'priority_model', label:'Priority model', type:'select',
-  options:[
-    'none',
-    'Severity × Frequency × Impact',
-    'ICE (Impact, Confidence, Ease)',
-    'RICE-like (Reach, Impact, Confidence, Effort)',
-    'WSJF (Cost of Delay ÷ Job Size)',
-    'Opportunity scoring (Importance × Satisfaction)',
-    "MoSCoW (Must/Should/Could/Won't)",
-    'Kano-informed (Basic/Performance/Delighter)',
-    'FMEA RPN (Severity × Occurrence × Detectability)',
-    'Risk Exposure (Probability × Impact)',
-    'CVSS-style 0–10 bins',
-    'PIE (Potential, Importance, Ease)',
-    'PXL (weighted CRO checklist)',
-    'ROI (Value ÷ Cost)',
-    'Cost of Delay (absolute)',
-    'Expected Value of Learning (EVoL)',
-    'Ethical Risk HARM (Harm × Affected users × Reversibility × Mitigation readiness)',
-    'Accessibility Priority (Impact on task × Affected users × WCAG risk)',
-    'Eisenhower (Urgency × Importance)',
-    'QFD/House of Quality (weighted requirements)',
-    'North Star vs MVP impact score',
-    'Value × Effort grid',
-    'other (specify below)'
-  ] },
-    { key:'theme_threshold', label:'Theme evidence threshold', type:'text',
-      ph:'e.g., mention in ≥5 interviews or ≥15 excerpts' },
+      ph:'conversion, retention, trust, cost to serve, risk',
+      desc:'Name the outcomes your team cares about, to focus prioritization.' },
 
-    /* Reliability & quality */
+    { key:'priority_model', label:'Priority model', type:'select',
+      options:[
+        'none',
+        'Severity x Frequency x Impact',
+        'ICE (Impact, Confidence, Ease)',
+        'RICE-like (Reach, Impact, Confidence, Effort)',
+        'WSJF (Cost of Delay / Job Size)',
+        'Opportunity scoring (Importance x Satisfaction)',
+        'MoSCoW (Must, Should, Could, Won’t)',
+        'Kano-informed (Basic, Performance, Delighter)',
+        'FMEA RPN (Severity x Occurrence x Detectability)',
+        'Risk Exposure (Probability x Impact)',
+        'CVSS-style bins 0..10',
+        'PIE (Potential, Importance, Ease)',
+        'PXL (weighted CRO checklist)',
+        'ROI (Value / Cost)',
+        'Cost of Delay (absolute)',
+        'Expected Value of Learning (EVoL)',
+        'Ethical Risk HARM (Harm x Affected users x Reversibility x Mitigation readiness)',
+        'Accessibility Priority (Task impact x Affected users x WCAG risk)',
+        'Eisenhower (Urgency x Importance)',
+        'QFD or House of Quality (weighted requirements)',
+        'North Star vs MVP impact score',
+        'Value x Effort grid',
+        'other (specify below)'
+      ],
+      desc:'How to rank problems or opportunities. You can switch later.' },
+
+    { key:'theme_threshold', label:'Theme evidence threshold', type:'text',
+      ph:'mention in >= 5 interviews or >= 15 excerpts',
+      desc:'Minimum evidence required to call something a theme.' },
+
+    /* Reliability and quality */
     { key:'reliability_metric', label:'Reliability plan', type:'select',
-      options:['consensus only','Cohen’s κ (subset)','Krippendorff’s α (subset)','none'] },
-    { key:'double_code_pct', label:'Double-code % (optional)', type:'text', ph:'e.g., 20%' },
+      options:['none','consensus only','Cohen’s kappa (subset)','Krippendorff’s alpha (subset)','other (specify below)'],
+      desc:'How agreement will be checked if multiple coders are involved.' },
+
+    { key:'double_code_pct', label:'Double-code percent (optional)', type:'text',
+      ph:'e.g., 20%',
+      desc:'Portion of the corpus that two coders will code to check agreement.' },
+
     { key:'saturation_check', label:'Saturation tracking', type:'select',
-      options:['yes (plot new codes/interview)','no'] },
+      options:['yes (plot new codes per interview)','no','unsure'],
+      desc:'Tracks whether new codes are still emerging over time.' },
 
     /* Journey context */
     { key:'journey_stages', label:'Journey stages (optional)', type:'textarea',
-      ph:'Onboard → First value → Routines → Renewal; or your map' },
+      ph:'Onboard -> First value -> Routines -> Renewal',
+      desc:'Paste your map or stage names so outputs can pivot by stage.' },
 
-    /* Quotes & ethics (no quote_rights field per request) */
-    { key:'quotes',        label:'Include verbatim quotes?', type:'select', options:['yes','no'] },
-    { key:'quote_length',  label:'Quote length policy', type:'select',
-      options:['≤25 words (slide-ready)','≤40 words','no limit'] },
-    { key:'quote_criteria',label:'Quote selection criteria', type:'textarea',
-      ph:'Concrete, decision-linked, self-contained, memorable' },
-    { key:'redaction_policy', label:'Other redaction, privacy, & anonymity notes', type:'textarea',
-      ph:'Remove PII; use IDs/timestamps; consent notes' },
+    /* Quotes and ethics */
+    { key:'quotes', label:'Include verbatim quotes?', type:'select',
+      options:['yes','no','unsure'],
+      desc:'If yes, the AI will select and redact per your policy.' },
+
+    { key:'quote_length', label:'Quote length policy', type:'select',
+      options:['<= 25 words (slide ready)','<= 40 words','no limit'],
+      desc:'Shorter quotes fit slides. Longer quotes carry more nuance.' },
+
+    { key:'quote_criteria', label:'Quote selection criteria', type:'textarea',
+      ph:'Concrete, decision-linked, self-contained, memorable',
+      desc:'How to pick quotes. Add any domain-specific rules.' },
 
     /* Outputs, visuals, tools */
-{ key:'deliverable', label:'Primary deliverable', type:'select',
-  options:[
-  'none',
-    'themes + evidence — named themes with definitions & exemplar quotes',
-    'insight cards — card per insight with so-what & owner',
-    'journey tensions — stage × theme conflicts and moments of truth',
-    'executive summary — top 5 findings with clear decisions',
-    'full analysis report — comprehensive analysis + data appendices',
-    'full narrative report — long-form story with evidence and tradeoffs',
-    'research readout deck — slide-ready storyline',
-    'stakeholder one-pager — narrative brief for decision-makers',
-    'stakeholder presentation deck — bullet-point brief for decision-makers',
-    'spoken presentation script — concise presenter script with cues',
-    '30-second impact RAP — spoken highlights (Readout, Action, Proof)',
-    'backlog tickets (issue-ready) — use provided format template',
-    'persona updates — adjust attributes, needs, and quotes',
-    'journey blueprint — end-to-end stages, steps, pain/delight',
-    'assumptions & follow-up questions — open questions + next probes',
-    'brainstorm & transcript discussion — workshop prompts and activities',
-    'quote bank + codebook export — searchable quotes & final codes',
-    'tagged CSV/JSON (for audit) — machine-usable export',
-    /* Added */
-    'problem statement & decision memo — problem framing with recommended decision',
-    'PR/FAQ — press-release style summary with FAQs',
-    'experiment plan (A/B) — hypotheses, metrics, variants, risks',
-    'training/enablement guide — role-based scenarios and FAQs',
-    'support macros & FAQ updates — help center copy suggestions',
-    'service blueprint — frontstage/backstage with lines of interaction',
-    'executive Q&A — anticipated questions with evidence-based answers',
-    'implementation recommendations — ranked fixes with effort/impact',
-    'other (specify below)'
-  ],
-      desc:'Deliverable + brief descriptor for the AI.'
-    },
-    { key:'visuals',       label:'Visuals', type:'select',
+    { key:'deliverable', label:'Primary deliverable', type:'select',
       options:[
-      'none',
-    'theme map — clusters with exemplar quotes',
-    'frequency bar — theme counts',
-    'stacked bar — codes by stage/persona',
-    'heatmap — stage × theme intensity',
-    'co-occurrence matrix — code × code',
-    'sentiment timeline — valence/arousal over time',
-    'saturation curve — new codes by interview',
-    'pareto chart — frequency with cumulative %',
-    'box/violin — distribution of severity/time',
-    'scatter/bubble — impact × effort (reach = size)',
-    'radar — multi-criteria theme profile',
-    'timeline (gantt-like) — events/interviews',
-    'sankey/alluvial — flow across stages',
-    'treemap — hierarchy share',
-    'upset plot — set overlaps',
-    'adjacency matrix — co-occurrence grid',
-    'word bars — top n-grams',
-    'confidence × evidence 2×2',
-    'funnel — drop-offs by step',
-    'theme network — force-directed graph',
-    'chord diagram — inter-theme connections',
-    'ASCII heatmap/bars (text)',
-    'Mermaid text (flow/sequence/journey)',
-    'DOT/Graphviz text (network/hierarchy)',
-    'storyboard — text panels with quotes',
-    'other (specify below)'
-  ] },
+        'none',
+        'themes + evidence - named themes with definitions and exemplar quotes',
+        'insight cards - card per insight with so-what and owner',
+        'journey tensions - stage x theme conflicts and moments of truth',
+        'executive summary - top 5 findings with clear decisions',
+        'full analysis report - comprehensive analysis with appendices',
+        'full narrative report - long-form story with evidence and tradeoffs',
+        'research readout deck - slide-ready storyline',
+        'stakeholder one-pager - narrative brief for decision-makers',
+        'stakeholder presentation deck - bullet-point briefing',
+        'spoken presentation script - concise presenter script with cues',
+        '30-second impact RAP - Readout, Action, Proof',
+        'backlog tickets (issue-ready) - use provided template',
+        'persona updates - attributes, needs, quotes',
+        'journey blueprint - stages, steps, pain and delight',
+        'assumptions and follow-up questions - open questions and next probes',
+        'brainstorm and transcript discussion - workshop prompts',
+        'quote bank + codebook export - searchable quotes and final codes',
+        'tagged CSV or JSON (for audit) - machine-usable export',
+        'problem statement and decision memo - framing with recommendation',
+        'PR/FAQ - press release style summary and FAQs',
+        'experiment plan (A/B) - hypotheses, metrics, variants, risks',
+        'training and enablement guide - role-based scenarios and FAQs',
+        'support macros and FAQ updates - suggested help center copy',
+        'service blueprint - frontstage and backstage with interactions',
+        'executive Q&A - anticipated questions with evidence',
+        'implementation recommendations - ranked fixes with effort and impact',
+        'other (specify below)'
+      ],
+      desc:'Pick the main packaging for your audience.' },
+
+    { key:'visuals', label:'Visuals', type:'select',
+      options:[
+        'none',
+        'theme map - clusters with exemplar quotes',
+        'frequency bar - theme counts',
+        'stacked bar - codes by stage or persona',
+        'heatmap - stage x theme intensity',
+        'co-occurrence matrix - code x code',
+        'sentiment timeline - valence or arousal over time',
+        'saturation curve - new codes by interview',
+        'pareto chart - frequency with cumulative percent',
+        'box or violin - distribution of severity or time',
+        'scatter or bubble - impact x effort (reach = size)',
+        'radar - multi-criteria theme profile',
+        'timeline - events or interviews',
+        'sankey or alluvial - flow across stages',
+        'treemap - hierarchy share',
+        'upset plot - set overlaps',
+        'adjacency matrix - co-occurrence grid',
+        'word bars - top n-grams',
+        'confidence x evidence 2x2',
+        'funnel - drop-offs by step',
+        'theme network - force-directed graph',
+        'chord diagram - inter-theme connections',
+        'ASCII heatmap or bars (text)',
+        'Mermaid text (flow or journey)',
+        'DOT or Graphviz text (network or hierarchy)',
+        'storyboard - text panels with quotes',
+        'other (specify below)'
+      ],
+      desc:'Pick one for now. You can add more later.' },
+
     { key:'export_format', label:'Export format', type:'select',
       options:[
-      'none',
-    'CSV',
-    'Airtable-ready CSV',
-    'Excel-ready CSV',
-    'XLSX export',
-    'JSON',
-    'NDJSON',
-    'Parquet',
-    'Feather (Apache Arrow)',
-    'SQLite (.db)',
-    'GraphML',
-    'GEXF (Gephi)',
-    'Codebook CSV',
-    'REFI-QDA codebook XML (export)',
-    'NVivo/ATLAS.ti codebook CSV (export)',
-    'Markdown report (md)',
-    'HTML report (print-ready)',
-    'LaTeX (tex) export',
-    'written report (doc/pdf outline, paste-ready)',
-    'stakeholder brief (one-pager, paste-ready)',
-    'spoken presentation notes / teleprompter',
-    'slide deck outline (pptx paste-ready)',
-    'Google Slides outline (paste-ready)',
-    'PPTX content (paste-ready)',
-    'Jupyter Notebook (ipynb) export',
-    'R script (ggplot2/dplyr) — paste-ready',
-    'RMarkdown (Rmd) — paste-ready',
-    'SQL seed (CREATE TABLE + INSERT) — paste-ready',
-    'Julia script — paste-ready',
-    'MATLAB script — paste-ready',
-    'SAS program — paste-ready',
-    'SPSS syntax — paste-ready',
-    'Vega-Lite spec (JSON) — paste-ready',
-    'Looker Studio–ready CSV (schema notes)',
-    'other (specify below)'
-  ],
-      desc:'Choose data or communication outputs.'
-    },
-    { key:'tools',         label:'Tools', type:'text',
-      ph:'e.g., Dovetail, Airtable, Miro, NVivo' },
+        'none',
+        'CSV',
+        'Airtable-ready CSV',
+        'Excel-ready CSV',
+        'XLSX export',
+        'JSON',
+        'NDJSON',
+        'Parquet',
+        'Feather (Apache Arrow)',
+        'SQLite (.db)',
+        'GraphML',
+        'GEXF (Gephi)',
+        'Codebook CSV',
+        'REFI-QDA codebook XML (export)',
+        'NVivo or ATLAS.ti codebook CSV (export)',
+        'Markdown report (md)',
+        'HTML report (print ready)',
+        'LaTeX (tex) export',
+        'written report (doc or pdf outline, paste ready)',
+        'stakeholder brief (one pager, paste ready)',
+        'spoken presentation notes or teleprompter',
+        'slide deck outline (pptx paste ready)',
+        'Google Slides outline (paste ready)',
+        'PPTX content (paste ready)',
+        'Jupyter Notebook (ipynb) export',
+        'R script (ggplot2/dplyr) - paste ready',
+        'RMarkdown (Rmd) - paste ready',
+        'SQL seed (CREATE TABLE + INSERT) - paste ready',
+        'Julia script - paste ready',
+        'MATLAB script - paste ready',
+        'SAS program - paste ready',
+        'SPSS syntax - paste ready',
+        'Vega-Lite spec (JSON) - paste ready',
+        'Looker Studio ready CSV (schema notes)',
+        'other (specify below)'
+      ],
+      desc:'Choose data or communication outputs.' },
 
-    /* LLM assist */
-    { key:'llm_assist',    label:'LLM assist level', type:'select',
+    { key:'tools', label:'Tools', type:'text',
+      ph:'Dovetail, Airtable, Miro, NVivo',
+      desc:'Helps tailor exports and naming.' },
+
+    /* AI assist */
+    { key:'ai_assist', label:'AI assist level', type:'select',
       options:[
         'none (manual only)',
         'suggest codes (review required)',
@@ -3681,560 +3738,248 @@ desc:'Call out anything that may affect coding accuracy.' },
         'summarize themes only',
         'all of the above (combo)',
         'explain every step (transparent)',
-        'discussion (back & forth)',
-        'full analysis & final report (comprehensive)',
+        'discussion (back and forth)',
+        'full analysis and final report (comprehensive)',
         'other (specify below)'
       ],
-      desc:'Sets model involvement and expectations for human QA.'
-    },
+      desc:'Sets model involvement and expectations for human QA.' },
 
-    /* Bias & ethics library (exact shape) */
-    {
-      key: 'risks_picks',
-      label: 'Biases (from library)',
-      type: 'repeater',
-      itemType: 'typeahead',
-      unit: 'bias',
-      dataset: 'bias',
-      autofill: 'bias->inline',
-      desc:'Inline reminders to avoid stereotypes/exclusion or fear-mongering.',
-      ph:'e.g., Accessibility; Fear appeals; Cultural sensitivity'
-    },
+    /* Bias and ethics library */
+    { key:'risks_picks', label:'Biases (from library)', type:'repeater',
+      itemType:'typeahead', unit:'bias', dataset:'bias', autofill:'bias->inline',
+      ph:'Accessibility; Fear appeals; Cultural sensitivity',
+      desc:'Inline reminders to avoid stereotypes, exclusion, or fear-mongering.' },
 
     /* Constraints */
-    { key:'constraints',   label:'Constraints', type:'textarea',
-      ph:'privacy, confidentiality, timeline, team availability' }
+    { key:'constraints', label:'Constraints', type:'textarea',
+      ph:'privacy, confidentiality, timeline, team availability',
+      desc:'Hard limits the AI must respect.' }
   ],
+
   boosters: [
-    'Open code first (even deductive) to catch surprises; then converge and lock the codebook.',
-    'Write include/exclude rules with examples for ambiguous codes; maintain a change log.',
-    'Tag sentiment/emotion with context (stage, task) to avoid false positives/negatives.',
-    'Prioritize by severity × frequency × impact; temper with confidence and evidence thresholds.',
-    'Call out contradictions explicitly; probe conditions before judging (role, time, environment).',
+    'Open coding first, then converge and lock the codebook.',
+    'Write include and exclude rules with examples for ambiguous codes and keep a change log.',
+    'Tag sentiment and emotion with context like stage or task to avoid false positives.',
+    'Prioritize by severity x frequency x impact and temper with confidence and evidence thresholds.',
+    'Call out contradictions explicitly and note conditions like role, time, or environment.',
     'Curate quotes that are concrete, decision-linked, and self-contained.',
-    'Use co-occurrence to reveal compound problems (e.g., “billing” + “mobile” + “confusion”).',
-    'Dual-code 10–20% early (κ/α); adjudicate, then freeze v1.0 codebook.',
+    'Use co-occurrence to reveal compound problems like billing + mobile + confusion.',
+    'Double-code 10 to 20 percent early for kappa or alpha, adjudicate, then freeze v1.0.',
     'Close with insight cards tied to owners, effort, and measurable outcomes.',
-    'Document limitations, evidence thresholds, confidence, and anonymization choices.'
+    'Document limitations, evidence thresholds, confidence, and privacy choices.'
   ],
-  template: (f)=>{
+
+  template: (f) => {
     const list = v => Array.isArray(v) ? v.filter(Boolean).join(', ') : v;
 
-    // Source notes
-    const sourceNote = (() => {
-      const src = f.source_type;
-      const why = f.source_reason;
-      const extra = f.reason_other ? ` Extra context: ${f.source_other}, ${f.reason_other}` : null;
-      if (!src && !why) return null;
-      const srcMap = {
-        'usability test — moderated': 'Source: moderated usability — expect tasks, think-aloud, and hint policy.',
-        'usability test — unmoderated': 'Source: unmoderated usability — task-oriented, less probing; rely on behavior.',
-        'interview — 1:1': 'Source: 1:1 interview — narrative data; probe mental models and workflows.',
-        'focus group': 'Source: focus group — watch for consensus effects; attribute quotes carefully.',
-        'call center / support': 'Source: support calls — high-signal pains; tag by issue type and resolution.',
-        'sales / discovery call': 'Source: sales/discovery — outcome-oriented; separate objections from curiosity.',
-        'research self-audit': 'Source: self-audit — meta-reflection; expect bias; triangulate with artifacts.',
-        'research diary/think-aloud (rubberducky)': 'Source: research diary / think-aloud (rubberducky) — reflective log with spontaneous narration; expect fragmented entries and meta-cognition cues.',
-        'workshop/session': 'Source: workshop or session — co-created data; multiple voices; track facilitators vs. participants.',
-  'open-ended survey responses': 'Source: open-ended survey responses — written, self-paced answers; often terse; code for clarity and intent.',
-  'public hearing': 'Source: public hearing — formal statements, often performative; note stakeholders, consensus, and dissent.',
-  'netography: social media discussions, messages, or written open online forum': 'Source: netography (discussions/messages/forums) — conversational, peer-to-peer; expect slang, anonymity, and evolving threads.',
-  'netography: social media posts & comment discussions': 'Source: netography (posts & comments) — short-form content with reactions; high volume and noise; tag virality vs. depth.',
-        'user feedback forum/community': 'Source: community — noisy but rich; de-duplicate and tag sentiment.',
-        'internal meeting/standup': 'Source: internal meeting — capture decisions, risks, and follow-ups.',
-        'other (specify below)': 'Source: other — use additional context.'
-      };
-      const whyMap = {
-        'diagnose friction/pain points': 'Purpose: diagnose friction — emphasize severity, frequency, and error/recovery.',
-        'define the problem(s)':         'Purpose: define the problem(s) — surface root causes and concrete failure modes to frame scope and next steps.',
-  'discover opportunities/solutions': 'Purpose: discover opportunities/solutions — find unmet needs and potential solution directions for ideation.',
-  'prioritize backlog':            'Purpose: prioritize backlog — identify high-impact, high-confidence opportunities to inform short-term scope.',
-  'inform roadmap/OKRs':            'Purpose: inform roadmap/OKRs — map themes to strategic objectives and recommend measurable targets.',
-  'evaluate a feature/release':    'Purpose: evaluate a feature/release — measure reception, regressions, and rollout issues to guide follow-up work.',
-  'craft messaging/positioning':    'Purpose: craft messaging/positioning — extract user language and proof points for product marketing.',
-        'measure change vs baseline': 'Purpose: compare vs baseline — align codes to prior taxonomy and report deltas.',
-        'generate insights for roadmap': 'Purpose: roadmap insights — map themes to impact domains and owners.',
-        'curate quotes for storytelling': 'Purpose: quotes — prioritize self-contained, high-impact excerpts.',
-        'compliance/legal audit': 'Purpose: compliance — tag PII, consent, and risk surfaces.',
-        'training/enablement': 'Purpose: training — produce scenario-based examples and FAQs.',
-        'train support/sales':           'Purpose: train support/sales — create scenario-based examples, common objections, and canonical responses.',
-        'other (specify below)': 'Purpose: other — use additional context.'
-      };
-      return [src && srcMap[src], why && whyMap[why], extra].filter(Boolean).join(' ');
-    })();
+    // Source and purpose notes
+    const srcMap = {
+      'usability test - moderated': 'Source: moderated usability. Expect tasks, think-aloud, and a hint policy.',
+      'usability test - unmoderated': 'Source: unmoderated usability. Task oriented, less probing. Rely on behavior.',
+      'interview - 1:1': 'Source: interview. Narrative data. Probe mental models and workflows.',
+      'focus group': 'Source: focus group. Watch for consensus effects. Attribute quotes carefully.',
+      'call center or support': 'Source: support calls. High-signal pains. Tag by issue type and resolution.',
+      'sales or discovery call': 'Source: sales or discovery. Outcome oriented. Separate objections from curiosity.',
+      'research self-audit': 'Source: self-audit. Meta-reflection. Expect bias. Triangulate with artifacts.',
+      'research diary or think-aloud (rubberducky)': 'Source: research diary or think-aloud. Reflective log with spontaneous narration. Expect fragmented entries and meta-cognition cues.',
+      'workshop or session': 'Source: workshop or session. Co-created data with multiple voices. Track facilitators vs participants.',
+      'open-ended survey responses': 'Source: open-ended survey responses. Written, self-paced answers. Often terse.',
+      'public hearing': 'Source: public hearing. Formal statements and public comment. Note stakeholders and dissent.',
+      'netnography: discussions, messages, or forums': 'Source: netnography of discussions or forums. Conversational and peer to peer. Expect slang and anonymity.',
+      'netnography: social posts with comment threads': 'Source: social posts with threads. Short-form content and reactions. High volume and noise.',
+      'user feedback forum or community': 'Source: community feedback. Noisy but rich. De-duplicate and tag sentiment.',
+      'internal meeting or standup': 'Source: internal meeting. Capture decisions, risks, and follow-ups.',
+      'other (specify below)': 'Source: other. Use the additional context.'
+    };
+
+    const whyMap = {
+      'diagnose friction and pain points': 'Purpose: diagnose friction. Emphasize severity, frequency, and recovery.',
+      'define the problem': 'Purpose: define the problem. Surface root causes and concrete failure modes.',
+      'discover opportunities and solution directions': 'Purpose: discover opportunities. Find unmet needs and solution directions.',
+      'prioritize backlog': 'Purpose: prioritize backlog. Identify high impact, high confidence items.',
+      'inform roadmap and OKRs': 'Purpose: inform roadmap. Map themes to objectives and targets.',
+      'evaluate a feature or release': 'Purpose: evaluate a release. Measure reception, regressions, and rollout issues.',
+      'craft messaging and positioning': 'Purpose: craft messaging. Extract user language and proof points.',
+      'measure change vs baseline': 'Purpose: compare vs baseline. Align codes to prior taxonomy and report deltas.',
+      'curate quotes for storytelling': 'Purpose: quotes. Prioritize self-contained, high-impact excerpts.',
+      'compliance or legal audit': 'Purpose: compliance. Tag PII, consent, and risk surfaces.',
+      'training and enablement': 'Purpose: training. Produce scenario-based examples and FAQs.',
+      'train support or sales': 'Purpose: train support or sales. Create scenarios, objections, and responses.',
+      'other (specify below)': 'Purpose: other. Use the additional context.'
+    };
+
+    const srcLine = (f.source_type && f.source_type !== 'none') ? srcMap[f.source_type] : null;
+    const whyLine = (f.source_reason && f.source_reason !== 'none') ? whyMap[f.source_reason] : null;
+    const extraSrc = f.source_other ? `Extra source context: ${f.source_other}` : null;
 
     // Scope note
     const scopeNote = (() => {
       switch (f.analysis_scope) {
-        case 'full corpus': return 'Scope: Full corpus — comprehensive pass with codebook finalization and full deliverables.';
-        case 'subset (by time/segment)': return 'Scope: Subset — analyze specified slices; report limits vs. full population.';
-        case 'single transcript': return 'Scope: Single transcript — deep pass with quotes and micro-themes; caution on generalization.';
-        case 'top highlights only': return 'Scope: Highlights — skim for top pains/delights and 3–5 quotes of impact.';
-        case 'only pull quotes for storytelling': return 'Scope: Quotes-only — extract high-impact, self-contained quotes for storytelling and comms; include speaker IDs, timestamps, short context (1–2 surrounding lines), and suggested slide-ready truncations.';
-        case 'qualitative analysis': return 'Scope: Qualitative analysis — in-depth thematic coding, exemplar quotes, tensions, and narrative synthesis; emphasize meaning and context over counts.';
-        case 'quantitative analysis': return 'Scope: Quantitative analysis — structured counts, distributions, sentiment aggregates, and statistical comparisons; pull any numbers or stats; include sample sizes and caveats about ASR/noise.';
-        case 'rapid scan (timeboxed)': return 'Scope: Rapid scan (timeboxed) — lightweight pass focused on pattern spotting and top 5–7 takeaways; note confidence and recommended deeper follow-ups.';
-        case 'comparative (A/B groups)': return 'Scope: Comparative (A/B groups) — align codes across groups and report divergences, effect sizes, and group-specific themes; ensure consistent code application or reconcile differences before counting.'; 
-        case 'multi-session comparison': return 'Scope: Multi-session comparison — align codes and contrast across sessions.';
-        case 'longitudinal (waves)': return 'Scope: Longitudinal — track theme trajectories across waves; report emergence/saturation.';
-        case 'delta analysis (before/after change)': return 'Scope: Delta analysis (before/after) — compare pre/post corpora to surface changes in sentiment, theme frequency, and new/emergent issues; align time windows and control for confounds.';
-        case 'exhaustive deep dive': return 'Scope: Exhaustive deep dive — comprehensive coding and cross-validation, saturation tracking, reliability checks, qualitative/quantitative, and full appendices (codebook, all tagged excerpts, and adjudication notes).';
-        case 'incident deep-dive': return 'Scope: Incident deep-dive — focus on root causes, recovery, and prevention.';
-        case 'other (specify below)': return 'Scope: other — use additional context.';
+        case 'full corpus': return 'Scope: full corpus with comprehensive pass and full deliverables.';
+        case 'subset by time or segment': return 'Scope: subset by specified slices. Report limits vs full population.';
+        case 'single transcript': return 'Scope: single transcript. Deep pass with quotes and micro-themes. Caution on generalization.';
+        case 'top highlights only': return 'Scope: highlights. Skim for top pains or delights with 3 to 5 quotes.';
+        case 'quotes only for storytelling': return 'Scope: quotes only. Extract decision-linked, self-contained quotes with IDs and timestamps.';
+        case 'qualitative analysis': return 'Scope: qualitative focus. Meaning and context over counts, with exemplar quotes.';
+        case 'quantitative analysis': return 'Scope: quantitative focus. Counts, distributions, sentiment aggregates, and comparisons.';
+        case 'rapid scan (timeboxed)': return 'Scope: rapid scan. Lightweight pass and 5 to 7 takeaways with confidence notes.';
+        case 'comparative groups (A/B)': return 'Scope: comparative groups. Align codes and report divergences and effect sizes.';
+        case 'multi-session comparison': return 'Scope: multi-session comparison. Align codes across sessions.';
+        case 'longitudinal (waves)': return 'Scope: longitudinal. Track theme trajectories across waves and saturation.';
+        case 'delta analysis (before vs after)': return 'Scope: delta analysis. Compare pre vs post to surface changes in sentiment and theme frequency.';
+        case 'exhaustive deep dive': return 'Scope: exhaustive deep dive. Full coding with reliability and saturation tracking.';
+        case 'incident deep dive': return 'Scope: incident deep dive. Focus on root causes, recovery, and prevention.';
+        case 'other (specify below)': return 'Scope: other. Use the additional context.';
         default: return null;
       }
     })();
 
-    // Approach & method notes
+    // Approach and method notes
     const approachNote = (() => {
       switch (f.coding_approach) {
-        case 'inductive (bottom-up)': return 'Approach: Inductive — begin with open coding; let codes emerge; group into themes; finalize definitions.';
-        case 'deductive (top-down)': return 'Approach: Deductive — start from the seed codebook; permit additions only with evidence and change-log entries.';
-        case 'abductive (mixed)': return 'Approach: Abductive — blend seed codes with emergent ones; maintain a visible change log.';
-        case 'other (specify below)': return 'Approach: other — use additional context.';
+        case 'inductive (bottom-up)': return 'Approach: inductive. Begin with open coding and let codes emerge, then cluster into themes.';
+        case 'deductive (top-down)': return 'Approach: deductive. Start from the seed codebook and add sparingly with a change log.';
+        case 'abductive (mixed)': return 'Approach: abductive. Blend seed codes with emergent ones and track changes.';
         default: return null;
       }
     })();
+
     const methodNote = (() => {
       switch (f.method) {
-        case 'thematic analysis': return 'Method: Thematic analysis — code → cluster → name themes with boundaries and exemplars.';
-        case 'affinity mapping': return 'Method: Affinity mapping — spatially group excerpts; iterate labels until clusters stabilize.';
-        case 'grounded theory (open→axial)': return 'Method: Grounded — open coding → axial links (conditions/causes/consequences) → integrate around a core story.';
-        case 'content analysis (counts)': return 'Method: Content analysis — categorize consistently; report distributions with caveats.';
-        case 'journey mapping (stage × theme)': return 'Method: Journey mapping — index by stage; produce stage × theme heatmaps and moments of truth.';
-        case 'matrix coding (co-occurrence)': return 'Method: Matrix coding — examine code co-occurrence for compound pains/enablers.';
-        case 'JTBD timeline mapping': return 'Method: JTBD timeline — reconstruct triggers, pushes/pulls, anxieties, and habits over time.';
-        case 'rapid thematic synthesis': return 'Method: Rapid thematic synthesis — speed-focused clustering and validation; flag confidence levels.';
-        case 'other (specify below)': return 'Method: other — use additional context.';
+        case 'thematic analysis': return 'Method: thematic analysis. Code, cluster, and name themes with boundaries and exemplars.';
+        case 'affinity mapping': return 'Method: affinity mapping. Group excerpts spatially and iterate labels until stable.';
+        case 'grounded theory (open to axial)': return 'Method: grounded theory. Open coding to axial links across conditions and consequences.';
+        case 'content analysis (counts)': return 'Method: content analysis. Categorize consistently and report distributions with caveats.';
+        case 'journey mapping (stage x theme)': return 'Method: journey mapping. Index by stage and produce stage x theme heatmaps.';
+        case 'matrix coding (co-occurrence)': return 'Method: matrix coding. Examine frequent pairs of codes for compound issues.';
+        case 'JTBD timeline mapping': return 'Method: JTBD timeline. Reconstruct triggers, pushes and pulls, anxieties, and habits.';
+        case 'rapid thematic synthesis': return 'Method: rapid synthesis. Fast clustering with confidence flags.';
         default: return null;
       }
     })();
 
-    // Sentiment, severity, priority notes
+    // Sentiment notes
     const sentimentNote = (() => {
-     switch (f.sentiment_model) {
-    case 'none':
-      return null;
-    case 'valence (positive↔negative)':
-      return 'Sentiment: valence only — label each excerpt as positive↔negative (and neutral if applicable).';
-    case 'valence + arousal':
-      return 'Sentiment: valence + arousal — capture tone (positive↔negative) and intensity (calm↔excited).';
-    case 'valence + arousal + dominance (VAD/PAD)':
-      return 'Sentiment: VAD/PAD — add dominance/control to valence and arousal for richer affect profiles.';
-    case 'aspect-based sentiment (targeted)':
-      return 'Sentiment: aspect-based — identify targets (features/entities) and assign sentiment per target.';
-    case 'stance (pro/neutral/anti/uncertain)':
-      return 'Sentiment: stance — classify position toward a proposition or entity (pro/neutral/anti/uncertain).';
-    case 'subjectivity (objective↔subjective)':
-      return 'Sentiment: subjectivity — score objective↔subjective tone to separate facts from opinions.';
-    case 'emotion intensity (0–1)':
-      return 'Sentiment: emotion intensity — regress a 0–1 strength score for detected emotions/valence.';
-    case 'discrete emotions (set below)':
-      return `Sentiment: discrete emotions — use the provided label set (${f.emotion_labels || 'define labels to proceed'}).`;
-    case 'Plutchik (8 emotions)':
-      return 'Sentiment: Plutchik — classify into 8 emotions (joy, trust, fear, surprise, sadness, disgust, anger, anticipation).';
-    case 'Ekman (basic emotions)':
-      return 'Sentiment: Ekman — classify into basic emotions (anger, disgust, fear, happiness, sadness, surprise).';
-    case 'OCC appraisal families':
-      return 'Sentiment: OCC — appraisal-based categories; tie emotions to appraisals of events, agents, and objects.';
-    case 'moral sentiment (foundations)':
-      return 'Sentiment: moral foundations — tag moral frames (care, fairness, loyalty, authority, purity).';
-    case 'toxicity/politeness':
-      return 'Sentiment: toxicity/politeness — flag toxic/impolite vs polite/constructive phrasing.';
-    case 'hedging & certainty':
-      return 'Sentiment: hedging/certainty — detect hedges, confidence markers, and epistemic stance.';
-    case 'sarcasm/irony flag':
-      return 'Sentiment: sarcasm/irony — flag likely sarcastic/ironic utterances to avoid polarity errors.';
-    case 'power/agency connotation':
-      return 'Sentiment: power/agency — tag connotations of control, agency, and dominance/submission cues.';
-    case 'directed sentiment (speaker→target)':
-      return 'Sentiment: directed — record (speaker → target) pairs for polarity/direction of sentiment.';
-    case 'sentiment dynamics (shift over time)':
-      return 'Sentiment: dynamics — track sentiment trajectory across the session or journey stages.';
-    case 'lexicon-based (VADER/NRC/AFINN)':
-      return 'Sentiment: lexicon-based — dictionary-driven scoring; transparent but domain-sensitive.';
-    case 'LIWC affect categories':
-      return 'Sentiment: LIWC affect — tag categories like posemo/negemo, anxiety, anger, sadness (if licensed).';
-    case 'transformer classifier (domain-tuned)':
-      return 'Sentiment: transformer classifier — supervised model tuned to domain language; document label schema.';
-    case 'multi-label emotions (27+ set)':
-      return 'Sentiment: multi-label emotions — allow multiple emotion tags per excerpt (e.g., 27-class sets).';
-      case 'other (specify below)': return 'Sentiment: other — use additional context.';
+      switch (f.sentiment_model) {
+        case 'valence (positive to negative)': return 'Sentiment: valence only. Label each excerpt positive, negative, or neutral.';
+        case 'valence + arousal': return 'Sentiment: valence plus arousal. Capture tone and intensity.';
+        case 'valence + arousal + dominance (VAD or PAD)': return 'Sentiment: VAD or PAD. Add a control or dominance axis.';
+        case 'aspect-based sentiment (targeted)': return 'Sentiment: aspect-based. Identify targets and assign sentiment per target.';
+        case 'stance (pro, neutral, anti, uncertain)': return 'Sentiment: stance. Classify position toward a proposition or entity.';
+        case 'subjectivity (objective to subjective)': return 'Sentiment: subjectivity. Score objective to subjective tone.';
+        case 'emotion intensity (0 to 1)': return 'Sentiment: intensity. Regress a 0 to 1 strength score.';
+        case 'discrete emotions (set below)': return `Sentiment: discrete emotions. Use the provided labels ${f.emotion_labels ? '(' + f.emotion_labels + ')' : ''}.`;
+        case 'Plutchik (8 emotions)': return 'Sentiment: Plutchik. Classify into 8 emotions.';
+        case 'Ekman (basic emotions)': return 'Sentiment: Ekman. Classify into basic emotions.';
+        case 'OCC appraisal families': return 'Sentiment: OCC appraisal. Tie emotions to appraisals of events and agents.';
+        case 'moral sentiment (foundations)': return 'Sentiment: moral foundations. Tag frames like care, fairness, and authority.';
+        case 'toxicity or politeness': return 'Sentiment: toxicity or politeness flags.';
+        case 'hedging and certainty': return 'Sentiment: hedging and certainty markers.';
+        case 'sarcasm or irony flag': return 'Sentiment: sarcasm or irony flags.';
+        case 'power or agency connotation': return 'Sentiment: power or agency connotations.';
+        case 'directed sentiment (speaker to target)': return 'Sentiment: directed. Record speaker to target pairs.';
+        case 'sentiment dynamics (shift over time)': return 'Sentiment: dynamics. Track changes across time or stages.';
+        case 'lexicon-based (VADER, NRC, AFINN)': return 'Sentiment: lexicon-based. Dictionary scoring with domain caveats.';
+        case 'LIWC affect categories': return 'Sentiment: LIWC categories if licensed.';
+        case 'transformer classifier (domain tuned)': return 'Sentiment: domain tuned transformer classifier.';
+        case 'multi-label emotions (27+ set)': return 'Sentiment: multi-label emotions allowed per excerpt.';
         default: return null;
       }
     })();
-    
-    /* Sentiment units → short note */
-const sentimentUnitsNote = (() => {
-  switch (f.sentiment_units) {
-  case 'none':
-      return null;
-    case '−1..+1':
-      return 'Sentiment scale: −1..+1 — continuous valence from negative to positive (0≈neutral).';
-    case '0..1':
-      return 'Sentiment scale: 0..1 — probability/strength where higher = more positive or stronger emotion.';
-    case '0..100':
-      return 'Sentiment scale: 0..100 — percentage-like score; report with integer rounding.';
-       case 'other (specify below)': return 'Sentiment scale: other — use additional context.';
-    default:
-      return null;
-  }
-})();
-    
+
+    const sentimentUnitsNote = (() => {
+      switch (f.sentiment_units) {
+        case '-1..+1': return 'Sentiment scale: -1..+1. Negative to positive. Zero is near neutral.';
+        case '0..1': return 'Sentiment scale: 0..1. Probability or strength.';
+        case '0..100': return 'Sentiment scale: 0..100. Percentage-like score.';
+        default: return null;
+      }
+    })();
+
+    // Severity and priority notes
     const severityNote = (() => {
-  switch (f.severity_scale) {
-   case 'none':
-      return null;
-    case 'Nielsen 0–4 (cosmetic→catastrophe)':
-      return 'Severity: Nielsen 0–4 — 0=Not a problem; 1=Cosmetic; 2=Minor; 3=Major; 4=Usability catastrophe.';
-    case 'Heuristic 1–5 (pass→catastrophe)':
-      return 'Severity: Heuristic 1–5 — 1=Pass/low; 5=Catastrophe; anchor examples at 2/3/4 to align ratings.';
-    case 'High–Medium–Low (HML)':
-      return 'Severity: HML — triage into High/Medium/Low; include examples to avoid bucket drift.';
-    case 'Task criticality (1–4)':
-      return 'Severity: Task criticality 1–4 — rate by how the issue prevents task completion on critical paths.';
-    case 'Time/effort penalty (0–4)':
-      return 'Severity: Time/effort 0–4 — score by extra steps/minutes imposed on users (0 none → 4 severe).';
-    case 'Frequency × Impact grid':
-      return 'Severity: Frequency × Impact — classify issues on a 2D grid; highlight high-impact frequent items.';
-    case 'Accessibility impact (WCAG 0–4)':
-      return 'Severity: A11y (WCAG 0–4) — 0 no issue; 4 blocks assistive tech users; reference WCAG 2.2 criteria.';
-    case 'Ethical/harm severity (0–4)':
-      return 'Severity: Ethical/harm 0–4 — assess potential user harm, fairness, and dignity impacts.';
-    case 'Sentiment intensity (−3 to +3)':
-      return 'Severity: Sentiment −3…+3 — use negative intensity to flag pain magnitude; document labeler guidance.';
-    case 'Likelihood × Impact (risk matrix)':
-      return 'Severity: Risk matrix — score Likelihood and Impact; prioritize high–high cells first.';
-    case 'Likert 1–5 (very low→very high)':
-      return 'Severity: Likert 1–5 — 1 very low, 5 very high; provide anchors for consistency.';
-    case 'Mean Opinion Score (MOS) 1–5':
-      return 'Severity: MOS 1–5 — telecom-style perceived quality; use averages with n-sizes and variance.';
-    case 'Qualitative risk matrix (1–5 × 1–5)':
-      return 'Severity: Qual risk matrix — 1–5 Likelihood × 1–5 Impact; include rationale per rating.';
-    case 'Bug/incident severities (S1–S5 or P0–P4)':
-      return 'Severity: Bug/incident — map product issues to incident classes (S1/P0 most critical).';
-    case 'SEV1–SEV4 (ops: critical→minor)':
-      return 'Severity: Ops SEV1–SEV4 — SEV1 critical outage; SEV4 minor; align with on-call/runbook definitions.';
-    case '1–10 (granular, anchored)':
-      return 'Severity: 1–10 — granular scoring; anchor 2/5/8 with examples to prevent inflation.';
-    case 'FMEA RPN (1–10 scales)':
-      return 'Severity: FMEA RPN — Severity × Occurrence × Detectability (each 1–10); reduce highest RPN first.';
-    case 'CVSS 0.0–10.0':
-      return 'Severity: CVSS — security scoring 0.0–10.0; include vector string for transparency if applicable.';
-    case 'Numeric Rating Scale (NRS) 0–10':
-      return 'Severity: NRS 0–10 — perceived “pain” of an issue; 0 none, 10 worst imaginable.';
-    case 'Borg CR10 0–10':
-      return 'Severity: Borg CR10 — category-ratio scale for perceived exertion/effort; use verbal anchors.';
-    case 'DREAD (0–10 per factor)':
-      return 'Severity: DREAD — score Damage, Reproducibility, Exploitability, Affected users, Discoverability.';
-    case 'Rubrics letter grade scale (A–F)':
-      return 'Severity: Rubrics letter grades A–F — simple audience-friendly grading; define rubrics for each grade.';
-    case 'other (specify below)':
-      return 'Severity: other — use additional context — provide anchors and examples so ratings remain consistent.';
+      switch (f.severity_scale) {
+        case 'Nielsen 0..4 (cosmetic to catastrophe)': return 'Severity: Nielsen 0..4. 0 not a problem, 4 usability catastrophe.';
+        case 'Heuristic 1..5 (pass to catastrophe)': return 'Severity: Heuristic 1..5. Anchor examples at 2, 3, and 4.';
+        case 'High, Medium, Low': return 'Severity: H, M, L. Triage quickly with examples to prevent drift.';
+        case 'Task criticality 1..4': return 'Severity: task criticality. Rate by effect on critical path completion.';
+        case 'Time or effort penalty 0..4': return 'Severity: time or effort penalty per task.';
+        case 'Frequency x Impact grid': return 'Severity: frequency x impact. Highlight high-high items.';
+        case 'Accessibility impact 0..4 (WCAG)': return 'Severity: accessibility impact. 0 none, 4 blocks assistive tech users.';
+        case 'Ethical or harm severity 0..4': return 'Severity: ethical or harm severity.';
+        case 'Sentiment intensity -3..+3': return 'Severity: sentiment intensity. Use negative intensity as pain magnitude.';
+        case 'Likelihood x Impact (risk matrix)': return 'Severity: risk matrix. Score likelihood and impact.';
+        case 'Likert 1..5 (very low to very high)': return 'Severity: Likert 1..5 with anchors.';
+        case 'Mean Opinion Score 1..5': return 'Severity: MOS 1..5. Include n and variance.';
+        case 'Qualitative risk matrix 1..5 x 1..5': return 'Severity: qualitative risk matrix with rationale per rating.';
+        case 'Bug or incident severities (S1..S5 or P0..P4)': return 'Severity: map to incident classes like S1 or P0.';
+        case 'Ops SEV1..SEV4': return 'Severity: ops SEV scale. Align with on-call definitions.';
+        case '1..10 (anchored)': return 'Severity: 1..10 with clear anchors to prevent inflation.';
+        case 'FMEA RPN (1..10 factors)': return 'Severity: FMEA RPN. Reduce highest RPN first.';
+        case 'CVSS 0.0..10.0': return 'Severity: CVSS style scoring if security related.';
+        case 'Numeric Rating Scale 0..10': return 'Severity: numeric rating scale for perceived pain.';
+        case 'Borg CR10 0..10': return 'Severity: Borg CR10 with verbal anchors.';
+        case 'DREAD (0..10 per factor)': return 'Severity: DREAD factors like damage and reproducibility.';
+        case 'Letter grades A..F': return 'Severity: A to F grades with rubric descriptions.';
         default: return null;
       }
     })();
+
     const priorityNote = (() => {
-        switch (f.priority_model) {
-         case 'none':
-      return null;
-    case 'Severity × Frequency × Impact':
-      return 'Priority: S×F×I — rank pains by how bad they are, how often they occur, and how much they move outcomes; temper with confidence.';
-    case 'ICE (Impact, Confidence, Ease)':
-      return 'Priority: ICE — quick stack-ranking by Impact, Confidence, and Ease of implementation.';
-    case 'RICE-like (Reach, Impact, Confidence, Effort)':
-      return 'Priority: RICE — includes Reach (affected users) and Effort; best when items vary widely in audience size.';
-    case 'WSJF (Cost of Delay ÷ Job Size)':
-      return 'Priority: WSJF — sequence by Cost of Delay divided by Job Size; favors time-critical value.';
-    case 'Opportunity scoring (Importance × Satisfaction)':
-      return 'Priority: Opportunity — target outcomes that are important but poorly satisfied (underserved).';
-    case "MoSCoW (Must/Should/Could/Won't)":
-      return 'Priority: MoSCoW — bucket into Must/Should/Could/Won’t; sort within buckets with a secondary rule.';
-    case 'Kano-informed (Basic/Performance/Delighter)':
-      return 'Priority: Kano-informed — cover Basics first, then Performance, then selected Delighters.';
-    case 'FMEA RPN (Severity × Occurrence × Detectability)':
-      return 'Priority: FMEA RPN — reduce highest Risk Priority Numbers first (Severity×Occurrence×Detectability).';
-    case 'Risk Exposure (Probability × Impact)':
-      return 'Priority: Risk Exposure — focus on high Probability × Impact items; document mitigation and residual risk.';
-    case 'CVSS-style 0–10 bins':
-      return 'Priority: CVSS-style — security-like scoring in 0–10 bins; include vector notes if applicable.';
-    case 'PIE (Potential, Importance, Ease)':
-      return 'Priority: PIE — CRO-friendly scoring of Potential, Importance, and Ease on target surfaces.';
-    case 'PXL (weighted CRO checklist)':
-      return 'Priority: PXL — weighted conversion checklist (evidence, clarity, urgency, etc.) for experiments.';
-    case 'ROI (Value ÷ Cost)':
-      return 'Priority: ROI — maximize Value divided by Cost; include time-to-value and confidence in estimates.';
-    case 'Cost of Delay (absolute)':
-      return 'Priority: Cost of Delay — schedule items with the highest absolute delay cost first.';
-    case 'Expected Value of Learning (EVoL)':
-      return 'Priority: EVoL — pick the work that most reduces uncertainty on big bets per unit time/cost.';
-    case 'Ethical Risk HARM (Harm × Affected users × Reversibility × Mitigation readiness)':
-      return 'Priority: HARM — address highest ethical risk: Harm, #Affected, Reversibility, and Mitigation readiness.';
-    case 'Accessibility Priority (Impact on task × Affected users × WCAG risk)':
-      return 'Priority: Accessibility — rank by task impact, # affected users, and WCAG conformance risk.';
-    case 'Eisenhower (Urgency × Importance)':
-      return 'Priority: Eisenhower — do Important & Urgent now; schedule Important; reduce or drop non-important.';
-    case 'QFD/House of Quality (weighted requirements)':
-      return 'Priority: QFD — weight requirements by customer importance and technical correlation.';
-    case 'North Star vs MVP impact score':
-      return 'Priority: North Star vs MVP — balance near-term MVP impact with progress toward the North Star metric.';
-    case 'Value × Effort grid':
-      return 'Priority: Value × Effort — quick triage; validate top-right picks with a second method.';
-      case 'other (specify below)':
-      return 'Priority: other — use additional context.';
+      switch (f.priority_model) {
+        case 'Severity x Frequency x Impact': return 'Priority: S x F x I. Rank by how bad, how often, and how much it moves outcomes.';
+        case 'ICE (Impact, Confidence, Ease)': return 'Priority: ICE. Quick stack ranking by impact, confidence, and ease.';
+        case 'RICE-like (Reach, Impact, Confidence, Effort)': return 'Priority: RICE-like. Includes reach and effort for different audience sizes.';
+        case 'WSJF (Cost of Delay / Job Size)': return 'Priority: WSJF. Sequence by cost of delay divided by job size.';
+        case 'Opportunity scoring (Importance x Satisfaction)': return 'Priority: opportunity scoring. Underserved outcomes first.';
+        case 'MoSCoW (Must, Should, Could, Won’t)': return 'Priority: MoSCoW buckets with a secondary rule inside each.';
+        case 'Kano-informed (Basic, Performance, Delighter)': return 'Priority: Kano informed. Cover basics, then performance, then selected delighters.';
+        case 'FMEA RPN (Severity x Occurrence x Detectability)': return 'Priority: FMEA RPN. Address highest RPN first.';
+        case 'Risk Exposure (Probability x Impact)': return 'Priority: risk exposure. Focus on high probability x impact items.';
+        case 'CVSS-style bins 0..10': return 'Priority: CVSS style bins with vector notes if applicable.';
+        case 'PIE (Potential, Importance, Ease)': return 'Priority: PIE. CRO friendly scoring.';
+        case 'PXL (weighted CRO checklist)': return 'Priority: PXL. Weighted checklist for experiments.';
+        case 'ROI (Value / Cost)': return 'Priority: ROI. Include time to value and confidence.';
+        case 'Cost of Delay (absolute)': return 'Priority: cost of delay absolute.';
+        case 'Expected Value of Learning (EVoL)': return 'Priority: EVoL. Pick the work that reduces uncertainty fastest.';
+        case 'Ethical Risk HARM (Harm x Affected users x Reversibility x Mitigation readiness)': return 'Priority: HARM. Address highest ethical risk first.';
+        case 'Accessibility Priority (Task impact x Affected users x WCAG risk)': return 'Priority: accessibility. Rank by task impact, affected users, and WCAG risk.';
+        case 'Eisenhower (Urgency x Importance)': return 'Priority: Eisenhower matrix.';
+        case 'QFD or House of Quality (weighted requirements)': return 'Priority: QFD weighting with correlations.';
+        case 'North Star vs MVP impact score': return 'Priority: balance near term MVP vs progress to North Star metric.';
+        case 'Value x Effort grid': return 'Priority: value x effort grid with validation for top right picks.';
         default: return null;
       }
     })();
 
-    // Codebook policy note
-    const codebookNote = (() => {
-      switch (f.codebook_policy) {
-          case 'none':
-      return null;
-      case 'generate a codebook': return 'Codebook policy: we would like you to generate a codebook policy for future use.';
-        case 'lock after pilot (v1.0)': return 'Codebook policy: Lock after pilot — freeze v1.0 before scaling to ensure consistency.';
-        case 'evolving with change log': return 'Codebook policy: Evolving — allow additions/merges with a rigorous change log and retro-coding as needed.';
-        case 'strict (no additions)': return 'Codebook policy: Strict — no new codes; use “notes” for anomalies and report limitations.';
-        case 'fork by cohort then reconcile': return 'Codebook policy: Fork & reconcile — maintain cohort-specific forks, then merge with reconciliation notes.';
-        case 'other (specify below)': return 'Codebook policy: other — use additional context.';
-        default: return null;
-      }
-    })();
-
-    // Visuals, deliverables, exports notes
-    const visualsNote = (() => {
-       switch (f.visuals) {
-                 case 'none':
-      return null;
-    case 'theme map — clusters with exemplar quotes':
-      return 'Visual: Theme map — cluster related excerpts; label with concise theme names and add exemplar quotes.';
-    case 'frequency bar — theme counts':
-      return 'Visual: Frequency bars — show top theme counts to indicate prevalence (include n and %).';
-    case 'stacked bar — codes by stage/persona':
-      return 'Visual: Stacked bars — compare code distributions across stages or personas.';
-    case 'heatmap — stage × theme intensity':
-      return 'Visual: Heatmap — intensity by stage × theme; annotate hotspots and gaps.';
-    case 'co-occurrence matrix — code × code':
-      return 'Visual: Co-occurrence matrix — highlight pairs of codes that frequently appear together.';
-    case 'sentiment timeline — valence/arousal over time':
-      return 'Visual: Sentiment timeline — track valence/arousal across time or journey phases.';
-    case 'saturation curve — new codes by interview':
-      return 'Visual: Saturation curve — plot new codes per interview to signal convergence.';
-    case 'pareto chart — frequency with cumulative %':
-      return 'Visual: Pareto — order by frequency and show cumulative % to find the vital few.';
-    case 'box/violin — distribution of severity/time':
-      return 'Visual: Box/violin — show distribution and outliers for severity or time-on-task.';
-    case 'scatter/bubble — impact × effort (reach = size)':
-      return 'Visual: Scatter/bubble — plot impact vs effort; bubble size encodes reach.';
-    case 'radar — multi-criteria theme profile':
-      return 'Visual: Radar — compare themes across multiple criteria (impact, severity, confidence…).';
-    case 'timeline (gantt-like) — events/interviews':
-      return 'Visual: Timeline — lay out events/interviews; annotate key shifts or incidents.';
-    case 'sankey/alluvial — flow across stages':
-      return 'Visual: Sankey — visualize flows across stages or states; highlight attrition paths.';
-    case 'treemap — hierarchy share':
-      return 'Visual: Treemap — depict hierarchical share of themes/subthemes.';
-    case 'upset plot — set overlaps':
-      return 'Visual: UpSet plot — quantify overlaps among sets (e.g., themes across cohorts).';
-    case 'adjacency matrix — co-occurrence grid':
-      return 'Visual: Adjacency matrix — grid view of co-occurrence strength for many codes.';
-    case 'word bars — top n-grams':
-      return 'Visual: Word bars — top unigrams/bigrams with stopword handling documented.';
-    case 'confidence × evidence 2×2':
-      return 'Visual: Confidence × Evidence — place insights in a 2×2 to communicate certainty.';
-    case 'funnel — drop-offs by step':
-      return 'Visual: Funnel — show drop-offs by step; annotate blockers and recovery points.';
-    case 'theme network — force-directed graph':
-      return 'Visual: Theme network — force-directed graph linking themes by co-occurrence strength.';
-    case 'chord diagram — inter-theme connections':
-      return 'Visual: Chord diagram — display inter-theme connection weights in a circular layout.';
-    case 'ASCII heatmap/bars (text)':
-      return 'Visual: ASCII — text-only heatmap/bars for quick sharing in plain channels.';
-    case 'Mermaid text (flow/sequence/journey)':
-      return 'Visual: Mermaid — output a Mermaid code block for flows/sequences/journeys.';
-    case 'DOT/Graphviz text (network/hierarchy)':
-      return 'Visual: Graphviz — DOT text describing a network/hierarchy for external rendering.';
-    case 'storyboard — text panels with quotes':
-      return 'Visual: Storyboard — sequence of panels with actions, feelings, and quotes.';
-      case 'other (specify below)':
-      return 'Visual: other — use additional context.';
-        default: return null;
-      }
-    })();
-    const deliverableNote = (() => {
-        switch (f.deliverable) {
-                       case 'none':
-      return null;
-    case 'themes + evidence — named themes with definitions & exemplar quotes':
-      return 'Deliverable: Themes + evidence — produce 5–9 themes with clear boundaries, 1–2 exemplar quotes each (with IDs/timestamps), and include/exclude notes.';
-    case 'insight cards — card per insight with so-what & owner':
-      return 'Deliverable: Insight cards — for each insight, include why it matters, evidence, recommended action, owner, and success metric.';
-    case 'journey tensions — stage × theme conflicts and moments of truth':
-      return 'Deliverable: Journey tensions — map pains/delights across stages; highlight moments of truth and contradictions with evidence.';
-    case 'executive summary — top 5 findings with clear decisions':
-      return 'Deliverable: Executive summary — 1–2 pages with the top findings, decisions requested, risks, and next steps.';
-    case 'full analysis report — comprehensive analysis + data appendices':
-      return 'Deliverable: Full analysis report — narrative + methods, reliability, saturation plots, and tagged excerpts appendix.';
-    case 'full narrative report — long-form story with evidence and tradeoffs':
-      return 'Deliverable: Full narrative report — story-led synthesis with counter-evidence, limitations, and decision tradeoffs.';
-    case 'research readout deck — slide-ready storyline':
-      return 'Deliverable: Readout deck — storyline slides with visuals (theme map, heatmaps) and a TL;DR upfront.';
-    case 'stakeholder one-pager — narrative brief for decision-makers':
-      return 'Deliverable: One-pager — concise narrative targeting decisions; include 1 hero quote and one balancing quote.';
-    case 'stakeholder presentation deck — bullet-point brief for decision-makers':
-      return 'Deliverable: Stakeholder deck — bullet-point slides focusing on decisions, risks, and asks.';
-    case 'spoken presentation script — concise presenter script with cues':
-      return 'Deliverable: Presentation script — timeboxed script with slide cues and presenter notes.';
-    case '30-second impact RAP — spoken highlights (Readout, Action, Proof)':
-      return 'Deliverable: 30-second RAP — one-paragraph spoken readout with the action and a proof point.';
-    case 'backlog tickets (issue-ready) — use provided format template':
-      return 'Deliverable: Backlog tickets — issue-ready items with problem, evidence, acceptance criteria, and priority.';
-    case 'persona updates — adjust attributes, needs, and quotes':
-      return 'Deliverable: Persona updates — update attributes, jobs, pains/gains, and add fresh verbatim quotes.';
-    case 'journey blueprint — end-to-end stages, steps, pain/delight':
-      return 'Deliverable: Journey blueprint — stages, steps, channels, pain/delight, and backstage contributors.';
-    case 'assumptions & follow-up questions — open questions + next probes':
-      return 'Deliverable: Assumptions & follow-ups — list assumptions, evidence gaps, and targeted next research questions.';
-    case 'brainstorm & transcript discussion — workshop prompts and activities':
-      return 'Deliverable: Brainstorm pack — prompts, “how might we” seeds, and timed activities derived from quotes.';
-    case 'quote bank + codebook export — searchable quotes & final codes':
-      return 'Deliverable: Quote bank + codebook — searchable quotes with tags and a finalized codebook (v1.x) for reuse.';
-    case 'tagged CSV/JSON (for audit) — machine-usable export':
-      return 'Deliverable: Tagged export — machine-usable file of excerpts, codes, sentiment, and metadata for audit/BI.';
-    case 'problem statement & decision memo — problem framing with recommended decision':
-      return 'Deliverable: Decision memo — structured problem framing, options considered, recommendation, and risks.';
-    case 'PR/FAQ — press-release style summary with FAQs':
-      return 'Deliverable: PR/FAQ — press-release narrative plus FAQ that anticipates objections and cites evidence.';
-    case 'experiment plan (A/B) — hypotheses, metrics, variants, risks':
-      return 'Deliverable: Experiment plan — H1/H0, success metrics, guardrails, sample sizing notes, and variant specs.';
-    case 'training/enablement guide — role-based scenarios and FAQs':
-      return 'Deliverable: Enablement guide — scenario-based training notes and FAQs tailored to roles (support/sales).';
-    case 'support macros & FAQ updates — help center copy suggestions':
-      return 'Deliverable: Support macros — proposed macro texts and FAQ updates with links to evidence.';
-    case 'service blueprint — frontstage/backstage with lines of interaction':
-      return 'Deliverable: Service blueprint — frontstage/backstage interactions, support processes, and pain handoffs.';
-    case 'executive Q&A — anticipated questions with evidence-based answers':
-      return 'Deliverable: Executive Q&A — anticipated tough questions with concise, evidence-backed answers.';
-    case 'implementation recommendations — ranked fixes with effort/impact':
-      return 'Deliverable: Implementation recommendations — ranked fixes with estimated effort/impact and owners.';
-            case 'other (specify below)':
-      return 'Deliverable: other — use additional context.';
-   default: return null;
-  }
-    })();
-    const exportNote = (() => {
-      switch (f.export_format) {
-    case 'none':
-      return null;
-    case 'CSV':
-      return 'Export: CSV — tabular excerpts, codes, and metadata (UTF-8).';
-    case 'Airtable-ready CSV':
-      return 'Export: Airtable CSV — columns aligned to common base schemas.';
-    case 'Excel-ready CSV':
-      return 'Export: Excel CSV — Excel-friendly delimiters and quoting.';
-    case 'XLSX export':
-      return 'Export: XLSX — multi-sheet workbook (excerpts, themes, codebook).';
-    case 'JSON':
-      return 'Export: JSON — hierarchical structure of excerpts, codes, and themes.';
-    case 'NDJSON':
-      return 'Export: NDJSON — one JSON object per line for streaming pipelines.';
-    case 'Parquet':
-      return 'Export: Parquet — columnar format for analytics; preserves types.';
-    case 'Feather (Apache Arrow)':
-      return 'Export: Feather — Arrow-based columnar file for fast loading in Python/R.';
-    case 'SQLite (.db)':
-      return 'Export: SQLite — portable database with normalized tables.';
-    case 'GraphML':
-      return 'Export: GraphML — XML graph for network tools (yEd, Gephi).';
-    case 'GEXF (Gephi)':
-      return 'Export: GEXF — Gephi-friendly graph format (nodes/edges).';
-    case 'Codebook CSV':
-      return 'Export: Codebook CSV — final codes with definitions and include/exclude rules.';
-    case 'REFI-QDA codebook XML (export)':
-      return 'Export: REFI-QDA XML — interoperable codebook for QDA tools.';
-    case 'NVivo/ATLAS.ti codebook CSV (export)':
-      return 'Export: NVivo/ATLAS.ti CSV — import-ready codebook for those suites.';
-    case 'Markdown report (md)':
-      return 'Export: Markdown — narrative report with headings and quotes.';
-    case 'HTML report (print-ready)':
-      return 'Export: HTML — styled, print-ready report with anchors.';
-    case 'LaTeX (tex) export':
-      return 'Export: LaTeX — .tex source for academic-style typesetting.';
-    case 'written report (doc/pdf outline, paste-ready)':
-      return 'Export: Doc/PDF outline — paste-ready headings and body text.';
-    case 'stakeholder brief (one-pager, paste-ready)':
-      return 'Export: One-pager — concise summary tailored to decisions.';
-    case 'spoken presentation notes / teleprompter':
-      return 'Export: Speaker notes — timed script and section cues.';
-    case 'slide deck outline (pptx paste-ready)':
-      return 'Export: Slide outline — slide-by-slide bullets to paste into PPT.';
-    case 'Google Slides outline (paste-ready)':
-      return 'Export: Slides outline — structured bullets for Google Slides.';
-    case 'PPTX content (paste-ready)':
-      return 'Export: PPTX — generated deck content with basic master/layouts descriptions.';
-    case 'Jupyter Notebook (ipynb) export':
-      return 'Export: Jupyter — notebook with data cells and narrative cells.';
-    case 'R script (ggplot2/dplyr) — paste-ready':
-      return 'Export: R script — starter code for ggplot2/dplyr analysis.';
-    case 'RMarkdown (Rmd) — paste-ready':
-      return 'Export: RMarkdown — template report with code fences.';
-    case 'SQL seed (CREATE TABLE + INSERT) — paste-ready':
-      return 'Export: SQL seed — schema + inserts to load your findings.';
-    case 'Julia script — paste-ready':
-      return 'Export: Julia — starter script for data wrangling/plots.';
-    case 'MATLAB script — paste-ready':
-      return 'Export: MATLAB — script scaffold for analysis/plots.';
-    case 'SAS program — paste-ready':
-      return 'Export: SAS — PROC steps scaffold for import/analysis.';
-    case 'SPSS syntax — paste-ready':
-      return 'Export: SPSS — .sps syntax for variable labels and imports.';
-    case 'Vega-Lite spec (JSON) — paste-ready':
-      return 'Export: Vega-Lite — JSON spec for reproducible charts.';
-    case 'Looker Studio–ready CSV (schema notes)':
-      return 'Export: Looker Studio — CSV with schema/field notes for visuals.';
-    case 'other (specify below)':
-      return 'Export: other — use additional context.';
-        default: return null;
-      }
-    })();
-
-    // LLM assist note
-    const assistNote = (() => {
-      switch (f.llm_assist) {
-        case 'none (manual only)': return 'LLM assist: none — human-only coding and synthesis.';
-        case 'suggest codes (review required)': return 'LLM assist: suggest codes — model proposes tags; human approves/edits.';
-        case 'auto-tag then human review': return 'LLM assist: auto-tag — model tags excerpts; human reviews a sample then spot-checks.';
-        case 'summarize themes only': return 'LLM assist: themes only — model summarizes patterns; human codes for evidence.';
-        case 'explain every step (transparent)': return 'LLM assist: explain every step of your process, reasoning of your analysis, and evidence for your conclusions.';
-        case 'discussion (back & forth)': return 'LLM assist: engage in conversation with me as though you are a highly engaged fellow co-worker/colleague with high stakes and we are have a detailed meeting on our findings - ask follow questions, provide personal insights, challenge my assumptions, and express yourself freely with well-educated, opinionated, and passionate perspectives that add on to the material.';
-        case 'full analysis & final report (comprehensive)': return 'LLM assist: full — model produces a comprehensive analysis and final report.';
-        case 'all of the above (combo)': return 'LLM assist: heavy combo — explain reasoning, suggest codes, auto-tag, and full report.';
-        case 'other (specify below)': return 'LLM assist: other — use additional context.';
-        default: return null;
-      }
-    })();
-
-    // Uploading note to instruct model that attachments exist
+    // Attachments note
     const attachmentNote = f.uploading === 'yes'
-      ? 'Attachments: Files will be provided; read and incorporate uploaded documents/transcripts as primary evidence.'
+      ? 'Attachments: files will be provided. Read and incorporate uploaded documents as primary evidence.'
       : null;
 
-    // Speaker & privacy summary
+    // Speaker and privacy summary
     const speakerNote = (() => {
       const parts = [];
       if (f.speaker_count) parts.push(`# speakers: ${f.speaker_count}`);
       if (f.user_count) parts.push(`# users/customers: ${f.user_count}`);
       if (f.diarization) parts.push(`Diarization: ${f.diarization}`);
-      if (f.anonymization) parts.push(`Anonymization: ${f.anonymization}`);
-      if (f.redaction_pref) parts.push(`Redaction: ${f.redaction_pref}`);
       if (f.speaker_names) parts.push(`Speakers: ${f.speaker_names}`);
+      if (f.name_redaction_policy) parts.push(`Name/redaction: ${f.name_redaction_policy}`);
+      if (f.redact_terms) parts.push(`Redact terms: ${f.redact_terms}`);
       return parts.length ? `Participants:\n${parts.join(' · ')}` : null;
     })();
 
+    // Sentiment modifiers list handling (multiselect)
+    const sentimentMods = Array.isArray(f.sentiment_modifiers) && f.sentiment_modifiers.length
+      ? `Sentiment modifiers:\n${f.sentiment_modifiers.join(', ')}`
+      : null;
+
     return [
-      'Analyze the following transcripts for decision-useful insights.',
+      'Analyze the following corpus for decision-useful insights.',
       f.org && `Organization: ${f.org}`,
-      sourceNote,
+      srcLine,
+      whyLine,
+      extraSrc,
       scopeNote,
 
       f.corpus && `Corpus:\n${f.corpus}`,
@@ -4243,13 +3988,13 @@ const sentimentUnitsNote = (() => {
       f.upload_context && `Upload notes:\n${f.upload_context}`,
 
       speakerNote,
-      (f.language || f.unique_terms || f.misheard_terms) && [
-        'Language & terms:',
+
+      // Language and domain terms
+      (f.language || f.domain_dictionary || f.transcript_quality) && [
+        'Language and terms:',
         f.language && `- Language/dialect: ${f.language}`,
-        f.unique_terms && `- Unique terms: ${f.unique_terms}`,
         f.domain_dictionary && `- Domain dictionary: ${f.domain_dictionary}`,
-        f.misheard_terms && `- Likely misheard→intended: ${f.misheard_terms}`,
-        f.transcript_quality && `- Transcript quality flags: ${f.transcript_quality}`
+        f.transcript_quality && `- Quality flags: ${f.transcript_quality}`
       ].filter(Boolean).join('\n'),
 
       f.questions && `Research questions:\n${f.questions}`,
@@ -4260,63 +4005,186 @@ const sentimentUnitsNote = (() => {
 
       f.audience_persona && `Personas/segments: ${list(f.audience_persona)}`,
       f.segments && `Cohorts to compare:\n${f.segments}`,
+      f.journey_stages && `Journey stages:\n${f.journey_stages}`,
 
       f.codebook_seed && `Seed codebook:\n${f.codebook_seed}`,
-      f.inclusion_rules && `Inclusion/Exclusion rules:\n${f.inclusion_rules}`,
+      f.inclusion_rules && `Inclusion and exclusion rules:\n${f.inclusion_rules}`,
       f.code_styles && `Code styles:\n${f.code_styles}`,
-      codebookNote,
 
+      // Codebook policy
+      (() => {
+        switch (f.codebook_policy) {
+          case 'generate a codebook': return 'Codebook policy: generate a candidate codebook for future use.';
+          case 'lock after pilot (v1.0)': return 'Codebook policy: lock after a pilot then scale with v1.0.';
+          case 'evolving with change log': return 'Codebook policy: evolving with change log and retro-coding if needed.';
+          case 'strict (no additions)': return 'Codebook policy: strict. No new codes; note anomalies and limitations.';
+          case 'fork by cohort then reconcile': return 'Codebook policy: fork per cohort and reconcile later.';
+          default: return null;
+        }
+      })(),
+
+      // Sentiment and scoring
       sentimentNote,
       sentimentUnitsNote,
-      f.sentiment_modifiers && `Sentiment Modifiers:\n${f.sentiment_modifiers}`,
+      sentimentMods,
       severityNote,
       f.severity_anchors && `Severity anchors:\n${f.severity_anchors}`,
       f.impact_domains && `Impact domains:\n${f.impact_domains}`,
       f.theme_threshold && `Theme evidence threshold: ${f.theme_threshold}`,
       priorityNote,
 
+      // Reliability
       f.reliability_metric && `Reliability plan: ${f.reliability_metric}`,
-      f.double_code_pct && `Double-code %: ${f.double_code_pct}`,
+      f.double_code_pct && `Double-code percent: ${f.double_code_pct}`,
       f.saturation_check && `Saturation tracking: ${f.saturation_check}`,
 
-      f.journey_stages && `Journey stages:\n${f.journey_stages}`,
-
+      // Quotes and privacy
       f.quotes && `Include quotes: ${f.quotes}`,
       f.quote_length && `Quote length policy: ${f.quote_length}`,
-      f.quote_criteria && `Quote criteria:\n${f.quote_criteria}`,
-      f.redaction_policy && `Redaction & anonymity:\n${f.redaction_policy}`,
+      f.quote_criteria && `Quote selection criteria:\n${f.quote_criteria}`,
+      f.privacy_notes && `Privacy and anonymity notes:\n${f.privacy_notes}`,
 
-      deliverableNote,
-      visualsNote,
-      exportNote,
+      // Outputs
+      (() => {
+        const deliverableMap = {
+          'themes + evidence - named themes with definitions and exemplar quotes': 'Deliverable: themes with definitions and exemplar quotes.',
+          'insight cards - card per insight with so-what and owner': 'Deliverable: insight cards with so-what, owner, and metric.',
+          'journey tensions - stage x theme conflicts and moments of truth': 'Deliverable: journey tensions across stages.',
+          'executive summary - top 5 findings with clear decisions': 'Deliverable: executive summary for decisions.',
+          'full analysis report - comprehensive analysis with appendices': 'Deliverable: full analysis report with appendices.',
+          'full narrative report - long-form story with evidence and tradeoffs': 'Deliverable: narrative report with evidence and tradeoffs.',
+          'research readout deck - slide-ready storyline': 'Deliverable: readout deck with storyline.',
+          'stakeholder one-pager - narrative brief for decision-makers': 'Deliverable: stakeholder one pager.',
+          'stakeholder presentation deck - bullet-point briefing': 'Deliverable: stakeholder presentation deck.',
+          'spoken presentation script - concise presenter script with cues': 'Deliverable: presenter script.',
+          '30-second impact RAP - Readout, Action, Proof': 'Deliverable: 30 second RAP.',
+          'backlog tickets (issue-ready) - use provided template': 'Deliverable: issue-ready backlog tickets.',
+          'persona updates - attributes, needs, quotes': 'Deliverable: persona updates.',
+          'journey blueprint - stages, steps, pain and delight': 'Deliverable: journey blueprint.',
+          'assumptions and follow-up questions - open questions and next probes': 'Deliverable: assumptions and follow-up questions.',
+          'brainstorm and transcript discussion - workshop prompts': 'Deliverable: brainstorm prompts.',
+          'quote bank + codebook export - searchable quotes and final codes': 'Deliverable: quote bank and codebook export.',
+          'tagged CSV or JSON (for audit) - machine-usable export': 'Deliverable: tagged export for audit.',
+          'problem statement and decision memo - framing with recommendation': 'Deliverable: decision memo.',
+          'PR/FAQ - press release style summary and FAQs': 'Deliverable: PR/FAQ.',
+          'experiment plan (A/B) - hypotheses, metrics, variants, risks': 'Deliverable: experiment plan.',
+          'training and enablement guide - role-based scenarios and FAQs': 'Deliverable: training and enablement guide.',
+          'support macros and FAQ updates - suggested help center copy': 'Deliverable: support macros and FAQ updates.',
+          'service blueprint - frontstage and backstage with interactions': 'Deliverable: service blueprint.',
+          'executive Q&A - anticipated questions with evidence': 'Deliverable: executive Q&A.',
+          'implementation recommendations - ranked fixes with effort and impact': 'Deliverable: implementation recommendations.'
+        };
+        return f.deliverable && f.deliverable !== 'none' ? (deliverableMap[f.deliverable] || `Deliverable: ${f.deliverable}`) : null;
+      })(),
+
+      (() => {
+        const visualsMap = {
+          'theme map - clusters with exemplar quotes': 'Visual: theme map with clusters and exemplar quotes.',
+          'frequency bar - theme counts': 'Visual: frequency bars for theme counts.',
+          'stacked bar - codes by stage or persona': 'Visual: stacked bars by stage or persona.',
+          'heatmap - stage x theme intensity': 'Visual: heatmap of stage x theme intensity.',
+          'co-occurrence matrix - code x code': 'Visual: co-occurrence matrix for code pairs.',
+          'sentiment timeline - valence or arousal over time': 'Visual: sentiment timeline.',
+          'saturation curve - new codes by interview': 'Visual: saturation curve showing new codes over interviews.',
+          'pareto chart - frequency with cumulative percent': 'Visual: pareto chart.',
+          'box or violin - distribution of severity or time': 'Visual: distribution via box or violin.',
+          'scatter or bubble - impact x effort (reach = size)': 'Visual: scatter or bubble chart of impact x effort.',
+          'radar - multi-criteria theme profile': 'Visual: radar chart for multi-criteria theme profiles.',
+          'timeline - events or interviews': 'Visual: timeline of events or interviews.',
+          'sankey or alluvial - flow across stages': 'Visual: sankey or alluvial for flow.',
+          'treemap - hierarchy share': 'Visual: treemap of hierarchy share.',
+          'upset plot - set overlaps': 'Visual: upset plot for overlaps.',
+          'adjacency matrix - co-occurrence grid': 'Visual: adjacency matrix.',
+          'word bars - top n-grams': 'Visual: word bars for top n-grams.',
+          'confidence x evidence 2x2': 'Visual: confidence x evidence 2x2.',
+          'funnel - drop-offs by step': 'Visual: funnel of step drop-offs.',
+          'theme network - force-directed graph': 'Visual: force-directed theme network.',
+          'chord diagram - inter-theme connections': 'Visual: chord diagram of connections.',
+          'ASCII heatmap or bars (text)': 'Visual: ASCII heatmap or bars (text only).',
+          'Mermaid text (flow or journey)': 'Visual: Mermaid text for flow or journey.',
+          'DOT or Graphviz text (network or hierarchy)': 'Visual: DOT or Graphviz text for networks or hierarchies.',
+          'storyboard - text panels with quotes': 'Visual: storyboard as text panels with quotes.'
+        };
+        return f.visuals && f.visuals !== 'none' ? (visualsMap[f.visuals] || `Visual: ${f.visuals}`) : null;
+      })(),
+
+      (() => {
+        const exportMap = {
+          'CSV': 'Export: CSV with excerpts, codes, and metadata.',
+          'Airtable-ready CSV': 'Export: Airtable-ready CSV.',
+          'Excel-ready CSV': 'Export: Excel-friendly CSV.',
+          'XLSX export': 'Export: XLSX with multiple sheets.',
+          'JSON': 'Export: JSON hierarchy of excerpts, codes, and themes.',
+          'NDJSON': 'Export: NDJSON, one JSON object per line.',
+          'Parquet': 'Export: Parquet columnar format.',
+          'Feather (Apache Arrow)': 'Export: Feather (Arrow).',
+          'SQLite (.db)': 'Export: SQLite database.',
+          'GraphML': 'Export: GraphML for network tools.',
+          'GEXF (Gephi)': 'Export: GEXF for Gephi.',
+          'Codebook CSV': 'Export: codebook CSV with definitions and rules.',
+          'REFI-QDA codebook XML (export)': 'Export: REFI-QDA XML.',
+          'NVivo or ATLAS.ti codebook CSV (export)': 'Export: NVivo or ATLAS.ti codebook CSV.',
+          'Markdown report (md)': 'Export: Markdown report.',
+          'HTML report (print ready)': 'Export: HTML report.',
+          'LaTeX (tex) export': 'Export: LaTeX source.',
+          'written report (doc or pdf outline, paste ready)': 'Export: doc or pdf outline.',
+          'stakeholder brief (one pager, paste ready)': 'Export: one pager.',
+          'spoken presentation notes or teleprompter': 'Export: speaker notes.',
+          'slide deck outline (pptx paste ready)': 'Export: slide deck outline.',
+          'Google Slides outline (paste ready)': 'Export: Google Slides outline.',
+          'PPTX content (paste ready)': 'Export: PPTX content outline.',
+          'Jupyter Notebook (ipynb) export': 'Export: Jupyter notebook.',
+          'R script (ggplot2/dplyr) - paste ready': 'Export: R script.',
+          'RMarkdown (Rmd) - paste ready': 'Export: RMarkdown template.',
+          'SQL seed (CREATE TABLE + INSERT) - paste ready': 'Export: SQL seed script.',
+          'Julia script - paste ready': 'Export: Julia script.',
+          'MATLAB script - paste ready': 'Export: MATLAB script.',
+          'SAS program - paste ready': 'Export: SAS program scaffold.',
+          'SPSS syntax - paste ready': 'Export: SPSS syntax.',
+          'Vega-Lite spec (JSON) - paste ready': 'Export: Vega-Lite JSON spec.',
+          'Looker Studio ready CSV (schema notes)': 'Export: Looker Studio ready CSV.'
+        };
+        return f.export_format && f.export_format !== 'none' ? (exportMap[f.export_format] || `Export: ${f.export_format}`) : null;
+      })(),
+
       f.tools && `Tools: ${f.tools}`,
 
-      assistNote,
+      // AI assist note
+      (() => {
+        switch (f.ai_assist) {
+          case 'none (manual only)': return 'AI assist: none. Human-only coding and synthesis.';
+          case 'suggest codes (review required)': return 'AI assist: suggest codes. Human approves or edits.';
+          case 'auto-tag then human review': return 'AI assist: auto-tag, then human review a sample plus spot checks.';
+          case 'summarize themes only': return 'AI assist: summarize themes only. Human codes evidence.';
+          case 'explain every step (transparent)': return 'AI assist: explain every step, reasoning, and evidence.';
+          case 'discussion (back and forth)': return 'AI assist: collaborative discussion with probing and challenges.';
+          case 'full analysis and final report (comprehensive)': return 'AI assist: comprehensive analysis and final report.';
+          case 'all of the above (combo)': return 'AI assist: combo. Explain, suggest, auto-tag, and report.';
+          default: return null;
+        }
+      })(),
 
-      f.risks_picks && `Bias/ethics checks: ${list(f.risks_picks)}`,
+      f.risks_picks && `Bias and ethics checks: ${list(f.risks_picks)}`,
       f.constraints && `Constraints:\n${f.constraints}`,
 
       [
         'Output format:',
-        '- Codebook (final): name · definition · include/exclude · examples · relationships · change log summary',
-        '- Tagged excerpts: id · timestamp · codes · sentiment/emotion · persona/segment · stage',
-        '- Themes: name · description · evidence (quotes with IDs/time) · frequency · severity (per chosen scale) · impact',
-        '- Tensions & Contradictions: statement · linked excerpts · hypothesized conditions',
-        '- Pain Prioritization: scored list (per chosen model) with confidence and assumptions',
-        '- Visuals (if selected): theme map / journey heatmap / co-occurrence / sentiment timeline / saturation curve',
-        '- Insight Cards: insight · evidence · so-what · recommendation · owner · metric · effort · confidence',
-        '- Deliverable packaging (per selection):',
-        '  · Executive summary: 1-page TL;DR, decisions, 3–5 quotes of impact',
-        '  · Research readout deck: storyline slides + appendices',
-        '  · Full analysis report: narrative with methods, limitations, appendix exports',
-        '  · Stakeholder one-pager: decision-focused brief with KPIs',
-        '- Exports (per selection): data (CSV/JSON/Excel/Airtable) and/or communication artifacts (doc, deck, notes, brief)',
-        '- Appendix: reliability stats (if any), saturation, limitations, anonymization notes'
+        '- Codebook (final): name, definition, include/exclude, examples, relationships, change log summary',
+        '- Tagged excerpts: id, timestamp, codes, sentiment/emotion, persona/segment, stage',
+        '- Themes: name, description, evidence (quotes with IDs and time), frequency, severity, impact',
+        '- Tensions and contradictions: statement, linked excerpts, hypothesized conditions',
+        '- Prioritization: scored list per model with confidence and assumptions',
+        '- Visuals (if selected): theme map, journey heatmap, co-occurrence, sentiment timeline, saturation curve',
+        '- Insight cards: insight, evidence, so-what, recommendation, owner, metric, effort, confidence',
+        '- Packaging (per selection): exec summary, readout deck, full report, or one pager',
+        '- Exports: CSV, JSON, Excel, Airtable, and narrative artifacts',
+        '- Appendix: reliability stats, saturation, limitations, and privacy notes'
       ].join('\n')
     ].filter(Boolean).join('\n');
   },
+
   meta: {
-    search_text: "transcripts analyze source reason org speakers anonymization dictionary upload thematic sentiment severity priority WSJF ICE RICE codebook policy deliverables visuals exports LLM assist"
+    search_text: 'transcripts analyze corpus source reason org speakers privacy redaction dictionary upload thematic sentiment severity priority WSJF ICE RICE codebook policy deliverables visuals exports AI assist'
   }
 },
 
