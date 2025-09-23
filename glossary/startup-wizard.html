@@ -71,6 +71,40 @@ a.btn,a.btn:hover,.btn,.btn:hover,.btn:focus,.btn:active{ text-decoration:none!i
 }
 
 /* Inputs */
+/* === Stepper fields: spacing & label/description distinction === */
+#wizViewSteps .field {
+  margin: 0 0 8px; /* baseline */
+}
+
+/* When there are 2+ fields on the step, increase vertical spacing */
+#wizStepBody.many-fields .field + .field,
+#commonCtxBody .field + .field {
+  margin-top: 16px;
+}
+
+/* Labels: stronger and a touch larger */
+#wizViewSteps .field > label {
+  display: block;
+  font-weight: 600;
+  font-size: 14.5px;
+  letter-spacing: .1px;
+  color: var(--fg);
+  margin: 0 0 6px;
+}
+
+/* Descriptive text: smaller, muted, and clearly separate */
+#wizViewSteps .field .desc {
+  font-size: 12.75px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: 6px;
+}
+html[data-theme="dark"] #wizViewSteps .field .desc {
+  color: color-mix(in srgb, var(--muted), white 10%);
+}
+
+
+
 input[type="text"], textarea, select{
   width:100%; height:48px; padding:0 12px; border-radius:var(--radius); border:1px solid var(--border);
   background:var(--card); color:var(--fg); outline:none; box-shadow:var(--shadow);
@@ -128,6 +162,62 @@ body::before{
 .wiz-step0 ul.meta{ display:flex; flex-wrap:wrap; gap:12px; margin:8px 0; padding:0; list-style:none }
 .wiz-step0 .uses{ margin-top:10px }
 .wiz-step0 .uses li{ margin:6px 0; color:var(--fg) }
+
+/* === Step 0 layout refresh (left-aligned, centered column, larger type) === */
+.wiz-step0{
+  max-width: 820px;        /* narrower column to pull content toward center */
+  margin: 8vh auto 6vh;    /* centers the section while keeping left alignment */
+  padding: 20px 22px;
+}
+
+@media (max-width: 900px){
+  .wiz-step0{ margin: 4vh auto; padding: 16px; }
+}
+
+.wiz-step0 .title{
+  font-size: clamp(28px, 3.2vw, 40px);
+  margin: 0 0 12px;
+}
+
+.wiz-step0 .def{
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  max-width: 70ch;
+}
+
+.wiz-step0 ul.meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 10px 0 4px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.wiz-step0 ul.meta li{
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.wiz-step0 .uses{ margin-top: 18px; }
+.wiz-step0 .uses .subhead{ font-size: 14px; letter-spacing: .2px; }
+.wiz-step0 .uses li{ font-size: 14.5px; line-height: 1.45; }
+
+/* Actions row: show "back to search" first visually, keep DOM order accessible */
+.wiz-step0 .step0-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  /* flips visual order only */
+}
+.wiz-step0 .step0-actions .btn{
+  padding: 10px 16px;
+  font-size: 15px;
+}
+
 
 /* Steps layout */
 .wiz-stepsWrap{ display:grid; grid-template-columns:260px 1fr; gap:14px; align-items:start }
@@ -347,53 +437,224 @@ body::before{
   z-index: 9999;           /* top of the app */
 }
 
+/* ===== INDEX ↔ WIZARD SEARCH PARITY — place at end of <style> ===== */
+
+/* Container width + pop-in like index */
+#wizViewStartup .searchWrap{
+  width:min(780px,100%);
+  margin:6px auto 0;
+  position:relative;
+  transform-origin:center;
+  animation: popIn .56s cubic-bezier(.2,.9,.2,1.2) both;
+  z-index:10; /* keep suggestions above following content */
+}
+@keyframes popIn{ 0%{transform:scale(.88);opacity:0}60%{transform:scale(1.03);opacity:1}100%{transform:scale(1)} }
+
+/* The pill itself: gradient border + soft halo + “hanging” underline */
+#wizViewStartup .wiz-searchShell{
+  width:100%; display:flex; align-items:center; gap:8px; padding:8px;
+  border:2px solid transparent; border-radius:999px; position:relative;
+  background:var(--card);
+  background-image:
+    linear-gradient(var(--card), var(--card)),
+    conic-gradient(from 200deg,
+      var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, box-shadow .18s ease, filter .18s ease;
+}
+#wizViewStartup .wiz-searchShell::before{
+  content:""; position:absolute; inset:-10px; border-radius:999px; z-index:-1;
+  filter: blur(22px) saturate(120%);
+  background: conic-gradient(from 200deg,
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:.16; transition: opacity .18s ease, filter .18s ease;
+}
+#wizViewStartup .wiz-searchShell::after{
+  content:""; position:absolute; left:10%; right:10%; bottom:-6px; height:4px; border-radius:999px;
+  background: linear-gradient(90deg,
+    var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6), var(--r1));
+  opacity:0; transform: translateY(0); transition: opacity .20s ease, transform .20s ease; pointer-events:none;
+}
+#wizViewStartup .wiz-searchShell:hover,
+#wizViewStartup .wiz-searchShell:focus-within{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.10);
+}
+#wizViewStartup .wiz-searchShell:hover::before,
+#wizViewStartup .wiz-searchShell:focus-within::before{
+  opacity:.20; filter: blur(22px) saturate(125%);
+}
+#wizViewStartup .wiz-searchShell:hover::after,
+#wizViewStartup .wiz-searchShell:focus-within::after{
+  opacity:.95; transform: translateY(2px);
+}
+
+/* Input sizing/typography parity with index */
+#wizViewStartup #wizQ{
+  display:block; width:100%; max-width:100%; box-sizing:border-box;
+  min-height:48px; padding:12px 16px;
+  border:none; outline:none; border-radius:16px; background:transparent; color:var(--fg);
+  font:16px/1.2 inherit;
+}
+
+/* “search” button parity (overrides .btn sm look inside the shell) */
+#wizViewStartup #wizGo{
+  border:none; border-radius:999px; padding:10px 14px; cursor:pointer;
+  font-weight:600; text-transform:lowercase;
+  background: var(--fg); color:#fff;
+}
+#wizViewStartup #wizClear{ border:none; background:transparent; color:var(--muted); cursor:pointer; }
+
+/* Typeahead shell parity (index uses #ta; wizard uses #taSug .box) */
+#wizViewStartup #taSug{
+  position:absolute; left:10px; right:10px; top:calc(100% + 8px);
+  z-index:300;
+}
+#wizViewStartup #taSug .box{
+  border:1px solid var(--border); background:var(--card); border-radius:12px;
+  box-shadow: var(--shadow); max-height:260px; overflow:auto;
+}
+
+/* Quick actions row parity */
+#wizViewStartup .searchCtas, 
+#wizViewStartup .quickRow{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:8px; margin-top:10px;
+}
+@media (max-width:480px){
+  #wizViewStartup .searchCtas .btn, #wizViewStartup .quickRow .btn{ padding:8px 12px }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  #wizViewStartup .wiz-searchShell,
+  #wizViewStartup .wiz-searchShell::before,
+  #wizViewStartup .wiz-searchShell::after{ transition:none }
+}
+
+/* Header should be flush on the Wizard page */
+header.no-edge{
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* ===== Wizard search: subtle mode (no underline, softer glow) ===== */
+
+/* Reduce border rainbow to a gentle hint */
+#wizSearchShell{
+  border-width: 1px;                 /* thinner than 2px */
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(from 200deg,
+      color-mix(in srgb, var(--r1), transparent 88%),
+      color-mix(in srgb, var(--r2), transparent 90%),
+      color-mix(in srgb, var(--r3), transparent 92%),
+      color-mix(in srgb, var(--r4), transparent 90%),
+      color-mix(in srgb, var(--r5), transparent 90%),
+      color-mix(in srgb, var(--r6), transparent 88%),
+      color-mix(in srgb, var(--r1), transparent 88%)
+    ) border-box !important;         /* ensure we win against the utility */
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
+/* Kill the “hanging rainbow” underline entirely */
+#wizSearchShell::after{ display: none !important; }
+
+/* Make the halo almost imperceptible */
+#wizSearchShell::before{
+  opacity: .04 !important;           /* was ~.10–.16 */
+  filter: blur(12px) saturate(104%) !important;
+}
+#wizSearchShell:hover::before,
+#wizSearchShell:focus-within::before{
+  opacity: .06 !important;           /* gentle bump instead of a glow bomb */
+  filter: blur(14px) saturate(106%) !important;
+}
+
+/* Softer hover: no lift, lighter shadow */
+#wizSearchShell:hover,
+#wizSearchShell:focus-within{
+  transform: none !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.06) !important;
+}
+
+/* If the .rainbow utility is present on the shell, neutralize its stronger hover */
+#wizSearchShell.rainbow:hover{
+  background:
+    linear-gradient(color-mix(in srgb, var(--card), white 2%), color-mix(in srgb, var(--card), white 2%)) padding-box,
+    conic-gradient(from 200deg,
+      color-mix(in srgb, var(--r1), transparent 88%),
+      color-mix(in srgb, var(--r2), transparent 90%),
+      color-mix(in srgb, var(--r3), transparent 92%),
+      color-mix(in srgb, var(--r4), transparent 90%),
+      color-mix(in srgb, var(--r5), transparent 90%),
+      color-mix(in srgb, var(--r6), transparent 88%),
+      color-mix(in srgb, var(--r1), transparent 88%)
+    ) border-box !important;
+}
+
+/* Quick actions: no stretch; size to content like the home page */
+#wizViewStartup .quickRow,
+#wizViewStartup .searchCtas{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Tighten the button padding slightly on the wizard page */
+#wizViewStartup .quickRow .btn,
+#wizViewStartup .searchCtas .btn{
+  padding: 6px 10px;                 /* was 6px 12–14px */
+  min-width: auto;                    /* don’t force equal widths */
+}
+
 
 </style>
 </head>
 <body>
 
-  <header>
+<header class="no-edge">
+
 <a class="btn sm" href="../index.html">← back to home</a>
 <div class="spacer"></div>
 <button class="btn sm hide" id="btnExitSearch">search</button>
-<button class="btn sm" id="btnAdvanced">exit to advanced layout</button>
   </header>
 
   <main class="wiz-root">
-    <!-- Header strip: search pill -->
+
+
+    <!-- Startup view -->
+    <section id="wizViewStartup" class="wiz-startup">
+        <!-- Header strip: search pill -->
 <div class="wiz-header-search" id="wizHdr">
   <div class="searchCenter">
-    <div class="wiz-searchShell rainbow">
+    <div class="wiz-searchShell search rainbow" id="wizSearchShell">
       <input id="wizQ" type="text" placeholder="search use-cases, labels, tags…" autocomplete="off" />
       <button id="wizClear" class="wiz-clear" title="clear">×</button>
      <button id="wizGo" class="btn sm">search</button>
-      <div id="taSug" hidden><div class="box" role="listbox" aria-label="suggestions"></div></div>
+      <div id="taSug" hidden>
+      <div class="box" role="listbox" aria-label="suggestions"></div>
+      </div>
     </div>
-    
-    
-    <div id="wizTopProgress" class="wiz-topprog hide">
-  <div class="wiz-topprog-bar" aria-hidden="true"><i id="tpBar"></i></div>
-  <div class="wiz-topprog-meta">
-    <span id="tpStep">step 1 of 1</span>
-    <span aria-hidden="true">•</span>
-    <span id="tpPct">0%</span>
-    <span aria-hidden="true">•</span>
-    <span id="tpEnc">let’s get rolling</span>
-    <span aria-hidden="true">•</span>
-    <span id="tpTime">~0 min left</span>
-  </div>
-</div>
-    
-    
-    <div class="quickRow">
-      <button id="btnHelp"  class="btn sm rainbow">help</button>
+        <p class="hint">type what you want to make in everyday words — we’ll shape it into a clear ai prompt.</p>
+
+        <div class="quickRow searchCtas">
+         <a id="btnAdv" class="btn sm rainbow" href="./templates-glossary.html">advanced search</a>
+      <button id="btnHelp"  class="btn sm rainbow">help me</button>
       <button id="btnLucky" class="btn sm rainbow">i’m feeling lucky</button>
     </div>
   </div>
 </div>
-
-    <!-- Startup view -->
-    <section id="wizViewStartup" class="wiz-startup">
+     <!-- existing Startup content begins -->
 <div class="wiz-row">
   <label for="wizAllSelect" class="muted">all matches</label>
   <span id="wizMatchMeta" class="muted" style="margin-left:8px">0 matches of 0 total</span>
@@ -422,14 +683,26 @@ body::before{
         <div class="subhead">use-cases</div>
         <ul id="wizStep0Uses"></ul>
       </div>
-      <div style="margin-top:12px; display:flex; gap:8px">
-        <button id="wizStep0Start" class="btn primary">start guided setup →</button>
-        <button id="wizExitSearch" class="btn">back to search</button>
-      </div>
+<div class="step0-actions">
+  <button id="wizStep0Start" class="btn primary">← start guided setup</button>
+  <button id="wizExitSearch" class="btn">back to search</button>
+</div>
     </section>
 
     <!-- Steps view -->
     <section id="wizViewSteps" class="hide">
+        <div id="wizTopProgress" class="wiz-topprog hide">
+  <div class="wiz-topprog-bar" aria-hidden="true"><i id="tpBar"></i></div>
+  <div class="wiz-topprog-meta">
+    <span id="tpStep">step 1 of 1</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpPct">0%</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpEnc">let’s get rolling</span>
+    <span aria-hidden="true">•</span>
+    <span id="tpTime">~0 min left</span>
+  </div>
+</div>
       <div class="wiz-stepsWrap">
         <aside class="wiz-rail">
           <div class="wiz-prog" aria-hidden="true"><i id="wizProgBar"></i></div>
@@ -982,6 +1255,8 @@ el('btnNext3').addEventListener('click', ()=>{
     CURRENT = t;
     renderStep0Meta(t);
     showView('step0');
+     if (typeof window.__setURLForTemplate==='function') // ⟵ add this
+    window.__setURLForTemplate(t);
     el('wizTopProgress').classList.add('hide'); // add this
   }
 
@@ -1470,6 +1745,8 @@ function renderSteps(t){
   
 } 
 
+
+
 else if (S.special === 'extra'){
   // HTML only; placeholder/prefill will be set by wiz_bindExtrasUI(t)
   body.innerHTML = `
@@ -1623,19 +1900,96 @@ el('wizStepBack').addEventListener('click', ()=>{
 el('wizStepNext').addEventListener('click', ()=>{
   if (STEP_INDEX<STEPS.length-1){ const prev=STEP_INDEX; STEP_INDEX++; updateStepStates(prev); renderSteps(CURRENT); updateTopProgress(); }
 });
-
-  // Advanced layout exit (just persist preference)
-  el('btnAdvanced').addEventListener('click', ()=> writeUI({ preferredMode:'classic' }));
-  
-  
   
   el('btnExitSearch').addEventListener('click', ()=> showView('startup'));
+  
+  
+  
+/* ===== URL deep-linking (slug/id → Step 0) ============================== */
+(function wireDeepLinking(){
+  function readTargetFromURL(){
+    const url = new URL(window.location.href);
+    const p   = url.searchParams;
+    let v = (p.get('slug') || p.get('id') || p.get('t') || '').trim();
+    if (!v && url.hash) v = url.hash.replace(/^#/, '').trim();
+    return v.toLowerCase();
+  }
+
+  function findTemplate(slugOrId){
+    if (!slugOrId) return null;
+    const s = slugOrId.toLowerCase();
+    const T = allTemplates();
+    return T.find(x =>
+      String(x.slug||'').toLowerCase() === s ||
+      String(x.id  ||'').toLowerCase() === s ||
+      String(x.key ||'').toLowerCase() === s ||
+      String(x.label||'').toLowerCase() === s
+    ) || null;
+  }
+
+  function setURLForTemplate(t){
+    try{
+      const url = new URL(window.location.href);
+      const canonical = (t.slug || t.id || '').toString().toLowerCase();
+      // normalize to ?slug=… and drop ?id=…
+      if (canonical){
+        url.searchParams.set('slug', canonical);
+        url.searchParams.delete('id');
+      }else{
+        url.searchParams.delete('slug');
+        url.searchParams.delete('id');
+      }
+      history.replaceState({}, '', url);
+    }catch(_){}
+  }
+  window.__setURLForTemplate = setURLForTemplate; // used when user clicks cards too
+
+  function tryOpenFromURL(){
+    const target = readTargetFromURL();
+    if (!target) return;
+
+    // immediate attempt
+    const hit = findTemplate(target);
+    if (hit){ openStep0(hit); setURLForTemplate(hit); return; }
+
+    // datasets may still be loading → retry a few times
+    let tries = 0;
+    const iv = setInterval(()=>{
+      const h = findTemplate(target);
+      if (h){ clearInterval(iv); openStep0(h); setURLForTemplate(h); }
+      else if (++tries >= 30){ clearInterval(iv); } // ~4.5s total
+    }, 150);
+  }
+
+  // run after DOM is ready; safe with late-loading datasets thanks to retry loop
+  window.addEventListener('DOMContentLoaded', tryOpenFromURL);
+})();
+
+
 
 // ===== Boot =====
 buildIndex();
 recompute('');                   // prime UI
 setTimeout(()=>{ buildIndex(); recompute(el('wizQ').value); }, 300); // pick up late dataset
   </script>
+  
+  <script>
+(function ensureIndexSkin(){
+  const root = document.getElementById('wizViewStartup');
+  if (!root) return;
+  const apply = () => {
+    document.getElementById('wizHdr')?.classList.add('searchWrap');
+    root.querySelector('.wiz-searchShell')?.classList.add('search');
+    root.querySelector('.quickRow')?.classList.add('searchCtas');
+    const box = document.querySelector('#taSug .box');
+    if (box) box.parentElement.classList.add('ta');
+  };
+  apply();
+  // If your framework re-renders, keep it skinned.
+  new MutationObserver(apply).observe(root, { childList:true, subtree:true });
+})();
+</script>
+
 
   <!-- ===== Only external deps (datasets) ===== -->
   <script src="./templates.data.js"></script>
