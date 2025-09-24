@@ -3502,7 +3502,7 @@ goEl.addEventListener('click', ()=>{
         if (typeof startScan === 'function') startScan();
         return;
       }
-    case 'btnAI': {
+case 'btnAI': {
   try { pb.log('actionChosen', { action: 'ai' }); } catch {}
   const qNow = (qEl && qEl.value ? qEl.value : '').trim();
   if (typeof triggerSearchShake === 'function') triggerSearchShake();
@@ -4792,8 +4792,40 @@ pb.ai.callApertus = async function(opts){
 (function(){
   window.pb = window.pb || {};
   pb.ai = pb.ai || {};
+  function norm(x){
+    return String(x || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[\s_]+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  }
+  pb.ai.routeTopSlugs = function(topSlugs){
+    const ALL = (Array.isArray(window.INDEX) ? window.INDEX : []);
+    const set = new Set(ALL.map(t => norm(t.slug || t.id || '')));
+    const seen = new Set();
+    for (const s of (topSlugs || [])){
+      const n = norm(s);
+      if (!n || seen.has(n)) continue;
+      seen.add(n);
+      if (set.has(n)) return { slug:n, fallback:false };
+    }
+    return { slug:'pattern-picker', fallback:true };
+  };
+})();
+</script>
 
-  function norm(x){ return String(x||'').trim().toLowerCase(); }
+<script>
+(function(){
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+
+  function norm(x){
+  return String(x || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_]+/g, '-')      // spaces/underscores → hyphens
+    .replace(/[^a-z0-9-]/g, '');  // keep only slug-safe chars
+}
 
   pb.ai.routeTopSlugs = function(topSlugs){
     const ALL = (typeof allTemplates === 'function') ? allTemplates() : (Array.isArray(INDEX) ? INDEX : []);
