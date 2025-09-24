@@ -429,6 +429,146 @@ body::before{
   white-space:pre-wrap;
 }
 
+/* Output step: head row + actions placeholder (Slice 0) */
+.out-head-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:10px 0 6px;
+}
+.out-head-row .subhead{ margin:0; } /* keep subhead snug when paired with actions */
+
+.out-actions.placeholder{
+  min-width:160px;
+  height:28px;
+  border:1px dashed var(--border);
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  color:var(--muted);
+  padding:0 10px;
+  user-select:none;
+}
+
+/* Output step: actions group (Slice 1) */
+.out-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.out-actions .btn.sm{ padding:6px 10px; }
+
+/* “Ask ChatGPT” visual treatment: black background, white text */
+.btn.ask{
+  background:#000;
+  color:#fff;
+  border-color:#000;
+}
+.btn.ask:hover,
+.btn.ask:focus-visible{
+  filter:brightness(0.9);
+  outline:none;
+}
+
+/* === Action Modal (shared) — Slice 1 === */
+dialog#actionModal{
+  width:min(900px, 92vw);
+  max-width:900px;
+  border:1px solid var(--border, #ddd);
+  border-radius:12px;
+  padding:0;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+#actionModal::backdrop{ background:rgba(0,0,0,.35); }
+
+#actionModal .dlg-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-bottom:1px solid var(--border, #eee);
+}
+#actionModal .dlg-head .title{ font-weight:600; font-size:16px; }
+#actionModal .icon-btn{
+  background:transparent; border:0; font-size:20px; line-height:1; cursor:pointer;
+}
+
+#actionModal .dlg-body{ padding:12px 16px; }
+
+/* Slice 2: subtle helper note inside the action modal */
+#actionModal .note{
+  margin:8px 0 0 0;
+  font-size:12px;
+  color:var(--muted, #666);
+}
+
+/* === Slice 3: Post-Launch Helper dialog === */
+dialog#postLaunchDlg{
+  width:min(820px, 92vw);
+  max-width:820px;
+  border:1px solid var(--border, #ddd);
+  border-radius:12px;
+  padding:0;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+#postLaunchDlg::backdrop{ background:rgba(0,0,0,.35); }
+
+#postLaunchDlg .dlg-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-bottom:1px solid var(--border, #eee);
+}
+#postLaunchDlg .dlg-head .title{ font-weight:600; font-size:16px; }
+#postLaunchDlg .icon-btn{
+  background:transparent; border:0; font-size:20px; line-height:1; cursor:pointer;
+}
+
+#postLaunchDlg .dlg-body{ padding:12px 16px; }
+#postLaunchDlg .note{
+  margin:0 0 8px 0; font-size:12px; color:var(--muted, #666);
+}
+#postLaunchText{
+  width:100%; min-height:220px; resize:vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:13px; line-height:1.4;
+  border:1px solid var(--border, #ddd); border-radius:8px; padding:10px; box-sizing:border-box;
+  white-space:pre-wrap; background: #fafafa;
+}
+
+#postLaunchDlg .dlg-foot{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 16px; border-top:1px solid var(--border, #eee);
+}
+#postLaunchStatus[hidden]{ display:none; }
+#postLaunchStatus{ font-size:12px; color:var(--muted, #666); }
+
+@media (max-width:640px){
+  #postLaunchText{ min-height:180px; }
+}
+
+
+#actionPreview{
+  width:100%; min-height:220px; resize:vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:13px; line-height:1.4;
+  border:1px solid var(--border, #ddd); border-radius:8px; padding:10px; box-sizing:border-box;
+  white-space:pre-wrap;
+}
+
+#actionModal .dlg-foot{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 16px; border-top:1px solid var(--border, #eee);
+}
+#copyStatus[hidden]{ display:none; }
+#copyStatus{ font-size:12px; color:var(--muted, #666); }
+#actionModal .grow{ flex:1; }
+
+
+@media (max-width:640px){
+  .out-head-row{ flex-direction:column; align-items:flex-start; gap:8px; }
+  .out-actions.placeholder{ align-self:stretch; height:32px; }
+}
+
+
 /* Typeahead: render above all app layers when portaled */
 #taSug.ta-portal{
   position: fixed;         /* viewport-based, not limited by parents */
@@ -626,7 +766,13 @@ header.no-edge{
 
 <a class="btn sm" href="../index.html">← back to home</a>
 <div class="spacer"></div>
+
+
 <button class="btn sm hide" id="btnExitSearch">search</button>
+
+<!-- AI: -->
+  <button id="aiSettingsBtn" class="btn sm" type="button" title="AI Assist Settings">ai settings</button>
+
   </header>
 
   <main class="wiz-root">
@@ -649,7 +795,7 @@ header.no-edge{
 
         <div class="quickRow searchCtas">
          <a id="btnAdv" class="btn sm rainbow" href="./templates-glossary.html">advanced search</a>
-      <button id="btnHelp"  class="btn sm rainbow">help me</button>
+      <a id="btnHelp"  class="btn sm rainbow"  href="./startup-wizard.html?slug=pattern-picker">help me</a>
       <button id="btnLucky" class="btn sm rainbow">i’m feeling lucky</button>
     </div>
   </div>
@@ -720,6 +866,52 @@ header.no-edge{
       </div>
     </section>
   </main>
+  
+  <!-- === Slice 1: Action Modal (shared for Copy / Ask) === -->
+<dialog id="actionModal" aria-labelledby="actionTitle">
+  <div class="dlg-head">
+    <div id="actionTitle" class="title">Copy prompt</div>
+    <button id="actionClose" class="icon-btn" aria-label="Close">×</button>
+  </div>
+  <div class="dlg-body">
+    <textarea id="actionPreview" aria-label="Editable prompt preview"></textarea>
+    <p id="actionNote" class="note" hidden>
+      If your prompt doesn’t appear in ChatGPT, very long URLs or cached drafts can get in the way. You’ll be able to open a clean chat or copy/paste manually.
+    </p>
+  </div>
+  <div class="dlg-foot">
+    <span id="copyStatus" role="status" aria-live="polite" aria-atomic="true" hidden>Copied to clipboard.</span>
+    <div class="grow"></div>
+    <button id="actionCopy" class="btn sm">Copy</button>
+    <button id="actionCancel" class="btn sm">Close</button>
+  </div>
+</dialog>
+
+<!-- === Slice 3: Post-Launch Helper (shown after returning from ChatGPT) === -->
+<dialog id="postLaunchDlg" aria-labelledby="postLaunchTitle">
+  <div class="dlg-head">
+    <div id="postLaunchTitle" class="title">Did the prompt appear in ChatGPT?</div>
+    <button id="postLaunchClose" class="icon-btn" aria-label="Close">×</button>
+  </div>
+
+  <div class="dlg-body">
+    <p id="postLaunchMsg" class="note">
+      If it didn’t, very long URLs or a cached draft can get in the way.
+      You can open a clean chat or copy the prompt and paste it manually.
+    </p>
+
+    <textarea id="postLaunchText" aria-label="Your prompt (read-only)" readonly></textarea>
+  </div>
+
+  <div class="dlg-foot">
+    <span id="postLaunchStatus" role="status" aria-live="polite" aria-atomic="true" hidden></span>
+    <div class="grow"></div>
+    <button id="postLaunchOpenBase" class="btn sm">Open clean chat</button>
+    <button id="postLaunchCopy" class="btn sm">Copy again</button>
+    <button id="postLaunchDismiss" class="btn sm">Dismiss</button>
+  </div>
+</dialog>
+
 
   <script>
   // Tiny UI state (theme, mode preference)
@@ -1241,14 +1433,24 @@ el('btnNext3').addEventListener('click', ()=>{
   function renderStep0Meta(t){
     el('wizStep0Title').textContent = String(t.label||t.slug||t.id||'template');
     const def = String(t.definition||t.help||'').trim();
-    el('wizStep0Def').textContent = def;
-    const fields = Array.isArray(t.fields) ? t.fields.length : 0;
-    const useCount = Array.isArray(t.use_cases) ? t.use_cases.length : 0;
-    el('wizStep0Stats').innerHTML =
-      `<li><strong>${useCount}</strong> use-cases</li>
-       <li><strong>${fields}</strong> fields</li>
-       <li><strong>${estimateTimeByFields(fields)}</strong> to complete</li>`;
-    el('wizStep0Uses').innerHTML = (t.use_cases||[]).map(u=>`<li>${u}</li>`).join('') || `<li class="muted">no use-cases listed</li>`;
+el('wizStep0Def').textContent = def;
+
+// fields count as before
+const fields = Array.isArray(t.fields) ? t.fields.length : 0;
+
+// LIMIT: show only the first 10 use-cases
+const uses = Array.isArray(t.use_cases) ? t.use_cases.slice(0, 10) : [];
+
+// REMOVE total use-cases count line from stats
+el('wizStep0Stats').innerHTML =
+  `<li><strong>${fields}</strong> fields</li>
+   <li><strong>${estimateTimeByFields(fields)}</strong> to complete</li>`;
+
+// Render only the (up to) 10 use-cases
+el('wizStep0Uses').innerHTML = uses.length
+  ? uses.map(u=>`<li>${u}</li>`).join('')
+  : `<li class="muted">no use-cases listed</li>`;
+
   }
 
   function openStep0(t){
@@ -1286,9 +1488,17 @@ function isTextAreaOrRepeater(f){
 }
 function fieldFilled(fid){
   const el = document.getElementById(fid);
-  const v = el ? (el.value||'').trim() : (VALUES.get(fid)||'').trim();
-  return v.length>0;
+  if (!el){
+    const v = (VALUES.get(fid)||'').trim();
+    return v.length > 0;
+  }
+  if (el.tagName === 'SELECT' && el.multiple){
+    return [...el.selectedOptions].length > 0 || ((VALUES.get(fid)||'').trim().length>0);
+  }
+  const v = (el.value||'').trim();
+  return v.length > 0;
 }
+
 // Read a field by id; prefer the VALUES map (survives step unmounts)
 function wiz_getVal(id){
   const v = (VALUES.get(id) ?? '').toString().trim();
@@ -1380,15 +1590,27 @@ function wiz_updateCounter(textareaEl, counterEl){
   counterEl.textContent = `${n} chars`;
 }
 
+function setSelectValue(selectEl, saved){
+  if (!selectEl) return;
+  const isMulti = !!selectEl.multiple;
+  if (!isMulti){ selectEl.value = saved || ''; return; }
+  const want = new Set(String(saved||'').split(/\s*,\s*|\n+/).filter(Boolean));
+  [...selectEl.options].forEach(opt => opt.selected = want.has(opt.value));
+}
+
+
 // Set input/textarea/select values from VALUES so edits persist across step switches
 function wiz_hydrateFields(container){
   if (!container) return;
   container.querySelectorAll('input[type="text"], textarea, select').forEach(ctrl=>{
     const id = ctrl.id; if (!id) return;
     const saved = VALUES.get(id);
-    if (typeof saved === 'string') ctrl.value = saved;
+    if (typeof saved !== 'string') return;
+    if (ctrl.tagName === 'SELECT'){ setSelectValue(ctrl, saved); }
+    else { ctrl.value = saved; }
   });
 }
+
 
 /* Wire Extras UI: placeholder, optional prefill, counters, and Restore */
 function wiz_bindExtrasUI(fw){
@@ -1485,8 +1707,8 @@ function wiz_toItems(s){
 
 /* Collect template field values keyed by the template’s own keys */
 function wiz_collectTemplateFields(fw){
-  const bag = {}; // key -> string value
-  const lists = {}; // key -> array value
+  const bag = {};
+  const lists = {};
   const fields = Array.isArray(fw?.fields) ? fw.fields : [];
 
   for (const f of fields){
@@ -1494,13 +1716,19 @@ function wiz_collectTemplateFields(fw){
     if (!key) continue;
     const fid = computeFieldId(f);
     const el  = document.getElementById(fid);
-    const raw = (el ? el.value : (VALUES.get(fid)||'')).trim();
+    const t   = String(f.type||'').toLowerCase();
 
-    if (!raw){ continue; } // omit empty fields entirely
+    let raw = '';
+    if (el && el.tagName === 'SELECT' && el.multiple){
+      const vals = [...el.selectedOptions].map(o=>o.value.trim()).filter(Boolean);
+      raw = vals.join(', ');
+      if (vals.length) lists[key] = vals;
+    } else {
+      raw = (el ? el.value : (VALUES.get(fid)||'')).trim();
+    }
+    if (!raw) continue;
 
-    const type = String(f.type||'').toLowerCase();
-    const isListish = /textarea|repeater/.test(type);
-
+    const isListish = /textarea|repeater/.test(t);
     if (isListish){
       const arr = wiz_toItems(raw);
       if (arr.length){ lists[key] = arr; }
@@ -1509,13 +1737,13 @@ function wiz_collectTemplateFields(fw){
     }
   }
 
-  // add list aliases and singular convenience keys
+  // keep the convenient aliases
   for (const [k,arr] of Object.entries(lists)){
-    bag[k] = arr.join('\n');         // keep a joined string for template convenience
+    bag[k] = Array.isArray(arr) ? arr.join('\n') : String(arr);
     bag[`${k}_list`]  = arr;
     bag[`${k}_items`] = arr;
     bag[`${k}_arr`]   = arr;
-    if (k.endsWith('s') && arr.length===1){
+    if (Array.isArray(arr) && k.endsWith('s') && arr.length===1){
       const singular = k.replace(/s$/, '');
       if (singular && !(singular in bag)) bag[singular] = arr[0];
     }
@@ -1523,6 +1751,7 @@ function wiz_collectTemplateFields(fw){
 
   return bag;
 }
+
 
 /* Extras — user text wins; otherwise boosters from the framework */
 function wiz_extras(fw){
@@ -1630,21 +1859,55 @@ function renderPreviewMaybe(){
   // ===== Steps (standalone renderer — uses template.fields directly) =====
 // ===== Steps (guided wizard with shared first/penultimate/final) =====
 function fieldInput(f){
-  const fid = computeFieldId(f);
-  const label = f.label||f.name||f.key||'field';
-  const desc  = f.desc||f.description||'';
-  const ph    = f.ph||f.placeholder||'';
-  const isLong = isTextAreaOrRepeater(f) || (ph&&ph.length>60) || (desc&&desc.length>80);
+  const fid   = computeFieldId(f);
+  const label = f.label || f.name || f.key || 'field';
+  const desc  = f.desc || f.description || '';
+  const ph    = f.ph || f.placeholder || '';
+  const t     = String(f.type || '').toLowerCase();
 
-  const control = isLong
-    ? `<label for="${fid}">${label}</label>
-       <textarea id="${fid}" name="${fid}" placeholder="${ph}"></textarea>
-       ${desc?`<div class="desc muted" style="margin-top:4px">${desc}</div>`:''}`
-    : `<label for="${fid}">${label}</label>
-       <input type="text" id="${fid}" name="${fid}" placeholder="${ph}">
-       ${desc?`<div class="desc muted" style="margin-top:4px">${desc}</div>`:''}`;
+  // normalize options: strings or {value,label}
+  const rawOpts = Array.isArray(f.options) ? f.options
+                 : Array.isArray(f.choices) ? f.choices
+                 : [];
+  const opts = rawOpts.map(o => {
+    if (o && typeof o === 'object') return { value: String(o.value ?? o.label ?? ''), label: String(o.label ?? o.value ?? '') };
+    return { value: String(o ?? ''), label: String(o ?? '') };
+  }).filter(o => o.value);
 
-  return `<div class="field" data-field-id="${fid}">${control}</div>`;
+  // select / multiselect
+  if (t === 'select' || t === 'dropdown' || t === 'multiselect'){
+    const multiple = (t === 'multiselect') || !!f.multiple;
+    const optHtml = [
+      (!multiple ? `<option value="" disabled selected>${ph || '— choose —'}</option>` : ''),
+      ...opts.map(o => `<option value="${o.value}">${o.label}</option>`)
+    ].join('');
+    return `
+      <div class="field" data-field-id="${fid}">
+        <label for="${fid}">${label}</label>
+        <select id="${fid}" name="${fid}" ${multiple?'multiple size="'+Math.min(6, Math.max(3, opts.length))+'"':''}>
+          ${optHtml}
+        </select>
+        ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
+      </div>`;
+  }
+
+  // textarea/repeater stay as-is
+  if (isTextAreaOrRepeater(f) || (ph && ph.length>60) || (desc && desc.length>80)){
+    return `
+      <div class="field" data-field-id="${fid}">
+        <label for="${fid}">${label}</label>
+        <textarea id="${fid}" name="${fid}" placeholder="${ph}"></textarea>
+        ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
+      </div>`;
+  }
+
+  // default short input
+  return `
+    <div class="field" data-field-id="${fid}">
+      <label for="${fid}">${label}</label>
+      <input type="text" id="${fid}" name="${fid}" placeholder="${ph}">
+      ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
+    </div>`;
 }
 
 let SHOW_ALL = false, STEP_INDEX = 0, STEPS = [], REQUIRED_FIDS = [];
@@ -1775,13 +2038,23 @@ else if (S.special === 'extra'){
   // Wire counters, placeholder/prefill, and Restore behavior
    wiz_hydrateFields(body);
   wiz_bindExtrasUI(t);
-  } else if (S.special === 'output'){
-    body.innerHTML = `
+} else if (S.special === 'output'){
+  body.innerHTML = `
+    <div class="out-head-row">
       <h3 class="subhead">output</h3>
-      <pre id="out" class="wiz-output" aria-live="polite">(your generated prompt will appear here)</pre>
-    `;
-    renderPreviewMaybe();
-  } else {
+      <div id="outActions" class="out-actions">
+        <button id="copyBtn2" class="btn sm">Copy</button>
+        <button id="openBtn2" class="btn sm ask" title="Ask ChatGPT">Ask ChatGPT</button>
+      </div>
+    </div>
+    <pre id="out" class="wiz-output" aria-live="polite">(your generated prompt will appear here)</pre>
+  `;
+  // Wire Slice 1 actions for this step render
+  wireOutputActions();
+  renderPreviewMaybe();
+} else {
+
+
     // Template fields step
     body.innerHTML = `<h3 class="subhead">${S.title||('step '+(STEP_INDEX+1))}</h3>` + S.fields.map(fieldInput).join('');
      wiz_hydrateFields(body);
@@ -1971,6 +2244,259 @@ el('wizStepNext').addEventListener('click', ()=>{
 buildIndex();
 recompute('');                   // prime UI
 setTimeout(()=>{ buildIndex(); recompute(el('wizQ').value); }, 300); // pick up late dataset
+
+
+/* ===================== Slice 1: Copy modal logic ===================== */
+
+/** Seeds and opens the shared Action Modal in "Copy" mode. */
+function openCopyModalFromOut(){
+  const dlg     = document.getElementById('actionModal');
+  const title   = document.getElementById('actionTitle');
+  const ta      = document.getElementById('actionPreview');
+  const primary = document.getElementById('actionCopy');
+  const status  = document.getElementById('copyStatus');
+  const note    = document.getElementById('actionNote');
+
+  const outEl = document.getElementById('out');
+  const text  = outEl ? outEl.textContent : '';
+
+  title.textContent = 'Copy prompt';
+  ta.value = text;
+  status.hidden = true;
+
+  // Primary button acts as "Copy" in this mode
+  primary.textContent = 'Copy';
+  primary.onclick = copyFromModal;
+
+  // Hide the advisory note in Copy mode
+  if (note) note.hidden = true;
+
+  // Open and focus textarea
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open','');
+
+  setTimeout(() => { ta.focus(); ta.select(); }, 0);
+}
+
+
+/** Copies current modal textarea to clipboard, keeps dialog open, shows status. */
+async function copyFromModal(){
+  const ta = document.getElementById('actionPreview');
+  const status = document.getElementById('copyStatus');
+  try {
+    await navigator.clipboard.writeText(ta.value);
+    status.textContent = 'Copied to clipboard.';
+  } catch(e){
+    status.textContent = 'Copy failed. Select all and press ⌘/Ctrl+C.';
+  }
+  status.hidden = false;
+}
+
+/** Closes the action modal */
+function closeActionModal(){
+  const dlg = document.getElementById('actionModal');
+  if (!dlg) return;
+  dlg.close ? dlg.close() : dlg.removeAttribute('open');
+}
+
+/**
+ * Wires buttons for the Output step (called after the Output HTML is injected).
+ * Safe to call repeatedly; it rebinds current step's elements.
+ */
+function wireOutputActions(){
+  const copyBtn = document.getElementById('copyBtn2');
+  const askBtn  = document.getElementById('openBtn2'); // present, no behavior yet (Slice 2)
+
+  const dlg = document.getElementById('actionModal');
+  const actionCopy = document.getElementById('actionCopy');
+  const actionCancel = document.getElementById('actionCancel');
+  const actionCloseX = document.getElementById('actionClose');
+
+  if (copyBtn){
+    copyBtn.onclick = openCopyModalFromOut;
+  }
+if (askBtn){
+  askBtn.onclick = openAskModalFromOut;
+}
+
+
+  if (actionCopy){
+    actionCopy.onclick = copyFromModal;
+  }
+  if (actionCancel){
+    actionCancel.onclick = closeActionModal;
+  }
+  if (actionCloseX){
+    actionCloseX.onclick = closeActionModal;
+  }
+
+  // Optional: close on backdrop click
+  if (dlg && !dlg._backdropBound){
+    dlg.addEventListener('click', (e) => {
+      const rect = dlg.getBoundingClientRect();
+      const inDialog = (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top  && e.clientY <= rect.bottom
+      );
+      if (!inDialog) closeActionModal();
+    });
+    dlg._backdropBound = true;
+  }
+}
+
+/* ===================== Slice 2: Ask ChatGPT (happy path) ===================== */
+
+/** Returns ChatGPT URL and base given a prompt string. */
+function buildChatURL(promptText){
+  const base = 'https://chat.openai.com/'; // base ChatGPT entry
+  const url  = base + '?prompt=' + encodeURIComponent(promptText || '');
+  return { url, base };
+}
+
+/** Seeds and opens the shared Action Modal in "Ask ChatGPT" mode. */
+function openAskModalFromOut(){
+  const dlg      = document.getElementById('actionModal');
+  const title    = document.getElementById('actionTitle');
+  const ta       = document.getElementById('actionPreview');
+  const primary  = document.getElementById('actionCopy');     // reuse as primary
+  const note     = document.getElementById('actionNote');
+
+  const outEl = document.getElementById('out');
+  const text  = outEl ? outEl.textContent : '';
+
+  title.textContent = 'Ask ChatGPT';
+  ta.value = text;
+
+  // Primary button behaves as "Open in ChatGPT" in this mode
+  primary.textContent = 'Open in ChatGPT';
+  primary.onclick = openChatFromModal;
+
+  // Show the advisory note (helpful hint; Slice 3 will drive fallbacks)
+  if (note) note.hidden = false;
+
+  // Open dialog
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open','');
+
+  // Focus the textarea for quick edits
+  setTimeout(() => { ta.focus(); ta.select(); }, 0);
+}
+
+/** Opens ChatGPT with the textarea contents in the URL (happy path), then closes modal. */
+function openChatFromModal(){
+  const dlg   = document.getElementById('actionModal');
+  const ta    = document.getElementById('actionPreview');
+  const text  = ta ? ta.value : '';
+  const { url, base } = buildChatURL(text);
+
+  // 1) Long URL guard → copy + open clean chat + post-launch helper
+  if (url.length > MAX_URL_CHARS) {
+    openBaseAndNotify(base, text, 'long-url');
+    if (dlg && dlg.close) dlg.close(); else dlg.removeAttribute('open');
+    return;
+  }
+
+  // 2) Try happy path
+  const win = window.open(url, '_blank', 'noopener,noreferrer');
+
+  // 3) Popup blocked or navigation refused → copy + open clean chat + post-launch helper
+  if (!win) {
+    openBaseAndNotify(base, text, 'popup-blocked');
+    if (dlg && dlg.close) dlg.close(); else dlg.removeAttribute('open');
+    return;
+  }
+
+  // 4) Happy path: close modal; if the user returns later and wants help,
+  // they can still click Copy/Ask again. (No post-launch prompt in happy path.)
+  if (dlg && dlg.close) dlg.close(); else dlg.removeAttribute('open');
+}
+
+
+/* ===================== Slice 3: Fallbacks & Post-Launch Helper ===================== */
+
+const MAX_URL_CHARS = 7800; // conservative safety threshold for ?prompt= URLs
+const POST_LAUNCH_KEY = 'postLaunchAsk';
+
+/** Store post-launch payload so we can prompt the user when they return. */
+function markPostLaunch(payload){
+  try {
+    sessionStorage.setItem(POST_LAUNCH_KEY, JSON.stringify({
+      text: payload.text || '',
+      base: payload.base || 'https://chat.openai.com/',
+      reason: payload.reason || 'unknown',
+      t: Date.now()
+    }));
+  } catch(e) {/* ignore */}
+}
+
+/** Try to open a clean chat, copy text, and record post-launch state. */
+async function openBaseAndNotify(base, text, reason){
+  try { await navigator.clipboard.writeText(text); } catch(e) {/* ignore */}
+  window.open(base, '_blank', 'noopener,noreferrer');
+  markPostLaunch({ text, base, reason });
+}
+
+/** If a post-launch payload exists (and we're back on this tab), show the helper once. */
+function consumePostLaunchIfAny(){
+  let raw = null;
+  try { raw = sessionStorage.getItem(POST_LAUNCH_KEY); } catch(e) {}
+  if (!raw) return;
+
+  let data = null;
+  try { data = JSON.parse(raw); } catch(e) {}
+  if (!data) { try { sessionStorage.removeItem(POST_LAUNCH_KEY); } catch(_) {} ; return; }
+
+  // Clear immediately so we only show once
+  try { sessionStorage.removeItem(POST_LAUNCH_KEY); } catch(_) {}
+
+  openPostLaunchDlg(data);
+}
+
+/** Open the helper dialog with buttons: Open clean chat, Copy again, Dismiss. */
+function openPostLaunchDlg(data){
+  const dlg   = document.getElementById('postLaunchDlg');
+  const ta    = document.getElementById('postLaunchText');
+  const openB = document.getElementById('postLaunchOpenBase');
+  const copyB = document.getElementById('postLaunchCopy');
+  const dismB = document.getElementById('postLaunchDismiss');
+  const xBtn  = document.getElementById('postLaunchClose');
+  const stat  = document.getElementById('postLaunchStatus');
+
+  const text = (data && data.text) || '';
+  const base = (data && data.base) || 'https://chat.openai.com/';
+
+  ta.value = text;
+  stat.hidden = true;
+
+  openB.onclick = () => { window.open(base, '_blank', 'noopener,noreferrer'); };
+  copyB.onclick = async () => {
+    try { await navigator.clipboard.writeText(text); stat.textContent = 'Copied to clipboard.'; }
+    catch(e){ stat.textContent = 'Copy failed. Select all and press ⌘/Ctrl+C.'; }
+    stat.hidden = false;
+  };
+  const closeDlg = () => { dlg.close ? dlg.close() : dlg.removeAttribute('open'); };
+  dismB.onclick = closeDlg;
+  xBtn.onclick  = closeDlg;
+
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open','');
+
+  // Focus textarea for quick manual copy
+  setTimeout(() => { ta.focus(); ta.select(); }, 0);
+}
+
+/** Bind once: when the tab regains focus/visibility, check for post-launch payload. */
+(function bindPostLaunchReturnHooks(){
+  if (window.__postLaunchBound) return;
+  window.__postLaunchBound = true;
+  window.addEventListener('focus', consumePostLaunchIfAny, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') consumePostLaunchIfAny();
+  }, { passive: true });
+})();
+
+
+
   </script>
   
   <script>
@@ -1991,7 +2517,9 @@ setTimeout(()=>{ buildIndex(); recompute(el('wizQ').value); }, 300); // pick up 
 </script>
 
 
+
   <!-- ===== Only external deps (datasets) ===== -->
+     <script src="./aisettings.js"></script>
   <script src="./templates.data.js"></script>
   <script src="./templates.tasks.data.js"></script>
 </body>
