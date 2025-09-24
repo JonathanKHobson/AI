@@ -1410,6 +1410,19 @@ input:focus, textarea:focus, select:focus,
   *{ animation: none !important; transition: none !important; }
   .btn, .chip, .tab, .panel, .outCard{ transform: none !important; }
 }
+
+/* --- Fix: keep typeahead menus above neighboring blocks --- */
+#biasSuggestions.ta-menu { z-index: 400; }  /* beats default 50 */
+
+/* While any ta-menu inside a block is open, float that block above siblings */
+.block:has(.ta-menu:not([hidden])) {
+  position: relative;
+  z-index: 350;
+}
+
+/* (Optional) anchor absolute children locally if needed later */
+#biasChipsWrap { position: relative; }
+
     
   </style>
 </head>
@@ -1425,8 +1438,8 @@ input:focus, textarea:focus, select:focus,
 <span class="ctaGroup">
   <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
   <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
-  <button id="copyBtn" class="btn sm">Copy Prompt</button>
-  <button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
+<button id="aiSettingsBtn" class="btn sm" title="AI Assist Settings">AI Settings</button>
+
 </span>
     <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
   </header>
@@ -1760,9 +1773,39 @@ input:focus, textarea:focus, select:focus,
   </form>
 </dialog>
 
+<dialog id="postLaunchDlg" class="modal">
+  <form method="dialog" class="modal-body" id="postLaunchForm" aria-labelledby="postLaunchTitle">
+    <header class="modal-header">
+      <h3 id="postLaunchTitle">Did the prompt appear in ChatGPT?</h3>
+      <button type="button" class="icon close" aria-label="Close" id="postLaunchClose">×</button>
+    </header>
+
+    <section class="modal-section">
+      <p id="postLaunchMsg">
+        Sometimes ChatGPT opens with a blank box due to a very long URL or because it shows a previously cached draft.
+        No worries—you can paste your prompt below.
+      </p>
+      <div class="field">
+        <label for="postLaunchText">Your prompt</label>
+        <textarea id="postLaunchText" rows="10" spellcheck="false" readonly></textarea>
+      </div>
+      <p class="note" id="postLaunchNote">
+        Why this happens: 1) very long URLs can be ignored by the site/browser, and 2) ChatGPT sometimes restores your last draft instead of the passed-in prompt.
+      </p>
+    </section>
+
+    <footer class="modal-footer">
+      <button type="button" class="btn" id="postLaunchOpenBase">Open clean chat</button>
+      <button type="button" class="btn" id="postLaunchCopy">Copy again</button>
+      <button type="submit" class="btn" id="postLaunchDismiss">Dismiss</button>
+    </footer>
+  </form>
+</dialog>
+
+
 <div id="toast" class="toast" aria-live="polite" hidden></div>
 
-  
+   <script src="./aisettings.js" defer></script>
   <script src="./templates.data.js"></script>
   <script src="./glossary.data.js"></script>
   
@@ -6418,7 +6461,12 @@ switchFramework(first.value);
   let active = -1;     // highlighted index in menu
   let picks  = [];     // [{ id, name, p }], where p = full persona object
 
-  function close(){ menu.hidden = true; menu.innerHTML=''; active=-1; }
+  function close(){
+  menu.hidden = true;
+  menu.innerHTML = '';
+  active = -1;
+  const blk = menu.closest('.block'); if (blk) blk.classList.remove('z-top');
+}
 
   function renderChips(){
     chips.innerHTML = '';
@@ -6482,6 +6530,8 @@ switchFramework(first.value);
     const rect = input.getBoundingClientRect();
     menu.style.minWidth = rect.width + 'px';
     menu.hidden = false;
+const blk = menu.closest('.block'); if (blk) blk.classList.add('z-top');
+
   }
 
   input.addEventListener('input', ()=>{
@@ -6821,6 +6871,7 @@ $('#copyBtn').addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MOD
   try {
     const url = 'https://chat.openai.com/?q=' + encodeURIComponent(txt);
     window.open(url, '_blank', 'noopener,noreferrer');
+    markPostLaunch(txt, (localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/'), false);
   } catch(e){ console.warn('Open failed', e); }
   // message text is updated just below in your existing code
 
@@ -7003,6 +7054,7 @@ dlg.addEventListener('cancel', () => {
     let url = base;
     try { const u = new URL(base); u.searchParams.set('q', text); u.searchParams.set('prompt', text); u.searchParams.set('input', text); url = u.toString(); } catch(e){}
     try { window.open(url, '_blank', 'noopener,noreferrer'); } catch(e){}
+    markPostLaunch(text, (localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/'), false);
     const dlg = document.getElementById('msg'); const msg = document.getElementById('msgText');
     if (msg) msg.textContent = copied
       ? 'Prompt copied. A ChatGPT tab opened. If it didn’t prefill, paste with Cmd/Ctrl+V.'
@@ -7129,7 +7181,18 @@ function buildChatURL(prompt){
 window.buildChatURL = buildChatURL;
 
 
-
+ // Stash info so we can show the helper when the user returns to this tab.
+  function markPostLaunch(txt, base, tooLong){
+    try{
+      sessionStorage.setItem('pb.v1.postLaunch', JSON.stringify({
+        t: Date.now(),
+        txt: String(txt || ''),
+        base: (base || 'https://chatgpt.com/').trim(),
+        tooLong: !!tooLong
+      }));
+    }catch(_){}
+  }
+  window.markPostLaunch = window.markPostLaunch || markPostLaunch;
 
 // ===== Action Modal v2 — unified, conflict-safe =====
 (function(){
@@ -7257,11 +7320,15 @@ form.addEventListener('submit', async (e)=>{
     try { await navigator.clipboard.writeText(txt); } catch(_){}
     showToast('Text copied. ChatGPT opened — paste (Ctrl/Cmd+V).', 2600);
     window.open(built.base, '_blank', 'noopener,noreferrer');
+markPostLaunch(txt, built.base, true);
+
     closeModal();
     return;
   }
 
   window.open(built.url, '_blank', 'noopener,noreferrer');
+markPostLaunch(txt, built.base, false);
+
   closeModal();
 });
 
@@ -7269,17 +7336,17 @@ form.addEventListener('submit', async (e)=>{
   // --- wire triggers in CAPTURE (kills prior handlers) ---
   function wire(id, kind, defaultScope){
     const el = document.getElementById(id);
+    if (!el) return;
+    // Only wire Copy here; Ask flows are handled by provider-aware wiring.
+    if (kind !== 'copy') return;
     bindCapture(el, ()=> openModal(kind, defaultScope));
   }
   // Header (defaults to All)
   wire('copyBtn', 'copy', 'all');
-  wire('openBtn', 'ask',  'all');
   // Configure (defaults to Current)
   wire('copyBtn2', 'copy', 'prompt');
-  wire('openBtn2', 'ask',  'prompt');
   // Footer duplicates if present (All)
   wire('copyAllBtnFooter', 'copy', 'all');
-  wire('openAllBtnFooter', 'ask',  'all');
 
   // Inline chips (per-card) — give them class .js-inline-copy and data-idx (card index)
   document.addEventListener('click', function onChip(e){
@@ -7301,6 +7368,54 @@ form.addEventListener('submit', async (e)=>{
     }
     openModal('copy', 'prompt');
   }, {capture:true}); // capture to preempt old handlers
+})();
+
+
+(function wirePostLaunchDialog(){
+  const dlg   = document.getElementById('postLaunchDlg');
+  if (!dlg) return;
+
+  const $     = (sel)=> document.querySelector(sel);
+  const ta    = $('#postLaunchText');
+  const btnCp = $('#postLaunchCopy');
+  const btnOp = $('#postLaunchOpenBase');
+  const btnX  = $('#postLaunchClose');
+  const form  = $('#postLaunchForm');
+  let last    = null;
+
+  function openDialog(data){
+    last = data || last;
+    if (!last) return;
+    if (ta) ta.value = String(last.txt || '');
+    try { dlg.showModal(); } catch(_){ dlg.open = true; }
+    setTimeout(()=> btnCp?.focus(), 50);
+  }
+
+  function consumePending(){
+    try{
+      const raw = sessionStorage.getItem('pb.v1.postLaunch');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      sessionStorage.removeItem('pb.v1.postLaunch');
+      openDialog(data);
+    }catch(_){}
+  }
+
+  // Show when user returns to this tab; also try once shortly after launch
+  document.addEventListener('visibilitychange', ()=>{
+    if (document.visibilityState === 'visible') consumePending();
+  });
+  setTimeout(consumePending, 900);
+
+  btnCp?.addEventListener('click', async ()=>{
+    try { await navigator.clipboard.writeText(ta?.value || ''); showToast('Copied to clipboard.'); } catch(_){}
+  });
+  btnOp?.addEventListener('click', ()=>{
+    const href = (last && last.base) || 'https://chatgpt.com/';
+    try { window.open(href, '_blank', 'noopener,noreferrer'); } catch(_){}
+  });
+  btnX?.addEventListener('click', ()=>{ try{ dlg.close(); }catch(_){ dlg.open=false; } });
+  form?.addEventListener('cancel', (e)=>{ e.preventDefault(); try{ dlg.close(); }catch(_){ dlg.open=false; } });
 })();
 
 
@@ -7610,6 +7725,269 @@ function openWorksheet(){
   syncButtons();
 })();
 </script>
+
+<script>
+(function(){
+  // ---- helpers you already have or can adapt ----
+function activePromptText(scope = 'prompt'){
+  try{
+    // If asking for "all", prefer the deck text
+    if (scope === 'all' && typeof getAllGeneratedText === 'function'){
+      const all = getAllGeneratedText();
+      if (all) return all;
+    }
+    // Build from the active tab via your real builder
+    const t = (typeof activeTab === 'function') ? activeTab()
+            : (window.state?.tabs?.[window.state?.active] || null);
+    let text = (typeof makePromptForTab === 'function' && t) ? makePromptForTab(t) : '';
+    // If picker tab, append framework digest for clarity
+    if (t && t.id === 'none' && typeof buildFrameworkDigest === 'function'){
+      const dig = buildFrameworkDigest();
+      if (dig) text = [text, dig].filter(Boolean).join('\n\n');
+    }
+    // Fallback to the legacy preview node
+    if (!text) {
+      const out = document.getElementById('out');
+      text = (out?.textContent || '').trim();
+    }
+    return String(text || '').trim();
+  }catch(e){
+    console.warn('activePromptText failed:', e);
+    return '';
+  }
+}
+
+
+function buildAskURL(provider, prompt){
+  const txt = String(prompt || '');
+
+  // Gemini
+  if (provider === 'gemini'){
+    const base = 'https://gemini.google.com/app'; // no stable ?prompt param
+    let url = base;
+    try { const u = new URL(base); u.searchParams.set('q', txt); url = u.toString(); } catch(_){}
+    const tooLong = url.length > 7800;
+    return { url, base: base + '/', tooLong };
+  }
+
+  // Apertus
+  if (provider === 'apertus'){
+    const ai = AISettings.get();
+    const route = (ai && ai.apertusRoute) ? ai.apertusRoute : 'publicai';
+
+    if (route === 'huggingface'){
+      // Model card — cannot prefill; just open and rely on clipboard
+      const base = 'https://huggingface.co/swiss-ai/Apertus-8B-Instruct-2509';
+      return { url: base, base, tooLong: false };
+    } else {
+      // PublicAI chat — attempt a ?q= prefill; fall back to clipboard if too long
+      const base = 'https://publicai.co/chat';
+      let url = base;
+      try { const u = new URL(base); u.searchParams.set('q', txt); url = u.toString(); } catch(_){}
+      const tooLong = url.length > 7800;
+      return { url, base: base + '/', tooLong };
+    }
+  }
+
+  // ChatGPT (OpenAI) — best-effort ?prompt=
+  const base = 'https://chat.openai.com';
+  let url = base + '/?prompt=' + encodeURIComponent(txt);
+  const tooLong = url.length > 7800;
+  return { url, base: base + '/', tooLong };
+}
+
+function setAskLabels(){
+  const ai = AISettings.get();
+  const labelMap = {
+    openai:  '💬 Ask ChatGPT',
+    gemini:  '💬 Ask Gemini',
+    apertus: '💬 Ask Apertus'
+  };
+  const label = labelMap[ai.provider] || labelMap.openai;
+
+  const targets = [
+    document.getElementById('openBtn'),
+    document.getElementById('openBtn2'),
+    document.getElementById('openAllBtnFooter')
+  ].filter(Boolean);
+
+  targets.forEach(btn => {
+    btn.textContent = label;
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+  });
+
+  document.querySelectorAll('.ask-btn').forEach(btn => {
+    btn.textContent = label;
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+  });
+}
+
+
+
+  // ---- provider-aware Action modal wiring ----
+ function openAskModalWith(text, defaultScope = 'prompt'){
+  const ai = AISettings.get();
+  const dlg = document.getElementById('actionModal');
+  const form = document.getElementById('actionForm');
+  const title = document.getElementById('actionTitle');
+  const previewWrap = dlg?.querySelector('.field');
+  const preview = document.getElementById('actionPreview');
+  const note = document.getElementById('actionNote');
+  const confirm = document.getElementById('actionConfirm');
+  const cancel = document.getElementById('actionCancel');
+  const closeX = document.getElementById('actionClose');
+  const rPrompt = document.getElementById('scopePrompt');
+  const rAll    = document.getElementById('scopeAll');
+
+  if (!dlg || !form || !title || !preview || !confirm) {
+    return openDirect(text); // safety fallback
+  }
+
+const providerName =
+  ai.provider === 'gemini'  ? 'Gemini'  :
+  ai.provider === 'apertus' ? 'Apertus' :
+  'ChatGPT';
+
+  title.textContent = `💬 Ask ${providerName}`;
+  confirm.textContent = `Open in ${providerName}`;
+  if (previewWrap) previewWrap.style.display = '';
+
+  // Seed by desired scope
+  const scope = (defaultScope === 'all') ? 'all' : 'prompt';
+  if (rPrompt) rPrompt.checked = (scope === 'prompt');
+  if (rAll)    rAll.checked    = (scope === 'all');
+  const seed = (typeof activePromptText === 'function') ? activePromptText(scope) : String(text || '');
+  preview.value = seed;
+  note.hidden = true;
+
+  // Fresh confirm listener
+  const newConfirm = confirm.cloneNode(true);
+  confirm.parentNode.replaceChild(newConfirm, confirm);
+
+  // Radio => live regenerate preview
+  function regen(){
+    const sc = (rAll && rAll.checked) ? 'all' : 'prompt';
+    preview.value = (typeof activePromptText === 'function') ? activePromptText(sc) : preview.value;
+  }
+  if (rPrompt) { rPrompt.onchange = regen; rPrompt.onclick = regen; }
+  if (rAll)    { rAll.onchange    = regen; rAll.onclick    = regen; }
+
+  newConfirm.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const finalTxt = (preview.value || '').trim();
+    const built = buildAskURL(ai.provider, finalTxt);
+    if (built.tooLong){
+      try { navigator.clipboard.writeText(finalTxt); } catch {}
+      openBaseAndNotify(built.base, providerName, true, finalTxt);
+    } else {
+      window.open(built.url, '_blank', 'noopener,noreferrer');
+      openBaseAndNotify(built.base, providerName, false, finalTxt);
+    }
+    try { dlg.close(); } catch {}
+  });
+
+  cancel && cancel.addEventListener('click', ()=>{ try { dlg.close(); } catch {} }, {once:true});
+  closeX && closeX.addEventListener('click', ()=>{ try { dlg.close(); } catch {} }, {once:true});
+  try { dlg.showModal(); } catch { dlg.open = true; }
+}
+
+
+function openBaseAndNotify(base, providerName, copied, txt){
+  const post    = document.getElementById('postLaunchDlg');
+  const title   = document.getElementById('postLaunchTitle');
+  const msg     = document.getElementById('postLaunchMsg');
+  const note    = document.getElementById('postLaunchNote');
+  const openBase= document.getElementById('postLaunchOpenBase');
+  const ta      = document.getElementById('postLaunchText');
+  const copyBtn = document.getElementById('postLaunchCopy');
+  const closeX  = document.getElementById('postLaunchClose');
+  const form    = document.getElementById('postLaunchForm');
+
+  if (post && post.showModal){
+    if (title) title.textContent = `Did the prompt appear in ${providerName}?`;
+    if (msg)   msg.textContent = copied
+      ? `Prompt copied. A ${providerName} tab opened. If it didn’t prefill, paste (Cmd/Ctrl+V).`
+      : `A ${providerName} tab opened. If it didn’t prefill, paste with Cmd/Ctrl+V.`;
+    if (note)  note.textContent = `Why this happens: very long URLs can be ignored, and ${providerName} can restore a cached draft.`;
+    if (openBase) openBase.onclick = ()=> window.open(base, '_blank','noopener,noreferrer');
+
+    if (ta) ta.value = String(txt || '');        // ← populate the textarea
+
+    if (copyBtn) copyBtn.onclick = async ()=>{
+      try { await navigator.clipboard.writeText(ta?.value || ''); showToast('Copied to clipboard.'); } catch {}
+    };
+    if (closeX)  closeX.onclick  = ()=> { try { post.close(); } catch {} };
+    if (form)    form.addEventListener('cancel', (e)=>{ e.preventDefault(); try { post.close(); } catch {} });
+
+    post.showModal();
+    return;
+  }
+  try { showToast(`${providerName} opened. Paste your prompt if it didn’t prefill.`); } catch {}
+}
+
+  function openDirect(text){
+    const ai = AISettings.get();
+    const providerName = (
+  ai.provider === 'gemini'  ? 'Gemini'  :
+  ai.provider === 'apertus' ? 'Apertus' : 'ChatGPT'
+);
+const isHF = (ai.provider === 'apertus' && (ai.apertusRoute || 'publicai') === 'huggingface');
+const msg = isHF
+  ? `${providerName} page opened on Hugging Face. Prompt is on your clipboard; paste it where appropriate.`
+  : `${providerName} opened. Paste your prompt if it didn’t prefill.`;
+try { showToast(msg); } catch {}
+    const built = buildAskURL(ai.provider, text);
+    if (built.tooLong){
+      try { navigator.clipboard.writeText(text); } catch {}
+      window.open(built.base, '_blank', 'noopener,noreferrer');
+    } else {
+      window.open(built.url, '_blank', 'noopener,noreferrer');
+    }
+    try { showToast(`${providerName} opened. Paste your prompt if it didn’t prefill.`); } catch {}
+  }
+
+  // ---- wire header + ask buttons ----
+  function wirePage(){
+    // Header: Settings launcher
+    const settingsBtn = document.getElementById('aiSettingsBtn');
+    settingsBtn && settingsBtn.addEventListener('click', ()=> AISettings.open());
+
+    // Secondary Ask (Template Fields): provider-aware modal open
+// Secondary Ask (Template Fields): provider-aware modal open
+const openBtn2  = document.getElementById('openBtn2');
+const footerAsk = document.getElementById('openAllBtnFooter');
+
+if (openBtn2){
+  openBtn2.onclick = async ()=>{
+    const txt = activePromptText('prompt');
+    try { await navigator.clipboard.writeText(txt); } catch {}
+    openAskModalWith(txt, 'prompt');
+  };
+}
+
+if (footerAsk){
+  footerAsk.onclick = async ()=>{
+    const txt = activePromptText('all');
+    try { await navigator.clipboard.writeText(txt); } catch {}
+    openAskModalWith(txt, 'all');
+  };
+}
+
+
+
+    // Initial label set + subscribe to changes
+    setAskLabels();
+    AISettings.onSaved(setAskLabels);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', wirePage);
+  } else wirePage();
+})();
+</script>
+
 
 
 </body>
