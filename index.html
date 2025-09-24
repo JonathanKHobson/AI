@@ -24,7 +24,52 @@
       --slot-pad:0.3ch;         /* left/right padding inside slot */
       --slot-width:16ch;        /* will be overwritten by JS to “widest word” */
       --slot-gap-r: .90ch; /* ← tune this: .32ch (tighter) … .48ch (roomier) */
+      
+        /* === Prompt Builder panel tokens === */
+  /* Spacing scale */
+  --pb-space-8: 8px;
+  --pb-space-10: 10px;
+  --pb-space-12: 12px;
+  --pb-space-14: 14px;
+  --pb-space-16: 16px;
+
+  /* Radii */
+  --pb-radius-10: 10px;
+  --pb-radius-12: 12px;
+
+  /* Neutral borders (fallbacks if app tokens absent) */
+  --pb-border-200: var(--border-200, #e5e7eb); /* neutral-200 */
+  --pb-border-300: var(--border-300, #d1d5db); /* neutral-300 */
+
+  /* Extra-soft shadow (very subtle) */
+  --pb-shadow-extra-soft:
+    0 1px 1px rgba(0,0,0,.04),
+    0 2px 6px rgba(0,0,0,.04);
+
+  /* Panel presets (used by the no-match panel) */
+  --pb-panel-pad: var(--pb-space-16);
+  --pb-panel-gap: var(--pb-space-10);
+  --pb-panel-radius: var(--pb-radius-12);
+  --pb-panel-border: var(--pb-border-300);
+  --pb-panel-shadow: var(--pb-shadow-extra-soft);
+
+  /* Button presets (secondary) */
+  --pb-btn-sec-height: 44px;
+  --pb-btn-sec-pad-x: var(--pb-space-12);
+  --pb-btn-sec-radius: var(--pb-radius-10);
+  --pb-btn-sec-fg: var(--fg-muted, #1f2937);
+  --pb-btn-sec-bg: var(--surface, #ffffff);
+  --pb-btn-sec-border: var(--pb-border-300);
+  --pb-btn-sec-hover-bg: var(--surface-1, #f9fafb);
+  --pb-btn-sec-active-bg: var(--surface-2, #f3f4f6);
+
+  /* Muted text */
+  --pb-text-muted: var(--muted, #6b7280);
+  --pb-text-subtle: var(--muted-2, #70757d);
+   --pb-icon-size: 16px; /* shared size for panel icons */
     }
+    
+    
     
 
 /* Make wrappers and the search row respect the viewport width */
@@ -505,6 +550,41 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
   max-height:220px; z-index: 400;    /* above card content */
 }
 
+/* ===== Slice 3: A11y + Shake ===== */
+
+/* Visually hidden but screen-reader accessible */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 1px 1px);
+  clip-path: inset(50%); border: 0;
+}
+
+/* Shake animation keyframes */
+@keyframes pb-shake-x {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-5px); }
+  60% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+  90% { transform: translateX(3px); }
+}
+
+/* Apply shake to the search wrapper when .shake is toggled */
+.searchWrap.shake {
+  animation: pb-shake-x 0.42s ease-in-out;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .searchWrap.shake {
+    animation: none !important;
+  }
+}
+
+
 /* --- rainbow pop-out buttons (like quickLinks) --- */
 .searchCtas .btn{
   position:relative;
@@ -644,6 +724,12 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
     /* typeahead */
     .ta{ position:absolute; left:10px; right:10px; top:100%; background:#fff; border:1px solid var(--border); border-radius:14px; margin-top:8px; box-shadow: var(--shadow); max-height:260px; overflow:auto; z-index: 300; /* was 50 */
  }
+ 
+ /* No-good-match: show full panel + 2 closest with no inner scrolling */
+.ta.ta--noMatch{
+  max-height: none;
+  overflow: visible;
+}
     .ta[hidden]{ display:none }
     .ta .item{ padding:10px 12px; cursor:pointer; border-bottom:1px solid #f1f5fb; }
     .ta .item:last-child{ border-bottom:none }
@@ -820,84 +906,6 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
 }
 
 
-/* === Slice 4C: Details CTAs — cluster centered, one line (final) === */
-/* Goal: three columns sized to content (left group | builder | right group),
-   the entire cluster centered under the mini search, on a single baseline. */
-
-.detailCtas{
-  /* hard override the older flex/full-width row */
-  display: grid !important;
-  grid-auto-flow: column;
-  grid-template-columns: auto auto auto;   /* content-sized columns */
-  column-gap: 12px;
-  align-items: center;                      /* same baseline */
-  justify-content: center;                  /* center the 3 columns as a cluster */
-
-  /* shrink to fit its contents and center under the mini search */
-  width: fit-content;
-  max-width: none;                          /* neutralize earlier max-width */
-  margin: 8px auto 6px;                     /* center horizontally */
-  padding: 0;                               /* no extra padding from old rules */
-  white-space: nowrap;                      /* keep one line on desktop */
-}
-
-/* left/right groups are small inline rows */
-.detailCtas .ctaGroup{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* explicit column placement (DOM order already matches) */
-.detailCtas .ctaGroup.left  { grid-column: 1; justify-content: flex-end; }
-.detailCtas #openBuilder     { grid-column: 2; justify-self: center; }
-.detailCtas .ctaGroup.right { grid-column: 3; justify-content: flex-start; }
-
-/* unify button visuals in this row (only Builder stays primary) */
-.detailCtas .btn{
-  text-decoration: none;
-  border-radius: 999px;
-  transition: transform .06s ease, box-shadow .18s ease, background-color .12s ease, color .12s ease;
-}
-.detailCtas .btn.secondary{
-  background:#fff; color:var(--fg); border:1px solid var(--border); box-shadow:none;
-}
-.detailCtas .btn.tertiary{ border-style: solid; color: var(--fg); }
-
-/* Builder is the only primary */
-.detailCtas #openBuilder.btn.primary{
-  background: var(--fg); color:#fff; border-color: transparent;
-  box-shadow: 0 6px 16px rgba(15,23,32,.15);
-}
-
-/* hover “bump” and focus clarity, scoped to this row */
-.detailCtas .btn:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(15,23,32,.12);
-}
-.detailCtas .btn:active{ transform: translateY(0); }
-.detailCtas .btn:focus-visible{ outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-
-/* Mobile: stack to 3 centered rows (left group, builder, right group) */
-@media (max-width: 720px){
-  .detailCtas{
-    grid-template-columns: 1fr;       /* single column */
-    grid-auto-flow: row;
-    row-gap: 8px;
-    width: 100%;                      /* allow full width on small screens */
-    white-space: normal;              /* permit wrapping on narrow devices */
-    justify-content: center;
-    justify-items: center;
-  }
-  .detailCtas .ctaGroup.left,
-  .detailCtas .ctaGroup.right{
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .detailCtas #openBuilder{ justify-self: center; }
-  .detailCtas .btn{ min-height:38px; padding:8px 10px; font-size:14px; }
-}
-
 
 /* Mobile polish */
 @media (max-width: 720px){
@@ -914,7 +922,6 @@ html.is-mobile #resultMenu.resultMenu [role="menuitem"]:focus-visible{
 @media (prefers-reduced-motion: reduce){
   #actionModal { transition: none; }
 }
-
 
 
 
@@ -1275,9 +1282,396 @@ html.is-mobile .hero{ padding-top:18px; }
 }
 
 
+/* === AI settings button — site-consistent look & placement === */
+.ai-settings-btn{
+  /* adopt your pill button look (you already have .btn + .secondary) */
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--fg);
+  box-shadow: none;
+  gap: .6ch;
+}
 
+/* default placement: fixed top-right on the start page */
+.ai-settings-btn{
+  position: fixed;
+  inset-block-start: 16px;       /* top */
+  inset-inline-end: 16px;        /* right */
+  z-index: 1200;
+}
+
+/* when we move it into the sticky header, let flex push it to the right */
+.resultHeader .bar{ position: relative; }
+.ai-settings-btn.is-in-header{
+  position: static;
+  margin-inline-start: auto;     /* pushes it to the right in the flex row */
+}
+
+/* small polish */
+.ai-settings-btn svg{ display:inline-block; width:16px; height:16px }
+.ai-settings-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,32,.12); }
+.ai-settings-btn:active{ transform: translateY(0); }
+
+/* mobile spacing */
+@media (max-width:720px){
+  .ai-settings-btn{ inset-block-start:12px; inset-inline-end:12px; padding:8px 10px; }
+}
+
+/* AI settings button: same pill look as your other CTAs */
+.ai-settings-btn{
+  /* your .btn + .secondary styles already apply; this just ensures placement */
+  position: fixed;
+  inset-block-start: 16px;  /* logical top */
+  inset-inline-end: 16px;   /* logical right */
+
+  /* physical fallbacks for older engines */
+  top: 16px; right: 16px; left: auto;
+
+  z-index: 1200;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: #fff; color: var(--fg);
+  box-shadow: none; gap: .6ch;
+}
+
+/* When inside the header’s flex row, let it sit at the far right */
+.ai-settings-btn.is-in-header{
+  position: static;          /* participate in header layout */
+  margin-inline-start: auto; /* push to the right */
+}
+
+/* keep the subtle lift to match other header buttons */
+.ai-settings-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+.ai-settings-btn:active{ transform: translateY(0); }
+
+/* no-match panel styles */
+.ta .noMatch{ padding:12px; }
+/* Slice 8 — hybrid list + panel layout (closest matches above options) */
+.ta .noMatch .pb-near{
+  margin: 2px 0 10px;
+  padding: 6px 4px 8px;
+}
+.ta .noMatch .pb-near .hdr.sm{
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: .02em;
+  text-transform: none;
+  color: var(--muted);
+  opacity: .8;
+}
+.ta .noMatch .pb-div{
+  border: 0;
+  border-top: 1px solid var(--border, #e3e9f2);
+  margin: 10px 0 0;
+}
+.ta .noMatch .hdr{ font-weight:600; margin-bottom:6px; }
+.ta .noMatch .sub{ font-size:12px; color:var(--muted); margin-bottom:10px; }
+.ta .noMatch .actions{ display:flex; flex-wrap:wrap; gap:8px; }
+
+
+/* Slice C: consistent focus rings for panel CTAs */
+.ta .noMatch .btn.secondary:focus,
+.ta .noMatch .btn.secondary:focus-visible{
+  outline: 2px solid var(--focus, #2563eb);
+  outline-offset: 2px;
+}
+
+/* Avoid showing focus when not keyboard-focused (where supported) */
+.ta .noMatch .btn.secondary:focus:not(:focus-visible){
+  outline: none;
+}
+
+/* Firefox inner focus fix for <button> */
+.ta .noMatch .btn.secondary::-moz-focus-inner{ border: 0; }
   
   </style>
+  
+  
+  
+  <style id="ai-settings-hotfix">
+/* === AI Settings dialog — last-in-cascade, high-specificity hotfix === */
+
+/* 1) Match common variants your JS might emit */
+:is(
+  #aiSettingsDialog,
+  dialog#aiSettingsDialog,
+  dialog#aiSettings,
+  dialog.ai-settings,
+  [role="dialog"][data-modal="ai-settings"],
+  [id*="ai"][id*="setting"][class*="modal"]
+){
+  /* Card shell */
+  padding: 0 !important;
+  border: 1px solid var(--border, #e3e9f2) !important;
+  border-radius: 18px !important;
+  background: var(--bg, #fff) !important;
+  color: var(--fg, #0f1720) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.08) !important;
+  width: min(720px, 92vw) !important;
+  max-height: 90vh !important;
+  margin: 8vh auto !important;
+}
+
+/* Backdrop dim */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings)::backdrop{
+  background: rgba(0,0,0,.45) !important;
+}
+
+/* 2) Interior layout: header / body / footer */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-body{
+  display: grid !important;
+  grid-template-rows: auto 1fr auto !important;
+  border-radius: inherit !important;
+  overflow: hidden !important;
+}
+
+/* Header with title left, X on the right */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-header{
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--border, #e3e9f2) !important;
+}
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-header h3{
+  margin: 0 !important;
+  font: 600 1.05rem/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+  text-transform: lowercase !important;
+  letter-spacing: .2px !important;
+}
+
+/* Put the close “X” in the true upper-right */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-header :is(.icon.close,#aiClose,.btn-close,[data-close]){
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  inline-size: 34px !important;
+  block-size: 34px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border, #e3e9f2) !important;
+  background: #fff0 !important;
+  color: inherit !important;
+  cursor: pointer !important;
+}
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-header :is(.icon.close,#aiClose,.btn-close,[data-close]):hover{
+  background: rgba(0,0,0,.06) !important;
+}
+
+/* Body padding and comfy spacing */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-section{
+  padding: 18px 16px !important;
+  display: grid !important;
+  gap: 12px !important;
+}
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-section .field label{
+  display: block !important;
+  margin-bottom: 6px !important;
+  font-size: 12px !important;
+  color: var(--muted, #506070) !important;
+  text-transform: lowercase !important;
+}
+
+/* Footer buttons aligned right with real space between */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-footer{
+  display: flex !important;
+
+  gap: 10px !important;
+  padding: 12px 16px 14px !important;
+  border-top: 1px solid var(--border, #e3e9f2) !important;
+}
+
+/* Button polish (inherits your .btn look) */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) .modal-footer .btn{
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  padding: 9px 14px !important;
+}
+
+/* 3) Exact button variants per your spec */
+/* Forget keys → red */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) :is(#aiForget,[data-action="forget-keys"],.btn-danger){
+  background: #ef4444 !important;  /* red-500 */
+  color: #fff !important;
+  border: 1px solid transparent !important;
+}
+
+/* Test → discreet/subtle */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) :is(#aiTest,[data-action="test"],.btn-subtle){
+  opacity: .78 !important;
+  background: #fff !important;
+  color: var(--muted, #506070) !important;
+  border: 1px dashed var(--border, #e3e9f2) !important;
+}
+
+/* Close → white button */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) :is(#aiCancel,[data-action="cancel"],.btn-white){
+  background: #fff !important;
+  color: var(--fg, #0f1720) !important;
+  border: 1px solid var(--border, #e3e9f2) !important;
+}
+
+/* Save (if present) stays primary, with small nudge */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) :is(#aiSave,[data-action="save"],.btn.primary){
+  filter: saturate(1.02) !important;
+}
+
+/* 4) Inputs inside the dialog (consistent, modern) */
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) input,
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) select,
+:is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) textarea{
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--border, #e3e9f2) !important;
+  background: #f9fafb !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+
+
+/* === No-match panel: unified secondary buttons (scoped) === */
+.ta .noMatch .btn.secondary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pb-space-8);
+  height: var(--pb-btn-sec-height);
+  padding: 0 var(--pb-btn-sec-pad-x);
+  border-radius: var(--pb-btn-sec-radius);
+  border: 1px solid var(--pb-btn-sec-border);
+  background: var(--pb-btn-sec-bg);
+  color: var(--pb-btn-sec-fg);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Slice 7 — subtle rainbow edges + minimal sparkle (scoped) */
+
+/* 7.1 — Tokens (panel scope only) */
+.ta .noMatch{
+  /* very gentle rainbow; we’ll fade it via alpha */
+  --pb-rainbow: conic-gradient(
+    from 180deg at 50% 50%,
+    #ff6b6b, #ffd166, #06d6a0, #118ab2, #c77dff, #ff6b6b
+  );
+  /* strengths */
+  --pb-rainbow-alpha:        0.08; /* default: faint */
+  --pb-rainbow-alpha-strong: 0.14; /* AI: one notch stronger */
+}
+
+/* default per-button alpha (can be overridden per-button) */
+.ta .noMatch .btn.secondary{ --_rbw: var(--pb-rainbow-alpha); }
+/* AI gets a slightly stronger edge (used only on :hover/:focus-visible) */
+.ta .noMatch #btnAI{ --_rbw: var(--pb-rainbow-alpha-strong); }
+
+/* 7.2 — Hover/focus: border becomes a faint rainbow edge */
+.ta .noMatch .btn.secondary:hover,
+.ta .noMatch .btn.secondary:focus-visible{
+  /* let the gradient show through the border */
+  border-color: transparent;
+  /* layer 1: solid button fill (hover color if defined), layer 2: rainbow edge */
+  background-image:
+    linear-gradient(var(--pb-btn-sec-hover-bg, var(--pb-btn-sec-bg)), var(--pb-btn-sec-hover-bg, var(--pb-btn-sec-bg))),
+    /* fade the rainbow via alpha; keep it classy */
+    conic-gradient(
+      from 180deg at 50% 50%,
+      rgba(255,107,107, var(--_rbw)),
+      rgba(255,209,102, var(--_rbw)),
+      rgba(6,214,160,   var(--_rbw)),
+      rgba(17,138,178,  var(--_rbw)),
+      rgba(199,125,255, var(--_rbw)),
+      rgba(255,107,107, var(--_rbw))
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: background-image .18s ease, border-color .18s ease;
+}
+
+/* 7.3 — Tiny sparkle micro-motion on AI icon (hover/focus only) */
+@keyframes pb-sparkle-wiggle{
+  0%   { transform: none; filter: none; }
+  40%  { transform: rotate(6deg) scale(1.04); filter: brightness(1.08); }
+  100% { transform: none; filter: none; }
+}
+
+/* Run once per hover/focus; no idle animation */
+.ta .noMatch #btnAI:hover .pb-ico,
+.ta .noMatch #btnAI:focus-visible .pb-ico,
+.ta .noMatch #btnAI:hover .pb-icon,
+.ta .noMatch #btnAI:focus-visible .pb-icon{
+  animation: pb-sparkle-wiggle 380ms cubic-bezier(.2,.9,.2,1) 1;
+  transform-origin: 50% 50%;
+}
+
+/* 7.4 — Respect reduced motion: no icon motion at all */
+@media (prefers-reduced-motion: reduce){
+  .ta .noMatch #btnAI:hover .pb-ico,
+  .ta .noMatch #btnAI:focus-visible .pb-ico,
+  .ta .noMatch #btnAI:hover .pb-icon,
+  .ta .NoMatch #btnAI:focus-visible .pb-icon{
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+transition: background-color .15s ease, box-shadow .15s ease, transform .15s ease;
+
+.ta .noMatch .btn.secondary:hover{
+  background: var(--pb-btn-sec-hover-bg);
+}
+
+.ta .noMatch .btn.secondary:active{
+  background: var(--pb-btn-sec-active-bg);
+}
+
+.ta .noMatch .btn.secondary:focus{
+  outline: 2px solid var(--focus, #2563eb);
+  outline-offset: 2px;
+}
+
+/* Force icon size in no-match panel (beats global svg rules) */
+.ta .noMatch .btn.secondary svg.pb-icon{
+  width: var(--pb-icon-size) !important;
+  height: var(--pb-icon-size) !important;
+  flex: 0 0 var(--pb-icon-size) !important;
+}
+
+
+/* === Subtle text utilities (muted, small) === */
+.pb-subtle{
+  color: var(--pb-text-muted);
+}
+
+.pb-fineprint{
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--pb-text-subtle);
+}
+
+/* === Subtle text utilities (muted, small) === */
+.pb-subtle{
+  color: var(--pb-text-muted);
+}
+
+.pb-fineprint{
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--pb-text-subtle);
+}
+
+/* Ensure panel CTAs are clickable even if a parent has pointer-events:none */
+.pb-panel .btn { pointer-events: auto; }
+
+</style>
+
+  
+  
+  <!-- HTML STARTS HERE -->
   
   
 </head>
@@ -1285,31 +1679,13 @@ html.is-mobile .hero{ padding-top:18px; }
 <a class="skip-link" href="#main">skip to content</a>
 
 
-  <!-- RESULTS HEADER (appears only on the results page) -->
-  <header id="resultHeader" class="resultHeader" hidden>
-    <div class="bar">
-      <button id="back" class="btn link backBtn" type="button" aria-label="Back to search">
-  <span class="icon" aria-hidden="true">←</span>
-  <span class="label">back to home</span>
+<header>
+<!-- Keep your existing button -->
+<button id="aiSettingsBtn" class="btn secondary ai-settings-btn" type="button" title="AI Assist settings">
+  <span class="label">ai settings</span>
 </button>
-      <div class="spacer"></div>
-      <button id="resultMenuBtn" class="btn link menuBtn" type="button"
-        aria-label="More options" aria-haspopup="menu" aria-expanded="false">
-  <!-- hamburger icon -->
-  <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
-  </svg>
-</button>
-<div id="resultMenu" class="resultMenu" role="menu" hidden></div>
-
-<nav class="ctas" aria-hidden="true">
-  <a class="btn tertiary"  href="#">all templates</a>
-  <a class="btn secondary" href="#">worksheet</a>
-  <a class="btn primary"   href="#">prompt builder</a>
-</nav>
-    </div>
-    <div class="rainbowLine"></div>
   </header>
+  
 
   <main id="main" class="wrap">
 
@@ -1317,8 +1693,8 @@ html.is-mobile .hero{ padding-top:18px; }
     <section class="hero" id="hero">
       <h1 class="heroTitle">
         start building your 
-        <span id="slot" class="slot" aria-live="polite" aria-atomic="true">
-          <span id="reel" class="reel">
+        <span id="slot" class="slot" aria-live="polite" aria-atomic="true"> 
+          <span id="reel" class="reel"> 
             <span id="reelList" class="reelList"></span>
           </span>
        </span>  
@@ -1327,6 +1703,7 @@ html.is-mobile .hero{ padding-top:18px; }
       <div class="searchWrap">
         <div class="search">
           <input id="q" type="text" placeholder="type what you’re trying to build…" autocomplete="off" />
+          <div id="srStatus" class="visually-hidden" aria-live="polite"></div>
           <button id="go" type="button" title="Search">search</button>
         </div>
         <div id="ta" class="ta" role="listbox" hidden></div>
@@ -1482,7 +1859,8 @@ html.is-mobile .hero{ padding-top:18px; }
 
   <!-- datasets -->
   
-    <script src="./templates.data.js"></script>
+     <script src="./glossary/aisettings.js" defer></script>
+    <script src="./glossary/templates.data.js"></script>
     
      <script>
     // lazy-load tasks dataset
@@ -1519,11 +1897,18 @@ html.is-mobile .hero{ padding-top:18px; }
   }
 
   // Rebuild the search index any time a dataset arrives
-  function rebuild(){ INDEX = buildIndex(); onQuery(); }
+function rebuild(){
+  INDEX = buildIndex();
+  // Keep the AI library markdown cache fresh, but don’t break if pb.ai isn’t ready yet
+  try{ if (pb && pb.ai && typeof pb.ai.rebuildLibraryMd === 'function') pb.ai.rebuildLibraryMd(); }catch(_){}
+  onQuery();
+}
 
   injectScript('./glossary/templates.data.js').onload = rebuild;
   injectScript('./glossary/templates.tasks.data.js').onload = rebuild;
 </script>
+
+
 
   <script>
 /* ===== HERO: fixed-width slot + vertical reel (anti-clipping) ===== */
@@ -1679,8 +2064,341 @@ html.is-mobile .hero{ padding-top:18px; }
       };
     });
   }
+  
+
+// ==== Slice 0: Flags, Tunables, Logger (no behavior changes) ====
+
+window.pb = window.pb || {};
+pb.flags = pb.flags || {
+  // feature flags (defaults ON for shipping)
+  search: {
+    useConfidence: true,         // ON: rank/gate by confidence
+    showClosestMatches: true,    // ON: show 1–2 closest hits with panel
+    helperGrace: true,           // ON: show helper 4..6 chars if no good hit
+    tailPenalty: true,           // ON: suppress last-word hijacks
+    idf: true                    // ON: rarity weighting
+  }
+};
+
+// AI-assisted search flags (Slice A)
+pb.flags.aiAssist = pb.flags.aiAssist || {
+  enabled: true,        // master kill switch for AI-assisted search
+  allowOpenAI: true,    // allow using OpenAI if user selected it in AI Settings
+  allowGemini: true,     // allow using Gemini if user selected it in AI Settings
+  allowApertus: true   // allow using Apertus if user selected it in AI Settings
+};
+
+// Tunables (safe defaults; used later when flags flip ON)
+pb.tuning = pb.tuning || {
+  minPanelLen: 7,          // flip to panel at >=7 chars (when confidence logic enabled)
+  helperGraceMin: 4,       // show helper ideas between 4..6 chars (if helperGrace=true)
+  helperGraceMax: 6,
+  confidenceThreshold: 0.70
+};
+
+// Lightweight counters (in-memory only)
+pb.metrics = pb.metrics || {
+  panelShown: 0,
+  goodMatchShown: 0,
+  actionChosen: { ai: 0, advanced: 0, continue: 0 },
+  confidenceBucket: { lt30: 0, lt55: 0, gte55: 0 }
+};
+
+// Tiny logger (counts only; noop-safe)
+pb.log = function(evt, data){
+  try{
+    if (evt === 'panelShown') pb.metrics.panelShown++;
+    else if (evt === 'goodMatchShown') pb.metrics.goodMatchShown++;
+    else if (evt === 'actionChosen' && data && data.action){
+      const k = String(data.action);
+      if (pb.metrics.actionChosen[k] != null) pb.metrics.actionChosen[k]++;
+    } else if (evt === 'confidenceBucket' && data && typeof data.confidence === 'number'){
+      const c = data.confidence;
+      if (c < 0.30) pb.metrics.confidenceBucket.lt30++;
+      else if (c < pb.tuning.confidenceThreshold) pb.metrics.confidenceBucket.lt55++;
+      else pb.metrics.confidenceBucket.gte55++;
+    }
+    // Optional: expose last event for debugging in devtools
+    pb._lastLog = { evt, data, ts: Date.now() };
+  }catch(_){}
+};
+
+// Dev helper: window.pbStats() prints current counters (remove in prod if desired)
+window.pbStats = function(){ try{ console.table(pb.metrics); }catch(_){ console.log(pb.metrics); } };
+
+
+// Helper to read flags/tunables in one place (future slices use this)
+pb.feature = function(path, fallback){
+  try{
+    const parts = path.split('.');
+    let cur = (path.startsWith('search.') ? pb.flags : pb)[parts.shift()];
+    for (const p of parts) cur = cur[p];
+    return (typeof cur === 'undefined') ? fallback : cur;
+  }catch(_){ return fallback; }
+};
+
+/* ==== Slice A: AI-assist plumbing (no network yet) ==== */
+pb.ai = (function(){
+  // LocalStorage keys used by aisettings.js (v2 first, then fallback)
+  const LS_KEYS = ['pb.ai.settings.v2', 'pb.ai.settings'];
+
+  // Normalize settings into a stable shape
+  function normalize(s){
+    const out = {
+      provider: (s?.provider || '').toLowerCase(), // 'openai' | 'gemini' | ''
+      noApi: !!s?.noApi,
+      // canonical model fields (both kept; callers pick what they need)
+      model: s?.model || '',
+      geminiModel: s?.geminiModel || s?.model || '',
+      // canonical apiKey field (provider-specific fallbacks)
+      apiKey: s?.apiKey || s?.openaiKey || s?.geminiKey || ''
+    };
+    // If provider hints exist (e.g., openaiKey is present), prefer them
+    if (!out.apiKey){
+      if (out.provider === 'openai' && s?.openaiKey) out.apiKey = s.openaiKey;
+      if (out.provider === 'gemini' && s?.geminiKey) out.apiKey = s.geminiKey;
+    }
+    return out;
+  }
+
+  // Try to read settings from the AISettings module, then from localStorage
+  function readSettings(){
+    // 1) Preferred: module API (if it’s loaded)
+    try{
+      const mod = window.AISettings || window.aiSettings || window.ai;
+      if (mod && typeof mod.get === 'function'){
+        const got = mod.get();
+        return normalize(got || {});
+      }
+    }catch(_){}
+    // 2) Fallback: localStorage (v2 then legacy)
+    for (const k of LS_KEYS){
+      try{
+        const raw = localStorage.getItem(k);
+        if (raw){
+          const got = JSON.parse(raw);
+          return normalize(got || {});
+        }
+      }catch(_){}
+    }
+    // 3) Empty defaults
+    return normalize({});
+  }
+
+  // Public: mirror of AISettings.get() (normalized)
+  function getSettings(){ return readSettings(); }
+
+  // Public: do we have a usable API key for the selected provider?
+function hasKey(){
+  const s = getSettings();                     // mirrors AISettings.get()
+  const provider = (s.provider || '').toLowerCase();
+
+  // No-API mode is never valid for AI-assisted search
+  if (s.noApi) return { ok:false, provider, reason:'no-api-mode' };
+
+  if (provider === 'openai'){
+    if (!s.apiKey) return { ok:false, provider, reason:'missing-key' };
+    return { ok:true, provider, key:s.apiKey, model:s.model || 'gpt-4o-mini' };
+  }
+
+  if (provider === 'gemini'){
+    if (!s.apiKey) return { ok:false, provider, reason:'missing-key' };
+    return { ok:true, provider, key:s.apiKey, model:s.geminiModel || 'gemini-2.5-flash' };
+  }
+
+  // APERTUS
+  if (provider === 'apertus'){
+    const route = (s.apertusRoute || 'publicai').toLowerCase();
+    if (route === 'publicai'){
+      if (!s.publicAIKey) return { ok:false, provider, reason:'missing-key' };
+      return { ok:true, provider, route, key:s.publicAIKey, model:s.apertusModel || 'swiss-ai/apertus-8b-instruct' };
+    } else {
+      // huggingface
+      if (!s.hfToken) return { ok:false, provider, reason:'missing-key' };
+      return { ok:true, provider, route, key:s.hfToken, model:s.apertusModel || 'swiss-ai/apertus-8b-instruct' };
+    }
+  }
+
+  return { ok:false, provider:null, reason:'no-provider' };
+}
+
+  // Public: placeholder for the intent rewrite pipeline (no network yet)
+  // Returns a Promise that resolves to a typed stub so wiring can proceed safely.
+  // Public: provider-dispatch with 12s timeout
+  // NOTE: we still ignore any universal prompt/promptSeed on purpose.
+function runIntentRewrite(opts){
+  const q = String(opts?.q || '').trim();
+  const md = (opts && opts.libraryMd) || (pb.ai.getLibraryMarkdown ? pb.ai.getLibraryMarkdown() : '');
+  const s = getSettings();
+  const k = pb.ai.hasKey();
+
+  if (!k.ok){
+    return Promise.resolve({ ok:false, provider: s.provider || null, error: { type:'no_key', reason:k.reason }});
+  }
+
+  const allow = pb.flags && pb.flags.aiAssist || {};
+  if (s.provider === 'openai' && allow.allowOpenAI !== true){
+    return Promise.resolve({ ok:false, provider:'openai', error:{ type:'blocked', reason:'provider-blocked' }});
+  }
+  if (s.provider === 'gemini' && allow.allowGemini !== true){
+    return Promise.resolve({ ok:false, provider:'gemini', error:{ type:'blocked', reason:'provider-blocked' }});
+  }
+  if (s.provider === 'apertus' && allow.allowApertus !== true){
+    return Promise.resolve({ ok:false, provider:'apertus', error:{ type:'blocked', reason:'provider-blocked' }});
+  }
+
+  // Build common args
+  const base = { q, libraryMd: md, timeoutMs: 12000 };
+
+  if (s.provider === 'gemini'){
+    return pb.ai.callGemini({ ...base, key: s.apiKey, model: s.geminiModel || 'gemini-2.5-flash' });
+  }
+  if (s.provider === 'apertus'){
+    const route = (s.apertusRoute || 'publicai').toLowerCase();
+    const key   = route === 'publicai' ? s.publicAIKey : s.hfToken;
+    return pb.ai.callApertus({ ...base, key, model: s.apertusModel || 'swiss-ai/apertus-8b-instruct', route });
+  }
+  // default → openai
+  return pb.ai.callOpenAI({ ...base, key: s.apiKey, model: s.model || 'gpt-4o-mini' });
+}
+
+  // Optional: tiny dev helper
+  window.pbAI = function(){
+    const s = getSettings();
+    console.info('[pb.ai] settings:', s, 'hasKey:', hasKey());
+    return s;
+  };
+
+  return { getSettings, hasKey, runIntentRewrite };
+})();
+
+/* ==== Slice B: Library Markdown builder (templates + tasks) ==== */
+(function(){
+  // Guard namespace
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+
+  // Lightweight local fold (safe even if pb.fold isn’t ready yet)
+  function foldLocal(s){
+    try{
+      return String(s ?? '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase()
+        .replace(/[_~`^"'.,!?;:(){}$begin:math:display$$end:math:display$<>/\\|@#$%&*=+]/g,' ')
+        .replace(/\s+/g,' ')
+        .trim();
+    }catch{ return String(s ?? '').toLowerCase().trim(); }
+  }
+
+  // Use global stopwords if present; otherwise a tiny fallback set
+  const STOP = (pb && pb.stop) || new Set(['a','an','the','i','you','we','to','for','of','and','or','with','on','in']);
+
+  // Cache record
+  pb.ai._libCache = pb.ai._libCache || null;
+
+  // Helpers
+  const MAX_DEF = 80;   // truncate definition text
+  const MAX_KW  = 8;    // max keyword tokens per row
+
+  function def80(s){
+    if (!s) return '';
+    s = String(s).replace(/\s+/g,' ').trim();
+    if (s.length <= MAX_DEF) return s;
+    return s.slice(0, MAX_DEF - 1).trimEnd() + '…';
+  }
+
+  function kwFromTemplate(t){
+    const pool = [];
+    if (Array.isArray(t.tags))        pool.push(...t.tags);
+    if (Array.isArray(t.categories))  pool.push(...t.categories);
+    if (Array.isArray(t.use_tags))    pool.push(...t.use_tags);
+    if (Array.isArray(t.use_cases))   pool.push(...t.use_cases.slice(0,3));
+    if (Array.isArray(t.fields))      pool.push(...t.fields.map(f => f && (f.label || f.key || '')).filter(Boolean));
+    if (t.label)                      pool.push(t.label);
+
+    const toks = [];
+    const seen = new Set();
+    const folded = foldLocal(pool.filter(Boolean).join(' '));
+    for (const tok of folded.split(/\s+/)){
+      if (!tok || tok.length < 2) continue;
+      if (STOP.has(tok)) continue;
+      if (seen.has(tok)) continue;
+      seen.add(tok);
+      toks.push(tok);
+      if (toks.length >= MAX_KW) break;
+    }
+    return toks;
+  }
+
+  function collectItems(){
+    // Prefer your allTemplates() merger so we get { isTask, kind, use_cases, ... }
+    const src = (typeof allTemplates === 'function') ? allTemplates() : [];
+    // Dedupe by slug; first wins
+    const map = new Map();
+    for (const t of src){
+      const slug = String(t.slug || t.id || '').trim();
+      if (!slug) continue;
+      if (!map.has(slug)) map.set(slug, t);
+    }
+    // Deterministic stable order: tasks first, then label ASC (lightweight hinting)
+    return Array.from(map.values()).sort((a,b)=>
+      ((b.__isTask?1:0) - (a.__isTask?1:0)) || String(a.label||'').localeCompare(String(b.label||''))
+    );
+  }
+
+  function buildMd(items){
+    const esc = s => String(s).replace(/\|/g, '\\|');
+    const rows = [
+      '| slug | definition | keywords |',
+      '|---|---|---|'
+    ];
+    for (const t of items){
+      const slug = String(t.slug || t.id || '').trim();
+      if (!slug) continue;
+      const def  = def80(t.definition || t.help || (t.use_cases && t.use_cases[0]) || '');
+      const kws  = kwFromTemplate(t).join(', ');
+      rows.push(`| ${esc(slug)} | ${esc(def)} | ${esc(kws)} |`);
+    }
+    return rows.join('\n');
+  }
+
+  // Public: build on demand (optionally from custom items)
+  pb.ai.buildLibraryMarkdown = function(items){
+    const list = (Array.isArray(items) && items.length) ? items : collectItems();
+    return buildMd(list);
+  };
+
+  // Public: cached getter (keyed by dataset version + rough slug count)
+  pb.ai.getLibraryMarkdown = function(){
+    const version = (window.DATA_VERSION != null) ? String(window.DATA_VERSION) : '0';
+    const slugCount = (Array.isArray(INDEX) ? INDEX.length : 0);
+    const cacheKey = version + '|' + slugCount;
+
+    const c = pb.ai._libCache;
+    if (c && c.key === cacheKey) return c.text;
+
+    const items = collectItems();
+    const text  = buildMd(items);
+    pb.ai._libCache = { key: cacheKey, text, bytes: text.length, rows: items.length };
+    return text;
+  };
+
+  // Public: invalidate + rebuild now (used by rebuild() on dataset load)
+  pb.ai.rebuildLibraryMd = function(){
+    pb.ai._libCache = null;
+    try { return pb.ai.getLibraryMarkdown(); } catch { return ''; }
+  };
+})();
 
     function rankSuggestions(q, idx, limit = 8){
+    // Slice 1: compute tokens for the current query (no behavior change yet)
+const _Q = pb.tokenizeQueryCached(q);
+// Expose for future slices / debugging (safe)
+pb._lastQ = _Q;
+    if (pb && pb.flags && pb.flags.search && pb.flags.search.idf){
+  if (!pb.idf) pb.buildIDF(INDEX);
+}
   const rawQ  = String(q || '').trim().toLowerCase();
   const terms = rawQ.split(/[^a-z0-9]+/).filter(Boolean);
   if (!terms.length) return [];
@@ -1789,15 +2507,16 @@ html.is-mobile .hero{ padding-top:18px; }
     for (const t of helperTemplates){
       for (const uc of (t.use_cases || [])){
         if (seenUse.has(uc)) continue;
-        hits.push({
-          bucket:'uc',
-          score: helperBase - (step++ * 0.5),
-          use: uc,
-          label: t.label,
-          template: t,
-          id: t.id,
-          slug: t.slug
-        });
+ hits.push({
+  bucket:'uc',
+  score: helperBase - (step++ * 0.5),
+  use: uc,
+  label: t.label,
+  template: t,
+  id: t.id,
+  slug: t.slug,
+  origin: 'helper' // <-- CRITICAL: mark as helper so DIRECT excludes these
+});
         seenUse.add(uc);
       }
     }
@@ -1818,6 +2537,7 @@ html.is-mobile .hero{ padding-top:18px; }
 // ===== Recent + idle helper suggestions =====
 const RECENT_KEY  = 'pb_recent_queries';
 const MAX_RECENT  = 12;
+const LAST_KEY    = 'pb_last_search';   // <- single, structured handoff record
 
 function loadRecent(){
   try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
@@ -1830,6 +2550,27 @@ function saveRecent(q){
   list.unshift(q);
   if (list.length > MAX_RECENT) list = list.slice(0, MAX_RECENT);
   localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+}
+
+function saveLastSearch(ctx){
+  try{
+    const safe = {
+      q: String(ctx?.q || '').trim() || null,
+      slug: ctx?.slug || null,
+      label: ctx?.label || null,
+      confidence: (typeof ctx?.confidence === 'number') ? ctx.confidence : null,
+      state: ctx?.state || null,               // 'GoodMatch' | 'NoGoodMatch' | 'Helper'
+      tokens: Array.isArray(ctx?.tokens) ? ctx.tokens.slice(0, 32) : [], // cap to stay tiny
+      ts: Date.now(),
+      from: ctx?.from || 'index'
+    };
+    localStorage.setItem(LAST_KEY, JSON.stringify(safe));
+  }catch(_){}
+}
+
+function loadLastSearch(){
+  try{ return JSON.parse(localStorage.getItem(LAST_KEY) || 'null'); }
+  catch{ return null; }
 }
 
 function helperTemplates(idx){
@@ -1885,6 +2626,9 @@ function buildIdleSuggestions(idx, limit=8){
     const qEl  = document.getElementById('q');
     const taEl = document.getElementById('ta');
     const goEl = document.getElementById('go');
+    
+    window.pb = window.pb || {};
+window.pb.srStatusEl = document.getElementById('srStatus');
 
     let INDEX = [];
     let active = -1;
@@ -1902,8 +2646,595 @@ let LAST_CTX = { q:'', slug:null };
       `).join('');
       taEl.hidden = false; active = 0;
     }
+    
+    
+    // Build the "Closest matches" mini-list (1–2 items) for NoGoodMatch.
+// Uses the same .item markup & data-i indices so existing handlers work.
+function buildClosestMatchesHTML(list, max = 2){
+  if (!Array.isArray(list) || !list.length) return '';
+  const idxs = [];
+  for (let i = 0; i < list.length && idxs.length < max; i++){
+    if (list[i] && list[i].origin !== 'helper') idxs.push(i);
+  }
+  if (!idxs.length) return '';
+
+  const items = idxs.map(i => `
+    <div class="item" role="option" data-i="${i}">
+      <div class="use">${list[i].use}</div>
+      <div class="sub" aria-hidden="true">${list[i].label}</div>
+    </div>
+  `).join('');
+
+  return `
+    <hr class="pb-div">
+    <div class="pb-near" role="group" aria-label="Closest matches">
+      <div class="hdr sm">Closest matches</div>
+      ${items}
+    </div>
+  `;
+}
+
+function buildNoMatchPanelHTML(q){
+  // Escape user text for safe HTML
+  const esc = (s)=>String(s||'').replace(/[&<>"]/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m]));
+  const txt = esc(q);
+
+  // Markup structure: Title → Guidance → Actions (3 buttons) → (no global fine print)
+  // Spacing: actions gap = 14px; panel bottom margin = 16px (inline styles per Slice 6)
+  return `
+    <div class="pb-panel" role="group" aria-labelledby="noMatchTitle" style="margin-bottom:16px;">
+      <!-- Title -->
+      <div id="noMatchTitle" class="hdr">No good match yet for “${txt}”</div>
+
+      <!-- Guidance (not a button) -->
+      <p class="pb-subtle gap">
+        Tip: try fewer words or a different use case
+        (e.g., ‘break down a goal’, ‘write a résumé’, ‘design inclusive policies’).
+      </p>
+
+      <!-- Actions row: three equal secondary buttons (AI first) -->
+      <div class="actions gap" style="gap:14px;">
+        <!-- 1) AI-assisted search -->
+        <button id="btnAI" class="btn secondary" type="button">
+          <svg class="pb-ico" width="32" height="32" viewBox="0 0 24 24"
+               aria-hidden="true" focusable="false" fill="currentColor"
+               style="width:16px!important;height:16px!important;max-width:none!important;max-height:none!important;transform:none!important;display:inline-block;flex:0 0 16px;vertical-align:middle;">
+            <path d="M9 3l1.5 3.5L14 8l-3.5 1.5L9 13l-1.5-3.5L4 8l3.5-1.5L9 3zM17 10l.8 1.8L19.5 13l-1.7.2L17 15l-.8-1.8L14.5 13l1.7-.2L17 10zM12 16l1 2 2 1-2 .3-1 1.7-1-1.7-2-.3 2-1 1-2z"/>
+          </svg>
+          <span>AI-assisted search</span>
+        </button>
+
+        <!-- 2) Advanced search -->
+        <a id="btnadv" class="btn secondary" href="./glossary/templates-glossary.html">
+          <svg class="pb-ico" width="32" height="32" viewBox="0 0 24 24"
+               aria-hidden="true" focusable="false" fill="currentColor"
+               style="width:16px!important;height:16px!important;max-width:none!important;max-height:none!important;transform:none!important;display:inline-block;flex:0 0 16px;vertical-align:middle;">
+            <path d="M10 18a8 8 0 1 1 5.293-14.293A8 8 0 0 1 10 18zm0-2a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm8.707 3.293l-3.4-3.4 1.414-1.414 3.4 3.4a1 1 0 0 1-1.414 1.414z"/>
+          </svg>
+          <span>Advanced search</span>
+        </a>
+
+        <!-- 3) Continue anyway (with inline caveat tied via aria-describedby) -->
+        <button id="btnContinue" class="btn secondary" type="button" aria-describedby="continueCaveat">
+          <svg class="pb-ico" width="32" height="32" viewBox="0 0 24 24"
+               aria-hidden="true" focusable="false" fill="none"
+               style="width:16px!important;height:16px!important;max-width:none!important;max-height:none!important;transform:none!important;display:inline-block;flex:0 0 16px;vertical-align:middle;">
+            <path d="M5 12h12M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Continue anyway</span>
+          <!-- Inline sublabel (small, muted) -->
+          <div id="continueCaveat" class="pb-fineprint"
+               style="display:block;font-size:12px;line-height:1.25;opacity:.75;margin-top:2px;">
+            May be off-target.
+          </div>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// ==== Slice 2: IDF prep (rarity points), built once, behind flag ====
+
+// ==== Slice 1: Tokenization, normalization, and weights (improved) ====
+// No external deps. Works with window.TEMPLATES/FRAMEWORKS and TASK_TEMPLATES/TASKS.
+
+// 0) Namespace
+window.pb = window.pb || {};
+
+// 1) Stopwords (drop completely from matching)
+//    Includes pronouns, auxiliaries, common preps/conjs, contractions shards, and boilerplate adverbs.
+pb.stop = pb.stop || new Set([
+  // articles, determiners, pronouns
+  'a','an','the','this','that','these','those','some','any','each','every','either','neither',
+  'i','me','my','mine','you','your','yours','we','us','our','ours','they','them','their','theirs',
+  'he','him','his','she','her','hers','it','its','one','ones','someone','something','everyone','everything',
+  // wh-words & fillers
+  'who','whom','whose','what','when','where','why','how',
+  // auxiliaries & modals
+  'be','am','is','are','was','were','been','being',
+  'do','does','did','doing',
+  'have','has','had','having',
+  'will','would','shall','should','can','could','may','might','must',
+  // negation shards from folding contractions
+  'not','no','nor','n','t','s','d','ll','re','ve','m',
+  // prepositions / conjunctions / adverbs (common)
+  'to','for','of','and','or','with','on','in','into','at','by','from','as','than','then',
+  'so','too','very','just','only','also','about','because','before','after','between','during','until','while',
+  'against','through','throughout','per','without','within','across','toward','towards','via',
+  'over','under','again','further','more','most','few','many','much','own','same','other','another',
+  'all','both','either','else',
+  // misc boilerplate
+  'etc','eg','e.g','ie','i.e','aka','vs'
+]);
+
+// 1a) Query boilerplate phrases to strip early (kept separate so UI can still echo the raw text)
+pb.stripPhrases = pb.stripPhrases || [
+  /^(how\s+to)\s+/i,
+  /^(what\s+is|what's)\s+/i,
+  /^(best\s+way\s+to)\s+/i,
+  /^(i\s+need\s+to|i\s+want\s+to)\s+/i,
+  /^(help\s+me\s+(to\s+)?)\s+/i
+];
+
+// 2) Downweighted “utility” terms (keep, but reduce scoring weight)
+//    Keep your original + expand a bit. These are common verbs/adjectives that add low discriminative value.
+pb.utility = pb.utility || new Set([
+  'make','do','get','help','plan','create','write','use',
+  'need','want','try','start','add','set','take','give','show','work','change','build',
+  'fix','improve','manage','simple','easily','fast','quick','best','good','bad','new'
+]);
+
+// 3) High-signal boosts (static core + dynamic library-derived later)
+//    These are tokens we know matter in your domain (frameworks, methods, task nouns).
+pb.boost = pb.boost || new Set([
+  // methods & patterns (seed list; dynamic builder adds many more)
+  'okr','okrs','wsjf','rice','ice','pas','bab','aida','par','star','scqa','hmw',
+  'triz','toulmin','feynman','bayesian','abm','dag','liwc','vader','nrc','afinn',
+  // UX/Researchy nouns
+  'screener','interview','survey','usability','codebook','journey','persona','heuristic',
+  // ops / comms
+  'postmortem','press','release','announcement','apology','roadmap','backlog','prioritization'
+]);
+
+// 4) Alias map (variant → canonical). Hyphens are preserved by our folder; map to hyphenated forms.
+pb.aliasIndex = pb.aliasIndex || (function(){
+  const map = new Map();
+  const pairs = [
+    // diacritics / punctuation
+    ['résumé','resume'], ['e-mail','email'], ['emails','email'],
+    // plural/singular and morphology
+    ['policies','policy'], ['roadmaps','roadmap'], ['roadmapping','roadmap'],
+    ['frameworks','framework'], ['methods','method'],
+    // synonyms / abbreviations
+    ['cv','resume'], ['curriculum-vitae','resume'],
+    ['okrs','okr'], ['a/b','ab'], ['a-b','ab'],
+    ['u.x','ux'], ['uxr','ux-research'], ['user-research','ux-research'],
+    // common UK/US variants
+    ['prioritisation','prioritization'], ['behaviour','behavior'], ['colour','color'],
+    // library proper nouns & acronyms (normalize)
+    ['press-release','press-release'], ['post-mortem','postmortem'],
+  ];
+  for (const [variant, canon] of pairs) map.set(variant, canon);
+  return map;
+})();
+
+// 5) Sentiment / intent lexicons (used for small nudges, not hard filters)
+pb.sentiments = pb.sentiments || {
+  // People ask for repair, growth, or evaluation flavored tasks
+  repair: new Set(['apology','regret','sorry','outage','incident','bug','failure','postmortem','remediation']),
+  growth: new Set(['improve','increase','optimize','grow','scale','accelerate','launch','announce','go-live']),
+  risk:   new Set(['risk','bias','ethics','safety','privacy','security','consent','accessibility','guardrail']),
+  distress: new Set(['stuck','overwhelmed','confused','blocked','friction']),
+  urgency:  new Set(['urgent','asap','immediately','now','today'])
+};
+pb.sentimentWeights = pb.sentimentWeights || {
+  repair: 1.15, growth: 1.10, risk: 1.12, distress: 1.08, urgency: 1.06
+};
+
+// 6) Unicode fold: lowercase, remove accents, keep hyphens; trim light punctuation
+pb.fold = pb.fold || function(s){
+  try{
+    return String(s ?? '')
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g,'')      // strip diacritics
+      .toLowerCase()
+      .replace(/[_~`^"'.,!?;:(){}\[\]<>/\\|@#$%&*=+]/g,' ') // keep hyphens
+      .replace(/\s+/g,' ')
+      .trim();
+  }catch{
+    return String(s ?? '').toLowerCase().trim();
+  }
+};
+
+// 7) Optional boilerplate stripping (non-destructive to pb.qCache.raw)
+pb.preclean = function(raw){
+  let s = String(raw || '');
+  for (const re of pb.stripPhrases) s = s.replace(re,'');
+  return s;
+};
+
+// Cache of last tokenized query
+pb.qCache = pb.qCache || { raw:'', folded:'', tokens:[], tokensMeaningful:[], tokensUtility:[], tokensDownweighted:[], tokensBoosted:[], aliasesApplied:[], toneBuckets:[] };
+
+// 8) Tokenize + annotate classes
+pb.tokenizeQuery = function(raw){
+  const cleaned = pb.preclean(raw);
+  const folded = pb.fold(cleaned);
+  const parts = folded ? folded.split(' ') : [];
+  const tokens = [];
+  const aliasesApplied = [];
+  for (let t of parts){
+    if (!t || t.length < 2) continue; // drop 1-char noise
+    const canon = pb.aliasIndex.get(t) || t; // alias normalization
+    if (canon !== t) aliasesApplied.push([t, canon]);
+    tokens.push(canon);
+  }
+
+  // drop true stopwords
+  const tokensMeaningful = tokens.filter(t => !pb.stop.has(t));
+
+  // classify
+  const tokensUtility     = tokensMeaningful.filter(t => pb.utility.has(t));
+  const tokensDownweighted= tokensUtility; // synonym; kept for clarity
+  const tokensBoosted     = tokensMeaningful.filter(t => pb.boost.has(t));
+
+  // tone / intent buckets (lightweight)
+  const toneBuckets = [];
+  for (const [k,set] of Object.entries(pb.sentiments)){
+    if (tokensMeaningful.some(t => set.has(t))) toneBuckets.push(k);
+  }
+
+  return { raw, folded, tokens, tokensMeaningful, tokensUtility, tokensDownweighted, tokensBoosted, aliasesApplied, toneBuckets };
+};
+
+// 9) Cached wrapper
+pb.tokenizeQueryCached = function(raw){
+  if (pb.qCache && pb.qCache.raw === raw) return pb.qCache;
+  const res = pb.tokenizeQuery(raw);
+  pb.qCache = res;
+  return res;
+};
+
+// Dev helper: inspect last tokenization quickly in console
+window.pbQ = function(){ try{ console.table(pb._lastQ || pb.qCache); }catch(e){ console.log(pb._lastQ || pb.qCache); } };
+
+
+// 10) Lightweight IDF compiled from your library (labels/tags/use_cases/boosters/fields)
+//     Relies on meta.search_text that your data builders attach to items.
+//     See: templates.data.js & templates.tasks.data.js builders that set t.meta.search_text. 
+pb.idf = pb.idf || new Map();
+pb.buildIdfWeights = function(){
+  const docs = [];
+
+  const pull = (arr) => {
+    if (!Array.isArray(arr)) return;
+    for (const t of arr){
+      const text = (t && t.meta && t.meta.search_text) ? t.meta.search_text : [
+        t?.label, t?.slug, t?.definition, t?.help,
+        ...(t?.tags || []), ...(t?.categories || []), ...(t?.use_cases || []), ...(t?.boosters || []),
+        ...(Array.isArray(t?.fields) ? t.fields.map(f => f?.label || f?.key || '') : [])
+      ].filter(Boolean).join(' ').toLowerCase();
+      docs.push(pb.fold(text));
+    }
+  };
+
+  // Your libs export under both names; use whichever is present.
+  pull(window.TEMPLATES || window.FRAMEWORKS || []);
+  pull(window.TASK_TEMPLATES || window.TASKS || []);
+
+  // DF counts
+  const df = new Map();
+  const N = docs.length || 1;
+  for (const d of docs){
+    const seen = new Set();
+    for (const tok of d.split(/[^a-z0-9-]+/)){
+      if (!tok || tok.length < 2) continue;
+      if (pb.stop.has(tok)) continue;
+      if (seen.has(tok)) continue;
+      seen.add(tok);
+      df.set(tok, (df.get(tok) || 0) + 1);
+    }
+  }
+
+  // Compute IDF; also fold rare library tokens into pb.boost
+  pb.idf.clear();
+  for (const [tok, n] of df.entries()){
+    const idf = Math.log(1 + N / (1 + n)); // smooth
+    pb.idf.set(tok, idf);
+    if (idf >= 0.9) pb.boost.add(tok); // rare/diagnostic → boost
+  }
+};
+
+// 11) Shared term weight function (use in scoring elsewhere)
+//     Base multipliers: stop=0, utility~0.6, boost~1.5, sentiment nudges up to ~1.15.
+pb.termWeight = function(tok, toneBuckets = []){
+  if (!tok) return 0;
+  if (pb.stop.has(tok)) return 0;
+
+  let w = 1.0;
+  if (pb.utility.has(tok)) w *= 0.6;
+  if (pb.boost.has(tok))   w *= 1.5;
+
+  // sentiment/intent nudges (applied once per query if bucket present)
+  if (toneBuckets && toneBuckets.length){
+    for (const b of toneBuckets){
+      const m = pb.sentimentWeights[b];
+      if (m) w *= m;
+    }
+  }
+
+  // add IDF if known
+  const idf = pb.idf.get(tok);
+  if (idf != null) w *= (1 + idf); // modest bump: 1..~2
+
+  return w;
+};
+
+// Cache of the last tokenized query (helps with rapid onInput calls)
+pb.qCache = pb.qCache || { raw:'', folded:'', tokens:[], tokensMeaningful:[], aliasesApplied:[] };
+
+// Tokenize a user query into tokens + "meaningful" tokens (no stopwords).
+// - Keeps hyphenated tokens
+// - Applies alias normalization (variant -> canonical) and tracks changes
+// - Marks utility verbs (kept; downweighted later)
+// Returns: { raw, folded, tokens, tokensMeaningful, tokensUtility, aliasesApplied }
+pb.tokenizeQuery = function(raw){
+  const folded = pb.fold(raw);
+  const parts = folded ? folded.split(' ') : [];
+  const tokens = [];
+  const aliasesApplied = [];
+  for (let t of parts){
+    if (!t || t.length < 2) continue;                // drop 1-char noise
+    // alias normalization
+    const canon = pb.aliasIndex.get(t) || t;
+    if (canon !== t) aliasesApplied.push([t, canon]);
+    tokens.push(canon);
+  }
+  // meaningful = exclude stopwords; keep utilities (but track them)
+  const tokensMeaningful = tokens.filter(t => !pb.stop.has(t));
+  const tokensUtility = tokensMeaningful.filter(t => pb.utility.has(t));
+  return { raw, folded, tokens, tokensMeaningful, tokensUtility, aliasesApplied };
+};
+
+// Cached wrapper: returns cached result when the raw string is identical.
+// (We’ll keep it simple for now; full incremental diffing isn’t required.)
+pb.tokenizeQueryCached = function(raw){
+  if (pb.qCache && pb.qCache.raw === raw) return pb.qCache;
+  const res = pb.tokenizeQuery(raw);
+  pb.qCache = res;
+  return res;
+};
+
+
+// Tokenizer for IDF: split, trim, drop numeric-ish tokens, drop stopwords, minLen=2
+pb.tokenizeForIDF = function(text){
+  const out = [];
+  const seen = new Set();
+  const parts = pb.fold(text).split(/\s+/);
+  for (let t of parts){
+    if (!t || t.length < 2) continue;
+    if (/^\d+([.-]\d+)?$/.test(t)) continue; // numbers
+    if (pb.stop.has(t)) continue;
+    if (!seen.has(t)){ out.push(t); seen.add(t); } // unique per document
+  }
+  return out;
+};
+
+pb.idf = pb.idf || null;           // Map<string, number> when built
+pb.idfMeta = pb.idfMeta || null;   // { N, kept, dropped, bytesGuess }
+
+// Build IDF once from the current INDEX (templates/use-cases)
+pb.buildIDF = function(INDEX){
+  try{
+    if (!pb.flags.search.idf) return null;   // gated by feature flag
+    if (pb.idf) return pb.idf;               // already built
+
+    // 1) Collect “documents” = every use-case line across all templates
+    // Each distinct use-case counts as one doc for DF purposes
+    const docs = [];
+    const NMAX = 20000; // sanity cap
+    if (Array.isArray(INDEX)){
+      for (const t of INDEX){
+        const ucs = (t && Array.isArray(t.use_cases)) ? t.use_cases : [];
+        for (const uc of ucs){
+          if (docs.length >= NMAX) break;
+          const tokens = pb.tokenizeForIDF(uc);
+          if (tokens.length) docs.push(tokens);
+        }
+        if (docs.length >= NMAX) break;
+      }
+    }
+    const N = docs.length || 1;
+
+    // 2) Document frequency (DF): count in how many docs each token appears
+    const df = new Map();
+    for (const doc of docs){
+      for (const tok of doc){
+        df.set(tok, (df.get(tok)||0) + 1);
+      }
+    }
+
+    // 3) Compute IDF = log(N / (1 + df)), clamp & prune to stay < ~50KB
+    //    - drop tokens that are ultra-common (df/N > 0.6)
+    //    - drop ultra-rare singletons if desired (not necessary here)
+    //    - keep a max of MAX_TOKENS most informative tokens by IDF
+    const MAX_TOKENS = 3000;        // ~3k entries ~ < 50KB when stored as Map/object
+    const CLAMP_MIN = 0.20;         // sane floor so nothing becomes 0
+    const CLAMP_MAX = 3.50;         // sane ceiling; avoids runaway weights
+
+    let candidates = [];
+    df.forEach((count, tok) => {
+      const freq = count / N;
+      if (freq > 0.60) return; // too common → not informative
+      // raw idf & clamp
+      let idf = Math.log(N / (1 + count));
+      if (idf < CLAMP_MIN) idf = CLAMP_MIN;
+      else if (idf > CLAMP_MAX) idf = CLAMP_MAX;
+      candidates.push([tok, idf]);
+    });
+
+    // Sort informative-first (higher IDF first), then keep top MAX_TOKENS
+    candidates.sort((a,b) => b[1] - a[1]);
+    if (candidates.length > MAX_TOKENS) candidates = candidates.slice(0, MAX_TOKENS);
+
+    // 4) Store into pb.idf (Map for speed) and meta
+    const idfMap = new Map(candidates);
+    pb.idf = idfMap;
+    const kept = idfMap.size;
+    const dropped = df.size - kept;
+    // VERY rough bytes guess (key avg ~6 chars + number): ~16 bytes/entry + Map overhead
+    const bytesGuess = kept * 16;
+
+    pb.idfMeta = { N, kept, dropped, bytesGuess };
+    // Optional console note for devs:
+    // console.info('[IDF] built', pb.idfMeta);
+
+    return idfMap;
+  }catch(e){
+    // Fail-safe: never break search if build fails
+    pb.idf = null;
+    pb.idfMeta = null;
+    return null;
+  }
+};
+
+// Dev helper: print IDF summary (remove in prod if desired)
+window.pbIDF = function(){
+  try{
+    if (!pb.idf) return console.log('IDF not built (flag off or not triggered)');
+    console.table({ N: pb.idfMeta.N, kept: pb.idfMeta.kept, dropped: pb.idfMeta.dropped, bytesGuess: pb.idfMeta.bytesGuess+'B' });
+  }catch(e){ console.log('pbIDF error', e); }
+};
+
+
+// ==== Slice 3: Confidence scoring (coverage + phrase + IDF + tail penalty) ====
+// We compute confidence per suggestion using the tokenized query from Slice 1
+// and the IDF map from Slice 2 (if enabled).
+
+// Build one folded text blob from a suggestion for matching (cheap & stable)
+pb.docTextForSuggestion = function(s){
+  const t = s && s.template || {};
+  const pieces = [];
+  if (s && s.use)   pieces.push(String(s.use));
+  if (s && s.label) pieces.push(String(s.label));
+  if (t && t.label) pieces.push(String(t.label));
+  if (Array.isArray(t.tags) && t.tags.length)         pieces.push(t.tags.join(' '));
+  if (Array.isArray(t.categories) && t.categories.length) pieces.push(t.categories.join(' '));
+  // include up to 3 use-cases from the template to help phrase/bigram matches
+  if (Array.isArray(t.use_cases) && t.use_cases.length) pieces.push(t.use_cases.slice(0,3).join(' '));
+  return pb.fold(pieces.filter(Boolean).join(' '));
+};
+
+// Compute confidence parts and final score for one suggestion.
+// Returns { confidence, matchedTokens, matchedNgrams: { longest, hasFull } }
+pb.computeConfidence = function(s, _Q){
+  const qTokens = Array.from(new Set((_Q && _Q.tokensMeaningful) || [])); // unique meaningful tokens
+  const totalQ  = qTokens.length;
+  if (!totalQ){
+    return { confidence: 0, matchedTokens: [], matchedNgrams: { longest: 0, hasFull: false } };
+  }
+
+  // Candidate doc tokens/set
+  const doc   = pb.docTextForSuggestion(s);
+  const dToks = doc ? doc.split(/\s+/).filter(x => x && x.length >= 2) : [];
+  const dSet  = new Set(dToks);
+
+  // Coverage
+  const matched = qTokens.filter(t => dSet.has(t));
+  const coverage = matched.length / totalQ;
+
+  // Phrase score: full phrase > trigrams > bigrams > singletons
+  let longest = 0, hasFull = false;
+  if (totalQ >= 1){
+    const full = qTokens.join(' ');
+    if (full && doc.includes(full)){
+      hasFull = true;
+      longest = totalQ;
+    } else {
+      // scan down from 3 to 2
+      const maxN = Math.min(3, totalQ);
+      outer: for (let n = maxN; n >= 2; n--){
+        for (let i = 0; i <= totalQ - n; i++){
+          const gram = qTokens.slice(i, i + n).join(' ');
+          if (doc.includes(gram)){ longest = n; break outer; }
+        }
+      }
+    }
+  }
+  let phrase = totalQ ? (longest / totalQ) : 0;
+  if (hasFull) phrase = Math.min(1, phrase + 0.15); // small “big bonus” for full-substring hit
+
+  // IDF blend (flag-gated): matched rarity vs. query rarity mass
+  let idfBlend = 0;
+  if (pb.flags.search.idf && pb.idf instanceof Map){
+    let sumQ = 0, sumM = 0;
+    for (const t of qTokens){
+      const w = pb.idf.get(t) || 0;
+      sumQ += w;
+    }
+    for (const t of matched){
+      const w = pb.idf.get(t) || 0;
+      sumM += w;
+    }
+    if (sumQ > 0) idfBlend = Math.max(0, Math.min(1, sumM / sumQ));
+    else idfBlend = coverage; // fallback if IDF yields zeros
+  } else {
+    // If IDF isn’t enabled, a light proxy (keeps weights summing to 1)
+    idfBlend = coverage;
+  }
+
+  // Blend
+  const w1 = 0.40, w2 = 0.35, w3 = 0.25;
+  let conf = (w1 * coverage) + (w2 * phrase) + (w3 * idfBlend);
+
+  // Tail penalty (flag-gated): if only last token matched and there are ≥2 tokens
+  if (pb.flags.search.tailPenalty && totalQ >= 2 && matched.length === 1){
+    const last = qTokens[totalQ - 1];
+    if (matched[0] === last) conf *= 0.5;
+  }
+
+  // Clamp + return
+  conf = Math.max(0, Math.min(1, conf));
+  return { confidence: conf, matchedTokens: matched, matchedNgrams: { longest, hasFull } };
+};
+
 
     let SUGS = [];
+    
+    // Choose a "best" suggestion for Continue anyway, preferring helper pickers
+function pickBestForContinue(q, list, idx){
+  const L = Array.isArray(list) ? list : [];
+  const helperLabels = new Set(['— Task Picker —','— Pattern Picker —']);
+
+  // 1) If any current hit is a helper (or labeled as such), take it
+  const directHelper = L.find(s =>
+    s?.origin === 'helper' ||
+    helperLabels.has(String(s?.label || '').trim()) ||
+    /(^|-)helper$/i.test(String(s?.template?.kind || s?.template?.type || ''))
+  );
+  if (directHelper) return directHelper;
+
+  // 2) Otherwise, rerank quickly and prefer a helper if it appears in the top 12
+  const reranked = rankSuggestions(q, idx, 12);
+  const rerankedHelper = reranked.find(s =>
+    s?.origin === 'helper' ||
+    helperLabels.has(String(s?.label || '').trim())
+  );
+  if (rerankedHelper) return rerankedHelper;
+
+  // 3) Fallback: synthesize a helper UC from the first helper template
+  const helpers = helperTemplates(idx);
+  if (helpers.length){
+    const t = helpers[0];
+    const uc = (t.use_cases && t.use_cases[0]) || q || 'prompt';
+    return { bucket:'uc', score:999, use: uc, label: t.label, template: t, id: t.id, slug: t.slug, origin:'helper' };
+  }
+
+  // 4) Ultimate fallback: top suggestion
+  return L[0] || null;
+}
+
+    
 function onQuery(){
   const q = qEl.value.trim();
   const focused = document.activeElement === qEl;
@@ -1912,17 +3243,169 @@ function onQuery(){
     if (focused){
       SUGS = buildIdleSuggestions(INDEX, 8);
       renderTA(SUGS);
+      pb.log('goodMatchShown', { q, len: q.length });
     } else {
       hideTA(); // collapsed when not focused
     }
     return;
   }
 
-  SUGS = rankSuggestions(q, INDEX, 8);
-  renderTA(SUGS);
+SUGS = rankSuggestions(q, INDEX, 8);
+
+// Slice 3: attach confidence to each suggestion and (optionally) reorder
+{
+  // Ensure IDF map exists if flagged on
+  if (pb.flags.search.idf && !pb.idf) { try { pb.buildIDF(INDEX); } catch(_){} }
+
+  const _Q = pb.tokenizeQueryCached(q);
+  SUGS = (SUGS || []).map(s => {
+    const parts = pb.computeConfidence(s, _Q);
+    // log the top suggestion’s confidence bucket once per onQuery
+    return Object.assign({}, s, parts);
+  });
+
+  if (pb.flags.search.useConfidence){
+    // Highest confidence first; tie-break by existing score if present
+    SUGS.sort((a, b) => {
+      const d = (b.confidence||0) - (a.confidence||0);
+      if (d !== 0) return d;
+      return (b.score||0) - (a.score||0);
+    });
+    if (SUGS[0] && typeof SUGS[0].confidence === 'number'){
+      pb.log('confidenceBucket', { confidence: SUGS[0].confidence });
+    }
+  }
 }
+
+// ==== Slice 4: State machine (Helper | NoGoodMatch | GoodMatch) ====
+// Flags used: search.helperGrace, search.useConfidence, search.showClosestMatches
+// Tunables: helperGraceMin/helperGraceMax, minPanelLen, confidenceThreshold
+
+// 1) Derive quick facts from SUGS
+const DIRECT = (SUGS || []).filter(s => s && s.origin !== 'helper');
+const useConf = !!(pb.flags.search && pb.flags.search.useConfidence);
+const thresh  = Number(pb.tuning.confidenceThreshold || 0.55);
+const hasGood = useConf ? (SUGS || []).some(s => (s.confidence || 0) >= thresh) : (DIRECT.length > 0);
+const weakAll = useConf ? ((SUGS || []).length > 0 && (SUGS || []).every(s => (s.confidence || 0) < thresh)) : false;
+const noHits  = DIRECT.length === 0;
+
+// 2) Helper grace window?
+const HG  = !!(pb.flags.search && pb.flags.search.helperGrace);
+const len = q.length;
+const inGrace = HG && len >= (pb.tuning.helperGraceMin || 4) && len <= (pb.tuning.helperGraceMax || 6) && !hasGood;
+
+// 3) Compute state
+let STATE = 'GoodMatch';
+if (inGrace){
+  STATE = 'Helper';
+} else if (len >= (pb.tuning.minPanelLen || 7) && (noHits || (useConf && weakAll))){
+  STATE = 'NoGoodMatch';
+}
+
+// 4) Render per state
+if (STATE === 'Helper'){
+  // Show helper use-cases during grace window
+  SUGS = helperUsecaseSuggestions(INDEX, 8);
+  taEl.classList.remove('ta--noMatch');
+  renderTA(SUGS);
+  
+    // Slice 5: Primary button reads "search" in Helper state
+  (function(){
+    if (!goEl) return;
+    goEl.dataset.mode = 'search';
+    const lab = goEl.querySelector('.label');
+    if (lab) lab.textContent = 'search';
+    else goEl.textContent = 'search';
+    goEl.setAttribute('aria-label', 'search');
+  })();
+  
+  
+  if (window.pb && window.pb.srStatusEl) window.pb.srStatusEl.textContent = '';
+  pb.log('goodMatchShown', { q, len: q.length, state: 'Helper' });
+
+} else if (STATE === 'NoGoodMatch'){
+  // Sticky panel: optional “Closest matches” + panel
+  taEl.classList.add('ta--noMatch');
+  active = -1;
+  
+    // Slice 8: render up to 2 closest matches above the panel when enabled
+  const nearHtml = (pb.flags.search && pb.flags.search.showClosestMatches)
+    ? buildClosestMatchesHTML(SUGS, 2)
+    : '';
+
+  taEl.innerHTML = buildNoMatchPanelHTML(q) + nearHtml;
+  taEl.hidden = false;
+  
+    // Slice 5: Primary button reads "review options" in NoGoodMatch
+  (function(){
+    if (!goEl) return;
+    goEl.dataset.mode = 'review';
+    const lab = goEl.querySelector('.label');
+    if (lab) lab.textContent = 'review options';
+    else goEl.textContent = 'review options';
+    goEl.setAttribute('aria-label', 'review options');
+  })();
+
+  // Optional: top 1–2 closest (non-helper) matches above the panel
+
+
+  pb.log('panelShown', { q, len: q.length, state: 'NoGoodMatch' });
+
+  // A11y announce
+  if (window.pb && window.pb.srStatusEl) {
+    window.pb.srStatusEl.textContent = `No good match yet for "${q}". Choose an option below.`;
+  }
+
+  // --- Panel CTAs (already Slice-4 wired; this keeps it in scope) ---
+
+  // Try another (clear) — optional, present only if #btnClear exists in markup
+  {
+    const btnClear = taEl.querySelector('#btnClear');
+    if (btnClear){
+      btnClear.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        picked = null;
+        qEl.value = '';
+        onQuery();
+        qEl.focus();
+      }, { once:false });
+    }
+  }
+
+
+} else {
+  // GoodMatch — standard suggestions; panel hidden
+  taEl.classList.remove('ta--noMatch');
+  renderTA(SUGS);
+  
+    // Slice 5: Primary button reads "search" in GoodMatch
+  (function(){
+    if (!goEl) return;
+    goEl.dataset.mode = 'search';
+    const lab = goEl.querySelector('.label');
+    if (lab) lab.textContent = 'search';
+    else goEl.textContent = 'search';
+    goEl.setAttribute('aria-label', 'search');
+  })();
+  
+  if (window.pb && window.pb.srStatusEl) window.pb.srStatusEl.textContent = '';
+  pb.log('goodMatchShown', { q, len: q.length, state: 'GoodMatch' });
+}
+}
+
     qEl.addEventListener('input', onQuery);
     qEl.addEventListener('keydown', (e)=>{
+    // Slice 2: Block Enter while the "No-match" panel is showing
+// Slice 5: In NoGoodMatch, Enter does not launch — focus AI button instead
+if (e.key === 'Enter' && taEl.classList.contains('ta--noMatch')){
+  e.preventDefault();
+  const ai = taEl.querySelector('#btnAI');
+  if (ai && typeof ai.focus === 'function'){
+    ai.focus();
+  }
+  triggerSearchShake(); // subtle feedback; reduced-motion respected inside
+  return;
+}
       const open = !taEl.hidden && taEl.children.length;
       if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
         e.preventDefault();
@@ -1968,8 +3451,150 @@ taEl.addEventListener('pointerdown', handlePick, { passive:false });
 taEl.addEventListener('mousedown',  handlePick);
 taEl.addEventListener('click',      handlePick);
 goEl.addEventListener('click', ()=>{
+  // Slice 5: In NoGoodMatch, do not launch; focus AI and keep panel visible
+  if (taEl.classList.contains('ta--noMatch')){
+    const ai = taEl.querySelector('#btnAI');
+    if (ai && typeof ai.focus === 'function') ai.focus();
+    triggerSearchShake();
+    return;
+  }
   if (!picked && SUGS[0] && !taEl.hidden){ choose(0); }  // choose() triggers start
   else if (qEl.value.trim()) startScan();
+});
+
+/* Panel CTAs — global capture on pointerdown (fires before click + before teardown) */
+(function(){
+  let __ctaTs = 0; // dedupe pointerdown→click double fire
+
+  function handleCta(e){
+    const cta = e.target && (e.target.closest && e.target.closest('#btnadv, #btnContinue, #btnAI'));
+    if (!cta) return;
+
+    // Dedupe: if we just handled a pointerdown, ignore the trailing click
+    const now = Date.now();
+    if (now - __ctaTs < 180) { e.preventDefault(); e.stopPropagation(); return; }
+    __ctaTs = now;
+
+    // Own the event early; other handlers won’t swallow or teardown first
+    if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+    e.stopPropagation();
+    e.preventDefault();
+
+    // Defensive: collapse whatever host is active without assuming container
+    try {
+      // Desktop path
+      if (taEl) { taEl.hidden = true; taEl.innerHTML = ''; }
+      // Portal path
+      const portal = document.getElementById('suggestions-portal');
+      if (portal) portal.innerHTML = '';
+    } catch {}
+
+    // Route action
+    switch (cta.id) {
+      case 'btnadv': {
+        try { pb.log('actionChosen', { action: 'advanced' }); } catch {}
+        window.location.href = './glossary/templates-glossary.html';
+        return;
+      }
+      case 'btnContinue': {
+        try { pb.log('actionChosen', { action: 'continue' }); } catch {}
+        if (!picked && Array.isArray(SUGS) && SUGS[0]) picked = SUGS[0];
+        if (typeof startScan === 'function') startScan();
+        return;
+      }
+    case 'btnAI': {
+  try { pb.log('actionChosen', { action: 'ai' }); } catch {}
+  const qNow = (qEl && qEl.value ? qEl.value : '').trim();
+  if (typeof triggerSearchShake === 'function') triggerSearchShake();
+  pb.ai.handlePanelAI(qNow);
+  return;
+}
+    }
+  }
+
+  // Capture-phase pointerdown fires even if other code kills click later
+  document.addEventListener('pointerdown', handleCta, true);
+  // Backup: capture click too (e.g., keyboard activation via Enter/Space)
+  document.addEventListener('click', handleCta, true);
+})();
+
+/* Panel CTAs (delegated) — works across re-renders and overlay moves */
+taEl.addEventListener('click', function onPanelCta(e){
+  // Only care about our three CTAs inside the panel
+  const cta = e.target && e.target.closest('#btnadv, #btnContinue, #btnAI');
+  if (!cta) return; // let normal typeahead clicks keep working
+
+  // Prevent typeahead's own click logic / outside-closers from interfering
+  e.preventDefault();
+  e.stopPropagation();
+    // Also stop *other* click listeners on #ta from running
+  if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+
+  // Always collapse the dropdown before we do anything else
+  try { taEl.hidden = true; taEl.innerHTML = ''; } catch {}
+
+  // Route by ID
+  switch (cta.id) {
+ case 'btnadv': {
+  try { pb.log('actionChosen', { action: 'advanced' }); } catch {}
+  // Navigate immediately; no need to clear DOM first
+  window.location.href = './glossary/templates-glossary.html';
+  return;
+}
+    case 'btnContinue': {
+      // Continue anyway: mimic current fallback (prefer the top suggestion)
+      try { pb.log('actionChosen', { action: 'continue' }); } catch {}
+      if (!picked && Array.isArray(SUGS) && SUGS[0]) picked = SUGS[0];
+      // startScan() already reads qEl.value and optional picked
+      if (typeof startScan === 'function') startScan();
+      return;
+    }
+  case 'btnAI': {
+  try { pb.log('actionChosen', { action: 'ai' }); } catch {}
+  const qNow = (qEl && qEl.value ? qEl.value : '').trim();
+  if (typeof triggerSearchShake === 'function') triggerSearchShake();
+  pb.ai.handlePanelAI(qNow);
+  return;
+}
+  }
+});
+
+/* Panel CTAs — portal handler (only fires when panel is mounted in #suggestions-portal) */
+document.addEventListener('click', function onPortalPanelCta(e){
+  const portal = document.getElementById('suggestions-portal');
+  if (!portal) return;
+
+  // Only match our 3 CTAs, and only when they live under the portal
+  const cta = e.target && e.target.closest('#btnadv, #btnContinue, #btnAI');
+  if (!cta || !portal.contains(cta)) return;
+
+  // Take ownership before any other click plumbing
+  e.preventDefault();
+  e.stopPropagation();
+  if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+
+  // Tidy the portal DOM (desktop DOM is separate; we don't touch #ta here)
+  try { portal.innerHTML = ''; } catch {}
+
+  switch (cta.id) {
+    case 'btnadv': {
+      try { pb.log('actionChosen', { action: 'advanced' }); } catch {}
+      window.location.href = './glossary/templates-glossary.html';
+      return;
+    }
+    case 'btnContinue': {
+      try { pb.log('actionChosen', { action: 'continue' }); } catch {}
+      if (!picked && Array.isArray(SUGS) && SUGS[0]) picked = SUGS[0];
+      if (typeof startScan === 'function') startScan();
+      return;
+    }
+    case 'btnAI': {
+      try { pb.log('actionChosen', { action: 'ai' }); } catch {}
+      if (typeof triggerSearchShake === 'function') triggerSearchShake();
+      console.log('[AI Assist] TODO → send query to provider:', qEl.value);
+      return;
+    }
+  }
 });
 
 // Show idle suggestions (recent → helper) the moment the field is focused & blank
@@ -2242,6 +3867,31 @@ btnLucky?.addEventListener('click', ()=>{
     const resultHeader = document.getElementById('resultHeader');
 
     function startScan(){
+    
+    // Slice: cross-page handoff — persist last search context for wizard/AI
+try{
+  // raw query and best pick (if any)
+  const qNow   = String(qEl?.value || LAST_CTX.q || '').trim();
+  const best   = picked || (Array.isArray(SUGS) ? SUGS[0] : null);
+
+  // classify current state from UI (matches our state machine)
+  const state  = taEl.classList.contains('ta--noMatch') ? 'NoGoodMatch' : 'GoodMatch';
+
+  // keep recent text history as before
+  saveRecent(qNow);
+
+  // persist the structured last-search record
+  saveLastSearch({
+    q: qNow,
+    slug: best?.slug || null,
+    label: best?.label || null,
+    confidence: (typeof best?.confidence === 'number') ? best.confidence : null,
+    state,
+    tokens: (pb?.qCache?.tokensMeaningful) ? pb.qCache.tokensMeaningful : [],
+    from: 'index'
+  });
+}catch(_){}
+
     saveRecent(qEl.value.trim()); // ← NEW: remember it
     LAST_CTX.q = qEl.value.trim(); 
     
@@ -2673,7 +4323,6 @@ function hideTA(){
 
     /* ===== Boot index for search ===== */
     function boot(){ INDEX = buildIndex(); onQuery(); }
-function boot(){ INDEX = buildIndex(); onQuery(); }
 
 (function watchDatasets(){
   let lastSeen = '';
@@ -2689,6 +4338,52 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
   }, 80);
 })();
   </script>
+  
+<script>
+// Slice 3 — Respect reduced motion + live announcement + clean animation end
+function triggerSearchShake(){
+  try {
+    if (!searchWrap) return;
+
+    // Announce for assistive tech even if we animate
+    if (window.pb && window.pb.srStatusEl) {
+      window.pb.srStatusEl.textContent = 'No direct match. Choose an option below.';
+    }
+
+    // If user prefers reduced motion, skip animation entirely
+    const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (rm) return;
+
+    // Replayable animation: remove -> reflow -> add
+    searchWrap.classList.remove('shake');
+    void searchWrap.offsetWidth;
+    searchWrap.classList.add('shake');
+
+    // Ensure we clear the class at the end (and also after a timeout as fallback)
+    const onEnd = () => { try { searchWrap.classList.remove('shake'); } catch {} };
+    searchWrap.addEventListener('animationend', onEnd, { once: true });
+    setTimeout(onEnd, 600);
+  } catch {}
+}
+</script>
+
+<script>
+// Slice 3 — Cache the live region; create it if missing for resilience
+window.pb = window.pb || {};
+(function ensureSRStatus(){
+  const q = document.getElementById('q');
+  let el = document.getElementById('srStatus');
+  if (!el && q && q.parentNode) {
+    el = document.createElement('div');
+    el.id = 'srStatus';
+    el.className = 'visually-hidden';
+    el.setAttribute('aria-live', 'polite');
+    q.parentNode.insertBefore(el, q.nextSibling);
+  }
+  window.pb.srStatusEl = el || null;
+})();
+</script>
+
   
   <script>
 /* ===== MANTRA REEL: slow, infinite, resize-safe vertical scroller ===== */
@@ -2819,6 +4514,399 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
     lockMetrics();
     translateTo(current);
   });
+})();
+</script>
+
+<script>
+/* ==== Slice C — Provider adapters (Gemini + OpenAI). No wire-up yet. ==== */
+(function(){
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+
+  // ---------------------------
+  // Helpers (local to adapters)
+  // ---------------------------
+
+
+
+  // Tiny timeout wrapper so a bad network doesn’t hang the UI
+  async function fetchJsonWithTimeout(url, opts={}, timeoutMs=20000){
+    const c = new AbortController();
+    const t = setTimeout(()=>c.abort(), timeoutMs);
+    try{
+      const res  = await fetch(url, { ...opts, signal:c.signal });
+      const json = await res.json().catch(()=>null);
+      return { ok: res.ok, status: res.status, json };
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
+  // Build the exact intent-matching prompt (same contract for both providers).
+  // NOTE: we *intentionally ignore* any AI Settings "promptSeed" / universal prompt here.
+  pb.ai.buildIntentPrompt = function(q, libraryMd){
+ const userQuery = String(q ?? '').trim();
+const lib = String(libraryMd ?? '').trim();
+    // The demo uses a strict JSON schema and application/json response mode.
+    // We mirror that here so both providers emit the same shape. 
+    return [
+      "You are an intent rewriter and taxonomy expert for a mixed toolbox library of tools containing frameworks, patterns, heuristics, strategies, and methods",
+      "The library spans phases of work (explore, define, ideate, plan, compose, evaluate, review, prioritize, troubleshoot, compare/decide), topics (prompting, debiasing, logic, ethics, psychology, design, storytelling, etc.), and uses (ideation, decision-making, process improvement, teaching, content, coding) to guide a user through a template. Included is a library of templates identified by a slug.",
+      "Each library slug contributes 'search text' from definition/keywords use this to assist in matching what works best and rewrite the user’s sentence 'use case to match' into a canonical, concise intent and pick the best 5 slugs from the provided Library.",
+      "",
+      "Return STRICT JSON only (no prose), exactly in this schema:",
+      '{ "query_rewrite":"...", "top_slugs":["...","...","...","...","..."] }',
+      "",
+      "Guidelines:",
+      "- Rewrite the user’s sentence into a concise, canonical intent in ;query_rewrite' and match it to the best fitting slugs.",
+      "- Rank slugs from the library provided by semantic fit using the provided library search text (definition + keywords) and your inferred knowledge of that tool. Consider phase/topic/use cues in the query and match them to the best fit in the library.",
+      "- Use ONLY slugs that appear in the Library. Slugs are canonical, lowercase, kebab-case (e.g., 'a3-problem-solving-toyota'', 'abcde-cbt-framework'', 'woop-wish-outcome-obstacle-plan'', 'triangulation-methods'').",
+      "- Always output exactly 5 unique slugs in 'top_slugs' (no commentary, no extra keys). If matches are weak or ambiguous, include the best available five.",
+      "- Never invent slugs that are not in the library; never alter spelling; no duplicates; no explanations. Only five slugs."
+      "",
+      "User use case to match:",
+      userQuery,
+      "",
+      "Toolbox Library of slugs =",
+      "",
+      lib
+    ].join("\n");
+  };
+
+  // Normalize/validate a provider’s JSON into { query_rewrite, top_slugs }
+  function coerceResult(obj){
+    const out = { query_rewrite: "", top_slugs: [] };
+    if (!obj || typeof obj !== 'object') return out;
+    if (typeof obj.query_rewrite === 'string') out.query_rewrite = obj.query_rewrite.trim();
+    if (Array.isArray(obj.top_slugs)){
+      const seen = new Set();
+      for (const s of obj.top_slugs){
+        const v = String(s||'').trim();
+        if (!v) continue;
+        if (seen.has(v)) continue;
+        seen.add(v);
+        out.top_slugs.push(v);
+        if (out.top_slugs.length >= 5) break;
+      }
+    }
+    // If fewer than 5 came back, leave as-is; caller can handle fallback.
+    return out;
+  }
+
+  function typedError(provider, type, message, extra){
+    return { ok:false, provider, error:{ type, message, ...(extra||{}) } };
+  }
+  
+  // --- Apertus adapter (PublicAI or Hugging Face routes) ---
+pb.ai.callApertus = async function(opts){
+  const provider = 'apertus';
+  const key     = String(opts?.key || '');
+  const model   = String(opts?.model || 'swiss-ai/apertus-8b-instruct');
+  const route   = (opts?.route || 'publicai').toLowerCase();
+  const timeout = Number(opts?.timeoutMs || 12000);
+
+  if (!key) return typedError(provider, 'api', 'missing key', { status:0 });
+
+  // Build prompt once (shared across providers)
+  const prompt = pb.ai.buildIntentPrompt(opts?.q || '', opts?.libraryMd || '');
+
+  // OpenAI-compatible Chat Completions payload
+  const body = {
+    model,
+    response_format: { type: 'json_object' },
+    messages: [
+      { role: 'system', content: 'You are an expert intent rewriter and taxonomy mapper.' },
+      { role: 'user',   content: prompt }
+    ]
+  };
+
+  // Route selection
+  let url, headers;
+  if (route === 'publicai'){
+    // Public AI (OpenAI-compatible)
+    url = 'https://api.publicai.co/v1/chat/completions';
+    headers = {
+      'Authorization': 'Bearer ' + key,
+      'Content-Type': 'application/json',
+      'User-Agent': 'PromptBuilder/1.0 (+ai-assist)'
+    };
+  } else {
+    // Hugging Face router (OpenAI-compatible)
+    url = 'https://router.huggingface.co/v1/chat/completions';
+    headers = {
+      'Authorization': 'Bearer ' + key,
+      'Content-Type': 'application/json'
+    };
+  }
+
+  const res = await fetchJsonWithTimeout(url, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(body)
+  }, timeout);
+
+  if (!res.ok){
+    return typedError(provider, 'api', `Apertus HTTP ${res.status}`, { status:res.status, raw:res.json });
+  }
+
+  // Parse OpenAI-style content → JSON with guard against ``` fences
+  const content = res.json?.choices?.[0]?.message?.content ?? '';
+  const cleaned = String(content || '').trim()
+    .replace(/^```json\s*/i,'').replace(/^```/,'').replace(/```$/,'');
+  let parsed = null;
+  try { parsed = JSON.parse(cleaned); } catch(_){}
+
+  if (!parsed || !parsed.top_slugs || !Array.isArray(parsed.top_slugs)){
+    return typedError(provider, 'parse', 'invalid JSON from model', { raw: content });
+  }
+
+  const cooked = coerceResult(parsed);
+  return { ok:true, provider, query_rewrite: cooked.query_rewrite, top_slugs: cooked.top_slugs };
+};
+
+  // ---------------------------
+  // Gemini adapter
+  // ---------------------------
+  // Mirrors your demo: POST to v1beta ...:generateContent with responseMimeType
+  // and responseSchema enforcing our JSON shape. 
+  pb.ai.callGemini = async function({ q, libraryMd, key, model='gemini-2.5-flash', timeoutMs=20000 }){
+    const provider = 'gemini';
+    try{
+      const prompt = pb.ai.buildIntentPrompt(q, libraryMd);
+
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`;
+      const body = {
+        contents: [{ role: "user", parts: [{ text: prompt }]}],
+        generationConfig: {
+          temperature: 0.2,
+          topK: 40,
+          topP: 0.9,
+          candidateCount: 1,
+          responseMimeType: "application/json",
+          // Enforce the shape exactly as in the demo.
+          responseSchema: {
+            type: "OBJECT",
+            properties: {
+              query_rewrite: { type: "STRING" },
+              top_slugs: { type: "ARRAY", items: { type: "STRING" } }
+            },
+            required: ["query_rewrite","top_slugs"]
+          }
+        }
+      };
+
+      const res = await fetchJsonWithTimeout(endpoint, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(body)
+      }, timeoutMs);
+
+      if (!res.ok){
+        return typedError(provider, 'api', `Gemini HTTP ${res.status}`, { status:res.status, raw:res.json });
+      }
+
+      // In the demo, JSON lives in candidates[0].content.parts[0].text as a JSON string. 
+      const rawText = res.json?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      const cleaned = String(rawText || '').trim().replace(/^```json\s*/i,'').replace(/^```/,'').replace(/```$/,'');
+      let parsed = null;
+      try{ parsed = JSON.parse(cleaned); }catch(_){}
+      if (!parsed){
+        return typedError(provider, 'parse', 'Gemini returned non-JSON or empty response', { raw: res.json });
+      }
+
+      const coerced = coerceResult(parsed);
+      if (!coerced.query_rewrite && coerced.top_slugs.length === 0){
+        return typedError(provider, 'parse', 'Gemini JSON missing expected fields', { parsed });
+      }
+
+      return { ok:true, provider, query_rewrite: coerced.query_rewrite, top_slugs: coerced.top_slugs, raw: res.json };
+    }catch(err){
+      if (err?.name === 'AbortError') return typedError(provider, 'timeout', 'Gemini request timed out');
+      return typedError(provider, 'network', String(err && err.message || err));
+    }
+  };
+
+  // ---------------------------
+  // OpenAI adapter
+  // ---------------------------
+  // Uses Chat Completions (JSON mode). We set response_format:{type:"json_object"}
+  // and ask for the same strict JSON shape. (We still *ignore* any promptSeed/universal prompt here.)
+  pb.ai.callOpenAI = async function({ q, libraryMd, key, model='gpt-4o-mini', timeoutMs=20000 }){
+    const provider = 'openai';
+    try{
+      const prompt = pb.ai.buildIntentPrompt(q, libraryMd);
+
+      const endpoint = 'https://api.openai.com/v1/chat/completions';
+      const body = {
+        model,
+        temperature: 0.2,
+        response_format: { type: "json_object" },
+        messages: [
+          // Keep system concise; all rules live in the user prompt built above.
+          { role: "system", content: "Return strict JSON only for intent→slug matching." },
+          { role: "user",   content: prompt }
+        ]
+      };
+
+      const res = await fetchJsonWithTimeout(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type":"application/json",
+          "Authorization": "Bearer " + String(key || '')
+        },
+        body: JSON.stringify(body)
+      }, timeoutMs);
+
+      if (!res.ok){
+        return typedError(provider, 'api', `OpenAI HTTP ${res.status}`, { status:res.status, raw:res.json });
+      }
+
+      const content = res.json?.choices?.[0]?.message?.content ?? '';
+      const cleaned = String(content || '').trim().replace(/^```json\s*/i,'').replace(/^```/,'').replace(/```$/,'');
+      let parsed = null;
+      try{ parsed = JSON.parse(cleaned); }catch(_){}
+
+      if (!parsed){
+        return typedError(provider, 'parse', 'OpenAI returned non-JSON or empty response', { raw: res.json });
+      }
+
+      const coerced = coerceResult(parsed);
+      if (!coerced.query_rewrite && coerced.top_slugs.length === 0){
+        return typedError(provider, 'parse', 'OpenAI JSON missing expected fields', { parsed });
+      }
+
+      return { ok:true, provider, query_rewrite: coerced.query_rewrite, top_slugs: coerced.top_slugs, raw: res.json };
+    }catch(err){
+      if (err?.name === 'AbortError') return typedError(provider, 'timeout', 'OpenAI request timed out');
+      return typedError(provider, 'network', String(err && err.message || err));
+    }
+  };
+
+  // Dev convenience: quick probe to see which provider you’re about to hit
+  pb.ai._who = function(){ try{ return (pb.ai.getSettings && pb.ai.getSettings().provider) || null; }catch{ return null; } };
+
+})();
+</script>
+
+<script>
+(function(){
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+
+  function norm(x){ return String(x||'').trim().toLowerCase(); }
+
+  pb.ai.routeTopSlugs = function(topSlugs){
+    const ALL = (typeof allTemplates === 'function') ? allTemplates() : (Array.isArray(INDEX) ? INDEX : []);
+    const set = new Set(ALL.map(t => norm(t.slug || t.id)).filter(Boolean));
+    const seen = new Set();
+    for (const s of (topSlugs || [])){
+      const n = norm(s);
+      if (!n || seen.has(n)) continue;
+      seen.add(n);
+      if (set.has(n)) return { slug:n, fallback:false };
+    }
+    for (const h of ['pattern-picker','task-picker']) if (set.has(h)) return { slug:h, fallback:true };
+    const helper = ALL.find(t => norm(t.kind||t.type) === 'helper');
+    if (helper) return { slug:norm(helper.slug||helper.id), fallback:true };
+    const any = ALL.find(t => (t.slug||t.id));
+    return { slug: any ? norm(any.slug||any.id) : 'pattern-picker', fallback:true };
+  };
+
+  pb.ai.openSettingsWithError = function(reason, providerMsg){
+    try { AISettings.open(); } catch {}
+    setTimeout(function(){
+      const form  = document.getElementById('aiSettingsForm');
+      if (!form) return;
+      let banner  = document.getElementById('aiKeyError');
+      if (!banner){
+        banner = document.createElement('div');
+        banner.id = 'aiKeyError';
+        banner.className = 'alert error';
+        banner.style.cssText = 'margin:0 0 10px 0;padding:8px 10px;border-radius:8px;background:#fee;color:#900';
+        const header = form.querySelector('.modal-header');
+        (header && header.nextSibling)
+          ? form.insertBefore(banner, header.nextSibling)
+          : form.insertBefore(banner, form.firstChild);
+      }
+      let msg = 'Add your API key to use AI-assisted search.';
+      if (reason === 'no-api-mode')       msg = 'Turn off “No API mode” and enter your API key.';
+      else if (reason === 'no-provider')  msg = 'Choose a provider to use AI-assisted search.';
+      else if (reason === 'missing-key')  msg = 'Enter your API key for the selected provider.';
+      else if (reason === 'provider-blocked') msg = 'This provider is disabled in app settings.';
+      else if (reason === 'api')          msg = providerMsg || 'Your API key didn’t work. Check the key or billing status.';
+      banner.textContent = msg;
+
+      try {
+        if (reason === 'no-provider'){
+          (document.getElementById('aiProvOpenAI') || document.getElementById('aiProvGemini') || document.getElementById('aiProvApertus'))?.focus();
+        } else if (reason === 'no-api-mode'){
+          document.getElementById('aiNoApi')?.focus();
+        } else {
+          document.getElementById('aiApiKey')?.focus();
+        }
+      } catch {}
+    }, 10);
+  };
+
+  pb.ai._fallbackRoute = function(reason, q){
+    try { if (window.pb && window.pb.srStatusEl) window.pb.srStatusEl.textContent = 'Network was slow; we fell back to a safe choice.'; } catch {}
+    const r = pb.ai.routeTopSlugs([]);
+    try {
+      saveLastSearch({ q: (q||'').trim(), slug: r.slug, state: 'AI-fallback:' + reason, tokens: (pb?.qCache?.tokensMeaningful)||[], from: 'index' });
+    } catch {}
+    const base = './glossary/startup-wizard.html';
+    window.location.assign(`${base}?slug=${encodeURIComponent(r.slug)}`);
+  };
+
+  pb.ai.handlePanelAI = async function(q){
+    const k = pb.ai.hasKey();
+    if (!k.ok){
+      try { pb.log && pb.log('ai:no_key', { reason: k.reason }); } catch {}
+      pb.ai.openSettingsWithError(k.reason);
+      return;
+    }
+
+    try { pb.log && pb.log('ai:start', { provider: k.provider }); } catch {}
+
+    const md = (pb.ai.getLibraryMarkdown && pb.ai.getLibraryMarkdown()) || '';
+    let res;
+    try {
+      res = await pb.ai.runIntentRewrite({ q, libraryMd: md });
+    } catch (e){
+      try { pb.log && pb.log('ai:network_exception', { message: String(e && e.message || e) }); } catch {}
+      return pb.ai._fallbackRoute('timeout', q);
+    }
+
+    if (!res || res.ok !== true){
+      const err = (res && res.error) || {};
+      if (err.type === 'api'){
+        const hint = err.message || (err.raw && (err.raw.error?.message)) || 'Your API key didn’t work.';
+        pb.ai.openSettingsWithError('api', hint);
+        try { pb.log && pb.log('ai:api_error', { provider: k.provider, status: err.status || null }); } catch {}
+        return;
+      }
+      const why = err.type || 'unknown';
+      try { pb.log && pb.log('ai:fallback', { reason: why }); } catch {}
+      return pb.ai._fallbackRoute(why, q);
+    }
+
+    const route = pb.ai.routeTopSlugs(res.top_slugs || []);
+    const slug  = route.slug;
+
+    try {
+      saveLastSearch({
+        q: (res.query_rewrite || q || '').trim(),
+        slug,
+        state: 'AI',
+        tokens: (pb?.qCache?.tokensMeaningful) || [],
+        from: 'index'
+      });
+    } catch {}
+
+    try { pb.log && pb.log('ai:ok', { provider: k.provider, fallback: !!route.fallback }); } catch {}
+    const base = './glossary/startup-wizard.html';
+    window.location.assign(`${base}?slug=${encodeURIComponent(slug)}`);
+  };
 })();
 </script>
 
@@ -3268,6 +5356,223 @@ function boot(){ INDEX = buildIndex(); onQuery(); }
     };
   })();
 </script>
+
+<script>
+(function(){
+  // ---- helpers you already have or can adapt ----
+  function activePromptText(){
+    // TODO: reuse your existing function that builds the final prompt text.
+    const ta = document.getElementById('actionPreview') || document.querySelector('textarea[data-role="prompt"]');
+    return (ta && ta.value) ? ta.value.trim() : '';
+  }
+
+  function buildAskURL(provider, prompt){
+    const txt = String(prompt || '');
+    if (provider === 'gemini'){
+      const base = 'https://gemini.google.com/app'; // no stable ?prompt param
+      let url = base;
+      try { const u = new URL(base); u.searchParams.set('q', txt); url = u.toString(); } catch(_){}
+      const tooLong = url.length > 7800;
+      return { url, base: base + '/', tooLong };
+    }
+    // ChatGPT supports ?prompt= (often works; long URLs can fail)
+    const base = 'https://chat.openai.com';
+    let url = base + '/?prompt=' + encodeURIComponent(txt);
+    const tooLong = url.length > 7800;
+    return { url, base: base + '/', tooLong };
+  }
+
+  function setAskLabels(){
+    const ai = AISettings.get();
+    const label = (ai.provider === 'gemini') ? '💬 Ask Gemini' : '💬 Ask ChatGPT';
+    const openBtn2 = document.getElementById('openBtn2');
+    const footerAsk = document.getElementById('openAllBtnFooter');
+    if (openBtn2)   openBtn2.textContent = label;
+    if (footerAsk)  footerAsk.textContent = label;
+
+    // If you have template-field Ask buttons, unify by class:
+    document.querySelectorAll('.ask-btn').forEach(btn => btn.textContent = label);
+  }
+
+  // ---- provider-aware Action modal wiring ----
+  function openAskModalWith(text){
+    const ai = AISettings.get();
+    const dlg = document.getElementById('actionModal');
+    const form = document.getElementById('actionForm');
+    const title = document.getElementById('actionTitle');
+    const previewWrap = dlg?.querySelector('.field');
+    const preview = document.getElementById('actionPreview');
+    const note = document.getElementById('actionNote');
+    const confirm = document.getElementById('actionConfirm');
+    const cancel = document.getElementById('actionCancel');
+    const closeX = document.getElementById('actionClose');
+    if (!dlg || !form || !title || !preview || !confirm) {
+      // Fallback: open directly
+      return openDirect(text);
+    }
+
+    const providerName = (ai.provider === 'gemini') ? 'Gemini' : 'ChatGPT';
+    title.textContent = `💬 Ask ${providerName}`;
+    confirm.textContent = `Open in ${providerName}`;
+    if (previewWrap) previewWrap.style.display = '';
+    preview.value = text;
+    note.hidden = true;
+
+    // Clean previous handlers
+    const newConfirm = confirm.cloneNode(true);
+    confirm.parentNode.replaceChild(newConfirm, confirm);
+
+    newConfirm.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const finalTxt = (preview.value || '').trim();
+      const built = buildAskURL(ai.provider, finalTxt);
+
+      if (built.tooLong){
+        try { navigator.clipboard.writeText(finalTxt); } catch {}
+        openBaseAndNotify(built.base, providerName, true);
+      } else {
+        window.open(built.url, '_blank', 'noopener,noreferrer');
+        openBaseAndNotify(built.base, providerName, false);
+      }
+      try { dlg.close(); } catch {}
+    });
+
+    cancel && cancel.addEventListener('click', ()=>{ try { dlg.close(); } catch {} }, {once:true});
+    closeX && closeX.addEventListener('click', ()=>{ try { dlg.close(); } catch {} }, {once:true});
+
+    try { dlg.showModal(); } catch { dlg.open = true; }
+  }
+
+  function openBaseAndNotify(base, providerName, copied){
+    // Post-launch dialog (if you have it), otherwise toast
+    const post = document.getElementById('postLaunchDlg');
+    const title = document.getElementById('postLaunchTitle');
+    const msg   = document.getElementById('postLaunchMsg');
+    const note  = document.getElementById('postLaunchNote');
+    const openBase = document.getElementById('postLaunchOpenBase');
+
+    if (post && post.showModal){
+      if (title) title.textContent = `Did the prompt appear in ${providerName}?`;
+      if (msg)   msg.textContent   = copied
+        ? `Prompt copied. A ${providerName} tab opened. If it didn’t prefill, paste (Cmd/Ctrl+V).`
+        : `A ${providerName} tab opened. If it didn’t prefill, paste with Cmd/Ctrl+V.`;
+      if (note)  note.textContent  = `Why this happens: very long URLs can be ignored, and ${providerName} can restore a cached draft.`;
+      if (openBase) {
+        openBase.onclick = ()=> window.open(base, '_blank','noopener,noreferrer');
+      }
+      post.showModal();
+      return;
+    }
+    // minimal fallback
+    try { showToast(`${providerName} opened. Paste your prompt if it didn’t prefill.`); } catch {}
+  }
+
+  function openDirect(text){
+    const ai = AISettings.get();
+    const providerName = (ai.provider === 'gemini') ? 'Gemini' : 'ChatGPT';
+    const built = buildAskURL(ai.provider, text);
+    if (built.tooLong){
+      try { navigator.clipboard.writeText(text); } catch {}
+      window.open(built.base, '_blank', 'noopener,noreferrer');
+    } else {
+      window.open(built.url, '_blank', 'noopener,noreferrer');
+    }
+    try { showToast(`${providerName} opened. Paste your prompt if it didn’t prefill.`); } catch {}
+  }
+
+  // ---- wire header + ask buttons ----
+  function wirePage(){
+    // Header: Settings launcher
+    const settingsBtn = document.getElementById('aiSettingsBtn');
+    settingsBtn && settingsBtn.addEventListener('click', ()=> AISettings.open());
+
+    // Secondary Ask (Template Fields): provider-aware modal open
+    const openBtn2 = document.getElementById('openBtn2');
+    if (openBtn2){
+      openBtn2.onclick = async ()=>{
+        // Build or read your composed prompt:
+        const txt = activePromptText();
+        // Keep current UX: copy prompt before opening modal:
+        try { await navigator.clipboard.writeText(txt); } catch {}
+        openAskModalWith(txt);
+      };
+    }
+
+    // Footer Ask (if present)
+    const footerAsk = document.getElementById('openAllBtnFooter');
+    if (footerAsk){
+      footerAsk.onclick = async ()=>{
+        const txt = activePromptText();
+        try { await navigator.clipboard.writeText(txt); } catch {}
+        openAskModalWith(txt);
+      };
+    }
+
+    // Initial label set + subscribe to changes
+    setAskLabels();
+    AISettings.onSaved(setAskLabels);
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', wirePage);
+  } else wirePage();
+  
+  
+  
+})();
+</script>
+
+
+<script>
+(function mountAISettingsBtn(){
+  const btn = document.getElementById('aiSettingsBtn');
+  if (!btn) return;
+
+  // open the dialog
+  btn.addEventListener('click', ()=> { try{ AISettings.open(); }catch{} });
+
+  function place(){
+    const headerBar = document.querySelector('#resultHeader:not([hidden]) .bar');
+    if (headerBar){
+      // Put the button at the far right of the header
+      if (btn.parentNode !== headerBar) headerBar.appendChild(btn);
+      btn.classList.add('is-in-header');
+      btn.style.position = '';  // use header layout
+      btn.style.top = btn.style.right = btn.style.left = ''; // clear fixed coords
+    } else {
+      // No visible header: keep it fixed in the top-right of the page
+      btn.classList.remove('is-in-header');
+      btn.style.position = 'fixed';
+      btn.style.top = '16px';
+      // robust logical/physical fallback
+      btn.style.right = '16px';
+      btn.style.left = 'auto';
+    }
+  }
+
+  // Place now
+  place();
+
+  // Re-place whenever the results header shows/hides
+  const rh = document.getElementById('resultHeader');
+  if (rh){
+    new MutationObserver(place).observe(rh, { attributes:true, attributeFilter:['hidden','style','class'] });
+  }
+  // Also re-run on resize (mobile/desktop toggles)
+  window.addEventListener('resize', place, { passive:true });
+})();
+</script>
+
+<!-- Wire the header button to the modal (keeps aisettings.js untouched) -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('aiSettingsBtn');
+    if (btn && window.AISettings && typeof AISettings.open === 'function') {
+      btn.addEventListener('click', () => AISettings.open());
+    }
+  });
+</script>
+
 
   
 </body>
