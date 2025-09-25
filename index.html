@@ -1667,6 +1667,26 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
 /* Ensure panel CTAs are clickable even if a parent has pointer-events:none */
 .pb-panel .btn { pointer-events: auto; }
 
+
+/* ==== AI-Results modal (cards) ==== */
+.ai-results::backdrop{ background: rgba(15,23,42,.48); }
+.ai-results .modal-body{ padding:16px; border:1px solid var(--border); border-radius:16px; background:#fff; box-shadow: var(--shadow); }
+.ai-results .results{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+.ai-results .result{
+  border:1px solid var(--border); border-radius:14px; padding:12px; background:#fff; box-shadow: var(--shadow);
+  display:flex; flex-direction:column; gap:8px; cursor:pointer;
+  transition: transform .12s ease, box-shadow .18s ease;
+}
+.ai-results .result:hover{ transform: translateY(-1px); box-shadow: 0 12px 44px rgba(0,0,0,0.10); }
+.ai-results .use{ margin:0; font-size:15px; font-weight:700; text-transform:lowercase; letter-spacing:.2px; }
+.ai-results .label{ font-size:12px; color:var(--muted); }
+.ai-results .def{ font-size:13px; color:#0c1220; margin:2px 0 0; }
+.ai-results .def .full[hidden]{ display:none; }
+.ai-results .row{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.ai-results .actions{ margin-top:2px; display:flex; justify-content:flex-end; }
+.ai-results .btn.small{ padding:6px 10px; font-size:12px; border-radius:10px; }
+
+
 </style>
 
   
@@ -1767,6 +1787,21 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
         <ul id="rollList"></ul>
       </div>
     </section>
+    
+    <!-- AI RESULTS MODAL -->
+<dialog id="aiResultsDlg" class="modal ai-results">
+  <form method="dialog" class="modal-body" style="max-width:860px;">
+    <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+      <h3 style="margin:0;font-size:18px;line-height:1;">Pick the best match</h3>
+      <button id="aiResultsClose" class="btn secondary" type="button" aria-label="Close">close</button>
+    </div>
+    <p class="hint" style="margin:.5rem 0 1rem;color:var(--muted);">
+      Based on “<em id="aiResultsQuery" style="font-style:normal;"></em>”
+    </p>
+    <div id="aiResultsList" class="results"></div>
+  </form>
+</dialog>
+
 
     <!-- DETAILS -->
     <section class="details" id="details" hidden>
@@ -2207,17 +2242,27 @@ function hasKey(){
   }
 
   // APERTUS
-  if (provider === 'apertus'){
-    const route = (s.apertusRoute || 'publicai').toLowerCase();
-    if (route === 'publicai'){
-      if (!s.publicAIKey) return { ok:false, provider, reason:'missing-key' };
-      return { ok:true, provider, route, key:s.publicAIKey, model:s.apertusModel || 'swiss-ai/apertus-8b-instruct' };
-    } else {
-      // huggingface
-      if (!s.hfToken) return { ok:false, provider, reason:'missing-key' };
-      return { ok:true, provider, route, key:s.hfToken, model:s.apertusModel || 'swiss-ai/apertus-8b-instruct' };
-    }
+if (provider === 'apertus'){
+  const route = (s.apertusRoute || 'publicai').toLowerCase();
+  const model = s.apertusModel || 'swiss-ai/apertus-8b-instruct';
+
+  // PUBLICAI ROUTE: proxy holds the upstream key → allow keyless operation
+  if (route === 'publicai'){
+    return {
+      ok: true,
+      provider,
+      route,
+      key: s.publicAIKey || '',  // optional; adapter won’t send Authorization when empty
+      model
+    };
   }
+
+  // HUGGINGFACE ROUTE: client must provide token
+  if (!s.hfToken){
+    return { ok:false, provider, reason:'missing-key' };
+  }
+  return { ok:true, provider, route, key:s.hfToken, model };
+}
 
   return { ok:false, provider:null, reason:'no-provider' };
 }
@@ -2253,11 +2298,27 @@ function runIntentRewrite(opts){
   if (s.provider === 'gemini'){
     return pb.ai.callGemini({ ...base, key: s.apiKey, model: s.geminiModel || 'gemini-2.5-flash' });
   }
-  if (s.provider === 'apertus'){
-    const route = (s.apertusRoute || 'publicai').toLowerCase();
-    const key   = route === 'publicai' ? s.publicAIKey : s.hfToken;
-    return pb.ai.callApertus({ ...base, key, model: s.apertusModel || 'swiss-ai/apertus-8b-instruct', route });
-  }
+// ▼▼ REPLACE ONLY THE APERTUS BRANCH WITH THIS ▼▼
+if (s.provider === 'apertus'){
+  // Settings
+  const route = String(s.apertusRoute || 'publicai').toLowerCase();
+  const model = s.apertusModel || 'swiss-ai/apertus-8b-instruct';
+
+  // When using your PublicAI Worker (proxy holds the upstream key),
+  // it’s OK for 'key' to be empty. For Hugging Face route, we do need the token.
+  const key   = (route === 'huggingface') ? (s.hfToken || '') : (s.publicAIKey || '');
+
+  // Call the new demo-parity adapter (20s timeout, same as Gemini)
+  return pb.ai.callApertus({
+    q,
+    libraryMd,
+    key,
+    model,
+    route,
+    timeoutMs
+  });
+}
+// ▲▲ REPLACE ONLY THE APERTUS BRANCH WITH THIS ▲▲
   // default → openai
   return pb.ai.callOpenAI({ ...base, key: s.apiKey, model: s.model || 'gpt-4o-mini' });
 }
@@ -3917,18 +3978,32 @@ try{
 
       rollList.innerHTML = finalList.map(l => `<li${l===chosenLabel?' class="hit"':''}>${l}</li>`).join('');
 
-      // Skip fancy motion for reduced-motion users
-      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Skip fancy motion for reduced-motion users
+const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// NEW: AI-assist can set this flag to run the scan as “visual only”
+const visualOnly = !!window.__scanVisualOnly;
 
-      if (prefersReduce){
-        // Hard-center without animation
-        hardCenterHit();
-        // Move on almost immediately
-        setTimeout(()=> showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)), 250);
-      } else {
-        animateToCenterHit({ overshoot: 48, scrollMs: 2200, backMs: 420, fwdMs: 320, settleMs: 200, jiggleBack: 18, jiggleFwd: 9 })
-          .then(()=>{ showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel)); });
-      }
+function finishOrReveal(){
+  if (visualOnly){
+    try { scan.style.display = 'none'; } catch {}
+    try { hero.style.display = 'block'; } catch {}
+    // Let listeners know the scan visual finished
+    try { document.dispatchEvent(new CustomEvent('scan:done')); } catch {}
+    window.__scanVisualOnly = false;
+  } else {
+    // legacy behavior → proceed to details (which currently routes to wizard)
+    showDetails(picked?.template || INDEX.find(t => t.label === chosenLabel));
+  }
+}
+
+if (prefersReduce){
+  hardCenterHit();
+  setTimeout(finishOrReveal, 250);
+} else {
+  animateToCenterHit({ overshoot: 48, scrollMs: 2200, backMs: 420, fwdMs: 320, settleMs: 200, jiggleBack: 18, jiggleFwd: 9 })
+    .then(finishOrReveal);
+}
+
     }
 
     function getHitGeometry(){
@@ -4594,72 +4669,6 @@ const lib = String(libraryMd ?? '').trim();
   function typedError(provider, type, message, extra){
     return { ok:false, provider, error:{ type, message, ...(extra||{}) } };
   }
-  
-  // --- Apertus adapter (PublicAI or Hugging Face routes) ---
-pb.ai.callApertus = async function(opts){
-  const provider = 'apertus';
-  const key     = String(opts?.key || '');
-  const model   = String(opts?.model || 'swiss-ai/apertus-8b-instruct');
-  const route   = (opts?.route || 'publicai').toLowerCase();
-  const timeout = Number(opts?.timeoutMs || 12000);
-
-  if (!key) return typedError(provider, 'api', 'missing key', { status:0 });
-
-  // Build prompt once (shared across providers)
-  const prompt = pb.ai.buildIntentPrompt(opts?.q || '', opts?.libraryMd || '');
-
-  // OpenAI-compatible Chat Completions payload
-  const body = {
-    model,
-    response_format: { type: 'json_object' },
-    messages: [
-      { role: 'system', content: 'You are an expert intent rewriter and taxonomy mapper.' },
-      { role: 'user',   content: prompt }
-    ]
-  };
-
-  // Route selection
-  let url, headers;
-  if (route === 'publicai'){
-    // Public AI (OpenAI-compatible)
-    url = 'https://api.publicai.co/v1/chat/completions';
-    headers = {
-      'Authorization': 'Bearer ' + key,
-      'Content-Type': 'application/json',
-      'User-Agent': 'PromptBuilder/1.0 (+ai-assist)'
-    };
-  } else {
-    // Hugging Face router (OpenAI-compatible)
-    url = 'https://router.huggingface.co/v1/chat/completions';
-    headers = {
-      'Authorization': 'Bearer ' + key,
-      'Content-Type': 'application/json'
-    };
-  }
-
-  const res = await fetchJsonWithTimeout(url, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(body)
-  }, timeout);
-
-  if (!res.ok){
-    return typedError(provider, 'api', `Apertus HTTP ${res.status}`, { status:res.status, raw:res.json });
-  }
-
-  // Parse OpenAI-style content → JSON with guard against ``` fences
-  const content = res.json?.choices?.[0]?.message?.content ?? '';
-  const cleaned = String(content || '').trim()
-    .replace(/^```json\s*/i,'').replace(/^```/,'').replace(/```$/,'');
-  let parsed = null;
-  try { parsed = JSON.parse(cleaned); } catch(_){}
-
-  if (!parsed || !parsed.top_slugs || !Array.isArray(parsed.top_slugs)){
-    return typedError(provider, 'parse', 'invalid JSON from model', { raw: content });
-  }
-
-  const cooked = coerceResult(parsed);
-  };
 
 
 
@@ -4802,55 +4811,72 @@ pb.ai.callApertus = async function(opts){
     window.location.assign(`${base}?slug=${encodeURIComponent(r.slug)}`);
   };
 
-  pb.ai.handlePanelAI = async function(q){
-    const k = pb.ai.hasKey();
-    if (!k.ok){
-      try { pb.log && pb.log('ai:no_key', { reason: k.reason }); } catch {}
-      pb.ai.openSettingsWithError(k.reason);
+pb.ai.handlePanelAI = async function(q){
+  const k = pb.ai.hasKey();
+  if (!k.ok){
+    try { pb.log && pb.log('ai:no_key', { reason: k.reason }); } catch {}
+    pb.ai.openSettingsWithError(k.reason);
+    return;
+  }
+
+  // 1) Kick off the scan animation as a *visual-only* interstitial
+  try { window.__scanVisualOnly = true; startScan(); } catch {}
+
+  // 2) Call provider (currently Gemini override lives in runIntentRewrite)
+  const md = (pb.ai.getLibraryMarkdown && pb.ai.getLibraryMarkdown()) || '';
+  let res;
+  try {
+    res = await pb.ai.runIntentRewrite({ q, libraryMd: md });
+  } catch (e){
+    try { pb.log && pb.log('ai:network_exception', { message: String(e && e.message || e) }); } catch {}
+    return pb.ai._fallbackRoute('timeout', q);
+  }
+
+  if (!res || res.ok !== true){
+    const err = (res && res.error) || {};
+    if (err.type === 'api'){
+      const hint = err.message || (err.raw && (err.raw.error?.message)) || 'Your API key didn’t work.';
+      pb.ai.openSettingsWithError('api', hint);
+      try { pb.log && pb.log('ai:api_error', { provider: k.provider, status: err.status || null }); } catch {}
       return;
     }
+    const why = err.type || 'unknown';
+    try { pb.log && pb.log('ai:fallback', { reason: why }); } catch {}
+    return pb.ai._fallbackRoute(why, q);
+  }
 
-    try { pb.log && pb.log('ai:start', { provider: k.provider }); } catch {}
+  // 3) Map top 5 slugs → concrete template objects
+  const ALL = (typeof allTemplates === 'function') ? allTemplates() : (Array.isArray(INDEX) ? INDEX : []);
+  const norm = s => String(s||'').trim().toLowerCase().replace(/[\s_]+/g,'-').replace(/[^a-z0-9-]/g,'');
+  const bySlug = new Map(ALL.map(t => [norm(t.slug || t.id), t]));
+  const picks = [];
+  for (const s of (res.top_slugs || [])){
+    const t = bySlug.get(norm(s));
+    if (t) picks.push(t);
+  }
+  if (!picks.length) return pb.ai._fallbackRoute('no-matches', q);
 
-    const md = (pb.ai.getLibraryMarkdown && pb.ai.getLibraryMarkdown()) || '';
-    let res;
-    try {
-      res = await pb.ai.runIntentRewrite({ q, libraryMd: md });
-    } catch (e){
-      try { pb.log && pb.log('ai:network_exception', { message: String(e && e.message || e) }); } catch {}
-      return pb.ai._fallbackRoute('timeout', q);
-    }
+  // 4) Stop the scan overlay (in case it’s still up) and open modal
+  try { document.getElementById('scan').style.display = 'none'; } catch {}
+  try { document.getElementById('hero').style.display = 'block'; } catch {}
 
-    if (!res || res.ok !== true){
-      const err = (res && res.error) || {};
-      if (err.type === 'api'){
-        const hint = err.message || (err.raw && (err.raw.error?.message)) || 'Your API key didn’t work.';
-        pb.ai.openSettingsWithError('api', hint);
-        try { pb.log && pb.log('ai:api_error', { provider: k.provider, status: err.status || null }); } catch {}
-        return;
-      }
-      const why = err.type || 'unknown';
-      try { pb.log && pb.log('ai:fallback', { reason: why }); } catch {}
-      return pb.ai._fallbackRoute(why, q);
-    }
+  // Persist for history/debug
+  try {
+    saveLastSearch({
+      q: (res.query_rewrite || q || '').trim(),
+      slug: String(picks[0].slug || picks[0].id || ''),
+      state: 'AI-top5',
+      tokens: (pb?.qCache?.tokensMeaningful) || [],
+      from: 'index'
+    });
+  } catch {}
 
-    const route = pb.ai.routeTopSlugs(res.top_slugs || []);
-    const slug  = route.slug;
+  try { pb.log && pb.log('ai:ok', { provider: k.provider, count: picks.length }); } catch {}
 
-    try {
-      saveLastSearch({
-        q: (res.query_rewrite || q || '').trim(),
-        slug,
-        state: 'AI',
-        tokens: (pb?.qCache?.tokensMeaningful) || [],
-        from: 'index'
-      });
-    } catch {}
+  // 5) Show the chooser modal
+  openAIResultsModal({ templates: picks, query: res.query_rewrite || q });
+};
 
-    try { pb.log && pb.log('ai:ok', { provider: k.provider, fallback: !!route.fallback }); } catch {}
-    const base = './glossary/startup-wizard.html';
-    window.location.assign(`${base}?slug=${encodeURIComponent(slug)}`);
-  };
 })();
 </script>
 
@@ -5303,6 +5329,93 @@ pb.ai.callApertus = async function(opts){
 
 <script>
 (function(){
+  function truncate(s, n){ s = String(s||''); return s.length <= n ? s : (s.slice(0, n-1) + '…'); }
+  function bestUseCase(t, hint){
+    const ucs = Array.isArray(t.use_cases) ? t.use_cases : [];
+    if (!ucs.length) return t.label || t.slug || 'template';
+    if (hint){
+      const h = String(hint||'').toLowerCase();
+      const hit = ucs.find(u => u.toLowerCase().includes(h.split(/\s+/)[0]||''));
+      if (hit) return hit;
+    }
+    return ucs[0];
+  }
+
+  window.openAIResultsModal = function({ templates=[], query='' }){
+    const dlg   = document.getElementById('aiResultsDlg');
+    const list  = document.getElementById('aiResultsList');
+    const qslot = document.getElementById('aiResultsQuery');
+    if (!dlg || !list){ 
+      // safety: fall back to first
+      if (templates[0]) gotoWizard(templates[0]);
+      return;
+    }
+    if (qslot) qslot.textContent = String(query||'').trim();
+
+    // Build cards
+    list.innerHTML = templates.map(t=>{
+      const slug = String(t.slug || t.id || '').trim();
+      const title = bestUseCase(t, query);
+      const defFull = String(t.definition || 'No definition provided yet.');
+      const defShort = truncate(defFull, 100);
+      return `
+        <article class="result" data-slug="${slug}">
+          <div class="row">
+            <h4 class="use">${title}</h4>
+          </div>
+          <div class="label">${(t.label || t.slug || t.id || '').toLowerCase()}</div>
+          <p class="def">
+            <span class="short">${defShort}</span>
+            <span class="full" hidden>${defFull}</span>
+            ${defFull.length > 100 ? `<button class="btn small more" type="button">more</button>` : ``}
+          </p>
+          <div class="actions">
+            <button class="btn primary small choose" type="button">use this</button>
+          </div>
+        </article>`;
+    }).join('');
+
+    // Delegate clicks (card, button, and “more” toggle)
+    list.onclick = function(e){
+      const moreBtn = e.target.closest('.more');
+      if (moreBtn){
+        e.preventDefault();
+        const card = e.target.closest('.result');
+        if (!card) return;
+        const full  = card.querySelector('.def .full');
+        const short = card.querySelector('.def .short');
+        const on = full && full.hasAttribute('hidden');
+        if (full){ on ? full.removeAttribute('hidden') : full.setAttribute('hidden',''); }
+        if (short){ on ? short.setAttribute('hidden','') : short.removeAttribute('hidden'); }
+        moreBtn.textContent = on ? 'less' : 'more';
+        return;
+      }
+
+      const choose = e.target.closest('.choose') || e.target.closest('.result');
+      if (choose){
+        e.preventDefault();
+        const card = e.target.closest('.result') || choose;
+        const slug = card.getAttribute('data-slug') || '';
+        // Resolve template by slug/id
+        const ALL = (typeof allTemplates === 'function') ? allTemplates() : (Array.isArray(INDEX) ? INDEX : []);
+        const norm = s => String(s||'').trim().toLowerCase().replace(/[\s_]+/g,'-').replace(/[^a-z0-9-]/g,'');
+        const t = ALL.find(x => norm(x.slug||x.id) === norm(slug));
+        try { dlg.close(); } catch {}
+        if (t) return gotoWizard(t);
+      }
+    };
+
+    // Close button + ESC support
+    const closeBtn = document.getElementById('aiResultsClose');
+    if (closeBtn){ closeBtn.onclick = ()=>{ try { dlg.close(); } catch {} }; }
+    try { dlg.showModal(); } catch { dlg.open = true; }
+  };
+})();
+</script>
+
+
+<script>
+(function(){
   // ---- helpers you already have or can adapt ----
   function activePromptText(){
     // TODO: reuse your existing function that builds the final prompt text.
@@ -5463,6 +5576,129 @@ pb.ai.callApertus = async function(opts){
   
   
   
+})();
+</script>
+
+<script>
+/* === Apertus adapter (demo-parity) — single source of truth for MVP === */
+(function(){
+  // Build the same exact prompt as Gemini’s adapter (don’t “improve”)
+  function buildPromptForApertus(userQuery, libraryMd){
+    return [
+      "You are an intent rewriter and taxonomy matcher for a small prompt library.",
+      "Rewrite the user’s sentence into a concise, canonical intent (query_rewrite).",
+      "Then pick the best 5 slugs from the Library below (top_slugs).",
+      "",
+      "Rules:",
+      "- Use ONLY slugs that appear in the Library (exact spelling).",
+      "- Rank by semantic fit; short definitions/keywords hint the topic.",
+      "- Output STRICT JSON only, exactly in this schema (no prose):",
+      '{ "query_rewrite":"...", "top_slugs":["...","...","...","...","..."] }',
+      "",
+      "User use case to match:",
+      userQuery,
+      "",
+      "Library =",
+      libraryMd
+    ].join("\n");
+  }
+
+  // Strip ``` fences and trim to outer JSON before parse (same as Gemini)
+  function stripFences(s){
+    if (!s) return "";
+    let t = String(s).trim();
+    t = t.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "");
+    const first = t.indexOf("{");
+    const last  = t.lastIndexOf("}");
+    if (first >= 0 && last >= first) t = t.slice(first, last + 1);
+    return t.trim();
+  }
+
+  // NOTE on headers:
+  // - Browsers cannot set the real 'User-Agent'. If your Worker needs a UA, use a custom header like 'X-User-Agent'.
+  // - You said your PublicAI Worker carries the upstream API key. If so, 'Authorization' may be omitted for route='publicai'.
+  async function callApertus({ q, libraryMd, key, model, route='publicai', timeoutMs=20000, userAgent }){
+    // Cap library size to keep latency predictable (same policy as Gemini)
+    if (libraryMd && libraryMd.length > 120_000){
+      console.warn("[AI] Library too large; trimming for speed.", libraryMd.length);
+      libraryMd = libraryMd.slice(0, 119_000) + "\n<!-- trimmed -->";
+    }
+
+    const prompt = buildPromptForApertus(q, libraryMd);
+
+    // Endpoints
+    const basePublic = (String(window.PB_PUBLICAI_BASE || 'https://pb-publicai-proxy.composer01.workers.dev').replace(/\/+$/,'') + '/v1/chat/completions');
+    const url = (String(route||'publicai').toLowerCase() === 'huggingface')
+      ? 'https://router.huggingface.co/v1/chat/completions'
+      : basePublic;
+
+    // OpenAI-compatible Chat Completions payload
+    const body = {
+      model: model || 'swiss-ai/apertus-8b-instruct',
+      response_format: { type: 'json_object' },
+      messages: [
+        // Keep system minimal; all strict rules live in the user content
+        { role: 'system', content: 'Return strict JSON only.' },
+        { role: 'user',   content: prompt }
+      ],
+      temperature: 0.2
+    };
+
+    // Headers
+    const headers = { 'Content-Type':'application/json' };
+    const addAuth = (String(route||'publicai').toLowerCase() === 'huggingface') || !!key;
+    if (addAuth && key) headers['Authorization'] = 'Bearer ' + String(key);
+    if (userAgent) headers['X-User-Agent'] = String(userAgent); // custom UA if you want your Worker to log it
+
+    // Timeout + fetch
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=> ctrl.abort(), timeoutMs);
+    const t0 = performance.now();
+
+    try{
+      console.info("[AI] Apertus call → start", { route, model: body.model, timeoutMs });
+      const res = await fetch(url, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body),
+        signal: ctrl.signal
+      });
+
+      const latency = Math.round(performance.now() - t0);
+      if (!res.ok){
+        let raw = '';
+        try { raw = await res.text(); } catch {}
+        console.warn("[AI] Apertus call → fail http", res.status, raw?.slice?.(0,180));
+        return { ok:false, provider:'apertus', error:{ type:'http', status:res.status, body:raw }, latency };
+      }
+
+      const json = await res.json().catch(()=> ({}));
+      const content = json?.choices?.[0]?.message?.content ?? '';
+      const clean   = stripFences(content);
+      let parsed = null;
+      try { parsed = JSON.parse(clean); } catch(e){
+        console.warn("[AI] Apertus call → fail parse", e, { preview: clean.slice(0,180) });
+        return { ok:false, provider:'apertus', error:{ type:'parse', message:String(e) }, latency };
+      }
+
+      const top = Array.isArray(parsed.top_slugs) ? parsed.top_slugs.filter(s => typeof s === 'string') : [];
+      const qr  = typeof parsed.query_rewrite === 'string' ? parsed.query_rewrite : "";
+      console.info("[AI] Apertus call → ok", { latency, n: top.length });
+      return { ok:true, provider:'apertus', top_slugs: top.slice(0,5), query_rewrite: qr, latency };
+    } catch(e){
+      const latency = Math.round(performance.now() - t0);
+      const type = (e && e.name === 'AbortError') ? 'timeout' : 'net';
+      console.warn("[AI] Apertus call → fail", type, e);
+      return { ok:false, provider:'apertus', error:{ type }, latency };
+    } finally{
+      clearTimeout(timer);
+    }
+  }
+
+  // Export
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+  pb.ai.callApertus = callApertus;
 })();
 </script>
 
