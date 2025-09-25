@@ -757,6 +757,179 @@ header.no-edge{
   min-width: auto;                    /* don’t force equal widths */
 }
 
+/* Step 0 — Similar matches: divider + spacing (scoped) */
+#step0Similar {
+  position: relative;
+  margin-top: 24px;     /* space from main content */
+  padding-top: 14px;    /* space after divider */
+  --hairline: rgba(0,0,0,0.12);  /* fallback if you don't have a var */
+}
+
+/* subtle hairline divider above the similar section */
+#step0Similar::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline) 15%, var(--hairline) 85%, transparent);
+  margin-bottom: 14px;
+}
+
+/* card grid breathing room (doesn't change your layout columns) */
+#step0Similar .wiz-cards {
+  gap: 12px;  /* adds spacing between cards */
+}
+
+/* inside each card: ensure content doesn’t crash into actions */
+#step0Similar .card > * + * { 
+  margin-top: 6px;      /* gentle vertical rhythm between siblings */
+}
+
+/* common class names seen in your cards; safe, scoped nudges */
+#step0Similar .card .def,
+#step0Similar .card .desc { 
+  margin-bottom: 6px;
+}
+
+/* space the “More” toggle from what follows */
+#step0Similar .card .more,
+#step0Similar .card .toggle-more {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* ensure the primary CTA never kisses the text or the More toggle */
+#step0Similar .card .def + .btn,
+#step0Similar .card .more + .btn,
+#step0Similar .card .toggle-more + .btn,
+#step0Similar .card .desc + .btn {
+  margin-top: 10px;
+}
+
+/* if you have an actions row/container, add a bit more air */
+#step0Similar .card .card-actions { 
+  margin-top: 10px;
+}
+
+/* if multiple buttons sit on the same row, give them elbow room */
+#step0Similar .card .btn + .btn {
+  margin-left: 8px;
+}
+
+/* === AI Settings dialog polish (scoped, non-destructive) ================== */
+/* Scope to *any* AI Settings modal flavors we might render */
+dialog.ai-settings,
+dialog[id*="aiSettings"],
+dialog[id*="ai-modal"],
+dialog[class*="ai-settings"] {
+  border-radius: 14px;
+  box-shadow: var(--shadow, 0 12px 40px rgba(0,0,0,.12));
+  border: 1px solid var(--border, #e3e9f2);
+  background: var(--panel, #fff);
+}
+
+/* Header: make room and pin the X in the upper-right */
+dialog.ai-settings .modal-header,
+dialog[id*="aiSettings"] .modal-header,
+dialog[id*="ai-modal"] .modal-header,
+dialog[class*="ai-settings"] .modal-header,
+dialog.ai-settings .dlg-head,
+dialog[id*="aiSettings"] .dlg-head,
+dialog[id*="ai-modal"] .dlg-head,
+dialog[class*="ai-settings"] .dlg-head {
+  position: relative;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border, #e3e9f2);
+}
+
+/* Close/X button: absolute in the top-right, smaller + crisp hit-area */
+dialog.ai-settings .modal-header .icon.close,
+dialog[id*="aiSettings"] .modal-header .icon.close,
+dialog[id*="ai-modal"] .modal-header .icon.close,
+dialog[class*="ai-settings"] .modal-header .icon.close,
+dialog.ai-settings .dlg-head .icon-btn,
+dialog[id*="aiSettings"] .dlg-head .icon-btn,
+dialog[id*="ai-modal"] .dlg-head .icon-btn,
+dialog[class*="ai-settings"] .dlg-head .icon-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 18px;
+}
+dialog[class*="ai-settings"] .modal-header .icon.close:hover,
+dialog[class*="ai-settings"] .dlg-head .icon-btn:hover {
+  background: var(--chip, #f3f6fa);
+  border-color: var(--border, #e3e9f2);
+}
+
+/* Body: keep things airy and modern */
+dialog.ai-settings .modal-section,
+dialog[id*="aiSettings"] .modal-section,
+dialog[id*="ai-modal"] .modal-section,
+dialog[class*="ai-settings"] .modal-section,
+dialog[class*="ai-settings"] .dlg-body {
+  padding: 16px 20px;
+}
+
+/* “Universal prompt” line: add separation from footer buttons.
+   If AISettings.js gives this row an id/class, we catch it.
+   Otherwise this still helps by targeting common label/input rows. */
+dialog[class*="ai-settings"] .universal-row,
+dialog[class*="ai-settings"] .universal,
+dialog[class*="ai-settings"] .row-universal,
+dialog[class*="ai-settings"] [id*="universal"],
+dialog[class*="ai-settings"] [name*="universal"] {
+  margin-bottom: 10px;
+}
+
+/* Footer: increase top spacing + button gap */
+dialog.ai-settings .modal-footer,
+dialog[id*="aiSettings"] .modal-footer,
+dialog[id*="ai-modal"] .modal-footer,
+dialog[class*="ai-settings"] .modal-footer,
+dialog[class*="ai-settings"] .dlg-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;         /* more space between buttons */
+  padding: 14px 20px;     /* more padding around area */
+  margin-top: 8px;        /* more space from content above */
+  border-top: 1px solid var(--border, #e3e9f2);
+}
+
+/* Forgot keys: make it a red (danger) button without guessing exact id */
+dialog[class*="ai-settings"] button[id*="forget"],
+dialog[class*="ai-settings"] button[name*="forget"],
+dialog[class*="ai-settings"] button[data-action*="forget"],
+dialog[class*="ai-settings"] button[data-variant="danger"] {
+  background: #b91c1c;      /* red-700 */
+  border-color: #b91c1c;
+  color: #fff;
+}
+dialog[class*="ai-settings"] button[id*="forget"]:hover,
+dialog[class*="ai-settings"] button[name*="forget"]:hover,
+dialog[class*="ai-settings"] button[data-action*="forget"]:hover,
+dialog[class*="ai-settings"] button[data-variant="danger"]:hover {
+  background: #991b1b;      /* red-800 */
+  border-color: #991b1b;
+}
+
+/* Keep secondary/ghost buttons lean */
+dialog[class*="ai-settings"] .btn:not(.primary):not([id*="forget"]):not([name*="forget"]):not([data-action*="forget"]) {
+  background: #fff;
+  color: var(--fg, #0f1720);
+  border-color: var(--border, #e3e9f2);
+}
+dialog[class*="ai-settings"] .btn:not(.primary):hover {
+  background: var(--chip, #f3f6fa);
+}
+
+
 
 </style>
 </head>
@@ -820,20 +993,34 @@ header.no-edge{
 </div>
     </section>
 
-    <!-- Step 0 view -->
-    <section id="wizViewStep0" class="wiz-step0 hide">
-      <h2 class="title" id="wizStep0Title">template</h2>
-      <p class="def" id="wizStep0Def"></p>
-      <ul class="meta" id="wizStep0Stats"></ul>
-      <div class="uses">
-        <div class="subhead">use-cases</div>
-        <ul id="wizStep0Uses"></ul>
+<!-- Step 0 view -->
+<section id="wizViewStep0" class="wiz-step0 hide">
+  <h2 class="title" id="wizStep0Title">template</h2>
+  <p class="def" id="wizStep0Def"></p>
+  <ul class="meta" id="wizStep0Stats"></ul>
+  <div class="uses">
+    <div class="subhead">use-cases</div>
+    <ul id="wizStep0Uses"></ul>
+  </div>
+
+  <div class="step0-actions">
+    <button id="wizStep0Start" class="btn primary">← start guided setup</button>
+    <button id="wizExitSearch" class="btn">back to search</button>
+  </div>
+
+  <!-- Similar matches (Step 0 footer) -->
+  <div id="step0Similar" class="block">
+    <div class="block-title">
+      <h3 class="subhead" style="margin:0">similar matches</h3>
+      <div class="right" style="display:flex; align-items:center; gap:10px">
+        <button id="btnSimNext3" class="btn sm">next 3</button>
+        <span id="simMeta" class="muted">showing 0 of 0</span>
       </div>
-<div class="step0-actions">
-  <button id="wizStep0Start" class="btn primary">← start guided setup</button>
-  <button id="wizExitSearch" class="btn">back to search</button>
-</div>
-    </section>
+    </div>
+    <div id="simCards" class="wiz-cards" style="margin-top:8px"></div>
+  </div>
+</section>
+
 
     <!-- Steps view -->
     <section id="wizViewSteps" class="hide">
@@ -1230,6 +1417,9 @@ function recompute(query=''){
     // Update top-3 + all-matches based on ranked suggestions; do not navigate.
     const q = String(query||'').trim();
     if (opts.saveHistory) saveRecent(q);
+    
+      // 🔧 NEW: keep a fresh total for “(out of N)”
+  allRows = rowsFromTemplates(allTemplates());
 
     // Rank suggestions, then collapse to unique templates by order
     const ranked = q ? rankSuggestions(q, 64) : [];
@@ -1428,6 +1618,489 @@ el('btnNext3').addEventListener('click', ()=>{
   renderTop(matchRows);
 });
 
+/* ===== Step 0: Similar templates v4 (intentional, inclusive, alignment-aware, future-proof) ===== */
+
+let SIM_ROWS = [];
+let simIndex = 0;
+
+/* ---------- Config (tweak without touching logic) ------------------------- */
+const SIM_CONFIG = {
+  MIN_POOL: 3,                 // minimum pool size before falling back
+  REQUIRE_TOP_FAMILY: true,    // require same top family unless topic “escape” hits hardThreshold
+  ALLOW_TOPIC_ESCAPE: true,    // allow strong topic match to cross domains
+  SCORE_THRESHOLDS: {          // escape gates
+    hard: 2600,                // allow cross-domain if candidate score >= hard
+    soft: 1500                 // nudge for in-domain-but-weak matches
+  },
+  SHOW_SIM_EXPLAIN: false,     // flip to true to attach reason strings for your UI
+  MAX_CARDS: 3                 // how many to render at once
+};
+
+/* ---------- Utils --------------------------------------------------------- */
+const normStr = (s)=> String(s||'').toLowerCase().trim();
+const arrStr  = (x)=> Array.isArray(x) ? x.flatMap(v => v==null?[]:[String(v)]) : (typeof x==='string'? [x] : []);
+const uniq    = (arr)=> Array.from(new Set(arr.filter(Boolean)));
+const tok     = (s)=> String(s||'').toLowerCase().normalize('NFKD')
+                  .replace(/[\u0300-\u036f]/g,'') // strip diacritics
+                  .split(/[^a-z0-9]+/).filter(Boolean);
+const kebab   = (s)=> String(s||'').toLowerCase()
+                  .replace(/[_\s]+/g,'-').replace(/[^a-z0-9\.\-]/g,'')
+                  .replace(/^-+|-+$/g,'').replace(/-+/g,'-');
+function slugify(s){
+  return String(s||'').toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .replace(/-+/g,'-');
+}
+function overlapCount(A,B){ if(!A.length||!B.length) return 0; const s=new Set(B); let n=0; for(const a of A){ if(s.has(a)) n++; } return n; }
+function tokenOverlap(A,B){ if(!A.length||!B.length) return 0; const s=new Set(B); let n=0; for(const a of A){ if(s.has(a)) n++; } return n; }
+function topFamilies(fams){ return uniq(fams.map(f=>f.split('.')[0])); }
+
+/* ---------- Category canon (manual families + dynamic discovery) ---------- */
+/* We merge a curated inclusive canon with auto-discovered categories appearing
+   in both your template libraries (TEMPLATES & TASK_TEMPLATES). */
+(function buildCategoryCanon(root){
+  const MANUAL_CANON = {
+    // Health
+    'health': ['health','medical','medicine','med','healthcare','health-care','health care','clinical','clinic','wellness','well-being','wellbeing'],
+    'health.public': ['public-health','public health','population-health','population health','epidemiology','epi'],
+    'health.mental': ['mental-health','mental health','behavioral-health','behavioural-health','psych','psychology','psychiatry','therapy','counseling','counselling'],
+
+    // Career
+    'career': ['career','job','jobs','employment','hiring','recruiting','recruitment','job-search','job search'],
+    'career.resume': ['resume','cv','curriculum-vitae','cover-letter','cover letter','portfolio'],
+    'career.interview': ['interview','interviews','interviewing'],
+    'career.networking': ['networking','outreach','cold outreach','cold-outreach','follow-up','follow up','warm intro','warm-intro'],
+
+    // Planning & Strategy
+    'planning': ['planning','roadmap','prioritization','prioritisation','backlog','capacity','forecast','timeline','scheduling','time-planning','time planning'],
+    'strategy': ['strategy','strategic','vision','goals','north-star','okrs','v2mom','theory-of-change','backcasting'],
+
+    // Design / Research / Accessibility
+    'design': ['design','product-design','ui','ux-ui'],
+    'design.ux': ['ux','user-experience','ux-design','experience-design'],
+    'design.accessibility': ['accessibility','a11y','inclusive-design','inclusive design','universal-design','universal design'],
+    'research': ['research','evaluation','analysis','benchmarking','testing','study'],
+    'research.ux': ['ux-research','user-research','research-ux','usability','usability-test','usability testing'],
+
+    // Communication & Writing
+    'communication': ['communication','comms','presentations','slides','docs','documentation','announcement','press','press-release','press release','brief','one-pager','one pager'],
+    'communication.email': ['email','emails','mail'],
+    'writing': ['writing','copywriting','content','blog','article','narrative','story','storytelling'],
+    'writing.press': ['press','press-release','press release','news','newsroom'],
+
+    // Ops, Governance, Safety, Ethics
+    'operations': ['operations','ops','process','workflow','sops','runbook','governance','policy','policies','compliance','playbook','oncall','incident','postmortem','premortem','pre-mortem'],
+    'safety': ['safety','risk','risk-management','incident-response','integrity'],
+    'ethics': ['ethics','equity','dei','inclusion','responsible','fairness','bias','privacy','data-ethics','ai-ethics'],
+
+    // Community / Civic
+    'community': ['community','civic','public-participation','public participation','stakeholders','engagement','governance-community'],
+
+    // Product & AI
+    'product': ['product','product-management','product mgmt','prd','requirements','release','mvp','mlp','epic','epics','user-story','user stories','story','stories'],
+    'ai': ['ai','ml','machine-learning','large-language-models','llm','genai','gen-ai'],
+    'ai.prompting': ['prompt','prompts','prompting','prompt-engineering','prompt design','prompt-design','prompt-architect'],
+
+    // Meta / Personal admin / Notes
+    'notes': ['notes','journal','journaling','meeting-notes','minutes','log','tracker'],
+    'personal-admin': ['personal-admin','personal admin','admin','life-admin','life admin'],
+
+    // Education / Productivity
+    'education': ['education','teach','learning','learn','workshop','lesson','curriculum','course'],
+    'productivity': ['productivity','time-management','habits','routines'],
+
+    // Inclusion-oriented topics (help cross-link future content)
+    'accessibility': ['access','accessibility','a11y','assistive-tech','assistive tech'],
+    'language': ['language','localization','l10n','internationalization','i18n','translation','multilingual','bilingual']
+  };
+
+  // Generic families get a mild penalty for off-domain suggestions
+  var GENERIC_TOP_FAMS = new Set(['planning','notes','communication','operations','strategy','productivity','design','community','language']);
+  // Expose so scoring can see it
+  window.GENERIC_TOP_FAMS = GENERIC_TOP_FAMS;
+
+  // Build alias map from manual canon
+  const map = new Map();
+  function addAliases(canon, list){
+    const C = kebab(canon);
+    const all = [canon, ...list];
+    for (const raw of all){
+      const v = kebab(raw);
+      if (!v) continue;
+      map.set(v, C);
+      map.set(v.replace(/-/g,' '), C); // tolerate spaces
+      if (v.endsWith('s')) map.set(v.slice(0,-1), C);
+      if (!v.endsWith('s')) map.set(v+'s', C);
+    }
+    map.set(C, C);
+  }
+  for (const k of Object.keys(MANUAL_CANON)) addAliases(k, MANUAL_CANON[k]);
+
+  // Dynamic discovery from libraries (future-proof)
+  const sources = [
+    ...(Array.isArray(root.TEMPLATES) ? root.TEMPLATES : []),
+    ...(Array.isArray(root.FRAMEWORKS) ? root.FRAMEWORKS : []),
+    ...(Array.isArray(root.TASK_TEMPLATES) ? root.TASK_TEMPLATES : []),
+    ...(Array.isArray(root.TASKS) ? root.TASKS : [])
+  ];
+  const discovered = new Set();
+  for (const t of sources){
+    for (const c of (t?.categories || [])) discovered.add(kebab(c));
+  }
+  // Light heuristics to fold common free categories into inclusive families
+  const heuristics = [
+    { test:/^ux$/, canon:'design.ux' },
+    { test:/^user-?research$/, canon:'research.ux' },
+    { test:/^usability(-test|testing)?$/, canon:'research.ux' },
+    { test:/^public-?health$/, canon:'health.public' },
+    { test:/^mental-?health$/, canon:'health.mental' },
+    { test:/^email(s)?$/, canon:'communication.email' },
+    { test:/^(resume|cv|cover-?letter)$/, canon:'career.resume' },
+    { test:/^jobs?$/, canon:'career' },
+    { test:/^personal-?admin$/, canon:'personal-admin' },
+    { test:/^a11y|^access(ibility)?$/, canon:'design.accessibility' },
+    { test:/^(i18n|l10n|localization|internationalization)$/, canon:'language' }
+  ];
+  for (const c of discovered){
+    if (map.has(c)) continue;
+    let mapped = null;
+    for (const rule of heuristics){ if (rule.test.test(c)){ mapped = rule.canon; break; } }
+    map.set(c, mapped ? mapped : c); // identity if unknown
+  }
+
+  // Export
+  window.CAT_ALIASES = map;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+/* Heuristic canonicalization that remains domain-agnostic. */
+function canonicalCategory(cat){
+  const s = slugify(cat);
+  if (window.CAT_ALIASES && window.CAT_ALIASES.has(s)) return window.CAT_ALIASES.get(s);
+  if (s.includes('research')) return 'research';
+  if (s.includes('education') || s.includes('teach') || s.includes('learn')) return 'education';
+  if (s.includes('plan') || s.includes('roadmap')) return 'planning';
+  return s;
+}
+
+/* Expand a canonical key into family chain: "alpha.beta" → ["alpha.beta","alpha"] */
+function expandFamily(key){
+  const parts = key.split('.');
+  const keys = [key];
+  if (parts.length > 1) keys.push(parts[0]); // parent
+  return uniq(keys);
+}
+function familiesFromCategories(cats){
+  const fams = [];
+  for (const c of arrStr(cats)){
+    const canon = canonicalCategory(c);
+    fams.push(...expandFamily(canon));
+  }
+  return uniq(fams);
+}
+
+/* ---------- Tag parsing (typed prefixes, inclusive) ----------------------- */
+/* Normalizes:
+   - stage → phase
+   - supports audience, persona, language, region, ethics, safety, access, inclusion
+   - accepts "key: value" and single bare tags
+*/
+function parseTag(tag){
+  const s = normStr(tag);
+  const m = s.match(/^([a-z\.\-_]+)\s*:\s*(.+)$/); // "use:planning"
+  if (!m) return {type:'other', value:s};
+  let type = m[1];
+  let value = m[2].trim();
+  if (type === 'stage') type = 'phase';
+  if (type === 'aud') type = 'audience';
+  if (type === 'lvl') type = 'level';
+  if (type === 'lang') type = 'language';
+  if (type === 'loc') type = 'region';
+  if (type === 'a11y' || type === 'access') type = 'accessibility';
+  return {type, value};
+}
+
+/* ---------- Facet extraction (inclusive, future-proof) -------------------- */
+function extractFacets(t){
+  const families = familiesFromCategories(t?.categories || []);
+
+  const tags = arrStr(t?.tags || []).map(parseTag);
+  const topics   = uniq(tags.filter(x=>x.type==='topic').map(x=>x.value));
+  const useTags  = uniq(tags.filter(x=>x.type==='use').map(x=>x.value));
+  const phases   = uniq(tags.filter(x=>x.type==='phase').map(x=>x.value));
+  const levels   = uniq(tags.filter(x=>x.type==='level').map(x=>x.value));
+  const types    = uniq(tags.filter(x=>x.type==='type').map(x=>x.value));
+  const audience = uniq(tags.filter(x=>x.type==='audience' || x.type==='persona').map(x=>x.value));
+  const persona  = uniq(tags.filter(x=>x.type==='persona').map(x=>x.value));
+  const ethics   = uniq(tags.filter(x=>x.type==='ethics' || x.type==='equity' || x.type==='dei' || x.type==='bias').map(x=>x.value));
+  const safety   = uniq(tags.filter(x=>x.type==='safety' || x.type==='risk').map(x=>x.value));
+  const access   = uniq(tags.filter(x=>x.type==='accessibility').map(x=>x.value));
+  const language = uniq(tags.filter(x=>x.type==='language').map(x=>x.value));
+  const region   = uniq(tags.filter(x=>x.type==='region' || x.type==='locale').map(x=>x.value));
+
+  const otherTags = uniq(tags.filter(x=>!['use','topic','phase','level','type','audience','persona','ethics','safety','accessibility','language','region'].includes(x.type)).map(x=>x.value));
+
+  const usesInput = arrStr(t?.use_cases || []);
+  const uses = usesInput.length ? usesInput.map(normStr) : [];
+
+  const label = normStr(t?.label || t?.slug || t?.id);
+  const def   = normStr(t?.definition || t?.help || '');
+  const kind  = normStr(t?.kind || '');
+
+  // tokens intentionally weighted toward “what it does” content
+  const textTokens = uniq(tok([label, def, ...uses, ...topics, ...useTags].join(' ')));
+
+  // Build an intent signature to help with alignment
+  const sig = {
+    hasHealth: families.some(f => f.startsWith('health')),
+    hasDesign: families.some(f => f.startsWith('design')),
+    hasResearch: families.some(f => f.startsWith('research')),
+    hasCareer: families.some(f => f.startsWith('career')),
+    hasCommunity: families.some(f => f.startsWith('community')),
+    hasAI: families.some(f => f.startsWith('ai')),
+  };
+
+  return {
+    families, topics, useTags, phases, levels, types,
+    audience, persona, ethics, safety, access, language, region,
+    otherTags, uses, kind, textTokens, sig
+  };
+}
+
+/* ---------- Index templates once for speed & determinism ------------------ */
+const __FACET_CACHE = new WeakMap();
+function getFacets(t){
+  let f = __FACET_CACHE.get(t);
+  if (!f){ f = extractFacets(t); __FACET_CACHE.set(t, f); }
+  return f;
+}
+
+/* ---------- Scoring (alignment-aware, inclusive) -------------------------- */
+function similarScore(base, cand){
+  // Skip self
+  const bslug = normStr(base.slug || base.id || base.label);
+  const cslug = normStr(cand.slug || cand.id || cand.label);
+  if (bslug && cslug && bslug === cslug) return {score:-1, why:'self'};
+
+  const BF = getFacets(base);
+  const CF = getFacets(cand);
+
+  const reasons = [];
+  let s = 0;
+
+  // Category family overlap
+  const bDeep = BF.families.filter(f=>f.includes('.'));
+  const cDeep = CF.families.filter(f=>f.includes('.'));
+  const deepMatch = overlapCount(bDeep, cDeep);
+
+  const bTop = topFamilies(BF.families);
+  const cTop = topFamilies(CF.families);
+  const topMatch = overlapCount(bTop, cTop);
+
+  if (deepMatch) { s += deepMatch * 5200; reasons.push(`deep-family x${deepMatch}`); }
+  if (topMatch)  { s += (topMatch - deepMatch) * 2800; if (topMatch - deepMatch>0) reasons.push(`top-family x${topMatch - deepMatch}`); }
+
+  // Typed tags
+  const topicO = overlapCount(BF.topics,  CF.topics);
+  const useO   = overlapCount(BF.useTags, CF.useTags);
+  const otherO = overlapCount(BF.otherTags, CF.otherTags);
+
+  if (topicO){ s += topicO * 1000; reasons.push(`topics +${topicO*1000}`); }
+  if (useO){   s += useO   * 550;  reasons.push(`use +${useO*550}`); }
+  if (otherO){ s += otherO * 140;  reasons.push(`other +${otherO*140}`); }
+
+  // Phase, level, type, kind alignment
+  const phaseO = overlapCount(BF.phases, CF.phases);
+  if (phaseO){ s += phaseO * 30; reasons.push(`phase +${phaseO*30}`); }
+  if (BF.kind && CF.kind && BF.kind === CF.kind){ s += 60; reasons.push('kind +60'); }
+
+  const levelO = overlapCount(BF.levels, CF.levels);
+  if (levelO){ s += levelO * 45; reasons.push(`level +${levelO*45}`); }
+
+  const audO = overlapCount(BF.audience, CF.audience) + overlapCount(BF.persona, CF.persona);
+  if (audO){ s += audO * 160; reasons.push(`audience/persona +${audO*160}`); }
+
+  const accessO = overlapCount(BF.access, CF.access);
+  if (accessO){ s += accessO * 120; reasons.push(`access +${accessO*120}`); }
+
+  const ethicsO = overlapCount(BF.ethics, CF.ethics) + overlapCount(BF.safety, CF.safety);
+  if (ethicsO){ s += ethicsO * 120; reasons.push(`ethics/safety +${ethicsO*120}`); }
+
+  const langO = overlapCount(BF.language, CF.language) + overlapCount(BF.region, CF.region);
+  if (langO){ s += langO * 80; reasons.push(`language/region +${langO*80}`); }
+
+  // Text fallback — tiny but inclusive
+  const baseTokens = uniq(tok([...BF.topics, ...BF.useTags, ...BF.otherTags, ...BF.uses].join(' ')));
+  const tokenO = tokenOverlap(baseTokens, CF.textTokens);
+  if (tokenO){ s += tokenO * 3; reasons.push(`tokens +${tokenO*3}`); }
+
+  // Distance penalties (push off-domain down)
+  const sharesTop = topMatch > 0;
+  if (!sharesTop) {
+    s -= 3500; reasons.push('off-domain -3500');
+  }
+
+  // Mild penalty for generic families when base isn’t generic
+  const baseTop = bTop[0] || '';
+  const candTopSet = new Set(cTop);
+  const candIsGeneric = cTop.some(f=>window.GENERIC_TOP_FAMS.has(f));
+  const baseIsGeneric = window.GENERIC_TOP_FAMS.has(baseTop);
+  if (!baseIsGeneric && candIsGeneric && !candTopSet.has(baseTop)){
+    s -= 600; reasons.push('generic-mismatch -600');
+  }
+
+  // Inclusive domain alignment nudges:
+  // If base is health-any, boost other health.*; penalize unrelated unless strong topical bridge.
+  if (BF.sig.hasHealth && !CF.sig.hasHealth){
+    s -= 800; reasons.push('health-domain guard -800');
+  }
+  if (BF.sig.hasDesign && CF.sig.hasResearch) { s += 120; reasons.push('design↔research +120'); }
+  if (BF.sig.hasAI && CF.sig.hasEthics) { s += 120; reasons.push('ai↔ethics +120'); }
+
+  return {score: s, why: reasons.join(' | ')};
+}
+
+/* Dominant anchor for gating (kept simple, deterministic) */
+function dominantFamily(fams){
+  const deep = fams.find(f=>f.includes('.'));
+  if (deep) return deep.split('.')[0];
+  const top = fams.find(f=>!f.includes('.'));
+  return top || '';
+}
+
+/* ---------- Pool selection with strict gating + topic escape -------------- */
+const MIN3 = SIM_CONFIG.MIN_POOL;
+
+function buildSimilarRows(base){
+  const T = allTemplates();
+  const BF = getFacets(base);
+
+  const scored = [];
+  for (const t of T){
+    const {score, why} = similarScore(base, t);
+    if (score <= 0) continue;
+    scored.push({ t, sc: score, why });
+  }
+
+  // Global ranking
+  scored.sort((a,b)=>{
+    if (b.sc !== a.sc) return b.sc - a.sc;
+    const an = normStr(a.t.label||a.t.slug||a.t.id);
+    const bn = normStr(b.t.label||b.t.slug||b.t.id);
+    return an.localeCompare(bn);
+  });
+
+  // Pools
+  const bDeep = new Set(BF.families.filter(f=>f.includes('.')));
+  const bTop  = new Set(topFamilies(BF.families));
+  const bTopic= new Set(BF.topics);
+
+  const deepPool = scored.filter(({t})=>{
+    const cf = getFacets(t);
+    return cf.families.some(f=>bDeep.has(f));
+  });
+
+  const topPool = scored.filter(({t})=>{
+    const cf = getFacets(t);
+    return topFamilies(cf.families).some(f=>bTop.has(f));
+  });
+
+  const topicPool = scored.filter(({t,sc})=>{
+    const cf = getFacets(t);
+    const topicHit = cf.topics.some(v=>bTopic.has(v));
+    // Only allow “topic escape” if strong enough score
+    if (!SIM_CONFIG.ALLOW_TOPIC_ESCAPE) return false;
+    if (!topicHit) return false;
+    return sc >= SIM_CONFIG.SCORE_THRESHOLDS.hard;
+  });
+
+  // Primary gating
+  let pool = null;
+  if (deepPool.length >= MIN3) pool = deepPool;
+  else if (topPool.length >= MIN3) pool = topPool;
+  else if (topicPool.length >= MIN3) pool = topicPool;
+  else {
+    // Last resort: keep in-domain candidates unless we have very strong out-of-domain bridges
+    if (SIM_CONFIG.REQUIRE_TOP_FAMILY){
+      const inDomain = scored.filter(({t,sc})=>{
+        const cf = getFacets(t);
+        const shareTop = topFamilies(cf.families).some(f=>bTop.has(f));
+        if (shareTop) return true;
+        // allow really strong bridges
+        return sc >= SIM_CONFIG.SCORE_THRESHOLDS.hard && cf.topics.some(v=>bTopic.has(v));
+      });
+      pool = inDomain.length ? inDomain : scored;
+    } else {
+      pool = scored;
+    }
+  }
+
+  // Map to card rows (with optional explain)
+  return pool.map(({t, sc, why})=>{
+    const useText = Array.isArray(t.use_cases) && t.use_cases.length ? arrStr(t.use_cases).join(' • ')
+                  : (t.label||t.slug||t.id||'');
+    const row = {
+      id: t.id, slug: t.slug, key: t.key,
+      label: (t.label||t.slug||t.id||'template'),
+      definition: (t.definition||t.help||''),
+      useText,
+      kind: (t.kind||'framework'),
+      ref: t
+    };
+    if (SIM_CONFIG.SHOW_SIM_EXPLAIN) row._simWhy = why;
+    row._simScore = sc;
+    return row;
+  });
+}
+
+/* ---------- Render & pager (unchanged UX, better meta) -------------------- */
+function renderSimilar(rows){
+  const wrap = document.getElementById('step0Similar');
+  const list = document.getElementById('simCards');
+  const meta = document.getElementById('simMeta');
+  if (!wrap || !list || !meta) return;
+
+  if (!rows.length){
+    wrap.classList.add('hide');
+    list.innerHTML = '';
+    meta.textContent = 'showing 0 of 0';
+    return;
+  }
+  wrap.classList.remove('hide');
+
+  const start = simIndex % rows.length;
+  const take = SIM_CONFIG.MAX_CARDS;
+  const slice = [];
+  for (let i=0;i<take;i++){
+    const row = rows[(start+i)%rows.length];
+    if (row) slice.push(row);
+  }
+
+  list.innerHTML = slice.map(cardHTML).join('');
+  meta.textContent = `showing ${Math.min(take, rows.length)} of ${rows.length}`;
+}
+
+function buildAndRenderSimilar(baseTemplate){
+  SIM_ROWS = buildSimilarRows(baseTemplate);
+  simIndex = 0;
+  renderSimilar(SIM_ROWS);
+}
+
+// Pager
+(function wireSimilarPager(){
+  const btn = document.getElementById('btnSimNext3');
+  if (!btn) return;
+  btn.addEventListener('click', ()=>{
+    if (!SIM_ROWS.length) return;
+    simIndex = (simIndex + SIM_CONFIG.MAX_CARDS) % Math.max(1, SIM_ROWS.length);
+    renderSimilar(SIM_ROWS);
+  });
+})();
+
+
+
+
   // ===== Step 0 =====
   let CURRENT = null;
   function renderStep0Meta(t){
@@ -1453,14 +2126,18 @@ el('wizStep0Uses').innerHTML = uses.length
 
   }
 
-  function openStep0(t){
-    CURRENT = t;
-    renderStep0Meta(t);
-    showView('step0');
-     if (typeof window.__setURLForTemplate==='function') // ⟵ add this
+function openStep0(t){
+  CURRENT = t;
+  renderStep0Meta(t);
+  showView('step0');
+  if (typeof window.__setURLForTemplate==='function')
     window.__setURLForTemplate(t);
-    el('wizTopProgress').classList.add('hide'); // add this
-  }
+  el('wizTopProgress').classList.add('hide');
+
+  // Build/render the Step 0 “similar matches” block
+  buildAndRenderSimilar(t);
+}
+
 
 
 // Expand long definitions: reveal full text, hide short + button
@@ -2516,10 +3193,41 @@ function openPostLaunchDlg(data){
 })();
 </script>
 
+<script>
+/* Slice 1: Wire AI Settings button (Startup Wizard) */
+(function wireAISettingsButton(){
+  function bind(){
+    var btn = document.getElementById('aiSettingsBtn');
+    if (!btn) return;
+    if (btn.__aiSettingsWired) return;     // idempotence guard
+    btn.__aiSettingsWired = true;
+
+    btn.addEventListener('click', function(){
+      try {
+        if (window.AISettings && typeof AISettings.open === 'function'){
+          AISettings.open();               // parity with Prompt Builder
+        } else {
+          console.warn('AISettings not ready yet.');
+        }
+      } catch (e){
+        console.error('AI Settings open failed:', e);
+      }
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind, { once: true });
+  } else {
+    bind();
+  }
+})();
+</script>
+
+
 
 
   <!-- ===== Only external deps (datasets) ===== -->
-     <script src="./aisettings.js"></script>
+     <script src="./aisettings.js" defer></script>
   <script src="./templates.data.js"></script>
   <script src="./templates.tasks.data.js"></script>
 </body>
