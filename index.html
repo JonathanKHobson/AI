@@ -2203,7 +2203,7 @@ function hasKey(){
 
   if (provider === 'gemini'){
     if (!s.apiKey) return { ok:false, provider, reason:'missing-key' };
-    return { ok:true, provider, key:s.apiKey, model:s.geminiModel || 'gemini-2.5-flash' };
+    return { ok:true, provider, key:s.apiKey, model:s.geminiModel || 'gemini-2.0-flash' };
   }
 
   // APERTUS
@@ -2230,20 +2230,20 @@ function runIntentRewrite(opts){
   const q = String(opts?.q || '').trim();
   const md = (opts && opts.libraryMd) || (pb.ai.getLibraryMarkdown ? pb.ai.getLibraryMarkdown() : '');
   const s = getSettings();
-  const k = pb.ai.hasKey();
+  const k = hasKey();
 
   if (!k.ok){
     return Promise.resolve({ ok:false, provider: s.provider || null, error: { type:'no_key', reason:k.reason }});
   }
 
   const allow = pb.flags && pb.flags.aiAssist || {};
-  if (s.provider === 'openai' && allow.allowOpenAI !== true){
+  if (s.provider === 'openai'  && allow.allowOpenAI  === false){
     return Promise.resolve({ ok:false, provider:'openai', error:{ type:'blocked', reason:'provider-blocked' }});
   }
-  if (s.provider === 'gemini' && allow.allowGemini !== true){
+  if (s.provider === 'gemini'  && allow.allowGemini  === false){
     return Promise.resolve({ ok:false, provider:'gemini', error:{ type:'blocked', reason:'provider-blocked' }});
   }
-  if (s.provider === 'apertus' && allow.allowApertus !== true){
+  if (s.provider === 'apertus' && allow.allowApertus === false){
     return Promise.resolve({ ok:false, provider:'apertus', error:{ type:'blocked', reason:'provider-blocked' }});
   }
 
@@ -3410,7 +3410,7 @@ if (e.key === 'Enter' && taEl.classList.contains('ta--noMatch')){
       if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
         e.preventDefault();
         active = Math.max(0, Math.min(taEl.children.length-1, active + (e.key==='ArrowDown'?1:-1)));
-        [...taEl.children].forEach((n,i)=> n.classList.toggle('active', i===active));
+        Array.from(taEl.children).forEach((n,i)=> n.classList.toggle('active', i===active));
 } else if (e.key === 'Enter'){
   e.preventDefault();
   if (!taEl.hidden && taEl.children.length){
@@ -4550,24 +4550,22 @@ const lib = String(libraryMd ?? '').trim();
     // The demo uses a strict JSON schema and application/json response mode.
     // We mirror that here so both providers emit the same shape. 
     return [
-      "You are an intent rewriter and taxonomy expert for a mixed toolbox library of tools containing frameworks, patterns, heuristics, strategies, and methods",
-      "The library spans phases of work (explore, define, ideate, plan, compose, evaluate, review, prioritize, troubleshoot, compare/decide), topics (prompting, debiasing, logic, ethics, psychology, design, storytelling, etc.), and uses (ideation, decision-making, process improvement, teaching, content, coding) to guide a user through a template. Included is a library of templates identified by a slug.",
-      "Each library slug contributes 'search text' from definition/keywords use this to assist in matching what works best and rewrite the user’s sentence 'use case to match' into a canonical, concise intent and pick the best 5 slugs from the provided Library.",
-      "",
-      "Return STRICT JSON only (no prose), exactly in this schema:",
-      '{ "query_rewrite":"...", "top_slugs":["...","...","...","...","..."] }',
-      "",
-      "Guidelines:",
-      "- Rewrite the user’s sentence into a concise, canonical intent in ;query_rewrite' and match it to the best fitting slugs.",
-      "- Rank slugs from the library provided by semantic fit using the provided library search text (definition + keywords) and your inferred knowledge of that tool. Consider phase/topic/use cues in the query and match them to the best fit in the library.",
-      "- Use ONLY slugs that appear in the Library. Slugs are canonical, lowercase, kebab-case (e.g., 'a3-problem-solving-toyota'', 'abcde-cbt-framework'', 'woop-wish-outcome-obstacle-plan'', 'triangulation-methods'').",
-      "- Always output exactly 5 unique slugs in 'top_slugs' (no commentary, no extra keys). If matches are weak or ambiguous, include the best available five.",
-      "- Never invent slugs that are not in the library; never alter spelling; no duplicates; no explanations. Only five slugs."
-      "",
-      "User use case to match:",
+       "You are an intent rewriter and taxonomy expert for a mixed toolbox library of tools containing frameworks, patterns, heuristics, strategies, and methods. The library spans phases of work (explore, define, ideate, plan, compose, evaluate, review, prioritize, troubleshoot, compare/decide), topics (prompting, debiasing, logic, ethics, psychology, design, storytelling, etc.), and uses (ideation, decision-making, process improvement, teaching, content, coding) to guide a user through a template.  Include is a library of the template's identified by a slug. Each library slug contributes “search text” from definition/keywords so lightweight matching works.",
+        "",
+        "Return STRICT JSON only (no prose), exactly in this schema:",
+        '{ "query_rewrite":"...", "top_slugs":["...","...","...","...","..."] }',
+        "",
+        "Guidelines (follow all):",
+        "- Rewrite the user’s sentence into a concise, canonical intent in \"query_rewrite\" and match it to the best fitting slugs.",
+        "- Use ONLY slugs that appear in the Library. Slugs are canonical, lowercase, kebab-case (e.g., \"a3-problem-solving-toyota\", \"abcde-cbt-framework\", \"woop-wish-outcome-obstacle-plan\", \"triangulation-methods\").",
+        "- Rank slugs from the library provided by semantic fit using the provided library search text (definition + keywords) and your inferred knowledge of that tool. Consider phase/topic/use cues in the query and match them to the best fit in the library.",
+        "- Always output exactly 5 unique slugs in \"top_slugs\" (no commentary, no extra keys). If matches are weak or ambiguous, include the best available five.",
+        "- Never invent slugs; never alter spelling; no duplicates; no explanations.",
+        "",
+        "User use case to match:",
       userQuery,
       "",
-      "Toolbox Library of slugs =",
+      "Library =",
       "",
       lib
     ].join("\n");
@@ -4661,70 +4659,9 @@ pb.ai.callApertus = async function(opts){
   }
 
   const cooked = coerceResult(parsed);
-  return { ok:true, provider, query_rewrite: cooked.query_rewrite, top_slugs: cooked.top_slugs };
-};
-
-  // ---------------------------
-  // Gemini adapter
-  // ---------------------------
-  // Mirrors your demo: POST to v1beta ...:generateContent with responseMimeType
-  // and responseSchema enforcing our JSON shape. 
-  pb.ai.callGemini = async function({ q, libraryMd, key, model='gemini-2.5-flash', timeoutMs=20000 }){
-    const provider = 'gemini';
-    try{
-      const prompt = pb.ai.buildIntentPrompt(q, libraryMd);
-
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`;
-      const body = {
-        contents: [{ role: "user", parts: [{ text: prompt }]}],
-        generationConfig: {
-          temperature: 0.2,
-          topK: 40,
-          topP: 0.9,
-          candidateCount: 1,
-          responseMimeType: "application/json",
-          // Enforce the shape exactly as in the demo.
-          responseSchema: {
-            type: "OBJECT",
-            properties: {
-              query_rewrite: { type: "STRING" },
-              top_slugs: { type: "ARRAY", items: { type: "STRING" } }
-            },
-            required: ["query_rewrite","top_slugs"]
-          }
-        }
-      };
-
-      const res = await fetchJsonWithTimeout(endpoint, {
-        method: "POST",
-        headers: { "Content-Type":"application/json" },
-        body: JSON.stringify(body)
-      }, timeoutMs);
-
-      if (!res.ok){
-        return typedError(provider, 'api', `Gemini HTTP ${res.status}`, { status:res.status, raw:res.json });
-      }
-
-      // In the demo, JSON lives in candidates[0].content.parts[0].text as a JSON string. 
-      const rawText = res.json?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-      const cleaned = String(rawText || '').trim().replace(/^```json\s*/i,'').replace(/^```/,'').replace(/```$/,'');
-      let parsed = null;
-      try{ parsed = JSON.parse(cleaned); }catch(_){}
-      if (!parsed){
-        return typedError(provider, 'parse', 'Gemini returned non-JSON or empty response', { raw: res.json });
-      }
-
-      const coerced = coerceResult(parsed);
-      if (!coerced.query_rewrite && coerced.top_slugs.length === 0){
-        return typedError(provider, 'parse', 'Gemini JSON missing expected fields', { parsed });
-      }
-
-      return { ok:true, provider, query_rewrite: coerced.query_rewrite, top_slugs: coerced.top_slugs, raw: res.json };
-    }catch(err){
-      if (err?.name === 'AbortError') return typedError(provider, 'timeout', 'Gemini request timed out');
-      return typedError(provider, 'network', String(err && err.message || err));
-    }
   };
+
+
 
   // ---------------------------
   // OpenAI adapter
@@ -4788,31 +4725,6 @@ pb.ai.callApertus = async function(opts){
 })();
 </script>
 
-<script>
-(function(){
-  window.pb = window.pb || {};
-  pb.ai = pb.ai || {};
-  function norm(x){
-    return String(x || '')
-      .trim()
-      .toLowerCase()
-      .replace(/[\s_]+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-  }
-  pb.ai.routeTopSlugs = function(topSlugs){
-    const ALL = (Array.isArray(window.INDEX) ? window.INDEX : []);
-    const set = new Set(ALL.map(t => norm(t.slug || t.id || '')));
-    const seen = new Set();
-    for (const s of (topSlugs || [])){
-      const n = norm(s);
-      if (!n || seen.has(n)) continue;
-      seen.add(n);
-      if (set.has(n)) return { slug:n, fallback:false };
-    }
-    return { slug:'pattern-picker', fallback:true };
-  };
-})();
-</script>
 
 <script>
 (function(){
@@ -5553,6 +5465,125 @@ pb.ai.callApertus = async function(opts){
   
 })();
 </script>
+
+<!-- ▼▼ paste this block inside the pb.ai IIFE, right after runIntentRewrite() ▼▼ -->
+<script>
+/* === Gemini adapter (demo-parity) — single source of truth for MVP === */
+(function(){
+  // Build the exact prompt we send to Gemini (keep it stable; don’t “improve”)
+  function buildPromptForGemini(userQuery, libraryMd){
+    // Keep this structure tight: short system brief → strict schema → the query → the library table
+    // The schema is minimal and matches our parser below.
+    return [
+      "You are an intent rewriter and taxonomy matcher for a small prompt library.",
+      "Rewrite the user’s sentence into a concise, canonical intent (query_rewrite).",
+      "Then pick the best 5 slugs from the Library below (top_slugs).",
+      "",
+      "Rules:",
+      "- Use ONLY slugs that appear in the Library (exact spelling).",
+      "- Rank by semantic fit; short definitions/keywords hint the topic.",
+      "- Output STRICT JSON only, exactly in this schema (no prose):",
+      '{ "query_rewrite":"...", "top_slugs":["...","...","...","...","..."] }',
+      "",
+      "User use case to match:",
+      userQuery,
+      "",
+      "Library =",
+      libraryMd
+    ].join("\n");
+  }
+
+  // Strip code-fences/backticks and surrounding whitespace before JSON.parse
+  function stripFences(s){
+    if (!s) return "";
+    let t = String(s).trim();
+    // strip ```json ... ``` or ``` ... ```
+    t = t.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "");
+    // strip stray leading/trailing non-json junk
+    const first = t.indexOf("{");
+    const last  = t.lastIndexOf("}");
+    if (first >= 0 && last >= first) t = t.slice(first, last + 1);
+    return t.trim();
+  }
+
+  async function callGemini({ q, libraryMd, key, model, timeoutMs=20000 }){
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`;
+
+    // Safety: cap library size so we don’t balloon latency (keep ≤ ~120KB)
+    if (libraryMd && libraryMd.length > 120_000){
+      console.warn("[AI] Library too large; trimming for speed.", libraryMd.length);
+      libraryMd = libraryMd.slice(0, 119_000) + "\n<!-- trimmed -->";
+    }
+
+    const prompt = buildPromptForGemini(q, libraryMd);
+
+    // Gemini JSON mode + schema (enforces that we get pure JSON text back)
+    const req = {
+      contents: [{ role: "user", parts: [{ text: prompt }]}],
+      generationConfig: {
+        temperature: 0.2,
+        topK: 40,
+        topP: 0.9,
+        candidateCount: 1,
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: "OBJECT",
+          properties: {
+            query_rewrite: { type: "STRING" },
+            top_slugs: { type: "ARRAY", items: { type: "STRING" } }
+          },
+          required: ["top_slugs"]
+        }
+      }
+    };
+
+    const ctrl = new AbortController();
+    const t = setTimeout(()=> ctrl.abort(), timeoutMs);
+    const t0 = performance.now();
+
+    try{
+      console.info("[AI] Gemini call → start", { model, timeoutMs });
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+        signal: ctrl.signal
+      });
+      const latency = Math.round(performance.now()-t0);
+      if (!res.ok){
+        const errText = await res.text().catch(()=> "");
+        console.warn("[AI] Gemini HTTP error", res.status, errText);
+        return { ok:false, provider:'gemini', error:{ type:'http', status:res.status, body:errText }, latency };
+      }
+      const json = await res.json();
+      // Pull the model’s text response (JSON string), then parse
+      const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+      const clean = stripFences(raw);
+      let parsed = null;
+      try{ parsed = JSON.parse(clean); }catch(e){
+        console.warn("[AI] parse error", e, { raw: raw.slice(0,200) });
+        return { ok:false, provider:'gemini', error:{ type:'parse', message:String(e) }, latency };
+      }
+      // Normalize result
+      const top = Array.isArray(parsed.top_slugs) ? parsed.top_slugs.filter(s => typeof s === 'string') : [];
+      const qr  = typeof parsed.query_rewrite === 'string' ? parsed.query_rewrite : "";
+      console.info("[AI] Gemini call → ok", { latency, n: top.length });
+      return { ok:true, provider:'gemini', top_slugs: top.slice(0,5), query_rewrite: qr, latency };
+    }catch(e){
+      const latency = Math.round(performance.now()-t0);
+      const type = (e && e.name === 'AbortError') ? 'timeout' : 'net';
+      console.warn("[AI] Gemini call → fail", type, e);
+      return { ok:false, provider:'gemini', error:{ type }, latency };
+    }finally{
+      clearTimeout(t);
+    }
+  }
+
+  // Expose as the canonical Gemini caller for pb.ai
+  pb.ai.callGemini = callGemini;
+})();
+</script>
+<!-- ▲▲ paste ends here ▲▲ -->
 
 
 <script>
