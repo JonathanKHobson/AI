@@ -31,9 +31,9 @@
         "Ask up to 3 clarifying questions before recommending.",
         "Return 3 candidate frameworks with a short rationale.",
         "Then synthesize a ready-to-copy prompt using the best candidate.",
-        "Library tools: 2-minute rule (david allen):planning avoidance away beginner brief c,5w1h — who · what · where · when · why · how:incident prompt scope acceptance analysi,a3 problem solving (toyota):problem plan actions align brief cause c,aar — feelings first:debrief learning needs alone beginner bo,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self bias coachi,abductive reasoning — best explanation:predictions risky account analysis begin,accountability letter:amends apology beginner clear close comm,active imagination — dialogue with inner voices:inner creative dialogue parts self chara,addie — analyze · design · develop · implement · evaluate:course training learning design goals ou,adversarial collaboration:adjudication design advance change commu,agent-based models & system dynamics:abm agents calibration complex declare d,aida — attention · interest · desire · action:copy write action email hook landing not,amor–vita–memoria (avm):grief self gratitude one you memory ment,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias context cross f,announcement — change & action:announcement change communication notice,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate design,arnstein’s ladder of participation — from tokenism to citizen control:power community influence governance pla,automatic writing — truth sprint:writing truth automatic avoiding beginne,backcasting - start from the desired future state and plan backwards:back community plan future map planning,backlog — prioritize:capacity items plan portfolio prioritiza,bayesian science — posterior odds:priors action analysis based bayes data,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write bridge cold deck f,bhag — big hairy audacious goal:planning vision align ambition around au,bias impact assessment (ai/tech pre-launch):bias check right compliance dataset ethi,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair group make rubr,blameless postmortem — essence first:teaching actionable analyze beginner bla,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson plan b,brand archetypes for communities - shared identity motifs and tone:our archetype archetypes community voice,buddhist eightfold path (adapted for action):decision ethical design harm right check,canary + blue-green — revert comms:comms rollback beginner blast blue call,causal inference — dags & identification:identification assumptions causal dag di,causal inference playbook:design assumptions based bias block choo,clear — challenge · limitation · effect · action · result:problem summary action decision write ca,clear contracts + exit ramps:boundaries consent beginner communicatio,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask make next promp,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask audience hygiene i,clown ‘flop’ — failure seen safely:failure resilience shame armor bravery b,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision evidence make,collective impact — common agenda shared measurement backbone:partners purpose across community govern,community capitals framework - seven capitals lens for purpose and investment:capital capitals across investments comm,community-led development (cld): locally led priorities accountability and capacity:community design governance phase planni,comparative analysis — rank • pros/cons • matrix:compare should options side which best b,competing values framework - culture map to align ways of working with mission:culture values across decide our clan ex,computational science — simulation:reproducibility simulation validation ca,constraint flip (play with edges):what design feature had make one work as,contact improv — listening duet:listening practice attention attunement,costar — context · objective · style · tone · audience · response:brief content message campaign copy crea,cover letter — tailor / rewrite / feedback:cover letter job ats draft feedback sect,critical incident analysis:ethics teaching charged communication da,cultural probes & diary studies - longitudinal participant-led voice capture:people daily study capture routines acro,cultural web - unpack symbols rituals stories shaping voice:culture cultural voice rituals shape map,daoist wu-wei strategy (effortless action):instead align burnout plan already big c,decision record — dissent & kill criteria:dissent adr alignment beginner chose com,deliberative polling / citizens juries - informed structured public deliberation:people citizens public make community de,design doc — scariest change:design risk align alignment architecture,design justice principles — center those most affected; redistribute design power:design community power data decision jus,design science research (dsr):utility artifact artifacts build constru,dignity questions — identity · meaning · legacy:family gratitude storytelling audio begi,disney strategy — dreamer · realist · critic:idea creative concept plan balance ideas,dm — outreach & follow-up:follow outreach quick writing ask beta c,dmaic — define · measure · analyze · improve · control:data improvement process project quality,doe + tolerance stacks — ci & power:acceptance experiment stack analysis ana,dot voting and heat-mapping - quick temperature check on priorities:decision phase planning community across,east — easy · attractive · social · timely:design behavioral nudge choice friction,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what decide de,email — draft & polish:email follow networking outreach support,empathy mapping personas jtbd - ground voice in needs and contexts:what design empathy community jobs needs,empty chair dialogue (gestalt):self one conversation talk boundary busi,energy budget planner (spoon theory):plan energy day spoons tasks accommodati,engineering method — iterate to standard:acceptance cycle standards beginner buil,epic quest tasking — gamify the chore:quest quests chores make self storytelli,ethical data stewardship - governance for safe listening:data community design decide safe sharin,ethnographic & interpretivist methods:description fieldwork reflexivity thick,examples / few-shot prompting:examples example format output show styl,exploratory vs confirmatory paths:cda eda avoid beginner confirmatory diff,fab — feature · advantage · benefit:benefits bullets copy feature features p,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument check c,facts & expertise primer:what facts check expert give avoid begin,feyerabend — pluralism:method design document ethics exploring,feynman technique — explain like i’m 5:explain make complex non break clear exp,findings — synthesize:insights confidence create summarize the,first principles — question assumptions & reason from basics:true problem reasoning analogies assumpt,fmea · hazop · fault tree — unified card:design hazop analysis causes criticality,focusing — felt-sense check:check mental aboutness ambivalent beginn,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming ideas,future search — whole-system future-focused planning (2–3 days):future planning search community plan ac,fuzzing + mutation — outage shape:edge inputs catch conditions define flow,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous sha,goal breakdown (prompt/question decomposition):step goal tasks turn what break first pl,goal composition (prompt/question composition):one tasks plan asks brief goal goals mak,goal prompting:goal goals plan first main next objectiv,goals of care — what matters most:conversation life planning values advanc,golden circle — why · how · what · mission:purpose mission community values align c,gratitude under duress:pain acknowledge beginner bypass check c,grounded theory — reflexive memos:coding reflexivity theory audit axial be,grow — goal · reality · options · way forward:goal coaching plan what goals next set b,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance choice gut,hero’s journey — departure · initiation · return:journey story arc hero writing map outli,heuristics & biases — debiasing pre-flight:check bias decision quick review wrong a,holacracy (selective) - role-based governance for volunteer groups:roles governance meetings without avoid,hoshin kanri (policy deployment) - align annual breakthrough objectives with daily work:phase planning community objectives revi,how might we statements (hmw):problem make questions brainstorming opp,human-centered design / double diamond: discover define develop deliver with community co-creation:design research clear community delivery,hypnagogic spark — semi-sleep insight technique:brainstorming state creativity design dr,iap2 spectrum of public participation — inform → consult → involve → collaborate → empower:engagement community input planning publ,ice — impact × confidence × ease:ideas planning quick backlog effort fast,ikigai — purpose map:purpose career against align anti beginn,imaginary council — multiple mentors one question:would phase see what council creative de,implementation intentions (if–then):plan coding goals habits new set daily h,inclusive design (edge personas):design make edge check easier low one te,inner child work — conscious self · inner child:child inner self childhood practice comf,internal weather report — storm · calm · forecast:check state emotional energy mood reduce,interviews — plan & questions — write:plan guide interviews design discussion,jtbd interviews — felt-sense friction:jtbd progress struggles body capture dis,kaitiakitanga — guardianship & stewardship (māori):product cultural data design governance,kano model — must-be · performance · delighters:planning product what brainstorming buil,kansei engineering (emotion → design mapping):design emotions emotional features feeli,kaupapa māori research — by/with/for māori communities; sovereignty at the core:research ori community communities data,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives amo,keywords + why + tasks — vector priming:actionable alignment apply avoid better,kuhn — paradigms & revolutions:anomalies science across beginner choice,kumu / systems mapping - actors flows feedbacks:purpose community find map system visual,lakatos — research programs:belt core hard program theory decide deg,lara / cri — dialogue scaffold:dialogue affirmation beginner center com,last 2% round — share the unsaid edge:alignment avoid beginner communication c,lean startup loop — stop & harm rules:decision hypothesis rules analytics begi,least to most (ltm):building complex derive edge escalating,letter — formal / personal:letter formal writing apology appeal app,liberating structures - light-weight ways to get everyones voice in (1-2-4-all 9 whys triz conversation café what so what now what):group ways simple what without decision,lines/veils revisit — mid-campaign:consent lines refresh safety ttrpg veils,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align appeal a,memento mori — micro-sit:gratitude actually add beginner choose c,memo — tl;dr + recommendation:decision writing brief capture change co,mind map — central idea with branches:visual adhd analysis around assist begin,mind mapping — visual cluster of ideas:discover map planning actions around beg,mixed methods — triangulation:integration beginner design designs disc,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across act ada,mortal message — letter/audio:gratitude repair beginner blessing brief,moscow — must · should · could · won’t:planning management product scope beginn,most significant change (msc) — collect stories; community selects what mattered most:community stories change evaluation acti,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilita,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic asia,nonviolent communication (nvc): needs-based dialogue for deeper listening:nvc conflict without empathy needs ways,north star metric & narrative:metric one community long mission planni,noting — mindfulness labels:sleep awareness beginner check craving d,nyāya — five-member syllogism:explicit inference mode analyses applica,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints,observability — slos · slis · error budgets:burn reliability analytics budget budget,ocap® & care principles — community data ownership governance and ethical listening:data community sharing control ethics re,ofrenda / remembrance board:altar artifacts beginner board care crea,okr — objective & key results:outcomes measurable planning progress re,okrs — with kill criteria:okrs analytics avoid beginner cadence co,okrs (community-adapted) — objectives & key results:community goals mission progress measura,ooda loop (observe–orient–decide–act):decision discovery fast loop ooda produc,open science checklist:accessible beginner cannot capsule check,open space technology - participant-set agenda for what matters now:open space agenda community meetings way,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate clarificat,opportunity solution tree - tie problems to outcomes to keep purpose tight:outcome outcomes tree solutions opportun,outcome harvesting - gather outcomes after the fact and trace contributions with community input:already change clear community decisions,outcome mapping — boundary partners & behavior change:change community partner behavior evalua,par — problem · action · result:experience impact postmortem storytellin,participatory & decolonial approaches:data sovereignty benefit clarify communi,participatory action research (par):decision dissemination rights accessible,participatory action research / cbpr - co-research with communities:community research action phase capacity,participatory budgeting — residents directly allocate resources:community budget equity planning decisio,parts check-in — ifs-inspired:coaching self beginner check communicati,parts work dialogue (ifs therapy):inner parts self coaching compassion men,pas — problem · agitate · solution:problem copy landing marketing pain reli,paul–elder — elements of thought + standards:decision analysis apply argument brief c,pdca — plan · do · check · act:improvement beginner changes close desig,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark brief do,persona — actas / simulate:apply beginner clarification development,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader busin,plan and solve (p&s):planning against checks clarification co,playback theatre — confession line:group story check consent create deeper,pomodoro scaffold:beginner creativity focus frame goal mic,popperian falsification:design predictions risky beginner belief,positionality statement:analysis practice preface research stand,power mapping - visualize formal and informal power; plan inclusive engagement:who influence which map see decide engag,power/interest grid & stakeholder salience — who has power who’s affected who must be heard:who power actually affected analysis com,pra / rra - participatory mapping ranking seasonal calendars guided by locals:community local research create led maps,pramāṇa — means of knowledge:evidence advanced answer audit change cl,prd — write:requirements plan guardrails localizatio,pre-mortem + pre-grief:ethics failure human review clear condit,pre-mortem + red team — embarrassing sentence:ethics failure review conditions dissent,pre-mortem scaffold:actions beginner committing decision fai,press release — ap style:release launch writing announcement appo,prompt augmentation (demonstration learning):format phase against answers apply consi,public narrative - structure shared story and call to action:story action people ask community make c,public narrative (marshall ganz) — story of self us now:story community craft action alignment a,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause cultural,questionnaire — write:design item bias items logic platform qu,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding compari,raci or drci - clarify roles without muting voice:who roles consent consulted informed rac,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach check cl,random association — combine unrelated ideas:brainstorming beginner block break conne,rap — result · action · problem:impact storytelling apply beginner bulle,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify defi,rapid ideation — timed idea sprint:brainstorming beginner block creative cr,ratio — role · audience · task · instructions · output:prompt brief agent apply beginner develo,reflect (bias reflection):bias analysis beginner brainstorming con,reflexive memo:analysis activated affect affective assu,registered reports & preregistration:analysis plan clarify collection data de,reliability growth & burn-in:test acceptance growth plan stop accepta,restorative circles / deep democracy - surface minority voices and work with conflict productively:circle conflict group community healing,resume — tailor / rewrite / feedback:resume job ats draft admin alongside app,rfc — unsaid objection:decision dissent alignment architecture,rice — reach × impact × confidence ÷ effort:planning allocate coding features manage,ripple effects mapping — appreciative story-mapping of impacts with stakeholders:community impact map stories action effe,risen — role · instructions · steps · end goal · narrowing:plan content design development experime,rodes — role · objective · details · examples · sense check:guided adaptation against apply check co,role storming — ideation as different personas:brainstorming apply beginner changing cr,root cause analysis:apply beginner brainstorming causes coun,rose · thorn · bud + weather:check daily hope journal practice affect,rtf — role · task · format:format prompt prompting api apply beginn,rubber duck debugging — explain to understand:problem step analysis articulating assum,safety pause with essence:safety truth ttrpg agree beginner body c,scamper (idea expansion):beginner brainstorming creative creativi,scenario-based prompting — deliberative reasoning:advice analysis coaching compose develop,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design experiment,scqa — situation · complication · question · answer:frameworks analysis arc beginner brief c,screener — create criteria:screener eligibility design device fraud,sensemaker: micro-narratives self-signified by participants to surface patterns:stories patterns community phase analysi,sentipensar — thinking-feeling integration (latin america):design side analytic cultural decomposit,service design blueprints - map frontstage/backstage to see where voice is silenced:service map blueprint design help show s,shadow work dialogue — conscious self · shadow self:self side you acts advanced anger beginn,six thinking hats:brainstorming decision explore beginner,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner cle,soar analysis:align aspirations beginner clarification,social media post — tailor / write / brainstorm:social media post write char hashtags ho,social network analysis / network weaving / netography - find connectors peripheries and missing voices:map spot bridges networks see track whic,sociocracy / consent decision-making - circles roles and dynamic governance for shared ownership:sociocracy consent decide circles govern,socratic questioning method:alternatives assumptions beginner belief,soft systems methodology (ssm) — explore messy problems via multiple worldviews; rich pictures:map problems community issues messy prob,somatic focusing — feel · ask · listen:self them asking beginner bodily body cl,spectrum of community engagement to ownership — concrete power-shifting practices:community power ownership authority enga,star — situation · task · action · result:story storytelling study answer apply be,stars & wishes + bleed check:bleed debrief safety ttrpg beginner cele,story circles / story harvesting — peer storytelling to extract themes and values:stories community voices values listenin,story spine + one naked sentence:story draft line pitch talk truth align,survey — plan — design:design plan survey scale align edit low,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy assess,synectics — analogies & problem transfer:advanced analogies apply context creativ,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies,systematic review & meta-analysis:criteria heterogeneity policy protocol b,talanoa dialogue (pacific):beginner build content cultural decision,talanoa yarning circles talking circles — narrative-first consensus building:community decisions hearing understadnin,tarot spread reflection — past · present · future:mode reflection storytelling tarot actio,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming brea,task scenarios — write:scenarios design accessibility hta klm p,tdd + property-based testing — invariants:edge invariants tests beginner capture d,theory of change — backcasting:change community planning mission outcom,threat modeling — stride/linddun:privacy risk security architecture categ,three vaults — facts → stories → essence:coaching check communication facilitatio,time machine advice — past self & future self:self your future you advice beginner bra,tonglen-lite — breathe with suffering:compassion self aversion beginner breath,tote — test · operate · test · exit:beginner brainstorming build communicati,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation arg,transcripts - analyze:analysis analyze codebook executive sent,tree of thought — brainstorm & evaluate:across advanced best brainstorming compa,tree of thought — decomposition:advanced alternatives ambiguous brainsto,triangulation methods:across alignment apply bias checking cro,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discus,triz (theory of inventive problem solving):brainstorming aim communication content,trls — with exit ramps:exit maturity salvage trl avoid beginner,trunk-based dev — feature flags:audience beginner behind cleanup collect,truth & reconciliation — micro-format:accountability amends conflict dignity a,two-eyed seeing (etuaptmumk): braiding indigenous and western knowledge:community knowledge design elders indige,usability test — plan:plan policy accessibility criteria desig,user flow — audit — design:flow design states acceptance accessibil,ux microcopy — write:copy design accessibility clarity conten,v-model / mbse — assumption ledger:assumptions model architecture dates des,v2mom — vision values methods obstacles measures:community vision plan create finding mis,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management ma,viable system model - ensure functions that keep a community adaptive and coherent:community design governance operations s,voice and tone frameworks - codify how the community speaks:our tone voice community style avoid cle,vow-and-witness:commitment vow witness accountability be,vroom–yetton–jago decision model:decision autocratic balance brainstormin,wardley mapping - map capabilities and evolution to protect community advantage:community shared spot across map chain c,weighted mini-matrix (quick score):planning against compare criteria decisi,what if — scenario reframing questions:brainstorming problem alternative beginn,wishing — imagine ideal solutions:brainstorming beginner beyond constraint,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming con,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards buildin,working out loud — truth edition:review asks beginner clarity communicati,world café - rotating small-group conversations to synthesize collective themes:cafe world ideas conversation group peop,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement max,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content"
+        "Library tools: 2-minute rule (david allen):planning avoidance away beginner,5w1h — who · what · where · when · why · how:incident prompt scope acceptance,a3 problem solving (toyota):problem plan actions align,aar — feelings first:debrief learning needs alone,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self,abductive reasoning — best explanation:predictions risky account analysis,accessibility reality check (wcag + plain language):frameworks language phase plain,accountability letter:amends apology beginner clear,active imagination — dialogue with inner voices:inner creative dialogue parts,addie — analyze · design · develop · implement · evaluate:course training learning design,adversarial collaboration:adjudication design advance change,agent-based models & system dynamics:abm agents calibration complex,aida — attention · interest · desire · action:copy write action email,amor–vita–memoria (avm):grief self gratitude one,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias,announcement — change & action:announcement change communication notice,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate,arnstein’s ladder of participation — from tokenism to citizen control:power community influence governance,ask-me-3 — what’s my main problem? what do i need to do? why is it important? (+ provisional/differential/working dx):phase blood communication notes,automatic writing — truth sprint:writing truth automatic avoiding,backcasting - start from the desired future state and plan backwards:back community plan future,backlog — prioritize:capacity items plan portfolio,bayesian science — posterior odds:priors action analysis based,bdd (given–when–then) → tests → code — reusable template:bdd gherkin acceptance auto,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write,bhag — big hairy audacious goal:planning vision align ambition,bias impact assessment (ai/tech pre-launch):bias check right compliance,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair,blameless postmortem — essence first:teaching actionable analyze beginner,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson,bpmh — best possible medication history (+ provisional/differential/working dx):phase list planning safety,brand archetypes for communities - shared identity motifs and tone:our archetype archetypes community,buddhist eightfold path (adapted for action):decision ethical design harm,canary + blue-green — revert comms:comms rollback beginner blast,causal inference — dags & identification:identification assumptions causal dag,causal inference playbook:design assumptions based bias,checklists (gawande-style) — turn recurring tasks into zero-brain-power steps:phase management quality safety,clear — challenge · limitation · effect · action · result:problem summary action decision,clear contracts + exit ramps:boundaries consent beginner communicatio,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask,clown ‘flop’ — failure seen safely:failure resilience shame armor,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision,collective impact — common agenda shared measurement backbone:partners purpose across community,community capitals framework - seven capitals lens for purpose and investment:capital capitals across investments,community-led development (cld): locally led priorities accountability and capacity:community design governance phase,comparative analysis — rank • pros/cons • matrix:compare should options side,competing values framework - culture map to align ways of working with mission:culture values across decide,computational science — simulation:reproducibility simulation validation ca,constraint flip (play with edges):what design feature had,contact improv — listening duet:listening practice attention attunement,costar — context · objective · style · tone · audience · response:brief content message campaign,cover letter — tailor / rewrite / feedback:cover letter job ats,critical bias & methodology audit:review bias check ai,critical incident analysis:ethics teaching charged communication,cross-cultural localization readiness:locale localization translation accessib,cultural probes & diary studies - longitudinal participant-led voice capture:people daily study capture,cultural web - unpack symbols rituals stories shaping voice:culture cultural voice rituals,daoist wu-wei strategy (effortless action):instead align burnout plan,decision matrix (weighted) — compare by criteria not vibes:planning criteria decision management,decision record — dissent & kill criteria:dissent adr alignment beginner,deliberative polling / citizens juries - informed structured public deliberation:people citizens public make,design doc — scariest change:design risk align alignment,design justice principles — center those most affected; redistribute design power:design community power data,design science research (dsr):utility artifact artifacts build,dignity questions — identity · meaning · legacy:family gratitude storytelling audio,disney strategy — dreamer · realist · critic:idea creative concept plan,dm — outreach & follow-up:follow outreach quick writing,dmaic — define · measure · analyze · improve · control:data improvement process project,doe + tolerance stacks — ci & power:acceptance experiment stack analysis,dot voting and heat-mapping - quick temperature check on priorities:decision phase planning community,east — easy · attractive · social · timely:design behavioral nudge choice,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what,email — draft & polish:email follow networking outreach,empathy mapping personas jtbd - ground voice in needs and contexts:what design empathy community,empty chair dialogue (gestalt):self one conversation talk,energy budget planner (spoon theory):plan energy day spoons,engineering method — iterate to standard:acceptance cycle standards beginner,epic quest tasking — gamify the chore:quest quests chores make,ethical data stewardship - governance for safe listening:data community design decide,ethnographic & interpretivist methods:description fieldwork reflexivity thick,evidence robustness & reproducibility check:methods advanced analysis analyze,examples / few-shot prompting:examples example format output,exploratory vs confirmatory paths:cda eda avoid beginner,fab — feature · advantage · benefit:benefits bullets copy feature,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument,facts & expertise primer:what facts check expert,feyerabend — pluralism:method design document ethics,feynman technique — explain like i’m 5:explain make complex non,findings — synthesize:insights confidence create summarize,first principles — question assumptions & reason from basics:true problem reasoning analogies,fmea · hazop · fault tree — unified card:design hazop analysis causes,focusing — felt-sense check:check mental aboutness ambivalent,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming,future search — whole-system future-focused planning (2–3 days):future planning search community,fuzzing + mutation — outage shape:edge inputs catch conditions,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous,goal breakdown (prompt/question decomposition):step goal tasks turn,goal composition (prompt/question composition):one tasks plan asks,goal prompting:goal goals plan first,goals of care — what matters most:conversation life planning values,golden circle — why · how · what · mission:purpose mission community values,gratitude under duress:pain acknowledge beginner bypass,grounded theory — reflexive memos:coding reflexivity theory audit,grow — goal · reality · options · way forward:goal coaching plan what,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance,health — symptom log & clinician brief:back health planning teach,hero’s journey — departure · initiation · return:journey story arc hero,heuristics & biases — debiasing pre-flight:check bias decision quick,holacracy (selective) - role-based governance for volunteer groups:roles governance meetings without,hoshin kanri (policy deployment) - align annual breakthrough objectives with daily work:phase planning community objectives,how might we statements (hmw):problem make questions brainstorming,human-centered design / double diamond: discover define develop deliver with community co-creation:design research clear community,hypnagogic spark — semi-sleep insight technique:brainstorming state creativity design,iap2 spectrum of public participation — inform → consult → involve → collaborate → empower:engagement community input planning,ice — impact × confidence × ease:ideas planning quick backlog,ikigai — purpose map:purpose career against align,imaginary council — multiple mentors one question:would phase see what,implementation intentions (if–then):plan coding goals habits,inclusive design (edge personas):design make edge check,inclusive language & metaphor scrubber:accessibility frameworks across analysis,informational-interview ladder — 2/day → 5/week → 50/quarter (ask for insights not jobs):planning networking outreach phase,inner child work — conscious self · inner child:child inner self childhood,intent → action design patterns (command • interpreter • strategy • cor • builder/factory):actions builder command factory,internal weather report — storm · calm · forecast:check state emotional energy,interviews — plan & questions — write:plan guide interviews design,jobs — alignment targeting stories & pipeline:plan personal planning your,jtbd interviews — felt-sense friction:jtbd progress struggles body,kaitiakitanga — guardianship & stewardship (māori):product cultural data design,kano model — must-be · performance · delighters:planning product what brainstorming,kansei engineering (emotion → design mapping):design emotions emotional features,kaupapa māori research — by/with/for māori communities; sovereignty at the core:research ori community communities,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives,keywords + why + tasks — vector priming:actionable alignment apply avoid,kuhn — paradigms & revolutions:anomalies science across beginner,kumu / systems mapping - actors flows feedbacks:purpose community find map,lakatos — research programs:belt core hard program,language optimizer — ats · domain · seo · aieo:answer ats content metadata,lara / cri — dialogue scaffold:dialogue affirmation beginner center,last 2% round — share the unsaid edge:alignment avoid beginner communication,lean startup loop — stop & harm rules:decision hypothesis rules analytics,least to most (ltm):building complex derive edge,letter — formal / personal:letter formal writing apology,liberating structures - light-weight ways to get everyones voice in (1-2-4-all 9 whys triz conversation café what so what now what):group ways simple what,lines/veils revisit — mid-campaign:consent lines refresh safety,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align,memento mori — micro-sit:gratitude actually add beginner,memo — tl;dr + recommendation:decision writing brief capture,mind map — central idea with branches:visual adhd analysis around,mind mapping — visual cluster of ideas:discover map planning actions,mixed methods — triangulation:integration beginner design designs,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across,mortal message — letter/audio:gratitude repair beginner blessing,moscow — must · should · could · won’t:planning management product scope,most significant change (msc) — collect stories; community selects what mattered most:community stories change evaluation,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilita,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic,nonviolent communication (nvc): needs-based dialogue for deeper listening:nvc conflict without empathy,north star metric & narrative:metric one community long,noting — mindfulness labels:sleep awareness beginner check,nyāya — five-member syllogism:explicit inference mode analyses,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints,observability — slos · slis · error budgets:burn reliability analytics budget,ocap® & care principles — community data ownership governance and ethical listening:data community sharing control,ofrenda / remembrance board:altar artifacts beginner board,okr — objective & key results:outcomes measurable planning progress,okrs — with kill criteria:okrs analytics avoid beginner,okrs (community-adapted) — objectives & key results:community goals mission progress,okrs (job search) — land x offers:evaluation job phase planning,ooda loop (observe–orient–decide–act):decision discovery fast loop,open science checklist:accessible beginner cannot capsule,open space technology - participant-set agenda for what matters now:open space agenda community,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate,opportunity solution tree - tie problems to outcomes to keep purpose tight:outcome outcomes tree solutions,outcome harvesting - gather outcomes after the fact and trace contributions with community input:already change clear community,outcome mapping — boundary partners & behavior change:change community partner behavior,par — problem · action · result:experience impact postmortem storytellin,participatory & decolonial approaches:data sovereignty benefit clarify,participatory action research (par):decision dissemination rights accessible,participatory action research / cbpr - co-research with communities:community research action phase,participatory budgeting — residents directly allocate resources:community budget equity planning,parts check-in — ifs-inspired:coaching self beginner check,parts work dialogue (ifs therapy):inner parts self coaching,pas — problem · agitate · solution:problem copy landing marketing,paul–elder — elements of thought + standards:decision analysis apply argument,pdca — plan · do · check · act:improvement beginner changes close,pdsa — plan · do · study · act:change phase planning week,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark,persona — actas / simulate:apply beginner clarification development,personal kanban + wip limits — backlog → doing (limit 1–3) → done:planning phase focus management,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader,pipeline kanban — leads → applied → interviewing → offer → closed:phase planning job search,plan and solve (p&s):planning against checks clarification,playback theatre — confession line:group story check consent,pomodoro scaffold:beginner creativity focus frame,popperian falsification:design predictions risky beginner,positionality statement:analysis practice preface research,power mapping - visualize formal and informal power; plan inclusive engagement:who influence which map,power/interest grid & stakeholder salience — who has power who’s affected who must be heard:who power actually affected,pra / rra - participatory mapping ranking seasonal calendars guided by locals:community local research create,pramāṇa — means of knowledge:evidence advanced answer audit,prd — write:requirements plan guardrails localizatio,pre-mortem — imagine failure find causes build safeguards:planning phase risks safety,pre-mortem + pre-grief:ethics failure human review,pre-mortem + red team — embarrassing sentence:ethics failure review conditions,pre-mortem scaffold:actions beginner committing decision,press release — ap style:release launch writing announcement,product — plain words → specs → code:contracts roadmap specs align,product roadmap → team-ready brief (slices + phases):capacity quarterly across beginner,prompt augmentation (demonstration learning):format phase against answers,public narrative - structure shared story and call to action:story action people ask,public narrative (marshall ganz) — story of self us now:story community craft action,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause,questionnaire — write:design item bias items,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding,raci or drci - clarify roles without muting voice:who roles consent consulted,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach,random association — combine unrelated ideas:brainstorming beginner block break,rap — result · action · problem:impact storytelling apply beginner,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify,rapid framing rewriter:frameworks phase add alternatives,rapid ideation — timed idea sprint:brainstorming beginner block creative,ratio — role · audience · task · instructions · output:prompt brief agent apply,red-flag list — pre-agree triggers & actions (+ provisional/differential/working dx):phase communication planning safety,reflect (bias reflection):bias analysis beginner brainstorming,reflexive memo:analysis activated affect affective,registered reports & preregistration:analysis plan clarify collection,reliability growth & burn-in:test acceptance growth plan,restorative circles / deep democracy - surface minority voices and work with conflict productively:circle conflict group community,resume — tailor / rewrite / feedback:resume job ats draft,rfc — unsaid objection:decision dissent alignment architecture,rice — reach × impact × confidence ÷ effort:planning allocate coding features,ripple effects mapping — appreciative story-mapping of impacts with stakeholders:community impact map stories,risen — role · instructions · steps · end goal · narrowing:plan content design development,rodes — role · objective · details · examples · sense check:guided adaptation against apply,role storming — ideation as different personas:brainstorming apply beginner changing,root cause analysis:apply beginner brainstorming causes,rose · thorn · bud + weather:check daily hope journal,rtf — role · task · format:format prompt prompting api,rubber duck debugging — explain to understand:problem step analysis articulating,safety pause with essence:safety truth ttrpg agree,sbar for health — situation · background · assessment · recommendation (+ provisional/differential/working dx):phase call communication day,scamper (idea expansion):beginner brainstorming creative creativi,scenario-based prompting — deliberative reasoning:advice analysis coaching compose,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design,scqa — situation · complication · question · answer:frameworks analysis arc beginner,screener — create criteria:screener eligibility design device,sensemaker: micro-narratives self-signified by participants to surface patterns:stories patterns community phase,sentipensar — thinking-feeling integration (latin america):design side analytic cultural,service design blueprints - map frontstage/backstage to see where voice is silenced:service map blueprint design,shadow work dialogue — conscious self · shadow self:self side you acts,shared decision-making (sdm) — options → benefits/risks → values/preferences → decide → review (+ provisional/differential/working dx):phase decision communication one,six thinking hats:brainstorming decision explore beginner,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner,soap diary — subjective · objective · assessment · plan (+ provisional/differential/working dx):phase communication day notes,soar analysis:align aspirations beginner clarification,social media post — tailor / write / brainstorm:social media post write,social network analysis / network weaving / netography - find connectors peripheries and missing voices:map spot bridges networks,sociocracy / consent decision-making - circles roles and dynamic governance for shared ownership:sociocracy consent decide circles,socratic questioning method:alternatives assumptions beginner belief,soft systems methodology (ssm) — explore messy problems via multiple worldviews; rich pictures:map problems community issues,somatic focusing — feel · ask · listen:self them asking beginner,spectrum of community engagement to ownership — concrete power-shifting practices:community power ownership authority,stakeholder harm & benefit forecast:equity safety across analysis,star — situation · task · action · result:story storytelling study answer,star / soar stories (job search):interview phase resume stories,stars & wishes + bleed check:bleed debrief safety ttrpg,story circles / story harvesting — peer storytelling to extract themes and values:stories community voices values,story spine + one naked sentence:story draft line pitch,survey — plan — design:design plan survey scale,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy,synectics — analogies & problem transfer:advanced analogies apply context,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies,systematic review & meta-analysis:criteria heterogeneity policy protocol,t-gap analysis — requirements vs skills + 30-day plan:planning phase analysis beginner,talanoa dialogue (pacific):beginner build content cultural,talanoa yarning circles talking circles — narrative-first consensus building:community decisions hearing understadnin,targeting matrix: role × industry × location × company size:planning careers list phase,tarot spread reflection — past · present · future:mode reflection storytelling tarot,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming,task scenarios — write:scenarios design accessibility hta,tdd + property-based testing — invariants:edge invariants tests beginner,teach-back — restate instructions; confirm & correct (+ provisional/differential/working dx):phase what communication notes,theory of change — backcasting:change community planning mission,threat modeling — stride/linddun:privacy risk security architecture,three vaults — facts → stories → essence:coaching check communication facilitatio,time machine advice — past self & future self:self your future you,tonglen-lite — breathe with suffering:compassion self aversion beginner,tote — test · operate · test · exit:beginner brainstorming build communicati,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation,transcripts - analyze:analysis analyze codebook executive,travel — door-to-door planner:door plan planning travel,tree of thought — brainstorm & evaluate:across advanced best brainstorming,tree of thought — decomposition:advanced alternatives ambiguous brainsto,triangulation methods:across alignment apply bias,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discus,triz (theory of inventive problem solving):brainstorming aim communication content,trls — with exit ramps:exit maturity salvage trl,trunk-based dev — feature flags:audience beginner behind cleanup,truth & reconciliation — micro-format:accountability amends conflict dignity,two-eyed seeing (etuaptmumk): braiding indigenous and western knowledge:community knowledge design elders,usability test — plan:plan policy accessibility criteria,user flow — audit — design:flow design states acceptance,user stories & acceptance criteria → developer-ready brief:planning acceptance accessibility produc,ux microcopy — write:copy design accessibility clarity,v-model / mbse — assumption ledger:assumptions model architecture dates,v2mom — vision values methods obstacles measures:community vision plan create,value proposition canvas (personal):planning positioning careers employer,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management,viable system model - ensure functions that keep a community adaptive and coherent:community design governance operations,voice and tone frameworks - codify how the community speaks:our tone voice community,vow-and-witness:commitment vow witness accountability,vroom–yetton–jago decision model:decision autocratic balance brainstormin,wardley mapping - map capabilities and evolution to protect community advantage:community shared spot across,week planning — focus triage & motivation:anxiety energy plan planning,weighted mini-matrix (quick score):planning against compare criteria,what if — scenario reframing questions:brainstorming problem alternative beginn,wishing — imagine ideal solutions:brainstorming beginner beyond constraint,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards,working out loud — truth edition:review asks beginner clarity,world café - rotating small-group conversations to synthesize collective themes:cafe world ideas conversation,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content"
       ],
-      definition: "A helper that recommends the most suitable tool from the provided template library list or generates a prompt to do so.",
+      definition: "A helper that recommends the most suitable template from a provided library or generates a prompt to do so.",
       help: "Describe your goal and context. A full list of the template options will be included when you use the copy/open buttons.",
       fields: [
         {
@@ -20606,7 +20606,7 @@ Dissatisfaction ↓`;
     { label: "Harms to avoid", key: "avoid", type: "textarea", ph: "Pain, isolation, burdens on others, loss of… (be concrete)" },
     { label: "Trade-off stance", key: "tradeoff", type: "select",
       options: ["quality-of-life over time","more time even if quality is low","unsure/decide with my proxy"], ph: "Choose one" },
-    { label: "Independence & function that matters", key: "function", type: "textarea", ph: "Mobility, communication, cognition, privacy…" },
+    { label: "Independence & function that matters", key: "functions", type: "textarea", ph: "Mobility, communication, cognition, privacy…" },
     { label: "Place of care preference", key: "place", type: "select",
       options: ["home","hospital","hospice","no strong preference"], ph: "Pick one" },
     { label: "People to involve in decisions", key: "people", type: "text", ph: "Names/roles to be in the room." },
@@ -20616,7 +20616,7 @@ Dissatisfaction ↓`;
     { label: "Review cadence", key: "review", type: "text", ph: "e.g., “On birthdays” or “after health changes.”" }
   ],
   template: ({
-    snapshot, protect, prioritize, avoid, tradeoff, function: fn, place, people, proxy, redlines, next_step, review,
+    snapshot, protect, prioritize, avoid, tradeoff, functions: fn, place, people, proxy, redlines, next_step, review,
     ctx, audience, style, tone
   }) => [
     "Goals of Care — What Matters Most",
@@ -22650,7 +22650,7 @@ Dissatisfaction ↓`;
   fields: [
     { label: "System/process", key: "system", type: "text", ph: "Scope" },
     { label: "Method", key: "method", type: "select", options: ["FMEA","HAZOP","Fault Tree"], ph: "Pick one" },
-    { label: "Function / node / block", key: "function", type: "text", ph: "What this part is supposed to do" },
+    { label: "Function / node / block", key: "functions", type: "text", ph: "What this part is supposed to do" },
     { label: "Failure mode / deviation / top event", key: "mode", type: "text", ph: "What goes wrong" },
     { label: "Cause(s)", key: "causes", type: "textarea", ph: "Upstream contributors" },
     { label: "Effect(s) on user/system", key: "effects", type: "textarea", ph: "Downstream impact" },
@@ -22665,14 +22665,14 @@ Dissatisfaction ↓`;
     { label: "Notes", key: "notes", type: "textarea", ph: "HAZOP guidewords, FTA gates, assumptions…" }
   ],
   template: ({
-    system, method, function: fn, mode, causes, effects, behavior, controls, mitigation,
+    system, method, functions: fn, mode, causes, effects, behavior, controls, mitigation,
     sev, occ, det, rpn, owner, notes, ctx, audience, style, tone
   }) => [
     "FMEA · HAZOP · Fault Tree — Unified Card",
     ctx && `Context: ${ctx}`, audience && `Audience: ${audience}`, style && `Style: ${style}`, tone && `Tone: ${tone}`,
     system && `System/process: ${system}`,
     method && `Method: ${method}`,
-    fn && `Function/node/block: ${fn}`,
+    fn && `Functions/node/block: ${fn}`,
     mode && `Failure mode/deviation/top event: ${mode}`,
     causes && `Causes:\n${causes}`,
     effects && `Effects:\n${effects}`,
@@ -29059,7 +29059,7 @@ Dissatisfaction ↓`;
   id: "pra_rra",
   slug: "pra-rra-participatory-rapid-rural-appraisal",
   label: "PRA / RRA - Participatory mapping, ranking, seasonal calendars guided by locals",
-  kind: "research",
+  kind: "framework",
   categories: [
     "research",
     "planning",
@@ -31404,7 +31404,7 @@ Dissatisfaction ↓`;
   id: "ripple_effects_mapping",
   slug: "ripple-effects-mapping",
   label: "Ripple Effects Mapping — Appreciative story-mapping of impacts with stakeholders",
-  kind: "evaluation",
+  kind: "framework",
   categories: [
     "evaluation",
     "learning",
@@ -31775,7 +31775,7 @@ Dissatisfaction ↓`;
   id: "sensemaker_micro_narratives",
   slug: "sensemaker-micro-narratives",
   label: "SenseMaker: Micro-narratives self-signified by participants to surface patterns",
-  kind: "research",
+  kind: "framework",
   categories: [
     "research",
     "evaluation",
@@ -34038,7 +34038,7 @@ Dissatisfaction ↓`;
   id: "brand_archetypes_community",
   slug: "brand-archetypes-jungian-for-communities",
   label: "Brand Archetypes for Communities - Shared identity motifs and tone",
-  kind: "branding",
+  kind: "framework",
   categories: [
     "branding",
     "communications",
@@ -34325,7 +34325,7 @@ Dissatisfaction ↓`;
   id: "voice_tone_frameworks",
   slug: "voice-and-tone-frameworks-this-not-that",
   label: "Voice and Tone Frameworks - Codify how the community speaks",
-  kind: "branding",
+  kind: "framework",
   categories: [
     "branding",
     "communications",
@@ -34601,7 +34601,7 @@ Dissatisfaction ↓`;
   id: "public_narrative_action",
   slug: "public-narrative-structure-call-to-action",
   label: "Public Narrative - Structure shared story and call to action",
-  kind: "communications",
+  kind: "framework",
   categories: [
     "communications",
     "community",
@@ -35227,7 +35227,7 @@ Dissatisfaction ↓`;
   id: "cultural_web_johnson_scholes",
   slug: "cultural-web-johnson-scholes",
   label: "Cultural Web - Unpack symbols, rituals, stories shaping voice",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "branding",
     "communications",
@@ -35558,7 +35558,7 @@ Dissatisfaction ↓`;
   id: "sociocracy_consent_governance",
   slug: "sociocracy-consent-decision-making",
   label: "Sociocracy / Consent Decision-Making - Circles, roles, and dynamic governance for shared ownership",
-  kind: "governance",
+  kind: "framework",
   categories: [
     "governance",
     "community",
@@ -35864,7 +35864,7 @@ Dissatisfaction ↓`;
   id: "holacracy_selective_volunteer",
   slug: "holacracy-selective-role-governance-volunteer",
   label: "Holacracy (selective) - Role-based governance for volunteer groups",
-  kind: "governance",
+  kind: "framework",
   categories: [
     "governance",
     "community",
@@ -36150,7 +36150,7 @@ Dissatisfaction ↓`;
   id: "soft_systems_methodology_ssm",
   slug: "soft-systems-methodology-ssm-rich-pictures-multiple-worldviews",
   label: "Soft Systems Methodology (SSM) — Explore messy problems via multiple worldviews; rich pictures",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "systems",
     "research",
@@ -36438,7 +36438,7 @@ Dissatisfaction ↓`;
   id: "viable_system_model_vsm",
   slug: "viable-system-model-vsm-community",
   label: "Viable System Model - Ensure functions that keep a community adaptive and coherent",
-  kind: "systems",
+  kind: "heuristic",
   categories: [
     "systems",
     "governance",
@@ -36769,7 +36769,7 @@ Dissatisfaction ↓`;
   id: "competing_values_framework_cvf",
   slug: "competing-values-framework-culture-to-mission",
   label: "Competing Values Framework - Culture map to align ways of working with mission",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "strategy",
     "research",
@@ -37091,7 +37091,7 @@ Dissatisfaction ↓`;
   id: "community_capitals_framework",
   slug: "community-capitals-framework-seven-capitals",
   label: "Community Capitals Framework - Seven capitals lens for purpose and investment",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "strategy",
     "research",
@@ -37404,7 +37404,7 @@ Dissatisfaction ↓`;
   id: "hcd_double_diamond",
   slug: "human-centered-design-double-diamond-co-creation",
   label: "Human-Centered Design / Double Diamond: Discover Define Develop Deliver with community co-creation",
-  kind: "design",
+  kind: "framework",
   categories: [
     "design",
     "research",
@@ -37760,7 +37760,7 @@ Dissatisfaction ↓`;
   id: "empathy_personas_jtbd",
   slug: "empathy-mapping-personas-jtbd-ground-voice",
   label: "Empathy Mapping, Personas, JTBD - Ground voice in needs and contexts",
-  kind: "research",
+  kind: "framework",
   categories: [
     "research",
     "community",
@@ -38091,7 +38091,7 @@ Dissatisfaction ↓`;
   id: "service_design_blueprint",
   slug: "service-design-blueprints-frontstage-backstage-voice",
   label: "Service Design Blueprints - Map frontstage/backstage to see where voice is silenced",
-  kind: "design",
+  kind: "framework",
   categories: [
     "design",
     "research",
@@ -38406,7 +38406,7 @@ Dissatisfaction ↓`;
   id: "power_mapping_inclusive_engagement",
   slug: "power-mapping-visualize-power-inclusive-engagement",
   label: "Power Mapping - Visualize formal and informal power; plan inclusive engagement",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "community",
     "strategy",
@@ -38729,7 +38729,7 @@ Dissatisfaction ↓`;
   id: "sna_network_weaving_netography",
   slug: "social-network-analysis-network-weaving-netography",
   label: "Social Network Analysis / Network Weaving / Netography - Find connectors, peripheries, and missing voices",
-  kind: "analysis",
+  kind: "framework",
   categories: [
     "research",
     "community",
@@ -39068,7 +39068,7 @@ Dissatisfaction ↓`;
   id: "ethical_data_stewardship",
   slug: "ethical-data-stewardship-data-trusts-community-irb",
   label: "Ethical Data Stewardship - Governance for safe listening",
-  kind: "governance",
+  kind: "framework",
   categories: [
     "governance",
     "community",
@@ -39434,7 +39434,7 @@ Dissatisfaction ↓`;
   id: "cultural_probes_diary_studies",
   slug: "cultural-probes-diary-studies-longitudinal-voice",
   label: "Cultural Probes & Diary Studies - Longitudinal, participant-led voice capture",
-  kind: "research",
+  kind: "framework",
   categories: [
     "research",
     "design",
@@ -40069,7 +40069,7 @@ Dissatisfaction ↓`;
   id: "raci_drci_consent",
   slug: "raci-drci-consent-based-tweaks",
   label: "RACI or DRCI - Clarify roles without muting voice",
-  kind: "governance",
+  kind: "framework",
   categories: [
     "governance",
     "operations",
@@ -41430,7 +41430,9355 @@ Dissatisfaction ↓`;
   meta: {
     search_text: "dot voting heat map prioritization workshop matrix criteria budget anonymity anti bias quorum guardrails template"
   }
+},
+
+{
+  id: "pdsa",
+  slug: "pdsa-plan-do-study-act",
+  label: "PDSA — Plan · Do · Study · Act",
+  kind: "strategy",
+  categories: [
+    "quality",
+    "operations",
+    "process-improvement",
+    "reasoning",
+    "teaching"
+  ],
+  tags: [
+    "type:framework",
+    "use:process-improvement",
+    "use:experiment-design",
+    "use:metrics",
+    "use:planning",
+    "use:retrospective",
+    "phase:plan",
+    "phase:apply",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "run a tiny test of change before scaling up",
+    "replace big bets with quick, low-risk experiments",
+    "validate a hypothesis with explicit predictions",
+    "improve a service or workflow week by week",
+    "collect just-enough data to learn and act",
+    "decide to adopt, adapt, or abandon a change idea",
+    "clinical QI, service design, ops tweaks, product experiments",
+    "turn complaints into measurable improvements",
+    "standardize a successful change",
+    "planning my week"
+  ],
+  boosters: [
+    "Write explicit predictions in Plan; compare them verbatim in Study.",
+    "Define 2–4 measures max: at least one Outcome, one Process, and a Balancing measure.",
+    "State operational definitions: how each measure is computed (units, inclusion/exclusion).",
+    "Keep the first cycle scope tiny (one shift/day/team of 3–5) to learn fast.",
+    "Timebox the cycle (e.g., 1–7 days) and set exit criteria up front.",
+    "Use a quick run chart or before/after comparison; annotate notable events.",
+    "Capture surprises and unintended effects explicitly (good or bad).",
+    "Close the loop: Act must select Adopt/Adapt/Abandon with rationale and next-cycle plan.",
+    "Number your cycles (PDSA #1, #2…) and link each to a single aim.",
+    "If harm risk > low, insert a safety check or ethics review in Plan and Do."
+  ],
+  definition: "PDSA is a rapid-learning improvement cycle: Plan a small test with explicit predictions and measures; Do the test and gather data; Study the results against predictions; Act by adopting, adapting, or abandoning and planning the next cycle. Unlike PDCA’s pass/fail ‘Check,’ PDSA centers quantitative and qualitative learning to adjust the next test.",
+  help: "Use this when you want to test a change on a small scale. Fill Plan with a clear aim, change idea(s), explicit predictions, and a handful of measures with operational definitions. Keep Do to factual notes and data. In Study, compare results to predictions and note what you learned (including surprises). In Act, decide Adopt/Adapt/Abandon and plan the next cycle.",
+
+  fields: [
+    /* PLAN */
+    {
+      label: "Aim (specific and time-bound)",
+      desc: "What are we trying to accomplish in this cycle? Tie to a larger goal if relevant.",
+      key: "aim",
+      ph: "Reduce intake wait time from 18→12 minutes this week for the Monday morning clinic.",
+      type: "textarea"
+    },
+    {
+      label: "Change idea(s)",
+      desc: "What change will you test? Keep it small and concrete.",
+      key: "change_ideas",
+      ph: "Add a pre-check form; route complex cases to Desk B; start triage at :45 past the hour.",
+      type: "textarea"
+    },
+    {
+      label: "Predictions (make them explicit)",
+      desc: "What do you expect will happen (direction and rough size)?",
+      key: "predictions",
+      ph: "Median wait will drop by ~4–6 minutes; 10% may be sent to wrong desk on day 1.",
+      type: "textarea"
+    },
+    {
+      label: "Outcome measure(s)",
+      desc: "Results that matter to users (e.g., time, satisfaction, errors).",
+      key: "outcome_measures",
+      ph: "Median intake wait (minutes); % users rating ≥4/5.",
+      type: "textarea"
+    },
+    {
+      label: "Process measure(s)",
+      desc: "Are we doing the change as intended?",
+      key: "process_measures",
+      ph: "% forms pre-filled; % arrivals triaged within 2 minutes.",
+      type: "textarea"
+    },
+    {
+      label: "Balancing measure(s)",
+      desc: "Make sure fixing one thing doesn’t break another.",
+      key: "balancing_measures",
+      ph: "Rework rate; % misrouted; staff overtime minutes.",
+      type: "textarea"
+    },
+    {
+      label: "Operational definitions",
+      desc: "How exactly will you measure each metric (units, start/stop, inclusion/exclusion)?",
+      key: "operational_defs",
+      ph: "Wait time = arrival to triage start, rounded to nearest minute; exclude late arrivals >15 min.",
+      type: "textarea"
+    },
+    {
+      label: "Baseline / reference (optional)",
+      desc: "Recent data to compare against (even if rough).",
+      key: "baseline",
+      ph: "Last week: median 18 min (n=57), IQR 12–24.",
+      type: "textarea"
+    },
+    {
+      label: "Test scope & sample",
+      desc: "Who/where/when for this small test.",
+      key: "scope",
+      ph: "Desk A only, Mon–Wed mornings; one triage nurse and one runner.",
+      type: "textarea"
+    },
+    {
+      label: "Timeframe & cadence",
+      desc: "Cycle duration and any checkpoints.",
+      key: "timeframe",
+      ph: "Cycle length: 3 days; checkpoint daily at 11:30.",
+      type: "text"
+    },
+    {
+      label: "Roles / ownership",
+      desc: "Who does what (collection, triage, logging, decision maker)?",
+      key: "roles",
+      ph: "Lead: Ops mgr; Data: triage nurse; Logger: desk lead; Decision: clinic lead.",
+      type: "textarea"
+    },
+    {
+      label: "Risks & safety/ethics checks (optional)",
+      desc: "Any potential harm or fairness issues? What safeguards exist?",
+      key: "risks",
+      ph: "Risk: misrouting new patients → add signage; double-check at Desk B; opt-out allowed.",
+      type: "textarea"
+    },
+
+    /* DO */
+    {
+      label: "Test steps (what actually happened)",
+      desc: "Brief notes of execution; include deviations from plan.",
+      key: "do_steps",
+      ph: "Day 1 signage late; used a paper backup; runner out 9:30–10:00.",
+      type: "textarea"
+    },
+    {
+      label: "Data collected",
+      desc: "Numbers/observations gathered during Do.",
+      key: "do_data",
+      ph: "n=21; waits [7, 9, 11…]; 76% forms pre-filled; 2 misroutes; 0 overtime.",
+      type: "textarea"
+    },
+    {
+      label: "Issues & surprises",
+      desc: "Anything unexpected (good or bad).",
+      key: "do_issues",
+      ph: "Peak arrivals at 9:05; patients confused by Desk B arrow.",
+      type: "textarea"
+    },
+
+    /* STUDY */
+    {
+      label: "Results vs predictions",
+      desc: "Compare actuals to each prediction; quantify if possible.",
+      key: "study_compare",
+      ph: "Median wait fell 5.5 min (predicted 4–6) → matched; misroutes 9.5% (predicted ~10%).",
+      type: "textarea"
+    },
+    {
+      label: "Analysis & learning",
+      desc: "Why did we see these results? Include quick visuals/stats if you have them.",
+      key: "study_learning",
+      ph: "Biggest gains were 8:45–9:30; signage delay affected first 45 min only.",
+      type: "textarea"
+    },
+
+    /* ACT */
+    {
+      label: "Decision",
+      desc: "Pick one: Adopt (standardize), Adapt (tweak, next test), Abandon (stop).",
+      key: "act_decision",
+      ph: "Adapt",
+      type: "select",
+      options: ["Adopt", "Adapt", "Abandon"]
+    },
+    {
+      label: "Next actions / next cycle plan",
+      desc: "What will you change or scale next? Include dates/owners.",
+      key: "act_next",
+      ph: "Add icon signage; extend to Tue afternoons; PDSA #2 starts next Monday.",
+      type: "textarea"
+    },
+    {
+      label: "Standardize (if Adopt) (optional)",
+      desc: "Documentation, training, or SOP updates to lock in the improvement.",
+      key: "standardize",
+      ph: "Update intake SOP; add pre-check form to welcome packet.",
+      type: "textarea"
+    },
+
+    /* WRAP */
+    {
+      label: "Cycle number (optional)",
+      desc: "Label this cycle for traceability.",
+      key: "cycle_no",
+      ph: "PDSA #1",
+      type: "text"
+    },
+    {
+      label: "Confidence rating (0–100%) (optional)",
+      desc: "How confident are you this change will achieve the aim at scale?",
+      key: "confidence",
+      ph: "70%",
+      type: "text"
+    }
+  ],
+
+  template: ({
+    aim, change_ideas, predictions,
+    outcome_measures, process_measures, balancing_measures,
+    operational_defs, baseline, scope, timeframe, roles, risks,
+    do_steps, do_data, do_issues,
+    study_compare, study_learning,
+    act_decision, act_next, standardize,
+    cycle_no, confidence,
+    ctx, audience, style, tone
+  }) => [
+    "Run a PDSA cycle (Plan → Do → Study → Act).",
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    cycle_no && `Cycle: ${cycle_no}`,
+    "",
+    "PLAN",
+    aim && `Aim:\n${aim}`,
+    change_ideas && `Change idea(s):\n${change_ideas}`,
+    predictions && `Predictions:\n${predictions}`,
+    outcome_measures && `Outcome measure(s):\n${outcome_measures}`,
+    process_measures && `Process measure(s):\n${process_measures}`,
+    balancing_measures && `Balancing measure(s):\n${balancing_measures}`,
+    operational_defs && `Operational definitions:\n${operational_defs}`,
+    baseline && `Baseline/reference:\n${baseline}`,
+    scope && `Test scope & sample:\n${scope}`,
+    timeframe && `Timeframe & cadence: ${timeframe}`,
+    roles && `Roles/ownership:\n${roles}`,
+    risks && `Risks & safety/ethics checks:\n${risks}`,
+    "",
+    "DO",
+    do_steps && `Test steps (actual):\n${do_steps}`,
+    do_data && `Data collected:\n${do_data}`,
+    do_issues && `Issues & surprises:\n${do_issues}`,
+    "",
+    "STUDY",
+    study_compare && `Results vs predictions:\n${study_compare}`,
+    study_learning && `Analysis & learning:\n${study_learning}`,
+    "",
+    "ACT",
+    act_decision && `Decision: ${act_decision}`,
+    act_next && `Next actions / next cycle plan:\n${act_next}`,
+    standardize && `Standardize (if Adopt):\n${standardize}`,
+    confidence && `Confidence rating: ${confidence}`,
+    "",
+    "Output:",
+    "1) A small, timeboxed test of change with explicit predictions.",
+    "2) Quick evidence (measures + notes) and a clear Adopt/Adapt/Abandon decision.",
+    "3) A concrete plan for the next cycle or for standardization.",
+    "",
+    "Checklist:",
+    "- [ ] Aim is specific and time-bound",
+    "- [ ] Predictions written in Plan and compared in Study",
+    "- [ ] Outcome + Process + Balancing measures defined (with operational defs)",
+    "- [ ] Scope is small enough to be safe and fast",
+    "- [ ] Act includes Adopt/Adapt/Abandon and next steps"
+  ].filter(Boolean).join("\n"),
+
+  meta: {
+    search_text: "pdsa plan do study act tiny experiments improvement learning cycle predictions outcome process balancing measures adopt adapt abandon rapid test run chart operational definitions quality service design product ops improvement"
+  }
+},
+
+{
+  id: "premortem",
+  slug: "pre-mortem-future-failure-safeguards",
+  label: "Pre-mortem — Imagine Failure, Find Causes, Build Safeguards",
+  kind: "strategy",
+  categories: [
+    "critical-thinking",
+    "planning",
+    "risk",
+    "decision-making",
+    "operations",
+    "project-management"
+  ],
+  tags: [
+    "type:framework",
+    "use:premortem",
+    "use:risk",
+    "use:brainstorming",
+    "use:alignment",
+    "use:contingency-planning",
+    "phase:plan",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "stress-test a plan before committing resources",
+    "surface hidden assumptions and single points of failure",
+    "prioritize risks by likelihood and impact",
+    "convert top risks into concrete safeguards and playbooks",
+    "set kill/hold criteria and early-warning signals",
+    "align a diverse group around ‘how this could fail’ safely"
+  ],
+  boosters: [
+    "Timebox to 45–60 minutes; smaller first. Psychological safety first: ‘Blame the plan, not the people.’",
+    "Start with a vivid ‘failure headline’ dated in the future to unlock concrete thinking.",
+    "Silent brainstorm → round-robin share → then cluster; this prevents loud-voice bias.",
+    "Score risks with a simple 1–5 Likelihood × 1–5 Impact to focus the room.",
+    "Design safeguards in four layers: Avoid, Prevent, Detect, Respond (APDR).",
+    "Define early-warning signals and tripwires with named owners.",
+    "Write pre-commitment rules: kill/hold criteria that auto-trigger review.",
+    "End with one page: Top risks, APDR safeguards, owners, dates, review cadence.",
+    "Schedule a mid-course ‘pre-mortem check-in’ now; treat it as non-negotiable."
+  ],
+  definition: "A pre-mortem is a prospective hindsight exercise: you assume it’s the future and the plan has failed. You list plausible causes, cluster and score them, then design safeguards and contingencies. The aim is not pessimism; it’s disciplined imagination to reduce avoidable failure.",
+  help: "Use this template before launch or at major milestones. Start by writing a future ‘failure headline’ and story. Brainstorm causes, cluster them, and score by Likelihood and Impact. Select the top risks; for each, define early signals and APDR safeguards (Avoid, Prevent, Detect, Respond), with owners and dates. Finish with kill/hold criteria and a review cadence.",
+
+  fields: [
+    /* CONTEXT */
+    {
+      label: "Plan / Initiative",
+      desc: "Name the thing you’re stress-testing.",
+      key: "plan_name",
+      ph: "Community onboarding pilot for volunteers",
+      type: "text"
+    },
+    {
+      label: "Purpose of this pre-mortem",
+      desc: "Why are we running this now?",
+      key: "purpose",
+      ph: "Reduce preventable failure modes before the 6-week pilot",
+      type: "textarea"
+    },
+    {
+      label: "Time horizon (look ahead)",
+      desc: "How far into the future is the imagined failure?",
+      key: "horizon",
+      ph: "3 months from launch",
+      type: "select",
+      options: ["2 weeks","1 month","3 months","6 months","12 months","custom"]
+    },
+    {
+      label: "Success criteria (for contrast)",
+      desc: "What would success look like (so failure is clear)?",
+      key: "success_criteria",
+      ph: "≥70% onboarding completion; ≤10% drop-off after week 2; CSAT ≥4.3/5",
+      type: "textarea"
+    },
+    {
+      label: "Key assumptions",
+      desc: "Assumptions this plan depends on (name what could be wrong).",
+      key: "assumptions",
+      ph: "Volunteers have smartphones; staff can respond within 24h; budget for SMS is approved",
+      type: "textarea"
+    },
+    {
+      label: "Participants & roles",
+      desc: "Who’s in the session (and why)?",
+      key: "participants",
+      ph: "Facilitator, ops lead, volunteer lead, tech owner, finance rep, 2 front-line volunteers",
+      type: "textarea"
+    },
+
+    /* FAILURE VISION */
+    {
+      label: "Failure headline (future-dated)",
+      desc: "Write it like a news headline from the future.",
+      key: "failure_headline",
+      ph: "Dec 12: Volunteer Onboarding Pilot Stalls; Completion Drops to 28%",
+      type: "text"
+    },
+    {
+      label: "Failure story (what happened?)",
+      desc: "Short narrative that makes the failure feel real.",
+      key: "failure_story",
+      ph: "SMS reminders didn’t go out; forms were confusing; two key mentors left; trust eroded after data mix-up…",
+      type: "textarea"
+    },
+
+    /* CAUSE FINDING */
+    {
+      label: "Raw causes (brainstorm dump)",
+      desc: "List every reason it failed. One per line. No filtering yet.",
+      key: "causes_raw",
+      ph: "• Wrong eligibility criteria\n• SMS vendor delays\n• Staff turnover\n• Privacy concerns\n• Confusing copy…",
+      type: "textarea"
+    },
+    {
+      label: "Clustered themes (affinity)",
+      desc: "Group similar causes into themes.",
+      key: "clusters",
+      ph: "Messaging & Copy; Vendor/Tech; Staffing; Trust & Privacy; Timeline; Budget; Governance",
+      type: "textarea"
+    },
+
+    /* CATEGORY PROMPTS (OPTIONAL) */
+    {
+      label: "People / Team risks",
+      desc: "Skills, capacity, turnover, incentives, burnout.",
+      key: "risks_people",
+      ph: "Mentor attrition; limited bilingual support; unclear ownership for reminders",
+      type: "textarea"
+    },
+    {
+      label: "Process / Ops risks",
+      desc: "Handoffs, SOPs, scheduling, onboarding flows.",
+      key: "risks_process",
+      ph: "No backup for reminder sending; manual spreadsheet errors",
+      type: "textarea"
+    },
+    {
+      label: "Technology / Data risks",
+      desc: "Vendors, integrations, reliability, privacy, security.",
+      key: "risks_tech",
+      ph: "SMS API rate limits; PII in spreadsheets; failed 2FA for volunteers",
+      type: "textarea"
+    },
+    {
+      label: "Product / Service risks",
+      desc: "Fit, usability, accessibility, content quality.",
+      key: "risks_product",
+      ph: "Form copy at 12th-grade reading level; poor mobile UX; no screen-reader labels",
+      type: "textarea"
+    },
+    {
+      label: "Stakeholder / Community risks",
+      desc: "Trust, expectations, politics, consent.",
+      key: "risks_stakeholders",
+      ph: "Community backlash to data collection; unclear consent flows",
+      type: "textarea"
+    },
+    {
+      label: "Timeline / External risks",
+      desc: "Seasonality, dependencies, compliance, economy.",
+      key: "risks_external",
+      ph: "Holiday season engagement dip; pending grant decision; new privacy regulation",
+      type: "textarea"
+    },
+    {
+      label: "Legal / Ethics risks",
+      desc: "Equity, fairness, bias, safety.",
+      key: "risks_ethics",
+      ph: "Unequal access to devices; bias in selection; consent not in plain language",
+      type: "textarea"
+    },
+    {
+      label: "Funding / Budget risks",
+      desc: "Costs, overruns, approvals.",
+      key: "risks_budget",
+      ph: "SMS overages; mentor stipend not approved; delayed PO",
+      type: "textarea"
+    },
+    {
+      label: "Comms / Reputation risks",
+      desc: "Messaging, crisis comms, misinformation.",
+      key: "risks_comms",
+      ph: "Negative social post escalates; conflicting instructions from different teams",
+      type: "textarea"
+    },
+
+    /* PRIORITIZATION */
+    {
+      label: "Scoring scale (define once)",
+      desc: "Describe your Likelihood (L) and Impact (I) scale; Risk Score = L × I.",
+      key: "scoring_scale",
+      ph: "L and I: 1=Low, 3=Medium, 5=High; Score 15+ = critical",
+      type: "text"
+    },
+    {
+      label: "Top risks (prioritized)",
+      desc: "List the few that truly threaten success (with L, I, Score).",
+      key: "top_risks",
+      ph: "R1 Vendor SMS delays (L4, I5, 20)\nR2 Copy too complex (L3, I4, 12)\nR3 Mentor attrition (L3, I5, 15)",
+      type: "textarea"
+    },
+
+    /* SAFEGUARDS & PLAYBOOKS */
+    {
+      label: "Early-warning signals & tripwires",
+      desc: "Leading indicators that a risk is materializing and thresholds that trigger action.",
+      key: "signals",
+      ph: "Delivery success < 95% for 2 days; CSAT < 4.0; mentor/volunteer ratio > 1:12",
+      type: "textarea"
+    },
+    {
+      label: "Safeguards — APDR",
+      desc: "For each top risk, define Avoid, Prevent, Detect, Respond measures.",
+      key: "safeguards_apdr",
+      ph: "R1 SMS delays → Avoid: pre-qual vendor; Prevent: signed SLA; Detect: daily send report; Respond: switch to backup Twilio project within 24h",
+      type: "textarea"
+    },
+    {
+      label: "Owners & triggers",
+      desc: "Who watches which signal; what trigger causes which playbook.",
+      key: "owners_triggers",
+      ph: "Ops lead monitors send-rate; if <95% 2 days → activate backup vendor; comms lead posts status",
+      type: "textarea"
+    },
+    {
+      label: "Kill/Hold criteria (pre-commitments)",
+      desc: "Objective rules to pause, pivot, or stop.",
+      key: "kill_hold",
+      ph: "If completion <30% after week 2 despite safeguards → pause cohort; investigate root causes",
+      type: "textarea"
+    },
+    {
+      label: "Contingency playbooks",
+      desc: "Short step lists for likely failures.",
+      key: "playbooks",
+      ph: "Playbook A: Vendor outage; Playbook B: Comms misfire; Playbook C: Privacy incident (who to notify, within what time)",
+      type: "textarea"
+    },
+    {
+      label: "Comms plan (internal/external)",
+      desc: "Templates, channels, who says what, to whom, and when.",
+      key: "comms_plan",
+      ph: "Slack status updates twice daily; one owner for external statements; canned FAQ for volunteers",
+      type: "textarea"
+    },
+
+    /* MONITORING & NEXT STEPS */
+    {
+      label: "Monitoring metrics",
+      desc: "Track a few leading and lagging measures.",
+      key: "monitoring_metrics",
+      ph: "Send success %, open/click %, completion %, CSAT, mentor availability",
+      type: "textarea"
+    },
+    {
+      label: "Review cadence",
+      desc: "When will we revisit this pre-mortem and adjust?",
+      key: "review_cadence",
+      ph: "Daily standup checkpoint + weekly risk review (Fridays 2pm)",
+      type: "text"
+    },
+    {
+      label: "Decisions now",
+      desc: "Immediate plan adjustments you’re making based on the pre-mortem.",
+      key: "decisions_now",
+      ph: "Secure backup SMS account; rewrite forms to 7th-grade level; confirm mentor backups",
+      type: "textarea"
+    },
+    {
+      label: "Next actions",
+      desc: "Owners and dates for safeguards, playbooks, and comms.",
+      key: "next_actions",
+      ph: "Copy lead revises forms (due Tue); Tech sets SLA monitor (due Wed); Ops drafts Playbook A (due Thu)",
+      type: "textarea"
+    },
+    {
+      label: "Links / docs",
+      desc: "Where artifacts live (SOPs, dashboards, vendor info).",
+      key: "links",
+      ph: "SOP folder, risk board, message templates, vendor contracts",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    plan_name, purpose, horizon, success_criteria, assumptions, participants,
+    failure_headline, failure_story,
+    causes_raw, clusters,
+    risks_people, risks_process, risks_tech, risks_product, risks_stakeholders, risks_external, risks_ethics, risks_budget, risks_comms,
+    scoring_scale, top_risks,
+    signals, safeguards_apdr, owners_triggers, kill_hold, playbooks, comms_plan,
+    monitoring_metrics, review_cadence, decisions_now, next_actions, links,
+    ctx, audience, style, tone
+  }) => [
+    `PRE-MORTEM — Prospective Hindsight for ${plan_name || "this plan"}`,
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    "",
+    "Purpose:",
+    purpose,
+    horizon && `Time horizon: ${horizon}`,
+    "",
+    "Success criteria (for contrast):",
+    success_criteria,
+    "Key assumptions:",
+    assumptions,
+    participants && `Participants & roles:\n${participants}`,
+    "",
+    "— FUTURE FAILURE VISION —",
+    `Failure headline: ${failure_headline || ""}`,
+    failure_story && `Failure story:\n${failure_story}`,
+    "",
+    "— CAUSES —",
+    "Raw causes (brainstorm dump):",
+    causes_raw,
+    clusters && `Clustered themes:\n${clusters}`,
+    "",
+    "Category prompts:",
+    risks_people && `People/Team:\n${risks_people}`,
+    risks_process && `Process/Ops:\n${risks_process}`,
+    risks_tech && `Technology/Data:\n${risks_tech}`,
+    risks_product && `Product/Service:\n${risks_product}`,
+    risks_stakeholders && `Stakeholder/Community:\n${risks_stakeholders}`,
+    risks_external && `Timeline/External:\n${risks_external}`,
+    risks_ethics && `Legal/Ethics:\n${risks_ethics}`,
+    risks_budget && `Funding/Budget:\n${risks_budget}`,
+    risks_comms && `Comms/Reputation:\n${risks_comms}`,
+    "",
+    "— PRIORITIZATION —",
+    `Scoring scale: ${scoring_scale || "L and I 1–5; Score = L×I"}`,
+    "Top risks (with L, I, Score):",
+    top_risks,
+    "",
+    "— SAFEGUARDS & PLAYBOOKS —",
+    "Early-warning signals & tripwires:",
+    signals,
+    "Safeguards (APDR = Avoid, Prevent, Detect, Respond):",
+    safeguards_apdr,
+    "Owners & triggers:",
+    owners_triggers,
+    "Kill/Hold criteria (pre-commitments):",
+    kill_hold,
+    "Contingency playbooks:",
+    playbooks,
+    "Comms plan:",
+    comms_plan,
+    "",
+    "— MONITORING & NEXT STEPS —",
+    "Monitoring metrics:",
+    monitoring_metrics,
+    review_cadence && `Review cadence: ${review_cadence}`,
+    "Decisions now:",
+    decisions_now,
+    "Next actions:",
+    next_actions,
+    links && `Links / docs:\n${links}`,
+    "",
+    "Facilitation script:",
+    "1) Set the scene (2 min): ‘It’s the future; this failed.’ Read the failure headline.",
+    "2) Silent brainstorm (6–10 min): Everyone lists causes individually.",
+    "3) Round-robin share (10–15 min): Capture everything; no debate.",
+    "4) Cluster & categorize (10 min): Affinity themes; use prompts to fill gaps.",
+    "5) Score & select (8 min): L×I; choose top 3–5 critical risks.",
+    "6) Design safeguards (10–15 min): For each top risk define APDR, signals, triggers, owners.",
+    "7) Commit (5 min): Kill/hold criteria, monitoring metrics, review date, next actions.",
+    "",
+    "Checklist:",
+    "- [ ] Failure headline & story written",
+    "- [ ] Causes brainstormed, clustered, and prioritized",
+    "- [ ] Top risks have APDR safeguards and early-warning signals",
+    "- [ ] Owners, triggers, and playbooks assigned",
+    "- [ ] Kill/hold criteria and review cadence set",
+    "- [ ] Next actions with names and dates confirmed"
+  ].filter(Boolean).join("\n"),
+
+  meta: {
+    search_text: "premortem pre mortem prospective hindsight failure headline risk brainstorming likelihood impact safeguards avoid prevent detect respond apdr early warning signals triggers kill criteria review cadence contingency playbooks"
+  }
+},
+
+{
+  id: "personal_kanban_wip",
+  slug: "personal-kanban-wip-limits",
+  label: "Personal Kanban + WIP Limits — Backlog → Doing (limit 1–3) → Done",
+  kind: "tool",
+  categories: [
+    "productivity",
+    "planning",
+    "operations",
+    "project-management",
+    "self-management"
+  ],
+  tags: [
+    "type:pattern",
+    "use:workflow",
+    "use:prioritization",
+    "use:focus",
+    "use:time-blocking",
+    "use:overwhelm-reduction",
+    "phase:plan",
+    "phase:apply",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "turn a pile of to-dos into a pull-based, visual flow",
+    "stop multitasking by limiting work-in-progress (WIP)",
+    "plan your day/week with a simple board",
+    "finish more by starting less; reduce thrash and context switching",
+    "surface blockers early and make them actionable",
+    "create a gentle cadence for weekly planning and daily focus"
+  ],
+  boosters: [
+    "Set a hard WIP cap for Doing (start at 1–3). If you’re over the cap, you must finish or move something out before pulling new work.",
+    "Add a small ‘Ready/Next’ buffer (WIP 3–5) so Backlog stays long-term and calm.",
+    "Use ‘Blocked’ as a spotlight, not a parking lot. Every blocked item gets an unblock action and a named owner.",
+    "Time-block your Doing items: put them on a calendar to defend focus windows.",
+    "Add ‘Aging WIP’ markers: if an item sits >2 days in Doing, force a decision (split, unblock, or drop).",
+    "Define ‘Done-Done’: finished, checked, and logged—no loose ends.",
+    "Use Classes of Service: Standard, Fixed-Date (deadline), Expedite (limit 1), Intangible (maintenance).",
+    "End each day with a 5-minute flow check; end each week with a 15-minute retro.",
+    "Prefer splitting over stretching: if a Doing task won’t fit in one focus block, split it."
+  ],
+  definition: "Personal Kanban is a pull-based workflow with two rules: visualize your work and limit your work-in-progress (WIP). You maintain a Backlog, pull a tiny number (1–3) into Doing, and move finished items to Done. WIP limits create focus, reveal bottlenecks, and increase throughput without heavy tooling.",
+  help: "Start by listing everything in Backlog. Choose at most 1–3 items for Doing (your WIP cap). Optionally stage 3–5 in Ready/Next. If something blocks, move it to Blocked and write an explicit unblock step. Finish before you pull. Review daily and weekly; adjust WIP caps to match your real capacity.",
+
+  fields: [
+    /* CONTEXT */
+    {
+      label: "Board name",
+      desc: "A short name for this board.",
+      key: "board_name",
+      ph: "Week of Oct 13 — Personal Board",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      desc: "What period is this board targeting?",
+      key: "horizon",
+      ph: "This week (Mon–Sun)",
+      type: "text"
+    },
+    {
+      label: "Focus theme (optional)",
+      desc: "Anchor your week/day with a theme to guide pulls.",
+      key: "theme",
+      ph: "Deep Work + Health + 2 Admin blocks",
+      type: "text"
+    },
+
+    /* POLICIES */
+    {
+      label: "Column set",
+      desc: "Choose your columns. Keep it simple.",
+      key: "columns",
+      ph: "Backlog | Ready/Next | Doing | Blocked | Done",
+      type: "text"
+    },
+    {
+      label: "WIP limits",
+      desc: "Hard caps per column (numbers only). Enforce at least for Doing.",
+      key: "wip_limits",
+      ph: "Ready/Next=5; Doing=2; Blocked=∞; Done=∞",
+      type: "text"
+    },
+    {
+      label: "Definition of Done",
+      desc: "What ‘done-done’ means for you.",
+      key: "def_done",
+      ph: "Output delivered, checked, logged; calendar/task closed; notes filed",
+      type: "textarea"
+    },
+    {
+      label: "Classes of Service (optional)",
+      desc: "How items are treated (policies per class).",
+      key: "classes_of_service",
+      ph: "Standard; Fixed-Date (due: YYYY-MM-DD); Expedite (limit 1, max 2h); Intangible (maintenance)",
+      type: "textarea"
+    },
+    {
+      label: "Pull policy",
+      desc: "Rules for moving work from Backlog → Ready → Doing.",
+      key: "pull_policy",
+      ph: "Pull only when under WIP; prefer small items (≤90 min); respect time-blocks; no ‘just in case’ pulls",
+      type: "textarea"
+    },
+    {
+      label: "Blocked policy",
+      desc: "Rules for handling blocked items.",
+      key: "blocked_policy",
+      ph: "Every blocked card gets: reason, next unblock step, owner, date; review first in daily check",
+      type: "textarea"
+    },
+    {
+      label: "Aging WIP rule",
+      desc: "When does a Doing item need escalation or splitting?",
+      key: "aging_rule",
+      ph: "If >2 days in Doing → split or escalate; if >4 days → drop or redefine",
+      type: "text"
+    },
+    {
+      label: "Cadence",
+      desc: "Your planning and review rhythm.",
+      key: "cadence",
+      ph: "Daily 5-min check at 5:30pm; Weekly retro Fri 4:00–4:15pm",
+      type: "text"
+    },
+
+    /* PRIORITIZATION */
+    {
+      label: "Prioritization criteria",
+      desc: "How you decide what rises to the top.",
+      key: "priority_rules",
+      ph: "Fixed-date > high-impact > low-effort; align to theme; avoid context switching",
+      type: "textarea"
+    },
+    {
+      label: "Energy/Context tags (optional)",
+      desc: "Useful filters when pulling work.",
+      key: "tags",
+      ph: "deep-focus; shallow; errands; calls; home; office; laptop; low-spoons",
+      type: "text"
+    },
+
+    /* BOARD ITEMS */
+    {
+      label: "Backlog",
+      desc: "Longer list; one item per line. Use optional metadata in brackets.",
+      key: "backlog_items",
+      ph: "Write workshop outline [deep-focus, 2h]\nSchedule dentist [calls, deadline: 2025-11-10]\nRenew car reg [errands]\nRefactor script step 2 [dev, 90m]",
+      type: "textarea"
+    },
+    {
+      label: "Ready/Next",
+      desc: "Staging buffer (WIP 3–5).",
+      key: "ready_items",
+      ph: "Prepare slides intro [deep-focus, 90m]\nBook flights to PDX [laptop, 45m]\nInbox zero sweep [shallow, 30m]",
+      type: "textarea"
+    },
+    {
+      label: "Doing (respect WIP cap)",
+      desc: "Items actively in progress right now.",
+      key: "doing_items",
+      ph: "Prepare slides intro [deep-focus, 90m]",
+      type: "textarea"
+    },
+    {
+      label: "Blocked",
+      desc: "Stalled items; include the unblock step.",
+      key: "blocked_items",
+      ph: "Book flights to PDX — waiting for travel dates from Mia → ping Mia @ 3pm",
+      type: "textarea"
+    },
+    {
+      label: "Done",
+      desc: "Finished work (celebrate!).",
+      key: "done_items",
+      ph: "Inbox zero sweep [shallow, 30m]",
+      type: "textarea"
+    },
+
+    /* TODAY & SCHEDULE */
+    {
+      label: "Today’s focus (1–3)",
+      desc: "Pick at most 1–3 outcomes for today.",
+      key: "today_focus",
+      ph: "Finalize slides intro; Book flights; 20-min workout",
+      type: "textarea"
+    },
+    {
+      label: "Time-blocks",
+      desc: "Calendar windows you’ll defend for Doing.",
+      key: "timeblocks",
+      ph: "09:00–10:30 Deep work\n13:00–13:45 Calls/Admin\n16:30–17:00 Review & plan",
+      type: "textarea"
+    },
+
+    /* RETRO */
+    {
+      label: "Daily flow check",
+      desc: "Quick reflection to keep flow healthy.",
+      key: "daily_check",
+      ph: "WIP respected? Any aging WIP? What’s blocked? What to finish before pull?",
+      type: "textarea"
+    },
+    {
+      label: "Weekly retro",
+      desc: "Short look-back to tune policies/WIP.",
+      key: "weekly_retro",
+      ph: "What helped flow? What hurt? Adjust WIP caps? Update policies?",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    board_name, horizon, theme,
+    columns, wip_limits, def_done, classes_of_service, pull_policy, blocked_policy, aging_rule, cadence,
+    priority_rules, tags,
+    backlog_items, ready_items, doing_items, blocked_items, done_items,
+    today_focus, timeblocks,
+    daily_check, weekly_retro,
+    ctx, audience, style, tone
+  }) => {
+    const count = s => (s ? s.split(/\n/).filter(x => x.trim()).length : 0);
+    const doingCount = count(doing_items);
+    const doingCapMatch = /Doing\s*=\s*(\d+)/i.exec(wip_limits || "");
+    const doingCap = doingCapMatch ? parseInt(doingCapMatch[1], 10) : 3;
+    const readyCapMatch = /Ready\/Next\s*=\s*(\d+)/i.exec(wip_limits || "");
+    const readyCap = readyCapMatch ? parseInt(readyCapMatch[1], 10) : 5;
+
+    const warnings = [];
+    if (doingCount > doingCap) warnings.push(`⚠️ Doing over WIP cap (${doingCount}/${doingCap}). Finish or move something out before pulling.`);
+    const readyCount = count(ready_items);
+    if (readyCount > readyCap) warnings.push(`⚠️ Ready/Next buffer too full (${readyCount}/${readyCap}). Trim to reduce thrash.`);
+
+    return [
+      `PERSONAL KANBAN — ${board_name || "My Board"}`,
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      horizon && `Horizon: ${horizon}`,
+      theme && `Focus theme: ${theme}`,
+      "",
+      "Columns:",
+      columns || "Backlog | Ready/Next | Doing | Blocked | Done",
+      `WIP limits: ${wip_limits || "Ready/Next=5; Doing=2; Blocked=∞; Done=∞"}`,
+      "",
+      "Policies:",
+      `• Definition of Done: ${def_done || "Finished, checked, logged"}`,
+      classes_of_service && `• Classes of Service: ${classes_of_service}`,
+      pull_policy && `• Pull policy: ${pull_policy}`,
+      blocked_policy && `• Blocked policy: ${blocked_policy}`,
+      aging_rule && `• Aging WIP rule: ${aging_rule}`,
+      cadence && `• Cadence: ${cadence}`,
+      priority_rules && `• Prioritization: ${priority_rules}`,
+      tags && `• Tags: ${tags}`,
+      "",
+      warnings.length ? warnings.join("\n") : "",
+      warnings.length ? "" : "",
+      "— BOARD —",
+      "Backlog:",
+      backlog_items || "(empty)",
+      "",
+      `Ready/Next (WIP ${readyCap}):`,
+      ready_items || "(empty)",
+      "",
+      `Doing (WIP ${doingCap}):`,
+      doing_items || "(empty)",
+      "",
+      "Blocked:",
+      blocked_items || "(empty)",
+      "",
+      "Done:",
+      done_items || "(empty)",
+      "",
+      "— TODAY —",
+      "Today’s focus (1–3):",
+      today_focus || "(choose up to 3)",
+      "",
+      "Time-blocks:",
+      timeblocks || "(put your focus windows here)",
+      "",
+      "— DAILY FLOW CHECK —",
+      daily_check || "WIP respected? Any aging WIP? What’s blocked? What can I finish before pulling?",
+      "",
+      "— WEEKLY RETRO —",
+      weekly_retro || "What helped flow? What hurt? Adjust WIP caps or policies? What to stop/continue/start?",
+      "",
+      "Checklist:",
+      "- [ ] Doing at or under WIP cap",
+      "- [ ] Blocked items have explicit next unblock steps",
+      "- [ ] Ready/Next trimmed (≤ cap) and truly ready",
+      "- [ ] Today’s focus ≤ 3; time-blocked on calendar",
+      "- [ ] ‘Done-Done’ enforced; celebrate wins"
+    ].filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "personal kanban wip limits backlog ready next doing blocked done pull system visualize work context switching focus throughput classes of service expedite fixed date intangible aging wip time blocking daily review weekly retro definition of done"
+  }
+},
+
+{
+  id: "decision_matrix_weighted",
+  slug: "decision-matrix-weighted-compare-by-criteria",
+  label: "Decision Matrix (Weighted) — Compare by Criteria, Not Vibes",
+  kind: "tool",
+  categories: [
+    "decision-making",
+    "critical-thinking",
+    "planning",
+    "product-management",
+    "operations",
+    "self-management"
+  ],
+  tags: [
+    "type:tool",
+    "use:comparison",
+    "use:prioritization",
+    "use:tradeoffs",
+    "use:evidence",
+    "phase:decide",
+    "phase:plan",
+    "level:beginner"
+  ],
+  use_cases: [
+    "choose among tools, vendors, roles, or project options with clarity",
+    "make a hiring or purchasing decision with explicit trade-offs",
+    "rank travel plans, courses, or design alternatives",
+    "align a group on what matters (criteria + weights) before picking",
+    "stress-test a ‘favorite’ option against shared criteria"
+  ],
+  boosters: [
+    "Separate *what matters* (criteria + weights) from *how options score*. Lock the weights first.",
+    "Use both benefit criteria (higher is better) and cost criteria (lower is better). Name the polarity.",
+    "Keep 3–7 criteria. More than that dilutes focus and invites noise.",
+    "Define the rating scale (e.g., 1–5). Give anchor examples for 1, 3, 5 to reduce rater drift.",
+    "Normalize weights (sum to 100%). If not exact, auto-normalize—just say so.",
+    "Add at least one balancing criterion (e.g., risk, effort, equity impact) to avoid tunnel vision.",
+    "Run a quick sensitivity check: nudge a single weight ±10% and see if the winner changes.",
+    "Record must-haves (hard constraints) *before* scoring so you don’t bend the rules later.",
+    "Invite a devil’s advocate to score independently; compare deltas where you diverge."
+  ],
+  definition: "A weighted decision matrix compares options against shared criteria. Each criterion has a weight that reflects importance and a polarity (benefit: higher is better; cost: lower is better). Options are rated on a defined scale (e.g., 1–5). Ratings are normalized and multiplied by weights to produce a comparable total score.",
+  help: "1) List options. 2) Define 3–7 criteria with weights that sum ~100% and mark each as benefit or cost. 3) Choose a rating scale (min/max) and anchor examples. 4) Rate each option on each criterion. 5) The matrix normalizes scores and applies weights; highest total wins (subject to must-haves). 6) Do a quick sensitivity check and write the decision rule and next steps.",
+
+  fields: [
+    /* CONTEXT */
+    {
+      label: "Decision name",
+      desc: "What are you choosing?",
+      key: "decision_name",
+      ph: "Select a project management tool for a 10-person team",
+      type: "text"
+    },
+    {
+      label: "Purpose & context",
+      desc: "Why decide now? Who’s affected?",
+      key: "context",
+      ph: "We need to standardize for onboarding, reporting, and cross-team visibility before Q1.",
+      type: "textarea"
+    },
+
+    /* OPTIONS & CRITERIA */
+    {
+      label: "Options (one per line)",
+      desc: "List the alternatives you’re comparing.",
+      key: "options",
+      ph: "Tool A\nTool B\nTool C",
+      type: "textarea"
+    },
+    {
+      label: "Criteria with weights & polarity",
+      desc: "Format: Criterion | weight% | benefit|cost",
+      key: "criteria",
+      ph: "Total Cost of Ownership | 30% | cost\nUsability (new users) | 25% | benefit\nIntegrations Coverage | 20% | benefit\nSecurity & Compliance | 15% | benefit\nImplementation Effort | 10% | cost",
+      type: "textarea"
+    },
+    {
+      label: "Rating scale min",
+      desc: "Numeric minimum of the rating scale.",
+      key: "scale_min",
+      ph: "1",
+      type: "text"
+    },
+    {
+      label: "Rating scale max",
+      desc: "Numeric maximum of the rating scale.",
+      key: "scale_max",
+      ph: "5",
+      type: "text"
+    },
+    {
+      label: "Scale anchors (optional)",
+      desc: "Examples so raters calibrate (what’s a 1, 3, 5?).",
+      key: "scale_anchors",
+      ph: "Usability: 1=confusing even after onboarding; 3=learnable; 5=intuitive day-one.\nCost: 1=very expensive; 3=moderate; 5=very low.",
+      type: "textarea"
+    },
+    {
+      label: "Must-haves / disqualifiers (optional)",
+      desc: "Hard constraints (e.g., HIPAA, <$X/month, mobile access).",
+      key: "must_haves",
+      ph: "HIPAA compliance; SSO required; SOC 2 Type II",
+      type: "textarea"
+    },
+
+    /* RATINGS */
+    {
+      label: "Ratings (matrix)",
+      desc: "Format per line: Option | Criterion1=score | Criterion2=score | ...",
+      key: "ratings",
+      ph: "Tool A | Total Cost of Ownership=4 | Usability (new users)=5 | Integrations Coverage=3 | Security & Compliance=5 | Implementation Effort=2\nTool B | Total Cost of Ownership=3 | Usability (new users)=3 | Integrations Coverage=4 | Security & Compliance=4 | Implementation Effort=4\nTool C | Total Cost of Ownership=5 | Usability (new users)=4 | Integrations Coverage=4 | Security & Compliance=3 | Implementation Effort=3",
+      type: "textarea"
+    },
+
+    /* POLICIES & OUTPUTS */
+    {
+      label: "Decision rule",
+      desc: "How will you choose? (e.g., highest total unless must-have violated; tie-breaker = lower cost).",
+      key: "decision_rule",
+      ph: "Pick highest total; if tie within 2%, choose higher Security; else choose lower Cost.",
+      type: "textarea"
+    },
+    {
+      label: "Sensitivity check (optional)",
+      desc: "What weight tweaks will you test?",
+      key: "sensitivity",
+      ph: "Vary Usability ±10% and Cost ±10%. If winner flips, revisit weights.",
+      type: "textarea"
+    },
+    {
+      label: "Notes & assumptions (optional)",
+      desc: "Anything that might bias ratings or weights.",
+      key: "notes",
+      ph: "Security ratings pulled from vendor docs; usability from 5 trial users.",
+      type: "textarea"
+    },
+    {
+      label: "Next steps",
+      desc: "What happens after the decision?",
+      key: "next_steps",
+      ph: "Pilot winner with 3 teams for 2 weeks; negotiate price; finalize by Nov 15.",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    decision_name, context,
+    options, criteria, scale_min, scale_max, scale_anchors, must_haves,
+    ratings, decision_rule, sensitivity, notes, next_steps,
+    ctx, audience, style, tone
+  }) => {
+    // Helpers
+    const lines = s => (s || "").split(/\n/).map(x => x.trim()).filter(Boolean);
+    const num = v => (v == null ? NaN : parseFloat(String(v).replace(/[^\d.\-]/g, "")));
+    const parseCrit = line => {
+      // Expect: Name | weight% | benefit|cost
+      const parts = line.split("|").map(x => x.trim());
+      const name = parts[0] || "";
+      const w = parts[1] != null ? num(parts[1]) : NaN;
+      const type = (parts[2] || "benefit").toLowerCase();
+      return { name, weight: isNaN(w) ? 0 : w, type: /cost/.test(type) ? "cost" : "benefit" };
+    };
+    const crits = lines(criteria).map(parseCrit).filter(c => c.name);
+    const totalW = crits.reduce((s, c) => s + c.weight, 0) || 0;
+    const weightsNote = Math.abs(totalW - 100) > 0.01 ? `⚠️ Weights sum to ${totalW}%. Auto-normalizing to 100%.` : "";
+    const normCrits = crits.map(c => ({...c, w: totalW ? c.weight / totalW : 0}));
+
+    const min = isNaN(num(scale_min)) ? 1 : num(scale_min);
+    const max = isNaN(num(scale_max)) ? 5 : num(scale_max);
+    const span = (max - min) || 1;
+
+    const critIndex = Object.fromEntries(normCrits.map(c => [c.name.toLowerCase(), c]));
+    const optionList = lines(options);
+
+    // Parse ratings: "Option | Crit=score | Crit=score ..."
+    const ratingRows = lines(ratings).map(line => {
+      const parts = line.split("|").map(x => x.trim());
+      const opt = parts.shift() || "";
+      const cells = {};
+      parts.forEach(p => {
+        const [k, v] = p.split("=").map(x => x.trim());
+        if (k) cells[k] = isNaN(num(v)) ? null : num(v);
+      });
+      return { opt, cells };
+    });
+
+    // Compute scores
+    const scoreRows = optionList.map(opt => {
+      const row = ratingRows.find(r => r.opt.toLowerCase() === opt.toLowerCase()) || { cells: {} };
+      let total = 0;
+      const missing = [];
+      const contributions = [];
+
+      normCrits.forEach(c => {
+        let raw = row.cells[c.name] ?? row.cells[Object.keys(row.cells).find(k => k.toLowerCase() === c.name.toLowerCase()) || ""];
+        if (raw == null || isNaN(raw)) { missing.push(c.name); raw = null; }
+        let norm;
+        if (raw == null) {
+          norm = 0; // treat missing as 0 contribution; flagged below
+        } else {
+          const clipped = Math.max(min, Math.min(max, raw));
+          // Normalize to 0..1; invert if cost
+          const z = (clipped - min) / span;
+          norm = (c.type === "cost") ? (1 - z) : z;
+        }
+        const contrib = c.w * norm;
+        total += contrib;
+        contributions.push({ criterion: c.name, weight: c.w, norm, contrib, type: c.type, raw });
+      });
+
+      return { opt, total, contributions, missing };
+    });
+
+    // Sort by total desc
+    scoreRows.sort((a, b) => b.total - a.total);
+
+    const fmtPct = x => `${Math.round(x * 1000) / 10}%`;
+    const fmt = n => (Math.round(n * 1000) / 1000).toFixed(3);
+
+    // Build output
+    const out = [];
+    out.push(`DECISION MATRIX (WEIGHTED) — ${decision_name || "Untitled decision"}`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    context && out.push("", "Purpose & context:", context);
+
+    out.push("", "Options:", optionList.length ? optionList.map(o => `• ${o}`).join("\n") : "(none)");
+
+    out.push("", "Criteria (weights, polarity):");
+    if (normCrits.length) {
+      normCrits.forEach(c => out.push(`• ${c.name} — ${fmtPct(c.w)} — ${c.type}`));
+    } else {
+      out.push("(none)");
+    }
+
+    out.push("", `Scale: ${min}–${max}`);
+    scale_anchors && out.push("Scale anchors:\n" + scale_anchors);
+    must_haves && out.push("Must-haves:\n" + must_haves);
+    weightsNote && out.push("", weightsNote);
+
+    out.push("", "— SCORES —");
+    if (!scoreRows.length) {
+      out.push("(no ratings provided)");
+    } else {
+      scoreRows.forEach((r, i) => {
+        out.push(`${i === 0 ? "⭐ " : ""}${r.opt} — Total: ${fmtPct(r.total)}${r.missing.length ? `  (missing: ${r.missing.join(", ")})` : ""}`);
+        r.contributions.forEach(c => {
+          out.push(`   · ${c.criterion}: w=${fmtPct(c.weight)}, ${c.type}, rating=${c.raw ?? "—"} ⇒ contrib=${fmtPct(c.contrib)}`);
+        });
+      });
+    }
+
+    decision_rule && out.push("", "Decision rule:", decision_rule);
+    sensitivity && out.push("Sensitivity check:", sensitivity);
+    notes && out.push("Notes & assumptions:", notes);
+    next_steps && out.push("Next steps:", next_steps);
+
+    out.push(
+      "",
+      "Checklist:",
+      "- [ ] Criteria (3–7) defined with polarity and weights",
+      "- [ ] Weights sum ~100% (auto-normalized if not)",
+      "- [ ] Scale min/max and anchors set",
+      "- [ ] Must-haves recorded before scoring",
+      "- [ ] Ratings complete for each option × criterion",
+      "- [ ] Sensitivity check documented",
+      "- [ ] Decision rule applied and next steps assigned"
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "decision matrix weighted compare options criteria weights benefit cost normalization scale anchors sensitivity analysis multi criteria decision making mcdm tradeoffs"
+  }
+},
+
+{
+  id: "checklists_gawande",
+  slug: "checklists-gawande-zero-brain-power",
+  label: "Checklists (Gawande-style) — Turn Recurring Tasks into Zero-Brain-Power Steps",
+  kind: "tool",
+  categories: [
+    "operations",
+    "quality",
+    "safety",
+    "project-management",
+    "self-management",
+    "education-training"
+  ],
+  tags: [
+    "type:tool",
+    "use:checklist",
+    "use:standardization",
+    "use:handoffs",
+    "use:safety",
+    "use:quality",
+    "use:communication",
+    "phase:plan",
+    "phase:apply",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "standardize recurring procedures so they’re done the same safe way every time",
+    "compress complex work into a short list of the critical few steps",
+    "make team coordination explicit (names, roles, call-and-response checks)",
+    "reduce errors under time pressure or distraction",
+    "onboard new teammates fast with a single, printable source of truth",
+    "create personal daily/weekly checklists that actually get used"
+  ],
+  boosters: [
+    "Choose the checklist type first: **Do-Confirm** (do work from memory, then confirm) or **Read-Do** (read each step, then do it). Hybrid is fine.",
+    "Place the checklist at a **pause point** (e.g., before/during/after a critical phase).",
+    "Limit to the **critical few** (5–9 items per section). If it doesn’t prevent a common failure, cut it.",
+    "Use **plain, imperative verbs** (“Verify ID,” “Start timer,” “Label sample”). Avoid paragraphs.",
+    "Mark **killer items** (the truly can’t-miss steps). Use a clear marker like `!` or `★`.",
+    "Add **call-and-response** for high-risk steps (reader calls item; doer confirms aloud).",
+    "Timebox to **≤60–90 seconds** per section. If longer, split into another pause point.",
+    "Make it **single-page, high-contrast, ≥12–14pt**, big checkboxes, and enough white space.",
+    "Include a **team brief** line (names/roles/concerns) when coordination matters.",
+    "Test with a quick **table-top simulation**; revise ruthlessly; version and review on a cadence."
+  ],
+  definition: "A Gawande-style checklist is a short, plain-language list of the critical steps placed at a pause point. It is designed to be read and used in real time—either as Do-Confirm (work first, then confirm) or Read-Do (read an item, then do it). It focuses on preventing frequent, serious, or easy-to-miss failures and making teamwork explicit.",
+  help: "1) Define the pause point and checklist type. 2) Draft the critical few items in imperative verbs; mark killer items with `!` or `★`. 3) Add call-and-response for high-risk steps. 4) Keep ≤9 items per section; split if needed. 5) Simulate, trim, and format for one page. 6) Version it, set review dates, and track adoption.",
+  
+  fields: [
+    /* CONTEXT & GOVERNANCE */
+    {
+      label: "Checklist name",
+      desc: "Short title that will appear at the top.",
+      key: "name",
+      ph: "Medication Refill Safety Check",
+      type: "text"
+    },
+    {
+      label: "Purpose",
+      desc: "What failure are we preventing? What success looks like.",
+      key: "purpose",
+      ph: "Prevent look-alike/sound-alike medication errors; ensure correct patient, drug, dose, route, time.",
+      type: "textarea"
+    },
+    {
+      label: "Owner",
+      desc: "Role or person who maintains this checklist.",
+      key: "owner",
+      ph: "Clinical Ops Lead",
+      type: "text"
+    },
+    {
+      label: "Version",
+      desc: "Semantic version and effective date.",
+      key: "version",
+      ph: "v1.3 — 2025-10-01",
+      type: "text"
+    },
+    {
+      label: "Review cadence",
+      desc: "When this checklist is revisited.",
+      key: "review_cadence",
+      ph: "Quarterly (Jan/Apr/Jul/Oct)",
+      type: "text"
+    },
+    {
+      label: "Where it lives",
+      desc: "Link or location (folder, wall, app).",
+      key: "location",
+      ph: "Clinic Ops Wiki → /Checklists/Med-Safety or laminated card by Station 2",
+      type: "text"
+    },
+
+    /* DESIGN CHOICES */
+    {
+      label: "Checklist type",
+      desc: "Choose how it’s used in real time.",
+      key: "type",
+      type: "select",
+      options: ["Do-Confirm", "Read-Do", "Hybrid"],
+      ph: "Read-Do"
+    },
+    {
+      label: "Pause point(s) / triggers",
+      desc: "When to run this checklist (before/during/after).",
+      key: "pause_points",
+      ph: "Before dispensing; after order entry but before printing label.",
+      type: "textarea"
+    },
+    {
+      label: "Time budget",
+      desc: "Target time to complete each section.",
+      key: "time_budget",
+      ph: "≤60s per section",
+      type: "text"
+    },
+    {
+      label: "Medium & format",
+      desc: "Paper, wall poster, mobile, EHR panel; font size, contrast.",
+      key: "format",
+      ph: "Laminated A4, ≥14pt, high-contrast, big checkboxes; QR to digital.",
+      type: "textarea"
+    },
+    {
+      label: "Language guidelines",
+      desc: "Tone and phrasing rules.",
+      key: "language",
+      ph: "Imperative verbs; one line per item; no acronyms without expansion.",
+      type: "textarea"
+    },
+    {
+      label: "Accessibility & localization (optional)",
+      desc: "Translations, symbols, screen-reader labels.",
+      key: "a11y",
+      ph: "Spanish version; icons for each step; aria-labels in app view.",
+      type: "textarea"
+    },
+    {
+      label: "Killer item marker",
+      desc: "Symbol used to flag critical steps.",
+      key: "killer_marker",
+      ph: "!",
+      type: "text"
+    },
+
+    /* TEAM BRIEF / ROLES */
+    {
+      label: "Team brief (names, roles, concerns)",
+      desc: "One-line ‘time-out’ to align the team.",
+      key: "team_brief",
+      ph: "Reader: Mia; Doer: Jordan; Supervisor: Chen — concern: new labeler firmware.",
+      type: "textarea"
+    },
+
+    /* PREREQUISITES */
+    {
+      label: "Prerequisites",
+      desc: "What must be true before starting.",
+      key: "prereqs",
+      ph: "Order signed; allergies recorded; scanner online.",
+      type: "textarea"
+    },
+    {
+      label: "Materials / tools",
+      desc: "Supplies or data needed.",
+      key: "materials",
+      ph: "Prescription, patient ID, barcode scanner, label stock.",
+      type: "textarea"
+    },
+
+    /* CHECKLIST SECTIONS (BEFORE / DURING / AFTER) */
+    {
+      label: "BEFORE (items, one per line)",
+      desc: "Use imperative verbs. Mark killer items with your marker (e.g., !).",
+      key: "before_items",
+      ph: "! Confirm patient full name & DOB against ID\nVerify drug name and strength\nCheck allergies and interactions\nMatch dosage form with prescription\nInitials of preparer and verifier",
+      type: "textarea"
+    },
+    {
+      label: "DURING (items, one per line)",
+      desc: "Steps performed during execution.",
+      key: "during_items",
+      ph: "Scan NDC and verify match\nPrepare dose using calibrated device\nLabel with patient name, drug, strength, route, frequency\n! Independent double-check by verifier",
+      type: "textarea"
+    },
+    {
+      label: "AFTER (items, one per line)",
+      desc: "Close-out steps and handoff.",
+      key: "after_items",
+      ph: "Provide clear instructions in plain language\nConfirm patient understanding (teach-back)\nDocument lot number and expiration\n! Record completion; note any deviations",
+      type: "textarea"
+    },
+
+    /* COMMUNICATION */
+    {
+      label: "Call-and-response lines (optional)",
+      desc: "Short verbal checks for high-risk items.",
+      key: "calls",
+      ph: "Reader: “Patient name?” — Doer: “Ava Martinez, 03-14-1988.”\nReader: “Allergies?” — Doer: “NKDA confirmed.”",
+      type: "textarea"
+    },
+
+    /* CONTINGENCIES & ESCALATION */
+    {
+      label: "If something doesn’t check out…",
+      desc: "Stop-the-line rule, escalation, and contingency steps.",
+      key: "escalation",
+      ph: "Any member may stop; place order on hold; notify supervisor; open incident ticket; resume only after correction.",
+      type: "textarea"
+    },
+
+    /* TESTING & METRICS */
+    {
+      label: "Simulation / pilot notes",
+      desc: "What changed after testing this checklist?",
+      key: "pilot",
+      ph: "Reduced steps from 18→12; added teach-back; clarified allergy check.",
+      type: "textarea"
+    },
+    {
+      label: "Adoption metrics",
+      desc: "How you’ll track usage/compliance.",
+      key: "adoption",
+      ph: "% encounters with completed checklist; audit weekly; goal ≥90%.",
+      type: "textarea"
+    },
+    {
+      label: "Outcome/quality metrics",
+      desc: "Leading/lagging indicators to watch.",
+      key: "metrics",
+      ph: "Labeling error rate; rework; time-to-dispense; patient understanding score.",
+      type: "textarea"
+    },
+
+    /* CHANGE LOG */
+    {
+      label: "Change log",
+      desc: "Date, change, author.",
+      key: "changelog",
+      ph: "2025-10-01: Added independent double-check (Chen)\n2025-12-05: Simplified label step wording (Mia)",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    name, purpose, owner, version, review_cadence, location,
+    type, pause_points, time_budget, format, language, a11y, killer_marker,
+    team_brief, prereqs, materials,
+    before_items, during_items, after_items,
+    calls, escalation, pilot, adoption, metrics, changelog,
+    ctx, audience, style, tone
+  }) => {
+    const lines = s => (s || "").split(/\n/).map(x => x.trim()).filter(Boolean);
+    const count = s => lines(s).length;
+    const kmark = (killer_marker || "!").trim();
+    const extractKiller = items =>
+      lines(items).filter(l => l.startsWith(kmark) || l.startsWith("★") || /\[!\]/.test(l))
+                  .map(l => l.replace(/^\s*(?:\Q${kmark}\E|★|\[!\])\s*/.replace("${kmark}", kmark), "").trim());
+
+    const b = lines(before_items);
+    const d = lines(during_items);
+    const a = lines(after_items);
+
+    const killer = [
+      ...extractKiller(before_items),
+      ...extractKiller(during_items),
+      ...extractKiller(after_items)
+    ];
+
+    const tooMany = (count(before_items) > 9) || (count(during_items) > 9) || (count(after_items) > 9);
+    const totalItems = count(before_items) + count(during_items) + count(after_items);
+
+    const out = [];
+    out.push(`CHECKLIST — ${name || "Untitled"} (${type || "Read-Do"})`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    version && out.push(`Version: ${version}`);
+    owner && out.push(`Owner: ${owner}`);
+    review_cadence && out.push(`Review cadence: ${review_cadence}`);
+    location && out.push(`Location: ${location}`);
+
+    out.push("", "Purpose:", purpose || "(state the failure you’re preventing and the success condition)");
+    pause_points && out.push("Pause point(s) / triggers:", pause_points);
+    time_budget && out.push(`Time budget: ${time_budget}`);
+    format && out.push("Medium & format:", format);
+    language && out.push("Language rules:", language);
+    a11y && out.push("Accessibility/localization:", a11y);
+
+    if (tooMany) {
+      out.push(
+        "",
+        `⚠️ Tip: Keep sections to 5–9 items. You currently have ${totalItems} total items. Consider splitting or trimming.`
+      );
+    }
+
+    team_brief && out.push("", "Team brief (names, roles, concerns):", team_brief);
+    prereqs && out.push("", "Prerequisites:", prereqs);
+    materials && out.push("Materials / tools:", materials);
+
+    const renderSection = (title, items) => {
+      out.push("", `— ${title} —`);
+      if (!items.length) { out.push("(none)"); return; }
+      items.forEach(l => {
+        const isK = l.startsWith(kmark) || l.startsWith("★") || /\[!\]/.test(l);
+        const text = l.replace(new RegExp(`^\\s*(?:${kmark.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}|★|\\[!\\])\\s*`), "");
+        out.push(`${isK ? "☑︎" : "□"} ${text}`);
+      });
+    };
+
+    renderSection("BEFORE", b);
+    renderSection("DURING", d);
+    renderSection("AFTER", a);
+
+    calls && out.push("", "Call-and-response:", calls);
+    escalation && out.push("", "If something doesn’t check out…", escalation);
+
+    if (killer.length) {
+      out.push("", "Killer items spotlight (must not be missed):");
+      killer.forEach(k => out.push(`• ${k}`));
+    }
+
+    pilot && out.push("", "Simulation / pilot notes:", pilot);
+    adoption && out.push("Adoption metrics:", adoption);
+    metrics && out.push("Outcome/quality metrics:", metrics);
+
+    changelog && out.push("", "Change log:", changelog);
+
+    out.push(
+      "",
+      "Formatting checklist:",
+      "• Single page; high-contrast; ≥12–14pt; generous spacing; big checkboxes.",
+      `• Mark killer items with “${kmark}” or “★”; keep 5–9 per section; split if longer.`,
+      "• Place at the pause point; build the habit of reading it aloud when stakes are high."
+    );
+
+    out.push(
+      "",
+      "Checklist self-audit:",
+      "- [ ] Clear pause point and checklist type",
+      "- [ ] Critical few steps only; plain language; imperative verbs",
+      "- [ ] Killer items flagged; call-and-response added where risk is high",
+      "- [ ] Simulation done; issues fixed; version & review date set",
+      "- [ ] Adoption & outcome metrics defined and tracked"
+    );
+
+    return out.join("\n");
+  },
+
+  meta: {
+    search_text: "checklist gawande do-confirm read-do pause point killer items call-and-response plain language single page safety quality standard work simulation adoption metrics version review cadence"
+  }
+},
+
+{
+  id: "sbar_health_dx",
+  slug: "sbar-health-provisional-differential-working-diagnoses",
+  label: "SBAR for Health — Situation · Background · Assessment · Recommendation (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "decision-making",
+    "psychology"
+  ],
+  tags: [
+    "type:tool",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:triage-call",
+    "use:notes",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "level:beginner"
+  ],
+  use_cases: [
+    "prepare for a doctor’s visit, urgent care, or nurse triage call",
+    "summarize your story clearly so clinicians can act fast",
+    "organize symptoms, timing, and day-to-day impact",
+    "capture your best-guess (provisional) and alternatives (differential)",
+    "set clear goals for today’s visit and next steps"
+  ],
+  // Boosters: heavy clinical/technical language by request (for facilitators/clinicians reading instructions)
+  boosters: [
+    "Construct a concise **problem representation** using **semantic qualifiers** (acute vs. subacute vs. chronic; focal vs. diffuse; intermittent vs. persistent; progressive vs. static).",
+    "In the Assessment, draft a **provisional diagnosis** and a **tiered differential diagnosis (DDx)** using **base rates (pretest probability)** and, when relevant, **likelihood ratios** from key historical or exam findings.",
+    "Include **working diagnosis** only after integrating HPI, exam summaries, salient positives/negatives, and any available POCT/labs; make explicit **safety-net** and **return precautions**.",
+    "Perform an explicit **cognitive forcing strategy** review: screen for **anchoring**, **premature closure**, **confirmation bias**, **availability bias**, and **base-rate neglect**.",
+    "Use standardized structure for history: **HPI** (onset, chronology, modifiers), **ROS** (targeted positives/negatives), **PMH/PSH**, **FH**, **SH** (tobacco, alcohol, substances; housing; occupational), **Meds/All** (reconcile doses/PRN/OTC/supplements).",
+    "Quantify severity (e.g., **VAS/NRS pain scales**), and include **functional status** (ADLs/IADLs), **psychological state** (mood, anxiety, sleep), and **risk factors** (e.g., VTE, metabolic, obstetric).",
+    "When appropriate, reference **validated clinical decision rules** (e.g., Wells, PERC, Ottawa, Centor/McIsaac) and identify what data is missing to apply them.",
+    "Formulate **Recommendations** as **shared decision-making** options with **benefit–harm tradeoffs**, **test thresholds**, **treatment thresholds**, and contingency plans.",
+    "For mental health concerns, add a **brief cognitive/affective appraisal** (triggers, appraisals, behaviors, safety) and screen signal (e.g., PHQ-2/9 items requested) without self-diagnosing.",
+    "Document **red flags** explicitly (e.g., rapidly progressive neuro deficit, chest pain with hemodynamic compromise), but avoid self-management beyond basic safety instructions; defer to clinician judgment."
+  ],
+  definition: "SBAR is a structured handoff and communication tool (Situation, Background, Assessment, Recommendation) used by clinicians to transmit critical information quickly. In this version, you’ll also record a provisional diagnosis, a differential diagnosis (alternative explanations), and a working diagnosis (the current best explanation to test). The aim is a clear, brief message for your clinician—no jargon required from you, just the facts in order—while the generated output uses clinical language suitable for MD/DO teams.",
+  help: "Use this before calling or visiting your clinician. Fill in plain language—what’s happening now, what led up to it, your notes, and what you hope to get today. The output will format a professional SBAR-style summary with added provisional/differential/working diagnoses for clinical clarity. This is not medical advice; in an emergency, call local emergency services.",
+
+  fields: [
+    /* SAFETY & CONTEXT (LAYPERSON-FRIENDLY) */
+    {
+      label: "Why you’re reaching out (now)",
+      desc: "What’s going on right now that made you seek help?",
+      key: "situation_now",
+      ph: "Strong chest tightness started an hour ago while resting; feels worse when I walk.",
+      type: "textarea"
+    },
+    {
+      label: "When it started and how it changed",
+      desc: "First day/time you noticed anything; has it gotten better, worse, or moved?",
+      key: "timeline_course",
+      ph: "Began yesterday evening; got worse overnight; now steady and more intense.",
+      type: "textarea"
+    },
+    {
+      label: "Important background",
+      desc: "Known conditions, recent illnesses or injuries, travel, surgeries, pregnancy, exposures.",
+      key: "background_story",
+      ph: "Asthma since childhood; COVID last month; started a new workout; no recent travel.",
+      type: "textarea"
+    },
+    {
+      label: "Medicines & supplements",
+      desc: "All current meds with doses and when you take them, plus vitamins or herbs.",
+      key: "meds_all",
+      ph: "Albuterol inhaler (2 puffs PRN), Lisinopril 10 mg daily, vitamin D 1000 IU daily.",
+      type: "textarea"
+    },
+    {
+      label: "Allergies or bad reactions",
+      desc: "Drugs, foods, or other allergies and what happens.",
+      key: "allergies",
+      ph: "Penicillin — hives and swelling.",
+      type: "text"
+    },
+    {
+      label: "Measurements you have",
+      desc: "Any numbers you can share (temp, blood pressure, heart rate, oxygen, blood sugar, weight).",
+      key: "vitals_self",
+      ph: "Temp 100.6°F, HR 110, home BP 148/92 at 8:10am.",
+      type: "textarea"
+    },
+    {
+      label: "Body location & feel",
+      desc: "Where in your body and what it feels like (sharp, dull, burning), what makes it better/worse.",
+      key: "location_quality_modifiers",
+      ph: "Left side of chest; pressure-like; worse when climbing stairs; better when sitting still.",
+      type: "textarea"
+    },
+    {
+      label: "Other signs or symptoms",
+      desc: "Anything else you noticed (breathing, fever, tummy issues, mood, sleep, rash, etc.).",
+      key: "other_symptoms",
+      ph: "Short of breath; mild cough; felt lightheaded once; no rash.",
+      type: "textarea"
+    },
+    {
+      label: "Daily life impact",
+      desc: "How this affects your day (work, school, parenting, walking, sleeping).",
+      key: "function_impact",
+      ph: "Missed work; can’t walk more than a block without stopping.",
+      type: "textarea"
+    },
+    {
+      label: "Things you already tried",
+      desc: "Rest, fluids, over-the-counter meds, home treatments, etc., and what happened.",
+      key: "self_care_attempts",
+      ph: "Took ibuprofen 400 mg once; helped for 2 hours.",
+      type: "textarea"
+    },
+    {
+      label: "Worry points or red flags you noticed",
+      desc: "Anything that scared you or changed suddenly.",
+      key: "red_flags_user",
+      ph: "One brief fainting spell; pain spread to left arm once.",
+      type: "textarea"
+    },
+
+    /* PROVISIONAL / DIFFERENTIAL / WORKING — USER-FACING IN PLAIN LANGUAGE */
+    {
+      label: "What you think it might be (your best guess)",
+      desc: "It’s okay to be unsure—use normal words.",
+      key: "provisional_plain",
+      ph: "Could be anxiety or maybe something with my heart.",
+      type: "textarea"
+    },
+    {
+      label: "Other possibilities you want checked",
+      desc: "List a few other ideas to rule in/out.",
+      key: "differential_plain",
+      ph: "Heartburn, asthma flare, pulled muscle.",
+      type: "textarea"
+    },
+    {
+      label: "What you want to happen today",
+      desc: "Tests, advice, treatment ideas, or just a plan.",
+      key: "visit_goals",
+      ph: "Make sure it’s not my heart; get advice on what to do next.",
+      type: "textarea"
+    },
+    {
+      label: "Top 3 questions to ask",
+      desc: "What answers do you need most?",
+      key: "ask_me_three",
+      ph: "What’s the main problem? What do I need to do? Why is it important?",
+      type: "textarea"
+    },
+    {
+      label: "Anything about mood, stress, or safety",
+      desc: "Stress, panic feelings, low mood, thoughts of harm, or safety concerns.",
+      key: "psych_context",
+      ph: "High stress at work; sleeping 4–5 hours; no thoughts of self-harm.",
+      type: "textarea"
+    },
+
+    /* CLINICIAN-FACING ADD-ONS WILL BE AUTO-FORMATTED IN OUTPUT */
+    {
+      label: "Preferred contact and access needs",
+      desc: "Best phone, hearing/vision needs, interpreter, caregiver contact.",
+      key: "access_needs",
+      ph: "Phone 555-123-4567; Spanish interpreter; bring caregiver Ana.",
+      type: "textarea"
+    },
+
+    /* APPOINTMENT & SAFETY */
+    {
+      label: "Urgent safety plan (if told by clinic)",
+      desc: "Any instructions you were given about when to call or go in.",
+      key: "safety_plan",
+      ph: "If chest pain lasts >5 min at rest, call 911.",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    situation_now, timeline_course, background_story, meds_all, allergies,
+    vitals_self, location_quality_modifiers, other_symptoms, function_impact,
+    self_care_attempts, red_flags_user,
+    provisional_plain, differential_plain, visit_goals, ask_me_three, psych_context,
+    access_needs, safety_plan,
+    ctx, audience, style, tone
+  }) => {
+    // Helper formatters
+    const sec = (title, body) => body ? `${title}\n${body}` : "";
+    const nl = s => (s || "").trim();
+    const hasRed = nl(red_flags_user).length > 0;
+
+    const out = [];
+
+    out.push(`SBAR HEALTH SUMMARY — for Clinician Use`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+
+    // S — Situation
+    out.push(
+      "",
+      "S — Situation (concise chief concern / current status):",
+      nl(situation_now) || "(no current concern provided)"
+    );
+
+    // B — Background
+    out.push(
+      "",
+      "B — Background (salient history):",
+      sec("• Onset / course:", nl(timeline_course)),
+      sec("• Relevant history:", nl(background_story)),
+      sec("• Medications / supplements:", nl(meds_all)),
+      sec("• Allergies:", nl(allergies)),
+      sec("• Home measurements:", nl(vitals_self))
+    );
+
+    // A — Assessment (problem representation + candidate diagnoses)
+    // Build a clinician-facing problem representation using technical language.
+    const problemRep = [
+      nl(location_quality_modifiers) && `Anatomic locus/quality/modifiers: ${nl(location_quality_modifiers)}`,
+      nl(other_symptoms) && `Associated symptoms: ${nl(other_symptoms)}`,
+      nl(function_impact) && `Functional impairment: ${nl(function_impact)}`,
+      nl(self_care_attempts) && `Prior self-directed therapeutics and response: ${nl(self_care_attempts)}`,
+      nl(psych_context) && `Psychological context/safety: ${nl(psych_context)}`
+    ].filter(Boolean).join("\n");
+
+    // Translate layperson Dx lines into labels for clinicians
+    const provDx = nl(provisional_plain) ? `Provisional diagnosis (patient-stated hypothesis): ${nl(provisional_plain)}` : "";
+    const ddx = nl(differential_plain) ? `Differential considerations (to be ruled in/out): ${nl(differential_plain)}` : "";
+
+    out.push(
+      "",
+      "A — Assessment (problem representation; provisional/differential/working constructs):",
+      problemRep || "(salient positives/negatives not provided)",
+      provDx,
+      ddx,
+      "Working diagnosis: (to be established after clinical evaluation; pending exam/studies).",
+      hasRed ? "Noted red-flag signals reported by patient; clinician to assess emergent risk." : ""
+    );
+
+    // R — Recommendation (asks / plan / safety-net)
+    out.push(
+      "",
+      "R — Recommendation (asks, investigations, management preferences, safety-net):",
+      sec("• Patient goals for today:", nl(visit_goals)),
+      sec("• Priority questions:", nl(ask_me_three)),
+      sec("• Access/communication needs:", nl(access_needs)),
+      sec("• Pre-existing safety plan:", nl(safety_plan)),
+      "• Propose shared decision-making re: diagnostic testing vs. watchful waiting, with return precautions."
+    );
+
+    // Clinician-facing closing
+    out.push(
+      "",
+      "Clinician Notes (MD/DO-facing):",
+      "• Consider generating a succinct problem representation using semantic qualifiers; estimate pretest probability.",
+      "• If applicable, apply relevant decision aids (e.g., Wells, Centor) and document risk stratification.",
+      "• Reconcile medications/allergies; confirm functional status; document safety-net and return precautions.",
+      "• Convert provisional and differential into a working diagnosis with a test/treat threshold rationale."
+    );
+
+    // Patient safety reminder
+    out.push(
+      "",
+      "Important:",
+      "This summary is for communication only and is not medical advice. If symptoms are severe, worsening, or feel like an emergency, call your local emergency number immediately."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "SBAR situation background assessment recommendation provisional diagnosis differential diagnosis working diagnosis problem representation semantic qualifiers cognitive bias safety net shared decision making MD DO psychology psychiatry triage communication"
+  }
+},
+
+{
+  id: "soap_health_dx",
+  slug: "soap-diary-provisional-differential-working-dx",
+  label: "SOAP Diary — Subjective · Objective · Assessment · Plan (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "psychology",
+    "notes"
+  ],
+  tags: [
+    "type:tool",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:tracking",
+    "use:notes",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "level:beginner"
+  ],
+  use_cases: [
+    "track symptoms, timing, and day-to-day impact between visits",
+    "prepare a clear summary for a doctor, urgent care, or nurse line",
+    "capture your best-guess and alternatives to discuss (not to self-diagnose)",
+    "organize numbers (temperature, blood pressure, sugar, weight, oxygen, pain) in one place",
+    "write down questions, next steps, and safety reminders"
+  ],
+  // Heavy clinical/MD/DO/psych terminology in boosters & output by request
+  boosters: [
+    "Generate a compact **problem representation** using **semantic qualifiers** (acute/subacute/chronic; intermittent/persistent; progressive/static; focal/diffuse; pleuritic/pressure-like) with **illness script** cues.",
+    "Construct a **provisional diagnosis** and a **prioritized differential diagnosis (DDx)** using **pretest probability**, **Bayesian updating**, and (where applicable) **likelihood ratios** from historical and exam findings.",
+    "Select a **working diagnosis** only after integrating **HPI**, **salient positives/negatives**, any **POCT**/**labs**, and functional status; articulate **test thresholds** vs **treatment thresholds** and specify **safety-net**/**return precautions**.",
+    "Perform a **cognitive forcing strategy** review for **anchoring**, **premature closure**, **confirmation bias**, **availability bias**, **base-rate neglect**, and **commission bias**.",
+    "For psych/behavioral health entries, add a brief **cognitive/affective appraisal** (automatic thoughts, core beliefs, behavioral responses); optionally include **PHQ-9/GAD-7** signal requests, **C-SSRS** flags if safety concerns arise, and **DSM-5 cross-cutting** symptom items as prompts.",
+    "Use standardized structure: **HPI**, targeted **ROS**, **PMH/PSH**, **FH**, **SH** (tobacco/alcohol/substances; housing; intimate partner safety; occupation), **Meds/All** (reconcile dose/route/frequency; PRN; OTC; supplements).",
+    "Consider validated decision tools when applicable (e.g., **Wells/PERC** for VTE, **Centor/McIsaac** for pharyngitis, **Ottawa** rules for minor trauma); document when data are insufficient to apply a rule.",
+    "Quantify severity with **NRS/VAS** scales; include **ADLs/IADLs** impact and **performance status**; document **red flags** (e.g., neurologic deficits, hemodynamic instability, GI bleed signs).",
+    "When uncertainty is high, explicitly record **diagnostic momentum** risks and plan **time-dependent re-evaluation** (watchful waiting vs escalation) with **shared decision-making**."
+  ],
+  definition: "A SOAP note is a structured way to track health information: Subjective (your story), Objective (numbers and observations), Assessment (the best explanation and alternatives), and Plan (what to do next). This version adds clinician-grade structure—provisional diagnosis, differential diagnosis, and working diagnosis—using technical concepts (problem representation, semantic qualifiers, Bayesian reasoning) while keeping your data entry simple and plain-language.",
+  help: "Fill this out in your own words. Keep it short and honest. Bring or send the generated summary to your clinician. This helps them act faster and safer. This is not medical advice—if you think you’re in danger, call your local emergency number.",
+  
+  fields: [
+    /* HEADER */
+    {
+      label: "Entry date & time",
+      desc: "When you’re writing this.",
+      key: "entry_dt",
+      ph: "2025-09-25 08:15",
+      type: "text"
+    },
+    {
+      label: "Why you’re writing today (main concern)",
+      desc: "Say what’s bothering you right now in simple words.",
+      key: "chief_concern",
+      ph: "Crushing chest pressure and shortness of breath started this morning.",
+      type: "textarea"
+    },
+
+    /* SUBJECTIVE (your story in plain language) */
+    {
+      label: "When it started & how it changed",
+      desc: "First noticed, what happened since, getting better or worse.",
+      key: "onset_course",
+      ph: "Began last night, on and off; worse this morning; steady for 45 minutes.",
+      type: "textarea"
+    },
+    {
+      label: "Where & what it feels like",
+      desc: "Body spot and feeling (sharp, dull, burning, heavy).",
+      key: "location_quality",
+      ph: "Center of chest; heavy squeezing; moves to left shoulder sometimes.",
+      type: "textarea"
+    },
+    {
+      label: "What makes it better or worse",
+      desc: "Positions, activity, food, stress, breathing, meds.",
+      key: "modifiers",
+      ph: "Worse with stairs and deep breaths; better when sitting still.",
+      type: "textarea"
+    },
+    {
+      label: "Other things you noticed",
+      desc: "Fever, cough, tummy issues, pee/poop changes, headache, rash, mood, sleep.",
+      key: "associated_symptoms",
+      ph: "Mild cough, sweaty, a little lightheaded; no rash, no vomiting.",
+      type: "textarea"
+    },
+    {
+      label: "Daily life impact",
+      desc: "Work, school, walking, caring for others, sleep.",
+      key: "functional_status",
+      ph: "Had to stop climbing stairs; missed morning meeting.",
+      type: "textarea"
+    },
+    {
+      label: "Things you tried",
+      desc: "Rest, fluids, over-the-counter, home steps—did they help?",
+      key: "self_care",
+      ph: "Took ibuprofen 400 mg—helped a little for an hour.",
+      type: "textarea"
+    },
+    {
+      label: "Past times this happened",
+      desc: "If this feels familiar, say when and what helped.",
+      key: "prior_episodes",
+      ph: "Similar but milder 2 months ago; went away with rest.",
+      type: "textarea"
+    },
+    {
+      label: "Stress, mood, thoughts, safety",
+      desc: "Stress at home/work, panic feelings, low mood, thoughts of harm.",
+      key: "psych_social",
+      ph: "Very stressed at work; slept 4–5 hours; no thoughts of harming myself or others.",
+      type: "textarea"
+    },
+
+    /* OBJECTIVE (numbers & observations you can share) */
+    {
+      label: "Home measurements",
+      desc: "Numbers you have (temp, blood pressure, heart rate, oxygen, sugar, weight).",
+      key: "vitals",
+      ph: "Temp 100.6°F; HR 110; BP 148/92 at 08:10; SpO₂ 95% on room air.",
+      type: "textarea"
+    },
+    {
+      label: "What you can see",
+      desc: "Color, swelling, rashes, wounds, breathing effort, speech.",
+      key: "observations",
+      ph: "Breathing looks faster; a bit pale and sweaty.",
+      type: "textarea"
+    },
+    {
+      label: "Meds & supplements taken today",
+      desc: "Names, doses, and times.",
+      key: "meds_taken",
+      ph: "Albuterol 2 puffs at 7:50; aspirin 325 mg at 8:05.",
+      type: "textarea"
+    },
+    {
+      label: "Allergies / bad reactions",
+      desc: "Drugs, foods, and what happens.",
+      key: "allergies",
+      ph: "Penicillin — hives and swelling.",
+      type: "text"
+    },
+    {
+      label: "Ongoing meds & doses (full list)",
+      desc: "Daily meds, ‘as needed’ meds, vitamins, herbs.",
+      key: "meds_list",
+      ph: "Lisinopril 10 mg daily; Metformin 500 mg twice daily; Vitamin D 1000 IU daily.",
+      type: "textarea"
+    },
+    {
+      label: "Your health background (short)",
+      desc: "Big conditions, surgeries, pregnancies, family history, smoking/drinking/drugs.",
+      key: "hx_brief",
+      ph: "High blood pressure, borderline diabetes; dad had a heart attack at 52; no smoking.",
+      type: "textarea"
+    },
+
+    /* ASSESSMENT (your plain-language ideas & questions) */
+    {
+      label: "Your best guess (it might be…)",
+      desc: "It’s okay to be unsure—use normal words.",
+      key: "provisional_plain",
+      ph: "Heartburn or anxiety; worried it could be my heart.",
+      type: "textarea"
+    },
+    {
+      label: "Other ideas to check (rule in/out)",
+      desc: "List a few possibilities.",
+      key: "differential_plain",
+      ph: "Asthma flare, muscle strain, pneumonia.",
+      type: "textarea"
+    },
+    {
+      label: "What worries you most",
+      desc: "Anything you fear or red flags you noticed.",
+      key: "worries",
+      ph: "Pain spread to left arm once; brief lightheadedness.",
+      type: "textarea"
+    },
+    {
+      label: "Top questions for the clinician",
+      desc: "What do you want answered today?",
+      key: "questions",
+      ph: "Is this from my heart? What should I do next? When should I go to the ER?",
+      type: "textarea"
+    },
+
+    /* PLAN (what you want to do/ask next) */
+    {
+      label: "What you want from today’s visit",
+      desc: "Tests, advice, treatment ideas, or a follow-up plan.",
+      key: "visit_goals",
+      ph: "Check heart causes; advice for pain and breathing; plan for this week.",
+      type: "textarea"
+    },
+    {
+      label: "Safety plan (what to do if worse)",
+      desc: "Any instructions you were given about when to call or go in.",
+      key: "safety_plan",
+      ph: "If chest pain lasts >5 minutes at rest, call 911.",
+      type: "textarea"
+    },
+    {
+      label: "Access & support needs",
+      desc: "Interpreter, hearing/vision needs, caregiver contact, preferred phone.",
+      key: "access_needs",
+      ph: "Spanish interpreter; caregiver Ana (555-123-4567).",
+      type: "textarea"
+    }
+  ],
+
+ template: ({
+  entry_dt, chief_concern,
+  onset_course, location_quality, modifiers, associated_symptoms, functional_status: functional_status, self_care, prior_episodes, psych_social,
+  vitals, observations, meds_taken, allergies, meds_list, hx_brief,
+  provisional_plain, differential_plain, worries, questions,
+  visit_goals, safety_plan, access_needs,
+  ctx, audience, style, tone
+}) => {
+    const nl = s => (s || "").trim();
+    const sec = (t, v) => v ? `${t}\n${v}` : "";
+    const out = [];
+
+    out.push(`SOAP CLINICAL SUMMARY — with Provisional/Differential/Working Diagnostic Formulation`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    entry_dt && out.push(`Entry: ${entry_dt}`);
+
+    // SUBJECTIVE — clinician-grade phrasing, but built from lay inputs
+    out.push(
+      "",
+      "S — Subjective (HPI; semantic qualifiers; patient-reported):",
+      sec("Chief concern:", nl(chief_concern) || "(not provided)"),
+      sec("Onset/course (chronology):", nl(onset_course)),
+      sec("Anatomic locus/quality/modifiers:", [nl(location_quality), nl(modifiers)].filter(Boolean).join(" | ")),
+      sec("Associated symptoms (targeted ROS):", nl(associated_symptoms)),
+      sec("Functional impact (ADLs/IADLs):", nl(functional_status)),
+      sec("Self-directed therapeutics & response:", nl(self_care)),
+      sec("Prior similar episodes:", nl(prior_episodes)),
+      sec("Psychosocial context (mood, sleep, stress, safety):", nl(psych_social))
+    );
+
+    // OBJECTIVE — clinician-grade listing
+    out.push(
+      "",
+      "O — Objective (patient-supplied measurements/observations):",
+      sec("Home vitals/metrics:", nl(vitals)),
+      sec("Observed signs (appearance/respiratory/skin/neurologic speech):", nl(observations)),
+      sec("Meds taken today:", nl(meds_taken)),
+      sec("Allergies/adverse reactions:", nl(allergies)),
+      sec("Medication list (chronic/PRN/OTC/supplements):", nl(meds_list)),
+      sec("Condensed history (PMH/PSH/FH/SH):", nl(hx_brief))
+    );
+
+    // ASSESSMENT — heavy technical terminology + Dx constructs
+    const prov = nl(provisional_plain);
+    const ddx = nl(differential_plain);
+    const red = nl(worries);
+
+    out.push(
+      "",
+      "A — Assessment (problem representation; diagnostic reasoning):",
+      "• Problem representation (MD/DO semantic qualifiers): acute/subacute/chronic course; focal vs diffuse locus; quality and provoking/palliating factors; salient positives/negatives as above.",
+      prov ? `• Provisional diagnosis (patient-stated hypothesis): ${prov}` : "• Provisional diagnosis: (to be determined)",
+      ddx ? `• Differential diagnosis (prioritized, to rule-in/rule-out): ${ddx}` : "• Differential diagnosis: (not specified; to be elicited)",
+      "• Working diagnosis: to be assigned by clinician after H&P ± POCT/labs/imaging.",
+      red ? `• Risk/Red-flag signals reported: ${red}` : "• Risk/Red-flag signals: none reported by patient (clinician to verify).",
+      "• Cognitive forcing check: screen for anchoring/premature closure/availability bias/base-rate neglect; consider diagnostic momentum.",
+      "• If applicable, consider decision rules (e.g., Wells/PERC, Centor/McIsaac, Ottawa) and document pretest probability and test/treat thresholds.",
+      "• Psych/behavioral health: brief cognitive/affective appraisal when relevant (automatic thoughts, behavioral responses); consider PHQ-9/GAD-7 screening if indicated; assess safety (C-SSRS) when appropriate."
+    );
+
+    // PLAN — clinician-grade structure but no medical advice; shared decision-making framing
+    out.push(
+      "",
+      "P — Plan (shared decision-making scaffold; not medical advice):",
+      sec("Patient goals for today:", nl(visit_goals)),
+      sec("Key questions:", nl(questions)),
+      sec("Access/communication needs:", nl(access_needs)),
+      sec("Safety-net / return precautions (patient-stated or prior guidance):", nl(safety_plan)),
+      "• Propose: clarify test vs treat thresholds; discuss benefit/harms of diagnostics vs watchful waiting; agree on time-bound re-evaluation.",
+      "• Tasks for visit: targeted exam, reconcile meds/allergies, risk stratification, consider point-of-care tests if appropriate.",
+      "• Education: provide plain-language explanation; document teach-back; provide written return precautions."
+    );
+
+    out.push(
+      "",
+      "Important:",
+      "This generated note organizes information for clinical review. It is not a diagnosis or treatment plan. If symptoms are severe, worsening, or feel like an emergency, call your local emergency number."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "SOAP note subjective objective assessment plan provisional diagnosis differential diagnosis working diagnosis problem representation semantic qualifiers Bayesian reasoning MD DO psychiatry psychology PHQ-9 GAD-7 decision rules Wells PERC Centor Ottawa safety net return precautions"
+  }
+},
+
+{
+  id: "askme3_health_dx",
+  slug: "ask-me-3-health-provisional-differential-working-dx",
+  label: "Ask-Me-3 — What’s my main problem? What do I need to do? Why is it important? (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "psychology",
+    "notes"
+  ],
+  tags: [
+    "type:tool",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:triage-call",
+    "use:notes",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "level:beginner"
+  ],
+  use_cases: [
+    "prep for a doctor/urgent care/nurse line conversation using Ask-Me-3",
+    "summarize in plain language, then auto-format a clinician-grade brief",
+    "capture your best-guess (provisional) and alternatives (differential) without self-diagnosing",
+    "record numbers (temperature, blood pressure, oxygen, blood sugar, weight, pain) in one place",
+    "set goals and questions; after the visit, record what you were told"
+  ],
+  // Heavy technical MD/DO/psych language is used here (boosters + generated output),
+  // while fields, placeholders, and descriptions remain layperson-friendly.
+  boosters: [
+    "Construct a **problem representation** with **semantic qualifiers** (acute/subacute/chronic; intermittent/persistent; progressive/static; focal/diffuse; pleuritic/pressure-like; exertional/non-exertional).",
+    "Formulate a **provisional diagnosis** and a **prioritized differential diagnosis (DDx)** anchored to **pretest probability**; when feasible, reference **likelihood ratios**, **Bayesian updating**, and **disease base rates**.",
+    "Designate a **working diagnosis** only after integration of HPI, exam, salient positives/negatives, and any **POCT/labs/imaging**; specify **test thresholds**, **treatment thresholds**, **safety-net**, and **return precautions**.",
+    "Apply **cognitive forcing strategies** to mitigate **anchoring**, **premature closure**, **confirmation bias**, **availability bias**, and **base-rate neglect**; explicitly document uncertainty and plans for **time-contingent re-evaluation**.",
+    "Use structured history elements: **HPI**, targeted **ROS**, **PMH/PSH**, **FH**, **SH** (tobacco/alcohol/substance, housing, occupational), **Meds/All** (full reconciliation: dose/route/frequency; PRN/OTC/supplements).",
+    "For psych presentations, include a **cognitive/affective appraisal** (automatic thoughts, core beliefs, behavioral responses), consider **PHQ-2/9** or **GAD-7** signals when indicated, and always assess safety (e.g., **C-SSRS** triggers).",
+    "When applicable, cite validated rules (e.g., **Wells/PERC** for VTE, **Centor/McIsaac** for pharyngitis, **Ottawa** rules for minor trauma) and note when data are insufficient to apply a rule.",
+    "Communicate recommendations via **shared decision-making**, articulating **benefit–harm tradeoffs** and **patient values/preferences**; document **teach-back** and create explicit **contingency plans**.",
+    "Close the loop by converting Ask-Me-3 answers into action items, assigning owners/time frames, and capturing any **red flags** requiring immediate escalation."
+  ],
+  definition: "Ask-Me-3 is a simple set of three questions to structure a health conversation. This template keeps your inputs plain and human while generating a clinician-style brief that layers in technical reasoning: provisional diagnosis, differential diagnosis, and a working diagnosis scaffold (the clinician’s current best explanation) with cognitive/affective appraisal and safety-netting. Goal: faster, clearer MD/DO communication without you needing medical jargon.",
+  help: "Answer in your own words. Bring or send the generated summary to your clinician. This organizes your story and questions; it is not medical advice. If you feel in danger or your symptoms are severe/worsening, call your local emergency number.",
+  
+  fields: [
+    /* HEADER */
+    {
+      label: "Today’s date & time",
+      desc: "When you’re filling this out.",
+      key: "entry_dt",
+      ph: "2025-09-25 08:15",
+      type: "text"
+    },
+    {
+      label: "Why you’re reaching out (main concern)",
+      desc: "Say what’s bothering you right now in simple words.",
+      key: "chief_concern",
+      ph: "Heavy chest pressure and shortness of breath that started this morning.",
+      type: "textarea"
+    },
+
+    /* YOUR STORY (PLAIN LANGUAGE) */
+    {
+      label: "When it started & how it changed",
+      desc: "First noticed, what happened since, getting better or worse.",
+      key: "onset_course",
+      ph: "Started last night; worse after waking; steady for 45 minutes.",
+      type: "textarea"
+    },
+    {
+      label: "Where & what it feels like",
+      desc: "Body spot and feeling (sharp, dull, burning, tight, heavy).",
+      key: "location_quality",
+      ph: "Center chest; heavy squeezing; sometimes to left shoulder.",
+      type: "textarea"
+    },
+    {
+      label: "What makes it better or worse",
+      desc: "Positions, activity, food, stress, breathing, meds.",
+      key: "modifiers",
+      ph: "Worse with stairs and deep breaths; better when sitting still.",
+      type: "textarea"
+    },
+    {
+      label: "Other things you noticed",
+      desc: "Fever, cough, tummy issues, pee/poop changes, headache, rash, mood, sleep.",
+      key: "associated_symptoms",
+      ph: "Mild cough, sweaty, slightly lightheaded; no rash, no vomiting.",
+      type: "textarea"
+    },
+    {
+      label: "Daily life impact",
+      desc: "Work, school, walking, caring for others, sleep.",
+      key: "functional_status",
+      ph: "Had to stop on the stairs; missed morning meeting.",
+      type: "textarea"
+    },
+    {
+      label: "Things you tried",
+      desc: "Rest, fluids, over-the-counter, home steps—did they help?",
+      key: "self_care",
+      ph: "Took ibuprofen 400 mg; helped a little for an hour.",
+      type: "textarea"
+    },
+
+    /* NUMBERS & BACKGROUND */
+    {
+      label: "Home measurements (numbers)",
+      desc: "Temperature, blood pressure, heart rate, oxygen, blood sugar, weight, pain.",
+      key: "vitals",
+      ph: "Temp 100.6°F; HR 110; BP 148/92 at 08:10; SpO₂ 95%; pain 7/10.",
+      type: "textarea"
+    },
+    {
+      label: "Meds taken today",
+      desc: "Names, doses, and times.",
+      key: "meds_taken",
+      ph: "Albuterol 2 puffs at 7:50; aspirin 325 mg at 8:05.",
+      type: "textarea"
+    },
+    {
+      label: "Allergies / bad reactions",
+      desc: "Drugs, foods, and what happens.",
+      key: "allergies",
+      ph: "Penicillin — hives and swelling.",
+      type: "text"
+    },
+    {
+      label: "Ongoing meds & doses (full list)",
+      desc: "Daily meds, ‘as needed’ meds, vitamins, herbs.",
+      key: "meds_list",
+      ph: "Lisinopril 10 mg daily; Metformin 500 mg twice daily; Vitamin D 1000 IU daily.",
+      type: "textarea"
+    },
+    {
+      label: "Your health background (short)",
+      desc: "Big conditions, surgeries, pregnancies, family history, smoking/drinking/drugs.",
+      key: "hx_brief",
+      ph: "High blood pressure; dad had a heart attack at 52; no smoking.",
+      type: "textarea"
+    },
+
+    /* COGNITIVE/EMOTIONAL & SAFETY */
+    {
+      label: "Stress, mood, thoughts, safety",
+      desc: "Stress at home/work, panic feelings, low mood, thoughts of harm.",
+      key: "psych_social",
+      ph: "Very stressed at work; slept 4–5 hours; no thoughts of harming myself or others.",
+      type: "textarea"
+    },
+    {
+      label: "What worries you most",
+      desc: "Anything you fear or sudden changes you noticed.",
+      key: "worries",
+      ph: "Pain spread to left arm once; brief lightheadedness.",
+      type: "textarea"
+    },
+
+    /* ASK-ME-3 (BEFORE VISIT — YOUR BEST GUESS) */
+    {
+      label: "Ask-Me-3 #1 — What’s my main problem? (your words)",
+      desc: "Short answer in plain words.",
+      key: "am3_problem_pre",
+      ph: "Chest pain and shortness of breath.",
+      type: "text"
+    },
+    {
+      label: "Ask-Me-3 #2 — What do I need to do? (what you think now)",
+      desc: "Short answer in plain words.",
+      key: "am3_do_pre",
+      ph: "See if it’s my heart; get checked today.",
+      type: "text"
+    },
+    {
+      label: "Ask-Me-3 #3 — Why is it important? (your reason)",
+      desc: "Short answer in plain words.",
+      key: "am3_why_pre",
+      ph: "Could be serious; don’t want to miss something dangerous.",
+      type: "text"
+    },
+
+    /* DIAGNOSTIC GUESSES TO DISCUSS (PLAIN) */
+    {
+      label: "Your best guess (it might be…)",
+      desc: "It’s okay to be unsure—use normal words.",
+      key: "provisional_plain",
+      ph: "Heartburn or anxiety; worried it could be my heart.",
+      type: "textarea"
+    },
+    {
+      label: "Other ideas to check (rule in/out)",
+      desc: "List a few possibilities.",
+      key: "differential_plain",
+      ph: "Asthma flare, muscle strain, pneumonia.",
+      type: "textarea"
+    },
+
+    /* VISIT GOALS & ACCESS */
+    {
+      label: "What you want from today’s visit",
+      desc: "Tests, advice, treatment ideas, or a follow-up plan.",
+      key: "visit_goals",
+      ph: "Check heart causes; advice for pain and breathing; plan for this week.",
+      type: "textarea"
+    },
+    {
+      label: "Access & support needs",
+      desc: "Interpreter, hearing/vision needs, caregiver contact, preferred phone.",
+      key: "access_needs",
+      ph: "Spanish interpreter; caregiver Ana (555-123-4567).",
+      type: "textarea"
+    },
+    {
+      label: "Safety plan (what to do if worse)",
+      desc: "Any instructions you were given about when to call or go in.",
+      key: "safety_plan",
+      ph: "If chest pain lasts >5 minutes at rest, call 911.",
+      type: "textarea"
+    },
+
+    /* ASK-ME-3 (AFTER VISIT — WHAT YOU WERE TOLD) */
+    {
+      label: "After visit — What’s my main problem? (what you were told)",
+      desc: "Short answer you heard from the clinician.",
+      key: "am3_problem_post",
+      ph: "Likely non-cardiac chest pain; heart cause needs checking.",
+      type: "text"
+    },
+    {
+      label: "After visit — What do I need to do? (plan you were given)",
+      desc: "Short steps you’re supposed to take.",
+      key: "am3_do_post",
+      ph: "Get EKG today; schedule stress test; take meds as directed; return if worse.",
+      type: "textarea"
+    },
+    {
+      label: "After visit — Why is it important? (reason you were told)",
+      desc: "Why doing this matters.",
+      key: "am3_why_post",
+      ph: "To rule out a heart cause and prevent something dangerous.",
+      type: "text"
+    }
+  ],
+
+  template: ({
+    entry_dt, chief_concern,
+    onset_course, location_quality, modifiers, associated_symptoms, functional_status, self_care,
+    vitals, meds_taken, allergies, meds_list, hx_brief,
+    psych_social, worries,
+    am3_problem_pre, am3_do_pre, am3_why_pre,
+    provisional_plain, differential_plain,
+    visit_goals, access_needs, safety_plan,
+    am3_problem_post, am3_do_post, am3_why_post,
+    ctx, audience, style, tone
+  }) => {
+    const nl = s => (s || "").trim();
+    const sec = (t, v) => v ? `${t}\n${v}` : "";
+    const out = [];
+
+    out.push(`ASK-ME-3 CLINICAL BRIEF — with Provisional/Differential/Working Diagnostic Formulation`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    entry_dt && out.push(`Entry: ${entry_dt}`);
+
+    // Patient-facing prompts captured, clinician-facing output below
+    out.push(
+      "",
+      "Patient Inputs (plain language):",
+      sec("Main concern:", nl(chief_concern) || "(not provided)"),
+      sec("When it started & changes:", nl(onset_course)),
+      sec("Where & what it feels like:", nl(location_quality)),
+      sec("What makes it better/worse:", nl(modifiers)),
+      sec("Other things noticed:", nl(associated_symptoms)),
+      sec("Daily life impact:", nl(functional_status)),
+      sec("Tried so far:", nl(self_care)),
+      sec("Numbers (home measurements):", nl(vitals)),
+      sec("Meds taken today:", nl(meds_taken)),
+      sec("Allergies / bad reactions:", nl(allergies)),
+      sec("Ongoing meds (full list):", nl(meds_list)),
+      sec("Short health background:", nl(hx_brief)),
+      sec("Stress, mood, thoughts, safety:", nl(psych_social)),
+      sec("What worries you most:", nl(worries))
+    );
+
+    // Ask-Me-3 — pre-visit guesses
+    const am3Pre = [
+      nl(am3_problem_pre) && `1) What’s my main problem?  →  ${nl(am3_problem_pre)}`,
+      nl(am3_do_pre) &&     `2) What do I need to do?     →  ${nl(am3_do_pre)}`,
+      nl(am3_why_pre) &&    `3) Why is it important?      →  ${nl(am3_why_pre)}`
+    ].filter(Boolean).join("\n");
+
+    out.push(
+      "",
+      "Ask-Me-3 (pre-visit, patient-stated):",
+      am3Pre || "(not provided)"
+    );
+
+    // Clinician-facing reasoning scaffold
+    out.push(
+      "",
+      "MD/DO Diagnostic Formulation (for clinician use):",
+      "• Problem representation (semantic qualifiers): acute/subacute/chronic course; focal vs diffuse locus; quality and provoking/palliating factors; salient positives/negatives as above.",
+      provisional_plain ? `• Provisional diagnosis (patient-stated hypothesis): ${nl(provisional_plain)}` : "• Provisional diagnosis: (to be determined).",
+      differential_plain ? `• Differential diagnosis (prioritized DDx): ${nl(differential_plain)}` : "• Differential diagnosis: (to be elicited/prioritized).",
+      "• Working diagnosis: to be assigned post H&P ± POCT/labs/imaging (document pretest probability; consider test/treat thresholds).",
+      "• Cognitive/affective appraisal: assess automatic thoughts, affective state, behavioral responses; screen as indicated (PHQ-2/9, GAD-7); evaluate safety when appropriate (e.g., C-SSRS triggers).",
+      "• Cognitive forcing check: anchoring, premature closure, confirmation/availability bias, base-rate neglect; plan time-dependent re-evaluation.",
+      "• Decision supports (if applicable): Wells/PERC (VTE), Centor/McIsaac (pharyngitis), Ottawa rules (injury)."
+    );
+
+    // Recommendation / plan scaffold (shared decision-making)
+    out.push(
+      "",
+      "Recommendations / Plan (shared decision-making scaffold; not medical advice):",
+      sec("Patient goals for today:", nl(visit_goals)),
+      sec("Access & support needs:", nl(access_needs)),
+      sec("Safety-net / return precautions (patient-stated or prior guidance):", nl(safety_plan)),
+      "• Clarify: diagnostic vs therapeutic thresholds; benefit–harm tradeoffs; patient values/preferences; document teach-back.",
+      "• Tasks for visit: targeted exam; reconcile meds/allergies; risk stratification; consider appropriate POCT.",
+      "• Contingencies: explicit triggers for escalation or re-evaluation."
+    );
+
+    // Ask-Me-3 — after-visit
+    const am3Post = [
+      nl(am3_problem_post) && `1) What’s my main problem?  →  ${nl(am3_problem_post)}`,
+      nl(am3_do_post) &&     `2) What do I need to do?     →  ${nl(am3_do_post)}`,
+      nl(am3_why_post) &&    `3) Why is it important?      →  ${nl(am3_why_post)}`
+    ].filter(Boolean).join("\n");
+
+    out.push(
+      "",
+      "Ask-Me-3 (after visit, clinician-stated & patient recorded):",
+      am3Post || "(fill in after the visit)"
+    );
+
+    out.push(
+      "",
+      "Important:",
+      "This generated brief organizes information for clinical review. It is not a diagnosis or treatment plan. If symptoms are severe, worsening, or feel like an emergency, call your local emergency number."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "ask me 3 health communication main problem what do i do why important provisional diagnosis differential diagnosis working diagnosis problem representation semantic qualifiers cognitive biases teach back safety net MD DO psychiatry psychology"
+  }
+},
+
+{
+  id: "teach_back_health_dx",
+  slug: "teach-back-health-provisional-differential-working-dx",
+  label: "Teach-Back — Restate Instructions; Confirm & Correct (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "psychology",
+    "notes"
+  ],
+  tags: [
+    "type:tool",
+    "use:teach-back",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:triage-call",
+    "use:notes",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "level:beginner"
+  ],
+  use_cases: [
+    "after a doctor/urgent care/nurse visit, restate what you heard and get corrections",
+    "turn complex medical directions into clear, checkable steps",
+    "capture what the clinician called it, alternatives being checked, and the current working idea",
+    "write down how to take medicines, watch for warning signs, and what to do next",
+    "share a clean summary with caregivers or future clinicians"
+  ],
+  // Heavy MD/DO/psych terminology for facilitators/clinicians (boosters + output).
+  boosters: [
+    "Operationalize **closed-loop communication** using a **chunk-and-check** protocol with **universal health literacy precautions**; verify **information transfer fidelity** and **readback accuracy**.",
+    "Elicit a concise **problem representation** employing **semantic qualifiers**; articulate a **provisional diagnosis** and **prioritized differential diagnosis (DDx)** anchored to **pretest probability** with optional **likelihood ratios** and **Bayesian updating**.",
+    "Specify a **working diagnosis** only after synthesizing HPI, exam, **salient positives/negatives**, and available **POCT/labs/imaging**; document **test thresholds**, **treatment thresholds**, and explicit **safety-net/return precautions**.",
+    "Apply **cognitive forcing strategies** to mitigate **anchoring**, **premature closure**, **confirmation/availability bias**, **diagnostic momentum**, and **base-rate neglect**; record residual diagnostic uncertainty.",
+    "For psych/behavioral domains, include a **cognitive/affective appraisal** (automatic thoughts, affect, behavioral contingencies); consider **PHQ-9/GAD-7** screening prompts and assess safety (e.g., **C-SSRS** triggers) when indicated.",
+    "Convert directives into **implementation intentions** and **adherence plans** (dose/route/frequency, monitoring parameters, contraindications, interactions). Document **concordance** via teach-back (patient restates; clinician calibrates).",
+    "Capture **red-flag criteria**, **escalation algorithms**, and **care navigation** details (who to call, when, how). Include **follow-up intervals** and **contingency pathways** for deterioration or non-response."
+  ],
+  definition: "Teach-Back is a ‘closed-loop’ way to confirm understanding: you restate the plan in your own words and the clinician corrects anything that’s off. This template keeps your typing simple while generating a clinician-style brief with technical elements—provisional and differential diagnoses, a working diagnosis scaffold, safety-netting, and cognitive/affective notes—so MD/DO teams can verify clarity and completeness fast.",
+  help: "Use this right after a visit or call. Write what you were told in everyday words, then your restatement. Add any corrections the clinician gave. Record how to take medicines, warning signs, tests, and follow-ups. This helps you follow the plan and helps clinicians spot misunderstandings. This is not medical advice—if you feel in danger or symptoms are severe/worsening, call your local emergency number.",
+  
+  fields: [
+    /* HEADER */
+    {
+      label: "Visit date & time",
+      desc: "When the visit/call happened.",
+      key: "visit_dt",
+      ph: "2025-09-25 10:40",
+      type: "text"
+    },
+    {
+      label: "Clinician & place",
+      desc: "Who you met and where (doctor, nurse, clinic).",
+      key: "clinician_team",
+      ph: "Dr. Lopez (Family Medicine), Valley Clinic — Room 4",
+      type: "text"
+    },
+    {
+      label: "Main reason for visit (your words)",
+      desc: "Say what brought you in, in simple words.",
+      key: "chief_concern",
+      ph: "Heavy chest pressure and shortness of breath this morning.",
+      type: "textarea"
+    },
+
+    /* WHAT YOU WERE TOLD (PLAIN) */
+    {
+      label: "What they said is going on (their words to you)",
+      desc: "Short summary you heard.",
+      key: "dx_label_plain",
+      ph: "Likely non-heart chest pain; still need to make sure it’s not the heart.",
+      type: "textarea"
+    },
+    {
+      label: "What to do (their steps for you)",
+      desc: "Meds, tests, changes, or home steps they told you.",
+      key: "plan_steps_plain",
+      ph: "Get EKG today; schedule stress test this week; take medicine as directed.",
+      type: "textarea"
+    },
+    {
+      label: "Why it matters (their reason)",
+      desc: "Why these steps are important.",
+      key: "why_important_plain",
+      ph: "To rule out a heart cause and keep you safe.",
+      type: "textarea"
+    },
+
+    /* YOUR TEACH-BACK (YOUR RESTATEMENT) */
+    {
+      label: "My restatement — problem (Teach-Back)",
+      desc: "Say back the problem in your own words.",
+      key: "tb_problem",
+      ph: "This might not be my heart, but we’re checking to be sure.",
+      type: "textarea"
+    },
+    {
+      label: "My restatement — what I will do (Teach-Back)",
+      desc: "Say back the exact steps you’ll take.",
+      key: "tb_actions",
+      ph: "Today I’ll get an EKG; I’ll call to book the stress test; I’ll take the new medicine as told.",
+      type: "textarea"
+    },
+    {
+      label: "My restatement — why it matters (Teach-Back)",
+      desc: "Say back the reason it’s important.",
+      key: "tb_why",
+      ph: "Catching a heart problem early can prevent something dangerous.",
+      type: "textarea"
+    },
+    {
+      label: "Corrections from the clinician (if any)",
+      desc: "Write changes the clinician made after hearing your restatement.",
+      key: "tb_corrections",
+      ph: "Take the medicine twice daily with food (not once); call the on-call number if pain lasts >5 minutes.",
+      type: "textarea"
+    },
+
+    /* MEDS & MONITORING (PLAIN) */
+    {
+      label: "New medicines to start",
+      desc: "Name, amount, how often.",
+      key: "meds_start",
+      ph: "Nitroglycerin 0.4 mg SL as needed for chest pain (max 3 tabs, 5 min apart).",
+      type: "textarea"
+    },
+    {
+      label: "Changes to current medicines",
+      desc: "Which ones changed and how.",
+      key: "meds_change",
+      ph: "Increase Metoprolol to 50 mg daily starting tomorrow.",
+      type: "textarea"
+    },
+    {
+      label: "Medicines to stop",
+      desc: "Which ones to stop and when.",
+      key: "meds_stop",
+      ph: "Stop ibuprofen until after heart tests are done.",
+      type: "textarea"
+    },
+    {
+      label: "How to take them (simple schedule)",
+      desc: "Time of day, with/without food, special notes.",
+      key: "meds_schedule",
+      ph: "Morning with breakfast; evening with dinner; carry nitro at all times.",
+      type: "textarea"
+    },
+    {
+      label: "Things to watch for",
+      desc: "Common side effects they mentioned or warning signs.",
+      key: "meds_watch",
+      ph: "Headache with nitro; call if dizziness or fainting.",
+      type: "textarea"
+    },
+    {
+      label: "Home tracking plan",
+      desc: "Numbers or notes to record at home.",
+      key: "home_monitor",
+      ph: "Blood pressure morning/evening; chest pain times; what you were doing.",
+      type: "textarea"
+    },
+
+    /* TESTS, APPOINTMENTS, CONTACTS (PLAIN) */
+    {
+      label: "Tests ordered & how to prepare",
+      desc: "Which tests and any prep (food, meds, clothing).",
+      key: "tests_prep",
+      ph: "EKG today (no prep); stress test this week (wear comfy clothes; no caffeine 12h).",
+      type: "textarea"
+    },
+    {
+      label: "Results — how and when you’ll hear",
+      desc: "Portal, phone, visit; expected time.",
+      key: "results_plan",
+      ph: "Results in the portal in 1–3 days; call if not posted by Friday.",
+      type: "textarea"
+    },
+    {
+      label: "Follow-ups & referrals",
+      desc: "Next visits or specialists and dates.",
+      key: "followups",
+      ph: "Cardiology referral; tele-visit in 1 week; ER if severe pain.",
+      type: "textarea"
+    },
+    {
+      label: "Who to call and how",
+      desc: "Clinic number, after-hours, nurse line.",
+      key: "contacts",
+      ph: "Clinic: 555-123-4567 (8a–5p); After-hours: 555-987-6543.",
+      type: "textarea"
+    },
+
+    /* SAFETY & RED FLAGS (PLAIN) */
+    {
+      label: "Red flags & safety steps",
+      desc: "Exact words they used for when to act fast.",
+      key: "red_flags",
+      ph: "Call 911 for chest pain >5 minutes at rest, fainting, or trouble breathing.",
+      type: "textarea"
+    },
+
+    /* DIAGNOSTIC IDEAS (PLAIN) */
+    {
+      label: "What they called it (if told)",
+      desc: "Name they used for the problem.",
+      key: "dx_label_given",
+      ph: "Non-cardiac chest pain; rule out coronary cause.",
+      type: "text"
+    },
+    {
+      label: "Other possibilities they’re checking",
+      desc: "List the main other ideas.",
+      key: "dx_alternatives",
+      ph: "Heart cause, reflux, muscle strain, anxiety.",
+      type: "textarea"
+    },
+    {
+      label: "What we’re assuming for now (working idea)",
+      desc: "Current best explanation they’re using.",
+      key: "dx_working_plain",
+      ph: "Likely not the heart; testing to make sure.",
+      type: "textarea"
+    },
+
+    /* COGNITIVE/EMOTIONAL & BARRIERS (PLAIN) */
+    {
+      label: "How you feel about the plan",
+      desc: "Worries, hopes, or stuck points in simple words.",
+      key: "cognitive_appraisal_plain",
+      ph: "Nervous about the test; worried I’ll forget the medicine.",
+      type: "textarea"
+    },
+    {
+      label: "Confidence to follow the plan (0–10)",
+      desc: "Pick a number for how sure you feel.",
+      key: "confidence_0_10",
+      ph: "7",
+      type: "text"
+    },
+    {
+      label: "Possible blockers",
+      desc: "Cost, transport, time, child care, language, tech access.",
+      key: "barriers",
+      ph: "No car on weekdays; need Spanish interpreter for calls.",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    visit_dt, clinician_team, chief_concern,
+    dx_label_plain, plan_steps_plain, why_important_plain,
+    tb_problem, tb_actions, tb_why, tb_corrections,
+    meds_start, meds_change, meds_stop, meds_schedule, meds_watch, home_monitor,
+    tests_prep, results_plan, followups, contacts,
+    red_flags,
+    dx_label_given, dx_alternatives, dx_working_plain,
+    cognitive_appraisal_plain, confidence_0_10, barriers,
+    ctx, audience, style, tone
+  }) => {
+    const nl = s => (s || "").trim();
+    const sec = (t, v) => v ? `${t}\n${v}` : "";
+    const out = [];
+
+    out.push("TEACH-BACK CLINICAL BRIEF — Closed-Loop Comprehension with Diagnostic Formulation");
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    visit_dt && out.push(`Encounter: ${visit_dt}`);
+    clinician_team && out.push(`Clinician/Setting: ${clinician_team}`);
+
+    // Patient-facing summary captured, then MD/DO-facing formulation
+    out.push(
+      "",
+      "Patient Summary (plain language):",
+      sec("Main reason for visit:", nl(chief_concern) || "(not provided)"),
+      sec("What they said is going on:", nl(dx_label_plain)),
+      sec("What to do:", nl(plan_steps_plain)),
+      sec("Why it matters:", nl(why_important_plain))
+    );
+
+    out.push(
+      "",
+      "Teach-Back Loop (patient restatement → clinician calibration):",
+      sec("My restatement — problem:", nl(tb_problem)),
+      sec("My restatement — actions:", nl(tb_actions)),
+      sec("My restatement — why:", nl(tb_why)),
+      sec("Clinician corrections:", nl(tb_corrections))
+    );
+
+    // Medication & monitoring
+    out.push(
+      "",
+      "Therapeutics & Self-Monitoring (plain language):",
+      sec("Start:", nl(meds_start)),
+      sec("Change:", nl(meds_change)),
+      sec("Stop:", nl(meds_stop)),
+      sec("How to take (schedule):", nl(meds_schedule)),
+      sec("What to watch for:", nl(meds_watch)),
+      sec("Home tracking plan:", nl(home_monitor))
+    );
+
+    // Logistics
+    out.push(
+      "",
+      "Diagnostics, Follow-up, and Access (plain language):",
+      sec("Tests & preparation:", nl(tests_prep)),
+      sec("Results — how/when:", nl(results_plan)),
+      sec("Follow-ups & referrals:", nl(followups)),
+      sec("Contacts:", nl(contacts)),
+      sec("Red flags & safety steps:", nl(red_flags))
+    );
+
+    // MD/DO-facing diagnostic formulation (technical)
+    out.push(
+      "",
+      "MD/DO Diagnostic Formulation (technical handoff):",
+      dx_label_given ? `• Provisional diagnosis (clinician-stated label): ${nl(dx_label_given)}` : "• Provisional diagnosis: (to be specified).",
+      dx_alternatives ? `• Differential diagnosis (prioritized DDx): ${nl(dx_alternatives)}` : "• Differential diagnosis: (to be elicited/prioritized).",
+      dx_working_plain ? `• Working diagnosis (current leading hypothesis): ${nl(dx_working_plain)}` : "• Working diagnosis: deferred pending additional data.",
+      "• Problem representation (semantic qualifiers): see Teach-Back content; integrate onset/course, anatomic locus, quality, modifiers, and salient positives/negatives.",
+      "• Thresholds & safety-net: define pretest probability; specify test/treat thresholds; document return precautions and escalation triggers.",
+      "• Cognitive forcing check: review for anchoring, premature closure, confirmation/availability bias, diagnostic momentum, base-rate neglect.",
+      "• Behavioral/Cognitive appraisal: note automatic thoughts/affect/behaviors; consider PHQ-9/GAD-7 screens when indicated; assess safety (e.g., C-SSRS triggers)."
+    );
+
+    // Adherence & barriers
+    out.push(
+      "",
+      "Adherence & Implementation (technical):",
+      `• Self-efficacy rating: ${nl(confidence_0_10) || "—"}/10`,
+      cognitive_appraisal_plain ? `• Patient cognitive/affective appraisal (plain → mapped to psychoeducation/CBT strategies): ${nl(cognitive_appraisal_plain)}` : "• Cognitive/affective appraisal: (not recorded).",
+      barriers ? `• Anticipated barriers (social determinants/access): ${nl(barriers)}` : "• Anticipated barriers: none reported.",
+      "• Implementation intentions: convert directives into IF–THEN scripts (e.g., IF chest pain ≥5 min at rest THEN call EMS).",
+      "• Concordance confirmation: Teach-Back completed; clinician calibrated discrepancies as noted above."
+    );
+
+    // Instructions for clinicians (technical)
+    out.push(
+      "",
+      "Instructions (clinical, technical):",
+      "1) Employ chunk-and-check with universal health literacy precautions; avoid idiom; use numeric precision where material (dose/route/frequency).",
+      "2) After patient restates, perform readback verification; document corrections; confirm understanding with a second Teach-Back pass for high-stakes directives.",
+      "3) Record test/treat thresholds, safety-net criteria, and time-contingent re-evaluation plan.",
+      "4) Translate plan into concrete behaviors and monitoring parameters; document shared decision-making and teach-back completion."
+    );
+
+    // Safety reminder
+    out.push(
+      "",
+      "Important:",
+      "This summary organizes information for communication only. It is not a diagnosis or treatment plan. If symptoms are severe, worsening, or feel like an emergency, call your local emergency number immediately."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "teach back closed loop communication readback universal health literacy chunk and check provisional diagnosis differential diagnosis working diagnosis problem representation thresholds safety net cognitive forcing strategies MD DO psychiatry psychology adherence implementation intentions"
+  }
+},
+
+{
+  id: "red_flag_plan_health_dx",
+  slug: "red-flag-list-urgent-er-triggers",
+  label: "Red-Flag List — Pre-Agree Triggers & Actions (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "psychology",
+    "planning"
+  ],
+  tags: [
+    "type:tool",
+    "use:red-flags",
+    "use:safety-net",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:care-navigation",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "level:beginner"
+  ],
+  use_cases: [
+    "agree with your clinician on clear ‘if X, then do Y’ emergency/urgent steps",
+    "write down warning signs and number thresholds you should not ignore",
+    "capture who to call, where to go, and how to get there (day or night)",
+    "document what the problem might be now and other possibilities being checked",
+    "share a simple plan with family/caregivers and keep it handy at home"
+  ],
+  // Heavy clinical/MD/DO/psych terminology (instructions/output); fields stay lay-friendly.
+  boosters: [
+    "Codify **safety-netting** using an explicit **trigger–response algorithm** (IF–THEN) that escalates from self-management → same-day clinic → **urgent care** → **ED/EMS activation** based on **physiologic derangement** and **time-sensitivity**.",
+    "Anchor **red-flag criteria** to organ systems and **hemodynamic instability** (airway compromise, respiratory distress, hypoxemia, hypotension, altered mentation), plus high-risk syndromes (e.g., **ACS**, **PE**, **stroke**, **sepsis**, **GI bleed**, **ectopic pregnancy**, **testicular torsion**, **status asthmaticus**, **DKA/HHS**).",
+    "Document a **problem representation** with **semantic qualifiers** and articulate **provisional diagnosis**, **prioritized differential diagnosis (DDx)** with **pretest probability**, and a **working diagnosis** contingent on further H&P/POCT/labs/imaging; note **test/treat thresholds**.",
+    "Embed **cognitive forcing strategies** to mitigate **anchoring**, **premature closure**, **confirmation/availability bias**, and **diagnostic momentum** when interpreting at-home metrics or new symptoms.",
+    "For mental/behavioral health, include **cognitive/affective appraisal** and explicit **safety pathways** for **suicidality**, **homicidality**, **psychosis**, or **withdrawal**, leveraging tools like **C-SSRS** triggers for immediate escalation.",
+    "Pre-author **care navigation**: verified **ED destination**, **urgent care** alternative, **after-hours on-call** number, **transport plan**, language/communication supports, and who accompanies the patient; ensure **closed-loop communication** via **Teach-Back**.",
+    "Record **return precautions** with objective **tripwires** (numeric thresholds, duration, pattern change) and assign **owners**; review/redocument at defined intervals to maintain **clinical fidelity**."
+  ],
+  definition: "A Red-Flag Plan is a safety net. You and your clinician agree on the warning signs and number thresholds that should trigger urgent action, and you write down the exact steps to take (who to call, where to go). This version keeps your entries simple and plain while generating a clinician-style, technical ‘trigger–response’ brief that layers in provisional, differential, and working diagnoses, plus safety-net reasoning and cognitive/behavioral notes.",
+  help: "Fill this out with your clinician’s guidance. Use everyday words. Keep it somewhere easy to grab. This organizes warning signs and actions; it’s not medical advice by itself. If you feel in danger or symptoms are severe/worsening, call your local emergency number.",
+  
+  fields: [
+    /* HEADER */
+    {
+      label: "Today’s date",
+      desc: "When you filled this in.",
+      key: "plan_date",
+      ph: "2025-09-25",
+      type: "text"
+    },
+    {
+      label: "Your name",
+      desc: "Who this plan is for.",
+      key: "patient_name",
+      ph: "Alex Rivera",
+      type: "text"
+    },
+    {
+      label: "Clinician & clinic",
+      desc: "Who agreed to this plan with you.",
+      key: "clinician_team",
+      ph: "Dr. Lee (Family Medicine), Valley Clinic",
+      type: "text"
+    },
+
+    /* CURRENT PROBLEM — PLAIN */
+    {
+      label: "What they called it (now)",
+      desc: "The name your clinician used for your current problem.",
+      key: "dx_label_plain",
+      ph: "Chest pain — likely non-cardiac; heart cause needs checking.",
+      type: "textarea"
+    },
+    {
+      label: "Other possibilities being checked",
+      desc: "Other ideas your clinician is considering.",
+      key: "dx_alternatives_plain",
+      ph: "Heart cause, reflux/heartburn, muscle strain, anxiety.",
+      type: "textarea"
+    },
+    {
+      label: "What we’re assuming for now (working idea)",
+      desc: "Current best explanation they’re using.",
+      key: "dx_working_plain",
+      ph: "Not clearly heart-related; testing to make sure.",
+      type: "textarea"
+    },
+
+    /* CONTACTS & DESTINATIONS */
+    {
+      label: "Emergency number",
+      desc: "Local emergency number.",
+      key: "ems_number",
+      ph: "911 (USA) or your local number",
+      type: "text"
+    },
+    {
+      label: "Nearest emergency department",
+      desc: "Name, address, and how to get there.",
+      key: "ed_destination",
+      ph: "City General Hospital — 123 Main St; 12 min by car; ER entrance on Oak Ave.",
+      type: "textarea"
+    },
+    {
+      label: "Urgent care option",
+      desc: "If told to use urgent care sometimes.",
+      key: "uc_destination",
+      ph: "Downtown Urgent Care — 456 Pine St; open 8a–8p.",
+      type: "textarea"
+    },
+    {
+      label: "Clinic numbers",
+      desc: "Main line and after-hours/on-call.",
+      key: "clinic_contacts",
+      ph: "Main: 555-123-4567 (8a–5p); After-hours: 555-987-6543.",
+      type: "textarea"
+    },
+    {
+      label: "Who comes with you (if possible)",
+      desc: "Family/friend and how to reach them.",
+      key: "care_partner",
+      ph: "Ana (spouse) — 555-222-1111.",
+      type: "text"
+    },
+    {
+      label: "Access needs",
+      desc: "Interpreter, hearing/vision, mobility, device charger, meds list.",
+      key: "access_needs",
+      ph: "Spanish interpreter; wheelchair access; bring med list.",
+      type: "textarea"
+    },
+
+    /* PERSONAL THRESHOLDS (PLAIN; NUMBERS IF GIVEN BY CLINICIAN) */
+    {
+      label: "Breathing & oxygen numbers",
+      desc: "Exact numbers your clinician gave you.",
+      key: "resp_thresholds",
+      ph: "Breathing hard at rest; lips turning blue; home oxygen under __% for __ minutes.",
+      type: "textarea"
+    },
+    {
+      label: "Heart & blood pressure numbers",
+      desc: "Exact numbers your clinician gave you.",
+      key: "cardio_thresholds",
+      ph: "Chest pain at rest > __ minutes; heart rate over __; blood pressure under __ or over __.",
+      type: "textarea"
+    },
+    {
+      label: "Fever & infection numbers",
+      desc: "Exact numbers your clinician gave you.",
+      key: "fever_thresholds",
+      ph: "Temp over __°F/°C for __ hours with chills/shaking; fever plus stiff neck/confusion.",
+      type: "textarea"
+    },
+    {
+      label: "Sugar & diabetes numbers",
+      desc: "Exact numbers your clinician gave you.",
+      key: "diabetes_thresholds",
+      ph: "Sugar over __ mg/dL (or __ mmol/L) and vomiting; sugar under __ with faint/ shaking.",
+      type: "textarea"
+    },
+    {
+      label: "Bleeding, tummy, pregnancy",
+      desc: "What to watch for and when to act.",
+      key: "bleed_abd_ob_thresholds",
+      ph: "Heavy bleeding soaking __ pads/hour; black/red vomit or stool; bad lower belly pain in pregnancy.",
+      type: "textarea"
+    },
+    {
+      label: "Head, nerves, thinking",
+      desc: "Sudden changes you were told not to ignore.",
+      key: "neuro_thresholds",
+      ph: "Sudden weakness on one side, face droop, trouble speaking, worst headache of life, seizure, fainting.",
+      type: "textarea"
+    },
+    {
+      label: "Allergy reactions",
+      desc: "Breathing, swelling, rash signs you were told about.",
+      key: "allergy_thresholds",
+      ph: "Trouble breathing, swelling of tongue/lips, throat tight, hives all over, feeling faint.",
+      type: "textarea"
+    },
+    {
+      label: "Feeling unsafe or in danger",
+      desc: "Mental health safety steps you agreed on.",
+      key: "mh_safety",
+      ph: "Thoughts of self-harm or harm to others; hearing/seeing things others don’t; call crisis line or go to ER.",
+      type: "textarea"
+    },
+
+    /* IF–THEN RED-FLAG TRIGGERS (PLAIN) */
+    {
+      label: "IF–THEN list (your exact triggers and actions)",
+      desc: "Write each as ‘IF [sign/number/time], THEN [action/place/phone]’. One per line.",
+      key: "if_then_rules",
+      ph: "IF chest pain lasts >5 minutes at rest, THEN call 911.\nIF sugar >300 mg/dL twice + vomiting, THEN go to ER.\nIF thoughts of self-harm now, THEN call 988 or go to ER with Ana.",
+      type: "textarea"
+    },
+
+    /* TEACH-BACK & CONFIDENCE (PLAIN) */
+    {
+      label: "Teach-Back — say the plan in your words",
+      desc: "Restate key red flags and actions; your clinician can fix anything that’s off.",
+      key: "teach_back_plain",
+      ph: "If I have chest pain that doesn’t stop, I will call 911 and go to City General ER.",
+      type: "textarea"
+    },
+    {
+      label: "Confidence to follow the plan (0–10)",
+      desc: "How sure you feel you can do this.",
+      key: "confidence_0_10",
+      ph: "8",
+      type: "text"
+    },
+    {
+      label: "Possible blockers",
+      desc: "Cost, ride, child care, language, phone battery, location.",
+      key: "barriers",
+      ph: "No car weekdays; need Spanish interpreter; phone battery runs low by evening.",
+      type: "textarea"
+    },
+
+    /* REVIEW & SHARING */
+    {
+      label: "Review date",
+      desc: "When you’ll check/update this plan.",
+      key: "review_date",
+      ph: "2025-12-01",
+      type: "text"
+    },
+    {
+      label: "Who has a copy",
+      desc: "Caregivers, family, school, work.",
+      key: "share_list",
+      ph: "Ana (spouse), school nurse, work HR.",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    plan_date, patient_name, clinician_team,
+    dx_label_plain, dx_alternatives_plain, dx_working_plain,
+    ems_number, ed_destination, uc_destination, clinic_contacts, care_partner, access_needs,
+    resp_thresholds, cardio_thresholds, fever_thresholds, diabetes_thresholds, bleed_abd_ob_thresholds, neuro_thresholds, allergy_thresholds, mh_safety,
+    if_then_rules,
+    teach_back_plain, confidence_0_10, barriers,
+    review_date, share_list,
+    ctx, audience, style, tone
+  }) => {
+    const nl = s => (s || "").trim();
+    const sec = (t, v) => v ? `${t}\n${v}` : "";
+    const out = [];
+
+    out.push("RED-FLAG SAFETY-NET BRIEF — Trigger–Response Algorithm with Diagnostic Context");
+    plan_date && out.push(`Date: ${plan_date}`);
+    patient_name && out.push(`Patient: ${patient_name}`);
+    clinician_team && out.push(`Clinician/Clinic: ${clinician_team}`);
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+
+    // Diagnostic context (technical handoff; kept brief)
+    out.push(
+      "",
+      "MD/DO Diagnostic Context:",
+      dx_label_plain ? `• Provisional diagnosis (clinician-stated label): ${nl(dx_label_plain)}` : "• Provisional diagnosis: (to be specified).",
+      dx_alternatives_plain ? `• Differential diagnosis (prioritized DDx): ${nl(dx_alternatives_plain)}` : "• Differential diagnosis: (to be elicited/prioritized).",
+      dx_working_plain ? `• Working diagnosis (current leading hypothesis): ${nl(dx_working_plain)}` : "• Working diagnosis: deferred pending additional data.",
+      "• Problem representation: synthesize onset/course, anatomic locus, quality/modifiers, salient positives/negatives; document pretest probability and test/treat thresholds as applicable.",
+      "• Cognitive forcing strategies: guard against anchoring/premature closure/availability bias/diagnostic momentum; re-evaluate if trajectory deviates or tripwires activate."
+    );
+
+    // Destinations & contacts
+    out.push(
+      "",
+      "Care Navigation (pre-authorized):",
+      sec("Emergency number:", nl(ems_number)),
+      sec("Nearest Emergency Department:", nl(ed_destination)),
+      sec("Urgent Care option:", nl(uc_destination)),
+      sec("Clinic numbers (main / after-hours):", nl(clinic_contacts)),
+      sec("Care partner (who may accompany):", nl(care_partner)),
+      sec("Access needs:", nl(access_needs))
+    );
+
+    // Thresholds (patient-facing content captured, but useful for clinicians)
+    out.push(
+      "",
+      "Red-Flag Thresholds (patient-specific, plain language):",
+      sec("Breathing & oxygen:", nl(resp_thresholds)),
+      sec("Heart & blood pressure / chest pain:", nl(cardio_thresholds)),
+      sec("Fever & infection:", nl(fever_thresholds)),
+      sec("Diabetes / blood sugar:", nl(diabetes_thresholds)),
+      sec("Bleeding / belly / pregnancy:", nl(bleed_abd_ob_thresholds)),
+      sec("Head / nerves / thinking:", nl(neuro_thresholds)),
+      sec("Allergy reactions:", nl(allergy_thresholds)),
+      sec("Mental health safety:", nl(mh_safety))
+    );
+
+    // IF–THEN algorithm
+    out.push(
+      "",
+      "Trigger–Response Algorithm (IF–THEN):",
+      nl(if_then_rules) || "(Add clear IF–THEN lines agreed with your clinician.)"
+    );
+
+    // Teach-Back + implementation
+    out.push(
+      "",
+      "Teach-Back & Implementation:",
+      sec("Teach-Back restatement (patient):", nl(teach_back_plain)),
+      `Self-efficacy rating: ${nl(confidence_0_10) || "—"}/10`,
+      sec("Possible blockers to plan:", nl(barriers)),
+      "Implementation intentions: translate each IF–THEN into a simple action (e.g., IF chest pain >5 min at rest → THEN call EMS and go to the named ED)."
+    );
+
+    // Governance
+    out.push(
+      "",
+      "Maintenance:",
+      sec("Review date:", nl(review_date)),
+      sec("Shared with:", nl(share_list))
+    );
+
+    // Technical instructions for MD/DO teams
+    out.push(
+      "",
+      "Clinical Instructions (technical):",
+      "• Safety-netting: Define organ-system-specific red-flags and objective tripwires (duration, intensity, numeric cutoffs).",
+      "• Thresholds: Specify pretest probability and test/treat thresholds where relevant; document rationale for ED vs Urgent Care vs Same-Day Clinic pathways.",
+      "• Closed-loop communication: Perform Teach-Back; correct misunderstandings; re-document after corrections.",
+      "• Behavioral/psych safety: If suicidality/psychosis/withdrawal is suspected, activate crisis pathway; document C-SSRS trigger or equivalent.",
+      "• Re-evaluation: Set time-contingent follow-up; monitor for trajectory inflection; avoid diagnostic momentum; update plan after any acute event."
+    );
+
+    // Safety reminder
+    out.push(
+      "",
+      "Important:",
+      "This plan helps you act fast and communicate clearly. It does not replace medical care. If symptoms are severe, worsening, or feel dangerous, call your local emergency number immediately."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "red flag plan safety net trigger response algorithm urgent care emergency department EMS hemodynamic instability ACS PE stroke sepsis GI bleed ectopic pregnancy DKA thresholds teach back diagnostic momentum provisional differential working diagnosis MD DO psychiatry psychology"
+  }
+},
+
+{
+  id: "sdm_health_dx",
+  slug: "shared-decision-making-options-benefits-risks-values-decide-review",
+  label: "Shared Decision-Making (SDM) — Options → Benefits/Risks → Values/Preferences → Decide → Review (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "planning",
+    "psychology",
+    "notes"
+  ],
+  tags: [
+    "type:tool",
+    "use:decision-making",
+    "use:appointment-prep",
+    "use:clinical-communication",
+    "use:safety-net",
+    "use:care-navigation",
+    "phase:plan",
+    "phase:decide",
+    "phase:apply",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "prepare for a conversation where more than one reasonable medical option exists",
+    "compare options in plain language while producing a clinician-grade brief",
+    "make trade-offs clearer using your values and practical limits",
+    "capture provisional/differential/working diagnoses to anchor the decision",
+    "record the decision, consent elements, and the review plan in one place"
+  ],
+  // Heavy MD/DO/psych terminology for instructions/output; fields remain layperson-friendly.
+  boosters: [
+    "Formulate a concise **problem representation** using **semantic qualifiers** (acute vs. chronic; focal vs. diffuse; intermittent vs. persistent; progressive vs. static) and tie it to **pretest probability** for candidate etiologies.",
+    "Explicitly state **provisional diagnosis** and a **prioritized differential diagnosis (DDx)**; acknowledge **diagnostic uncertainty** and apply **Bayesian updating** as new data arrive (POCT, labs, imaging).",
+    "When describing options, provide **absolute risks** and **absolute benefits** (ARR/ARI), **Number Needed to Treat/Harm (NNT/NNH)**, **time-to-benefit**, and **evidence quality** (e.g., GRADE). Avoid isolated **relative risk** metrics.",
+    "Integrate **patient values and preferences** with **benefit–harm tradeoffs**, **burden**, **cost/financial toxicity**, **access**, **equity**, and **caregiver context**; document **test thresholds** and **treatment thresholds**.",
+    "Perform **cognitive forcing strategy** checks for **anchoring**, **premature closure**, **framing effects**, **availability bias**, **commission bias**, and **diagnostic momentum**; use **balanced framing** (both gains and losses).",
+    "For psych/behavioral elements, add a **cognitive/affective appraisal** (automatic thoughts, affect, behaviors) and, when indicated, brief screens (e.g., **PHQ-9**, **GAD-7**) and **safety pathways** (e.g., **C-SSRS** triggers).",
+    "Use **closed-loop communication** and **Teach-Back** to verify comprehension; document **concordance** and elements of **informed consent** (indications, alternatives, risks, benefits, uncertainty).",
+    "Plan **time-contingent re-evaluation** (watchful waiting vs escalation), specify **return precautions**, and predefine **failure-of-therapy** criteria; schedule a **decision review** to mitigate post-decision **regret** and **omission bias**."
+  ],
+  definition: "Shared Decision-Making (SDM) is a structured conversation where you and your clinician choose among reasonable options by weighing benefits, risks, uncertainties, and what matters most to you. This template keeps your entries simple and plain, then generates a clinician-style brief—complete with provisional/differential/working diagnoses, risk framing (ARR/NNT), and safety-net planning—so MD/DO teams can check accuracy and document the plan.",
+  help: "Use everyday words. List the options you were offered (including ‘do nothing/watchful waiting’ if relevant). Write what you see as the upsides, downsides, and unknowns, plus what matters most to you. The output will format a professional SDM summary for your clinician. This is not medical advice—if you feel in danger or symptoms are severe/worsening, call your local emergency number.",
+
+  fields: [
+    /* HEADER */
+    {
+      label: "Today’s date & time",
+      desc: "When you’re filling this out.",
+      key: "entry_dt",
+      ph: "2025-09-25 11:20",
+      type: "text"
+    },
+    {
+      label: "Decision topic (your words)",
+      desc: "What choice are you making or discussing?",
+      key: "decision_topic",
+      ph: "How to evaluate and treat chest pain this week",
+      type: "text"
+    },
+    {
+      label: "Clinician & clinic",
+      desc: "Who you’re talking with.",
+      key: "clinician_team",
+      ph: "Dr. Lee (Family Medicine), Valley Clinic",
+      type: "text"
+    },
+
+    /* CONTEXT (PLAIN) */
+    {
+      label: "Your story (short)",
+      desc: "What’s going on and what you hope for.",
+      key: "context_plain",
+      ph: "Chest pressure since morning; want to make sure it’s not my heart.",
+      type: "textarea"
+    },
+    {
+      label: "What they think it might be (now)",
+      desc: "Name they used for the problem, in simple words.",
+      key: "provisional_plain",
+      ph: "Likely non-heart chest pain; checking for heart causes.",
+      type: "textarea"
+    },
+    {
+      label: "Other possibilities being checked",
+      desc: "Other ideas on the table.",
+      key: "differential_plain",
+      ph: "Heart cause, reflux, muscle strain, anxiety.",
+      type: "textarea"
+    },
+    {
+      label: "What we’re going with for now (working idea)",
+      desc: "Best current explanation they’re using.",
+      key: "working_plain",
+      ph: "Probably not the heart; testing to be sure.",
+      type: "textarea"
+    },
+
+    /* OPTIONS — PLAIN BUT STRUCTURED */
+    {
+      label: "Options (one per line)",
+      desc: "Format: Option name | what it is / where done.",
+      key: "options_list",
+      ph: "Watchful waiting | rest + track symptoms at home\nStress test | treadmill or medicine test at hospital\nStart medicine | acid reducer for 2 weeks\nGo to ER now | immediate tests and monitoring",
+      type: "textarea"
+    },
+    {
+      label: "Benefits & numbers (per option)",
+      desc: "Format: Option = benefits (add numbers if given).",
+      key: "benefits_map",
+      ph: "Watchful waiting = avoid extra tests; see if it settles\nStress test = better check for heart blood flow\nStart medicine = may stop heartburn symptoms\nGo to ER now = quickest way to check dangerous causes",
+      type: "textarea"
+    },
+    {
+      label: "Risks/downsides & numbers (per option)",
+      desc: "Format: Option = risks or hassles (add numbers if given).",
+      key: "risks_map",
+      ph: "Watchful waiting = could miss something early\nStress test = false alarms; rare bad reactions\nStart medicine = side effects like headache\nGo to ER now = cost, long wait, radiation if CT",
+      type: "textarea"
+    },
+    {
+      label: "Unknowns/uncertainty (per option)",
+      desc: "Format: Option = what we don’t know yet.",
+      key: "unknowns_map",
+      ph: "Stress test = may not catch all problems\nStart medicine = helps if reflux, not if heart\nWatchful waiting = depends on how symptoms change",
+      type: "textarea"
+    },
+    {
+      label: "Numbers you were told (optional)",
+      desc: "Any odds or counts (keep simple).",
+      key: "numbers_free",
+      ph: "Heart cause chance today about 5%; stress test false alarm about 10%; CT adds small radiation risk.",
+      type: "textarea"
+    },
+
+    /* VALUES & PREFERENCES (PLAIN) */
+    {
+      label: "What matters most to you",
+      desc: "Comfort, safety, less time off, fewer tests, cost, etc.",
+      key: "values_list",
+      ph: "Avoid dangerous misses; avoid big bills; get back to work fast.",
+      type: "textarea"
+    },
+    {
+      label: "Rate what matters (optional)",
+      desc: "Format: item = 1–5 importance.",
+      key: "values_ranked",
+      ph: "Avoid hospital = 3\nAvoid radiation = 4\nCatch heart problem early = 5",
+      type: "textarea"
+    },
+    {
+      label: "Life details that affect the choice",
+      desc: "Ride, child care, job, location, language, faith, caregiver.",
+      key: "life_context",
+      ph: "No car during weekdays; need Spanish interpreter; night shift job.",
+      type: "textarea"
+    },
+    {
+      label: "How you feel about the options",
+      desc: "Hopes, worries, stuck points in simple words.",
+      key: "cog_appraisal_plain",
+      ph: "Worried about missing something; also worried about costs.",
+      type: "textarea"
+    },
+
+    /* DECISION & CONSENT (PLAIN) */
+    {
+      label: "Choice we’re making today",
+      desc: "Which option you’re choosing now (it can change later).",
+      key: "decision_choice",
+      ph: "Stress test this week + acid reducer trial",
+      type: "text"
+    },
+    {
+      label: "Why this choice fits you",
+      desc: "Your reasons in your words.",
+      key: "decision_reasons",
+      ph: "Checks heart with limited time off; medicine might help if it’s heartburn.",
+      type: "textarea"
+    },
+    {
+      label: "Teach-Back (say the plan in your words)",
+      desc: "Restate steps; your clinician can fix any mix-ups.",
+      key: "teach_back_plain",
+      ph: "I’ll do the stress test this week, start the medicine tonight, and call if pain lasts over 5 minutes at rest.",
+      type: "textarea"
+    },
+
+    /* REVIEW & SAFETY-NET (PLAIN) */
+    {
+      label: "Return/urgent steps",
+      desc: "Exact ‘if X, then Y’ safety steps you agreed on.",
+      key: "safety_net",
+      ph: "If chest pain lasts >5 minutes at rest → call 911; if worse with shortness of breath → ER.",
+      type: "textarea"
+    },
+    {
+      label: "Follow-up plan",
+      desc: "Who, when, and how you’ll check in.",
+      key: "followup_plan",
+      ph: "Phone check in 48 hours; clinic visit in 1 week after test.",
+      type: "textarea"
+    },
+    {
+      label: "Open questions for later",
+      desc: "Things to ask at the next step.",
+      key: "open_questions",
+      ph: "If the test is normal, what’s next? How long to stay on the medicine?",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    entry_dt, decision_topic, clinician_team, context_plain,
+    provisional_plain, differential_plain, working_plain,
+    options_list, benefits_map, risks_map, unknowns_map, numbers_free,
+    values_list, values_ranked, life_context, cog_appraisal_plain,
+    decision_choice, decision_reasons, teach_back_plain,
+    safety_net, followup_plan, open_questions,
+    ctx, audience, style, tone
+  }) => {
+    // Helpers
+    const lines = s => (s || "").split(/\n/).map(x => x.trim()).filter(Boolean);
+    const nl = s => (s || "").trim();
+    const mapLines = (s) => {
+      // Expect "Key = value"
+      const obj = {};
+      lines(s).forEach(l => {
+        const [k, v] = l.split("=").map(x => x.trim());
+        if (k) obj[k] = v || "";
+      });
+      return obj;
+    };
+    const optRows = lines(options_list).map(l => {
+      const [name, what] = l.split("|").map(x => x.trim());
+      return { name: name || l, what: what || "" };
+    });
+    const ben = mapLines(benefits_map);
+    const risk = mapLines(risks_map);
+    const unk = mapLines(unknowns_map);
+
+    const out = [];
+    out.push("SHARED DECISION-MAKING (SDM) — Clinician-Grade Brief with Diagnostic Context");
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    entry_dt && out.push(`Entry: ${entry_dt}`);
+    decision_topic && out.push(`Decision topic: ${decision_topic}`);
+    clinician_team && out.push(`Clinician/Clinic: ${clinician_team}`);
+
+    // Diagnostic context (technical)
+    out.push(
+      "",
+      "Diagnostic Context (MD/DO framing):",
+      provisional_plain ? `• Provisional diagnosis: ${nl(provisional_plain)}` : "• Provisional diagnosis: (to be specified).",
+      differential_plain ? `• Differential diagnosis (prioritized DDx): ${nl(differential_plain)}` : "• Differential diagnosis: (to be elicited/prioritized).",
+      working_plain ? `• Working diagnosis (current leading hypothesis): ${nl(working_plain)}` : "• Working diagnosis: deferred pending additional data.",
+      "• Problem representation (semantic qualifiers): integrate onset/course, locus, quality/modifiers, and salient positives/negatives.",
+      "• Risk thresholds: apply pretest probability and test/treat thresholds; update as data accrue."
+    );
+
+    // Patient story (plain)
+    out.push("", "Patient Story (plain language):", nl(context_plain) || "(not provided)");
+
+    // Options grid
+    out.push("", "Options Considered:");
+    if (optRows.length) {
+      optRows.forEach((o, i) => {
+        out.push(`• ${o.name}${o.what ? " — " + o.what : ""}`);
+        if (ben[o.name]) out.push(`   · Benefits: ${ben[o.name]}`);
+        if (risk[o.name]) out.push(`   · Risks/downsides: ${risk[o.name]}`);
+        if (unk[o.name]) out.push(`   · Unknowns/uncertainty: ${unk[o.name]}`);
+      });
+    } else {
+      out.push("(no options listed)");
+    }
+    numbers_free && out.push("", "Numbers/Evidence (as communicated):", numbers_free);
+
+    // Values & preferences
+    out.push(
+      "",
+      "Values & Preferences (patient-stated):",
+      nl(values_list) || "(not specified)"
+    );
+    nl(values_ranked) && out.push("Importance ratings:", values_ranked);
+    nl(life_context) && out.push("Life context:", life_context);
+    nl(cog_appraisal_plain) && out.push("Cognitive/affective appraisal:", cog_appraisal_plain);
+
+    // Decision & consent scaffold
+    out.push(
+      "",
+      "Decision & Consent Elements:",
+      decision_choice ? `• Choice today: ${decision_choice}` : "• Choice today: (undecided/deferral).",
+      nl(decision_reasons) ? `• Rationale (patient-specific): ${decision_reasons}` : "",
+      nl(teach_back_plain) ? `• Teach-Back restatement (patient): ${teach_back_plain}` : "",
+      "• Informed consent structure: indications; expected benefits (absolute); risks/harms (absolute); reasonable alternatives (including watchful waiting); uncertainties; ability to withdraw consent; questions addressed."
+    );
+
+    // Safety-net & review
+    out.push(
+      "",
+      "Safety-Net & Review Plan:",
+      nl(safety_net) ? `• Return precautions / IF–THEN triggers: ${safety_net}` : "• Return precautions: (to be specified).",
+      nl(followup_plan) ? `• Follow-up plan: ${followup_plan}` : "• Follow-up plan: (to be scheduled).",
+      nl(open_questions) ? `• Open questions: ${open_questions}` : ""
+    );
+
+    // Clinical instructions (technical)
+    out.push(
+      "",
+      "Instructions (clinical, technical):",
+      "1) Present absolute effects (ARR/ARI), NNT/NNH, and time-to-benefit with balanced framing; avoid RR alone.",
+      "2) Map benefits/risks to patient values; explicitly document cost/burden and equity/access constraints.",
+      "3) Conduct cognitive bias check (anchoring, framing, availability, diagnostic momentum); use Teach-Back.",
+      "4) Specify test/treat thresholds and contingency pathways; schedule time-contingent re-evaluation.",
+      "5) Record consent elements and provide a plain-language after-visit summary with red-flag criteria."
+    );
+
+    // Safety reminder
+    out.push(
+      "",
+      "Important:",
+      "This summary organizes information for communication only. It is not a diagnosis or treatment plan. If symptoms are severe, worsening, or feel like an emergency, call your local emergency number immediately."
+    );
+
+    return out.filter(Boolean).join("\n");
+  },
+
+  meta: {
+    search_text: "shared decision making SDM options benefits risks uncertainty values preferences ARR NNT informed consent teach back Bayesian thresholds provisional diagnosis differential diagnosis working diagnosis problem representation MD DO psychology psychiatry safety net review plan"
+  }
+},
+
+{
+  id: "bpmh_health_dx",
+  slug: "bpmh-best-possible-medication-history",
+  label: "BPMH — Best Possible Medication History (+ Provisional/Differential/Working Dx)",
+  kind: "tool",
+  categories: [
+    "health",
+    "communication",
+    "safety",
+    "planning",
+    "notes"
+  ],
+  tags: [
+    "type:tool",
+    "use:medication-reconciliation",
+    "use:appointment-prep",
+    "use:safety-net",
+    "use:care-navigation",
+    "phase:plan",
+    "phase:apply",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "keep one accurate list of all medicines, vitamins, and supplements",
+    "prepare for any clinic, ER, pharmacy, or hospital visit",
+    "share a simple list with family/caregivers and new clinicians",
+    "track who prescribed each item and why you take it",
+    "spot duplicates, out-of-date items, and possible mix-ups to discuss"
+  ],
+  // Heavy MD/DO/psych terminology for instructions/output (fields remain lay-friendly).
+  boosters: [
+    "Perform a **BPMH** via multi-source triangulation: patient/caregiver interview, **brown-bag review** (physical containers), community/specialty **dispense histories**, PHR/EMR med lists, and recent **discharge summaries**; assign **source reliability** for each item.",
+    "Document each agent with **generic name**, **strength**, **dose/route/frequency (DRF)**, **indication (problem–drug pairing)**, **prescriber/service**, **start/stop dates**, **last dose time**, and **PRN contingencies**; include **OTC**, **herbals**, **nutraceuticals**, and **topicals/inhaled/injectables**.",
+    "Execute **medication reconciliation** against the active med list; identify **Medication Therapy Problems (MTPs)**: unnecessary therapy, needs additional therapy, ineffective therapy, **dose too low/high**, **adverse drug reaction**, **nonadherence**, and **drug–drug/drug–disease** interactions.",
+    "Screen for **polypharmacy** and **Potentially Inappropriate Medications (PIMs)** (e.g., **Beers Criteria**, **STOPP/START**, anticholinergic burden, **QTc-prolonging** agents, **renal/hepatic** dose adjustments, **high-alert** meds: insulin, anticoagulants, opioids, antiarrhythmics, lithium, clozapine, digoxin).",
+    "Record **allergies vs intolerances** with **reaction phenotype** (e.g., IgE-mediated anaphylaxis vs side effect) and **severity**; add **desensitization** status if relevant.",
+    "Elicit **adherence** using neutral questions (**Morisky-like** prompts), **cost/access barriers**, **cognitive/affective appraisal** (beliefs about medicines), and **implementation intentions**; document **concordance** after **Teach-Back**.",
+    "Tie the BPMH to diagnostic reasoning: write a concise **problem representation** with **semantic qualifiers**; state **provisional dx**, **prioritized differential (DDx)** with **pretest probability/Bayesian** thinking, and a **working diagnosis** with **test/treat thresholds** and **safety-net**/**return precautions**.",
+    "For psychotropics, monitor **metabolic risk**, **EPS**, **lithium levels**, **clozapine ANC**, **serotonergic toxicity**; for cardiometabolic agents, track **BP/HbA1c/lipid** targets; note required **TDM**/**labs**."
+  ],
+  definition: "BPMH is a best-source medication list built by carefully checking what you actually take—prescriptions, over-the-counter items, vitamins, and supplements—plus how you take them and why. This template keeps your typing simple and plain, then generates a clinician-style reconciliation brief (with technical add-ons like provisional/differential/working diagnosis context, safety-netting, and cognitive/behavioral notes) so teams can verify and correct quickly.",
+  help: "Gather your pill bottles, inhalers, patches, eye/ear drops, creams, syringes/pens, and your pharmacy info. Type each item on its own line following the example. Simple words are fine. Bring or send the output to your clinician or pharmacist. This helps them check for mix-ups. This is not medical advice—if you’re in danger or feel very unwell, call your local emergency number.",
+  
+  fields: [
+    /* HEADER */
+    {
+      label: "Today’s date & time",
+      desc: "When you filled this in.",
+      key: "entry_dt",
+      ph: "2025-09-25 09:10",
+      type: "text"
+    },
+    {
+      label: "Your name & birthday",
+      desc: "Helps match your records.",
+      key: "patient_ident",
+      ph: "Alex Rivera — 1985-03-14",
+      type: "text"
+    },
+    {
+      label: "Clinician & clinic (who will review)",
+      desc: "Who you’ll share this with.",
+      key: "clinician_team",
+      ph: "Dr. Lee (Family Medicine), Valley Clinic",
+      type: "text"
+    },
+    {
+      label: "Pharmacy info",
+      desc: "Name, phone, and any mail-order or specialty pharmacy.",
+      key: "pharmacy",
+      ph: "City Pharmacy 555-123-4567; MailRx 555-222-3333 (insulin).",
+      type: "textarea"
+    },
+    {
+      label: "Caregiver contact (optional)",
+      desc: "Who helps with medicines.",
+      key: "caregiver",
+      ph: "Ana — 555-444-7777",
+      type: "text"
+    },
+
+    /* SOURCES & ALLERGIES */
+    {
+      label: "Where this list came from",
+      desc: "All that apply (pill bottles, memory, clinic list, pharmacy website, discharge papers, caregiver).",
+      key: "sources",
+      ph: "Pill bottles at home; pharmacy printout (Aug); clinic visit summary (June); caregiver notes.",
+      type: "textarea"
+    },
+    {
+      label: "Allergies & bad reactions",
+      desc: "List the item, what happened, and how bad.",
+      key: "allergies",
+      ph: "Penicillin — hives and swelling (moderate).\nHydrocodone — nausea (mild).",
+      type: "textarea"
+    },
+
+    /* MEDICATION LISTS — one per line, simple format */
+    {
+      label: "Prescription medicines (daily or regular)",
+      desc: "One per line. Format: Name | strength | how much/how often | what it’s for | who prescribed | when started | last dose time",
+      key: "rx_regular",
+      ph: "Lisinopril | 10 mg | 1 tab daily in morning | blood pressure | Dr. Lee | 2023-04 | today 08:00\nMetformin | 500 mg | 1 tab twice daily with meals | blood sugar | Dr. Lee | 2022-11 | today 08:00",
+      type: "textarea"
+    },
+    {
+      label: "Prescription — as needed (PRN)",
+      desc: "Same format; include when you take it.",
+      key: "rx_prn",
+      ph: "Albuterol inhaler | 90 mcg | 2 puffs as needed for wheeze (max every 4h) | asthma | Dr. Kim | 2021 | last 2025-09-24 21:00",
+      type: "textarea"
+    },
+    {
+      label: "Over-the-counter (OTC)",
+      desc: "Pain, cold meds, antacids, etc.",
+      key: "otc",
+      ph: "Ibuprofen | 200 mg | 2 tabs up to 3x/day with food | pain | self | 2020 | last 2025-09-24 19:30",
+      type: "textarea"
+    },
+    {
+      label: "Vitamins & supplements",
+      desc: "Vitamins, herbs, powders, teas.",
+      key: "supplements",
+      ph: "Vitamin D | 1000 IU | 1 daily | low vitamin D | self | 2021 | today 08:00\nFish oil | 1000 mg | 1 daily | heart health | self | 2022 | today 08:00",
+      type: "textarea"
+    },
+    {
+      label: "Topical / inhaled / drops / patches",
+      desc: "Creams, ointments, sprays, eye/ear drops, patches.",
+      key: "topicals",
+      ph: "Fluticasone nasal spray | 50 mcg | 1 spray each nostril daily | allergies | Dr. Kim | 2023 | today 07:45",
+      type: "textarea"
+    },
+    {
+      label: "Shots / pens / infusions",
+      desc: "Insulin, biologics, B12, etc.",
+      key: "injectables",
+      ph: "Insulin glargine pen | 100 U/mL | 18 units nightly | diabetes | Dr. Lee | 2024-01 | last 2025-09-24 22:00",
+      type: "textarea"
+    },
+    {
+      label: "Short courses (recent antibiotics, steroids, etc.)",
+      desc: "Name and dates if still on them or ended in last 30 days.",
+      key: "short_courses",
+      ph: "Amoxicillin | 500 mg | 1 tab 3x/day for 7 days | sinus infection | urgent care | 2025-09-10 to 2025-09-17",
+      type: "textarea"
+    },
+    {
+      label: "Not taking anymore (stopped)",
+      desc: "Things you stopped and when.",
+      key: "stopped",
+      ph: "Omeprazole | 20 mg | stopped 2025-08 (felt better)",
+      type: "textarea"
+    },
+
+    /* ADHERENCE & DAILY LIFE (PLAIN) */
+    {
+      label: "How you take them day to day",
+      desc: "Missed doses, timing mix-ups, food interactions, reminders you use.",
+      key: "adherence",
+      ph: "Miss 1–2 evening doses/week; use phone alarms; sometimes forget insulin when traveling.",
+      type: "textarea"
+    },
+    {
+      label: "Side effects or concerns",
+      desc: "Anything you feel might be from a medicine.",
+      key: "side_effects",
+      ph: "Cough since starting lisinopril; mild stomach upset with metformin.",
+      type: "textarea"
+    },
+    {
+      label: "Costs & access",
+      desc: "Price, refills, prior auth, rides, mail delays.",
+      key: "access",
+      ph: "Struggle with insulin copay; mail-order delays 1–2 weeks.",
+      type: "textarea"
+    },
+    {
+      label: "Your thoughts about these medicines",
+      desc: "Hopes, worries, beliefs (say in your words).",
+      key: "cog_appraisal_plain",
+      ph: "Worried about side effects; want fewer pills if safe.",
+      type: "textarea"
+    },
+
+    /* VISIT PREP & DIAGNOSTIC IDEAS (PLAIN) */
+    {
+      label: "What you think the main problem is (your best guess)",
+      desc: "It’s okay to be unsure—use normal words.",
+      key: "provisional_plain",
+      ph: "Blood pressure not controlled; maybe acid reflux too.",
+      type: "textarea"
+    },
+    {
+      label: "Other possibilities to check",
+      desc: "List a few ideas to rule in/out.",
+      key: "differential_plain",
+      ph: "Anxiety, heartburn, side effect from a medicine.",
+      type: "textarea"
+    },
+    {
+      label: "What you think they’re going with for now (working idea)",
+      desc: "What it seems like for the moment.",
+      key: "working_plain",
+      ph: "Likely blood pressure + mild reflux; adjust meds and see.",
+      type: "textarea"
+    },
+    {
+      label: "Top questions for your clinician/pharmacist",
+      desc: "What do you want answered today?",
+      key: "visit_questions",
+      ph: "Do I need a different BP medicine? Is the cough from lisinopril? Any issues with fish oil + aspirin?",
+      type: "textarea"
+    }
+  ],
+
+  template: ({
+    entry_dt, patient_ident, clinician_team, pharmacy, caregiver, sources, allergies,
+    rx_regular, rx_prn, otc, supplements, topicals, injectables, short_courses, stopped,
+    adherence, side_effects, access, cog_appraisal_plain,
+    provisional_plain, differential_plain, working_plain, visit_questions,
+    ctx, audience, style, tone
+  }) => {
+    // Helpers
+    const lines = s => (s || "").split(/\n/).map(x => x.trim()).filter(Boolean);
+    const nl = s => (s || "").trim();
+    const parseItems = s => lines(s).map(l => {
+      const parts = l.split("|").map(x => x.trim());
+      return {
+        raw: l,
+        name: parts[0] || "",
+        strength: parts[1] || "",
+        drf: parts[2] || "", // dose/route/frequency in plain words
+        indication: parts[3] || "",
+        prescriber: parts[4] || "",
+        start: parts[5] || "",
+        last: parts[6] || ""
+      };
+    });
+
+    const rx = parseItems(rx_regular);
+    const prn = parseItems(rx_prn);
+    const otcL = parseItems(otc);
+    const sup = parseItems(supplements);
+    const top = parseItems(topicals);
+    const inj = parseItems(injectables);
+    const shortc = parseItems(short_courses);
+    const stopd = parseItems(stopped);
+
+    const allCurrent = [...rx, ...prn, ...otcL, ...sup, ...top, ...inj];
+    const nameKey = s => s.toLowerCase().replace(/\s+/g, " ").trim();
+    const dupes = (() => {
+      const map = new Map();
+      allCurrent.forEach(it => {
+        const k = nameKey(it.name);
+        if (!k) return;
+        map.set(k, (map.get(k) || 0) + 1);
+      });
+      return [...map.entries()].filter(([, n]) => n > 1).map(([k]) => k).map(k => k);
+    })();
+
+    const polyCount = allCurrent.length;
+    const polyFlag = polyCount >= 5;
+
+    const warnIncomplete = allCurrent.filter(it => !(it.strength && it.drf && it.indication)).map(it => it.raw);
+
+    const renderList = (title, arr) => {
+      const out = [];
+      out.push(`• ${title}:`);
+      if (!arr.length) { out.push("   (none)"); return out.join("\n"); }
+      arr.forEach(it => {
+        out.push(`   - ${it.name}${it.strength ? " | " + it.strength : ""}${it.drf ? " | " + it.drf : ""}${it.indication ? " | " + it.indication : ""}${it.prescriber ? " | " + it.prescriber : ""}${it.start ? " | start " + it.start : ""}${it.last ? " | last " + it.last : ""}`);
+      });
+      return out.join("\n");
+    };
+
+    const out = [];
+    out.push("BPMH & MEDICATION RECONCILIATION — Clinician-Grade Brief with Diagnostic Context");
+    ctx && out.push(`Context: ${ctx}`);
+    audience && out.push(`Audience: ${audience}`);
+    style && out.push(`Style: ${style}`);
+    tone && out.push(`Tone: ${tone}`);
+    entry_dt && out.push(`Entry: ${entry_dt}`);
+    patient_ident && out.push(`Patient: ${patient_ident}`);
+    clinician_team && out.push(`Reviewing clinician/clinic: ${clinician_team}`);
+    pharmacy && out.push(`Pharmacy: ${pharmacy}`);
+    caregiver && out.push(`Caregiver: ${caregiver}`);
+
+    out.push(
+      "",
+      "Sources (multi-source triangulation):",
+      nl(sources) || "(not specified)"
+    );
+
+    out.push(
+      "",
+      "Allergies/adverse reactions (phenotype, severity):",
+      nl(allergies) || "(none listed)"
+    );
+
+    out.push(
+      "",
+      "— CURRENT THERAPIES —"
+    );
+    out.push(
+      renderList("Prescription (regular)", rx),
+      renderList("Prescription (PRN/as needed)", prn),
+      renderList("Over-the-counter (OTC)", otcL),
+      renderList("Vitamins & supplements", sup),
+      renderList("Topical / inhaled / drops / patches", top),
+      renderList("Injectables / pens / infusions", inj),
+      renderList("Short courses (recent)", shortc),
+      renderList("Stopped/discontinued", stopd)
+    );
+
+    // Quality/safety signals
+    const safety = [];
+    safety.push(`Total current items counted: ${polyCount}${polyFlag ? "  ⚠️ polypharmacy risk threshold met (≥5)" : ""}.`);
+    if (dupes.length) safety.push(`Possible duplicates by name (check forms/strengths): ${dupes.join(", ")}.`);
+    if (warnIncomplete.length) safety.push(`Items missing key details (strength/DRF/indication):\n${warnIncomplete.map(x => "   · " + x).join("\n")}`);
+    if (safety.length) {
+      out.push("", "Reconciliation signals:", ...safety);
+    }
+
+    // Patient context
+    out.push(
+      "",
+      "Adherence & daily life (patient-stated):",
+      nl(adherence) || "(not provided)"
+    );
+    out.push("Side effects/concerns:", nl(side_effects) || "(not provided)");
+    out.push("Costs & access:", nl(access) || "(not provided)");
+    out.push("Cognitive/affective appraisal (patient words):", nl(cog_appraisal_plain) || "(not provided)");
+
+    // Diagnostic context with MD/DO framing
+    out.push(
+      "",
+      "Diagnostic Context (MD/DO framing):",
+      provisional_plain ? `• Provisional diagnosis (patient-stated hypothesis): ${nl(provisional_plain)}` : "• Provisional diagnosis: (to be determined).",
+      differential_plain ? `• Differential diagnosis (prioritized DDx): ${nl(differential_plain)}` : "• Differential diagnosis: (to be elicited/prioritized).",
+      working_plain ? `• Working diagnosis (current leading hypothesis): ${nl(working_plain)}` : "• Working diagnosis: deferred pending additional data.",
+      "• Problem representation (semantic qualifiers): integrate onset/course, anatomic locus, quality/modifiers, and salient positives/negatives.",
+      "• Thresholds & safety-net: define pretest probability; specify test/treat thresholds; document return precautions and time-contingent re-evaluation.",
+      "• Medication Therapy Problems (MTPs): screen for unnecessary therapy, needs additional therapy, ineffective therapy, dose too low/high, adverse drug reaction, nonadherence, and interactions.",
+      "• Consider PIM screens (Beers, STOPP/START), anticholinergic burden, QTc risk, renal/hepatic dose adjustment, and high-alert medications."
+    );
+
+    // Visit questions
+    out.push(
+      "",
+      "Questions for clinician/pharmacist (patient-stated):",
+      nl(visit_questions) || "(none recorded)"
+    );
+
+    // Technical instructions for MD/DO teams
+    out.push(
+      "",
+      "Instructions (clinical, technical):",
+      "1) Verify each agent against at least two sources; assign source reliability; reconcile with the active medication orders.",
+      "2) Map each drug to an indication (problem–drug pairing); address MTPs; consider deprescribing where appropriate.",
+      "3) Check for interactions, duplications (therapeutic class), contraindications, and organ-function dosing; confirm monitoring (e.g., BMP, LFTs, INR, lithium level).",
+      "4) Employ Teach-Back to confirm patient understanding; convert to implementation intentions (dose/route/frequency; what to do if a dose is missed).",
+      "5) Provide a clean, plain-language med list to the patient/caregiver; schedule follow-up for unresolved items."
+    );
+
+    out.push(
+      "",
+      "Important:",
+      "This list is for communication and safety. It is not medical advice. For severe or worsening symptoms, call your local emergency number."
+    );
+
+    return out.join("\n");
+  },
+
+  meta: {
+    search_text: "BPMH best possible medication history medication reconciliation brown bag review Rx OTC supplements indication prescriber start stop PRN polypharmacy PIM Beers STOPP START MTP adverse drug reaction adherence teach back MD DO psychiatry psychology"
+  }
+},
+
+{
+  id: "user_story_ac_pro",
+  slug: "user-stories-acceptance-criteria-developer-brief",
+  label: "User Stories & Acceptance Criteria → Developer-Ready Brief",
+  kind: "tool",
+  categories: ["product", "delivery", "engineering", "qa", "ux"],
+  tags: [
+    "type:tool",
+    "use:story-writing",
+    "use:acceptance-criteria",
+    "use:requirements",
+    "level:beginner",
+    'type:task',
+    'topic:prd',
+    'topic:requirements',
+    'topic:roadmap',
+    'topic:traceability',
+    'topic:telemetry',
+    'topic:accessibility',
+    'topic:localization',
+    'topic:security',
+    'use:plan',
+    'use:spec',
+    'use:write',
+    'use:governance',
+    'phase:plan'
+  ],
+
+  use_cases: [
+    "turn a plain idea into a developer-ready brief",
+    "capture small, testable stories with clear acceptance checks",
+    "share non-functional needs (speed, security, accessibility)",
+    "state the language/stack so builders know where to start",
+    "record current product stage and long-term vision"
+  ],
+
+  help: "Fill in simple fields and picks. Your words will be turned into a technical document for developers and testers. Keep your inputs short and concrete. Use selects where possible; add notes only where helpful.",
+
+  boosters: [
+    "Keep each story small and testable (INVEST).",
+    "State outcomes, not UI widgets (say “select a value,” not “dropdown”).",
+    "Write at least one happy path and one edge case scenario.",
+    "Add non-functional expectations (performance, accessibility, security).",
+    "If you’re uncertain, mark risk as Medium/High so the team investigates early."
+  ],
+
+  /* =========================
+   * FIELDS — simple, layperson wording (lots of selects)
+   * ========================= */
+  fields: [
+    /* META */
+    { label: "Today’s date & time", desc: "When you’re filling this out.", key: "entry_dt", type: "text", ph: "2025-09-25 15:10" },
+    { label: "Project / feature name", desc: "Short name people will recognize.", key: "project_name", type: "text", ph: "Saved payment method" },
+
+    /* WHAT ARE WE BUILDING & WITH WHAT */
+    {
+      label: "What are we building?",
+      desc: "Pick the closest type.",
+      key: "build_type",
+      type: "select",
+      options: [
+        "Web app (front-end UI)",
+        "Web API / backend service",
+        "Mobile app (iOS)",
+        "Mobile app (Android)",
+        "Desktop app",
+        "Command-line tool (CLI)",
+        "Automation / script",
+        "Data/ETL pipeline",
+        "ML/AI feature or service",
+        "Embedded/IoT",
+        "Integration/connector",
+        "Infrastructure/DevOps",
+        "Other / not sure"
+      ]
+    },
+    {
+      label: "Primary programming language",
+      desc: "Pick the main language to use.",
+      key: "lang_primary",
+      type: "select",
+      options: [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C#",
+        "C++",
+        "C",
+        "Go",
+        "Rust",
+        "Ruby",
+        "PHP",
+        "Swift",
+        "Kotlin",
+        "Scala",
+        "Dart",
+        "Objective-C",
+        "R",
+        "Julia",
+        "MATLAB",
+        "Haskell",
+        "Elixir",
+        "Erlang",
+        "OCaml",
+        "F#",
+        "Clojure",
+        "Perl",
+        "Lua",
+        "Solidity",
+        "SQL (PostgreSQL)",
+        "SQL (MySQL)",
+        "SQL (SQL Server)",
+        "NoSQL (MongoDB)",
+        "Shell (bash/zsh)",
+        "PowerShell",
+        "HTML/CSS (front-end)"
+      ]
+    },
+    {
+      label: "Secondary language / tech (optional)",
+      desc: "If there’s a second choice or helper tech.",
+      key: "lang_secondary",
+      type: "select",
+      options: [
+        "None",
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C#",
+        "C++",
+        "C",
+        "Go",
+        "Rust",
+        "Ruby",
+        "PHP",
+        "Swift",
+        "Kotlin",
+        "Scala",
+        "Dart",
+        "Objective-C",
+        "R",
+        "Julia",
+        "MATLAB",
+        "Haskell",
+        "Elixir",
+        "Erlang",
+        "OCaml",
+        "F#",
+        "Clojure",
+        "Perl",
+        "Lua",
+        "Solidity",
+        "SQL (PostgreSQL)",
+        "SQL (MySQL)",
+        "SQL (SQL Server)",
+        "NoSQL (MongoDB)",
+        "Shell (bash/zsh)",
+        "PowerShell",
+        "HTML/CSS (front-end)"
+      ]
+    },
+    {
+      label: "Runtime / platform target",
+      desc: "Where will it run?",
+      key: "runtime",
+      type: "select",
+      options: [
+        "Browser",
+        "Node.js",
+        ".NET",
+        "JVM",
+        "iOS",
+        "Android",
+        "Serverless (AWS/Lambda, etc.)",
+        "Docker/Kubernetes",
+        "On-prem VM/servers",
+        "Bare metal/embedded",
+        "Not sure"
+      ]
+    },
+    {
+      label: "Data store (if any)",
+      desc: "Where data should live.",
+      key: "datastore",
+      type: "select",
+      options: [
+        "Not needed",
+        "PostgreSQL",
+        "MySQL",
+        "SQL Server",
+        "SQLite",
+        "MongoDB",
+        "DynamoDB",
+        "Redis",
+        "Elasticsearch",
+        "S3/Blob storage",
+        "Other / not sure"
+      ]
+    },
+    {
+      label: "Tech notes (optional)",
+      desc: "Frameworks or libraries you prefer (short note).",
+      key: "tech_notes",
+      type: "textarea",
+      ph: "React + Vite + Tailwind; Express or FastAPI; OpenAPI for contracts"
+    },
+
+    /* STORY CORE */
+    { label: "Actor (who?)", desc: "Who will use it?", key: "actor", type: "select",
+      options: ["Customer","Visitor","Admin","Seller","Support Agent","Content Editor","API Client","Internal Tool User","Other"] },
+    { label: "What do they need to do? (what?)", desc: "One clear action.", key: "capability", type: "text", ph: "save a payment method" },
+    { label: "Why does it matter? (why?)", desc: "Benefit or outcome.", key: "benefit", type: "text", ph: "so checkout is faster next time" },
+    { label: "Priority", key: "priority", type: "select", options: ["Must","Should","Could","Won’t (now)"] },
+    { label: "Risk / Unknown", key: "risk", type: "select", options: ["Low","Medium","High"] },
+
+    /* SCOPE & DATA */
+    {
+      label: "Inputs & rules (short)",
+      desc: "Key fields and simple rules.",
+      key: "inputs_rules",
+      type: "textarea",
+      ph: "Card brand, number (tokenized), exp month/year; only one default at a time"
+    },
+    {
+      label: "Out of scope (for now)",
+      desc: "What we are not doing.",
+      key: "out_of_scope",
+      type: "textarea",
+      ph: "Apple Pay; multiple profiles; corporate cards"
+    },
+
+    /* ACCEPTANCE CRITERIA — EASY INPUTS */
+    {
+      label: "Acceptance rules (one per line)",
+      desc: "Facts that must be true.",
+      key: "rules",
+      type: "textarea",
+      ph: "Only one default card\nReject expired cards\nStore token only; no PAN at rest"
+    },
+
+    /* GHERKIN SCENARIOS */
+    { label: "Scenario 1 — title", key: "sc1_title", type: "text", ph: "Save first card as default" },
+    { label: "Given", key: "sc1_given", type: "textarea", ph: "Logged-in buyer with no saved cards" },
+    { label: "When", key: "sc1_when", type: "textarea", ph: "Add Visa 4242 exp 12/28" },
+    { label: "Then", key: "sc1_then", type: "textarea", ph: "Card shown as Default; token stored; no PAN saved" },
+
+    { label: "Scenario 2 — title (optional)", key: "sc2_title", type: "text", ph: "Reject expired card" },
+    { label: "Given", key: "sc2_given", type: "textarea", ph: "On Add card form" },
+    { label: "When", key: "sc2_when", type: "textarea", ph: "Submit card expiring 07/23" },
+    { label: "Then", key: "sc2_then", type: "textarea", ph: "See 'Card is expired'; card not saved" },
+
+    /* EXAMPLES TABLE (OPTIONAL) */
+    { label: "Examples (CSV rows)", key: "examples_csv", type: "textarea",
+      ph: "brand,last4,exp,expected\nVisa,4242,12/28,Accept default\nVisa,4242,07/23,Reject expired" },
+
+    /* NON-FUNCTIONAL */
+    { label: "Accessibility (a11y)", key: "a11y", type: "textarea", ph: "Meets WCAG 2.2 AA; focus order; labels; contrast" },
+    { label: "Performance", key: "perf", type: "textarea", ph: "Web TTI p95 < 2.5s; API p95 < 300ms" },
+    { label: "Security & privacy", key: "sec", type: "textarea", ph: "PCI SAQ-A; tokens only; input rate limit 10/min/IP" },
+    { label: "Reliability / Observability", key: "reliab", type: "textarea", ph: "SLO 99.9%; emit card_saved/card_failed events" },
+
+    /* TELEMETRY */
+    { label: "Analytics events", key: "analytics", type: "textarea", ph: "card_saved, card_failed(reason), card_set_default" },
+    { label: "Success metric (what ‘good’ looks like)", key: "metric_success", type: "text", ph: "≥60% of checkouts use saved card within 30 days" },
+    { label: "Guardrail metric (don’t make this worse)", key: "metric_guardrail", type: "text", ph: "Payment failures p95 ≤ baseline" },
+
+    /* DEPENDENCIES */
+    { label: "Dependencies & links", key: "deps", type: "textarea", ph: "Payments API v2; token vault; UI design link; legal sign-off" },
+
+    /* PRODUCT STATUS & VISION */
+    {
+      label: "Where is the product right now?",
+      desc: "Pick the current stage.",
+      key: "product_stage",
+      type: "select",
+      options: [
+        "Idea / discovery",
+        "Clickable prototype",
+        "MVP (in development)",
+        "Beta (limited users)",
+        "GA / in production",
+        "Maintenance / sunsetting"
+      ]
+    },
+    {
+      label: "Current state notes",
+      desc: "What exists today (plain words).",
+      key: "current_state",
+      type: "textarea",
+      ph: "We have checkout without saved cards; backend can store tokens"
+    },
+    {
+      label: "North Star vision (long term)",
+      desc: "Where you want this to go.",
+      key: "north_star",
+      type: "textarea",
+      ph: "One-tap checkout across web and mobile, with wallet support and smart retries"
+    },
+
+    /* CATCH-ALL */
+    {
+      label: "Anything else (optional)",
+      desc: "Other details you want builders to know.",
+      key: "other_notes",
+      type: "textarea",
+      ph: "Brand/copy tone; localization needs; legal disclaimers; migration notes"
+    }
+  ],
+
+  /* =========================
+   * TEMPLATE — converts plain inputs into a technical brief
+   * ========================= */
+  template: (f) => {
+    const nl = s => (s || "").trim();
+    const lines = s => (s || "").split("\n").map(x => x.trim()).filter(Boolean);
+    const exRows = lines(f.examples_csv).map(r => r.split(",").map(x=>x.trim()));
+    const hasSc2 = f.sc2_title || f.sc2_given || f.sc2_when || f.sc2_then;
+
+    const out = [];
+
+    // Header & reading instructions
+    out.push(`DEVELOPER-READY BRIEF — User Story & Acceptance Criteria`);
+    out.push(`This document transforms plain inputs into a technical plan for engineers and testers. Structure: story → rules → scenarios → examples → non-functional → telemetry → dependencies → status & vision.`);
+    nl(f.entry_dt) && out.push(`Entry: ${f.entry_dt}`);
+    nl(f.project_name) && out.push(`Project/Feature: ${f.project_name}`);
+
+    // Build target & tech
+    out.push(`\nBuild Target & Tech`);
+    out.push(`• What: ${f.build_type || "—"}`);
+    out.push(`• Primary language: ${f.lang_primary || "—"}`);
+    out.push(`• Secondary language/tech: ${f.lang_secondary || "—"}`);
+    out.push(`• Runtime/platform: ${f.runtime || "—"}`);
+    out.push(`• Data store: ${f.datastore || "—"}`);
+    nl(f.tech_notes) && out.push(`• Tech notes: ${nl(f.tech_notes)}`);
+
+    // Story
+    out.push(`\nUser Story`);
+    out.push(`As a ${f.actor || "user"}, I want to ${nl(f.capability)||"[capability]"}, so that ${nl(f.benefit)||"[benefit]"}.`);
+    out.push(`Priority: ${f.priority || "—"}   Risk: ${f.risk || "—"}`);
+
+    // Scope, inputs, out of scope
+    out.push(`\nScope & Data`);
+    nl(f.inputs_rules) && out.push(`• Inputs & rules: ${nl(f.inputs_rules)}`);
+    nl(f.out_of_scope) && out.push(`• Out of scope: ${nl(f.out_of_scope)}`);
+
+    // Acceptance Criteria — Rules
+    out.push(`\nAcceptance Criteria — Rules`);
+    const ruleList = lines(f.rules);
+    out.push(ruleList.length ? ruleList.map(r=>`- ${r}`).join("\n") : "- (none)");
+
+    // Gherkin scenarios
+    out.push(`\nAcceptance Criteria — Gherkin`);
+    const scenario = (t,g,w,th) => `Scenario: ${t||"(title)"}\n  Given ${nl(g)||"(given)"}\n  When  ${nl(w)||"(when)"}\n  Then  ${nl(th)||"(then)"}`;
+    out.push(scenario(f.sc1_title,f.sc1_given,f.sc1_when,f.sc1_then));
+    if (hasSc2) out.push("", scenario(f.sc2_title,f.sc2_given,f.sc2_when,f.sc2_then));
+
+    // Examples table
+    if (exRows.length) {
+      out.push(`\nAcceptance Criteria — Examples`);
+      const header = exRows[0]; const body = exRows.slice(1);
+      out.push(`| ${header.join(" | ")} |`);
+      out.push(`| ${header.map(()=>"-").join(" | ")} |`);
+      body.forEach(r => out.push(`| ${r.join(" | ")} |`));
+    }
+
+    // Non-functional
+    out.push(`\nNon-Functional Requirements`);
+    nl(f.a11y) && out.push(`- Accessibility: ${nl(f.a11y)}`);
+    nl(f.perf) && out.push(`- Performance: ${nl(f.perf)}`);
+    nl(f.sec) && out.push(`- Security & privacy: ${nl(f.sec)}`);
+    nl(f.reliab) && out.push(`- Reliability/Observability: ${nl(f.reliab)}`);
+
+    // Telemetry
+    (nl(f.analytics) || nl(f.metric_success) || nl(f.metric_guardrail)) && out.push(`\nTelemetry & Success Measures`);
+    nl(f.analytics) && out.push(`- Events: ${nl(f.analytics)}`);
+    nl(f.metric_success) && out.push(`- Success metric: ${nl(f.metric_success)}`);
+    nl(f.metric_guardrail) && out.push(`- Guardrail metric: ${nl(f.metric_guardrail)}`);
+
+    // Dependencies
+    nl(f.deps) && out.push(`\nDependencies & Links\n${nl(f.deps)}`);
+
+    // Product status & vision
+    out.push(`\nProduct Status & Vision`);
+    out.push(`- Current stage: ${f.product_stage || "—"}`);
+    nl(f.current_state) && out.push(`- Current state: ${nl(f.current_state)}`);
+    nl(f.north_star) && out.push(`- North Star: ${nl(f.north_star)}`);
+
+    // Optional notes
+    nl(f.other_notes) && out.push(`\nOther Notes\n${nl(f.other_notes)}`);
+
+    // Implementation checklist (developer-facing)
+    out.push(`\nImplementation Checklist (Definition of Done)`);
+    out.push([
+      "- [ ] All acceptance rules pass (automated where practical)",
+      "- [ ] Happy path + at least one edge scenario covered",
+      "- [ ] Accessibility checks completed",
+      "- [ ] Performance budget verified",
+      "- [ ] Security review / secrets handled / rate limits in place",
+      "- [ ] Logs/metrics/events wired + dashboard link",
+      "- [ ] Feature flag/rollout & rollback plan documented",
+      "- [ ] Docs/Changelog updated"
+    ].join("\n"));
+
+    // Hand-off summary
+    out.push(`\nHand-Off Summary (developer instructions)`);
+    out.push([
+      "1) Start from the User Story and Acceptance Rules; wire scenarios into tests.",
+      "2) Use the chosen language/runtime. If unclear, propose a minimal scaffold.",
+      "3) Meet the non-functional targets (a11y, performance, security).",
+      "4) Emit the analytics/diagnostic events called out above.",
+      "5) Confirm edge cases with the Examples table; add more as needed.",
+      "6) Demo against the Gherkin scenarios; attach evidence (test runs/screens)."
+    ].join("\n"));
+
+    return out.join("\n");
+  }
+},
+
+{
+  id: "roadmap_brief_pro",
+  slug: "product-roadmap-brief-slices-phases",
+  label: "Product Roadmap → Team-Ready Brief (Slices + Phases)",
+  kind: "tool",
+  categories: ["product", "strategy", "delivery", "engineering", "portfolio"],
+  tags: [
+    "type:tool",
+    "use:roadmap",
+    "use:planning",
+    "use:prioritization",
+    "use:capacity",
+    "level:beginner"
+  ],
+
+  use_cases: [
+    "turn messy inputs (ideas, JTBD, PRDs, features) into a coherent roadmap",
+    "produce two views: Now-Next-Later and a slice-level quarterly plan",
+    "sequence value-thin vertical slices across MVP → MLP → MMP → Scale phases",
+    "score bets with RICE/WSJF and tie everything to a North Star",
+    "set governance (monthly outcome review, quarterly refresh) and capacity guards"
+  ],
+
+  help: "Pick from simple dropdowns and add short notes. Your words become a team-ready roadmap: vision → outcomes → themes → bets → slices → phases. It’s a time-bounded narrative of intent, not a promise or a Gantt chart.",
+
+  boosters: [
+    "Think “few phases, many slices”: phases decide; slices deliver value and learning.",
+    "Anchor everything to a **North Star** and theme-level outcomes (avoid feature factory).",
+    "Design a **walking skeleton** for MVP; MLP retains; MMP sells; Scale hardens/grows.",
+    "Use **RICE** or **WSJF** to rank inside themes; keep a parking lot for “not now.”",
+    "Staff capacity at ~70% planned slices, 20% discovery, 10% interrupts."
+  ],
+
+  /* =========================
+   * FIELDS — friendly prompts, lots of selects
+   * ========================= */
+  fields: [
+    { label: "Today’s date & time", desc: "When you’re filling this out.", key: "entry_dt", type: "text", ph: "2025-09-25 16:40" },
+    { label: "Product / portfolio name", desc: "Short name people will recognize.", key: "product_name", type: "text", ph: "Team Collaboration Suite" },
+    {
+      label: "Planning horizon",
+      desc: "Time box for this roadmap.",
+      key: "horizon",
+      type: "select",
+      options: ["6 weeks", "12 weeks", "1 quarter", "2 quarters", "6 months"]
+    },
+    {
+      label: "Roadmap view(s) to generate",
+      desc: "Choose both for exec + team.",
+      key: "views",
+      type: "select",
+      options: ["Now-Next-Later", "Quarterly slice plan", "Both"]
+    },
+
+    /* VISION & STRATEGY */
+    {
+      label: "Vision (18–36 months)",
+      desc: "Change in the world you want to create (plain words).",
+      key: "vision",
+      type: "textarea",
+      ph: "Teams keep promises to each other without nagging."
+    },
+    {
+      label: "Strategy (how we win)",
+      desc: "Segments, problems, capabilities (plain words).",
+      key: "strategy",
+      type: "textarea",
+      ph: "Win SMB teams by nailing activation + habit loops in 30 days."
+    },
+    {
+      label: "North Star metric",
+      desc: "Single metric that best captures delivered value.",
+      key: "north_star",
+      type: "text",
+      ph: "Weekly active retained teams (%)"
+    },
+    {
+      label: "North Star baseline → target",
+      desc: "Where it is now and where we want to get in this horizon.",
+      key: "north_star_goal",
+      type: "text",
+      ph: "15% → 28% in 2 quarters"
+    },
+
+    /* THEMES (3–5) */
+    {
+      label: "Themes (CSV rows)",
+      desc: "theme | outcome target | guardrail metric",
+      key: "themes_csv",
+      type: "textarea",
+      ph: "Activation | First-week success 22% → 40% | Support tickets do not rise\nCollaboration | Teams with 2+ active users 15% → 30% | NPS ≥ 40\nReliability | Crash rate 2.3% → 0.4% | p95 latency < 300ms"
+    },
+
+    /* INVENTORY */
+    {
+      label: "Opportunities (CSV)",
+      desc: "opportunity/JTBD | theme",
+      key: "opportunities_csv",
+      type: "textarea",
+      ph: "Users forget commitments; need timely nudges | Activation\nTeams can’t see each other’s progress | Collaboration"
+    },
+    {
+      label: "Facts & constraints (bullets)",
+      desc: "Dependencies, obligations, compliance, dates.",
+      key: "facts",
+      type: "textarea",
+      ph: "- SSO contract due by Q4\n- Billing revamp dependency\n- iOS 14+ support only"
+    },
+
+    /* PRIORITIZATION — choose one, paste table(s) */
+    {
+      label: "Prioritization method",
+      desc: "How we’ll rank bets inside themes.",
+      key: "prio_method",
+      type: "select",
+      options: ["RICE", "WSJF", "Both (show both)"]
+    },
+    {
+      label: "RICE table (CSV)",
+      desc: "bet | reach (users/quarter) | impact (3/2/1) | confidence (0–1) | effort (person-weeks) | theme",
+      key: "rice_csv",
+      type: "textarea",
+      ph: "Invite by link | 1500 | 3 | 0.7 | 2 | Activation\nFirst reminder at commit time | 1500 | 2 | 0.8 | 1 | Activation\nTeam activity view | 800 | 2 | 0.6 | 2 | Collaboration"
+    },
+    {
+      label: "WSJF table (CSV)",
+      desc: "bet | cost of delay | duration (weeks) | theme",
+      key: "wsjf_csv",
+      type: "textarea",
+      ph: "Invite by link | 120 | 2 | Activation\nTeam activity view | 80 | 2 | Collaboration\nSnooze windows | 60 | 1 | Collaboration"
+    },
+
+    /* SLICES BY PHASE */
+    {
+      label: "Phase selection",
+      desc: "Pick phases to include.",
+      key: "phases",
+      type: "select",
+      options: ["Discovery + MVP + MLP + MMP + Scale", "Discovery + MVP + MLP", "MVP + MLP + MMP", "Custom (we will parse CSVs)"]
+    },
+    {
+      label: "Discovery (Phase 0) — slices (CSV)",
+      desc: "slice | learning risk | method | decision date",
+      key: "discovery_csv",
+      type: "textarea",
+      ph: "Value risk smoke test | Demand | Landing page + waitlist | 2025-10-10\nFeasibility spike | Tech | Link tokens & activity feed | 2025-10-15"
+    },
+    {
+      label: "MVP (Phase 1) — slices (CSV)",
+      desc: "slice | outcome metric | target delta | owner | t-shirt (XS/S/M/L) | deps | confidence | decision date",
+      key: "mvp_csv",
+      type: "textarea",
+      ph: "Invite via share link | % signups join a team in 24h | +20% | Alex | S | user model, activity feed | Med | 2025-10-15\nFirst reminder at commit time | D1 retention | +10% | Priya | S | notifications svc | Med | 2025-10-20\nTeam list shows last activity | % weekly active teams | +5% | Sam | M | activity feed | Low | 2025-10-25"
+    },
+    {
+      label: "MLP (Phase 2) — slices (CSV)",
+      desc: "slice | outcome metric | target delta | owner | t-shirt | deps | confidence | decision date",
+      key: "mlp_csv",
+      type: "textarea",
+      ph: "Smart reminder windows & snooze | Missed tasks | −15% | Alex | M | scheduler | Med | 2025-11-10\nTeam activity view | % weekly active teams | +5% | Priya | M | analytics | Med | 2025-11-20"
+    },
+    {
+      label: "MMP (Phase 3) — slices (CSV)",
+      desc: "slice | outcome metric | target delta | owner | t-shirt | deps | confidence | decision date",
+      key: "mmp_csv",
+      type: "textarea",
+      ph: "Admin controls & export | Pilot paying teams | 10 teams | Sam | M | billing | High | 2025-12-10\nSSO lite | Security exceptions | 0 | Priya | M | IdP | Med | 2025-12-18"
+    },
+    {
+      label: "Scale (Phase 4) — slices (CSV)",
+      desc: "slice | outcome metric | target delta | owner | t-shirt | deps | confidence | decision date",
+      key: "scale_csv",
+      type: "textarea",
+      ph: "Perf hardening | p95 latency | <300ms | Alex | L | cache | Med | 2026-01-15\nGrowth loop A/B | Referral rate | +2pp | Priya | M | email svc | Low | 2026-01-30"
+    },
+
+    /* NOW / NEXT / LATER */
+    {
+      label: "Now (CSV)",
+      desc: "slice | expected outcome | metric delta",
+      key: "now_csv",
+      type: "textarea",
+      ph: "Invite via share link | Teams form faster | +20% join in 24h\nFirst reminder at commit time | Higher day-1 retention | +10%"
+    },
+    {
+      label: "Next (CSV)",
+      desc: "slice | expected outcome | metric delta",
+      key: "next_csv",
+      type: "textarea",
+      ph: "Team activity view | More weekly active teams | +5%\nSnooze windows | Fewer missed tasks | −15%"
+    },
+    {
+      label: "Later (CSV)",
+      desc: "slice | expected outcome | metric delta",
+      key: "later_csv",
+      type: "textarea",
+      ph: "Roles and mentions | Smoother coordination | TBD\nTrends dashboard v1 | Visibility | TBD"
+    },
+
+    /* CAPACITY & CADENCE */
+    {
+      label: "Sprint length",
+      desc: "Your delivery cadence.",
+      key: "sprint_len",
+      type: "select",
+      options: ["1 week", "2 weeks", "3 weeks", "4 weeks"]
+    },
+    { label: "Team capacity per sprint (points)", desc: "Rough sum for the whole team.", key: "capacity_pts", type: "text", ph: "40" },
+    { label: "Planned time split", desc: "planned/discovery/interrupts (%)", key: "split", type: "text", ph: "70/20/10" },
+    { label: "Sprints in horizon", desc: "How many sprints this plan covers.", key: "sprints", type: "text", ph: "6" },
+
+    /* GOVERNANCE */
+    {
+      label: "Monthly outcome review (day of month)",
+      desc: "Pick a day like 5, 10, 15, etc.",
+      key: "monthly_day",
+      type: "select",
+      options: ["5", "10", "15", "20", "25"]
+    },
+    {
+      label: "Quarterly refresh month",
+      desc: "When to re-rank with new evidence.",
+      key: "quarter_refresh",
+      type: "select",
+      options: ["Jan", "Apr", "Jul", "Oct"]
+    },
+    {
+      label: "Discovery cadence",
+      desc: "Assumption tests per sprint.",
+      key: "discovery_cadence",
+      type: "select",
+      options: ["≥1 per sprint", "Every other sprint", "Ad hoc"]
+    },
+
+    /* COMMUNICATION STYLE */
+    {
+      label: "Tone for stakeholder doc",
+      desc: "Choose the writing tone.",
+      key: "tone",
+      type: "select",
+      options: ["Concise/exec", "Narrative/product", "Technical/delivery"]
+    },
+    {
+      label: "Anything else (optional)",
+      desc: "Other notes, risks, or context.",
+      key: "other_notes",
+      type: "textarea",
+      ph: "Regulatory review in Q2; partner co-marketing in Q3"
+    }
+  ],
+
+  /* =========================
+   * TEMPLATE — builds a comprehensive roadmap brief
+   * ========================= */
+  template: (f) => {
+    const nl = s => (s||"").trim();
+    const lines = s => (s||"").split("\n").map(x=>x.trim()).filter(Boolean);
+    const csv = s => lines(s).map(r => r.split("|").map(c=>c.trim()));
+
+    // Helpers: scoring
+    const riceRows = csv(f.rice_csv).map(r => ({
+      bet: r[0], reach: +r[1], impact: +r[2], conf: +r[3], effort: +r[4], theme: r[5],
+      score: ( (+r[1]||0) * (+r[2]||0) * (+r[3]||0) ) / ( (+r[4]||1) )
+    })).filter(x => x.bet);
+    const wsjfRows = csv(f.wsjf_csv).map(r => ({
+      bet: r[0], cod: +r[1], dur: +r[2], theme: r[3],
+      score: ( (+r[1]||0) ) / ( (+r[2]||1) )
+    })).filter(x => x.bet);
+
+    const byTheme = (arr) => arr.reduce((acc, x) => {
+      const k = x.theme || "Unassigned"; (acc[k] ||= []).push(x); return acc;
+    }, {});
+
+    const fmtTable = (header, rows) => {
+      if (!rows.length) return "";
+      const head = `| ${header.join(" | ")} |\n| ${header.map(()=>"-").join(" | ")} |`;
+      const body = rows.map(r => `| ${r.join(" | ")} |`).join("\n");
+      return `${head}\n${body}`;
+    };
+
+    // Capacity math
+    const capacity = parseFloat(f.capacity_pts||"0") || 0;
+    const sprints = parseInt(f.sprints||"0",10) || 0;
+    const [planPct, discPct, intPct] = (f.split||"70/20/10").split("/").map(x=>parseFloat(x)||0);
+    const totalPts = capacity * sprints;
+    const plannedPts = Math.round(totalPts * (planPct/100));
+    const discoveryPts = Math.round(totalPts * (discPct/100));
+    const interruptPts = Math.round(totalPts * (intPct/100));
+
+    // Sections start
+    const out = [];
+    out.push(`PRODUCT ROADMAP — Team-Ready Brief (Time-Bounded Narrative of Intent)`);
+    nl(f.entry_dt) && out.push(`Entry: ${f.entry_dt}`);
+    nl(f.product_name) && out.push(`Product/Portfolio: ${f.product_name}`);
+    out.push(`Horizon: ${f.horizon || "—"}   Views: ${f.views || "Now-Next-Later"}`);
+
+    // Vision/Strategy/North Star
+    out.push(`\nVision (18–36 months)\n${nl(f.vision) || "(not provided)"}`);
+    out.push(`\nStrategy (how we win)\n${nl(f.strategy) || "(not provided)"}`);
+    out.push(`\nNorth Star\n${nl(f.north_star) || "(not provided)"} — Target: ${nl(f.north_star_goal) || "(not set)"}`);
+
+    // Themes
+    const themes = csv(f.themes_csv);
+    if (themes.length) {
+      const tRows = themes.map(r => [r[0], r[1], r[2]]);
+      out.push(`\nThemes & Outcomes`);
+      out.push(fmtTable(["Theme","Outcome target","Guardrail"], tRows));
+    }
+
+    // Opportunities
+    const opp = csv(f.opportunities_csv).map(r=>[r[0], r[1] || "—"]);
+    if (opp.length) {
+      out.push(`\nOpportunities (normalized)`);
+      out.push(fmtTable(["Opportunity/JTBD","Theme"], opp));
+    }
+    nl(f.facts) && out.push(`\nFacts & Constraints\n${nl(f.facts)}`);
+
+    // Prioritization
+    if ((f.prio_method||"").includes("RICE")) {
+      out.push(`\nPrioritization — RICE (Reach × Impact × Confidence ÷ Effort)`);
+      const grouped = byTheme(riceRows);
+      Object.keys(grouped).forEach(t => {
+        const sorted = grouped[t].sort((a,b)=>b.score-a.score);
+        const rows = sorted.map(x => [x.bet, String(x.reach), String(x.impact), String(x.conf), String(x.effort), x.score.toFixed(1)]);
+        out.push(`\nTheme: ${t}`);
+        out.push(fmtTable(["Bet","Reach","Impact","Confidence","Effort (pw)","RICE"], rows));
+      });
+    }
+    if ((f.prio_method||"").includes("WSJF")) {
+      out.push(`\nPrioritization — WSJF (Cost of Delay ÷ Duration)`);
+      const groupedW = byTheme(wsjfRows);
+      Object.keys(groupedW).forEach(t => {
+        const sorted = groupedW[t].sort((a,b)=>b.score-a.score);
+        const rows = sorted.map(x => [x.bet, String(x.cod), String(x.dur), x.score.toFixed(2)]);
+        out.push(`\nTheme: ${t}`);
+        out.push(fmtTable(["Bet","Cost of delay","Duration (wks)","WSJF"], rows));
+      });
+    }
+
+    // Phases & slices
+    const discovery = csv(f.discovery_csv);
+    const mvp = csv(f.mvp_csv);
+    const mlp = csv(f.mlp_csv);
+    const mmp = csv(f.mmp_csv);
+    const scale = csv(f.scale_csv);
+
+    out.push(`\nPhases (few phases, many slices)`);
+    out.push(`Included: ${f.phases || "Discovery + MVP + MLP + MMP + Scale"}`);
+
+    if (discovery.length) {
+      out.push(`\nPhase 0 — Discovery (assumption tests)`);
+      out.push(fmtTable(["Slice","Learning risk","Method","Decision date"], discovery.map(r=>[r[0],r[1],r[2],r[3]])));
+      out.push(`Exit focus: Validate riskiest assumptions; pick MVP slice set.`);
+    }
+    if (mvp.length) {
+      out.push(`\nPhase 1 — MVP (walking skeleton live to narrow audience)`);
+      out.push(fmtTable(["Slice","Outcome metric","Target delta","Owner","Size","Deps","Confidence","Decision date"], mvp.map(r=>[r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7]])));
+      out.push(`Exit criteria example: early usage signal + risk retired; slice set proves core loop.`);
+    }
+    if (mlp.length) {
+      out.push(`\nPhase 2 — MLP (lovable & reliable)`);
+      out.push(fmtTable(["Slice","Outcome metric","Target delta","Owner","Size","Deps","Confidence","Decision date"], mlp.map(r=>[r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7]])));
+      out.push(`Exit criteria example: usability polish for 3 must-have workflows; instrumentation solid; reliability targets hit.`);
+    }
+    if (mmp.length) {
+      out.push(`\nPhase 3 — MMP (sellable & supportable)`);
+      out.push(fmtTable(["Slice","Outcome metric","Target delta","Owner","Size","Deps","Confidence","Decision date"], mmp.map(r=>[r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7]])));
+      out.push(`Exit criteria example: pricing/billing/onboarding ready; support/docs playbooks live; first paying cohorts onboarded.`);
+    }
+    if (scale.length) {
+      out.push(`\nPhase 4 — Scale (hardening & growth)`);
+      out.push(fmtTable(["Slice","Outcome metric","Target delta","Owner","Size","Deps","Confidence","Decision date"], scale.map(r=>[r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7]])));
+      out.push(`Exit criteria example: performance budgets met; growth loops healthy; platform hardened.`);
+    }
+
+    // Now-Next-Later view
+    const now = csv(f.now_csv), next = csv(f.next_csv), later = csv(f.later_csv);
+    if ((f.views||"Both") !== "Quarterly slice plan") {
+      out.push(`\nNow-Next-Later (outcome-based, low commitment)`);
+      if (now.length) out.push(`\nNow\n` + fmtTable(["Slice","Expected outcome","Metric delta"], now));
+      if (next.length) out.push(`\nNext\n` + fmtTable(["Slice","Expected outcome","Metric delta"], next));
+      if (later.length) out.push(`\nLater\n` + fmtTable(["Slice","Expected outcome","Metric delta"], later));
+    }
+
+    // Capacity & cadence
+    out.push(`\nCapacity & Cadence`);
+    out.push(`Sprint length: ${f.sprint_len || "—"}   Team capacity/sprint: ${f.capacity_pts || "—"} pts   Sprints in horizon: ${f.sprints || "—"}`);
+    out.push(`Planned split: ${f.split || "70/20/10"}  ⇒  Planned slices: ${plannedPts} pts • Discovery: ${discoveryPts} pts • Interrupts: ${interruptPts} pts`);
+    out.push(`Guideline: map 3–7 slices per phase; sequence by dependencies & risk burn-down (shortest path to learning first).`);
+
+    // Governance
+    out.push(`\nGovernance & Learning Loops`);
+    out.push(`Monthly outcome review: day ${f.monthly_day || "—"}  |  Quarterly refresh: ${f.quarter_refresh || "—"}  |  Discovery cadence: ${f.discovery_cadence || "—"}`);
+    out.push(`Definition of done at slice level: shipped, measured, decision made. Wire learning back into the plan (update roadmap, not just dashboards).`);
+
+    // Anti-patterns & guardrails
+    out.push(`\nGuardrails & Anti-Patterns (read before sharing)`);
+    out.push(`• Avoid feature factory catalogs; speak in outcomes, not features.`);
+    out.push(`• Do not over-promise dates beyond a quarter; confidence decays with time.`);
+    out.push(`• Slice vertically (end-to-end); users don’t experience databases.`);
+    out.push(`• Don’t label MVPs that can’t test a risk. MVP learns; MLP retains; MMP sells.`);
+
+    // Stakeholder-facing one-pager summary
+    out.push(`\nOne-Page Summary (for stakeholders)`);
+    out.push(`North Star: ${nl(f.north_star) || "—"}  Target: ${nl(f.north_star_goal) || "—"}`);
+    if (themes.length) {
+      out.push(`Themes: ${themes.map(r=>r[0]).join(" • ")}`);
+    }
+    out.push(`Now: ${(now.map(r=>r[0]).slice(0,3).join(", ")) || "—"}`);
+    out.push(`Next: ${(next.map(r=>r[0]).slice(0,3).join(", ")) || "—"}`);
+    out.push(`Risks to watch: ${(csv(f.discovery_csv).map(r=>r[1]).filter(Boolean).slice(0,2).join(", ")) || "—"}`);
+
+    // Tone hint
+    out.push(`\nTone: ${f.tone || "Concise/exec"}. Communicate like a human: each item shows Problem, Outcome, Metric, Slice, Confidence, Next decision date.`);
+
+    // Extras
+    nl(f.other_notes) && out.push(`\nNotes\n${nl(f.other_notes)}`);
+
+    return out.join("\n");
+  },
+
+  meta: {
+    search_text: "product roadmap slices phases MVP MLP MMP walking skeleton RICE WSJF Now Next Later North Star themes outcomes bets opportunities capacity cadence governance discovery review"
+  }
+},
+
+{
+  id: "targeting_matrix",
+  slug: "targeting-matrix-role-industry-location-size",
+  label: "Targeting Matrix: Role × Industry × Location × Company Size",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "prioritization",
+    "careers",
+    "job-search"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:prioritize",
+    "use:decision-making",
+    "topic:careers",
+    "phase:define",
+    "phase:plan",
+    "level:beginner"
+  ],
+  use_cases: [
+    "translate a career mission into a focused target list",
+    "prioritize roles, industries, locations, and company sizes",
+    "produce a top 20 target profile list for outreach",
+    "align networking and applications to a clear matrix"
+  ],
+  boosters: [
+    "Use the format Item | weight for each line. If no weight is given, it defaults to 1.",
+    "Keep each list short and intentional: 3 to 7 items per dimension is ideal.",
+    "Weights can be 0.5 to 5. Heavier weights mean more importance.",
+    "Set dimension weights to reflect strategy. Example: role=3, industry=3, location=2, size=1.",
+    "If you add seed companies, the template will score and sort them."
+  ],
+  definition: "A scoring matrix that combines Role, Industry, Location, and Company Size to create a ranked set of target profiles and a short list of companies.",
+  help: "Enter items line by line. Optional weights: Role Name | 2. Use dimension weights to emphasize what matters. You can add seed companies as lines like Company | Industry | Location | Size | notes.",
+  fields: [
+    {
+      label: "Title",
+      key: "title",
+      ph: "e.g., 2026 Career Targeting Matrix",
+      type: "text"
+    },
+    {
+      label: "Career mission (one line)",
+      key: "mission",
+      ph: "e.g., Build ethical AI products that improve public services",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., Q4 2025 to Q2 2026",
+      type: "text"
+    },
+    {
+      label: "Roles (one per line, optional weight with |)",
+      key: "roles",
+      ph: "e.g., UX Researcher | 2\nConversational Designer | 1.5\nProduct Manager | 1",
+      type: "textarea"
+    },
+    {
+      label: "Industries (one per line, optional weight with |)",
+      key: "industries",
+      ph: "e.g., Civic Tech | 2\nHealth Tech | 1.5\nEdTech | 1",
+      type: "textarea"
+    },
+    {
+      label: "Locations (one per line, include Remote if desired, optional weight with |)",
+      key: "locations",
+      ph: "e.g., Phoenix AZ | 1.5\nSeattle WA | 1.2\nRemote | 2",
+      type: "textarea"
+    },
+    {
+      label: "Company sizes (one per line, optional weight with |)",
+      key: "sizes",
+      ph: "e.g., 11–50 | 1\n51–200 | 1.5\n201–1000 | 1\n1000+ | 0.8",
+      type: "textarea"
+    },
+    {
+      label: "Dimension weights (role=, industry=, location=, size=)",
+      key: "dim_weights",
+      ph: "e.g., role=3, industry=3, location=2, size=1",
+      type: "text"
+    },
+    {
+      label: "Top N targets",
+      key: "top_n",
+      ph: "e.g., 20",
+      type: "text"
+    },
+    {
+      label: "Constraints and must-haves",
+      key: "constraints",
+      ph: "e.g., Base salary ≥ $110k; H1B transfer; hybrid up to 2 days on site; inclusive healthcare",
+      type: "textarea"
+    },
+    {
+      label: "Exclusions",
+      key: "exclusions",
+      ph: "e.g., Crypto; surveillance tech; defense primes",
+      type: "textarea"
+    },
+    {
+      label: "Must-use skills and themes",
+      key: "skills",
+      ph: "e.g., Mixed-methods UXR; AI prompting; service design; data storytelling",
+      type: "textarea"
+    },
+    {
+      label: "Seed companies (Company | Industry | Location | Size | notes)",
+      key: "seed_companies",
+      ph: "e.g., PublicDigital | Civic Tech | Remote | 51–200 | EU clients\nAcme Health | Health Tech | Phoenix AZ | 201–1000 | EPIC integrations",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      key: "notes",
+      ph: "Links, networks, mentors, target programs",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    mission,
+    horizon,
+    roles,
+    industries,
+    locations,
+    sizes,
+    dim_weights,
+    top_n,
+    constraints,
+    exclusions,
+    skills,
+    seed_companies,
+    notes
+  }) => {
+    const parseList = (s) => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map(line => {
+        const parts = line.split("|").map(v => v.trim());
+        const name = parts[0];
+        const w = parts[1] ? Number(parts[1]) : 1;
+        const weight = isFinite(w) && w > 0 ? w : 1;
+        return { name, weight };
+      });
+
+    const parseDimWeights = (s) => {
+      const out = { role: 3, industry: 3, location: 2, size: 1 };
+      String(s || "").split(/[,\n]+/).map(x => x.trim()).filter(Boolean).forEach(kv => {
+        const [k, v] = kv.split("=").map(x => x.trim().toLowerCase());
+        const n = Number(v);
+        if (["role","industry","location","size"].includes(k) && isFinite(n) && n >= 0) out[k] = n;
+      });
+      return out;
+    };
+
+    const parseCompanies = (s) => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map(line => {
+        const [company, ind, loc, size, note] = line.split("|").map(v => (v || "").trim());
+        return { company, ind, loc, size, note };
+      });
+
+    const R = parseList(roles);
+    const I = parseList(industries);
+    const L = parseList(locations);
+    const S = parseList(sizes);
+    const W = parseDimWeights(dim_weights);
+    const N = Math.max(1, Number(top_n || 20));
+
+    // Build and score role × industry × location × size combinations
+    const combos = [];
+    R.forEach(r => I.forEach(i => L.forEach(l => S.forEach(s => {
+      const score = r.weight * W.role + i.weight * W.industry + l.weight * W.location + s.weight * W.size;
+      combos.push({ role: r.name, industry: i.name, location: l.name, size: s.name, score });
+    }))));
+
+    combos.sort((a,b) => b.score - a.score);
+    const topCombos = combos.slice(0, N);
+
+    // Score seed companies if provided
+    let scoredCompanies = [];
+    if (seed_companies) {
+      const companies = parseCompanies(seed_companies);
+
+      // Helper maps for quick weight lookup
+      const iw = Object.fromEntries(I.map(x => [x.name.toLowerCase(), x.weight]));
+      const lw = Object.fromEntries(L.map(x => [x.name.toLowerCase(), x.weight]));
+      const sw = Object.fromEntries(S.map(x => [x.name.toLowerCase(), x.weight]));
+
+      scoredCompanies = companies.map(c => {
+        const indW = iw[c.ind?.toLowerCase?.()] || 0;
+        const locW = lw[c.loc?.toLowerCase?.()] || 0;
+        const sizeW = sw[c.size?.toLowerCase?.()] || 0;
+        const score = indW * W.industry + locW * W.location + sizeW * W.size;
+        return { ...c, score };
+      }).sort((a,b) => b.score - a.score).slice(0, N);
+    }
+
+    const listify = (arr, mapFn) =>
+      (arr || []).map((x,i) => `${i+1}. ${mapFn ? mapFn(x) : x}`).join("\n");
+
+    const section = (title, body) =>
+      [title, body || "(none)"].filter(Boolean).join("\n");
+
+    return [
+      title && `Title: ${title}`,
+      mission && `Career mission: ${mission}`,
+      horizon && `Time horizon: ${horizon}`,
+
+      "",
+      section("Preferences and weights",
+        [
+          `Dimension weights: role=${W.role}, industry=${W.industry}, location=${W.location}, size=${W.size}`,
+          "",
+          "Roles:",
+          listify(R, x => `${x.name} (w=${x.weight})`),
+          "",
+          "Industries:",
+          listify(I, x => `${x.name} (w=${x.weight})`),
+          "",
+          "Locations:",
+          listify(L, x => `${x.name} (w=${x.weight})`),
+          "",
+          "Company sizes:",
+          listify(S, x => `${x.name} (w=${x.weight})`)
+        ].join("\n")
+      ),
+
+      "",
+      section(`Top ${N} target profiles`,
+        listify(topCombos, c =>
+          `${c.role} × ${c.industry} × ${c.location} × ${c.size}  [score ${c.score.toFixed(2)}]`
+        )
+      ),
+
+      seed_companies && [
+        "",
+        section(`Top ${N} seed companies by fit`,
+          scoredCompanies.length
+            ? listify(scoredCompanies, c =>
+                `${c.company}  | ${c.ind} × ${c.loc} × ${c.size}  [score ${c.score.toFixed(2)}]${c.note ? `  | ${c.note}` : ""}`
+              )
+            : "(no seed companies parsed)"
+        )
+      ].join("\n"),
+
+      "",
+      section("Constraints and must-haves", constraints),
+      section("Exclusions", exclusions),
+      section("Must-use skills and themes", skills),
+
+      "",
+      "Shortlist worksheet",
+      listify(Array.from({length: N}), (_x, i) => `[ ] Company ${i+1}: matches Role ___, Industry ___, Location ___, Size ___`),
+
+      "",
+      section("Notes", notes),
+
+      "",
+      "Next actions",
+      "- Send three warm intros for top profiles",
+      "- Book five informational chats for the highest scoring combinations",
+      "- Align resume and portfolio bullets to the top two role profiles",
+      "- Track responses and refine weights biweekly",
+
+      "",
+      "Checklist",
+      "- [ ] Each list uses Item | weight format where helpful",
+      "- [ ] Dimension weights reflect strategy",
+      "- [ ] Top N target profiles generated",
+      "- [ ] Seed companies scored (if provided)",
+      "- [ ] Constraints and exclusions documented"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "job search targeting matrix role industry location company size scoring top 20 targets careers template"
+  }
+},
+
+{
+  id: "value_prop_canvas_personal",
+  slug: "value-proposition-canvas-personal",
+  label: "Value Proposition Canvas (Personal)",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "positioning",
+    "planning"
+  ],
+  tags: [
+    "type:framework",
+    "use:positioning",
+    "use:storytelling",
+    "use:planning",
+    "topic:careers",
+    "phase:define",
+    "phase:plan",
+    "level:beginner"
+  ],
+  use_cases: [
+    "map what an employer needs and how you solve it",
+    "write a sharp positioning statement for your resume or profile",
+    "prioritize proof points and results for interviews",
+    "align outreach and portfolio to employer pains and gains"
+  ],
+  boosters: [
+    "Write in simple, honest language first; polish later.",
+    "Start with the employer side before describing yourself.",
+    "Keep pains and gains concrete (numbers, time saved, risk reduced).",
+    "Tie every claim to one proof point (result, metric, link, reference).",
+    "Cut anything that doesn’t ease a pain or create a gain."
+  ],
+  definition: "A personal Value Proposition Canvas aligns an employer’s Jobs-To-Be-Done, pains, and gains with your pain relievers and gain creators. Non-technical: match what they need to what you offer. Technical: operationalize problem–solution fit by decomposing functional, emotional, and social JTBD into verifiable interventions, evidence, and positioning claims.",
+  help: "Fill the employer side first (jobs, pains, gains). Then add your side (skills, pain relievers, gain creators, proof). Finish with a one-line positioning statement and clear metrics you move.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name this canvas so you can find it later.",
+      key: "title",
+      ph: "e.g., Personal Value Prop — Civic Tech UXR",
+      type: "text"
+    },
+    {
+      label: "Target employer (short description)",
+      desc: "Describe the kind of employer in plain words.",
+      key: "target_employer",
+      ph: "e.g., Mid-size civic tech org focused on digital public services",
+      type: "text"
+    },
+    {
+      label: "Priority role(s)",
+      desc: "What job titles are you aiming for?",
+      key: "roles",
+      ph: "e.g., UX Researcher; Conversational Designer; Product Researcher",
+      type: "text"
+    },
+    {
+      label: "Employer jobs-to-be-done (JTBD)",
+      desc: "What they’re trying to get done. Think tasks, progress, and outcomes.",
+      key: "employer_jobs",
+      ph: "e.g., Run fast discovery; de-risk roadmap; improve task success; report insights clearly",
+      type: "textarea"
+    },
+    {
+      label: "Employer pains",
+      desc: "What’s hard, costly, slow, risky, or frustrating for them.",
+      key: "employer_pains",
+      ph: "e.g., Low research participation; unclear priorities; slow delivery; rework after launch",
+      type: "textarea"
+    },
+    {
+      label: "Employer desired gains",
+      desc: "What good looks like for them. Wins, outcomes, relief, improvements.",
+      key: "employer_gains",
+      ph: "e.g., Faster decisions; higher adoption; fewer support tickets; clearer metrics",
+      type: "textarea"
+    },
+    {
+      label: "Your core strengths",
+      desc: "Simple list of your best strengths relevant to this employer.",
+      key: "your_strengths",
+      ph: "e.g., Mixed-methods research; facilitation; service design; AI prompting",
+      type: "textarea"
+    },
+    {
+      label: "Pain relievers (what you do that reduces their pains)",
+      desc: "Plain, practical actions you take to remove their headaches.",
+      key: "pain_relievers",
+      ph: "e.g., Rapid recruiting kit; decision-ready insight briefs; usability triage; stakeholder workshops",
+      type: "textarea"
+    },
+    {
+      label: "Gain creators (what you do that creates their wins)",
+      desc: "Ways you add value beyond fixing problems.",
+      key: "gain_creators",
+      ph: "e.g., North Star metric model; experiment playbooks; service blueprints; training sessions",
+      type: "textarea"
+    },
+    {
+      label: "Proof & evidence",
+      desc: "Show, don’t tell. Add quick results, links, numbers, or references.",
+      key: "proof",
+      ph: "e.g., +28% task completion (case study link); 6 MoUs signed; NPS +12; 40% drop in tickets",
+      type: "textarea"
+    },
+    {
+      label: "Differentiators",
+      desc: "What sets you apart from similar candidates.",
+      key: "differentiators",
+      ph: "e.g., Research-to-design handoff toolkits; bilingual facilitation; AI workflow automation",
+      type: "textarea"
+    },
+    {
+      label: "Positioning one-liner",
+      desc: "Short sentence that says who you help, how, and the win.",
+      key: "positioning",
+      ph: "e.g., I help civic tech teams cut decision time in half by running lean, inclusive research that moves roadmaps.",
+      type: "text"
+    },
+    {
+      label: "Channels & touchpoints",
+      desc: "Where you’ll share this value (resume, LinkedIn, portfolio, outreach).",
+      key: "channels",
+      ph: "e.g., Resume header; LinkedIn About; case study intros; recruiter email; portfolio hero",
+      type: "textarea"
+    },
+    {
+      label: "Success metrics you move",
+      desc: "Pick simple metrics you can affect and prove.",
+      key: "metrics",
+      ph: "e.g., Time-to-decision; adoption; task success; support tickets; cycle time",
+      type: "textarea"
+    },
+    {
+      label: "Risks & assumptions",
+      desc: "What might not hold true and what you’re assuming.",
+      key: "risks",
+      ph: "e.g., Access to users; data availability; stakeholder time; policy constraints",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful to remember.",
+      key: "notes",
+      ph: "e.g., Stakeholder map link; referral names; timing considerations",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    target_employer,
+    roles,
+    employer_jobs,
+    employer_pains,
+    employer_gains,
+    your_strengths,
+    pain_relievers,
+    gain_creators,
+    proof,
+    differentiators,
+    positioning,
+    channels,
+    metrics,
+    risks,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    // — Output intentionally uses heavy technical/analytical language —
+    return [
+      title && `VALUE PROPOSITION CANVAS — PERSONAL | ${title}`,
+      target_employer && `Target Employer Archetype: ${target_employer}`,
+      roles && `Priority Role(s): ${roles}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "1) PROBLEM SPACE — EMPLOYER JTBD DECOMPOSITION",
+      employer_jobs ? listify(employer_jobs) : "(JTBD not specified)",
+      "",
+      "2) NEGATIVE OUTCOMES — PAIN VECTOR CATALOG",
+      employer_pains ? listify(employer_pains) : "(pains not specified)",
+      "",
+      "3) DESIRED OUTCOMES — GAIN VECTOR CATALOG",
+      employer_gains ? listify(employer_gains) : "(gains not specified)",
+
+      "",
+      "4) SOLUTION SPACE — INTERVENTION SET",
+      "4a) Capability Endowment (Strength Inventory)",
+      your_strengths ? listify(your_strengths) : "(strengths not specified)",
+      "",
+      "4b) Pain-Relief Mechanisms (Risk, Cost, Latency Reduction)",
+      pain_relievers ? listify(pain_relievers) : "(pain relievers not specified)",
+      "",
+      "4c) Gain-Creation Mechanisms (Throughput, Quality, Adoption Uplift)",
+      gain_creators ? listify(gain_creators) : "(gain creators not specified)",
+
+      "",
+      "5) DIFFERENTIATION VECTOR — BASIS OF COMPETITION",
+      differentiators ? listify(differentiators) : "(differentiators not specified)",
+
+      "",
+      "6) EVIDENCE LEDGER — FALSIFIABLE CLAIMS WITH VERIFICATION",
+      proof ? listify(proof) : "(evidence not specified)",
+
+      "",
+      "7) POSITIONING STATEMENT — ONE-LINE CONTRACT",
+      positioning || "(add a succinct, testable, audience-specific claim)",
+
+      "",
+      "8) ROUTING PLAN — CHANNELS & TOUCHPOINTS",
+      channels ? listify(channels) : "(channels not specified)",
+
+      "",
+      "9) METRICS & ACCEPTANCE CRITERIA — LEADING/LAGGING INDICATORS",
+      metrics ? listify(metrics) : "(metrics not specified)",
+
+      "",
+      "10) RISK REGISTER — ASSUMPTIONS, DEPENDENCIES, MITIGATIONS",
+      risks ? listify(risks) : "(risks not specified)",
+
+      "",
+      "IMPLEMENTATION CHECKLIST",
+      "- [ ] Each pain is addressed by ≥1 relief mechanism",
+      "- [ ] Each gain is amplified by ≥1 creation mechanism",
+      "- [ ] Each claim has at least one verifiable proof point",
+      "- [ ] Positioning statement is audience-bound and falsifiable",
+      "- [ ] Metrics include at least one adoption and one quality signal",
+
+      "",
+      "DISPATCH-READY BLURBS",
+      "- Resume Header: <insert positioning> | Core Metrics: <insert two>",
+      "- LinkedIn About: <insert positioning> | Proof: <two bullet claims + links>",
+      "- Recruiter Email: Problem→Intervention→Evidence→CTA in 4 lines",
+
+      "",
+      "OPERATIONAL NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "value proposition canvas personal employer pains gains jobs-to-be-done pain relievers gain creators positioning statement careers template"
+  }
+},
+
+{
+  id: "bdd_gwt_pro",
+  slug: "bdd-behavior-driven-development-template",
+  label: "BDD (Given–When–Then) → Tests → Code — Reusable Template",
+  kind: "tool",
+  categories: ["product", "qa", "engineering", "delivery"],
+  tags: [
+    "type:tool",
+    "use:bdd",
+    "use:gherkin",
+    "use:acceptance-testing",
+    "use:automation",
+    "level:beginner"
+  ],
+
+  use_cases: [
+    "turn plain behavior into a Gherkin feature file",
+    "auto-generate step-definition stubs for your chosen BDD framework",
+    "produce a runnable test plan and developer instructions",
+    "document tags, data tables, and environment matrix for CI"
+  ],
+
+  help: "Pick your framework and fill in the fields using plain language. This will output a ready-to-share technical brief: the Gherkin feature file, step-definition stubs in your selected language, and a short runner plan for devs/QA.",
+
+  boosters: [
+    "Keep steps observable: prefer outcomes you can verify on screen, API, logs, or DB.",
+    "One behavior per scenario. Add examples for data permutations (Scenario Outline).",
+    "Tag scenarios (e.g., @smoke, @regression, @api) and wire tags into CI selection.",
+    "Name steps in domain language; avoid raw UI details unless they’re essential.",
+    "Make Background minimal—only invariant preconditions needed by all scenarios."
+  ],
+
+  /* =========================
+   * FIELDS — user-friendly, mostly selects + small textareas
+   * ========================= */
+  fields: [
+    { label: "Today’s date & time", desc: "When you’re filling this out.", key: "entry_dt", type: "text", ph: "2025-09-25 18:15" },
+    { label: "Project / feature area", desc: "Short recognizable name.", key: "project_name", type: "text", ph: "Payments — Saved Card" },
+
+    /* TARGET & STACK */
+    {
+      label: "BDD framework",
+      desc: "Pick the tool you’ll run.",
+      key: "framework",
+      type: "select",
+      options: [
+        "Cucumber.js (JavaScript/TypeScript)",
+        "SpecFlow (.NET / C#)",
+        "Behave (Python)",
+        "Cucumber-JVM (Java)",
+        "JBehave (Java)"
+      ]
+    },
+    {
+      label: "Primary programming language",
+      desc: "Language for step definitions.",
+      key: "lang_primary",
+      type: "select",
+      options: [
+        "JavaScript","TypeScript","Python","Java","C#","Go","Ruby","PHP","Kotlin","Swift","Other"
+      ]
+    },
+    {
+      label: "Test target",
+      desc: "What are we exercising?",
+      key: "test_target",
+      type: "select",
+      options: ["Web UI","API/Service","Mobile (Appium)","CLI/Process","Data/ETL","Contract/Schema"]
+    },
+    {
+      label: "Runner / driver (optional)",
+      desc: "Helpful hint for implementers.",
+      key: "runner",
+      type: "select",
+      options: ["Playwright","Selenium/WebDriver","REST client (supertest/requests/RestAssured)","Appium","None/Custom"]
+    },
+    { label: "Base URL / endpoint (optional)", desc: "Environment entry point.", key: "base_url", type: "text", ph: "https://api.example.com" },
+
+    /* FEATURE METADATA */
+    { label: "Feature name (one line)", desc: "Plain language feature title.", key: "feature_name", type: "text", ph: "Save a payment card for faster checkout" },
+    { label: "Feature description", desc: "Short why/what (not UI details).", key: "feature_desc", type: "textarea", ph: "Shoppers can securely save one card to speed up future purchases." },
+    { label: "Tags (comma-separated)", desc: "Used to select in CI.", key: "tags", type: "text", ph: "@payments,@savecard,@smoke" },
+
+    /* BACKGROUND (OPTIONAL) */
+    { label: "Background — Given steps (one per line)", desc: "Shared setup for all scenarios.", key: "bg_given", type: "textarea", ph: "a registered buyer exists\nno saved cards are on file" },
+
+    /* SCENARIO 1 */
+    { label: "Scenario 1 — title", desc: "What behavior are we proving?", key: "sc1_title", type: "text", ph: "Save first card as default" },
+    { label: "Scenario 1 — Given (one per line)", key: "sc1_given", type: "textarea", ph: "I am logged in\nI am on the Add card page" },
+    { label: "Scenario 1 — When (one per line)", key: "sc1_when", type: "textarea", ph: "I add a Visa ending 4242 exp 12/28" },
+    { label: "Scenario 1 — Then (one per line)", key: "sc1_then", type: "textarea", ph: "I see “Visa •••• 4242” marked as Default\nno raw PAN is stored" },
+    { label: "Scenario 1 — Examples (CSV, optional)", desc: "Use to make it a Scenario Outline.", key: "sc1_examples_csv", type: "textarea", ph: "brand,last4,exp,expected\nVisa,4242,12/28,Accepted\nAmex,0005,10/27,Accepted" },
+
+    /* SCENARIO 2 (OPTIONAL) */
+    { label: "Scenario 2 — title (optional)", key: "sc2_title", type: "text", ph: "Reject expired card" },
+    { label: "Scenario 2 — Given", key: "sc2_given", type: "textarea", ph: "I am on the Add card page" },
+    { label: "Scenario 2 — When", key: "sc2_when", type: "textarea", ph: "I submit a card expiring 07/23" },
+    { label: "Scenario 2 — Then", key: "sc2_then", type: "textarea", ph: "I see “Card is expired”\nthe card is not saved" },
+    { label: "Scenario 2 — Examples (CSV, optional)", key: "sc2_examples_csv", type: "textarea", ph: "exp,expected\n07/23,Rejected\n01/24,Accepted" },
+
+    /* ENV & CI */
+    { label: "Environment matrix (CSV, optional)", desc: "env | baseUrl | browser/device | notes", key: "env_csv", type: "textarea", ph: "staging | https://staging.example.com | chromium | default\nprod   | https://app.example.com     | chromium | smoke only" },
+    { label: "Retries", desc: "Flake budget per scenario.", key: "retries", type: "select", options: ["0","1","2","3"] },
+    { label: "Parallel workers", desc: "How many in parallel.", key: "workers", type: "select", options: ["1","2","4","8"] },
+    { label: "Reporting", desc: "Preferred report format.", key: "reporting", type: "select", options: ["JUnit XML","Allure","HTML","Console only"] },
+
+    /* OPEN CONTEXT */
+    { label: "Extra notes (optional)", desc: "Anything that helps implementers.", key: "notes", type: "textarea", ph: "PCI SAQ-A scope; tokenization expected; mask last4 only" }
+  ],
+
+  /* =========================
+   * TEMPLATE — builds .feature text, step stubs, and a runner plan
+   * ========================= */
+  template: (f) => {
+    const nl = s => (s||"").trim();
+    const lines = s => (s||"").split("\n").map(x=>x.trim()).filter(Boolean);
+    const csv = s => lines(s).map(r => r.split(",").map(c=>c.trim()));
+    const tagLine = nl(f.tags) ? f.tags.split(",").map(t=>t.trim()).filter(Boolean).map(t=>t.startsWith("@")?t:`@${t}`).join(" ") : "";
+
+    // Build Gherkin Feature
+    const feat = [];
+    if (tagLine) feat.push(tagLine);
+    feat.push(`Feature: ${nl(f.feature_name) || "Untitled feature"}`);
+    if (nl(f.feature_desc)) feat.push(`  ${f.feature_desc.split("\n").map(x=>"  " + x).join("\n")}`);
+
+    // Background
+    const bg = lines(f.bg_given);
+    if (bg.length) {
+      feat.push(`\n  Background:`);
+      bg.forEach(g => feat.push(`    Given ${g}`));
+    }
+
+    // Scenario builder
+    const buildScenario = (title, g, w, t, exCSV) => {
+      const given = lines(g), when = lines(w), then = lines(t);
+      const examples = csv(exCSV);
+      const isOutline = examples.length > 1; // header + at least one row
+      const s = [];
+      s.push(`\n  ${isOutline ? "Scenario Outline" : "Scenario"}: ${nl(title)||"(untitled scenario)"}`);
+      given.forEach(step => s.push(`    Given ${step}`));
+      when.forEach(step => s.push(`    When ${step}`));
+      then.forEach(step => s.push(`    Then ${step}`));
+      if (isOutline) {
+        const header = examples[0];
+        s.push(`\n    Examples:`);
+        s.push(`      | ${header.join(" | ")} |`);
+        for (const row of examples.slice(1)) {
+          s.push(`      | ${row.join(" | ")} |`);
+        }
+      }
+      return s.join("\n");
+    };
+
+    const s1 = buildScenario(f.sc1_title, f.sc1_given, f.sc1_when, f.sc1_then, f.sc1_examples_csv);
+    const s2 = (f.sc2_title || f.sc2_given || f.sc2_when || f.sc2_then || f.sc2_examples_csv) ?
+      buildScenario(f.sc2_title, f.sc2_given, f.sc2_when, f.sc2_then, f.sc2_examples_csv) : "";
+
+    feat.push(s1);
+    if (s2) feat.push(s2);
+
+    const featureText = feat.join("\n");
+
+    // Collect unique steps for stub generation
+    const stepObjs = [];
+    const pushSteps = (kw, arr) => lines(arr).forEach(txt => stepObjs.push({kw, txt}));
+    bg.forEach(txt => stepObjs.push({kw:"Given", txt}));
+    pushSteps("Given", f.sc1_given);
+    pushSteps("When",  f.sc1_when);
+    pushSteps("Then",  f.sc1_then);
+    pushSteps("Given", f.sc2_given);
+    pushSteps("When",  f.sc2_when);
+    pushSteps("Then",  f.sc2_then);
+
+    // Deduplicate by text regardless of keyword repetition
+    const uniqueSteps = [];
+    const seen = new Set();
+    for (const s of stepObjs) {
+      const k = s.txt;
+      if (!k || seen.has(k)) continue;
+      seen.add(k);
+      uniqueSteps.push(s);
+    }
+
+    // Regex escape + parameterization for <placeholders>
+    const escapeRe = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const toRegex = (txt) => "^" + escapeRe(txt).replace(/<[^>]+>/g, "(.+)") + "$";
+
+    // Language-specific stubs
+    const fw = f.framework || "Cucumber.js (JavaScript/TypeScript)";
+    const lang = f.lang_primary || "JavaScript";
+
+    const stubs = [];
+
+    if (fw.startsWith("Cucumber.js")) {
+      stubs.push(`// steps/${(nl(f.feature_name)||"feature").toLowerCase().replace(/\s+/g,"_")}.steps.${lang === "TypeScript" ? "ts" : "js"}`);
+      stubs.push(`import { Given, When, Then } from '@cucumber/cucumber';`);
+      uniqueSteps.forEach(s => {
+        stubs.push(`\n${s.kw}(/${toRegex(s.txt)}/, async function (...args) {\n  // TODO: implement step → ${s.txt}\n  // args: ${s.txt.match(/<[^>]+>/g)?.map(a=>a.replace(/[<>]/g,"")).join(", ") || "none"}\n});`);
+      });
+    } else if (fw.startsWith("Behave")) {
+      stubs.push(`# features/steps/${(nl(f.feature_name)||"feature").toLowerCase().replace(/\s+/g,"_")}_steps.py`);
+      stubs.push(`from behave import given, when, then\n`);
+      uniqueSteps.forEach(s => {
+        const dec = s.kw.toLowerCase();
+        stubs.push(`\n@${dec}(r'${toRegex(s.txt)}')\ndef step_${dec}_${Math.random().toString(36).slice(2,7)}(context, *args):\n    # TODO: implement step → ${s.txt}\n    pass`);
+      });
+    } else if (fw.startsWith("Cucumber-JVM")) {
+      stubs.push(`// src/test/java/steps/${(nl(f.feature_name)||"Feature").replace(/\s+/g,"")}Steps.java`);
+      stubs.push(`import io.cucumber.java.en.*;`);
+      stubs.push(`public class ${((nl(f.feature_name)||"Feature").replace(/[^A-Za-z0-9]/g,""))}Steps {`);
+      uniqueSteps.forEach(s => {
+        stubs.push(`  @${s.kw}("${toRegex(s.txt).replace(/\\/g,"\\\\")}")\n  public void ${s.kw.toLowerCase()}_${Math.random().toString(36).slice(2,7)}(io.cucumber.java.PendingException... ignore) {\n    // TODO: implement step → ${s.txt}\n  }\n`);
+      });
+      stubs.push(`}`);
+    } else if (fw.startsWith("SpecFlow")) {
+      stubs.push(`// Features/Steps/${(nl(f.feature_name)||"Feature").replace(/\s+/g,"")}Steps.cs`);
+      stubs.push(`using TechTalk.SpecFlow;\n[Binding]\npublic class ${(nl(f.feature_name)||"Feature").replace(/[^A-Za-z0-9]/g,"")}Steps {\n  private readonly ScenarioContext _ctx;\n  public ${(nl(f.feature_name)||"Feature").replace(/[^A-Za-z0-9]/g,"")}Steps(ScenarioContext ctx){ _ctx = ctx; }`);
+      uniqueSteps.forEach(s => {
+        stubs.push(`  [${s.kw}(@"${toRegex(s.txt)}")]\n  public void ${s.kw}${Math.random().toString(36).slice(2,7)}() {\n    // TODO: implement step → ${s.txt}\n  }\n`);
+      });
+      stubs.push(`}`);
+    } else if (fw.startsWith("JBehave")) {
+      stubs.push(`// src/test/java/steps/${(nl(f.feature_name)||"Feature").replace(/\s+/g,"")}Steps.java`);
+      stubs.push(`import org.jbehave.core.annotations.*;`);
+      stubs.push(`public class ${((nl(f.feature_name)||"Feature").replace(/[^A-Za-z0-9]/g,""))}Steps {`);
+      uniqueSteps.forEach(s => {
+        stubs.push(`  @${s.kw}("${toRegex(s.txt).replace(/\\/g,"\\\\")}")\n  public void ${s.kw.toLowerCase()}_${Math.random().toString(36).slice(2,7)}() {\n    // TODO: implement step → ${s.txt}\n  }\n`);
+      });
+      stubs.push(`}`);
+    }
+
+    // Runner plan
+    const runner = [];
+    runner.push(`RUN PLAN — ${fw}`);
+    if (fw.startsWith("Cucumber.js")) {
+      runner.push(`- Install: npm i -D @cucumber/cucumber ${f.runner==="Playwright" ? "playwright " : ""}`);
+      runner.push(`- Feature files: features/*.feature`);
+      runner.push(`- Steps: features/steps/*.steps.${lang==="TypeScript"?"ts":"js"}`);
+      runner.push(`- Run: npx cucumber-js ${tagLine ? `--tags "${tagLine.split(" ").join(" or ")}"` : ""} --parallel ${f.workers||"1"} --retry ${f.retries||"0"}`);
+    } else if (fw.startsWith("Behave")) {
+      runner.push(`- Install: pip install behave ${f.runner==="Selenium/WebDriver" ? "selenium " : ""}${f.runner==="REST client (supertest/requests/RestAssured)" ? "requests " : ""}`);
+      runner.push(`- Structure: features/*.feature, features/steps/*.py`);
+      runner.push(`- Run: behave ${tagLine ? `-t "${tagLine.replace(/\s+/g," and ")}"` : ""}`);
+    } else if (fw.startsWith("Cucumber-JVM")) {
+      runner.push(`- Add deps: io.cucumber:cucumber-java, cucumber-junit (or TestNG)`);
+      runner.push(`- Run with JUnit/TestNG; glue = "steps", features = "classpath:features"`);
+    } else if (fw.startsWith("SpecFlow")) {
+      runner.push(`- Add NuGet: SpecFlow, SpecFlow.Tools.MsBuild.Generation, test runner (xUnit/NUnit/MSTest)`);
+      runner.push(`- Build: .feature files generate code-behind; run via chosen test runner`);
+    } else if (fw.startsWith("JBehave")) {
+      runner.push(`- Add deps: org.jbehave:jbehave-core; define Stories and Steps; run via JUnit`);
+    }
+    if (nl(f.base_url)) runner.push(`- Base URL: ${f.base_url}`);
+    runner.push(`- Retries: ${f.retries||"0"}   Parallel: ${f.workers||"1"}   Reporting: ${f.reporting||"Console only"}`);
+
+    // Environment matrix
+    const envRows = lines(f.env_csv).map(r => r.split("|").map(c=>c.trim()));
+    const envTable = envRows.length ? (() => {
+      const head = ["env","baseUrl","browser/device","notes"];
+      const body = envRows.map(r => `| ${r.join(" | ")} |`).join("\n");
+      return `| ${head.join(" | ")} |\n| ${head.map(()=>"-").join(" | ")} |\n${body}`;
+    })() : "";
+
+    // Assemble final brief
+    const out = [];
+    out.push("BDD BRIEF — From Given–When–Then to Tests & Code");
+    nl(f.entry_dt) && out.push(`Entry: ${f.entry_dt}`);
+    nl(f.project_name) && out.push(`Project: ${f.project_name}`);
+    out.push(`Framework: ${fw}   Language: ${lang}   Target: ${f.test_target||"—"}   Runner: ${f.runner||"—"}`);
+
+    out.push("\nFEATURE FILE (.feature)\n```gherkin\n" + featureText + "\n```");
+
+    out.push("\nSTEP-DEFINITION STUBS\n```" + (fw.startsWith("Behave") ? "python" : fw.startsWith("SpecFlow") ? "csharp" : fw.startsWith("Cucumber-JVM")||fw.startsWith("JBehave") ? "java" : (lang==="TypeScript"?"ts":"js")) + "\n" + stubs.join("\n") + "\n```");
+
+    out.push("\nRUNNER PLAN\n" + runner.join("\n"));
+
+    if (envTable) {
+      out.push("\nENVIRONMENT MATRIX\n" + envTable);
+    }
+
+    if (nl(f.notes)) {
+      out.push("\nNOTES\n" + nl(f.notes));
+    }
+
+    out.push("\nHAND-OFF CHECKLIST");
+    out.push([
+      "- [ ] Feature file saved under `features/`",
+      "- [ ] Step stubs compiled/recognized by runner",
+      "- [ ] Base URL/env wired; secrets via env vars",
+      "- [ ] Tags hooked into CI selection",
+      "- [ ] Reporting format enabled (e.g., JUnit/Allure)",
+      "- [ ] Parallelism & retries tuned",
+      "- [ ] Failing steps reproduce locally"
+    ].join("\n"));
+
+    return out.join("\n");
+  },
+
+  meta: {
+    search_text: "BDD Gherkin Given When Then Cucumber SpecFlow Behave JBehave feature files step definitions test automation CI tags scenario outline examples data tables"
+  }
+},
+
+{
+  id: "critical_bias_methodology_audit",
+  slug: "critical-bias-methodology-audit",
+  label: "Critical Bias & Methodology Audit",
+  kind: "heuristics",
+  categories: ["analysis-frameworks","ethics","critical-thinking","quality"],
+  tags: [
+    "type:framework",
+    "type:heuristics",
+    "use:evaluation",
+    "use:review",
+    "topic:bias",
+    "use:prompt",
+    "level:advanced",
+    "phase:analyze"
+  ],
+  use_cases: [
+    "audit an article/policy/report for bias & rigor",
+    "equity review of UX copy, research, or product decisions",
+    "editorial standards/checklist for inclusive content",
+    "peer review with assumption/method checks",
+    "AI evaluation prompt to stress-test a draft",
+    "check content for biases, assumptions",
+     "is this fair",
+        "check if a news article is one-sided",
+    "spot hidden assumptions in a research paper",
+    "review a product design for fairness issues",
+    "see if marketing copy stereotypes people",
+    "test a survey for leading or biased questions",
+    "audit a school curriculum for missing voices",
+    "review AI prompts for fairness and inclusivity",
+    "evaluate a report for sloppy methods or missing data",
+    "check if a community plan leaves anyone out",
+    "look at a policy draft for equity impacts",
+    "review academic work for blind spots",
+    "scan social media posts for harmful framing",
+    "see if interview questions are loaded",
+    "audit UX writing for cultural bias",
+    "review grant applications for hidden privilege",
+    "check team research notes for overlooked perspectives",
+    "stress test AI-generated outputs for bias",
+    "review nonprofit reports for balanced voices",
+    "see if workplace guidelines unintentionally exclude groups",
+    "check onboarding docs for jargon or bias"
+  ],
+  boosters: [
+    "Stay people-first and non-judgmental; critique ideas, not authors.",
+    "Flag uncertainty and limits explicitly; never overclaim.",
+    "Always produce exactly 3 probing questions at the end.",
+    "Distinguish safe (risk reduced) from beneficial (positive effect).",
+    "Require one concrete mitigation per high-risk finding."
+  ],
+  definition: "A concise input form that produces a comprehensive, highly technical set of instructions for a human or AI reviewer to interrogate content for biases, assumptions, missing perspectives, and methodological weaknesses—then propose mitigations and equity-focused revisions.",
+  help: "Fill 7–10 short fields in plain language. The template will output a long, technical instruction block guiding a full bias/methodology audit (Bias Map, Assumption Audit, Methodology Check, Safe vs Beneficial, Alternative Frames, Ethics triad, and more).",
+  fields: [
+    {
+      label: "Your content (paste excerpt or summary)",
+      key: "content",
+      ph: "Paste the passage/policy/snippet you want reviewed.",
+      type: "textarea"
+    },
+    {
+      label: "Purpose & success",
+      desc: "Why this exists + what ‘good’ looks like.",
+      key: "purpose",
+      ph: "Goal, decision this informs, desired outcome(s)",
+      type: "textarea"
+    },
+    {
+      label: "Audience personas",
+      autofill: "persona->inline",
+      itemLabel: "persona",
+      itemType: "typeahead",
+      key: "audience",
+      max: 8,
+      min: 1,
+      ph: "Start typing to pick personas (e.g., Student, Clinician, City Planner)…",
+      type: "repeater"
+    },
+    {
+      label: "Context & stakes",
+      desc: "Where/when this will be used + risks if wrong.",
+      key: "context",
+      ph: "Setting, timing, constraints, harms if mistaken",
+      type: "textarea"
+    },
+    {
+      label: "Key claim(s) or question(s)",
+      desc: "Main thesis, promises, or decision crux.",
+      key: "claims",
+      ph: "List 1–3 central claims or the main question to answer",
+      type: "textarea"
+    },
+    {
+      label: "Evidence & sources (brief)",
+      desc: "What supports the claim? Note data types or citations.",
+      key: "evidence",
+      ph: "Data summary, study types, links, anecdotes vs. datasets",
+      type: "textarea"
+    },
+    {
+      label: "Missing voices & access needs",
+      desc: "Who’s absent; accessibility/language considerations.",
+      key: "missing",
+      ph: "Rural users, low-resource languages, disability access, etc.",
+      type: "textarea"
+    },
+    {
+      label: "Ethics lens emphasis",
+      desc: "Primary lens for evaluation (you can pick ‘All balanced’).",
+      key: "ethics",
+      options: [
+        "All balanced (default)",
+        "Duties/Rights (privacy, consent, dignity)",
+        "Outcomes (benefits/harms by subgroup)",
+        "Care/Relationships (trust, reciprocity, repair)"
+      ],
+      ph: "All balanced (default)",
+      type: "select"
+    },
+    {
+      label: "Bias lens (from library)",
+      autofill: "bias->inline",
+      dataset: "bias",
+      desc: "Attach named biases/techniques for shared language.",
+      itemLabel: "bias",
+      itemType: "typeahead",
+      key: "bias_lens",
+      ph: "Search: anchoring, availability, authority, selection, survivorship…",
+      type: "repeater",
+      unit: "bias"
+    },
+    {
+      label: "Language & accessibility notes (optional)",
+      desc: "Plain language, translation, alt text, captions, screen-reader needs.",
+      key: "inclusion",
+      ph: "Preferred terms, reading level, multilingual sources, WCAG notes…",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    content, purpose, audience, context, claims, evidence, missing, ethics, bias_lens, inclusion,
+    ctx, style, tone
+  }) => [
+`Critical Bias & Methodology Audit — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+purpose && `Purpose & success: ${purpose}`,
+audience && (
+  'Audience personas:\n' + String(audience)
+    .split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+context && `Context & stakes:\n${context}`,
+claims && `Key claim(s)/question(s):\n${claims}`,
+evidence && `Evidence & sources (brief):\n${evidence}`,
+missing && `Missing voices & access needs:\n${missing}`,
+inclusion && `Language & accessibility notes:\n${inclusion}`,
+bias_lens && (
+  'Bias lens (from library):\n' +
+  String(bias_lens).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+ethics && `Ethics lens emphasis: ${ethics}`,
+
+'— — —',
+'ROLE: You are a neutral, evidence-aware reviewer. Be compassionate, culturally sensitive, and people-first. Critique ideas, not authors. Do not summarize the content; interrogate it.',
+'OBJECTIVE: Produce a thorough audit of the provided content for bias, assumptions, missing perspectives, and methodological risk. Then propose concrete mitigations and equity-focused revisions.',
+'NON-NEGOTIABLES:',
+'- Distinguish “safe” (risk reduction) from “beneficial” (positive effect).',
+'- Separate descriptive facts from normative claims (values).',
+'- State uncertainties and what evidence would change conclusions.',
+'- Use person-first, non-stigmatizing language.',
+'REFERENCE LENSES (apply as relevant, briefly citing each use): Six Thinking Hats; Heick’s lenses (Parts/Whole/Interdependence/Function/Abstraction/Self); Rapoport’s Rules; Steelman + Charity; Counterfactuals; Outside View/base rates; Inclusive design & accessibility; Cultural humility (avoid universalizing).',
+
+'=== REQUIRED OUTPUT SECTIONS ===',
+'# 1) Bias Map (table)',
+'Claim/Passage | Bias/Assumption (name) | Evidence (≤12-word quote) | Why it qualifies | Impact on inference/reader | Confidence',
+'- Only flag when you can justify from the text. Use ≤12 words for the quote.',
+'- Favor justified labels (e.g., selection, authority, survivorship, anchoring, confirmation).',
+
+'# 2) Assumption Audit',
+'- List implicit assumptions driving the argument.',
+'- Mark each as Testable / Not testable.',
+'- For testable ones, specify the falsification test and the exact data needed.',
+'- Include representativeness, causality, value universality, problem framing.',
+
+'# 3) Methodology Check',
+'- Sampling/Selection: inclusion/exclusion, representativeness, non/response, survivorship.',
+'- Measures/Endpoints: construct validity vs proxy, measurement error, subgroup salience.',
+'- Design/Stats: controls/confounders, power/effect size, multiple comparisons, model fit.',
+'- Dose/Context: population, setting, timeline; external validity by subgroup.',
+
+'# 4) Safe vs Beneficial',
+'- Explicitly separate risk reduction measures from positive, measurable improvements.',
+'- State equity implications (who benefits/loses under each action).',
+
+'# 5) Alternative Frames (≤40 words each, 1–2)',
+'- Offer at least one systems frame and one capability frame (freedoms expanded).',
+'- If culturally relevant, qualify claims (e.g., “in some respects…,” “under conditions…”).',
+
+'# 6) Ethics Triad',
+'- Duties/Rights (privacy, consent, dignity); Outcomes (benefits/harms by subgroup, second-order effects); Care/Relationships (trust, reciprocity, repair pathways).',
+'- Document trade-offs and any dissenting views; propose mitigation or stop-rules.',
+
+'# 7) Mitigation & Redesign',
+'- For each high-risk finding, provide: (a) concrete mitigation or revision, (b) who/when, (c) how to measure effect, (d) accessibility/language adjustments.',
+'- Rebalance sources/voices; add missing subgroups; adjust defaults that encode majority norms.',
+'- Include at least one participatory review step with affected stakeholders.',
+
+'# 8) Probing Questions (exactly 3)',
+'- Draft three Socratic prompts that challenge evidence, logic, and empathy/perspective.',
+
+'# 9) Evidence & Limits',
+'- What evidence was present/absent? Where uncertainty remains? What single finding would most change the conclusion?',
+
+'# 10) Quality Gate (self-check)',
+'- Relevance; Accurate bias labels; Complete map + tests; Plain language; Coherence; Sensitivity; No summary of the text.',
+
+'=== METHODS TO RUN (apply lightly but explicitly) ===',
+'• Steelman the strongest opposing view before critiquing.',
+'• Consider-the-opposite: generate ≥2 reasons the main claim could be wrong.',
+'• Outside view: compare against base rates / similar cases; avoid singular-case myopia.',
+'• Counterfactual: “What evidence would reverse the conclusion?”',
+'• Order/primacy checks: guard against anchoring; revisit late-arriving evidence.',
+'• Accessibility pass: language level, alt text, captions, multilingual sources, assistive-tech compatibility.',
+'• Cultural checks: avoid Western-centrism/English-dominance; include local sources and first-person accounts.',
+'• Safety vs benefit: log which recommendations merely reduce risk vs measurably help under-served groups.',
+
+'DELIVERABLE FORMAT:',
+'- Use headings exactly as above.',
+'- Tables rendered in plain text are fine.',
+'- Keep tone analytic, compassionate, and specific.',
+'- End with “Next actions” (3 bullets) tied to metrics/timeboxes.'
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "critical bias & methodology audit — interrogate texts for bias; assumptions; missing perspectives; method checks. fields: content, purpose, audience personas (repeater typeahead), context & stakes, claims, evidence, missing voices, ethics lens (select), bias lens (repeater typeahead), inclusion notes. output: Bias Map; Assumption Audit; Methodology Check; Safe vs Beneficial; Alternative Frames; Ethics triad; Mitigation; Probing Questions; Evidence & Limits; Quality Gate."
+  }
+},
+
+{
+  id: "star_soar_stories",
+  slug: "star-soar-stories-job-search",
+  label: "STAR / SOAR Stories (Job Search)",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "storytelling",
+    "interviews"
+  ],
+  tags: [
+    "type:framework",
+    "use:positioning",
+    "use:storytelling",
+    "use:resume",
+    "use:interview",
+    "phase:compose",
+    "phase:review",
+    "level:beginner"
+  ],
+  use_cases: [
+    "turn real work into concise resume bullets and interview stories",
+    "prep STAR/SOAR stories that show measurable results",
+    "align claims with proof links, metrics, and competencies",
+    "create versions tailored to different roles or industries"
+  ],
+  boosters: [
+    "Write plainly first; numbers beat adjectives.",
+    "One idea per line in Actions and Results; keep lines short.",
+    "If you don’t have a number, use a ratio, time saved, or before/after.",
+    "Map each Action to a Result; delete Actions with no payoff.",
+    "Tag 3–5 competencies per story to match the job post."
+  ],
+  definition: "A story builder that structures achievements using STAR (Situation, Task, Action, Result) and SOAR (Situation, Obstacle/Objective, Action, Result). Non-technical: tell what happened, what you tried to do, what you did, and what changed. Technical: encode causal chains, align interventions to KPIs, and surface evidence-backed competency signals for ATS and hiring panels.",
+  help: "Fill one story per template run. Use short, clear lines. Start with the Situation, then your goal (Task/Objective), then Actions, then measurable Results. Add proof links and pick competencies that match the job.",
+  fields: [
+    {
+      label: "Story title",
+      desc: "Give your story a simple name so you can find it later.",
+      key: "title",
+      ph: "e.g., Cut onboarding time by 40%",
+      type: "text"
+    },
+    {
+      label: "Role and employer",
+      desc: "Your job title and the company or team.",
+      key: "role_employer",
+      ph: "e.g., UX Researcher, Oak (nonprofit tech)",
+      type: "text"
+    },
+    {
+      label: "Dates",
+      desc: "When this happened.",
+      key: "dates",
+      ph: "e.g., Jan–Aug 2025",
+      type: "text"
+    },
+    {
+      label: "Target job focus",
+      desc: "The kind of job you’re aiming this story at.",
+      key: "target_focus",
+      ph: "e.g., Senior UX Researcher in civic tech",
+      type: "text"
+    },
+    {
+      label: "Situation (S)",
+      desc: "Set the scene. What was going on?",
+      key: "situation",
+      ph: "e.g., New user portal had low task success and many support tickets",
+      type: "textarea"
+    },
+    {
+      label: "Task / Objective (T or O)",
+      desc: "Your goal in plain words.",
+      key: "task_objective",
+      ph: "e.g., Improve account setup success before Q3 launch",
+      type: "textarea"
+    },
+    {
+      label: "Obstacle(s) (O in SOAR)",
+      desc: "What was in the way? Time, tools, people, policy.",
+      key: "obstacles",
+      ph: "e.g., No research budget; tight deadline; limited analytics access",
+      type: "textarea"
+    },
+    {
+      label: "Actions (A) — one per line",
+      desc: "What you actually did. Use short lines.",
+      key: "actions",
+      ph: "e.g., Ran 8 remote tests with recruits from mailing list\nMapped top 5 friction points\nPartnered with support to pull ticket themes\nLed 2 design sprints to test fixes",
+      type: "textarea"
+    },
+    {
+      label: "Tools, methods, frameworks",
+      desc: "Name tools or methods you used.",
+      key: "tools_methods",
+      ph: "e.g., Unmoderated tests (Maze), JTBD interviews, Service blueprint, A/B test",
+      type: "textarea"
+    },
+    {
+      label: "Collaborators & stakeholders",
+      desc: "Who you worked with and why they mattered.",
+      key: "stakeholders",
+      ph: "e.g., PM, designer, support lead, data analyst, compliance",
+      type: "textarea"
+    },
+    {
+      label: "Baseline metrics (before)",
+      desc: "Numbers or facts from before you started.",
+      key: "baseline",
+      ph: "e.g., Task success 52%; avg setup time 18 min; 220 tickets/mo",
+      type: "textarea"
+    },
+    {
+      label: "Results (R) with numbers (after) — one per line",
+      desc: "What changed because of your actions. Use numbers when possible.",
+      key: "results",
+      ph: "e.g., Task success 81% (+29pts)\nSetup time 9 min (−50%)\nTickets 110/mo (−50%)",
+      type: "textarea"
+    },
+    {
+      label: "Outcome & impact (plain words)",
+      desc: "Why this mattered to users or the org.",
+      key: "impact",
+      ph: "e.g., Faster setup, fewer calls, happier new users, smoother launch",
+      type: "textarea"
+    },
+    {
+      label: "Proof links",
+      desc: "Links to docs, dashboards, case studies, or refs.",
+      key: "proof",
+      ph: "e.g., Case study URL; dashboard; A/B report; stakeholder quote",
+      type: "textarea"
+    },
+    {
+      label: "Competencies shown (3–7) — one per line",
+      desc: "Skills the job post cares about that you showed here.",
+      key: "competencies",
+      ph: "e.g., Mixed-methods research\nStakeholder facilitation\nExperiment design\nData storytelling",
+      type: "textarea"
+    },
+    {
+      label: "Lessons & next time",
+      desc: "What you learned and what you’d change.",
+      key: "learnings",
+      ph: "e.g., Start with analytics instrumentation; pre-book recruiting pool",
+      type: "textarea"
+    },
+    {
+      label: "Resume bullet (1–2 lines)",
+      desc: "Short version for your resume.",
+      key: "resume_bullet",
+      ph: "e.g., Raised setup success from 52%→81% by running lean tests and redesigning onboarding; cut tickets 50%.",
+      type: "textarea"
+    },
+    {
+      label: "Interview hook (1 sentence)",
+      desc: "A teaser line you can say out loud.",
+      key: "interview_hook",
+      ph: "e.g., We halved setup time in six weeks without new budget.",
+      type: "text"
+    },
+    {
+      label: "ATS keywords",
+      desc: "Words to help resume scans match the job.",
+      key: "keywords",
+      ph: "e.g., usability testing, JTBD, mixed methods, A/B testing, service blueprint",
+      type: "textarea"
+    },
+    {
+      label: "Audience / tailoring notes",
+      desc: "Who this version is for and how you’ll tweak it.",
+      key: "audience_notes",
+      ph: "e.g., For gov roles: emphasize accessibility and compliance",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else you want to remember.",
+      key: "notes",
+      ph: "e.g., PM endorsement quote; follow-up experiment idea",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    role_employer,
+    dates,
+    target_focus,
+    situation,
+    task_objective,
+    obstacles,
+    actions,
+    tools_methods,
+    stakeholders,
+    baseline,
+    results,
+    impact,
+    proof,
+    competencies,
+    learnings,
+    resume_bullet,
+    interview_hook,
+    keywords,
+    audience_notes,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    // Output intentionally uses heavy technical/analytical language
+    return [
+      title && `ACHIEVEMENT DOSSIER — STAR/SOAR ENCODING | ${title}`,
+      role_employer && `Actor/Context: ${role_employer}`,
+      dates && `Temporal Boundaries: ${dates}`,
+      target_focus && `Target Role Fit: ${target_focus}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I. PROBLEM SPACE FORMALIZATION",
+      "S (Situation) — Environmental State:",
+      situation || "(unspecified)",
+      "",
+      "T/O (Task/Objective) — Goal Definition:",
+      task_objective || "(unspecified)",
+      "",
+      "O (Obstacle) — Constraint Set:",
+      obstacles ? listify(obstacles) : "(none provided)",
+
+      "",
+      "II. INTERVENTION SET",
+      "A (Actions) — Procedure Log:",
+      actions ? listify(actions) : "(none provided)",
+      "",
+      "Method Stack / Toolchain:",
+      tools_methods ? listify(tools_methods) : "(none provided)",
+      "",
+      "Stakeholder Topology:",
+      stakeholders ? listify(stakeholders) : "(none provided)",
+
+      "",
+      "III. METRICS & EVIDENCE",
+      "Baseline (Pre-Intervention KPIs):",
+      baseline ? listify(baseline) : "(none provided)",
+      "",
+      "R (Results) — Outcome Metrics:",
+      results ? listify(results) : "(none provided)",
+      "",
+      "Impact Narrative (Qualitative Utility):",
+      impact || "(unspecified)",
+      "",
+      "Evidence Register (Verifiability):",
+      proof ? listify(proof) : "(none provided)",
+
+      "",
+      "IV. COMPETENCY SIGNALS",
+      "Capability Map (ATS-Aligned):",
+      competencies ? listify(competencies) : "(none provided)",
+      "",
+      "Keyword Vector (Search Alignment):",
+      keywords ? listify(keywords) : "(none provided)",
+
+      "",
+      "V. KNOWLEDGE TRANSFER",
+      "Retro & Iteration Hypotheses:",
+      learnings ? listify(learnings) : "(none provided)",
+
+      "",
+      "VI. DISPATCH ARTIFACTS",
+      "Resume Bullet:",
+      resume_bullet || "(add 1–2-line bullet)",
+      "",
+      "Interview Hook:",
+      interview_hook || "(add 1 sentence opener)",
+
+      "",
+      "VII. READ-OUTS",
+      "STAR Compact:",
+      [
+        `S: ${situation || "(n/a)"}`,
+        `T: ${task_objective || "(n/a)"}`,
+        `A: ${actions ? actions.split(/\n+/).map(s=>s.trim()).filter(Boolean).join("; ") : "(n/a)"}`,
+        `R: ${results ? results.split(/\n+/).map(s=>s.trim()).filter(Boolean).join("; ") : "(n/a)"}`
+      ].join("\n"),
+      "",
+      "SOAR Compact:",
+      [
+        `S: ${situation || "(n/a)"}`,
+        `O: ${obstacles ? obstacles.split(/\n+/).map(s=>s.trim()).filter(Boolean).join("; ") : "(n/a)"}`,
+        `A: ${actions ? actions.split(/\n+/).map(s=>s.trim()).filter(Boolean).join("; ") : "(n/a)"}`,
+        `R: ${results ? results.split(/\n+/).map(s=>s.trim()).filter(Boolean).join("; ") : "(n/a)"}`
+      ].join("\n"),
+
+      "",
+      "VIII. OPERATIONAL CHECKLIST",
+      "- [ ] Each Action maps to ≥1 Result",
+      "- [ ] Results include at least one numeric delta",
+      "- [ ] Baseline captured for causal contrast",
+      "- [ ] Competencies align with target job",
+      "- [ ] Evidence links are accessible",
+
+      "",
+      "TAILORING NOTES",
+      audience_notes || "(none)",
+
+      "",
+      "OPERATIONAL NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "STAR SOAR job interview stories resume bullets situation task action result obstacle objective metrics competencies proof template"
+  }
+},
+
+
+{
+  id: "pipeline_kanban_job_search",
+  slug: "pipeline-kanban-job-search",
+  label: "Pipeline Kanban — Leads → Applied → Interviewing → Offer → Closed",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "execution",
+    "planning"
+  ],
+  tags: [
+    "type:framework",
+    "use:prioritize",
+    "use:process-improvement",
+    "use:planning",
+    "use:measurement",
+    "phase:plan",
+    "phase:compose",
+    "phase:evaluate",
+    "level:beginner"
+  ],
+  use_cases: [
+    "keep a clear, visual job-search pipeline",
+    "finish more applications by limiting work-in-progress (WIP)",
+    "run a weekly review that actually moves things",
+    "track flow with simple, honest metrics"
+  ],
+  boosters: [
+    "Keep stage names short and action-based (e.g., Applied, Interviewing).",
+    "Set small WIP limits (1–3) where you get stuck the most.",
+    "Write a simple 'definition of done' for each stage so moves are clear.",
+    "Use a weekly calendar event for the review and protect it.",
+    "Flag anything stuck past the target days as 'Aging' and act on it first."
+  ],
+  definition: "A lightweight Kanban for job search that moves opportunities across stages with explicit WIP limits and a weekly review. Non-technical: list your steps, cap how many you juggle, and meet weekly to move items forward. Technical: implement pull-based flow control with stage-specific WIP constraints, service level expectations (SLE), and cadence-driven governance to reduce cycle time and increase throughput.",
+  help: "Fill in your stages, limits, and simple rules. Add target days per stage so you can spot items that are sitting too long. Pick a weekly review day and a short agenda.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name your board so you can find it later.",
+      key: "title",
+      ph: "e.g., 2025 Job Search Kanban",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      desc: "How long you’ll run this board before a reset.",
+      key: "horizon",
+      ph: "e.g., Oct–Dec 2025",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      desc: "Who is responsible day to day.",
+      key: "owner",
+      ph: "e.g., Jonathan Kyle Hobson",
+      type: "text"
+    },
+    {
+      label: "Stages (one per line, left→right order)",
+      desc: "List the pipeline steps from first contact to finish.",
+      key: "stages",
+      ph: "Leads\nApplied\nInterviewing\nOffer\nClosed",
+      type: "textarea"
+    },
+    {
+      label: "Definitions of Done (Stage | what must be true)",
+      desc: "For each stage, say what “done” means in plain words.",
+      key: "dod",
+      ph: "Leads | company + role identified, contact found\nApplied | application sent + tracker updated\nInterviewing | prep done + interview completed\nOffer | offer received + details logged\nClosed | accepted or declined, notes written",
+      type: "textarea"
+    },
+    {
+      label: "WIP limits (Stage | number)",
+      desc: "How many items you’ll allow in each stage at once.",
+      key: "wip",
+      ph: "Leads | 10\nApplied | 3\nInterviewing | 2\nOffer | 1\nClosed | ∞",
+      type: "textarea"
+    },
+    {
+      label: "Target days per stage (Stage | days)",
+      desc: "How long items should normally stay here before it feels too slow.",
+      key: "sle",
+      ph: "Leads | 7\nApplied | 5\nInterviewing | 10\nOffer | 7\nClosed | 0",
+      type: "textarea"
+    },
+    {
+      label: "Weekly review day & time",
+      desc: "Pick a day and time you can keep.",
+      key: "review_time",
+      ph: "e.g., Fridays 3:00–3:30 PM",
+      type: "text"
+    },
+    {
+      label: "Weekly review agenda (short list)",
+      desc: "The steps you’ll follow every review.",
+      key: "review_agenda",
+      ph: "1) Clear blockers\n2) Pull oldest aging items\n3) Rebalance to WIP limits\n4) Pick next 3 actions\n5) Update metrics",
+      type: "textarea"
+    },
+    {
+      label: "Lead sources",
+      desc: "Where your leads come from.",
+      key: "sources",
+      ph: "e.g., LinkedIn searches; referrals; target list; job boards; communities",
+      type: "textarea"
+    },
+    {
+      label: "Priority labels (label | what it means)",
+      desc: "Simple tags to sort what to do first.",
+      key: "priority",
+      ph: "High | referral warm intro ready\nMedium | posted role fits well\nLow | long shot or cold outbound",
+      type: "textarea"
+    },
+    {
+      label: "Blocked reasons (one per line)",
+      desc: "Common reasons something gets stuck.",
+      key: "blocked",
+      ph: "Waiting on reply\nWaiting on internal approval\nNeed portfolio asset\nNeed recruiter intro",
+      type: "textarea"
+    },
+    {
+      label: "Tooling",
+      desc: "Where you’ll track it (trello, notion, spreadsheet).",
+      key: "tools",
+      ph: "e.g., Notion board + Google Sheet metrics",
+      type: "text"
+    },
+    {
+      label: "Success metrics (plain words)",
+      desc: "A few simple signals you care about.",
+      key: "metrics",
+      ph: "e.g., Applications/week; interviews/week; offers/quarter; days-to-offer",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful.",
+      key: "notes",
+      ph: "e.g., Color code by industry; add 'Warm' swimlane for referrals",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    stages,
+    dod,
+    wip,
+    sle,
+    review_time,
+    review_agenda,
+    sources,
+    priority,
+    blocked,
+    tools,
+    metrics,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listify = s => lines(s).map((x,i)=>`${i+1}. ${x}`).join("\n");
+    const parsePairs = (s) => {
+      const out = {};
+      lines(s).forEach(row => {
+        const [k, vRaw] = row.split("|").map(x => (x||"").trim());
+        if (!k) return;
+        out[k] = vRaw || "";
+      });
+      return out;
+    };
+    const parseNumPairs = (s) => {
+      const out = {};
+      lines(s).forEach(row => {
+        const [k, vRaw] = row.split("|").map(x => (x||"").trim());
+        if (!k) return;
+        const n = Number(String(vRaw).replace(/[^0-9.]/g,""));
+        out[k] = isFinite(n) ? n : Infinity;
+      });
+      return out;
+    };
+
+    const S = lines(stages);
+    const DOD = parsePairs(dod);
+    const WIP = parseNumPairs(wip);
+    const SLE = parseNumPairs(sle);
+
+    // Build stage table
+    const stageTable = S.map(sg => {
+      const lim = (WIP[sg] === Infinity) ? "∞" : (WIP[sg] ?? "—");
+      const days = (SLE[sg] === Infinity) ? "—" : (SLE[sg] ?? "—");
+      const rule = DOD[sg] || "(no definition)";
+      return `• ${sg} | WIP ${lim} | SLE ${days}d | DoD: ${rule}`;
+    }).join("\n");
+
+    // Output intentionally uses heavy technical/analytical language
+    return [
+      title && `PIPELINE KANBAN SPEC — JOB SEARCH | ${title}`,
+      horizon && `Operating Window: ${horizon}`,
+      owner && `Process Owner: ${owner}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I) PIPELINE TOPOLOGY & CONTROL LIMITS",
+      stageTable || "(no stages defined)",
+
+      "",
+      "II) FLOW POLICY — PULL SYSTEM & TRANSITION CRITERIA",
+      "- Work Intake is pull-based: advance only when downstream WIP < limit.",
+      "- Transitions require stage-specific Definition of Done (DoD) to be satisfied.",
+      "- Items exceeding SLE thresholds enter 'Aging WIP' and are prioritized for intervention.",
+
+      "",
+      "III) SERVICE LEVEL EXPECTATIONS (SLE) & EXCEPTIONS",
+      Object.keys(SLE).length
+        ? listify(Object.entries(SLE).map(([k,v]) => `${k}: target ≤ ${v === Infinity ? "n/a" : v + " days"}`.trim()).join("\n"))
+        : "(no SLE targets defined)",
+
+      "",
+      "IV) CADENCE GOVERNANCE — WEEKLY REVIEW",
+      review_time ? `Scheduled Cadence: ${review_time}` : "Scheduled Cadence: (not set)",
+      "Standard Agenda:",
+      review_agenda ? listify(review_agenda) : "(no agenda provided)",
+      "",
+      "Escalation Rules:",
+      "- Oldest aging item first (FIFO within 'Aging').",
+      "- Blocked items require explicit unblock action/owner before new intake.",
+      "- If WIP > limit, stop starting; swarm to finish.",
+
+      "",
+      "V) PRIORITIZATION HEURISTICS",
+      priority ? listify(priority) : "(no priority labels defined)",
+      "",
+      "Blocked Taxonomy:",
+      blocked ? listify(blocked) : "(no blocked reasons defined)",
+
+      "",
+      "VI) TOOLCHAIN & INSTRUMENTATION",
+      tools || "(no tools specified)",
+      "",
+      "Operational Metrics (define and track):",
+      metrics ? listify(metrics) : listify([
+        "Throughput (items/week per stage)",
+        "Cycle Time (days from Leads→Closed)",
+        "WIP per stage (daily snapshot)",
+        "Aging WIP (count over SLE threshold)"
+      ]),
+      "",
+      "Little’s Law Sanity Check:",
+      "WIP ≈ Throughput × Cycle Time  (monitor weekly to spot bottlenecks)",
+
+      "",
+      "VII) SOURCING & INTAKE CHANNELS",
+      sources ? listify(sources) : "(no lead sources specified)",
+
+      "",
+      "VIII) STANDARD WORK — DAILY/KANBAN BOARD PROTOCOL",
+      "- Morning sweep: pull one item only when immediate downstream < WIP limit.",
+      "- Tag 'Aging' when elapsed days > SLE for current stage.",
+      "- Update DoD evidence in the card before transition.",
+      "- Record closures with outcome label (accepted/declined) and brief note.",
+
+      "",
+      "IX) WEEKLY REVIEW CHECKLIST",
+      "- [ ] Clear all blockers or re-assign with next-step and date",
+      "- [ ] Rebalance to WIP limits (stop starting; finish work)",
+      "- [ ] Pull oldest aging first; set explicit next action",
+      "- [ ] Capture metrics (throughput, cycle time, WIP, aging)",
+      "- [ ] Identify stage with highest WIP or longest cycle time; run one experiment",
+
+      "",
+      "X) EXPERIMENT BACKLOG (ONE-PER-WEEK RULE)",
+      "- Hypothesis: Reducing Applied WIP from 3→2 will lower cycle time",
+      "- Measure: Cycle time (Applied→Interviewing), next 2 weeks",
+      "- Decision: Keep/revert based on delta",
+
+      "",
+      "XI) NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "kanban pipeline job search leads applied interviewing offer closed WIP limits weekly review service level expectation SLE aging WIP throughput cycle time template"
+  }
+},
+
+{
+  id: "intent_to_action_patterns",
+  slug: "map-words-intent-to-actions-patterns",
+  label: "Intent → Action Design Patterns (Command • Interpreter • Strategy • CoR • Builder/Factory)",
+  kind: "tool",
+  categories: ["architecture", "engineering", "product", "delivery", "qa"],
+  tags: [
+    "type:tool",
+    "use:intent-mapping",
+    "use:command-pattern",
+    "use:interpreter-pattern",
+    "use:strategy-pattern",
+    "use:chain-of-responsibility",
+    "use:factory",
+    "use:builder",
+    "use:bdd",
+    "level:intermediate"
+  ],
+
+  use_cases: [
+    "turn plain-language user phrases into executable actions",
+    "produce a code-oriented plan with stubs for Command, Interpreter, Strategy, CoR, and Factory/Builder",
+    "generate mapping tables (intents, entities, actions) + a test matrix (Gherkin)",
+    "hand off a developer-ready brief that is easy to automate and extend"
+  ],
+
+  help: "Pick your language and target. Fill in dropdowns and short CSV lists (intents, entities, handlers, strategies). The template outputs a technical brief plus code stubs for Commands, an Interpreter, Strategy registry, Chain-of-Responsibility handlers, and a Factory/Builder to assemble complex actions. It also emits a small BDD suite to keep behavior honest.",
+
+  boosters: [
+    "Keep parsing separate from deciding and doing: Interpreter parses → Strategy chooses → Command executes.",
+    "Prefer small Commands with pure execute(ctx) and idempotent behavior where possible.",
+    "Let the Chain-of-Responsibility absorb ambiguity and fallbacks; log why a handler passed.",
+    "Use a Factory for multi-step actions; a Builder to stream complex payload assembly.",
+    "Prove behavior with Gherkin: one happy path + one edge case per intent."
+  ],
+
+  /* =========================
+   * FIELDS — friendly, mostly selects + compact CSVs
+   * ========================= */
+  fields: [
+    { label: "Today’s date & time", desc: "When you’re filling this out.", key: "entry_dt", type: "text", ph: "2025-09-25 19:25" },
+    { label: "Project / domain name", desc: "Short name people will recognize.", key: "project_name", type: "text", ph: "Catalog Search & Sort" },
+
+    /* STACK TARGETS */
+    {
+      label: "Primary programming language",
+      desc: "Language for the stubs.",
+      key: "lang_primary",
+      type: "select",
+      options: [
+        "TypeScript","JavaScript","Python","Java","C#","Go","Rust","Kotlin","Swift","Ruby","PHP","C++","C","Scala","Elixir","Clojure"
+      ]
+    },
+    {
+      label: "Runtime / platform target",
+      desc: "Where this will run.",
+      key: "runtime",
+      type: "select",
+      options: ["Node.js","Browser","JVM",".NET","Serverless (AWS/GCP/Azure)","Docker/Kubernetes","Mobile (iOS/Android)","CLI","Embedded/Edge","Unknown"]
+    },
+    {
+      label: "Intent understanding approach",
+      desc: "How to go from text → intent.",
+      key: "nlu_mode",
+      type: "select",
+      options: ["Rules (regex/grammar)","Classifier (ML)","Hybrid (rules + ML)","External NLU (API)"]
+    },
+    {
+      label: "Pattern blend",
+      desc: "What patterns to scaffold.",
+      key: "patterns",
+      type: "select",
+      options: [
+        "Command only",
+        "Interpreter + Command",
+        "Interpreter + Strategy + Command",
+        "CoR + Interpreter + Command",
+        "Full stack (CoR + Interpreter + Strategy + Command + Builder/Factory)"
+      ]
+    },
+
+    /* VOCABULARY & MAPPINGS */
+    {
+      label: "Intent catalog (CSV)",
+      desc: "intent_id | description | sample_utterances(;sep) | entities(csv) | action_id",
+      key: "intents_csv",
+      type: "textarea",
+      ph: "search_items | Find items by text | search shoes; find running shoes | query,text | ACT_SEARCH\nsort_items | Sort items by field | sort by price; sort by date | field,order | ACT_SORT"
+    },
+    {
+      label: "Entity schema (CSV)",
+      desc: "entity | type | examples(csv) | validation hint/regex",
+      key: "entities_csv",
+      type: "textarea",
+      ph: "field | enum | price,date,rating | ^(price|date|rating)$\norder | enum | asc,desc | ^(asc|desc)$\ntext  | string | shoes, boots | .+"
+    },
+    {
+      label: "Action registry (CSV)",
+      desc: "action_id | command_class | side_effects (yes/no) | notes",
+      key: "actions_csv",
+      type: "textarea",
+      ph: "ACT_SEARCH | SearchCommand | no | queries read-only index\nACT_SORT | SortCommand | no | in-memory sort of last result"
+    },
+
+    /* STRATEGIES & HANDLERS */
+    {
+      label: "Strategy registry (CSV)",
+      desc: "strategy_key | condition | behavior/algorithm | default?(yes/no)",
+      key: "strategies_csv",
+      type: "textarea",
+      ph: "sort_by_price | field==price | numeric ascending/descending | yes\nsort_by_date | field==date  | chrono ascending/descending | no"
+    },
+    {
+      label: "Handler pipeline (CoR) (CSV)",
+      desc: "handler_name | responsibility | success_if | next_if_fail",
+      key: "handlers_csv",
+      type: "textarea",
+      ph: "SpellcheckHandler | normalize tokens | tokens corrected | true\nGrammarHandler | apply grammar rules | parse ok | true\nMLIntentHandler | classify if low-confidence | confidence>0.6 | true\nFallbackHandler | fallback intent | always | false"
+    },
+
+    /* GRAMMAR & RECIPES */
+    {
+      label: "Grammar rules (BNF-ish)",
+      desc: "Plain mini-language rules (Interpreter).",
+      key: "grammar",
+      type: "textarea",
+      ph: "<query> ::= 'search' <text>\n<sort>  ::= 'sort by' <field> [<order>]\n<order> ::= 'asc' | 'desc'"
+    },
+    {
+      label: "Factory recipes (CSV) (optional)",
+      desc: "product_id | components(csv) | builder_steps(csv)",
+      key: "factory_csv",
+      type: "textarea",
+      ph: "COMPOSITE_SEARCH_SORT | SearchCommand,SortCommand | exec:Search, capture:Results, exec:Sort"
+    },
+
+    /* GOVERNANCE & SAFETY */
+    {
+      label: "Side-effects policy",
+      desc: "What’s allowed without auth?",
+      key: "effects_policy",
+      type: "select",
+      options: ["Read-only without auth","Auth required for all writes","Admin-only destructive ops","Custom"]
+    },
+    {
+      label: "Observability events (CSV)",
+      desc: "event | payload keys",
+      key: "events_csv",
+      type: "textarea",
+      ph: "intent_detected | intent,confidence,entities\ncommand_executed | action_id,duration_ms,success\nhandler_skipped | handler,reason"
+    },
+
+    /* BDD QUICK CHECKS */
+    {
+      label: "Gherkin scenarios (CSV)",
+      desc: "title | Given(;sep) | When(;sep) | Then(;sep)",
+      key: "gherkin_csv",
+      type: "textarea",
+      ph: "Sort by price ascending | results exist | user says 'sort by price asc' | items sorted by price ascending"
+    },
+
+    /* OPEN CONTEXT */
+    {
+      label: "Notes / constraints (optional)",
+      desc: "Anything else that helps devs.",
+      key: "notes",
+      type: "textarea",
+      ph: "Latency budget p95 < 200ms; i18n planned; profanity filter on input tokens"
+    }
+  ],
+
+  /* =========================
+   * TEMPLATE — produces an architecture brief + code stubs
+   * ========================= */
+  template: (f) => {
+    const nl = s => (s||"").trim();
+    const lines = s => (s||"").split("\n").map(x=>x.trim()).filter(Boolean);
+    const csv = s => lines(s).map(r => r.split("|").map(c=>c.trim()));
+
+    // Parse tables
+    const intents = csv(f.intents_csv).map(r => ({id:r[0], desc:r[1], samples:(r[2]||"").split(";").map(x=>x.trim()).filter(Boolean), entities:(r[3]||"").split(",").map(x=>x.trim()).filter(Boolean), action:r[4]})).filter(x=>x.id);
+    const entities = csv(f.entities_csv).map(r => ({name:r[0], type:r[1], examples:(r[2]||"").split(",").map(x=>x.trim()).filter(Boolean), val:r[3]})).filter(x=>x.name);
+    const actions  = csv(f.actions_csv).map(r => ({id:r[0], cmd:r[1], side:r[2], notes:r[3]})).filter(x=>x.id);
+    const strategies = csv(f.strategies_csv).map(r => ({key:r[0], cond:r[1], behavior:r[2], def:(r[3]||"").toLowerCase().startsWith("y")})).filter(x=>x.key);
+    const handlers = csv(f.handlers_csv).map(r => ({name:r[0], resp:r[1], ok:r[2], cont:(r[3]||"").toLowerCase().startsWith("t")})).filter(x=>x.name);
+    const recipes = csv(f.factory_csv).map(r => ({product:r[0], comps:(r[1]||"").split(",").map(x=>x.trim()).filter(Boolean), steps:(r[2]||"").split(",").map(x=>x.trim()).filter(Boolean)})).filter(x=>x.product);
+    const gh = csv(f.gherkin_csv);
+
+    const lang = f.lang_primary || "TypeScript";
+    const codeLang = (lang === "TypeScript" ? "ts" :
+                      lang === "JavaScript" ? "js" :
+                      lang === "Python" ? "python" :
+                      lang === "Java" ? "java" :
+                      lang === "C#" ? "csharp" :
+                      lang === "Go" ? "go" :
+                      "txt");
+
+    const out = [];
+    out.push(`INTENT → ACTION PATTERNS — Developer Brief`);
+    nl(f.entry_dt) && out.push(`Entry: ${f.entry_dt}`);
+    out.push(`Project: ${nl(f.project_name)||"—"}   Language: ${lang}   Runtime: ${f.runtime||"—"}`);
+    out.push(`Approach: ${f.nlu_mode||"—"}   Pattern blend: ${f.patterns||"—"}`);
+
+    // Vocabulary tables
+    if (intents.length) {
+      out.push(`\nIntent Catalog\n| intent_id | description | entities | action_id | samples |\n| - | - | - | - | - |`);
+      intents.forEach(i => out.push(`| ${i.id} | ${i.desc} | ${i.entities.join(", ")||"—"} | ${i.action} | ${i.samples.slice(0,3).join(" • ")} |`));
+    }
+    if (entities.length) {
+      out.push(`\nEntity Schema\n| entity | type | examples | validation |\n| - | - | - | - |`);
+      entities.forEach(e => out.push(`| ${e.name} | ${e.type} | ${e.examples.slice(0,3).join(", ")} | ${e.val||"—"} |`));
+    }
+    if (actions.length) {
+      out.push(`\nAction Registry\n| action_id | command_class | side_effects | notes |\n| - | - | - | - |`);
+      actions.forEach(a => out.push(`| ${a.id} | ${a.cmd} | ${a.side||"no"} | ${a.notes||"—"} |`));
+    }
+
+    // Handlers / Strategies
+    if (handlers.length) {
+      out.push(`\nChain of Responsibility — Handler Pipeline\n| handler | responsibility | success_if | continue_if_fail |\n| - | - | - | - |`);
+      handlers.forEach(h => out.push(`| ${h.name} | ${h.resp} | ${h.ok} | ${h.cont} |`));
+    }
+    if (strategies.length) {
+      out.push(`\nStrategy Registry\n| key | condition | behavior | default |\n| - | - | - | - |`);
+      strategies.forEach(s => out.push(`| ${s.key} | ${s.cond} | ${s.behavior} | ${s.def?"yes":"no"} |`));
+    }
+    if (recipes.length) {
+      out.push(`\nFactory Recipes\n| product | components | builder_steps |\n| - | - | - |`);
+      recipes.forEach(r => out.push(`| ${r.product} | ${r.comps.join(", ")} | ${r.steps.join(" → ")} |`));
+    }
+
+    // Grammar
+    if (nl(f.grammar)) {
+      out.push(`\nInterpreter Grammar (mini-language)\n\`\`\`\n${f.grammar}\n\`\`\``);
+    }
+
+    // Code stubs
+    const cmdStub = `// Command interface and a couple of concrete Commands
+export interface Command<TCtx=any, TOut=any> { execute(ctx: TCtx): Promise<TOut>; }
+
+export class SearchCommand implements Command<{text:string}, any[]> {
+  async execute(ctx){ /* TODO: query index by ctx.text */ return []; }
 }
+
+export class SortCommand implements Command<{items:any[], field:string, order:'asc'|'desc'}, any[]> {
+  async execute(ctx){ /* TODO: stable sort by field/order */ return ctx.items; }
+}`;
+
+    const interpreterStub = `// Interpreter: parse utterance → { intent, entities }
+export type ParseResult = { intent: string, entities: Record<string,string>, confidence: number };
+
+export class Interpreter {
+  constructor(private rules: any /* grammar/regex */, private classifier?: any /* optional ML */) {}
+  parse(utterance: string): ParseResult {
+    // 1) try grammar/regex
+    // 2) if low-confidence AND classifier present → ML classify
+    // return best ParseResult
+    return { intent: "search_items", entities: { text: "shoes" }, confidence: 0.88 };
+  }
+}`;
+
+    const strategyStub = `// Strategy selection for variants (e.g., sorting)
+export type StrategyFn = (params:any) => Promise<any>;
+export class StrategyRegistry {
+  private map = new Map<string, StrategyFn>();
+  register(key:string, fn:StrategyFn){ this.map.set(key, fn); }
+  pick(key:string): StrategyFn { return this.map.get(key) || (async x=>x); }
+}
+// Example:
+const strategies = new StrategyRegistry();
+strategies.register("sort_by_price", async ({items, order}) => /* sort */ items);
+strategies.register("sort_by_date", async ({items, order}) => /* sort */ items);`;
+
+    const corStub = `// Chain of Responsibility for understanding/fallback
+export interface Handler { handle(u:string, ctx:any): Promise<{handled:boolean, result?:any, ctx:any}>; }
+
+export class GrammarHandler implements Handler {
+  async handle(u, ctx){ /* try grammar parse */ return { handled:false, ctx }; }
+}
+export class MLIntentHandler implements Handler {
+  async handle(u, ctx){ /* call classifier */ return { handled:false, ctx }; }
+}
+export class FallbackHandler implements Handler {
+  async handle(u, ctx){ /* default intent */ return { handled:true, result:{intent:"fallback"}, ctx }; }
+}
+
+export async function runPipeline(u:string, ctx:any, handlers:Handler[]){
+  let last = {handled:false, result:null, ctx};
+  for (const h of handlers){
+    last = await h.handle(u, last.ctx);
+    if (last.handled) return last;
+  }
+  return last;
+}`;
+
+    const factoryStub = `// Factory/Builder: compose multi-step actions
+export class ActionFactory {
+  create(actionId:string){
+    switch(actionId){
+      case "ACT_SEARCH": return new SearchCommand();
+      case "ACT_SORT":   return new SortCommand();
+      default: throw new Error("Unknown action");
+    }
+  }
+}
+
+export class RequestBuilder {
+  private payload:any = {};
+  set(key:string, val:any){ this.payload[key]=val; return this; }
+  build(){ return this.payload; }
+}
+
+// Example composition:
+async function executeComposite({text, field, order}){
+  const factory = new ActionFactory();
+  const search = factory.create("ACT_SEARCH");
+  const sort   = factory.create("ACT_SORT");
+  const items  = await search.execute({text});
+  return sort.execute({items, field, order});
+}`;
+
+    const orchestratorStub = `// Orchestrator: utterance → parse → strategy → command(s) → result
+export async function handleUtterance(utterance:string, env:any){
+  const parse = new Interpreter(/* rules */, /* classifier? */).parse(utterance);
+  // map intent → action
+  switch(parse.intent){
+    case "search_items": {
+      const cmd = new SearchCommand();
+      return cmd.execute({ text: parse.entities.text });
+    }
+    case "sort_items": {
+      const stratKey = parse.entities.field === "price" ? "sort_by_price" : "sort_by_date";
+      // choose algorithm
+      const alg = /* strategies */ async (x:any)=>x;
+      const items = env.lastResult || [];
+      return alg({items, order: parse.entities.order || "asc"});
+    }
+    default:
+      return { error: "Unknown intent" };
+  }
+}`;
+
+    out.push(`\nCODE STUBS (${lang})\n\`\`\`${codeLang}\n${cmdStub}\n\n${interpreterStub}\n\n${strategyStub}\n\n${corStub}\n\n${factoryStub}\n\n${orchestratorStub}\n\`\`\``);
+
+    // Observability
+    const events = csv(f.events_csv);
+    if (events.length) {
+      out.push(`\nObservability Events\n| event | payload keys |\n| - | - |`);
+      events.forEach(e => out.push(`| ${e[0]} | ${e[1] || "—"} |`));
+    }
+
+    // Policy
+    out.push(`\nSide-Effects Policy: ${f.effects_policy || "—"}`);
+
+    // BDD quick checks
+    if (gh.length) {
+      const gherkin = gh.map(r => {
+        const [title, g, w, t] = r;
+        const toSteps = (s, kw) => (s||"").split(";").map(x=>x.trim()).filter(Boolean).map(x=>`    ${kw} ${x}`).join("\n");
+        return `Scenario: ${title}\n${toSteps(g,"Given")}\n${toSteps(w,"When")}\n${toSteps(t,"Then")}`;
+      }).join("\n\n");
+      out.push(`\nGherkin Smoke (scenarios)\n\`\`\`gherkin\nFeature: Intent → Action mapping sanity\n${gherkin}\n\`\`\``);
+    }
+
+    // Notes
+    if (nl(f.notes)) {
+      out.push(`\nNotes\n${nl(f.notes)}`);
+    }
+
+    // Hand-off checklist
+    out.push(`\nHand-Off Checklist`);
+    out.push([
+      "- [ ] Intent catalog and entity schema reviewed with product/QA",
+      "- [ ] Grammar rules validated with examples; ML thresholds set (if used)",
+      "- [ ] Command classes compile; execute(ctx) is idempotent where possible",
+      "- [ ] Strategy registry covers all declared fields; defaults defined",
+      "- [ ] Handler pipeline order documented; logs on pass/skip",
+      "- [ ] Factory/Builder composes multi-step flows; errors bubble with context",
+      "- [ ] Gherkin scenarios run green in CI; tags wired (@intent,@regression)",
+      "- [ ] Observability events emitted; dashboards/alerts connected"
+    ].join("\n"));
+
+    return out.join("\n");
+  },
+
+  meta: {
+    search_text: "intent mapping command pattern interpreter grammar strategy registry chain of responsibility builder factory Gherkin BDD utterance parse execute architecture stubs"
+  }
+},
+
+
+{
+  id: "t_gap_analysis_30day",
+  slug: "t-gap-analysis-30-day-upskill",
+  label: "T-Gap Analysis — Requirements vs Skills + 30-Day Plan",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "learning",
+    "planning"
+  ],
+  tags: [
+    "type:framework",
+    "use:gap-analysis",
+    "use:planning",
+    "use:skill-development",
+    "use:decision-making",
+    "phase:define",
+    "phase:plan",
+    "level:beginner"
+  ],
+  use_cases: [
+    "compare a role’s requirements with your current skills",
+    "spot the biggest gaps to focus on first",
+    "build a realistic 30-day learning and practice plan",
+    "show evidence and progress for interviews"
+  ],
+  boosters: [
+    "Keep items short and concrete; one idea per line.",
+    "Use 0–5 levels: 0 none, 3 working, 5 expert.",
+    "If unsure, pick a modest level and update weekly.",
+    "Tie each upskill item to a tiny project you can show.",
+    "Protect 2–4 steady study blocks per week."
+  ],
+  definition: "A practical gap analysis that lists role requirements against your skills and converts the deltas into a 30-day plan. Non-technical: write what the job needs, rate yourself honestly, and plan small weekly steps. Technical: quantify competency deltas (Δ), prioritize by weighted impact, and instantiate a four-sprint micro-curriculum with workload allocation, artifacts, and verification checkpoints.",
+  help: "Paste the job info. List must-haves and nice-to-haves with importance 1–5 and desired level 1–5. List your skills with a self-rating 0–5 and quick proof. Add hours you can commit and resources to learn from. The plan will prioritize the biggest gaps and spread them across four weeks.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name this plan so you can find it later.",
+      key: "title",
+      ph: "e.g., 30-Day Gap Plan — Senior UXR (Civic Tech)",
+      type: "text"
+    },
+    {
+      label: "Target role title",
+      desc: "What is the job called?",
+      key: "role_title",
+      ph: "e.g., Senior UX Researcher",
+      type: "text"
+    },
+    {
+      label: "Employer or role type",
+      desc: "Company name or a short description of the kind of employer.",
+      key: "employer",
+      ph: "e.g., Oak (nonprofit) or Mid-size civic tech vendor",
+      type: "text"
+    },
+    {
+      label: "Job post or source link",
+      desc: "A link to the post or a brief source note.",
+      key: "job_link",
+      ph: "e.g., https://… or Recruiter email 6/15",
+      type: "text"
+    },
+    {
+      label: "Location / Remote",
+      desc: "Where the job is or if it’s remote/hybrid.",
+      key: "location",
+      ph: "e.g., Phoenix AZ (hybrid, 2 days onsite)",
+      type: "text"
+    },
+    {
+      label: "Must-have requirements (Requirement | importance 1–5 | desired level 1–5)",
+      desc: "List the top must-haves with importance and how strong they want you to be.",
+      key: "musts",
+      ph: "Mixed-methods research | 5 | 4\nStakeholder facilitation | 4 | 4\nAccessibility testing | 4 | 3",
+      type: "textarea"
+    },
+    {
+      label: "Nice-to-have requirements (Requirement | importance 1–5 | desired level 1–5)",
+      desc: "Good extras with importance and desired level.",
+      key: "nths",
+      ph: "R | 3 | 3\nService blueprints | 3 | 3\nLLM prompt design | 2 | 3",
+      type: "textarea"
+    },
+    {
+      label: "Your current skills (Skill | level 0–5 | quick evidence)",
+      desc: "List your level and a short proof for each skill.",
+      key: "your_skills",
+      ph: "Mixed-methods research | 3 | diary+usability case study\nStakeholder facilitation | 4 | ran 6 workshops\nAccessibility testing | 2 | 1 audit + WCAG notes\nService blueprints | 1 | read guide; no project",
+      type: "textarea"
+    },
+    {
+      label: "Available hours per week",
+      desc: "How many hours you can give most weeks.",
+      key: "hours_per_week",
+      ph: "e.g., 8",
+      type: "text"
+    },
+    {
+      label: "Start date",
+      desc: "When you want to begin (any format).",
+      key: "start_date",
+      ph: "e.g., Nov 3",
+      type: "text"
+    },
+    {
+      label: "Learning resources by skill (Skill | resource/link)",
+      desc: "Best videos, courses, docs, or books for each skill.",
+      key: "resources",
+      ph: "Accessibility testing | Deque University course\nService blueprints | NN/g article\nR | R4DS book",
+      type: "textarea"
+    },
+    {
+      label: "Practice project ideas (Skill | tiny project to ship)",
+      desc: "Small, showable projects you can finish in a week.",
+      key: "projects",
+      ph: "Accessibility testing | Audit a public form + fixes PDF\nService blueprints | Map library checkout flow (draft → v1)\nR | Recreate 2 charts from a .csv",
+      type: "textarea"
+    },
+    {
+      label: "Success metrics (plain words)",
+      desc: "Simple signs you’re improving.",
+      key: "metrics",
+      ph: "e.g., 2 shipped artifacts/week; 1 shareable link/week; mock interview score ≥ 4/5",
+      type: "textarea"
+    },
+    {
+      label: "Check-in rhythm",
+      desc: "When you’ll review and adjust.",
+      key: "cadence",
+      ph: "e.g., Weekly on Fridays, 30 minutes",
+      type: "text"
+    },
+    {
+      label: "Accountability / mentor",
+      desc: "Who will nudge you and give feedback.",
+      key: "mentor",
+      ph: "e.g., Mia for weekly review; Tom for portfolio check",
+      type: "text"
+    },
+    {
+      label: "Constraints",
+      desc: "Time, tools, or limits to plan around.",
+      key: "constraints",
+      ph: "e.g., Travel on week 2; limited weekday evenings",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful.",
+      key: "notes",
+      ph: "e.g., Recruiter wants artifacts; focus on accessibility first",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    role_title,
+    employer,
+    job_link,
+    location,
+    musts,
+    nths,
+    your_skills,
+    hours_per_week,
+    start_date,
+    resources,
+    projects,
+    metrics,
+    cadence,
+    mentor,
+    constraints,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    // Helpers
+    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const num = v => {
+      const n = Number(String(v||"").replace(/[^0-9.]/g,""));
+      return isFinite(n) ? n : 0;
+    };
+    const parseReqs = (s, fallbackDesired=3) =>
+      lines(s).map(row => {
+        const [name, imp, des] = row.split("|").map(x => (x||"").trim());
+        const importance = Math.min(5, Math.max(1, num(imp)||3));
+        const desired = Math.min(5, Math.max(1, num(des)||fallbackDesired||3));
+        return { name, importance, desired };
+      }).filter(x => x.name);
+    const parseSkills = (s) =>
+      lines(s).map(row => {
+        const [name, lvl, ev] = row.split("|").map(x => (x||"").trim());
+        const level = Math.min(5, Math.max(0, num(lvl)));
+        return { name, level, ev };
+      }).filter(x => x.name);
+    const mapBy = (arr, k) => {
+      const m = {};
+      arr.forEach(x => m[String(x[k]).toLowerCase()] = x);
+      return m;
+    };
+    const listify = arr => (arr||[]).map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const MUST = parseReqs(musts, 4);
+    const NTH  = parseReqs(nths, 3);
+    const ALL  = [...MUST.map(x=>({...x, kind:"must"})), ...NTH.map(x=>({...x, kind:"nth"}))];
+
+    const SK = parseSkills(your_skills);
+    const SKMAP = mapBy(SK, "name");
+
+    const gaps = ALL.map(r => {
+      const m = SKMAP[r.name.toLowerCase()];
+      const have = m ? m.level : 0;
+      const delta = Math.max(0, r.desired - have);
+      const score = r.importance * delta;
+      return {
+        requirement: r.name,
+        kind: r.kind,
+        importance: r.importance,
+        desired: r.desired,
+        have,
+        delta,
+        score,
+        evidence: m ? (m.ev || "") : ""
+      };
+    }).sort((a,b) => b.score - a.score);
+
+    const totalScore = gaps.reduce((t,g)=>t+g.score,0) || 1;
+    const H = Math.max(1, num(hours_per_week||"8"));
+
+    // Allocate hours per week across top gaps (cap to 6 focus items)
+    const focus = gaps.slice(0, 6).map(g => {
+      const share = g.score / totalScore;
+      const weekly = Math.max(1, Math.round(share * H)); // at least 1h/week
+      return {...g, weekly};
+    });
+
+    // Build resource/project maps
+    const RES = {};
+    lines(resources).forEach(row => {
+      const [skill, link] = row.split("|").map(x => (x||"").trim());
+      if (!skill) return;
+      RES[skill.toLowerCase()] = (RES[skill.toLowerCase()]||[]).concat(link || "");
+    });
+    const PROJ = {};
+    lines(projects).forEach(row => {
+      const [skill, idea] = row.split("|").map(x => (x||"").trim());
+      if (!skill) return;
+      PROJ[skill.toLowerCase()] = (PROJ[skill.toLowerCase()]||[]).concat(idea || "");
+    });
+
+    const fmtGap = g => {
+      const res = RES[g.requirement.toLowerCase()] || [];
+      const pj  = PROJ[g.requirement.toLowerCase()] || [];
+      return [
+        `${g.requirement} [${g.kind.toUpperCase()}]`,
+        `• Importance=${g.importance} | Desired=${g.desired} | Have=${g.have} | Δ=${g.delta} | PriorityScore=${g.score.toFixed(2)}`,
+        `• WeeklyAllocation ≈ ${g.weekly}h`,
+        g.evidence && `• CurrentEvidence: ${g.evidence}`,
+        res.length ? `• Resources: ${res.join("; ")}` : null,
+        pj.length ? `• Micro-Projects: ${pj.join("; ")}` : null
+      ].filter(Boolean).join("\n");
+    };
+
+    // Heavy technical/analytical output
+    return [
+      title && `T-GAP ANALYSIS SPEC | ${title}`,
+      role_title && `Target Role: ${role_title}`,
+      employer && `Employer/Archetype: ${employer}`,
+      job_link && `Source: ${job_link}`,
+      location && `Location: ${location}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I) REQUIREMENT → COMPETENCY DIAGNOSTIC",
+      gaps.length
+        ? gaps.map((g,i)=>`${i+1}. ${g.requirement} | kind=${g.kind} | imp=${g.importance} | desired=${g.desired} | have=${g.have} | Δ=${g.delta} | score=${g.score.toFixed(2)}`).join("\n")
+        : "(no requirements parsed)",
+
+      "",
+      "II) PRIORITIZED DEFICIT VECTOR (TOP FOCUS ITEMS)",
+      focus.length ? focus.map((g,i)=>`${i+1}. ${g.requirement} | Δ=${g.delta} | score=${g.score.toFixed(2)} | weekly≈${g.weekly}h`).join("\n") : "(none)",
+
+      "",
+      "III) WORKLOAD BUDGET",
+      `StartDate: ${start_date || "(unset)"} | Hours/Week: ~${H}`,
+      "Allocation Heuristic: proportional to PriorityScore with min 1h per focus item; re-balance weekly by observed throughput.",
+
+      "",
+      "IV) FOUR-SPRINT MICRO-CURRICULUM (30 DAYS)",
+      "Sprint 1 (Days 1-7) — Onboarding & Baseline:",
+      listify(focus.map(f => `Initialize ${f.requirement}: 1) skim resources; 2) complete 1 tutorial; 3) ship 1 micro-artifact`)),
+      "",
+      "Sprint 2 (Days 8-14) — Guided Practice:",
+      listify(focus.map(f => `Deepen ${f.requirement}: execute micro-project #1; document before/after; request 1 review`)),
+      "",
+      "Sprint 3 (Days 15-21) — Productionization:",
+      listify(focus.map(f => `Harden ${f.requirement}: micro-project #2 with acceptance criteria; add tests/checklist`)),
+      "",
+      "Sprint 4 (Days 22-30) — Evidence & Transfer:",
+      listify(focus.map(f => `Publish ${f.requirement}: case note + link; rehearse interview demo; add to portfolio`)),
+
+      "",
+      "V) FOCUS ITEM PLAYBOOKS",
+      focus.length ? focus.map(fmtGap).join("\n\n") : "(no focus items)",
+
+      "",
+      "VI) VERIFICATION PLAN",
+      "Success Metrics:",
+      metrics ? lines(metrics).map((m,i)=>`${i+1}. ${m}`).join("\n") : "1. 2 shipped artifacts/week\n2. 1 shareable link/week\n3. Mock interview ≥ 4/5",
+      "",
+      "Evidence Collection:",
+      "- Store artifacts in a single folder; name: YYYY-MM-DD_skill_v1",
+      "- Capture baseline and post-metrics for each micro-project",
+      "- Log reviews/feedback with date and action taken",
+
+      "",
+      "VII) CADENCE & GOVERNANCE",
+      `Check-in Rhythm: ${cadence || "(weekly, 30 min suggested)"}`,
+      `Accountability: ${mentor || "(none specified)"}`,
+      `Constraints: ${constraints || "(none noted)"}`,
+
+      "",
+      "VIII) WEEKLY OPERATING PROCEDURE",
+      "- Recompute PriorityScore from updated levels; re-allocate hours",
+      "- Close oldest micro-project first (finish > start)",
+      "- Replace any blocked resource with a backup within 24h",
+      "- Update resume/portfolio with 1 new proof each week",
+
+      "",
+      "IX) RISK REGISTER & MITIGATIONS",
+      "- Schedule Variance: pre-book 2 study blocks on calendar",
+      "- Scope Creep: cap micro-projects at 4–6 hours each",
+      "- Feedback Scarcity: solicit 1 async review mid-week",
+
+      "",
+      "X) READINESS GATE (INTERVIEW-READY CRITERIA)",
+      "- ≥3 artifacts aligned to must-have skills",
+      "- Live demo script ≤ 3 minutes per artifact",
+      "- Quantified deltas (before→after) for at least two items",
+
+      "",
+      "XI) NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "t-gap analysis role requirements vs skills 30 day upskill plan weighted gaps micro curriculum weekly cadence artifacts verification template"
+  }
+},
+
+{
+  id: "rapid_framing_rewriter",
+  slug: "rapid-framing-rewriter",
+  label: "Rapid Framing Rewriter",
+  kind: "framework",
+  categories: ["writing-frameworks","analysis-frameworks","critical-thinking","ethics"],
+  tags: [
+    "type:framework","use:rewriting","use:framing","use:prompt",
+    "phase:define","phase:ideate","level:intermediate"
+  ],
+  use_cases: [
+    "restate a problem/solution through multiple lenses before editing",
+    "prepare executive-ready alternatives for a decision memo",
+    "reduce blame-y or narrow frames; add systems/equity/capability views"
+  ],
+  boosters: [
+    "Return side-by-side rewrites plus a rationale table.",
+    "Name harmful metaphors and replace with neutral, people-first wording.",
+    "Prefer specific, testable claims over vibe-based assertions.",
+    "Flag where prevention vs cure shifts metrics and ownership."
+  ],
+  definition: "A concise input form that generates instructions to reframe a draft’s problem/solution across multiple lenses (systems, capability, equity, prevention vs cure), with side-by-side rewrites and a rationale table mapping lens → changes → predicted effects.",
+  help: "Paste the snippet and fill the short fields. The output is a long, technical instruction set for an AI or reviewer to produce lens-based rewrites and a justification table.",
+  fields: [
+    { label: "Your draft snippet", key: "content", ph: "Paste the passage (1–3 paragraphs) to reframe.", type: "textarea" },
+    { label: "Current framing (your words)", key: "current", ph: "How does your draft currently define the problem and the solution?", type: "textarea" },
+    { label: "Target audiences", autofill: "persona->inline", itemLabel: "persona", itemType: "typeahead", key: "audience", min: 1, max: 8, ph: "Start typing to pick personas (e.g., Student, Clinician, City Planner)…", type: "repeater" },
+    { label: "Harms of the status quo", key: "harms", ph: "Who is hurt today and how (esp. minoritized groups)?", type: "textarea" },
+    { label: "Alternate lenses (multi-select)", key: "lenses", type: "multiselect",
+      options: [
+        "Systems", "Capability (Amartya Sen)", "Equity/Justice", "Prevention vs Cure",
+        "Individual vs Structural", "Short-term vs Long-term", "Behavioral", "Economic"
+      ],
+      ph: "Pick 2–4 lenses to apply"
+    },
+    { label: "Constraints & context", key: "constraints", ph: "Time, budget, policy, legal, cultural limits; where this will be used.", type: "textarea" },
+    { label: "Success criteria", key: "success", ph: "What does ‘good’ look like? Include metrics and time horizon.", type: "textarea" },
+    { label: "Taboo / avoid list", key: "taboo", ph: "Words, metaphors, or frames to avoid; sensitive topics; don’ts.", type: "textarea" }
+  ],
+  template: ({
+    content, current, audience, harms, lenses, constraints, success, taboo,
+    ctx, style, tone
+  }) => [
+`Rapid Framing Rewriter — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+content && `Draft snippet:\n${content}`,
+current && `Current framing (author-supplied):\n${current}`,
+audience && (
+  'Target audiences:\n' +
+  String(audience).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+harms && `Harms of the status quo:\n${harms}`,
+constraints && `Constraints & context:\n${constraints}`,
+success && `Success criteria:\n${success}`,
+taboo && `Taboo / avoid list:\n${taboo}`,
+lenses && (
+  'Lenses to apply:\n' +
+  (Array.isArray(lenses) ? lenses : String(lenses).split(/\n+/))
+    .map(s=>String(s).trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+
+`— — —`,
+`ROLE: You are a neutral, evidence-aware rewriter. Be compassionate, culturally sensitive, and people-first. Critique ideas, not authors.`,
+
+`OBJECTIVE: Produce side-by-side rewrites of the draft’s problem and solution using each selected lens. Then explain the differences with a rationale table mapping lens → changes → predicted effects, including equity and prevention implications.`,
+
+`NON-NEGOTIABLES`,
+`- Use person-first, non-stigmatizing language; replace deficit metaphors (e.g., “broken people”) with system-aware wording.`,
+`- Separate facts (what is) from values (what ought); state uncertainties and what evidence would change conclusions.`,
+`- Distinguish *safe* (risk reduction) from *beneficial* (positive, measurable effect) in recommendations.`,
+
+`=== OUTPUT A — SIDE-BY-SIDE REWRITES ===`,
+`For EACH chosen lens, deliver:`,
+`1) Problem reframe (≤60 words) — name the drivers consistent with the lens.`,
+`2) Solution reframe (≤60 words) — who acts, where, and how success is measured.`,
+`3) Reader impact — who is centered, what shifts in responsibility (individual ↔ system), what trade-offs are acknowledged.`,
+`Apply the following if selected:`,
+`• Systems — identify feedback loops, incentives, bottlenecks; name structural levers.`,
+`• Capability — describe real freedoms expanded (functionings), not just outputs.`,
+`• Equity/Justice — surface benefit/harm distribution, access barriers, repair mechanisms.`,
+`• Prevention vs Cure — prefer upstream measures; clarify metrics that demonstrate prevention.`,
+`Also consider Short-term vs Long-term, Individual vs Structural, Behavioral, and Economic angles when listed.`,
+
+`=== OUTPUT B — RATIONALE TABLE ===`,
+`Lens | Key framing swaps | Why this is more accurate/just | Predicted reader effect | Predicted benefits | Risks & mitigations | Metrics`,
+`- Keep entries concise but specific (avoid vague “clarity”/“trust”).`,
+`- Include at least one metric that distinguishes prevention from remediation when that lens is used.`,
+
+`=== OUTPUT C — CHECKS & ETHICS ===`,
+`1) Bias/Framing checks: identify any of — attribution error, confirmation/anchoring, omission of context, urban/majority defaults, English-dominance, techno-solutionism. Note exact phrases to change.`,
+`2) Accessibility & inclusion: reading level; translation/terminology needs; alt text/captions if referencing images; screen-reader affordances.`,
+`3) Ethics triad: Duties/Rights (privacy, consent, dignity), Outcomes (benefit/harm by subgroup; second-order effects), Care/Relationships (trust, reciprocity, repair). Document trade-offs and any dissent.`,
+
+`=== OUTPUT D — SAFE VS BENEFICIAL ===`,
+`List recommendations in two buckets:`,
+`• Safe (risk-reduction / guardrails)`,
+`• Beneficial (positive, measurable improvements for under-served groups)`,
+`Tie each to the success criteria and constraints provided.`,
+
+`=== OUTPUT E — NEXT ACTIONS ===`,
+`Provide exactly 3 concrete next steps with owners/roles (generic ok), a small metric, and a timebox.`,
+
+`METHODS TO APPLY (lightly, as scaffolds)`,
+`- Steelman + Charity: state the strongest version of the current framing before rewriting.`,
+`- Consider-the-opposite: generate ≥2 reasons the current frame could be wrong.`,
+`- Outside view: compare to base rates or analogous cases; avoid singular-case myopia.`,
+`- Counterfactual: what evidence would *reverse* your recommended frame?`,
+`- Six Thinking Hats spot-check (Yellow benefits, Black risks, Green alternatives); keep notes brief.`,
+`- Heick lenses (Parts/Whole/Interdependence/Function/Abstraction/Self) for a quick completeness scan.`,
+
+`DELIVERABLE FORMAT`,
+`- Use headings exactly as above.`,
+`- Tables in plain text are fine.`,
+`- Keep tone analytic, compassionate, and specific.`
+
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Rapid Framing Rewriter — reframe problem/solution via Systems · Capability · Equity · Prevention vs Cure; produce side-by-side rewrites and rationale table; include bias/framing checks, ethics triad, accessibility, safe vs beneficial, and next actions."
+  }
+},
+
+{
+  id: "informational_interview_ladder",
+  slug: "informational-interview-ladder",
+  label: "Informational-Interview Ladder — 2/day → 5/week → 50/quarter (Ask for insights, not jobs)",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "networking",
+    "planning"
+  ],
+  tags: [
+    "type:framework",
+    "use:outreach",
+    "use:networking",
+    "use:planning",
+    "use:process-improvement",
+    "phase:plan",
+    "phase:compose",
+    "level:beginner"
+  ],
+  use_cases: [
+    "set a daily/weekly/quarterly outreach rhythm",
+    "start warm, useful conversations that lead to referrals",
+    "standardize messages and follow-ups that respect people’s time",
+    "measure response, booking, and referral rates without begging for jobs"
+  ],
+  boosters: [
+    "Lead with curiosity: ask for a 15–20 minute chat and 2–3 specific questions.",
+    "Personalize one sentence: why them, why now.",
+    "Never attach a resume unless asked; link to a short portfolio if relevant.",
+    "Always close with an easy CTA: 2–3 time windows or a scheduling link.",
+    "Send one gentle follow-up after ~5–7 days; then one last nudge; then archive.",
+    "After each chat, ask for 1–2 referrals to others you should learn from."
+  ],
+  definition: "A lightweight ladder for informational interviews that operationalizes a steady outreach cadence and respectful scripts. Non-technical: contact a few people each day, ask for advice, learn, and keep it human. Technical: implement cadence governance (daily/weekly/quarterly targets), message standardization, follow-up SLAs, and KPI instrumentation (response, booking, show, referral, and opportunity conversion).",
+  help: "Fill targets, people types, sources, and scripts. Keep language simple and kind. The output will produce a rigorous operating plan with metrics and checklists.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name this plan so you can find it later.",
+      key: "title",
+      ph: "e.g., Q4 Informational-Interview Ladder",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      desc: "How long this plan runs (month or quarter).",
+      key: "horizon",
+      ph: "e.g., Oct–Dec 2025",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      desc: "Who is doing the outreach.",
+      key: "owner",
+      ph: "e.g., Jonathan Kyle Hobson",
+      type: "text"
+    },
+    {
+      label: "Daily outreach target",
+      desc: "How many new people you’ll contact per day.",
+      key: "daily_goal",
+      ph: "e.g., 2",
+      type: "text"
+    },
+    {
+      label: "Weekly outreach target",
+      desc: "How many new people you’ll contact per week.",
+      key: "weekly_goal",
+      ph: "e.g., 5",
+      type: "text"
+    },
+    {
+      label: "Quarterly outreach target",
+      desc: "How many total new contacts by end of quarter.",
+      key: "quarterly_goal",
+      ph: "e.g., 50",
+      type: "text"
+    },
+    {
+      label: "Target roles / functions",
+      desc: "Job titles or roles you want to learn from.",
+      key: "target_roles",
+      ph: "e.g., UX Research Lead; Head of Product; Conversational AI PM",
+      type: "textarea"
+    },
+    {
+      label: "Target segments (Segment | examples)",
+      desc: "Kinds of people or orgs and a quick example list.",
+      key: "segments",
+      ph: "Civic Tech | city digital teams; gov vendors\nHealth Tech | hospital IT; patient experience\nEdTech | learning platforms; university labs",
+      type: "textarea"
+    },
+    {
+      label: "Lead sources (Source | description)",
+      desc: "Where you’ll find people.",
+      key: "sources",
+      ph: "LinkedIn | 2nd-degree connections and alumni\nCommunities | NN/g Slack, Design Justice\nEvents | Meetup speakers, conference lists",
+      type: "textarea"
+    },
+    {
+      label: "Personalization ingredients (one per line)",
+      desc: "Short facts you can mention to make it human.",
+      key: "personalization",
+      ph: "Shared alma mater\nRecent talk/article they gave\nMutual connection\nProduct you admire",
+      type: "textarea"
+    },
+    {
+      label: "Primary outreach script",
+      desc: "Plain, kind message you’ll send first.",
+      key: "script_primary",
+      ph: "Hi <Name>, I loved your <talk/article>. I’m exploring <area> and would value your perspective. Could we do 15–20 minutes next week? I’m curious about <Q1> and <Q2>. Happy to share what I’m seeing in <topic>. If helpful, here are a couple windows: <times> or use <link>. Thanks either way.",
+      type: "textarea"
+    },
+    {
+      label: "Follow-up scripts (one per line)",
+      desc: "Short nudges you’ll send if no reply.",
+      key: "script_followups",
+      ph: "Bump: still hoping for 15 minutes on <topic> — could <times> work?\nLast nudge: if now’s not ideal, I’ll circle back next quarter. Thanks for all you share publicly.",
+      type: "textarea"
+    },
+    {
+      label: "Insights question menu (one per line)",
+      desc: "Good questions to ask on the call. No job asks.",
+      key: "question_menu",
+      ph: "What are 2–3 skills you hire for that are hard to fake?\nWhere do new folks stumble in their first 90 days?\nWhat teams are shipping work you respect, and why?",
+      type: "textarea"
+    },
+    {
+      label: "Value you can offer (one per line)",
+      desc: "Ways you can be helpful back.",
+      key: "value_offer",
+      ph: "Share a brief audit or teardown\nIntroduce to a peer in <area>\nSend a summary of what I’m seeing in <trend>",
+      type: "textarea"
+    },
+    {
+      label: "Referral ask (one line)",
+      desc: "Simple way to ask for intros after the chat.",
+      key: "referral_ask",
+      ph: "Is there one person you’d recommend I learn from next?",
+      type: "text"
+    },
+    {
+      label: "Scheduling link",
+      desc: "A link they can use if they prefer.",
+      key: "schedule_link",
+      ph: "e.g., https://cal.com/…",
+      type: "text"
+    },
+    {
+      label: "Time windows you can offer",
+      desc: "Days/times that usually work for you.",
+      key: "time_windows",
+      ph: "e.g., Tue–Thu, 1:00–4:00 PM PT",
+      type: "text"
+    },
+    {
+      label: "Follow-up cadence (Day | action)",
+      desc: "Your no-reply plan and timing.",
+      key: "followup_plan",
+      ph: "Day 5 | gentle bump\nDay 12 | final nudge\nDay 20 | archive + move on",
+      type: "textarea"
+    },
+    {
+      label: "Conversation notes template",
+      desc: "Quick structure to capture takeaways.",
+      key: "notes_template",
+      ph: "3 insights | 1 resource to read | 1 action | 1 referral asked",
+      type: "text"
+    },
+    {
+      label: "Boundaries & ethics (plain rules)",
+      desc: "Your ground rules to stay respectful.",
+      key: "ethics",
+      ph: "Ask for insights, not a job; never spam; keep it to 15–20 minutes; send a thank-you and one useful thing after.",
+      type: "textarea"
+    },
+    {
+      label: "Tracking fields (Contact | role | org | source | date | status)",
+      desc: "Format you’ll use in your tracker or sheet.",
+      key: "tracking_format",
+      ph: "e.g., Ada Lee | UXR Lead | City of Mesa | alumni | 2025-10-28 | booked",
+      type: "text"
+    },
+    {
+      label: "Metric targets (one per line)",
+      desc: "Simple goals to measure progress.",
+      key: "metrics",
+      ph: "Response rate ≥ 25%\nBooked calls/week ≥ 2\nReferral rate ≥ 1.0 per call\nThank-you sent within 24h = 100%",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful.",
+      key: "notes",
+      ph: "e.g., Focus on civic tech first; avoid cold InMails; use warm intros where possible",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    daily_goal,
+    weekly_goal,
+    quarterly_goal,
+    target_roles,
+    segments,
+    sources,
+    personalization,
+    script_primary,
+    script_followups,
+    question_menu,
+    value_offer,
+    referral_ask,
+    schedule_link,
+    time_windows,
+    followup_plan,
+    notes_template,
+    ethics,
+    tracking_format,
+    metrics,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    // Helpers
+    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listify = s => lines(s).map((x,i)=>`${i+1}. ${x}`).join("\n");
+    const num = (v, d) => {
+      const n = Number(String(v||"").replace(/[^0-9.]/g,""));
+      return isFinite(n) && n > 0 ? n : d;
+    };
+
+    // Targets with defaults (2/day → 5/week → 50/quarter)
+    const D = num(daily_goal, 2);
+    const W = num(weekly_goal, 5);
+    const Q = num(quarterly_goal, 50);
+
+    // Output intentionally uses heavy technical/analytical language
+    return [
+      title && `INFORMATIONAL-INTERVIEW LADDER — OPERATING SPEC | ${title}`,
+      horizon && `Operating Window: ${horizon}`,
+      owner && `Process Owner: ${owner}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I) CADENCE GOVERNANCE — CONTROL LIMITS",
+      `Daily New Outreach Target (D): ${D}`,
+      `Weekly New Outreach Target (W): ${W}`,
+      `Quarterly New Outreach Target (Q): ${Q}`,
+      "Policy: prioritize insight-seeking over placement seeking; no resume attachments unless explicitly requested.",
+
+      "",
+      "II) TARGETING TOPOLOGY — WHO & WHERE",
+      "Role/Function Focus:",
+      target_roles ? listify(target_roles) : "(none specified)",
+      "",
+      "Segments (market slices):",
+      segments ? listify(segments) : "(none specified)",
+      "",
+      "Lead Sources:",
+      sources ? listify(sources) : "(none specified)",
+
+      "",
+      "III) MESSAGE STANDARDIZATION — TEMPLATES & COMPONENTS",
+      "Personalization Ingredients:",
+      personalization ? listify(personalization) : "(none specified)",
+      "",
+      "Primary Outreach Script:",
+      script_primary || "(no primary script provided)",
+      "",
+      "Follow-up Scripts:",
+      script_followups ? listify(script_followups) : "(none specified)",
+      "",
+      "Scheduling Surface:",
+      schedule_link || "(no scheduling link)",
+      time_windows ? `Preferred Windows: ${time_windows}` : null,
+
+      "",
+      "IV) CALL CONTENT — INSIGHT HARVEST PLAN",
+      "Question Menu (select 2–3 per conversation):",
+      question_menu ? listify(question_menu) : "(none specified)",
+      "",
+      "Reciprocity Envelope (ways to add value):",
+      value_offer ? listify(value_offer) : "(none specified)",
+      "",
+      "Referral Ask:",
+      referral_ask || "(not specified)",
+
+      "",
+      "V) SLA — FOLLOW-UP & ARCHIVAL POLICY",
+      "Cadence:",
+      followup_plan ? listify(followup_plan) : "1. Day 5 | gentle bump\n2. Day 12 | final nudge\n3. Day 20 | archive (no further outreach this quarter)",
+      "",
+      "Boundaries & Ethics:",
+      ethics ? listify(ethics) : listify([
+        "Ask for insights, not jobs",
+        "Limit to 15–20 minutes unless invited longer",
+        "No spam; personalize; one thread at a time",
+        "Send thank-you + useful resource within 24 hours"
+      ]),
+
+      "",
+      "VI) INSTRUMENTATION — KPI DEFINITIONS",
+      listify([
+        "Response Rate = replies / outbound",
+        "Booking Rate = calls scheduled / replies",
+        "Show Rate = calls completed / scheduled",
+        "Referral Rate = referrals received / calls completed",
+        "Thank-You SLA = thank-yous sent within 24h / calls completed"
+      ]),
+      "",
+      "Metric Targets:",
+      metrics ? listify(metrics) : listify([
+        "Response rate ≥ 25%",
+        "Booked calls/week ≥ 2",
+        "Referral rate ≥ 1.0 per call",
+        "Thank-you within 24h = 100%"
+      ]),
+
+      "",
+      "VII) DATA MODEL — TRACKING FIELDS",
+      `Row Format: ${tracking_format || "Contact | role | org | source | date | status"}`,
+      "Conversation Notes Template:",
+      notes_template || "3 insights | 1 resource | 1 action | 1 referral asked",
+
+      "",
+      "VIII) DAILY STANDARD WORK",
+      listify([
+        `Queue Generation: add ≥ ${D} new prospects to backlog by 10:00`,
+        "Personalize 1 line for each prospect",
+        "Dispatch outreach; log send and next follow-up date",
+        "Process replies: schedule immediately or tag for reschedule",
+        "Send 24h thank-yous + 1 useful resource after each call"
+      ]),
+
+      "",
+      "IX) WEEKLY REVIEW — GOVERNANCE CHECKLIST",
+      listify([
+        "Recompute response/booking/show/referral rates",
+        "Identify channel with highest conversion; double down",
+        "Archive non-responders per SLA; refresh backlog",
+        "Ship one iteration: update script or question menu based on feedback",
+        "Plan next week’s D and W; pre-block calendar windows"
+      ]),
+
+      "",
+      "X) RISK REGISTER & MITIGATIONS",
+      listify([
+        "Low Response: increase personalization depth; switch channels",
+        "Scheduling Friction: add 2–3 time windows plus link",
+        "No Referrals: explicitly ask for 1 name at end of call",
+        "Time Drift: calendar-block a 30-min daily outreach slot"
+      ]),
+
+      "",
+      "XI) NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "informational interview ladder outreach cadence insights not jobs scripts follow-up SLA response booking referral metrics template"
+  }
+},
+
+{
+  id: "stakeholder_harm_benefit_forecast",
+  slug: "stakeholder-harm-benefit-forecast",
+  label: "Stakeholder Harm & Benefit Forecast",
+  kind: "framework",
+  categories: ["analysis-frameworks","ethics","equity","risk"],
+  tags: [
+    "type:framework","use:evaluation","use:equity","use:risk","phase:analyze","level:intermediate"
+  ],
+  use_cases: [
+    "anticipate uneven impacts across groups before launch or publication",
+    "plan mitigations and monitoring for high-risk stakeholders",
+    "document owners, metrics, and early-warning indicators"
+  ],
+  boosters: [
+    "Produce an Equity Impact Matrix with severity/likelihood risk ratings.",
+    "Name owners and concrete mitigations for each high-risk stakeholder.",
+    "Define early-warning indicators and monitoring cadence tied to decisions.",
+    "Separate safe (risk-reduction) from beneficial (positive effect) actions."
+  ],
+  definition: "Concise inputs → a comprehensive, technical instruction set for forecasting uneven stakeholder impacts (benefits/harms), assigning risk ratings, defining early-warning indicators, and appointing mitigation owners.",
+  help: "List who is affected, how, and what you’ll watch. The output is a long, technical guide for an AI or reviewer to produce an Equity Impact Matrix with owners, metrics, and a monitoring plan.",
+  fields: [
+    {
+      label: "Decision / change summary",
+      key: "decision",
+      ph: "What decision, feature, policy, or publication is being considered?",
+      type: "textarea"
+    },
+    {
+      label: "Your draft snippet (optional)",
+      key: "content",
+      ph: "Paste the relevant passage or summary that will affect stakeholders.",
+      type: "textarea"
+    },
+    {
+      label: "Stakeholders (list groups, roles, or communities)",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      min: 2,
+      max: 20,
+      ph: "e.g., New users, Power users, Non-English readers, Screen-reader users, Rural clinics…",
+      type: "repeater"
+    },
+    {
+      label: "Default power/voice context",
+      desc: "A quick read on influence vs being-heard (you can refine per group later).",
+      key: "power_voice",
+      type: "select",
+      options: [
+        "High power / High voice",
+        "High power / Low voice",
+        "Low power / High voice",
+        "Low power / Low voice",
+        "Mixed / Unknown"
+      ],
+      ph: "Pick the overall context"
+    },
+    {
+      label: "Potential harms (by theme)",
+      key: "harms",
+      ph: "Safety, exclusion, unfair outcomes, costs, lost trust, privacy, stigma…",
+      type: "textarea"
+    },
+    {
+      label: "Potential benefits (by theme)",
+      key: "benefits",
+      ph: "Access gains, reduced burden, time saved, better outcomes, dignity, trust…",
+      type: "textarea"
+    },
+    {
+      label: "Mitigation ideas (initial)",
+      key: "mitigation",
+      ph: "Safeguards, design changes, consent, translation, alternative paths, redress…",
+      type: "textarea"
+    },
+    {
+      label: "Uncertainty level",
+      key: "uncertainty",
+      type: "select",
+      options: ["Low","Medium","High"],
+      ph: "How unsure are we about impacts?"
+    },
+    {
+      label: "Early-warning indicators (signals you’ll watch)",
+      key: "signals",
+      ph: "Complaints from group X, opt-outs, error rates, drop-off, NPS by subgroup…",
+      type: "textarea"
+    },
+    {
+      label: "Monitoring plan",
+      key: "monitor",
+      ph: "Cadence, metrics, thresholds, who reviews, stop-rules, public reporting…",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    decision, content, stakeholders, power_voice, harms, benefits, mitigation, uncertainty, signals, monitor,
+    ctx, style, tone
+  }) => [
+`Stakeholder Harm & Benefit Forecast — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+decision && `Decision / change summary:\n${decision}`,
+content && `Draft snippet (optional):\n${content}`,
+stakeholders && (
+  'Stakeholders (author-supplied):\n' +
+  String(stakeholders).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+power_voice && `Default power/voice context: ${power_voice}`,
+harms && `Potential harms (themes):\n${harms}`,
+benefits && `Potential benefits (themes):\n${benefits}`,
+mitigation && `Mitigation ideas (initial):\n${mitigation}`,
+uncertainty && `Uncertainty level: ${uncertainty}`,
+signals && `Early-warning indicators (author-supplied):\n${signals}`,
+monitor && `Monitoring plan (author-supplied):\n${monitor}`,
+
+`— — —`,
+`ROLE: You are a neutral, evidence-aware reviewer. Be compassionate, culturally sensitive, and people-first. Critique ideas, not authors.`,
+
+`OBJECTIVE: Produce an Equity Impact Matrix that anticipates uneven effects across stakeholders, assigns risk ratings, defines early-warning indicators, and names mitigation owners with measurable success criteria. Distinguish safe (risk-reduction) from beneficial (positive effect) actions.`,
+
+`NON-NEGOTIABLES`,
+`- Use person-first, non-stigmatizing language; avoid deficit framing.`,
+`- Separate descriptive facts from normative judgments; state uncertainties and what would change your view.`,
+`- For each high-risk group, provide at least one concrete mitigation with an owner and metric.`,
+
+`=== OUTPUT A — EQUITY IMPACT MATRIX ===`,
+`Columns: Stakeholder | Power (H/M/L) | Voice (H/M/L) | Anticipated Benefits | Anticipated Harms | Net Risk Rating (Low/Med/High/Critical) | Early-Warning Indicators | Mitigation Actions | Owner/Role | Metric & Threshold | Review Cadence`,
+`Instructions:`,
+`1) Start from the provided stakeholder list. If power/voice is given only as a default, tailor H/M/L per stakeholder.`,
+`2) Populate benefits and harms with specific, observable outcomes (avoid vague “trust issues”).`,
+`3) Assign Net Risk Rating using a simple matrix: Likelihood (L/M/H) × Severity (L/M/H) → Low/Med/High/Critical. Show reasoning in one sentence.`,
+`4) Propose Early-Warning Indicators per stakeholder (leading signals, not just lagging outcomes).`,
+`5) For each material risk, add a Mitigation Action linked to an Owner/Role (e.g., Policy, Design, Research, Community, Legal) and a clear Metric & Threshold (what triggers action).`,
+`6) Set a Review Cadence (e.g., weekly for launch+4 weeks, then monthly) and note any stop-rules.`,
+
+`=== OUTPUT B — RISK RATINGS & RATIONALE ===`,
+`- Define Likelihood and Severity in plain terms for this context.`,
+`- Note key uncertainties; when Uncertainty is “High,” expand monitoring and add a conservative bias to ratings.`,
+`- Call out common pitfalls: selection bias (who’s missing), survivorship, majority defaults, urban/English dominance, techno-solutionism. Cite exact phrases to revise if present.`,
+
+`=== OUTPUT C — SAFE VS BENEFICIAL ===`,
+`Bucket each recommendation:`,
+`• Safe (risk-reduction / guardrails) — e.g., consent flow, rate limits, fallback paths, clarity & translation, alt text/captions, privacy safeguards.`,
+`• Beneficial (positive effect) — e.g., measurable access gains for under-served groups, improved outcomes, reduced burden, capability expansion.`,
+`Tie each to the Matrix metrics and thresholds.`,
+
+`=== OUTPUT D — ETHICS & REDRESS ===`,
+`- Duties/Rights: privacy, consent, dignity; document legitimate interests and limits.`,
+`- Outcomes: distribution of benefits/harms by subgroup; second-order effects.`,
+`- Care/Relationships: trust, reciprocity, community review. Provide a redress/appeal pathway for harms.`,
+`- Include FPIC/participatory review where appropriate; note compensation and decision rights.`,
+
+`=== OUTPUT E — MONITORING & EARLY-WARNING PLAN ===`,
+`- Convert indicator ideas into a plan: metric → source → threshold → owner → cadence.`,
+`- Include subgroup cuts (language, region, disability, age, connectivity).`,
+`- Define a “fast escalation” path and stop-rules when thresholds are breached.`,
+`- Add a brief transparency note (what will be reported, to whom, and how often).`,
+
+`=== OUTPUT F — NEXT ACTIONS ===`,
+`Provide exactly 3 next steps with owners/roles (generic ok), a small metric, and a timebox. Example pattern: “Translate consent copy for {stakeholder} — Owner: Content — Metric: <2% confusion reports — Due: 2 weeks.”`,
+
+`METHODS TO APPLY (lightly, but explicitly)`,
+`- Steelman + Charity: articulate stakeholders’ strongest concerns before responding.`,
+`- Consider-the-opposite: list ≥2 reasons harms might be underestimated.`,
+`- Outside view: compare to base rates or similar launches; avoid singular-case myopia.`,
+`- Counterfactual: what evidence would *reverse* your risk ratings?`,
+`- Six Thinking Hats spot-check (Benefits, Risks, Creativity) and Heick lenses (Parts/Whole/Interdependence/Function/Abstraction/Self) to avoid tunnel vision.`,
+`- Accessibility pass: ensure language level, translation, alt text/captions, and assistive-tech compatibility for affected groups.`,
+
+`DELIVERABLE FORMAT`,
+`- Use the section headings exactly as above.`,
+`- Tables may be plain text.`,
+`- Keep tone analytic, compassionate, and specific.`,
+`- End with “Open Questions” (exactly 3) that would most change the plan.`
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Stakeholder Harm & Benefit Forecast — equity impact matrix; risk ratings; early-warning indicators; mitigation owners; fields: decision, content, stakeholders (repeater), power/voice select, harms, benefits, mitigation, uncertainty, signals, monitoring plan."
+  }
+},
+
+{
+  id: "informational_interview_ladder",
+  slug: "informational-interview-ladder",
+  label: "Informational-Interview Ladder — 2/day → 5/week → 50/quarter (Ask for insights, not jobs)",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "networking",
+    "planning"
+  ],
+  tags: [
+    "type:framework",
+    "use:outreach",
+    "use:networking",
+    "use:planning",
+    "use:process-improvement",
+    "phase:plan",
+    "phase:compose",
+    "level:beginner"
+  ],
+  use_cases: [
+    "set a daily/weekly/quarterly outreach rhythm",
+    "start warm, useful conversations that lead to referrals",
+    "standardize messages and follow-ups that respect people’s time",
+    "measure response, booking, and referral rates without begging for jobs"
+  ],
+  boosters: [
+    "Lead with curiosity: ask for a 15–20 minute chat and 2–3 specific questions.",
+    "Personalize one sentence: why them, why now.",
+    "Never attach a resume unless asked; link to a short portfolio if relevant.",
+    "Always close with an easy CTA: 2–3 time windows or a scheduling link.",
+    "Send one gentle follow-up after ~5–7 days; then one last nudge; then archive.",
+    "After each chat, ask for 1–2 referrals to others you should learn from."
+  ],
+  definition: "A lightweight ladder for informational interviews that operationalizes a steady outreach cadence and respectful scripts. Non-technical: contact a few people each day, ask for advice, learn, and keep it human. Technical: implement cadence governance (daily/weekly/quarterly targets), message standardization, follow-up SLAs, and KPI instrumentation (response, booking, show, referral, and opportunity conversion).",
+  help: "Fill targets, people types, sources, and scripts. Keep language simple and kind. The output will produce a rigorous operating plan with metrics and checklists.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name this plan so you can find it later.",
+      key: "title",
+      ph: "e.g., Q4 Informational-Interview Ladder",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      desc: "How long this plan runs (month or quarter).",
+      key: "horizon",
+      ph: "e.g., Oct–Dec 2025",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      desc: "Who is doing the outreach.",
+      key: "owner",
+      ph: "e.g., Jonathan Kyle Hobson",
+      type: "text"
+    },
+    {
+      label: "Daily outreach target",
+      desc: "How many new people you’ll contact per day.",
+      key: "daily_goal",
+      ph: "e.g., 2",
+      type: "text"
+    },
+    {
+      label: "Weekly outreach target",
+      desc: "How many new people you’ll contact per week.",
+      key: "weekly_goal",
+      ph: "e.g., 5",
+      type: "text"
+    },
+    {
+      label: "Quarterly outreach target",
+      desc: "How many total new contacts by end of quarter.",
+      key: "quarterly_goal",
+      ph: "e.g., 50",
+      type: "text"
+    },
+    {
+      label: "Target roles / functions",
+      desc: "Job titles or roles you want to learn from.",
+      key: "target_roles",
+      ph: "e.g., UX Research Lead; Head of Product; Conversational AI PM",
+      type: "textarea"
+    },
+    {
+      label: "Target segments (Segment | examples)",
+      desc: "Kinds of people or orgs and a quick example list.",
+      key: "segments",
+      ph: "Civic Tech | city digital teams; gov vendors\nHealth Tech | hospital IT; patient experience\nEdTech | learning platforms; university labs",
+      type: "textarea"
+    },
+    {
+      label: "Lead sources (Source | description)",
+      desc: "Where you’ll find people.",
+      key: "sources",
+      ph: "LinkedIn | 2nd-degree connections and alumni\nCommunities | NN/g Slack, Design Justice\nEvents | Meetup speakers, conference lists",
+      type: "textarea"
+    },
+    {
+      label: "Personalization ingredients (one per line)",
+      desc: "Short facts you can mention to make it human.",
+      key: "personalization",
+      ph: "Shared alma mater\nRecent talk/article they gave\nMutual connection\nProduct you admire",
+      type: "textarea"
+    },
+    {
+      label: "Primary outreach script",
+      desc: "Plain, kind message you’ll send first.",
+      key: "script_primary",
+      ph: "Hi <Name>, I loved your <talk/article>. I’m exploring <area> and would value your perspective. Could we do 15–20 minutes next week? I’m curious about <Q1> and <Q2>. Happy to share what I’m seeing in <topic>. If helpful, here are a couple windows: <times> or use <link>. Thanks either way.",
+      type: "textarea"
+    },
+    {
+      label: "Follow-up scripts (one per line)",
+      desc: "Short nudges you’ll send if no reply.",
+      key: "script_followups",
+      ph: "Bump: still hoping for 15 minutes on <topic> — could <times> work?\nLast nudge: if now’s not ideal, I’ll circle back next quarter. Thanks for all you share publicly.",
+      type: "textarea"
+    },
+    {
+      label: "Insights question menu (one per line)",
+      desc: "Good questions to ask on the call. No job asks.",
+      key: "question_menu",
+      ph: "What are 2–3 skills you hire for that are hard to fake?\nWhere do new folks stumble in their first 90 days?\nWhat teams are shipping work you respect, and why?",
+      type: "textarea"
+    },
+    {
+      label: "Value you can offer (one per line)",
+      desc: "Ways you can be helpful back.",
+      key: "value_offer",
+      ph: "Share a brief audit or teardown\nIntroduce to a peer in <area>\nSend a summary of what I’m seeing in <trend>",
+      type: "textarea"
+    },
+    {
+      label: "Referral ask (one line)",
+      desc: "Simple way to ask for intros after the chat.",
+      key: "referral_ask",
+      ph: "Is there one person you’d recommend I learn from next?",
+      type: "text"
+    },
+    {
+      label: "Scheduling link",
+      desc: "A link they can use if they prefer.",
+      key: "schedule_link",
+      ph: "e.g., https://cal.com/…",
+      type: "text"
+    },
+    {
+      label: "Time windows you can offer",
+      desc: "Days/times that usually work for you.",
+      key: "time_windows",
+      ph: "e.g., Tue–Thu, 1:00–4:00 PM PT",
+      type: "text"
+    },
+    {
+      label: "Follow-up cadence (Day | action)",
+      desc: "Your no-reply plan and timing.",
+      key: "followup_plan",
+      ph: "Day 5 | gentle bump\nDay 12 | final nudge\nDay 20 | archive + move on",
+      type: "textarea"
+    },
+    {
+      label: "Conversation notes template",
+      desc: "Quick structure to capture takeaways.",
+      key: "notes_template",
+      ph: "3 insights | 1 resource to read | 1 action | 1 referral asked",
+      type: "text"
+    },
+    {
+      label: "Boundaries & ethics (plain rules)",
+      desc: "Your ground rules to stay respectful.",
+      key: "ethics",
+      ph: "Ask for insights, not a job; never spam; keep it to 15–20 minutes; send a thank-you and one useful thing after.",
+      type: "textarea"
+    },
+    {
+      label: "Tracking fields (Contact | role | org | source | date | status)",
+      desc: "Format you’ll use in your tracker or sheet.",
+      key: "tracking_format",
+      ph: "e.g., Ada Lee | UXR Lead | City of Mesa | alumni | 2025-10-28 | booked",
+      type: "text"
+    },
+    {
+      label: "Metric targets (one per line)",
+      desc: "Simple goals to measure progress.",
+      key: "metrics",
+      ph: "Response rate ≥ 25%\nBooked calls/week ≥ 2\nReferral rate ≥ 1.0 per call\nThank-you sent within 24h = 100%",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful.",
+      key: "notes",
+      ph: "e.g., Focus on civic tech first; avoid cold InMails; use warm intros where possible",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    daily_goal,
+    weekly_goal,
+    quarterly_goal,
+    target_roles,
+    segments,
+    sources,
+    personalization,
+    script_primary,
+    script_followups,
+    question_menu,
+    value_offer,
+    referral_ask,
+    schedule_link,
+    time_windows,
+    followup_plan,
+    notes_template,
+    ethics,
+    tracking_format,
+    metrics,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    // Helpers
+    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listify = s => lines(s).map((x,i)=>`${i+1}. ${x}`).join("\n");
+    const num = (v, d) => {
+      const n = Number(String(v||"").replace(/[^0-9.]/g,""));
+      return isFinite(n) && n > 0 ? n : d;
+    };
+
+    // Targets with defaults (2/day → 5/week → 50/quarter)
+    const D = num(daily_goal, 2);
+    const W = num(weekly_goal, 5);
+    const Q = num(quarterly_goal, 50);
+
+    // Output intentionally uses heavy technical/analytical language
+    return [
+      title && `INFORMATIONAL-INTERVIEW LADDER — OPERATING SPEC | ${title}`,
+      horizon && `Operating Window: ${horizon}`,
+      owner && `Process Owner: ${owner}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I) CADENCE GOVERNANCE — CONTROL LIMITS",
+      `Daily New Outreach Target (D): ${D}`,
+      `Weekly New Outreach Target (W): ${W}`,
+      `Quarterly New Outreach Target (Q): ${Q}`,
+      "Policy: prioritize insight-seeking over placement seeking; no resume attachments unless explicitly requested.",
+
+      "",
+      "II) TARGETING TOPOLOGY — WHO & WHERE",
+      "Role/Function Focus:",
+      target_roles ? listify(target_roles) : "(none specified)",
+      "",
+      "Segments (market slices):",
+      segments ? listify(segments) : "(none specified)",
+      "",
+      "Lead Sources:",
+      sources ? listify(sources) : "(none specified)",
+
+      "",
+      "III) MESSAGE STANDARDIZATION — TEMPLATES & COMPONENTS",
+      "Personalization Ingredients:",
+      personalization ? listify(personalization) : "(none specified)",
+      "",
+      "Primary Outreach Script:",
+      script_primary || "(no primary script provided)",
+      "",
+      "Follow-up Scripts:",
+      script_followups ? listify(script_followups) : "(none specified)",
+      "",
+      "Scheduling Surface:",
+      schedule_link || "(no scheduling link)",
+      time_windows ? `Preferred Windows: ${time_windows}` : null,
+
+      "",
+      "IV) CALL CONTENT — INSIGHT HARVEST PLAN",
+      "Question Menu (select 2–3 per conversation):",
+      question_menu ? listify(question_menu) : "(none specified)",
+      "",
+      "Reciprocity Envelope (ways to add value):",
+      value_offer ? listify(value_offer) : "(none specified)",
+      "",
+      "Referral Ask:",
+      referral_ask || "(not specified)",
+
+      "",
+      "V) SLA — FOLLOW-UP & ARCHIVAL POLICY",
+      "Cadence:",
+      followup_plan ? listify(followup_plan) : "1. Day 5 | gentle bump\n2. Day 12 | final nudge\n3. Day 20 | archive (no further outreach this quarter)",
+      "",
+      "Boundaries & Ethics:",
+      ethics ? listify(ethics) : listify([
+        "Ask for insights, not jobs",
+        "Limit to 15–20 minutes unless invited longer",
+        "No spam; personalize; one thread at a time",
+        "Send thank-you + useful resource within 24 hours"
+      ]),
+
+      "",
+      "VI) INSTRUMENTATION — KPI DEFINITIONS",
+      listify([
+        "Response Rate = replies / outbound",
+        "Booking Rate = calls scheduled / replies",
+        "Show Rate = calls completed / scheduled",
+        "Referral Rate = referrals received / calls completed",
+        "Thank-You SLA = thank-yous sent within 24h / calls completed"
+      ]),
+      "",
+      "Metric Targets:",
+      metrics ? listify(metrics) : listify([
+        "Response rate ≥ 25%",
+        "Booked calls/week ≥ 2",
+        "Referral rate ≥ 1.0 per call",
+        "Thank-you within 24h = 100%"
+      ]),
+
+      "",
+      "VII) DATA MODEL — TRACKING FIELDS",
+      `Row Format: ${tracking_format || "Contact | role | org | source | date | status"}`,
+      "Conversation Notes Template:",
+      notes_template || "3 insights | 1 resource | 1 action | 1 referral asked",
+
+      "",
+      "VIII) DAILY STANDARD WORK",
+      listify([
+        `Queue Generation: add ≥ ${D} new prospects to backlog by 10:00`,
+        "Personalize 1 line for each prospect",
+        "Dispatch outreach; log send and next follow-up date",
+        "Process replies: schedule immediately or tag for reschedule",
+        "Send 24h thank-yous + 1 useful resource after each call"
+      ]),
+
+      "",
+      "IX) WEEKLY REVIEW — GOVERNANCE CHECKLIST",
+      listify([
+        "Recompute response/booking/show/referral rates",
+        "Identify channel with highest conversion; double down",
+        "Archive non-responders per SLA; refresh backlog",
+        "Ship one iteration: update script or question menu based on feedback",
+        "Plan next week’s D and W; pre-block calendar windows"
+      ]),
+
+      "",
+      "X) RISK REGISTER & MITIGATIONS",
+      listify([
+        "Low Response: increase personalization depth; switch channels",
+        "Scheduling Friction: add 2–3 time windows plus link",
+        "No Referrals: explicitly ask for 1 name at end of call",
+        "Time Drift: calendar-block a 30-min daily outreach slot"
+      ]),
+
+      "",
+      "XI) NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "informational interview ladder outreach cadence insights not jobs scripts follow-up SLA response booking referral metrics template"
+  }
+},
+
+
+{
+  id: "inclusive_language_metaphor_scrubber",
+  slug: "inclusive-language-metaphor-scrubber",
+  label: "Inclusive Language & Metaphor Scrubber",
+  kind: "framework",
+  categories: ["writing-frameworks","analysis-frameworks","equity","accessibility"],
+  tags: [
+    "type:framework","use:editing","use:review","use:prompt",
+    "phase:revise","level:intermediate"
+  ],
+  use_cases: [
+    "detect exclusionary metaphors, labels, and tone issues",
+    "standardize community-preferred terminology across drafts",
+    "prep content for plain language, localization, and accessibility"
+  ],
+  boosters: [
+    "Produce a Replacement Table with rationale and register notes.",
+    "Flag metaphors by type (war, disease, violent, colonial, ableist, etc.).",
+    "Distinguish person-first vs identity-first per community preference.",
+    "Return a plain-language rewrite at the target reading level."
+  ],
+  definition: "Concise inputs → a comprehensive, technical instruction set to scan excerpts for exclusionary metaphors, labels, register/tone issues, and accessibility gaps, then propose replacements and a clean rewrite with localization notes.",
+  help: "Paste excerpt(s) and specify sensitivities, preferred terms, and reading level. Output is a long instruction block guiding a term/metaphor audit, replacements, and a clean rewrite.",
+  fields: [
+    { label: "Excerpt(s) to scan", key: "content", ph: "Paste 1–5 short passages or a page section.", type: "textarea" },
+    { label: "Audience sensitivities", key: "sensitivities", ph: "Contexts to handle with care (e.g., disability, immigration, religion, trauma).", type: "textarea" },
+    {
+      label: "Banned terms/phrases (known no-gos)",
+      autofill: "term->inline",
+      itemLabel: "term",
+      itemType: "typeahead",
+      key: "banned",
+      min: 0, max: 40,
+      ph: "Add terms to avoid (e.g., whitelist/blacklist, master/slave)…",
+      type: "repeater"
+    },
+    {
+      label: "Community-preferred terms",
+      autofill: "term->inline",
+      itemLabel: "preferred",
+      itemType: "typeahead",
+      key: "preferred",
+      min: 0, max: 40,
+      ph: "Add preferred terms (e.g., allowlist/blocklist; person who uses a wheelchair)…",
+      type: "repeater"
+    },
+    {
+      label: "Reading level target",
+      key: "reading",
+      type: "select",
+      options: ["Grade 6","Grade 8","Grade 10–12","College"],
+      ph: "Pick the intended reading level"
+    },
+    {
+      label: "Languages in scope",
+      itemLabel: "language",
+      itemType: "typeahead",
+      key: "languages",
+      min: 1, max: 10,
+      ph: "e.g., English, Spanish, Arabic, Hindi…",
+      type: "repeater"
+    },
+    {
+      label: "Metaphor types to avoid (multi-select)",
+      key: "metaphors",
+      type: "multiselect",
+      options: [
+        "War/Military","Sports/Competition","Violence/Crime","Disease/Contagion",
+        "Colonial/Exploration","Animalizing/Dehumanizing","Ableist/Ageist",
+        "Gendered/Family-role","Economic-as-morality"
+      ],
+      ph: "Pick 2–6 to emphasize"
+    },
+    {
+      label: "Tone/register goals",
+      key: "tone_goals",
+      type: "multiselect",
+      options: ["Plain-language","Neutral/clinical","Supportive/empathetic","Empowering/agency-forward","Policy/legal-specific"],
+      ph: "Pick 1–3 tone targets"
+    }
+  ],
+  template: ({
+    content, sensitivities, banned, preferred, reading, languages, metaphors, tone_goals,
+    ctx, style, tone
+  }) => [
+`Inclusive Language & Metaphor Scrubber — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+content && `Excerpt(s):\n${content}`,
+sensitivities && `Audience sensitivities:\n${sensitivities}`,
+banned && (
+  'Banned terms/phrases (author-supplied):\n' +
+  String(banned).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+preferred && (
+  'Community-preferred terms (author-supplied):\n' +
+  String(preferred).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+reading && `Reading level target: ${reading}`,
+languages && (
+  'Languages in scope:\n' +
+  String(languages).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+metaphors && (
+  'Metaphor types to avoid:\n' +
+  (Array.isArray(metaphors) ? metaphors : String(metaphors).split(/\n+/))
+    .map(s=>String(s).trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+tone_goals && (
+  'Tone/register goals:\n' +
+  (Array.isArray(tone_goals) ? tone_goals : String(tone_goals).split(/\n+/))
+    .map(s=>String(s).trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+
+`— — —`,
+`ROLE: You are a neutral, evidence-aware language reviewer. Be compassionate, culturally sensitive, and people-first. Critique wording, not people.`,
+
+`OBJECTIVE: Detect exclusionary metaphors, labels, and tone/register issues; propose replacements aligned with community preferences; rewrite the excerpt at the target reading level; and provide localization/accessibility notes.`,
+
+`NON-NEGOTIABLES`,
+`- Use person-first language unless the community norm is identity-first; follow author-supplied preferences where given.`,
+`- Avoid violent, disease, colonial, animalizing, ableist, ageist, and gendered metaphors unless directly necessary and contextualized.`,
+`- Separate descriptive from normative statements; state uncertainty and what evidence would change the choice of terms.`,
+`- Distinguish safe (risk reduction) from beneficial (positive, measurable effect) recommendations.`,
+
+`=== OUTPUT A — FLAGS & REPLACEMENTS TABLE ===`,
+`Quote (≤12 words) | Issue | Type (metaphor/term/tone) | Why it matters | Replacement (inclusive) | Register note | Confidence`,
+`- Quote briefly and precisely. Tie “Issue” to a concrete harm (exclusion, stigma, ambiguity, accessibility).`,
+`- If the issue is metaphor type, label it (e.g., War/Military).`,
+`- If a banned term appears, replace with a community-preferred alternative or neutral description.`,
+
+`=== OUTPUT B — CLEAN REWRITE (TARGET READING LEVEL: ${reading || "Grade 8"}) ===`,
+`- Rewrite the excerpt(s) in plain language while preserving meaning, agency, and dignity.`,
+`- Meet the reading level target; avoid idioms and culture-bound references.`,
+`- Apply tone/register goals: ${tone_goals ? String(tone_goals).replace(/\n+/g, ", ") : "Plain-language"}.\n`,
+
+`=== OUTPUT C — RATIONALE & REGISTER ANALYSIS ===`,
+`- For each replacement, explain (1–2 sentences) the harm avoided or clarity gained.`,
+`- Note shifts in agency (from blame/deficit → capability/system-aware).`,
+`- Call out any remaining hedges, weasel words, absolutes, or euphemisms.`,
+
+`=== OUTPUT D — COMMUNITY PREFERENCE ALIGNMENT ===`,
+`- If the community typically prefers identity-first language (e.g., “Deaf community”), use it and explain the rationale.`,
+`- Respect named preferences in “Community-preferred terms.” If conflicts arise, state both options and when to use which.`,
+
+`=== OUTPUT E — LOCALIZATION & ACCESSIBILITY PLAN ===`,
+`- For languages in scope: note terms that require culturally appropriate equivalents; avoid false friends and Anglicisms.`,
+`- Provide glossary entries for key terms with plain definitions for translators.`,
+`- Accessibility pass: alt text guidance if images are referenced; caption style for media; screen-reader checks (expand acronyms on first use).`,
+
+`=== OUTPUT F — SAFE VS BENEFICIAL ===`,
+`- Safe: risk-reduction edits (remove slurs/violent metaphors, clarify pronouns, add definitions).`,
+`- Beneficial: measurable improvements (comprehension at target level, increased perceived respect/agency in user research, multilingual parity). Provide a small metric for each.`,
+
+`=== OUTPUT G — NEXT ACTIONS ===`,
+`Provide exactly 3 concrete next steps with owner/role (generic ok), a small metric, and a timebox.`,
+
+`METHODS TO APPLY (explicitly reference where used)`,
+`- Steelman + Charity (assume intent to inform; repair wording, not motives).`,
+`- Consider-the-opposite (generate ≥2 reasons a phrase could be misread by target groups).`,
+`- Outside view (compare to established community style guides or usage).`,
+`- Six Thinking Hats sample (Yellow benefits of clarity; Black risks of misread; Green alternatives).`,
+`- Heick lenses quick pass (Parts/Whole/Interdependence/Function/Abstraction/Self) to ensure completeness.`,
+
+`DELIVERABLE FORMAT`,
+`- Use headings exactly as above.`,
+`- Tables may be plain text.`,
+`- Keep tone analytic, compassionate, and specific.`
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Inclusive Language & Metaphor Scrubber — detect metaphors/labels/tone issues; Replacement Table; clean rewrite at target reading level; localization & accessibility plan; safe vs beneficial; next actions.",
+    keywords: "inclusive language, metaphor audit, person-first, identity-first, accessibility, localization, plain language"
+  }
+},
+
+{
+  id: "okrs_job_search",
+  slug: "okrs-job-search",
+  label: "OKRs (Job Search) — Land X Offers",
+  kind: "strategy",
+  categories: [
+    "careers",
+    "job-search",
+    "alignment",
+    "measurement"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:goals",
+    "use:measurement",
+    "phase:define",
+    "phase:plan",
+    "level:beginner"
+  ],
+  use_cases: [
+    "turn a job-search goal into clear weekly actions",
+    "track progress with simple, honest numbers",
+    "create a scoreboard and a weekly review rhythm"
+  ],
+  boosters: [
+    "Keep one primary Objective; everything else serves it.",
+    "2–4 Key Results is plenty; avoid task wording.",
+    "Include at least one quality/equity guardrail (health metric).",
+    "Review weekly; adjust targets only at cycle boundaries.",
+    "Publish a simple scorecard so you can spot trends."
+  ],
+  definition: "OKRs convert a job-search aim into one Objective and a few measurable Key Results. Non-technical: pick a goal, set a few weekly numbers, and check them every week. Technical: operationalize the objective via outcome KRs, cadence-based instrumentation, and lag/lead indicators with explicit scoring rules and governance.",
+  help: "Add your time window, owner, and the offer target (X). Write one clear Objective. List Key Results in the simple format below with targets, baselines, data source, and cadence. Add 2–4 health metrics and choose a weekly review time.",
+  fields: [
+    {
+      label: "Title",
+      desc: "Name this OKR so you can find it later.",
+      key: "title",
+      ph: "e.g., Q4 Job Search OKRs",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      desc: "The dates this OKR covers.",
+      key: "horizon",
+      ph: "e.g., Oct–Dec 2025",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      desc: "Who is accountable day to day.",
+      key: "owner",
+      ph: "e.g., Jonathan Kyle Hobson",
+      type: "text"
+    },
+    {
+      label: "Mission (one line, optional)",
+      desc: "Short purpose statement for this search.",
+      key: "mission",
+      ph: "e.g., Land meaningful, values-aligned offers in civic tech",
+      type: "text"
+    },
+    {
+      label: "Offer target (X)",
+      desc: "How many offers you aim to land by the end.",
+      key: "offer_target",
+      ph: "e.g., 2",
+      type: "text"
+    },
+    {
+      label: "Objective (one line)",
+      desc: "Say the goal in simple words.",
+      key: "objective",
+      ph: "e.g., Land X offers by the end of the quarter",
+      type: "text"
+    },
+    {
+      label: "Key Results (one per line: label | target | baseline | data source | cadence)",
+      desc: "Measurable outcomes, not tasks. Include target and how you’ll measure.",
+      key: "key_results",
+      ph: "10 tailored applications/week | 10/wk | baseline 0 | tracker sheet | weekly\n5 warm intros/week | 5/wk | baseline 0 | CRM/notes | weekly\n1 portfolio upgrade/week | 1/wk | baseline 0 | portfolio changelog | weekly",
+      type: "textarea"
+    },
+    {
+      label: "Health metrics (guardrails) — one per line",
+      desc: "Quality and sustainability checks to keep you honest.",
+      key: "health",
+      ph: "Response rate ≥ 25%\nThank-you within 24h = 100%\nOutreach personalization ≥ 1 custom line each",
+      type: "textarea"
+    },
+    {
+      label: "Initiatives (projects that may drive KRs; not scored)",
+      desc: "Helpful projects you’ll do to move the numbers.",
+      key: "initiatives",
+      ph: "Rebuild case-study #1; Referrals campaign; Interview drills",
+      type: "textarea"
+    },
+    {
+      label: "Cadence & review",
+      desc: "When and how you’ll check progress.",
+      key: "cadence",
+      ph: "Fridays 3:00–3:30 PM — update scorecard, pick next 3 actions",
+      type: "text"
+    },
+    {
+      label: "Tracking format",
+      desc: "What your rows look like in your sheet or doc.",
+      key: "tracking_format",
+      ph: "Date | KR | target | actual | score | note",
+      type: "text"
+    },
+    {
+      label: "Risks & assumptions",
+      desc: "What might get in the way and what you’re counting on.",
+      key: "risks",
+      ph: "Travel in week 2; rely on alumni network for warm intros",
+      type: "textarea"
+    },
+    {
+      label: "Notes",
+      desc: "Anything else helpful.",
+      key: "notes",
+      ph: "e.g., Focus on civic tech and health tech first",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    mission,
+    offer_target,
+    objective,
+    key_results,
+    health,
+    initiatives,
+    cadence,
+    tracking_format,
+    risks,
+    notes,
+    audience,
+    style,
+    tone
+  }) => {
+    // Helpers
+    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+    const listify = s => lines(s).map((x,i)=>`${i+1}. ${x}`).join("\n");
+    const parseKRs = (s) => lines(s).map(row => {
+      const [label, target, baseline, source, cadence] = row.split("|").map(v => (v||"").trim());
+      return { label, target, baseline, source, cadence };
+    }).filter(x => x.label);
+
+    const KRS = parseKRs(key_results);
+    const X = String(offer_target || "").trim() || "X";
+
+    // Output intentionally uses heavy technical/analytical language
+    return [
+      title && `OKR OPERATING SPEC — JOB SEARCH | ${title}`,
+      horizon && `Operating Window: ${horizon}`,
+      owner && `Process Owner: ${owner}`,
+      mission && `Mission: ${mission}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "",
+      "I) OBJECTIVE FUNCTION",
+      `O1: ${objective || `Land ${X} offer(s) by cycle end`}`,
+
+      "",
+      "II) KEY RESULT DEFINITIONS (LEAD/LAG INDICATORS)",
+      KRS.length
+        ? KRS.map((kr,i)=>[
+            `${i+1}. KR${i+1}: ${kr.label}`,
+            `   • Target: ${kr.target || "(unset)"} | Baseline: ${kr.baseline || "(n/a)"} | Cadence: ${kr.cadence || "(n/a)"}`,
+            `   • Data Source: ${kr.source || "(unspecified)"}`
+          ].join("\n")).join("\n")
+        : [
+            "1. KR1: 10 tailored applications/week",
+            "   • Target: 10/wk | Baseline: 0 | Cadence: weekly",
+            "   • Data Source: tracker sheet",
+            "2. KR2: 5 warm intros/week",
+            "   • Target: 5/wk | Baseline: 0 | Cadence: weekly",
+            "   • Data Source: CRM/notes",
+            "3. KR3: 1 portfolio upgrade/week",
+            "   • Target: 1/wk | Baseline: 0 | Cadence: weekly",
+            "   • Data Source: portfolio changelog"
+          ].join("\n"),
+
+      "",
+      "III) KPI DICTIONARY & SCORING",
+      "- Offer Count (lag): total offers by cycle end.",
+      "- Tailored Application Throughput (lead): apps/week matching role/industry matrix.",
+      "- Warm Intro Rate (lead): intros/week sourced from network nodes.",
+      "- Portfolio Upgrade Velocity (lead): published improvements/week.",
+      "",
+      "Scoring Method:",
+      "- Each KR scored 0.0–1.0 weekly as actual/target, capped at 1.0.",
+      "- Objective confidence = mean(KR scores) × offer traction signal (0.8–1.2 heuristic).",
+
+      "",
+      "IV) CADENCE GOVERNANCE",
+      cadence ? `Scheduled Review: ${cadence}` : "Scheduled Review: (not set)",
+      "Review Protocol:",
+      listify([
+        "Update actuals and KR scores",
+        "Identify constraint (lowest-scoring KR or stuck channel)",
+        "Select 1 experiment for next week; define success criterion",
+        "Commit next 3 actions; calendar-block time"
+      ]),
+
+      "",
+      "V) HEALTH METRICS (GUARDRAILS)",
+      health ? listify(health) : listify([
+        "Response rate ≥ 25%",
+        "Thank-you within 24h = 100%",
+        "Personalization ≥ 1 custom line per outreach"
+      ]),
+
+      "",
+      "VI) INITIATIVE BACKLOG (NON-SCORED DRIVERS)",
+      initiatives ? listify(initiatives) : "(none)",
+
+      "",
+      "VII) DATA MODEL",
+      `Row Format: ${tracking_format || "Date | KR | target | actual | score | note"}`,
+      "Evidence Repos:",
+      "- Outreach: CRM/Sheet",
+      "- Portfolio: changelog/commit log",
+      "- Intros: notes with source and follow-up",
+
+      "",
+      "VIII) RISK REGISTER",
+      risks ? listify(risks) : listify([
+        "Channel saturation → rotate sources",
+        "Low response → deepen personalization; switch time-of-day",
+        "Portfolio debt → schedule weekly upgrade slot"
+      ]),
+
+      "",
+      "IX) WEEKLY OPERATING PROCEDURE",
+      listify([
+        "Queue Generation: prepare next week’s tailored roles (≥10)",
+        "Warm Reachouts: request ≥5 intros; log next step",
+        "Portfolio: publish ≥1 upgrade with diff and before/after",
+        "Scorecard: update actuals; recompute KR scores; pick experiment"
+      ]),
+
+      "",
+      "X) SUCCESS CRITERIA",
+      `Objective Completion: ≥ ${X} offer(s) AND mean(KR score) ≥ 0.7 over final 2 weeks.`,
+
+      "",
+      "XI) NOTES",
+      notes || "(none)"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "okrs job search land offers key results tailored applications per week warm intros portfolio upgrades weekly review scorecard template"
+  }
+},
+
+{
+  id: "evidence_robustness_reproducibility_check",
+  slug: "evidence-robustness-reproducibility-check",
+  label: "Evidence Robustness & Reproducibility Check",
+  kind: "framework",
+  categories: ["analysis-frameworks","methods","research-quality","risk"],
+  tags: [
+    "type:framework","use:evaluation","use:methods","phase:analyze","level:advanced"
+  ],
+  use_cases: [
+    "grade the strength of evidence behind key claims",
+    "prepare for peer review or go/no-go decisions",
+    "plan replications and data/code requests"
+  ],
+  boosters: [
+    "Produce a structured Evidence Scorecard per claim.",
+    "Prefer effect sizes and uncertainty over p-value theatrics.",
+    "Flag multiple-comparisons and researcher degrees of freedom.",
+    "Name replication risks and concrete ‘what would change my mind’ items."
+  ],
+  definition: "Concise inputs → a comprehensive, technical instruction set to evaluate claims on design quality, sampling, measures, statistics, and transparency; then output an Evidence Scorecard, replication risk, missing data requests, and a ‘what would change my mind’ list.",
+  help: "List your claims and high-level methods info. The output guides a methods-only audit—no rhetoric—focusing on rigor, transparency, and reproducibility.",
+  fields: [
+    {
+      label: "Claim list",
+      key: "claims",
+      ph: "One claim per line (e.g., ‘X reduces Y by 12% in Z population.’)",
+      type: "textarea"
+    },
+    {
+      label: "Primary evidence type",
+      key: "evidence_type",
+      type: "select",
+      options: [
+        "Randomized Controlled Trial (RCT)",
+        "Quasi-experiment (DiD/IV/RD)",
+        "Observational (Cohort/Case-Control/Cross-Sectional)",
+        "A/B Test (online)",
+        "Systematic Review/Meta-analysis",
+        "Qualitative (Interviews/FGDs/Ethnography)",
+        "Mechanistic/Biological/Engineering rationale",
+        "Modeling/Simulation",
+        "Expert opinion/Authority"
+      ],
+      ph: "Pick the predominant design backing these claims"
+    },
+    {
+      label: "Sample summary",
+      key: "sample",
+      ph: "Population, N, setting, timeframe; inclusion/exclusion; representativeness",
+      type: "textarea"
+    },
+    {
+      label: "Confounders considered",
+      key: "confounders",
+      ph: "Which covariates were measured/adjusted? What likely remains unaddressed?",
+      type: "textarea"
+    },
+    {
+      label: "Preregistration / protocol status",
+      key: "prereg",
+      type: "select",
+      options: [
+        "Preregistered (public)",
+        "Protocol available (non-public)",
+        "Not preregistered",
+        "Unknown"
+      ],
+      ph: "How constrained was analytic flexibility?"
+    },
+    {
+      label: "Effect size & uncertainty (not just p-values)",
+      key: "effects",
+      ph: "Effect sizes, confidence intervals, minimal important difference; note p-values only as context",
+      type: "textarea"
+    },
+    {
+      label: "Multiple comparisons & flexibility control",
+      key: "multiplicity",
+      type: "select",
+      options: [
+        "Controlled (FWER/FDR/Bonferroni/Holm)",
+        "Partially controlled",
+        "Not controlled",
+        "Unknown/NA"
+      ],
+      ph: "How were multiple tests handled?"
+    },
+    {
+      label: "Data & code availability",
+      key: "availability",
+      type: "select",
+      options: [
+        "Open data & code",
+        "Open data (code closed)",
+        "By request (data/code)",
+        "Proprietary/closed",
+        "Unknown"
+      ],
+      ph: "Transparency posture"
+    },
+    {
+      label: "Replication aim & constraints (optional)",
+      key: "replication",
+      ph: "If replicated, where/with whom/what outcomes? Constraints (budget, ethics, time)?",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    claims, evidence_type, sample, confounders, prereg, effects, multiplicity, availability, replication,
+    ctx, style, tone
+  }) => [
+`Evidence Robustness & Reproducibility Check — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+claims && `Claims (author-supplied):\n${claims}`,
+evidence_type && `Primary evidence type: ${evidence_type}`,
+sample && `Sample summary:\n${sample}`,
+confounders && `Confounders considered:\n${confounders}`,
+prereg && `Preregistration / protocol: ${prereg}`,
+effects && `Effect size & uncertainty notes:\n${effects}`,
+multiplicity && `Multiple-comparisons control: ${multiplicity}`,
+availability && `Data & code availability: ${availability}`,
+replication && `Replication aim & constraints (optional):\n${replication}`,
+
+`— — —`,
+`ROLE: You are a neutral, evidence-first methods reviewer. No rhetoric. Focus on design quality, sampling, measures, statistics, and transparency. Be compassionate and people-first; critique methods, not authors.`,
+
+`OBJECTIVE: Grade evidence strength behind each claim and produce (A) an Evidence Scorecard, (B) replication risk ratings, (C) a prioritized list of missing data/analyses to request, and (D) a ‘what would change my mind’ list.`,
+
+`NON-NEGOTIABLES`,
+`- Prefer effect sizes with uncertainty (CIs, posterior intervals) over p-values alone.`,
+`- Separate correlation from causation; state the identification strategy (if any).`,
+`- Disclose analytic flexibility (HARKing/p-hacking risks; multiple testing).`,
+`- Note external validity limits by subgroup (esp. minoritized or low-access groups).`,
+
+`=== OUTPUT A — EVIDENCE SCORECARD (PER CLAIM) ===`,
+`Columns:`,
+`Claim | Evidence Type | Identification Strategy (if causal) | Sample (N, representativeness) | Measures (construct validity, reliability) | Effect Size (+ CI) | Confounding Control (design/model) | Multiple Comparisons | Prereg/Protocol | Data/Code Availability | Heterogeneity (subgroups) | External Validity | Overall Grade (A–D) | Notes`,
+`Grading guide:`,
+`• A = Strong design + sufficient power + valid measures + transparent prereg + open data/code + consistent effects across subgroups.`,
+`• B = Solid but with one notable weakness (e.g., partial control of confounding, modest N, limited openness).`,
+`• C = Important weaknesses (design/measurement/power/multiplicity) or narrow external validity.`,
+`• D = Weak or non-evaluable (insufficient detail, high bias risk).`,
+
+`=== OUTPUT B — REPLICATION RISK (PER CLAIM) ===`,
+`Rate Likelihood of replication (Low/Med/High) and list drivers: sample size/power, measurement error, analytic flexibility, proximity of p-values to thresholds, heterogeneity across contexts, and dependence on modeling assumptions.`,
+`Add a short “fragility” note (e.g., small N, wide CI, boundary p).`,
+
+`=== OUTPUT C — MISSING DATA / ANALYSES TO REQUEST ===`,
+`List concrete requests with priority and rationale: raw data access, code/scripts, prereg documentation, full covariate list, missingness patterns, robustness/sensitivity checks (placebo tests, alternative specifications, outlier analyses), calibration/validation of instruments, subgroup effects (language, region, disability, age).`,
+
+`=== OUTPUT D — WHAT WOULD CHANGE MY MIND (WWCM) ===`,
+`For each claim, specify falsifiable conditions (data or analyses) that would materially shift the grade (e.g., null replication with adequate power; effect shrinks below minimal important difference; sensitivity to reasonable model alternatives; subgroup reversal).`,
+
+`=== OUTPUT E — METHODS NOTES & DEFINITIONS (KEEP BRIEF) ===`,
+`- Identification strategy: how causality is claimed (randomization, IV, RD, DiD, parallel trends, DAG logic).`,
+`- Power/effect size: whether N supports detecting the minimal important difference.`,
+`- Measures: construct validity vs proxy; reliability; outcome salience to affected subgroups.`,
+`- Multiplicity: how family-wise errors or FDR were addressed (or not).`,
+`- Transparency: data/code availability; preregistration status; deviations from protocol.`,
+
+`=== OUTPUT F — LIMITS & EXTERNAL VALIDITY ===`,
+`State who/where/when the evidence applies. Note transportability concerns (context, culture, language, access, tech constraints). Flag equity risks if averages hide subgroup harms or benefits.`,
+
+`=== OUTPUT G — NEXT ACTIONS ===`,
+`Provide exactly 3 actions with owner/role (generic ok), a metric, and a timebox. Examples: “Run sensitivity to alternative outcome definition; Owner: Analytics; Metric: grade moves ≥1 tier if robust.”`,
+
+`METHODS TO APPLY (explicitly cite where used)`,
+`- Consider-the-opposite: propose ≥2 plausible failure modes for each claim.`,
+`- Outside view: compare to base rates or meta-analytic priors.`,
+`- Counterfactual: what minimal additional evidence would flip your grade?`,
+`- Heterogeneity scan: check subgroup effects (report where data allow).`,
+`- DAG/Design check: ensure the causal story (if any) is coherent with design.`,
+`- Reproducibility hygiene: if data/code are open, attempt a small re-run plan (specify steps).`,
+
+`DELIVERABLE FORMAT`,
+`- Use the section headings exactly as above.`,
+`- Tables may be plain text.`,
+`- Keep tone analytic, precise, and people-first.`
+
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Evidence Robustness & Reproducibility Check — methods-only audit; Evidence Scorecard; replication risk; missing data requests; what would change my mind; fields: claims, evidence type, sample, confounders, prereg, effects, multiplicity, availability, replication."
+  }
+},
+
+
+{
+  id: "cross_cultural_localization_readiness",
+  slug: "cross-cultural-localization-readiness",
+  label: "Cross-Cultural Localization Readiness",
+  kind: "framework",
+  categories: ["localization","analysis-frameworks","equity","accessibility"],
+  tags: [
+    "type:framework","use:localization","use:translation","use:adaptation",
+    "phase:prepare","level:intermediate"
+  ],
+  use_cases: [
+    "prep content for non-dominant languages and cultures",
+    "plan locale-by-locale adaptations beyond direct translation",
+    "expand sources to include local voices and references"
+  ],
+  boosters: [
+    "Produce a locale-by-locale adaptation plan with risks and mitigations.",
+    "Return a glossary/terminology table and a source expansion list.",
+    "Specify formats (date/number/address), register, and reading level per locale.",
+    "Include accessibility (plain language, alt text, captions) and ethics notes."
+  ],
+  definition: "Concise inputs → a comprehensive, technical instruction set for translation + cultural adaptation, yielding a locale-by-locale plan with terminology, formats, sensitivities, accessibility, and local sources.",
+  help: "List locales and what must change (terms, imagery, constraints). Output is a long instruction block for an AI or reviewer to produce a complete localization readiness plan.",
+  fields: [
+    { label: "Content to localize", key: "content", ph: "Paste the passage or page(s) to localize.", type: "textarea" },
+    {
+      label: "Locales in scope",
+      autofill: "locale->inline",
+      itemLabel: "locale",
+      itemType: "typeahead",
+      key: "locales",
+      min: 1, max: 20,
+      ph: "e.g., es-MX, ar-EG, hi-IN, sw-KE, bn-BD…",
+      type: "repeater"
+    },
+    {
+      label: "Terms/phrases needing localization",
+      autofill: "term->inline",
+      itemLabel: "term",
+      itemType: "typeahead",
+      key: "terms",
+      min: 0, max: 80,
+      ph: "Idioms, legal/medical terms, culture-bound references, product names…",
+      type: "repeater"
+    },
+    {
+      label: "Imagery & symbols notes",
+      key: "imagery",
+      ph: "What imagery needs change? Colors, gestures, icons, maps, holidays…",
+      type: "textarea"
+    },
+    {
+      label: "Regulatory / cultural constraints",
+      key: "constraints",
+      ph: "Advertising, claims, consent, religious/cultural norms, data/privacy rules…",
+      type: "textarea"
+    },
+    {
+      label: "Reading levels & register notes",
+      key: "reading",
+      ph: "Per locale: target grade/level, plain vs technical, honorifics, politeness style.",
+      type: "textarea"
+    },
+    {
+      label: "Formality & address style",
+      key: "formality",
+      type: "select",
+      options: ["Formal/polite","Neutral","Informal","Honorifics required","Mixed / Locale-specific"],
+      ph: "Global default (override per locale in notes)"
+    },
+    {
+      label: "Formats & conventions",
+      key: "formats",
+      ph: "Dates (YYYY/MM/DD vs DD/MM/YYYY), numerals (Arabic-Indic), units, currency, address/phone.",
+      type: "textarea"
+    },
+    {
+      label: "Local sources to include",
+      autofill: "source->inline",
+      itemLabel: "source",
+      itemType: "typeahead",
+      key: "sources",
+      min: 0, max: 40,
+      ph: "Local media, community orgs, style guides, glossaries…",
+      type: "repeater"
+    },
+    {
+      label: "Sensitive topics & taboos",
+      key: "sensitivities",
+      ph: "Topics to avoid or contextualize; how to phrase with care.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    content, locales, terms, imagery, constraints, reading, formality, formats, sources, sensitivities,
+    ctx, style, tone
+  }) => [
+`Cross-Cultural Localization Readiness — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+content && `Content to localize:\n${content}`,
+locales && (
+  'Locales in scope:\n' +
+  String(locales).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+terms && (
+  'Terms/phrases needing localization:\n' +
+  String(terms).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+imagery && `Imagery & symbols notes:\n${imagery}`,
+constraints && `Regulatory / cultural constraints:\n${constraints}`,
+reading && `Reading levels & register notes:\n${reading}`,
+formality && `Formality & address style (default): ${formality}`,
+formats && `Formats & conventions:\n${formats}`,
+sources && (
+  'Local sources to include:\n' +
+  String(sources).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+sensitivities && `Sensitive topics & taboos:\n${sensitivities}`,
+
+`— — —`,
+`ROLE: You are a neutral, evidence-aware localization lead. Be compassionate, culturally sensitive, and people-first. Optimize for clarity, dignity, and accuracy across locales.`,
+
+`OBJECTIVE: Produce a locale-by-locale adaptation plan (beyond translation) plus a source expansion list, terminology table, formats guidance, accessibility steps, risks/mitigations, and a lightweight LQA (linguistic QA) plan.`,
+
+`NON-NEGOTIABLES`,
+`- Avoid universalizing. Respect local norms while preserving core meaning and rights.`,
+`- Use person-first language unless a community’s style convention differs; state and follow that convention.`,
+`- Separate safe (risk-reduction) from beneficial (positive, measurable improvements for under-served groups).`,
+`- Document uncertainties and what evidence (community feedback, usage data) would change the plan.`,
+
+`=== OUTPUT A — LOCALE PROFILES (ONE SECTION PER LOCALE) ===`,
+`For EACH locale listed above, provide:`,
+`• Audience & context snapshot — who is served; connectivity/tech constraints; reading level target; register (formal/informal/honorifics).`,
+`• Terminology notes — false friends; required transcreation; legal/medical terms; product names (translate vs keep).`,
+`• Formats & conventions — date/time, numerals, currency, units, addresses/phones, punctuation/quotes; RTL/LTR handling where relevant.`,
+`• Imagery & symbols — colors, gestures, maps/territories, holidays/religion; recommended substitutions.`,
+`• Sensitive topics & taboos — phrasing guidelines; disclaimers; when to omit or contextualize.`,
+`• Regulatory/cultural constraints — claims/ads limits, consent, privacy, required notices.`,
+`• Accessibility — plain-language target, alt text & captions guidance, screen-reader considerations, font/script legibility.`,
+
+`=== OUTPUT B — TERMINOLOGY & GLOSSARY TABLE ===`,
+`Term (source) | Issue (idiom/legal/medical/brand/ambiguous) | Recommended rendering per locale | Rationale | Risk if mistranslated | Confidence`,
+`- Include community-preferred terms where applicable.`,
+`- Note when identity-first vs person-first is locally preferred and why.`,
+
+`=== OUTPUT C — TRANSLATION & ADAPTATION INSTRUCTIONS ===`,
+`- Indicate when to use translation vs transcreation vs cultural substitution vs retention.`,
+`- Register & address style: formal/polite vs neutral vs informal; honorifics usage.`,
+`- Style & readability: target reading level per locale; avoid idioms; expand acronyms on first mention.`,
+`- Ethics & equity: avoid majority-default metaphors; represent local voices; cite local sources; avoid English dominance in examples.`,
+`- Safety vs benefit: list guardrails (safe) and positive equity actions (beneficial) with small metrics (e.g., comprehension ≥90% in user test).`,
+
+`=== OUTPUT D — SOURCE EXPANSION LIST ===`,
+`- For each locale: add local media, civil society orgs, community style guides, and subject-matter sources to cite or consult.`,
+`- Note any translation partnerships or community reviewers to involve (compensation and consent where appropriate).`,
+
+`=== OUTPUT E — LQA & FUNCTIONAL CHECKS ===`,
+`- LQA plan: checklist for terminology, register, tone, punctuation/typography, locale formats, link targets, RTL/LTR handling.`,
+`- Functional checks: date/number parsing, currency formatting, search/indexing for transliterated names, hyphenation/line breaking per script.`,
+`- Monitoring: early-warning indicators (complaints by locale, bounce/opt-out, task success), thresholds and escalation path.`,
+
+`=== OUTPUT F — RISK REGISTER & MITIGATIONS ===`,
+`Risk | Locale(s) | Trigger/Symptom | Likelihood (L/M/H) | Severity (L/M/H) | Net Rating | Mitigation | Owner | Metric & Threshold | Review Cadence`,
+`- Include at least one mitigation for each High/Critical risk.`,
+
+`=== OUTPUT G — NEXT ACTIONS ===`,
+`Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox. Example: “Run 5-user comprehension test in ${ (locales && String(locales).split(/\n+/)[0]) || 'first locale' }; Owner: Research; Metric: ≥4/5 answer key tasks correctly; Due: 2 weeks.”`,
+
+`METHODS TO APPLY (explicitly reference where used)`,
+`- Steelman + Charity (assume good-faith source meaning; adapt respectfully).`,
+`- Consider-the-opposite (≥2 reasons a rendering could mislead locally).`,
+`- Outside view (compare to local style guides and usage; base rates for comprehension).`,
+`- Counterfactual (what evidence would reverse a terminology choice?).`,
+`- Heick lenses quick pass (Parts/Whole/Interdependence/Function/Abstraction/Self) to ensure completeness.`,
+`- Accessibility pass (WCAG, plain language) with multilingual parity checks.`,
+
+`DELIVERABLE FORMAT`,
+`- Use the section headings exactly as above.`,
+`- Tables may be plain text.`,
+`- Keep tone analytic, compassionate, and specific.`
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Cross-Cultural Localization Readiness — translation + cultural adaptation checklist; locale profiles; terminology & formats; sensitivities; accessibility; source expansion; LQA; risk register; next actions."
+  }
+},
+
+{
+  id: "accessibility_reality_check",
+  slug: "accessibility-reality-check",
+  label: "Accessibility Reality Check (WCAG + Plain Language)",
+  kind: "framework",
+  categories: ["accessibility","analysis-frameworks","equity","writing-frameworks"],
+  tags: [
+    "type:framework","use:a11y-audit","use:plain-language",
+    "phase:revise","phase:verify","level:intermediate"
+  ],
+  use_cases: [
+    "ensure access across disability contexts and tech constraints",
+    "prepare WCAG conformance notes and concrete fix list",
+    "produce plain-language samples at a target reading level"
+  ],
+  boosters: [
+    "Return a Pass/Fail/Needs-Review table mapped to WCAG.",
+    "Prioritize fixes by user impact; name owners and thresholds.",
+    "Include sample plain-language rewrites at target reading level.",
+    "Plan for low-bandwidth/offline and assistive-tech compatibility."
+  ],
+  definition: "Concise inputs → a comprehensive, technical instruction set that drives a practical accessibility engineering pass (WCAG + plain language), producing a prioritized fix list, pass/fail table, assistive-tech notes, and sample rewrites.",
+  help: "List media types, current alt/caption/keyboard/contrast status, rewrite targets, assistive-tech assumptions, and bandwidth/offline needs. Output is a long instruction block for a human or AI reviewer to generate concrete fixes and samples.",
+  fields: [
+    {
+      label: "Content in scope",
+      key: "content",
+      ph: "Paste the page/section/snippets or describe screens/components to check.",
+      type: "textarea"
+    },
+    {
+      label: "Media types present (multi-select)",
+      key: "media_types",
+      type: "multiselect",
+      options: [
+        "Images/Icons","Infographics/Charts","Tables","Video","Audio",
+        "Forms/Inputs","Interactive Widgets/Maps","Downloads/PDFs"
+      ],
+      ph: "Pick all that apply"
+    },
+    {
+      label: "Alt text & captions status",
+      key: "alt_caption",
+      ph: "Which images/charts lack descriptive alt text? Which videos lack captions/transcripts?",
+      type: "textarea"
+    },
+    {
+      label: "Keyboard, focus, & contrast flags",
+      key: "kbd_contrast",
+      ph: "Tab order, focus visibility, skip links, modal traps, contrast complaints, color-only cues…",
+      type: "textarea"
+    },
+    {
+      label: "Plain-language rewrite targets",
+      key: "plain_targets",
+      ph: "Paste phrases/sentences that need clarity; note jargon/idioms to simplify.",
+      type: "textarea"
+    },
+    {
+      label: "Reading level target",
+      key: "reading",
+      type: "select",
+      options: ["Grade 6","Grade 8","Grade 10–12","College"],
+      ph: "Pick the intended reading level"
+    },
+    {
+      label: "Assistive-tech assumptions",
+      autofill: "assistive->inline",
+      itemLabel: "assistive_tech",
+      itemType: "typeahead",
+      key: "assistive",
+      min: 1, max: 10,
+      ph: "e.g., Screen reader (NVDA/JAWS/VoiceOver), Switch control, Voice control, Magnifier, Braille display…",
+      type: "repeater"
+    },
+    {
+      label: "Bandwidth/offline needs",
+      key: "bandwidth",
+      ph: "Low bandwidth, metered data, offline/spotty connections, low-end devices, text-only fallback…",
+      type: "textarea"
+    },
+    {
+      label: "WCAG target",
+      key: "wcag",
+      type: "select",
+      options: ["WCAG 2.1 AA (default)","WCAG 2.2 AA","WCAG 2.1 AAA (aspirational)"],
+      ph: "Choose the conformance target"
+    },
+    {
+      label: "Critical user tasks",
+      key: "tasks",
+      ph: "Key actions to test (sign up, pay, download, read policy, watch video…).",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    content, media_types, alt_caption, kbd_contrast, plain_targets, reading, assistive, bandwidth, wcag, tasks,
+    ctx, style, tone
+  }) => [
+`Accessibility Reality Check (WCAG + Plain Language) — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+content && `Content in scope:\n${content}`,
+media_types && (
+  'Media types present:\n' +
+  (Array.isArray(media_types) ? media_types : String(media_types).split(/\n+/))
+    .map(s=>String(s).trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+alt_caption && `Alt text & captions status:\n${alt_caption}`,
+kbd_contrast && `Keyboard, focus, & contrast flags:\n${kbd_contrast}`,
+plain_targets && `Plain-language rewrite targets:\n${plain_targets}`,
+reading && `Reading level target: ${reading}`,
+assistive && (
+  'Assistive-tech assumptions:\n' +
+  String(assistive).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+bandwidth && `Bandwidth/offline needs:\n${bandwidth}`,
+wcag && `WCAG target: ${wcag}`,
+tasks && `Critical user tasks:\n${tasks}`,
+
+`— — —`,
+`ROLE: You are a neutral, evidence-aware accessibility reviewer. Be compassionate, culturally sensitive, and people-first. Focus on practical fixes and clarity. Critique implementation and wording, not authors.`,
+
+`OBJECTIVE: Produce (A) a Pass/Fail/Needs-Review table mapped to ${wcag || "WCAG 2.1 AA"}, (B) a prioritized fix list with owners and thresholds, (C) sample plain-language rewrites at the target level, (D) assistive-tech compatibility notes, and (E) a low-bandwidth/offline plan.`,
+
+`NON-NEGOTIABLES`,
+`- Keyboard first: all interactive controls operable via keyboard; visible, non-ambiguous focus.`,
+`- Text alternatives for non-text content; meaningful alt for informative images; empty alt for decorative.`,
+`- Captions and transcripts for time-based media; audio descriptions for essential visuals where feasible.`,
+`- Sufficient contrast; no color-only meaning; motion/auto-play controllable; no keyboard traps.`,
+`- Clear language at the target reading level; expand acronyms on first use; avoid idioms/jargon unless defined.`,
+`- Distinguish “safe” guardrails from “beneficial” improvements with measurable equity gains.`,
+
+`=== OUTPUT A — WCAG PASS/FAIL TABLE ===`,
+`Criterion | Area/Component | Status (Pass/Fail/Needs-Review) | Evidence (brief) | User Impact | Fix Summary | Owner | Due`,
+`Cover at least these groups (as applicable to target WCAG):`,
+`• Perceivable: 1.1.1 Text Alternatives; 1.2.x Captions/Audio Descriptions; 1.3.x Info & Relationships (semantics, headings, lists, tables, form labels); 1.4.3 Contrast; 1.4.10 Reflow; 1.4.11 Non-text Contrast; 1.4.13 Hover/Focus content.`,
+`• Operable: 2.1.1 Keyboard; 2.1.2 No Keyboard Trap; 2.2.x Pause/Stop; 2.4.1 Bypass Blocks; 2.4.3 Focus Order; 2.4.4 Link Purpose; 2.4.7/2.4.11 Focus Visible/Appearance (if using 2.2); 2.5.x Pointer/Target/Dragging.`,
+`• Understandable: 3.1.x Readable; 3.2.x Predictable; 3.3.x Input Assistance (errors, labels, help, suggestions, prevention).`,
+`• Robust: 4.1.1 Parsing; 4.1.2 Name/Role/Value; 4.1.3 Status Messages.`,
+
+`=== OUTPUT B — PRIORITIZED FIX LIST ===`,
+`List High → Medium → Low by USER IMPACT (not dev effort). For each fix, include:`,
+`Issue | Component | Affected Task(s) | Severity (H/M/L) | Likelihood (H/M/L) | Net Risk | Remediation Steps | Owner/Role | Metric & Threshold | Review Cadence`,
+`- Provide at least one High-impact fix per critical task if applicable.`,
+`- Include code-level hints (e.g., semantic HTML, ARIA only when needed, focus management, landmarks, label-for/ID, error messages, live regions).`,
+
+`=== OUTPUT C — PLAIN-LANGUAGE REWRITES (TARGET: ${reading || "Grade 8"}) ===`,
+`Provide clean rewrites for every item in “Plain-language rewrite targets.”`,
+`- Keep meaning intact; remove idioms and dense nominalizations; use active voice; define terms on first use.`,
+`- Add example(s) or step-by-step where helpful. Show BEFORE → AFTER pairs.`,
+
+`=== OUTPUT D — ASSISTIVE-TECH COMPATIBILITY NOTES ===`,
+`AT | Expected Navigation Path | Known Issues | Workarounds/Tests | Owner`,
+`- Cover screen readers (NVDA/JAWS/VoiceOver), magnifier/zoom, switch/keyboard-only, voice control, braille display as relevant.`,
+`- Include headings/landmarks map and form/error announcements (status messages).`,
+
+`=== OUTPUT E — LOW-BANDWIDTH & OFFLINE PLAN ===`,
+`- Optimizations: image compression/responsive images; defer non-critical JS; lazy-load offscreen media; no auto-play; text-only fallbacks.`,
+`- Offline/spotty: cache essential assets and text; allow deferred submission/retry; provide downloadable alternatives (HTML/PDF) for key content.`,
+`- Monitoring: early-warning indicators (error rates, time-to-interactive, abandonment on low-end devices) with thresholds and escalation path.`,
+
+`=== OUTPUT F — TEST PLAN & EARLY-WARNING INDICATORS ===`,
+`- Manual: keyboard path for each critical task; focus order and visibility; screen reader announcement checks; error recovery; zoom/reflow at 200–400%; motion reduced when prefers-reduced-motion.`,
+`- Automated: contrast checks; landmark/aria roles sanity; form label associations; headings structure.`,
+`- Indicators: complaints by assistive-tech users, failed tasks, caption/alt coverage, contrast violations; list thresholds and owners.`,
+
+`=== OUTPUT G — SAFE VS BENEFICIAL ===`,
+`- Safe: guardrails that reduce risk of exclusion (e.g., captions present, keyboard operable, focus visible).`,
+`- Beneficial: measurable improvements (e.g., task completion ↑ for screen-reader users; reading time ↓ at target level; bandwidth usage ↓ for low-end devices). Attach small metrics.`,
+
+`=== OUTPUT H — NEXT ACTIONS ===`,
+`Provide exactly 3 concrete next steps with owner/role (generic ok), a small metric, and a timebox. Example: “Add captions to 5 tutorial videos — Owner: Content — Metric: 100% caption coverage — Due: 1 week.”`,
+
+`METHODS TO APPLY (reference where used)`,
+`- Steelman + Charity (assume intent to inform; repair implementation/wording).`,
+`- Consider-the-opposite (≥2 reasons a control or phrasing could fail for a user).`,
+`- Outside view (compare to a11y base rates/patterns; reuse proven components).`,
+`- Counterfactual (what evidence would reverse a pass/fail judgment?).`,
+`- Accessibility pass: semantic HTML first; ARIA as last resort; respect user settings (prefers-reduced-motion, reduced data).`,
+
+`DELIVERABLE FORMAT`,
+`- Use the section headings exactly as above.`,
+`- Tables may be plain text.`,
+`- Keep tone analytic, compassionate, and specific.`
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "Accessibility Reality Check — WCAG + plain language; pass/fail table; prioritized fixes; AT compatibility; low-bandwidth/offline plan; sample rewrites; fields: media types, alt/captions, keyboard/contrast, plain-language targets, AT assumptions, bandwidth, WCAG target, critical tasks."
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
