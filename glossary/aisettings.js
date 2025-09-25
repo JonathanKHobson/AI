@@ -1,6 +1,15 @@
 /* AISettings.js — site-wide AI settings (OpenAI/Gemini/Apertus), lean modal, dynamic UI */
 (function(){
   const KEY = 'pb.ai.settings.v2';
+  
+  // ---- Public AI base (global) ----
+// Other pages can override by defining window.PB_PUBLICAI_BASE *before* loading this file.
+window.PB_PUBLICAI_BASE = window.PB_PUBLICAI_BASE || 'https://pb-publicai-proxy.composer01.workers.dev';
+function publicAIBaseV1(){
+  // Always normalize to .../v1
+  return (String(window.PB_PUBLICAI_BASE || '').replace(/\/+$/,'') + '/v1');
+}
+
 
   const defaults = {
     provider: 'openai',            // 'openai' | 'gemini' | 'apertus'
@@ -234,9 +243,22 @@
       refs.modelLabel.textContent = 'Gemini models';
       add(refs.modelSel, 'gemini-2.5-flash', 'Gemini 2.5 Flash');
       add(refs.modelSel, 'gemini-2.5-pro', 'Gemini 2.5 Pro');
+      // New: Gemini 2.0 family
+add(refs.modelSel, 'gemini-2.0-flash', 'Gemini 2.0 Flash');
+add(refs.modelSel, 'gemini-2.0-flash-lite', 'Gemini 2.0 Flash-Lite');
       refs.modelHint.textContent = 'Gemini generateContent API.';
 
-      refs.modelSel.value = /^gemini-2\.5-(flash|pro)$/.test(s.geminiModel||'') ? s.geminiModel : 'gemini-2.5-flash';
+      // Allow any of the supported Gemini models, including new 2.0 variants
+const allowedGemini = new Set([
+  'gemini-2.5-flash',
+  'gemini-2.5-pro',
+  'gemini-2.0-flash',
+  'gemini-2.0-flash-lite',
+]);
+refs.modelSel.value = allowedGemini.has(s.geminiModel || '')
+  ? s.geminiModel
+  : 'gemini-2.5-flash';
+
       refs.apiKey.value = s.apiKey || '';
       return;
     }
@@ -248,7 +270,7 @@
     if (refs.apertusRoute.value === 'publicai'){
       refs.keyLabel.textContent = 'Public AI API key';
       refs.apiKey.placeholder = 'pk-...';
-      refs.apiHint.textContent = 'OpenAI-compatible at https://api.publicai.co/v1 (Authorization + User-Agent).';
+      refs.apiHint.textContent = 'OpenAI-compatible via proxy at ' + (window.PB_PUBLICAI_BASE || 'https://pb-publicai-proxy.composer01.workers.dev') + '/v1 (Authorization; UA added by proxy).';
       refs.apiKey.value = s.publicAIKey || '';
     } else {
       refs.keyLabel.textContent = 'Hugging Face token';
@@ -435,7 +457,7 @@ async function onTest(){
     } else if (provider === 'gemini') {
       result = await testGeminiKey(key);
     } else {
-      if (route === 'publicai') result = await testOpenAICompatKey('https://api.publicai.co/v1', key, 'Public AI');
+      if (route === 'publicai') result = await testOpenAICompatKey(publicAIBaseV1(), key, 'Public AI');
       else result = await testOpenAICompatKey('https://router.huggingface.co/v1', key, 'Hugging Face');
     }
 
@@ -447,7 +469,11 @@ async function onTest(){
     }
   } catch (err){
     const msg = (err && err.message) ? err.message : String(err);
-    setTestStatus(`❌ Network/CORS error. ${msg}. Are you running over https and not file:// ?`, 'error');
+    const isPublicAI = (refs?.provApertus?.checked && (refs?.apertusRoute?.value || s.apertusRoute) === 'publicai');
+const hint = isPublicAI
+  ? ' Public AI requires a User-Agent header; browsers can’t set it. Requests are routed via your proxy at ' + (window.PB_PUBLICAI_BASE || '(not set)') + '.'
+  : ' Are you running over https and not file:// ?';
+setTestStatus(`❌ Network/CORS error. ${msg}.${hint}`, 'error');
   } finally {
     btn.disabled = false;
     btn.style.opacity = '';
