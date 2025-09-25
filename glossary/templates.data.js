@@ -31,7 +31,7 @@
         "Ask up to 3 clarifying questions before recommending.",
         "Return 3 candidate frameworks with a short rationale.",
         "Then synthesize a ready-to-copy prompt using the best candidate.",
-        "Library tools: 2-minute rule (david allen):planning avoidance away beginner brief chip convert copy,5w1h — who · what · where · when · why · how:incident prompt scope acceptance analysis analyze beginner capture,a3 problem solving (toyota):problem plan actions align brief cause countermeasures current,aar — feelings first:debrief learning needs alone beginner body data defensiveness,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self bias coaching management negative,abductive reasoning — best explanation:predictions risky account analysis beginner choice competing decisive,accountability letter:amends apology beginner clear close commitment commitments communication,active imagination — dialogue with inner voices:inner creative dialogue parts self characters child explore,addie — analyze · design · develop · implement · evaluate:course training learning design goals outline plan assessments,adversarial collaboration:adjudication design advance change communication conditions data debate,agent-based models & system dynamics:abm agents calibration complex declare dynamics equations experiments,aida — attention · interest · desire · action:copy write action email hook landing notification page,amor–vita–memoria (avm):grief self gratitude one you memory mentor name,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias context cross find frameworks,announcement — change & action:announcement change communication notice update writing access availability,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate design essay logical map,automatic writing — truth sprint:writing truth automatic avoiding beginner break clarity conversation,backlog — prioritize:capacity items plan portfolio prioritization rank roadmap a11y,bayesian science — posterior odds:priors action analysis based bayes data decision decisions,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write bridge cold deck fundraising,bhag — big hairy audacious goal:planning vision align ambition around audacious bhag cadence,bias impact assessment (ai/tech pre-launch):bias check right compliance dataset ethics feature review,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair group make rubric code,blameless postmortem — essence first:teaching actionable analyze beginner blame body corrections defuse,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson plan beginner goals ideas,buddhist eightfold path (adapted for action):decision ethical design harm right check choice cultural,canary + blue-green — revert comms:comms rollback beginner blast blue call canaries compensation,causal inference — dags & identification:identification assumptions causal dag diagnostics did document estimand,causal inference playbook:design assumptions based bias block choose dag dags,clear — challenge · limitation · effect · action · result:problem summary action decision write cause change framing,clear contracts + exit ramps:boundaries consent beginner communication conflict conversations create ethics,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask make next prompts adaptive,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask audience hygiene improve instructions,clown ‘flop’ — failure seen safely:failure resilience shame armor bravery build clowning creativity,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision evidence make spot assumption,comparative analysis — rank • pros/cons • matrix:compare should options side which best buy choose,computational science — simulation:reproducibility simulation validation capture engineering environment experiment,constraint flip (play with edges):what design feature had make one work assume,contact improv — listening duet:listening practice attention attunement building consent contact creativity,costar — context · objective · style · tone · audience · response:brief content message campaign copy creative press ux,cover letter — tailor / rewrite / feedback:cover letter job ats draft feedback section admin,critical incident analysis:ethics teaching charged communication data debrief deep dive,daoist wu-wei strategy (effortless action):instead align burnout plan already big choose cultural,decision record — dissent & kill criteria:dissent adr alignment beginner chose communication conditions criteria,design doc — scariest change:design risk align alignment architecture blast constraints engineering,design science research (dsr):utility artifact artifacts build construct contribution criteria design,dignity questions — identity · meaning · legacy:family gratitude storytelling audio beginner capture communication conversation,disney strategy — dreamer · realist · critic:idea creative concept plan balance ideas lenses loop,dm — outreach & follow-up:follow outreach quick writing ask beta call cold,dmaic — define · measure · analyze · improve · control:data improvement process project quality compliance control countermeasures,doe + tolerance stacks — ci & power:acceptance experiment stack analysis analytics analyze clear contributors,east — easy · attractive · social · timely:design behavioral nudge choice friction interventions make nudges,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what decide decision drop important,email — draft & polish:email follow networking outreach support writing application cold,empty chair dialogue (gestalt):self one conversation talk boundary business chair critic,energy budget planner (spoon theory):plan energy day spoons tasks accommodations avoid balance,engineering method — iterate to standard:acceptance cycle standards beginner builds capture design engineering,epic quest tasking — gamify the chore:quest quests chores make self storytelling tasks boss,ethnographic & interpretivist methods:description fieldwork reflexivity thick access analysis codes consent,examples / few-shot prompting:examples example format output show style like phase,exploratory vs confirmatory paths:cda eda avoid beginner confirmatory different exploratory findings,fab — feature · advantage · benefit:benefits bullets copy feature features product pitch value,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument check claim conclusion critical,facts & expertise primer:what facts check expert give avoid beginner context,feyerabend — pluralism:method design document ethics exploring feyerabend guardrails heterodoxy,feynman technique — explain like i’m 5:explain make complex non break clear experts simple,findings — synthesize:insights confidence create summarize themes acceptance align analysis,first principles — question assumptions & reason from basics:true problem reasoning analogies assumptions brainstorming constraints principle,fmea · hazop · fault tree — unified card:design hazop analysis causes criticality effects engineering event,focusing — felt-sense check:check mental aboutness ambivalent beginner body boundaries clarity,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming ideas subconscious warm without,fuzzing + mutation — outage shape:edge inputs catch conditions define flow fuzz generate,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous shared authority boundaries confluence,goal breakdown (prompt/question decomposition):step goal tasks turn what break first plan,goal composition (prompt/question composition):one tasks plan asks brief goal goals make,goal prompting:goal goals plan first main next objectives one,goals of care — what matters most:conversation life planning values advance align appear around,golden circle — why · how · what · mission:purpose mission values align career craft frameworks statement,gratitude under duress:pain acknowledge beginner bypass check conversation day end,grounded theory — reflexive memos:coding reflexivity theory audit axial beginner building comparison,grow — goal · reality · options · way forward:goal coaching plan what goals next set brainstorming,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance choice gut head logic,hero’s journey — departure · initiation · return:journey story arc hero writing map outline brand,heuristics & biases — debiasing pre-flight:check bias decision quick review wrong advocate assumptions,how might we statements (hmw):brainstorming prompts align areas avoid baked beginner bias,hypnagogic spark — semi-sleep insight technique:brainstorming design advanced associations beginner blocks creative creativity,ice — impact × confidence × ease:planning process backlog beginner coding cro cultural deeper,ikigai — purpose map:purpose career against align anti beginner breakers clarify,imaginary council — multiple mentors one question:phase decision apply brainstorming break constraints creative creativity,implementation intentions (if–then):action apply beginner bind choice coping copy create,inclusive design (edge personas):design edge acceptance adaptations articulate benefits beyond cognition,inner child work — conscious self · inner child:self your beginner child childhood comfort compassion connect,internal weather report — storm · calm · forecast:self beginner check clearer collaboration daily decompression energy,interviews — plan & questions — write:plan guide interviews design discussion guides research sessions,jtbd interviews — felt-sense friction:jtbd progress struggles body capture discovery friction highest,kaitiakitanga — guardianship & stewardship (māori):affected apply assess brainstorming communities cultural data design,kano model — must-be · performance · delighters:planning product what brainstorming build complaints creates decide,kansei engineering (emotion → design mapping):design affective align analysis brand build coding commit,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives among anticipate apply auditable,keywords + why + tasks — vector priming:actionable alignment apply avoid better clarification content decomposition,kuhn — paradigms & revolutions:anomalies science across beginner choice communications crisis field,lakatos — research programs:belt core hard program theory decide degenerating intermediate,lara / cri — dialogue scaffold:dialogue affirmation beginner center communication conflict conversation defensi,last 2% round — share the unsaid edge:alignment avoid beginner communication concerns conflict decision edge,lean startup loop — stop & harm rules:decision hypothesis rules analytics beginner commit cycles document,least to most (ltm):building complex derive edge escalating framing goals healing,letter — formal / personal:letter formal writing apology appeal application appreciation cancellation,lines/veils revisit — mid-campaign:consent lines refresh safety ttrpg veils agree arc,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align appeal aware benefit benefits,memento mori — micro-sit:gratitude actually add beginner choose closing decision development,memo — tl;dr + recommendation:decision writing brief capture change communication context cross,mind map — central idea with branches:visual adhd analysis around assist beginner brainstorm brainstorming,mind mapping — visual cluster of ideas:discover map planning actions around beginner brainstorm central,mixed methods — triangulation:integration beginner design designs discrepancies discrepant document explicit,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across act adapt appeals argument,mortal message — letter/audio:gratitude repair beginner blessing brief communication contemplative ethics,moscow — must · should · could · won’t:planning management product scope beginner clarify communicate features,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilitate inclusive modify objections options,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic asian blend change coexistence,noting — mindfulness labels:sleep awareness beginner check craving development experience focus,nyāya — five-member syllogism:explicit inference mode analyses application arguments asserting beginner,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints design alternatives approaches artistic,observability — slos · slis · error budgets:burn reliability analytics budget budgets connect decide define,ofrenda / remembrance board:altar artifacts beginner board care create day dead,okr — objective & key results:outcomes measurable planning progress review strategy align alignment,okrs — with kill criteria:okrs analytics avoid beginner cadence conditions criteria explicit,ooda loop (observe–orient–decide–act):decision discovery fast loop ooda product strategy accelerate,open science checklist:accessible beginner cannot capsule checklist code data document,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate clarification compare design discovery,par — problem · action · result:experience impact postmortem storytelling study work agile apply,participatory & decolonial approaches:data sovereignty benefit clarify community consent decision design,participatory action research (par):decision dissemination rights accessible action benefit clarify community,parts check-in — ifs-inspired:coaching self beginner check communication deciding different exiles,parts work dialogue (ifs therapy):inner parts self coaching compassion mental therapy work,pas — problem · agitate · solution:problem copy landing marketing pain relief solution action,paul–elder — elements of thought + standards:decision analysis apply argument brief checks copywriting critical,pdca — plan · do · check · act:improvement beginner changes close design feedback iteration learning,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark brief doc environment frameworks,persona — actas / simulate:apply beginner clarification development goals management phase prompt,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader business context discover environment,plan and solve (p&s):planning against checks clarification coding create errors executing,playback theatre — confession line:group story check consent create deeper empathy facilitation,pomodoro scaffold:beginner creativity focus frame goal micro minute next,popperian falsification:design predictions risky beginner beliefs conjectures could falsifiable,positionality statement:analysis practice preface research standpoint beginner bias blind,pramāṇa — means of knowledge:evidence advanced answer audit change claim decide healing,prd — write:requirements plan guardrails localization telemetry traceability ux a11y,pre-mortem + pre-grief:ethics failure human review clear conditions cost early,pre-mortem + red team — embarrassing sentence:ethics failure review conditions dissent hate imagine install,pre-mortem scaffold:actions beginner committing decision failure immediate modes phase,press release — ap style:release launch writing announcement appointment award board communication,prompt augmentation (demonstration learning):format phase against answers apply consistency demonstrations development,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause cultural effective extend frameworks,questionnaire — write:design item bias items logic platform question reduce,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding comparison compose content development,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach check close compassion conversation,random association — combine unrelated ideas:brainstorming beginner block break connections creative creativity discover,rap — result · action · problem:impact storytelling apply beginner bullets concise context copy,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify defining does making management,rapid ideation — timed idea sprint:brainstorming beginner block creative creativity generate healing ideas,ratio — role · audience · task · instructions · output:prompt brief agent apply beginner development graded handoff,reflect (bias reflection):bias analysis beginner brainstorming concrete critical discover ethics,reflexive memo:analysis activated affect affective assumptions beginner biases capture,registered reports & preregistration:analysis plan clarify collection data degrees design deviations,reliability growth & burn-in:test acceptance growth plan stop acceptable analysis burn,resume — tailor / rewrite / feedback:resume job ats draft admin alongside application career,rfc — unsaid objection:decision dissent alignment architecture beginner begins channels comments,rice — reach × impact × confidence ÷ effort:planning allocate coding features management product quantitatively rank,risen — role · instructions · steps · end goal · narrowing:plan content design development experiment intermediate learning production,rodes — role · objective · details · examples · sense check:guided adaptation against apply check copywriting criteria development,role storming — ideation as different personas:brainstorming apply beginner changing creativity fresh get ideas,root cause analysis:apply beginner brainstorming causes countermeasures document identify improvemen,rose · thorn · bud + weather:check daily hope journal practice affect beginner classes,rtf — role · task · format:format prompt prompting api apply beginner data development,rubber duck debugging — explain to understand:problem step analysis articulating assumption beginner bias bug,safety pause with essence:safety truth ttrpg agree beginner body change communication,scamper (idea expansion):beginner brainstorming creative creativity exploration generate idea storytellin,scenario-based prompting — deliberative reasoning:advice analysis coaching compose development edge empathy intermediate,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design experiment hypotheses iteration reasoning,scqa — situation · complication · question · answer:frameworks analysis arc beginner brief compelling compose executive,screener — create criteria:screener eligibility design device fraud full have participants,sentipensar — thinking-feeling integration (latin america):design side analytic cultural decomposition empathy evidence experiential,shadow work dialogue — conscious self · shadow self:self side you acts advanced anger beginner brainstorming,six thinking hats:brainstorming decision explore beginner control creativity data discussion,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner clear creativity criteria defined,soar analysis:align aspirations beginner clarification decision decomposition discussion find,social media post — tailor / write / brainstorm:social media post write char hashtags hook platform,socratic questioning method:alternatives assumptions beginner belief bias claims communication critical,somatic focusing — feel · ask · listen:self them asking beginner bodily body clarify communication,star — situation · task · action · result:story storytelling study answer apply beginner behavioral bullet,stars & wishes + bleed check:bleed debrief safety ttrpg beginner celebration character check,story spine + one naked sentence:story draft line pitch talk truth align arc,survey — plan — design:design plan survey scale align edit low product,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy assessment beginner business campaign,synectics — analogies & problem transfer:advanced analogies apply context creativity different domains drawing,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies angles beginner challenge color,systematic review & meta-analysis:criteria heterogeneity policy protocol brief effect evidence inclusion,talanoa dialogue (pacific):beginner build content cultural decision dialogue empathy explore,tarot spread reflection — past · present · future:mode reflection storytelling tarot action archetypal archetypes brainstorm,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming break concrete crisp development,task scenarios — write:scenarios design accessibility hta klm paths per realistic,tdd + property-based testing — invariants:edge invariants tests beginner capture design drive engineering,threat modeling — stride/linddun:privacy risk security architecture categories define design ethics,three vaults — facts → stories → essence:coaching check communication facilitation journaling personal beginner beyond,time machine advice — past self & future self:self your future you advice beginner brainstorming challenge,tonglen-lite — breathe with suffering:compassion self aversion beginner breath care check emotion,tote — test · operate · test · exit:beginner brainstorming build communication control decide iterating iteration,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation arguments competitive conflict copywriting,transcripts - analyze:analysis analyze codebook executive sentiment themes transcripts across,tree of thought — brainstorm & evaluate:across advanced best brainstorming compare deciding decision explore,tree of thought — decomposition:advanced alternatives ambiguous brainstorming branching break checkpoints comple,triangulation methods:across alignment apply bias checking cross decide deepen,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discussion generate ideas incomplete intermedi,triz (theory of inventive problem solving):brainstorming aim communication content contradictions explore final generate,trls — with exit ramps:exit maturity salvage trl avoid beginner commitment define,trunk-based dev — feature flags:audience beginner behind cleanup collection commits data delivery,truth & reconciliation — micro-format:accountability amends conflict dignity affirm apology behavior communication,usability test — plan:plan policy accessibility criteria design sessions set success,user flow — audit — design:flow design states acceptance accessibility blueprint copy criteria,ux microcopy — write:copy design accessibility clarity content critique localization microcopy,v-model / mbse — assumption ledger:assumptions model architecture dates design elements engineering explicit,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management matrix offs operations planning,vow-and-witness:commitment vow witness accountability beginner ceremony check dignity,vroom–yetton–jago decision model:decision autocratic balance brainstorming choose clarification commitment consul,weighted mini-matrix (quick score):planning against compare criteria decision force intermediate matrix,what if — scenario reframing questions:brainstorming problem alternative beginner changing constraints context creativi,wishing — imagine ideal solutions:brainstorming beginner beyond constraints creativity features ideal identify,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming contrast desired evaluation main,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards building communication customer facing,working out loud — truth edition:review asks beginner clarity communication design facilitation help,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement maximize process safe self,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content context craft cultural ethics"
+        "Library tools: 2-minute rule (david allen):planning avoidance away beginner brief c,5w1h — who · what · where · when · why · how:incident prompt scope acceptance analysi,a3 problem solving (toyota):problem plan actions align brief cause c,aar — feelings first:debrief learning needs alone beginner bo,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self bias coachi,abductive reasoning — best explanation:predictions risky account analysis begin,accountability letter:amends apology beginner clear close comm,active imagination — dialogue with inner voices:inner creative dialogue parts self chara,addie — analyze · design · develop · implement · evaluate:course training learning design goals ou,adversarial collaboration:adjudication design advance change commu,agent-based models & system dynamics:abm agents calibration complex declare d,aida — attention · interest · desire · action:copy write action email hook landing not,amor–vita–memoria (avm):grief self gratitude one you memory ment,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias context cross f,announcement — change & action:announcement change communication notice,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate design,arnstein’s ladder of participation — from tokenism to citizen control:power community influence governance pla,automatic writing — truth sprint:writing truth automatic avoiding beginne,backcasting - start from the desired future state and plan backwards:back community plan future map planning,backlog — prioritize:capacity items plan portfolio prioritiza,bayesian science — posterior odds:priors action analysis based bayes data,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write bridge cold deck f,bhag — big hairy audacious goal:planning vision align ambition around au,bias impact assessment (ai/tech pre-launch):bias check right compliance dataset ethi,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair group make rubr,blameless postmortem — essence first:teaching actionable analyze beginner bla,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson plan b,brand archetypes for communities - shared identity motifs and tone:our archetype archetypes community voice,buddhist eightfold path (adapted for action):decision ethical design harm right check,canary + blue-green — revert comms:comms rollback beginner blast blue call,causal inference — dags & identification:identification assumptions causal dag di,causal inference playbook:design assumptions based bias block choo,clear — challenge · limitation · effect · action · result:problem summary action decision write ca,clear contracts + exit ramps:boundaries consent beginner communicatio,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask make next promp,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask audience hygiene i,clown ‘flop’ — failure seen safely:failure resilience shame armor bravery b,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision evidence make,collective impact — common agenda shared measurement backbone:partners purpose across community govern,community capitals framework - seven capitals lens for purpose and investment:capital capitals across investments comm,community-led development (cld): locally led priorities accountability and capacity:community design governance phase planni,comparative analysis — rank • pros/cons • matrix:compare should options side which best b,competing values framework - culture map to align ways of working with mission:culture values across decide our clan ex,computational science — simulation:reproducibility simulation validation ca,constraint flip (play with edges):what design feature had make one work as,contact improv — listening duet:listening practice attention attunement,costar — context · objective · style · tone · audience · response:brief content message campaign copy crea,cover letter — tailor / rewrite / feedback:cover letter job ats draft feedback sect,critical incident analysis:ethics teaching charged communication da,cultural probes & diary studies - longitudinal participant-led voice capture:people daily study capture routines acro,cultural web - unpack symbols rituals stories shaping voice:culture cultural voice rituals shape map,daoist wu-wei strategy (effortless action):instead align burnout plan already big c,decision record — dissent & kill criteria:dissent adr alignment beginner chose com,deliberative polling / citizens juries - informed structured public deliberation:people citizens public make community de,design doc — scariest change:design risk align alignment architecture,design justice principles — center those most affected; redistribute design power:design community power data decision jus,design science research (dsr):utility artifact artifacts build constru,dignity questions — identity · meaning · legacy:family gratitude storytelling audio begi,disney strategy — dreamer · realist · critic:idea creative concept plan balance ideas,dm — outreach & follow-up:follow outreach quick writing ask beta c,dmaic — define · measure · analyze · improve · control:data improvement process project quality,doe + tolerance stacks — ci & power:acceptance experiment stack analysis ana,dot voting and heat-mapping - quick temperature check on priorities:decision phase planning community across,east — easy · attractive · social · timely:design behavioral nudge choice friction,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what decide de,email — draft & polish:email follow networking outreach support,empathy mapping personas jtbd - ground voice in needs and contexts:what design empathy community jobs needs,empty chair dialogue (gestalt):self one conversation talk boundary busi,energy budget planner (spoon theory):plan energy day spoons tasks accommodati,engineering method — iterate to standard:acceptance cycle standards beginner buil,epic quest tasking — gamify the chore:quest quests chores make self storytelli,ethical data stewardship - governance for safe listening:data community design decide safe sharin,ethnographic & interpretivist methods:description fieldwork reflexivity thick,examples / few-shot prompting:examples example format output show styl,exploratory vs confirmatory paths:cda eda avoid beginner confirmatory diff,fab — feature · advantage · benefit:benefits bullets copy feature features p,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument check c,facts & expertise primer:what facts check expert give avoid begin,feyerabend — pluralism:method design document ethics exploring,feynman technique — explain like i’m 5:explain make complex non break clear exp,findings — synthesize:insights confidence create summarize the,first principles — question assumptions & reason from basics:true problem reasoning analogies assumpt,fmea · hazop · fault tree — unified card:design hazop analysis causes criticality,focusing — felt-sense check:check mental aboutness ambivalent beginn,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming ideas,future search — whole-system future-focused planning (2–3 days):future planning search community plan ac,fuzzing + mutation — outage shape:edge inputs catch conditions define flow,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous sha,goal breakdown (prompt/question decomposition):step goal tasks turn what break first pl,goal composition (prompt/question composition):one tasks plan asks brief goal goals mak,goal prompting:goal goals plan first main next objectiv,goals of care — what matters most:conversation life planning values advanc,golden circle — why · how · what · mission:purpose mission community values align c,gratitude under duress:pain acknowledge beginner bypass check c,grounded theory — reflexive memos:coding reflexivity theory audit axial be,grow — goal · reality · options · way forward:goal coaching plan what goals next set b,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance choice gut,hero’s journey — departure · initiation · return:journey story arc hero writing map outli,heuristics & biases — debiasing pre-flight:check bias decision quick review wrong a,holacracy (selective) - role-based governance for volunteer groups:roles governance meetings without avoid,hoshin kanri (policy deployment) - align annual breakthrough objectives with daily work:phase planning community objectives revi,how might we statements (hmw):problem make questions brainstorming opp,human-centered design / double diamond: discover define develop deliver with community co-creation:design research clear community delivery,hypnagogic spark — semi-sleep insight technique:brainstorming state creativity design dr,iap2 spectrum of public participation — inform → consult → involve → collaborate → empower:engagement community input planning publ,ice — impact × confidence × ease:ideas planning quick backlog effort fast,ikigai — purpose map:purpose career against align anti beginn,imaginary council — multiple mentors one question:would phase see what council creative de,implementation intentions (if–then):plan coding goals habits new set daily h,inclusive design (edge personas):design make edge check easier low one te,inner child work — conscious self · inner child:child inner self childhood practice comf,internal weather report — storm · calm · forecast:check state emotional energy mood reduce,interviews — plan & questions — write:plan guide interviews design discussion,jtbd interviews — felt-sense friction:jtbd progress struggles body capture dis,kaitiakitanga — guardianship & stewardship (māori):product cultural data design governance,kano model — must-be · performance · delighters:planning product what brainstorming buil,kansei engineering (emotion → design mapping):design emotions emotional features feeli,kaupapa māori research — by/with/for māori communities; sovereignty at the core:research ori community communities data,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives amo,keywords + why + tasks — vector priming:actionable alignment apply avoid better,kuhn — paradigms & revolutions:anomalies science across beginner choice,kumu / systems mapping - actors flows feedbacks:purpose community find map system visual,lakatos — research programs:belt core hard program theory decide deg,lara / cri — dialogue scaffold:dialogue affirmation beginner center com,last 2% round — share the unsaid edge:alignment avoid beginner communication c,lean startup loop — stop & harm rules:decision hypothesis rules analytics begi,least to most (ltm):building complex derive edge escalating,letter — formal / personal:letter formal writing apology appeal app,liberating structures - light-weight ways to get everyones voice in (1-2-4-all 9 whys triz conversation café what so what now what):group ways simple what without decision,lines/veils revisit — mid-campaign:consent lines refresh safety ttrpg veils,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align appeal a,memento mori — micro-sit:gratitude actually add beginner choose c,memo — tl;dr + recommendation:decision writing brief capture change co,mind map — central idea with branches:visual adhd analysis around assist begin,mind mapping — visual cluster of ideas:discover map planning actions around beg,mixed methods — triangulation:integration beginner design designs disc,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across act ada,mortal message — letter/audio:gratitude repair beginner blessing brief,moscow — must · should · could · won’t:planning management product scope beginn,most significant change (msc) — collect stories; community selects what mattered most:community stories change evaluation acti,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilita,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic asia,nonviolent communication (nvc): needs-based dialogue for deeper listening:nvc conflict without empathy needs ways,north star metric & narrative:metric one community long mission planni,noting — mindfulness labels:sleep awareness beginner check craving d,nyāya — five-member syllogism:explicit inference mode analyses applica,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints,observability — slos · slis · error budgets:burn reliability analytics budget budget,ocap® & care principles — community data ownership governance and ethical listening:data community sharing control ethics re,ofrenda / remembrance board:altar artifacts beginner board care crea,okr — objective & key results:outcomes measurable planning progress re,okrs — with kill criteria:okrs analytics avoid beginner cadence co,okrs (community-adapted) — objectives & key results:community goals mission progress measura,ooda loop (observe–orient–decide–act):decision discovery fast loop ooda produc,open science checklist:accessible beginner cannot capsule check,open space technology - participant-set agenda for what matters now:open space agenda community meetings way,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate clarificat,opportunity solution tree - tie problems to outcomes to keep purpose tight:outcome outcomes tree solutions opportun,outcome harvesting - gather outcomes after the fact and trace contributions with community input:already change clear community decisions,outcome mapping — boundary partners & behavior change:change community partner behavior evalua,par — problem · action · result:experience impact postmortem storytellin,participatory & decolonial approaches:data sovereignty benefit clarify communi,participatory action research (par):decision dissemination rights accessible,participatory action research / cbpr - co-research with communities:community research action phase capacity,participatory budgeting — residents directly allocate resources:community budget equity planning decisio,parts check-in — ifs-inspired:coaching self beginner check communicati,parts work dialogue (ifs therapy):inner parts self coaching compassion men,pas — problem · agitate · solution:problem copy landing marketing pain reli,paul–elder — elements of thought + standards:decision analysis apply argument brief c,pdca — plan · do · check · act:improvement beginner changes close desig,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark brief do,persona — actas / simulate:apply beginner clarification development,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader busin,plan and solve (p&s):planning against checks clarification co,playback theatre — confession line:group story check consent create deeper,pomodoro scaffold:beginner creativity focus frame goal mic,popperian falsification:design predictions risky beginner belief,positionality statement:analysis practice preface research stand,power mapping - visualize formal and informal power; plan inclusive engagement:who influence which map see decide engag,power/interest grid & stakeholder salience — who has power who’s affected who must be heard:who power actually affected analysis com,pra / rra - participatory mapping ranking seasonal calendars guided by locals:community local research create led maps,pramāṇa — means of knowledge:evidence advanced answer audit change cl,prd — write:requirements plan guardrails localizatio,pre-mortem + pre-grief:ethics failure human review clear condit,pre-mortem + red team — embarrassing sentence:ethics failure review conditions dissent,pre-mortem scaffold:actions beginner committing decision fai,press release — ap style:release launch writing announcement appo,prompt augmentation (demonstration learning):format phase against answers apply consi,public narrative - structure shared story and call to action:story action people ask community make c,public narrative (marshall ganz) — story of self us now:story community craft action alignment a,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause cultural,questionnaire — write:design item bias items logic platform qu,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding compari,raci or drci - clarify roles without muting voice:who roles consent consulted informed rac,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach check cl,random association — combine unrelated ideas:brainstorming beginner block break conne,rap — result · action · problem:impact storytelling apply beginner bulle,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify defi,rapid ideation — timed idea sprint:brainstorming beginner block creative cr,ratio — role · audience · task · instructions · output:prompt brief agent apply beginner develo,reflect (bias reflection):bias analysis beginner brainstorming con,reflexive memo:analysis activated affect affective assu,registered reports & preregistration:analysis plan clarify collection data de,reliability growth & burn-in:test acceptance growth plan stop accepta,restorative circles / deep democracy - surface minority voices and work with conflict productively:circle conflict group community healing,resume — tailor / rewrite / feedback:resume job ats draft admin alongside app,rfc — unsaid objection:decision dissent alignment architecture,rice — reach × impact × confidence ÷ effort:planning allocate coding features manage,ripple effects mapping — appreciative story-mapping of impacts with stakeholders:community impact map stories action effe,risen — role · instructions · steps · end goal · narrowing:plan content design development experime,rodes — role · objective · details · examples · sense check:guided adaptation against apply check co,role storming — ideation as different personas:brainstorming apply beginner changing cr,root cause analysis:apply beginner brainstorming causes coun,rose · thorn · bud + weather:check daily hope journal practice affect,rtf — role · task · format:format prompt prompting api apply beginn,rubber duck debugging — explain to understand:problem step analysis articulating assum,safety pause with essence:safety truth ttrpg agree beginner body c,scamper (idea expansion):beginner brainstorming creative creativi,scenario-based prompting — deliberative reasoning:advice analysis coaching compose develop,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design experiment,scqa — situation · complication · question · answer:frameworks analysis arc beginner brief c,screener — create criteria:screener eligibility design device fraud,sensemaker: micro-narratives self-signified by participants to surface patterns:stories patterns community phase analysi,sentipensar — thinking-feeling integration (latin america):design side analytic cultural decomposit,service design blueprints - map frontstage/backstage to see where voice is silenced:service map blueprint design help show s,shadow work dialogue — conscious self · shadow self:self side you acts advanced anger beginn,six thinking hats:brainstorming decision explore beginner,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner cle,soar analysis:align aspirations beginner clarification,social media post — tailor / write / brainstorm:social media post write char hashtags ho,social network analysis / network weaving / netography - find connectors peripheries and missing voices:map spot bridges networks see track whic,sociocracy / consent decision-making - circles roles and dynamic governance for shared ownership:sociocracy consent decide circles govern,socratic questioning method:alternatives assumptions beginner belief,soft systems methodology (ssm) — explore messy problems via multiple worldviews; rich pictures:map problems community issues messy prob,somatic focusing — feel · ask · listen:self them asking beginner bodily body cl,spectrum of community engagement to ownership — concrete power-shifting practices:community power ownership authority enga,star — situation · task · action · result:story storytelling study answer apply be,stars & wishes + bleed check:bleed debrief safety ttrpg beginner cele,story circles / story harvesting — peer storytelling to extract themes and values:stories community voices values listenin,story spine + one naked sentence:story draft line pitch talk truth align,survey — plan — design:design plan survey scale align edit low,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy assess,synectics — analogies & problem transfer:advanced analogies apply context creativ,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies,systematic review & meta-analysis:criteria heterogeneity policy protocol b,talanoa dialogue (pacific):beginner build content cultural decision,talanoa yarning circles talking circles — narrative-first consensus building:community decisions hearing understadnin,tarot spread reflection — past · present · future:mode reflection storytelling tarot actio,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming brea,task scenarios — write:scenarios design accessibility hta klm p,tdd + property-based testing — invariants:edge invariants tests beginner capture d,theory of change — backcasting:change community planning mission outcom,threat modeling — stride/linddun:privacy risk security architecture categ,three vaults — facts → stories → essence:coaching check communication facilitatio,time machine advice — past self & future self:self your future you advice beginner bra,tonglen-lite — breathe with suffering:compassion self aversion beginner breath,tote — test · operate · test · exit:beginner brainstorming build communicati,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation arg,transcripts - analyze:analysis analyze codebook executive sent,tree of thought — brainstorm & evaluate:across advanced best brainstorming compa,tree of thought — decomposition:advanced alternatives ambiguous brainsto,triangulation methods:across alignment apply bias checking cro,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discus,triz (theory of inventive problem solving):brainstorming aim communication content,trls — with exit ramps:exit maturity salvage trl avoid beginner,trunk-based dev — feature flags:audience beginner behind cleanup collect,truth & reconciliation — micro-format:accountability amends conflict dignity a,two-eyed seeing (etuaptmumk): braiding indigenous and western knowledge:community knowledge design elders indige,usability test — plan:plan policy accessibility criteria desig,user flow — audit — design:flow design states acceptance accessibil,ux microcopy — write:copy design accessibility clarity conten,v-model / mbse — assumption ledger:assumptions model architecture dates des,v2mom — vision values methods obstacles measures:community vision plan create finding mis,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management ma,viable system model - ensure functions that keep a community adaptive and coherent:community design governance operations s,voice and tone frameworks - codify how the community speaks:our tone voice community style avoid cle,vow-and-witness:commitment vow witness accountability be,vroom–yetton–jago decision model:decision autocratic balance brainstormin,wardley mapping - map capabilities and evolution to protect community advantage:community shared spot across map chain c,weighted mini-matrix (quick score):planning against compare criteria decisi,what if — scenario reframing questions:brainstorming problem alternative beginn,wishing — imagine ideal solutions:brainstorming beginner beyond constraint,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming con,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards buildin,working out loud — truth edition:review asks beginner clarity communicati,world café - rotating small-group conversations to synthesize collective themes:cafe world ideas conversation group peop,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement max,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content"
       ],
       definition: "A helper that recommends the most suitable tool from the provided template library list or generates a prompt to do so.",
       help: "Describe your goal and context. A full list of the template options will be included when you use the copy/open buttons.",
@@ -6188,7 +6188,11 @@
         "use:planning",
         "use:communication",
         "use:pattern",
-        "use:storytelling"
+        "use:storytelling",
+         "use:purpose",
+         "use:mission",
+         "use:why",
+         "use:community"
       ],
       use_cases: [
         "Craft an authentic brand or organizational purpose statement.",
@@ -6227,7 +6231,8 @@
       "culture doc opener",
       "why customers should care",
       "one-line purpose",
-      "purpose → how → what"
+      "purpose → how → what",
+      "finding community purpose"
       ],
       boosters: [
         "Lead with *Why* — begin with belief or cause, not with the product.",
@@ -7236,7 +7241,24 @@
         "kick off brainstorming with human-centered prompts",
         "align cross-functional teams on focus areas",
         "spin variants at different scopes (broad ↔ narrow)",
-        "generate inclusive, non-leading prompts that avoid baked-in solutions"
+        "generate inclusive, non-leading prompts that avoid baked-in solutions",
+          "turn this problem into a question",
+  "how might we make this easier",
+  "reframe my challenge",
+  "write HMW questions from insights",
+  "make this opportunity statement",
+  "spark creative ideas from this issue",
+  "turn complaints into design prompts",
+  "make a positive spin on this problem",
+  "help me ask better questions",
+  "how might we see this differently",
+  "frame this without the solution baked in",
+  "turn research notes into HMWs",
+  "make broad and narrow HMW versions",
+  "help me start a brainstorm",
+  "align my team with opportunity questions",
+  "understand my problem",
+  "put postive spin on my problem"
       ],
       boosters: [
         "Generate 5+ variants: 2 broad, 2 narrow, 1 wild “adjacent possible”.",
@@ -7483,7 +7505,22 @@
         "Reframe problems with dreamlike, non-linear associations",
         "Practice surrealist or Jungian-style ideation",
         "Incubate design, story, or research sparks from hypnagogic imagery",
-        "Translate half-dream fragments into testable, real-world prototypes"
+        "Translate half-dream fragments into testable, real-world prototypes",
+        "catch ideas before I fall asleep",
+  "use half-dreams for creativity",
+  "spark weird connections",
+  "dreamlike problem solving",
+  "find inspiration in drifting off",
+  "turn sleepy thoughts into designs",
+  "capture surreal story ideas",
+  "use hypnagogic state for brainstorming",
+  "let my subconscious suggest answers",
+  "make random images into insights",
+  "how to use drowsy state productively",
+  "inspiration from the edge of sleep",
+  "train myself to notice dream fragments",
+  "get new angles from twilight thinking",
+  "turn nonsense thoughts into concepts"
       ],
       boosters: [
         "Keep sessions short (≤3 cycles, 2–4 minutes each) to preserve novelty.",
@@ -7809,7 +7846,22 @@
         "fast triage of product ideas or experiments",
         "growth/CRO backlog grooming and sprint planning",
         "ops/process improvements and quick wins identification",
-        "research/design workstream prioritization before deeper sizing"
+        "research/design workstream prioritization before deeper sizing",
+         "help me pick quick wins",
+  "rank ideas by impact",
+  "what’s easiest with big effect",
+  "score tasks by effort vs value",
+  "how confident should I be",
+  "prioritize my backlog",
+  "compare impact vs ease",
+  "choose low-hanging fruit",
+  "which idea gives best return",
+  "fast way to prioritize options",
+  "sort projects by payoff",
+  "is this worth the effort",
+  "weigh ideas by confidence",
+  "quick prioritization method",
+  "make a simple scoring table"
       ],
       boosters: [
         "Define and display your scale rubric before scoring (e.g., Impact 1=negligible, 5=step-change).",
@@ -8129,7 +8181,23 @@
         "break fixation by sampling diverse lenses before deciding",
         "stress-test a plan with skeptic, user, and ethicist seats",
         "unblock creative work via playful roleplay with constraints",
-        "produce a smallest-viable experiment and a minority report"
+        "produce a smallest-viable experiment and a minority report",
+          "what would my mentor say",
+  "ask the skeptic first",
+  "how would a user see this",
+  "what would an ethicist warn about",
+  "play devil’s advocate with characters",
+  "get advice from different voices",
+  "pretend I have a council of mentors",
+  "imagine an optimist vs pessimist take",
+  "roleplay perspectives before deciding",
+  "what would a future self recommend",
+  "stress test this with diverse views",
+  "show me a supporter and a critic",
+  "how would a creative see this",
+  "minority report version please",
+  "council of experts simulation",
+  "see other perspectives"
       ],
       boosters: [
         "Keep it one question only; run another council for additional questions.",
@@ -8353,7 +8421,46 @@
         "bind a reliable cue to a tiny starter action to reduce choice friction",
         "create coping plans for predictable obstacles",
         "stack a new habit after an existing routine",
-        "translate goals into daily cues with a 7-day scorecard"
+        "translate goals into daily cues with a 7-day scorecard",
+          "if I crave sugar then drink water",
+  "plan what to do if I feel stressed",
+  "if it rains then I’ll work out inside",
+  "set a backup plan for bad days",
+  "if I miss a habit then restart tomorrow",
+  "tie new habit to brushing teeth",
+  "if I scroll too long then set a timer",
+  "when I get home then put on running shoes",
+  "if I feel anxious then try breathing exercise",
+  "if I’m tired then take a short walk",
+  "when I make coffee then write a to-do",
+  "if I fail then learn one thing",
+  "if meeting runs over then send a quick recap",
+  "when alarm goes off then stretch",
+  "if I want to quit then remind myself why",
+    "stick to new habits without overthinking",
+  "plan what to do when obstacles show up",
+  "turn goals into automatic actions",
+  "make a morning routine more consistent",
+  "reduce decision fatigue during the day",
+  "have a plan for stressful situations",
+  "set up reminders that trigger action",
+  "stay on track after missing a step",
+  "build healthy habits with simple cues",
+  "cope better with common setbacks",
+  "translate vague goals into daily routines",
+  "strengthen willpower with pre-decided rules",
+  "prepare fallback actions in advance",
+  "tie new behaviors to existing habits",
+  "make change easier by lowering friction",
+    "stay focused while coding sessions",
+  "plan what to do if I hit a bug",
+  "turn vague coding goals into small steps",
+  "reduce context-switching while programming",
+  "build coding habits with clear triggers",
+  "cope with coding roadblocks ahead of time",
+  "set fallback plan if code breaks",
+  "turn coding goals into daily routines",
+  "create an if then statement"
       ],
       boosters: [
         "Make the trigger observable and frequent (time, place, routine, sensation).",
@@ -8604,7 +8711,22 @@
         "co-design adaptations that reduce exclusion and cognitive load",
         "map designs to WCAG and beyond (cognition, language, environment)",
         "spec edge-first acceptance criteria and lightweight usability tests",
-        "articulate “solve for one → extend to many” benefits with metrics"
+        "articulate “solve for one → extend to many” benefits with metrics",
+          "design for people with limited vision",
+  "make this easier for non-native speakers",
+  "check accessibility for screen readers",
+  "design for one-handed use",
+  "make forms simpler for low literacy",
+  "test design in noisy environments",
+  "design for colorblind users",
+  "make mobile use in sunlight easier",
+  "plan for older users with memory challenges",
+  "design for low bandwidth internet",
+  "adapt for temporary injuries",
+  "design for multitasking situations",
+  "make instructions easy to follow",
+  "check if my design excludes anyone",
+  "how to include edge cases in design"
       ],
       boosters: [
         "Recognize exclusion; treat “edge cases” as design inputs, not exceptions.",
@@ -8834,7 +8956,22 @@
       use_cases: [
         "connect with and comfort your “inner child” (wounded or vulnerable parts of yourself)",
         "practice re-parenting: respond with the compassion and guidance you needed then",
-        "explore childhood experiences that shape your current patterns and emotions"
+        "explore childhood experiences that shape your current patterns and emotions",
+         "heal childhood wounds",
+  "talk kindly to my younger self",
+  "practice re-parenting exercises",
+  "comfort the scared part of me",
+  "rewrite old memories with compassion",
+  "give my inner child a safe space",
+  "explore where my triggers come from",
+  "connect with my playful side again",
+  "heal past neglect through dialogue",
+  "practice self-love through inner child work",
+  "support myself like a caring parent",
+  "understand childhood roots of my anxiety",
+  "build trust with my inner child",
+  "respond differently to old patterns",
+  "validate feelings I had as a child"
       ],
       boosters: [
         "Approach the inner child gently — think of how you would speak to a child you love.",
@@ -9064,7 +9201,17 @@
         "one-minute mood check to reduce reactivity",
         "pre-meeting “state of me” for clearer collaboration",
         "post-incident decompression and next-step planning",
-        "daily self-regulation ritual integrated with spoons/energy tracking"
+        "daily self-regulation ritual integrated with spoons/energy tracking",
+          "quick emotional check-in before work",
+  "share my mood with a team in simple terms",
+  "help kids name and express feelings",
+  "track my energy for chronic illness",
+  "use in therapy sessions as a grounding tool",
+  "check my state before making a big decision",
+  "reflect on how I feel at the end of the day",
+  "teach emotional literacy in classrooms",
+  "reduce conflict by naming my state first",
+  "journal moods using weather metaphors"
       ],
       boosters: [
         "Prefer 1–3 precise feelings and one body signal over long narratives.",
@@ -9370,7 +9517,17 @@
       use_cases: [
         "assess long-term responsibilities for places, communities, species, data, or knowledge (taonga)",
         "design safeguards (e.g., rāhui triggers) and monitoring with local guardians (kaitiaki)",
-        "set co-governance, escalation paths, and reciprocity duties with affected groups"
+        "set co-governance, escalation paths, and reciprocity duties with affected groups",
+          "plan product stewardship with community input",
+  "design data use with indigenous guardianship",
+  "evaluate environmental impact long-term",
+  "set cultural protocols for shared resources",
+  "build reciprocity into company strategy",
+  "co-create rules for when to pause activity",
+  "include indigenous voices in governance",
+  "frame sustainability through guardianship lens",
+  "align product roadmap with intergenerational duty",
+  "treat knowledge as taonga (treasure) to protect"
       ],
       boosters: [
         "Treat kaitiakitanga as relational and place-based. Do not generalize across iwi/hapū; name the specific partners and tikanga you’ll follow.",
@@ -9578,7 +9735,17 @@
         "Segment explicitly (e.g., newcomers vs. power users); categories can flip by segment.",
         "If you have data, compute Timko CS (customer satisfaction) and DS (dissatisfaction).",
         "Pair categories with feasibility: add Effort and Strategic Fit to avoid “delight myopia.”",
-        "Revisit quarterly; Delighters drift toward Performance or Must-be over time."
+        "Revisit quarterly; Delighters drift toward Performance or Must-be over time.",
+          "decide which features are basic expectations",
+  "find out what really delights customers",
+  "prioritize features from user surveys",
+  "separate nice-to-have vs must-have",
+  "analyze feedback to spot hidden delighters",
+  "plan roadmap based on user satisfaction impact",
+  "avoid wasting time on indifferent features",
+  "compare user segments to see shifting needs",
+  "decide what to build first for MVP",
+  "check if a feature prevents complaints or adds joy"
       ],
       definition: "Kano classifies features by how presence/absence affects satisfaction. Buckets: Must-be (basics), Performance (linear value), Delighters (wow), plus Indifferent/Reverse/Questionable. Optionally quantify with Timko coefficients.",
       help: "Enter candidate features, segments (personas), and any evidence. Choose a Study mode (the value is a directive the AI will follow). Pick table/chart preferences; their values are also injected as explicit instructions.",
@@ -9877,7 +10044,22 @@ Dissatisfaction ↓`;
         "build a testable Emotion → Stimulus map with success criteria",
         "prioritize features and micro-interactions by affective impact",
         "align brand emotions with visual, copy, motion, sound, and material design",
-        "validate emotional effects on prototypes before commit"
+        "validate emotional effects on prototypes before commit",
+          "design a product that feels calming",
+  "match brand identity to emotions",
+  "test if my design feels trustworthy",
+  "turn desired feelings into design choices",
+  "connect emotions with product features",
+  "map how copy or visuals make users feel",
+  "measure emotional impact of prototypes",
+  "design with sensory cues like sound or texture",
+  "check if design creates stress or comfort",
+  "align product look and feel with target mood",
+  "make UX emotionally consistent across touchpoints",
+  "translate abstract feelings into concrete design rules",
+  "compare how different features change user emotions",
+  "design experiences that evoke joy or confidence",
+  "validate if emotional goals are met before launch"
       ],
       boosters: [
         "Limit to ≤5 core emotion goals; define them in users’ native language (avoid translation drift).",
@@ -24165,7 +24347,17091 @@ Dissatisfaction ↓`;
   meta: {
     search_text: 'bhag big hairy audacious goal vision pillars milestones guardrails cadence rallying cry'
   }
+},
+
+
+{
+  id: "theory_of_change",
+  slug: "theory-of-change",
+  label: "Theory of Change — Backcasting",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "analysis-frameworks",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:goals",
+    "use:evaluation",
+    "use:process-improvement",
+    "use:purpose",
+    "use:mission",
+    "use:change",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "co-create a community mission and causal logic",
+    "design a program or initiative from outcomes backward",
+    "write a grant-ready purpose and results chain",
+    "align stakeholders on what success looks like",
+    "build indicators and a lightweight measurement plan",
+    "stress-test assumptions and external risks",
+     "finding community purpose",
+      "understanding change",
+       "why must change happen",
+        "how do we deal with change",
+          "map steps from vision to results",
+  "plan backwards from the big goal",
+  "show how actions lead to impact",
+  "create a roadmap for change",
+  "explain program logic simply",
+  "align funders and community on goals",
+  "make a clear story of cause and effect",
+  "set outcomes before planning activities",
+  "visualize how success will be measured",
+  "test if our plan really leads to change",
+  "connect daily actions to long-term mission",
+  "simplify complex initiatives into steps",
+  "design with assumptions made visible",
+  "show pathways from effort to outcomes",
+  "clarify who benefits and how"
+  ],
+  boosters: [
+    "Start from the highest-level impact, then back-cast to long, intermediate, and short outcomes before listing activities.",
+    "Write explicit If-Then-Because links to make causality testable.",
+    "Name boundary partners who must change for impact to happen.",
+    "Pair each outcome with at least one observable indicator and data source.",
+    "List assumptions and external factors that could break the chain.",
+    "Keep it on one page - diagram later if needed."
+  ],
+  definition: "A purpose and causal-logic scaffold that back-casts from desired impact to outcomes to activities. It clarifies who must change, why change should happen, and how you will know.",
+  help: "Complete Impact, Outcomes (short-mid-long), Activities, Indicators, Assumptions, and Risks. Use the template output to generate a clear If-Then-Because chain and a minimal measurement plan.",
+  fields: [
+    {
+      label: "Impact - ultimate change in the world",
+      desc: "High-level, mission-aligned difference you seek.",
+      key: "impact",
+      ph: "e.g., Residents experience safer, more connected neighborhoods",
+      type: "textarea"
+    },
+    {
+      label: "Beneficiaries / boundary partners",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 10,
+      min: 1,
+      ph: "e.g., Youth leaders; neighborhood associations; city transit",
+      type: "repeater"
+    },
+    {
+      label: "Long-term outcomes - 3–5+ years",
+      desc: "End-state outcomes that contribute to the Impact.",
+      key: "outcomes_long",
+      ph: "e.g., Sustained resident leadership; reduced crime; stable funding",
+      type: "textarea"
+    },
+    {
+      label: "Intermediate outcomes - 6–24 months",
+      desc: "Behavior and relationship changes that enable long-term outcomes.",
+      key: "outcomes_mid",
+      ph: "e.g., Cross-org collaborations; higher participation; trusted forums",
+      type: "textarea"
+    },
+    {
+      label: "Short-term outcomes - 0–6 months",
+      desc: "Knowledge, attitudes, skills, access changes.",
+      key: "outcomes_short",
+      ph: "e.g., Awareness of services; trained facilitators; initial trust",
+      type: "textarea"
+    },
+    {
+      label: "Activities / strategies",
+      desc: "What you will do to trigger the short-term outcomes.",
+      key: "activities",
+      ph: "e.g., Story circles, peer facilitation, pilot micro-grants, outreach",
+      type: "textarea"
+    },
+    {
+      label: "Outputs (optional) - deliverables, participation counts",
+      key: "outputs",
+      ph: "e.g., 6 circles held; 120 attendees; 10 micro-grants awarded",
+      type: "textarea"
+    },
+    {
+      label: "Inputs / resources",
+      desc: "People, budget, tools, partnerships.",
+      key: "inputs",
+      ph: "e.g., 2 facilitators; $20k; space; data-sharing agreement",
+      type: "textarea"
+    },
+    {
+      label: "Indicators (how we'll know)",
+      desc: "Observable signs for the main outcomes or impact.",
+      key: "indicators",
+      ph: "e.g., % of residents who report belonging; attendance growth; MoUs signed",
+      type: "textarea"
+    },
+    {
+      label: "Data sources & cadence",
+      desc: "Where indicators come from and how often you’ll check.",
+      key: "data_plan",
+      ph: "e.g., Quarterly survey; sign-in sheets; network map every 6 months",
+      type: "textarea"
+    },
+    {
+      label: "Assumptions - why you think this will work",
+      desc: "Conditions you expect to hold true in the context.",
+      key: "assumptions",
+      ph: "e.g., Partners will share spaces; small grants spur participation",
+      type: "textarea"
+    },
+    {
+      label: "External factors / risks",
+      desc: "Contextual forces that could block change.",
+      key: "risks",
+      ph: "e.g., Policy shifts; leadership turnover; safety incidents",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundary conditions (optional)",
+      desc: "What is intentionally out of scope to stay focused.",
+      key: "non_goals",
+      ph: "e.g., We are not providing direct clinical services",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    impact,
+    partners,
+    outcomes_long,
+    outcomes_mid,
+    outcomes_short,
+    activities,
+    outputs,
+    inputs,
+    indicators,
+    data_plan,
+    assumptions,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => [
+    "Build a Theory of Change - backcasting from impact.",
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+
+    impact && `Impact:\n${impact}`,
+
+    partners && (
+      "Beneficiaries / boundary partners:\n" +
+      String(partners)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((x,i)=>`${i+1}. ${x}`).join("\n")
+    ),
+
+    outcomes_long  && `Long-term outcomes (3–5+ yrs):\n${outcomes_long}`,
+    outcomes_mid   && `Intermediate outcomes (6–24 mo):\n${outcomes_mid}`,
+    outcomes_short && `Short-term outcomes (0–6 mo):\n${outcomes_short}`,
+
+    activities && `Activities / strategies:\n${activities}`,
+    outputs    && `Outputs:\n${outputs}`,
+    inputs     && `Inputs / resources:\n${inputs}`,
+
+    // Logic chain
+    (activities || outcomes_short || outcomes_mid || outcomes_long || impact || assumptions) && [
+      "Logic chain (If-Then-Because):",
+      activities && `If we carry out: ${activities.replace(/\n+/g, "; ")}`,
+      outcomes_short && `Then in the short term we expect: ${outcomes_short.replace(/\n+/g, "; ")}`,
+      outcomes_mid && `Which enables: ${outcomes_mid.replace(/\n+/g, "; ")}`,
+      outcomes_long && `Contributing to: ${outcomes_long.replace(/\n+/g, "; ")}`,
+      impact && `Ultimately achieving impact: ${impact.replace(/\n+/g, "; ")}`,
+      assumptions && `Because (assumptions): ${assumptions.replace(/\n+/g, "; ")}`
+    ].filter(Boolean).join("\n"),
+
+    // Measurement
+    (indicators || data_plan) && [
+      "Indicators & measurement plan:",
+      indicators && `Indicators:\n${indicators}`,
+      data_plan && `Data sources & cadence:\n${data_plan}`
+    ].filter(Boolean).join("\n"),
+
+    risks && `External factors / risks:\n${risks}`,
+    non_goals && `Non-goals / boundary conditions:\n${non_goals}`,
+
+    "Output:",
+    "1) One-page ToC text with Impact, Outcomes, Activities, and Logic chain.",
+    "2) Minimal measurement plan - indicators mapped to outcomes.",
+    "3) Assumptions and risks called out for review.",
+
+    "Checklist:\n- [ ] Outcomes precede activities\n- [ ] If-Then-Because links are explicit\n- [ ] Boundary partners named\n- [ ] Indicators and data sources specified\n- [ ] Major assumptions and risks listed\n- [ ] Non-goals clarify scope"
+  ].filter(Boolean).join("\n"),
+  meta: {
+    search_text: "theory of change — backcasting causal logic community program planning outcomes indicators assumptions risks boundary partners mission grant measurement plan template"
+  }
+},
+
+{
+  id: "v2mom",
+  slug: "v2mom-vision-values-methods-obstacles-measures",
+  label: "V2MOM — Vision, Values, Methods, Obstacles, Measures",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "execution",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:goals",
+    "use:prioritize",
+    "use:vision",
+    "use:mission",
+     "use:values",
+     "use:purpose",
+    "use:decision-making",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "co-create a clear north star for a community or team",
+    "turn mission into an execution plan with owners",
+    "align stakeholders on what matters and how to decide",
+    "cascade priorities across circles/working groups",
+    "select a few measures that prove momentum",
+    "surface risks and agree on mitigations",
+      "make our team vision clear",
+  "set shared values before starting",
+  "turn ideas into a simple plan",
+  "align everyone on priorities",
+  "decide what to measure for progress",
+  "spot obstacles before they derail us",
+  "share one page plan with the team",
+  "create focus for the quarter",
+  "check if we’re staying true to vision",
+  "plan community goals together",
+  "make decisions with shared values in mind",
+  "break big vision into practical steps",
+  "agree on how to track success",
+  "create alignment across departments",
+  "simplify strategy into 5 parts",
+  "finding community purpose",
+  "finding vision",
+  "finding mission"
+  ],
+  boosters: [
+    "Write the Vision as a vivid future state that will be true by a specific date.",
+    "Treat Values as decision rules, not wall art; include 'This, not That' examples.",
+    "Limit Methods to 5–7 big rocks; attach owners and timeframes.",
+    "Balance Measures: include both leading (activities/behavior) and lagging (outcomes/impact).",
+    "Translate Obstacles into mitigations and explicit assumptions.",
+    "Review monthly; retire or replace Methods that no longer serve the Vision."
+  ],
+  definition: "A lightweight alignment framework that turns a shared north star (Vision) and decision rules (Values) into a small set of prioritized Methods, anticipated Obstacles, and clear Measures.",
+  help: "Complete each V2MOM section. Keep it on one page. Use Values to arbitrate tradeoffs. Convert Methods into backlog items or workstreams with owners.",
+  fields: [
+    {
+      label: "Title (initiative / community)",
+      key: "title",
+      ph: "e.g., Eastside Neighborhood Network 2026 Plan",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., Jan–Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      key: "owner",
+      ph: "e.g., Community Council Steering Group",
+      type: "text"
+    },
+    {
+      label: "Stakeholders",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 12,
+      ph: "e.g., Youth leaders; small business reps; city liaison; elders council",
+      type: "repeater"
+    },
+    {
+      label: "Vision (future state, specific date)",
+      desc: "What will be true if we succeed?",
+      key: "vision",
+      ph: "e.g., By Dec 2026, residents report a strong sense of belonging and co-run monthly forums...",
+      type: "textarea"
+    },
+    {
+      label: "Values (decision rules)",
+      desc: "Non-negotiables that guide choices. One per line; add brief 'this, not that' if helpful.",
+      key: "values",
+      ph: "e.g., Center the margins — prioritize first-time voices; Evidence over anecdotes; Open by default — private when sensitive",
+      type: "textarea"
+    },
+    {
+      label: "Methods (big rocks / strategies)",
+      desc: "5–7 prioritized methods. One per line; optionally add owner or timeframe.",
+      key: "methods",
+      ph: "e.g., Monthly Story Circles (Mia); Youth Micro-grants pilot (Q2, Dani); Partnership MoUs (Tom, Q1–Q3)",
+      type: "textarea"
+    },
+    {
+      label: "Obstacles (risks, dependencies, constraints)",
+      desc: "Anticipated blockers and how we’ll mitigate them.",
+      key: "obstacles",
+      ph: "e.g., Volunteer burnout → rotate facilitation; Space access → MoU with library; Safety concerns → code of conduct + training",
+      type: "textarea"
+    },
+    {
+      label: "Measures (leading & lagging)",
+      desc: "How we’ll know it’s working. One per line. Include target where possible.",
+      key: "measures",
+      ph: "e.g., Forum attendance +30% by Q3; % first-time speakers ≥25% monthly; Belonging index +0.5 by Dec; 6 signed MoUs by Q2",
+      type: "textarea"
+    },
+    {
+      label: "Baseline & data sources (optional)",
+      key: "data",
+      ph: "e.g., Current belonging index 3.1/5 (2025 survey); sign-in sheets; SenseMaker micro-narratives quarterly",
+      type: "textarea"
+    },
+    {
+      label: "Cadence & review",
+      desc: "How often we check progress and adapt.",
+      key: "cadence",
+      ph: "e.g., Monthly council review; quarterly community report-outs",
+      type: "text"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We do not provide clinical services; we do not endorse political candidates",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Relevant background, links, or constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    stakeholders,
+    vision,
+    values,
+    methods,
+    obstacles,
+    measures,
+    data,
+    cadence,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `V2MOM: ${title}`,
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Owner: ${owner}`,
+      stakeholders && ("Stakeholders:\n" + listify(stakeholders)),
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "—",
+      "VISION",
+      vision || "(add a vivid future-state statement with a date)",
+
+      "—",
+      "VALUES (decision rules)",
+      values ? listify(values) : "(add 3–7 values with brief definitions)",
+
+      "—",
+      "METHODS (big rocks)",
+      methods ? listify(methods) : "(list 5–7 prioritized methods with owners/timeframes)",
+
+      "—",
+      "OBSTACLES (with mitigations)",
+      obstacles ? listify(obstacles) : "(list major risks/constraints and mitigation ideas)",
+
+      "—",
+      "MEASURES (leading & lagging)",
+      measures ? listify(measures) : "(add 3–6 measurable indicators with targets)",
+
+      data && ["—", "BASELINE & DATA SOURCES", data].join("\n"),
+      cadence && ["—", "CADENCE & REVIEW", cadence].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Vision has a date and is testable",
+      "- [ ] Values resolve common tradeoffs (This/Not That)",
+      "- [ ] ≤7 Methods, each actionable and prioritized",
+      "- [ ] Obstacles have explicit mitigations",
+      "- [ ] Measures include both leading and lagging with targets",
+      "- [ ] Monthly review cadence is set"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "v2mom vision values methods obstacles measures one-page plan community alignment execution leading lagging metrics decision rules north star template"
+  }
+},
+
+{
+  id: "community_okrs",
+  slug: "okrs-community",
+  label: "OKRs (Community-Adapted) — Objectives & Key Results",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "measurement",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:goals",
+    "use:evaluation",
+    "use:purpose",
+    "use:mission",
+    "use:objective",
+    "use:prioritize",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "translate mission into measurable progress",
+    "align circles/working groups around shared outcomes",
+    "publish a transparent scorecard for the community",
+    "separate inspiring objectives from measurable results",
+    "focus volunteer energy on the few things that matter",
+      "set clear goals for our community project",
+  "show progress in a simple scorecard",
+  "align volunteers on what matters most",
+  "separate big vision from measurable steps",
+  "track if our efforts are making impact",
+  "share transparent progress with members",
+  "decide where to put limited energy",
+  "measure both growth and inclusion",
+  "create accountability without micromanaging",
+  "review goals together every cycle",
+  "help newcomers see community priorities",
+  "set stretch goals while staying realistic",
+  "make mission progress visible to funders",
+  "focus community work on outcomes not tasks",
+  "balance impact goals with learning goals",
+  "finding community goals",
+  "aligning on mission",
+  "finding community purpose"
+  ],
+  boosters: [
+    "Objectives are qualitative, memorable, time-bound, and owned; avoid task words.",
+    "Attach 2–4 Key Results per Objective; each KR is an outcome metric with target, baseline, and data source.",
+    "Balance leading (behavior/activity) and lagging (outcome/impact) KRs.",
+    "Mark Objectives as COMMIT or STRETCH; average KR score of ~0.7 at cycle end is healthy.",
+    "Include at least one equity/representation KR and one learning KR.",
+    "Review biweekly; retire KRs that drift into tasks and replace with outcome measures."
+  ],
+  definition: "OKRs convert a community’s mission into a small set of qualitative Objectives and a handful of quantitative Key Results that show real progress.",
+  help: "Add a short mission, cycle dates, and owner(s). List COMMIT and STRETCH Objectives. For Key Results, use one line per KR in the format “O#: KR label — target — baseline — data source — cadence.” Example: “O2: First-time speakers ≥25% — target 25% — baseline 12% — sign-in sheets — monthly.”",
+  fields: [
+    {
+      label: "Mission (one line)",
+      key: "mission",
+      ph: "e.g., Build belonging and shared power in Eastside neighborhoods",
+      type: "text"
+    },
+    {
+      label: "Cycle / time horizon",
+      key: "horizon",
+      ph: "e.g., Q1 2026 (Jan–Mar)",
+      type: "text"
+    },
+    {
+      label: "Owner(s)",
+      key: "owner",
+      ph: "e.g., Community Council Steering Group",
+      type: "text"
+    },
+    {
+      label: "Stakeholders",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 12,
+      ph: "e.g., Youth leaders; small business reps; city liaison; elders council",
+      type: "repeater"
+    },
+    {
+      label: "Objectives — COMMIT (qualitative, owned)",
+      desc: "One per line; use O1, O2… prefixes if helpful.",
+      key: "objectives_commit",
+      ph: "e.g., O1: Make monthly forums welcoming and predictable\nO2: Grow youth leadership in decision spaces",
+      type: "textarea"
+    },
+    {
+      label: "Objectives — STRETCH (ambitious, nice-to-have)",
+      desc: "One per line; optional.",
+      key: "objectives_stretch",
+      ph: "e.g., O3: Secure multi-year space partnership",
+      type: "textarea"
+    },
+    {
+      label: "Key Results (format: O#: label — target — baseline — data source — cadence)",
+      desc: "2–4 per objective. Outcome metrics, not tasks.",
+      key: "key_results",
+      ph: "e.g., O1: Forum attendance +30% — target +30% — baseline avg 45 — sign-in sheets — monthly\nO1: First-time speakers ≥25% — target 25% — baseline 12% — sign-in sheets — monthly\nO2: 12 trained youth facilitators — target 12 — baseline 4 — training roster — end of Q1",
+      type: "textarea"
+    },
+    {
+      label: "Health metrics (guardrails)",
+      desc: "Quality, equity, sustainability signals.",
+      key: "health",
+      ph: "e.g., Volunteer burnout ≤10% self-reported; safety incidents = 0; budget variance ≤5%",
+      type: "textarea"
+    },
+    {
+      label: "Initiatives / major work (optional)",
+      desc: "Projects that may drive KRs. Not scored.",
+      key: "initiatives",
+      ph: "e.g., Story Circles program; Youth micro-grants pilot; Library MoU",
+      type: "textarea"
+    },
+    {
+      label: "Cadence & review",
+      key: "cadence",
+      ph: "e.g., Biweekly check-ins; public scorecard update monthly; end-cycle retrospective",
+      type: "text"
+    },
+    {
+      label: "Risks & assumptions",
+      key: "risks",
+      ph: "e.g., Space access depends on MoU; assume stable volunteer core",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We don’t endorse political candidates; no clinical services",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    mission,
+    horizon,
+    owner,
+    stakeholders,
+    objectives_commit,
+    objectives_stretch,
+    key_results,
+    health,
+    initiatives,
+    cadence,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      mission && `Mission: ${mission}`,
+      horizon && `Cycle: ${horizon}`,
+      owner && `Owner(s): ${owner}`,
+      stakeholders && ("Stakeholders:\n" + listify(stakeholders)),
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "—",
+      "OBJECTIVES — COMMIT",
+      objectives_commit ? listify(objectives_commit) : "(add 1–3 commit objectives)",
+
+      objectives_stretch && [
+        "—",
+        "OBJECTIVES — STRETCH",
+        listify(objectives_stretch)
+      ].join("\n"),
+
+      "—",
+      "KEY RESULTS",
+      key_results ? listify(key_results) : "(add 2–4 KRs per objective in the format: O#: label — target — baseline — data source — cadence)",
+
+      health && ["—", "HEALTH METRICS", listify(health)].join("\n"),
+      initiatives && ["—", "INITIATIVES (not scored)", listify(initiatives)].join("\n"),
+      cadence && ["—", "CADENCE & REVIEW", cadence].join("\n"),
+      risks && ["—", "RISKS & ASSUMPTIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Scoring guidance:",
+      "- Score each KR 0.0–1.0 at check-ins; average by Objective.",
+      "- Healthy end-of-cycle average ≈ 0.6–0.8; 1.0 should be rare.",
+      "- Publish a simple scorecard; discuss learning, not just numbers.",
+
+      "Checklist:",
+      "- [ ] Objectives are qualitative and inspiring",
+      "- [ ] 2–4 measurable KRs per Objective with targets and data sources",
+      "- [ ] At least one equity/representation KR",
+      "- [ ] Cadence and owners are explicit",
+      "- [ ] Public scorecard rhythm is set"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "okrs community adapted objectives key results commit stretch outcomes equity learning cadence public scorecard measurement template"
+  }
+},
+
+{
+  id: "outcome_mapping",
+  slug: "outcome-mapping",
+  label: "Outcome Mapping — Boundary Partners & Behavior Change",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "measurement",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:evaluation",
+    "use:purpose",
+    "use:community",
+    "use:goals",
+    "use:process-improvement",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "focus a program on partner behavior change, not just deliverables",
+    "co-create progress markers with boundary partners",
+    "separate spheres of control, influence, and interest",
+    "design light monitoring (journals) for adaptive learning",
+    "clarify how strategies support partner change",
+      "map who we’re really trying to influence",
+  "show how our work affects partner behavior",
+  "separate what we control vs what we influence",
+  "set shared markers of progress with partners",
+  "track change without heavy reporting",
+  "make partner roles and responsibilities clear",
+  "connect daily activities to bigger behavior shifts",
+  "design flexible monitoring that adapts as we learn",
+  "clarify our contribution vs others’ contribution",
+  "align strategies with long-term partner outcomes",
+  "simplify evaluation into stories and journals",
+  "focus on sustainable behavior, not just outputs",
+  "plan with partners instead of for them",
+  "help stakeholders see their part in change",
+  "finding community purpose",
+  "community change",
+  "working with change"
+  ],
+  boosters: [
+    "Name real boundary partners (specific groups or organizations), not generic 'the public.'",
+    "Write progress markers as observable behaviors using verbs (attend, initiate, co-facilitate).",
+    "Balance 'expect to see,' 'like to see,' and 'love to see' markers.",
+    "Pair internal (things we do) and external (with/for partners) strategies.",
+    "Log a brief Outcome Journal entry whenever a marker shows up.",
+    "Review markers quarterly; retire achieved ones, add emergent ones."
+  ],
+  definition: "Outcome Mapping centers the people and organizations you seek to influence (boundary partners) and defines change as their behaviors, relationships, actions, and practices—tracked through progressive 'expect/like/love to see' markers.",
+  help: "Complete Vision, Mission, Boundary Partners, Progress Markers, Strategies, and Monitoring. Keep markers observable and partner-owned. Use journals to learn, not to punish.",
+  fields: [
+    {
+      label: "Title (initiative / community)",
+      key: "title",
+      ph: "e.g., Eastside Belonging Initiative",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., 2026",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      key: "owner",
+      ph: "e.g., Community Council OM Team",
+      type: "text"
+    },
+    {
+      label: "Vision (ultimate improvement)",
+      desc: "High-level human/social/ecological wellbeing you care about.",
+      key: "vision",
+      ph: "e.g., Eastside residents experience durable belonging and shared power",
+      type: "textarea"
+    },
+    {
+      label: "Mission (our contribution to the Vision)",
+      desc: "How your program will support partner change.",
+      key: "mission",
+      ph: "e.g., We cultivate forums, training, and micro-grants that enable resident-led action",
+      type: "textarea"
+    },
+    {
+      label: "Boundary partners",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 12,
+      ph: "e.g., Youth leadership circle; Library branch team; Small business alliance",
+      type: "repeater"
+    },
+    {
+      label: "Progress markers — EXPECT to see",
+      desc: "Early signals partners are engaging.",
+      key: "pm_expect",
+      ph: "e.g., Attend forums; share meeting notes; ask clarifying questions",
+      type: "textarea"
+    },
+    {
+      label: "Progress markers — LIKE to see",
+      desc: "Active participation and initial initiative-taking.",
+      key: "pm_like",
+      ph: "e.g., Co-facilitate sessions; recruit peers; propose agenda items",
+      type: "textarea"
+    },
+    {
+      label: "Progress markers — LOVE to see",
+      desc: "Ownership, leadership, new norms spreading.",
+      key: "pm_love",
+      ph: "e.g., Launch independent working groups; negotiate MoUs; mentor new leaders",
+      type: "textarea"
+    },
+    {
+      label: "Strategies — INTERNAL (within our sphere of control)",
+      desc: "Capacity, tools, routines we run.",
+      key: "str_internal",
+      ph: "e.g., Train facilitators; publish open data; offer micro-grants; set code-of-conduct",
+      type: "textarea"
+    },
+    {
+      label: "Strategies — EXTERNAL (with/for partners)",
+      desc: "Engagements that directly support partner behavior change.",
+      key: "str_external",
+      ph: "e.g., Story circles with elders; youth-led outreach; monthly co-design clinics",
+      type: "textarea"
+    },
+    {
+      label: "Spheres (Control • Influence • Interest)",
+      desc: "Clarify what you control (activities), influence (partner behaviors), and care about (long-term changes).",
+      key: "spheres",
+      ph: "Control: our trainings, grants\nInfluence: partners co-facilitate, sign MoUs\nInterest: neighborhood belonging increases",
+      type: "textarea"
+    },
+    {
+      label: "Monitoring — Journals & cadence",
+      desc: "Which journals you’ll keep and how often.",
+      key: "monitoring",
+      ph: "Outcome Journal (monthly); Strategy Journal (biweekly); Performance Journal (quarterly); Learning sync (monthly)",
+      type: "textarea"
+    },
+    {
+      label: "Indicators & data sources (lightweight)",
+      desc: "Optional quant signals to pair with journals.",
+      key: "indicators",
+      ph: "e.g., % first-time speakers; attendance trend; # independent meetings initiated",
+      type: "textarea"
+    },
+    {
+      label: "Assumptions & external factors",
+      key: "assumptions",
+      ph: "e.g., Partners have stable access to space; city liaison remains supportive",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Volunteer burnout → rotate roles; safety concerns → trauma-informed facilitation",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We don’t endorse candidates; we don’t provide clinical services",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    vision,
+    mission,
+    partners,
+    pm_expect,
+    pm_like,
+    pm_love,
+    str_internal,
+    str_external,
+    spheres,
+    monitoring,
+    indicators,
+    assumptions,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `Outcome Mapping: ${title}`,
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Owner: ${owner}`,
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "—",
+      "VISION",
+      vision || "(add the ultimate improvement you care about)",
+
+      "—",
+      "MISSION (our contribution to the Vision)",
+      mission || "(how we will support partner behavior change)",
+
+      partners && [
+        "—",
+        "BOUNDARY PARTNERS",
+        listify(partners)
+      ].join("\n"),
+
+      "—",
+      "PROGRESS MARKERS",
+      (pm_expect || pm_like || pm_love)
+        ? [
+            "Expect to see:",
+            pm_expect ? listify(pm_expect) : "(add early engagement behaviors)",
+            "Like to see:",
+            pm_like ? listify(pm_like) : "(add active participation behaviors)",
+            "Love to see:",
+            pm_love ? listify(pm_love) : "(add ownership/leadership behaviors)"
+          ].join("\n")
+        : "(add expect/like/love to see markers)",
+
+      "—",
+      "STRATEGIES",
+      "Internal (within control):",
+      str_internal ? listify(str_internal) : "(add internal strategies)",
+      "External (with/for partners):",
+      str_external ? listify(str_external) : "(add external strategies)",
+
+      spheres && ["—", "SPHERES (Control • Influence • Interest)", spheres].join("\n"),
+
+      monitoring && ["—", "MONITORING — JOURNALS & CADENCE", monitoring].join("\n"),
+      indicators && ["—", "INDICATORS & DATA SOURCES (optional)", listify(indicators)].join("\n"),
+
+      assumptions && ["—", "ASSUMPTIONS & EXTERNAL FACTORS", assumptions].join("\n"),
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Boundary partners named (specific, not generic)",
+      "- [ ] Markers observable and partner-owned",
+      "- [ ] Expect/Like/Love balance shows progression",
+      "- [ ] Strategies link to markers (internal & external)",
+      "- [ ] Journals and cadence are lightweight and real",
+      "- [ ] Spheres clarify what we control vs influence vs care about"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "outcome mapping boundary partners progress markers expect like love behavior change spheres of control influence interest journals monitoring template"
+  }
+},
+
+{
+  id: "collective_impact",
+  slug: "collective-impact-common-agenda-shared-measurement-backbone",
+  label: "Collective Impact — Common Agenda, Shared Measurement, Backbone",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "community",
+    "governance"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:alignment",
+    "use:purpose",
+    "use:evaluation",
+    "use:coordination",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "align multiple organizations around a common purpose",
+    "build a shared measurement system with public accountability",
+    "coordinate mutually reinforcing activities across partners",
+    "stand up a backbone for facilitation, data, and communications",
+    "establish continuous communication rhythms and governance",
+      "get different groups working toward the same goal",
+  "make progress visible across all partners",
+  "share data in one common system",
+  "coordinate activities so efforts reinforce each other",
+  "set up a neutral backbone team to keep things moving",
+  "create regular check-ins and updates between partners",
+  "align funders and nonprofits on shared outcomes",
+  "avoid duplication of work across organizations",
+  "show community progress in a transparent way",
+  "build trust through consistent communication",
+  "decide together how to measure success",
+  "design governance that includes all voices",
+  "make it easier for partners to collaborate",
+  "clarify roles so partners don’t work at cross-purposes",
+   "finding purpose",
+    "clarify mission, purpose, and vision",
+    "creating a shared movement and vision"
+  ],
+  boosters: [
+    "Write the Common Agenda as a single page: problem, affected populations/places, desired long-term outcome, principles, and a brief theory of change.",
+    "Keep 5–8 shared measures total; mix leading (behavioral) and lagging (outcome/impact) indicators.",
+    "Publish a simple scorecard quarterly; make data useful to partners, not just funders.",
+    "Map who does what where to expose overlaps and gaps; reinforce rather than duplicate.",
+    "Backbone ≠ boss: facilitate, convene, coordinate, and make evidence legible.",
+    "Invest early in communication rituals: monthly WG syncs, quarterly summits, open notes."
+  ],
+  definition: "Collective Impact aligns multiple organizations and community groups around a Common Agenda, uses a Shared Measurement system, coordinates Mutually Reinforcing Activities, maintains Continuous Communication, and relies on a Backbone organization for facilitation, data, and coordination.",
+  help: "Complete the Common Agenda, define shared indicators with baselines/targets, list partner activities that reinforce each other, specify the backbone’s roles, and set steady communication cadences and governance.",
+  fields: [
+    {
+      label: "Initiative title",
+      key: "title",
+      ph: "e.g., Eastside Belonging Collective",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., 2025–2028",
+      type: "text"
+    },
+    {
+      label: "Backbone organization (owner)",
+      key: "owner",
+      ph: "e.g., Community Council (Backbone)",
+      type: "text"
+    },
+    {
+      label: "Participating partners",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 24,
+      ph: "e.g., Library; Youth Coalition; Small Biz Assoc.; City Liaison; Elders Circle",
+      type: "repeater"
+    },
+
+    // Common Agenda
+    {
+      label: "Common Agenda — Problem statement",
+      key: "ca_problem",
+      ph: "e.g., Residents report low belonging and limited cross-neighborhood ties...",
+      type: "textarea"
+    },
+    {
+      label: "Common Agenda — Desired long-term outcome",
+      key: "ca_outcome",
+      ph: "e.g., By 2028, belonging index ≥4.0/5 across all neighborhoods with reduced disparities",
+      type: "textarea"
+    },
+    {
+      label: "Common Agenda — Target populations & places",
+      key: "ca_targets",
+      ph: "e.g., Youth (14–24), recent immigrants; Eastside & Riverbend corridors",
+      type: "textarea"
+    },
+    {
+      label: "Common Agenda — Principles / decision rules",
+      key: "ca_principles",
+      ph: "e.g., Center the margins; Evidence over anecdotes; Open by default; Trauma-informed",
+      type: "textarea"
+    },
+    {
+      label: "Common Agenda — Theory of change (brief)",
+      key: "ca_toc",
+      ph: "e.g., If we convene monthly forums, train facilitators, and fund micro-grants...",
+      type: "textarea"
+    },
+
+    // Shared Measurement
+    {
+      label: "Shared measures (one per line: label — baseline — target — data source — cadence — owner)",
+      key: "measures",
+      ph: "e.g., Belonging index — 3.1 — 3.7 by Dec 2026 — annual survey — annual — Council\n% first-time speakers — 12% — ≥25% monthly — sign-in sheets — monthly — Forum WG",
+      type: "textarea"
+    },
+    {
+      label: "Data governance & equity (access, privacy, disaggregation)",
+      key: "data_governance",
+      ph: "e.g., Disaggregate by neighborhood, age, language; data-sharing MoU; open quarterly briefs",
+      type: "textarea"
+    },
+
+    // Mutually Reinforcing Activities
+    {
+      label: "Mutually reinforcing activities (one per line: partner — activity — contribution — dependencies)",
+      key: "activities",
+      ph: "e.g., Library — host monthly forums — space & outreach — MoU signed\nYouth Coalition — recruit facilitators — leadership pipeline — micro-grant fund",
+      type: "textarea"
+    },
+    {
+      label: "Geography / coverage map notes (optional)",
+      key: "coverage",
+      ph: "e.g., Eastside: Library; Riverbend: Small Biz Assoc.; gaps: North End",
+      type: "textarea"
+    },
+
+    // Continuous Communication
+    {
+      label: "Continuous communication cadence & channels",
+      key: "comms",
+      ph: "e.g., WG syncs monthly; Steering quarterly; public newsletter quarterly; Slack for day-to-day",
+      type: "textarea"
+    },
+
+    // Backbone & Governance
+    {
+      label: "Backbone roles (select or list)",
+      key: "backbone_roles",
+      ph: "e.g., Convening/facilitation; Data & evaluation; Project management; Communications; Resource mobilization",
+      type: "textarea"
+    },
+    {
+      label: "Governance structure",
+      key: "governance",
+      ph: "e.g., Steering Committee; Working Groups (Forums, Youth, Data); Community Advisory Circle",
+      type: "textarea"
+    },
+
+    // Resourcing & Risks
+    {
+      label: "Resources & budget (high-level)",
+      key: "resources",
+      ph: "e.g., $200k/year pooled; 1 FTE backbone; in-kind spaces; volunteer stipends",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Volunteer burnout → rotate facilitation; Space loss → backup MoU; Data pushback → privacy-first briefs",
+      type: "textarea"
+    },
+    {
+      label: "Assumptions",
+      key: "assumptions",
+      ph: "e.g., Partners honor MoUs; city liaison remains supportive; survey remains funded",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., Not endorsing candidates; no clinical services",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    partners,
+    ca_problem,
+    ca_outcome,
+    ca_targets,
+    ca_principles,
+    ca_toc,
+    measures,
+    data_governance,
+    activities,
+    coverage,
+    comms,
+    backbone_roles,
+    governance,
+    resources,
+    risks,
+    assumptions,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `Collective Impact: ${title}`,
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Backbone: ${owner}`,
+      partners && ("Partners:\n" + listify(partners)),
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "—",
+      "COMMON AGENDA",
+      ca_problem && `Problem: ${ca_problem}`,
+      ca_outcome && `Desired long-term outcome: ${ca_outcome}`,
+      ca_targets && `Target populations & places:\n${ca_targets}`,
+      ca_principles && `Principles / decision rules:\n${ca_principles}`,
+      ca_toc && `Theory of change (brief):\n${ca_toc}`,
+
+      "—",
+      "SHARED MEASUREMENT",
+      measures ? listify(measures) : "(add 5–8 shared measures: label — baseline — target — data source — cadence — owner)",
+      data_governance && `Data governance & equity:\n${data_governance}`,
+
+      "—",
+      "MUTUALLY REINFORCING ACTIVITIES",
+      activities ? listify(activities) : "(list partner — activity — contribution — dependencies)",
+      coverage && `Geography / coverage notes:\n${coverage}`,
+
+      "—",
+      "CONTINUOUS COMMUNICATION",
+      comms || "(add cadence and channels)",
+
+      "—",
+      "BACKBONE & GOVERNANCE",
+      backbone_roles && `Backbone roles:\n${backbone_roles}`,
+      governance && `Governance structure:\n${governance}`,
+
+      "—",
+      "RESOURCING, RISKS, ASSUMPTIONS",
+      resources && `Resources & budget:\n${resources}`,
+      risks && `Risks & mitigations:\n${risks}`,
+      assumptions && `Assumptions:\n${assumptions}`,
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] One-page Common Agenda agreed by all partners",
+      "- [ ] 5–8 shared measures with baselines/targets and owners",
+      "- [ ] Visible scorecard and regular data cadence",
+      "- [ ] Mutually reinforcing activities mapped with gaps/overlaps",
+      "- [ ] Backbone roles funded and explicit",
+      "- [ ] Continuous communication rituals scheduled",
+      "- [ ] Governance defined with community voice represented"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "collective impact common agenda shared measurement backbone mutually reinforcing activities continuous communication governance equity scorecard template"
+  }
+},
+
+{
+  id: "north_star_metric",
+  slug: "north-star-metric-and-narrative",
+  label: "North Star Metric & Narrative",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "measurement",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:goals",
+    "use:evaluation",
+    "use:purpose",
+    "use:metric",
+     "use:mission",
+     "use:vision",
+    "use:prioritize",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "choose one guiding metric that represents community value",
+    "align workstreams on what actually moves the mission",
+    "pair a single metric with a story that explains why it matters",
+    "prevent Goodhart’s Law by defining guardrails and anti-metrics",
+    "publish a clear baseline, target, and cadence",
+      "pick one number that shows real progress",
+  "keep the team focused on what matters most",
+  "explain our main goal in one story and one metric",
+  "stop chasing too many KPIs at once",
+  "share a simple success measure with funders",
+  "help volunteers see the bigger picture",
+  "check if daily work connects to the mission",
+  "set a baseline and track improvement",
+  "create alignment across different projects",
+  "make our goal easy to remember and repeat",
+  "avoid vanity metrics that look good but mean little",
+  "combine data with narrative to inspire people",
+  "what is my north star",
+  "finding a north star",
+  "finding my long term vision",
+  "aiming for the long term",
+  "long term goals"
+  ],
+  boosters: [
+    "Name one metric. If you have two, you don’t have a North Star.",
+    "Write a plain-English definition and the exact formula, including units and inclusion rules.",
+    "Disaggregate by equity-relevant segments; the worst-off group should visibly improve.",
+    "List 3–7 leading indicators that causally move the NSM; retire those that don’t correlate.",
+    "Add guardrail metrics (quality, equity, sustainability) and at least one anti-metric.",
+    "Tell the narrative: why this metric matters to people, not just dashboards."
+  ],
+  definition: "A single, outcome-oriented metric that captures the core value you create for the community, paired with a short narrative explaining why it matters and how your work moves it.",
+  help: "Fill the metric, formula, scope, baseline, target, owner, cadence, segments, leading indicators, guardrails, and the narrative. Keep the NSM human-centered and measurable.",
+  fields: [
+    {
+      label: "Title (initiative / community)",
+      key: "title",
+      ph: "e.g., Eastside Belonging Initiative",
+      type: "text"
+    },
+    {
+      label: "North Star Metric (name)",
+      key: "nsm_name",
+      ph: "e.g., Belonging Index (avg 1–5)",
+      type: "text"
+    },
+    {
+      label: "Plain-English definition",
+      key: "nsm_def",
+      ph: "e.g., Average self-reported sense of belonging among residents (1–5 scale)",
+      type: "textarea"
+    },
+    {
+      label: "Formula (exact math, units, inclusion/exclusion rules)",
+      key: "nsm_formula",
+      ph: "e.g., mean(survey_q3_belonging) among residents 14+ who attended ≥1 forum in last 12 mo; exclude incomplete responses",
+      type: "textarea"
+    },
+    {
+      label: "Directionality",
+      key: "direction",
+      ph: "e.g., Higher is better",
+      type: "text"
+    },
+    {
+      label: "Scope (what counts / time window)",
+      key: "scope",
+      ph: "e.g., All neighborhoods; rolling 12 months; resident-facing activities only",
+      type: "textarea"
+    },
+    {
+      label: "Baseline",
+      key: "baseline",
+      ph: "e.g., 3.1 (Dec 2025)",
+      type: "text"
+    },
+    {
+      label: "Target",
+      key: "target",
+      ph: "e.g., 3.7 by Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Owner",
+      key: "owner",
+      ph: "e.g., Community Council Steering Group",
+      type: "text"
+    },
+    {
+      label: "Cadence (update rhythm)",
+      key: "cadence",
+      ph: "e.g., Quarterly survey; monthly scorecard update",
+      type: "text"
+    },
+    {
+      label: "Data source(s)",
+      key: "data_sources",
+      ph: "e.g., Annual resident survey; forum sign-in; SenseMaker micro-narratives",
+      type: "textarea"
+    },
+    {
+      label: "Segments / disaggregation",
+      desc: "Equity-relevant cuts you’ll monitor.",
+      key: "segments",
+      ph: "e.g., Neighborhood, age, language, disability, race/ethnicity",
+      type: "textarea"
+    },
+    {
+      label: "Leading indicators (inputs that move the NSM)",
+      desc: "3–7 causal drivers.",
+      key: "leading_indicators",
+      ph: "e.g., % first-time speakers; # independent meetings started; facilitator:participant ratio",
+      type: "textarea"
+    },
+    {
+      label: "Guardrail metrics (quality, equity, sustainability)",
+      key: "guardrails",
+      ph: "e.g., Safety incidents = 0; burnout ≤10%; gap between highest/lowest subgroup ≤0.5",
+      type: "textarea"
+    },
+    {
+      label: "Anti-metrics (don’t optimize for these)",
+      key: "antimetrics",
+      ph: "e.g., Total attendance without parity; vanity social followers",
+      type: "textarea"
+    },
+    {
+      label: "Narrative — why this metric matters",
+      desc: "Short story linking the metric to lived experience.",
+      key: "narrative",
+      ph: "e.g., When residents feel they belong, they show up for each other...",
+      type: "textarea"
+    },
+    {
+      label: "Causal chain — this metric moves because...",
+      key: "causal_chain",
+      ph: "e.g., If we train facilitators → more first-time speakers → richer ties → higher belonging",
+      type: "textarea"
+    },
+    {
+      label: "Assumptions",
+      key: "assumptions",
+      ph: "e.g., Survey is accessible; translation quality is high; safe spaces maintained",
+      type: "textarea"
+    },
+    {
+      label: "Risks & failure modes",
+      key: "risks",
+      ph: "e.g., Optimizing attendance crowds out marginalized voices; sampling bias",
+      type: "textarea"
+    },
+    {
+      label: "Related secondary metrics (optional)",
+      key: "secondary_metrics",
+      ph: "e.g., Network density; repeat attendance; MoUs signed",
+      type: "textarea"
+    },
+    {
+      label: "Dashboard / doc link (optional)",
+      key: "link",
+      ph: "URL",
+      type: "text"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    nsm_name,
+    nsm_def,
+    nsm_formula,
+    direction,
+    scope,
+    baseline,
+    target,
+    owner,
+    cadence,
+    data_sources,
+    segments,
+    leading_indicators,
+    guardrails,
+    antimetrics,
+    narrative,
+    causal_chain,
+    assumptions,
+    risks,
+    secondary_metrics,
+    link,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `North Star Metric & Narrative: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "NORTH STAR METRIC",
+      nsm_name && `Name: ${nsm_name}`,
+      nsm_def && `Definition: ${nsm_def}`,
+      nsm_formula && `Formula: ${nsm_formula}`,
+      direction && `Directionality: ${direction}`,
+      scope && `Scope: ${scope}`,
+      baseline && `Baseline: ${baseline}`,
+      target && `Target: ${target}`,
+      owner && `Owner: ${owner}`,
+      cadence && `Cadence: ${cadence}`,
+      data_sources && ["Data sources:", listify(data_sources)].join("\n"),
+      segments && ["Segments / disaggregation:", listify(segments)].join("\n"),
+
+      "—",
+      "LEADING INDICATORS (drivers)",
+      leading_indicators ? listify(leading_indicators) : "(add 3–7 drivers that causally move the NSM)",
+
+      guardrails && ["—", "GUARDRAIL METRICS", listify(guardrails)].join("\n"),
+      antimetrics && ["—", "ANTI-METRICS (avoid optimizing)", listify(antimetrics)].join("\n"),
+
+      "—",
+      "NARRATIVE — WHY THIS MATTERS",
+      narrative || "(tell a short story linking the metric to lived experience and mission)",
+
+      causal_chain && ["—", "CAUSAL CHAIN — THIS METRIC MOVES BECAUSE...", causal_chain].join("\n"),
+
+      assumptions && ["—", "ASSUMPTIONS", listify(assumptions)].join("\n"),
+      risks && ["—", "RISKS & FAILURE MODES", listify(risks)].join("\n"),
+      secondary_metrics && ["—", "RELATED SECONDARY METRICS", listify(secondary_metrics)].join("\n"),
+      link && `Dashboard: ${link}`,
+
+      "—",
+      "Checklist:",
+      "- [ ] Exactly one NSM with clear formula and units",
+      "- [ ] Baseline, target, cadence, and owner are explicit",
+      "- [ ] Disaggregated segments tracked for equity",
+      "- [ ] 3–7 leading indicators with plausible causal links",
+      "- [ ] Guardrails and anti-metrics prevent perverse incentives",
+      "- [ ] Narrative ties the metric to real community value"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "north star metric narrative single guiding metric causal chain leading indicators guardrails equity segments baseline target formula community template"
+  }
+},
+
+{
+  id: "systems_mapping_kumu",
+  slug: "kumu-systems-mapping",
+  label: "Kumu / Systems Mapping - Actors, Flows, Feedbacks",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "analysis-frameworks",
+    "systems",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:analysis",
+    "use:mapping",
+    "use:purpose",
+    "use:alignment",
+    "use:visualize",
+    "use:decision-making",
+    "phase:explore",
+    "phase:define",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "visualize a community within its living system",
+    "map actors, resources, incentives, and information flows",
+    "identify feedback loops and delays that drive behavior",
+    "find leverage points that move the purpose-aligned outcome",
+    "align partners on boundaries, roles, and interventions",
+     "see the whole system at a glance",
+  "map who’s connected to who",
+  "spot gaps and overlaps in the network",
+  "understand how resources flow",
+  "find where small changes could have big effects",
+  "show relationships between problems and solutions",
+  "make invisible dynamics visible",
+  "clarify roles across organizations",
+  "find bottlenecks or weak links",
+  "tell the story of a complex system visually",
+  "align different groups on the same picture",
+  "identify unintended consequences early",
+  "use a map to plan better interventions",
+  "simplify complexity for stakeholders",
+  "help me visualize a purpose",
+  "finding purpose"
+  ],
+  boosters: [
+    "Write a single focal question to keep the map honest.",
+    "Define the system boundary first; list what is out of scope.",
+    "Mark link polarity (+ increases, - decreases) and note delays.",
+    "Separate stocks (levels) from flows (rates) when possible.",
+    "Name common archetypes you spot (limits to growth, fixes that fail, tragedy of the commons).",
+    "Close with 3 leverage bets and what you will measure."
+  ],
+  definition: "A method-agnostic way to visualize a purpose within a living system by mapping actors, stocks and flows, causal links, feedback loops, and delays to reveal leverage points.",
+  help: "Fill in the focal question, boundary, actors, relationships, stocks/flows, loops, and leverage points. Use simple link syntax: FROM -> TO : label | polarity(+/-) | strength(1-5) | delay(y/n). Add a Kumu map link if you publish online.",
+  fields: [
+    {
+      label: "Title (initiative / community)",
+      key: "title",
+      ph: "e.g., Eastside Belonging System Map",
+      type: "text"
+    },
+    {
+      label: "Focal question",
+      key: "question",
+      ph: "e.g., What most increases resident belonging across neighborhoods?",
+      type: "text"
+    },
+    {
+      label: "System boundary",
+      desc: "What is in scope and what is out of scope.",
+      key: "boundary",
+      ph: "In scope: resident-led forums, public spaces, local orgs. Out of scope: national policy.",
+      type: "textarea"
+    },
+    {
+      label: "Purpose / desired outcome",
+      key: "purpose",
+      ph: "e.g., Higher sense of belonging with reduced disparities",
+      type: "text"
+    },
+    {
+      label: "Actors / nodes",
+      autofill: "persona->inline",
+      itemLabel: "actor",
+      itemType: "typeahead",
+      key: "actors",
+      max: 40,
+      ph: "e.g., Youth leaders; Library; Small businesses; Elders circle; City liaison; Newcomer groups",
+      type: "repeater"
+    },
+    {
+      label: "Stocks (levels) - optional",
+      desc: "Accumulate over time.",
+      key: "stocks",
+      ph: "e.g., Social capital; trained facilitators; trust; available spaces",
+      type: "textarea"
+    },
+    {
+      label: "Flows (rates) - optional",
+      desc: "Increase or decrease stocks.",
+      key: "flows",
+      ph: "e.g., Training rate; outreach rate; grant disbursement",
+      type: "textarea"
+    },
+    {
+      label: "Relationships / causal links (one per line)",
+      desc: "Format: FROM -> TO : label | polarity(+/-) | strength(1-5) | delay(y/n)",
+      key: "links",
+      ph: "e.g., Trained facilitators -> First-time speakers : coaching | + | 4 | y\nFirst-time speakers -> Belonging index : voice matters | + | 5 | n\nSafety incidents -> Forum attendance : fear | - | 3 | n",
+      type: "textarea"
+    },
+    {
+      label: "Feedback loops - optional",
+      desc: "Name loops and note type (reinforcing R or balancing B).",
+      key: "loops",
+      ph: "e.g., R1 Participation flywheel; B1 Burnout brake",
+      type: "textarea"
+    },
+    {
+      label: "Delays and friction - optional",
+      key: "delays",
+      ph: "e.g., Trust builds slowly; grant cycles lag impact by 6 months",
+      type: "textarea"
+    },
+    {
+      label: "Archetypes observed - optional",
+      desc: "Classic system patterns you recognize.",
+      key: "archetypes",
+      ph: "e.g., Limits to growth (space capacity); Shifting the burden (over-reliance on a few leaders)",
+      type: "textarea"
+    },
+    {
+      label: "Leverage points (3 to 7)",
+      desc: "Interventions with plausible high system impact.",
+      key: "leverage",
+      ph: "e.g., Train peer facilitators; micro-grants for independent meetups; public space MoUs",
+      type: "textarea"
+    },
+    {
+      label: "Candidate interventions",
+      desc: "Projects or policies to test at the leverage points.",
+      key: "interventions",
+      ph: "e.g., Story circles program; youth-led outreach; safety and belonging code",
+      type: "textarea"
+    },
+    {
+      label: "Indicators to watch",
+      desc: "Signals that your map and bets are right or wrong.",
+      key: "indicators",
+      ph: "e.g., % first-time speakers; network density; belonging index; incident reports",
+      type: "textarea"
+    },
+    {
+      label: "Assumptions and external factors",
+      key: "assumptions",
+      ph: "e.g., Stable space access; supportive city liaison; translation available",
+      type: "textarea"
+    },
+    {
+      label: "Kumu map URL - optional",
+      key: "map_url",
+      ph: "https://kumu.io/your-project/your-map",
+      type: "text"
+    },
+    {
+      label: "Context / notes - optional",
+      key: "ctx",
+      ph: "Links, sources, scoping notes",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    question,
+    boundary,
+    purpose,
+    actors,
+    stocks,
+    flows,
+    links,
+    loops,
+    delays,
+    archetypes,
+    leverage,
+    interventions,
+    indicators,
+    assumptions,
+    map_url,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `Systems Mapping: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "FOCAL QUESTION",
+      question || "(add a single guiding question)",
+
+      "SYSTEM BOUNDARY",
+      boundary || "(define what is in scope and out of scope)",
+
+      "PURPOSE / DESIRED OUTCOME",
+      purpose || "(state the outcome you care about)",
+
+      actors && ["ACTORS / NODES", listify(actors)].join("\n"),
+
+      stocks && ["STOCKS (levels)", listify(stocks)].join("\n"),
+      flows && ["FLOWS (rates)", listify(flows)].join("\n"),
+
+      "RELATIONSHIPS / CAUSAL LINKS",
+      links ? listify(links) : "(add links as FROM -> TO : label | polarity(+/-) | strength(1-5) | delay(y/n))",
+
+      loops && ["FEEDBACK LOOPS", listify(loops)].join("\n"),
+      delays && ["DELAYS AND FRICTION", listify(delays)].join("\n"),
+      archetypes && ["ARCHETYPES OBSERVED", listify(archetypes)].join("\n"),
+
+      "LEVERAGE POINTS",
+      leverage ? listify(leverage) : "(list 3 to 7 leverage points)",
+
+      interventions && ["CANDIDATE INTERVENTIONS", listify(interventions)].join("\n"),
+
+      indicators && ["INDICATORS TO WATCH", listify(indicators)].join("\n"),
+      assumptions && ["ASSUMPTIONS AND EXTERNAL FACTORS", listify(assumptions)].join("\n"),
+      map_url && `Kumu map: ${map_url}`,
+
+      "Checklist:",
+      "- [ ] Boundary is explicit and agreed",
+      "- [ ] Links have polarity and note delays where relevant",
+      "- [ ] At least one reinforcing and one balancing loop identified",
+      "- [ ] Stocks and flows are separated where useful",
+      "- [ ] 3 to 7 leverage points named with testable interventions",
+      "- [ ] Indicators chosen to validate or falsify the bets"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "kumu systems mapping actors flows feedback loops delays leverage points causal links community purpose boundary indicators template"
+  }
+},
+
+{
+  id: "arnsteins_ladder",
+  slug: "arnsteins-ladder-of-participation",
+  label: "Arnstein’s Ladder of Participation — From Tokenism to Citizen Control",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "governance",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:alignment",
+    "use:governance",
+    "use:power",
+     "use:influence",
+    "use:ethics",
+    "use:planning",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "assess current community power in decisions",
+    "set a target rung and define concrete power shifts",
+    "move engagement from informing/consultation to partnership/delegated power",
+    "document accountability and shared decision rights",
+    "track equity in who holds voice and authority",
+     "check if our community input is just tokenism",
+  "see how much real power people have",
+  "decide how to share decision-making fairly",
+  "move from consultation to partnership",
+  "give the community more control over outcomes",
+  "compare our engagement level to the ladder",
+  "make participation more than a checkbox",
+  "track progress in shifting power",
+  "plan steps toward shared governance",
+  "show funders how we empower the community",
+  "spot gaps between promises and real influence",
+  "design a process that builds citizen power",
+  "how do I gain influence",
+  "do I have influence"
+  ],
+  boosters: [
+    "Name a specific decision or domain (budget, space, policy) rather than 'community engagement' in general.",
+    "Use observable evidence for your current rung (not vibes). Link to agendas, sign-ins, decision logs.",
+    "Make the target rung time-bound and scoped; moving one rung can be a big win.",
+    "Translate target rung into explicit decision rights and money/time shifts.",
+    "Pair with IAP2 Spectrum for tactics; use Ladder for power clarity.",
+    "Publish a simple accountability table: who decides, who can veto, who can appeal."
+  ],
+  definition: "A diagnostic and planning scaffold to locate your current level of community power (rungs 1–8) and plan concrete shifts toward shared or community-controlled decisions.",
+  help: "Fill in the decision scope, stakeholders, evidence for the current rung, the target rung, and the specific power shifts, methods, and accountability you will implement. Use the workstreams lines to rate multiple areas.",
+  fields: [
+    {
+      label: "Title (initiative / community)",
+      key: "title",
+      ph: "e.g., Eastside Forums Decision Power Plan",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what decisions are we talking about?)",
+      key: "decision_scope",
+      ph: "e.g., Monthly forum agenda & facilitation; micro-grant selection; space rules",
+      type: "textarea"
+    },
+    {
+      label: "Stakeholders (who is affected / must be heard)",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 20,
+      ph: "e.g., Youth leaders; elders circle; library staff; small biz owners; newcomers",
+      type: "repeater"
+    },
+    {
+      label: "Current rung (1–8 or label)",
+      key: "current_rung",
+      ph: "e.g., 4 Consultation (surveys, comment periods)",
+      type: "text"
+    },
+    {
+      label: "Evidence for current rung",
+      key: "current_evidence",
+      ph: "e.g., We inform via newsletters; surveys collected but decisions made internally",
+      type: "textarea"
+    },
+    {
+      label: "Harms / tokenism risks observed (optional)",
+      key: "harms",
+      ph: "e.g., Repeated invitations without follow-through; translation gaps; weekday-only meetings",
+      type: "textarea"
+    },
+    {
+      label: "Target rung (1–8 or label) with timeframe",
+      key: "target_rung",
+      ph: "e.g., 6 Partnership by Q4 2026",
+      type: "text"
+    },
+    {
+      label: "Power shifts (decision rights, resources, vetoes)",
+      desc: "State concretely what changes: who decides, who can veto, what budget/time moves.",
+      key: "power_shifts",
+      ph: "e.g., Community co-chairs set agendas; 30% budget under resident committee; community veto on agenda changes",
+      type: "textarea"
+    },
+    {
+      label: "Engagement methods (current → planned)",
+      key: "methods",
+      ph: "e.g., Current: newsletters, surveys → Planned: co-design labs, resident co-facilitation, participatory budgeting",
+      type: "textarea"
+    },
+    {
+      label: "Accountability & transparency mechanisms",
+      key: "accountability",
+      ph: "e.g., Public decision logs; appeal process; quarterly open retros; publish who decided and why",
+      type: "textarea"
+    },
+    {
+      label: "Equity & inclusion (whose voice is centered; access supports)",
+      key: "equity",
+      ph: "e.g., Stipends; childcare; language access; ADA access; rotating meeting times; affinity voices prioritized",
+      type: "textarea"
+    },
+    {
+      label: "Measures of voice & power",
+      desc: "Track participation AND decision influence.",
+      key: "measures",
+      ph: "e.g., % agenda items proposed by residents; % decisions finalized by resident body; disaggregated attendance; veto usage",
+      type: "textarea"
+    },
+    {
+      label: "Workstreams (one per line: area — current rung → target rung — actions)",
+      key: "workstreams",
+      ph: "e.g., Micro-grants — 5 Placation → 7 Delegated Power — resident panel control with clear criteria\nForums — 3 Informing → 6 Partnership — co-chairs rotate; agenda set by resident council",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Burnout → rotate roles; capture by a clique → term limits; conflicts → restorative circles",
+      type: "textarea"
+    },
+    {
+      label: "Timeline & cadence",
+      key: "timeline",
+      ph: "e.g., Pilot partnership Q1–Q2; formalize delegated power Q3; public review quarterly",
+      type: "text"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We don’t police speech beyond code-of-conduct; we don’t endorse candidates",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    decision_scope,
+    stakeholders,
+    current_rung,
+    current_evidence,
+    harms,
+    target_rung,
+    power_shifts,
+    methods,
+    accountability,
+    equity,
+    measures,
+    workstreams,
+    risks,
+    timeline,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const ladderCheat = [
+      "1 Manipulation — non-participation",
+      "2 Therapy — non-participation framed as help",
+      "3 Informing — one-way information",
+      "4 Consultation — ask but don’t share power",
+      "5 Placation — advise with limited influence",
+      "6 Partnership — shared planning & decisions",
+      "7 Delegated Power — community holds authority",
+      "8 Citizen Control — community governs"
+    ].join("\n");
+
+    return [
+      title && `Arnstein’s Ladder: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "DECISION SCOPE",
+      decision_scope || "(name the specific decisions/domains covered)",
+
+      stakeholders && ["—", "STAKEHOLDERS", listify(stakeholders)].join("\n"),
+
+      "—",
+      "LADDER CHEAT-SHEET",
+      ladderCheat,
+
+      "—",
+      "CURRENT RUNG",
+      current_rung || "(add 1–8 or label)",
+      current_evidence && `Evidence:\n${current_evidence}`,
+      harms && `Harms / tokenism risks:\n${harms}`,
+
+      "—",
+      "TARGET RUNG & POWER SHIFTS",
+      target_rung || "(add 1–8 or label + timeframe)",
+      power_shifts ? `Power shifts:\n${power_shifts}` : "(define concrete decision rights, resources, vetoes)",
+
+      "—",
+      "ENGAGEMENT METHODS",
+      methods || "(list current → planned methods)",
+
+      "—",
+      "ACCOUNTABILITY & TRANSPARENCY",
+      accountability || "(add decision logs, appeal routes, public retros, etc.)",
+
+      "—",
+      "EQUITY & INCLUSION",
+      equity || "(state supports for access and whose voices are centered)",
+
+      "—",
+      "MEASURES OF VOICE & POWER",
+      measures ? listify(measures) : "(e.g., % resident-originated agenda items; % decisions finalized by residents; veto use)",
+
+      workstreams && ["—", "WORKSTREAMS (area — current → target — actions)", listify(workstreams)].join("\n"),
+
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      timeline && ["—", "TIMELINE & CADENCE", timeline].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Specific decision scope named",
+      "- [ ] Current rung evidenced with artifacts",
+      "- [ ] Target rung time-bound and realistic",
+      "- [ ] Concrete power shifts (decision rights, budget, veto)",
+      "- [ ] Accountability and transparency codified",
+      "- [ ] Equity supports and metrics defined"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "arnstein ladder participation manipulation therapy informing consultation placation partnership delegated power citizen control decision rights accountability equity template"
+  }
+},
+
+{
+  id: "iap2_spectrum",
+  slug: "iap2-spectrum-of-public-participation",
+  label: "IAP2 Spectrum of Public Participation — Inform → Consult → Involve → Collaborate → Empower",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "governance",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:alignment",
+    "use:governance",
+    "use:planning",
+    "use:trust",
+    "use:engagement",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "choose the right level of public participation for a decision",
+    "make explicit promises to the public about influence",
+    "plan engagement methods matched to the chosen level",
+    "set feedback standards and response times",
+    "track whether input changed the decision",
+      "decide if we’re just informing or really empowering",
+  "explain clearly how much influence people have",
+  "match tools to the right engagement level",
+  "make sure public input isn’t wasted",
+  "choose between consult vs collaborate",
+  "show the community how their input shaped outcomes",
+  "avoid overpromising on participation",
+  "plan different levels for different stakeholders",
+  "check if our process builds trust",
+  "set clear expectations for engagement"
+  ],
+  boosters: [
+    "Pick one primary Spectrum level per decision; mixing is fine across different workstreams.",
+    "Write your promise in plain language and publish how you’ll report back.",
+    "Timebox: show when input is still influential vs when decisions are fixed.",
+    "Match methods to level; don’t call something 'Empower' without actual authority transfer.",
+    "Disaggregate participation and influence metrics for equity.",
+    "Close the loop publicly: what you heard, what changed, what didn’t, and why."
+  ],
+  definition: "A planning scaffold to choose a public participation level (Inform, Consult, Involve, Collaborate, Empower), match methods to that level, state the promise about influence, and measure participation and impact on decisions.",
+  help: "Fill the decision scope, stakeholders, selected level, promise, methods by level, feedback standards, and measures. Use workstreams to map multiple areas with different levels.",
+  fields: [
+    {
+      label: "Title (initiative / decision)",
+      key: "title",
+      ph: "e.g., Eastside Forums: 2026 Agenda Setting",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what decisions are in play?)",
+      key: "decision_scope",
+      ph: "e.g., Monthly forum topics; facilitation model; micro-grant criteria",
+      type: "textarea"
+    },
+    {
+      label: "Decision-maker(s)",
+      key: "decision_makers",
+      ph: "e.g., Community Council Steering Group; Resident Panel",
+      type: "text"
+    },
+    {
+      label: "Stakeholders (who is affected / must be heard)",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 20,
+      ph: "e.g., Youth leaders; elders circle; library staff; small biz owners; newcomers",
+      type: "repeater"
+    },
+    {
+      label: "Timeline (when input is influential)",
+      key: "timeline",
+      ph: "e.g., Draft options Mar–Apr; public input May; decision in June",
+      type: "text"
+    },
+    {
+      label: "Selected Spectrum level (primary)",
+      key: "spectrum_level",
+      ph: "Inform | Consult | Involve | Collaborate | Empower",
+      type: "text"
+    },
+    {
+      label: "Promise to the public (plain language)",
+      desc: "State how input will influence the decision at the selected level.",
+      key: "promise",
+      ph: "e.g., We will work with you so your concerns are reflected in the preferred option…",
+      type: "textarea"
+    },
+
+    // Methods by level
+    {
+      label: "Methods — INFORM",
+      key: "methods_inform",
+      ph: "e.g., Fact sheets; web updates; signage; multilingual briefs; SMS alerts",
+      type: "textarea"
+    },
+    {
+      label: "Methods — CONSULT",
+      key: "methods_consult",
+      ph: "e.g., Surveys; comment periods; office hours; hearings with feedback log",
+      type: "textarea"
+    },
+    {
+      label: "Methods — INVOLVE",
+      key: "methods_involve",
+      ph: "e.g., Workshops; world cafés; co-design clinics; deliberative small groups",
+      type: "textarea"
+    },
+    {
+      label: "Methods — COLLABORATE",
+      key: "methods_collaborate",
+      ph: "e.g., Working groups; joint drafting; MOUs on roles; shared data rooms",
+      type: "textarea"
+    },
+    {
+      label: "Methods — EMPOWER",
+      key: "methods_empower",
+      ph: "e.g., Participatory budgeting; binding votes; resident-led panels with authority",
+      type: "textarea"
+    },
+
+    // Standards & equity
+    {
+      label: "Feedback standards & response time",
+      key: "feedback_standards",
+      ph: "e.g., Publish 'What we heard / What we changed' within 30 days; individual replies in 5 business days",
+      type: "textarea"
+    },
+    {
+      label: "Transparency & documentation",
+      key: "transparency",
+      ph: "e.g., Public decision log; comment repository; open meeting notes; translation availability",
+      type: "textarea"
+    },
+    {
+      label: "Equity & access supports",
+      key: "equity",
+      ph: "e.g., Stipends; childcare; language access; ADA; rotating times; affinity breakouts",
+      type: "textarea"
+    },
+
+    // Measures
+    {
+      label: "Measures — participation & influence",
+      desc: "One per line; include targets where possible.",
+      key: "measures",
+      ph: "e.g., Attendance by subgroup; % first-time participants; % agenda items changed due to input; time-to-response",
+      type: "textarea"
+    },
+
+    // Multi-area mapping
+    {
+      label: "Workstreams (area — current level → target level — methods — promise — feedback SLA)",
+      key: "workstreams",
+      ph: "e.g., Agenda setting — Consult → Involve — co-design clinics — your input shapes the final options — 30-day report-back",
+      type: "textarea"
+    },
+
+    // Risks etc.
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Tokenism risk → publish decision log; fatigue → rotate formats; dominance → facilitation norms",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We are not deciding facility closures in this process",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    decision_scope,
+    decision_makers,
+    stakeholders,
+    timeline,
+    spectrum_level,
+    promise,
+    methods_inform,
+    methods_consult,
+    methods_involve,
+    methods_collaborate,
+    methods_empower,
+    feedback_standards,
+    transparency,
+    equity,
+    measures,
+    workstreams,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const promises = {
+      Inform: "We will keep people informed with timely, clear information.",
+      Consult: "We will ask for input and report back how it influenced options and decisions.",
+      Involve: "We will work directly with people so their concerns are reflected in the preferred solution.",
+      Collaborate: "We will co-create options and incorporate advice to the greatest extent feasible.",
+      Empower: "We will place final decision-making in the hands of the community."
+    };
+
+    const chosen = (spectrum_level || "").trim();
+    const defaultPromise = promises[chosen] || "";
+
+    return [
+      title && `IAP2 Spectrum Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "DECISION SCOPE",
+      decision_scope || "(name the specific decisions covered)",
+      decision_makers && `Decision-maker(s): ${decision_makers}`,
+      timeline && `Timeline: ${timeline}`,
+
+      "—",
+      "SELECTED LEVEL",
+      chosen || "(choose one: Inform | Consult | Involve | Collaborate | Empower)",
+      (promise || defaultPromise) && `Promise to the public:\n${promise || defaultPromise}`,
+
+      "—",
+      "METHODS BY LEVEL",
+      methods_inform && ["INFORM", listify(methods_inform)].join("\n"),
+      methods_consult && ["CONSULT", listify(methods_consult)].join("\n"),
+      methods_involve && ["INVOLVE", listify(methods_involve)].join("\n"),
+      methods_collaborate && ["COLLABORATE", listify(methods_collaborate)].join("\n"),
+      methods_empower && ["EMPOWER", listify(methods_empower)].join("\n"),
+
+      "—",
+      "FEEDBACK & TRANSPARENCY",
+      feedback_standards && ["Feedback standards & response time", feedback_standards].join("\n"),
+      transparency && ["Transparency & documentation", transparency].join("\n"),
+
+      "—",
+      "EQUITY & ACCESS SUPPORTS",
+      equity || "(state supports and whose voices are centered)",
+
+      "—",
+      "MEASURES — PARTICIPATION & INFLUENCE",
+      measures ? listify(measures) : "(add metrics and targets)",
+
+      workstreams && ["—", "WORKSTREAMS", listify(workstreams)].join("\n"),
+
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Spectrum cheat-sheet:",
+      "Inform — share information",
+      "Consult — gather input & report back",
+      "Involve — incorporate concerns in solutions",
+      "Collaborate — co-create and share decisions",
+      "Empower — delegate final authority to the public",
+
+      "—",
+      "Checklist:",
+      "- [ ] Level chosen per decision and published with a clear promise",
+      "- [ ] Methods match the level and are accessible",
+      "- [ ] Feedback standards (report-backs, response times) are explicit",
+      "- [ ] Equity supports budgeted and in place",
+      "- [ ] Measures track both participation and influence",
+      "- [ ] Public close-the-loop report planned"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "iap2 spectrum inform consult involve collaborate empower promise to the public engagement methods feedback standards equity measures template"
+  }
+},
+
+{
+  id: "engagement_to_ownership_spectrum",
+  slug: "spectrum-community-engagement-to-ownership",
+  label: "Spectrum of Community Engagement to Ownership — Concrete Power-Shifting Practices",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "alignment",
+    "governance",
+    "equity",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:alignment",
+    "use:governance",
+     "use:leading",
+    "use:planning",
+    "use:engagement",
+    "use:power-shift",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "diagnose current engagement level and name power imbalances",
+    "set a target level (toward ownership) for each decision domain",
+    "choose concrete practices that transfer authority, budget, and data",
+    "plan capacity-building and compensation that enable ownership",
+    "track power transfer with measurable indicators over time",
+      "see if our process really shifts power or just engages",
+  "check who controls budget, data, and decisions",
+  "plan how to move from engagement to ownership",
+  "design ways for community to hold authority",
+  "make participation less symbolic and more real",
+  "compensate community members for leadership",
+  "track progress in sharing power over time",
+  "set up structures for community-led governance",
+  "show funders how ownership is being built",
+  "balance organizational role with community authority",
+  "map where we are vs where we want to be on the spectrum",
+  "design fair pathways for communities to lead",
+    "how to lead",
+     "finding leadership"
+  ],
+  boosters: [
+    "Map specific decision domains (budget, agenda, staffing, data) rather than discussing engagement in general.",
+    "Publish plain-language 'promises' at each level; avoid empowerment theater.",
+    "Attach budget control, decision rights, and data governance to the target level.",
+    "Pay people for their labor; fund accessibility supports up front.",
+    "Pair level shifts with capacity-building so ownership is sustainable.",
+    "Measure influence, not just attendance; disaggregate by equity-relevant groups."
+  ],
+  definition: "A planning scaffold (inspired by Facilitating Power) to move from low-influence engagement toward community ownership by selecting concrete practices that transfer decision rights, budget control, and data governance to the community.",
+  help: "Pick a decision scope, log your current level, choose a time-bound target level, and select concrete practices (decision rights, budget, data, leadership, accountability, access, compensation, capacity). Map multiple workstreams if different areas need different levels.",
+  fields: [
+    {
+      label: "Title (initiative / decision space)",
+      key: "title",
+      ph: "e.g., Eastside Forums — From Engagement to Ownership",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what decisions are in play?)",
+      key: "decision_scope",
+      ph: "e.g., Forum agenda; micro-grant awards; space management; data reporting",
+      type: "textarea"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., Jan–Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Facilitating organization (owner)",
+      key: "owner",
+      ph: "e.g., Community Council (facilitator/backbone)",
+      type: "text"
+    },
+    {
+      label: "Stakeholders / community groups",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 20,
+      ph: "e.g., Youth leaders; elders circle; newcomer groups; small biz association",
+      type: "repeater"
+    },
+
+    // Levels
+    {
+      label: "Current level (primary)",
+      key: "current_level",
+      ph: "Outreach | Consult | Involve | Collaborate | Defer to | Community-Owned",
+      type: "text"
+    },
+    {
+      label: "Evidence for current level",
+      key: "current_evidence",
+      ph: "e.g., We survey but staff make final decisions; no budget delegated; data not shared",
+      type: "textarea"
+    },
+    {
+      label: "Target level (with timeframe)",
+      key: "target_level",
+      ph: "e.g., Defer to by Q3 2026; Community-Owned by 2027",
+      type: "text"
+    },
+    {
+      label: "Promise to the community (plain language)",
+      key: "promise",
+      ph: "e.g., 'By Q3, resident panel will make the final decision on micro-grants.'",
+      type: "textarea"
+    },
+
+    // Concrete power-shifting practices
+    {
+      label: "Decision rights (who decides, who can veto)",
+      key: "decision_rights",
+      ph: "e.g., Resident panel has final say on agenda; community veto on rule changes",
+      type: "textarea"
+    },
+    {
+      label: "Budget control (% and process)",
+      key: "budget_control",
+      ph: "e.g., 35% of program budget under resident committee with transparent criteria",
+      type: "textarea"
+    },
+    {
+      label: "Data governance & access",
+      key: "data_governance",
+      ph: "e.g., Community IRB; shared repository; disaggregated dashboards; OCAP/CARE-aligned",
+      type: "textarea"
+    },
+    {
+      label: "Leadership & staffing (roles, hiring, terms)",
+      key: "leadership",
+      ph: "e.g., Co-chairs from resident body; term limits; paid community coordinator",
+      type: "textarea"
+    },
+    {
+      label: "Accountability & transparency",
+      key: "accountability",
+      ph: "e.g., Public decision logs; appeal routes; quarterly open retros; who decided & why",
+      type: "textarea"
+    },
+    {
+      label: "Compensation & access supports",
+      key: "compensation",
+      ph: "e.g., Stipends; childcare; transportation; language/ASL; remote options; food",
+      type: "textarea"
+    },
+    {
+      label: "Capacity-building (to sustain ownership)",
+      key: "capacity",
+      ph: "e.g., Facilitation training; grantmaking 101; governance coaching; peer mentoring",
+      type: "textarea"
+    },
+    {
+      label: "Space & infrastructure",
+      key: "infrastructure",
+      ph: "e.g., MoU for community-managed space; equipment budget; tech support",
+      type: "textarea"
+    },
+
+    // Methods by level (menu to choose from)
+    {
+      label: "Methods — OUTREACH (inform)",
+      key: "methods_outreach",
+      ph: "e.g., Multilingual briefs; SMS updates; info sessions",
+      type: "textarea"
+    },
+    {
+      label: "Methods — CONSULT (input)",
+      key: "methods_consult",
+      ph: "e.g., Surveys; comment periods; office hours; report-back posts",
+      type: "textarea"
+    },
+    {
+      label: "Methods — INVOLVE (co-shape)",
+      key: "methods_involve",
+      ph: "e.g., Workshops; world café; scenario testing with feedback loops",
+      type: "textarea"
+    },
+    {
+      label: "Methods — COLLABORATE (shared work)",
+      key: "methods_collaborate",
+      ph: "e.g., Working groups; joint drafting; shared data rooms; co-facilitation",
+      type: "textarea"
+    },
+    {
+      label: "Methods — DEFER TO (community decides)",
+      key: "methods_defer",
+      ph: "e.g., Binding resident panel decisions; community-led standards; delegated authority",
+      type: "textarea"
+    },
+    {
+      label: "Methods — COMMUNITY-OWNED (governance & assets)",
+      key: "methods_owned",
+      ph: "e.g., Community-owned org; participatory budgeting; community data trust",
+      type: "textarea"
+    },
+
+    // Measures
+    {
+      label: "Measures of power shift",
+      desc: "One per line; include targets if possible.",
+      key: "measures",
+      ph: "e.g., % budget under community control; % decisions finalized by resident body; # community-held roles; time-to-report-back ≤30 days",
+      type: "textarea"
+    },
+
+    // Multi-area mapping
+    {
+      label: "Workstreams (area — current → target — practices — promise — SLA)",
+      key: "workstreams",
+      ph: "e.g., Micro-grants — Consult → Defer to — resident panel control; budget delegation — 'final say by Q3' — 30-day report-back",
+      type: "textarea"
+    },
+
+    // Risks etc.
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Clique capture → term limits; burnout → role rotation; conflict → restorative circles",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries (optional)",
+      key: "non_goals",
+      ph: "e.g., We do not police private speech; we do not endorse candidates",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    decision_scope,
+    horizon,
+    owner,
+    stakeholders,
+    current_level,
+    current_evidence,
+    target_level,
+    promise,
+    decision_rights,
+    budget_control,
+    data_governance,
+    leadership,
+    accountability,
+    compensation,
+    capacity,
+    infrastructure,
+    methods_outreach,
+    methods_consult,
+    methods_involve,
+    methods_collaborate,
+    methods_defer,
+    methods_owned,
+    measures,
+    workstreams,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const spectrumCheat = [
+      "Outreach — inform people about decisions",
+      "Consult — gather input and report back",
+      "Involve — co-shape options and solutions",
+      "Collaborate — share work and draft together",
+      "Defer to — community holds final say for this scope",
+      "Community-Owned — community governs assets & decisions"
+    ].join("\n");
+
+    return [
+      title && `Engagement → Ownership Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "DECISION SCOPE",
+      decision_scope || "(name the decisions/domains covered)",
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Facilitating org: ${owner}`,
+      stakeholders && ["Stakeholders / community groups:", listify(stakeholders)].join("\n"),
+
+      "—",
+      "SPECTRUM CHEAT-SHEET",
+      spectrumCheat,
+
+      "—",
+      "CURRENT → TARGET LEVEL",
+      current_level ? `Current: ${current_level}` : "(add current level)",
+      current_evidence && `Evidence:\n${current_evidence}`,
+      target_level ? `Target: ${target_level}` : "(add target level + timeframe)",
+      promise && `Promise: ${promise}`,
+
+      "—",
+      "CONCRETE POWER-SHIFTING PRACTICES",
+      decision_rights && `Decision rights:\n${decision_rights}`,
+      budget_control && `Budget control:\n${budget_control}`,
+      data_governance && `Data governance & access:\n${data_governance}`,
+      leadership && `Leadership & staffing:\n${leadership}`,
+      accountability && `Accountability & transparency:\n${accountability}`,
+      compensation && `Compensation & access supports:\n${compensation}`,
+      capacity && `Capacity-building:\n${capacity}`,
+      infrastructure && `Space & infrastructure:\n${infrastructure}`,
+
+      "—",
+      "METHODS MENU BY LEVEL",
+      methods_outreach && ["OUTREACH", listify(methods_outreach)].join("\n"),
+      methods_consult && ["CONSULT", listify(methods_consult)].join("\n"),
+      methods_involve && ["INVOLVE", listify(methods_involve)].join("\n"),
+      methods_collaborate && ["COLLABORATE", listify(methods_collaborate)].join("\n"),
+      methods_defer && ["DEFER TO", listify(methods_defer)].join("\n"),
+      methods_owned && ["COMMUNITY-OWNED", listify(methods_owned)].join("\n"),
+
+      "—",
+      "MEASURES OF POWER SHIFT",
+      measures ? listify(measures) : "(add influence-focused metrics and targets)",
+
+      workstreams && ["—", "WORKSTREAMS (area — current → target — practices — promise — SLA)", listify(workstreams)].join("\n"),
+
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Decision scope and target level are public and time-bound",
+      "- [ ] Decision rights, budget %, and data governance shift to community",
+      "- [ ] Compensation and access supports funded",
+      "- [ ] Capacity-building plan tied to target level",
+      "- [ ] Influence metrics (not just attendance) tracked and disaggregated",
+      "- [ ] Close-the-loop report cadence published"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "spectrum of community engagement to ownership facilitating power outreach consult involve collaborate defer to community-owned decision rights budget control data governance compensation capacity template"
+  }
+},
+
+{
+  id: "design_justice_principles",
+  slug: "design-justice-principles",
+  label: "Design Justice Principles — Center those most affected; redistribute design power",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "ethics",
+    "governance",
+    "community",
+    "design"
+  ],
+  tags: [
+    "type:framework",
+    "use:ethics",
+    "use:alignment",
+    "use:justice",
+     "use:morals",
+     "use:power",
+    "use:planning",
+    "use:governance",
+    "use:engagement",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "shift decision power and ownership toward those most affected",
+    "co-lead design with community knowledge holders",
+    "prevent extractive research and harmful implementation",
+    "embed accessibility, disability justice, and language access",
+    "establish accountability, consent, and repair mechanisms",
+    "center people most affected in every design decision",
+    "move from consultation to community leadership and ownership",
+    "audit harms and redistribute resources, roles, and data power",
+    "codify accountability, consent, and data sovereignty",
+    "track equity outcomes and decision influence over time",
+     "design with the community, not just for them",
+  "check if those most affected have real decision power",
+  "make sure benefits flow back to the community",
+  "avoid research that just extracts stories or data",
+  "share design credit and ownership fairly",
+  "design processes that repair past harms",
+  "embed equity and accessibility from the start",
+  "make space for marginalized voices to lead",
+  "redistribute budget and resources to community partners",
+  "audit who holds power in the design process",
+  "create consent-based methods for data use",
+  "measure if our design outcomes are equitable",
+  "how do I apply justice",
+  "what does justice look like"
+  ],
+  boosters: [
+    "Name specific communities and co-leads from those communities; compensate them at fair rates.",
+    "Publish plain-language decision rights, budget shares, data governance, and consent processes.",
+    "Co-create access plans (childcare, stipends, transport, language/ASL, remote options, sensory needs).",
+    "Adopt data sovereignty practices (e.g., OCAP/CARE-aligned) and community review before release.",
+    "Document history of harms and name anti-extractive practices and repair commitments.",
+    "Credit and share ownership (IP, authorship, revenue) with community partners."
+  ],
+  definition: "A practical scaffold to apply Design Justice: centering those most affected, redistributing power and resources, preventing extraction, and ensuring accountability throughout research, design, and delivery.",
+  help: "Fill decision scope, affected groups, community co-leads, power shifts, consent and data governance, access supports, accountability and repair, and equity measures. Use the principles menu to select or paraphrase which principles you are operationalizing.",
+  fields: [
+    {
+      label: "Title (initiative / product / service)",
+      key: "title",
+      ph: "e.g., Eastside Forum Redesign",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what choices this plan covers)",
+      key: "decision_scope",
+      ph: "e.g., Research plan, facilitation model, data policy, feature roadmap",
+      type: "textarea"
+    },
+    {
+      label: "Affected groups (centered communities)",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "affected_groups",
+      max: 24,
+      ph: "e.g., Newcomers; youth; elders; disabled residents; non-dominant language speakers",
+      type: "repeater"
+    },
+    {
+      label: "Community co-leads (roles & orgs)",
+      key: "co_leads",
+      ph: "e.g., Resident co-chair; Youth council liaison; Elders circle representative",
+      type: "textarea"
+    },
+    {
+      label: "Principles we will operationalize (one per line)",
+      desc: "Paraphrase or select the items you’ll put into practice.",
+      key: "principles",
+      ph: "e.g., Center those most affected; Share power & ownership; Prevent extraction; Ensure access; Data sovereignty; Consent & transparency; Credit & compensation; Build capacity; Account for harms & repair; Design for regenerative futures",
+      type: "textarea"
+    },
+    {
+      label: "Power shifts (decision rights, vetoes, budget, ownership)",
+      key: "power_shifts",
+      ph: "e.g., Resident panel final say on agenda; 35% budget delegated; co-ownership of IP; community veto on policy changes",
+      type: "textarea"
+    },
+    {
+      label: "Compensation & contracts",
+      key: "compensation",
+      ph: "e.g., Stipends; hourly rates; fiscal sponsorship; prompt payment terms",
+      type: "textarea"
+    },
+    {
+      label: "Accessibility & language access",
+      key: "access",
+      ph: "e.g., ADA/Universal Design; interpreters; translated materials; childcare; transportation; hybrid formats",
+      type: "textarea"
+    },
+    {
+      label: "Consent & privacy (informed, ongoing, revocable)",
+      key: "consent",
+      ph: "e.g., Plain-language consent; easy withdrawal; no penalty; privacy by default",
+      type: "textarea"
+    },
+    {
+      label: "Data governance & sovereignty",
+      key: "data_governance",
+      ph: "e.g., Community IRB; data-sharing MoU; disaggregated dashboards; OCAP/CARE-aligned repository",
+      type: "textarea"
+    },
+    {
+      label: "Anti-extractive practices",
+      key: "anti_extractive",
+      ph: "e.g., No unpaid labor; no hidden surveillance; mutual benefit documented; publish back findings first to community",
+      type: "textarea"
+    },
+    {
+      label: "History of harms & context",
+      key: "harm_history",
+      ph: "e.g., Prior studies without report-backs; inaccessible meetings; ignored input",
+      type: "textarea"
+    },
+    {
+      label: "Repair & accountability mechanisms",
+      key: "repair",
+      ph: "e.g., Public decision logs; appeal routes; ombudsperson; grievance process; restorative circles",
+      type: "textarea"
+    },
+    {
+      label: "Capacity-building (skills, leadership, staffing)",
+      key: "capacity",
+      ph: "e.g., Paid apprenticeships; facilitation training; governance coaching; resident coordinator role",
+      type: "textarea"
+    },
+    {
+      label: "Co-design & engagement methods",
+      key: "methods",
+      ph: "e.g., Story circles; co-design labs; participatory budgeting; joint drafting; usability testing with accessibility protocols",
+      type: "textarea"
+    },
+    {
+      label: "Measures — equity & harm reduction",
+      key: "measures",
+      ph: "e.g., % decisions finalized by resident body; % budget under community control; accessibility score; time-to-report-back; grievances resolved ≤30 days",
+      type: "textarea"
+    },
+    {
+      label: "Feedback cadence & public reporting",
+      key: "cadence",
+      ph: "e.g., Monthly check-ins; quarterly 'what we heard/changed' briefs; open meeting notes",
+      type: "text"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Clique capture → term limits; burnout → rotate roles; delays → clear SLAs",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / boundaries",
+      key: "non_goals",
+      ph: "e.g., We do not endorse candidates; we won’t collect biometrics",
+      type: "textarea"
+    },
+    {
+      label: "Timeline",
+      key: "timeline",
+      ph: "e.g., Pilot Q1–Q2; formalize power shifts Q3; public review quarterly",
+      type: "text"
+    },
+    {
+      label: "Context / links / notes",
+      key: "ctx",
+      ph: "References, links, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    decision_scope,
+    affected_groups,
+    co_leads,
+    principles,
+    power_shifts,
+    compensation,
+    access,
+    consent,
+    data_governance,
+    anti_extractive,
+    harm_history,
+    repair,
+    capacity,
+    methods,
+    measures,
+    cadence,
+    risks,
+    non_goals,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const cheat = [
+      "Center those most affected in decisions and benefits.",
+      "Share power, credit, and ownership.",
+      "Prevent extraction; ensure mutual benefit.",
+      "Ensure accessibility, disability justice, and language access.",
+      "Practice consent, privacy, and transparency.",
+      "Honor data sovereignty and community governance.",
+      "Acknowledge harms; establish repair and accountability.",
+      "Invest in capacity and leadership of community members.",
+      "Credit community knowledge; compensate fairly.",
+      "Design for sustainable, regenerative futures."
+    ].join("\n");
+
+    return [
+      title && `Design Justice Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "DECISION SCOPE",
+      decision_scope || "(name the choices this plan governs)",
+
+      affected_groups && ["—", "AFFECTED GROUPS (CENTERED)", listify(affected_groups)].join("\n"),
+      co_leads && ["—", "COMMUNITY CO-LEADS (ROLES & ORGS)", co_leads].join("\n"),
+
+      "—",
+      "PRINCIPLES WE WILL OPERATIONALIZE",
+      principles ? listify(principles) : cheat,
+
+      "—",
+      "POWER SHIFTS",
+      power_shifts || "(define decision rights, vetoes, budget %, ownership/IP)",
+
+      "—",
+      "COMPENSATION & CONTRACTS",
+      compensation || "(stipends, rates, payment terms)",
+
+      "—",
+      "ACCESSIBILITY & LANGUAGE ACCESS",
+      access || "(ADA/UD, interpreters, translations, childcare, transport, hybrid)",
+
+      "—",
+      "CONSENT & PRIVACY",
+      consent || "(plain-language, ongoing, revocable; privacy by default)",
+
+      "—",
+      "DATA GOVERNANCE & SOVEREIGNTY",
+      data_governance || "(community review, MoUs, disaggregated dashboards, OCAP/CARE)",
+
+      "—",
+      "ANTI-EXTRACTIVE PRACTICES",
+      anti_extractive || "(no unpaid labor; publish back first; mutual benefit)",
+
+      harm_history && ["—", "HISTORY OF HARMS & CONTEXT", harm_history].join("\n"),
+
+      "—",
+      "REPAIR & ACCOUNTABILITY",
+      repair || "(decision logs, grievance process, restorative practices, ombudsperson)",
+
+      capacity && ["—", "CAPACITY-BUILDING", capacity].join("\n"),
+      methods && ["—", "CO-DESIGN & ENGAGEMENT METHODS", listify(methods)].join("\n"),
+
+      "—",
+      "MEASURES — EQUITY & HARM REDUCTION",
+      measures ? listify(measures) : "(add influence metrics, accessibility metrics, timeliness)",
+
+      cadence && ["—", "FEEDBACK CADENCE & PUBLIC REPORTING", cadence].join("\n"),
+
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / BOUNDARIES", non_goals].join("\n"),
+      timeline && ["—", "TIMELINE", timeline].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Community co-leads named and compensated",
+      "- [ ] Decision rights, budget %, and ownership shift documented",
+      "- [ ] Accessibility & language access funded and scheduled",
+      "- [ ] Consent, privacy, and data sovereignty codified",
+      "- [ ] Anti-extractive practices and repair mechanisms in place",
+      "- [ ] Equity & harm-reduction measures tracked and reported"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "design justice principles center most affected redistribute power consent data sovereignty accessibility anti-extractive repair accountability capacity equity template"
+  }
+},
+
+{
+  id: "community_led_development",
+  slug: "community-led-development-cld",
+  label: "Community-Led Development (CLD): Locally led priorities, accountability, and capacity",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "governance",
+    "community",
+    "equity"
+  ],
+  tags: [
+    "type:framework",
+    "use:planning",
+    "use:governance",
+    "use:leadership",
+    "use:engagement",
+    "use:capacity",
+    "use:evaluation",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "co-create locally led priorities and budgets",
+    "formalize community governance and accountability",
+    "design capacity-building to sustain ownership",
+    "align partners on roles and commitments",
+    "set simple monitoring and learning rhythms",
+     "make sure development projects reflect local priorities",
+  "plan budgets with the community not just donors",
+  "shift decision-making to local leaders",
+  "design accountability back to the community",
+  "build skills so ownership lasts long term",
+  "agree on roles between community and outside partners",
+  "set up simple ways to track progress together",
+  "avoid top-down project design",
+  "share power and resources fairly",
+  "support communities to lead their own solutions",
+  "strengthen trust between funders and communities",
+  "show how community voices shaped the plan"
+  ],
+  boosters: [
+    "Start with assets and strengths before needs. Map what already works.",
+    "Name decision rights, budget delegation percent, and data governance in plain language.",
+    "Use open reporting: what we heard, what we decided, why, and by whom.",
+    "Disaggregate indicators to track equity and inclusion.",
+    "Pay community leaders for their labor and provide access supports up front.",
+    "Close the loop on feedback within a specific service-level agreement."
+  ],
+  definition: "A locally owned planning and accountability scaffold that centers community priorities, transfers decision power and resources, and builds capacity for durable self-determination.",
+  help: "Complete governance, priorities, roles, budget delegation, capacity, participation mechanisms, accountability, MEL (monitoring, evaluation, learning), and sustainability. Use workstreams to track multiple areas. Keep everything public by default unless sensitive.",
+  fields: [
+    {
+      label: "Title (initiative or locality)",
+      key: "title",
+      ph: "e.g., Eastside CLD Partnership",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., 2026–2028",
+      type: "text"
+    },
+    {
+      label: "Community governance body (owner)",
+      key: "owner",
+      ph: "e.g., Eastside Community Steering Committee",
+      type: "text"
+    },
+    {
+      label: "Community groups and stakeholders",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 24,
+      ph: "e.g., Youth leaders; elders circle; newcomer groups; small biz association; library branch team",
+      type: "repeater"
+    },
+
+    // Foundations
+    {
+      label: "Principles and safeguards",
+      key: "principles",
+      ph: "e.g., Do no harm; consent; transparency; equity; disability justice; language access; data sovereignty",
+      type: "textarea"
+    },
+    {
+      label: "Asset map and capacities",
+      key: "assets",
+      ph: "e.g., Spaces, connectors, skills, cultural practices, grassroots orgs, mutual aid networks",
+      type: "textarea"
+    },
+    {
+      label: "Power and inclusion analysis",
+      key: "power_analysis",
+      ph: "e.g., Who decides today; who benefits; who is excluded; barriers and enablers",
+      type: "textarea"
+    },
+
+    // Priorities and budgets
+    {
+      label: "Community priorities (one per line)",
+      key: "priorities",
+      ph: "e.g., Safe gathering spaces; youth leadership; translation; micro-grants",
+      type: "textarea"
+    },
+    {
+      label: "Decision rights and budget delegation",
+      key: "decision_budget",
+      ph: "e.g., Resident panel final say on micro-grants; 35% of program budget delegated to community committee",
+      type: "textarea"
+    },
+    {
+      label: "Resources and financing",
+      key: "resources",
+      ph: "e.g., Pooled fund; in-kind space; equipment; staffing; stipend policy",
+      type: "textarea"
+    },
+
+    // Roles and commitments
+    {
+      label: "Roles and commitments: community",
+      key: "roles_community",
+      ph: "e.g., Set priorities; hold decision seats; maintain public decision log",
+      type: "textarea"
+    },
+    {
+      label: "Roles and commitments: facilitating orgs",
+      key: "roles_facilitators",
+      ph: "e.g., Convene; coach; manage grants; publish open data; logistics",
+      type: "textarea"
+    },
+    {
+      label: "Roles and commitments: government and donors",
+      key: "roles_partners",
+      ph: "e.g., Align policy; remove barriers; co-fund; respect community decisions",
+      type: "textarea"
+    },
+
+    // Participation and accountability
+    {
+      label: "Participation mechanisms",
+      key: "participation",
+      ph: "e.g., Assemblies; co-design clinics; participatory budgeting; community scorecards",
+      type: "textarea"
+    },
+    {
+      label: "Accountability and transparency",
+      key: "accountability",
+      ph: "e.g., Public decision logs; open meeting notes; SLA for report-backs; who decided and why",
+      type: "textarea"
+    },
+    {
+      label: "Grievance and appeals",
+      key: "grievance",
+      ph: "e.g., Ombudsperson; anonymous channel; response within 30 days; restorative circles",
+      type: "textarea"
+    },
+
+    // Capacity and access
+    {
+      label: "Capacity-building plan",
+      key: "capacity",
+      ph: "e.g., Facilitation training; grantmaking 101; governance coaching; peer mentoring",
+      type: "textarea"
+    },
+    {
+      label: "Compensation and access supports",
+      key: "compensation",
+      ph: "e.g., Stipends; childcare; transportation; food; interpreters; ASL; hybrid participation",
+      type: "textarea"
+    },
+
+    // Data and learning
+    {
+      label: "Consent and data governance",
+      key: "data_governance",
+      ph: "e.g., Plain-language consent; community IRB; OCAP/CARE-aligned data trust; disaggregated dashboards",
+      type: "textarea"
+    },
+    {
+      label: "Indicators and targets",
+      desc: "Outcome and equity indicators with baselines where possible.",
+      key: "indicators",
+      ph: "e.g., Belonging index; % first-time speakers; % budget under community control; gap between subgroups ≤0.5",
+      type: "textarea"
+    },
+    {
+      label: "Monitoring, evaluation, and learning (MEL)",
+      key: "mel",
+      ph: "e.g., Quarterly community scorecard; story harvesting; outcome journal; biannual learning summit",
+      type: "textarea"
+    },
+    {
+      label: "Feedback cadence and public reporting",
+      key: "cadence",
+      ph: "e.g., Monthly updates; 30-day close-the-loop report; open dataset quarterly",
+      type: "text"
+    },
+
+    // Delivery and risk
+    {
+      label: "Workstreams (area — owner — milestones — budget — indicators)",
+      key: "workstreams",
+      ph: "e.g., Micro-grants — Resident panel — launch Q2, 12 awards — $25k — % first-time grantees",
+      type: "textarea"
+    },
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      ph: "e.g., Burnout → role rotation; capture by clique → term limits; safety → clear code of conduct",
+      type: "textarea"
+    },
+    {
+      label: "Sustainability and exit strategy",
+      key: "sustainability",
+      ph: "e.g., Transition staffing to community roles; local revenue streams; MoUs for space; capacity handoff timeline",
+      type: "textarea"
+    },
+
+    // Context
+    {
+      label: "Context and notes",
+      key: "ctx",
+      ph: "Links, history, constraints, alignments",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    owner,
+    stakeholders,
+    principles,
+    assets,
+    power_analysis,
+    priorities,
+    decision_budget,
+    resources,
+    roles_community,
+    roles_facilitators,
+    roles_partners,
+    participation,
+    accountability,
+    grievance,
+    capacity,
+    compensation,
+    data_governance,
+    indicators,
+    mel,
+    cadence,
+    workstreams,
+    risks,
+    sustainability,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    const cldCycle = [
+      "Assess",
+      "Plan",
+      "Act",
+      "Reflect",
+      "Adapt"
+    ].join(" → ");
+
+    return [
+      title && `Community-Led Development Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Community governance body: ${owner}`,
+      stakeholders && ["Community groups and stakeholders:", listify(stakeholders)].join("\n"),
+
+      "SECTION: CLD cycle",
+      cldCycle,
+
+      "SECTION: Foundations",
+      principles && `Principles and safeguards:\n${principles}`,
+      assets && `Asset map and capacities:\n${assets}`,
+      power_analysis && `Power and inclusion analysis:\n${power_analysis}`,
+
+      "SECTION: Priorities and budgets",
+      priorities ? ["Community priorities:", listify(priorities)].join("\n") : "(add priorities)",
+      decision_budget && `Decision rights and budget delegation:\n${decision_budget}`,
+      resources && `Resources and financing:\n${resources}`,
+
+      "SECTION: Roles and commitments",
+      roles_community && `Community commitments:\n${roles_community}`,
+      roles_facilitators && `Facilitating orgs:\n${roles_facilitators}`,
+      roles_partners && `Government and donors:\n${roles_partners}`,
+
+      "SECTION: Participation and accountability",
+      participation && `Participation mechanisms:\n${participation}`,
+      accountability && `Accountability and transparency:\n${accountability}`,
+      grievance && `Grievance and appeals:\n${grievance}`,
+
+      "SECTION: Capacity and access",
+      capacity && `Capacity-building plan:\n${capacity}`,
+      compensation && `Compensation and access supports:\n${compensation}`,
+
+      "SECTION: Data and learning",
+      data_governance && `Consent and data governance:\n${data_governance}`,
+      indicators && ["Indicators and targets:", listify(indicators)].join("\n"),
+      mel && `MEL plan:\n${mel}`,
+      cadence && `Feedback cadence and public reporting: ${cadence}`,
+
+      "SECTION: Delivery and risk",
+      workstreams && ["Workstreams (area — owner — milestones — budget — indicators):", listify(workstreams)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+      sustainability && `Sustainability and exit strategy:\n${sustainability}`,
+
+      "Checklist:",
+      "- [ ] Priorities set by the community and published",
+      "- [ ] Decision rights and budget delegation are explicit",
+      "- [ ] Accountability, grievance, and transparency in place",
+      "- [ ] Capacity and access supports funded",
+      "- [ ] Equity indicators disaggregated and tracked",
+      "- [ ] Regular close-the-loop reports and learning sessions",
+      "- [ ] Sustainability and handoff plan defined"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "community-led development CLD locally led priorities budget delegation governance accountability capacity assets participatory budgeting community scorecards data sovereignty MEL sustainability template"
+  }
+},
+
+{
+  id: "participatory_budgeting",
+  slug: "participatory-budgeting",
+  label: "Participatory Budgeting — Residents Directly Allocate Resources",
+  kind: "strategy",
+  categories: [
+    "governance",
+    "community",
+    "planning",
+    "equity",
+    "budget"
+  ],
+  tags: [
+    "type:framework",
+    "use:governance",
+    "use:engagement",
+    "use:planning",
+    "use:budget",
+    "use:decision-making",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "create a resident-led process to allocate a public or philanthropic fund",
+    "set clear eligibility, rules, and equity guardrails",
+    "run idea collection, proposal development, vetting, voting, and implementation",
+    "publish a transparent tally and implementation tracker",
+    "institutionalize PB with annual rhythms and learning",
+      "let residents decide how money is spent",
+  "give community members a real vote on budget priorities",
+  "make funding decisions more transparent",
+  "engage marginalized groups in resource allocation",
+  "turn community ideas into funded projects",
+  "show the public how budget decisions were made",
+  "build trust through open voting and reporting",
+  "balance equity with community preferences",
+  "set up recurring cycles for community input",
+  "share power over funding with residents",
+  "design simple rules for fair participation",
+  "track project delivery after the vote"
+  ],
+  boosters: [
+    "Name a specific fund with a real dollar amount and what it can/can’t buy.",
+    "Codify eligibility (age, residency, constituency) and verification methods in plain language.",
+    "Publish equity rules: set-asides, geographic minimums, or weighted tallies if appropriate.",
+    "Offer coaching so proposals from under-represented groups are competitive.",
+    "Choose a voting method that’s simple to explain; test ballots with real residents.",
+    "Close the loop with a public tally, implementation tracker, and 30-day report-back."
+  ],
+  definition: "A resident-led budgeting process in which community members generate ideas, develop proposals, and vote to allocate a defined pool of resources, with transparent rules and public implementation.",
+  help: "Complete fund details, decision scope, eligibility, governance/roles, process phases, rules, equity guardrails, ballot design, voting/tally method, implementation plan, and measures. Use workstreams for multi-neighborhood or multi-category PB.",
+  fields: [
+    {
+      label: "Fund name",
+      key: "fund_name",
+      ph: "e.g., Eastside Community PB Fund",
+      type: "text"
+    },
+    {
+      label: "Total budget (amount & source)",
+      key: "total_budget",
+      ph: "e.g., $250,000 (city discretionary + foundation match)",
+      type: "text"
+    },
+    {
+      label: "Time horizon (cycle dates)",
+      key: "horizon",
+      ph: "e.g., Jan–Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what funds can/can’t buy)",
+      key: "decision_scope",
+      ph: "e.g., Capital improvements ≤$50k per project; programming costs; no ongoing staffing beyond 1 year",
+      type: "textarea"
+    },
+    {
+      label: "Policy/Legal constraints (optional)",
+      key: "constraints",
+      ph: "e.g., Procurement thresholds; ADA requirements; public funds restrictions",
+      type: "textarea"
+    },
+    {
+      label: "Owner / administrator",
+      key: "owner",
+      ph: "e.g., Community Council PB Office (with City liaison)",
+      type: "text"
+    },
+    {
+      label: "Governance roles (steering, facilitators, agency liaisons)",
+      key: "governance_roles",
+      ph: "e.g., Resident Steering Committee (12); volunteer facilitators; City Public Works liaison",
+      type: "textarea"
+    },
+    {
+      label: "Steering composition & selection",
+      key: "steering",
+      ph: "e.g., At least 50% renters; youth seats; term limits; open application + lottery",
+      type: "textarea"
+    },
+
+    // Eligibility & equity
+    {
+      label: "Voter eligibility",
+      key: "voter_eligibility",
+      ph: "e.g., Age 14+; lives, works, or studies in Eastside; no citizenship requirement",
+      type: "textarea"
+    },
+    {
+      label: "Verification methods",
+      key: "verification",
+      ph: "e.g., Address on ID, school ID, self-attestation with neighborhood check; one-person-one-ballot controls",
+      type: "textarea"
+    },
+    {
+      label: "Proposer eligibility",
+      key: "proposer_eligibility",
+      ph: "e.g., Any resident 14+; CBOs; informal groups with fiscal sponsorship",
+      type: "textarea"
+    },
+    {
+      label: "Equity rules (set-asides, geographic minimums, weighting)",
+      key: "equity_rules",
+      ph: "e.g., 30% set-aside for newcomer-led proposals; at least one project per neighborhood",
+      type: "textarea"
+    },
+
+    // Process phases
+    {
+      label: "Process phases & timeline",
+      key: "timeline",
+      ph: "e.g., Design (Jan) → Idea Collection (Feb–Mar) → Proposal Dev (Apr–May) → Vetting & Costing (Jun) → Balloting (Jul) → Tally (Aug) → Implementation (Sep–) → Reporting (quarterly)",
+      type: "textarea"
+    },
+    {
+      label: "Outreach & engagement plan",
+      key: "outreach",
+      ph: "e.g., Door-to-door; school visits; pop-ups; social; partner orgs; tabling calendar",
+      type: "textarea"
+    },
+    {
+      label: "Access supports",
+      key: "access",
+      ph: "e.g., Stipends; childcare; transportation; interpreters/ASL; translated ballots; accessible venues",
+      type: "textarea"
+    },
+
+    // Idea & proposal development
+    {
+      label: "Idea collection methods",
+      key: "idea_methods",
+      ph: "e.g., Assemblies; online idea portal; SMS; paper drop boxes; listening sessions",
+      type: "textarea"
+    },
+    {
+      label: "Proposal support (coaching, templates, workshops)",
+      key: "proposal_support",
+      ph: "e.g., Weekly clinics; volunteer proposal coaches; sample proposal template",
+      type: "textarea"
+    },
+    {
+      label: "Feasibility review & costing (agency roles, SLAs)",
+      key: "feasibility",
+      ph: "e.g., City liaisons respond within 15 business days; cost ranges with confidence levels",
+      type: "textarea"
+    },
+
+    // Categories & rules
+    {
+      label: "Ballot categories & set budgets (one per line: category — budget)",
+      key: "categories",
+      ph: "e.g., Parks — $100k\nSafety — $75k\nArts — $75k",
+      type: "textarea"
+    },
+    {
+      label: "Proposal eligibility rules",
+      key: "proposal_rules",
+      ph: "e.g., Public benefit; one-time costs; open access; no ongoing staffing >12 months",
+      type: "textarea"
+    },
+
+    // Voting & tally
+    {
+      label: "Voting method",
+      key: "voting_method",
+      ph: "e.g., Approval (pick up to 5); Rank-choice within category; K-approval by category",
+      type: "text"
+    },
+    {
+      label: "Voting channels",
+      key: "voting_channels",
+      ph: "e.g., In-person paper at pop-ups; online portal; phone assist; roaming ballot boxes",
+      type: "textarea"
+    },
+    {
+      label: "Anti-coercion & fraud controls",
+      key: "integrity",
+      ph: "e.g., Unique voter codes; duplicate detection; privacy screens; no campaigning at polling sites",
+      type: "textarea"
+    },
+    {
+      label: "Tally rules & tie-breakers",
+      key: "tally_rules",
+      ph: "e.g., Greedy knapsack within each category by cost; ties → lowest cost wins; then lottery",
+      type: "textarea"
+    },
+
+    // Implementation & reporting
+    {
+      label: "Implementation owners & SLAs",
+      key: "implementation",
+      ph: "e.g., Parks Dept for park projects (start within 90 days); quarterly progress updates",
+      type: "textarea"
+    },
+    {
+      label: "Transparency & data governance",
+      key: "transparency",
+      ph: "e.g., Public proposal list; open tally dataset; community data trust; disaggregated participation",
+      type: "textarea"
+    },
+    {
+      label: "Measures & targets",
+      key: "measures",
+      ph: "e.g., Turnout ≥1,500; % first-time voters ≥30%; diversity parity; # proposals funded; % projects delivered on time; 30-day report-back SLA",
+      type: "textarea"
+    },
+
+    // Multi-area mapping
+    {
+      label: "Workstreams (area — owner — milestones — budget — indicators)",
+      key: "workstreams",
+      ph: "e.g., Outreach — CBO coalition — pop-ups x12 — $12k — turnout by subgroup\nBalloting — PB office — launch portal + 8 sites — $8k — ballots cast & integrity checks",
+      type: "textarea"
+    },
+
+    // Risks
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Clique capture → random selection + set-asides; fraud → unique codes; under-delivery → implementation SLAs + tracker",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals / exclusions",
+      key: "non_goals",
+      ph: "e.g., No private benefit; no ongoing staffing beyond 12 months; no political campaigning",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, background, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    fund_name,
+    total_budget,
+    horizon,
+    decision_scope,
+    constraints,
+    owner,
+    governance_roles,
+    steering,
+    voter_eligibility,
+    verification,
+    proposer_eligibility,
+    equity_rules,
+    timeline,
+    outreach,
+    access,
+    idea_methods,
+    proposal_support,
+    feasibility,
+    categories,
+    proposal_rules,
+    voting_method,
+    voting_channels,
+    integrity,
+    tally_rules,
+    implementation,
+    transparency,
+    measures,
+    workstreams,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const phasesCheat = [
+      "Design",
+      "Idea Collection",
+      "Proposal Development",
+      "Vetting & Costing",
+      "Balloting",
+      "Tally & Announcement",
+      "Implementation",
+      "Monitoring & Reporting"
+    ].join(" → ");
+
+    return [
+      `Participatory Budgeting Plan${fund_name ? `: ${fund_name}` : ""}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "FUND & SCOPE",
+      total_budget && `Total budget: ${total_budget}`,
+      horizon && `Cycle: ${horizon}`,
+      decision_scope && `Decision scope:\n${decision_scope}`,
+      constraints && `Policy/Legal constraints:\n${constraints}`,
+      owner && `Owner/Administrator: ${owner}`,
+      governance_roles && `Governance roles:\n${governance_roles}`,
+      steering && `Steering composition & selection:\n${steering}`,
+
+      "—",
+      "ELIGIBILITY & EQUITY",
+      voter_eligibility && `Voter eligibility:\n${voter_eligibility}`,
+      verification && `Verification methods:\n${verification}`,
+      proposer_eligibility && `Proposer eligibility:\n${proposer_eligibility}`,
+      equity_rules && `Equity rules:\n${equity_rules}`,
+
+      "—",
+      "PROCESS PHASES & TIMELINE",
+      timeline || phasesCheat,
+
+      "—",
+      "OUTREACH & ACCESS",
+      outreach && `Outreach plan:\n${outreach}`,
+      access && `Access supports:\n${access}`,
+
+      "—",
+      "IDEAS → PROPOSALS",
+      idea_methods && `Idea collection methods:\n${idea_methods}`,
+      proposal_support && `Proposal support:\n${proposal_support}`,
+      feasibility && `Feasibility review & costing:\n${feasibility}`,
+      proposal_rules && `Proposal eligibility rules:\n${proposal_rules}`,
+
+      "—",
+      "BALLOT DESIGN & CATEGORIES",
+      categories ? listify(categories) : "(add categories — budget lines)",
+      voting_method && `Voting method: ${voting_method}`,
+      voting_channels && `Voting channels:\n${voting_channels}`,
+      integrity && `Anti-coercion & fraud controls:\n${integrity}`,
+      tally_rules && `Tally rules & tie-breakers:\n${tally_rules}`,
+
+      "—",
+      "IMPLEMENTATION & REPORTING",
+      implementation && `Implementation owners & SLAs:\n${implementation}`,
+      transparency && `Transparency & data governance:\n${transparency}`,
+      measures && ["Measures & targets:", listify(measures)].join("\n"),
+
+      workstreams && ["—", "WORKSTREAMS", listify(workstreams)].join("\n"),
+
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      non_goals && ["—", "NON-GOALS / EXCLUSIONS", non_goals].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Fund amount and scope published in plain language",
+      "- [ ] Eligibility and verification methods clear and accessible",
+      "- [ ] Equity rules (set-asides/geographic minimums) defined",
+      "- [ ] Outreach and access supports funded and scheduled",
+      "- [ ] Proposal coaching available; feasibility SLAs set",
+      "- [ ] Simple, tested ballot with clear voting method",
+      "- [ ] Public tally, dataset, and implementation tracker",
+      "- [ ] 30-day ‘what we heard/what we decided’ report-back"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "participatory budgeting PB residents allocate resources fund categories equity set-asides eligibility ballot approval ranked-choice tally implementation transparency template"
+  }
+},
+
+{
+  id: "power_interest_salience",
+  slug: "power-interest-grid-stakeholder-salience",
+  label: "Power/Interest Grid & Stakeholder Salience — Who has power, who’s affected, who must be heard",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "analysis-frameworks",
+    "governance",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:analysis",
+    "use:mapping",
+     "use:power",
+     "use:purpose",
+    "use:engagement",
+    "use:decision-making",
+    "phase:explore",
+    "phase:define",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "map stakeholders by power and interest to plan engagement",
+    "classify salience (power, legitimacy, urgency) to set ethical priorities",
+    "separate who decides from who is affected and who must be centered",
+    "design tailored promises, methods, and cadences per quadrant/class",
+    "track whether voice and influence actually shift over time",
+      "who really makes the decisions here",
+  "how do I know who has the most power",
+  "figure out who I need to convince",
+  "who should I talk to first",
+  "how to deal with powerful stakeholders",
+  "see who is most affected by this decision",
+  "how do I balance loud voices vs quiet ones",
+  "who actually matters in this project",
+  "make a list of people with influence",
+  "how do I keep everyone informed",
+  "who needs to be in the room",
+  "understand who has the final say",
+  "decide whose opinions count most",
+  "how do I manage conflicting interests",
+  "spot hidden power dynamics"
+  ],
+  boosters: [
+    "Define what you mean by power, legitimacy, and urgency in this context before you rate anyone.",
+    "Rate with evidence, not vibes. Link to artifacts (agreements, policies, turnout, lived experience).",
+    "Center affected groups: low power/high legitimacy stakeholders must not be sidelined.",
+    "Publish promises and SLAs for report-backs; measure influence (what changed), not just attendance.",
+    "Revisit classifications quarterly; context shifts change power and urgency.",
+    "Pair with IAP2 or Engagement→Ownership Spectrum to translate insights into action."
+  ],
+  definition: "A mapping scaffold that scores stakeholders on Power and Interest (for engagement strategy) and on Salience attributes (Power, Legitimacy, Urgency) to decide who must be prioritized, heard, and included in decisions.",
+  help: "Fill the decision scope and list stakeholders. Rate each on Power (1–5) and Interest (1–5) and note Salience attributes (P/L/U). Group stakeholders into quadrants and salience classes. Write promises, methods, owners, and cadences. Track measures that show influence and equity.",
+  fields: [
+    {
+      label: "Title (initiative / decision)",
+      key: "title",
+      ph: "e.g., Eastside Forums — Stakeholder Map",
+      type: "text"
+    },
+    {
+      label: "Decision scope (what decisions are in play?)",
+      key: "decision_scope",
+      ph: "e.g., Forum agenda, micro-grants criteria, space rules",
+      type: "textarea"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., 2026 cycle",
+      type: "text"
+    },
+    {
+      label: "Owner / mapper",
+      key: "owner",
+      ph: "e.g., Community Council Steering Group",
+      type: "text"
+    },
+
+    // Criteria & scales
+    {
+      label: "Criteria definitions (Power, Interest, Legitimacy, Urgency)",
+      key: "criteria",
+      ph: "e.g., Power = ability to shape or block decisions/resources; Interest = degree affected/motivated; Legitimacy = rightful claim grounded in norms/law/lived experience; Urgency = time-sensitivity/criticality",
+      type: "textarea"
+    },
+    {
+      label: "Evidence sources",
+      key: "evidence",
+      ph: "e.g., MoUs; attendance data; surveys; testimonies; policies; past decisions",
+      type: "textarea"
+    },
+
+    // Stakeholders
+    {
+      label: "Stakeholders (names or groups)",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 40,
+      ph: "e.g., Youth leaders; elders circle; library branch; small biz assoc; newcomer groups",
+      type: "repeater"
+    },
+    {
+      label: "Ratings — one per line: name — segment — Power(1–5) — Interest(1–5) — Legitimacy(Y/N) — Urgency(Y/N) — Influence(+/0/−) — notes",
+      key: "ratings",
+      ph: "e.g., Youth leaders — community — 3 — 5 — Y — Y — + — organize peers, affected by space rules",
+      type: "textarea"
+    },
+
+    // Quadrants (Power/Interest)
+    {
+      label: "Quadrant: Manage closely (High Power, High Interest)",
+      key: "q_manage",
+      ph: "e.g., Youth leaders; Library branch team",
+      type: "textarea"
+    },
+    {
+      label: "Quadrant: Keep satisfied (High Power, Low Interest)",
+      key: "q_satisfy",
+      ph: "e.g., City facilities department",
+      type: "textarea"
+    },
+    {
+      label: "Quadrant: Keep informed (Low Power, High Interest)",
+      key: "q_inform",
+      ph: "e.g., Newcomer groups; renters coalition",
+      type: "textarea"
+    },
+    {
+      label: "Quadrant: Monitor (Low Power, Low Interest)",
+      key: "q_monitor",
+      ph: "e.g., Regional media",
+      type: "textarea"
+    },
+
+    // Salience classes (Mitchell-Agle-Wood)
+    {
+      label: "Salience classification (one per line: name — attributes (P/L/U) — class)",
+      key: "salience",
+      ph: "e.g., Youth leaders — L,U — Dependent; Library — P,L — Dominant; City safety — P,U — Dangerous; Residents w/ disability — L,U — Dependent; Tenant union — P,L,U — Definitive",
+      type: "textarea"
+    },
+
+    // Strategy
+    {
+      label: "Engagement promises & methods (one per line: name — promise — methods — owner — cadence)",
+      key: "engagement_plan",
+      ph: "e.g., Newcomer groups — your concerns shape final design — co-design clinics + interpreters — Maria — biweekly",
+      type: "textarea"
+    },
+    {
+      label: "Escalation & conflict handling",
+      key: "conflict",
+      ph: "e.g., Restorative circles; mediation; transparent appeal routes; code-of-conduct",
+      type: "textarea"
+    },
+    {
+      label: "Equity & inclusion commitments",
+      key: "equity",
+      ph: "e.g., Stipends; childcare; language/ASL; accessibility; rotate times; affinity sessions",
+      type: "textarea"
+    },
+    {
+      label: "Transparency & feedback SLAs",
+      key: "feedback",
+      ph: "e.g., Publish 'What we heard/changed' in 30 days; individual replies in 5 business days",
+      type: "textarea"
+    },
+
+    // Measures
+    {
+      label: "Measures — participation & influence (one per line)",
+      key: "measures",
+      ph: "e.g., % agenda items originating from affected groups; % decisions changed due to input; participation by subgroup; time-to-report-back",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Clique capture → term limits; tokenism → shared decision rights; fatigue → rotate roles",
+      type: "textarea"
+    },
+    {
+      label: "Map link (optional)",
+      key: "map_link",
+      ph: "URL (Miro/Kumu/FigJam)",
+      type: "text"
+    },
+    {
+      label: "Context / notes (optional)",
+      key: "ctx",
+      ph: "Links, constraints, history",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    decision_scope,
+    horizon,
+    owner,
+    criteria,
+    evidence,
+    stakeholders,
+    ratings,
+    q_manage,
+    q_satisfy,
+    q_inform,
+    q_monitor,
+    salience,
+    engagement_plan,
+    conflict,
+    equity,
+    feedback,
+    measures,
+    risks,
+    map_link,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    const quadrantCheat = [
+      "Manage closely — High Power, High Interest: co-create, frequent touchpoints, shared decisions.",
+      "Keep satisfied — High Power, Low Interest: targeted updates, remove friction, avoid surprises.",
+      "Keep informed — Low Power, High Interest: open channels, capacity-building, feedback loops.",
+      "Monitor — Low Power, Low Interest: lightweight updates; revisit if context shifts."
+    ].join("\n");
+
+    const salienceCheat = [
+      "Dormant (P) • Discretionary (L) • Demanding (U)",
+      "Dominant (P,L) • Dependent (L,U) • Dangerous (P,U) • Definitive (P,L,U)"
+    ].join("\n");
+
+    return [
+      title && `Power/Interest & Salience Map: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "OVERVIEW",
+      decision_scope && `Decision scope: ${decision_scope}`,
+      horizon && `Time horizon: ${horizon}`,
+      owner && `Owner/mapper: ${owner}`,
+
+      "—",
+      "CRITERIA & EVIDENCE",
+      criteria && `Criteria definitions:\n${criteria}`,
+      evidence && `Evidence sources:\n${evidence}`,
+
+      stakeholders && ["—", "STAKEHOLDERS", listify(stakeholders)].join("\n"),
+      ratings && ["—", "RATINGS (name — segment — Pwr — Int — Leg — Urg — Inf — notes)", listify(ratings)].join("\n"),
+
+      "—",
+      "POWER/INTEREST QUADRANTS",
+      quadrantCheat,
+      q_manage && ["Manage closely (H/H):", listify(q_manage)].join("\n"),
+      q_satisfy && ["Keep satisfied (H/L):", listify(q_satisfy)].join("\n"),
+      q_inform && ["Keep informed (L/H):", listify(q_inform)].join("\n"),
+      q_monitor && ["Monitor (L/L):", listify(q_monitor)].join("\n"),
+
+      "—",
+      "STAKEHOLDER SALIENCE (P/L/U)",
+      salienceCheat,
+      salience ? listify(salience) : "(add lines: name — attributes (P/L/U) — class)",
+
+      "—",
+      "ENGAGEMENT STRATEGY",
+      engagement_plan ? listify(engagement_plan) : "(add: name — promise — methods — owner — cadence)",
+      conflict && `Escalation & conflict handling:\n${conflict}`,
+      equity && `Equity & inclusion commitments:\n${equity}`,
+      feedback && `Transparency & feedback SLAs:\n${feedback}`,
+
+      "—",
+      "MEASURES",
+      measures ? listify(measures) : "(add participation & influence measures with targets)",
+      risks && ["—", "RISKS & MITIGATIONS", risks].join("\n"),
+      map_link && `Map: ${map_link}`,
+
+      "—",
+      "Checklist:",
+      "- [ ] Criteria defined and evidence attached",
+      "- [ ] Stakeholders rated with justification",
+      "- [ ] Quadrants populated with tailored strategies",
+      "- [ ] Salience classes assigned; definitive stakeholders prioritized",
+      "- [ ] Plain-language promises & response SLAs set",
+      "- [ ] Measures track influence (what changed), not just attendance",
+      "- [ ] Revisit map quarterly and after major context shifts"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "power interest grid stakeholder salience mitchell agle wood legitimacy urgency manage closely keep satisfied keep informed monitor engagement promises equity measures template"
+  }
+},
+
+
+{
+  id: "public_narrative_ganz",
+  slug: "public-narrative-story-of-self-us-now",
+  label: "Public Narrative (Marshall Ganz) — Story of Self, Us, Now",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "communication",
+    "alignment",
+    "community",
+    "storytelling"
+  ],
+  tags: [
+    "type:framework",
+    "use:communication",
+    "use:alignment",
+     "use:alignment",
+    "use:narrative",
+    "use:mobilization",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "articulate a shared voice for a campaign, org, or community",
+    "craft speeches, kickoff remarks, onboarding intros, or funder pitches",
+    "mobilize volunteers or partners around an urgent next step",
+    "translate lived values into action with a concrete ask",
+      "how do I tell my story in a speech",
+  "make my presentation more inspiring",
+  "how to connect my story to a bigger cause",
+  "write a talk that moves people to act",
+  "how do I share why this work matters to me",
+  "help me rally people around an urgent issue",
+  "turn my personal story into a call to action",
+  "make my team feel part of the same mission",
+  "how do I explain why now is the time",
+  "craft a story that motivates volunteers",
+  "craft a story for community"
+  ],
+  boosters: [
+    "Use the challenge → choice → outcome arc in each section (Self, Us, Now).",
+    "Be specific: concrete scenes, names, places, small details beat abstractions.",
+    "Name values in action (courage, solidarity) rather than listing adjectives.",
+    "Make the ask a real commitment with a time, place, and owner.",
+    "Bridge emotion to action: tie feelings (fear, hope, anger, joy) to a next step.",
+    "Keep it tight: 2–3 minutes spoken; write more only if you’ll edit down."
+  ],
+  definition: "A narrative structure that links personal values (Self), shared identity and values (Us), and urgent strategic action (Now) into a concise call to act together.",
+  help: "Complete the fields below. Draft Self, Us, Now with a visible challenge → choice → outcome arc. End with one specific ask. Use the variants to tailor for different audiences/channels.",
+  fields: [
+    {
+      label: "Title (campaign / moment)",
+      key: "title",
+      ph: "e.g., Belonging Starts With One Voice",
+      type: "text"
+    },
+    {
+      label: "Audience (primary)",
+      key: "audience",
+      ph: "e.g., New volunteers at the monthly forum",
+      type: "text"
+    },
+    {
+      label: "Purpose (what this narrative should accomplish)",
+      key: "purpose",
+      ph: "e.g., Invite 25 people to commit as peer facilitators by June",
+      type: "textarea"
+    },
+    {
+      label: "Issue / context (why this matters here)",
+      key: "issue",
+      ph: "e.g., Low sense of belonging across neighborhoods; few first-time speakers",
+      type: "textarea"
+    },
+
+    // STORY OF SELF
+    {
+      label: "SELF — scene & challenge (moment that tested your values)",
+      key: "self_challenge",
+      ph: "e.g., The first time I walked into the library forum and said nothing for an hour…",
+      type: "textarea"
+    },
+    {
+      label: "SELF — choice (value-based decision you made)",
+      key: "self_choice",
+      ph: "e.g., I signed up to co-facilitate even though I was terrified",
+      type: "textarea"
+    },
+    {
+      label: "SELF — outcome (what changed / what you learned)",
+      key: "self_outcome",
+      ph: "e.g., Three neighbors spoke for the first time; I learned courage can be borrowed",
+      type: "textarea"
+    },
+    {
+      label: "Values named (words that actually show up in the story)",
+      key: "values",
+      ph: "e.g., Courage, solidarity, dignity, curiosity",
+      type: "textarea"
+    },
+
+    // STORY OF US
+    {
+      label: "US — shared challenge (what we face together)",
+      key: "us_challenge",
+      ph: "e.g., We’re spread across neighborhoods and don’t hear newcomers’ voices",
+      type: "textarea"
+    },
+    {
+      label: "US — shared choice (what we decide to do together)",
+      key: "us_choice",
+      ph: "e.g., We will train neighbors as peer facilitators and fund micro-grants",
+      type: "textarea"
+    },
+    {
+      label: "US — shared outcome / vision (what becomes possible)",
+      key: "us_outcome",
+      ph: "e.g., Forums where first-time speakers are the norm; ties across language lines",
+      type: "textarea"
+    },
+    {
+      label: "Proof points (brief, human-scale)",
+      key: "proof",
+      ph: "e.g., First-time speakers rose from 12% to 24% in 3 months",
+      type: "textarea"
+    },
+
+    // STORY OF NOW
+    {
+      label: "NOW — urgent challenge (why now, not later)",
+      key: "now_challenge",
+      ph: "e.g., Summer events start in 6 weeks; without facilitators we’ll lose momentum",
+      type: "textarea"
+    },
+    {
+      label: "NOW — strategic choice (the path that moves the metric)",
+      key: "now_choice",
+      ph: "e.g., Train 12 peer facilitators and secure space MoUs by June 30",
+      type: "textarea"
+    },
+    {
+      label: "NOW — outcome if we act (and if we don’t)",
+      key: "now_outcome",
+      ph: "e.g., If we act, first-time speakers ≥25%; if not, voices go unheard another year",
+      type: "textarea"
+    },
+
+    // THE ASK
+    {
+      label: "Primary call to action (specific, time-bound)",
+      key: "ask_primary",
+      ph: "e.g., Commit to the facilitator workshop on May 10, 6–9pm at the library",
+      type: "text"
+    },
+    {
+      label: "Commitment options (low / medium / high)",
+      key: "ask_tiers",
+      ph: "e.g., Low: share invite with 3 neighbors; Med: host a story circle; High: join facilitator cohort",
+      type: "textarea"
+    },
+    {
+      label: "How to respond (contact/link/instructions)",
+      key: "response",
+      ph: "e.g., Text 'FACILITATE' to 555-0199 or sign up at tinyurl.com/eastside-facilitate",
+      type: "text"
+    },
+
+    // STYLE & DELIVERY
+    {
+      label: "Tone & voice",
+      key: "tone",
+      ph: "e.g., Warm, invitational, confident, specific",
+      type: "text"
+    },
+    {
+      label: "Channel & format",
+      key: "channel",
+      ph: "e.g., 3-min live remarks; email follow-up; 5-slide deck; 6-post thread",
+      type: "text"
+    },
+    {
+      label: "Length target",
+      key: "length_target",
+      ph: "e.g., 350–450 words (spoken ~2–3 min)",
+      type: "text"
+    },
+    {
+      label: "Closing image / line",
+      key: "closing",
+      ph: "e.g., An empty chair waiting for a first-time speaker",
+      type: "text"
+    },
+
+    // Optional helpers
+    {
+      label: "Counter-narratives to acknowledge & reframe (optional)",
+      key: "counter",
+      ph: "e.g., 'This won’t change anything' → show one concrete win and a next step",
+      type: "textarea"
+    },
+    {
+      label: "Audience variants (optional; one per line: audience — tweak)",
+      key: "variants",
+      ph: "e.g., Donors — emphasize shared outcome; Teens — emphasize belonging & skill-building",
+      type: "textarea"
+    },
+    {
+      label: "Context / notes",
+      key: "ctx",
+      ph: "Links, constraints, attribution",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    audience,
+    purpose,
+    issue,
+    self_challenge,
+    self_choice,
+    self_outcome,
+    values,
+    us_challenge,
+    us_choice,
+    us_outcome,
+    proof,
+    now_challenge,
+    now_choice,
+    now_outcome,
+    ask_primary,
+    ask_tiers,
+    response,
+    tone,
+    channel,
+    length_target,
+    closing,
+    counter,
+    variants,
+    ctx,
+    style
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `Public Narrative: ${title}`,
+      audience && `Audience: ${audience}`,
+      purpose && `Purpose: ${purpose}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      channel && `Channel: ${channel}`,
+      length_target && `Length target: ${length_target}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "ISSUE / CONTEXT",
+      issue || "(name the problem in this place, with this audience)",
+
+      "—",
+      "STORY OF SELF (challenge → choice → outcome)",
+      self_challenge ? `Challenge: ${self_challenge}` : "(add a specific scene that tested your values)",
+      self_choice && `Choice: ${self_choice}`,
+      self_outcome && `Outcome: ${self_outcome}`,
+      values && `Values named: ${values}`,
+
+      "—",
+      "STORY OF US (shared challenge → shared choice → shared outcome)",
+      us_challenge ? `Shared challenge: ${us_challenge}` : "(what we face together)",
+      us_choice && `Shared choice: ${us_choice}`,
+      us_outcome && `Shared outcome/vision: ${us_outcome}`,
+      proof && `Proof points: ${proof}`,
+
+      "—",
+      "STORY OF NOW (urgent challenge → strategic choice → likely outcome)",
+      now_challenge ? `Urgent challenge: ${now_challenge}` : "(why now)",
+      now_choice && `Strategic choice: ${now_choice}`,
+      now_outcome && `Outcome if we act (and if not): ${now_outcome}`,
+
+      "—",
+      "CALL TO ACTION",
+      ask_primary ? `Primary ask: ${ask_primary}` : "(make one concrete, time-bound ask)",
+      ask_tiers && ["Commitment options:", listify(ask_tiers)].join("\n"),
+      response && `How to respond: ${response}`,
+
+      counter && ["—", "COUNTER-NARRATIVES & REFRAMES", counter].join("\n"),
+      variants && ["—", "AUDIENCE VARIANTS", listify(variants)].join("\n"),
+      closing && ["—", "CLOSING IMAGE / LINE", closing].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Each section uses challenge → choice → outcome",
+      "- [ ] Specific, sensory details (no vague abstractions)",
+      "- [ ] Values are shown in action, not merely listed",
+      "- [ ] Primary ask is specific, time-bound, and feasible",
+      "- [ ] Response path is obvious (link, text, sign-up)",
+      "- [ ] Length fits the channel (≈2–3 min spoken)",
+      "- [ ] Emotion bridges to collective action"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "public narrative marshall ganz story of self us now challenge choice outcome campaign speech call to action community organizing template"
+  }
+},
+
+
+{
+  id: "par_cbpr",
+  slug: "participatory-action-research-cbpr",
+  label: "Participatory Action Research / CBPR - Co-research with communities",
+  kind: "strategy",
+  categories: [
+    "research",
+    "planning",
+    "ethics",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:research",
+    "use:engagement",
+    "use:governance",
+    "use:evaluation",
+    "use:capacity",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "co-design and co-lead research with communities",
+    "pair learning with action through Plan-Act-Observe-Reflect cycles",
+    "establish community governance over data, consent, and findings",
+    "build capacity and compensate community researchers",
+    "translate evidence into concrete changes and accountability",
+      "how do I work with the community instead of studying them",
+  "make research more fair and equal",
+  "how do I share power in a project",
+  "get real input from people affected",
+  "turn community feedback into action",
+  "how to include residents in the research team",
+  "what’s the best way to ask for consent",
+  "make sure the community owns the results",
+  "how do I pay or thank community partners",
+  "how can research actually help people",
+  "turning research into action"
+  ],
+  boosters: [
+    "Name a community research board or steering group with real decision rights.",
+    "Publish plain-language consent, data governance, and return-of-results commitments.",
+    "Center access supports and paid roles so participation is possible and fair.",
+    "Plan participatory analysis sessions where community members code, theme, and interpret data.",
+    "Close the loop first to the community, then to external audiences.",
+    "Track influence on decisions, not just participation counts."
+  ],
+  definition: "A co-research approach where communities identify questions, design and conduct research, analyze results, and act on findings, with shared governance over ethics, data, and dissemination.",
+  help: "Complete governance, ethics, access supports, research questions, sampling and recruitment, methods, instruments, data management, analysis and sensemaking, action cycles, dissemination, capacity, and indicators. Use journals to document reflexivity and learning.",
+  fields: [
+    {
+      label: "Title (project or initiative)",
+      key: "title",
+      ph: "e.g., Eastside Belonging PAR",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., Jan-Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Community partners and roles",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 24,
+      ph: "e.g., Youth council; elders circle; newcomer group; library branch",
+      type: "repeater"
+    },
+    {
+      label: "Governance - Community research board / steering",
+      key: "governance",
+      ph: "e.g., 9-member resident board with agenda-setting and veto on releases",
+      type: "textarea"
+    },
+    {
+      label: "Owner / coordinator",
+      key: "owner",
+      ph: "e.g., Community Council Research Team",
+      type: "text"
+    },
+
+    // Ethics and access
+    {
+      label: "Ethics and consent",
+      key: "ethics",
+      ph: "e.g., Plain-language, ongoing, revocable consent; no penalty for withdrawal; privacy by default",
+      type: "textarea"
+    },
+    {
+      label: "Data governance and sovereignty",
+      key: "data_governance",
+      ph: "e.g., Community IRB; OCAP/CARE aligned; data trust; shared repository with role-based access",
+      type: "textarea"
+    },
+    {
+      label: "Confidentiality and safety",
+      key: "safety",
+      ph: "e.g., De-identification; secure storage; safety plan; mandatory reporting boundaries explained",
+      type: "textarea"
+    },
+    {
+      label: "Accessibility and language access",
+      key: "access",
+      ph: "e.g., Interpreters; translated materials; ASL; childcare; transport; remote options; sensory accommodations",
+      type: "textarea"
+    },
+    {
+      label: "Compensation and staffing",
+      key: "compensation",
+      ph: "e.g., Community researchers $30/hr; stipends; prompt payment policy; paid coordinator",
+      type: "textarea"
+    },
+
+    // Purpose and questions
+    {
+      label: "Purpose and change goals",
+      key: "purpose",
+      ph: "e.g., Increase first-time speakers and cross-neighborhood ties",
+      type: "textarea"
+    },
+    {
+      label: "Research questions (one per line)",
+      key: "questions",
+      ph: "e.g., What helps newcomers speak at forums?\nWhich access supports correlate with higher belonging?",
+      type: "textarea"
+    },
+
+    // Sampling, recruitment, inclusion
+    {
+      label: "Sampling and recruitment",
+      key: "sampling",
+      ph: "e.g., Purposive sampling across neighborhoods; recruit through partners and pop-ups",
+      type: "textarea"
+    },
+    {
+      label: "Inclusion and equity criteria",
+      key: "inclusion",
+      ph: "e.g., Disaggregate by language, disability, age; oversample under-heard groups",
+      type: "textarea"
+    },
+
+    // Methods and instruments
+    {
+      label: "Methods menu (co-designed)",
+      key: "methods",
+      ph: "e.g., Story circles; interviews; photovoice; participatory mapping; short surveys; SenseMaker micro-narratives",
+      type: "textarea"
+    },
+    {
+      label: "Instruments and prompts",
+      key: "instruments",
+      ph: "e.g., Interview guide; survey items; photo consent; mapping legend",
+      type: "textarea"
+    },
+    {
+      label: "Fieldwork plan and SLAs",
+      key: "fieldwork",
+      ph: "e.g., 8 weeks; 2 sessions per site; agency responses within 10 business days",
+      type: "textarea"
+    },
+
+    // Data management and analysis
+    {
+      label: "Data management plan",
+      key: "data_plan",
+      ph: "e.g., Tools; storage; encryption; retention; deletion; access roles",
+      type: "textarea"
+    },
+    {
+      label: "Participatory analysis and sensemaking",
+      key: "analysis",
+      ph: "e.g., Community coding workshops; theme clustering; validation sessions; member checks",
+      type: "textarea"
+    },
+
+    // Action cycles and dissemination
+    {
+      label: "Action cycles - Plan, Act, Observe, Reflect",
+      key: "cycles",
+      ph: "e.g., Cycle 1: forum format tweak; Cycle 2: outreach change; track indicators each cycle",
+      type: "textarea"
+    },
+    {
+      label: "Dissemination and return of results",
+      key: "dissemination",
+      ph: "e.g., Community-first brief; multilingual zines; public deck; policy memo; open dataset (where safe)",
+      type: "textarea"
+    },
+    {
+      label: "Authorship, IP, and credit",
+      key: "authorship",
+      ph: "e.g., Community co-authors; shared copyright; CC license; citation norms",
+      type: "textarea"
+    },
+
+    // Capacity and learning
+    {
+      label: "Capacity-building plan",
+      key: "capacity",
+      ph: "e.g., Interview training; trauma-informed practice; analysis clinics; peer mentoring",
+      type: "textarea"
+    },
+    {
+      label: "Journals and reflexivity",
+      key: "journals",
+      ph: "e.g., Field notes; reflexivity journal; outcome journal; weekly learning huddle",
+      type: "textarea"
+    },
+
+    // Measures and risks
+    {
+      label: "Indicators and targets",
+      key: "indicators",
+      ph: "e.g., % first-time speakers; belonging index; % decisions changed due to evidence; participation by subgroup",
+      type: "textarea"
+    },
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      ph: "e.g., Re-traumatization risk; confidentiality breaches; fatigue; capture by a clique",
+      type: "textarea"
+    },
+
+    // Delivery
+    {
+      label: "Workstreams (area - owner - milestones - budget - indicators)",
+      key: "workstreams",
+      ph: "e.g., Fieldwork - resident team - 40 interviews by May - $12k - subgroup coverage",
+      type: "textarea"
+    },
+    {
+      label: "Timeline and cadence",
+      key: "timeline",
+      ph: "e.g., Design Jan-Feb; Fieldwork Mar-Apr; Analysis May; Action cycles Jun-Sep; Community brief Oct",
+      type: "text"
+    },
+    {
+      label: "Context and links",
+      key: "ctx",
+      ph: "References, prior work, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    partners,
+    governance,
+    owner,
+    ethics,
+    data_governance,
+    safety,
+    access,
+    compensation,
+    purpose,
+    questions,
+    sampling,
+    inclusion,
+    methods,
+    instruments,
+    fieldwork,
+    data_plan,
+    analysis,
+    cycles,
+    dissemination,
+    authorship,
+    capacity,
+    journals,
+    indicators,
+    risks,
+    workstreams,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `PAR / CBPR Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Time horizon: ${horizon}`,
+      partners && ["Community partners and roles:", listify(partners)].join("\n"),
+      owner && `Owner or coordinator: ${owner}`,
+
+      "SECTION: Governance and ethics",
+      governance && `Governance: ${governance}`,
+      ethics && `Ethics and consent: ${ethics}`,
+      data_governance && `Data governance and sovereignty: ${data_governance}`,
+      safety && `Confidentiality and safety: ${safety}`,
+      access && `Accessibility and language access: ${access}`,
+      compensation && `Compensation and staffing: ${compensation}`,
+
+      "SECTION: Purpose and questions",
+      purpose && `Purpose and change goals:\n${purpose}`,
+      questions ? ["Research questions:", listify(questions)].join("\n") : "(add research questions)",
+
+      "SECTION: Sampling, recruitment, inclusion",
+      sampling && `Sampling and recruitment:\n${sampling}`,
+      inclusion && `Inclusion and equity criteria:\n${inclusion}`,
+
+      "SECTION: Methods and instruments",
+      methods && `Methods menu:\n${methods}`,
+      instruments && `Instruments and prompts:\n${instruments}`,
+      fieldwork && `Fieldwork plan and SLAs:\n${fieldwork}`,
+
+      "SECTION: Data management and analysis",
+      data_plan && `Data management plan:\n${data_plan}`,
+      analysis && `Participatory analysis and sensemaking:\n${analysis}`,
+
+      "SECTION: Action cycles and dissemination",
+      cycles && `Action cycles (Plan-Act-Observe-Reflect):\n${cycles}`,
+      dissemination && `Dissemination and return of results:\n${dissemination}`,
+      authorship && `Authorship, IP, and credit:\n${authorship}`,
+
+      "SECTION: Capacity and learning",
+      capacity && `Capacity-building plan:\n${capacity}`,
+      journals && `Journals and reflexivity:\n${journals}`,
+
+      "SECTION: Measures and risks",
+      indicators ? ["Indicators and targets:", listify(indicators)].join("\n") : "(add indicators and targets)",
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Delivery",
+      workstreams && ["Workstreams (area - owner - milestones - budget - indicators):", listify(workstreams)].join("\n"),
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Checklist:",
+      "- [ ] Community board governs questions, methods, data, and releases",
+      "- [ ] Consent is plain-language, ongoing, and revocable",
+      "- [ ] Data governance and sovereignty are codified",
+      "- [ ] Access supports and paid roles are funded",
+      "- [ ] Participatory analysis sessions scheduled and staffed",
+      "- [ ] Action cycles tie findings to concrete changes",
+      "- [ ] Community-first return of results with public follow-up",
+      "- [ ] Influence on decisions tracked and reported"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "participatory action research PAR CBPR co-research community research board ethics consent data governance OCAP CARE participatory analysis plan act observe reflect dissemination capacity template"
+  }
+},
+
+{
+  id: "pra_rra",
+  slug: "pra-rra-participatory-rapid-rural-appraisal",
+  label: "PRA / RRA - Participatory mapping, ranking, seasonal calendars guided by locals",
+  kind: "research",
+  categories: [
+    "research",
+    "planning",
+    "analysis-frameworks",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:research",
+    "use:mapping",
+    "use:engagement",
+    "use:prioritize",
+    "phase:explore",
+    "phase:define",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "gain rapid, locally led understanding of place and priorities",
+    "produce community maps, rankings, and seasonal calendars",
+    "identify hazards, assets, gaps, and opportunities",
+    "triangulate insights across multiple PRA methods",
+    "co-create an action list with owners and timing",
+      "how to map my community with locals",
+  "make a simple ranking of local needs",
+  "create a seasonal calendar with villagers",
+  "quick way to learn what matters to residents",
+  "how to spot local problems and resources",
+  "let people draw their own maps",
+  "community-led way to set priorities",
+  "fast research method with residents",
+  "how to plan projects using local knowledge",
+  "ways to involve villagers in decisions",
+  "bringing in participation",
+  "getting people involved"
+  ],
+  boosters: [
+    "Locals lead, outsiders facilitate. Recruit guides and pay them.",
+    "Draw first, write later. Use ground materials and local symbols.",
+    "Walk the ground. Do a transect with planned stops and photo notes.",
+    "Run separate sessions for different groups if power dynamics exist.",
+    "Triangulate findings across at least 3 methods before concluding.",
+    "Return outputs within 30 days in accessible formats and languages."
+  ],
+  definition: "A locally led, visual and hands-on approach that uses mapping, ranking, timelines, and seasonal calendars to understand conditions and priorities. Facilitators support, community members analyze and decide.",
+  help: "Complete scope, team, ethics, participants, and the PRA methods you will run. Capture outputs as photos or scans. Synthesize, validate with participants, and finish with a simple action list and measures.",
+  fields: [
+    {
+      label: "Title (locality or initiative)",
+      key: "title",
+      ph: "e.g., Eastside PRA",
+      type: "text"
+    },
+    {
+      label: "Time horizon",
+      key: "horizon",
+      ph: "e.g., Mar–Jun 2026",
+      type: "text"
+    },
+    {
+      label: "Locality / sites",
+      key: "sites",
+      ph: "e.g., Eastside neighborhoods A, B, C",
+      type: "text"
+    },
+    {
+      label: "Team and roles",
+      key: "team",
+      ph: "e.g., 2 local guides, 1 facilitator, 1 note-taker, 1 photographer",
+      type: "textarea"
+    },
+    {
+      label: "Ethics, consent, and photo/audio rules",
+      key: "ethics",
+      ph: "e.g., Plain-language consent, opt-out options, no faces without consent, privacy by default",
+      type: "textarea"
+    },
+    {
+      label: "Accessibility and language access",
+      key: "access",
+      ph: "e.g., Interpreters, translated handouts, large-print, childcare, transport stipends",
+      type: "textarea"
+    },
+    {
+      label: "Participants and inclusion",
+      key: "participants",
+      ph: "e.g., Youth group, elders circle, renters, newcomers; oversample under-heard groups",
+      type: "textarea"
+    },
+    {
+      label: "Focal questions",
+      key: "questions",
+      ph: "e.g., What makes it easier or harder to participate? Where are the safe and unsafe spaces?",
+      type: "textarea"
+    },
+
+    // Method plans
+    {
+      label: "Participatory mapping plan",
+      key: "mapping",
+      ph: "e.g., Social map, resource map, hazard map, mobility map; base sheet size; symbols and legend; materials list",
+      type: "textarea"
+    },
+    {
+      label: "Transect walk plan",
+      key: "transect",
+      ph: "e.g., Route, 5 planned stops, what to observe, photo notes, who speaks at each stop",
+      type: "textarea"
+    },
+    {
+      label: "Seasonal calendar plan",
+      key: "seasonal",
+      ph: "e.g., Rows: rainfall, cash flow, illnesses, workload, festivals, migration, safety concerns",
+      type: "textarea"
+    },
+    {
+      label: "Daily activity clocks (optional)",
+      key: "daily_clock",
+      ph: "e.g., Typical day for youth, caregivers, vendors; differences by season",
+      type: "textarea"
+    },
+    {
+      label: "Wealth or wellbeing ranking",
+      key: "wealth_ranking",
+      ph: "e.g., Criteria list, household card sorting, confidentiality notes, verification approach",
+      type: "textarea"
+    },
+    {
+      label: "Matrix or pairwise ranking",
+      key: "matrix_ranking",
+      ph: "e.g., Options vs criteria grid, scoring tokens, reason capture, who participates",
+      type: "textarea"
+    },
+    {
+      label: "Institutional or Venn mapping",
+      key: "venn",
+      ph: "e.g., Circles for groups and agencies, distance shows access/trust, overlaps show collaboration",
+      type: "textarea"
+    },
+    {
+      label: "Timeline or historical mapping",
+      key: "timeline",
+      ph: "e.g., Key events, shocks, policy changes, infrastructure openings/closures",
+      type: "textarea"
+    },
+    {
+      label: "Problem and opportunity ranking",
+      key: "priority_ranking",
+      ph: "e.g., Top issues and assets, reasons, quick-win filter, feasibility notes",
+      type: "textarea"
+    },
+
+    // Documentation and synthesis
+    {
+      label: "Documentation plan",
+      key: "docs",
+      ph: "e.g., Photo protocol, scans of maps, GPS pins, file naming, shared drive link",
+      type: "textarea"
+    },
+    {
+      label: "Data governance and return of results",
+      key: "data_governance",
+      ph: "e.g., Community repository, open brief in local languages, ownership and access rules",
+      type: "textarea"
+    },
+    {
+      label: "Synthesis and validation workshop",
+      key: "validation",
+      ph: "e.g., Bring groups together, compare outputs, resolve conflicts, confirm top 3 actions",
+      type: "textarea"
+    },
+
+    // Action and measures
+    {
+      label: "Action list (one per line: action - owner - resources - start - check date)",
+      key: "actions",
+      ph: "e.g., Night lighting on corridor B - Resident panel - $8k - Jul - Oct review",
+      type: "textarea"
+    },
+    {
+      label: "Measures and signals to watch",
+      key: "measures",
+      ph: "e.g., % first-time speakers; incident reports; foot traffic; participation by subgroup",
+      type: "textarea"
+    },
+
+    // Risks and context
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      ph: "e.g., Stigma from wealth ranking, elite capture, fatigue; mitigations and supports",
+      type: "textarea"
+    },
+    {
+      label: "Links and context",
+      key: "ctx",
+      ph: "e.g., Photo album URL, Kumu map, prior studies",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    sites,
+    team,
+    ethics,
+    access,
+    participants,
+    questions,
+    mapping,
+    transect,
+    seasonal,
+    daily_clock,
+    wealth_ranking,
+    matrix_ranking,
+    venn,
+    timeline,
+    priority_ranking,
+    docs,
+    data_governance,
+    validation,
+    actions,
+    measures,
+    risks,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const menu = [
+      "Participatory maps: social, resource, hazard, mobility",
+      "Transect walk with photo notes and stops",
+      "Seasonal calendar across workload, health, cash flow, climate",
+      "Daily activity clocks by group",
+      "Wealth or wellbeing ranking with community criteria",
+      "Matrix or pairwise ranking of options vs criteria",
+      "Institutional or Venn mapping of relationships and access",
+      "Timeline or historical mapping of shocks and changes",
+      "Problem and opportunity ranking with quick-win filter"
+    ].join("\n");
+
+    return [
+      title && `PRA / RRA plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      horizon && `Time horizon: ${horizon}`,
+      sites && `Locality or sites: ${sites}`,
+      ctx && `Links and context: ${ctx}`,
+
+      "SECTION: Team and ethics",
+      team && `Team and roles:\n${team}`,
+      ethics && `Ethics, consent, and photo/audio rules:\n${ethics}`,
+      access && `Accessibility and language access:\n${access}`,
+      participants && `Participants and inclusion:\n${participants}`,
+
+      "SECTION: Focal questions",
+      questions || "(add the questions this PRA will answer)",
+
+      "SECTION: Method menu",
+      menu,
+
+      "SECTION: Method plans",
+      mapping && `Participatory mapping plan:\n${mapping}`,
+      transect && `Transect walk plan:\n${transect}`,
+      seasonal && `Seasonal calendar plan:\n${seasonal}`,
+      daily_clock && `Daily activity clocks:\n${daily_clock}`,
+      wealth_ranking && `Wealth or wellbeing ranking:\n${wealth_ranking}`,
+      matrix_ranking && `Matrix or pairwise ranking:\n${matrix_ranking}`,
+      venn && `Institutional or Venn mapping:\n${venn}`,
+      timeline && `Timeline or historical mapping:\n${timeline}`,
+      priority_ranking && `Problem and opportunity ranking:\n${priority_ranking}`,
+
+      "SECTION: Documentation and synthesis",
+      docs && `Documentation plan:\n${docs}`,
+      data_governance && `Data governance and return of results:\n${data_governance}`,
+      validation && `Synthesis and validation workshop:\n${validation}`,
+
+      "SECTION: Action and measures",
+      actions ? ["Action list:", listify(actions)].join("\n") : "(add actions with owner, resources, dates)",
+      measures && ["Measures and signals to watch:", listify(measures)].join("\n"),
+
+      risks && ["SECTION: Risks and mitigations", risks].join("\n"),
+
+      "Checklist:",
+      "- [ ] Local guides recruited and compensated",
+      "- [ ] Consent and photo rules clear and respected",
+      "- [ ] At least 3 PRA methods run with triangulation",
+      "- [ ] Separate sessions held where power dynamics require",
+      "- [ ] Outputs photographed or scanned with clear legends",
+      "- [ ] Validation session held and top 3 actions agreed",
+      "- [ ] Return of results scheduled within 30 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "PRA RRA participatory rapid rural appraisal mapping transect seasonal calendar wealth ranking matrix ranking venn map timeline locally led triangulation template"
+  }
+},
+
+{
+  id: "two_eyed_seeing",
+  slug: "two-eyed-seeing-etuaptmumk",
+  label: "Two-Eyed Seeing (Etuaptmumk): Braiding Indigenous and Western knowledge",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "research",
+    "ethics",
+    "community",
+    "systems"
+  ],
+  tags: [
+    "type:framework",
+    "use:research",
+    "use:governance",
+    "use:design",
+    "use:learning",
+    "phase:explore",
+    "phase:define",
+    "topic:community",
+    "topic:indigenous",
+    "topic:western",
+    "topic:ideas",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "co-create knowledge with Elders and Knowledge Keepers alongside academics or practitioners",
+    "design programs that respect protocol, land, and relational accountability",
+    "pair Indigenous methodologies with Western methods without collapsing differences",
+    "align data governance with OCAP or CARE principles and community consent",
+    "build indicators that honor story, ceremony, and lived experience alongside quantitative measures",
+     "how to mix indigenous knowledge with science",
+  "work with elders and researchers together",
+  "respect cultural ways in research",
+  "how to use western tools without losing tradition",
+  "make sure data is handled with community consent",
+  "balance numbers with stories",
+  "design programs that fit both worlds",
+  "include ceremony and culture in planning",
+  "how to braid two knowledge systems",
+  "learn from elders and experts at the same time",
+  "bridging worlds together"
+  ],
+  boosters: [
+    "Begin with relationship and protocol before methods. Ask who convenes, who benefits, and who decides.",
+    "Name community authority in governance, IP, and data. Publish it in plain language.",
+    "Create Ethical Space practices for dialogue where worldviews meet on equal footing.",
+    "Use seasonal or ceremony-informed timelines in addition to fiscal calendars.",
+    "Protect sacred and restricted knowledge. Some things are not for publication.",
+    "Budget for honoraria, travel, food, translation, and ceremony as core requirements."
+  ],
+  definition: "A practice of holding multiple ways of knowing side by side without forcing one into the other. It braids Indigenous and Western knowledge through relationships, protocol, co-governance, and reciprocal benefit.",
+  help: "Complete governance, protocol, consent and data sovereignty, Indigenous and Western methods, braiding plans, reciprocity, and two sets of indicators. Treat this template as a scaffold that must be adapted with community leadership.",
+  fields: [
+    {
+      label: "Title",
+      key: "title",
+      ph: "e.g., Eastside River Work - Two-Eyed Learning Partnership",
+      type: "text"
+    },
+    {
+      label: "Place and Land Acknowledgment",
+      key: "land",
+      ph: "e.g., On the homelands of..., guided by local Nations and community",
+      type: "textarea"
+    },
+    {
+      label: "Community partners and roles",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 24,
+      ph: "e.g., Nation council reps; Elders circle; youth knowledge holders; library branch team",
+      type: "repeater"
+    },
+    {
+      label: "Elders and Knowledge Keepers",
+      key: "knowledge_keepers",
+      ph: "e.g., Names or roles, how they guide, how they consent to share",
+      type: "textarea"
+    },
+    {
+      label: "Honoraria, ceremony, access supports",
+      key: "supports",
+      ph: "e.g., Honoraria rates, food, transport, childcare, interpreters, ceremony costs",
+      type: "textarea"
+    },
+
+    // Governance and protocol
+    {
+      label: "Co-governance structure",
+      key: "governance",
+      ph: "e.g., Joint steering with community majority; consent checkpoints; release approvals",
+      type: "textarea"
+    },
+    {
+      label: "Protocol and Ethical Space practices",
+      key: "protocol",
+      ph: "e.g., Openings and closings, who speaks first, decision rituals, conflict handling",
+      type: "textarea"
+    },
+    {
+      label: "Consent and community approvals",
+      key: "consent",
+      ph: "e.g., Community consent in addition to individual consent; ongoing and revocable",
+      type: "textarea"
+    },
+    {
+      label: "Data governance and sovereignty",
+      key: "data_governance",
+      ph: "e.g., OCAP or CARE alignment; community data trust; storage and access rules; review before release",
+      type: "textarea"
+    },
+    {
+      label: "Intellectual property and authorship",
+      key: "ip",
+      ph: "e.g., Shared authorship with community; restrictions on derivative use; license terms",
+      type: "textarea"
+    },
+    {
+      label: "Safeguarding sacred and restricted knowledge",
+      key: "safeguards",
+      ph: "e.g., Off-record categories; ceremony-only knowledge; redaction rules",
+      type: "textarea"
+    },
+
+    // Methods
+    {
+      label: "Indigenous methodologies",
+      key: "indigenous_methods",
+      ph: "e.g., Storywork, talking circles, ceremony-informed practice, land-based learning",
+      type: "textarea"
+    },
+    {
+      label: "Western methods",
+      key: "western_methods",
+      ph: "e.g., Surveys, interviews, network mapping, quasi-experiments",
+      type: "textarea"
+    },
+    {
+      label: "Braiding plan - how methods meet without collapse",
+      key: "braid_plan",
+      ph: "e.g., Parallel analysis, joint sensemaking, respectful synthesis rules",
+      type: "textarea"
+    },
+
+    // Time and cadence
+    {
+      label: "Seasonal and ceremony rhythms",
+      key: "seasonal_time",
+      ph: "e.g., Work pauses during harvest or ceremony; gatherings align with seasonal cycles",
+      type: "textarea"
+    },
+    {
+      label: "Administrative timeline",
+      key: "admin_time",
+      ph: "e.g., Grant quarters; reporting dates; coordination with seasonal time",
+      type: "text"
+    },
+
+    // Reciprocity and capacity
+    {
+      label: "Reciprocity and benefit sharing",
+      key: "reciprocity",
+      ph: "e.g., Community-first briefings; revenue share; equipment left in community; training commitments",
+      type: "textarea"
+    },
+    {
+      label: "Capacity and leadership development",
+      key: "capacity",
+      ph: "e.g., Paid apprenticeships; facilitation training; data stewardship skill building",
+      type: "textarea"
+    },
+
+    // Indicators and sensemaking
+    {
+      label: "Community-defined outcomes and indicators",
+      key: "indigenous_indicators",
+      ph: "e.g., Strength of ties, language use, healing signals, ceremony participation, story evidence",
+      type: "textarea"
+    },
+    {
+      label: "Western evaluation indicators",
+      key: "western_indicators",
+      ph: "e.g., Attendance trends, network density, survey scales, policy changes",
+      type: "textarea"
+    },
+    {
+      label: "Sensemaking plan",
+      key: "sensemaking",
+      ph: "e.g., Joint readings of stories and stats, validation gatherings, member checks",
+      type: "textarea"
+    },
+
+    // Transparency and risk
+    {
+      label: "Transparency and public reporting",
+      key: "transparency",
+      ph: "e.g., What we heard and what we decided reports, bilingual briefs, community first",
+      type: "textarea"
+    },
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      ph: "e.g., Tokenism risk, extraction, spiritual harm, confidentiality, burnout",
+      type: "textarea"
+    },
+    {
+      label: "Non-goals and boundaries",
+      key: "non_goals",
+      ph: "e.g., We will not publish ceremony content; no surveillance; no data resale",
+      type: "textarea"
+    },
+    {
+      label: "Context and notes",
+      key: "ctx",
+      ph: "Links, history, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    land,
+    partners,
+    knowledge_keepers,
+    supports,
+    governance,
+    protocol,
+    consent,
+    data_governance,
+    ip,
+    safeguards,
+    indigenous_methods,
+    western_methods,
+    braid_plan,
+    seasonal_time,
+    admin_time,
+    reciprocity,
+    capacity,
+    indigenous_indicators,
+    western_indicators,
+    sensemaking,
+    transparency,
+    risks,
+    non_goals,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    return [
+      title && `Two-Eyed Seeing plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      land && `Place and Land Acknowledgment:\n${land}`,
+      ctx && `Context and notes:\n${ctx}`,
+
+      "SECTION: Relationships, governance, protocol",
+      partners && ["Community partners and roles:", listify(partners)].join("\n"),
+      knowledge_keepers && `Elders and Knowledge Keepers:\n${knowledge_keepers}`,
+      supports && `Honoraria, ceremony, access supports:\n${supports}`,
+      governance && `Co-governance structure:\n${governance}`,
+      protocol && `Protocol and Ethical Space practices:\n${protocol}`,
+
+      "SECTION: Consent, sovereignty, IP",
+      consent && `Consent and community approvals:\n${consent}`,
+      data_governance && `Data governance and sovereignty:\n${data_governance}`,
+      ip && `Intellectual property and authorship:\n${ip}`,
+      safeguards && `Safeguarding sacred and restricted knowledge:\n${safeguards}`,
+
+      "SECTION: Methods and braiding",
+      indigenous_methods && `Indigenous methodologies:\n${indigenous_methods}`,
+      western_methods && `Western methods:\n${western_methods}`,
+      braid_plan && `Braiding plan:\n${braid_plan}`,
+
+      "SECTION: Time and cadence",
+      seasonal_time && `Seasonal and ceremony rhythms:\n${seasonal_time}`,
+      admin_time && `Administrative timeline: ${admin_time}`,
+
+      "SECTION: Reciprocity and capacity",
+      reciprocity && `Reciprocity and benefit sharing:\n${reciprocity}`,
+      capacity && `Capacity and leadership development:\n${capacity}`,
+
+      "SECTION: Indicators and sensemaking",
+      indigenous_indicators && ["Community-defined outcomes and indicators:", listify(indigenous_indicators)].join("\n"),
+      western_indicators && ["Western evaluation indicators:", listify(western_indicators)].join("\n"),
+      sensemaking && `Sensemaking plan:\n${sensemaking}`,
+
+      "SECTION: Transparency and risk",
+      transparency && `Transparency and public reporting:\n${transparency}`,
+      risks && `Risks and mitigations:\n${risks}`,
+      non_goals && `Non-goals and boundaries:\n${non_goals}`,
+
+      "Checklist:",
+      "- [ ] Community co-governance and protocol defined in writing",
+      "- [ ] Consent is ongoing and revocable at individual and community levels",
+      "- [ ] OCAP or CARE aligned data governance with community review before release",
+      "- [ ] Honoraria and ceremony resourced, access supports funded",
+      "- [ ] Methods are braided without collapse and differences are respected",
+      "- [ ] Sacred knowledge safeguarded and not published",
+      "- [ ] Two sets of indicators used with joint sensemaking",
+      "- [ ] Reciprocity and benefit sharing are concrete and auditable"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "two-eyed seeing etuaptmumk ethical space indigenous methodologies western methods ocap care data sovereignty ceremony protocol reciprocity indicators template"
+  }
+},
+
+{
+  id: "ocap_care_governance",
+  slug: "ocap-and-care-data-governance",
+  label: "OCAP® & CARE Principles — Community Data Ownership, Governance, and Ethical Listening",
+  kind: "strategy",
+  categories: [
+    "research",
+    "ethics",
+    "governance",
+    "community",
+    "data"
+  ],
+  tags: [
+    "type:framework",
+    "use:governance",
+    "use:data-policy",
+    "use:ethics",
+    "use:research",
+    "use:agreements",
+    "phase:plan",
+    "topic:community",
+    "topic:indigenous",
+    "topic:data",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "establish community authority over data creation, access, use, and sharing",
+    "operationalize OCAP® (Ownership, Control, Access, Possession) commitments",
+    "operationalize CARE (Collective Benefit, Authority to Control, Responsibility, Ethics) commitments",
+    "set consent, approvals, and data lifecycle rules (collection → storage → use → sharing → retention/deletion)",
+    "build transparent benefit-sharing, grievance, and audit mechanisms",
+    "who owns community data",
+  "how to keep data in community control",
+  "rules for sharing research data fairly",
+  "make sure community benefits from data",
+  "how to handle consent and approvals",
+  "safe ways to store and delete data",
+  "share data without losing trust",
+  "protect indigenous knowledge online",
+  "fair rules for researchers using data",
+  "community rights over information"
+  ],
+  boosters: [
+    "Differentiate ACCESS (who can view) from AUTHORITY (who decides) and from CUSTODY (who holds). Community authority should be explicit and majority-led.",
+    "Minimize data. Collect only what is necessary; default to privacy and community-first reporting.",
+    "Adopt tiered publication: Public → Community-only → Restricted → Sacred/Not-for-release, with clear criteria.",
+    "Create a community data trust or board with veto, pause, and recall powers (‘kill switch’).",
+    "Resource the work: honoraria, translation, storage, security, and legal support are budget lines, not afterthoughts.",
+    "Disaggregate where safe and approved; never disclose small-n groups that create re-identification risk."
+  ],
+  definition: "A practical scaffold to govern data with community authority, aligning with OCAP® and CARE principles through clear consent, approvals, lifecycle controls, benefit-sharing, and ethical listening practices.",
+  help: "Complete governance, scope and inventory, consent and approvals, access rules, storage and security, benefit-sharing, publication tiers, agreements, lifecycle (retention/deletion), accountability and grievance, and indicators. Map each OCAP® and CARE principle to concrete practices.",
+  fields: [
+    // Overview
+    {
+      label: "Title (project / initiative)",
+      key: "title",
+      ph: "e.g., Eastside Community Data Governance",
+      type: "text"
+    },
+    {
+      label: "Community authority & governance body",
+      key: "authority",
+      ph: "e.g., Community Data Board (majority residents, Elder/Knowledge Keeper seats, youth seats)",
+      type: "textarea"
+    },
+    {
+      label: "Owner / steward / custodian roles",
+      key: "roles",
+      ph: "e.g., Owner: Community; Steward: Community Board; Custodian: Library IT; Processor: Research team",
+      type: "textarea"
+    },
+    {
+      label: "Partners & agreements (MoU, IRB, Data Use Agreement)",
+      key: "partners",
+      ph: "e.g., City liaison (MoU §3 data-sharing); University IRB; CBO data processors",
+      type: "textarea"
+    },
+
+    // Scope & inventory
+    {
+      label: "Data scope & inventory",
+      key: "inventory",
+      ph: "e.g., Surveys; sign-ins; micro-narratives; photos/audio; admin data; derived indicators",
+      type: "textarea"
+    },
+    {
+      label: "Data classification & sensitivity levels",
+      key: "classification",
+      ph: "Public • Community-only • Restricted • Sacred/Not-for-release (criteria for each)",
+      type: "textarea"
+    },
+
+    // OCAP® mapping
+    {
+      label: "OCAP® mapping — Ownership",
+      key: "ocap_ownership",
+      ph: "e.g., Community is legal/beneficial owner; IP clauses; attribution norms",
+      type: "textarea"
+    },
+    {
+      label: "OCAP® mapping — Control",
+      key: "ocap_control",
+      ph: "e.g., Board sets questions, methods, approvals; veto/pause powers; change log",
+      type: "textarea"
+    },
+    {
+      label: "OCAP® mapping — Access",
+      key: "ocap_access",
+      ph: "e.g., Role-based access; request process; turnaround SLAs; refusal criteria",
+      type: "textarea"
+    },
+    {
+      label: "OCAP® mapping — Possession",
+      key: "ocap_possession",
+      ph: "e.g., Data stored on community-controlled servers; residency; escrow copies",
+      type: "textarea"
+    },
+
+    // CARE mapping
+    {
+      label: "CARE mapping — Collective Benefit",
+      key: "care_benefit",
+      ph: "e.g., Community-first briefings; open tools; local capacity; revenue/royalty share",
+      type: "textarea"
+    },
+    {
+      label: "CARE mapping — Authority to Control",
+      key: "care_authority",
+      ph: "e.g., Approvals needed for reuse/derivatives; enforceable licenses; community veto",
+      type: "textarea"
+    },
+    {
+      label: "CARE mapping — Responsibility",
+      key: "care_responsibility",
+      ph: "e.g., Harm assessment; de-bias audits; small-n suppression; no surveillance",
+      type: "textarea"
+    },
+    {
+      label: "CARE mapping — Ethics",
+      key: "care_ethics",
+      ph: "e.g., Protocols, ceremony-informed pauses, plain-language consent, cultural safety",
+      type: "textarea"
+    },
+
+    // Consent & approvals
+    {
+      label: "Consent model (individual & community)",
+      key: "consent",
+      ph: "e.g., Ongoing, revocable; dynamic consent dashboard; community consent checkpoints",
+      type: "textarea"
+    },
+    {
+      label: "Approvals workflow",
+      key: "approvals",
+      ph: "e.g., Who approves collection, linkage, external sharing, publication; timeline & quorum",
+      type: "textarea"
+    },
+
+    // Access & use
+    {
+      label: "Access policy & roles",
+      key: "access_policy",
+      ph: "e.g., Viewer/Editor/Exporter; training required; least-privilege defaults",
+      type: "textarea"
+    },
+    {
+      label: "Requests process (internal/external) & SLAs",
+      key: "requests",
+      ph: "e.g., Web form; 10 business days; appeals route; public request log",
+      type: "textarea"
+    },
+    {
+      label: "Permitted uses & anti-uses",
+      key: "permitted",
+      ph: "e.g., Community planning; service improvement; NOT: targeted enforcement; political micro-targeting",
+      type: "textarea"
+    },
+    {
+      label: "Licenses for derivatives & publications",
+      key: "licenses",
+      ph: "e.g., Community license; CC BY-NC with addendum; citation & acknowledgment rules",
+      type: "textarea"
+    },
+
+    // Storage, security, and lifecycle
+    {
+      label: "Storage, residency, and security",
+      key: "security",
+      ph: "e.g., Region-locked storage; encryption at rest/in transit; key management; backups",
+      type: "textarea"
+    },
+    {
+      label: "Retention & deletion schedule",
+      key: "retention",
+      ph: "e.g., Raw audio 12 months; transcripts 36 months; indicators 60 months; secure deletion proofs",
+      type: "textarea"
+    },
+    {
+      label: "De-identification & re-identification risk",
+      key: "deid",
+      ph: "e.g., K-anonymity thresholds; small-n suppression; re-id risk audits",
+      type: "textarea"
+    },
+    {
+      label: "Audit trails & transparency reporting",
+      key: "audit",
+      ph: "e.g., Quarterly access log review; public ‘what we used/why’ report; data incidents log",
+      type: "textarea"
+    },
+
+    // Benefit, reciprocity, and grievance
+    {
+      label: "Benefit-sharing & reciprocity",
+      key: "benefit",
+      ph: "e.g., Revenue share; equipment left with community; paid apprenticeships",
+      type: "textarea"
+    },
+    {
+      label: "Grievance, redress, & kill-switch",
+      key: "grievance",
+      ph: "e.g., Ombudsperson; 30-day response; powers to suspend use/remove datasets",
+      type: "textarea"
+    },
+
+    // Publication tiers & comms
+    {
+      label: "Publication tiers & release rules",
+      key: "publication",
+      ph: "Public • Community-only • Restricted • Sacred/Not-for-release (who decides; criteria; examples)",
+      type: "textarea"
+    },
+    {
+      label: "Community-first reporting cadence",
+      key: "cadence",
+      ph: "e.g., Monthly briefs; quarterly open data (approved slices); bilingual zines",
+      type: "text"
+    },
+
+    // Indicators & risk
+    {
+      label: "Indicators & targets (data governance health)",
+      key: "indicators",
+      ph: "e.g., % requests fulfilled/denied with reasons; time-to-response; incidents=0; training completion ≥95%",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Re-identification; misuse; scope creep; capture by elites; burnout",
+      type: "textarea"
+    },
+
+    // Context
+    {
+      label: "Context / notes / links",
+      key: "ctx",
+      ph: "References, protocol links, legal basis, histories",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    authority,
+    roles,
+    partners,
+    inventory,
+    classification,
+    ocap_ownership,
+    ocap_control,
+    ocap_access,
+    ocap_possession,
+    care_benefit,
+    care_authority,
+    care_responsibility,
+    care_ethics,
+    consent,
+    approvals,
+    access_policy,
+    requests,
+    permitted,
+    licenses,
+    security,
+    retention,
+    deid,
+    audit,
+    benefit,
+    grievance,
+    publication,
+    cadence,
+    indicators,
+    risks,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `OCAP® & CARE Data Governance: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context / notes:\n${ctx}`,
+
+      "—",
+      "AUTHORITY & ROLES",
+      authority && `Community authority & governance body:\n${authority}`,
+      roles && `Owner / steward / custodian roles:\n${roles}`,
+      partners && `Partners & agreements:\n${partners}`,
+
+      "—",
+      "SCOPE & INVENTORY",
+      inventory && `Data scope & inventory:\n${inventory}`,
+      classification && `Data classification & sensitivity levels:\n${classification}`,
+
+      "—",
+      "OCAP® MAPPING",
+      ocap_ownership && `Ownership:\n${ocap_ownership}`,
+      ocap_control && `Control:\n${ocap_control}`,
+      ocap_access && `Access:\n${ocap_access}`,
+      ocap_possession && `Possession:\n${ocap_possession}`,
+
+      "—",
+      "CARE MAPPING",
+      care_benefit && `Collective Benefit:\n${care_benefit}`,
+      care_authority && `Authority to Control:\n${care_authority}`,
+      care_responsibility && `Responsibility:\n${care_responsibility}`,
+      care_ethics && `Ethics:\n${care_ethics}`,
+
+      "—",
+      "CONSENT & APPROVALS",
+      consent && `Consent model:\n${consent}`,
+      approvals && `Approvals workflow:\n${approvals}`,
+
+      "—",
+      "ACCESS, USE, & LICENSING",
+      access_policy && `Access policy & roles:\n${access_policy}`,
+      requests && `Requests process & SLAs:\n${requests}`,
+      permitted && `Permitted uses & anti-uses:\n${permitted}`,
+      licenses && `Licenses for derivatives & publications:\n${licenses}`,
+
+      "—",
+      "STORAGE, SECURITY, & LIFECYCLE",
+      security && `Storage, residency, and security:\n${security}`,
+      retention && `Retention & deletion schedule:\n${retention}`,
+      deid && `De-identification & re-identification risk:\n${deid}`,
+      audit && `Audit trails & transparency reporting:\n${audit}`,
+
+      "—",
+      "BENEFIT, RECIPROCITY, & REMEDY",
+      benefit && `Benefit-sharing & reciprocity:\n${benefit}`,
+      grievance && `Grievance, redress, & kill-switch:\n${grievance}`,
+
+      "—",
+      "PUBLICATION & COMMUNICATION",
+      publication && `Publication tiers & release rules:\n${publication}`,
+      cadence && `Community-first reporting cadence: ${cadence}`,
+
+      "—",
+      "INDICATORS & RISK",
+      indicators && ["Indicators & targets:", listify(indicators)].join("\n"),
+      risks && `Risks & mitigations:\n${risks}`,
+
+      "—",
+      "Checklist:",
+      "- [ ] Community authority, roles, and veto/pause powers are explicit",
+      "- [ ] OCAP® (Ownership, Control, Access, Possession) mapped to concrete practices",
+      "- [ ] CARE (Collective Benefit, Authority, Responsibility, Ethics) mapped to practices",
+      "- [ ] Consent is ongoing, revocable, and includes community approvals",
+      "- [ ] Tiered publication rules and harm safeguards defined",
+      "- [ ] Storage, residency, security, and deletion proofs documented",
+      "- [ ] Benefit-sharing, grievance, and transparency reports scheduled",
+      "- [ ] Access logs and requests are audited with public summaries"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "OCAP CARE data governance ownership control access possession collective benefit authority responsibility ethics community consent data trust reciprocity grievance audit template"
+  }
+},
+
+
+{
+  id: "talanoa_yarning_talking_circles",
+  slug: "talanoa-yarning-talking-circles",
+  label: "Talanoa, Yarning Circles, Talking Circles — Narrative-first consensus building",
+  kind: "strategy",
+  categories: [
+    "community",
+    "governance",
+    "ethics",
+    "research",
+    "facilitation"
+  ],
+  tags: [
+    "type:framework",
+    "use:engagement",
+    "use:decision-making",
+    "use:healing",
+    "use:hearing",
+    "use:understanding",
+    "use:sharing",
+     "use:mission",
+      "use:purpose",
+    "use:learning",
+    "use:conflict-transformation",
+    "phase:explore",
+    "phase:define",
+    "topic:indigenous",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "host culturally grounded conversations for learning, healing, and decisions",
+    "center oral narratives and relational accountability over debate",
+    "surface shared values and craft consensus or consent-based next steps",
+    "document what is sharable versus sacred or confidential",
+    "align reporting with community protocols and data sovereignty",
+      "how to run a talking circle",
+  "ways to make group decisions fairly",
+  "use stories to solve problems",
+  "how to build trust in meetings",
+  "share without debate or fighting",
+  "how to hear every voice in a group",
+  "cultural way to heal through talking",
+  "make decisions by listening first",
+  "respect what stories can and can’t be shared",
+  "use circles for learning and consensus",
+   "bring people together",
+   "hearing the voices",
+    "hearing the people",
+    "understadning goals, mission, values, and vision",
+     "understadning community",
+     "understadning purpose"
+  ],
+  boosters: [
+    "Begin with relationship and protocol. Ask who invites, who opens, who closes, and who benefits.",
+    "Seat Elders and Knowledge Holders with visible authority. Compensate them first.",
+    "Establish circle agreements in participants’ own words. No cross-talk, voluntary sharing, confidentiality by default.",
+    "Use a talking piece or facilitator-managed turns to equalize voice. Allow passes.",
+    "Decide how stories are held. Some knowledge is not recorded or published.",
+    "Close with gratitude, commitments, and a clear follow-up date. Feed people."
+  ],
+  definition: "A family of circle practices that privilege story, listening, and relationship to build understanding and move toward consensus or consent. Protocols and leadership come from the local community and traditions.",
+  help: "Complete purpose, protocol, roles, participants, access supports, prompts, turn-taking, documentation rules, decision approach, and follow-ups. Treat this as a scaffold to be adapted with community leadership and cultural guidance.",
+  fields: [
+    {
+      label: "Title",
+      key: "title",
+      ph: "e.g., Eastside Talanoa on Shared Spaces",
+      type: "text"
+    },
+    {
+      label: "Tradition and protocol lineage",
+      key: "lineage",
+      ph: "e.g., Talanoa (Tonga/Fiji/Samoa), Aboriginal Yarning, Indigenous Talking Circle",
+      type: "textarea"
+    },
+    {
+      label: "Purpose",
+      key: "purpose",
+      ph: "e.g., Build shared understanding and decide on space guidelines",
+      type: "textarea"
+    },
+    {
+      label: "Circle type",
+      key: "circle_type",
+      ph: "healing | learning | relationship-building | decision-making | mediation",
+      type: "text"
+    },
+    {
+      label: "Conveners and facilitators",
+      key: "facilitators",
+      ph: "e.g., Elder A opens and closes, Facilitator B holds time, Youth C manages talking piece",
+      type: "textarea"
+    },
+    {
+      label: "Elders and Knowledge Holders",
+      key: "knowledge_holders",
+      ph: "names or roles, how they guide, how consent to share is handled",
+      type: "textarea"
+    },
+    {
+      label: "Participants and inclusion",
+      autofill: "persona->inline",
+      itemLabel: "participant group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 24,
+      ph: "e.g., Youth leaders; elders circle; newcomer groups; disabled residents",
+      type: "repeater"
+    },
+    {
+      label: "Access supports and compensation",
+      key: "access",
+      ph: "e.g., Honoraria; childcare; food; transport; interpreters and ASL; sensory-friendly setup",
+      type: "textarea"
+    },
+    {
+      label: "Space and logistics",
+      key: "logistics",
+      ph: "e.g., Circle seating, privacy needs, time boundary, food, talking piece",
+      type: "textarea"
+    },
+    {
+      label: "Opening and closing protocol",
+      key: "protocol",
+      ph: "e.g., Acknowledgment of place, song or silence, prayer or welcome, gratitude and commitments",
+      type: "textarea"
+    },
+    {
+      label: "Circle agreements",
+      key: "agreements",
+      ph: "e.g., Speak from experience; listen to understand; no cross-talk; confidentiality; right to pass",
+      type: "textarea"
+    },
+    {
+      label: "Consent and recording rules",
+      key: "consent",
+      ph: "e.g., Oral consent; off-the-record by default; no photos without explicit permission",
+      type: "textarea"
+    },
+    {
+      label: "Data governance and publication tiers",
+      key: "data_governance",
+      ph: "Public | Community-only | Restricted | Sacred Not-for-release, with who decides and how",
+      type: "textarea"
+    },
+    {
+      label: "Prompts and story invitations",
+      key: "prompts",
+      ph: "e.g., Tell about a time you felt welcome here. What would it take for that to be common?",
+      type: "textarea"
+    },
+    {
+      label: "Turn-taking and timing",
+      key: "turns",
+      ph: "e.g., Talking piece clockwise, 2 rounds of 2 minutes, optional third weaving round",
+      type: "textarea"
+    },
+    {
+      label: "Weaving and meaning-making",
+      key: "weaving",
+      ph: "e.g., Facilitator reflects themes; pair shares; harvest on sticky notes; community validation",
+      type: "textarea"
+    },
+    {
+      label: "Decision approach",
+      key: "decision",
+      ph: "consensus | consent with objections addressed | advice process | no-decision learning circle",
+      type: "text"
+    },
+    {
+      label: "What will be documented",
+      key: "documentation",
+      ph: "e.g., Themes only; no attribution; commitments and next steps with owners and dates",
+      type: "textarea"
+    },
+    {
+      label: "Follow-ups and commitments",
+      key: "followups",
+      ph: "e.g., Publish plain-language summary to participants in 14 days; check-in circle next month",
+      type: "textarea"
+    },
+    {
+      label: "Risks and safeguards",
+      key: "risks",
+      ph: "e.g., Re-traumatization; dominance by a few; confidentiality breaches; safety plan and supports",
+      type: "textarea"
+    },
+    {
+      label: "Measures and signals",
+      key: "measures",
+      ph: "e.g., % of participants who spoke; % first-time speakers; perceived safety; healing signals; dissent resolved",
+      type: "textarea"
+    },
+    {
+      label: "Timeline and cadence",
+      key: "timeline",
+      ph: "e.g., Monthly learning circle; quarterly decision circle; seasonal ceremony-aligned pauses",
+      type: "text"
+    },
+    {
+      label: "Context and notes",
+      key: "ctx",
+      ph: "links, cultural guidance, constraints, acknowledgments",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    lineage,
+    purpose,
+    circle_type,
+    facilitators,
+    knowledge_holders,
+    participants,
+    access,
+    logistics,
+    protocol,
+    agreements,
+    consent,
+    data_governance,
+    prompts,
+    turns,
+    weaving,
+    decision,
+    documentation,
+    followups,
+    risks,
+    measures,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    return [
+      title && `Circle plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes: ${ctx}`,
+
+      "SECTION: Purpose and lineage",
+      lineage && `Tradition and protocol lineage:\n${lineage}`,
+      purpose && `Purpose:\n${purpose}`,
+      circle_type && `Circle type: ${circle_type}`,
+
+      "SECTION: Roles and inclusion",
+      facilitators && `Conveners and facilitators:\n${facilitators}`,
+      knowledge_holders && `Elders and Knowledge Holders:\n${knowledge_holders}`,
+      participants && ["Participants and inclusion:", listify(participants)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+      logistics && `Space and logistics:\n${logistics}`,
+
+      "SECTION: Protocol and agreements",
+      protocol && `Opening and closing protocol:\n${protocol}`,
+      agreements && `Circle agreements:\n${agreements}`,
+      consent && `Consent and recording rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Story flow",
+      prompts && `Prompts and story invitations:\n${prompts}`,
+      turns && `Turn-taking and timing:\n${turns}`,
+      weaving && `Weaving and meaning-making:\n${weaving}`,
+
+      "SECTION: Decision and documentation",
+      decision && `Decision approach: ${decision}`,
+      documentation && `What will be documented:\n${documentation}`,
+      followups && `Follow-ups and commitments:\n${followups}`,
+
+      "SECTION: Safety and learning",
+      risks && `Risks and safeguards:\n${risks}`,
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Checklist:",
+      "- [ ] Protocol, roles, and purpose confirmed with community leadership",
+      "- [ ] Access supports and honoraria funded and scheduled",
+      "- [ ] Agreements set in participants’ own words and visible in the room",
+      "- [ ] Consent rules and publication tiers clear before stories begin",
+      "- [ ] Turn-taking method chosen with right to pass",
+      "- [ ] Decision approach agreed or explicitly a no-decision learning circle",
+      "- [ ] Documentation respects confidentiality and cultural safety",
+      "- [ ] Commitments, owners, and dates captured with a public report-back"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Talanoa Yarning Talking Circle Indigenous protocol narrative listening consensus consent talking piece Elders data sovereignty culturally grounded facilitation template"
+  }
+},
+
+{
+  id: "kaupapa_maori_research",
+  slug: "kaupapa-maori-research-sovereignty-centered",
+  label: "Kaupapa Māori Research — By/with/for Māori communities; sovereignty at the core",
+  kind: "strategy",
+  categories: [
+    "research",
+    "ethics",
+    "governance",
+    "community",
+    "design"
+  ],
+  tags: [
+    "type:framework",
+    "use:research",
+    "use:governance",
+    "use:ethics",
+    "use:data-policy",
+    "use:purpose",
+    "use:capacity",
+    "phase:explore",
+    "phase:plan",
+    "topic:indigenous",
+    "topic:maori",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "co-design and co-lead research with iwi, hapū, and whānau",
+    "embed rangatiratanga in decisions, data, IP, and benefits",
+    "align methods with tikanga, kawa, and mātauranga Māori",
+    "run wānanga and kanohi-ki-te-kanohi processes with proper protocol",
+    "publish community-first in te reo Māori and English with approvals",
+      "how to do research with Māori communities",
+  "make sure Māori lead the project",
+  "respect tikanga and cultural rules in research",
+  "share results in te reo Māori and English",
+  "give control of data back to iwi and hapū",
+  "how to follow protocol in meetings",
+  "design research that supports self-determination",
+  "make research accountable to the community",
+  "protect Māori knowledge and IP",
+  "publish results with community approval",
+  "helping communities respectfully",
+  "finding mission in communities respectfully"
+  ],
+  boosters: [
+    "Begin with whakapapa and relationships. Protocol before method.",
+    "Name community authority in writing: who decides, who can pause, who approves release.",
+    "Resource honoraria, travel, kai, translation, access supports, and ceremony.",
+    "Protect taonga and tapu knowledge. Some things are not for recording or release.",
+    "Adopt Māori data sovereignty rules and community-controlled storage within Aotearoa where required.",
+    "Return results first to whānau. Measure influence on decisions, not just participation."
+  ],
+  definition: "A research scaffold grounded in Kaupapa Māori that upholds rangatiratanga, follows tikanga and kawa, centers mātauranga Māori, and ensures community authority over questions, methods, data, IP, and benefits.",
+  help: "Complete governance and protocol, consent and data sovereignty, kaupapa and outcomes, methods and wānanga plans, reciprocity, capacity, indicators, and publication approvals. Use maramataka for timing alongside administrative calendars.",
+  fields: [
+    // Overview
+    {
+      label: "Title",
+      key: "title",
+      ph: "e.g., He Ara Whakapapa Research Partnership",
+      type: "text"
+    },
+    {
+      label: "Place / Rohe",
+      key: "rohe",
+      ph: "e.g., Te Whanganui-a-Tara",
+      type: "text"
+    },
+    {
+      label: "Iwi / Hapū / Whānau partners",
+      autofill: "persona->inline",
+      itemLabel: "roopu",
+      itemType: "typeahead",
+      key: "partners",
+      max: 24,
+      ph: "e.g., Ngāti X; Hapū Y; Local whānau rōpū; Māori service orgs",
+      type: "repeater"
+    },
+    {
+      label: "Kaumātua / Kuia guidance",
+      key: "kaumatua",
+      ph: "e.g., Names or roles, how they guide openings/closings, consent to share",
+      type: "textarea"
+    },
+
+    // Governance and protocol
+    {
+      label: "Rangatiratanga and co-governance",
+      key: "governance",
+      ph: "e.g., Community-majority steering; veto/pause powers; release approvals; quorum and process",
+      type: "textarea"
+    },
+    {
+      label: "Tikanga and kawa",
+      key: "tikanga",
+      ph: "e.g., Who opens/closes, pōwhiri/whakatau steps, waiata/karakia, conflict handling, koha protocols",
+      type: "textarea"
+    },
+    {
+      label: "Te reo plan",
+      key: "reo_plan",
+      ph: "e.g., Bilingual materials; interpreters; reo-first reporting; glossary of kupu",
+      type: "textarea"
+    },
+
+    // Ethics, consent, data sovereignty
+    {
+      label: "Consent model (individual and collective)",
+      key: "consent",
+      ph: "e.g., Ongoing, revocable; whānau/hapū approvals; dynamic consent options",
+      type: "textarea"
+    },
+    {
+      label: "Māori data sovereignty",
+      key: "data_sovereignty",
+      ph: "e.g., Community-controlled storage; Aotearoa residency; role-based access; review before release",
+      type: "textarea"
+    },
+    {
+      label: "IP and taonga protection",
+      key: "ip",
+      ph: "e.g., Shared authorship; TK Labels; restrictions on derivative use; license and citation norms",
+      type: "textarea"
+    },
+    {
+      label: "Safeguards for tapu/restricted knowledge",
+      key: "safeguards",
+      ph: "e.g., Off-record categories; ceremony-only knowledge; redaction rules; no AI training on sensitive data",
+      type: "textarea"
+    },
+
+    // Kaupapa and outcomes
+    {
+      label: "Kaupapa and change goals",
+      key: "kaupapa",
+      ph: "e.g., Strengthen whanaungatanga and belonging; improve access to space and services",
+      type: "textarea"
+    },
+    {
+      label: "Whānau ora outcomes",
+      key: "whanau_ora",
+      ph: "e.g., Manaakitanga experienced; safety; language use; leadership pathways",
+      type: "textarea"
+    },
+
+    // Methods and wānanga
+    {
+      label: "Research pātai (questions)",
+      key: "patai",
+      ph: "e.g., He aha ngā āhuatanga e whakapiki ana i te māia o ngā manu kōrero hou?",
+      type: "textarea"
+    },
+    {
+      label: "Methods aligned to mātauranga Māori",
+      key: "methods_maori",
+      ph: "e.g., Wānanga; kōrero tuku iho; pūrākau; kaupapa-based interviews; land-based learning",
+      type: "textarea"
+    },
+    {
+      label: "Western methods in parallel (if any)",
+      key: "methods_western",
+      ph: "e.g., Surveys; network mapping; observational notes; simple quasi-experiment",
+      type: "textarea"
+    },
+    {
+      label: "Braiding plan",
+      key: "braid",
+      ph: "e.g., Parallel analysis; joint sensemaking wānanga; respectful synthesis rules without collapse",
+      type: "textarea"
+    },
+    {
+      label: "Fieldwork and hui plan",
+      key: "fieldwork",
+      ph: "e.g., Kanohi-ki-te-kanohi sessions; hui schedule; venues; photo/audio rules",
+      type: "textarea"
+    },
+
+    // Time and resources
+    {
+      label: "Maramataka and seasonal timing",
+      key: "maramataka",
+      ph: "e.g., Pause during significant ceremony/harvest; meet on favorable nights",
+      type: "textarea"
+    },
+    {
+      label: "Administrative timeline",
+      key: "admin_time",
+      ph: "e.g., Grant quarters; reporting dates; align with maramataka",
+      type: "text"
+    },
+    {
+      label: "Honoraria, access, and supports",
+      key: "supports",
+      ph: "e.g., Kaumātua/Kuia honoraria; kai; childcare; transport; interpreters; accessibility",
+      type: "textarea"
+    },
+    {
+      label: "Capacity and leadership development",
+      key: "capacity",
+      ph: "e.g., Paid apprenticeships; facilitation and data stewardship training; rangatahi pathways",
+      type: "textarea"
+    },
+
+    // Analysis, dissemination, reciprocity
+    {
+      label: "Analysis and sensemaking wānanga",
+      key: "analysis",
+      ph: "e.g., Community coding workshop; theme validation; member checks; tikanga-led interpretation",
+      type: "textarea"
+    },
+    {
+      label: "Dissemination and approvals",
+      key: "dissemination",
+      ph: "e.g., Community-first hui; reo Māori brief; public deck after approval; embargo rules",
+      type: "textarea"
+    },
+    {
+      label: "Reciprocity and benefit sharing",
+      key: "reciprocity",
+      ph: "e.g., Equipment left with community; revenue share; shared authorship; local hosting",
+      type: "textarea"
+    },
+
+    // Indicators and risk
+    {
+      label: "Indicators and targets",
+      key: "indicators",
+      ph: "e.g., Mana and safety signals; reo use; participation by subgroup; % decisions changed by evidence",
+      type: "textarea"
+    },
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      ph: "e.g., Tapu breach; cultural harm; re-identification; burnout; capture by elites",
+      type: "textarea"
+    },
+
+    // Delivery
+    {
+      label: "Workstreams (area — owner — milestones — budget — indicators)",
+      key: "workstreams",
+      ph: "e.g., Wānanga series — hapū rōpū — 6 hui — $12k — attendance and safety signals",
+      type: "textarea"
+    },
+    {
+      label: "Context and notes",
+      key: "ctx",
+      ph: "Links, histories, alignments, prior commitments",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    rohe,
+    partners,
+    kaumatua,
+    governance,
+    tikanga,
+    reo_plan,
+    consent,
+    data_sovereignty,
+    ip,
+    safeguards,
+    kaupapa,
+    whanau_ora,
+    patai,
+    methods_maori,
+    methods_western,
+    braid,
+    fieldwork,
+    maramataka,
+    admin_time,
+    supports,
+    capacity,
+    analysis,
+    dissemination,
+    reciprocity,
+    indicators,
+    risks,
+    workstreams,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    return [
+      title && `Kaupapa Māori Research plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      rohe && `Place / Rohe: ${rohe}`,
+      ctx && `Context and notes:\n${ctx}`,
+
+      "—",
+      "RELATIONSHIPS, GOVERNANCE, PROTOCOL",
+      partners && ["Iwi / Hapū / Whānau partners:", listify(partners)].join("\n"),
+      kaumatua && `Kaumātua / Kuia guidance:\n${kaumatua}`,
+      governance && `Rangatiratanga and co-governance:\n${governance}`,
+      tikanga && `Tikanga and kawa:\n${tikanga}`,
+      reo_plan && `Te reo plan:\n${reo_plan}`,
+
+      "—",
+      "ETHICS, CONSENT, DATA SOVEREIGNTY",
+      consent && `Consent model:\n${consent}`,
+      data_sovereignty && `Māori data sovereignty:\n${data_sovereignty}`,
+      ip && `IP and taonga protection:\n${ip}`,
+      safeguards && `Safeguards for tapu/restricted knowledge:\n${safeguards}`,
+
+      "—",
+      "KAUPAPA AND OUTCOMES",
+      kaupapa && `Kaupapa and change goals:\n${kaupapa}`,
+      whanau_ora && `Whānau ora outcomes:\n${whanau_ora}`,
+
+      "—",
+      "METHODS AND WĀNANGA",
+      patai && ["Research pātai:", listify(patai)].join("\n"),
+      methods_maori && `Methods aligned to mātauranga Māori:\n${methods_maori}`,
+      methods_western && `Western methods in parallel:\n${methods_western}`,
+      braid && `Braiding plan:\n${braid}`,
+      fieldwork && `Fieldwork and hui plan:\n${fieldwork}`,
+
+      "—",
+      "TIME AND RESOURCING",
+      maramataka && `Maramataka and seasonal timing:\n${maramataka}`,
+      admin_time && `Administrative timeline: ${admin_time}`,
+      supports && `Honoraria, access, and supports:\n${supports}`,
+      capacity && `Capacity and leadership development:\n${capacity}`,
+
+      "—",
+      "ANALYSIS, DISSEMINATION, RECIPROCITY",
+      analysis && `Analysis and sensemaking wānanga:\n${analysis}`,
+      dissemination && `Dissemination and approvals:\n${dissemination}`,
+      reciprocity && `Reciprocity and benefit sharing:\n${reciprocity}`,
+
+      "—",
+      "INDICATORS, RISK, DELIVERY",
+      indicators && ["Indicators and targets:", listify(indicators)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+      workstreams && ["Workstreams (area — owner — milestones — budget — indicators):", listify(workstreams)].join("\n"),
+
+      "—",
+      "Checklist:",
+      "- [ ] Community rangatiratanga is explicit with veto/pause/review powers",
+      "- [ ] Tikanga, kawa, and reo commitments are documented and resourced",
+      "- [ ] Consent is ongoing and includes collective approvals",
+      "- [ ] Māori data sovereignty rules and storage residency are honored",
+      "- [ ] Taonga and tapu knowledge are safeguarded and not released",
+      "- [ ] Methods follow wānanga and mātauranga Māori alongside any Western tools",
+      "- [ ] Community-first dissemination in te reo Māori and English",
+      "- [ ] Benefits and capacities grow locally, with influence on decisions tracked"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Kaupapa Māori research rangatiratanga tikanga kawa mātauranga Māori maramataka Māori data sovereignty iwi hapū whānau wānanga taonga tapu TK Labels template"
+  }
+},
+
+{
+  id: "most_significant_change",
+  slug: "most-significant-change-msc",
+  label: "Most Significant Change (MSC) — Collect stories; community selects what mattered most",
+  kind: "strategy",
+  categories: [
+    "evaluation",
+    "learning",
+    "community",
+    "research"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:learning",
+    "use:story",
+    "use:change",
+    "use:purpose",
+    "use:decision-making",
+    "phase:reflect",
+    "phase:adapt",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "collect and review stories of change across domains",
+    "facilitate community panels to select the most significant changes",
+    "document rationales and translate insights into action",
+    "triangulate qualitative stories with quantitative indicators",
+    "close the loop with storytellers and publish community-first reports",
+     "how to collect stories of change",
+  "let the community decide what mattered most",
+  "easy way to measure impact with stories",
+  "how to run a group to pick important changes",
+  "turn stories into lessons for action",
+  "mix stories with numbers for evaluation",
+  "share results back with the people who told them",
+  "simple way to evaluate community projects",
+  "use storytelling instead of just surveys",
+  "how to learn from real experiences",
+  "change with listening",
+  "how do I listen",
+  "help me listen",
+  "telling a community story"
+  ],
+  boosters: [
+    "Name your domains up front (e.g., inclusion, trust, safety, livelihoods).",
+    "Train story collectors; use the same prompts and consent model everywhere.",
+    "Select panels that include those most affected; compensate and support access.",
+    "Document the rationale for selections in plain language (why this story, why now?).",
+    "Include negative and unintended changes; MSC is not only about ‘good news’.",
+    "Pair stories with indicators and quick tests; adapt something every cycle."
+  ],
+  definition: "A participatory, qualitative evaluation approach: gather stories of change, then convene panels to select the most significant changes in defined domains, documenting why those stories matter and how learning will change action.",
+  help: "Complete domains, prompts, collection and consent plans, panel composition, criteria, meeting cadence, rationale template, verification, feedback, and use of learning. Run MSC in cycles (e.g., quarterly) and publish back to the community first.",
+  fields: [
+    {
+      label: "Title (initiative / program)",
+      key: "title",
+      ph: "e.g., Eastside Forums — MSC Learning Cycles",
+      type: "text"
+    },
+    {
+      label: "Cycle cadence & horizon",
+      key: "horizon",
+      ph: "e.g., Quarterly cycles, Jan–Dec 2026",
+      type: "text"
+    },
+    {
+      label: "Domains (one per line)",
+      key: "domains",
+      ph: "e.g., Access & inclusion\nRelationships & trust\nAgency & leadership\nLivelihoods & skills\nSafety & wellbeing\nPolicy & systems influence",
+      type: "textarea"
+    },
+    {
+      label: "Primary prompts (story invitations)",
+      key: "prompts",
+      ph: "e.g., Tell me about a time something changed for you here. What happened? Why does it matter to you? Who or what contributed to this change?",
+      type: "textarea"
+    },
+    {
+      label: "Story sources & recruitment",
+      key: "recruitment",
+      ph: "e.g., Open call + targeted outreach to under-heard groups; pop-ups; partner referrals",
+      type: "textarea"
+    },
+    {
+      label: "Story collectors & training",
+      key: "collectors",
+      ph: "e.g., 8 community interviewers; 4-hour training on ethics, prompts, and note-taking",
+      type: "textarea"
+    },
+    {
+      label: "Consent & ethics",
+      key: "consent",
+      ph: "e.g., Plain-language, ongoing, revocable; options: named, pseudonym, anonymous; right to review quotes",
+      type: "textarea"
+    },
+    {
+      label: "Access supports & compensation",
+      key: "access",
+      ph: "e.g., Stipends; childcare; interpreters/ASL; transportation; large-print; remote options",
+      type: "textarea"
+    },
+    {
+      label: "Collection methods & channels",
+      key: "methods",
+      ph: "e.g., 1:1 interviews; story circles; voice notes; short form + photo optional",
+      type: "textarea"
+    },
+    {
+      label: "Volume & sampling plan",
+      key: "sampling",
+      ph: "e.g., 60 stories per cycle; minimum 10 per domain; oversample under-heard groups",
+      type: "textarea"
+    },
+    {
+      label: "Story metadata schema (fields captured)",
+      key: "schema",
+      ph: "e.g., date; domain; storyteller group; location; consent level; change type (+/−); contributors; significance (in their words)",
+      type: "textarea"
+    },
+    {
+      label: "Pre-screen & inclusion rules",
+      key: "prescreen",
+      ph: "e.g., Exclude non-consented content; route disclosures to safety protocol; keep negative changes",
+      type: "textarea"
+    },
+    {
+      label: "Selection panels (composition per domain)",
+      key: "panels",
+      ph: "e.g., 7 people: 3 community members most affected, 2 implementers, 1 partner, 1 youth; rotate seats each cycle",
+      type: "textarea"
+    },
+    {
+      label: "Selection criteria (panel uses)",
+      key: "criteria",
+      ph: "e.g., Depth of change; scale/reach; durability; contribution/attribution; equity relevance; surprise/learning value; negative/unintended significance",
+      type: "textarea"
+    },
+    {
+      label: "Selection meeting plan & cadence",
+      key: "meetings",
+      ph: "e.g., Panels meet 2 hours per domain in week 3 of each quarter; reading pack sent 7 days prior",
+      type: "textarea"
+    },
+    {
+      label: "Rationale template (how panels explain choices)",
+      key: "rationale",
+      ph: "e.g., What changed; for whom; why significant; what contributed; what should change in our work",
+      type: "textarea"
+    },
+    {
+      label: "Verification & triangulation",
+      key: "verification",
+      ph: "e.g., Follow-up call; light document check; compare to attendance or indicator trends",
+      type: "textarea"
+    },
+    {
+      label: "Feedback to storytellers & community reporting",
+      key: "feedback",
+      ph: "e.g., ‘What we heard / what we’ll change’ within 30 days; thank-you notes; bilingual brief",
+      type: "textarea"
+    },
+    {
+      label: "Use of learning (decisions & changes)",
+      key: "use_of_learning",
+      ph: "e.g., Adjust facilitation training; shift budget; propose policy changes; stop low-value activities",
+      type: "textarea"
+    },
+    {
+      label: "Indicators to pair with MSC",
+      key: "indicators",
+      ph: "e.g., % first-time speakers; belonging index; network density; safety incidents",
+      type: "textarea"
+    },
+    {
+      label: "Risks & mitigations",
+      key: "risks",
+      ph: "e.g., Harmful disclosure → safety protocol; selection bias → rotate panels & oversample; tokenism → act on findings",
+      type: "textarea"
+    },
+    {
+      label: "Data governance & publication tiers",
+      key: "data_governance",
+      ph: "Public • Community-only • Restricted • Not-for-release; who decides & why",
+      type: "textarea"
+    },
+    {
+      label: "Timeline (per cycle)",
+      key: "timeline",
+      ph: "e.g., Weeks 1–2 collect; week 3 panels; week 4 publish brief & action list",
+      type: "text"
+    },
+    {
+      label: "Context / notes",
+      key: "ctx",
+      ph: "Links, prior cycles, constraints",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    domains,
+    prompts,
+    recruitment,
+    collectors,
+    consent,
+    access,
+    methods,
+    sampling,
+    schema,
+    prescreen,
+    panels,
+    criteria,
+    meetings,
+    rationale,
+    verification,
+    feedback,
+    use_of_learning,
+    indicators,
+    risks,
+    data_governance,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const defaultCriteria = [
+      "Depth/meaning of change to those affected",
+      "Scale/reach (how many, how far)",
+      "Durability (likely to last)",
+      "Contribution/attribution (what enabled it)",
+      "Equity relevance (closes gaps or centers marginalized voices)",
+      "Surprise/learning value (changed our understanding)",
+      "Significance of negative or unintended change"
+    ].join("\n");
+
+    const cycle = "Collect → Cluster by domain → Panel reads & discusses → Select MSC per domain → Document rationale → Verify → Publish back → Act & adapt";
+
+    return [
+      title && `MSC Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context: ${ctx}`,
+
+      "—",
+      "CYCLE & HORIZON",
+      horizon || "(set cadence, e.g., quarterly)",
+
+      "—",
+      "DOMAINS",
+      domains ? listify(domains) : "(list domains such as inclusion, trust, agency, livelihoods, safety, policy)",
+
+      "—",
+      "PROMPTS",
+      prompts || "(add 2–4 consistent prompts used by all collectors)",
+
+      "—",
+      "COLLECTION PLAN",
+      recruitment && `Story sources & recruitment:\n${recruitment}`,
+      collectors && `Story collectors & training:\n${collectors}`,
+      methods && `Methods & channels:\n${methods}`,
+      sampling && `Volume & sampling:\n${sampling}`,
+      access && `Access supports & compensation:\n${access}`,
+      consent && `Consent & ethics:\n${consent}`,
+      schema && `Story metadata schema:\n${schema}`,
+      prescreen && `Pre-screen & inclusion rules:\n${prescreen}`,
+
+      "—",
+      "SELECTION PROCESS",
+      `Process: ${cycle}`,
+      panels && `Selection panels (composition):\n${panels}`,
+      "Selection criteria:",
+      criteria || defaultCriteria,
+      meetings && `Meeting plan & cadence:\n${meetings}`,
+      rationale && `Rationale template:\n${rationale}`,
+
+      "—",
+      "VERIFICATION & REPORT-BACK",
+      verification && `Verification & triangulation:\n${verification}`,
+      feedback && `Feedback & community reporting:\n${feedback}`,
+
+      "—",
+      "USE OF LEARNING",
+      use_of_learning || "(name decisions, budget shifts, policy proposals, or practice changes)",
+
+      "—",
+      "INDICATORS PAIRED WITH MSC",
+      indicators ? listify(indicators) : "(add a short list of quantitative indicators to watch)",
+
+      "—",
+      "GOVERNANCE, RISK, TIMELINE",
+      data_governance && `Data governance & publication tiers:\n${data_governance}`,
+      risks && `Risks & mitigations:\n${risks}`,
+      timeline && `Timeline per cycle: ${timeline}`,
+
+      "—",
+      "Checklist:",
+      "- [ ] Domains named; prompts standardized",
+      "- [ ] Collectors trained; consent and access supports in place",
+      "- [ ] Sampling plan covers under-heard groups",
+      "- [ ] Panels include those most affected; compensated",
+      "- [ ] Criteria agreed; negative changes welcomed",
+      "- [ ] Rationale documented in plain language",
+      "- [ ] Verification and community-first reporting done within 30 days",
+      "- [ ] Learning drives concrete changes before next cycle"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Most Significant Change MSC stories of change selection panels rationale qualitative evaluation learning domains prompts verification community reporting template"
+  }
+},
+
+{
+  id: "outcome_harvesting",
+  slug: "outcome-harvesting",
+  label: "Outcome Harvesting - Gather outcomes after the fact and trace contributions with community input",
+  kind: "strategy",
+  categories: [
+    "evaluation",
+    "learning",
+    "community",
+    "research"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:learning",
+    "use:analysis",
+     "use:change",
+    "use:retrospective",
+    "use:decision-making",
+    "phase:reflect",
+    "phase:adapt",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "identify significant outcomes that already occurred",
+    "write clear outcome statements with evidence and dates",
+    "analyze contribution pathways with boundary partners",
+    "triangulate stories, documents, and indicators",
+    "turn insights into decisions, policy shifts, and practice changes",
+      "how to look back and see what changed",
+  "find out what results already happened",
+  "write down clear outcomes with proof",
+  "how to connect actions to results",
+  "use stories and data together",
+  "trace who helped make the change",
+  "learn from past work to guide new plans",
+  "turn lessons into better decisions",
+  "simple way to review project impact",
+  "how to check if efforts made a difference"
+  ],
+  boosters: [
+    "Start with users and purpose. Name who will use the harvest and what decisions it should inform.",
+    "Write outcome statements in past tense and behavior-first: who did what, when and where, with what significance.",
+    "Substantiate with independent sources or peer verification, not just internal claims.",
+    "Invite those most affected to review and select outcomes that matter, including negative or unintended ones.",
+    "Explain contribution without over-claiming. Name other actors and external factors.",
+    "Close the loop with a public brief and a time-boxed action list."
+  ],
+  definition: "A participatory, retrospective evaluation approach. You collect evidence of outcomes that have already happened, craft precise outcome statements, and work with community partners to analyze significance and contribution, then use the learning to adapt.",
+  help: "Complete scope and users, harvest questions, partners and informants, consent and data governance, evidence sources, substantiation plan, and the outcome log. Analyze patterns and translate insights into actions and accountability.",
+  fields: [
+    // Overview
+    {
+      label: "Title (initiative or portfolio)",
+      key: "title",
+      type: "text",
+      ph: "e.g., Eastside Forums - Outcome Harvest 2026"
+    },
+    {
+      label: "Time horizon and scope",
+      key: "horizon",
+      type: "text",
+      ph: "e.g., Outcomes from Jan–Dec 2026; forums and micro-grants"
+    },
+    {
+      label: "Primary users and intended use",
+      key: "users",
+      type: "textarea",
+      ph: "e.g., Steering group to set 2027 priorities; funders to assess contribution"
+    },
+    {
+      label: "Harvest questions (one per line)",
+      key: "questions",
+      type: "textarea",
+      ph: "e.g., What outcomes influenced belonging and safety? Which practices contributed most?"
+    },
+    {
+      label: "Domains or tags (one per line)",
+      key: "domains",
+      type: "textarea",
+      ph: "e.g., Inclusion\nTrust\nSafety\nPolicy influence\nLeadership"
+    },
+
+    // Partners, roles, ethics
+    {
+      label: "Boundary partners (whose behavior changed)",
+      key: "boundary_partners",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      max: 24,
+      autofill: "persona->inline",
+      type: "repeater",
+      ph: "e.g., Youth council; library branch; tenant association; city liaison"
+    },
+    {
+      label: "Informants and reviewers",
+      key: "informants",
+      type: "textarea",
+      ph: "e.g., Elders circle; facilitators; program staff; external allies"
+    },
+    {
+      label: "Roles and responsibilities",
+      key: "roles",
+      type: "textarea",
+      ph: "e.g., Owner, harvesters, analysts, community reviewers, substantiators"
+    },
+    {
+      label: "Consent and ethics",
+      key: "consent",
+      type: "textarea",
+      ph: "e.g., Ongoing, revocable; plain language; community approvals for publication"
+    },
+    {
+      label: "Data governance and publication tiers",
+      key: "data_governance",
+      type: "textarea",
+      ph: "Public | Community-only | Restricted | Not-for-release, with who decides and how"
+    },
+    {
+      label: "Access supports and compensation",
+      key: "access",
+      type: "textarea",
+      ph: "e.g., Stipends; childcare; transport; interpreters; ASL; large-print"
+    },
+
+    // Evidence and substantiation
+    {
+      label: "Evidence sources to review",
+      key: "sources",
+      type: "textarea",
+      ph: "e.g., Meeting notes; decision logs; emails; policy memos; attendance; media; photos"
+    },
+    {
+      label: "Substantiation plan",
+      key: "substantiation",
+      type: "textarea",
+      ph: "e.g., Independent confirmations by partner orgs; document checks; brief interviews"
+    },
+    {
+      label: "Confidence scale definition",
+      key: "confidence_def",
+      type: "textarea",
+      ph: "e.g., Low = single internal source; Medium = multiple sources; High = independent substantiation"
+    },
+
+    // Outcome log
+    {
+      label: "Outcome statement format hint",
+      key: "format_hint",
+      type: "textarea",
+      ph: "Actor — behavior change — when/where — evidence/source — significance (for whom and why) — our contribution — other contributors/external factors — confidence"
+    },
+    {
+      label: "Outcome entries (one per line using the format hint)",
+      key: "outcomes",
+      type: "textarea",
+      ph: "e.g., Tenant association — adopted multilingual meeting rules — May 2026, Eastside — decision log #57 — increased first-time speakers — our coaching sessions; stipends — city translator program also helped — High"
+    },
+    {
+      label: "Negative or unintended outcomes (optional)",
+      key: "unintended",
+      type: "textarea",
+      ph: "e.g., Evening sessions reduced caregiver participation; evidence and reasons"
+    },
+    {
+      label: "Links to artifacts",
+      key: "links",
+      type: "textarea",
+      ph: "Paste URLs or ids for docs, photos, datasets where allowed"
+    },
+
+    // Analysis and use
+    {
+      label: "Clustering and patterns",
+      key: "patterns",
+      type: "textarea",
+      ph: "e.g., Outcomes cluster around access supports and co-facilitation"
+    },
+    {
+      label: "Contribution analysis",
+      key: "contribution",
+      type: "textarea",
+      ph: "e.g., Our specific activities that plausibly influenced outcomes and how"
+    },
+    {
+      label: "External factors and context",
+      key: "external",
+      type: "textarea",
+      ph: "e.g., Policy shifts; seasonal events; partner campaigns"
+    },
+    {
+      label: "Insights and implications",
+      key: "insights",
+      type: "textarea",
+      ph: "e.g., Which practices to scale, stop, or redesign"
+    },
+    {
+      label: "Decisions and action list (one per line: action - owner - start - check date)",
+      key: "actions",
+      type: "textarea",
+      ph: "e.g., Expand interpreter pool - Maria - Jul - Sep review"
+    },
+    {
+      label: "Paired indicators",
+      key: "indicators",
+      type: "textarea",
+      ph: "e.g., % first-time speakers; belonging index; network density; policy adoptions"
+    },
+    {
+      label: "Feedback and report-back plan",
+      key: "feedback",
+      type: "textarea",
+      ph: "e.g., Community-first brief in 30 days; bilingual summary; open dataset where safe"
+    },
+
+    // Delivery
+    {
+      label: "Timeline and cadence",
+      key: "timeline",
+      type: "text",
+      ph: "e.g., Design in Jan; evidence review in Feb; harvest workshops in Mar; brief in Apr"
+    },
+    {
+      label: "Risks and mitigations",
+      key: "risks",
+      type: "textarea",
+      ph: "e.g., Over-claiming → independent checks; bias → diverse reviewers; fatigue → stipends"
+    },
+    {
+      label: "Workstreams (area - owner - milestones - budget - indicators)",
+      key: "workstreams",
+      type: "textarea",
+      ph: "e.g., Evidence review - analyst team - archive tagged by Feb 10 - $4k - coverage by domain"
+    },
+    {
+      label: "Context and notes",
+      key: "ctx",
+      type: "textarea",
+      ph: "Links, constraints, prior evaluations"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    users,
+    questions,
+    domains,
+    boundary_partners,
+    informants,
+    roles,
+    consent,
+    data_governance,
+    access,
+    sources,
+    substantiation,
+    confidence_def,
+    format_hint,
+    outcomes,
+    unintended,
+    links,
+    patterns,
+    contribution,
+    external,
+    insights,
+    actions,
+    indicators,
+    feedback,
+    timeline,
+    risks,
+    workstreams,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`)
+      .join("\n");
+
+    const steps = [
+      "Design the harvest: users, use, scope, questions",
+      "Review sources and draft outcome statements",
+      "Engage informants and boundary partners",
+      "Substantiate outcomes and rate confidence",
+      "Analyze patterns and contribution",
+      "Support use: decisions, actions, and public brief"
+    ].join("\n");
+
+    return [
+      title && `Outcome Harvesting plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes:\n${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Time horizon and scope: ${horizon}`,
+      users && `Primary users and intended use:\n${users}`,
+      questions && ["Harvest questions:", listify(questions)].join("\n"),
+      domains && ["Domains or tags:", listify(domains)].join("\n"),
+
+      "SECTION: Partners, roles, and ethics",
+      boundary_partners && ["Boundary partners:", listify(boundary_partners)].join("\n"),
+      informants && `Informants and reviewers:\n${informants}`,
+      roles && `Roles and responsibilities:\n${roles}`,
+      consent && `Consent and ethics:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Evidence and substantiation",
+      sources && `Evidence sources to review:\n${sources}`,
+      substantiation && `Substantiation plan:\n${substantiation}`,
+      confidence_def && `Confidence scale definition:\n${confidence_def}`,
+
+      "SECTION: Outcome log",
+      format_hint && `Outcome statement format hint:\n${format_hint}`,
+      outcomes && ["Entries:", listify(outcomes)].join("\n"),
+      unintended && `Negative or unintended outcomes:\n${unintended}`,
+      links && `Links to artifacts:\n${links}`,
+
+      "SECTION: Analysis and use",
+      patterns && `Clustering and patterns:\n${patterns}`,
+      contribution && `Contribution analysis:\n${contribution}`,
+      external && `External factors and context:\n${external}`,
+      insights && `Insights and implications:\n${insights}`,
+      actions && ["Decisions and action list:", listify(actions)].join("\n"),
+      indicators && ["Paired indicators:", listify(indicators)].join("\n"),
+      feedback && `Feedback and report-back plan:\n${feedback}`,
+
+      "SECTION: Delivery",
+      timeline && `Timeline and cadence: ${timeline}`,
+      risks && `Risks and mitigations:\n${risks}`,
+      workstreams && ["Workstreams (area - owner - milestones - budget - indicators):", listify(workstreams)].join("\n"),
+
+      "Quick reference - steps:",
+      steps,
+
+      "Checklist:",
+      "- [ ] Users and decisions named up front",
+      "- [ ] Outcome statements are specific, dated, and evidenced",
+      "- [ ] Substantiation completed and confidence rated",
+      "- [ ] Negative and unintended outcomes included",
+      "- [ ] Contribution explained with other actors and factors",
+      "- [ ] Patterns distilled into actionable insights",
+      "- [ ] Public brief and close-the-loop report scheduled",
+      "- [ ] Actions have owners and check dates"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Outcome Harvesting retrospective evaluation outcome statements boundary partners contribution analysis substantiation learning decisions template"
+  }
+},
+
+{
+  id: "ripple_effects_mapping",
+  slug: "ripple-effects-mapping",
+  label: "Ripple Effects Mapping — Appreciative story-mapping of impacts with stakeholders",
+  kind: "evaluation",
+  categories: [
+    "evaluation",
+    "learning",
+    "community",
+    "research",
+    "systems"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:story",
+    "use:mapping",
+    "use:analysis",
+    "use:decision-making",
+    "phase:reflect",
+    "phase:adapt",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "surface intended, unintended, and emergent outcomes with those affected",
+    "map pathways of contribution across people, projects, and systems",
+    "identify keystone nodes and leverage points for future action",
+    "triangulate appreciative stories with documents and indicators",
+    "create a public learning brief and action commitments",
+     "how to see the ripple effects of a project",
+  "map out what changed because of our work",
+  "find unexpected results from a program",
+  "use stories to track impact",
+  "show how people and projects connect",
+  "trace outcomes back to actions",
+  "how to learn from community feedback",
+  "make a simple map of changes and impact",
+  "look at long-term effects together",
+  "share impact stories in a clear way"
+  ],
+  boosters: [
+    "Start with appreciative interviews to anchor in real change before mapping.",
+    "Invite a diverse, affected group; compensate and provide access supports.",
+    "Define node and link types up front; keep a visible legend on the canvas.",
+    "Capture evidence links (docs, photos, logs) on nodes and connections.",
+    "Name negative or unintended ripples explicitly; they’re valuable learning.",
+    "Close by selecting ‘most consequential’ ripples and assigning next actions."
+  ],
+  definition: "A participatory method that begins with appreciative stories of change, then mind-maps the ripples (secondary/tertiary effects), evidences them, and identifies leverage points and actions.",
+  help: "Fill purpose and focal question, roles, participants, interview prompts, map tool/legend, evidence plan, and workshop agenda. During the session, add outcomes as nodes, connect ripples with typed links, tag evidence, cluster, pick keystones, and agree actions.",
+  fields: [
+    // Overview
+    {
+      label: "Title (initiative / portfolio)",
+      key: "title",
+      ph: "e.g., Eastside Forums — Ripple Effects Mapping 2026",
+      type: "text"
+    },
+    {
+      label: "Horizon & session dates",
+      key: "horizon",
+      ph: "e.g., Jan–Mar 2026; workshop on Feb 15, 2–5pm",
+      type: "text"
+    },
+    {
+      label: "Purpose & focal question",
+      key: "purpose",
+      ph: "e.g., What changes have spread from the forums, for whom, and how?",
+      type: "textarea"
+    },
+
+    // Roles & inclusion
+    {
+      label: "Facilitator(s) & mapper(s)",
+      key: "roles",
+      ph: "e.g., Lead facilitator; visual mapper; note-taker; timekeeper",
+      type: "textarea"
+    },
+    {
+      label: "Stakeholders / participants",
+      autofill: "persona->inline",
+      itemLabel: "participant",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      ph: "e.g., Youth leaders; elders circle; newcomer groups; partner orgs; city liaison",
+      type: "repeater"
+    },
+    {
+      label: "Access supports & compensation",
+      key: "access",
+      ph: "e.g., Stipends; childcare; interpreters/ASL; transportation; food; hybrid option",
+      type: "textarea"
+    },
+
+    // Ethics & governance
+    {
+      label: "Consent & ethics",
+      key: "consent",
+      ph: "e.g., Plain-language, ongoing, revocable; story ownership and quoting rules",
+      type: "textarea"
+    },
+    {
+      label: "Data governance & publication tiers",
+      key: "data_governance",
+      ph: "Public • Community-only • Restricted • Sacred/Not-for-release (who decides, criteria)",
+      type: "textarea"
+    },
+
+    // Inputs & tools
+    {
+      label: "Appreciative interview prompts",
+      key: "prompts",
+      ph: "e.g., Tell me about a change you noticed; why it mattered; who/what contributed.",
+      type: "textarea"
+    },
+    {
+      label: "Evidence sources to have on hand",
+      key: "evidence_sources",
+      ph: "e.g., Decision logs; attendance; photos; emails; media mentions; policy memos",
+      type: "textarea"
+    },
+    {
+      label: "Map tool & canvas link",
+      key: "map_link",
+      ph: "e.g., Kumu/Miro/FigJam URL",
+      type: "text"
+    },
+    {
+      label: "Node types (legend)",
+      key: "node_types",
+      ph: "e.g., Outcome; Practice change; Policy; Relationship; Resource; Indicator",
+      type: "textarea"
+    },
+    {
+      label: "Link types (legend)",
+      key: "link_types",
+      ph: "e.g., contributed to; enabled; inspired; removed barrier; amplified; hindered",
+      type: "textarea"
+    },
+    {
+      label: "Domains/tags (optional, one per line)",
+      key: "domains",
+      ph: "e.g., Inclusion\nTrust\nSafety\nLeadership\nPolicy influence",
+      type: "textarea"
+    },
+
+    // Workshop plan
+    {
+      label: "Workshop agenda",
+      key: "agenda",
+      ph: "e.g., Welcome & consent; 2x2 interviews; harvest stories; seed nodes; map ripples; cluster; select keystones; actions; close",
+      type: "textarea"
+    },
+    {
+      label: "Seeding stories/outcomes (one per line)",
+      key: "seed_outcomes",
+      ph: "e.g., First-time speakers doubled at Library A; Youth council formed",
+      type: "textarea"
+    },
+
+    // Logging during/after workshop
+    {
+      label: "Outcome log (one per line: outcome — date — for whom — evidence/link)",
+      key: "outcome_log",
+      ph: "e.g., Tenant association adopted multilingual rules — May 2026 — renters — decision log #57",
+      type: "textarea"
+    },
+    {
+      label: "Ripples log (one per line: FROM —[link type]→ TO — evidence/link — date)",
+      key: "ripple_log",
+      ph: "e.g., Multilingual rules — enabled → First-time speakers ↑ — meeting notes — Jun 2026",
+      type: "textarea"
+    },
+    {
+      label: "Negative/unintended ripples",
+      key: "unintended",
+      ph: "e.g., Evening sessions reduced caregiver participation — sign-ins — Jul–Aug 2026",
+      type: "textarea"
+    },
+
+    // Synthesis
+    {
+      label: "Clusters/themes & keystone nodes",
+      key: "clusters",
+      ph: "e.g., Access supports cluster; Keystone = interpreters pool",
+      type: "textarea"
+    },
+    {
+      label: "Pathways & leverage points",
+      key: "pathways",
+      ph: "e.g., Outreach → first-time speakers → leadership roles; leverage: micro-grant criteria",
+      type: "textarea"
+    },
+    {
+      label: "Triangulation & verification",
+      key: "verification",
+      ph: "e.g., Follow-up calls; docs; indicator trends; member checks",
+      type: "textarea"
+    },
+
+    // Decisions & follow-through
+    {
+      label: "Decisions & action list (one per line: action — owner — resources — start — check date)",
+      key: "actions",
+      ph: "e.g., Expand interpreter pool — Maria — $6k — Jul — Sep review",
+      type: "textarea"
+    },
+    {
+      label: "Measures & signals to watch",
+      key: "measures",
+      ph: "e.g., # nodes/links; path length to outcomes; participation by subgroup; delivery on actions",
+      type: "textarea"
+    },
+    {
+      label: "Feedback & public reporting",
+      key: "feedback",
+      ph: "e.g., Community-first brief in 30 days; bilingual summary; open map snapshot",
+      type: "textarea"
+    },
+
+    // Risks & timeline
+    {
+      label: "Risks & safeguards",
+      key: "risks",
+      ph: "e.g., Over-claiming; confidentiality breaches; dominance by few; fatigue → mitigations",
+      type: "textarea"
+    },
+    {
+      label: "Timeline & cadence",
+      key: "timeline",
+      ph: "e.g., Prep (2 wks); workshop; verification (2 wks); brief & actions (1 wk); follow-up (quarterly)",
+      type: "text"
+    },
+    {
+      label: "Context / notes",
+      key: "ctx",
+      ph: "Links, constraints, prior maps",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    roles,
+    participants,
+    access,
+    consent,
+    data_governance,
+    prompts,
+    evidence_sources,
+    map_link,
+    node_types,
+    link_types,
+    domains,
+    agenda,
+    seed_outcomes,
+    outcome_log,
+    ripple_log,
+    unintended,
+    clusters,
+    pathways,
+    verification,
+    actions,
+    measures,
+    feedback,
+    risks,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const processCheat = [
+      "Appreciative interviews → harvest stories",
+      "Seed initial nodes on the canvas",
+      "Map ripples with typed links (e.g., enabled, inspired, removed barrier)",
+      "Attach evidence and dates to nodes/links",
+      "Cluster, spot keystones & leverage points",
+      "Select most consequential ripples",
+      "Agree actions, owners, and check dates",
+      "Publish a community-first brief and map snapshot"
+    ].join(" → ");
+
+    return [
+      `Ripple Effects Mapping plan${title ? `: ${title}` : ""}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context / notes: ${ctx}`,
+
+      "—",
+      "OVERVIEW",
+      horizon && `Horizon & session dates: ${horizon}`,
+      purpose && `Purpose & focal question:\n${purpose}`,
+
+      "—",
+      "ROLES & INCLUSION",
+      roles && `Facilitator(s) & mapper(s):\n${roles}`,
+      participants && ["Stakeholders / participants:", listify(participants)].join("\n"),
+      access && `Access supports & compensation:\n${access}`,
+
+      "—",
+      "ETHICS & GOVERNANCE",
+      consent && `Consent & ethics:\n${consent}`,
+      data_governance && `Data governance & publication tiers:\n${data_governance}`,
+
+      "—",
+      "INPUTS & TOOLS",
+      prompts && `Appreciative interview prompts:\n${prompts}`,
+      evidence_sources && `Evidence sources:\n${evidence_sources}`,
+      map_link && `Map tool & canvas: ${map_link}`,
+      node_types && `Node types (legend):\n${node_types}`,
+      link_types && `Link types (legend):\n${link_types}`,
+      domains && ["Domains/tags:", listify(domains)].join("\n"),
+
+      "—",
+      "WORKSHOP PLAN",
+      agenda && `Agenda:\n${agenda}`,
+      seed_outcomes && ["Seeding stories/outcomes:", listify(seed_outcomes)].join("\n"),
+
+      "—",
+      "LOGGING",
+      outcome_log && ["Outcome log:", listify(outcome_log)].join("\n"),
+      ripple_log && ["Ripples log:", listify(ripple_log)].join("\n"),
+      unintended && `Negative/unintended ripples:\n${unintended}`,
+
+      "—",
+      "SYNTHESIS",
+      clusters && `Clusters/themes & keystones:\n${clusters}`,
+      pathways && `Pathways & leverage points:\n${pathways}`,
+      verification && `Triangulation & verification:\n${verification}`,
+
+      "—",
+      "DECISIONS & FOLLOW-THROUGH",
+      actions && ["Decisions & action list:", listify(actions)].join("\n"),
+      measures && ["Measures & signals:", listify(measures)].join("\n"),
+      feedback && `Feedback & public reporting:\n${feedback}`,
+
+      "—",
+      "RISKS & TIMELINE",
+      risks && `Risks & safeguards:\n${risks}`,
+      timeline && `Timeline & cadence: ${timeline}`,
+
+      "—",
+      "Quick reference:",
+      processCheat,
+
+      "—",
+      "Checklist:",
+      "- [ ] Diverse, affected participants recruited and supported",
+      "- [ ] Legend (node/link types) visible and used consistently",
+      "- [ ] Evidence attached to nodes and links; dates recorded",
+      "- [ ] Negative/unintended ripples captured without shame or spin",
+      "- [ ] Keystones and leverage points identified",
+      "- [ ] ‘Most consequential’ ripples selected transparently",
+      "- [ ] Action owners, resources, and check dates agreed",
+      "- [ ] Community-first brief and map snapshot published within 30 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Ripple Effects Mapping appreciative inquiry outcomes ripples mapping evidence keystone nodes leverage points community workshop template"
+  }
+},
+
+{
+  id: "sensemaker_micro_narratives",
+  slug: "sensemaker-micro-narratives",
+  label: "SenseMaker: Micro-narratives self-signified by participants to surface patterns",
+  kind: "research",
+  categories: [
+    "research",
+    "evaluation",
+    "learning",
+    "community",
+    "analysis-frameworks",
+    "data"
+  ],
+  tags: [
+    "type:framework",
+    "use:research",
+    "use:evaluation",
+    "use:narratives",
+    "use:pattern-detection",
+    "use:analysis",
+    "use:engagement",
+    "phase:explore",
+    "phase:define",
+    "phase:reflect",
+    "topic:community",
+    "level:advanced"
+  ],
+  use_cases: [
+    "collect short real-world stories at scale with low interpreter bias",
+    "use participant self-signification to map meaning directly from storytellers",
+    "visualize patterns by subgroup using triads, dyads, stones, and filters",
+    "run sensemaking workshops to interpret clusters and decide actions",
+    "pair narrative patterns with indicators for adaptive management",
+      "how to collect lots of short stories fast",
+  "let people explain what their own story means",
+  "find patterns across many personal stories",
+  "use stories to see what’s really happening",
+  "sort feedback into themes without bias",
+  "make sense of complex community input",
+  "see differences between groups in data",
+  "how to mix stories with numbers",
+  "run a workshop to learn from stories",
+  "turn story patterns into action steps"
+  ],
+  boosters: [
+    "Pilot the instrument. Run cognitive testing to make triad pole wording plain-language and culturally grounded.",
+    "Keep prompts short. Anchor signifiers in the same time and place as the story.",
+    "Collect in multiple languages with the same conceptual signifiers. Validate translations with community reviewers.",
+    "Design for inclusion. Offer QR, kiosk, tablet, and assisted options with access supports and stipends.",
+    "Plan story pulls. For any hot spot on a triad, specify how you will retrieve exemplar stories for discussion.",
+    "Close the loop. Publish a community-first brief and name decisions that will change because of what you learned."
+  ],
+  definition: "A mixed-method approach that gathers many brief stories and asks storytellers to tag their own meaning using signifiers (triads, dyads, stones). The resulting landscapes reveal patterns for collective sensemaking and action.",
+  help: "Complete purpose, sampling, consent, access supports, instrument design (prompts and signifiers), collection channels, volume targets, analysis and visualization plans, sensemaking workshops, decisions, and reporting. Treat triads and dyads as living drafts that you pilot with community reviewers.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Eastside Forums SenseMaker 2026" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., Jan–Sep 2026" },
+    { label: "Purpose and users", key: "purpose", type: "textarea", ph: "e.g., Surface patterns to set 2027 priorities and improve access supports" },
+    { label: "Owner and team", key: "owner", type: "textarea", ph: "e.g., Community Council research lead, data steward, language coordinators" },
+    {
+      label: "Stakeholders and priority subgroups",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents"
+    },
+
+    // Ethics and inclusion
+    { label: "Consent and ethics", key: "consent", type: "textarea", ph: "Plain-language, ongoing, revocable; options for named/pseudonym/anonymous; right to review quotes" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release with who decides and why" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends; childcare; interpreters and ASL; large-print; remote assist" },
+
+    // Instrument design
+    { label: "Primary story prompt", key: "prompt_primary", type: "textarea", ph: "Tell a short story about a recent experience that mattered to you here. What happened?" },
+    { label: "Secondary prompt (why it mattered)", key: "prompt_secondary", type: "textarea", ph: "Why did this matter to you or others?" },
+    { label: "Story length target", key: "story_len", type: "text", ph: "e.g., 1 to 3 minutes or 100 to 250 words" },
+    { label: "Triad signifiers (one per line: name - poleA | poleB | poleC)", key: "triads", type: "textarea", ph: "Belonging - Isolated | Mixed | Connected" },
+    { label: "Dyad signifiers (one per line: name - left | right)", key: "dyads", type: "textarea", ph: "Voice - Not heard | Strongly heard" },
+    { label: "Stones or tags (checkboxes, one per line)", key: "stones", type: "textarea", ph: "Interpreter used\nChildcare available\nFelt safe\nFirst-time speaker" },
+    { label: "Metadata fields (one per line)", key: "metadata", type: "textarea", ph: "Location\nDate\nLanguage\nAge group\nDisability status\nRole" },
+    { label: "Instrument version and translations", key: "instrument_version", type: "text", ph: "v1.2 - English, Spanish, ASL video variant" },
+    { label: "Pilot and cognitive testing plan", key: "pilot", type: "textarea", ph: "5 think-aloud interviews per subgroup; revise wording; re-test" },
+
+    // Collection plan
+    { label: "Sampling approach", key: "sampling", type: "textarea", ph: "Purposive with oversampling of under-heard groups; target n by subgroup" },
+    { label: "Volume targets", key: "volume", type: "text", ph: "e.g., 300 micro-narratives total; min 40 per priority subgroup" },
+    { label: "Channels", key: "channels", type: "textarea", ph: "QR codes; intercept tablets; kiosk; SMS link; partner-hosted sessions" },
+    { label: "Fieldwork schedule and SLAs", key: "fieldwork", type: "textarea", ph: "Pop-ups weekly; partner nights; response to support requests within 2 business days" },
+    { label: "Quality and integrity checks", key: "quality", type: "textarea", ph: "Duplicate detection; time-on-task; completeness; language review" },
+
+    // Analysis and visualization
+    { label: "Filters and comparisons to test", key: "filters", type: "textarea", ph: "Language; disability; age; neighborhood; first-time vs repeat participants" },
+    { label: "Visualizations to produce", key: "visuals", type: "textarea", ph: "Triad heatmaps; dyad histograms; stones co-occurrence; landscape contours by subgroup" },
+    { label: "Story pull rules", key: "story_pulls", type: "textarea", ph: "From each triad hot spot, pull top 5 nearest stories with consent level for quoting" },
+    { label: "Sensemaking workshops", key: "workshops", type: "textarea", ph: "Two sessions with affected groups to interpret patterns and generate hypotheses" },
+    { label: "Pattern hypotheses and tests", key: "hypotheses", type: "textarea", ph: "e.g., Interpreter presence shifts belonging toward Connected for newcomers" },
+    { label: "Pair with indicators", key: "indicators", type: "textarea", ph: "Belonging index; % first-time speakers; network density; safety incidents" },
+
+    // Decisions and reporting
+    { label: "Decisions and action list (one per line: action - owner - start - check date)", key: "actions", type: "textarea", ph: "Expand interpreter pool - Maria - Jul 1 - Sep 15 review" },
+    { label: "Feedback and reporting plan", key: "feedback", type: "textarea", ph: "Community-first brief in 30 days; bilingual zine; open dataset of signifiers where safe" },
+
+    // Risks and delivery
+    { label: "Risks and safeguards", key: "risks", type: "textarea", ph: "Re-identification; misinterpretation; tech exclusion; fatigue - mitigations and supports" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Design and pilot May; fieldwork Jun–Aug; analysis Sep; workshops Oct; brief Nov" },
+    { label: "Workstreams (area - owner - milestones - budget - indicators)", key: "workstreams", type: "textarea", ph: "Translation - language team - approve v1 by May 10 - $3k - pilot comprehension ≥90%" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "Links, prior cycles, platform constraints" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    owner,
+    stakeholders,
+    consent,
+    data_governance,
+    access,
+    prompt_primary,
+    prompt_secondary,
+    story_len,
+    triads,
+    dyads,
+    stones,
+    metadata,
+    instrument_version,
+    pilot,
+    sampling,
+    volume,
+    channels,
+    fieldwork,
+    quality,
+    filters,
+    visuals,
+    story_pulls,
+    workshops,
+    hypotheses,
+    indicators,
+    actions,
+    feedback,
+    risks,
+    timeline,
+    workstreams,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const steps = [
+      "Design prompts and signifiers",
+      "Pilot and revise instrument",
+      "Collect stories with access supports",
+      "Visualize triads, dyads, stones by subgroup",
+      "Pull exemplar stories from hot spots",
+      "Sensemaking workshops with participants",
+      "Decide actions and publish a community-first brief"
+    ].join(" -> ");
+
+    return [
+      title && `SenseMaker plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon: ${horizon}`,
+      purpose && `Purpose and users:\n${purpose}`,
+      owner && `Owner and team:\n${owner}`,
+      stakeholders && ["Stakeholders and priority subgroups:", listify(stakeholders)].join("\n"),
+
+      "SECTION: Ethics and inclusion",
+      consent && `Consent and ethics:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Instrument",
+      prompt_primary && `Primary story prompt:\n${prompt_primary}`,
+      prompt_secondary && `Secondary prompt:\n${prompt_secondary}`,
+      story_len && `Story length target: ${story_len}`,
+      triads && ["Triad signifiers:", listify(triads)].join("\n"),
+      dyads && ["Dyad signifiers:", listify(dyads)].join("\n"),
+      stones && ["Stones or tags:", listify(stones)].join("\n"),
+      metadata && ["Metadata fields:", listify(metadata)].join("\n"),
+      instrument_version && `Instrument version and translations: ${instrument_version}`,
+      pilot && `Pilot and cognitive testing plan:\n${pilot}`,
+
+      "SECTION: Collection",
+      sampling && `Sampling approach:\n${sampling}`,
+      volume && `Volume targets: ${volume}`,
+      channels && `Channels:\n${channels}`,
+      fieldwork && `Fieldwork schedule and SLAs:\n${fieldwork}`,
+      quality && `Quality and integrity checks:\n${quality}`,
+
+      "SECTION: Analysis and visualization",
+      filters && `Filters and comparisons:\n${filters}`,
+      visuals && `Visualizations to produce:\n${visuals}`,
+      story_pulls && `Story pull rules:\n${story_pulls}`,
+      workshops && `Sensemaking workshops:\n${workshops}`,
+      hypotheses && `Pattern hypotheses and tests:\n${hypotheses}`,
+      indicators && ["Paired indicators:", listify(indicators)].join("\n"),
+
+      "SECTION: Decisions and reporting",
+      actions && ["Decisions and action list:", listify(actions)].join("\n"),
+      feedback && `Feedback and reporting plan:\n${feedback}`,
+
+      "SECTION: Risk and delivery",
+      risks && `Risks and safeguards:\n${risks}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+      workstreams && ["Workstreams (area - owner - milestones - budget - indicators):", listify(workstreams)].join("\n"),
+
+      "Quick reference",
+      steps,
+
+      "Checklist:",
+      "- [ ] Triads and dyads piloted and understood across languages",
+      "- [ ] Access supports and stipends funded and scheduled",
+      "- [ ] Volume targets cover priority subgroups",
+      "- [ ] Visualizations produced with subgroup filters",
+      "- [ ] Exemplar stories retrieved for each hot spot",
+      "- [ ] Sensemaking workshops held with those affected",
+      "- [ ] Community-first brief and public summary published",
+      "- [ ] Actions have owners and check dates"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "SenseMaker micro-narratives self signification triads dyads stones pattern detection sensemaking workshops filters visualization community evaluation template"
+  }
+},
+
+{
+  id: "deliberative_polling_citizens_jury",
+  slug: "deliberative-polling-citizens-jury",
+  label: "Deliberative Polling / Citizens' Juries - Informed, structured public deliberation",
+  kind: "strategy",
+  categories: [
+    "governance",
+    "community",
+    "decision",
+    "facilitation",
+    "research"
+  ],
+  tags: [
+    "type:framework",
+    "use:engagement",
+    "use:decision-making",
+    "use:research",
+    "use:evaluation",
+    "phase:define",
+    "phase:plan",
+    "phase:decide",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "convene a representative mini-public to deliberate on a policy question",
+    "produce recommendations or informed preferences for elected bodies",
+    "stress test contentious options with balanced materials and expert Q&A",
+    "measure knowledge change and opinion movement pre and post",
+    "build legitimacy through transparency, inclusion, and reasoned judgment",
+     "how to ask regular people about big decisions",
+  "make government choices more fair",
+  "how to run a citizens jury",
+  "let people vote after learning first",
+  "ways to test if policies actually make sense",
+  "bring random people together to talk about laws",
+  "how to get normal folks into politics",
+  "decide rules with everyday citizens",
+  "get public input without the yelling",
+  "how to debate fairly with facts",
+  "cheap way to hear from voters",
+  "give power back to the people",
+  "how to balance expert info with community views",
+  "make democracy more legit",
+  "stop only rich people making choices",
+  "how to test options before leaders decide",
+  "use citizens to guide tough choices",
+  "measure if opinions change with facts",
+  "how to do mini public debates",
+  "find fair results on hard issues",
+  "ways to involve citizens in policy",
+  "make sure decisions aren’t one-sided",
+  "how to run a fair town hall",
+  "can regular people solve complex issues",
+  "teach people before they vote",
+  "why citizens juries work",
+  "compare before and after public opinion",
+  "track knowledge growth in participants",
+  "community panels for tough laws",
+  "get buy-in for new policies",
+  "show leaders what the public thinks",
+  "use facts to guide community voting",
+  "is deliberative polling reliable",
+  "how to stop fake news in voting",
+  "make big choices with small groups",
+  "random people decide big stuff",
+  "test a law idea before passing it",
+  "community decision-making methods",
+  "easy way to sample public opinion",
+  "citizen juries vs surveys",
+  "how to make people listen to experts",
+  "balance expert panels and local voices",
+  "stop biased polling",
+  "democracy experiments that work",
+  "use citizens to stress test reforms",
+  "what’s a mini public",
+  "how to pick random citizens fairly",
+  "create a fair process for public input",
+  "examples of citizens juries working",
+  "better than normal surveys",
+  "does this build trust in democracy",
+  "ways to avoid shouting matches",
+  "get shy people to speak in groups",
+  "kid style: how can people help the mayor",
+  "5th grade: can random people pick ice cream rules",
+  "why not let normal people decide stuff",
+  "is this like jury duty for politics",
+  "how to make voting smarter",
+  "classroom version of a citizens jury",
+  "fun games to practice democracy",
+  "baby question: can kids be in juries",
+  "help my town pick a playground design",
+  "decide school lunch with citizens",
+  "should we vote on pizza toppings this way",
+  "how to explain citizens jury to a 10 year old",
+  "use citizen panels for climate change",
+  "fix democracy with mini juries",
+  "test healthcare policies with citizens",
+  "let people try out decision making"
+  ],
+  boosters: [
+    "Use sortition with stratified quotas to mirror the community. Publish the sampling frame and response rates.",
+    "Create an independent materials committee to curate balanced briefing packs and disclose conflicts of interest.",
+    "Pay participants and remove barriers: childcare, transport, interpreters, food, accessibility.",
+    "Train neutral table facilitators. Rotate small groups to reduce clustering and dominance.",
+    "Schedule expert and witness panels with contrasting perspectives and structured Q&A sourced from participants.",
+    "Run pre and post surveys with a short knowledge quiz and fairness perceptions, then publish methods and anonymized results."
+  ],
+  definition: "A mini-public method where a random, representative group receives balanced information, engages in facilitated small-group deliberation and plenary Q&A, then states informed preferences or issues recommendations.",
+  help: "Complete mandate, authority, population and sortition plan, recruitment and access supports, materials committee and expert panels, facilitation model, deliberation questions, agenda, polling instruments, decision rule, reporting, transparency, and evaluation.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Eastside Energy Deliberative Jury" },
+    { label: "Sponsor / convener", key: "sponsor", type: "text", ph: "e.g., City Council with Community Council" },
+    { label: "Mandate and question(s)", key: "mandate", type: "textarea", ph: "e.g., Should the city adopt Option A, B, or C for shared spaces?" },
+    { label: "Decision authority", key: "authority", type: "text", ph: "advisory | binding within scope | recommendation to elected body" },
+    { label: "Budget and resources", key: "budget", type: "textarea", ph: "e.g., $75k total; staffing; venue; platform; evaluation" },
+
+    // Population, sortition, recruitment
+    { label: "Population frame", key: "population_frame", type: "textarea", ph: "e.g., Adult residents; sampling source; coverage limits" },
+    { label: "Eligibility and exclusions", key: "eligibility", type: "textarea", ph: "e.g., Age 16+; residency; conflict rules; no current office holders" },
+    { label: "Sample size and stratification", key: "sample_size", type: "text", ph: "e.g., 48 participants; quotas by ward, age, gender, language, disability" },
+    { label: "Sortition method", key: "sortition", type: "textarea", ph: "e.g., Two-stage random selection with stratified quotas; lottery letters + follow-ups" },
+    { label: "Recruitment and consent", key: "recruitment", type: "textarea", ph: "e.g., Invitation waves; reminders; consent script; replacements policy" },
+    { label: "Compensation and supports", key: "compensation", type: "textarea", ph: "e.g., $200 per day; childcare; transport; interpreters; ASL; remote option" },
+
+    // Governance and neutrality
+    { label: "Oversight and independence", key: "oversight", type: "textarea", ph: "e.g., Independent advisory board; community seats; conflict disclosures" },
+    { label: "Code of conduct and ground rules", key: "conduct", type: "textarea", ph: "e.g., Respect, equal turns, reason-giving, right to pass" },
+
+    // Materials and experts
+    { label: "Briefing materials committee", key: "materials_committee", type: "textarea", ph: "members, remit, balance criteria, review cycle" },
+    { label: "Briefing pack contents", key: "briefing_pack", type: "textarea", ph: "plain-language summary; pros/cons; scenarios; FAQs; glossary" },
+    { label: "Experts and witnesses", key: "experts", type: "textarea", ph: "e.g., Panel A (advocates), Panel B (opponents), Panel C (neutral analysts), lived experience" },
+    { label: "Q&A process", key: "qa_process", type: "textarea", ph: "question collection, clustering, time boxing, fact-check follow-ups" },
+
+    // Facilitation and agenda
+    { label: "Facilitation model", key: "facilitation", type: "textarea", ph: "neutral table hosts; rotation plan; talk-time tracking" },
+    { label: "Small-group tables and hosts", key: "tables", type: "textarea", ph: "e.g., 8 tables of 6; host assignments; note-taking protocol" },
+    { label: "Agenda and schedule", key: "agenda", type: "textarea", ph: "e.g., Welcome; briefing; small groups; panels; plenary; drafting; polling" },
+    { label: "Deliberation questions (one per line)", key: "questions", type: "textarea", ph: "e.g., What matters most and why?\nWhich trade-offs are acceptable?" },
+
+    // Polling, drafting, and decisions
+    { label: "Pre and post instruments", key: "instruments", type: "textarea", ph: "attitudes; knowledge quiz; fairness perceptions; demographic check" },
+    { label: "Decision rule", key: "decision_rule", type: "text", ph: "consensus | consent with objections addressed | majority | ranked choice" },
+    { label: "Polling and voting method", key: "voting", type: "textarea", ph: "secret ballot; show of hands; ranked ballot; multiple rounds" },
+    { label: "Recommendations drafting process", key: "drafting", type: "textarea", ph: "who drafts, review steps, minority reports, sign-off" },
+
+    // Reporting, transparency, and data
+    { label: "Report format and delivery", key: "reporting", type: "textarea", ph: "plain-language report; evidence cited; dissent notes; delivery date" },
+    { label: "Transparency plan", key: "transparency", type: "textarea", ph: "publish materials, agenda, methods, anonymized data; livestream plenary; protect small-group privacy" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release; who decides and why" },
+
+    // Evaluation and risks
+    { label: "Evaluation criteria and measures", key: "evaluation", type: "textarea", ph: "representativeness; knowledge gain; speaking time parity; reason-giving quality; fairness perceptions" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "capture by elites; bias in materials; accessibility gaps; misinformation; harassment" },
+
+    // Delivery
+    { label: "Workstreams (area - owner - milestones - budget - indicators)", key: "workstreams", type: "textarea", ph: "e.g., Materials - committee - v1 by May 10 - $8k - balance checklist complete" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "e.g., Recruit Apr-May; sessions Jun 10-11; report Jul 1" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "prior efforts, legal constraints, public commitments" }
+  ],
+  template: ({
+    title,
+    sponsor,
+    mandate,
+    authority,
+    budget,
+    population_frame,
+    eligibility,
+    sample_size,
+    sortition,
+    recruitment,
+    compensation,
+    oversight,
+    conduct,
+    materials_committee,
+    briefing_pack,
+    experts,
+    qa_process,
+    facilitation,
+    tables,
+    agenda,
+    questions,
+    instruments,
+    decision_rule,
+    voting,
+    drafting,
+    reporting,
+    transparency,
+    data_governance,
+    evaluation,
+    risks,
+    workstreams,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Recruit a representative sample",
+      "Brief with balanced materials",
+      "Small-group deliberation with neutral facilitation",
+      "Expert and witness Q&A",
+      "Draft recommendations and test options",
+      "Poll post deliberation and document rationales",
+      "Publish report and methods; enact follow-ups"
+    ].join(" -> ");
+
+    return [
+      title && `Deliberative Polling / Citizens' Juries plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      sponsor && `Sponsor / convener: ${sponsor}`,
+      mandate && `Mandate and question(s):\n${mandate}`,
+      authority && `Decision authority: ${authority}`,
+      budget && `Budget and resources:\n${budget}`,
+
+      "SECTION: Population, sortition, recruitment",
+      population_frame && `Population frame:\n${population_frame}`,
+      eligibility && `Eligibility and exclusions:\n${eligibility}`,
+      sample_size && `Sample size and stratification: ${sample_size}`,
+      sortition && `Sortition method:\n${sortition}`,
+      recruitment && `Recruitment and consent:\n${recruitment}`,
+      compensation && `Compensation and supports:\n${compensation}`,
+
+      "SECTION: Governance and neutrality",
+      oversight && `Oversight and independence:\n${oversight}`,
+      conduct && `Code of conduct and ground rules:\n${conduct}`,
+
+      "SECTION: Materials and experts",
+      materials_committee && `Briefing materials committee:\n${materials_committee}`,
+      briefing_pack && `Briefing pack contents:\n${briefing_pack}`,
+      experts && `Experts and witnesses:\n${experts}`,
+      qa_process && `Q&A process:\n${qa_process}`,
+
+      "SECTION: Facilitation and agenda",
+      facilitation && `Facilitation model:\n${facilitation}`,
+      tables && `Small-group tables and hosts:\n${tables}`,
+      agenda && `Agenda and schedule:\n${agenda}`,
+      questions && ["Deliberation questions:", listify(questions)].join("\n"),
+
+      "SECTION: Polling, drafting, and decisions",
+      instruments && `Pre and post instruments:\n${instruments}`,
+      decision_rule && `Decision rule: ${decision_rule}`,
+      voting && `Polling and voting method:\n${voting}`,
+      drafting && `Recommendations drafting process:\n${drafting}`,
+
+      "SECTION: Reporting, transparency, and data",
+      reporting && `Report format and delivery:\n${reporting}`,
+      transparency && `Transparency plan:\n${transparency}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Evaluation and risks",
+      evaluation && `Evaluation criteria and measures:\n${evaluation}`,
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Delivery",
+      workstreams && ["Workstreams (area - owner - milestones - budget - indicators):", listify(workstreams)].join("\n"),
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference - flow",
+      flow,
+
+      "Checklist:",
+      "- [ ] Stratified sortition plan and response rates published",
+      "- [ ] Balanced materials curated by an independent committee",
+      "- [ ] Neutral facilitation with rotation and talk-time tracking",
+      "- [ ] Expert and witness panels include contrasting perspectives",
+      "- [ ] Pre and post instruments fielded and reported",
+      "- [ ] Decision rule and drafting process are clear and fair",
+      "- [ ] Plain-language report delivered with methods and anonymized data",
+      "- [ ] Follow-up actions assigned to owners with dates"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "deliberative polling citizens jury citizens assembly sortition random selection balanced briefing neutral facilitation expert Q&A informed preferences recommendations evaluation template"
+  }
+},
+
+{
+  id: "world_cafe",
+  slug: "world-cafe-rotating-conversations",
+  label: "World Café - Rotating small-group conversations to synthesize collective themes",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "learning",
+    "decision",
+    "planning"
+  ],
+  tags: [
+    "type:method",
+    "use:engagement",
+    "use:facilitation",
+    "use:learning",
+    "use:decision-making",
+    "use:synthesis",
+    "phase:explore",
+    "phase:define",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "host rotating small-group conversations on a focused topic",
+    "surface patterns across perspectives and synthesize themes",
+    "build relationships and shared understanding at scale",
+    "feed recommendations into strategy or policy decisions",
+    "create a public learning brief with commitments",
+    "how to host a world cafe session",
+  "best way to get people talking at events",
+  "run small group conversations that connect",
+  "make big meetings less boring",
+  "how to hear everyone’s voice",
+  "rotate groups for fresh ideas",
+  "share stories in a structured way",
+  "get themes from many perspectives",
+  "how to turn talk into action",
+  "build trust through conversation",
+  "make strategy more inclusive",
+  "use world cafe for policy ideas",
+  "how to design community dialogue",
+  "create a learning circle event",
+  "ways to bring strangers together",
+  "generate ideas for city planning",
+  "school version of world cafe",
+  "fun workshop method",
+  "how to connect different departments",
+  "break silos with conversation",
+  "easy facilitation for big groups",
+  "what is a rotating conversation",
+  "get people engaged without PowerPoint",
+  "how to collect insights from tables",
+  "use cafe style talks for innovation",
+  "when to use world cafe vs focus group",
+  "help people open up",
+  "simple group method to share ideas",
+  "can this work online",
+  "virtual world cafe tips",
+  "how to map conversation themes",
+  "use markers and tablecloths for ideas",
+  "make meetings feel like coffee shop",
+  "ways to host dialogue at a conference",
+  "how to involve shy people",
+  "group brainstorm but calmer",
+  "turn discussions into patterns",
+  "how to make people listen better",
+  "funny idea: world cafe with donuts",
+  "can kids do world cafe at school",
+  "grade 5: rotate tables for story time",
+  "decide pizza toppings with world cafe",
+  "family reunion conversation game",
+  "neighborhood planning conversations",
+  "church group dialogue method",
+  "nonprofit board retreat ideas",
+  "classroom democracy practice",
+  "explain world cafe to a 10 year old",
+  "get consensus without fighting",
+  "how to avoid one person taking over",
+  "best way to mix groups of people",
+  "community healing through conversation",
+  "how to use world cafe for climate ideas",
+  "team building with conversations",
+  "end with one big summary everyone agrees on"
+  ],
+  boosters: [
+    "Frame one clear focus question and two follow-ups that progressively deepen the conversation.",
+    "Select and train table hosts to welcome newcomers and carry key insights forward each round.",
+    "Design short rounds with purposeful rotation so ideas cross-pollinate. Timebox and signal transitions.",
+    "Make thinking visible. Tablecloth notes, sticky clusters, and a live theme wall help everyone see patterns.",
+    "Provide access supports and compensation. Track speaking balance to reduce dominance.",
+    "Close with a strong harvest: plenary themes, priorities, owners, and dates for report-back."
+  ],
+  definition: "A structured conversation format using multiple rounds of small-group dialogue with rotations. Hosts anchor tables while participants move, cross-pollinating ideas and producing shared themes for action.",
+  help: "Complete purpose, participants, access supports, table hosts, rounds and rotation plan, focus questions, materials, harvest method, and follow-ups. Use the agenda to keep energy high and make insights visible.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., World Café on Shared Spaces" },
+    { label: "Horizon and date", key: "horizon", type: "text", ph: "e.g., Spring cycle; event on May 18, 6–8 pm" },
+    { label: "Purpose and focal topic", key: "purpose", type: "textarea", ph: "e.g., Identify 3 priorities to improve belonging across sites" },
+    { label: "Sponsor or owner", key: "owner", type: "text", ph: "e.g., Community Council with Library" },
+
+    // Inclusion
+    {
+      label: "Participants and inclusion",
+      autofill: "persona->inline",
+      itemLabel: "participant group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth leaders; elders; renters; newcomers; disabled residents"
+    },
+    { label: "Recruitment and outreach plan", key: "recruitment", type: "textarea", ph: "e.g., Partner invites; SMS; flyers; door-to-door in focus blocks" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "e.g., Stipends; childcare; interpreters and ASL; transport; food; sensory supports" },
+
+    // Setup
+    { label: "Venue and layout", key: "venue", type: "textarea", ph: "e.g., 8 round tables of 6; quiet space; clear signage; theme wall; projector" },
+    { label: "Materials and tools", key: "materials", type: "textarea", ph: "e.g., Paper tablecloths; markers; sticky notes; dots; timers; talk-time tracker" },
+    { label: "Consent and documentation rules", key: "consent", type: "textarea", ph: "e.g., Plain-language consent; photos only with sticker opt-in; quotes anonymized by default" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release (who decides and why)" },
+
+    // Hosts and rounds
+    { label: "Table hosts (names or roles)", key: "hosts", type: "textarea", ph: "e.g., 8 hosts briefed to welcome, summarize, and capture notes" },
+    { label: "Number of tables and capacity", key: "tables", type: "text", ph: "e.g., 8 tables, 6 seats each" },
+    { label: "Rounds and timing", key: "rounds", type: "text", ph: "e.g., 3 rounds of 18 minutes plus 10 minute harvest" },
+    { label: "Rotation method", key: "rotation", type: "text", ph: "e.g., All rotate clockwise except hosts who stay" },
+
+    // Questions
+    { label: "Round 1 focus question", key: "q1", type: "text", ph: "e.g., What helps you feel welcome here?" },
+    { label: "Round 2 focus question", key: "q2", type: "text", ph: "e.g., What practices or policies make that easier or harder?" },
+    { label: "Round 3 focus question", key: "q3", type: "text", ph: "e.g., What are the next two moves we can commit to?" },
+    { label: "Prompt cards or examples (optional)", key: "prompts", type: "textarea", ph: "e.g., Stories, photos, data points to spark thinking" },
+
+    // Harvest and synthesis
+    { label: "Harvest method", key: "harvest", type: "textarea", ph: "e.g., Gallery walk to cluster notes, dot-vote for energy check, plenary theme report" },
+    { label: "Theme categories or tags", key: "tags", type: "textarea", ph: "e.g., Access; Safety; Belonging; Space design; Partnerships" },
+    { label: "Action capture template", key: "action_template", type: "textarea", ph: "Action — owner — resources — start — check date" },
+    { label: "Report-back plan", key: "report_back", type: "textarea", ph: "e.g., Publish plain-language brief in 14 days with owners and dates" },
+
+    // Measures and risks
+    { label: "Measures and signals", key: "measures", type: "textarea", ph: "e.g., Attendance by subgroup; speaking balance; number of themes; commitments made" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "e.g., Dominance by a few; drift from topic; superficial outputs; fatigue" },
+
+    // Timeline and context
+    { label: "Agenda and schedule", key: "agenda", type: "textarea", ph: "e.g., Welcome; agreements; Round 1; rotate; Round 2; rotate; Round 3; harvest; close" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "e.g., Prep 2 weeks; event; report in 14 days; follow-up circle in 30 days" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "Links, constraints, prior events" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    owner,
+    participants,
+    recruitment,
+    access,
+    venue,
+    materials,
+    consent,
+    data_governance,
+    hosts,
+    tables,
+    rounds,
+    rotation,
+    q1,
+    q2,
+    q3,
+    prompts,
+    harvest,
+    tags,
+    action_template,
+    report_back,
+    measures,
+    risks,
+    agenda,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const flow = [
+      "Welcome and agreements",
+      "Round 1 conversations",
+      "Rotate",
+      "Round 2 conversations",
+      "Rotate",
+      "Round 3 conversations",
+      "Harvest themes and actions",
+      "Close and next steps"
+    ].join(" -> ");
+
+    return [
+      title && `World Café plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon and date: ${horizon}`,
+      purpose && `Purpose and focal topic:\n${purpose}`,
+      owner && `Sponsor or owner: ${owner}`,
+
+      "SECTION: Inclusion",
+      participants && ["Participants and inclusion:", listify(participants)].join("\n"),
+      recruitment && `Recruitment and outreach plan:\n${recruitment}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Setup",
+      venue && `Venue and layout:\n${venue}`,
+      materials && `Materials and tools:\n${materials}`,
+      consent && `Consent and documentation rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Hosts and rounds",
+      hosts && `Table hosts:\n${hosts}`,
+      tables && `Number of tables and capacity: ${tables}`,
+      rounds && `Rounds and timing: ${rounds}`,
+      rotation && `Rotation method: ${rotation}`,
+
+      "SECTION: Questions",
+      q1 && `Round 1 question: ${q1}`,
+      q2 && `Round 2 question: ${q2}`,
+      q3 && `Round 3 question: ${q3}`,
+      prompts && `Prompt cards or examples:\n${prompts}`,
+
+      "SECTION: Harvest and synthesis",
+      harvest && `Harvest method:\n${harvest}`,
+      tags && ["Theme categories or tags:", listify(tags)].join("\n"),
+      action_template && `Action capture template:\n${action_template}`,
+      report_back && `Report-back plan:\n${report_back}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline",
+      agenda && `Agenda and schedule:\n${agenda}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Focus questions are clear and progressively deepen the conversation",
+      "- [ ] Table hosts briefed to welcome, summarize, and carry insights forward",
+      "- [ ] Rotations timed and signaled; talk-time balance observed",
+      "- [ ] Visible capture: tablecloth notes, clusters, and theme wall",
+      "- [ ] Harvest produces themes, priorities, owners, and dates",
+      "- [ ] Consent rules and publication tiers respected",
+      "- [ ] Report-back scheduled with public summary and commitments"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "World Café rotating small groups table hosts rounds rotation harvest themes gallery walk dot vote community facilitation template"
+  }
+},
+
+
+{
+  id: "open_space_technology",
+  slug: "open-space-technology",
+  label: "Open Space Technology - Participant-set agenda for what matters now",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "learning",
+    "decision",
+    "planning"
+  ],
+  tags: [
+    "type:method",
+    "use:engagement",
+    "use:facilitation",
+    "use:decision-making",
+    "use:sensemaking",
+    "use:synthesis",
+    "phase:explore",
+    "phase:define",
+    "phase:decide",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "surface what matters now and let participants set the agenda",
+    "host many parallel sessions with minimal bureaucracy",
+    "harvest insights rapidly and converge on next actions",
+    "build ownership by letting energy and responsibility match",
+    "feed themes and commitments into strategy or policy",
+     "how to run an open space event",
+  "let people choose their own topics",
+  "make an unconference agenda",
+  "how to plan without a plan",
+  "best way to hear what matters now",
+  "set the agenda as we go",
+  "how to avoid boring panels",
+  "get people to self-organize",
+  "run many breakout groups at once",
+  "fast way to gather community input",
+  "easy way to host parallel sessions",
+  "what is open space meeting",
+  "how to keep energy in meetings",
+  "group method with no boss telling",
+  "let participants decide the agenda",
+  "unconference vs conference",
+  "how to summarize open discussions",
+  "ways to harvest ideas quickly",
+  "tools for big group self-organization",
+  "how to make sure no one dominates",
+  "use open space for nonprofits",
+  "can schools use open space meetings",
+  "community meeting with no preset agenda",
+  "how to do self-directed workshops",
+  "is this chaos or organized",
+  "let people leave boring sessions",
+  "law of two feet explained",
+  "open space rules for beginners",
+  "can kids use open space in class",
+  "pizza night open space agenda",
+  "decide summer camp games with open space",
+  "family reunion planning method",
+  "church retreat open agenda",
+  "neighborhood idea gathering",
+  "workshop with zero bureaucracy",
+  "how to get next steps from chaos",
+  "turn random ideas into action",
+  "self-organizing conference tips",
+  "can this work online meetings",
+  "zoom breakout version of open space",
+  "harvest themes without formal notes",
+  "how to build ownership in meetings",
+  "quick way to set meeting topics",
+  "funny idea: open space for pets",
+  "5th grade: decide playground rules together",
+  "kids pick their own class topics",
+  "how to stop boring agendas",
+  "best way to spark creativity fast",
+  "everyone chooses their own group",
+  "explain open space to a 10 year old",
+  "how to make big meetings not suck",
+  "help my team brainstorm without structure",
+  "ways to avoid death by PowerPoint",
+  "turn chaos into community wisdom"
+  ],
+  boosters: [
+    "Name a sharp theme or question. Energy follows clarity.",
+    "Explain the one law (two feet) and four principles up front. Post them big.",
+    "Resource access supports and food so people can stay and contribute.",
+    "Invite butterflies and bumblebees. Serendipity is a feature, not a bug.",
+    "Run a visible newsroom that compiles session notes as they happen.",
+    "Close with a strong harvest and action marketplace with owners and dates."
+  ],
+  definition: "A self-organizing meeting format where participants create the agenda in a marketplace, host the conversations they care about, and move freely according to passion and responsibility. The group harvests themes and actions at the end.",
+  help: "Complete theme and invitation, inclusion and access, space setup, principles and law, marketplace plan, rounds and timing, newsroom and harvest, and action convergence. Use the session report template to capture notes consistently.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Open Space on Belonging Across Neighborhoods" },
+    { label: "Horizon and date", key: "horizon", type: "text", ph: "e.g., Spring cycle; event on May 18, 1–5 pm" },
+    { label: "Theme or focus question", key: "theme", type: "text", ph: "e.g., What will most increase first-time speakers this summer?" },
+    { label: "Sponsor or owner", key: "owner", type: "text", ph: "e.g., Community Council with Library" },
+    { label: "Invitation text", key: "invitation", type: "textarea", ph: "Plain-language invite that names who, why now, and what will be different after" },
+
+    // Inclusion
+    {
+      label: "Participants and inclusion",
+      autofill: "persona->inline",
+      itemLabel: "participant group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents; small biz owners"
+    },
+    { label: "Recruitment and outreach plan", key: "recruitment", type: "textarea", ph: "e.g., Partner invites; SMS; flyers; door-to-door in focus blocks" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "e.g., Stipends; childcare; interpreters and ASL; transport; food; sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and documentation rules", key: "consent", type: "textarea", ph: "Plain-language consent; photos only with sticker opt-in; quotes anonymized by default" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release (who decides and why)" },
+
+    // Space and setup
+    { label: "Venue and layout", key: "venue", type: "textarea", ph: "e.g., Circle of chairs; marketplace wall; breakout spaces; newsroom tables; theme wall" },
+    { label: "Space zones and signage", key: "zones", type: "textarea", ph: "e.g., Quiet room; childcare; prayer space; lactation room; accessibility routes" },
+    { label: "Materials and tools", key: "materials", type: "textarea", ph: "e.g., Sticky notes; markers; flip charts; painter tape; timers; dot stickers; laptop + printer" },
+    { label: "Marketplace board link", key: "marketplace_link", type: "text", ph: "URL to Kumu/Miro/FigJam or photo album" },
+
+    // Principles and law
+    { label: "Four principles (custom wording optional)", key: "principles", type: "textarea", ph: "Whoever comes are the right people; Whenever it starts is the right time; Whatever happens is the only thing that could; When it is over, it is over" },
+    { label: "One law (two feet) wording", key: "law_two_feet", type: "text", ph: "If you are neither learning nor contributing, use your two feet to find a place where you can" },
+
+    // Roles and timing
+    { label: "Roles and staffing", key: "roles", type: "textarea", ph: "e.g., Host; timekeeper; marketplace wrangler; newsroom lead; accessibility lead; stewards" },
+    { label: "Opening circle plan", key: "opening", type: "textarea", ph: "Welcome; agreements; explain principles and law; how to pitch topics" },
+    { label: "Rounds and timing", key: "rounds", type: "text", ph: "e.g., 3 rounds of 40 minutes with 10 minute transitions" },
+    { label: "Breaks and food", key: "breaks", type: "text", ph: "e.g., Snack break 2:30; water and fruit always available" },
+
+    // Marketplace and sessions
+    { label: "Topic pitch instructions", key: "pitch_rules", type: "textarea", ph: "Propose a session you will convene; write a short title and outcome; pick time and space; post it" },
+    { label: "Session capacity and spaces", key: "spaces", type: "textarea", ph: "e.g., Rooms A–H, 6–12 seats; outdoor corner; hybrid table" },
+    { label: "Marketplace schedule snapshot", key: "marketplace", type: "textarea", ph: "e.g., Round 1: A1, B1, C1; Round 2: A2, B2, C2; Round 3: A3, B3, C3" },
+
+    // Newsroom and harvest
+    { label: "Newsroom and synthesis plan", key: "newsroom", type: "textarea", ph: "Collect session notes; live typing station; photo capture; theme wall clustering; printer for gallery" },
+    { label: "Session report template", key: "report_template", type: "textarea", ph: "Title — convenor — participants — key points — decisions — actions (owner, start, check date) — links/tags" },
+    { label: "Session reports log (one per line using the template)", key: "reports", type: "textarea", ph: "e.g., Interpreters pool — J. Rivera — 7 — what worked, gaps — 2 actions — link" },
+    { label: "Convergence method", key: "convergence", type: "textarea", ph: "e.g., Action marketplace; dot energy check; consent-based merge of overlaps" },
+    { label: "Decisions and action list (one per line: action - owner - resources - start - check date)", key: "actions", type: "textarea", ph: "e.g., Expand interpreter pool - Maria - $6k - Jul - Sep review" },
+    { label: "Report-back plan", key: "report_back", type: "textarea", ph: "Community-first brief in 14 days; bilingual summary; publish all session notes" },
+
+    // Measures, risks, timeline
+    { label: "Measures and signals", key: "measures", type: "textarea", ph: "Attendance by subgroup; # sessions; speaking balance; % sessions convened by residents; commitments made" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Dominance by a few; inaccessible rooms; note loss; drift from theme; safety incidents" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Prep 2 weeks; event; harvest 3 days; report in 14 days; follow-up circle in 30 days" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "Links, constraints, prior events" }
+  ],
+  template: ({
+    title,
+    horizon,
+    theme,
+    owner,
+    invitation,
+    participants,
+    recruitment,
+    access,
+    consent,
+    data_governance,
+    venue,
+    zones,
+    materials,
+    marketplace_link,
+    principles,
+    law_two_feet,
+    roles,
+    opening,
+    rounds,
+    breaks,
+    pitch_rules,
+    spaces,
+    marketplace,
+    newsroom,
+    report_template,
+    reports,
+    convergence,
+    actions,
+    report_back,
+    measures,
+    risks,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const principlesCheat = [
+      "Whoever comes are the right people",
+      "Whenever it starts is the right time",
+      "Whatever happens is the only thing that could",
+      "When it is over, it is over"
+    ].join("\n");
+
+    const lawCheat = "Law of two feet: if you are neither learning nor contributing, move to a place where you can.";
+
+    const flow = [
+      "Opening circle and invitation",
+      "Marketplace of topics and scheduling",
+      "Parallel sessions with free movement",
+      "Newsroom compiles reports live",
+      "Theme clustering and action marketplace",
+      "Closing circle and commitments",
+      "Publish report-back and owners"
+    ].join(" -> ");
+
+    return [
+      title && `Open Space Technology plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon and date: ${horizon}`,
+      theme && `Theme or focus question: ${theme}`,
+      owner && `Sponsor or owner: ${owner}`,
+      invitation && `Invitation:\n${invitation}`,
+
+      "SECTION: Inclusion",
+      participants && ["Participants and inclusion:", listify(participants)].join("\n"),
+      recruitment && `Recruitment and outreach plan:\n${recruitment}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and documentation rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Space and setup",
+      venue && `Venue and layout:\n${venue}`,
+      zones && `Space zones and signage:\n${zones}`,
+      materials && `Materials and tools:\n${materials}`,
+      marketplace_link && `Marketplace board link: ${marketplace_link}`,
+
+      "SECTION: Principles and law",
+      principles ? `Four principles:\n${principles}` : `Four principles:\n${principlesCheat}`,
+      law_two_feet ? `One law:\n${law_two_feet}` : `One law:\n${lawCheat}`,
+
+      "SECTION: Roles and timing",
+      roles && `Roles and staffing:\n${roles}`,
+      opening && `Opening circle plan:\n${opening}`,
+      rounds && `Rounds and timing: ${rounds}`,
+      breaks && `Breaks and food: ${breaks}`,
+
+      "SECTION: Marketplace and sessions",
+      pitch_rules && `Topic pitch instructions:\n${pitch_rules}`,
+      spaces && `Session capacity and spaces:\n${spaces}`,
+      marketplace && `Marketplace schedule snapshot:\n${marketplace}`,
+
+      "SECTION: Newsroom and harvest",
+      newsroom && `Newsroom and synthesis plan:\n${newsroom}`,
+      report_template && `Session report template:\n${report_template}`,
+      reports && ["Session reports log:", listify(reports)].join("\n"),
+      convergence && `Convergence method:\n${convergence}`,
+      actions && ["Decisions and action list:", listify(actions)].join("\n"),
+      report_back && `Report-back plan:\n${report_back}`,
+
+      "SECTION: Measures, risks, timeline",
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Theme is sharp and visible; invite is clear about why now",
+      "- [ ] Principles and the law are posted and explained",
+      "- [ ] Marketplace wall and breakout spaces are ready with signage",
+      "- [ ] Access supports, childcare, food, and stipends funded and available",
+      "- [ ] Newsroom live-captures session notes using a standard template",
+      "- [ ] Action marketplace yields owners, resources, and check dates",
+      "- [ ] Publish community-first summary and all session notes within 14 days",
+      "- [ ] Follow-up circle scheduled to review delivery on actions"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Open Space Technology participant led agenda marketplace two feet four principles butterflies bumblebees newsroom harvest action marketplace template"
+  }
+},
+
+
+{
+  id: "future_search",
+  slug: "future-search-whole-system-planning",
+  label: "Future Search — Whole-system, future-focused planning (2–3 days)",
+  kind: "strategy",
+  categories: [
+    "planning",
+    "facilitation",
+    "community",
+    "governance",
+    "systems"
+  ],
+  tags: [
+    "type:framework",
+    "use:strategy",
+    "use:alignment",
+    "use:decision-making",
+    "use:sensemaking",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "bring a ‘whole system in the room’ to build shared understanding",
+    "surface common ground and create near-term action commitments",
+    "shift from problem talk to future-focused scenarios",
+    "align multiple organizations, communities, and agencies on priorities",
+    "launch cross-sector action teams with clear charters",
+     "how to plan the future together",
+  "big workshop to set goals",
+  "get everyone in one room to agree",
+  "how to align many groups fast",
+  "best way to find common ground",
+  "plan with community and government",
+  "make a shared vision of the future",
+  "how to stop fighting and plan",
+  "ways to create near-term action steps",
+  "future search meeting explained",
+  "whole system planning method",
+  "run a 3 day planning workshop",
+  "how to focus on the future not the past",
+  "shift people from problems to solutions",
+  "align partners across sectors",
+  "multi-organization planning tool",
+  "bring business and community together",
+  "how to do long term planning fairly",
+  "future search vs strategic planning",
+  "ways to map scenarios",
+  "launch cross sector action teams",
+  "fast way to align priorities",
+  "how to get everyone’s voice in planning",
+  "whole community planning sessions",
+  "align around shared purpose",
+  "develop shared action plans",
+  "how to find what we all agree on",
+  "school version of future search",
+  "city planning future search",
+  "how to plan a community visioning event",
+  "best method for strategic workshops",
+  "use future search for nonprofits",
+  "government and citizens planning together",
+  "plan for climate change together",
+  "business future planning method",
+  "how to make a long term roadmap",
+  "what is future search workshop",
+  "funny idea: future search for pizza night",
+  "decide family vacation with future search",
+  "can kids use future search in class",
+  "5th grade: plan our playground future",
+  "decide next school year projects",
+  "neighborhood future planning",
+  "church future planning retreat",
+  "sports club long term planning",
+  "decide what to do in next 10 years",
+  "make a shared plan without arguing",
+  "big team offsite ideas",
+  "turn chaos into action steps",
+  "how to get consensus on priorities",
+  "community vision workshop ideas",
+  "align around 5 year goals",
+  "explain future search to a 10 year old",
+  "how to agree on the next steps",
+  "find common ground fast",
+  "future focused group planning",
+  "large scale collaboration workshop"
+  ],
+  boosters: [
+    "Invite the whole system: people with authority, resources, expertise, need, and diversity of lived experience.",
+    "Follow the core principles: whole system, future focus, common ground, self-managed small groups, and public data.",
+    "Keep time-boxed plenaries short and put most work in small, mixed groups.",
+    "Make the ‘history wall’ and ‘trends’ visual and public; let evidence travel between groups.",
+    "Write common-ground statements in participants’ words; avoid weasel words and vague verbs.",
+    "End with action teams that own ‘who does what by when,’ plus immediate next steps."
+  ],
+  definition: "A large-group planning method (typically 2–3 days) where a cross-section of the whole system explores the past and present, imagines preferred futures, agrees on common ground, and forms action teams.",
+  help: "Complete purpose, participants, access, agenda blocks (history → trends → present → future scenarios → common ground → action planning), facilitation roles, materials, documentation rules, and follow-ups.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Future Search: Belonging Across Neighborhoods" },
+    { label: "Horizon & dates", key: "horizon", type: "text", ph: "e.g., 2.5 days — Jun 12–14" },
+    { label: "Purpose & focus question", key: "purpose", type: "textarea", ph: "e.g., What future do we want for shared spaces in the next 3 years, and what will we do now?" },
+    { label: "Sponsor / convener", key: "sponsor", type: "text", ph: "e.g., City + Community Council + Library" },
+    { label: "Decision authority / mandate", key: "authority", type: "text", ph: "advisory | recommendation | binding within scope" },
+
+    // Inclusion & logistics
+    {
+      label: "Participants (whole system categories)",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 40,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; small biz; disability advocates; city; CBOs; funders; police; librarians"
+    },
+    { label: "Recruitment, quotas & sortition (if used)", key: "recruitment", type: "textarea", ph: "invite list, quotas by subgroup, outreach plan, response rate target" },
+    { label: "Access supports & compensation", key: "access", type: "textarea", ph: "stipends; childcare; interpreters/ASL; transport; food; sensory supports; remote option" },
+    { label: "Venue & layout (and virtual links)", key: "venue", type: "textarea", ph: "plenary room; 8–12 mixed tables; wall space for history/trends; quiet room; hybrid tech" },
+    { label: "Materials & tools", key: "materials", type: "textarea", ph: "history wall paper; markers; sticky notes; dots; timers; projectors; talk-time tracker" },
+
+    // Ethics & governance
+    { label: "Consent & documentation rules", key: "consent", type: "textarea", ph: "plain-language consent; photo rules; quotes anonymized by default" },
+    { label: "Data governance & publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release — who decides, criteria" },
+
+    // Principles & roles
+    { label: "Principles (confirm/wording)", key: "principles", type: "textarea", ph: "whole system; future focus; common ground; self-managed groups; public data" },
+    { label: "Facilitation team & roles", key: "roles", type: "textarea", ph: "lead facilitator; co-facilitators; harvest lead; accessibility lead; logistics; comms" },
+
+    // Agenda blocks (edit timings as needed)
+    { label: "Block 1: Welcome, purpose, and agreements", key: "block1", type: "textarea", ph: "check-in; goals; ground rules; access supports; overview of process" },
+    { label: "Block 2: History Wall (Past)", key: "block2", type: "textarea", ph: "decades/years; personal, local, national/global events; gallery walk" },
+    { label: "Block 3: External Trends (Present/Future forces)", key: "block3", type: "textarea", ph: "social, tech, economic, environmental, political; evidence snippets; implications" },
+    { label: "Block 4: Present State (Proud/Sad/Worried)", key: "block4", type: "textarea", ph: "mixed tables; what we’re proud of, what concerns us; data and stories" },
+    { label: "Block 5: Ideal Future Scenarios (Preferred futures)", key: "block5", type: "textarea", ph: "create vivid 3–5 year scenarios; headlines; storyboards; measures" },
+    { label: "Block 6: Common Ground Statements", key: "block6", type: "textarea", ph: "draft in mixed groups; test for shared support; edit to plain language" },
+    { label: "Block 7: Action Planning & Teams", key: "block7", type: "textarea", ph: "form teams; charters; 90-day moves; owners, resources, check dates" },
+    { label: "Block 8: Commitments & Close", key: "block8", type: "textarea", ph: "public commitments; sign the statements; next meetings; report-back plan" },
+
+    // Artifacts & action
+    { label: "Common ground drafting rules", key: "cg_rules", type: "textarea", ph: "present tense; plain verbs; no blame; test for consent; publish changes log" },
+    { label: "Action team charter template", key: "charter_tpl", type: "textarea", ph: "Goal — owner — members — first moves — resources — risks — measures — 30/60/90 dates" },
+    { label: "Harvest & reporting plan", key: "reporting", type: "textarea", ph: "daily newsletter wall; live doc; public brief in 14 days; multilingual summary" },
+
+    // Measures, risks, timeline
+    { label: "Measures & evaluation", key: "measures", type: "textarea", ph: "participation by subgroup; talk-time parity; quality of common ground; action delivery rate" },
+    { label: "Risks & mitigations", key: "risks", type: "textarea", ph: "dominance by a few; tokenism; fatigue; conflict; inaccessible venue — safeguards" },
+    { label: "Follow-ups & cadence", key: "followups", type: "textarea", ph: "monthly action team check-ins; quarterly public updates; annual mini-review" },
+    { label: "Context & links", key: "ctx", type: "textarea", ph: "prior plans; constraints; reference docs; commitments" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    sponsor,
+    authority,
+    participants,
+    recruitment,
+    access,
+    venue,
+    materials,
+    consent,
+    data_governance,
+    principles,
+    roles,
+    block1,
+    block2,
+    block3,
+    block4,
+    block5,
+    block6,
+    block7,
+    block8,
+    cg_rules,
+    charter_tpl,
+    reporting,
+    measures,
+    risks,
+    followups,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const flow = [
+      "Welcome & agreements",
+      "History Wall (past)",
+      "External Trends (forces shaping us)",
+      "Present state (proud/sad/worried)",
+      "Preferred future scenarios",
+      "Common ground statements",
+      "Action teams & near-term moves",
+      "Commitments, owners, and dates"
+    ].join(" -> ");
+
+    return [
+      title && `Future Search plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context & links:\n${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon & dates: ${horizon}`,
+      purpose && `Purpose & focus question:\n${purpose}`,
+      sponsor && `Sponsor / convener: ${sponsor}`,
+      authority && `Decision authority / mandate: ${authority}`,
+
+      "SECTION: Inclusion & logistics",
+      participants && ["Participants (whole system categories):", listify(participants)].join("\n"),
+      recruitment && `Recruitment, quotas & sortition:\n${recruitment}`,
+      access && `Access supports & compensation:\n${access}`,
+      venue && `Venue & layout:\n${venue}`,
+      materials && `Materials & tools:\n${materials}`,
+
+      "SECTION: Ethics & governance",
+      consent && `Consent & documentation rules:\n${consent}`,
+      data_governance && `Data governance & publication tiers:\n${data_governance}`,
+
+      "SECTION: Principles & roles",
+      principles && `Principles:\n${principles}`,
+      roles && `Facilitation team & roles:\n${roles}`,
+
+      "SECTION: Agenda blocks",
+      block1 && `Block 1 — Welcome & agreements:\n${block1}`,
+      block2 && `Block 2 — History Wall (Past):\n${block2}`,
+      block3 && `Block 3 — External Trends (Forces):\n${block3}`,
+      block4 && `Block 4 — Present state (Proud/Sad/Worried):\n${block4}`,
+      block5 && `Block 5 — Ideal Future Scenarios:\n${block5}`,
+      block6 && `Block 6 — Common Ground Statements:\n${block6}`,
+      block7 && `Block 7 — Action Planning & Teams:\n${block7}`,
+      block8 && `Block 8 — Commitments & Close:\n${block8}`,
+
+      "SECTION: Artifacts & action",
+      cg_rules && `Common ground drafting rules:\n${cg_rules}`,
+      charter_tpl && `Action team charter template:\n${charter_tpl}`,
+      reporting && `Harvest & reporting plan:\n${reporting}`,
+
+      "SECTION: Measures, risks, timeline",
+      measures && `Measures & evaluation:\n${measures}`,
+      risks && `Risks & mitigations:\n${risks}`,
+      followups && `Follow-ups & cadence:\n${followups}`,
+
+      "Quick reference — flow",
+      flow,
+
+      "Checklist:",
+      "- [ ] Whole system represented with access supports funded",
+      "- [ ] History wall and trends are visible, public, and evidence-linked",
+      "- [ ] Present state includes both pride and concerns without blame",
+      "- [ ] Future scenarios are vivid, time-bound, and measurable",
+      "- [ ] Common-ground statements in plain language with real consent",
+      "- [ ] Action teams own who/what/when with first 90-day moves",
+      "- [ ] Public brief within 14 days; multilingual where relevant",
+      "- [ ] Monthly check-ins and quarterly public updates scheduled"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Future Search whole system planning history wall trends proud sad worried preferred futures common ground action teams large group method template"
+  }
+},
+
+{
+  id: "liberating_structures_bundle",
+  slug: "liberating-structures-124all-9whys-triz-conversation-cafe-wsnw",
+  label: "Liberating Structures - Light-weight ways to get everyone's voice in (1-2-4-All, 9 Whys, TRIZ, Conversation Café, What So What Now What)",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "learning",
+    "decision",
+    "planning"
+  ],
+  tags: [
+    "type:method",
+    "use:engagement",
+    "use:facilitation",
+    "use:sensemaking",
+    "use:synthesis",
+    "use:decision-making",
+    "phase:explore",
+    "phase:define",
+    "phase:decide",
+    "phase:reflect",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "include many voices quickly without heavy process",
+    "clarify purpose and assumptions before deciding",
+    "surface patterns and options from lived experience",
+    "defuse dominance and share airtime fairly",
+    "turn insights into near-term actions with owners",
+      "how to make meetings less boring",
+  "get everyone to share ideas fast",
+  "easy way to hear all voices",
+  "how to stop one person from talking too much",
+  "simple group activities for decisions",
+  "make brainstorming more structured",
+  "what are liberating structures",
+  "how to use 1-2-4-all in class",
+  "ways to ask why multiple times",
+  "simple icebreakers with purpose",
+  "how to turn talk into action",
+  "get team ideas without PowerPoint",
+  "stop bosses from dominating meetings",
+  "fun group workshop methods",
+  "use TRIZ to flip problems",
+  "how to do conversation café",
+  "group activity to find common ground",
+  "ways to reflect after a project",
+  "simple tools for facilitators",
+  "best way to close a workshop",
+  "team building without cringe games",
+  "how to structure hard conversations",
+  "make learning sessions interactive",
+  "methods for inclusive engagement",
+  "quick decision making in groups",
+  "ways to surface hidden assumptions",
+  "simple structure for online workshops",
+  "funny idea: liberating structures for pizza night",
+  "5th grade: group game to pick playground rules",
+  "how to do a school project brainstorm",
+  "let shy people contribute safely",
+  "how to ask better questions in groups",
+  "ways to build trust in 30 minutes",
+  "simple activity to define purpose",
+  "how to find the root cause of a problem",
+  "group exercise to spot patterns",
+  "turn insights into action steps",
+  "quick way to get feedback from everyone",
+  "easy participatory workshop methods",
+  "nonprofit meeting facilitation tools",
+  "church group small group activities",
+  "corporate offsite energizer ideas",
+  "how to close with what so what now what",
+  "reflecting on what we learned today",
+  "decision making without endless debate",
+  "make classroom discussions fair",
+  "get people to think outside the box",
+  "lightweight ways to run strategy sessions",
+  "easy method for cross team alignment",
+  "neighborhood idea sharing games",
+  "help my family decide on vacation",
+  "group method to solve climate ideas",
+  "how to let everyone own next steps",
+  "ways to plan together without big planning"
+  ],
+  boosters: [
+    "Post a crisp focus question that invites stories and choices.",
+    "Timebox rounds and display a visual timer. Energy lives in short cycles.",
+    "Use visible capture: table sheets, sticky clusters, live scribe, or a canvas link.",
+    "Track speaking balance. Invite passes. Rotate roles.",
+    "Provide access supports and compensation so participation is real.",
+    "End every block with a micro decision or next step, not just discussion."
+  ],
+  definition: "A set of simple micro-structures that distribute participation and make it easy for groups to generate insights and decisions fast. This bundle includes 1-2-4-All, 9 Whys, TRIZ, Conversation Café, and What So What Now What.",
+  help: "Pick one or chain several structures. Complete focus, inclusion, access, consent, setup, and the fields for the structures you will run. Keep rules visible and finish with a harvest and action list.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Liberating Structures to Shape Summer Programming" },
+    { label: "Horizon and date", key: "horizon", type: "text", ph: "e.g., Cycle Q2; event on May 18, 6-8 pm" },
+    { label: "Focus question", key: "focus", type: "text", ph: "e.g., What would most increase first-time speakers by September?" },
+    { label: "Sponsor or owner", key: "owner", type: "text", ph: "e.g., Community Council with Library" },
+
+    // Inclusion and ethics
+    {
+      label: "Participants and inclusion",
+      autofill: "persona->inline",
+      itemLabel: "participant group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents"
+    },
+    { label: "Recruitment and outreach plan", key: "recruitment", type: "textarea", ph: "Partners, SMS, flyers, outreach in focus blocks" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends; childcare; interpreters and ASL; transport; food; sensory supports" },
+    { label: "Consent and documentation rules", key: "consent", type: "textarea", ph: "Plain-language consent; photos by sticker opt-in; quotes anonymized by default" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release (who decides and why)" },
+
+    // Setup
+    { label: "Venue and layout", key: "venue", type: "textarea", ph: "Round tables or pods; clear signage; theme wall; projector; quiet room" },
+    { label: "Materials and tools", key: "materials", type: "textarea", ph: "Paper tablecloths; markers; sticky notes; dots; timers; talk-time tracker" },
+    { label: "Facilitation roles and staffing", key: "roles", type: "textarea", ph: "Lead facilitator; table hosts; timekeeper; harvest lead; accessibility lead" },
+    { label: "Canvas or board link", key: "canvas_link", type: "text", ph: "Kumu/Miro/FigJam URL for live capture" },
+
+    // Chain plan
+    { label: "Run order of structures", key: "run_order", type: "text", ph: "e.g., 1-2-4-All -> 9 Whys -> TRIZ -> What So What Now What" },
+    { label: "Agenda and timing", key: "agenda", type: "textarea", ph: "Welcome; agreements; LS blocks; harvest; close" },
+
+    // 1-2-4-All
+    { label: "1-2-4-All - prompt", key: "ls_124all_prompt", type: "text", ph: "e.g., What small move would help newcomers speak up?" },
+    { label: "1-2-4-All - timing", key: "ls_124all_timing", type: "text", ph: "1 min solo, 2 min pairs, 4 min fours, 5-10 min plenary" },
+    { label: "1-2-4-All - reporting method", key: "ls_124all_report", type: "textarea", ph: "Dot shortlist on theme wall; each four shares 1 idea; scribe captures to canvas" },
+
+    // 9 Whys
+    { label: "9 Whys - starting statement", key: "ls_9whys_start", type: "text", ph: "e.g., Increase first-time speakers" },
+    { label: "9 Whys - pair rounds and notes", key: "ls_9whys_chains", type: "textarea", ph: "Pairs ask Why is that important? up to 9 times. Capture chain." },
+    { label: "9 Whys - synthesis method", key: "ls_9whys_synthesis", type: "textarea", ph: "Cluster deeper purposes. Draft 1 line purpose in participants' words." },
+
+    // TRIZ
+    { label: "TRIZ - invert the goal", key: "ls_triz_invert", type: "text", ph: "e.g., How could we ensure newcomers never speak?" },
+    { label: "TRIZ - list destructive behaviors", key: "ls_triz_list", type: "textarea", ph: "List everything that would guarantee failure." },
+    { label: "TRIZ - stop and start list", key: "ls_triz_stop_start", type: "textarea", ph: "What are we doing that resembles those items? What will we stop or start now?" },
+
+    // Conversation Café
+    { label: "Conversation Café - agreements", key: "ls_cc_agreements", type: "textarea", ph: "Listen to understand; speak with intention; right to pass; confidentiality" },
+    { label: "Conversation Café - rounds and timing", key: "ls_cc_rounds", type: "text", ph: "Round 1 2 min each; Round 2 1 min each; Open dialogue; Close 1 min each" },
+    { label: "Conversation Café - prompts", key: "ls_cc_prompts", type: "textarea", ph: "Add 1-2 prompts that deepen the focus question" },
+
+    // What So What Now What
+    { label: "WSW - event or data", key: "ls_wsnw_event", type: "text", ph: "Name the event, story set, or data slice" },
+    { label: "WSW - What notes", key: "ls_wsnw_notes", type: "textarea", ph: "Observations without judgment" },
+    { label: "WSW - So What themes", key: "ls_wsnw_themes", type: "textarea", ph: "Implications, patterns, surprises" },
+    { label: "WSW - Now What actions", key: "ls_wsnw_actions", type: "textarea", ph: "Action - owner - resources - start - check date" },
+
+    // Harvest and follow-through
+    { label: "Harvest method", key: "harvest", type: "textarea", ph: "Gallery walk; dot energy check; theme merge; action owners and dates" },
+    { label: "Report-back plan", key: "report_back", type: "textarea", ph: "Plain-language brief in 14 days; publish capture; bilingual where relevant" },
+
+    // Measures, risks, timeline
+    { label: "Measures and signals", key: "measures", type: "textarea", ph: "Attendance by subgroup; speaking balance; number of ideas; decisions made; action delivery rate" },
+    { label: "Risks and safeguards", key: "risks", type: "textarea", ph: "Dominance by a few; drift from question; superficial outputs; confidentiality breaches" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Prep 2 weeks; event; report in 14 days; follow-up circle in 30 days" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "Links, constraints, prior events" }
+  ],
+  template: ({
+    title,
+    horizon,
+    focus,
+    owner,
+    participants,
+    recruitment,
+    access,
+    consent,
+    data_governance,
+    venue,
+    materials,
+    roles,
+    canvas_link,
+    run_order,
+    agenda,
+
+    ls_124all_prompt,
+    ls_124all_timing,
+    ls_124all_report,
+
+    ls_9whys_start,
+    ls_9whys_chains,
+    ls_9whys_synthesis,
+
+    ls_triz_invert,
+    ls_triz_list,
+    ls_triz_stop_start,
+
+    ls_cc_agreements,
+    ls_cc_rounds,
+    ls_cc_prompts,
+
+    ls_wsnw_event,
+    ls_wsnw_notes,
+    ls_wsnw_themes,
+    ls_wsnw_actions,
+
+    harvest,
+    report_back,
+    measures,
+    risks,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const flow = [
+      "Welcome and agreements",
+      "Liberating Structures blocks per run order",
+      "Harvest and decisions",
+      "Close and next steps"
+    ].join(" -> ");
+
+    return [
+      title && `Liberating Structures plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes: ${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon and date: ${horizon}`,
+      focus && `Focus question: ${focus}`,
+      owner && `Sponsor or owner: ${owner}`,
+      canvas_link && `Canvas or board: ${canvas_link}`,
+      run_order && `Run order of structures: ${run_order}`,
+      agenda && `Agenda and timing:\n${agenda}`,
+
+      "SECTION: Inclusion and ethics",
+      participants && ["Participants and inclusion:", listify(participants)].join("\n"),
+      recruitment && `Recruitment and outreach plan:\n${recruitment}`,
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and documentation rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Setup",
+      venue && `Venue and layout:\n${venue}`,
+      materials && `Materials and tools:\n${materials}`,
+      roles && `Facilitation roles and staffing:\n${roles}`,
+
+      // LS blocks
+      (ls_124all_prompt || ls_124all_timing || ls_124all_report) && "SECTION: 1-2-4-All",
+      ls_124all_prompt && `Prompt: ${ls_124all_prompt}`,
+      ls_124all_timing && `Timing: ${ls_124all_timing}`,
+      ls_124all_report && `Reporting: ${ls_124all_report}`,
+
+      (ls_9whys_start || ls_9whys_chains || ls_9whys_synthesis) && "SECTION: 9 Whys",
+      ls_9whys_start && `Starting statement: ${ls_9whys_start}`,
+      ls_9whys_chains && `Pair rounds and notes:\n${ls_9whys_chains}`,
+      ls_9whys_synthesis && `Synthesis method:\n${ls_9whys_synthesis}`,
+
+      (ls_triz_invert || ls_triz_list || ls_triz_stop_start) && "SECTION: TRIZ",
+      ls_triz_invert && `Invert the goal: ${ls_triz_invert}`,
+      ls_triz_list && `Destructive behaviors list:\n${ls_triz_list}`,
+      ls_triz_stop_start && `Stop and start list:\n${ls_triz_stop_start}`,
+
+      (ls_cc_agreements || ls_cc_rounds || ls_cc_prompts) && "SECTION: Conversation Café",
+      ls_cc_agreements && `Agreements:\n${ls_cc_agreements}`,
+      ls_cc_rounds && `Rounds and timing: ${ls_cc_rounds}`,
+      ls_cc_prompts && `Prompts:\n${ls_cc_prompts}`,
+
+      (ls_wsnw_event || ls_wsnw_notes || ls_wsnw_themes || ls_wsnw_actions) && "SECTION: What - So What - Now What",
+      ls_wsnw_event && `Event or data: ${ls_wsnw_event}`,
+      ls_wsnw_notes && `What - observations:\n${ls_wsnw_notes}`,
+      ls_wsnw_themes && `So What - themes:\n${ls_wsnw_themes}`,
+      ls_wsnw_actions && ["Now What - actions:", listify(ls_wsnw_actions)].join("\n"),
+
+      "SECTION: Harvest and follow-through",
+      harvest && `Harvest method:\n${harvest}`,
+      report_back && `Report-back plan:\n${report_back}`,
+
+      "SECTION: Measures, risks, timeline",
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      risks && `Risks and safeguards:\n${risks}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Focus question is crisp and visible",
+      "- [ ] Timeboxes posted and timer running",
+      "- [ ] Rules and agreements visible at every table",
+      "- [ ] Speaking balance tracked and supported",
+      "- [ ] Visible capture feeds a shared canvas or wall",
+      "- [ ] Each block ends with a micro decision or next step",
+      "- [ ] Harvest yields themes, owners, and dates",
+      "- [ ] Community-first report-out scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Liberating Structures 1-2-4-All 9 Whys TRIZ Conversation Cafe What So What Now What inclusive engagement sensemaking decisions template"
+  }
+},
+
+{
+  id: "restorative_circles_deep_democracy",
+  slug: "restorative-circles-deep-democracy",
+  label: "Restorative Circles / Deep Democracy - Surface minority voices and work with conflict productively",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "ethics",
+    "governance",
+    "learning"
+  ],
+  tags: [
+    "type:method",
+    "use:conflict-transformation",
+    "use:healing",
+    "use:decision-making",
+    "use:engagement",
+    "phase:define",
+    "phase:decide",
+    "phase:repair",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "address harm and misunderstanding with those affected present",
+    "elevate minority and edge perspectives before decisions are made",
+    "co-create clear agreements, restitution, and follow-through",
+    "build group capacity to notice and work with tension early",
+    "document fair process and publish a community-first summary where appropriate",
+      "how to deal with conflict in groups",
+  "ways to hear every voice fairly",
+  "help people talk after a fight",
+  "what is a restorative circle",
+  "how to bring minority views forward",
+  "make peace meetings more effective",
+  "how to heal after harm in community",
+  "simple method for conflict resolution",
+  "group process to repair relationships",
+  "how to stop ignoring quiet voices",
+  "restorative justice in schools",
+  "ways to mediate disagreements",
+  "how to co-create agreements",
+  "give people a safe space to share",
+  "make sure decisions include all voices",
+  "how to elevate minority perspectives",
+  "circle method for healing after conflict",
+  "deep democracy explained simply",
+  "group repair method with fairness",
+  "how to notice tension early",
+  "prevent fights before they blow up",
+  "tools for community healing",
+  "how to create restitution agreements",
+  "group listening exercises",
+  "facilitation for tough conversations",
+  "how to stop meetings from breaking down",
+  "ways to resolve family conflicts",
+  "neighborhood dispute resolution",
+  "school circle talks for fairness",
+  "church conflict healing circles",
+  "how to mediate workplace tension",
+  "how to involve everyone in decisions",
+  "stop majority from drowning out voices",
+  "fair process for group agreements",
+  "examples of restorative practices",
+  "how to publish fair conflict summaries",
+  "methods to repair trust",
+  "simple steps for group healing",
+  "how to balance power in groups",
+  "ways to include edge voices",
+  "funny idea: circle to pick movie night",
+  "grade 5: circle to stop playground fights",
+  "how to let kids say sorry safely",
+  "pizza night: everyone gets a turn to speak",
+  "resolve sibling fights with circle rules",
+  "family version of deep democracy",
+  "how to hear from shy people",
+  "ways to surface hidden conflict",
+  "how to make sure no one feels left out",
+  "team circle after mistakes at work",
+  "community repair after hard events",
+  "how to explain restorative circles to kids",
+  "help group decide without bullying",
+  "simple fairness method for decision making",
+  "how to talk after trust is broken"
+  ],
+  boosters: [
+    "Voluntariness and consent are non-negotiable. Offer alternatives for those who cannot attend.",
+    "State confidentiality rules and limits in plain language. Duty-to-report boundaries must be clear.",
+    "Track speaking balance. Use a talking piece or strict round structure when power is uneven.",
+    "Name supporters for each party. Do not let parties arrive alone if the other has advocates.",
+    "Separate fact finding from sensemaking from agreement making. Do not blend them.",
+    "Close with named owners, resources, dates, and a safety check plan."
+  ],
+  definition: "A combined scaffold. Restorative Circles repair harm through dialogue among those affected and responsible, producing needs-based agreements. Deep Democracy adds structured steps to surface minority voices, role-switch, integrate dissent, and reach durable outcomes.",
+  help: "Fill purpose and mandate, parties, roles, consent and safety plan, process blocks for a Restorative Circle (pre-circle, circle, post-circle), plus a Deep Democracy track (issue, positions map, minority voice, role switch, test and integrate dissent). Capture agreements, owners, and follow-ups.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Restorative Circle on Shared Spaces" },
+    { label: "Mandate and authority", key: "mandate", type: "text", ph: "e.g., Advisory to Council; binding within program scope" },
+    { label: "Purpose and desired outcomes", key: "purpose", type: "textarea", ph: "e.g., Repair harm, restore safety, agree on restitution and safeguards" },
+    { label: "Sponsor or convener", key: "owner", type: "text", ph: "e.g., Community Council with Library" },
+
+    // Parties and roles
+    {
+      label: "Parties to the conflict",
+      autofill: "persona->inline",
+      itemLabel: "party",
+      itemType: "typeahead",
+      key: "parties",
+      max: 12,
+      type: "repeater",
+      ph: "e.g., Affected person, Responsible person, Witness group"
+    },
+    {
+      label: "Supporters and observers",
+      autofill: "persona->inline",
+      itemLabel: "supporter",
+      itemType: "typeahead",
+      key: "supporters",
+      max: 20,
+      type: "repeater",
+      ph: "e.g., Elder, advocate, translator, legal advisor"
+    },
+    { label: "Facilitator and circle keeper roles", key: "roles", type: "textarea", ph: "Lead keeper, co-keeper, timekeeper, scribe, safety lead, access lead" },
+
+    // Ethics, consent, safety
+    { label: "Consent model", key: "consent", type: "textarea", ph: "Voluntary, ongoing, revocable; options for anonymous written input" },
+    { label: "Confidentiality rules and limits", key: "confidentiality", type: "textarea", ph: "What is private, who sees notes, duty-to-report boundaries" },
+    { label: "Safety and harm plan", key: "safety", type: "textarea", ph: "Triggers, step-out options, de-escalation, shuttle diplomacy, security if needed" },
+    { label: "Trauma-informed practices", key: "trauma", type: "textarea", ph: "Grounding, pacing, breaks, separate prep calls, seating choices" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters and ASL, transport, childcare, sensory supports" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release with who decides and why" },
+
+    // Conflict map
+    { label: "Issue summary in neutral language", key: "issue", type: "textarea", ph: "One paragraph factual description without blame" },
+    { label: "Impacts and needs (one per line)", key: "needs", type: "textarea", ph: "e.g., Safety, recognition, restitution, policy change, apology" },
+    { label: "Power and risk assessment", key: "power", type: "textarea", ph: "Visible and invisible power, dependency, retaliation risks, supports" },
+
+    // Restorative Circle blocks
+    { label: "Pre-circle steps", key: "pre_circle", type: "textarea", ph: "Intake, separate conversations, readiness checks, consent, logistics" },
+    { label: "Circle agreements", key: "agreements", type: "textarea", ph: "Speak from experience, listen to understand, right to pass, respect, time boundaries" },
+    { label: "Restorative prompts", key: "prompts", type: "textarea", ph: "What happened; who was affected and how; what is needed; what would repair look like" },
+    { label: "Reparation and repair options", key: "repair_options", type: "textarea", ph: "Apology, restitution, community service, policy or practice change, learning" },
+    { label: "Agreement template", key: "agreement_tpl", type: "textarea", ph: "Action - owner - resources - start - check date - verification - contingencies" },
+    { label: "Post-circle follow-up plan", key: "post_circle", type: "textarea", ph: "Check-ins, verification, grievance route if agreement fails" },
+
+    // Deep Democracy track
+    { label: "Positions map including edge views", key: "positions_map", type: "textarea", ph: "List majority, minority, silent and taboo views" },
+    { label: "Minority voice elicitation plan", key: "minority_plan", type: "textarea", ph: "Go-round, anonymous cards, fishbowl, pair harvest" },
+    { label: "Role switch script", key: "role_switch", type: "textarea", ph: "Each person argues for a view they disagree with; rules and timing" },
+    { label: "Test and integrate dissent", key: "integrate_dissent", type: "textarea", ph: "Soft-shoe shuffle or vote, locate objections, add safeguards, amend proposal" },
+    { label: "Decision rule", key: "decision_rule", type: "text", ph: "Consensus, consent with objections addressed, majority with minority report" },
+
+    // Logistics
+    { label: "Session plan and timing", key: "agenda", type: "textarea", ph: "Welcome, agreements, story rounds, needs, repair options, integrate dissent, agreements, close" },
+    { label: "Venue and layout", key: "venue", type: "textarea", ph: "Circle of chairs, quiet room, breakout, accessibility routes, hybrid link" },
+    { label: "Materials and tools", key: "materials", type: "textarea", ph: "Talking piece, timers, markers, sticky notes, consent forms, recording rules" },
+
+    // Documentation and follow-through
+    { label: "Documentation rules", key: "docs", type: "textarea", ph: "What gets recorded, by whom, where stored, retention and deletion" },
+    { label: "Agreements log (one per line)", key: "agreements_log", type: "textarea", ph: "Action - owner - resources - start - check date - verification method" },
+    { label: "Escalation path", key: "escalation", type: "textarea", ph: "When agreements fail or safety is breached, who acts and how fast" },
+    { label: "Report-back plan", key: "report_back", type: "textarea", ph: "Community-first summary within 14 days when allowed, bilingual where relevant" },
+
+    // Measures and risks
+    { label: "Measures and signals", key: "measures", type: "textarea", ph: "Speaking time parity, perceived fairness, agreement delivery rate, repeat incidents" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Retaliation risk, confidentiality breach, tokenism, re-traumatization" },
+
+    // Timeline and context
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Prep 2 weeks, circle, 30 day and 90 day checks" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Policies, prior incidents, legal constraints, references" }
+  ],
+  template: ({
+    title,
+    mandate,
+    purpose,
+    owner,
+    parties,
+    supporters,
+    roles,
+    consent,
+    confidentiality,
+    safety,
+    trauma,
+    access,
+    data_governance,
+    issue,
+    needs,
+    power,
+    pre_circle,
+    agreements,
+    prompts,
+    repair_options,
+    agreement_tpl,
+    post_circle,
+    positions_map,
+    minority_plan,
+    role_switch,
+    integrate_dissent,
+    decision_rule,
+    agenda,
+    venue,
+    materials,
+    docs,
+    agreements_log,
+    escalation,
+    report_back,
+    measures,
+    risks,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Pre-circle intake and readiness",
+      "Circle agreements and story rounds",
+      "Name impacts and needs",
+      "Generate repair options",
+      "Deep Democracy: surface edge views and role switch",
+      "Test proposals, integrate dissent, choose decision rule",
+      "Write agreements with owners and dates",
+      "Follow-up checks and escalation if needed"
+    ].join(" -> ");
+
+    return [
+      title && `Plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      mandate && `Mandate and authority: ${mandate}`,
+      purpose && `Purpose and desired outcomes:\n${purpose}`,
+      owner && `Sponsor or convener: ${owner}`,
+
+      "SECTION: Parties and roles",
+      parties && ["Parties to the conflict:", listify(parties)].join("\n"),
+      supporters && ["Supporters and observers:", listify(supporters)].join("\n"),
+      roles && `Facilitator and circle keeper roles:\n${roles}`,
+
+      "SECTION: Ethics, consent, safety",
+      consent && `Consent model:\n${consent}`,
+      confidentiality && `Confidentiality rules and limits:\n${confidentiality}`,
+      safety && `Safety and harm plan:\n${safety}`,
+      trauma && `Trauma-informed practices:\n${trauma}`,
+      access && `Access supports and compensation:\n${access}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Conflict map",
+      issue && `Issue summary:\n${issue}`,
+      needs && ["Impacts and needs:", listify(needs)].join("\n"),
+      power && `Power and risk assessment:\n${power}`,
+
+      "SECTION: Restorative Circle",
+      pre_circle && `Pre-circle steps:\n${pre_circle}`,
+      agreements && `Circle agreements:\n${agreements}`,
+      prompts && `Restorative prompts:\n${prompts}`,
+      repair_options && `Reparation and repair options:\n${repair_options}`,
+      agreement_tpl && `Agreement template:\n${agreement_tpl}`,
+      post_circle && `Post-circle follow-up plan:\n${post_circle}`,
+
+      "SECTION: Deep Democracy",
+      positions_map && `Positions map including edge views:\n${positions_map}`,
+      minority_plan && `Minority voice elicitation plan:\n${minority_plan}`,
+      role_switch && `Role switch script:\n${role_switch}`,
+      integrate_dissent && `Test and integrate dissent:\n${integrate_dissent}`,
+      decision_rule && `Decision rule: ${decision_rule}`,
+
+      "SECTION: Logistics",
+      agenda && `Session plan and timing:\n${agenda}`,
+      venue && `Venue and layout:\n${venue}`,
+      materials && `Materials and tools:\n${materials}`,
+
+      "SECTION: Documentation and follow-through",
+      docs && `Documentation rules:\n${docs}`,
+      agreements_log && ["Agreements log:", listify(agreements_log)].join("\n"),
+      escalation && `Escalation path:\n${escalation}`,
+      report_back && `Report-back plan:\n${report_back}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Voluntary participation and clear confidentiality boundaries",
+      "- [ ] Safety plan active with step-out and de-escalation options",
+      "- [ ] Speaking balance tracked and minority voices elicited",
+      "- [ ] Role switch completed and dissent integrated before decision",
+      "- [ ] Agreements specify actions, owners, resources, and dates",
+      "- [ ] Verification and follow-ups scheduled with escalation path",
+      "- [ ] Community-first summary prepared where appropriate"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Restorative Circles Deep Democracy minority voice conflict transformation role switch integrate dissent repair agreements trauma informed safety template"
+  }
+},
+
+{
+  id: "nvc_needs_based_dialogue",
+  slug: "nonviolent-communication-nvc-needs-based-dialogue",
+  label: "Nonviolent Communication (NVC): Needs-based dialogue for deeper listening",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "ethics",
+    "learning",
+    "governance"
+  ],
+  tags: [
+    "type:method",
+    "use:conflict-transformation",
+    "use:healing",
+    "use:decision-making",
+    "use:engagement",
+    "use:coaching",
+    "phase:explore",
+    "phase:define",
+    "phase:repair",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "improve mutual understanding before problem solving",
+    "de-escalate conflict and reduce defensiveness",
+    "clarify observations, feelings, needs, and doable requests",
+    "support boundary setting while maintaining connection",
+    "train teams in empathic feedback and self-empathy",
+     "how to talk without starting a fight",
+  "ways to listen better in arguments",
+  "simple steps for peaceful communication",
+  "how to say what I need kindly",
+  "reduce conflict in relationships",
+  "how to share feelings without blame",
+  "what is nonviolent communication",
+  "speak so people actually listen",
+  "ways to de-escalate an argument",
+  "group training for empathy",
+  "how to give feedback without hurting",
+  "how to set boundaries kindly",
+  "speak up but stay connected",
+  "understand needs behind behavior",
+  "make conflict less scary",
+  "how to stop being defensive",
+  "tools for healthy family talks",
+  "team communication training",
+  "how to reduce tension at work",
+  "conflict resolution made simple",
+  "how to hear needs not insults",
+  "express feelings clearly",
+  "ways to prevent fights in school",
+  "help couples communicate better",
+  "easy method for empathy",
+  "how to keep calm in hard talks",
+  "turn anger into clear needs",
+  "how to stop yelling matches",
+  "nonviolent communication in parenting",
+  "listen without fixing right away",
+  "funny idea: use NVC for pizza toppings fight",
+  "grade 5: how to share crayons without fighting",
+  "how to say sorry the NVC way",
+  "teach kids to use kind words",
+  "school circle using NVC",
+  "ways to practice self-empathy",
+  "how to ask for help without guilt",
+  "use NVC in church groups",
+  "methods for safer community dialogue",
+  "reduce workplace drama",
+  "make team feedback more kind",
+  "ways to understand each other fast",
+  "how to calm down when upset",
+  "turn conflict into connection",
+  "how to avoid passive aggressive talk",
+  "practice empathy step by step",
+  "simple phrases for NVC",
+  "use NVC for roommate issues",
+  "how to keep family dinners calm",
+  "support healthy boundaries with care",
+  "how to hear kids’ needs better",
+  "make decisions with compassion",
+  "community healing talks with NVC"
+  ],
+  boosters: [
+    "Slow down. Empathy before solutions. Reflect back until the speaker says you got it.",
+    "Keep observations free of judgments or diagnoses. Anchor them in time and place.",
+    "Name feelings with words about emotion, not thoughts. Offer a short feelings list.",
+    "Translate strategies into needs. Many strategies can meet the same need.",
+    "Requests are specific, doable, time bound, and positive action. Avoid vague asks.",
+    "Track power. Offer supports and alternatives so participation is truly voluntary."
+  ],
+  definition: "A structured dialogue approach that focuses on four moves: Observations, Feelings, Needs, and Requests. It can be used for self-empathy, one-to-one repair, or group facilitation to create clarity and reduce blame.",
+  help: "Complete purpose, roles, participants, access supports, consent, safety, OFNR prompts, turn-taking rules, empathy flows, documentation limits, and action capture. Use this scaffold for coaching, mediation, or team norms.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., NVC practice for Shared Spaces team" },
+    { label: "Scope and context", key: "scope", type: "text", ph: "coaching | mediation | feedback | team norm" },
+    { label: "Purpose and desired outcomes", key: "purpose", type: "textarea", ph: "e.g., Reduce reactivity, increase clarity, agree on next steps" },
+
+    // People and roles
+    {
+      label: "Participants",
+      autofill: "persona->inline",
+      itemLabel: "participant",
+      itemType: "typeahead",
+      key: "participants",
+      max: 20,
+      type: "repeater",
+      ph: "e.g., Affected person; colleague; manager; mediator"
+    },
+    { label: "Facilitator and roles", key: "roles", type: "textarea", ph: "facilitator, coach, timekeeper, note-taker, access lead" },
+
+    // Inclusion, consent, safety
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "interpreters, ASL, childcare, transport, stipends, sensory supports" },
+    { label: "Consent and confidentiality", key: "consent", type: "textarea", ph: "voluntary, revocable, limits of confidentiality, duty-to-report boundaries" },
+    { label: "Safety and de-escalation plan", key: "safety", type: "textarea", ph: "timeouts, step-out, parallel writing option, shuttle dialogue if needed" },
+    { label: "Cultural and language adaptations", key: "culture", type: "textarea", ph: "use participants’ own words for feelings and needs; translator guidance" },
+
+    // NVC components and scripts
+    { label: "Observation prompt", key: "obs_prompt", type: "text", ph: "When I see/hear X at time/place Y" },
+    { label: "Feelings prompt", key: "feel_prompt", type: "text", ph: "I feel..." },
+    { label: "Needs prompt", key: "needs_prompt", type: "text", ph: "because I need/value..." },
+    { label: "Request prompt", key: "req_prompt", type: "text", ph: "Would you be willing to... by [date/time]?" },
+    { label: "Feelings word bank", key: "feelings_bank", type: "textarea", ph: "calm; anxious; relieved; frustrated; hopeful; sad; energized" },
+    { label: "Needs word bank", key: "needs_bank", type: "textarea", ph: "respect; safety; rest; clarity; belonging; fairness; autonomy; contribution" },
+    { label: "Doable request examples", key: "request_examples", type: "textarea", ph: "send summary today; arrive by 10; pause meetings after 6; use captioning" },
+
+    // Dialogue flow
+    { label: "Turn-taking rules", key: "turns", type: "textarea", ph: "2 minutes each, right to pass, talking piece, timer visible" },
+    { label: "Empathy loop for listener", key: "empathy_loop", type: "textarea", ph: "reflect observation, feelings, needs; check accuracy; only then discuss requests" },
+    { label: "Self-empathy plan", key: "self_empathy", type: "textarea", ph: "name own observations, feelings, needs before entering dialogue" },
+    { label: "Coach prompts (empathy guesses)", key: "coach_prompts", type: "textarea", ph: "Are you feeling X because you’re needing Y? Did I get that?" },
+    { label: "Power and bias checks", key: "power_checks", type: "textarea", ph: "who risks more by speaking; ensure supporters; rotate first-speaker; talk-time parity" },
+
+    // Practice structures
+    { label: "Warm-ups and exercises", key: "exercises", type: "textarea", ph: "jackal-to-giraffe translations; needs cards; role swap; gratitude round" },
+    { label: "Boundary and no-request option", key: "boundaries", type: "textarea", ph: "speaker may withhold a request; focus only on understanding for now" },
+
+    // Documentation and governance
+    { label: "Documentation rules", key: "docs", type: "textarea", ph: "what is recorded, where stored, retention and deletion; no quotes without consent" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release; who decides and why" },
+
+    // Integration and follow-through
+    { label: "Agreements template", key: "agreement_tpl", type: "textarea", ph: "Action - owner - resources - start - check date - verification" },
+    { label: "Agreements log", key: "agreements_log", type: "textarea", ph: "one per line using the template" },
+    { label: "Escalation or referral path", key: "escalation", type: "textarea", ph: "when to move to Restorative Circle or mediation; who to contact" },
+    { label: "Follow-up plan", key: "followup", type: "textarea", ph: "check at 2 weeks and 6 weeks; feedback form; adjustments" },
+
+    // Measures and risks
+    { label: "Measures and signals", key: "measures", type: "textarea", ph: "perceived understanding, reactivity drops, speaking balance, agreement delivery rate" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "performative NVC, manipulation, forced vulnerability, power gaps" },
+
+    // Timeline and context
+    { label: "Session agenda and timing", key: "agenda", type: "textarea", ph: "welcome, consent, self-empathy, OFNR rounds, requests, agreements, close" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "prep this week; session next week; follow-ups at 2 and 6 weeks" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "links, constraints, references" }
+  ],
+  template: ({
+    title,
+    scope,
+    purpose,
+    participants,
+    roles,
+    access,
+    consent,
+    safety,
+    culture,
+
+    obs_prompt,
+    feel_prompt,
+    needs_prompt,
+    req_prompt,
+    feelings_bank,
+    needs_bank,
+    request_examples,
+
+    turns,
+    empathy_loop,
+    self_empathy,
+    coach_prompts,
+    power_checks,
+
+    exercises,
+    boundaries,
+
+    docs,
+    data_governance,
+
+    agreement_tpl,
+    agreements_log,
+    escalation,
+    followup,
+
+    measures,
+    risks,
+
+    agenda,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const ofnr = [
+      obs_prompt && `Observation: ${obs_prompt}`,
+      feel_prompt && `Feeling: ${feel_prompt}`,
+      needs_prompt && `Need: ${needs_prompt}`,
+      req_prompt && `Request: ${req_prompt}`
+    ].filter(Boolean).join("\n");
+
+    return [
+      title && `NVC plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes:\n${ctx}`,
+
+      "SECTION: Overview",
+      scope && `Scope and context: ${scope}`,
+      purpose && `Purpose and desired outcomes:\n${purpose}`,
+
+      "SECTION: People and roles",
+      participants && ["Participants:", listify(participants)].join("\n"),
+      roles && `Facilitator and roles:\n${roles}`,
+
+      "SECTION: Inclusion, consent, safety",
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and confidentiality:\n${consent}`,
+      safety && `Safety and de-escalation plan:\n${safety}`,
+      culture && `Cultural and language adaptations:\n${culture}`,
+
+      "SECTION: NVC components",
+      ofnr || "Set Observation, Feeling, Need, Request prompts.",
+      feelings_bank && ["Feelings word bank:", listify(feelings_bank)].join("\n"),
+      needs_bank && ["Needs word bank:", listify(needs_bank)].join("\n"),
+      request_examples && ["Doable request examples:", listify(request_examples)].join("\n"),
+
+      "SECTION: Dialogue flow",
+      turns && `Turn-taking rules:\n${turns}`,
+      empathy_loop && `Empathy loop for listener:\n${empathy_loop}`,
+      self_empathy && `Self-empathy plan:\n${self_empathy}`,
+      coach_prompts && `Coach prompts (empathy guesses):\n${coach_prompts}`,
+      power_checks && `Power and bias checks:\n${power_checks}`,
+
+      "SECTION: Practice structures",
+      exercises && `Warm-ups and exercises:\n${exercises}`,
+      boundaries && `Boundary and no-request option:\n${boundaries}`,
+
+      "SECTION: Documentation and governance",
+      docs && `Documentation rules:\n${docs}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Integration and follow-through",
+      agreement_tpl && `Agreements template:\n${agreement_tpl}`,
+      agreements_log && ["Agreements log:", listify(agreements_log)].join("\n"),
+      escalation && `Escalation or referral path:\n${escalation}`,
+      followup && `Follow-up plan:\n${followup}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Measures and signals:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline",
+      agenda && `Session agenda and timing:\n${agenda}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Checklist:",
+      "- [ ] People understand and consent to the process",
+      "- [ ] Observations stated without judgment",
+      "- [ ] Feelings and needs named in plain language",
+      "- [ ] Requests are specific, doable, and time bound",
+      "- [ ] Empathy loop used before problem solving",
+      "- [ ] Power and safety checks in place",
+      "- [ ] Agreements captured with owners and dates",
+      "- [ ] Follow-ups scheduled with a clear escalation path"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Nonviolent Communication NVC OFNR observations feelings needs requests empathy self-empathy conflict transformation boundary setting template"
+  }
+},
+
+{
+  id: "brand_archetypes_community",
+  slug: "brand-archetypes-jungian-for-communities",
+  label: "Brand Archetypes for Communities - Shared identity motifs and tone",
+  kind: "branding",
+  categories: [
+    "branding",
+    "communications",
+    "community",
+    "design",
+    "strategy"
+  ],
+  tags: [
+    "type:framework",
+    "use:identity",
+    "use:voice",
+    "use:messaging",
+    "use:governance",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "align shared voice and tone across programs and channels",
+    "choose primary, secondary, and shadow archetypes with rationale",
+    "translate archetypes into words, rituals, visuals, and behaviors",
+    "avoid harmful tropes and stereotype drift with clear guardrails",
+    "equip contributors with examples and a quick style matrix",
+        "decide if our community feels more like a 'Caregiver' or a 'Rebel'",
+    "pick an archetype that matches our mission and tone",
+    "make our newsletter sound consistent across writers",
+    "help volunteers know what voice to use on social media",
+    "choose imagery and slogans that fit our archetype",
+    "check if our brand voice is too serious or too playful",
+    "avoid drifting into stereotypes when using archetypes",
+    "use archetypes to guide event themes and rituals",
+    "align how leaders and members describe the community",
+    "map our primary, secondary, and shadow archetypes",
+    "translate an archetype into colors, fonts, and visuals",
+    "create a style guide for new contributors",
+    "figure out if we’re more of a 'Hero' or an 'Explorer' group",
+    "make fundraising campaigns match our chosen archetype",
+    "stress-test if our brand voice resonates with our members",
+    "align external partnerships with our archetype identity",
+    "design onboarding materials that fit our tone",
+    "reframe a confusing mission statement using archetypes",
+    "choose brand metaphors that stick in people’s minds",
+    "test if our community logo reflects our archetype",
+    "decide whether our Discord should sound 'friendly' or 'wise'",
+    "help staff write in one shared voice",
+    "explain to outsiders what makes our culture unique",
+    "simplify our message using archetype language",
+    "pick visuals for a campaign that feel 'on brand'",
+    "run a workshop to identify archetypes with members",
+    "spot when our messaging drifts away from our core",
+    "make our tone consistent across emails, posters, and social posts",
+    "compare our archetype to other orgs to stand out",
+    "adjust our storytelling style to fit our identity",
+    "keep our archetype relevant as the community evolves"
+  ],
+  boosters: [
+    "Communities are multi-vocal. Name primary, secondary, and shadow archetypes. Allow seasonal shifts when context changes.",
+    "Write Do and Do-not examples in the community's own words. Small concrete patterns beat abstract adjectives.",
+    "Pair archetypes with accessibility rules and inclusive language. Voice without inclusion is cosmetics.",
+    "Map voice to situations. Invitation, conflict, crisis, celebration, and policy each need tone guidance.",
+    "Protect plurality. Archetypes guide tone but do not police dialect or identity. Localize respectfully."
+  ],
+  definition: "An identity scaffold that adapts Jungian archetypes to community contexts. It turns motifs and values into voice, tone, language patterns, and visual cues so many contributors can sound coherent without sounding the same.",
+  help: "Complete purpose, audience segments, archetype choices, motifs and promises, voice and tone matrix, word banks, examples, visual cues, guardrails, governance, and measures. Use primary, secondary, and shadow archetypes to reflect real plurality.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Eastside Community Identity" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council communications steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are defining voice and where it applies" },
+
+    // Audience
+    {
+      label: "Audience segments",
+      autofill: "persona->inline",
+      itemLabel: "segment",
+      itemType: "typeahead",
+      key: "audiences",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents; partners; agencies"
+    },
+    { label: "Audience needs and sensitivities", key: "audience_needs", type: "textarea", ph: "Access, safety, language, trust, trauma, consent" },
+
+    // Archetype choices
+    { label: "Primary archetype", key: "primary", type: "text", ph: "e.g., Caregiver or Neighbor" },
+    { label: "Secondary archetype", key: "secondary", type: "text", ph: "e.g., Host or Bridge Builder" },
+    { label: "Shadow archetype to watch", key: "shadow", type: "text", ph: "e.g., Ruler tendencies when stressed" },
+    {
+      label: "Archetype palette - pick any",
+      key: "palette",
+      type: "textarea",
+      ph: "Classic: Caregiver, Creator, Explorer, Hero, Innocent, Jester, Lover, Magician, Everyperson, Outlaw, Ruler, Sage\nCommunity adapted: Neighbor, Host, Steward, Bridge Builder, Guardian, Storykeeper, Spark, Trail Guide"
+    },
+    { label: "Why these archetypes", key: "why", type: "textarea", ph: "Evidence and stories that justify the fit" },
+
+    // Motifs and promise
+    { label: "Motifs and metaphors", key: "motifs", type: "textarea", ph: "e.g., Open table, lantern, bridge, garden, choir" },
+    { label: "Promise and proof points", key: "promise", type: "textarea", ph: "What we promise and how we prove it with actions" },
+    { label: "Personality adjectives", key: "adjectives", type: "textarea", ph: "3 to 5 words, e.g., welcoming, practical, curious, steady" },
+    { label: "Rituals and behaviors", key: "rituals", type: "textarea", ph: "Recurring practices that express the archetype" },
+
+    // Voice and tone matrix
+    { label: "Voice pillars", key: "voice_pillars", type: "textarea", ph: "Short statements that define how we sound" },
+    { label: "Tone - invitation", key: "tone_invite", type: "textarea", ph: "How we invite and call people in" },
+    { label: "Tone - information and updates", key: "tone_info", type: "textarea", ph: "How we share logistics and decisions" },
+    { label: "Tone - conflict and hard news", key: "tone_conflict", type: "textarea", ph: "How we hold tension and name harm" },
+    { label: "Tone - crisis", key: "tone_crisis", type: "textarea", ph: "How we speak in emergencies or incidents" },
+    { label: "Tone - celebration and gratitude", key: "tone_celebration", type: "textarea", ph: "How we recognize people without tokenism" },
+
+    // Language patterns
+    { label: "Word bank - preferred", key: "words_yes", type: "textarea", ph: "Plain words we favor" },
+    { label: "Word bank - avoid or rewrite", key: "words_no", type: "textarea", ph: "Jargon or tropes we avoid with alternatives" },
+    { label: "Microcopy patterns - do", key: "do_patterns", type: "textarea", ph: "Short examples that fit the voice" },
+    { label: "Microcopy patterns - do not", key: "dont_patterns", type: "textarea", ph: "Short counter examples that we will not use" },
+    { label: "Inclusive language rules", key: "inclusive", type: "textarea", ph: "Pronouns, disability first or identity first, reading level, multilingual notes" },
+
+    // Visual and sensory cues
+    { label: "Visual cues", key: "visuals", type: "textarea", ph: "Color families, shapes, textures, icon motifs" },
+    { label: "Accessibility and format", key: "a11y", type: "textarea", ph: "Contrast, captions, alt text, font sizes, motion limits" },
+
+    // Stories and examples
+    { label: "Story patterns", key: "stories", type: "textarea", ph: "Story of self, us, and now patterns that fit the archetype" },
+    { label: "Examples to copy and adapt", key: "examples", type: "textarea", ph: "Invite, update, apology, celebration, policy explainer" },
+    { label: "Taglines or lines to test", key: "taglines", type: "textarea", ph: "Short lines that could appear on posters or headers" },
+
+    // Guardrails and ethics
+    { label: "Anti tropes and red lines", key: "guardrails", type: "textarea", ph: "Lines we will not cross and why" },
+    { label: "Cultural checks", key: "cultural", type: "textarea", ph: "How we avoid appropriation and caricature" },
+    { label: "Consent and privacy reminders", key: "consent_rules", type: "textarea", ph: "Photo and story consent, opt out, retention" },
+
+    // Governance and rollout
+    { label: "Governance and roles", key: "governance", type: "textarea", ph: "Who stewards the voice and how changes are approved" },
+    { label: "Training and onboarding", key: "training", type: "textarea", ph: "How contributors learn the voice quickly" },
+    { label: "Channels and variants", key: "channels", type: "textarea", ph: "Website, SMS, social, flyers, in room signage" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Belonging, clarity, complaints, readability, delivery on promises" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Single voice dominance, drift to marketing, exclusion risks" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References and constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    audiences,
+    audience_needs,
+
+    primary,
+    secondary,
+    shadow,
+    palette,
+    why,
+
+    motifs,
+    promise,
+    adjectives,
+    rituals,
+
+    voice_pillars,
+    tone_invite,
+    tone_info,
+    tone_conflict,
+    tone_crisis,
+    tone_celebration,
+
+    words_yes,
+    words_no,
+    do_patterns,
+    dont_patterns,
+    inclusive,
+
+    visuals,
+    a11y,
+
+    stories,
+    examples,
+    taglines,
+
+    guardrails,
+    cultural,
+    consent_rules,
+
+    governance,
+    training,
+    channels,
+
+    measures,
+    risks,
+
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    return [
+      title && `Community identity plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+
+      "SECTION: Audience",
+      audiences && ["Audience segments:", listify(audiences)].join("\n"),
+      audience_needs && `Audience needs and sensitivities:\n${audience_needs}`,
+
+      "SECTION: Archetypes",
+      primary && `Primary archetype: ${primary}`,
+      secondary && `Secondary archetype: ${secondary}`,
+      shadow && `Shadow archetype to watch: ${shadow}`,
+      palette && `Archetype palette:\n${palette}`,
+      why && `Why these archetypes:\n${why}`,
+
+      "SECTION: Motifs and promise",
+      motifs && `Motifs and metaphors:\n${motifs}`,
+      promise && `Promise and proof points:\n${promise}`,
+      adjectives && ["Personality adjectives:", listify(adjectives)].join("\n"),
+      rituals && `Rituals and behaviors:\n${rituals}`,
+
+      "SECTION: Voice and tone",
+      voice_pillars && `Voice pillars:\n${voice_pillars}`,
+      tone_invite && `Tone - invitation:\n${tone_invite}`,
+      tone_info && `Tone - information and updates:\n${tone_info}`,
+      tone_conflict && `Tone - conflict and hard news:\n${tone_conflict}`,
+      tone_crisis && `Tone - crisis:\n${tone_crisis}`,
+      tone_celebration && `Tone - celebration and gratitude:\n${tone_celebration}`,
+
+      "SECTION: Language patterns",
+      words_yes && ["Word bank - preferred:", listify(words_yes)].join("\n"),
+      words_no && ["Word bank - avoid or rewrite:", listify(words_no)].join("\n"),
+      do_patterns && ["Microcopy patterns - do:", listify(do_patterns)].join("\n"),
+      dont_patterns && ["Microcopy patterns - do not:", listify(dont_patterns)].join("\n"),
+      inclusive && `Inclusive language rules:\n${inclusive}`,
+
+      "SECTION: Visual and sensory",
+      visuals && `Visual cues:\n${visuals}`,
+      a11y && `Accessibility and format:\n${a11y}`,
+
+      "SECTION: Stories and examples",
+      stories && `Story patterns:\n${stories}`,
+      examples && `Examples to copy and adapt:\n${examples}`,
+      taglines && ["Taglines or lines to test:", listify(taglines)].join("\n"),
+
+      "SECTION: Guardrails and ethics",
+      guardrails && `Anti tropes and red lines:\n${guardrails}`,
+      cultural && `Cultural checks:\n${cultural}`,
+      consent_rules && `Consent and privacy reminders:\n${consent_rules}`,
+
+      "SECTION: Governance and rollout",
+      governance && `Governance and roles:\n${governance}`,
+      training && `Training and onboarding:\n${training}`,
+      channels && `Channels and variants:\n${channels}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "Checklist:",
+      "- [ ] Primary, secondary, and shadow archetypes named with evidence",
+      "- [ ] Voice pillars and tone by situation are clear",
+      "- [ ] Word banks and examples reflect inclusive language rules",
+      "- [ ] Visual cues meet accessibility requirements",
+      "- [ ] Guardrails prevent stereotypes and appropriation",
+      "- [ ] Governance and training enable many contributors",
+      "- [ ] Measures track belonging, clarity, and promise delivery"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "brand archetypes community identity voice tone Jungian caregiver creator explorer hero outlaw ruler sage neighbor host steward bridge builder storykeeper inclusive language accessibility template"
+  }
+},
+
+{
+  id: "voice_tone_frameworks",
+  slug: "voice-and-tone-frameworks-this-not-that",
+  label: "Voice and Tone Frameworks - Codify how the community speaks",
+  kind: "branding",
+  categories: [
+    "branding",
+    "communications",
+    "community",
+    "design",
+    "governance"
+  ],
+  tags: [
+    "type:framework",
+    "use:identity",
+    "use:voice",
+    "use:messaging",
+    "use:style",
+    "use:governance",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "align many contributors on shared voice and tone",
+    "set clear do and do not examples that people can copy",
+    "adapt tone by scenario and channel without losing identity",
+    "prevent stereotype drift and inaccessible language",
+    "create a change process so the guide stays alive",
+       "decide if our community voice should be casual or professional",
+    "make emails, posts, and updates sound like they came from one voice",
+    "set do vs don’t examples for writing style",
+    "teach volunteers how to speak in our community’s tone",
+    "adapt tone for social media vs. formal reports",
+    "stop our messaging from sounding robotic",
+    "find words that feel welcoming and inclusive",
+    "avoid words or jokes that could alienate members",
+    "make our voice sound consistent even with many writers",
+    "explain to designers what tone matches the visuals",
+    "show how to shift tone between celebration and crisis",
+    "write website copy that feels friendly but still clear",
+    "train staff to reply to messages in the same style",
+    "decide if we say 'folks' or 'community members'",
+    "give newcomers a style cheat sheet they can copy fast",
+    "keep our tone from drifting over time",
+    "codify phrases we always use and phrases we avoid",
+    "explain why our voice is more warm than authoritative",
+    "set tone rules for press releases vs. internal notes",
+    "create consistency in multilingual or translated content",
+    "map our voice to our brand archetype",
+    "stress-test if our tone fits our values and mission",
+    "align voice for events, newsletters, and Discord chats",
+    "decide if humor is okay in official updates",
+    "make instructions clear without sounding bossy",
+    "rewrite confusing policies in plain language",
+    "plan how our tone changes when addressing conflict",
+    "avoid jargon so the community stays accessible",
+    "document a process for updating tone guidelines",
+    "show examples of the same message in different tones"
+  ],
+  boosters: [
+    "Write examples in the community's own words. Concrete lines beat abstract adjectives.",
+    "Map tone by scenario and channel. Invitation, conflict, crisis, and celebration need different moves.",
+    "Pair voice with inclusion rules and access supports. Voice without inclusion is cosmetic.",
+    "Use small reusable patterns. Subject lines, SMS, signage, captions, and apologies each get micro-templates.",
+    "Keep a visible This vs That ladder with rationale. Explain why the alternative fails."
+  ],
+  definition: "A practical style system for communities. It turns values into voice pillars, tone by scenario, word banks, microcopy patterns, and This vs That ladders so many people can write consistently and inclusively.",
+  help: "Complete purpose, audiences, voice pillars, tone matrix by scenario and channel, word banks, This vs That ladders, microcopy patterns, inclusivity and safety language, accessibility, governance, and measures. Include bilingual or multilingual variants when relevant.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Eastside Community Voice and Tone" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council communications steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are defining voice and where it applies" },
+
+    // Audience
+    {
+      label: "Audience segments",
+      autofill: "persona->inline",
+      itemLabel: "segment",
+      itemType: "typeahead",
+      key: "audiences",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents; partners; agencies"
+    },
+    { label: "Audience needs and sensitivities", key: "audience_needs", type: "textarea", ph: "Access, safety, language, trust, trauma, consent" },
+
+    // Voice and tone
+    { label: "Voice pillars", key: "voice_pillars", type: "textarea", ph: "Short statements that define how we sound" },
+    { label: "Formality scale by channel", key: "formality", type: "textarea", ph: "SMS low, social mid, email mid, policy high. Note emoji and contractions rules." },
+    { label: "Tone by scenario - invitation", key: "tone_invite", type: "textarea", ph: "How we invite and call people in" },
+    { label: "Tone by scenario - information and updates", key: "tone_info", type: "textarea", ph: "How we share logistics and decisions" },
+    { label: "Tone by scenario - conflict and hard news", key: "tone_conflict", type: "textarea", ph: "How we hold tension and name harm" },
+    { label: "Tone by scenario - crisis", key: "tone_crisis", type: "textarea", ph: "How we speak in emergencies or incidents" },
+    { label: "Tone by scenario - celebration and gratitude", key: "tone_celebration", type: "textarea", ph: "How we recognize people without tokenism" },
+
+    // Words and patterns
+    { label: "Word bank - preferred", key: "words_yes", type: "textarea", ph: "Plain words we favor" },
+    { label: "Word bank - avoid or rewrite", key: "words_no", type: "textarea", ph: "Jargon or tropes we avoid with alternatives" },
+    { label: "Numbers, dates, punctuation rules", key: "style_tokens", type: "textarea", ph: "24 hour or not, date format, Oxford comma, capitalization, emoji" },
+
+    // This vs That ladders
+    { label: "This vs That ladders (one per line: context - This: ... - Not that: ... - Rationale)", key: "ladders", type: "textarea", ph: "Apology - This: We are sorry we missed captions and have added them today. - Not that: We regret any inconvenience. - Rationale: plain, accountable, action included" },
+
+    // Microcopy patterns by channel
+    { label: "SMS patterns - do", key: "sms_do", type: "textarea", ph: "Short examples that fit the voice" },
+    { label: "SMS patterns - do not", key: "sms_dont", type: "textarea", ph: "Counter examples to avoid" },
+    { label: "Social patterns - do", key: "social_do", type: "textarea", ph: "Threads, alt text cues, CTA phrasing" },
+    { label: "Social patterns - do not", key: "social_dont", type: "textarea", ph: "Tone misses or jargon" },
+    { label: "Email patterns - do", key: "email_do", type: "textarea", ph: "Subject, opener, scannable body, CTA" },
+    { label: "Email patterns - do not", key: "email_dont", type: "textarea", ph: "Walls of text, no dates, passive voice" },
+    { label: "Signage and in room patterns - do", key: "signage_do", type: "textarea", ph: "Wayfinding, norms, big type, plain verbs" },
+    { label: "Signage and in room patterns - do not", key: "signage_dont", type: "textarea", ph: "Scolding, tiny type, euphemisms" },
+
+    // Inclusivity, safety, multilingual
+    { label: "Inclusive language rules", key: "inclusive", type: "textarea", ph: "Pronouns, disability first or identity first, reading level, multilingual notes" },
+    { label: "Consent, privacy, and safety language", key: "safety_lang", type: "textarea", ph: "Photo consent, opt out, reporting routes, crisis wording" },
+    { label: "Multilingual and translation guidance", key: "multilingual", type: "textarea", ph: "Which languages, glossary, review by native speakers, local idioms" },
+    { label: "Accessibility and format", key: "a11y", type: "textarea", ph: "Contrast, captions, alt text, font sizes, motion limits" },
+
+    // Scenarios and examples
+    { label: "Scenario scripts - invitation", key: "ex_invite", type: "textarea", ph: "Short script in our voice" },
+    { label: "Scenario scripts - conflict", key: "ex_conflict", type: "textarea", ph: "Name harm, next steps, contact, accountability" },
+    { label: "Scenario scripts - crisis", key: "ex_crisis", type: "textarea", ph: "Plain facts, safety, what we know, what we do next" },
+    { label: "Scenario scripts - celebration", key: "ex_celebration", type: "textarea", ph: "Gratitude without tokenism" },
+
+    // Governance and lifecycle
+    { label: "Governance and roles", key: "governance", type: "textarea", ph: "Who stewards the guide and how changes are approved" },
+    { label: "Change request and review process", key: "change_process", type: "textarea", ph: "How people propose updates and who decides" },
+    { label: "Training and onboarding", key: "training", type: "textarea", ph: "How contributors learn the voice quickly" },
+    { label: "Content audit links", key: "audit", type: "textarea", ph: "Inventory of pages, templates, and owners" },
+    { label: "Data governance for guide assets", key: "data_governance", type: "textarea", ph: "Public, Community only, Restricted, Not for release. Who decides and why." },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Belonging, clarity, readability, complaints, delivery on promises" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Single voice dominance, drift to marketing, exclusion risks, crisis missteps" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References and constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    audiences,
+    audience_needs,
+
+    voice_pillars,
+    formality,
+    tone_invite,
+    tone_info,
+    tone_conflict,
+    tone_crisis,
+    tone_celebration,
+
+    words_yes,
+    words_no,
+    style_tokens,
+
+    ladders,
+
+    sms_do, sms_dont,
+    social_do, social_dont,
+    email_do, email_dont,
+    signage_do, signage_dont,
+
+    inclusive,
+    safety_lang,
+    multilingual,
+    a11y,
+
+    ex_invite,
+    ex_conflict,
+    ex_crisis,
+    ex_celebration,
+
+    governance,
+    change_process,
+    training,
+    audit,
+    data_governance,
+
+    measures,
+    risks,
+
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    return [
+      title && `Voice and Tone guide: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+
+      "SECTION: Audience",
+      audiences && ["Audience segments:", listify(audiences)].join("\n"),
+      audience_needs && `Audience needs and sensitivities:\n${audience_needs}`,
+
+      "SECTION: Voice and tone",
+      voice_pillars && `Voice pillars:\n${voice_pillars}`,
+      formality && `Formality scale by channel:\n${formality}`,
+      tone_invite && `Tone - invitation:\n${tone_invite}`,
+      tone_info && `Tone - information and updates:\n${tone_info}`,
+      tone_conflict && `Tone - conflict and hard news:\n${tone_conflict}`,
+      tone_crisis && `Tone - crisis:\n${tone_crisis}`,
+      tone_celebration && `Tone - celebration and gratitude:\n${tone_celebration}`,
+
+      "SECTION: Words and patterns",
+      words_yes && ["Word bank - preferred:", listify(words_yes)].join("\n"),
+      words_no && ["Word bank - avoid or rewrite:", listify(words_no)].join("\n"),
+      style_tokens && `Numbers, dates, punctuation rules:\n${style_tokens}`,
+
+      "SECTION: This vs That ladders",
+      ladders && ["Ladders:", listify(ladders)].join("\n"),
+
+      "SECTION: Microcopy by channel",
+      sms_do && ["SMS - do:", listify(sms_do)].join("\n"),
+      sms_dont && ["SMS - do not:", listify(sms_dont)].join("\n"),
+      social_do && ["Social - do:", listify(social_do)].join("\n"),
+      social_dont && ["Social - do not:", listify(social_dont)].join("\n"),
+      email_do && ["Email - do:", listify(email_do)].join("\n"),
+      email_dont && ["Email - do not:", listify(email_dont)].join("\n"),
+      signage_do && ["Signage and in room - do:", listify(signage_do)].join("\n"),
+      signage_dont && ["Signage and in room - do not:", listify(signage_dont)].join("\n"),
+
+      "SECTION: Inclusivity, safety, multilingual",
+      inclusive && `Inclusive language rules:\n${inclusive}`,
+      safety_lang && `Consent, privacy, and safety language:\n${safety_lang}`,
+      multilingual && `Multilingual and translation guidance:\n${multilingual}`,
+      a11y && `Accessibility and format:\n${a11y}`,
+
+      "SECTION: Scenarios and scripts",
+      ex_invite && `Scenario script - invitation:\n${ex_invite}`,
+      ex_conflict && `Scenario script - conflict:\n${ex_conflict}`,
+      ex_crisis && `Scenario script - crisis:\n${ex_crisis}`,
+      ex_celebration && `Scenario script - celebration:\n${ex_celebration}`,
+
+      "SECTION: Governance and lifecycle",
+      governance && `Governance and roles:\n${governance}`,
+      change_process && `Change request and review process:\n${change_process}`,
+      training && `Training and onboarding:\n${training}`,
+      audit && `Content audit links:\n${audit}`,
+      data_governance && `Data governance for guide assets:\n${data_governance}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "Checklist:",
+      "- [ ] Voice pillars and tone by scenario are clear",
+      "- [ ] This vs That ladders include rationale and copyable lines",
+      "- [ ] Word banks and style tokens are simple and inclusive",
+      "- [ ] Microcopy patterns exist for SMS, social, email, and signage",
+      "- [ ] Safety, consent, and accessibility language is ready to paste",
+      "- [ ] Governance and change process are visible and used",
+      "- [ ] Measures track clarity, belonging, and promise delivery"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "voice tone frameworks style guide this vs that ladders microcopy inclusive language accessibility crisis communication scenario scripts community branding template"
+  }
+},
+
+{
+  id: "public_narrative_action",
+  slug: "public-narrative-structure-call-to-action",
+  label: "Public Narrative - Structure shared story and call to action",
+  kind: "communications",
+  categories: [
+    "communications",
+    "community",
+    "branding",
+    "facilitation",
+    "strategy"
+  ],
+  tags: [
+    "type:framework",
+    "use:story",
+    "use:voice",
+    "use:engagement",
+    "use:mobilization",
+    "use:advocacy",
+    "phase:define",
+    "phase:decide",
+    "phase:act",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "craft stories that move people to take a specific action",
+    "align many contributors on a shared narrative and ask",
+    "translate values into behavior through clear choice points",
+    "tailor message, messenger, and channel for each audience",
+    "measure what resonates and iterate responsibly",
+      "write a story that makes people want to sign a petition",
+    "make a speech that ends with a strong clear ask",
+    "align many contributors on one campaign story",
+    "share why this issue matters and what people can do now",
+    "help volunteers explain the cause in their own words",
+    "turn community values into real choices and actions",
+    "find the right messenger for the right audience",
+    "adapt the same call to action for email, TikTok, and flyers",
+    "test which story gets more people to click or join",
+    "measure what message actually worked",
+    "make a fundraising ask without sounding pushy",
+    "rally people at an event around one chant or theme",
+    "write a post that ends with 'join us here today'",
+    "tell my personal story so others care about the cause",
+    "teach teens how to talk about climate action at school",
+    "show the 'why act now' moment in a short video",
+    "create a campaign slogan that sticks in memory",
+    "give volunteers a simple story they can repeat",
+    "connect my family story to a bigger community fight",
+    "script an intro for a town hall meeting",
+    "build urgency into a call for donations",
+    "make sure different languages keep the same spirit",
+    "explain why doing nothing has a cost",
+    "practice a 2-minute version of our story for media",
+    "tell the story of 'us' not just 'me'",
+    "use story structure to calm fear and inspire hope",
+    "plan the closing line for a march or rally speech",
+    "get shy leaders to share personal stories",
+    "draft a campaign launch video script",
+    "frame our story to counter misinformation",
+    "tie a local problem to a global movement",
+    "show a before/after contrast to spark action",
+    "make the call to action easy and doable",
+    "rehearse our story until it feels natural",
+    "help staff emails feel more human",
+    "give donors a story they want to retell",
+    "turn research facts into an emotional story",
+    "close a meeting with one inspiring ask",
+    "choose between urgency vs. hope framing",
+    "share a 'we did it' story after action succeeds"
+  ],
+  boosters: [
+    "Make the ask first class. One crisp behavior, one deadline, one route to yes.",
+    "Stories need stakes. Name what is at risk if we do nothing and what is possible if we act.",
+    "Use trusted messengers for each audience. Proximity beats celebrity.",
+    "Pair emotion with evidence. Facts anchor, feelings move.",
+    "Keep accessibility and multilingual routes in scope from the start.",
+    "Close the loop. Report back outcomes quickly and thank by name when consented."
+  ],
+  definition: "An action-oriented remix of Public Narrative that turns Story of Self, Us, and Now into a clear call to action with the right messenger, channel, and proof.",
+  help: "Complete audience, messengers, the Self-Us-Now scaffolds, message and proof, a ladder of asks, channels and scripts, inclusion and consent, risks, measures, and a tight timeline. Publish a brief and iterate with real feedback.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Belonging This Summer - Public Narrative" },
+    { label: "Owner or team", key: "owner", type: "text", ph: "e.g., Community Council comms + youth leads" },
+    { label: "Purpose and objective", key: "purpose", type: "textarea", ph: "e.g., Recruit 120 first-time speakers by Sept 30" },
+
+    // Audience and messengers
+    {
+      label: "Audience segments",
+      autofill: "persona->inline",
+      itemLabel: "segment",
+      itemType: "typeahead",
+      key: "audiences",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Newcomers; renters; elders; small biz; volunteers; partners"
+    },
+    { label: "Audience needs and barriers", key: "audience_needs", type: "textarea", ph: "Access, trust, time, transport, safety, language" },
+    {
+      label: "Messengers and narrators",
+      autofill: "persona->inline",
+      itemLabel: "messenger",
+      itemType: "typeahead",
+      key: "messengers",
+      max: 20,
+      type: "repeater",
+      ph: "e.g., Youth host; librarian; tenant leader; imam; coach"
+    },
+    {
+      label: "Validators and partners",
+      autofill: "persona->inline",
+      itemLabel: "validator",
+      itemType: "typeahead",
+      key: "validators",
+      max: 20,
+      type: "repeater",
+      ph: "e.g., Disability advocates; language access office; neighborhood orgs"
+    },
+
+    // Story of Self
+    { label: "Self - protagonist and role", key: "self_role", type: "text", ph: "Who is speaking and why they care" },
+    { label: "Self - choice point", key: "self_choice", type: "textarea", ph: "A moment you chose to act and what it cost" },
+    { label: "Self - values revealed", key: "self_values", type: "textarea", ph: "The values at stake, named plainly" },
+
+    // Story of Us
+    { label: "Us - who is the we", key: "us_we", type: "textarea", ph: "Shared identity and experiences" },
+    { label: "Us - shared values", key: "us_values", type: "textarea", ph: "Belonging, fairness, safety, joy, care" },
+    { label: "Us - proof and examples", key: "us_proofs", type: "textarea", ph: "Short vignettes that show we act on our values" },
+
+    // Story of Now
+    { label: "Now - urgent challenge", key: "now_challenge", type: "textarea", ph: "What is at stake right now" },
+    { label: "Now - opportunity window", key: "now_window", type: "textarea", ph: "Why action now matters and why we can win" },
+    { label: "Now - clear call to action", key: "now_ask", type: "text", ph: "One behavior + date + place or link" },
+
+    // Message and proof
+    { label: "Core message (one line)", key: "message_one", type: "text", ph: "e.g., Your voice changes what happens here" },
+    { label: "Headline and subhead", key: "headline", type: "textarea", ph: "Short headline and support line" },
+    { label: "Evidence and proof points", key: "proof", type: "textarea", ph: "Stats, quotes with consent, before-after, endorsements" },
+    { label: "Emotional arc and tone", key: "tone", type: "textarea", ph: "From concern to possibility to agency" },
+    { label: "Metaphors and motifs", key: "metaphors", type: "textarea", ph: "Bridge, open table, lantern, garden" },
+
+    // Ladder of engagement
+    { label: "Low lift asks (one per line)", key: "ask_low", type: "textarea", ph: "Sign up; share; attend 15 min orientation" },
+    { label: "Medium lift asks (one per line)", key: "ask_mid", type: "textarea", ph: "Co-host; bring 2 friends; translate a flyer" },
+    { label: "High lift asks (one per line)", key: "ask_high", type: "textarea", ph: "Lead a table; testify; run outreach" },
+    { label: "Incentives and supports", key: "supports", type: "textarea", ph: "Stipends, childcare, interpreters, rides, food" },
+    { label: "Deadlines and milestones", key: "deadlines", type: "text", ph: "e.g., First 50 signups by Aug 1; 120 by Sept 30" },
+
+    // Channels and scripts
+    { label: "Channels to use", key: "channels", type: "textarea", ph: "SMS, WhatsApp, email, social, flyers, in-room, radio" },
+    { label: "Script - 60 second talk", key: "script_60s", type: "textarea", ph: "Self, Us, Now with a single ask" },
+    { label: "Script - SMS 160 chars", key: "script_sms", type: "text", ph: "Short line with date, place, link" },
+    { label: "Script - email invite", key: "script_email", type: "textarea", ph: "Subject, opener, scannable body, CTA" },
+    { label: "Script - social thread", key: "script_social", type: "textarea", ph: "3 to 5 posts with image alt text cues" },
+    { label: "Visual cues", key: "visuals", type: "textarea", ph: "Images, colors, icons that fit the message" },
+
+    // Inclusion, consent, accessibility
+    { label: "Consent and privacy", key: "consent", type: "textarea", ph: "Photo and story consent, opt out, data handling" },
+    { label: "Languages and translation", key: "languages", type: "textarea", ph: "Which languages, who reviews, local idioms" },
+    { label: "Accessibility supports", key: "a11y", type: "textarea", ph: "Alt text, captions, font size, contrast, motion limits" },
+
+    // Risks and counters
+    { label: "Opposition frames to expect", key: "counter_frames", type: "textarea", ph: "Common objections and short counters" },
+    { label: "Red lines and do-not-say", key: "red_lines", type: "textarea", ph: "Tropes to avoid and why" },
+
+    // Measure and learn
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Clicks, signups, attendance, replies, volunteer retention" },
+    { label: "Feedback loop and tests", key: "feedback", type: "textarea", ph: "A/B tests, intercept interviews, quick survey" },
+
+    // Timeline and report back
+    { label: "Timeline and launch plan", key: "timeline", type: "text", ph: "Prep this week, soft launch next week, full launch date" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Share outcomes within 14 days, thank publicly with consent" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Docs, data sources, prior campaigns" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+
+    audiences,
+    audience_needs,
+    messengers,
+    validators,
+
+    self_role,
+    self_choice,
+    self_values,
+
+    us_we,
+    us_values,
+    us_proofs,
+
+    now_challenge,
+    now_window,
+    now_ask,
+
+    message_one,
+    headline,
+    proof,
+    tone,
+    metaphors,
+
+    ask_low,
+    ask_mid,
+    ask_high,
+    supports,
+    deadlines,
+
+    channels,
+    script_60s,
+    script_sms,
+    script_email,
+    script_social,
+    visuals,
+
+    consent,
+    languages,
+    a11y,
+
+    counter_frames,
+    red_lines,
+
+    measures,
+    feedback,
+
+    timeline,
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone: overall_tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const ladderBlock = [
+      ask_low && ["Low lift asks:", listify(ask_low)].join("\n"),
+      ask_mid && ["Medium lift asks:", listify(ask_mid)].join("\n"),
+      ask_high && ["High lift asks:", listify(ask_high)].join("\n"),
+      supports && `Incentives and supports:\n${supports}`,
+      deadlines && `Deadlines and milestones: ${deadlines}`
+    ].filter(Boolean).join("\n");
+
+    return [
+      title && `Public Narrative plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      overall_tone && `Tone: ${overall_tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or team: ${owner}`,
+      purpose && `Purpose and objective:\n${purpose}`,
+
+      "SECTION: Audience and messengers",
+      audiences && ["Audience segments:", listify(audiences)].join("\n"),
+      audience_needs && `Audience needs and barriers:\n${audience_needs}`,
+      messengers && ["Messengers and narrators:", listify(messengers)].join("\n"),
+      validators && ["Validators and partners:", listify(validators)].join("\n"),
+
+      "SECTION: Story of Self",
+      self_role && `Protagonist and role: ${self_role}`,
+      self_choice && `Choice point:\n${self_choice}`,
+      self_values && `Values revealed:\n${self_values}`,
+
+      "SECTION: Story of Us",
+      us_we && `Who is the we:\n${us_we}`,
+      us_values && `Shared values:\n${us_values}`,
+      us_proofs && `Proof and examples:\n${us_proofs}`,
+
+      "SECTION: Story of Now",
+      now_challenge && `Urgent challenge:\n${now_challenge}`,
+      now_window && `Opportunity window:\n${now_window}`,
+      now_ask && `Call to action: ${now_ask}`,
+
+      "SECTION: Message and proof",
+      message_one && `Core message: ${message_one}`,
+      headline && `Headline and subhead:\n${headline}`,
+      proof && `Evidence and proof points:\n${proof}`,
+      tone && `Emotional arc and tone:\n${tone}`,
+      metaphors && `Metaphors and motifs:\n${metaphors}`,
+
+      "SECTION: Ladder of engagement",
+      ladderBlock,
+
+      "SECTION: Channels and scripts",
+      channels && `Channels:\n${channels}`,
+      script_60s && `Script - 60 second talk:\n${script_60s}`,
+      script_sms && `Script - SMS:\n${script_sms}`,
+      script_email && `Script - email:\n${script_email}`,
+      script_social && `Script - social thread:\n${script_social}`,
+      visuals && `Visual cues:\n${visuals}`,
+
+      "SECTION: Inclusion, consent, accessibility",
+      consent && `Consent and privacy:\n${consent}`,
+      languages && `Languages and translation:\n${languages}`,
+      a11y && `Accessibility supports:\n${a11y}`,
+
+      "SECTION: Risks and counters",
+      counter_frames && `Opposition frames to expect:\n${counter_frames}`,
+      red_lines && `Red lines and do-not-say:\n${red_lines}`,
+
+      "SECTION: Measure and learn",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      feedback && `Feedback loop and tests:\n${feedback}`,
+
+      "SECTION: Timeline and report back",
+      timeline && `Timeline and launch plan: ${timeline}`,
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Checklist:",
+      "- [ ] Self, Us, Now are each specific and human",
+      "- [ ] One clear call to action with a deadline",
+      "- [ ] Messenger matches audience and channel",
+      "- [ ] Proof points are credible and consented",
+      "- [ ] Access supports and languages are ready",
+      "- [ ] Risks and counters agreed with red lines",
+      "- [ ] Measures and feedback loop in place",
+      "- [ ] Report back scheduled and owners named"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Public Narrative Self Us Now call to action messenger channel proof ladder of engagement community storytelling template"
+  }
+},
+
+
+{
+  id: "story_circles_harvesting",
+  slug: "story-circles-story-harvesting",
+  label: "Story Circles / Story Harvesting — Peer storytelling to extract themes and values",
+  kind: "facilitation",
+  categories: [
+    "community",
+    "facilitation",
+    "learning",
+    "research",
+    "communications"
+  ],
+  tags: [
+    "type:method",
+    "use:story",
+    "use:engagement",
+    "use:sensemaking",
+    "use:synthesis",
+    "use:values",
+    "phase:explore",
+    "phase:define",
+    "phase:reflect",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "gather lived-experience stories and surface shared values",
+    "create quick, low-tech insight cycles with many voices",
+    "inform strategy, messaging, and program design with patterns",
+    "build trust and belonging through peer listening",
+    "generate quotes and vignettes with consent for reports",
+       "gather lived-experience stories and surface shared values",
+    "create quick, low-tech insight cycles with many voices",
+    "inform strategy, messaging, and program design with patterns",
+    "build trust and belonging through peer listening",
+    "generate quotes and vignettes with consent for reports",
+    "help a team reflect on what worked and what didn’t",
+    "use stories to connect generations in a community",
+    "share memories after a big project or event",
+    "make meetings more human with storytelling rounds",
+    "find common threads in personal journeys",
+    "teach students empathy through sharing circles",
+    "practice deep listening in a safe group setting",
+    "collect material for a grant or funding proposal",
+    "document the impact of a program through voices",
+    "harvest wisdom from elders or knowledge keepers",
+    "give shy people a way to be heard",
+    "replace boring surveys with group story sharing",
+    "celebrate small wins with peer stories",
+    "capture stories for a community newsletter",
+    "help new members feel welcome fast",
+    "train facilitators in listening and synthesis",
+    "explore cultural identity through shared tales",
+    "prepare case studies from community voices",
+    "discover hidden strengths in a group",
+    "gather healing stories after conflict",
+    "use stories to brainstorm solutions to problems",
+    "turn messy experiences into clear lessons",
+    "make evaluation feel meaningful, not extractive",
+    "map values that show up across stories",
+    "co-create a vision statement from real voices",
+    "strengthen bonds after a crisis or challenge",
+    "build confidence in telling personal stories",
+    "practice non-judgmental listening as a group",
+    "identify role models through storytelling",
+    "use stories to design better programs",
+    "find out what really motivates people",
+    "learn what success feels like for different groups",
+    "turn community voices into social media content",
+    "explain complex issues through personal stories",
+    "collect stories to share at an anniversary event",
+    "help kids share their feelings in safe groups",
+    "show funders the human impact of their support",
+    "gather migrant stories for cultural preservation",
+    "find values to guide a new community project",
+    "record stories for history and archives",
+    "capture emotional impact, not just numbers",
+    "surface tensions and opportunities through stories",
+    "use story circles to open a workshop or retreat",
+    "translate abstract values into lived examples",
+    "practice gratitude by sharing impact stories",
+    "make quieter voices visible in decisions"
+  ],
+  boosters: [
+    "Open with a clear, human prompt and a short demo story. Keep it local in time and place.",
+    "Use small circles (4–6) with strict timing to keep airtime fair. Rotate roles each round.",
+    "Harvest live. Pair each circle with a named harvester using a simple capture card.",
+    "Name harvest lenses up front (e.g., values, barriers, turning points). People listen differently when they know what to notice.",
+    "Consent is specific. Decide what can be quoted, where, and for how long. Offer anonymous options.",
+    "Close the loop. Share a quick public brief within 14 days and credit contributors who opted in."
+  ],
+  definition: "A peer storytelling format where participants share short, specific stories in small circles while designated harvesters capture values, themes, and signals. The group then synthesizes patterns and turns insights into actions.",
+  help: "Complete purpose, participants, access supports, consent, circle setup, prompts, timing, harvesting lenses, capture templates, synthesis plan, and follow-through. Aim for many short stories over a few long ones.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Story Circles on Belonging" },
+    { label: "Horizon & date", key: "horizon", type: "text", ph: "e.g., Spring cycle; event on May 18, 6–8 pm" },
+    { label: "Purpose & focal question", key: "purpose", type: "textarea", ph: "e.g., What moments made you feel welcome (or not) here in the last 6 months?" },
+    { label: "Sponsor / convener", key: "owner", type: "text", ph: "e.g., Community Council with Library" },
+
+    // Inclusion & outreach
+    {
+      label: "Participants",
+      autofill: "persona->inline",
+      itemLabel: "participant group",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; newcomers; disabled residents"
+    },
+    { label: "Recruitment & outreach plan", key: "recruitment", type: "textarea", ph: "Partners, SMS, flyers, outreach in focus blocks" },
+    { label: "Access supports & compensation", key: "access", type: "textarea", ph: "Stipends; childcare; interpreters/ASL; transport; food; sensory supports" },
+
+    // Ethics & governance
+    { label: "Consent & quoting rules", key: "consent", type: "textarea", ph: "Quote allowed? where? how long? opt-out and anonymity options" },
+    { label: "Data governance & publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release — who decides and why" },
+
+    // Setup & roles
+    { label: "Circle size & layout", key: "layout", type: "text", ph: "e.g., 8 circles of 5 chairs each; quiet room; hybrid link" },
+    { label: "Rounds & timing", key: "timing", type: "text", ph: "e.g., 3 rounds: 5–6 min stories + 2 min harvest each; 15 min synthesis" },
+    { label: "Roles & staffing", key: "roles", type: "textarea", ph: "Lead facilitator; circle hosts; timekeepers; harvesters; accessibility lead; scribe" },
+
+    // Prompts & capture
+    { label: "Primary story prompt", key: "prompt_primary", type: "textarea", ph: "Tell a short story about a moment you felt welcome (or unwelcome). What happened, where, and who was there?" },
+    { label: "Follow-up prompts", key: "prompt_followups", type: "textarea", ph: "What mattered about that? What changed after? What helped or got in the way?" },
+    { label: "Story length target", key: "story_len", type: "text", ph: "e.g., 90–180 seconds" },
+    { label: "Harvest lenses (one per line)", key: "lenses", type: "textarea", ph: "Values\nBarriers\nSupports\nTurning points\nEmotions\nPower/voice\nOutcomes\nIdeas" },
+    { label: "Capture template (fields)", key: "capture_tpl", type: "textarea", ph: "Story title; When/where; Who for; Essence (1–2 lines); Values; Barrier/Support; Turning point; Outcome; Quote (if consented); Tags" },
+    { label: "Capture tools", key: "tools", type: "textarea", ph: "Paper cards; Google Form; Miro/FigJam board; talk-time tracker" },
+    { label: "Recording/notes rules", key: "recording_rules", type: "textarea", ph: "Audio only with explicit consent; no video; anonymize by default" },
+
+    // Logs (during/after)
+    { label: "Story cards (one per line using the capture template)", key: "story_cards", type: "textarea", ph: "e.g., Library open mic; Mar 12; teens; essence...; values...; quote..." },
+    { label: "Quotes with consent (one per line)", key: "quotes_log", type: "textarea", ph: "Short quotes with attribution level (name/pseudonym/anonymous)" },
+    { label: "Values list (one per line)", key: "values_list", type: "textarea", ph: "e.g., Belonging\nSafety\nRecognition\nFairness\nJoy" },
+
+    // Synthesis
+    { label: "Clustering & themes", key: "themes", type: "textarea", ph: "Affinity clusters; name themes in participants’ words" },
+    { label: "Contradictions & edge cases", key: "edges", type: "textarea", ph: "Stories that resist the main pattern and what they teach" },
+    { label: "Tensions, needs, opportunities", key: "tno", type: "textarea", ph: "What needs surfaced? Where are leverage points?" },
+    { label: "Evidence links & artifacts", key: "evidence", type: "textarea", ph: "Decision logs; photos; attendance; policy notes" },
+
+    // Decisions & follow-through
+    { label: "Decisions & actions (one per line: action — owner — resources — start — check date)", key: "actions", type: "textarea", ph: "e.g., Expand interpreter pool — Maria — $6k — Jul — Sep review" },
+    { label: "Feedback & report-back plan", key: "report_back", type: "textarea", ph: "Community-first brief in 14 days; bilingual summary; publish anonymized stories if consented" },
+
+    // Measures & risks
+    { label: "Measures & signals", key: "measures", type: "textarea", ph: "Attendance by subgroup; speaking balance; # stories; value frequency; action delivery rate" },
+    { label: "Risks & mitigations", key: "risks", type: "textarea", ph: "Tokenism; extraction without return; confidentiality breaches; dominance by few" },
+
+    // Timeline & context
+    { label: "Agenda & schedule", key: "agenda", type: "textarea", ph: "Welcome; consent; round 1; round 2; round 3; cluster; harvest; actions; close" },
+    { label: "Timeline & cadence", key: "timeline", type: "text", ph: "Prep 1–2 weeks; event; brief in 14 days; follow-up circle in 30 days" },
+    { label: "Context & notes", key: "ctx", type: "textarea", ph: "Links, constraints, prior cycles" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    owner,
+
+    participants,
+    recruitment,
+    access,
+
+    consent,
+    data_governance,
+
+    layout,
+    timing,
+    roles,
+
+    prompt_primary,
+    prompt_followups,
+    story_len,
+    lenses,
+    capture_tpl,
+    tools,
+    recording_rules,
+
+    story_cards,
+    quotes_log,
+    values_list,
+
+    themes,
+    edges,
+    tno,
+    evidence,
+
+    actions,
+    report_back,
+
+    measures,
+    risks,
+
+    agenda,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const flow = [
+      "Welcome & consent",
+      "Story rounds in small circles",
+      "Live harvest with named lenses",
+      "Cluster themes and values",
+      "Name tensions, needs, opportunities",
+      "Agree actions with owners and dates",
+      "Report back publicly and close the loop"
+    ].join(" -> ");
+
+    return [
+      title && `Story Circles / Story Harvesting plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context & notes:\n${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon & date: ${horizon}`,
+      purpose && `Purpose & focal question:\n${purpose}`,
+      owner && `Sponsor / convener: ${owner}`,
+
+      "SECTION: Inclusion & outreach",
+      participants && ["Participants:", listify(participants)].join("\n"),
+      recruitment && `Recruitment & outreach plan:\n${recruitment}`,
+      access && `Access supports & compensation:\n${access}`,
+
+      "SECTION: Ethics & governance",
+      consent && `Consent & quoting rules:\n${consent}`,
+      data_governance && `Data governance & publication tiers:\n${data_governance}`,
+
+      "SECTION: Setup & roles",
+      layout && `Circle size & layout: ${layout}`,
+      timing && `Rounds & timing: ${timing}`,
+      roles && `Roles & staffing:\n${roles}`,
+
+      "SECTION: Prompts & capture",
+      prompt_primary && `Primary story prompt:\n${prompt_primary}`,
+      prompt_followups && `Follow-up prompts:\n${prompt_followups}`,
+      story_len && `Story length target: ${story_len}`,
+      lenses && ["Harvest lenses:", listify(lenses)].join("\n"),
+      capture_tpl && `Capture template (fields):\n${capture_tpl}`,
+      tools && `Capture tools:\n${tools}`,
+      recording_rules && `Recording/notes rules:\n${recording_rules}`,
+
+      "SECTION: Logs",
+      story_cards && ["Story cards:", listify(story_cards)].join("\n"),
+      quotes_log && ["Quotes with consent:", listify(quotes_log)].join("\n"),
+      values_list && ["Values list:", listify(values_list)].join("\n"),
+
+      "SECTION: Synthesis",
+      themes && `Clustering & themes:\n${themes}`,
+      edges && `Contradictions & edge cases:\n${edges}`,
+      tno && `Tensions, needs, opportunities:\n${tno}`,
+      evidence && `Evidence links & artifacts:\n${evidence}`,
+
+      "SECTION: Decisions & follow-through",
+      actions && ["Decisions & actions:", listify(actions)].join("\n"),
+      report_back && `Feedback & report-back plan:\n${report_back}`,
+
+      "SECTION: Measures & risks",
+      measures && ["Measures & signals:", listify(measures)].join("\n"),
+      risks && `Risks & mitigations:\n${risks}`,
+
+      "SECTION: Timeline & agenda",
+      agenda && `Agenda & schedule:\n${agenda}`,
+      timeline && `Timeline & cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Clear, human prompt and demo story",
+      "- [ ] Circles sized 4–6 with strict timing and rotation",
+      "- [ ] Named harvesters capturing with agreed lenses",
+      "- [ ] Consent and quoting rules understood and honored",
+      "- [ ] Visible clustering and values synthesis in participants’ words",
+      "- [ ] Actions have owners, resources, and check dates",
+      "- [ ] Community-first brief published within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Story Circles Story Harvesting peer storytelling values themes lenses capture cards consent clustering synthesis community method template"
+  }
+},
+
+
+{
+  id: "cultural_web_johnson_scholes",
+  slug: "cultural-web-johnson-scholes",
+  label: "Cultural Web - Unpack symbols, rituals, stories shaping voice",
+  kind: "analysis",
+  categories: [
+    "branding",
+    "communications",
+    "community",
+    "strategy",
+    "research"
+  ],
+  tags: [
+    "type:framework",
+    "use:identity",
+    "use:voice",
+    "use:diagnosis",
+    "use:change",
+    "use:research",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+	"topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "make implicit cultural patterns visible before codifying voice",
+    "map how stories, rituals, symbols, power, controls, and structures shape tone",
+    "spot shadow norms and stereotype risks that derail inclusive messaging",
+    "identify leverage points and quick experiments to shift culture and voice",
+    "link culture findings to brand archetypes and voice guides",
+       "make implicit cultural patterns visible before codifying voice",
+    "map how stories, rituals, symbols, power, controls, and structures shape tone",
+    "spot shadow norms and stereotype risks that derail inclusive messaging",
+    "identify leverage points and quick experiments to shift culture and voice",
+    "link culture findings to brand archetypes and voice guides",
+    "analyze company traditions to see how they influence behavior",
+    "understand why teams resist change by mapping hidden assumptions",
+    "spot rituals that keep people included or excluded",
+    "explain why the 'official' values don’t match daily practice",
+    "diagnose how meeting styles shape decision-making",
+    "prepare culture insights for a rebrand or merger",
+    "find stories staff tell that shape the organization’s reputation",
+    "surface unspoken rules that control behavior more than policies",
+    "use cultural mapping in onboarding to show how things ‘really work’",
+    "discover why slogans fail to connect with employees",
+    "map symbols (logos, dress codes, office layout) that send hidden signals",
+    "study culture before launching diversity or inclusion efforts",
+    "track how culture shifts after a leadership change",
+    "learn what rituals boost morale vs. waste time",
+    "explore how office humor reveals deeper norms",
+    "figure out why people ignore a new strategy or policy",
+    "test how changing one symbol (like office space design) shifts culture",
+    "spot who really has power vs. who just has a title",
+    "see how stories about 'heroes' and 'failures' shape risk-taking",
+    "understand cultural differences between departments",
+    "use with students to analyze school culture and cliques",
+    "map community rituals (festivals, gatherings) to see shared values",
+    "understand resistance to new technology rollouts",
+    "prepare insights for cultural sensitivity training",
+    "examine how communication channels reinforce hierarchy",
+    "document cultural barriers for an international partnership",
+    "track how informal groups shape real decision-making",
+    "identify stories that inspire change vs. keep the status quo",
+    "map unspoken taboos people avoid talking about",
+    "diagnose why new hires struggle to fit in",
+    "compare symbolic differences between two merging orgs",
+    "use cultural mapping in participatory research with communities",
+    "spot disconnects between leadership speeches and team jokes",
+    "help leaders design rituals that reinforce intended culture",
+    "study how recognition systems shape motivation",
+    "analyze cultural roots of conflict in a team",
+    "look at how holidays, awards, or mottos reinforce identity",
+    "map 'shadow values' that no one writes down but everyone feels",
+    "show why branding efforts feel fake if culture doesn’t match",
+    "teach students how culture shapes groups beyond rules",
+    "figure out why communication feels cold or welcoming",
+    "study how gender norms show up in rituals and symbols",
+    "find leverage points to align brand voice with lived culture"
+  ],
+  boosters: [
+    "Work with a cross section of the system and compensate lived expertise.",
+    "Collect real artifacts. Screenshots, flyers, posts, signage, swag, forms, meeting scripts.",
+    "Mine language. Build a mini corpus to see frequent words, metaphors, and reading level.",
+    "Separate description from judgment. First name what is, then decide what should change.",
+    "Close the loop by rewriting two real artifacts with the desired voice and testing them."
+  ],
+  definition: "A diagnostic map of the lived culture across six elements around a core paradigm. Stories, Rituals and Routines, Symbols, Power Structures, Organizational Structures, and Control Systems are examined to see how they shape community voice and tone.",
+  help: "Fill the fields for each Cultural Web element with evidence and quotes. Synthesize the current paradigm and the desired paradigm. Derive voice implications and choose a few experiments to shift practice and tone.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Cultural Web for Eastside Community Voice" },
+    { label: "Horizon and dates", key: "horizon", type: "text", ph: "e.g., Discovery in May, synthesis in June" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are mapping culture and which channels or teams are in scope" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council communications steward" },
+
+    // People and inclusion
+    {
+      label: "Participants and sources",
+      autofill: "persona->inline",
+      itemLabel: "participant or source",
+      itemType: "typeahead",
+      key: "participants",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth leaders, elders circle, frontline staff, moderators, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, childcare, interpreters and ASL, transport, food, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and quoting rules", key: "consent", type: "textarea", ph: "What can be quoted, where, how long, anonymity options" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release, who decides and why" },
+
+    // Evidence and tools
+    { label: "Evidence sources", key: "evidence_sources", type: "textarea", ph: "Docs, posts, transcripts, signage, forms, photos, policies, metrics" },
+    { label: "Canvas or board link", key: "canvas_link", type: "text", ph: "Kumu or Miro or FigJam URL" },
+
+    // Cultural Web elements - current state
+    { label: "Paradigm - current core beliefs", key: "paradigm_now", type: "textarea", ph: "The taken for granted story about who we are and how things work" },
+    { label: "Stories and myths - current", key: "stories_now", type: "textarea", ph: "Signature stories, heroes, villains, cautionary tales, origin myths" },
+    { label: "Rituals and routines - current", key: "rituals_now", type: "textarea", ph: "Recurring meetings, openings, awards, onboarding, moderation habits" },
+    { label: "Symbols and artifacts - current", key: "symbols_now", type: "textarea", ph: "Logos, colors, spaces, swag, emojis, dress, taglines, forms" },
+    { label: "Power structures - current", key: "power_now", type: "textarea", ph: "Formal and informal power, who gets airtime, who approves language" },
+    { label: "Organizational structures - current", key: "org_now", type: "textarea", ph: "Decision paths, committees, channels, roles, gatekeepers" },
+    { label: "Control systems - current", key: "controls_now", type: "textarea", ph: "What is measured and rewarded, moderation rules, SLAs, KPIs" },
+
+    // Cultural Web elements - desired state
+    { label: "Paradigm - desired core beliefs", key: "paradigm_next", type: "textarea", ph: "The future story we want to be true and lived" },
+    { label: "Stories and myths - desired", key: "stories_next", type: "textarea", ph: "New or elevated stories we will tell and share" },
+    { label: "Rituals and routines - desired", key: "rituals_next", type: "textarea", ph: "Rituals to start, stop, or adapt to match values" },
+    { label: "Symbols and artifacts - desired", key: "symbols_next", type: "textarea", ph: "Visual and material cues that signal the new voice" },
+    { label: "Power structures - desired", key: "power_next", type: "textarea", ph: "Shifts to participation, decision rights, and voice equity" },
+    { label: "Organizational structures - desired", key: "org_next", type: "textarea", ph: "Simpler routes, community roles, review loops for language" },
+    { label: "Control systems - desired", key: "controls_next", type: "textarea", ph: "Measures and incentives that reinforce the voice we want" },
+
+    // Language and voice
+    { label: "Language patterns observed", key: "language_now", type: "textarea", ph: "Common words, metaphors, reading level, passive vs active voice" },
+    { label: "Voice implications", key: "voice_implications", type: "textarea", ph: "How the current web pushes tone, what to keep, what to change" },
+    { label: "Risks and shadow norms", key: "shadows", type: "textarea", ph: "Tokenism, gatekeeping, jargon, paternalism, exclusion risks" },
+
+    // Experiments and change
+    { label: "Leverage points and experiments", key: "experiments", type: "textarea", ph: "Small tests that would shift practice and tone" },
+    { label: "Rewrite two artifacts now", key: "rewrites", type: "textarea", ph: "Name two items to rewrite with the desired voice and how you will test them" },
+
+    // Logs and artifacts
+    { label: "Story bank (one per line)", key: "story_bank", type: "textarea", ph: "Short story title - essence - quote if consented - link" },
+    { label: "Ritual inventory (one per line)", key: "rituals_log", type: "textarea", ph: "Name - frequency - participants - purpose - keep or change" },
+    { label: "Symbol and artifact inventory", key: "symbols_log", type: "textarea", ph: "Item - where seen - who uses it - meaning" },
+    { label: "Power map notes", key: "power_log", type: "textarea", ph: "Names or roles - influence route - risks - allies" },
+    { label: "Controls list", key: "controls_log", type: "textarea", ph: "Metric or rule - owner - behavior it drives" },
+
+    // Synthesis and decisions
+    { label: "Paradigm statement - one or two sentences", key: "paradigm_statement", type: "text", ph: "Concise statement in plain language" },
+    { label: "Tensions and tradeoffs", key: "tensions", type: "textarea", ph: "What we will balance and why" },
+    { label: "Decisions and actions (one per line: action - owner - resources - start - check date)", key: "actions", type: "textarea", ph: "e.g., Update signage kit - Maya - 4k - Jul 10 - Sep 1 review" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Belonging, clarity, complaints, readability, moderation outcomes" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Backlash, overcorrection, decision delays, loss of trust, churn" },
+
+    // Timeline and reporting
+    { label: "Workshop agenda and schedule", key: "agenda", type: "textarea", ph: "Story mining, artifact table, ritual inventory, power map, controls audit, synthesis" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Prep 1 to 2 weeks, workshop day, brief in 14 days, 60 day check" },
+    { label: "Reporting and publication", key: "reporting", type: "textarea", ph: "Community brief, bilingual summary, open artifacts where safe" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Constraints, prior guides, reference posts" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    owner,
+
+    participants,
+    access,
+
+    consent,
+    data_governance,
+
+    evidence_sources,
+    canvas_link,
+
+    paradigm_now,
+    stories_now,
+    rituals_now,
+    symbols_now,
+    power_now,
+    org_now,
+    controls_now,
+
+    paradigm_next,
+    stories_next,
+    rituals_next,
+    symbols_next,
+    power_next,
+    org_next,
+    controls_next,
+
+    language_now,
+    voice_implications,
+    shadows,
+
+    experiments,
+    rewrites,
+
+    story_bank,
+    rituals_log,
+    symbols_log,
+    power_log,
+    controls_log,
+
+    paradigm_statement,
+    tensions,
+    actions,
+
+    measures,
+    risks,
+
+    agenda,
+    timeline,
+    reporting,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Collect artifacts and stories",
+      "Map the six elements and the current paradigm",
+      "Name voice implications and shadow norms",
+      "Draft the desired paradigm and quick experiments",
+      "Rewrite two real artifacts and test",
+      "Agree actions, owners, and check dates",
+      "Publish a short brief and close the loop"
+    ].join(" -> ");
+
+    return [
+      title && `Cultural Web plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon and dates: ${horizon}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      owner && `Owner or steward: ${owner}`,
+
+      "SECTION: People and inclusion",
+      participants && ["Participants and sources:", listify(participants)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and quoting rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Evidence and tools",
+      evidence_sources && `Evidence sources:\n${evidence_sources}`,
+      canvas_link && `Canvas or board: ${canvas_link}`,
+
+      "SECTION: Cultural Web - current state",
+      paradigm_now && `Paradigm - current core beliefs:\n${paradigm_now}`,
+      stories_now && `Stories and myths - current:\n${stories_now}`,
+      rituals_now && `Rituals and routines - current:\n${rituals_now}`,
+      symbols_now && `Symbols and artifacts - current:\n${symbols_now}`,
+      power_now && `Power structures - current:\n${power_now}`,
+      org_now && `Organizational structures - current:\n${org_now}`,
+      controls_now && `Control systems - current:\n${controls_now}`,
+
+      "SECTION: Cultural Web - desired state",
+      paradigm_next && `Paradigm - desired core beliefs:\n${paradigm_next}`,
+      stories_next && `Stories and myths - desired:\n${stories_next}`,
+      rituals_next && `Rituals and routines - desired:\n${rituals_next}`,
+      symbols_next && `Symbols and artifacts - desired:\n${symbols_next}`,
+      power_next && `Power structures - desired:\n${power_next}`,
+      org_next && `Organizational structures - desired:\n${org_next}`,
+      controls_next && `Control systems - desired:\n${controls_next}`,
+
+      "SECTION: Language and voice",
+      language_now && `Language patterns observed:\n${language_now}`,
+      voice_implications && `Voice implications:\n${voice_implications}`,
+      shadows && `Risks and shadow norms:\n${shadows}`,
+
+      "SECTION: Experiments and change",
+      experiments && `Leverage points and experiments:\n${experiments}`,
+      rewrites && `Rewrite two artifacts now:\n${rewrites}`,
+
+      "SECTION: Logs and artifacts",
+      story_bank && ["Story bank:", listify(story_bank)].join("\n"),
+      rituals_log && ["Ritual inventory:", listify(rituals_log)].join("\n"),
+      symbols_log && ["Symbol and artifact inventory:", listify(symbols_log)].join("\n"),
+      power_log && ["Power map notes:", listify(power_log)].join("\n"),
+      controls_log && ["Controls list:", listify(controls_log)].join("\n"),
+
+      "SECTION: Synthesis and decisions",
+      paradigm_statement && `Paradigm statement:\n${paradigm_statement}`,
+      tensions && `Tensions and tradeoffs:\n${tensions}`,
+      actions && ["Decisions and actions:", listify(actions)].join("\n"),
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline and reporting",
+      agenda && `Workshop agenda and schedule:\n${agenda}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+      reporting && `Reporting and publication:\n${reporting}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Evidence gathered from diverse sources with consent",
+      "- [ ] Six elements mapped with concrete examples",
+      "- [ ] Current and desired paradigms written in plain language",
+      "- [ ] Voice implications and shadow norms named",
+      "- [ ] Two real artifacts rewritten and tested",
+      "- [ ] Actions have owners, resources, and check dates",
+      "- [ ] Community brief published within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Cultural Web Johnson Scholes stories rituals symbols power structures organizational structures control systems paradigm community voice tone template"
+  }
+},
+
+
+
+{
+  id: "sociocracy_consent_governance",
+  slug: "sociocracy-consent-decision-making",
+  label: "Sociocracy / Consent Decision-Making - Circles, roles, and dynamic governance for shared ownership",
+  kind: "governance",
+  categories: [
+    "governance",
+    "community",
+    "organization",
+    "decision",
+    "facilitation"
+  ],
+  tags: [
+    "type:framework",
+    "use:governance",
+    "use:decision-making",
+    "use:structure",
+    "use:equity",
+    "phase:plan",
+    "phase:decide",
+    "phase:operate",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "create clear circles with domains, aims, and decision rights",
+    "make decisions by consent with good objection handling",
+    "select people for roles by consent with transparent criteria",
+    "link circles for cross flow using double links",
+    "keep governance lightweight through short reviews and expiry dates",
+       "set up clear circles with defined domains and aims",
+    "make group decisions by consent instead of majority vote",
+    "handle objections constructively and turn them into improvements",
+    "elect people for roles transparently by consent",
+    "link circles together with double links for accountability",
+    "review decisions on a regular cycle instead of forever locking them",
+    "keep governance lightweight and adaptable",
+    "share power fairly instead of centralizing in one leader",
+    "build trust through transparent processes",
+    "use consent rules to avoid endless arguments",
+    "align team structure with shared purpose",
+    "clarify who decides what without top-down control",
+    "try sociocracy in a co-op board meeting",
+    "test sociocracy in a neighborhood group",
+    "use consent decision-making in a student council",
+    "decide roles in a nonprofit by consent",
+    "map overlapping circles in a volunteer org",
+    "reduce burnout by sharing responsibilities in circles",
+    "avoid dominance by giving equal say to all voices",
+    "run elections without campaigning or popularity contests",
+    "teach kids group consent in a classroom",
+    "decide chores in a household with sociocracy",
+    "use consent process in a church or spiritual community",
+    "decide budgets with clear domain ownership",
+    "experiment with sociocracy in a startup",
+    "structure teams in a flat organization",
+    "govern a community garden with consent",
+    "adapt sociocracy for online communities",
+    "try sociocracy with remote teams on Zoom",
+    "align project groups using circle governance",
+    "separate operations from governance cleanly",
+    "use sociocracy for equitable role rotation",
+    "design community bylaws with consent principles",
+    "shift from majority vote to consent-based culture",
+    "train facilitators in handling objections well",
+    "check decision quality through consent review",
+    "combine sociocracy with agile team sprints",
+    "decide how to spend grant money as a circle",
+    "use sociocracy for conflict resolution in teams",
+    "balance efficiency with inclusivity",
+    "show how sociocracy prevents minority rule",
+    "analyze differences between sociocracy and democracy",
+    "compare sociocracy vs. holacracy in practice",
+    "plan meeting structures around sociocratic roles",
+    "decide policy changes with sociocratic process",
+    "use sociocracy to include quieter voices",
+    "explain sociocracy to beginners with a household example",
+    "find when sociocracy is better than consensus",
+    "how do I stop my meetings from dragging on",
+    "how do we decide fairly without voting",
+    "how can my co-op make decisions without fighting",
+    "show to give everyone a voice in decisions",
+    "easy way to organize a flat team"
+  ],
+  boosters: [
+    "Separate governance from operations. Keep policy decisions in governance meetings and delivery in ops meetings.",
+    "Write drivers and aims in plain language tied to needs and customers. It keeps proposals relevant and testable.",
+    "Treat objections as gifts. Test them against the circle aim and integrate to make proposals safer to try.",
+    "Use short review periods and policy expiry. Iteration beats big one time bets.",
+    "Double link related circles. A leader and a delegate create two way listening and accountability.",
+    "Fund access supports and publish clear records. Transparency builds trust in consent."
+  ],
+  definition: "A dynamic governance method that structures work in circles with clear domains and aims. Decisions are made by consent when there are no reasoned and paramount objections tied to the shared aim. Roles are selected by consent. Circles are linked for coherence.",
+  help: "Complete purpose, mandate, circle map, domains and aims, roles and selection, consent process, objection test, meeting cadences, records, and measures. Keep logs of policies and role selections with review dates.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Dynamic Governance for Eastside Community" },
+    { label: "Sponsor or steward", key: "owner", type: "text", ph: "e.g., Community Council governance steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why use sociocracy here and what is in scope" },
+    { label: "Authority and mandate", key: "authority", type: "text", ph: "advisory | binding within scope | pilot with review" },
+
+    // Principles and model
+    { label: "Core principles", key: "principles", type: "textarea", ph: "consent, equivalence, transparency, effectiveness, empiricism" },
+    { label: "Governance vs operations", key: "gov_vs_ops", type: "textarea", ph: "What belongs in governance, what belongs in operations" },
+
+    // Circle map and decision rights
+    { label: "Circle map overview", key: "circle_map", type: "textarea", ph: "List circles and links. e.g., General Circle linked to Program, Outreach, Access, Data." },
+    { label: "Circle domains and aims (one per line: circle - domain - aim)", key: "domains_aims", type: "textarea", ph: "Outreach - external comms - invite and inform people clearly" },
+    { label: "Decision rights matrix", key: "decision_rights", type: "textarea", ph: "Who decides by consent, who advises, who executes, what requires escalation" },
+    { label: "Double links between circles", key: "links", type: "textarea", ph: "e.g., Program lead sits in General, General delegate sits in Program" },
+
+    // Roles and selection
+    { label: "Standard roles", key: "std_roles", type: "textarea", ph: "Facilitator, Secretary, Leader, Delegate, Operations lead, Rep for access" },
+    { label: "Role descriptions (one per line: role - purpose - accountabilities - term)", key: "role_desc", type: "textarea", ph: "Facilitator - enable consent and flow - agenda, rounds - 6 months" },
+    { label: "Selection by consent process", key: "selection_process", type: "textarea", ph: "nominations with reasons, questions, proposal, consent check, review date" },
+    { label: "Role selections log (one per line: circle - role - person - start - review date)", key: "roles_log", type: "textarea", ph: "Outreach - Facilitator - S. Lee - Jun 1 - Sep 30" },
+
+    // Consent decision flow
+    { label: "Driver statement template", key: "driver_tpl", type: "textarea", ph: "Context and need we are responding to" },
+    { label: "Proposal template", key: "proposal_tpl", type: "textarea", ph: "Aim - scope - policy or experiment - effects - risks - measures - review date" },
+    { label: "Consent question wording", key: "consent_q", type: "text", ph: "Do you have any paramount objections to adopting this as proposed for the review period?" },
+    { label: "Objection test", key: "objection_test", type: "textarea", ph: "Based on circle aim, reasoned, and shows how proposal would cause harm or miss aim" },
+    { label: "Integration steps", key: "integration_steps", type: "textarea", ph: "Hear objection, restate, find conditions to make safe to try, amend proposal" },
+    { label: "Review and expiry rule", key: "review_rule", type: "text", ph: "Default 90 day review unless otherwise stated" },
+
+    // Meetings and cadences
+    { label: "Governance meeting cadence", key: "gov_cadence", type: "text", ph: "e.g., monthly 60 min" },
+    { label: "Operations meeting cadence", key: "ops_cadence", type: "text", ph: "e.g., weekly 30 min" },
+    { label: "Governance agenda template", key: "gov_agenda", type: "textarea", ph: "check in, admin, drivers, proposals, consent, records, check out" },
+    { label: "Operations agenda template", key: "ops_agenda", type: "textarea", ph: "check in, metrics, tensions, next actions, help needed, check out" },
+    { label: "Backlog and intake", key: "intake", type: "textarea", ph: "how tensions become drivers, who triages, where logged" },
+
+    // Records and policies
+    { label: "Policy log (one per line: policy - circle - date - review date - link)", key: "policy_log", type: "textarea", ph: "Captioning standard - Access - May 10 - Aug 10 - link" },
+    { label: "Meeting records link", key: "records_link", type: "text", ph: "URL for published minutes or policy board" },
+
+    // Inclusion and ethics
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "stipends, interpreters and ASL, childcare, transport, food, sensory supports" },
+    { label: "Consent and transparency rules", key: "transparency", type: "textarea", ph: "what is public, what is private, who can see minutes" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release with who decides and why" },
+
+    // Training and onboarding
+    { label: "Training plan", key: "training", type: "textarea", ph: "intro to consent, objections, facilitation, roles, records" },
+    { label: "Onboarding checklist", key: "onboarding", type: "textarea", ph: "join a circle, read policies, meet buddy, shadow facilitation" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "time to decision, number of objections integrated, policy delivery rate, parity of voice" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "hidden hierarchy, decision drift, meeting overload, token roles" },
+
+    // Timeline and context
+    { label: "Rollout steps", key: "rollout", type: "textarea", ph: "pilot circle, learn, expand, link circles, publish map" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "prep 2 weeks, pilot 90 days, review and scale" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "prior governance, legal constraints, references" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    authority,
+
+    principles,
+    gov_vs_ops,
+
+    circle_map,
+    domains_aims,
+    decision_rights,
+    links,
+
+    std_roles,
+    role_desc,
+    selection_process,
+    roles_log,
+
+    driver_tpl,
+    proposal_tpl,
+    consent_q,
+    objection_test,
+    integration_steps,
+    review_rule,
+
+    gov_cadence,
+    ops_cadence,
+    gov_agenda,
+    ops_agenda,
+    intake,
+
+    policy_log,
+    records_link,
+
+    access,
+    transparency,
+    data_governance,
+
+    training,
+    onboarding,
+
+    measures,
+    risks,
+
+    rollout,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Map circles, domains, aims",
+      "Select core roles by consent",
+      "Run governance and ops meetings on cadence",
+      "Propose, test objections, integrate, consent",
+      "Record policies with review dates",
+      "Link circles and publish minutes",
+      "Review measures and improve"
+    ].join(" -> ");
+
+    return [
+      title && `Sociocracy plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Sponsor or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      authority && `Authority and mandate: ${authority}`,
+
+      "SECTION: Principles and model",
+      principles && `Core principles:\n${principles}`,
+      gov_vs_ops && `Governance vs operations:\n${gov_vs_ops}`,
+
+      "SECTION: Circle map and decision rights",
+      circle_map && `Circle map overview:\n${circle_map}`,
+      domains_aims && ["Circle domains and aims:", listify(domains_aims)].join("\n"),
+      decision_rights && `Decision rights matrix:\n${decision_rights}`,
+      links && `Double links between circles:\n${links}`,
+
+      "SECTION: Roles and selection",
+      std_roles && `Standard roles:\n${std_roles}`,
+      role_desc && ["Role descriptions:", listify(role_desc)].join("\n"),
+      selection_process && `Selection by consent process:\n${selection_process}`,
+      roles_log && ["Role selections log:", listify(roles_log)].join("\n"),
+
+      "SECTION: Consent decision flow",
+      driver_tpl && `Driver statement template:\n${driver_tpl}`,
+      proposal_tpl && `Proposal template:\n${proposal_tpl}`,
+      consent_q && `Consent question wording: ${consent_q}`,
+      objection_test && `Objection test:\n${objection_test}`,
+      integration_steps && `Integration steps:\n${integration_steps}`,
+      review_rule && `Review and expiry rule: ${review_rule}`,
+
+      "SECTION: Meetings and cadences",
+      gov_cadence && `Governance meeting cadence: ${gov_cadence}`,
+      ops_cadence && `Operations meeting cadence: ${ops_cadence}`,
+      gov_agenda && `Governance agenda template:\n${gov_agenda}`,
+      ops_agenda && `Operations agenda template:\n${ops_agenda}`,
+      intake && `Backlog and intake:\n${intake}`,
+
+      "SECTION: Records and policies",
+      policy_log && ["Policy log:", listify(policy_log)].join("\n"),
+      records_link && `Meeting records link: ${records_link}`,
+
+      "SECTION: Inclusion and ethics",
+      access && `Access supports and compensation:\n${access}`,
+      transparency && `Consent and transparency rules:\n${transparency}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Training and onboarding",
+      training && `Training plan:\n${training}`,
+      onboarding && `Onboarding checklist:\n${onboarding}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline",
+      rollout && `Rollout steps:\n${rollout}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Circles have clear domains, aims, and links",
+      "- [ ] Roles selected by consent with terms and review dates",
+      "- [ ] Consent flow and objection test are visible and used",
+      "- [ ] Governance and ops meetings follow simple agendas",
+      "- [ ] Policies recorded with public access and review dates",
+      "- [ ] Access supports funded and transparency rules clear",
+      "- [ ] Measures tracked and retros scheduled"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "sociocracy consent decision making circles domains aims roles selection by consent objection integration double links governance vs operations policy log template"
+  }
+},
+
+
+{
+  id: "holacracy_selective_volunteer",
+  slug: "holacracy-selective-role-governance-volunteer",
+  label: "Holacracy (selective) - Role-based governance for volunteer groups",
+  kind: "governance",
+  categories: [
+    "governance",
+    "community",
+    "organization",
+    "decision",
+    "facilitation"
+  ],
+  tags: [
+    "type:framework",
+    "use:governance",
+    "use:decision-making",
+    "use:structure",
+    "use:operations",
+    "phase:plan",
+    "phase:decide",
+    "phase:operate",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "define lightweight roles with clear purposes and accountabilities",
+    "run simple governance meetings to evolve roles and policies",
+    "run tactical meetings for checklists, metrics, and next actions",
+    "capture tensions and turn them into safe-to-try changes",
+    "link circles only where needed to avoid bureaucracy",
+        "define lightweight roles with clear purposes and accountabilities",
+    "run simple governance meetings to evolve roles and policies",
+    "run tactical meetings for checklists, metrics, and next actions",
+    "capture tensions and turn them into safe-to-try changes",
+    "link circles only where needed to avoid bureaucracy",
+    "organize a volunteer group so everyone knows their part",
+    "decide who takes what role without endless arguments",
+    "keep track of tasks when nobody is the official boss",
+    "make meetings shorter and more focused on actions",
+    "set clear agreements when volunteers switch roles",
+    "try a structure that avoids ‘too many chiefs’ problem",
+    "let people step into roles they’re energized about",
+    "update roles quickly when projects change direction",
+    "prevent burnout by making workloads visible",
+    "experiment with self-managed governance",
+    "help new members know where they fit in fast",
+    "avoid one loud person running the whole group",
+    "clarify who decides when multiple teams overlap",
+    "share leadership without chaos",
+    "handle conflicts about authority constructively",
+    "balance accountability with flexibility",
+    "use clear circles for community projects",
+    "let volunteers rotate roles easily",
+    "stop meetings from going in circles",
+    "split responsibilities without hurting feelings",
+    "try decentralized decision-making in a club",
+    "test small changes without long approvals",
+    "scale a hobby group into a proper org",
+    "delegate without micromanaging",
+    "empower quieter voices to take roles",
+    "document decisions so memory doesn’t fade",
+    "share power while still getting things done",
+    "reduce confusion when projects overlap",
+    "avoid ‘founder syndrome’ in a collective",
+    "organize student clubs without hierarchy fights",
+    "give community projects flexible structure",
+    "avoid everyone asking the leader for permission",
+    "make space for experimentation in governance",
+    "reduce meeting fatigue with tactical check-ins",
+    "set clear role purposes to align volunteers",
+    "how do I organize a volunteer group better",
+    "no one wants to be the boss, what do we do",
+    "simple governance for nonprofits",
+    "how to run meetings without a leader",
+    "club fights over who is in charge",
+    "shared leadership ideas",
+    "lightweight roles for community group",
+    "avoid power struggles in volunteer org",
+    "how to divide tasks fairly in a team",
+    "framework for no-boss organization"
+  ],
+  boosters: [
+    "Adopt only the minimum set: roles, accountabilities, domains, policies, tensions to proposals, integrative decision making, and simple tactical meetings.",
+    "Set short review dates on policies and roles. Try small changes and iterate.",
+    "Keep volunteer bandwidth visible. Add a capacity check in every meeting.",
+    "Replace jargon with plain words. Explain the why of each rule in one line.",
+    "Double link only when cross flow is blocked. Do not mirror full org charts.",
+    "Fund access supports and publish clear records so trust scales with autonomy."
+  ],
+  definition: "A selective, lightweight take on Holacracy for volunteer groups. Work is organized by roles with clear purposes and accountabilities. Governance updates roles and policies via integrative decision making. Operations flow through brief tactical meetings.",
+  help: "Complete purpose and scope, circle map, roles with accountabilities and domains, governance and tactical cadences, tensions intake and IDM steps, records, and measures. Use short terms and review dates to keep the system small and humane.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Selective Holacracy for Eastside Volunteers" },
+    { label: "Sponsor or steward", key: "owner", type: "text", ph: "e.g., Community Council governance steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are using a role system and what is in scope" },
+    { label: "Authority and mandate", key: "authority", type: "text", ph: "advisory | binding within scope | pilot with review" },
+
+    // What we adopt vs skip
+    { label: "Adopt these elements", key: "adopt", type: "textarea", ph: "roles, accountabilities, domains, policies, tensions to proposals, IDM, tactical meetings" },
+    { label: "Skip or adapt these", key: "skip_adapt", type: "textarea", ph: "full constitution, heavy circle stack, strict role elections, complex metrics" },
+
+    // Circle map and links
+    { label: "Circle map overview", key: "circle_map", type: "textarea", ph: "Anchor circle plus any sub circles needed" },
+    { label: "Double links between circles", key: "links", type: "textarea", ph: "Only where cross flow needs it. Leader and delegate pattern if used." },
+
+    // Roles and policies
+    {
+      label: "Roles - one per line",
+      key: "roles_list",
+      type: "textarea",
+      ph: "role name - purpose - 3 to 6 accountabilities - domain (if any) - term and review date"
+    },
+    { label: "Policies - one per line", key: "policies", type: "textarea", ph: "policy name - scope - rule - owner - review date" },
+    { label: "Decision rights and domains", key: "domains", type: "textarea", ph: "Who controls what assets or processes" },
+
+    // Meetings and cadences
+    { label: "Governance cadence", key: "gov_cadence", type: "text", ph: "e.g., monthly 60 minutes" },
+    { label: "Tactical cadence", key: "tac_cadence", type: "text", ph: "e.g., weekly 25 minutes" },
+    { label: "Tactical agenda template", key: "tac_agenda", type: "textarea", ph: "check in - checklist - metrics - projects - next actions - closing" },
+
+    // Tensions and IDM
+    { label: "Tension intake", key: "tension_intake", type: "textarea", ph: "how people log tensions and who triages" },
+    { label: "IDM steps", key: "idm_steps", type: "textarea", ph: "present proposal - clarifying questions - reactions - amend - objection test - integrate - consent" },
+    { label: "Objection test", key: "objection_test", type: "textarea", ph: "a reasoned risk tied to purpose or domain that makes proposal unsafe to try for the review period" },
+    { label: "Safe-to-try rule", key: "safe_to_try", type: "text", ph: "default short review window - try small and inspect soon" },
+
+    // Capacity and inclusion
+    { label: "Capacity checks and limits", key: "capacity", type: "textarea", ph: "how volunteers set hours limits and say no" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "stipends, interpreters and ASL, transport, childcare, sensory supports" },
+
+    // Ethics and records
+    { label: "Consent and transparency rules", key: "transparency", type: "textarea", ph: "what is public, what is private, who can see minutes" },
+    { label: "Data governance", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release - who decides and why" },
+    { label: "Records link", key: "records_link", type: "text", ph: "URL to minutes, role roster, policies" },
+
+    // Onboarding and training
+    { label: "Training plan", key: "training", type: "textarea", ph: "intro to roles, IDM, objections, tactical flow, records" },
+    { label: "Onboarding checklist", key: "onboarding", type: "textarea", ph: "join a circle, pick a role, read policies, buddy, first tactical" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "time to decision, policy delivery rate, role clarity, volunteer retention, parity of voice" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "hidden hierarchy, meeting overload, jargon creep, burnout" },
+
+    // Timeline and context
+    { label: "Rollout steps", key: "rollout", type: "textarea", ph: "pilot one circle, learn, expand only if needed, publish map" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "prep 2 weeks - pilot 90 days - review and scale or shrink" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "prior governance, constraints, references" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    authority,
+
+    adopt,
+    skip_adapt,
+
+    circle_map,
+    links,
+
+    roles_list,
+    policies,
+    domains,
+
+    gov_cadence,
+    tac_cadence,
+    tac_agenda,
+
+    tension_intake,
+    idm_steps,
+    objection_test,
+    safe_to_try,
+
+    capacity,
+    access,
+
+    transparency,
+    data_governance,
+    records_link,
+
+    training,
+    onboarding,
+
+    measures,
+    risks,
+
+    rollout,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Map minimal circles and links",
+      "Define roles with accountabilities and domains",
+      "Run short tactical meetings for work",
+      "Log tensions and evolve roles or policies via IDM",
+      "Record decisions with review dates",
+      "Check capacity and access at each meeting",
+      "Review measures and adapt"
+    ].join(" -> ");
+
+    return [
+      title && `Holacracy selective plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Sponsor or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      authority && `Authority and mandate: ${authority}`,
+
+      "SECTION: What we adopt vs skip",
+      adopt && `Adopt these elements:\n${adopt}`,
+      skip_adapt && `Skip or adapt these:\n${skip_adapt}`,
+
+      "SECTION: Circle map and links",
+      circle_map && `Circle map overview:\n${circle_map}`,
+      links && `Double links between circles:\n${links}`,
+
+      "SECTION: Roles and policies",
+      roles_list && ["Roles:", listify(roles_list)].join("\n"),
+      policies && ["Policies:", listify(policies)].join("\n"),
+      domains && `Decision rights and domains:\n${domains}`,
+
+      "SECTION: Meetings and cadences",
+      gov_cadence && `Governance cadence: ${gov_cadence}`,
+      tac_cadence && `Tactical cadence: ${tac_cadence}`,
+      tac_agenda && `Tactical agenda template:\n${tac_agenda}`,
+
+      "SECTION: Tensions and IDM",
+      tension_intake && `Tension intake:\n${tension_intake}`,
+      idm_steps && `IDM steps:\n${idm_steps}`,
+      objection_test && `Objection test:\n${objection_test}`,
+      safe_to_try && `Safe-to-try rule: ${safe_to_try}`,
+
+      "SECTION: Capacity and inclusion",
+      capacity && `Capacity checks and limits:\n${capacity}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and records",
+      transparency && `Consent and transparency rules:\n${transparency}`,
+      data_governance && `Data governance:\n${data_governance}`,
+      records_link && `Records link: ${records_link}`,
+
+      "SECTION: Onboarding and training",
+      training && `Training plan:\n${training}`,
+      onboarding && `Onboarding checklist:\n${onboarding}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline",
+      rollout && `Rollout steps:\n${rollout}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Roles have clear purposes, 3 to 6 accountabilities, and any domains",
+      "- [ ] Governance uses IDM with a clear objection test",
+      "- [ ] Tactical meetings are short and produce next actions",
+      "- [ ] Records include roles, policies, and review dates",
+      "- [ ] Capacity checks protect volunteers from overload",
+      "- [ ] Access supports funded and transparency rules clear",
+      "- [ ] Measures tracked and retros scheduled"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Holacracy selective volunteer roles accountabilities domains policies tactical meetings integrative decision making IDM objections safe to try circle map template"
+  }
+},
+
+{
+  id: "soft_systems_methodology_ssm",
+  slug: "soft-systems-methodology-ssm-rich-pictures-multiple-worldviews",
+  label: "Soft Systems Methodology (SSM) — Explore messy problems via multiple worldviews; rich pictures",
+  kind: "analysis",
+  categories: [
+    "systems",
+    "research",
+    "facilitation",
+    "planning",
+    "community"
+  ],
+  tags: [
+    "type:framework",
+    "use:diagnosis",
+    "use:sensemaking",
+    "use:design",
+    "use:change",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "map messy problem situations before solutioning",
+    "surface multiple worldviews and their implications",
+    "express the situation using rich pictures and artifacts",
+    "formulate root definitions (PQR + CATWOE) and conceptual models",
+    "compare models with reality to identify feasible, desirable changes",
+        "map messy problem situations before solutioning",
+    "surface multiple worldviews and their implications",
+    "express the situation using rich pictures and artifacts",
+    "formulate root definitions (PQR + CATWOE) and conceptual models",
+    "compare models with reality to identify feasible, desirable changes",
+    "make sense of a wicked problem with too many actors",
+    "analyze a community conflict where everyone disagrees on causes",
+    "map out healthcare challenges from patient, doctor, and policy views",
+    "understand climate change issues in a local region",
+    "explore education reform with teachers, parents, and students",
+    "decide what to do when technology, culture, and politics collide",
+    "use rich pictures to explain a complex issue visually",
+    "bring engineers, users, and managers into the same discussion",
+    "clarify system boundaries and what’s inside/outside",
+    "diagnose why a project keeps failing despite good intentions",
+    "analyze food system problems from farm to plate",
+    "study transportation issues across commuters, planners, and residents",
+    "map urban housing issues with landlords, tenants, and officials",
+    "understand messy policy decisions in government",
+    "plan organizational change where staff resist in different ways",
+    "improve nonprofit program design with multiple perspectives",
+    "capture community voices before writing a strategy",
+    "figure out why IT projects always go over budget",
+    "explore mental health systems with lived-experience input",
+    "diagnose poverty reduction efforts across agencies",
+    "analyze disaster response breakdowns from all angles",
+    "support cross-cultural projects with conflicting values",
+    "map water usage problems across farmers, industry, and households",
+    "study youth violence by including police, families, and youth voices",
+    "improve stakeholder alignment before funding decisions",
+    "find common ground across competing agendas",
+    "use CATWOE to structure stakeholder perspectives",
+    "plan feasible change instead of idealistic wish lists",
+    "stop chasing single solutions to complex problems",
+    "figure out why meetings go in circles without decisions",
+    "help teams see the big picture instead of blaming each other",
+    "ask: why do problems look different depending on who you ask",
+    "how to handle a wicked problem",
+    "how to solve messy problems at work",
+    "why does everyone disagree on the root cause",
+    "simple way to explain complicated issues",
+    "tools for group sensemaking",
+    "how to make a rich picture diagram",
+    "how to handle too many stakeholders",
+    "how to map different perspectives on one issue",
+    "how to avoid quick fixes for big problems",
+    "what framework for community planning",
+    "messy problem solver framework",
+    "how to find common ground in complex issues",
+    "tool for seeing whole system not just parts"
+  ],
+  boosters: [
+    "Invite a cross-section of stakeholders, especially edge voices. Compensate lived expertise.",
+    "Keep the boundary visible. Explicitly note what’s out of scope and why.",
+    "Draw first, debate later. Rich pictures help reveal assumptions and power flows.",
+    "Write root definitions in plain language using PQR. Then test with CATWOE.",
+    "Prefer small safe-to-try changes with short review cycles over grand designs.",
+    "Close the loop by publishing a brief and showing what changed because of the inquiry."
+  ],
+  definition: "SSM is an inquiry method for ill-structured, human situations. It expresses the situation (rich pictures), formulates root definitions of purposeful activity systems (PQR + CATWOE), builds conceptual models, and compares them with the real world to identify feasible and desirable change.",
+  help: "Fill in the problem situation, stakeholders, ethics, rich pictures and artifacts, worldviews and root definitions (PQR + CATWOE), conceptual models, comparison findings, and a shortlist of feasible, desirable changes with owners and review dates.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., SSM Inquiry: Belonging in Shared Spaces" },
+    { label: "Horizon & dates", key: "horizon", type: "text", ph: "e.g., Discovery in May; synthesis in June" },
+    { label: "Purpose & system of interest", key: "purpose", type: "textarea", ph: "Why we are inquiring and which system we are considering" },
+    { label: "Sponsor / convener", key: "owner", type: "text", ph: "e.g., Community Council + Library" },
+
+    // Problem situation
+    { label: "Situation description (messy problem)", key: "situation", type: "textarea", ph: "What’s going on, in plain words" },
+    { label: "Triggers / symptoms", key: "triggers", type: "textarea", ph: "Events or data that prompted this inquiry" },
+    { label: "Boundaries & scope", key: "boundaries", type: "textarea", ph: "What’s in / out; spatial, temporal, jurisdictional" },
+    { label: "Assumptions & uncertainties", key: "assumptions", type: "textarea", ph: "Known unknowns; contested facts" },
+
+    // People & inclusion
+    {
+      label: "Stakeholder groups",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 32,
+      type: "repeater",
+      ph: "e.g., Youth; elders; renters; disabled residents; staff; partners; funders"
+    },
+
+    // Ethics & governance
+    { label: "Consent & documentation rules", key: "consent", type: "textarea", ph: "Quoting rules, anonymity, retention & deletion" },
+    { label: "Data governance & publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not-for-release — who decides and why" },
+
+    // Expression: rich pictures & artifacts
+    { label: "Rich picture notes (what to depict)", key: "rich_notes", type: "textarea", ph: "Actors, flows, tensions, bottlenecks, emotions, power" },
+    { label: "Rich picture link(s)", key: "rich_links", type: "textarea", ph: "URLs to boards or images (Kumu/Miro/FigJam)" },
+    { label: "Artifact table", key: "artifacts", type: "textarea", ph: "Screenshots, forms, signage, posts, policies — one per line" },
+
+    // Worldviews & root definitions
+    { label: "Worldview statements (Weltanschauung)", key: "worldviews", type: "textarea", ph: "Short statements naming how different groups see the situation" },
+    { label: "Root definitions (PQR: do P by Q to achieve R)", key: "root_defs", type: "textarea", ph: "One per line: label — do P by Q to achieve R" },
+    { label: "CATWOE entries (one per line)", key: "catwoe", type: "textarea", ph: "label — C:…; A:…; T:…; W:…; O:…; E:…" },
+
+    // Conceptual models
+    { label: "Conceptual model activities (one per line)", key: "activities", type: "textarea", ph: "Activity steps implied by a root definition" },
+    { label: "Activity graph / dependencies", key: "dependencies", type: "textarea", ph: "Inputs, outputs, feedbacks, measures" },
+    { label: "Monitoring & performance ideas", key: "monitoring", type: "textarea", ph: "What to observe to know the system is working" },
+
+    // Comparison with the real world
+    { label: "Comparison matrix notes", key: "comparison", type: "textarea", ph: "Model vs reality: matches, gaps, conflicts, constraints" },
+    { label: "Tradeoffs & tensions", key: "tradeoffs", type: "textarea", ph: "Social, political, technical tensions to balance" },
+
+    // Changes & action
+    { label: "Feasible & desirable changes (one per line)", key: "changes", type: "textarea", ph: "Candidate changes likely to help and acceptable to stakeholders" },
+    { label: "Action experiments (one per line: action — owner — resources — start — check date)", key: "experiments", type: "textarea", ph: "e.g., Expand interpreter pool — Maria — $6k — Jul — Sep review" },
+    { label: "Decision log", key: "decisions", type: "textarea", ph: "Key decisions made and why" },
+
+    // Learning & adaptation
+    { label: "Learning questions", key: "learning_qs", type: "textarea", ph: "What we hope to learn from experiments" },
+    { label: "Evaluation plan", key: "evaluation", type: "textarea", ph: "Signals, methods, cadence" },
+
+    // Logistics
+    { label: "Workshop agenda & schedule", key: "agenda", type: "textarea", ph: "Express; Rich picture; Worldviews; Root defs; Models; Compare; Changes" },
+    { label: "Timeline & cadence", key: "timeline", type: "text", ph: "Prep 1–2 weeks; workshop; brief in 14 days; 60-day check" },
+    { label: "Context & links", key: "ctx", type: "textarea", ph: "Prior work, constraints, references" }
+  ],
+  template: ({
+    title,
+    horizon,
+    purpose,
+    owner,
+
+    situation,
+    triggers,
+    boundaries,
+    assumptions,
+
+    stakeholders,
+
+    consent,
+    data_governance,
+
+    rich_notes,
+    rich_links,
+    artifacts,
+
+    worldviews,
+    root_defs,
+    catwoe,
+
+    activities,
+    dependencies,
+    monitoring,
+
+    comparison,
+    tradeoffs,
+
+    changes,
+    experiments,
+    decisions,
+
+    learning_qs,
+    evaluation,
+
+    agenda,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i+1}. ${x}`).join("\n");
+
+    const flow = [
+      "Enter situation",
+      "Express (rich picture, artifacts)",
+      "Formulate root definitions (PQR + CATWOE)",
+      "Build conceptual models of activities",
+      "Compare with the real world",
+      "Agree feasible & desirable changes",
+      "Run action experiments and learn"
+    ].join(" -> ");
+
+    return [
+      title && `SSM plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context & links:\n${ctx}`,
+
+      "SECTION: Overview",
+      horizon && `Horizon & dates: ${horizon}`,
+      purpose && `Purpose & system of interest:\n${purpose}`,
+      owner && `Sponsor / convener: ${owner}`,
+
+      "SECTION: Problem situation",
+      situation && `Situation description:\n${situation}`,
+      triggers && `Triggers / symptoms:\n${triggers}`,
+      boundaries && `Boundaries & scope:\n${boundaries}`,
+      assumptions && `Assumptions & uncertainties:\n${assumptions}`,
+
+      "SECTION: People & inclusion",
+      stakeholders && ["Stakeholder groups:", listify(stakeholders)].join("\n"),
+
+      "SECTION: Ethics & governance",
+      consent && `Consent & documentation rules:\n${consent}`,
+      data_governance && `Data governance & publication tiers:\n${data_governance}`,
+
+      "SECTION: Expression — rich pictures & artifacts",
+      rich_notes && `Rich picture notes:\n${rich_notes}`,
+      rich_links && ["Rich picture link(s):", listify(rich_links)].join("\n"),
+      artifacts && ["Artifact table:", listify(artifacts)].join("\n"),
+
+      "SECTION: Worldviews & root definitions",
+      worldviews && `Worldview statements:\n${worldviews}`,
+      root_defs && ["Root definitions (PQR):", listify(root_defs)].join("\n"),
+      catwoe && ["CATWOE entries:", listify(catwoe)].join("\n"),
+
+      "SECTION: Conceptual models",
+      activities && ["Conceptual model activities:", listify(activities)].join("\n"),
+      dependencies && `Activity graph / dependencies:\n${dependencies}`,
+      monitoring && `Monitoring & performance ideas:\n${monitoring}`,
+
+      "SECTION: Comparison with the real world",
+      comparison && `Comparison matrix notes:\n${comparison}`,
+      tradeoffs && `Tradeoffs & tensions:\n${tradeoffs}`,
+
+      "SECTION: Changes & action",
+      changes && ["Feasible & desirable changes:", listify(changes)].join("\n"),
+      experiments && ["Action experiments:", listify(experiments)].join("\n"),
+      decisions && ["Decision log:", listify(decisions)].join("\n"),
+
+      "SECTION: Learning & adaptation",
+      learning_qs && `Learning questions:\n${learning_qs}`,
+      evaluation && `Evaluation plan:\n${evaluation}`,
+
+      "SECTION: Logistics",
+      agenda && `Workshop agenda & schedule:\n${agenda}`,
+      timeline && `Timeline & cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Boundaries explicit; edge voices included and compensated",
+      "- [ ] Rich picture captures actors, flows, emotions, and power",
+      "- [ ] Root definitions written in plain PQR and tested with CATWOE",
+      "- [ ] Conceptual models list activities and feedback loops",
+      "- [ ] Comparison surfaces gaps, conflicts, and constraints",
+      "- [ ] Shortlist of feasible & desirable changes with owners and dates",
+      "- [ ] Action experiments and learning questions are clear",
+      "- [ ] Community-first brief published within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Soft Systems Methodology SSM rich picture PQR CATWOE conceptual model worldview messy problem feasible desirable change comparison template"
+  }
+},
+
+{
+  id: "viable_system_model_vsm",
+  slug: "viable-system-model-vsm-community",
+  label: "Viable System Model - Ensure functions that keep a community adaptive and coherent",
+  kind: "systems",
+  categories: [
+    "systems",
+    "governance",
+    "community",
+    "strategy",
+    "operations"
+  ],
+  tags: [
+    "type:framework",
+    "use:operating-model",
+    "use:structure",
+    "use:governance",
+    "use:diagnosis",
+    "use:adaptation",
+    "phase:plan",
+    "phase:operate",
+    "phase:adapt",
+    "topic:community",
+    "level:advanced"
+  ],
+  use_cases: [
+    "map the essential functions that keep a community coherent while learning and changing",
+    "diagnose gaps in roles, information flows, and feedback needed for viability",
+    "design lightweight coordination and control that protects local autonomy",
+    "set up scanning and strategy so operations are informed by outside change",
+    "create recursion aware governance that scales across neighborhoods or teams",
+       "map the essential functions that keep a community coherent while learning and changing",
+    "diagnose gaps in roles, information flows, and feedback needed for viability",
+    "design lightweight coordination and control that protects local autonomy",
+    "set up scanning and strategy so operations are informed by outside change",
+    "create recursion-aware governance that scales across neighborhoods or teams",
+    "check if our community can survive leadership changes",
+    "spot weak links in how groups share information",
+    "make sure local teams can act without losing the big picture",
+    "adapt to rapid changes in law, funding, or environment",
+    "strengthen feedback loops so mistakes are corrected quickly",
+    "ensure daily operations don’t drift away from community goals",
+    "design a structure that works at both small and large scale",
+    "balance freedom of small groups with unity of the whole",
+    "prevent burnout by clarifying what functions are missing",
+    "test whether our system can learn from external shocks",
+    "map who listens to the outside world and brings signals back",
+    "create a long-term strategy team that connects to operations",
+    "decide how to coordinate across different projects fairly",
+    "analyze why decisions get stuck or ignored",
+    "check if there’s duplication or missing roles in governance",
+    "design simple reporting flows that don’t overload volunteers",
+    "help a nonprofit survive when one program shuts down",
+    "align neighborhood groups with city-wide efforts",
+    "scale up without collapsing under complexity",
+    "spot when too much power is centralized in one unit",
+    "make hidden assumptions about control explicit",
+    "show how each sub-team mirrors the whole system",
+    "give leaders a diagnostic lens to fix dysfunction",
+    "connect frontline workers’ insights to strategy faster",
+    "handle growth spurts without chaos",
+    "make resource flows transparent and fair",
+    "reduce turf wars between overlapping groups",
+    "decide what should be standardized vs. left local",
+    "support learning across different branches or circles",
+    "audit if our governance actually supports resilience",
+    "stress test whether the community could adapt in crisis",
+    "design structures for federated or networked communities",
+    "help grassroots movements avoid fragmentation",
+    "spot whether innovation is being blocked or lost",
+    "clarify where monitoring is needed vs. trust is enough",
+    "improve coordination between operations and planning",
+    "design adaptive policies that evolve with experience",
+    "align multiple organizations around a shared system logic",
+    "bridge between long-term vision and short-term tactics",
+    "track how value, information, and accountability flow",
+    "simplify without breaking essential connections",
+    "use recursion to organize multiple scales of action",
+    "help leaders sleep at night knowing the basics are covered"
+  ],
+  boosters: [
+    "Start with system in focus and boundary. Write it plain. Name what is in and out.",
+    "Model recursion. Each unit that delivers value should be viable in itself.",
+    "Protect local autonomy. Coordinate only what needs coordinating. Everything else local.",
+    "Design information flows first. Roles and meetings follow from what must be sensed and decided.",
+    "Use short review horizons and algedonic alerts. Escalate only when needed.",
+    "Pair variety attenuation with variety amplification. Reduce noise and increase community voice."
+  ],
+  definition: "VSM describes five interacting functions that a viable system needs to survive and adapt. S1 Operations deliver value. S2 Coordination stabilizes interactions among S1 units. S3 Control steers the whole today and audits reality. S4 Intelligence scans the outside and plans for tomorrow. S5 Policy holds identity, purpose, and values so the system stays coherent.",
+  help: "Fill system in focus, environment, recursion map, S1 to S5 functions, channels and feedback loops, variety management, cadences, roles, records, measures, and risks. Keep it human scale for volunteer communities.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., VSM map for Eastside Community" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why model viability and where it applies" },
+    { label: "System in focus", key: "system_focus", type: "text", ph: "The community system you are modeling" },
+    { label: "Boundary and exclusions", key: "boundary", type: "textarea", ph: "What is in and what is out" },
+
+    // Environment and recursion
+    { label: "Environment segments", key: "environment", type: "textarea", ph: "Partners, policies, funders, residents, culture, market, tech" },
+    { label: "Recursion levels", key: "recursions", type: "textarea", ph: "Level 0 city, Level 1 neighborhoods, Level 2 teams, Level 3 events" },
+    { label: "Interfaces across levels", key: "interfaces", type: "textarea", ph: "How levels link and what is shared" },
+
+    // S1 Operations
+    { label: "S1 units - one per line", key: "s1_units", type: "textarea", ph: "Unit - purpose - customers - key outputs - local measures" },
+    { label: "S1 autonomy rules", key: "s1_autonomy", type: "textarea", ph: "What is local by default, what needs consent or review" },
+
+    // S2 Coordination
+    { label: "S2 mechanisms", key: "s2_mech", type: "textarea", ph: "Shared calendars, standards, lightweight protocols, handoffs" },
+    { label: "S2 cadences", key: "s2_cadence", type: "text", ph: "e.g., weekly 25 min sync, monthly cross unit check" },
+    { label: "Conflict and load balancing", key: "s2_balance", type: "textarea", ph: "How clashes are seen early and smoothed" },
+
+    // S3 Control (and S3*)
+    { label: "S3 steering focus", key: "s3_focus", type: "textarea", ph: "Resources, constraints, priorities, compliance with values" },
+    { label: "S3 audits S3*", key: "s3_audit", type: "textarea", ph: "Spot checks, reality checks, gemba walks, secret shopper, community hotlines" },
+    { label: "S3 records and dashboards", key: "s3_records", type: "textarea", ph: "What is logged and where it is visible" },
+
+    // S4 Intelligence
+    { label: "S4 scanning and research", key: "s4_scan", type: "textarea", ph: "Trends, policy changes, community insights, experiments" },
+    { label: "S4 planning horizons", key: "s4_horizon", type: "text", ph: "90 day, yearly, multi year with light touch" },
+    { label: "S4 to S1 learning loop", key: "s4_learning", type: "textarea", ph: "How insights turn into trials and updates" },
+
+    // S5 Policy and identity
+    { label: "S5 identity and values", key: "s5_identity", type: "textarea", ph: "Purpose, values, red lines, promises to the community" },
+    { label: "S5 decision rules", key: "s5_rules", type: "textarea", ph: "Consent rule, quorum, who holds the pen" },
+    { label: "S5 stewardship roles", key: "s5_roles", type: "textarea", ph: "Who holds identity work and how they are selected" },
+
+    // Channels and feedback
+    { label: "Key channels", key: "channels", type: "textarea", ph: "Ops to control, ops to ops, community to ops, outside to intelligence" },
+    { label: "Algedonic alerts", key: "algedonic", type: "textarea", ph: "When do we escalate fast from S1 to S3 to S5" },
+    { label: "Homeostats", key: "homeostats", type: "textarea", ph: "Pairs of measures that stabilize the system, e.g., speed vs inclusion" },
+
+    // Variety management
+    { label: "Attenuators", key: "attenuators", type: "textarea", ph: "Filters, queues, templates, standards that reduce noise" },
+    { label: "Amplifiers", key: "amplifiers", type: "textarea", ph: "Translation, outreach, facilitation, small grants that increase voice" },
+
+    // Cadences and rituals
+    { label: "Meeting map", key: "meetings", type: "textarea", ph: "Ops daily or weekly, S2 sync weekly, S3 monthly, S4 monthly, S5 quarterly" },
+    { label: "Decision intake and routing", key: "intake", type: "textarea", ph: "How tensions become proposals and where they go" },
+
+    // Roles and selection
+    { label: "Core roles", key: "roles", type: "textarea", ph: "Facilitator, Secretary, Steward, Delegate, Intelligence lead, Access lead" },
+    { label: "Selection and terms", key: "selection", type: "textarea", ph: "How roles are filled, terms, review dates" },
+
+    // Inclusion and ethics
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters, transport, childcare, sensory supports" },
+    { label: "Consent and transparency", key: "consent", type: "textarea", ph: "What is public, what is private, who can see minutes" },
+    { label: "Data governance tiers", key: "data_governance", type: "textarea", ph: "Public, Community only, Restricted, Not for release" },
+
+    // Records and artifacts
+    { label: "Policy log", key: "policy_log", type: "textarea", ph: "Policy - owner - date - review date - link" },
+    { label: "Experiment log", key: "experiment_log", type: "textarea", ph: "Test - owner - start - measure - check date - result" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Delivery, service quality, inclusion, talk time parity, decision time, alert count" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Hidden hierarchy, over centralization, drift, burnout, bureaucracy creep" },
+
+    // Timeline and context
+    { label: "Rollout steps", key: "rollout", type: "textarea", ph: "Pilot one recursion, learn, then scale only where needed" },
+    { label: "Timeline and cadence", key: "timeline", type: "text", ph: "Prep 2 weeks, pilot 90 days, review and adapt" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, constraints, prior governance" }
+  ],
+  template: ({
+    title,
+    purpose,
+    system_focus,
+    boundary,
+
+    environment,
+    recursions,
+    interfaces,
+
+    s1_units,
+    s1_autonomy,
+
+    s2_mech,
+    s2_cadence,
+    s2_balance,
+
+    s3_focus,
+    s3_audit,
+    s3_records,
+
+    s4_scan,
+    s4_horizon,
+    s4_learning,
+
+    s5_identity,
+    s5_rules,
+    s5_roles,
+
+    channels,
+    algedonic,
+    homeostats,
+
+    attenuators,
+    amplifiers,
+
+    meetings,
+    intake,
+
+    roles,
+    selection,
+
+    access,
+    consent,
+    data_governance,
+
+    policy_log,
+    experiment_log,
+
+    measures,
+    risks,
+
+    rollout,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "State system in focus and boundary",
+      "Map recursion and environment",
+      "Describe S1 to S5 functions",
+      "Design channels, alerts, and homeostats",
+      "Tune variety attenuation and amplification",
+      "Set cadences, roles, and records",
+      "Track measures and adapt"
+    ].join(" -> ");
+
+    return [
+      title && `VSM plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      purpose && `Purpose and scope:\n${purpose}`,
+      system_focus && `System in focus: ${system_focus}`,
+      boundary && `Boundary and exclusions:\n${boundary}`,
+
+      "SECTION: Environment and recursion",
+      environment && `Environment segments:\n${environment}`,
+      recursions && `Recursion levels:\n${recursions}`,
+      interfaces && `Interfaces across levels:\n${interfaces}`,
+
+      "SECTION: S1 Operations",
+      s1_units && ["S1 units:", listify(s1_units)].join("\n"),
+      s1_autonomy && `S1 autonomy rules:\n${s1_autonomy}`,
+
+      "SECTION: S2 Coordination",
+      s2_mech && `S2 mechanisms:\n${s2_mech}`,
+      s2_cadence && `S2 cadences: ${s2_cadence}`,
+      s2_balance && `Conflict and load balancing:\n${s2_balance}`,
+
+      "SECTION: S3 Control",
+      s3_focus && `S3 steering focus:\n${s3_focus}`,
+      s3_audit && `S3 audits S3*:\n${s3_audit}`,
+      s3_records && `S3 records and dashboards:\n${s3_records}`,
+
+      "SECTION: S4 Intelligence",
+      s4_scan && `S4 scanning and research:\n${s4_scan}`,
+      s4_horizon && `S4 planning horizons: ${s4_horizon}`,
+      s4_learning && `S4 to S1 learning loop:\n${s4_learning}`,
+
+      "SECTION: S5 Policy and identity",
+      s5_identity && `S5 identity and values:\n${s5_identity}`,
+      s5_rules && `S5 decision rules:\n${s5_rules}`,
+      s5_roles && `S5 stewardship roles:\n${s5_roles}`,
+
+      "SECTION: Channels and feedback",
+      channels && `Key channels:\n${channels}`,
+      algedonic && `Algedonic alerts:\n${algedonic}`,
+      homeostats && `Homeostats:\n${homeostats}`,
+
+      "SECTION: Variety management",
+      attenuators && `Attenuators:\n${attenuators}`,
+      amplifiers && `Amplifiers:\n${amplifiers}`,
+
+      "SECTION: Cadences and rituals",
+      meetings && `Meeting map:\n${meetings}`,
+      intake && `Decision intake and routing:\n${intake}`,
+
+      "SECTION: Roles and selection",
+      roles && `Core roles:\n${roles}`,
+      selection && `Selection and terms:\n${selection}`,
+
+      "SECTION: Inclusion and ethics",
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and transparency:\n${consent}`,
+      data_governance && `Data governance tiers:\n${data_governance}`,
+
+      "SECTION: Records and artifacts",
+      policy_log && ["Policy log:", listify(policy_log)].join("\n"),
+      experiment_log && ["Experiment log:", listify(experiment_log)].join("\n"),
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline",
+      rollout && `Rollout steps:\n${rollout}`,
+      timeline && `Timeline and cadence: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] System in focus and boundary are explicit",
+      "- [ ] Recursion and environment are mapped",
+      "- [ ] S1 to S5 functions have clear owners and flows",
+      "- [ ] Channels, algedonic alerts, and homeostats are defined",
+      "- [ ] Variety attenuation and amplification are balanced",
+      "- [ ] Cadences, roles, and records are simple and visible",
+      "- [ ] Measures show delivery, inclusion, and adaptability",
+      "- [ ] Short reviews drive continuous learning"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Viable System Model VSM S1 S2 S3 S3* S4 S5 algedonic alerts homeostat variety attenuation amplification recursion governance community template"
+  }
+},
+
+{
+  id: "competing_values_framework_cvf",
+  slug: "competing-values-framework-culture-to-mission",
+  label: "Competing Values Framework - Culture map to align ways of working with mission",
+  kind: "analysis",
+  categories: [
+    "strategy",
+    "research",
+    "community",
+    "governance",
+    "operations"
+  ],
+  tags: [
+    "type:framework",
+    "use:diagnosis",
+    "use:operating-model",
+    "use:culture",
+    "use:alignment",
+     "use:values",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "assess current culture patterns across Clan, Adhocracy, Market, Hierarchy",
+    "align desired culture with mission, values, and outcomes",
+    "translate culture shifts into concrete behaviors and routines",
+    "balance tensions across quadrants without caricature or drift",
+    "track signals that show culture change is happening",
+       "assess current culture patterns across Clan, Adhocracy, Market, Hierarchy",
+    "align desired culture with mission, values, and outcomes",
+    "translate culture shifts into concrete behaviors and routines",
+    "balance tensions across quadrants without caricature or drift",
+    "track signals that show culture change is happening",
+    "figure out why our team feels chaotic vs. rigid",
+    "decide if we need more structure or more creativity",
+    "spot when competition is undermining collaboration",
+    "explain culture clashes between two merging groups",
+    "help leaders see their blind spots in style",
+    "compare what we say our values are vs. how we actually work",
+    "diagnose why staff turnover is high",
+    "map tensions between innovation and stability",
+    "decide if a startup should formalize processes",
+    "explain why some people resist agile or flexible work",
+    "check whether rewards match our stated values",
+    "balance being people-centered vs. performance-driven",
+    "design leadership training tailored to culture quadrant",
+    "explain why one department acts differently than another",
+    "test if our culture matches customer expectations",
+    "use culture mapping in a strategy offsite",
+    "translate abstract values into daily habits",
+    "spot where hierarchy is stifling innovation",
+    "help nonprofits avoid burnout while chasing impact",
+    "decide if a team should push harder or slow down",
+    "analyze culture fit during partnerships or coalitions",
+    "reconcile board priorities with staff values",
+    "show investors how culture supports growth",
+    "audit culture before scaling into new markets",
+    "plan a balanced hiring strategy (clan vs. market types)",
+    "decide what type of leader to hire next",
+    "coach leaders on flexing across quadrants",
+    "map out which culture quadrant dominates meetings",
+    "run before/after assessments to measure change",
+    "design culture interventions with real indicators",
+    "spot gaps where mission and culture diverge",
+    "help schools decide between rules or creativity focus",
+    "make sense of why projects stall in bureaucracy",
+    "connect culture type to decision-making speed",
+    "check if our reward system incentivizes the wrong things",
+    "teach students how organizations differ in culture",
+    "frame why some conflicts are about values not tasks",
+    "design a survey for staff cultural alignment",
+    "show how culture affects collaboration across silos",
+    "develop a hybrid model (e.g., clan + market blend)",
+    "reduce stress by balancing flexibility and control",
+    "plan leadership succession with culture continuity",
+    "help new hires understand ‘how we do things here’",
+    "compare two organizations before partnership",
+    "prepare for external shocks by flexing quadrants",
+    "decide if we’re too focused on short-term results",
+    "explain to kids why school rules feel different in classes"
+  ],
+  boosters: [
+    "Use mixed evidence. Pair survey results with artifacts, stories, and observation.",
+    "Customize quadrant language so it matches local vocabulary. Do not fight the dialect.",
+    "Map desired shifts to a small number of visible routines people can practice next week.",
+    "Balance the system. When you amplify one quadrant, name what you will keep from the others.",
+    "Review quarterly with short learning cycles rather than one big change program.",
+    "Fund access supports for diagnostics and publish a plain language brief."
+  ],
+  definition: "A culture model with four quadrants that often trade off. Clan Collaborate focuses on cohesion and participation. Adhocracy Create focuses on innovation and adaptability. Market Compete focuses on external results and speed. Hierarchy Control focuses on reliability and clarity. Use it to align ways of working to mission.",
+  help: "Fill current and desired profiles, evidence, and the routines you will change. Connect culture choices to mission outcomes. Name tensions and guardrails. Choose a handful of experiments with owners and review dates.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., CVF map for Eastside Community" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council culture steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are mapping culture and what is in scope" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., Now to 12 months" },
+
+    // Units and inclusion
+    {
+      label: "Units or teams in scope",
+      autofill: "persona->inline",
+      itemLabel: "unit or team",
+      itemType: "typeahead",
+      key: "units",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Outreach; Programs; Access; Data; Events"
+    },
+    { label: "Stakeholders to include in diagnostic", key: "stakeholders", type: "textarea", ph: "Members, volunteers, staff, partners, funders, residents" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters and ASL, transport, childcare, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and quoting rules", key: "consent", type: "textarea", ph: "What can be quoted, where, how long, anonymity options" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release. Who decides and why." },
+
+    // Quadrant language
+    { label: "Clan Collaborate - local description", key: "q_clan_desc", type: "textarea", ph: "Belonging, mentorship, voice in decisions, mutual aid" },
+    { label: "Adhocracy Create - local description", key: "q_adho_desc", type: "textarea", ph: "Experimentation, learning, pilots, variety" },
+    { label: "Market Compete - local description", key: "q_market_desc", type: "textarea", ph: "Clear goals, external results, responsiveness" },
+    { label: "Hierarchy Control - local description", key: "q_hier_desc", type: "textarea", ph: "Reliability, safety, documented standards" },
+
+    // Current profile
+    { label: "Current profile - overall scores 0 to 100", key: "now_overall", type: "text", ph: "Clan 35 | Adhocracy 25 | Market 20 | Hierarchy 20" },
+    { label: "Current profile by unit (one per line: unit - clan - adhocracy - market - hierarchy)", key: "now_by_unit", type: "textarea", ph: "Outreach - 40 - 35 - 15 - 10" },
+    { label: "Evidence and artifacts", key: "now_evidence", type: "textarea", ph: "Surveys, story quotes, screenshots, policies, metrics" },
+
+    // Desired profile
+    { label: "Desired profile - overall scores 0 to 100", key: "next_overall", type: "text", ph: "Clan 30 | Adhocracy 35 | Market 20 | Hierarchy 15" },
+    { label: "Desired profile by unit (one per line: unit - clan - adhocracy - market - hierarchy)", key: "next_by_unit", type: "textarea", ph: "Outreach - 35 - 40 - 15 - 10" },
+    { label: "Why these shifts", key: "why_shift", type: "textarea", ph: "Mission and outcomes that require the change" },
+
+    // Mission alignment
+    { label: "Mission anchors and outcomes", key: "mission", type: "textarea", ph: "Purpose, values, outcomes to improve" },
+    { label: "Ways of working that support mission", key: "wow_support", type: "textarea", ph: "Routines that express each quadrant in service of the mission" },
+
+    // Behaviors and routines to change
+    { label: "Clan behaviors to amplify", key: "clan_do", type: "textarea", ph: "Peer mentoring, participatory planning, gratitude rituals" },
+    { label: "Adhocracy behaviors to amplify", key: "adho_do", type: "textarea", ph: "Monthly pilot window, demo days, small grants" },
+    { label: "Market behaviors to amplify", key: "market_do", type: "textarea", ph: "Fast feedback from users, service level targets, response goals" },
+    { label: "Hierarchy behaviors to amplify", key: "hier_do", type: "textarea", ph: "Accessible checklists, safety reviews, clear handoffs" },
+
+    // Guardrails and tensions
+    { label: "Guardrails and do nots", key: "guardrails", type: "textarea", ph: "What we refuse to compromise, red lines by quadrant" },
+    { label: "Tensions and tradeoffs", key: "tensions", type: "textarea", ph: "Create vs Control, Collaborate vs Compete. What will we balance and how." },
+
+    // Experiments
+    { label: "Experiments and policy tweaks (one per line: change - owner - resources - start - check date - success signals)", key: "experiments", type: "textarea", ph: "Example - owner - $ - Jul - Sep 15 - signals" },
+
+    // Cadence and learning
+    { label: "Review cadence and roles", key: "cadence", type: "textarea", ph: "Quarterly culture review, who leads, who participates" },
+    { label: "Integration with governance", key: "governance_link", type: "textarea", ph: "How culture shifts feed proposals and policies" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Belonging, innovation rate, time to decision, reliability, outcomes" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Overcorrecting, jargon, tokenism, bureaucracy creep" },
+
+    // Timeline and reporting
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 2 weeks, workshops, brief in 14 days, 90 day check" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first summary, bilingual where relevant" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior work, references, constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    units,
+    stakeholders,
+    access,
+
+    consent,
+    data_governance,
+
+    q_clan_desc,
+    q_adho_desc,
+    q_market_desc,
+    q_hier_desc,
+
+    now_overall,
+    now_by_unit,
+    now_evidence,
+
+    next_overall,
+    next_by_unit,
+    why_shift,
+
+    mission,
+    wow_support,
+
+    clan_do,
+    adho_do,
+    market_do,
+    hier_do,
+
+    guardrails,
+    tensions,
+
+    experiments,
+
+    cadence,
+    governance_link,
+
+    measures,
+    risks,
+
+    timeline,
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const axes = [
+      "Horizontal axis: Collaborate (Clan) on the left vs Compete (Market) on the right",
+      "Vertical axis: Create (Adhocracy) on top vs Control (Hierarchy) on bottom"
+    ].join(" | ");
+
+    const flow = [
+      "Define scope and ethics",
+      "Describe quadrants in local language",
+      "Capture current and desired profiles",
+      "Link shifts to mission and outcomes",
+      "Name routines to change and guardrails",
+      "Run small experiments with owners and dates",
+      "Review signals and iterate"
+    ].join(" -> ");
+
+    return [
+      title && `CVF plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+
+      "SECTION: Units and inclusion",
+      units && ["Units or teams in scope:", listify(units)].join("\n"),
+      stakeholders && `Stakeholders to include in diagnostic:\n${stakeholders}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and quoting rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Quadrant language",
+      q_clan_desc && `Clan Collaborate - local description:\n${q_clan_desc}`,
+      q_adho_desc && `Adhocracy Create - local description:\n${q_adho_desc}`,
+      q_market_desc && `Market Compete - local description:\n${q_market_desc}`,
+      q_hier_desc && `Hierarchy Control - local description:\n${q_hier_desc}`,
+      `Axes: ${axes}`,
+
+      "SECTION: Current profile",
+      now_overall && `Current profile overall: ${now_overall}`,
+      now_by_unit && ["Current profile by unit:", listify(now_by_unit)].join("\n"),
+      now_evidence && `Evidence and artifacts:\n${now_evidence}`,
+
+      "SECTION: Desired profile",
+      next_overall && `Desired profile overall: ${next_overall}`,
+      next_by_unit && ["Desired profile by unit:", listify(next_by_unit)].join("\n"),
+      why_shift && `Why these shifts:\n${why_shift}`,
+
+      "SECTION: Mission alignment",
+      mission && `Mission anchors and outcomes:\n${mission}`,
+      wow_support && `Ways of working that support mission:\n${wow_support}`,
+
+      "SECTION: Behaviors and routines to change",
+      clan_do && `Clan behaviors to amplify:\n${clan_do}`,
+      adho_do && `Adhocracy behaviors to amplify:\n${adho_do}`,
+      market_do && `Market behaviors to amplify:\n${market_do}`,
+      hier_do && `Hierarchy behaviors to amplify:\n${hier_do}`,
+
+      "SECTION: Guardrails and tensions",
+      guardrails && `Guardrails and do nots:\n${guardrails}`,
+      tensions && `Tensions and tradeoffs:\n${tensions}`,
+
+      "SECTION: Experiments",
+      experiments && ["Experiments and policy tweaks:", listify(experiments)].join("\n"),
+
+      "SECTION: Cadence and learning",
+      cadence && `Review cadence and roles:\n${cadence}`,
+      governance_link && `Integration with governance:\n${governance_link}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline and reporting",
+      timeline && `Timeline: ${timeline}`,
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Quadrant language localized and understood",
+      "- [ ] Current and desired profiles captured by unit and overall",
+      "- [ ] Shifts tied directly to mission outcomes",
+      "- [ ] 3 to 6 concrete routines to change are named",
+      "- [ ] Guardrails avoid overcorrection and tokenism",
+      "- [ ] Experiments have owners, resources, and review dates",
+      "- [ ] Signals show movement without gaming the system",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Competing Values Framework CVF Clan Adhocracy Market Hierarchy culture diagnosis alignment routines mission signals template"
+  }
+},
+
+{
+  id: "community_capitals_framework",
+  slug: "community-capitals-framework-seven-capitals",
+  label: "Community Capitals Framework - Seven capitals lens for purpose and investment",
+  kind: "analysis",
+  categories: [
+    "strategy",
+    "research",
+    "community",
+    "planning",
+    "investment"
+  ],
+  tags: [
+    "type:framework",
+    "use:diagnosis",
+    "use:portfolio",
+    "use:investment",
+    "use:equity",
+    "use:resilience",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "asset mapping before strategy or funding decisions",
+    "align investments with mission across the seven capitals",
+    "design small tests that create positive spillovers",
+    "track equity outcomes and avoid negative externalities",
+    "report a clear, community first portfolio story",
+        "asset mapping before strategy or funding decisions",
+    "align investments with mission across the seven capitals",
+    "design small tests that create positive spillovers",
+    "track equity outcomes and avoid negative externalities",
+    "report a clear, community first portfolio story",
+    "decide if funding should go to parks or training programs",
+    "compare social vs. financial return on a grant",
+    "check if arts investments boost local pride",
+    "show why broadband matters as infrastructure capital",
+    "explain why housing affects human capital",
+    "help donors see more than just money impact",
+    "spot where cultural capital is undervalued",
+    "measure how volunteering strengthens social capital",
+    "balance natural and built capital in development plans",
+    "track if youth programs boost human capital long term",
+    "plan disaster recovery by looking across all capitals",
+    "decide what mix of investments builds resilience",
+    "design surveys to capture capitals growth",
+    "connect cultural heritage to economic vitality",
+    "report outcomes to funders in plain language",
+    "choose capital priorities in strategic planning",
+    "make equity tradeoffs more transparent",
+    "explain to residents why parks are investments",
+    "help a rural town compare assets with a city",
+    "set a baseline portfolio across seven capitals",
+    "identify capitals most at risk of erosion",
+    "diagnose why social trust is breaking down",
+    "argue for why art funding matters in tough times",
+    "connect education access to human capital growth",
+    "decide how to measure community wealth",
+    "help students map their town’s assets",
+    "teach local officials why natural capital matters",
+    "justify grants with a seven-capitals lens",
+    "surface unintended effects of an intervention",
+    "spot overlapping benefits across capitals",
+    "prioritize investments with biggest spillover",
+    "track change over time in capital scores",
+    "help foundations prove systemic impact",
+    "guide coalitions on what capital to focus on",
+    "design storytelling that shows community strength",
+    "debate tradeoffs: jobs vs. environment",
+    "create visuals of capital interconnections",
+    "help kids see why playgrounds are investments",
+    "diagnose imbalance: strong economy but weak trust",
+    "argue against short-term extractive projects",
+    "celebrate wins across capitals, not just dollars",
+    "map historic inequities across capitals",
+    "show where underinvestment locks poverty cycles",
+    "frame sustainability plans in seven-capitals terms",
+    "design participatory budgeting around capitals",
+    "help city planners measure inclusive prosperity"
+  ],
+  boosters: [
+    "Name the boundary up front. Place, time window, who is in scope.",
+    "Center equity. For each capital ask who benefits, who pays, and who decides.",
+    "Prefer investments that create cross capital multipliers.",
+    "Pair qualitative stories with simple, visible indicators.",
+    "Publish a short brief within 14 days and credit contributors who opted in."
+  ],
+  definition: "A structured lens from Flora and Flora with seven capitals: natural, cultural, human, social, political, financial, and built. It helps communities see assets, gaps, and investments that build purpose, resilience, and equity.",
+  help: "Fill assets, gaps, risks, opportunities, indicators, and candidate investments for each capital. Then synthesize cross capital synergies, tradeoffs, and a small portfolio with owners, resources, and check dates.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Seven Capitals map for Eastside" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council portfolio steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are mapping and where it applies" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., Now to 12 months" },
+    { label: "Geography and boundary", key: "boundary", type: "textarea", ph: "Neighborhoods, sites, online spaces, in and out of scope" },
+    { label: "Population and segments", key: "population", type: "textarea", ph: "Who lives here and who is most affected" },
+
+    // Inclusion and ethics
+    {
+      label: "Stakeholders to involve",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, newcomers, disabled residents, small biz"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters and ASL, childcare, transport, sensory supports" },
+    { label: "Consent and quoting rules", key: "consent", type: "textarea", ph: "What can be quoted, where, how long, anonymity options" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release - who decides and why" },
+
+    // Natural capital
+    { label: "Natural - assets and condition", key: "nat_assets", type: "textarea", ph: "Air, water, soil, trees, parks, biodiversity, climate hazards" },
+    { label: "Natural - gaps and risks", key: "nat_gaps", type: "textarea", ph: "Pollution, heat islands, flood zones, access gaps" },
+    { label: "Natural - opportunities and practices", key: "nat_ops", type: "textarea", ph: "Shade trees, greenways, water capture, habitat work" },
+    { label: "Natural - indicators", key: "nat_inds", type: "textarea", ph: "Canopy %, heat days, water quality, access minutes to green space" },
+    { label: "Natural - investments (one per line: action - owner - resources - start - check date - indicator)", key: "nat_invest", type: "textarea", ph: "Tree planting - Parks - $25k - Jul - Oct 1 - canopy %" },
+
+    // Cultural capital
+    { label: "Cultural - assets and expressions", key: "cul_assets", type: "textarea", ph: "Languages, arts, rituals, heritage sites, storykeepers" },
+    { label: "Cultural - gaps and risks", key: "cul_gaps", type: "textarea", ph: "Erasure, appropriation, single story risk" },
+    { label: "Cultural - opportunities", key: "cul_ops", type: "textarea", ph: "Festivals, makers, archives, youth arts, language programs" },
+    { label: "Cultural - indicators", key: "cul_inds", type: "textarea", ph: "Event count, language access, artist pay, attendance diversity" },
+    { label: "Cultural - investments (one per line: action - owner - resources - start - check date - indicator)", key: "cul_invest", type: "textarea", ph: "Community archive - Library - $10k - Aug - Nov 15 - items digitized" },
+
+    // Human capital
+    { label: "Human - assets and skills", key: "hum_assets", type: "textarea", ph: "Education, certifications, lived expertise, health" },
+    { label: "Human - gaps and risks", key: "hum_gaps", type: "textarea", ph: "Unemployment, burnout, no pathways, health barriers" },
+    { label: "Human - opportunities", key: "hum_ops", type: "textarea", ph: "Training, stipends, peer learning, mental health supports" },
+    { label: "Human - indicators", key: "hum_inds", type: "textarea", ph: "Completion rates, stipends paid, retention, perceived capability" },
+    { label: "Human - investments (one per line: action - owner - resources - start - check date - indicator)", key: "hum_invest", type: "textarea", ph: "Peer facilitation training - Council - $8k - Sep - Dec 1 - grads" },
+
+    // Social capital
+    { label: "Social - assets and networks", key: "soc_assets", type: "textarea", ph: "Associations, mutual aid, trust, bridging ties" },
+    { label: "Social - gaps and risks", key: "soc_gaps", type: "textarea", ph: "Isolation, silos, conflict, misinformation" },
+    { label: "Social - opportunities", key: "soc_ops", type: "textarea", ph: "Story circles, cross group events, mentorship, digital commons" },
+    { label: "Social - indicators", key: "soc_inds", type: "textarea", ph: "Attendance mix, talk time parity, collaboration count, trust survey" },
+    { label: "Social - investments (one per line: action - owner - resources - start - check date - indicator)", key: "soc_invest", type: "textarea", ph: "Cross group potlucks - Youth org - $5k - Jul - Sep 30 - attendance mix" },
+
+    // Political capital
+    { label: "Political - assets and voice", key: "pol_assets", type: "textarea", ph: "Civic groups, advocates, relationships, process fluency" },
+    { label: "Political - gaps and risks", key: "pol_gaps", type: "textarea", ph: "Gatekeeping, low turnout, language barriers" },
+    { label: "Political - opportunities", key: "pol_ops", type: "textarea", ph: "Civics training, participatory budgeting, advisory seats" },
+    { label: "Political - indicators", key: "pol_inds", type: "textarea", ph: "Attendance at hearings, translated notices, policy wins" },
+    { label: "Political - investments (one per line: action - owner - resources - start - check date - indicator)", key: "pol_invest", type: "textarea", ph: "Civics bootcamp - CBO - $12k - Aug - Nov 1 - grads" },
+
+    // Financial capital
+    { label: "Financial - assets and flows", key: "fin_assets", type: "textarea", ph: "Local spend, grants, small biz, credit access, philanthropy" },
+    { label: "Financial - gaps and risks", key: "fin_gaps", type: "textarea", ph: "Leakage, predatory products, uneven grantmaking" },
+    { label: "Financial - opportunities", key: "fin_ops", type: "textarea", ph: "Buy local, micro grants, CDFI links, pooled funds" },
+    { label: "Financial - indicators", key: "fin_inds", type: "textarea", ph: "Local spend %, small grants count, match dollars" },
+    { label: "Financial - investments (one per line: action - owner - resources - start - check date - indicator)", key: "fin_invest", type: "textarea", ph: "Micro grant pool - Council - $30k - Jul - Oct 15 - projects funded" },
+
+    // Built capital
+    { label: "Built - assets and quality", key: "bui_assets", type: "textarea", ph: "Housing, venues, sidewalks, transit, broadband, signage" },
+    { label: "Built - gaps and risks", key: "bui_gaps", type: "textarea", ph: "Vacancy, ADA gaps, unsafe crossings, digital divide" },
+    { label: "Built - opportunities", key: "bui_ops", type: "textarea", ph: "Wayfinding, pocket parks, co working, wifi, repair not replace" },
+    { label: "Built - indicators", key: "bui_inds", type: "textarea", ph: "Open hours, ADA checklists passed, wifi coverage, crash data" },
+    { label: "Built - investments (one per line: action - owner - resources - start - check date - indicator)", key: "bui_invest", type: "textarea", ph: "Wayfinding refresh - BID - $15k - Sep - Dec 1 - sign installs" },
+
+    // Cross capital synthesis
+    { label: "Synergies and sequences", key: "synergies", type: "textarea", ph: "How one investment multiplies another, order of moves" },
+    { label: "Tradeoffs and guardrails", key: "tradeoffs", type: "textarea", ph: "What to protect while investing elsewhere" },
+    { label: "Interdependencies map link", key: "deps_link", type: "text", ph: "Kumu or Miro or FigJam URL" },
+    { label: "Externalities to avoid", key: "externalities", type: "textarea", ph: "Displacement, noise, cultural erasure, exclusion risk" },
+
+    // Portfolio and delivery
+    { label: "Portfolio summary (one per line: action - capitals - owner - budget - start - check date - indicator)", key: "portfolio", type: "textarea", ph: "Tree planting - Natural+Social - Parks - $25k - Jul - Oct 1 - canopy %" },
+    { label: "Funding sources and constraints", key: "funding", type: "textarea", ph: "Grants, sponsors, public funds, policy links" },
+    { label: "Governance and decision rights", key: "governance", type: "textarea", ph: "Who decides, who advises, how the community reviews" },
+
+    // Measures and learning
+    { label: "Dashboard indicators", key: "dashboard", type: "textarea", ph: "Small set across capitals with definitions and owners" },
+    { label: "Review cadence and roles", key: "cadence", type: "text", ph: "Monthly ops, quarterly portfolio, annual refresh" },
+
+    // Risks
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Backlash, overcorrection, tokenism, drift, burnout" },
+
+    // Timeline and reporting
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 2 weeks, workshops, brief in 14 days, 90 day check" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first summary, bilingual where relevant" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior work, references, constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+    population,
+
+    stakeholders,
+    access,
+    consent,
+    data_governance,
+
+    nat_assets, nat_gaps, nat_ops, nat_inds, nat_invest,
+    cul_assets, cul_gaps, cul_ops, cul_inds, cul_invest,
+    hum_assets, hum_gaps, hum_ops, hum_inds, hum_invest,
+    soc_assets, soc_gaps, soc_ops, soc_inds, soc_invest,
+    pol_assets, pol_gaps, pol_ops, pol_inds, pol_invest,
+    fin_assets, fin_gaps, fin_ops, fin_inds, fin_invest,
+    bui_assets, bui_gaps, bui_ops, bui_inds, bui_invest,
+
+    synergies, tradeoffs, deps_link, externalities,
+
+    portfolio, funding, governance,
+
+    dashboard, cadence,
+
+    risks,
+
+    timeline, report_back, ctx,
+    audience, style, tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Set boundary and ethics",
+      "Map assets, gaps, risks, and opportunities by capital",
+      "Pick indicators and candidate investments",
+      "Design cross capital synergies and guardrails",
+      "Assemble a small portfolio with owners and dates",
+      "Review a simple dashboard on a clear cadence",
+      "Publish a brief and adjust with community input"
+    ].join(" -> ");
+
+    const capBlock = (name, assets, gaps, ops, inds, invest) => [
+      `SECTION: ${name} capital`,
+      assets && `${name} - assets and condition:\n${assets}`,
+      gaps && `${name} - gaps and risks:\n${gaps}`,
+      ops && `${name} - opportunities and practices:\n${ops}`,
+      inds && `${name} - indicators:\n${inds}`,
+      invest && [`${name} - investments:`, listify(invest)].join("\n")
+    ].filter(Boolean).join("\n");
+
+    return [
+      title && `Community Capitals plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+      boundary && `Geography and boundary:\n${boundary}`,
+      population && `Population and segments:\n${population}`,
+
+      "SECTION: Inclusion and ethics",
+      stakeholders && ["Stakeholders to involve:", listify(stakeholders)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and quoting rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      capBlock("Natural", nat_assets, nat_gaps, nat_ops, nat_inds, nat_invest),
+      capBlock("Cultural", cul_assets, cul_gaps, cul_ops, cul_inds, cul_invest),
+      capBlock("Human", hum_assets, hum_gaps, hum_ops, hum_inds, hum_invest),
+      capBlock("Social", soc_assets, soc_gaps, soc_ops, soc_inds, soc_invest),
+      capBlock("Political", pol_assets, pol_gaps, pol_ops, pol_inds, pol_invest),
+      capBlock("Financial", fin_assets, fin_gaps, fin_ops, fin_inds, fin_invest),
+      capBlock("Built", bui_assets, bui_gaps, bui_ops, bui_inds, bui_invest),
+
+      "SECTION: Cross capital synthesis",
+      synergies && `Synergies and sequences:\n${synergies}`,
+      tradeoffs && `Tradeoffs and guardrails:\n${tradeoffs}`,
+      deps_link && `Interdependencies map: ${deps_link}`,
+      externalities && `Externalities to avoid:\n${externalities}`,
+
+      "SECTION: Portfolio and delivery",
+      portfolio && ["Portfolio summary:", listify(portfolio)].join("\n"),
+      funding && `Funding sources and constraints:\n${funding}`,
+      governance && `Governance and decision rights:\n${governance}`,
+
+      "SECTION: Measures and learning",
+      dashboard && `Dashboard indicators:\n${dashboard}`,
+      cadence && `Review cadence and roles: ${cadence}`,
+
+      "SECTION: Risks",
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline and reporting",
+      timeline && `Timeline: ${timeline}`,
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Boundary clear and equity centered in each capital",
+      "- [ ] Assets, gaps, risks, and opportunities captured with consent",
+      "- [ ] Indicators small and visible with named owners",
+      "- [ ] Investments create cross capital multipliers where possible",
+      "- [ ] Tradeoffs and guardrails explicit to avoid harm",
+      "- [ ] Portfolio lists action, owner, resources, and check dates",
+      "- [ ] Dashboard and cadence agreed and public",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Community Capitals Framework Flora natural cultural human social political financial built asset mapping portfolio equity indicators template"
+  }
+},
+
+
+{
+  id: "hcd_double_diamond",
+  slug: "human-centered-design-double-diamond-co-creation",
+  label: "Human-Centered Design / Double Diamond: Discover Define Develop Deliver with community co-creation",
+  kind: "design",
+  categories: [
+    "design",
+    "research",
+    "community",
+    "strategy",
+    "product"
+  ],
+  tags: [
+    "type:framework",
+    "use:design",
+    "use:research",
+    "use:co-creation",
+    "use:delivery",
+    "phase:discover",
+    "phase:define",
+    "phase:develop",
+    "phase:deliver",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "co-create with residents and partners across all four diamonds",
+    "turn research into clear problem statements and principles",
+    "prototype quickly with access and safety in scope",
+    "ship small and learn with community feedback loops",
+    "connect discovery insights to delivery decisions and measures",
+    "co-create with residents and partners across all four diamonds",
+    "turn research into clear problem statements and principles",
+    "prototype quickly with access and safety in scope",
+    "ship small and learn with community feedback loops",
+    "connect discovery insights to delivery decisions and measures",
+    "plan a design sprint with clear phases",
+    "separate problem finding from solution finding",
+    "help a nonprofit redesign its service flow",
+    "map research insights into opportunities",
+    "structure a student project in clear phases",
+    "make a messy challenge feel more manageable",
+    "decide when to stop exploring and start focusing",
+    "teach teams the difference between diverging and converging",
+    "design safer public services with user input",
+    "prototype a new digital tool with residents",
+    "create visuals that explain process to funders",
+    "balance quick wins with deeper discovery",
+    "align cross-functional teams on one design process",
+    "add community voices into early discovery",
+    "prioritize which prototypes to test first",
+    "link insights directly to features shipped",
+    "explain design process to city officials",
+    "make design work visible and transparent",
+    "avoid jumping to solutions too quickly",
+    "show funders where the money supports co-creation",
+    "help volunteers brainstorm and then refine ideas",
+    "guide students through design thinking projects",
+    "plan youth workshops with a clear arc",
+    "turn complaints into structured design input",
+    "facilitate a design jam in neighborhoods",
+    "connect front-line staff to prototype testing",
+    "explain why research before design matters",
+    "give clear names to fuzzy project phases",
+    "make tradeoffs visible in the delivery stage",
+    "set milestones at each diamond point",
+    "teach newcomers a simple design language",
+    "balance expert design with local lived experience",
+    "choose when to diverge vs. converge",
+    "adapt the double diamond for government projects",
+    "use post-its and whiteboards effectively",
+    "design inclusive processes that respect constraints",
+    "explain to a board how design reduces risk",
+    "test ideas cheaply before investing big",
+    "document lessons across multiple iterations",
+    "combine HCD with agile delivery sprints",
+    "avoid burnout by pacing the design cycle",
+    "show impact by connecting phases to outcomes",
+    "make abstract research feel practical",
+    "remind teams why user voices matter",
+    "explain design process to kids building a project"
+  ],
+  boosters: [
+    "Compensate lived expertise and book access supports up front.",
+    "Draw a boundary for the system and keep a visible out of scope list.",
+    "Publish a one page brief after each diamond with what changed.",
+    "Prototype the risky parts first. Paper beats pixel when speed matters.",
+    "Always pair emotion with evidence. Quotes with consent plus simple stats.",
+    "Design multilingual and accessible by default, not as a later patch."
+  ],
+  definition: "A practical Double Diamond for community work. Discover and Define to understand needs and opportunities. Develop and Deliver to prototype, test, and ship with clear feedback loops and equity centered practices.",
+  help: "Fill ethics, access, stakeholders, and boundary. Then work each diamond: Discover questions and methods, Define synthesis and HMW questions, Develop concepts and prototypes with tests, Deliver the MVP with rollout and measures. Keep decision logs and report back quickly.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., HCD Double Diamond for Shared Spaces" },
+    { label: "Owner or team", key: "owner", type: "text", ph: "e.g., Community Council + Library" },
+    { label: "Purpose and desired outcomes", key: "purpose", type: "textarea", ph: "Why this work matters and what success looks like" },
+    { label: "Horizon and dates", key: "horizon", type: "text", ph: "e.g., Now to 90 days" },
+    { label: "Boundary and scope", key: "boundary", type: "textarea", ph: "In scope and out of scope" },
+
+    // People and inclusion
+    {
+      label: "Stakeholders and participants",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder or participant",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 32,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, disabled residents, staff, partners"
+    },
+    { label: "Recruitment and sampling plan", key: "recruitment", type: "textarea", ph: "Who, how, where, incentives, quotas for diversity" },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters and ASL, transport, childcare, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and privacy rules", key: "consent", type: "textarea", ph: "Quoting, anonymity, retention and deletion, image consent" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release with who decides and why" },
+
+    // DISCOVER
+    { label: "Discover questions", key: "disc_qs", type: "textarea", ph: "What do we need to learn" },
+    { label: "Discover methods", key: "disc_methods", type: "textarea", ph: "Interviews, intercepts, observation, diary, story circles" },
+    { label: "Discussion guide and prompts", key: "disc_guide", type: "textarea", ph: "Opening, core questions, closing, safety notes" },
+    { label: "Recruit log", key: "disc_recruit_log", type: "textarea", ph: "Name or code, segment, date, consent status" },
+    { label: "Field notes and artifacts", key: "disc_notes", type: "textarea", ph: "Links to notes, screenshots, photos with consent" },
+    { label: "Early insights and quotes", key: "disc_insights", type: "textarea", ph: "Short bullets with evidence links" },
+
+    // DEFINE
+    { label: "Synthesis methods", key: "def_methods", type: "textarea", ph: "Affinity, journey, JTBD, tensions, values mapping" },
+    { label: "Themes and tensions", key: "def_themes", type: "textarea", ph: "Named in participants words" },
+    { label: "Needs and jobs to be done", key: "def_needs", type: "textarea", ph: "Outcome oriented needs in plain language" },
+    { label: "Problem statements", key: "def_problem", type: "textarea", ph: "Point of view statements that frame the work" },
+    { label: "How might we questions", key: "def_hmw", type: "textarea", ph: "One per line" },
+    { label: "Opportunity areas", key: "def_opps", type: "textarea", ph: "Clusters where ideas should focus" },
+    { label: "Design principles", key: "def_principles", type: "textarea", ph: "Rules to guide decisions" },
+
+    // DEVELOP
+    { label: "Co-design session plans", key: "dev_codesign", type: "textarea", ph: "Agenda, roles, exercises, access supports" },
+    { label: "Concept list with hypotheses", key: "dev_concepts", type: "textarea", ph: "Concept name - hypothesis - risk - measure" },
+    { label: "Storyboards or wireframes links", key: "dev_wires", type: "textarea", ph: "URLs to boards or files" },
+    { label: "Prototype plan", key: "dev_proto_plan", type: "textarea", ph: "What fidelity, for whom, where, safety checks" },
+    { label: "Prototype links", key: "dev_proto_links", type: "textarea", ph: "URLs to prototypes" },
+    { label: "Experiment matrix", key: "dev_experiments", type: "textarea", ph: "Test - audience - success signal - risk - check date" },
+    { label: "Risks and guardrails", key: "dev_risks", type: "textarea", ph: "Harm checks, equity, data and safety limits" },
+
+    // TEST
+    { label: "Test participants and segments", key: "test_participants", type: "textarea", ph: "Who will try the prototype" },
+    { label: "Test script", key: "test_script", type: "textarea", ph: "Intro, tasks, probes, closing, crisis routes" },
+    { label: "Measures and signals", key: "test_measures", type: "textarea", ph: "Task success, time on task, errors, sentiment, quotes" },
+    { label: "Test findings", key: "test_findings", type: "textarea", ph: "What worked, what broke, what to change" },
+    { label: "Decision log", key: "test_decisions", type: "textarea", ph: "Ship, revise, or drop with reasons" },
+
+    // DELIVER
+    { label: "MVP scope", key: "del_mvp", type: "textarea", ph: "What we will ship first" },
+    { label: "Acceptance criteria", key: "del_accept", type: "textarea", ph: "Definition of done and quality gates" },
+    { label: "Build and rollout plan", key: "del_plan", type: "textarea", ph: "Owners, steps, dependencies, comms" },
+    { label: "Access and localization plan", key: "del_access", type: "textarea", ph: "Languages, alt text, captions, contrast, motion limits" },
+    { label: "Training and handover", key: "del_training", type: "textarea", ph: "Who needs what to run this well" },
+    { label: "Support and feedback loops", key: "del_support", type: "textarea", ph: "Help routes, hotlines, feedback forms, SLAs" },
+
+    // Governance and cadence
+    { label: "Roles and decision rights", key: "gov_roles", type: "textarea", ph: "Who decides, who advises, who executes" },
+    { label: "Review cadences", key: "gov_cadence", type: "textarea", ph: "Discover weekly, Develop weekly, Deliver biweekly, portfolio monthly" },
+    { label: "Change process", key: "gov_change", type: "textarea", ph: "How updates are proposed, reviewed, and recorded" },
+
+    // Budget and timeline
+    { label: "Budget and resources", key: "budget", type: "textarea", ph: "People, dollars, tools, venues" },
+    { label: "Milestones and dates", key: "timeline", type: "text", ph: "Key reviews and ship dates" },
+    { label: "Dependencies and risks", key: "deps_risks", type: "textarea", ph: "What could block delivery and how to mitigate" },
+
+    // Reporting and learning
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first brief schedule and channels" },
+    { label: "Learning questions", key: "learning", type: "textarea", ph: "What we hope to learn next" },
+    { label: "Dashboard", key: "dashboard", type: "textarea", ph: "Small set of indicators with owners" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, constraints, prior work" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    stakeholders,
+    recruitment,
+    access,
+
+    consent,
+    data_governance,
+
+    disc_qs,
+    disc_methods,
+    disc_guide,
+    disc_recruit_log,
+    disc_notes,
+    disc_insights,
+
+    def_methods,
+    def_themes,
+    def_needs,
+    def_problem,
+    def_hmw,
+    def_opps,
+    def_principles,
+
+    dev_codesign,
+    dev_concepts,
+    dev_wires,
+    dev_proto_plan,
+    dev_proto_links,
+    dev_experiments,
+    dev_risks,
+
+    test_participants,
+    test_script,
+    test_measures,
+    test_findings,
+    test_decisions,
+
+    del_mvp,
+    del_accept,
+    del_plan,
+    del_access,
+    del_training,
+    del_support,
+
+    gov_roles,
+    gov_cadence,
+    gov_change,
+
+    budget,
+    timeline,
+    deps_risks,
+
+    report_back,
+    learning,
+    dashboard,
+
+    ctx,
+    audience,
+    style,
+    tone: overall_tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Discover",
+      "Define",
+      "Develop",
+      "Deliver"
+    ].join(" -> ");
+
+    return [
+      title && `HCD Double Diamond plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      overall_tone && `Tone: ${overall_tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or team: ${owner}`,
+      purpose && `Purpose and desired outcomes:\n${purpose}`,
+      horizon && `Horizon and dates: ${horizon}`,
+      boundary && `Boundary and scope:\n${boundary}`,
+
+      "SECTION: People and inclusion",
+      stakeholders && ["Stakeholders and participants:", listify(stakeholders)].join("\n"),
+      recruitment && `Recruitment and sampling plan:\n${recruitment}`,
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and privacy rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Discover",
+      disc_qs && `Discover questions:\n${disc_qs}`,
+      disc_methods && `Discover methods:\n${disc_methods}`,
+      disc_guide && `Discussion guide and prompts:\n${disc_guide}`,
+      disc_recruit_log && ["Recruit log:", listify(disc_recruit_log)].join("\n"),
+      disc_notes && `Field notes and artifacts:\n${disc_notes}`,
+      disc_insights && `Early insights and quotes:\n${disc_insights}`,
+
+      "SECTION: Define",
+      def_methods && `Synthesis methods:\n${def_methods}`,
+      def_themes && `Themes and tensions:\n${def_themes}`,
+      def_needs && `Needs and jobs to be done:\n${def_needs}`,
+      def_problem && `Problem statements:\n${def_problem}`,
+      def_hmw && ["How might we questions:", listify(def_hmw)].join("\n"),
+      def_opps && `Opportunity areas:\n${def_opps}`,
+      def_principles && `Design principles:\n${def_principles}`,
+
+      "SECTION: Develop",
+      dev_codesign && `Co-design session plans:\n${dev_codesign}`,
+      dev_concepts && ["Concept list with hypotheses:", listify(dev_concepts)].join("\n"),
+      dev_wires && `Storyboards or wireframes links:\n${dev_wires}`,
+      dev_proto_plan && `Prototype plan:\n${dev_proto_plan}`,
+      dev_proto_links && `Prototype links:\n${dev_proto_links}`,
+      dev_experiments && ["Experiment matrix:", listify(dev_experiments)].join("\n"),
+      dev_risks && `Risks and guardrails:\n${dev_risks}`,
+
+      "SECTION: Test",
+      test_participants && `Test participants and segments:\n${test_participants}`,
+      test_script && `Test script:\n${test_script}`,
+      test_measures && ["Measures and signals:", listify(test_measures)].join("\n"),
+      test_findings && `Test findings:\n${test_findings}`,
+      test_decisions && ["Decision log:", listify(test_decisions)].join("\n"),
+
+      "SECTION: Deliver",
+      del_mvp && `MVP scope:\n${del_mvp}`,
+      del_accept && `Acceptance criteria:\n${del_accept}`,
+      del_plan && `Build and rollout plan:\n${del_plan}`,
+      del_access && `Access and localization plan:\n${del_access}`,
+      del_training && `Training and handover:\n${del_training}`,
+      del_support && `Support and feedback loops:\n${del_support}`,
+
+      "SECTION: Governance and cadence",
+      gov_roles && `Roles and decision rights:\n${gov_roles}`,
+      gov_cadence && `Review cadences:\n${gov_cadence}`,
+      gov_change && `Change process:\n${gov_change}`,
+
+      "SECTION: Budget and timeline",
+      budget && `Budget and resources:\n${budget}`,
+      timeline && `Milestones and dates: ${timeline}`,
+      deps_risks && `Dependencies and risks:\n${deps_risks}`,
+
+      "SECTION: Reporting and learning",
+      report_back && `Report back plan:\n${report_back}`,
+      learning && `Learning questions:\n${learning}`,
+      dashboard && `Dashboard:\n${dashboard}`,
+
+      "Quick reference",
+      `Flow: ${flow}`,
+
+      "Checklist:",
+      "- [ ] Boundary clear and equity centered with consent in place",
+      "- [ ] Discover plan includes access supports and diverse sampling",
+      "- [ ] Define outputs include crisp problem statements and HMW questions",
+      "- [ ] Develop includes co-design, prototypes, and harm checks",
+      "- [ ] Test has clear measures and a visible decision log",
+      "- [ ] Deliver includes access, localization, and support routes",
+      "- [ ] Roles, cadences, and change process are published",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Human Centered Design Double Diamond Discover Define Develop Deliver co-creation accessibility consent prototypes MVP decision log template"
+  }
+},
+
+
+{
+  id: "empathy_personas_jtbd",
+  slug: "empathy-mapping-personas-jtbd-ground-voice",
+  label: "Empathy Mapping, Personas, JTBD - Ground voice in needs and contexts",
+  kind: "research",
+  categories: [
+    "research",
+    "community",
+    "strategy",
+    "design",
+    "communications"
+  ],
+  tags: [
+    "type:framework",
+    "use:discovery",
+    "use:voice",
+    "use:ux",
+    "use:service-design",
+    "use:segmentation",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "co-create personas that reflect real contexts and constraints",
+    "map empathy to reveal pains, gains, and language patterns",
+    "run Jobs-to-Be-Done interviews to surface progress sought",
+    "translate insights into voice, tone, and microcopy decisions",
+    "prioritize jobs and test messages with quick experiments",
+     "co-create personas that reflect real contexts and constraints",
+    "map empathy to reveal pains, gains, and language patterns",
+    "run Jobs-to-Be-Done interviews to surface progress sought",
+    "translate insights into voice, tone, and microcopy decisions",
+    "prioritize jobs and test messages with quick experiments",
+    "understand what motivates different user groups",
+    "find pain points in customer journeys",
+    "decide which needs to solve first",
+    "test marketing messages against real contexts",
+    "design services that fit lived realities",
+    "show teams what different users feel and need",
+    "spot gaps between what people say and what they do",
+    "group stories into common patterns",
+    "plan inclusive outreach strategies",
+    "design features that meet actual jobs-to-be-done",
+    "use empathy maps in workshops",
+    "align stakeholders on who the product is for",
+    "visualize user needs in one page",
+    "capture emotional as well as functional needs",
+    "find the language users use themselves",
+    "support fundraising with relatable stories",
+    "choose tone of voice for different audiences",
+    "help kids explain what they want from a toy",
+    "figure out why people quit using an app",
+    "improve sign-up flows with empathy insights",
+    "map what stresses people in daily life",
+    "understand why families choose certain schools",
+    "design posters that actually connect with residents",
+    "decide which community programs to expand",
+    "write grant proposals grounded in lived needs",
+    "guide interview questions with empathy prompts",
+    "segment volunteers by what helps them contribute",
+    "build training that fits different learning goals",
+    "explain to leaders what the community values",
+    "connect user needs with product backlog items",
+    "translate survey data into empathy-based personas",
+    "develop campaign messages that resonate locally",
+    "improve customer service scripts with JTBD",
+    "make sure feedback loops stay human",
+    "choose metaphors that reflect real struggles",
+    "help kids design their dream playground",
+    "ask seniors what matters in daily routines",
+    "create empathy maps for pets and owners",
+    "figure out why students skip homework",
+    "help neighbors explain what makes them feel safe",
+    "design outreach for people without internet access",
+    "plan health services around patient pain points",
+    "decide which community spaces to renovate first",
+    "guide team away from stereotypes with real personas",
+    "help describe what bugs kids about chores",
+    "explain why people choose one snack over another"
+  ],
+  boosters: [
+    "Co-create with people who live the context. Compensate time and care work.",
+    "Write jobs in the classic When I... I want to... so I can... template. Keep it specific and situational.",
+    "Capture forces of progress. Push of the situation, pull of the new, anxieties, habits of the present.",
+    "Record exact phrases. Build the word bank from their words, then trim jargon.",
+    "Bind insights to choices. Each persona and job should change at least one message, one channel, or one ritual.",
+    "Publish a short brief in 14 days and credit contributors who opted in."
+  ],
+  definition: "A combined method. Empathy mapping surfaces what people see, hear, say or do, think or feel, pains, and gains. Co-created personas summarize patterns without stereotyping. Jobs-to-Be-Done interviews capture the progress people seek in specific situations and the forces that help or block them. Together they anchor voice and choices in real needs and contexts.",
+  help: "Fill ethics and access, recruit participants, capture empathy maps and JTBD jobs, summarize personas with constraints and language, and turn insights into voice and microcopy. Prioritize jobs and run small tests with owners and dates.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Empathy, Personas, and JTBD for Eastside" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community research steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why this study and where findings will be applied" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., 8 week discovery" },
+
+    // Inclusion and ethics
+    {
+      label: "Participants and segments",
+      autofill: "persona->inline",
+      itemLabel: "segment",
+      itemType: "typeahead",
+      key: "participants",
+      max: 32,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, newcomers, disabled residents, caregivers"
+    },
+    { label: "Recruitment and compensation", key: "recruitment", type: "textarea", ph: "Partners, outreach, stipends, scheduling, consent flow" },
+    { label: "Access supports", key: "access", type: "textarea", ph: "Interpreters and ASL, transport, childcare, sensory supports" },
+    { label: "Consent and privacy", key: "consent", type: "textarea", ph: "Quoting rules, recording, anonymization, retention and deletion" },
+    { label: "Data governance tiers", key: "data_governance", type: "textarea", ph: "Public, Community only, Restricted, Not for release" },
+
+    // Context
+    { label: "Place and channels in scope", key: "context", type: "textarea", ph: "Neighborhoods, venues, SMS, email, social, in room" },
+    { label: "Constraints to respect", key: "constraints", type: "textarea", ph: "Policy, safety, time windows, device limits" },
+
+    // Empathy mapping
+    { label: "Empathy map - See", key: "see", type: "textarea", ph: "What do people see in their environment" },
+    { label: "Empathy map - Hear", key: "hear", type: "textarea", ph: "What do they hear from peers, leaders, media" },
+    { label: "Empathy map - Say or do", key: "say_do", type: "textarea", ph: "What do they say or do now" },
+    { label: "Empathy map - Think or feel", key: "think_feel", type: "textarea", ph: "What do they think or feel under the surface" },
+    { label: "Empathy map - Pains", key: "pains", type: "textarea", ph: "Fears, risks, barriers" },
+    { label: "Empathy map - Gains", key: "gains", type: "textarea", ph: "Helps, benefits, wins" },
+    { label: "Language and quotes", key: "quotes", type: "textarea", ph: "Verbatim phrases with consent" },
+
+    // Personas co-created
+    { label: "Personas list (one per line: name - summary - constraints - language - access needs)", key: "personas", type: "textarea", ph: "e.g., Night Shift Parent - juggles 2 jobs - low time - Spanish first - SMS only" },
+    { label: "Anti-personas or boundary segments", key: "anti_personas", type: "textarea", ph: "Who is out of scope and why" },
+    { label: "Persona evidence links", key: "persona_evidence", type: "textarea", ph: "Docs, transcripts, artifacts" },
+
+    // JTBD interviews
+    { label: "Jobs list (one per line using When I... I want to... so I can...)", key: "jobs", type: "textarea", ph: "When I move to a new building I want to know my rights so I can avoid surprise fees" },
+    { label: "Job types", key: "job_types", type: "textarea", ph: "Functional, emotional, social jobs relevant here" },
+    { label: "Forces of progress (one per line: job - push - pull - anxieties - habits)", key: "forces", type: "textarea", ph: "Job A - unsafe crossing - safer route app - fear of fines - driving habit" },
+    { label: "Desired outcome statements", key: "outcomes", type: "textarea", ph: "Minimize the time to..., increase the likelihood that..., reduce the risk of..." },
+    { label: "Opportunity matrix (one per line: outcome - importance 1 to 10 - satisfaction 1 to 10)", key: "opportunity", type: "textarea", ph: "Get timely interpreter - 9 - 4" },
+    { label: "Interview guide link", key: "guide_link", type: "text", ph: "Protocol URL" },
+    { label: "Interview notes or transcripts", key: "interviews", type: "textarea", ph: "Short notes, timestamps, or links" },
+
+    // Scenarios and acceptance
+    { label: "Key scenarios", key: "scenarios", type: "textarea", ph: "Situation, path, obstacles, success definition" },
+    { label: "Acceptance criteria per job", key: "acceptance", type: "textarea", ph: "Job A is successful when... measured by..." },
+
+    // Voice and content implications
+    { label: "Voice implications by persona", key: "voice_implications", type: "textarea", ph: "Tone, formality, calls to action, trust cues" },
+    { label: "Word bank from quotes", key: "word_bank", type: "textarea", ph: "Preferred words and rewrites of jargon" },
+    { label: "Channel and format preferences", key: "channels", type: "textarea", ph: "SMS, flyers, email, in room, radio, reading level" },
+    { label: "Microcopy examples to test", key: "microcopy", type: "textarea", ph: "Invites, reminders, apologies, directions" },
+
+    // Prioritization and experiments
+    { label: "Prioritized jobs (one per line: job - reason - impact - effort)", key: "prioritized", type: "textarea", ph: "Job A - high equity impact - medium effort" },
+    { label: "Experiments (one per line: change - owner - resources - start - check date - success signals)", key: "experiments", type: "textarea", ph: "SMS invite rewrite - Outreach - $500 - Aug 1 - Aug 20 - reply rate 12 percent" },
+
+    // Measures and learning
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Task success, time to value, satisfaction, attendance, reply rate" },
+    { label: "Feedback loop and cadence", key: "cadence", type: "text", ph: "Weekly review, monthly share back, quarterly refresh" },
+
+    // Risks and guardrails
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Stereotyping, tokenism, overfitting, privacy risks" },
+
+    // Timeline and reporting
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 2 weeks, field 3 weeks, brief in 14 days" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first summary, bilingual where relevant" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior research, references, constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    participants,
+    recruitment,
+    access,
+    consent,
+    data_governance,
+
+    context,
+    constraints,
+
+    see,
+    hear,
+    say_do,
+    think_feel,
+    pains,
+    gains,
+    quotes,
+
+    personas,
+    anti_personas,
+    persona_evidence,
+
+    jobs,
+    job_types,
+    forces,
+    outcomes,
+    opportunity,
+    guide_link,
+    interviews,
+
+    scenarios,
+    acceptance,
+
+    voice_implications,
+    word_bank,
+    channels,
+    microcopy,
+
+    prioritized,
+    experiments,
+
+    measures,
+    cadence,
+
+    risks,
+
+    timeline,
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Recruit with consent and access supports",
+      "Map empathy and capture exact phrases",
+      "Write jobs and forces of progress",
+      "Summarize personas with constraints and language",
+      "Prioritize jobs and define acceptance criteria",
+      "Update voice, word bank, and microcopy",
+      "Run experiments and share back results"
+    ].join(" -> ");
+
+    return [
+      title && `Empathy, Personas, and JTBD plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+
+      "SECTION: Inclusion and ethics",
+      participants && ["Participants and segments:", listify(participants)].join("\n"),
+      recruitment && `Recruitment and compensation:\n${recruitment}`,
+      access && `Access supports:\n${access}`,
+      consent && `Consent and privacy:\n${consent}`,
+      data_governance && `Data governance tiers:\n${data_governance}`,
+
+      "SECTION: Context",
+      context && `Place and channels in scope:\n${context}`,
+      constraints && `Constraints to respect:\n${constraints}`,
+
+      "SECTION: Empathy mapping",
+      see && `See:\n${see}`,
+      hear && `Hear:\n${hear}`,
+      say_do && `Say or do:\n${say_do}`,
+      think_feel && `Think or feel:\n${think_feel}`,
+      pains && `Pains:\n${pains}`,
+      gains && `Gains:\n${gains}`,
+      quotes && ["Language and quotes:", listify(quotes)].join("\n"),
+
+      "SECTION: Personas co-created",
+      personas && ["Personas list:", listify(personas)].join("\n"),
+      anti_personas && `Anti-personas or boundary segments:\n${anti_personas}`,
+      persona_evidence && `Persona evidence links:\n${persona_evidence}`,
+
+      "SECTION: Jobs-to-Be-Done",
+      jobs && ["Jobs list:", listify(jobs)].join("\n"),
+      job_types && `Job types:\n${job_types}`,
+      forces && ["Forces of progress:", listify(forces)].join("\n"),
+      outcomes && ["Desired outcome statements:", listify(outcomes)].join("\n"),
+      opportunity && ["Opportunity matrix:", listify(opportunity)].join("\n"),
+      guide_link && `Interview guide link: ${guide_link}`,
+      interviews && `Interview notes or transcripts:\n${interviews}`,
+
+      "SECTION: Scenarios and acceptance",
+      scenarios && `Key scenarios:\n${scenarios}`,
+      acceptance && `Acceptance criteria per job:\n${acceptance}`,
+
+      "SECTION: Voice and content implications",
+      voice_implications && `Voice implications by persona:\n${voice_implications}`,
+      word_bank && ["Word bank from quotes:", listify(word_bank)].join("\n"),
+      channels && `Channel and format preferences:\n${channels}`,
+      microcopy && `Microcopy examples to test:\n${microcopy}`,
+
+      "SECTION: Prioritization and experiments",
+      prioritized && ["Prioritized jobs:", listify(prioritized)].join("\n"),
+      experiments && ["Experiments:", listify(experiments)].join("\n"),
+
+      "SECTION: Measures and learning",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Feedback loop and cadence: ${cadence}`,
+
+      "SECTION: Risks and guardrails",
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline and reporting",
+      timeline && `Timeline: ${timeline}`,
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Participants compensated and consent recorded",
+      "- [ ] Empathy map complete with pains, gains, and quotes",
+      "- [ ] Jobs written with forces of progress captured",
+      "- [ ] Personas co-created and grounded in evidence",
+      "- [ ] Voice and microcopy updated from word bank",
+      "- [ ] Prioritized jobs have acceptance criteria and owners",
+      "- [ ] Experiments and measures defined with review dates",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Empathy mapping personas co-created JTBD jobs to be done interviews forces of progress word bank acceptance criteria voice microcopy template"
+  }
+},
+
+{
+  id: "service_design_blueprint",
+  slug: "service-design-blueprints-frontstage-backstage-voice",
+  label: "Service Design Blueprints - Map frontstage/backstage to see where voice is silenced",
+  kind: "design",
+  categories: [
+    "design",
+    "research",
+    "community",
+    "operations",
+    "service"
+  ],
+  tags: [
+    "type:method",
+    "use:blueprint",
+    "use:journey",
+    "use:accessibility",
+    "use:delivery",
+    "use:equity",
+    "phase:discover",
+    "phase:define",
+    "phase:develop",
+    "phase:deliver",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "map how people experience a service across channels and roles",
+    "expose backstage systems, policies, and handoffs shaping voice",
+    "spot where voices are silenced and add access supports",
+    "align teams on fixes, SLAs, and accountability",
+    "prototype changes in the riskiest steps first",
+        "map how people experience a service across channels and roles",
+    "expose backstage systems, policies, and handoffs shaping voice",
+    "spot where voices are silenced and add access supports",
+    "align teams on fixes, SLAs, and accountability",
+    "prototype changes in the riskiest steps first",
+    "visualize how front desk and back office connect",
+    "show tech teams what users actually see",
+    "trace delays back to hidden bottlenecks",
+    "compare staff effort vs. user effort",
+    "find pain points where service breaks down",
+    "help leaders see the whole service end-to-end",
+    "improve hospital patient check-in experience",
+    "redesign library borrowing process",
+    "make call center scripts match website info",
+    "test if policy changes show up in user journey",
+    "help government offices simplify paperwork",
+    "map school lunch line from student perspective",
+    "spot accessibility barriers in ticket booking",
+    "see why online and in-person don’t align",
+    "check where residents drop out of an application",
+    "link metrics to specific steps in the blueprint",
+    "guide training by showing hidden staff work",
+    "design fairer housing application processes",
+    "plan digital upgrades without forgetting human steps",
+    "show funders real gaps in service delivery",
+    "decide which backstage tools to integrate first",
+    "run staff workshops using the blueprint map",
+    "connect surveys to touchpoints in the flow",
+    "spot when translation or signage is missing",
+    "analyze complaints by blueprint stage",
+    "help kids map cafeteria lunch experience",
+    "hwo do I improve the line speed",
+    "map pet adoption process from family’s view",
+    "figure out why parents hate school forms",
+    "design smoother vaccine clinic flow",
+    "trace how mail requests are processed",
+    "show residents how their feedback travels",
+    "visualize where volunteers get confused",
+    "align vendors and partners on shared service",
+    "turn mystery shopper notes into blueprint",
+    "see what happens after pressing submit online",
+    "highlight hidden labor of frontline workers",
+    "spot duplication across staff roles",
+    "test if chatbot answers match live agent help",
+    "design museum visit flow from entry to exit",
+    "make neighborhood permit system clearer",
+    "uncover equity gaps in social services",
+    "map before-and-after service improvement",
+    "help students design a lemonade stand blueprint",
+    "explain airport security lines to kids",
+    "show why grandma struggles with online forms",
+    "plan simple fixes before full system change"
+  ],
+  boosters: [
+    "Blueprint from evidence. Pair interviews and observation with artifact screenshots and logs.",
+    "Draw the three lines: Interaction, Visibility, Internal Interaction. Label them in the map.",
+    "Capture who speaks and who can’t at each step. Track talk-time parity and reading level.",
+    "Model edge cases explicitly: low bandwidth, language access, crisis, disability scenarios.",
+    "Make handoffs and waits visible with times and ownership. Timeboxes reveal reality.",
+    "Close the loop. Publish a plain-language brief in 14 days with before/after examples."
+  ],
+  definition: "A service map with swimlanes for Customer/Community actions, Frontstage interactions, Backstage actions, Support processes, and Evidence. It shows lines of interaction and visibility, making silenced voices, handoffs, and policy constraints explicit.",
+  help: "Define scenario, stages, actors, and ethics. Fill lanes per stage (customer, frontstage, backstage, support, evidence). Mark voice gaps, waits, and risks. Add measures, SLAs, owners, experiments, and review dates. Use multilingual, accessible artifacts.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Blueprint: Community Meeting Sign-up & Participation" },
+    { label: "Owner or team", key: "owner", type: "text", ph: "e.g., Service Design + Community Council" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "What we want to improve and where this blueprint applies" },
+    { label: "Horizon and dates", key: "horizon", type: "text", ph: "e.g., Now to 90 days" },
+    { label: "Boundary and exclusions", key: "boundary", type: "textarea", ph: "In vs out of scope; channels; locations" },
+
+    // People and inclusion
+    {
+      label: "Actors / participants",
+      autofill: "persona->inline",
+      itemLabel: "actor",
+      itemType: "typeahead",
+      key: "actors",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Resident, volunteer, moderator, interpreter, facilities"
+    },
+    { label: "Segments & access needs", key: "segments", type: "textarea", ph: "Language, mobility, sensory, digital access, trust" },
+
+    // Ethics
+    { label: "Consent & privacy rules", key: "consent", type: "textarea", ph: "Quoting, images, retention, opt-out, anonymity" },
+    { label: "Data governance tiers", key: "data_governance", type: "textarea", ph: "Public | Community-only | Restricted | Not for release" },
+
+    // Scenario
+    { label: "Service / scenario name", key: "scenario", type: "text", ph: "e.g., Register → Attend → Speak at meeting" },
+    { label: "Trigger & desired outcome", key: "trigger_outcome", type: "textarea", ph: "What starts the journey and what success looks like" },
+    { label: "Channels in play", key: "channels", type: "textarea", ph: "Web, SMS, phone, in-room, paper, social" },
+
+    // Stages
+    { label: "Stages (one per line)", key: "stages", type: "textarea", ph: "Discover info; Register; Prepare; Arrive; Participate; Follow-up" },
+
+    // Swimlanes (use 'stage - detail' per line)
+    { label: "Customer actions (stage - action)", key: "lane_customer", type: "textarea", ph: "Register - Fill form on phone" },
+    { label: "Frontstage interactions (stage - touchpoint - channel)", key: "lane_front", type: "textarea", ph: "Register - Confirmation SMS - SMS" },
+    { label: "Backstage actions (stage - who - what)", key: "lane_back", type: "textarea", ph: "Register - Moderator - Approves speaker list" },
+    { label: "Support processes (stage - team/system - process)", key: "lane_support", type: "textarea", ph: "Register - IT - Provision shortlink & redirects" },
+    { label: "Evidence (stage - artifact - link)", key: "lane_evidence", type: "textarea", ph: "Register - Screenshot of form - URL" },
+
+    // Systems, policies, data
+    { label: "Systems & tools (one per line: name - purpose - owner)", key: "systems", type: "textarea", ph: "Signup form - registration - Comms" },
+    { label: "Policies & scripts (one per line: policy - rule - owner)", key: "policies", type: "textarea", ph: "Public comment rules - 2 min limit - Council" },
+    { label: "Data flows (one per line: data - from - to - retention)", key: "data_flows", type: "textarea", ph: "Name/email - form - CRM - 12 months" },
+
+    // Voice, access, waits
+    { label: "Voice gaps & silence points (stage - who - why - signal)", key: "voice_gaps", type: "textarea", ph: "Participate - renters - jargon blocks - no hands raised" },
+    { label: "Access barriers & supports (stage - barrier - support)", key: "access_supports", type: "textarea", ph: "Arrive - stairs - ramp & seating map" },
+    { label: "Waits & handoffs (stage - from - to - wait mins)", key: "waits_handoffs", type: "textarea", ph: "Register - form submit - confirmation - 120" },
+    { label: "Risk & harm checks (stage - risk - guardrail)", key: "risks", type: "textarea", ph: "Follow-up - doxxing risk - redact names by default" },
+
+    // Measures & SLAs
+    { label: "Experience signals", key: "exp_signals", type: "textarea", ph: "Task success, time to speak, talk-time parity, sentiment" },
+    { label: "Operational metrics & SLAs", key: "ops_metrics", type: "textarea", ph: "Confirm within 10 mins; captioning 100%; reading level <= Grade 8" },
+
+    // Opportunities & experiments
+    { label: "Pain points (stage - issue - evidence)", key: "pain_points", type: "textarea", ph: "Register - phone form breaks - 8/20 errors" },
+    { label: "Opportunities (stage - idea - value)", key: "opportunities", type: "textarea", ph: "Register - SMS fallback - reduces drop-off" },
+    { label: "Experiments (one per line: test - owner - resources - start - check date - success)", key: "experiments", type: "textarea", ph: "SMS fallback - Comms - $1k - Jul - Aug 15 - +20% completion" },
+
+    // Ownership & cadence
+    { label: "Owners & RACI (one per line: area - R/A/C/I)", key: "owners", type: "textarea", ph: "Captioning - Access Lead R, Vendor A, Comms C, IT I" },
+    { label: "Review cadence", key: "cadence", type: "text", ph: "Weekly ops; monthly blueprint review; quarterly report-back" },
+
+    // Timeline & reporting
+    { label: "Timeline", key: "timeline", type: "text", ph: "Key changes and dates" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community-first brief in 14 days; bilingual; artifacts before/after" },
+
+    // Context
+    { label: "Context & links", key: "ctx", type: "textarea", ph: "References, constraints, related guides" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    actors,
+    segments,
+
+    consent,
+    data_governance,
+
+    scenario,
+    trigger_outcome,
+    channels,
+
+    stages,
+
+    lane_customer,
+    lane_front,
+    lane_back,
+    lane_support,
+    lane_evidence,
+
+    systems,
+    policies,
+    data_flows,
+
+    voice_gaps,
+    access_supports,
+    waits_handoffs,
+    risks,
+
+    exp_signals,
+    ops_metrics,
+
+    pain_points,
+    opportunities,
+    experiments,
+
+    owners,
+    cadence,
+
+    timeline,
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const lanes = [
+      lane_customer && ["Customer actions:", listify(lane_customer)].join("\n"),
+      lane_front && ["Frontstage interactions:", listify(lane_front)].join("\n"),
+      lane_back && ["Backstage actions:", listify(lane_back)].join("\n"),
+      lane_support && ["Support processes:", listify(lane_support)].join("\n"),
+      lane_evidence && ["Evidence:", listify(lane_evidence)].join("\n")
+    ].filter(Boolean).join("\n");
+
+    const keys = [
+      "Lines:",
+      "• Line of Interaction (Customer ↔ Frontstage)",
+      "• Line of Visibility (Frontstage ↔ Backstage)",
+      "• Line of Internal Interaction (Backstage ↔ Support)"
+    ].join("\n");
+
+    return [
+      title && `Service Blueprint: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context & links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or team: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon and dates: ${horizon}`,
+      boundary && `Boundary and exclusions:\n${boundary}`,
+
+      "SECTION: People & inclusion",
+      actors && ["Actors / participants:", listify(actors)].join("\n"),
+      segments && `Segments & access needs:\n${segments}`,
+
+      "SECTION: Ethics",
+      consent && `Consent & privacy rules:\n${consent}`,
+      data_governance && `Data governance tiers:\n${data_governance}`,
+
+      "SECTION: Scenario",
+      scenario && `Service / scenario: ${scenario}`,
+      trigger_outcome && `Trigger & desired outcome:\n${trigger_outcome}`,
+      channels && `Channels in play:\n${channels}`,
+      stages && ["Stages:", listify(stages)].join("\n"),
+
+      "SECTION: Swimlanes",
+      keys,
+      lanes,
+
+      "SECTION: Systems, policies, data",
+      systems && ["Systems & tools:", listify(systems)].join("\n"),
+      policies && ["Policies & scripts:", listify(policies)].join("\n"),
+      data_flows && ["Data flows:", listify(data_flows)].join("\n"),
+
+      "SECTION: Voice, access, waits",
+      voice_gaps && ["Voice gaps & silence points:", listify(voice_gaps)].join("\n"),
+      access_supports && ["Access barriers & supports:", listify(access_supports)].join("\n"),
+      waits_handoffs && ["Waits & handoffs:", listify(waits_handoffs)].join("\n"),
+      risks && ["Risk & harm checks:", listify(risks)].join("\n"),
+
+      "SECTION: Measures & SLAs",
+      exp_signals && ["Experience signals:", listify(exp_signals)].join("\n"),
+      ops_metrics && ["Operational metrics & SLAs:", listify(ops_metrics)].join("\n"),
+
+      "SECTION: Opportunities & experiments",
+      pain_points && ["Pain points:", listify(pain_points)].join("\n"),
+      opportunities && ["Opportunities:", listify(opportunities)].join("\n"),
+      experiments && ["Experiments:", listify(experiments)].join("\n"),
+
+      "SECTION: Ownership & cadence",
+      owners && ["Owners & RACI:", listify(owners)].join("\n"),
+      cadence && `Review cadence: ${cadence}`,
+
+      "SECTION: Timeline & reporting",
+      timeline && `Timeline: ${timeline}`,
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      "- Lanes: Customer | Frontstage | Backstage | Support | Evidence",
+      "- Lines: Interaction | Visibility | Internal Interaction",
+
+      "Checklist:",
+      "- [ ] Stages defined with real artifacts and logs",
+      "- [ ] Voice gaps and access supports named per stage",
+      "- [ ] Handoffs, waits, and owners visible with times",
+      "- [ ] Policies, scripts, and data flows mapped",
+      "- [ ] Measures include inclusion (talk-time parity, reading level)",
+      "- [ ] Experiments and SLAs have owners and review dates",
+      "- [ ] Community-first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "service design blueprint frontstage backstage support processes evidence line of interaction visibility internal interaction voice silenced accessibility equity template"
+  }
+},
+
+
+{
+  id: "power_mapping_inclusive_engagement",
+  slug: "power-mapping-visualize-power-inclusive-engagement",
+  label: "Power Mapping - Visualize formal and informal power; plan inclusive engagement",
+  kind: "analysis",
+  categories: [
+    "community",
+    "strategy",
+    "research",
+    "governance",
+    "advocacy"
+  ],
+  tags: [
+    "type:framework",
+    "use:diagnosis",
+    "use:network",
+    "use:engagement",
+    "use:advocacy",
+    "use:risk",
+    "phase:explore",
+    "phase:plan",
+    "phase:act",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "map formal authority and informal influence around a decision",
+    "identify allies, opponents, and swing stakeholders",
+    "trace influence pathways and gatekeepers to choose messengers",
+    "design inclusive and safe engagement plans with access supports",
+    "track stance shifts and commitments over time",
+        "map formal authority and informal influence around a decision",
+    "identify allies, opponents, and swing stakeholders",
+    "trace influence pathways and gatekeepers to choose messengers",
+    "design inclusive and safe engagement plans with access supports",
+    "track stance shifts and commitments over time",
+    "understand who actually makes decisions behind the scenes",
+    "see which community voices are ignored or sidelined",
+    "spot gatekeepers who control access to leaders",
+    "decide who to talk to first in an advocacy campaign",
+    "build coalitions by finding overlapping interests",
+    "prevent over-reliance on one powerful ally",
+    "map who influences budget decisions",
+    "analyze school board power dynamics",
+    "track which council members support an issue",
+    "see how social media influencers sway debates",
+    "plan which journalists to brief for coverage",
+    "identify which residents shape neighborhood opinion",
+    "spot who has veto power in a committee",
+    "decide which partners need more engagement",
+    "understand how money flows affect influence",
+    "map church, union, or club influence in local politics",
+    "plan safe routes to reach marginalized voices",
+    "test whether outreach reached key audiences",
+    "prevent tokenism by showing who has real say",
+    "analyze which staffers influence elected officials",
+    "show youth who actually makes school rules",
+    "teach kids why principals, not teachers, set policy",
+    "spot when parents or alumni drive school choices",
+    "map family decision-making before tough talks",
+    "see who controls playground rules at recess",
+    "understand which friend groups set trends",
+    "trace how gossip changes opinions",
+    "show how grandma’s opinion sways the family",
+    "plan who to ask for help on a group project",
+    "see how student council actually wields power",
+    "help nonprofits lobby effectively",
+    "decide which donors to prioritize",
+    "spot when outside consultants drive outcomes",
+    "compare formal org chart with real influence",
+    "track influence shifts after an election",
+    "prevent exclusion of disabled voices in planning",
+    "analyze workplace power flows",
+    "decide who can block a proposal",
+    "find out why some voices never get heard",
+    "see how peer pressure drives teen choices",
+    "understand social networks in small towns",
+    "use diagrams to explain complex politics simply",
+    "plan strategy by knowing who listens to whom",
+    "prepare activists with a map of risks and allies",
+    "map playground politics"
+  ],
+  boosters: [
+    "Name the decision and boundary up front. Keep the map scoped and current.",
+    "Evidence first. Record sources for claims about influence or stance.",
+    "Pair positional power with narrative and relational power indicators.",
+    "Use trusted messengers for each audience. Proximity and credibility matter.",
+    "Plan for safety and do no harm. Redact or aggregate sensitive data when needed.",
+    "Close the loop with a public brief that credits contributors who opted in."
+  ],
+  definition: "A practical way to chart who has power and influence on an issue, how they connect, what motivates them, and how to engage them safely and inclusively.",
+  help: "Complete scope and ethics, list stakeholders, score power and interest, map relationships and gatekeepers, segment into allies and swings, choose messengers and offers, schedule one on ones, and track stance shifts and commitments.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Power map for Safe Crossings" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community outreach steward" },
+    { label: "Purpose and decision context", key: "purpose", type: "textarea", ph: "What decision or change is at stake and why this map" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., Now to 90 days" },
+
+    // Scope and ethics
+    { label: "Issue and scope", key: "issue_scope", type: "textarea", ph: "Issue statement, geographic or org boundary, what is out of scope" },
+    { label: "Time window", key: "time_window", type: "text", ph: "e.g., Q3 hearings and related votes" },
+    { label: "Consent and sensitivity rules", key: "consent_rules", type: "textarea", ph: "What is public versus private, anonymization and redaction rules" },
+    { label: "Data governance tiers", key: "data_governance", type: "textarea", ph: "Public, Community only, Restricted, Not for release" },
+    { label: "Safety and do no harm notes", key: "safety", type: "textarea", ph: "Doxxing risks, retaliation risks, conflict sensitivity" },
+
+    // Stakeholders
+    {
+      label: "Stakeholder entities",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 60,
+      type: "repeater",
+      ph: "e.g., Tenant association, school principal, council member, business owner"
+    },
+    { label: "Stakeholders list (one per line: name - type - org - role - notes)", key: "stakeholder_list", type: "textarea", ph: "Jane Doe - council member - city - transportation committee - key vote" },
+
+    // Power and interest scoring
+    { label: "Scoring rubric", key: "scoring_rubric", type: "textarea", ph: "Power 0 to 5, Interest 0 to 5, Legitimacy 0 to 5, Access 0 to 5, Resources 0 to 5" },
+    { label: "Stakeholder scores (one per line: name - power - interest - legitimacy - access - resources)", key: "scores", type: "textarea", ph: "Council District 3 - 5 - 4 - 4 - 4 - 3" },
+
+    // Positions and motivations
+    { label: "Stance notes (one per line: name - public stance - private stance - salience 0 to 5)", key: "stance", type: "textarea", ph: "Business Association - neutral - leaning support - 3" },
+    { label: "Motivations and constraints (one per line: name - incentives - red lines - flex areas)", key: "motivations", type: "textarea", ph: "District 3 - safety and cost savings - no new taxes - pilot ok" },
+
+    // Relationships and pathways
+    { label: "Influence ties (one per line: source -> target - strength 1 to 5 - channel - evidence)", key: "ties", type: "textarea", ph: "Principal -> Council D3 - 4 - school safety briefings - meeting minutes" },
+    { label: "Gatekeepers and veto points", key: "gatekeepers", type: "textarea", ph: "Committee chairs, schedulers, legal reviewers" },
+    { label: "Brokers and connectors", key: "brokers", type: "textarea", ph: "Who bridges groups, high betweenness roles" },
+
+    // Segments
+    { label: "Allies", key: "allies", type: "textarea", ph: "Supportive stakeholders and why" },
+    { label: "Opponents", key: "opponents", type: "textarea", ph: "Stakeholders likely to block and why" },
+    { label: "Swing or undecided", key: "swing", type: "textarea", ph: "Stakeholders whose stance can move with the right offer" },
+
+    // Strategy and engagement
+    { label: "Objectives", key: "objectives", type: "textarea", ph: "What must change in 30 to 90 days" },
+    { label: "Messengers and validators (one per line: audience - messenger - validator)", key: "messengers", type: "textarea", ph: "Council D3 - school nurse - traffic engineer" },
+    { label: "Offers and asks by segment", key: "offers", type: "textarea", ph: "For swing businesses: clear delivery windows, signage kit, pilot sunset" },
+    { label: "Access supports", key: "access", type: "textarea", ph: "Interpreters and ASL, childcare, stipends, transport, sensory supports" },
+    { label: "Engagement ladder (one per line: action - owner - by when - success signal)", key: "ladder", type: "textarea", ph: "One on one with D3 scheduler - Alex - Jul 12 - meeting booked" },
+    { label: "One on ones plan", key: "one_on_ones", type: "textarea", ph: "Targets, order, briefing packet owners" },
+    { label: "Coalition partners and roles", key: "coalition", type: "textarea", ph: "Which orgs bring reach, legitimacy, technical help" },
+
+    // Measures and learning
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Meetings booked, responses, co sponsors, commitments, stance shifts" },
+    { label: "Review cadence and owners", key: "cadence", type: "text", ph: "Weekly standup, biweekly map refresh, post action debriefs" },
+
+    // Risks
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Backlash, safety risks, misrepresentation, confidentiality breaches" },
+
+    // Visualization and evidence
+    { label: "Map link", key: "map_link", type: "text", ph: "Kumu or Miro or FigJam URL" },
+    { label: "Legend and notes", key: "legend", type: "textarea", ph: "Color and line meanings, scoring legend" },
+    { label: "Evidence sources", key: "evidence", type: "textarea", ph: "Public records, minutes, FOIA, press, social, interviews" },
+
+    // Logs
+    { label: "Interactions log (one per line: date - with whom - notes - follow up)", key: "log", type: "textarea", ph: "Jul 7 - D3 staff - wants crash data by school - send brief" },
+    { label: "Commitments log (one per line: who - what - by when - status)", key: "commitments", type: "textarea", ph: "Council D3 - co sponsor ordinance - Aug 10 - pending" },
+
+    // Timeline and context
+    { label: "Timeline", key: "timeline", type: "text", ph: "Key hearings, deadlines, events" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior work, constraints, reference docs" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    issue_scope,
+    time_window,
+    consent_rules,
+    data_governance,
+    safety,
+
+    stakeholders,
+    stakeholder_list,
+
+    scoring_rubric,
+    scores,
+
+    stance,
+    motivations,
+
+    ties,
+    gatekeepers,
+    brokers,
+
+    allies,
+    opponents,
+    swing,
+
+    objectives,
+    messengers,
+    offers,
+    access,
+    ladder,
+    one_on_ones,
+    coalition,
+
+    measures,
+    cadence,
+
+    risks,
+
+    map_link,
+    legend,
+    evidence,
+
+    log,
+    commitments,
+
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Define issue, boundary, and ethics",
+      "List stakeholders and score power and interest",
+      "Map ties, brokers, and gatekeepers",
+      "Segment allies, opponents, and swings",
+      "Choose messengers, offers, and access supports",
+      "Schedule one on ones and coalition moves",
+      "Track stance shifts and commitments and refresh the map"
+    ].join(" -> ");
+
+    return [
+      title && `Power mapping plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and decision context:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+
+      "SECTION: Scope and ethics",
+      issue_scope && `Issue and scope:\n${issue_scope}`,
+      time_window && `Time window: ${time_window}`,
+      consent_rules && `Consent and sensitivity rules:\n${consent_rules}`,
+      data_governance && `Data governance tiers:\n${data_governance}`,
+      safety && `Safety and do no harm notes:\n${safety}`,
+
+      "SECTION: Stakeholders",
+      stakeholders && ["Stakeholder entities:", listify(stakeholders)].join("\n"),
+      stakeholder_list && ["Stakeholders list:", listify(stakeholder_list)].join("\n"),
+
+      "SECTION: Power and interest scoring",
+      scoring_rubric && `Scoring rubric:\n${scoring_rubric}`,
+      scores && ["Stakeholder scores:", listify(scores)].join("\n"),
+
+      "SECTION: Positions and motivations",
+      stance && ["Stance notes:", listify(stance)].join("\n"),
+      motivations && ["Motivations and constraints:", listify(motivations)].join("\n"),
+
+      "SECTION: Relationships and pathways",
+      ties && ["Influence ties:", listify(ties)].join("\n"),
+      gatekeepers && `Gatekeepers and veto points:\n${gatekeepers}`,
+      brokers && `Brokers and connectors:\n${brokers}`,
+
+      "SECTION: Segments",
+      allies && `Allies:\n${allies}`,
+      opponents && `Opponents:\n${opponents}`,
+      swing && `Swing or undecided:\n${swing}`,
+
+      "SECTION: Strategy and engagement",
+      objectives && `Objectives:\n${objectives}`,
+      messengers && ["Messengers and validators:", listify(messengers)].join("\n"),
+      offers && `Offers and asks by segment:\n${offers}`,
+      access && `Access supports:\n${access}`,
+      ladder && ["Engagement ladder:", listify(ladder)].join("\n"),
+      one_on_ones && `One on ones plan:\n${one_on_ones}`,
+      coalition && `Coalition partners and roles:\n${coalition}`,
+
+      "SECTION: Measures and learning",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Review cadence and owners: ${cadence}`,
+
+      "SECTION: Risks",
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Visualization and evidence",
+      map_link && `Map link: ${map_link}`,
+      legend && `Legend and notes:\n${legend}`,
+      evidence && `Evidence sources:\n${evidence}`,
+
+      "SECTION: Logs",
+      log && ["Interactions log:", listify(log)].join("\n"),
+      commitments && ["Commitments log:", listify(commitments)].join("\n"),
+
+      "SECTION: Timeline",
+      timeline && `Timeline: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Decision and scope defined and time bound",
+      "- [ ] Ethics and safety rules understood and used",
+      "- [ ] Stakeholders listed with evidence based scores",
+      "- [ ] Ties, brokers, and gatekeepers mapped",
+      "- [ ] Allies, opponents, and swings segmented with offers",
+      "- [ ] One on ones and coalition steps scheduled",
+      "- [ ] Measures tracked and map refreshed on cadence",
+      "- [ ] Community first brief prepared within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "power mapping formal informal influence interest grid allies opponents swing messengers gatekeepers brokers inclusive engagement do no harm template"
+  }
+},
+
+{
+  id: "sna_network_weaving_netography",
+  slug: "social-network-analysis-network-weaving-netography",
+  label: "Social Network Analysis / Network Weaving / Netography - Find connectors, peripheries, and missing voices",
+  kind: "analysis",
+  categories: [
+    "research",
+    "community",
+    "systems",
+    "strategy",
+    "operations"
+  ],
+  tags: [
+    "type:method",
+    "use:analysis",
+    "use:network",
+    "use:engagement",
+    "use:equity",
+    "use:sensemaking",
+    "phase:explore",
+    "phase:define",
+    "phase:plan",
+    "phase:act",
+    "topic:community",
+    "alt:netnography",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "map relationships to spot connectors, bridges, clusters, isolates, and peripheries",
+    "surface missing voices and homophily patterns that silence participation",
+    "design weaving moves that increase healthy bridges and reduce bottlenecks",
+    "track pre and post changes in inclusion, reach, and resilience",
+    "prioritize light touch investments with positive spillovers",
+     "map relationships to spot connectors, bridges, clusters, isolates, and peripheries",
+    "surface missing voices and homophily patterns that silence participation",
+    "design weaving moves that increase healthy bridges and reduce bottlenecks",
+    "track pre and post changes in inclusion, reach, and resilience",
+    "prioritize light touch investments with positive spillovers",
+    "see which people bring different groups together",
+    "find out who is left out of important conversations",
+    "show how information really flows across teams",
+    "measure which voices dominate vs. who is sidelined",
+    "understand friendship circles in a school",
+    "map alliances in city politics",
+    "track how community rumors spread",
+    "spot over-reliance on a single connector",
+    "identify super-spreaders of misinformation",
+    "analyze which subgroups resist collaboration",
+    "find cultural brokers across language groups",
+    "spot who carries messages across silos",
+    "decide where to invest limited outreach funds",
+    "plan how to connect newcomers into networks",
+    "measure diversity of ties across gender or race",
+    "trace resilience of networks during crises",
+    "see if programs actually broaden networks",
+    "identify youth leaders in a sports club",
+    "help students map their own friend groups",
+    "understand bullying dynamics in classrooms",
+    "trace how ideas move through social media",
+    "spot echo chambers in online communities",
+    "see where elders hold quiet influence",
+    "track which organizations work in isolation",
+    "design introductions that spark new bridges",
+    "see how volunteers recruit each other",
+    "map gaps in healthcare provider networks",
+    "spot critical connectors in disaster response",
+    "measure shifts in trust between groups",
+    "trace influence in activist campaigns",
+    "find peripheries who need extra support",
+    "understand how gossip changes reputations",
+    "teach kids who their hidden connectors are",
+    "show families how relatives connect cousins",
+    "analyze network growth after training",
+    "trace how innovation spreads in a company",
+    "spot bottlenecks in cross-department work",
+    "see which employees act as informal leaders",
+    "map alliances in neighborhood councils",
+    "study how migrants build new networks",
+    "plan outreach for hard-to-reach residents",
+    "use network maps to evaluate equity goals",
+    "compare online vs. offline connections",
+    "prepare a clear visual map for funders",
+    "track network change over several years"
+  ],
+  boosters: [
+    "Define boundary and time window first. Then pick a clear tie definition.",
+    "Pair math with meaning. Validate patterns with participant debriefs.",
+    "Use minimal necessary data. Aggregate and anonymize wherever possible.",
+    "Prefer multiple lenses: degree, betweenness, communities, assortativity.",
+    "Make visuals accessible: high contrast, readable labels, alt text, bilingual where relevant.",
+    "Close the loop with a short brief and consented quotes."
+  ],
+  definition: "A practical SNA and network weaving approach for communities. Collect relationship data, build a graph, compute centrality and community measures, visualize patterns, then weave introductions, supports, and routines that bring peripheries in while avoiding overload on hubs.",
+  help: "Complete ethics, boundary, data sources, tie rules, construction steps, metrics, visuals, insights, weaving moves, experiments, and measures. Keep sensitive attributes safe and apply suppression rules for small cells.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Network map of Eastside participants" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council research steward" },
+    { label: "Purpose and questions", key: "purpose", type: "textarea", ph: "Why map the network and what you need to learn" },
+    { label: "Horizon and dates", key: "horizon", type: "text", ph: "e.g., Last 180 days" },
+    { label: "Boundary and scope", key: "boundary", type: "textarea", ph: "Who and where are in scope. Channels and contexts included." },
+
+    // People and inclusion
+    {
+      label: "Stakeholder groups",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, newcomers, disabled residents, staff, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters or ASL, transport, childcare, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and privacy rules", key: "consent", type: "textarea", ph: "Quoting, anonymity, retention and deletion, image consent" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release - who decides and why" },
+    { label: "Risk assessment and mitigations", key: "risk", type: "textarea", ph: "Doxxing risk, re-identification, small cell suppression, opt out" },
+
+    // Data sources
+    { label: "Tie definition", key: "tie_def", type: "textarea", ph: "What counts as a tie. e.g., replied 2+ times, co-attended 2 events, co-authored, introduced." },
+    { label: "Time window", key: "time_window", type: "text", ph: "e.g., Jan 1 to Jun 30" },
+    { label: "Survey roster or egocentric instrument", key: "survey_instrument", type: "textarea", ph: "Roster names, prompts, consent text" },
+    { label: "Digital trace sources", key: "trace_sources", type: "textarea", ph: "Forums, chat, email headers, sign-ins with terms checked" },
+    { label: "Raw data files and schema links", key: "data_links", type: "textarea", ph: "CSV URLs, tabs, column descriptions" },
+    { label: "Node attributes to collect", key: "node_attrs", type: "textarea", ph: "Role, unit, language, neighborhood, tenure, skills" },
+
+    // Construction and transforms
+    { label: "Node types", key: "node_types", type: "textarea", ph: "People, orgs, channels, events. Note multiplex ties if any." },
+    { label: "Graph construction notes", key: "graph_build", type: "textarea", ph: "Bipartite projection rules, weighting, direction, thresholds" },
+    { label: "Filters and inclusion rules", key: "filters", type: "textarea", ph: "Drop one time ties, minimum interactions, bots removal" },
+
+    // Metrics
+    { label: "Centrality metrics", key: "metrics_centrality", type: "textarea", ph: "Degree, in and out degree, betweenness, closeness, eigenvector or PageRank" },
+    { label: "Cohesion and structure", key: "metrics_structure", type: "textarea", ph: "Communities and modularity, clustering coefficient, k core, components" },
+    { label: "Bridging and constraint", key: "metrics_bridge", type: "textarea", ph: "Burt constraint or effective size, articulation points, bridges" },
+    { label: "Equity and mixing", key: "metrics_equity", type: "textarea", ph: "Assortativity by language or role, participation by subgroup, talk time parity" },
+
+    // Visualization
+    { label: "Views to render", key: "viz_views", type: "textarea", ph: "Overall, by community, by role, by neighborhood, newcomers only" },
+    { label: "Layout and mapping rules", key: "viz_rules", type: "textarea", ph: "Layout type, size by degree, color by community, labels threshold" },
+    { label: "Legend and accessibility notes", key: "viz_access", type: "textarea", ph: "Alt text, high contrast, bilingual captions, publish tiers" },
+
+    // Findings
+    { label: "Connectors and brokers list", key: "find_connectors", type: "textarea", ph: "Names or roles - why they matter - support needed" },
+    { label: "Peripheries and isolates", key: "find_periphery", type: "textarea", ph: "Segments with low degree - where and why" },
+    { label: "Missing voices", key: "find_missing", type: "textarea", ph: "Groups not present or under connected and hypotheses" },
+    { label: "Homophily and barriers", key: "find_homophily", type: "textarea", ph: "Strong same to same ties and what maintains them" },
+    { label: "Opportunities and risks", key: "find_ops_risks", type: "textarea", ph: "Quick wins, structural holes, overload risks" },
+
+    // Weaving moves
+    { label: "Weaving strategies", key: "weave_strategies", type: "textarea", ph: "Warm introductions, cross group salons, buddy systems, micro grants, translation support" },
+    { label: "Introductions and bridges log", key: "weave_log", type: "textarea", ph: "Who introduced whom - purpose - check date" },
+    { label: "Onboarding and rituals", key: "weave_rituals", type: "textarea", ph: "Welcome calls, ask-me-anything, newcomer spotlight, norms walkthrough" },
+
+    // Experiments
+    { label: "Experiments (one per line: test - owner - resources - start - check date - success signals)", key: "experiments", type: "textarea", ph: "Cross circle coffee chats - A. Lee - $500 - Jul - Aug 15 - +bridging ties" },
+
+    // Measures and cadence
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Change in periphery degree, bridge count, newcomer retention, talk time parity, response latency" },
+    { label: "Review cadence and roles", key: "cadence", type: "text", ph: "Monthly network review - quarterly brief - who leads" },
+
+    // Toolchain and artifacts
+    { label: "Toolchain", key: "tools", type: "textarea", ph: "Kumu, Gephi, GraphCommons, Polinode, NetworkX, NodeXL" },
+    { label: "Figures and exports", key: "figures", type: "textarea", ph: "PNG and SVG links, data dictionary, notebook links" },
+
+    // Reporting
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first brief in 14 days - translated - accessible visuals" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, constraints, prior maps" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    stakeholders,
+    access,
+
+    consent,
+    data_governance,
+    risk,
+
+    tie_def,
+    time_window,
+    survey_instrument,
+    trace_sources,
+    data_links,
+    node_attrs,
+
+    node_types,
+    graph_build,
+    filters,
+
+    metrics_centrality,
+    metrics_structure,
+    metrics_bridge,
+    metrics_equity,
+
+    viz_views,
+    viz_rules,
+    viz_access,
+
+    find_connectors,
+    find_periphery,
+    find_missing,
+    find_homophily,
+    find_ops_risks,
+
+    weave_strategies,
+    weave_log,
+    weave_rituals,
+
+    experiments,
+
+    measures,
+    cadence,
+
+    tools,
+    figures,
+
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Set boundary and ethics",
+      "Collect survey or trace data with consent",
+      "Build graph with clear tie rules",
+      "Compute metrics and render accessible views",
+      "Validate patterns with participants",
+      "Weave introductions and supports",
+      "Track measures and report back"
+    ].join(" -> ");
+
+    return [
+      title && `Network analysis plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and questions:\n${purpose}`,
+      horizon && `Horizon and dates: ${horizon}`,
+      boundary && `Boundary and scope:\n${boundary}`,
+
+      "SECTION: People and inclusion",
+      stakeholders && ["Stakeholder groups:", listify(stakeholders)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and privacy rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+      risk && `Risk assessment and mitigations:\n${risk}`,
+
+      "SECTION: Data sources",
+      tie_def && `Tie definition:\n${tie_def}`,
+      time_window && `Time window: ${time_window}`,
+      survey_instrument && `Survey roster or egocentric instrument:\n${survey_instrument}`,
+      trace_sources && `Digital trace sources:\n${trace_sources}`,
+      data_links && ["Raw data files and schema:", listify(data_links)].join("\n"),
+      node_attrs && ["Node attributes to collect:", listify(node_attrs)].join("\n"),
+
+      "SECTION: Construction and transforms",
+      node_types && `Node types:\n${node_types}`,
+      graph_build && `Graph construction notes:\n${graph_build}`,
+      filters && `Filters and inclusion rules:\n${filters}`,
+
+      "SECTION: Metrics",
+      metrics_centrality && `Centrality metrics:\n${metrics_centrality}`,
+      metrics_structure && `Cohesion and structure:\n${metrics_structure}`,
+      metrics_bridge && `Bridging and constraint:\n${metrics_bridge}`,
+      metrics_equity && `Equity and mixing:\n${metrics_equity}`,
+
+      "SECTION: Visualization",
+      viz_views && ["Views to render:", listify(viz_views)].join("\n"),
+      viz_rules && `Layout and mapping rules:\n${viz_rules}`,
+      viz_access && `Legend and accessibility notes:\n${viz_access}`,
+
+      "SECTION: Findings",
+      find_connectors && ["Connectors and brokers:", listify(find_connectors)].join("\n"),
+      find_periphery && ["Peripheries and isolates:", listify(find_periphery)].join("\n"),
+      find_missing && ["Missing voices:", listify(find_missing)].join("\n"),
+      find_homophily && `Homophily and barriers:\n${find_homophily}`,
+      find_ops_risks && `Opportunities and risks:\n${find_ops_risks}`,
+
+      "SECTION: Weaving moves",
+      weave_strategies && `Weaving strategies:\n${weave_strategies}`,
+      weave_log && ["Introductions and bridges log:", listify(weave_log)].join("\n"),
+      weave_rituals && `Onboarding and rituals:\n${weave_rituals}`,
+
+      "SECTION: Experiments",
+      experiments && ["Experiments:", listify(experiments)].join("\n"),
+
+      "SECTION: Measures and cadence",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Review cadence and roles: ${cadence}`,
+
+      "SECTION: Toolchain and artifacts",
+      tools && `Toolchain:\n${tools}`,
+      figures && ["Figures and exports:", listify(figures)].join("\n"),
+
+      "SECTION: Reporting",
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Boundary and tie rules are explicit",
+      "- [ ] Consent, minimization, and suppression rules are in place",
+      "- [ ] Graph construction and filters are documented",
+      "- [ ] Metrics include bridges and equity lenses",
+      "- [ ] Visuals are accessible and bilingual where relevant",
+      "- [ ] Weaving moves target peripheries without overloading hubs",
+      "- [ ] Experiments have owners, resources, and check dates",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "social network analysis SNA network weaving netography netnography centrality betweenness communities homophily bridges periphery missing voices template"
+  }
+},
+
+{
+  id: "ethical_data_stewardship",
+  slug: "ethical-data-stewardship-data-trusts-community-irb",
+  label: "Ethical Data Stewardship - Governance for safe listening",
+  kind: "governance",
+  categories: [
+    "governance",
+    "community",
+    "research",
+    "data",
+    "safety"
+  ],
+  tags: [
+    "type:framework",
+    "use:data",
+    "use:privacy",
+    "use:governance",
+    "use:risk",
+    "use:equity",
+    "use:ethics",
+    "phase:plan",
+    "phase:operate",
+    "phase:review",
+    "topic:community",
+    "level:advanced"
+  ],
+  use_cases: [
+    "set up a community data trust or community IRB for listening work",
+    "govern consent, access, and sharing with clear tiers",
+    "minimize harm with DPIA and safe release standards",
+    "honor data sovereignty principles and community benefit",
+    "publish transparent records and respond to incidents",
+    "set up a community data trust or community IRB for listening work",
+    "govern consent, access, and sharing with clear tiers",
+    "minimize harm with DPIA and safe release standards",
+    "honor data sovereignty principles and community benefit",
+    "publish transparent records and respond to incidents",
+    "decide what data should never be collected",
+    "create clear rules for who can see survey responses",
+    "set boundaries for using AI on sensitive community stories",
+    "decide how long to keep or delete community data",
+    "design safe processes for handling children’s information",
+    "prevent re-identification when sharing anonymized data",
+    "write consent forms people actually understand",
+    "build a public registry of approved data projects",
+    "design emergency stop rules if harm is detected",
+    "let community members vote on data use policies",
+    "plan fair ways to share research benefits back",
+    "handle health data with extra protections",
+    "design secure storage that still allows community access",
+    "create red flag categories (never share, always anonymize)",
+    "teach students how to respect participant privacy",
+    "set up escalation steps for when data is misused",
+    "draft plain-language data-sharing agreements",
+    "make dashboards that hide personal identifiers",
+    "involve Elders or cultural leaders in data review",
+    "align with OCAP, CARE, or other sovereignty standards",
+    "balance transparency with protecting vulnerable groups",
+    "test bias impacts before releasing datasets",
+    "manage researcher credentials and role-based access",
+    "decide who owns and controls social media scraping data",
+    "design clear grievance and remedy pathways",
+    "build capacity for community data stewardship roles",
+    "review algorithms against equity and safety standards",
+    "train volunteers in safe data handling",
+    "develop exit strategies if a data project shuts down",
+    "map risks of cross-border data storage or use",
+    "negotiate terms with funders about data ownership",
+    "write a community-first data code of ethics",
+    "design audits to check compliance over time",
+    "handle DNA, biometric, or cultural heritage data safely",
+    "trace who accessed what data and when",
+    "allow participants to withdraw their data anytime",
+    "show communities how their data is being used",
+    "design safe aggregation so no one is singled out",
+    "balance open data with redaction for safety",
+    "explain to kids why sharing names and addresses online is risky",
+    "decide if sensitive stories should be archived or deleted",
+    "create visual consent flows instead of legal jargon",
+    "check social media terms before using community posts",
+    "compare options: keep data local vs. cloud storage",
+    "publish a transparency report that real people can read",
+    "decide how to handle hacked or leaked community data"
+  ],
+  boosters: [
+    "Write the boundary and purpose first. Collect only what you need.",
+    "Center community sovereignty. Align with OCAP and CARE where relevant.",
+    "Use dynamic consent with easy withdrawal routes and plain language.",
+    "Prefer safe aggregates and small experiments over broad collection.",
+    "Publish transparency reports and close the loop with contributors.",
+    "Practice defense in depth. People, process, and technical controls together."
+  ],
+  definition: "A lightweight operating model for community data governance using data trusts and community IRBs. It covers roles, consent, access tiers, risk assessment, safe release, accountability, and transparent reporting so listening can be ethical and effective.",
+  help: "Complete charter and principles, scope of data and uses, roles and decision rights, consent flows, lifecycle and security, access tiers and review, DPIA and safe release, transparency and incident response, measures and cadence.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Community Data Trust for Eastside" },
+    { label: "Sponsor or steward", key: "owner", type: "text", ph: "e.g., Community Council data steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why collect or steward data and where this applies" },
+    { label: "Jurisdiction and horizon", key: "jurisdiction", type: "text", ph: "e.g., City level, 12 month pilot" },
+
+    // Charter and principles
+    { label: "Charter link", key: "charter_link", type: "text", ph: "URL to charter or bylaws" },
+    { label: "Principles adopted", key: "principles", type: "textarea", ph: "OCAP, CARE, FAIR, local sovereignty, equity, transparency" },
+    { label: "Community benefit statement", key: "benefit", type: "textarea", ph: "How this stewardship benefits the community first" },
+
+    // People and roles
+    {
+      label: "Governing bodies",
+      autofill: "persona->inline",
+      itemLabel: "body",
+      itemType: "typeahead",
+      key: "bodies",
+      max: 10,
+      type: "repeater",
+      ph: "Data Trust Board, Community IRB, Access Committee, Appeals Panel"
+    },
+    { label: "Roles and decision rights (one per line: role - purpose - decisions - term)", key: "roles", type: "textarea", ph: "Data Steward - administer consent and access - approve tier 1 - 1 year" },
+    { label: "Conflict of interest policy", key: "coi", type: "textarea", ph: "Disclosure, recusal, public notes" },
+
+    // Data scope
+    { label: "Data uses and questions", key: "uses", type: "textarea", ph: "What questions you intend to answer" },
+    { label: "Data types in scope", key: "data_types", type: "textarea", ph: "Surveys, narratives, logs, attendance, contact info, location, etc" },
+    { label: "Out of scope or prohibited", key: "oos", type: "textarea", ph: "Sensitive or high risk data you will not collect" },
+    { label: "Sources and provenance", key: "provenance", type: "textarea", ph: "Where data comes from and evidence of consent" },
+
+    // Legal and agreements
+    { label: "Legal basis and contracts", key: "legal", type: "textarea", ph: "MOUs, DUAs, licenses, research approvals" },
+    { label: "Community benefit agreements", key: "cba", type: "textarea", ph: "Return of value to community" },
+
+    // Consent and participation
+    { label: "Consent models", key: "consent_models", type: "textarea", ph: "Opt in, dynamic consent, guardians for minors, withdrawal route" },
+    { label: "Notices and plain language", key: "notices", type: "textarea", ph: "Reading level, languages, formats, examples" },
+    { label: "Vulnerable groups protections", key: "vulnerable", type: "textarea", ph: "Minors, undocumented, survivors, disability, indigenous data sovereignty" },
+
+    // Access tiers and review
+    { label: "Access tiers", key: "tiers", type: "textarea", ph: "Tier 0 public brief, Tier 1 aggregates, Tier 2 limited deidentified, Tier 3 identified by exception" },
+    { label: "Access request workflow", key: "access_flow", type: "textarea", ph: "Apply - review - decision - conditions - expiry - audit" },
+    { label: "Review criteria", key: "review_criteria", type: "textarea", ph: "Benefit, risk, necessity, equity impact, reciprocity" },
+
+    // Lifecycle and security
+    { label: "Data minimization and quality", key: "minimize", type: "textarea", ph: "Collect the least needed and verify accuracy" },
+    { label: "Storage and security controls", key: "security", type: "textarea", ph: "Encryption, IAM, logs, backups, segregation" },
+    { label: "Retention and deletion", key: "retention", type: "textarea", ph: "Schedules by type and verified deletion process" },
+
+    // Risk assessment and safe release
+    { label: "DPIA or threat model", key: "dpia", type: "textarea", ph: "Risks, likelihood, impact, mitigations" },
+    { label: "Deidentification and SDC methods", key: "sdc", type: "textarea", ph: "Aggregation thresholds, suppression, k-anonymity, differential privacy if used" },
+    { label: "Redaction and small cell rules", key: "redaction", type: "textarea", ph: "Minimum cell size, masking rules" },
+
+    // Transparency and accountability
+    { label: "Transparency report template", key: "transparency_tpl", type: "textarea", ph: "What was collected, who accessed, for what, outcomes" },
+    { label: "Appeals and redress", key: "appeals", type: "textarea", ph: "How to contest decisions and seek remedy" },
+    { label: "Audit plan", key: "audit", type: "textarea", ph: "Internal checks, external reviews, cadence" },
+
+    // Community IRB process
+    { label: "Submission requirements", key: "irb_sub", type: "textarea", ph: "Protocol, consent materials, risk plan, benefit plan" },
+    { label: "Review steps and timelines", key: "irb_steps", type: "textarea", ph: "Precheck, full review, conditions, monitoring" },
+    { label: "Monitoring and continuing review", key: "irb_monitor", type: "textarea", ph: "Amendments, adverse events, renewals" },
+
+    // Artifacts and registry
+    { label: "Data inventory register", key: "inventory", type: "textarea", ph: "Dataset - purpose - fields - tier - owner - retention" },
+    { label: "Data dictionary links", key: "dictionary", type: "textarea", ph: "Where definitions live" },
+    { label: "Public briefs and summaries", key: "briefs", type: "textarea", ph: "Links to published community reports" },
+
+    // Logs
+    { label: "Access request log (one per line: id - who - dataset - tier - decision - expiry)", key: "access_log", type: "textarea", ph: "REQ-12 - City Dept - traffic survey - T2 - approved - 2025-12-31" },
+    { label: "Incident log (one per line: date - type - severity - status - lessons)", key: "incident_log", type: "textarea", ph: "2025-07-01 - misdirected email - low - closed - added 2 person review" },
+    { label: "Consent withdrawal log", key: "withdraw_log", type: "textarea", ph: "id - when - action taken - confirmation sent" },
+
+    // Measures and cadence
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Time to decision, approvals with conditions, withdrawals processed, incidents, audit findings" },
+    { label: "Review cadence and owners", key: "cadence", type: "text", ph: "Monthly access committee, quarterly board, annual external review" },
+
+    // Training
+    { label: "Training plan", key: "training", type: "textarea", ph: "Privacy, security, bias, safe storytelling, consent refreshers" },
+    { label: "Training completion log", key: "training_log", type: "textarea", ph: "name - module - date - status" },
+
+    // Timeline and context
+    { label: "Rollout plan", key: "rollout", type: "textarea", ph: "Pilot, evaluate, scale, archive or exit" },
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 2 weeks, pilot 90 days, review and adapt" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior policies, community norms, references" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    jurisdiction,
+
+    charter_link,
+    principles,
+    benefit,
+
+    bodies,
+    roles,
+    coi,
+
+    uses,
+    data_types,
+    oos,
+    provenance,
+
+    legal,
+    cba,
+
+    consent_models,
+    notices,
+    vulnerable,
+
+    tiers,
+    access_flow,
+    review_criteria,
+
+    minimize,
+    security,
+    retention,
+
+    dpia,
+    sdc,
+    redaction,
+
+    transparency_tpl,
+    appeals,
+    audit,
+
+    irb_sub,
+    irb_steps,
+    irb_monitor,
+
+    inventory,
+    dictionary,
+    briefs,
+
+    access_log,
+    incident_log,
+    withdraw_log,
+
+    measures,
+    cadence,
+
+    training,
+    training_log,
+
+    rollout,
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Define charter and principles",
+      "Limit scope and collect the minimum",
+      "Set consent, tiers, and access workflow",
+      "Assess risks and define safe release",
+      "Operate with audits, transparency, and appeals",
+      "Monitor measures and adapt with community input"
+    ].join(" -> ");
+
+    return [
+      title && `Ethical Data Stewardship plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Sponsor or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      jurisdiction && `Jurisdiction and horizon: ${jurisdiction}`,
+      charter_link && `Charter link: ${charter_link}`,
+
+      "SECTION: Principles and benefit",
+      principles && `Principles adopted:\n${principles}`,
+      benefit && `Community benefit statement:\n${benefit}`,
+
+      "SECTION: People and roles",
+      bodies && ["Governing bodies:", listify(bodies)].join("\n"),
+      roles && ["Roles and decision rights:", listify(roles)].join("\n"),
+      coi && `Conflict of interest policy:\n${coi}`,
+
+      "SECTION: Data scope",
+      uses && `Data uses and questions:\n${uses}`,
+      data_types && `Data types in scope:\n${data_types}`,
+      oos && `Out of scope or prohibited:\n${oos}`,
+      provenance && `Sources and provenance:\n${provenance}`,
+
+      "SECTION: Legal and agreements",
+      legal && `Legal basis and contracts:\n${legal}`,
+      cba && `Community benefit agreements:\n${cba}`,
+
+      "SECTION: Consent and participation",
+      consent_models && `Consent models:\n${consent_models}`,
+      notices && `Notices and plain language:\n${notices}`,
+      vulnerable && `Vulnerable groups protections:\n${vulnerable}`,
+
+      "SECTION: Access tiers and review",
+      tiers && `Access tiers:\n${tiers}`,
+      access_flow && `Access request workflow:\n${access_flow}`,
+      review_criteria && `Review criteria:\n${review_criteria}`,
+
+      "SECTION: Lifecycle and security",
+      minimize && `Data minimization and quality:\n${minimize}`,
+      security && `Storage and security controls:\n${security}`,
+      retention && `Retention and deletion:\n${retention}`,
+
+      "SECTION: Risk assessment and safe release",
+      dpia && `DPIA or threat model:\n${dpia}`,
+      sdc && `Deidentification and SDC methods:\n${sdc}`,
+      redaction && `Redaction and small cell rules:\n${redaction}`,
+
+      "SECTION: Transparency and accountability",
+      transparency_tpl && `Transparency report template:\n${transparency_tpl}`,
+      appeals && `Appeals and redress:\n${appeals}`,
+      audit && `Audit plan:\n${audit}`,
+
+      "SECTION: Community IRB process",
+      irb_sub && `Submission requirements:\n${irb_sub}`,
+      irb_steps && `Review steps and timelines:\n${irb_steps}`,
+      irb_monitor && `Monitoring and continuing review:\n${irb_monitor}`,
+
+      "SECTION: Artifacts and registry",
+      inventory && ["Data inventory register:", listify(inventory)].join("\n"),
+      dictionary && `Data dictionary links:\n${dictionary}`,
+      briefs && `Public briefs and summaries:\n${briefs}`,
+
+      "SECTION: Logs",
+      access_log && ["Access request log:", listify(access_log)].join("\n"),
+      incident_log && ["Incident log:", listify(incident_log)].join("\n"),
+      withdraw_log && ["Consent withdrawal log:", listify(withdraw_log)].join("\n"),
+
+      "SECTION: Measures and cadence",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Review cadence and owners: ${cadence}`,
+
+      "SECTION: Training",
+      training && `Training plan:\n${training}`,
+      training_log && ["Training completion log:", listify(training_log)].join("\n"),
+
+      "SECTION: Timeline",
+      rollout && `Rollout plan:\n${rollout}`,
+      timeline && `Timeline: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Purpose, boundary, and community benefit are clear",
+      "- [ ] Roles, decision rights, and COI policy are published",
+      "- [ ] Consent is specific, revocable, and multilingual",
+      "- [ ] Access tiers and review criteria are documented",
+      "- [ ] DPIA complete with safe release standards in place",
+      "- [ ] Transparency reports and audits scheduled",
+      "- [ ] Logs maintained for access, incidents, and withdrawals",
+      "- [ ] Measures tracked and practices adapted with community input"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "ethical data stewardship data trust community IRB consent tiers DPIA safe release OCAP CARE transparency appeals audit registry template"
+  }
+},
+
+{
+  id: "cultural_probes_diary_studies",
+  slug: "cultural-probes-diary-studies-longitudinal-voice",
+  label: "Cultural Probes & Diary Studies - Longitudinal, participant-led voice capture",
+  kind: "research",
+  categories: [
+    "research",
+    "design",
+    "community",
+    "ethnography",
+    "evaluation"
+  ],
+  tags: [
+    "type:method",
+    "use:longitudinal",
+    "use:co-creation",
+    "use:voice",
+    "use:equity",
+    "use:ethnography",
+    "phase:discover",
+    "phase:define",
+    "phase:develop",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "capture lived experiences over time in participants' own words and media",
+    "surface routines, workarounds, and emotions that single sessions miss",
+    "feed design with real moments and event-triggered insights",
+    "enable participant reflection and co-analysis",
+    "build a consented story bank for strategy and communication",
+     "capture lived experiences over time in participants' own words and media",
+    "surface routines, workarounds, and emotions that single sessions miss",
+    "feed design with real moments and event-triggered insights",
+    "enable participant reflection and co-analysis",
+    "build a consented story bank for strategy and communication",
+    "study how daily habits actually change over weeks or months",
+    "see what people do when no researcher is in the room",
+    "capture photos, sketches, or recordings from participants’ lives",
+    "compare weekday vs weekend routines in detail",
+    "track how feelings about a service shift across touchpoints",
+    "understand how chronic illness affects daily decisions",
+    "observe how children use learning apps outside school",
+    "see how families actually cook and eat meals at home",
+    "collect real-world experiences of using public transport",
+    "spot workarounds people invent for broken systems",
+    "test how a new product integrates into daily routines",
+    "gather voice notes during key stress or joy moments",
+    "capture participant reflections after specific triggers",
+    "study rituals around money, budgeting, and saving",
+    "understand how farmers adapt across planting seasons",
+    "compare cultural practices across different households",
+    "track how trust builds or fades with a new program",
+    "study student study patterns before exams",
+    "document how people use health tech over time",
+    "compare what people *say* vs what they *do* daily",
+    "design probes that spark creativity, like postcards or maps",
+    "make participants co-researchers by interpreting their entries",
+    "spot contradictions in routines (healthy vs unhealthy)",
+    "collect video diaries to understand emotional highs and lows",
+    "learn what frustrates people most about an app",
+    "understand why people skip medication doses",
+    "capture moments when people decide to ask for help",
+    "study daily mobility challenges of people with disabilities",
+    "track how neighborhoods change through resident diaries",
+    "see how new policies affect daily life over time",
+    "give participants playful kits to document experiences",
+    "ask people to draw maps of their social worlds",
+    "understand how migration impacts everyday identity",
+    "study bedtime routines across cultures",
+    "capture the soundscapes of different communities",
+    "see how gig workers juggle multiple jobs in a week",
+    "study how trust builds in online communities",
+    "track joy moments: what makes people smile daily",
+    "log frustrations: where people feel stuck or excluded",
+    "let kids design probes to show their own world",
+    "study how families share tech devices across members",
+    "follow how language use shifts over time in context",
+    "diary entries to measure emotional resilience",
+    "capture how climate events change daily routines"
+  ],
+  boosters: [
+    "Design prompts that are small, specific, and situated. Ask for a moment in time, not a life story.",
+    "Offer multiple modes: voice notes, photos, video, text, drawings, paper kits. Meet people where they are.",
+    "Schedule brief check-ins to reduce drift, answer questions, and keep consent fresh.",
+    "Close the loop with a participant-first report back and optional co-analysis session.",
+    "Budget for access supports: data stipends, devices, translation, ASL, childcare, transport.",
+    "Minimize data. Collect what you need, de-identify early, and set deletion dates."
+  ],
+  definition: "A longitudinal, participant-led method. Cultural probes seed reflection with playful artifacts and prompts. Diary studies collect repeated entries over days or weeks. Together they surface patterns, emotions, and constraints that reveal opportunities for change.",
+  help: "Complete ethics and access, sampling and recruitment, probe kit and diary prompts, cadence and channels, check-ins, data handling, analysis, and report back. Keep instructions simple and multimodal. Compensate contributions fairly and protect privacy.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Everyday Access Diaries" },
+    { label: "Owner or team", key: "owner", type: "text", ph: "e.g., Community Research + Library" },
+    { label: "Purpose and research questions", key: "purpose", type: "textarea", ph: "Why this matters and what you need to learn" },
+    { label: "Horizon and dates", key: "horizon", type: "text", ph: "e.g., Aug 1 to Sept 15" },
+    { label: "Boundary and scope", key: "boundary", type: "textarea", ph: "People, places, channels that are in scope" },
+
+    // Participants and inclusion
+    {
+      label: "Participants and segments",
+      autofill: "persona->inline",
+      itemLabel: "participant segment",
+      itemType: "typeahead",
+      key: "participants",
+      max: 32,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, newcomers, disabled residents"
+    },
+    { label: "Sampling frame and quotas", key: "sampling", type: "textarea", ph: "Targets by segment, language, neighborhood" },
+    { label: "Recruitment channels and scripts", key: "recruitment", type: "textarea", ph: "Partners, outreach text, screening, screener link" },
+    { label: "Incentives and payment plan", key: "incentives", type: "textarea", ph: "Amount, schedule, bonuses for completion" },
+    { label: "Access supports", key: "access", type: "textarea", ph: "Devices, data stipends, interpreters or ASL, transport, childcare, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and data rights", key: "consent", type: "textarea", ph: "Quoting rules, image consent, opt-out, deletion on request" },
+    { label: "Assent for minors and guardians", key: "assent", type: "textarea", ph: "Process if under 18 and who consents" },
+    { label: "Privacy tiers and publication", key: "publication", type: "textarea", ph: "Public, community only, restricted, not for release" },
+    { label: "Risk and crisis protocol", key: "risk", type: "textarea", ph: "Triggers, response routes, contacts, mandatory reporting if any" },
+    { label: "Data governance and retention", key: "data_governance", type: "textarea", ph: "Storage, encryption, retention period, deletion dates" },
+
+    // Probe and diary design
+    { label: "Probe kit contents", key: "probe_kit", type: "textarea", ph: "Postcards, stickers, map, disposable camera, prompt cards, prepaid envelope" },
+    { label: "Probe activities", key: "probe_activities", type: "textarea", ph: "Photo a doorway you avoid and tell why; draw your route to the clinic; save one receipt" },
+    { label: "Diary entry prompts", key: "diary_prompts", type: "textarea", ph: "What happened, where, who, how it felt, what helped or got in the way" },
+    { label: "Entry types allowed", key: "entry_types", type: "textarea", ph: "Text, audio note, photo with caption, short video, drawing, artifact" },
+    { label: "Cadence and duration", key: "cadence", type: "text", ph: "Daily for 14 days or 3 times a week for 6 weeks" },
+    { label: "Event triggers", key: "triggers", type: "textarea", ph: "When X happens, send an entry within 24 hours" },
+    { label: "Reminders and check-ins", key: "checkins", type: "textarea", ph: "Automated SMS, weekly 10 min call, group chat office hours" },
+
+    // Onboarding and training
+    { label: "Orientation session plan", key: "onboarding", type: "textarea", ph: "45 min overview, consent, practice entry, safety checks" },
+    { label: "Instruction sheet link", key: "instructions_link", type: "text", ph: "URL for quick start guide" },
+    { label: "Practice entry script", key: "practice_entry", type: "textarea", ph: "Warm up prompt and example" },
+
+    // Fieldwork operations
+    { label: "Channels and tools", key: "tools", type: "textarea", ph: "SMS, WhatsApp, email, research platform, paper return envelope" },
+    { label: "Help and contact routes", key: "help_routes", type: "textarea", ph: "Hotline, office hours, contact names" },
+    { label: "Translation and transcription plan", key: "translation", type: "textarea", ph: "Who translates and transcribes, quality checks" },
+
+    // Data handling
+    { label: "Intake and tagging schema", key: "intake_schema", type: "textarea", ph: "Filename, participant code, time, location, tags" },
+    { label: "De-identification and suppression", key: "deid", type: "textarea", ph: "Blur faces, remove names, small cell rules" },
+    { label: "File storage and backup", key: "storage", type: "textarea", ph: "Folder structure, backup cadence, access control" },
+
+    // Interim sensemaking
+    { label: "Interim check-ins and reflections", key: "interim", type: "textarea", ph: "Midpoint prompts, short surveys, mini-interviews" },
+    { label: "Analyst memoing and codes", key: "memos_codes", type: "textarea", ph: "Initial codes, tensions, surprises, quotes with consent" },
+    { label: "Participant co-analysis session", key: "co_analysis", type: "textarea", ph: "Agenda, activities, accessibility, honoraria" },
+
+    // Synthesis and outputs
+    { label: "Themes and tensions", key: "themes", type: "textarea", ph: "Named in participants' words" },
+    { label: "Story bank and exemplars", key: "story_bank", type: "textarea", ph: "Short titles, essence, media link, consent level" },
+    { label: "Design principles and implications", key: "principles", type: "textarea", ph: "Rules that guide choices" },
+    { label: "Recommendations and opportunities", key: "recs", type: "textarea", ph: "Where to act and why" },
+
+    // Measures and risks
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Entry completion rate, retention, diversity coverage, time to insight" },
+    { label: "Bias and sampling risks", key: "bias_risks", type: "textarea", ph: "Under coverage, attrition, self selection, tech exclusion" },
+
+    // Report back and closure
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Participant first brief in 14 days, bilingual, accessible artifacts" },
+    { label: "Return of results and thanks", key: "return_results", type: "textarea", ph: "Individual summaries if requested, share outcomes, thank by name if consented" },
+    { label: "Data disposition", key: "data_disposition", type: "textarea", ph: "What is kept, archived, or deleted when" },
+
+    // Timeline and context
+    { label: "Timeline and key dates", key: "timeline", type: "text", ph: "Pilot, launch, midpoint, close, synthesis, share out" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, constraints, related work" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    participants,
+    sampling,
+    recruitment,
+    incentives,
+    access,
+
+    consent,
+    assent,
+    publication,
+    risk,
+    data_governance,
+
+    probe_kit,
+    probe_activities,
+    diary_prompts,
+    entry_types,
+    cadence,
+    triggers,
+    checkins,
+
+    onboarding,
+    instructions_link,
+    practice_entry,
+
+    tools,
+    help_routes,
+    translation,
+
+    intake_schema,
+    deid,
+    storage,
+
+    interim,
+    memos_codes,
+    co_analysis,
+
+    themes,
+    story_bank,
+    principles,
+    recs,
+
+    measures,
+    bias_risks,
+
+    report_back,
+    return_results,
+    data_disposition,
+
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Prep ethics and access",
+      "Recruit and onboard",
+      "Seed probes and start diaries",
+      "Check in and support",
+      "Intake and de-identify",
+      "Co-analyze and synthesize",
+      "Report back and close the loop"
+    ].join(" -> ");
+
+    return [
+      title && `Cultural Probes & Diary Studies plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or team: ${owner}`,
+      purpose && `Purpose and research questions:\n${purpose}`,
+      horizon && `Horizon and dates: ${horizon}`,
+      boundary && `Boundary and scope:\n${boundary}`,
+
+      "SECTION: Participants and inclusion",
+      participants && ["Participants and segments:", listify(participants)].join("\n"),
+      sampling && `Sampling frame and quotas:\n${sampling}`,
+      recruitment && `Recruitment channels and scripts:\n${recruitment}`,
+      incentives && `Incentives and payment plan:\n${incentives}`,
+      access && `Access supports:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and data rights:\n${consent}`,
+      assent && `Assent for minors and guardians:\n${assent}`,
+      publication && `Privacy tiers and publication:\n${publication}`,
+      risk && `Risk and crisis protocol:\n${risk}`,
+      data_governance && `Data governance and retention:\n${data_governance}`,
+
+      "SECTION: Probe and diary design",
+      probe_kit && `Probe kit contents:\n${probe_kit}`,
+      probe_activities && ["Probe activities:", listify(probe_activities)].join("\n"),
+      diary_prompts && `Diary entry prompts:\n${diary_prompts}`,
+      entry_types && `Entry types allowed:\n${entry_types}`,
+      cadence && `Cadence and duration: ${cadence}`,
+      triggers && `Event triggers:\n${triggers}`,
+      checkins && `Reminders and check-ins:\n${checkins}`,
+
+      "SECTION: Onboarding and training",
+      onboarding && `Orientation session plan:\n${onboarding}`,
+      instructions_link && `Instruction sheet link: ${instructions_link}`,
+      practice_entry && `Practice entry script:\n${practice_entry}`,
+
+      "SECTION: Fieldwork operations",
+      tools && `Channels and tools:\n${tools}`,
+      help_routes && `Help and contact routes:\n${help_routes}`,
+      translation && `Translation and transcription plan:\n${translation}`,
+
+      "SECTION: Data handling",
+      intake_schema && `Intake and tagging schema:\n${intake_schema}`,
+      deid && `De-identification and suppression:\n${deid}`,
+      storage && `File storage and backup:\n${storage}`,
+
+      "SECTION: Interim sensemaking",
+      interim && `Interim check-ins and reflections:\n${interim}`,
+      memos_codes && `Analyst memoing and codes:\n${memos_codes}`,
+      co_analysis && `Participant co-analysis session:\n${co_analysis}`,
+
+      "SECTION: Synthesis and outputs",
+      themes && `Themes and tensions:\n${themes}`,
+      story_bank && ["Story bank and exemplars:", listify(story_bank)].join("\n"),
+      principles && `Design principles and implications:\n${principles}`,
+      recs && `Recommendations and opportunities:\n${recs}`,
+
+      "SECTION: Measures and risks",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      bias_risks && `Bias and sampling risks:\n${bias_risks}`,
+
+      "SECTION: Report back and closure",
+      report_back && `Report back plan:\n${report_back}`,
+      return_results && `Return of results and thanks:\n${return_results}`,
+      data_disposition && `Data disposition:\n${data_disposition}`,
+
+      "SECTION: Timeline",
+      timeline && `Timeline and key dates: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Prompts are small, specific, and situated",
+      "- [ ] Multimodal capture enabled with access supports funded",
+      "- [ ] Consent, privacy tiers, and crisis routes are clear",
+      "- [ ] Cadence and reminders agreed with participants",
+      "- [ ] Intake, de-identification, and storage rules documented",
+      "- [ ] Co-analysis or participant feedback integrated",
+      "- [ ] Measures show completion, diversity coverage, and insight quality",
+      "- [ ] Participant-first report back scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "cultural probes diary studies longitudinal participant led prompts cadence multimodal consent privacy de-identification co-analysis report back template"
+  }
+},
+
+{
+  id: "opportunity_solution_tree",
+  slug: "opportunity-solution-tree-outcomes-first",
+  label: "Opportunity Solution Tree - Tie problems to outcomes to keep purpose tight",
+  kind: "strategy",
+  categories: [
+    "strategy",
+    "research",
+    "product",
+    "community",
+    "operations"
+  ],
+  tags: [
+    "type:framework",
+    "use:discovery",
+    "use:prioritization",
+    "use:experimentation",
+    "use:outcomes",
+    "use:opportunities",
+    "phase:explore",
+    "phase:define",
+    "phase:test",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "anchor discovery work to a single outcome metric",
+    "turn research into a tree of opportunities before jumping to solutions",
+    "design lean experiments to de risk assumptions",
+    "decide what to build next with clear evidence",
+    "avoid scope creep by pruning ideas that do not serve the outcome",
+        "anchor discovery work to a single outcome metric",
+    "turn research into a tree of opportunities before jumping to solutions",
+    "design lean experiments to de-risk assumptions",
+    "decide what to build next with clear evidence",
+    "avoid scope creep by pruning ideas that do not serve the outcome",
+    "map every user problem back to the bigger outcome you want to achieve",
+    "separate opportunities from solutions so teams don’t fall in love with ideas",
+    "make hidden assumptions visible and testable",
+    "align cross-functional teams on one outcome goal",
+    "show stakeholders how ideas connect to strategy",
+    "turn messy user feedback into structured opportunity spaces",
+    "trace which opportunities deliver the biggest outcome impact",
+    "spot duplicate solutions that address the same need",
+    "help prioritize experiments when resources are limited",
+    "find the riskiest branch of the tree and test it first",
+    "teach product teams how to stay outcome-focused",
+    "document learning as you test and update the tree",
+    "compare different outcome paths before investing",
+    "use as a visual roadmap in strategy reviews",
+    "adapt tree for community projects, not just products",
+    "use in nonprofit settings to connect activities to mission outcomes",
+    "make design sprints more focused on outcomes, less on features",
+    "pair with OKRs to trace goals down to daily experiments",
+    "apply in operations: tie process improvements to efficiency outcomes",
+    "help avoid ‘pet projects’ that don’t link to outcomes",
+    "clarify difference between customer pain vs. business pain",
+    "map user journey pain points into opportunities on the tree",
+    "trace how solving small frustrations can lead to larger change",
+    "show how multiple solutions can address one opportunity",
+    "prevent random idea dumps by structuring thinking",
+    "use in workshops to align leadership around priorities",
+    "teach students to connect problems, solutions, and results",
+    "apply to civic projects: tie community asks to clear outcomes",
+    "use in hackathons to keep energy directed toward impact",
+    "adapt for healthcare to connect interventions to health outcomes",
+    "apply in education to link teaching methods to student outcomes",
+    "for startups: avoid building cool tech with no purpose",
+    "for teams: stop saying yes to everything, focus on outcome paths",
+    "use with volunteers: connect community efforts to results",
+    "document trade-offs when two outcomes conflict",
+    "help funders see why a solution matters through outcomes",
+    "keep track of ‘failed’ solutions and what they taught",
+    "create transparency: anyone can trace why this solution matters",
+    "make retrospectives more useful: tie learning back to the tree",
+    "use trees as living documents in Notion or Miro",
+    "make it fun for kids: ‘tree of problems and answers’ to homework"
+  ],
+  boosters: [
+    "Name one outcome for this cycle. If you need two outcomes, run two trees.",
+    "Write opportunities as needs in context. Avoid solution words.",
+    "Score evidence strength. Favor problems with strong signals from interviews or data.",
+    "Separate desirability, feasibility, and viability risks. Test the scariest first.",
+    "Time box experiments and define success signals before you start.",
+    "Close the loop. Share a brief that shows what you learned and what you will do next."
+  ],
+  definition: "A visual way to connect one outcome to the opportunities that block it, then to solution ideas and experiments. Popularized by Teresa Torres for continuous discovery.",
+  help: "Fill the outcome and metric, list opportunities from interviews and data, attach solution ideas to each opportunity, and plan experiments with clear hypotheses and success criteria. Track evidence, decisions, and next bets.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Outcome tree for Eastside onboarding" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Discovery lead or community steward" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., 6 to 12 weeks" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why this tree and where it applies" },
+
+    // Outcome
+    { label: "Outcome statement", key: "outcome_stmt", type: "textarea", ph: "Improve X for Y by Z within T" },
+    { label: "Outcome metric name and definition", key: "metric_def", type: "textarea", ph: "Name, formula, segment, source" },
+    { label: "Baseline and target", key: "metric_targets", type: "text", ph: "Baseline 12 percent to 18 percent by Nov 30" },
+    { label: "Guardrail metrics", key: "guardrails", type: "textarea", ph: "Quality, inclusion, safety, cost, support load" },
+
+    // Discovery inputs
+    {
+      label: "Segments in focus",
+      autofill: "persona->inline",
+      itemLabel: "segment",
+      itemType: "typeahead",
+      key: "segments",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Newcomers, night shift parents, elders, small biz owners"
+    },
+    { label: "Evidence sources", key: "evidence_src", type: "textarea", ph: "Interviews, logs, surveys, story circles, analytics" },
+    { label: "Interview or story links", key: "interview_links", type: "textarea", ph: "Docs or board URLs" },
+
+    // Opportunities
+    { label: "Opportunity list (one per line: id - parent id or root - need in context - evidence strength 1 to 5 - notes)", key: "opportunities", type: "textarea", ph: "OP1 - root - cannot find meeting times on mobile - 4 - 7 of 10 interviews" },
+
+    // Solutions
+    { label: "Solution ideas (one per line: op id - idea name - sketch or link - notes)", key: "solutions", type: "textarea", ph: "OP1 - SMS time picker - figma link - quick to try" },
+
+    // Assumptions
+    { label: "Assumptions list (one per line: item - type D/F/V/E - risk high or med or low - evidence strength 1 to 5)", key: "assumptions", type: "textarea", ph: "People will reply to SMS - D - high - 2" },
+
+    // Experiments
+    { label: "Experiment backlog (one per line: solution - hypothesis - method - sample - success criteria - owner - by when)", key: "experiments", type: "textarea", ph: "SMS time picker - replies will increase signups - fake door - n=300 - 8 percent click rate - Alex - Aug 15" },
+    { label: "Experiment methods allowed", key: "methods", type: "textarea", ph: "Fake door, prototype test, concierge, Wizard of Oz, A/B, usability, intercept interview" },
+
+    // Prioritization
+    { label: "Prioritization notes", key: "prioritization", type: "textarea", ph: "Pick highest outcome leverage with lowest effort and risk" },
+    { label: "Now, next, later bets (one per line: bet - reason - owner)", key: "bets", type: "textarea", ph: "Now - OP1 SMS time picker - strongest evidence - Alex" },
+
+    // Ethics and inclusion
+    { label: "Consent and privacy", key: "consent", type: "textarea", ph: "Quoting rules, recording, anonymization, withdrawal" },
+    { label: "Access supports", key: "access", type: "textarea", ph: "Interpreters and ASL, stipends, childcare, transport" },
+    { label: "Equity and do no harm checks", key: "equity_checks", type: "textarea", ph: "Bias risks, exclusion risks, sensitive contexts" },
+
+    // Links and visualization
+    { label: "Tree link", key: "tree_link", type: "text", ph: "Miro or FigJam or Kumu URL" },
+    { label: "Backlog link", key: "backlog_link", type: "text", ph: "Tracker or board URL" },
+
+    // Logs and decisions
+    { label: "Evidence log (one per line: date - finding - impact on tree)", key: "evidence_log", type: "textarea", ph: "Aug 5 - 6 of 8 could not find the link - increased OP1 strength" },
+    { label: "Decisions log (one per line: date - decision - reason)", key: "decisions", type: "textarea", ph: "Aug 12 - drop OP4 - not tied to outcome" },
+
+    // Measures and cadence
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Leading and lagging indicators beyond the outcome" },
+    { label: "Discovery cadence", key: "cadence", type: "text", ph: "Weekly interviews, biweekly synthesis, monthly share back" },
+
+    // Timeline and context
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 1 week, discovery 4 to 6 weeks, review and decide" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Constraints, prior work, references" }
+  ],
+  template: ({
+    title,
+    owner,
+    horizon,
+    purpose,
+
+    outcome_stmt,
+    metric_def,
+    metric_targets,
+    guardrails,
+
+    segments,
+    evidence_src,
+    interview_links,
+
+    opportunities,
+    solutions,
+    assumptions,
+
+    experiments,
+    methods,
+
+    prioritization,
+    bets,
+
+    consent,
+    access,
+    equity_checks,
+
+    tree_link,
+    backlog_link,
+
+    evidence_log,
+    decisions,
+
+    measures,
+    cadence,
+
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Choose one outcome and metric",
+      "List opportunities from interviews and data",
+      "Sketch solution ideas per opportunity",
+      "Map assumptions and pick the riskiest",
+      "Run small experiments with clear success criteria",
+      "Log evidence and decisions and prune the tree",
+      "Ship the next bet and review the outcome"
+    ].join(" -> ");
+
+    const legend = [
+      "Legend",
+      "D desirability, F feasibility, V viability, E ethical",
+      "Evidence strength 1 weak to 5 strong"
+    ].join("\n");
+
+    return [
+      title && `Opportunity Solution Tree plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      horizon && `Horizon: ${horizon}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+
+      "SECTION: Outcome",
+      outcome_stmt && `Outcome statement:\n${outcome_stmt}`,
+      metric_def && `Outcome metric definition:\n${metric_def}`,
+      metric_targets && `Baseline and target: ${metric_targets}`,
+      guardrails && `Guardrail metrics:\n${guardrails}`,
+
+      "SECTION: Discovery inputs",
+      segments && ["Segments in focus:", listify(segments)].join("\n"),
+      evidence_src && `Evidence sources:\n${evidence_src}`,
+      interview_links && `Interview or story links:\n${interview_links}`,
+
+      "SECTION: Opportunities",
+      opportunities && ["Opportunity list:", listify(opportunities)].join("\n"),
+
+      "SECTION: Solutions",
+      solutions && ["Solution ideas:", listify(solutions)].join("\n"),
+
+      "SECTION: Assumptions",
+      assumptions && ["Assumptions list:", listify(assumptions)].join("\n"),
+      legend,
+
+      "SECTION: Experiments",
+      methods && `Experiment methods allowed:\n${methods}`,
+      experiments && ["Experiment backlog:", listify(experiments)].join("\n"),
+
+      "SECTION: Prioritization",
+      prioritization && `Prioritization notes:\n${prioritization}`,
+      bets && ["Now, next, later bets:", listify(bets)].join("\n"),
+
+      "SECTION: Ethics and inclusion",
+      consent && `Consent and privacy:\n${consent}`,
+      access && `Access supports:\n${access}`,
+      equity_checks && `Equity and do no harm checks:\n${equity_checks}`,
+
+      "SECTION: Links and visualization",
+      tree_link && `Tree link: ${tree_link}`,
+      backlog_link && `Backlog link: ${backlog_link}`,
+
+      "SECTION: Logs and decisions",
+      evidence_log && ["Evidence log:", listify(evidence_log)].join("\n"),
+      decisions && ["Decisions log:", listify(decisions)].join("\n"),
+
+      "SECTION: Measures and cadence",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Discovery cadence: ${cadence}`,
+
+      "SECTION: Timeline",
+      timeline && `Timeline: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] One outcome and metric are named",
+      "- [ ] Opportunities are needs in context with evidence strength",
+      "- [ ] Solutions attach to opportunities not the other way around",
+      "- [ ] Assumptions typed D F V E with risk level",
+      "- [ ] Experiments have clear hypotheses and success criteria",
+      "- [ ] Bets are chosen based on outcome leverage and risk",
+      "- [ ] Logs show evidence and decisions and pruning",
+      "- [ ] Share back brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Opportunity Solution Tree outcome metric opportunities solutions experiments assumptions desirability feasibility viability ethical Teresa Torres continuous discovery template"
+  }
+},
+
+{
+  id: "raci_drci_consent",
+  slug: "raci-drci-consent-based-tweaks",
+  label: "RACI or DRCI - Clarify roles without muting voice",
+  kind: "governance",
+  categories: [
+    "governance",
+    "operations",
+    "community",
+    "strategy",
+    "delivery"
+  ],
+  tags: [
+    "type:framework",
+    "use:decision-clarity",
+    "use:roles",
+    "use:equity",
+    "use:process",
+    "phase:plan",
+    "phase:decide",
+    "phase:operate",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "make decision rights explicit without silencing affected groups",
+    "speed up delivery while keeping informed consent where needed",
+    "reduce meeting load by clarifying who is Consulted vs Informed",
+    "surface shadow work and handoff gaps",
+    "add review dates so decisions are safe to try and revisitable",
+     "make decision rights explicit without silencing affected groups",
+    "speed up delivery while keeping informed consent where needed",
+    "reduce meeting load by clarifying who is Consulted vs Informed",
+    "surface shadow work and handoff gaps",
+    "add review dates so decisions are safe to try and revisitable",
+    "help a project team figure out who actually makes the final call",
+    "clarify roles for cross-department initiatives",
+    "prevent confusion over who approves vs. who advises",
+    "map accountabilities to reduce dropped tasks",
+    "adapt for nonprofits to honor community input",
+    "document volunteer roles in a transparent way",
+    "create fairness by separating power from information rights",
+    "avoid bottlenecks caused by unclear decision authority",
+    "explain to stakeholders why they’re informed, not consulted",
+    "train new staff by showing clear RACI/DRCI examples",
+    "use in agile teams to clarify roles sprint by sprint",
+    "set up governance for coalition work",
+    "co-create role clarity with marginalized groups included",
+    "resolve conflict when two people think they’re ‘Responsible’",
+    "adapt for student groups to make fair decisions",
+    "apply in startups to balance speed with inclusion",
+    "use for board vs. staff clarity in nonprofits",
+    "document who owns a budget vs. who advises spending",
+    "show where too many ‘Approvers’ slow things down",
+    "audit equity by tracking whose voices get Consulted",
+    "layer consent practices onto traditional RACI charts",
+    "help distributed teams coordinate without endless calls",
+    "adapt to civic processes so residents see where they fit",
+    "compare RACI vs. DRCI for more consent-based practices",
+    "catch duplicate ‘Responsible’ roles that cause confusion",
+    "track how decisions shift over time as roles evolve",
+    "tie RACI/DRCI maps to performance reviews or OKRs",
+    "pair with service design blueprints to map roles to steps",
+    "spot ghost roles where no one is Accountable",
+    "simplify onboarding with a one-page RACI",
+    "design temporary roles for short-term projects",
+    "check for equity in who gets ‘C’ and who gets ‘I’",
+    "highlight over-consulted people burning out",
+    "use in conflict resolution: who had what role?",
+    "decide when consent is required vs. just information",
+    "silly version: who’s in charge of cleaning the break room?",
+    "kid version: who decides bedtime, who gets asked, who just hears?"
+  ],
+  boosters: [
+    "Localize the letters. If Decider fits better than Accountable, switch to DRCI.",
+    "Write consent gates clearly. Define where affected groups must consent or can object.",
+    "Publish a living matrix and keep it small. 20 to 40 named decisions is plenty.",
+    "Name access supports for participation. Interpreters, captions, stipends, and timing.",
+    "Record reasons in plain language. People accept outcomes they understand.",
+    "Add expiry dates. Policy and roles are perishable."
+  ],
+  definition: "A lightweight role and decision map. RACI means Responsible, Accountable, Consulted, Informed. DRCI is Decider, Responsible, Consulted, Informed. This version adds consent gates and speak up rights so clarity does not come at the cost of voice.",
+  help: "Fill scope, variant, consent rules, role roster, and the decision matrix. For each decision list who decides or is accountable, who is responsible to execute, who must be consulted, and who is informed. Add consent gates for affected groups, review dates, and access supports.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Decision clarity for Eastside portfolio" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Governance steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are clarifying and what is in scope" },
+    { label: "Horizon and review date", key: "horizon", type: "text", ph: "e.g., Pilot to 90 days then review" },
+
+    // Variant and vocabulary
+    { label: "Variant", key: "variant", type: "text", ph: "RACI or DRCI or custom" },
+    { label: "Letter meanings", key: "letters", type: "textarea", ph: "R - does the work. A or D - ultimately answers or decides. C - must be consulted before decision. I - is informed after." },
+    { label: "Local terms and definitions", key: "local_terms", type: "textarea", ph: "Replace jargon with plain local words" },
+
+    // Inclusion and ethics
+    {
+      label: "Stakeholders and affected groups",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 24,
+      type: "repeater",
+      ph: "e.g., Renters, elders, youth, disabled residents, staff, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Interpreters, captions, transport, stipends, childcare, sensory supports" },
+    { label: "Consent and quoting rules", key: "consent_rules", type: "textarea", ph: "What requires consent, quoting and anonymity, retention and deletion" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public, community only, restricted, not for release" },
+
+    // Roles and roster
+    { label: "Role roster and people - one per line", key: "roles", type: "textarea", ph: "Role - person or seat - purpose - limits - term - review date" },
+    { label: "Delegation and limits", key: "delegation", type: "textarea", ph: "What can be delegated and what cannot" },
+
+    // Consent based tweaks
+    { label: "Consent gates - one per line", key: "consent_gates", type: "textarea", ph: "Area or decision type - groups that must consent - objection test - escalation path" },
+    { label: "Speak up rights", key: "speak_up", type: "textarea", ph: "Who can raise a reasoned objection, how, and within what time window" },
+    { label: "Objection test", key: "objection_test", type: "textarea", ph: "Reasoned, tied to purpose or harm, proposes conditions to be safe to try" },
+
+    // Decision matrix
+    { label: "Decision list - one per line", key: "decisions", type: "textarea", ph: "Decision - domain - A or D - R - C list - I list - consent gate if any - evidence link - review date" },
+    { label: "Escalation and algedonic alerts", key: "escalation", type: "textarea", ph: "When to escalate quickly and to whom" },
+    { label: "Handoffs and records", key: "handoffs", type: "textarea", ph: "Where decisions are logged and how handoffs happen" },
+
+    // Meeting cadences
+    { label: "Governance cadence", key: "gov_cadence", type: "text", ph: "e.g., monthly 60 min for policy decisions" },
+    { label: "Operations cadence", key: "ops_cadence", type: "text", ph: "e.g., weekly 30 min for delivery coordination" },
+
+    // Checks and risks
+    { label: "Shadow work scan", key: "shadow_work", type: "textarea", ph: "Unpaid or hidden tasks and who carries them" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Token consultation, overload, rubber stamping, drift" },
+
+    // Measures and learning
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Time to decision, percent decisions with required consent logged, talk time parity, rework rate" },
+    { label: "Review and expiry rules", key: "review_rules", type: "textarea", ph: "Default expiry and retro cadence" },
+
+    // Timeline and links
+    { label: "Timeline and rollout steps", key: "timeline", type: "text", ph: "Pilot, publish, train, review" },
+    { label: "Records and board links", key: "links", type: "textarea", ph: "Matrix doc, minutes, policy board, issue tracker" },
+    { label: "Context and notes", key: "ctx", type: "textarea", ph: "Constraints, references, related frameworks" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    variant,
+    letters,
+    local_terms,
+
+    stakeholders,
+    access,
+    consent_rules,
+    data_governance,
+
+    roles,
+    delegation,
+
+    consent_gates,
+    speak_up,
+    objection_test,
+
+    decisions,
+    escalation,
+    handoffs,
+
+    gov_cadence,
+    ops_cadence,
+
+    shadow_work,
+    risks,
+
+    measures,
+    review_rules,
+
+    timeline,
+    links,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Pick variant and local words",
+      "Name consent gates and speak up rights",
+      "List roles and limits",
+      "Publish small decision matrix",
+      "Run on clear cadences",
+      "Track signals and review on expiry"
+    ].join(" -> ");
+
+    return [
+      title && `RACI or DRCI plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and notes:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon and review date: ${horizon}`,
+
+      "SECTION: Variant and vocabulary",
+      variant && `Variant: ${variant}`,
+      letters && `Letter meanings:\n${letters}`,
+      local_terms && `Local terms and definitions:\n${local_terms}`,
+
+      "SECTION: Inclusion and ethics",
+      stakeholders && ["Stakeholders and affected groups:", listify(stakeholders)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+      consent_rules && `Consent and quoting rules:\n${consent_rules}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Roles and roster",
+      roles && ["Role roster and people:", listify(roles)].join("\n"),
+      delegation && `Delegation and limits:\n${delegation}`,
+
+      "SECTION: Consent based tweaks",
+      consent_gates && ["Consent gates:", listify(consent_gates)].join("\n"),
+      speak_up && `Speak up rights:\n${speak_up}`,
+      objection_test && `Objection test:\n${objection_test}`,
+
+      "SECTION: Decision matrix",
+      decisions && ["Decision list:", listify(decisions)].join("\n"),
+      escalation && `Escalation and algedonic alerts:\n${escalation}`,
+      handoffs && `Handoffs and records:\n${handoffs}`,
+
+      "SECTION: Cadences",
+      gov_cadence && `Governance cadence: ${gov_cadence}`,
+      ops_cadence && `Operations cadence: ${ops_cadence}`,
+
+      "SECTION: Checks and risks",
+      shadow_work && `Shadow work scan:\n${shadow_work}`,
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Measures and learning",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      review_rules && `Review and expiry rules:\n${review_rules}`,
+
+      "SECTION: Timeline and links",
+      timeline && `Timeline and rollout steps: ${timeline}`,
+      links && ["Records and board links:", listify(links)].join("\n"),
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Variant chosen and terms localized",
+      "- [ ] Consent gates and speak up rights are published",
+      "- [ ] Roles and limits are clear and time boxed",
+      "- [ ] Decision matrix small, visible, and linked to evidence",
+      "- [ ] Cadences scheduled and minutes published",
+      "- [ ] Shadow work and access supports reviewed",
+      "- [ ] Measures tracked and expiry dates honored",
+      "- [ ] Community brief within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "RACI DRCI Responsible Accountable Decider Consulted Informed consent gates speak up rights decision matrix governance clarity equity template"
+  }
+},
+
+
+{
+  id: "wardley_mapping",
+  slug: "wardley-mapping-capabilities-evolution",
+  label: "Wardley Mapping - Map capabilities and evolution to protect community advantage",
+  kind: "strategy",
+  categories: [
+    "strategy",
+    "systems",
+    "community",
+    "operations",
+    "product"
+  ],
+  tags: [
+    "type:framework",
+    "use:capabilities",
+    "use:portfolio",
+    "use:landscape",
+    "use:prioritization",
+    "use:governance",
+    "phase:explore",
+    "phase:plan",
+    "phase:operate",
+    "topic:community",
+    "level:advanced"
+  ],
+  use_cases: [
+    "make a shared picture of users, needs, and the value chain",
+    "place components along evolution to choose the right methods",
+    "spot duplication, inertia, and where to open or standardize",
+    "plan plays and investments that build community advantage",
+    "connect discovery and delivery across pioneers, settlers, and town planners",
+    "make a shared picture of users, needs, and the value chain",
+    "place components along evolution to choose the right methods",
+    "spot duplication, inertia, and where to open or standardize",
+    "plan plays and investments that build community advantage",
+    "connect discovery and delivery across pioneers, settlers, and town planners",
+    "map your tech stack to see what’s custom vs commodity",
+    "decide where to innovate vs outsource",
+    "see which community services need standardization",
+    "spot bottlenecks in the value chain",
+    "explain why some tools should be shared infra, not custom builds",
+    "map where volunteer energy is best used",
+    "decide what parts of a program need experimentation",
+    "figure out when to stop reinventing the wheel",
+    "show stakeholders why migration is necessary",
+    "analyze supply chains for fragility and duplication",
+    "map the maturity of community practices",
+    "visualize partnerships and shared infrastructure",
+    "explain tech debt vs strategic bets in plain view",
+    "align a board on where to cut vs invest",
+    "diagnose why a project feels chaotic vs stable",
+    "tie funding proposals to clear landscape gaps",
+    "train new leaders on strategic thinking visually",
+    "compare maps across teams to find overlap",
+    "decide what should stay open source vs closed",
+    "design fair shared services across neighborhoods",
+    "spot early signals of disruption and commoditization",
+    "support advocacy with evidence of dependency",
+    "map people’s roles alongside technical components",
+    "see where rules and governance lag behind reality",
+    "help founders avoid over-investing in utilities",
+    "use maps to defend budgets with clarity",
+    "trace how innovations become commodities over time",
+    "plan data governance by maturity stage",
+    "spot fragile one-person dependencies",
+    "show communities how their assets evolve",
+    "teach kids why not everything should be custom-built"
+  ],
+  boosters: [
+    "Start with users and needs in plain language. Draw the map from the user outward.",
+    "Place first, debate later. You can refine positions once the landscape exists.",
+    "Use local language for stages. Teach with real artifacts and examples.",
+    "Choose doctrine before gameplay. Good play on bad doctrine still loses.",
+    "Prefer small, testable moves with short review dates over grand plans.",
+    "Publish a simple brief and show what changed because of the map."
+  ],
+  definition: "Wardley Mapping is a way to make strategy visible. It begins with user needs and a value chain, then places components on an evolution axis from Genesis to Custom Built to Product to Commodity or Utility. With climate patterns, doctrine, and gameplay, you choose moves that improve position and protect community advantage.",
+  help: "Fill users and needs, list components and dependencies, place components by evolution and visibility, note climate patterns and doctrine choices, then pick plays and investments. Record risks, measures, and review cadence.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Wardley map for Eastside engagement" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Strategy steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are mapping and where it applies" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., 1 to 3 quarters" },
+
+    // Boundary and context
+    { label: "Boundary and exclusions", key: "boundary", type: "textarea", ph: "What is in scope and what is out" },
+    { label: "Assumptions and constraints", key: "assumptions", type: "textarea", ph: "Funding, policy, tech limits, time windows" },
+
+    // Users and needs
+    {
+      label: "Users and segments",
+      autofill: "persona->inline",
+      itemLabel: "user or segment",
+      itemType: "typeahead",
+      key: "users",
+      max: 24,
+      type: "repeater",
+      ph: "Residents, volunteers, staff, partners, small businesses"
+    },
+    { label: "Needs list - one per line", key: "needs", type: "textarea", ph: "Need statement - segment - criticality 1 to 5 - evidence link" },
+
+    // Components and chain
+    { label: "Components - one per line", key: "components", type: "textarea", ph: "id - name - type pipeline or platform or activity or data - serves need or component - stage G or Cb or P or U - visibility 0.0 to 1.0 - owner - notes" },
+    { label: "Dependencies - one per line", key: "links", type: "textarea", ph: "src id -> dst id - strength 1 to 5 - notes" },
+    { label: "Interfaces and standards", key: "interfaces", type: "textarea", ph: "Contracts, APIs, protocols that stabilize handoffs" },
+    { label: "Map link", key: "map_link", type: "text", ph: "Miro or FigJam or Kumu URL" },
+
+    // Evolution language
+    { label: "Local stage descriptions", key: "stage_lang", type: "textarea", ph: "Genesis - few examples and uncertainty. Custom Built - tailored. Product or Rental - off the shelf. Commodity or Utility - ubiquitous and cheap." },
+    { label: "Anticipated evolution notes", key: "evolution_notes", type: "textarea", ph: "What is likely to commoditize, what will move to product, what might regress" },
+    { label: "Inertia sources", key: "inertia", type: "textarea", ph: "Financial, political, cultural, technical reasons placement will not change quickly" },
+
+    // Climate, doctrine, gameplay
+    { label: "Climate patterns seen", key: "climate", type: "textarea", ph: "Ubiquity increases, efficiency improves with evolution, inertia, coevolution, economic cycles" },
+    { label: "Doctrine choices", key: "doctrine", type: "textarea", ph: "Focus on user needs, challenge assumptions, small empowered teams, use appropriate methods by stage, bias for transparency" },
+    { label: "Gameplay options", key: "plays", type: "textarea", ph: "Open approach, standardize, outsource, build a platform, leverage ecosystem, educate, pioneer, acquire, retire" },
+
+    // Delivery approach by stage
+    { label: "Methods by stage", key: "methods", type: "textarea", ph: "Genesis - discovery, spikes. Custom - agile product. Product - lean delivery. Commodity - utility optimization and SRE" },
+    { label: "Pioneers settlers town planners allocation", key: "pst", type: "textarea", ph: "Percent allocation and teams for each stage" },
+
+    // Portfolio and moves
+    { label: "Now next later moves - one per line", key: "moves", type: "textarea", ph: "Now - standardize notifications to reduce toil. Next - open data schema. Later - outsource SMS gateway" },
+    { label: "Investments and owners - one per line", key: "investments", type: "textarea", ph: "Move - owner - resources - start - check date - success signal" },
+    { label: "Open vs proprietary choices", key: "open_prop", type: "textarea", ph: "Where to open for ecosystem advantage and where to keep proprietary" },
+    { label: "Partner and ecosystem plays", key: "ecosystem", type: "textarea", ph: "Allies, complementors, shared standards" },
+
+    // Measures and alerts
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Lead time, reliability, cost per transaction, adoption, equity, satisfaction" },
+    { label: "Algedonic alerts and thresholds", key: "alerts", type: "textarea", ph: "When to escalate decisions or pause a move" },
+    { label: "Review cadence", key: "cadence", type: "text", ph: "Monthly landscape refresh, quarterly doctrine check" },
+
+    // Risks and ethics
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Lock in, vendor risk, exclusion, fragility, governance gaps" },
+    { label: "Access supports and ethics", key: "ethics", type: "textarea", ph: "Interpreters and ASL, stipend policy, privacy, do no harm" },
+
+    // Evidence and logs
+    { label: "Evidence sources", key: "evidence", type: "textarea", ph: "Docs, interviews, metrics, market signals" },
+    { label: "Decisions log - one per line", key: "decisions", type: "textarea", ph: "Date - decision - reason - link" },
+    { label: "Experiments log - one per line", key: "experiments", type: "textarea", ph: "Date - hypothesis - method - result - effect on map" },
+
+    // Timeline and context
+    { label: "Timeline", key: "timeline", type: "text", ph: "Prep 1 week, mapping 1 to 2 sessions, review in 30 days" },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "Prior maps, constraints, references" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    boundary,
+    assumptions,
+
+    users,
+    needs,
+
+    components,
+    links,
+    interfaces,
+    map_link,
+
+    stage_lang,
+    evolution_notes,
+    inertia,
+
+    climate,
+    doctrine,
+    plays,
+
+    methods,
+    pst,
+
+    moves,
+    investments,
+    open_prop,
+    ecosystem,
+
+    measures,
+    alerts,
+    cadence,
+
+    risks,
+    ethics,
+
+    evidence,
+    decisions,
+    experiments,
+
+    timeline,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`).join("\n");
+
+    const axes = [
+      "Y axis: Visibility from the user - high at the top and low at the bottom",
+      "X axis: Evolution - Genesis -> Custom Built -> Product or Rental -> Commodity or Utility"
+    ].join(" | ");
+
+    const flow = [
+      "Name users and needs",
+      "List components and dependencies",
+      "Place components by visibility and evolution",
+      "Note climate patterns and adopt doctrine",
+      "Choose plays and investments by stage",
+      "Set measures, alerts, and review cadence",
+      "Publish a brief and update as the landscape shifts"
+    ].join(" -> ");
+
+    return [
+      title && `Wardley map plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+      boundary && `Boundary and exclusions:\n${boundary}`,
+      assumptions && `Assumptions and constraints:\n${assumptions}`,
+
+      "SECTION: Users and needs",
+      users && ["Users and segments:", listify(users)].join("\n"),
+      needs && ["Needs list:", listify(needs)].join("\n"),
+
+      "SECTION: Value chain",
+      components && ["Components:", listify(components)].join("\n"),
+      links && ["Dependencies:", listify(links)].join("\n"),
+      interfaces && `Interfaces and standards:\n${interfaces}`,
+      map_link && `Map link: ${map_link}`,
+      `Axes: ${axes}`,
+
+      "SECTION: Evolution language and inertia",
+      stage_lang && `Local stage descriptions:\n${stage_lang}`,
+      evolution_notes && `Anticipated evolution notes:\n${evolution_notes}`,
+      inertia && `Inertia sources:\n${inertia}`,
+
+      "SECTION: Climate, doctrine, gameplay",
+      climate && `Climate patterns seen:\n${climate}`,
+      doctrine && `Doctrine choices:\n${doctrine}`,
+      plays && `Gameplay options:\n${plays}`,
+
+      "SECTION: Delivery approach and roles",
+      methods && `Methods by stage:\n${methods}`,
+      pst && `Pioneers settlers town planners allocation:\n${pst}`,
+
+      "SECTION: Portfolio moves",
+      moves && ["Now next later moves:", listify(moves)].join("\n"),
+      investments && ["Investments and owners:", listify(investments)].join("\n"),
+      open_prop && `Open vs proprietary choices:\n${open_prop}`,
+      ecosystem && `Partner and ecosystem plays:\n${ecosystem}`,
+
+      "SECTION: Measures and alerts",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      alerts && `Algedonic alerts and thresholds:\n${alerts}`,
+      cadence && `Review cadence: ${cadence}`,
+
+      "SECTION: Risks and ethics",
+      risks && `Risks and mitigations:\n${risks}`,
+      ethics && `Access supports and ethics:\n${ethics}`,
+
+      "SECTION: Evidence and logs",
+      evidence && `Evidence sources:\n${evidence}`,
+      decisions && ["Decisions log:", listify(decisions)].join("\n"),
+      experiments && ["Experiments log:", listify(experiments)].join("\n"),
+
+      "SECTION: Timeline",
+      timeline && `Timeline: ${timeline}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Users and needs are clear and in plain language",
+      "- [ ] Components and dependencies listed with evidence",
+      "- [ ] Each component placed by visibility and evolution",
+      "- [ ] Climate patterns noted and doctrine chosen",
+      "- [ ] Plays tied to stage with owners and dates",
+      "- [ ] Measures and alerts defined with a review cadence",
+      "- [ ] Open vs proprietary choices explicit and ethical",
+      "- [ ] Brief published and map refreshed on cadence"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Wardley Mapping user needs value chain evolution Genesis Custom Product Commodity climate doctrine gameplay pioneers settlers town planners community strategy template"
+  }
+},
+
+
+
+
+{
+  id: "backcasting_future_to_now",
+  slug: "backcasting-start-from-future-plan-backwards",
+  label: "Backcasting - Start from the desired future state and plan backwards",
+  kind: "strategy",
+  categories: [
+    "strategy",
+    "planning",
+    "community",
+    "design",
+    "operations"
+  ],
+  tags: [
+    "type:framework",
+    "use:roadmap",
+    "use:alignment",
+    "use:prioritization",
+    "use:equity",
+    "phase:plan",
+    "phase:decide",
+    "phase:act",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "name a vivid future state and trace the minimum path back to today",
+    "align teams and community on outcomes before choosing activities",
+    "identify preconditions, enablers, and policy changes required",
+    "sequence no regret moves with short reviews and feedback loops",
+    "expose risks and forks where choices change the path",
+     "name a vivid future state and trace the minimum path back to today",
+    "align teams and community on outcomes before choosing activities",
+    "identify preconditions, enablers, and policy changes required",
+    "sequence no regret moves with short reviews and feedback loops",
+    "expose risks and forks where choices change the path",
+    "plan for climate resilience by envisioning a sustainable community 20 years out",
+    "design education reforms starting from an inclusive school system in 2035",
+    "map policy reforms needed for universal healthcare by 2040",
+    "plan a nonprofit campaign around what success looks like in 10 years",
+    "help a city council set a 2050 net-zero goal and backcast actions to 2025",
+    "decide how to transition from fossil fuels to renewables in stages",
+    "set a personal retirement vision and backcast financial milestones",
+    "plan a family’s move toward debt-free living by working backward from the goal",
+    "figure out how to publish a book by a set date by planning backwards",
+    "organize a graduation party by starting from the event day and mapping steps back",
+    "use in software teams to decide what’s needed for a launch date",
+    "align a startup’s milestones with investor expectations backwards from IPO",
+    "map the end state of a product and design feature sprints in reverse",
+    "structure a health program to reach equity targets by a certain year",
+    "show a church or community org how to achieve housing stability goals",
+    "map needed partnerships and funding steps for a nonprofit vision",
+    "teach students to work backwards from final exams to daily study plans",
+    "help activists plan campaign wins by backcasting from policy change",
+    "plan disaster preparedness by envisioning full resilience after a crisis",
+    "set Indigenous land stewardship outcomes and work back to today",
+    "visualize future inclusive hiring practices and design HR steps back",
+    "plan digital transformation from an ideal future org setup",
+    "decide household chores backwards from a ‘clean house by Saturday’ goal",
+    "a kid planning: ‘I want to be an astronaut’ → map steps back from NASA",
+    "‘I want to be a YouTuber’ → map gear, practice, and uploads back from success",
+    "what will my future look like"
+  ],
+  boosters: [
+    "Write the future in present tense. Make it observable and testable.",
+    "Anchor on equity and access. For each milestone ask who benefits and who decides.",
+    "Limit to the vital few outcomes. Everything else is supporting detail.",
+    "Prefer reversible steps with clear review dates. Safe to try beats perfect.",
+    "Track leading signals, not just lagging results. Make them visible on one page.",
+    "Publish a plain language brief and show what changed because of the plan."
+  ],
+  definition: "Backcasting begins by describing a concrete future state at a specific date. You then work backward to identify milestones, preconditions, and actions that make the future feasible. It aligns purpose, policy, and practice without locking into premature solutions.",
+  help: "Fill ethics, boundary, and the future snapshot first. Add success signals, guardrails, and assumptions. Backcast milestones in reverse order, name preconditions, enablers, blockers, and no regret moves. Convert to experiments with owners, dates, and measures. Keep a simple review cadence.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Backcast: Inclusive Participation by 2026" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Community Council planning steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why we are backcasting and where it applies" },
+    { label: "Horizon and future date", key: "horizon", type: "text", ph: "e.g., Future date Dec 2026 with quarterly checks" },
+    { label: "Boundary and exclusions", key: "boundary", type: "textarea", ph: "In scope vs out of scope" },
+
+    // People and inclusion
+    {
+      label: "Stakeholders and participants",
+      autofill: "persona->inline",
+      itemLabel: "stakeholder",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, disabled residents, staff, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Stipends, interpreters or ASL, transport, childcare, sensory supports" },
+
+    // Ethics and governance
+    { label: "Consent and quoting rules", key: "consent", type: "textarea", ph: "Quoting, anonymity, retention and deletion" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release" },
+
+    // Desired future
+    { label: "Future state snapshot", key: "future_snapshot", type: "textarea", ph: "Describe the world on the future date. Outcomes, equity, experience, environment." },
+    { label: "Success signals and metrics", key: "future_signals", type: "textarea", ph: "Belonging, participation parity, service outcomes, reliability, trust" },
+    { label: "Guardrails and red lines", key: "guardrails", type: "textarea", ph: "What must not be compromised while pursuing the future" },
+    { label: "Assumptions and uncertainties", key: "assumptions", type: "textarea", ph: "What must hold true. What is unknown and will be tested." },
+    { label: "Drivers and constraints", key: "drivers_constraints", type: "textarea", ph: "External trends and internal limits to respect" },
+
+    // Backcasting ladder
+    { label: "Milestones backcast high to low (one per line: date - milestone - evidence you would see)", key: "milestones", type: "textarea", ph: "2026-10-01 - 70% talk time parity - monthly dashboard shows parity" },
+    { label: "Preconditions per milestone", key: "preconditions", type: "textarea", ph: "Policy, capacity, relationships, tech, budget needed" },
+    { label: "Enablers", key: "enablers", type: "textarea", ph: "Assets, partners, capabilities that make the path feasible" },
+    { label: "Blockers", key: "blockers", type: "textarea", ph: "Risks, policies, bottlenecks, missing roles" },
+    { label: "No regret moves now", key: "no_regrets", type: "textarea", ph: "Actions worth doing in any scenario" },
+
+    // Options and pathways
+    { label: "Pathways options (one per line: path name - short description - key risk - key advantage)", key: "pathways", type: "textarea", ph: "Community first rollout - slower but deeper trust - backlash risk low" },
+    { label: "Decision gates and forks", key: "decision_gates", type: "textarea", ph: "Dates or signals that determine which path to take" },
+
+    // Experiments and policy tweaks
+    { label: "Experiments and policy tweaks (one per line: test - owner - resources - start - check date - success signals)", key: "experiments", type: "textarea", ph: "SMS reminders pilot - Comms - $2k - Jul - Aug 15 - +20% attendance" },
+
+    // Ownership and cadence
+    { label: "Owners and RACI", key: "owners", type: "textarea", ph: "Area - R/A/C/I names or roles" },
+    { label: "Review cadence and learning loops", key: "cadence", type: "text", ph: "Monthly reviews, quarterly portfolio check, 60 day experiment cycles" },
+
+    // Measures and risks
+    { label: "Leading indicators", key: "leading", type: "textarea", ph: "Early signals that predict progress" },
+    { label: "Lagging indicators", key: "lagging", type: "textarea", ph: "Outcome measures that confirm impact" },
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Backlash, overload, tokenism, delivery drift, budget shocks" },
+
+    // Timeline and reporting
+    { label: "Reverse timeline by quarter", key: "reverse_timeline", type: "textarea", ph: "Q4 2026, Q3 2026, ... Q1 2025, Q4 2024 with milestone notes" },
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first brief in 14 days. Bilingual. Before and after examples." },
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, constraints, prior plans" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    stakeholders,
+    access,
+
+    consent,
+    data_governance,
+
+    future_snapshot,
+    future_signals,
+    guardrails,
+    assumptions,
+    drivers_constraints,
+
+    milestones,
+    preconditions,
+    enablers,
+    blockers,
+    no_regrets,
+
+    pathways,
+    decision_gates,
+
+    experiments,
+
+    owners,
+    cadence,
+
+    leading,
+    lagging,
+    risks,
+
+    reverse_timeline,
+    report_back,
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Describe the future state with success signals",
+      "List guardrails and key assumptions",
+      "Backcast milestones in reverse order",
+      "Name preconditions, enablers, blockers",
+      "Choose pathways and decision gates",
+      "Convert to experiments with owners and dates",
+      "Review on cadence and report back"
+    ].join(" -> ");
+
+    return [
+      title && `Backcasting plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon and future date: ${horizon}`,
+      boundary && `Boundary and exclusions:\n${boundary}`,
+
+      "SECTION: People and inclusion",
+      stakeholders && ["Stakeholders and participants:", listify(stakeholders)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+
+      "SECTION: Ethics and governance",
+      consent && `Consent and quoting rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: Desired future",
+      future_snapshot && `Future state snapshot:\n${future_snapshot}`,
+      future_signals && `Success signals and metrics:\n${future_signals}`,
+      guardrails && `Guardrails and red lines:\n${guardrails}`,
+      assumptions && `Assumptions and uncertainties:\n${assumptions}`,
+      drivers_constraints && `Drivers and constraints:\n${drivers_constraints}`,
+
+      "SECTION: Backcasting ladder",
+      milestones && ["Milestones backcast high to low:", listify(milestones)].join("\n"),
+      preconditions && `Preconditions per milestone:\n${preconditions}`,
+      enablers && `Enablers:\n${enablers}`,
+      blockers && `Blockers:\n${blockers}`,
+      no_regrets && `No regret moves now:\n${no_regrets}`,
+
+      "SECTION: Options and pathways",
+      pathways && ["Pathways options:", listify(pathways)].join("\n"),
+      decision_gates && `Decision gates and forks:\n${decision_gates}`,
+
+      "SECTION: Experiments and policy tweaks",
+      experiments && ["Experiments and policy tweaks:", listify(experiments)].join("\n"),
+
+      "SECTION: Ownership and cadence",
+      owners && ["Owners and RACI:", listify(owners)].join("\n"),
+      cadence && `Review cadence and learning loops: ${cadence}`,
+
+      "SECTION: Measures and risks",
+      leading && ["Leading indicators:", listify(leading)].join("\n"),
+      lagging && ["Lagging indicators:", listify(lagging)].join("\n"),
+      risks && `Risks and mitigations:\n${risks}`,
+
+      "SECTION: Timeline and reporting",
+      reverse_timeline && ["Reverse timeline by quarter:", listify(reverse_timeline)].join("\n"),
+      report_back && `Report back plan:\n${report_back}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Future state is concrete, equitable, and observable",
+      "- [ ] Success signals fit on one page with owners",
+      "- [ ] Milestones are backcast from the future to now",
+      "- [ ] Preconditions, enablers, and blockers are explicit",
+      "- [ ] Pathways have decision gates and fork criteria",
+      "- [ ] Experiments have owners, resources, and check dates",
+      "- [ ] Leading and lagging indicators are tracked",
+      "- [ ] Community first brief scheduled within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "backcasting future state reverse planning milestones preconditions pathways decision gates no regret moves leading lagging indicators equity template"
+  }
+},
+
+{
+  id: "hoshin_kanri_policy_deployment",
+  slug: "hoshin-kanri-policy-deployment-true-north-to-daily-work",
+  label: "Hoshin Kanri (Policy Deployment) - Align annual breakthrough objectives with daily work",
+  kind: "strategy",
+  categories: [
+    "strategy",
+    "planning",
+    "operations",
+    "community",
+    "governance"
+  ],
+  tags: [
+    "type:framework",
+    "use:alignment",
+    "use:execution",
+    "use:prioritization",
+    "use:measurement",
+    "phase:plan",
+    "phase:act",
+    "phase:review",
+    "topic:community",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "set true north and 3 to 5 breakthrough objectives",
+    "translate strategy into annual objectives, projects, and daily work",
+    "run catchball to align across teams without muting voice",
+    "track progress with an X matrix and bowling charts",
+    "trigger countermeasures early with clear review cadences"
+  ],
+  boosters: [
+    "Name no more than 3 to 5 breakthrough objectives. Focus beats everything.",
+    "Run real catchball. Invite edge voices, publish changes from feedback, fund access supports.",
+    "Use codes to link items across the X matrix. Example B1 maps to A2, P3, M1.",
+    "Track both leading and lagging signals. Make the bowling chart visible.",
+    "Review monthly and learn quarterly. Countermeasures beat blame.",
+    "Yokoten. Share wins and lessons sideways so others can adapt quickly."
+  ],
+  definition: "Hoshin Kanri aligns a clear true north and a small set of breakthrough objectives to annual objectives, projects, and daily management. Catchball builds shared commitment. The X matrix visualizes linkage. Bowling charts make performance and countermeasures visible.",
+  help: "Fill ethics and boundary. Set true north, breakthrough objectives, and annual objectives with targets. Build the X matrix using codes. List projects, owners, and measures. Schedule catchball and monthly reviews. Track a bowling chart and log countermeasures with A3 links.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Hoshin 2026: Inclusive Participation" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Strategy steward" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Why policy deployment and where it applies" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., 3 year horizon with annual Hoshin 2025" },
+    { label: "Boundary and exclusions", key: "boundary", type: "textarea", ph: "In scope vs out of scope" },
+
+    // Inclusion and ethics
+    {
+      label: "Stakeholders and affected groups",
+      autofill: "persona->inline",
+      itemLabel: "group",
+      itemType: "typeahead",
+      key: "stakeholders",
+      max: 28,
+      type: "repeater",
+      ph: "e.g., Youth, elders, renters, disabled residents, staff, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Interpreters, captions, stipends, transport, childcare, sensory supports" },
+    { label: "Consent and quoting rules", key: "consent", type: "textarea", ph: "Quoting, anonymity, retention and deletion" },
+    { label: "Data governance and publication tiers", key: "data_governance", type: "textarea", ph: "Public | Community only | Restricted | Not for release" },
+
+    // True North and Breakthroughs
+    { label: "True north statement", key: "true_north", type: "textarea", ph: "Plain, observable, equity anchored north star" },
+    { label: "Breakthrough objectives (codes B1..B5, one per line: code - outcome - horizon - target state - why)", key: "breakthroughs", type: "textarea", ph: "B1 - Participation parity - 3y - 0.9 to 1.1 parity - voice matters" },
+
+    // Annual objectives and targets to improve
+    { label: "Annual objectives (codes A1..A8, one per line: code - objective - target - due - owner)", key: "annual_objectives", type: "textarea", ph: "A1 - Captioning coverage - 100% - Dec - Access lead" },
+
+    // Measures
+    { label: "Measures and KPIs (codes M1..M10, one per line: code - name - baseline - target - owner - frequency - leading/lagging)", key: "measures", type: "textarea", ph: "M1 - Talk time parity - 0.55 - 0.9 to 1.1 - Council - monthly - leading" },
+
+    // Projects and initiatives
+    { label: "Hoshin projects or initiatives (codes P1..P12, one per line: code - name - owner - start - finish - resources)", key: "projects", type: "textarea", ph: "P1 - Interpreter pool expansion - A. Lee - Jul - Oct - $6k" },
+
+    // X matrix linkages
+    { label: "X matrix links top to left (B to A) one per line: Bx -> Ay", key: "x_b_to_a", type: "textarea", ph: "B1 -> A1" },
+    { label: "X matrix links left to bottom (A to P) one per line: Ax -> Py", key: "x_a_to_p", type: "textarea", ph: "A1 -> P1" },
+    { label: "X matrix links right to top (M to B) one per line: Mx -> By", key: "x_m_to_b", type: "textarea", ph: "M1 -> B1" },
+    { label: "Critical interlocks and tradeoffs (one per line: item - linked item - note)", key: "x_interlocks", type: "textarea", ph: "P2 - P3 - resource contention" },
+
+    // Catchball
+    { label: "Catchball plan and rounds", key: "catchball_plan", type: "textarea", ph: "Who reviews what, sequence, access supports" },
+    { label: "Catchball notes and changes (one per line: item - feedback - change made)", key: "catchball_notes", type: "textarea", ph: "A1 - renters want SMS - add SMS opt in" },
+    { label: "Unresolved tensions and escalation path", key: "tensions", type: "textarea", ph: "What needs S3 or S5 level attention if using VSM terms" },
+
+    // Bowling chart tracking
+    { label: "Bowling chart table link", key: "bowling_link", type: "text", ph: "Sheet URL for monthly plan vs actual" },
+    { label: "Bowling chart notes (one per line: Mx - Jan plan/actual - Feb plan/actual ...)", key: "bowling_notes", type: "textarea", ph: "M1 - 0.75/0.62 - 0.8/0.7 ..." },
+
+    // Daily management and deployment
+    {
+      label: "Units or teams deploying Hoshin",
+      autofill: "persona->inline",
+      itemLabel: "unit or team",
+      itemType: "typeahead",
+      key: "units",
+      max: 24,
+      type: "repeater",
+      ph: "Outreach, Programs, Access, Data, Events"
+    },
+    { label: "Tier meetings and cadences", key: "cadences", type: "textarea", ph: "Tier 1 daily, Tier 2 weekly, Tier 3 monthly, Portfolio monthly, Quarterly review" },
+    { label: "Standard work and visual management", key: "std_work", type: "textarea", ph: "Boards, checklists, SLAs, visual KPIs" },
+
+    // Countermeasures and A3s
+    { label: "Trigger rules for countermeasures", key: "triggers", type: "textarea", ph: "2 misses in a row or adverse trend" },
+    { label: "Countermeasures and A3 links (one per line: problem - owner - link - next check)", key: "countermeasures", type: "textarea", ph: "Low turnout - Comms - A3 link - Aug 15" },
+
+    // Risks and supports
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Overload, gaming metrics, tokenism, drift" },
+    { label: "Access supports for reviews", key: "review_access", type: "textarea", ph: "Bilingual briefs, interpreters, stipend schedule" },
+
+    // Reporting and yokoten
+    { label: "Report back plan", key: "report_back", type: "textarea", ph: "Community first brief in 14 days, bilingual, before and after examples" },
+    { label: "Yokoten and knowledge sharing", key: "yokoten", type: "textarea", ph: "Cross team demos, playbooks, office hours" },
+
+    // Context
+    { label: "Context and links", key: "ctx", type: "textarea", ph: "References, OKR link, budget, constraints" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+    boundary,
+
+    stakeholders,
+    access,
+    consent,
+    data_governance,
+
+    true_north,
+    breakthroughs,
+    annual_objectives,
+
+    measures,
+    projects,
+
+    x_b_to_a,
+    x_a_to_p,
+    x_m_to_b,
+    x_interlocks,
+
+    catchball_plan,
+    catchball_notes,
+    tensions,
+
+    bowling_link,
+    bowling_notes,
+
+    units,
+    cadences,
+    std_work,
+
+    triggers,
+    countermeasures,
+
+    risks,
+    review_access,
+
+    report_back,
+    yokoten,
+
+    ctx,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/).map(x => x.trim()).filter(Boolean)
+      .map((x, i) => `${i + 1}. ${x}`).join("\n");
+
+    const flow = [
+      "Set true north and breakthroughs",
+      "Run catchball and refine",
+      "Link X matrix across B, A, P, M",
+      "Deploy to units with tier cadences",
+      "Track bowling chart and trigger countermeasures",
+      "Share learning through yokoten"
+    ].join(" -> ");
+
+    return [
+      title && `Hoshin Kanri plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      ctx && `Context and links:\n${ctx}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+      boundary && `Boundary and exclusions:\n${boundary}`,
+
+      "SECTION: Inclusion and ethics",
+      stakeholders && ["Stakeholders and affected groups:", listify(stakeholders)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and quoting rules:\n${consent}`,
+      data_governance && `Data governance and publication tiers:\n${data_governance}`,
+
+      "SECTION: True North and Breakthroughs",
+      true_north && `True north statement:\n${true_north}`,
+      breakthroughs && ["Breakthrough objectives:", listify(breakthroughs)].join("\n"),
+
+      "SECTION: Annual objectives",
+      annual_objectives && ["Annual objectives and targets to improve:", listify(annual_objectives)].join("\n"),
+
+      "SECTION: Measures and projects",
+      measures && ["Measures and KPIs:", listify(measures)].join("\n"),
+      projects && ["Hoshin projects or initiatives:", listify(projects)].join("\n"),
+
+      "SECTION: X matrix links",
+      x_b_to_a && ["B to A links:", listify(x_b_to_a)].join("\n"),
+      x_a_to_p && ["A to P links:", listify(x_a_to_p)].join("\n"),
+      x_m_to_b && ["M to B links:", listify(x_m_to_b)].join("\n"),
+      x_interlocks && ["Critical interlocks and tradeoffs:", listify(x_interlocks)].join("\n"),
+
+      "SECTION: Catchball",
+      catchball_plan && `Catchball plan and rounds:\n${catchball_plan}`,
+      catchball_notes && ["Catchball notes and changes:", listify(catchball_notes)].join("\n"),
+      tensions && `Unresolved tensions and escalation path:\n${tensions}`,
+
+      "SECTION: Bowling chart tracking",
+      bowling_link && `Bowling chart link: ${bowling_link}`,
+      bowling_notes && ["Bowling chart notes:", listify(bowling_notes)].join("\n"),
+
+      "SECTION: Daily management and deployment",
+      units && ["Units or teams deploying Hoshin:", listify(units)].join("\n"),
+      cadences && `Tier meetings and cadences:\n${cadences}`,
+      std_work && `Standard work and visual management:\n${std_work}`,
+
+      "SECTION: Countermeasures",
+      triggers && `Trigger rules for countermeasures:\n${triggers}`,
+      countermeasures && ["Countermeasures and A3 links:", listify(countermeasures)].join("\n"),
+
+      "SECTION: Risks and supports",
+      risks && `Risks and mitigations:\n${risks}`,
+      review_access && `Access supports for reviews:\n${review_access}`,
+
+      "SECTION: Reporting and yokoten",
+      report_back && `Report back plan:\n${report_back}`,
+      yokoten && `Yokoten and knowledge sharing:\n${yokoten}`,
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] True north is plain and observable",
+      "- [ ] 3 to 5 breakthroughs with clear targets",
+      "- [ ] Annual objectives, projects, and measures coded and linked",
+      "- [ ] Catchball run with edge voices and published changes",
+      "- [ ] Bowling chart visible with plan vs actual",
+      "- [ ] Countermeasures triggered by clear rules with A3s",
+      "- [ ] Tier cadences active and minutes published",
+      "- [ ] Yokoten sharing scheduled and resourced"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "Hoshin Kanri policy deployment true north breakthrough objectives annual objectives X matrix catchball bowling chart countermeasures A3 yokoten template"
+  }
+},
+
+
+{
+  id: "dot_voting_heatmap",
+  slug: "dot-voting-heat-mapping-priorities",
+  label: "Dot Voting and Heat-mapping - Quick temperature check on priorities",
+  kind: "facilitation",
+  categories: [
+    "facilitation",
+    "strategy",
+    "research",
+    "community",
+    "decision"
+  ],
+  tags: [
+    "type:framework",
+    "use:prioritization",
+    "use:engagement",
+    "use:workshop",
+    "use:decision-record",
+    "phase:plan",
+    "phase:decide",
+    "phase:act",
+    "topic:community",
+    "level:beginner"
+  ],
+  use_cases: [
+    "surface quick group preferences before deep planning",
+    "compare options across criteria with a heat map",
+    "triage backlog or portfolio into now next later",
+    "check temperature on themes after clustering",
+    "create a transparent decision trail with consent"
+  ],
+  boosters: [
+    "Set a clear boundary and question. What are we prioritizing and for whom.",
+    "Keep dots scarce. Small budgets sharpen choices.",
+    "Silence first then group discussion. Prevent anchoring.",
+    "Randomize item order and anonymize when power dynamics exist.",
+    "Pair the vote with a short decision rule and a review date.",
+    "Publish results and credit contributors who opted in."
+  ],
+  definition: "A lightweight method to gauge group priorities. Participants allocate a fixed dot budget to items or in a matrix across criteria. Results inform but do not replace good judgment and consent based decisions.",
+  help: "Define the decision and scope, set budgets and rules, list items, cluster themes, run a silent read then voting round, tally and visualize as a heat map, apply decision rules, record actions and review dates, and publish a short brief.",
+  fields: [
+    // Overview
+    { label: "Title", key: "title", type: "text", ph: "e.g., Priority heat map for Eastside projects" },
+    { label: "Owner or steward", key: "owner", type: "text", ph: "e.g., Workshop facilitator" },
+    { label: "Purpose and scope", key: "purpose", type: "textarea", ph: "Decision context and what is in scope" },
+    { label: "Horizon", key: "horizon", type: "text", ph: "e.g., Now to next quarter" },
+
+    // Inclusion and ethics
+    {
+      label: "Participants and segments",
+      autofill: "persona->inline",
+      itemLabel: "participant or segment",
+      itemType: "typeahead",
+      key: "participants",
+      max: 64,
+      type: "repeater",
+      ph: "Youth, elders, renters, staff, partners"
+    },
+    { label: "Access supports and compensation", key: "access", type: "textarea", ph: "Interpreters and ASL, childcare, stipends, transport, sensory supports" },
+    { label: "Consent and privacy", key: "consent", type: "textarea", ph: "Anonymity options, quoting rules, retention and deletion" },
+    { label: "Data governance tiers", key: "data_governance", type: "textarea", ph: "Public, Community only, Restricted, Not for release" },
+
+    // Items and structure
+    { label: "Question prompt", key: "prompt", type: "text", ph: "What are we choosing or ranking" },
+    { label: "Items list (one per line: id - label - short note - link)", key: "items", type: "textarea", ph: "P1 - Safer Crossings - add beacons near schools - doc link" },
+    { label: "Pre clusters or themes (optional)", key: "clusters", type: "textarea", ph: "Safety, Belonging, Access, Maintenance" },
+
+    // Heat map criteria
+    { label: "Use heat map matrix", key: "use_matrix", type: "text", ph: "yes or no" },
+    { label: "Rows source", key: "rows_src", type: "text", ph: "items or clusters" },
+    { label: "Rows list (one per line)", key: "rows", type: "textarea", ph: "If rows are not items, list them here" },
+    { label: "Columns criteria (one per line)", key: "cols", type: "textarea", ph: "Impact, Effort, Equity, Urgency" },
+    { label: "Color legend", key: "legend", type: "textarea", ph: "High impact dark, medium mid, low light" },
+
+    // Voting rules
+    { label: "Dot budget per participant", key: "budget", type: "text", ph: "e.g., 5 dots or 100 points" },
+    { label: "Budget mode", key: "budget_mode", type: "text", ph: "equal dots or points or one vote per column" },
+    { label: "Weighting by segment (optional)", key: "weights", type: "textarea", ph: "Segment - weight. Use sparingly and disclose." },
+    { label: "Anonymity", key: "anonymity", type: "text", ph: "public or anonymous" },
+    { label: "Anti bias safeguards", key: "anti_bias", type: "textarea", ph: "silent read, randomized order, rotate speaking" },
+
+    // Facilitation
+    { label: "Facilitation steps", key: "steps", type: "textarea", ph: "check in, explain rules, silent read, clarify, cluster, vote, tally, discuss, decide, next steps" },
+    { label: "Board or tool link", key: "board_link", type: "text", ph: "Miro or FigJam or Kumu URL" },
+
+    // Decision rule
+    { label: "Quorum and eligibility", key: "quorum", type: "text", ph: "e.g., 70 percent of invited segments present" },
+    { label: "Decision rule", key: "decision_rule", type: "textarea", ph: "Top N with consent, or threshold plus consent, or advisory to a consent circle" },
+    { label: "Guardrails and do nots", key: "guardrails", type: "textarea", ph: "Equity floors, budget caps, legal constraints" },
+    { label: "Tie breakers", key: "tiebreakers", type: "textarea", ph: "Runoff vote, consent check, random pick with review" },
+
+    // Results capture
+    { label: "Raw votes or points (one per line: id or row - col optional - count)", key: "raw", type: "textarea", ph: "P1 - 17" },
+    { label: "Heat map image or sheet link", key: "heatmap_link", type: "text", ph: "URL to visualization" },
+    { label: "Top selections and rationale", key: "top", type: "textarea", ph: "List winners and why based on discussion" },
+
+    // Actions
+    { label: "Now next later actions (one per line: item - owner - resources - start - check date - signals)", key: "actions", type: "textarea", ph: "P1 - Maya - $8k - Aug 1 - Sep 15 - installs complete" },
+
+    // Measures and learning
+    { label: "Signals and measures", key: "measures", type: "textarea", ph: "Participation rate, dispersion of votes, equity representation, outcome movement" },
+    { label: "Review cadence and owners", key: "cadence", type: "text", ph: "Weekly ops, monthly review, 90 day refresh" },
+
+    // Risks and notes
+    { label: "Risks and mitigations", key: "risks", type: "textarea", ph: "Popularity bias, tokenism, loud voices, gaming" },
+    { label: "Notes and links", key: "ctx", type: "textarea", ph: "Constraints, references, prior votes" },
+
+    // Logs
+    { label: "Decisions log (one per line: date - decision - reason)", key: "decisions", type: "textarea", ph: "Aug 12 - adopted P1 and P3 - strongest signals and consent" }
+  ],
+  template: ({
+    title,
+    owner,
+    purpose,
+    horizon,
+
+    participants,
+    access,
+    consent,
+    data_governance,
+
+    prompt,
+    items,
+    clusters,
+
+    use_matrix,
+    rows_src,
+    rows,
+    cols,
+    legend,
+
+    budget,
+    budget_mode,
+    weights,
+    anonymity,
+    anti_bias,
+
+    steps,
+    board_link,
+
+    quorum,
+    decision_rule,
+    guardrails,
+    tiebreakers,
+
+    raw,
+    heatmap_link,
+    top,
+
+    actions,
+
+    measures,
+    cadence,
+
+    risks,
+    ctx,
+
+    decisions,
+    audience,
+    style,
+    tone
+  }) => {
+    const listify = s => String(s || "")
+      .split(/\n+/)
+      .map(x => x.trim())
+      .filter(Boolean)
+      .map((x,i)=>`${i + 1}. ${x}`)
+      .join("\n");
+
+    const flow = [
+      "Define the decision and scope",
+      "List items and cluster themes",
+      "Set budgets, anonymity, and anti bias steps",
+      "Silent read then vote",
+      "Tally, heat map, and discuss",
+      "Apply decision rule and guardrails",
+      "Record actions and review on cadence"
+    ].join(" -> ");
+
+    return [
+      title && `Dot voting and heat map plan: ${title}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+
+      "SECTION: Overview",
+      owner && `Owner or steward: ${owner}`,
+      purpose && `Purpose and scope:\n${purpose}`,
+      horizon && `Horizon: ${horizon}`,
+
+      "SECTION: Inclusion and ethics",
+      participants && ["Participants and segments:", listify(participants)].join("\n"),
+      access && `Access supports and compensation:\n${access}`,
+      consent && `Consent and privacy:\n${consent}`,
+      data_governance && `Data governance tiers:\n${data_governance}`,
+
+      "SECTION: Items and structure",
+      prompt && `Question prompt: ${prompt}`,
+      items && ["Items list:", listify(items)].join("\n"),
+      clusters && `Pre clusters or themes:\n${clusters}`,
+
+      "SECTION: Heat map criteria",
+      use_matrix && `Use heat map matrix: ${use_matrix}`,
+      rows_src && `Rows source: ${rows_src}`,
+      rows && ["Rows list:", listify(rows)].join("\n"),
+      cols && ["Columns criteria:", listify(cols)].join("\n"),
+      legend && `Color legend:\n${legend}`,
+
+      "SECTION: Voting rules",
+      budget && `Dot budget per participant: ${budget}`,
+      budget_mode && `Budget mode: ${budget_mode}`,
+      weights && ["Weighting by segment:", listify(weights)].join("\n"),
+      anonymity && `Anonymity: ${anonymity}`,
+      anti_bias && `Anti bias safeguards:\n${anti_bias}`,
+
+      "SECTION: Facilitation",
+      steps && `Facilitation steps:\n${steps}`,
+      board_link && `Board or tool link: ${board_link}`,
+
+      "SECTION: Decision rule",
+      quorum && `Quorum and eligibility: ${quorum}`,
+      decision_rule && `Decision rule:\n${decision_rule}`,
+      guardrails && `Guardrails and do nots:\n${guardrails}`,
+      tiebreakers && `Tie breakers:\n${tiebreakers}`,
+
+      "SECTION: Results",
+      raw && ["Raw votes or points:", listify(raw)].join("\n"),
+      heatmap_link && `Heat map link: ${heatmap_link}`,
+      top && `Top selections and rationale:\n${top}`,
+
+      "SECTION: Actions",
+      actions && ["Now next later actions:", listify(actions)].join("\n"),
+
+      "SECTION: Measures and learning",
+      measures && ["Signals and measures:", listify(measures)].join("\n"),
+      cadence && `Review cadence and owners: ${cadence}`,
+
+      "SECTION: Risks and notes",
+      risks && `Risks and mitigations:\n${risks}`,
+      ctx && `Notes and links:\n${ctx}`,
+
+      "SECTION: Decisions log",
+      decisions && ["Decisions log:", listify(decisions)].join("\n"),
+
+      "Quick reference",
+      flow,
+
+      "Checklist:",
+      "- [ ] Decision and scope are clear and in plain language",
+      "- [ ] Items are de duplicated and clustered",
+      "- [ ] Budgets and anonymity are set and explained",
+      "- [ ] Anti bias steps used and documented",
+      "- [ ] Results visualized and decision rule applied",
+      "- [ ] Actions have owners, resources, and check dates",
+      "- [ ] Participation and equity signals reviewed on cadence",
+      "- [ ] Brief published within 14 days"
+    ].filter(Boolean).join("\n");
+  },
+  meta: {
+    search_text: "dot voting heat map prioritization workshop matrix criteria budget anonymity anti bias quorum guardrails template"
+  }
 }
+
 
 
     
