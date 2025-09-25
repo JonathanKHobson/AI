@@ -19,9 +19,8 @@
     'Ask up to 3 clarifying questions before recommending.',
     'Return 3 candidate frameworks with a short rationale.',
     'Then synthesize a ready-to-copy prompt using the best candidate.',
-        'Library tools: 2-minute rule (david allen):planning avoidance away beginner brief c,5w1h — who · what · where · when · why · how:incident prompt scope acceptance analysi,a3 problem solving (toyota):problem plan actions align brief cause c,aar — feelings first:debrief learning needs alone beginner bo,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self bias coachi,abductive reasoning — best explanation:predictions risky account analysis begin,accountability letter:amends apology beginner clear close comm,active imagination — dialogue with inner voices:inner creative dialogue parts self chara,addie — analyze · design · develop · implement · evaluate:course training learning design goals ou,adversarial collaboration:adjudication design advance change commu,agent-based models & system dynamics:abm agents calibration complex declare d,aida — attention · interest · desire · action:copy write action email hook landing not,amor–vita–memoria (avm):grief self gratitude one you memory ment,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias context cross f,announcement — change & action:announcement change communication notice,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate design,arnstein’s ladder of participation — from tokenism to citizen control:power community influence governance pla,automatic writing — truth sprint:writing truth automatic avoiding beginne,backcasting - start from the desired future state and plan backwards:back community plan future map planning,backlog — prioritize:capacity items plan portfolio prioritiza,bayesian science — posterior odds:priors action analysis based bayes data,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write bridge cold deck f,bhag — big hairy audacious goal:planning vision align ambition around au,bias impact assessment (ai/tech pre-launch):bias check right compliance dataset ethi,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair group make rubr,blameless postmortem — essence first:teaching actionable analyze beginner bla,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson plan b,brand archetypes for communities - shared identity motifs and tone:our archetype archetypes community voice,buddhist eightfold path (adapted for action):decision ethical design harm right check,canary + blue-green — revert comms:comms rollback beginner blast blue call,causal inference — dags & identification:identification assumptions causal dag di,causal inference playbook:design assumptions based bias block choo,clear — challenge · limitation · effect · action · result:problem summary action decision write ca,clear contracts + exit ramps:boundaries consent beginner communicatio,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask make next promp,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask audience hygiene i,clown ‘flop’ — failure seen safely:failure resilience shame armor bravery b,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision evidence make,collective impact — common agenda shared measurement backbone:partners purpose across community govern,community capitals framework - seven capitals lens for purpose and investment:capital capitals across investments comm,community-led development (cld): locally led priorities accountability and capacity:community design governance phase planni,comparative analysis — rank • pros/cons • matrix:compare should options side which best b,competing values framework - culture map to align ways of working with mission:culture values across decide our clan ex,computational science — simulation:reproducibility simulation validation ca,constraint flip (play with edges):what design feature had make one work as,contact improv — listening duet:listening practice attention attunement,costar — context · objective · style · tone · audience · response:brief content message campaign copy crea,cover letter — tailor / rewrite / feedback:cover letter job ats draft feedback sect,critical incident analysis:ethics teaching charged communication da,cultural probes & diary studies - longitudinal participant-led voice capture:people daily study capture routines acro,cultural web - unpack symbols rituals stories shaping voice:culture cultural voice rituals shape map,daoist wu-wei strategy (effortless action):instead align burnout plan already big c,decision record — dissent & kill criteria:dissent adr alignment beginner chose com,deliberative polling / citizens juries - informed structured public deliberation:people citizens public make community de,design doc — scariest change:design risk align alignment architecture,design justice principles — center those most affected; redistribute design power:design community power data decision jus,design science research (dsr):utility artifact artifacts build constru,dignity questions — identity · meaning · legacy:family gratitude storytelling audio begi,disney strategy — dreamer · realist · critic:idea creative concept plan balance ideas,dm — outreach & follow-up:follow outreach quick writing ask beta c,dmaic — define · measure · analyze · improve · control:data improvement process project quality,doe + tolerance stacks — ci & power:acceptance experiment stack analysis ana,dot voting and heat-mapping - quick temperature check on priorities:decision phase planning community across,east — easy · attractive · social · timely:design behavioral nudge choice friction,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what decide de,email — draft & polish:email follow networking outreach support,empathy mapping personas jtbd - ground voice in needs and contexts:what design empathy community jobs needs,empty chair dialogue (gestalt):self one conversation talk boundary busi,energy budget planner (spoon theory):plan energy day spoons tasks accommodati,engineering method — iterate to standard:acceptance cycle standards beginner buil,epic quest tasking — gamify the chore:quest quests chores make self storytelli,ethical data stewardship - governance for safe listening:data community design decide safe sharin,ethnographic & interpretivist methods:description fieldwork reflexivity thick,examples / few-shot prompting:examples example format output show styl,exploratory vs confirmatory paths:cda eda avoid beginner confirmatory diff,fab — feature · advantage · benefit:benefits bullets copy feature features p,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument check c,facts & expertise primer:what facts check expert give avoid begin,feyerabend — pluralism:method design document ethics exploring,feynman technique — explain like i’m 5:explain make complex non break clear exp,findings — synthesize:insights confidence create summarize the,first principles — question assumptions & reason from basics:true problem reasoning analogies assumpt,fmea · hazop · fault tree — unified card:design hazop analysis causes criticality,focusing — felt-sense check:check mental aboutness ambivalent beginn,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming ideas,future search — whole-system future-focused planning (2–3 days):future planning search community plan ac,fuzzing + mutation — outage shape:edge inputs catch conditions define flow,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous sha,goal breakdown (prompt/question decomposition):step goal tasks turn what break first pl,goal composition (prompt/question composition):one tasks plan asks brief goal goals mak,goal prompting:goal goals plan first main next objectiv,goals of care — what matters most:conversation life planning values advanc,golden circle — why · how · what · mission:purpose mission community values align c,gratitude under duress:pain acknowledge beginner bypass check c,grounded theory — reflexive memos:coding reflexivity theory audit axial be,grow — goal · reality · options · way forward:goal coaching plan what goals next set b,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance choice gut,hero’s journey — departure · initiation · return:journey story arc hero writing map outli,heuristics & biases — debiasing pre-flight:check bias decision quick review wrong a,holacracy (selective) - role-based governance for volunteer groups:roles governance meetings without avoid,hoshin kanri (policy deployment) - align annual breakthrough objectives with daily work:phase planning community objectives revi,how might we statements (hmw):problem make questions brainstorming opp,human-centered design / double diamond: discover define develop deliver with community co-creation:design research clear community delivery,hypnagogic spark — semi-sleep insight technique:brainstorming state creativity design dr,iap2 spectrum of public participation — inform → consult → involve → collaborate → empower:engagement community input planning publ,ice — impact × confidence × ease:ideas planning quick backlog effort fast,ikigai — purpose map:purpose career against align anti beginn,imaginary council — multiple mentors one question:would phase see what council creative de,implementation intentions (if–then):plan coding goals habits new set daily h,inclusive design (edge personas):design make edge check easier low one te,inner child work — conscious self · inner child:child inner self childhood practice comf,internal weather report — storm · calm · forecast:check state emotional energy mood reduce,interviews — plan & questions — write:plan guide interviews design discussion,jtbd interviews — felt-sense friction:jtbd progress struggles body capture dis,kaitiakitanga — guardianship & stewardship (māori):product cultural data design governance,kano model — must-be · performance · delighters:planning product what brainstorming buil,kansei engineering (emotion → design mapping):design emotions emotional features feeli,kaupapa māori research — by/with/for māori communities; sovereignty at the core:research ori community communities data,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives amo,keywords + why + tasks — vector priming:actionable alignment apply avoid better,kuhn — paradigms & revolutions:anomalies science across beginner choice,kumu / systems mapping - actors flows feedbacks:purpose community find map system visual,lakatos — research programs:belt core hard program theory decide deg,lara / cri — dialogue scaffold:dialogue affirmation beginner center com,last 2% round — share the unsaid edge:alignment avoid beginner communication c,lean startup loop — stop & harm rules:decision hypothesis rules analytics begi,least to most (ltm):building complex derive edge escalating,letter — formal / personal:letter formal writing apology appeal app,liberating structures - light-weight ways to get everyones voice in (1-2-4-all 9 whys triz conversation café what so what now what):group ways simple what without decision,lines/veils revisit — mid-campaign:consent lines refresh safety ttrpg veils,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align appeal a,memento mori — micro-sit:gratitude actually add beginner choose c,memo — tl;dr + recommendation:decision writing brief capture change co,mind map — central idea with branches:visual adhd analysis around assist begin,mind mapping — visual cluster of ideas:discover map planning actions around beg,mixed methods — triangulation:integration beginner design designs disc,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across act ada,mortal message — letter/audio:gratitude repair beginner blessing brief,moscow — must · should · could · won’t:planning management product scope beginn,most significant change (msc) — collect stories; community selects what mattered most:community stories change evaluation acti,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilita,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic asia,nonviolent communication (nvc): needs-based dialogue for deeper listening:nvc conflict without empathy needs ways,north star metric & narrative:metric one community long mission planni,noting — mindfulness labels:sleep awareness beginner check craving d,nyāya — five-member syllogism:explicit inference mode analyses applica,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints,observability — slos · slis · error budgets:burn reliability analytics budget budget,ocap® & care principles — community data ownership governance and ethical listening:data community sharing control ethics re,ofrenda / remembrance board:altar artifacts beginner board care crea,okr — objective & key results:outcomes measurable planning progress re,okrs — with kill criteria:okrs analytics avoid beginner cadence co,okrs (community-adapted) — objectives & key results:community goals mission progress measura,ooda loop (observe–orient–decide–act):decision discovery fast loop ooda produc,open science checklist:accessible beginner cannot capsule check,open space technology - participant-set agenda for what matters now:open space agenda community meetings way,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate clarificat,opportunity solution tree - tie problems to outcomes to keep purpose tight:outcome outcomes tree solutions opportun,outcome harvesting - gather outcomes after the fact and trace contributions with community input:already change clear community decisions,outcome mapping — boundary partners & behavior change:change community partner behavior evalua,par — problem · action · result:experience impact postmortem storytellin,participatory & decolonial approaches:data sovereignty benefit clarify communi,participatory action research (par):decision dissemination rights accessible,participatory action research / cbpr - co-research with communities:community research action phase capacity,participatory budgeting — residents directly allocate resources:community budget equity planning decisio,parts check-in — ifs-inspired:coaching self beginner check communicati,parts work dialogue (ifs therapy):inner parts self coaching compassion men,pas — problem · agitate · solution:problem copy landing marketing pain reli,paul–elder — elements of thought + standards:decision analysis apply argument brief c,pdca — plan · do · check · act:improvement beginner changes close desig,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark brief do,persona — actas / simulate:apply beginner clarification development,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader busin,plan and solve (p&s):planning against checks clarification co,playback theatre — confession line:group story check consent create deeper,pomodoro scaffold:beginner creativity focus frame goal mic,popperian falsification:design predictions risky beginner belief,positionality statement:analysis practice preface research stand,power mapping - visualize formal and informal power; plan inclusive engagement:who influence which map see decide engag,power/interest grid & stakeholder salience — who has power who’s affected who must be heard:who power actually affected analysis com,pra / rra - participatory mapping ranking seasonal calendars guided by locals:community local research create led maps,pramāṇa — means of knowledge:evidence advanced answer audit change cl,prd — write:requirements plan guardrails localizatio,pre-mortem + pre-grief:ethics failure human review clear condit,pre-mortem + red team — embarrassing sentence:ethics failure review conditions dissent,pre-mortem scaffold:actions beginner committing decision fai,press release — ap style:release launch writing announcement appo,prompt augmentation (demonstration learning):format phase against answers apply consi,public narrative - structure shared story and call to action:story action people ask community make c,public narrative (marshall ganz) — story of self us now:story community craft action alignment a,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause cultural,questionnaire — write:design item bias items logic platform qu,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding compari,raci or drci - clarify roles without muting voice:who roles consent consulted informed rac,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach check cl,random association — combine unrelated ideas:brainstorming beginner block break conne,rap — result · action · problem:impact storytelling apply beginner bulle,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify defi,rapid ideation — timed idea sprint:brainstorming beginner block creative cr,ratio — role · audience · task · instructions · output:prompt brief agent apply beginner develo,reflect (bias reflection):bias analysis beginner brainstorming con,reflexive memo:analysis activated affect affective assu,registered reports & preregistration:analysis plan clarify collection data de,reliability growth & burn-in:test acceptance growth plan stop accepta,restorative circles / deep democracy - surface minority voices and work with conflict productively:circle conflict group community healing,resume — tailor / rewrite / feedback:resume job ats draft admin alongside app,rfc — unsaid objection:decision dissent alignment architecture,rice — reach × impact × confidence ÷ effort:planning allocate coding features manage,ripple effects mapping — appreciative story-mapping of impacts with stakeholders:community impact map stories action effe,risen — role · instructions · steps · end goal · narrowing:plan content design development experime,rodes — role · objective · details · examples · sense check:guided adaptation against apply check co,role storming — ideation as different personas:brainstorming apply beginner changing cr,root cause analysis:apply beginner brainstorming causes coun,rose · thorn · bud + weather:check daily hope journal practice affect,rtf — role · task · format:format prompt prompting api apply beginn,rubber duck debugging — explain to understand:problem step analysis articulating assum,safety pause with essence:safety truth ttrpg agree beginner body c,scamper (idea expansion):beginner brainstorming creative creativi,scenario-based prompting — deliberative reasoning:advice analysis coaching compose develop,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design experiment,scqa — situation · complication · question · answer:frameworks analysis arc beginner brief c,screener — create criteria:screener eligibility design device fraud,sensemaker: micro-narratives self-signified by participants to surface patterns:stories patterns community phase analysi,sentipensar — thinking-feeling integration (latin america):design side analytic cultural decomposit,service design blueprints - map frontstage/backstage to see where voice is silenced:service map blueprint design help show s,shadow work dialogue — conscious self · shadow self:self side you acts advanced anger beginn,six thinking hats:brainstorming decision explore beginner,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner cle,soar analysis:align aspirations beginner clarification,social media post — tailor / write / brainstorm:social media post write char hashtags ho,social network analysis / network weaving / netography - find connectors peripheries and missing voices:map spot bridges networks see track whic,sociocracy / consent decision-making - circles roles and dynamic governance for shared ownership:sociocracy consent decide circles govern,socratic questioning method:alternatives assumptions beginner belief,soft systems methodology (ssm) — explore messy problems via multiple worldviews; rich pictures:map problems community issues messy prob,somatic focusing — feel · ask · listen:self them asking beginner bodily body cl,spectrum of community engagement to ownership — concrete power-shifting practices:community power ownership authority enga,star — situation · task · action · result:story storytelling study answer apply be,stars & wishes + bleed check:bleed debrief safety ttrpg beginner cele,story circles / story harvesting — peer storytelling to extract themes and values:stories community voices values listenin,story spine + one naked sentence:story draft line pitch talk truth align,survey — plan — design:design plan survey scale align edit low,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy assess,synectics — analogies & problem transfer:advanced analogies apply context creativ,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies,systematic review & meta-analysis:criteria heterogeneity policy protocol b,talanoa dialogue (pacific):beginner build content cultural decision,talanoa yarning circles talking circles — narrative-first consensus building:community decisions hearing understadnin,tarot spread reflection — past · present · future:mode reflection storytelling tarot actio,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming brea,task scenarios — write:scenarios design accessibility hta klm p,tdd + property-based testing — invariants:edge invariants tests beginner capture d,theory of change — backcasting:change community planning mission outcom,threat modeling — stride/linddun:privacy risk security architecture categ,three vaults — facts → stories → essence:coaching check communication facilitatio,time machine advice — past self & future self:self your future you advice beginner bra,tonglen-lite — breathe with suffering:compassion self aversion beginner breath,tote — test · operate · test · exit:beginner brainstorming build communicati,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation arg,transcripts - analyze:analysis analyze codebook executive sent,tree of thought — brainstorm & evaluate:across advanced best brainstorming compa,tree of thought — decomposition:advanced alternatives ambiguous brainsto,triangulation methods:across alignment apply bias checking cro,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discus,triz (theory of inventive problem solving):brainstorming aim communication content,trls — with exit ramps:exit maturity salvage trl avoid beginner,trunk-based dev — feature flags:audience beginner behind cleanup collect,truth & reconciliation — micro-format:accountability amends conflict dignity a,two-eyed seeing (etuaptmumk): braiding indigenous and western knowledge:community knowledge design elders indige,usability test — plan:plan policy accessibility criteria desig,user flow — audit — design:flow design states acceptance accessibil,ux microcopy — write:copy design accessibility clarity conten,v-model / mbse — assumption ledger:assumptions model architecture dates des,v2mom — vision values methods obstacles measures:community vision plan create finding mis,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management ma,viable system model - ensure functions that keep a community adaptive and coherent:community design governance operations s,voice and tone frameworks - codify how the community speaks:our tone voice community style avoid cle,vow-and-witness:commitment vow witness accountability be,vroom–yetton–jago decision model:decision autocratic balance brainstormin,wardley mapping - map capabilities and evolution to protect community advantage:community shared spot across map chain c,weighted mini-matrix (quick score):planning against compare criteria decisi,what if — scenario reframing questions:brainstorming problem alternative beginn,wishing — imagine ideal solutions:brainstorming beginner beyond constraint,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming con,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards buildin,working out loud — truth edition:review asks beginner clarity communicati,world café - rotating small-group conversations to synthesize collective themes:cafe world ideas conversation group peop,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement max,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content'
-      ],
-  definition: 'A helper that recommends the most suitable tool or generates a prompt to do so.',
+  'Library tools: 2-minute rule (david allen):planning avoidance away beginner,5w1h — who · what · where · when · why · how:incident prompt scope acceptance,a3 problem solving (toyota):problem plan actions align,aar — feelings first:debrief learning needs alone,abcde — activating event · belief · consequence · dispute · effect:thought anxiety reframe self,abductive reasoning — best explanation:predictions risky account analysis,accessibility reality check (wcag + plain language):frameworks language phase plain,accountability letter:amends apology beginner clear,active imagination — dialogue with inner voices:inner creative dialogue parts,addie — analyze · design · develop · implement · evaluate:course training learning design,adversarial collaboration:adjudication design advance change,agent-based models & system dynamics:abm agents calibration complex,aida — attention · interest · desire · action:copy write action email,amor–vita–memoria (avm):grief self gratitude one,anekāntavāda & syādvāda (jain many-sided logic):cultural truths add bias,announcement — change & action:announcement change communication notice,argument mapping — claim · premises · objections · rejoinders:points reasoning critical debate,arnstein’s ladder of participation — from tokenism to citizen control:power community influence governance,ask-me-3 — what’s my main problem? what do i need to do? why is it important? (+ provisional/differential/working dx):phase blood communication notes,automatic writing — truth sprint:writing truth automatic avoiding,backcasting - start from the desired future state and plan backwards:back community plan future,backlog — prioritize:capacity items plan portfolio,bayesian science — posterior odds:priors action analysis based,bdd (given–when–then) → tests → code — reusable template:bdd gherkin acceptance auto,before-after-bridge (bab) — before state · after state · bridge (solution):pitch copy page write,bhag — big hairy audacious goal:planning vision align ambition,bias impact assessment (ai/tech pre-launch):bias check right compliance,bias interrupters — diagnose risk · insert guardrail · measure effect:bias feedback check fair,blameless postmortem — essence first:teaching actionable analyze beginner,bloom’s — remember · understand · apply · analyze · evaluate · create:design objectives learning lesson,bpmh — best possible medication history (+ provisional/differential/working dx):phase list planning safety,brand archetypes for communities - shared identity motifs and tone:our archetype archetypes community,buddhist eightfold path (adapted for action):decision ethical design harm,canary + blue-green — revert comms:comms rollback beginner blast,causal inference — dags & identification:identification assumptions causal dag,causal inference playbook:design assumptions based bias,checklists (gawande-style) — turn recurring tasks into zero-brain-power steps:phase management quality safety,clear — challenge · limitation · effect · action · result:problem summary action decision,clear contracts + exit ramps:boundaries consent beginner communicatio,clear path forward — concise · logical · explicit · adaptive · reflective:prompt step planning ask,clear prompting method — clarity · length · empathy · actionability · relevance:prompt make scope ask,clown ‘flop’ — failure seen safely:failure resilience shame armor,cognitive debiasing — state assumption · seek disconfirming evidence · adjust:check bias could decision,collective impact — common agenda shared measurement backbone:partners purpose across community,community capitals framework - seven capitals lens for purpose and investment:capital capitals across investments,community-led development (cld): locally led priorities accountability and capacity:community design governance phase,comparative analysis — rank • pros/cons • matrix:compare should options side,competing values framework - culture map to align ways of working with mission:culture values across decide,computational science — simulation:reproducibility simulation validation ca,constraint flip (play with edges):what design feature had,contact improv — listening duet:listening practice attention attunement,costar — context · objective · style · tone · audience · response:brief content message campaign,cover letter — tailor / rewrite / feedback:cover letter job ats,critical bias & methodology audit:review bias check ai,critical incident analysis:ethics teaching charged communication,cross-cultural localization readiness:locale localization translation accessib,cultural probes & diary studies - longitudinal participant-led voice capture:people daily study capture,cultural web - unpack symbols rituals stories shaping voice:culture cultural voice rituals,daoist wu-wei strategy (effortless action):instead align burnout plan,decision matrix (weighted) — compare by criteria not vibes:planning criteria decision management,decision record — dissent & kill criteria:dissent adr alignment beginner,deliberative polling / citizens juries - informed structured public deliberation:people citizens public make,design doc — scariest change:design risk align alignment,design justice principles — center those most affected; redistribute design power:design community power data,design science research (dsr):utility artifact artifacts build,dignity questions — identity · meaning · legacy:family gratitude storytelling audio,disney strategy — dreamer · realist · critic:idea creative concept plan,dm — outreach & follow-up:follow outreach quick writing,dmaic — define · measure · analyze · improve · control:data improvement process project,doe + tolerance stacks — ci & power:acceptance experiment stack analysis,dot voting and heat-mapping - quick temperature check on priorities:decision phase planning community,east — easy · attractive · social · timely:design behavioral nudge choice,eisenhower matrix — urgent/important prioritization:delegate tasks priorities what,email — draft & polish:email follow networking outreach,empathy mapping personas jtbd - ground voice in needs and contexts:what design empathy community,empty chair dialogue (gestalt):self one conversation talk,energy budget planner (spoon theory):plan energy day spoons,engineering method — iterate to standard:acceptance cycle standards beginner,epic quest tasking — gamify the chore:quest quests chores make,ethical data stewardship - governance for safe listening:data community design decide,ethnographic & interpretivist methods:description fieldwork reflexivity thick,evidence robustness & reproducibility check:methods advanced analysis analyze,examples / few-shot prompting:examples example format output,exploratory vs confirmatory paths:cda eda avoid beginner,fab — feature · advantage · benefit:benefits bullets copy feature,facione — interpret · analyze · evaluate · infer · explain · self-regulate:bias evidence reasoning argument,facts & expertise primer:what facts check expert,feyerabend — pluralism:method design document ethics,feynman technique — explain like i’m 5:explain make complex non,findings — synthesize:insights confidence create summarize,first principles — question assumptions & reason from basics:true problem reasoning analogies,fmea · hazop · fault tree — unified card:design hazop analysis causes,focusing — felt-sense check:check mental aboutness ambivalent,freewriting — unfiltered stream of thought (zero draft):writing block draft brainstorming,future search — whole-system future-focused planning (2–3 days):future planning search community,fuzzing + mutation — outage shape:edge inputs catch conditions,ganma — knowledge confluence (yolŋu):knowledge cultural design indigenous,goal breakdown (prompt/question decomposition):step goal tasks turn,goal composition (prompt/question composition):one tasks plan asks,goal prompting:goal goals plan first,goals of care — what matters most:conversation life planning values,golden circle — why · how · what · mission:purpose mission community values,gratitude under duress:pain acknowledge beginner bypass,grounded theory — reflexive memos:coding reflexivity theory audit,grow — goal · reality · options · way forward:goal coaching plan what,head–heart–gut — logic · emotion · instinct (rational · emotional · instinctual check):check decision heart balance,health — symptom log & clinician brief:back health planning teach,hero’s journey — departure · initiation · return:journey story arc hero,heuristics & biases — debiasing pre-flight:check bias decision quick,holacracy (selective) - role-based governance for volunteer groups:roles governance meetings without,hoshin kanri (policy deployment) - align annual breakthrough objectives with daily work:phase planning community objectives,how might we statements (hmw):problem make questions brainstorming,human-centered design / double diamond: discover define develop deliver with community co-creation:design research clear community,hypnagogic spark — semi-sleep insight technique:brainstorming state creativity design,iap2 spectrum of public participation — inform → consult → involve → collaborate → empower:engagement community input planning,ice — impact × confidence × ease:ideas planning quick backlog,ikigai — purpose map:purpose career against align,imaginary council — multiple mentors one question:would phase see what,implementation intentions (if–then):plan coding goals habits,inclusive design (edge personas):design make edge check,inclusive language & metaphor scrubber:accessibility frameworks across analysis,informational-interview ladder — 2/day → 5/week → 50/quarter (ask for insights not jobs):planning networking outreach phase,inner child work — conscious self · inner child:child inner self childhood,intent → action design patterns (command • interpreter • strategy • cor • builder/factory):actions builder command factory,internal weather report — storm · calm · forecast:check state emotional energy,interviews — plan & questions — write:plan guide interviews design,jobs — alignment targeting stories & pipeline:plan personal planning your,jtbd interviews — felt-sense friction:jtbd progress struggles body,kaitiakitanga — guardianship & stewardship (māori):product cultural data design,kano model — must-be · performance · delighters:planning product what brainstorming,kansei engineering (emotion → design mapping):design emotions emotional features,kaupapa māori research — by/with/for māori communities; sovereignty at the core:research ori community communities,kepner–tregoe (situation · problem · decision · potential problem):decision analysis phase alternatives,keywords + why + tasks — vector priming:actionable alignment apply avoid,kuhn — paradigms & revolutions:anomalies science across beginner,kumu / systems mapping - actors flows feedbacks:purpose community find map,lakatos — research programs:belt core hard program,language optimizer — ats · domain · seo · aieo:answer ats content metadata,lara / cri — dialogue scaffold:dialogue affirmation beginner center,last 2% round — share the unsaid edge:alignment avoid beginner communication,lean startup loop — stop & harm rules:decision hypothesis rules analytics,least to most (ltm):building complex derive edge,letter — formal / personal:letter formal writing apology,liberating structures - light-weight ways to get everyones voice in (1-2-4-all 9 whys triz conversation café what so what now what):group ways simple what,lines/veils revisit — mid-campaign:consent lines refresh safety,maṣlaḥa — public interest reasoning (islamic ethics):decision product advanced align,memento mori — micro-sit:gratitude actually add beginner,memo — tl;dr + recommendation:decision writing brief capture,mind map — central idea with branches:visual adhd analysis around,mind mapping — visual cluster of ideas:discover map planning actions,mixed methods — triangulation:integration beginner design designs,monroe’s motivated sequence — attention · need · satisfaction · visualization · action:value decision persuasive across,mortal message — letter/audio:gratitude repair beginner blessing,moscow — must · should · could · won’t:planning management product scope,most significant change (msc) — collect stories; community selects what mattered most:community stories change evaluation,musyawarah & mufakat — deliberation to consensus (indonesia):consensus decision deliberation facilita,naïve dialecticism (east asian holistic reasoning):adapt adjustments advanced analytic,nonviolent communication (nvc): needs-based dialogue for deeper listening:nvc conflict without empathy,north star metric & narrative:metric one community long,noting — mindfulness labels:sleep awareness beginner check,nyāya — five-member syllogism:explicit inference mode analyses,oblique strategies — lateral thinking prompt cards:creative brainstorming break constraints,observability — slos · slis · error budgets:burn reliability analytics budget,ocap® & care principles — community data ownership governance and ethical listening:data community sharing control,ofrenda / remembrance board:altar artifacts beginner board,okr — objective & key results:outcomes measurable planning progress,okrs — with kill criteria:okrs analytics avoid beginner,okrs (community-adapted) — objectives & key results:community goals mission progress,okrs (job search) — land x offers:evaluation job phase planning,ooda loop (observe–orient–decide–act):decision discovery fast loop,open science checklist:accessible beginner cannot capsule,open space technology - participant-set agenda for what matters now:open space agenda community,opportunity scoring — importance vs. satisfaction:planning jtbd across allocate,opportunity solution tree - tie problems to outcomes to keep purpose tight:outcome outcomes tree solutions,outcome harvesting - gather outcomes after the fact and trace contributions with community input:already change clear community,outcome mapping — boundary partners & behavior change:change community partner behavior,par — problem · action · result:experience impact postmortem storytellin,participatory & decolonial approaches:data sovereignty benefit clarify,participatory action research (par):decision dissemination rights accessible,participatory action research / cbpr - co-research with communities:community research action phase,participatory budgeting — residents directly allocate resources:community budget equity planning,parts check-in — ifs-inspired:coaching self beginner check,parts work dialogue (ifs therapy):inner parts self coaching,pas — problem · agitate · solution:problem copy landing marketing,paul–elder — elements of thought + standards:decision analysis apply argument,pdca — plan · do · check · act:improvement beginner changes close,pdsa — plan · do · study · act:change phase planning week,peas — performance measure · environment · actuators · sensors:design agent analysis benchmark,persona — actas / simulate:apply beginner clarification development,personal kanban + wip limits — backlog → doing (limit 1–3) → done:planning phase focus management,pestle — political · economic · social · technological · legal · environmental:affecting analysis analyze broader,pipeline kanban — leads → applied → interviewing → offer → closed:phase planning job search,plan and solve (p&s):planning against checks clarification,playback theatre — confession line:group story check consent,pomodoro scaffold:beginner creativity focus frame,popperian falsification:design predictions risky beginner,positionality statement:analysis practice preface research,power mapping - visualize formal and informal power; plan inclusive engagement:who influence which map,power/interest grid & stakeholder salience — who has power who’s affected who must be heard:who power actually affected,pra / rra - participatory mapping ranking seasonal calendars guided by locals:community local research create,pramāṇa — means of knowledge:evidence advanced answer audit,prd — write:requirements plan guardrails localizatio,pre-mortem — imagine failure find causes build safeguards:planning phase risks safety,pre-mortem + pre-grief:ethics failure human review,pre-mortem + red team — embarrassing sentence:ethics failure review conditions,pre-mortem scaffold:actions beginner committing decision,press release — ap style:release launch writing announcement,product — plain words → specs → code:contracts roadmap specs align,product roadmap → team-ready brief (slices + phases):capacity quarterly across beginner,prompt augmentation (demonstration learning):format phase against answers,public narrative - structure shared story and call to action:story action people ask,public narrative (marshall ganz) — story of self us now:story community craft action,qiyās — analogical reasoning (islamic jurisprudence):advanced analogies apply cause,questionnaire — write:design item bias items,raccca — relevance · accuracy · completeness · clarity · coherence · appropriateness:evaluation audit beginner coding,raci or drci - clarify roles without muting voice:who roles consent consulted,rain — recognize · allow · investigate · nurture:self mindfulness beginner brach,random association — combine unrelated ideas:brainstorming beginner block break,rap — result · action · problem:impact storytelling apply beginner,rapid — recommend · agree · perform · input · decide:decision approvals beginner clarify,rapid framing rewriter:frameworks phase add alternatives,rapid ideation — timed idea sprint:brainstorming beginner block creative,ratio — role · audience · task · instructions · output:prompt brief agent apply,red-flag list — pre-agree triggers & actions (+ provisional/differential/working dx):phase communication planning safety,reflect (bias reflection):bias analysis beginner brainstorming,reflexive memo:analysis activated affect affective,registered reports & preregistration:analysis plan clarify collection,reliability growth & burn-in:test acceptance growth plan,restorative circles / deep democracy - surface minority voices and work with conflict productively:circle conflict group community,resume — tailor / rewrite / feedback:resume job ats draft,rfc — unsaid objection:decision dissent alignment architecture,rice — reach × impact × confidence ÷ effort:planning allocate coding features,ripple effects mapping — appreciative story-mapping of impacts with stakeholders:community impact map stories,risen — role · instructions · steps · end goal · narrowing:plan content design development,rodes — role · objective · details · examples · sense check:guided adaptation against apply,role storming — ideation as different personas:brainstorming apply beginner changing,root cause analysis:apply beginner brainstorming causes,rose · thorn · bud + weather:check daily hope journal,rtf — role · task · format:format prompt prompting api,rubber duck debugging — explain to understand:problem step analysis articulating,safety pause with essence:safety truth ttrpg agree,sbar for health — situation · background · assessment · recommendation (+ provisional/differential/working dx):phase call communication day,scamper (idea expansion):beginner brainstorming creative creativi,scenario-based prompting — deliberative reasoning:advice analysis coaching compose,scientific method — question · hypothesis · method · data · analysis · conclusion:beginner clear content design,scqa — situation · complication · question · answer:frameworks analysis arc beginner,screener — create criteria:screener eligibility design device,sensemaker: micro-narratives self-signified by participants to surface patterns:stories patterns community phase,sentipensar — thinking-feeling integration (latin america):design side analytic cultural,service design blueprints - map frontstage/backstage to see where voice is silenced:service map blueprint design,shadow work dialogue — conscious self · shadow self:self side you acts,shared decision-making (sdm) — options → benefits/risks → values/preferences → decide → review (+ provisional/differential/working dx):phase decision communication one,six thinking hats:brainstorming decision explore beginner,smart goals — specific · measurable · achievable · relevant · time-bound:goals actionable adjustment beginner,soap diary — subjective · objective · assessment · plan (+ provisional/differential/working dx):phase communication day notes,soar analysis:align aspirations beginner clarification,social media post — tailor / write / brainstorm:social media post write,social network analysis / network weaving / netography - find connectors peripheries and missing voices:map spot bridges networks,sociocracy / consent decision-making - circles roles and dynamic governance for shared ownership:sociocracy consent decide circles,socratic questioning method:alternatives assumptions beginner belief,soft systems methodology (ssm) — explore messy problems via multiple worldviews; rich pictures:map problems community issues,somatic focusing — feel · ask · listen:self them asking beginner,spectrum of community engagement to ownership — concrete power-shifting practices:community power ownership authority,stakeholder harm & benefit forecast:equity safety across analysis,star — situation · task · action · result:story storytelling study answer,star / soar stories (job search):interview phase resume stories,stars & wishes + bleed check:bleed debrief safety ttrpg,story circles / story harvesting — peer storytelling to extract themes and values:stories community voices values,story spine + one naked sentence:story draft line pitch,survey — plan — design:design plan survey scale,swot — strengths · weaknesses · opportunities · threats:analysis market snapshot strategy,synectics — analogies & problem transfer:advanced analogies apply context,synesthetic brainstorm — color · sound · texture:brainstorming sensory abstract analogies,systematic review & meta-analysis:criteria heterogeneity policy protocol,t-gap analysis — requirements vs skills + 30-day plan:planning phase analysis beginner,talanoa dialogue (pacific):beginner build content cultural,talanoa yarning circles talking circles — narrative-first consensus building:community decisions hearing understadnin,targeting matrix: role × industry × location × company size:planning careers list phase,tarot spread reflection — past · present · future:mode reflection storytelling tarot,task prompt breakdown — task/recipe + do/don’t (cot):recipe steps beginner brainstorming,task scenarios — write:scenarios design accessibility hta,tdd + property-based testing — invariants:edge invariants tests beginner,teach-back — restate instructions; confirm & correct (+ provisional/differential/working dx):phase what communication notes,theory of change — backcasting:change community planning mission,threat modeling — stride/linddun:privacy risk security architecture,three vaults — facts → stories → essence:coaching check communication facilitatio,time machine advice — past self & future self:self your future you,tonglen-lite — breathe with suffering:compassion self aversion beginner,tote — test · operate · test · exit:beginner brainstorming build communicati,toulmin’s argument model — claim · grounds · warrant · backing · qualifier · rebuttal:briefs design academic argumentation,transcripts - analyze:analysis analyze codebook executive,travel — door-to-door planner:door plan planning travel,tree of thought — brainstorm & evaluate:across advanced best brainstorming,tree of thought — decomposition:advanced alternatives ambiguous brainsto,triangulation methods:across alignment apply bias,trigger storming — prompt-based brainstorming:brainstorming abstract creativity discus,triz (theory of inventive problem solving):brainstorming aim communication content,trls — with exit ramps:exit maturity salvage trl,trunk-based dev — feature flags:audience beginner behind cleanup,truth & reconciliation — micro-format:accountability amends conflict dignity,two-eyed seeing (etuaptmumk): braiding indigenous and western knowledge:community knowledge design elders,usability test — plan:plan policy accessibility criteria,user flow — audit — design:flow design states acceptance,user stories & acceptance criteria → developer-ready brief:planning acceptance accessibility produc,ux microcopy — write:copy design accessibility clarity,v-model / mbse — assumption ledger:assumptions model architecture dates,v2mom — vision values methods obstacles measures:community vision plan create,value proposition canvas (personal):planning positioning careers employer,value vs. effort — 2×2 quick wins matrix:identify intermediate kill management,viable system model - ensure functions that keep a community adaptive and coherent:community design governance operations,voice and tone frameworks - codify how the community speaks:our tone voice community,vow-and-witness:commitment vow witness accountability,vroom–yetton–jago decision model:decision autocratic balance brainstormin,wardley mapping - map capabilities and evolution to protect community advantage:community shared spot across,week planning — focus triage & motivation:anxiety energy plan planning,weighted mini-matrix (quick score):planning against compare criteria,what if — scenario reframing questions:brainstorming problem alternative beginn,wishing — imagine ideal solutions:brainstorming beginner beyond constraint,woop (wish–outcome–obstacle–plan):obstacle beginner bind brainstorming,working backwards prfaq — truths & tradeoffs:align alignment amazon backwards,working out loud — truth edition:review asks beginner clarity,world café - rotating small-group conversations to synthesize collective themes:cafe world ideas conversation,wsjf — (business value + time criticality + risk reduction) ÷ job size:planning economic future improvement,zhongyong — doctrine of the mean (confucian moderation):avoid calibrating communication content'      ],
+  definition: 'A helper that recommends the most suitable template from a provided library or generates a prompt to do so.',
   help: 'Describe your goal and context. A full list of the template options will be included when you use the copy/open buttons.',
   fields: [
     
@@ -6309,7 +6308,1419 @@ const effortNote = (() => {
       ].join('\n')
     ].filter(Boolean).join('\n');
   }
+},
+
+{
+id: 'task_travel_planner',
+slug: 'travel-planning-door-to-door',
+label: 'Travel — Door-to-Door Planner',
+kind: 'task',
+categories: ['personal-admin','planning','travel'],
+tags: ['type:task','topic:travel','use:planning','use:logistics','use:risk','use:checklist'],
+use_cases: [
+'plan a door-to-door itinerary for a new trip',
+'set up price-watching with trigger prices and book windows',
+'organize flights, accommodation, routes, and essentials (FARE)',
+'prepare 3-2-1 document backups and emergency contacts',
+'map trip risks and pre-decide Plan B options'
+],
+definition: 'Plan a door-to-door trip by working backward from the exact arrival time/place. Structure around FARE (Flights, Accommodation, Routes, Essentials), include a price-watch plan, a 3-2-1 document backup checklist, and a simple Risk Map with pre-agreed Plan B options and contacts. Adapts depth based on current stage and desired help level.',
+help: 'Fill what you know. Start with destination arrival time/place if you have it. Choose your current stage and how hands-on you want help to be; the template adjusts the level of detail, questions, and research tasks automatically.',
+fields: [
+/* Scope & mode selectors (these shape the output depth and priorities) */
+{ key:'trip_stage', label:'Where are you in travel planning?', type:'select', desc:'Shapes the questions, research tasks, and which FARE components to prioritize first.',
+options:[
+{ label:'Just exploring ideas', value:'Stage: Exploring. Prioritize broad options, rough budget ranges, seasonality, visa/entry basics, and 2–3 viable trip patterns. Defer bookings; ask minimal high-leverage questions.' },
+{ label:'Dates chosen (not booked)', value:'Stage: Dates chosen. Produce a door-to-door backward plan, price-watch setup with trigger ranges, and shortlists for flights and stays. Include calendar holds and buffer times.' },
+{ label:'Flights booked (need the rest)', value:'Stage: Flights booked. Lock door-to-door around flight times. Focus on airport transfers, accommodation shortlists with trade-offs, local transport routes, and Essentials.' },
+{ label:'Accommodation booked (fill the gaps)', value:'Stage: Accommodation booked. Optimize routes, day plans, local transport passes, and Essentials. Add Risk Map and 3-2-1 backups if missing.' },
+{ label:'On trip (live adjustments)', value:'Stage: On-trip. Provide quick alternatives, day-by-day tweaks, Plan B options, contact cards, and a minimal Essentials audit.' }
+]
+},
+{ key:'help_level', label:'How much help do you want?', type:'select', desc:'Controls question count, research depth, and number of concrete options.',
+options:[
+{ label:'Overview (broad plan, light questions)', value:'Help level: Overview. Provide high-level itinerary, key decisions, and 0–3 clarifying questions. Avoid deep vendor research; give decision criteria and simple checklists.' },
+{ label:'Guided planning (moderate detail)', value:'Help level: Guided. Provide specific recommendations and up to 3 example options per category (flights/stays/transport) with pros/cons and rough cost ranges; 3–7 clarifying questions.' },
+{ label:'Concierge research (in-depth)', value:'Help level: Concierge. Provide deeper research tasks, example options with selection criteria, sample outreach scripts, and booking notes. Include 5–10 clarifying questions prioritized by impact.' }
+]
+},
+/* Trip basics */
+{ key:'goal_vibe', label:'Trip goal / vibe', type:'textarea', ph:'e.g., coffee + museums, scenic trains, low-stress mini-moon' },
+{ key:'travelers', label:'Travelers', type:'text', ph:'e.g., 2 adults, 1 child (8), 1 carry-on each' },
+{ key:'origin', label:'Origin city/airport (if known)', type:'text', ph:'e.g., PHX or Mesa, AZ (flexible to TUS/LAX)' },
+{ key:'arrival_place', label:'Arrival place (city/airport/station)', type:'text', ph:'e.g., Barcelona (BCN) · Hotel in El Born' },
+{ key:'arrival_datetime', label:'Exact arrival deadline (if any)', type:'text', ph:'e.g., Must be at El Born hotel by Jun 12, 18:00 local' },
+{ key:'start_date', label:'Start date (if known)', type:'text', ph:'YYYY-MM-DD' },
+{ key:'end_date', label:'End date (if known)', type:'text', ph:'YYYY-MM-DD' },
+{ key:'flexible_dates', label:'Date flexibility', type:'select', options:['none','±1–2 days','±3–7 days'], desc:'Improves price-watch and routing options.' },
+{ key:'duration_hint', label:'Trip length hint', type:'text', ph:'e.g., 7–9 days total' },
+{ key:'budget', label:'Budget (range/currency)', type:'text', ph:'e.g., $2,500–$3,000 total, flights separate' },
+{ key:'must_do', label:'Must-dos / constraints', type:'textarea', ph:'e.g., specific museum dates, mobility needs, pet-friendly, flight time windows' },
+
+/* FARE — core planning inputs */
+{ key:'flight_prefs', label:'Flight prefs (if any)', type:'textarea', ph:'e.g., nonstop preferred; depart after 10:00; Delta or Oneworld; aisle seats' },
+{ key:'stay_prefs', label:'Accommodation prefs', type:'textarea', ph:'e.g., quiet area, kitchen, washer, ≤$180/night, walkable to transit' },
+{ key:'route_notes', label:'Ground routes / transport notes', type:'textarea', ph:'e.g., rail pass vs point-to-point; rideshare after 23:00; ferry schedules' },
+{ key:'essentials_notes', label:'Essentials (docs/insurance/meds/money/SIM)', type:'textarea', ph:'e.g., passport renewal needed; eSIM preferred; travel medical plan; notify bank' },
+
+/* Price-watch pattern */
+{ key:'trigger_price', label:'Trigger price (per ticket or total)', type:'text', ph:'e.g., Book if PHX→BCN ≤ $620 RT (main cabin)' },
+{ key:'watch_window', label:'Watch window', type:'text', ph:'e.g., Today → 6 weeks before departure; Tue/Thu check' },
+{ key:'alerts_tools', label:'Alerts / tools to use', type:'text', ph:'e.g., Google Flights alerts, Kayak, Hopper; 2 alternative airports' },
+
+/* Documents — 3-2-1 backup */
+{ key:'docs_list', label:'Critical docs to include', type:'textarea', ph:'Passport, visas, vax cards, tickets, bookings, insurance card, emergency sheet' },
+{ key:'docs_media', label:'Backup media plan', type:'text', ph:'3 copies, 2 media (phone + cloud), 1 printed in carry-on' },
+
+/* Risk Map & contacts */
+{ key:'risk_concerns', label:'Top risks to pre-plan', type:'textarea', ph:'e.g., missed connection, hotel overbooked, lost ID, illness, civil strike' },
+{ key:'plan_b', label:'Plan B ideas (quick notes)', type:'textarea', ph:'Backup flight/route; backup hotel in same district; telemedicine app; embassy' },
+{ key:'contacts_card', label:'Contacts card', type:'textarea', ph:'Local friend; hotel desk; airline; insurer; embassy/consulate; bank; telemed' },
+
+/* Calendars & output preferences */
+{ key:'calendar_system', label:'Calendar system', type:'text', ph:'e.g., Google Calendar; wants .ics holds and checklists' },
+{ key:'output_focus', label:'Output emphasis', type:'select',
+  options:['balanced plan','cost-minimizing','stress-minimizing','accessibility-first','kid-friendly','carry-on only'],
+  desc:'Tailors trade-off decisions and tips.'
+},
+
+/* Freeform add-ons */
+{ key:'extras', label:'Other details / links (optional)', type:'textarea', ph:'Paste booking refs, confirmation codes, or links you already have' }
+],
+
+boosters: [
+'Plan backward from the exact arrival place/time. Add realistic buffer times at each leg (immigration, baggage, transfers).',
+'Normalize times and clearly mark time zones (origin vs destination).',
+'Structure around FARE: Flights, Accommodation, Routes, Essentials.',
+'Price-watch: define trigger price, watch window, alert setup, and decision rule; suggest 2 fallback airports.',
+'3-2-1 docs: list the exact files to store; specify cloud folder name, local device location, and what to print.',
+'Risk Map: list top risks → early warning signs → mitigations → Plan B steps → contact to call first.',
+'Use “TODO:” markers for any missing inputs; ask only the minimum high-leverage clarifying questions based on Help level.',
+'Offer calendar-ready milestones (holds) and a short packing categories list if space allows.'
+],
+
+template: (f) => {
+const level = f.help_level || 'Help level: Overview.';
+const stage = f.trip_stage || 'Stage: Exploring.';
+const tzNote = 'Show all times with explicit time zones (e.g., “18:00 CEST / 09:00 MST”).';
+const outRules = [
+  'Output format:',
+  '- Section 1: Clarifying questions (only what’s essential; count depends on Help level).',
+  '- Section 2: Door-to-Door plan (work backward from arrival; include buffers and time zones).',
+  '- Section 3: FARE — Flights, Accommodation, Routes, Essentials (with criteria and options per Help level).',
+  '- Section 4: Price-Watch recipe (trigger price, watch window, alert setup, decision rule, alternates).',
+  '- Section 5: 3-2-1 Docs backup (exact files + where to store: phone, cloud folder, printed packet).',
+  '- Section 6: Risk Map (risks → early signs → mitigations → Plan B steps → who to contact first).',
+  '- Section 7: Calendar holds & checklist (dates to place on calendar; step-by-step tasks).',
+  '- Optional: Packing categories (carry-on only if requested).'
+].join('\n');
+
+const basics = [
+  f.goal_vibe && `Trip goal/vibe: ${f.goal_vibe}`,
+  f.travelers && `Travelers: ${f.travelers}`,
+  f.origin && `Origin: ${f.origin}`,
+  f.arrival_place && `Arrival place: ${f.arrival_place}`,
+  f.arrival_datetime && `Arrival deadline: ${f.arrival_datetime}`,
+  (f.start_date || f.end_date) && `Dates: ${[f.start_date,f.end_date].filter(Boolean).join(' → ')}`,
+  f.flexible_dates && `Date flexibility: ${f.flexible_dates}`,
+  f.duration_hint && `Trip length hint: ${f.duration_hint}`,
+  f.budget && `Budget: ${f.budget}`,
+  f.must_do && `Must-dos/constraints: ${f.must_do}`
+].filter(Boolean).join('\n');
+
+const fare = [
+  f.flight_prefs && `Flight preferences:\n${f.flight_prefs}`,
+  f.stay_prefs && `Accommodation preferences:\n${f.stay_prefs}`,
+  f.route_notes && `Routes/transport notes:\n${f.route_notes}`,
+  f.essentials_notes && `Essentials notes:\n${f.essentials_notes}`
+].filter(Boolean).join('\n');
+
+const priceWatch = [
+  f.trigger_price && `Trigger price: ${f.trigger_price}`,
+  f.watch_window && `Watch window: ${f.watch_window}`,
+  f.alerts_tools && `Alerts/tools: ${f.alerts_tools}`
+].filter(Boolean).join('\n');
+
+const docs = [
+  f.docs_list && `Docs list:\n${f.docs_list}`,
+  f.docs_media && `Backup media plan: ${f.docs_media}`
+].filter(Boolean).join('\n');
+
+const risk = [
+  f.risk_concerns && `Top risks:\n${f.risk_concerns}`,
+  f.plan_b && `Plan B notes:\n${f.plan_b}`,
+  f.contacts_card && `Contacts card:\n${f.contacts_card}`
+].filter(Boolean).join('\n');
+
+const prefs = [
+  f.calendar_system && `Calendar system: ${f.calendar_system}`,
+  f.output_focus && `Output emphasis: ${f.output_focus}`,
+  f.extras && `Extras:\n${f.extras}`
+].filter(Boolean).join('\n');
+
+return [
+  'Create a comprehensive travel plan.',
+  stage,
+  level,
+  tzNote,
+  basics && `\nBasics:\n${basics}`,
+  fare && `\nFARE inputs:\n${fare}`,
+  priceWatch && `\nPrice-watch inputs:\n${priceWatch}`,
+  docs && `\n3-2-1 documents:\n${docs}`,
+  risk && `\nRisk & contacts:\n${risk}`,
+  prefs && `\nPreferences:\n${prefs}`,
+  '\nGuidance:',
+  '- Adjust depth, number of options, and question count according to Help level.',
+  '- Always plan backward from the arrival place/time, adding realistic buffers for immigration, baggage, transfers, and check-in windows.',
+  '- Provide costs as ranges with currency; cite assumptions (e.g., “shoulder season”).',
+  '- If visas/vaccines may apply, add a neutral “Check official sources” note with where to verify.',
+  '- For each unknown input, add a TODO line, not guesses.',
+  outRules
+].filter(Boolean).join('\n');
 }
+},
+
+/* ---------------------------------------------------------
+   TASK: Health — Symptom Log, Provisional/Differential/Working Dx, & Clinician Brief
+--------------------------------------------------------- */
+{
+  id: 'task_health_clinician_brief',
+  slug: 'health-symptoms-differential-and-brief',
+  label: 'Health — Symptom Log & Clinician Brief',
+  kind: 'task',
+  categories: ['health','planning','personal-admin'],
+  tags: [
+    'type:task',
+    'topic:health',
+    'topic:medicine',
+    'use:planning',
+    'use:communication',
+    'use:research',
+    'use:preparation',
+    'stage:intake'
+  ],
+  use_cases: [
+    'organize symptoms and daily tracking (SOAP diary)',
+    'prepare a clear packet for a doctor visit (SBAR-style brief, Ask-Me-3, Teach-Back prompts)',
+    'explore non-diagnostic hypotheses to discuss with a clinician (provisional/working/differential)',
+    'create a recovery/management plan outline and red-flag escalation steps',
+    'understand medical instructions using teach-back and shared decision-making (SDM)'
+  ],
+  definition: 'A guided health worksheet that logs symptoms and vitals (SOAP), frames questions in plain language (Ask-Me-3), captures medicines (BPMH), and produces a clinician-ready brief with non-diagnostic hypotheses (provisional/working/differential) and shared decision-making notes. It blends everyday wording for you with technical structuring for clinical conversations.',
+  help: 'Use this when you want to make sense of symptoms, get ready for a doctor visit, or better understand what your doctor said. Pick what kind of help you want (big-picture vs detailed). Fill in what you know in your own words; the output will reshape into a clean summary for a professional.',
+  fields: [
+    /* Scope & mode — plain language, shapes output depth and focus */
+    { key:'care_stage', label:'Where are you right now?', type:'select', desc:'This changes what the output focuses on.',
+      options:[
+        'I feel unwell and want help figuring it out',
+        'I already have a diagnosis and want to understand it',
+        'I need to prep for an appointment',
+        'I want a recovery or self-care plan',
+        'I need to make sense of test results or medical notes',
+        'I am helping someone else with their care'
+      ]
+    },
+    { key:'help_level', label:'How much help do you want?', type:'select', desc:'Controls how detailed the plan and questions get.',
+      options:[
+        { label:'Overview (quick summary, few questions)', value:'overview' },
+        { label:'Guided (some detail, a few example options)', value:'guided' },
+        { label:'Concierge (in-depth, step-by-step research prompts)', value:'concierge' }
+      ]
+    },
+    { key:'care_goal', label:'What do you want from this?', type:'select', desc:'The output will center on this.',
+      options:[
+        'Ideas to discuss with a doctor (possible causes)',
+        'Ways to feel better and care for myself (non-urgent)',
+        'A neat packet to hand to my clinician',
+        'Help understanding medical info or instructions'
+      ]
+    },
+
+    /* Ask-Me-3 — patient-facing, simple */
+    { key:'am3_problem', label:'Ask-Me-3 — What’s my main problem?', type:'textarea', ph:'Say it in your own words' },
+    { key:'am3_do',      label:'Ask-Me-3 — What do I need to do?', type:'textarea', ph:'What actions you think you should take' },
+    { key:'am3_why',     label:'Ask-Me-3 — Why is it important?', type:'textarea', ph:'Why this matters to you' },
+
+    /* SOAP diary — plain language prompts */
+    { key:'subjective', label:'Symptoms in your words', type:'textarea', ph:'Start, pattern, what makes it better/worse, pain level, sleep, stress' , desc:'This is your story: what you feel and notice.'},
+    { key:'objective',  label:'Numbers and observations', type:'textarea', ph:'Temperature, heart rate, blood pressure, oxygen, blood sugar, weight, step count', desc:'Anything measured or seen.'},
+    { key:'assessment_notes', label:'What you think might be going on (no need to be right)', type:'textarea', ph:'Hunches or ideas you want to ask about', desc:'Your early thoughts or worries.'},
+    { key:'plan_wish',  label:'What would you like to try or ask next?', type:'textarea', ph:'Small steps, questions, follow-ups' },
+
+    /* BPMH — Best Possible Medication History */
+    { key:'meds', label:'Medicines & supplements', type:'textarea', ph:'Name · Dose · When you take it · Why you take it · Who prescribed it', desc:'Make this as complete and accurate as possible.' },
+    { key:'allergies', label:'Allergies or reactions', type:'textarea', ph:'e.g., penicillin → rash; peanuts → hives' },
+    { key:'history', label:'Past conditions, surgeries, hospital visits', type:'textarea', ph:'Anything your doctor should know about' },
+    { key:'family', label:'Family health history (if known)', type:'textarea', ph:'e.g., diabetes, heart disease, cancer' },
+
+    /* Red flags — escalation plan */
+    { key:'red_flags', label:'Warning signs to act on fast', type:'textarea', ph:'Chest pain, trouble breathing, fainting, severe belly pain, high fever in baby, etc.' , desc:'Write the danger signs you were told to watch for.'},
+    { key:'escalation_plan', label:'Where to go or call if things get worse', type:'textarea', ph:'Which urgent care/ER, nurse line, on-call doctor' },
+
+    /* Shared Decision-Making (SDM) */
+    { key:'options', label:'Options you are considering', type:'textarea', ph:'Tests, treatments, lifestyle steps' },
+    { key:'benefits_risks', label:'Good and bad of each option', type:'textarea', ph:'What might help, and what side effects or downsides you care about' },
+    { key:'what_matters', label:'What matters most to you', type:'textarea', ph:'Work, childcare, cost, pain, side effects, values, faith' },
+    { key:'decision_preference', label:'How you want to decide with your clinician', type:'select',
+      options:['I prefer to decide together','I prefer my clinician to guide me','I prefer to decide myself after hearing options'] },
+
+    /* Teach-Back & logistics */
+    { key:'teachback', label:'What you think you were told', type:'textarea', ph:'Write it as if you’re explaining it back' },
+    { key:'questions', label:'Questions to confirm or clarify', type:'textarea', ph:'What still confuses you' },
+    { key:'clinicians', label:'Clinician names & contacts', type:'textarea', ph:'Primary, specialist, therapist, pharmacist' },
+    { key:'next_appointment', label:'Next appointment', type:'text', ph:'Date · time · location or telehealth link' },
+    { key:'pharmacy', label:'Preferred pharmacy', type:'text', ph:'Name · address · phone' },
+    { key:'insurance', label:'Insurance or payment notes (optional)', type:'textarea', ph:'Member ID, copays, network limits' },
+
+    /* Preferences for output emphasis */
+    { key:'output_focus', label:'What should the summary highlight?', type:'select',
+      options:['keep it simple','organize for my doctor','ideas to consider (not diagnosis)','recovery steps and follow-up'] }
+  ],
+
+  boosters: [
+    'Clinical rigor: structure the note as SOAP with SBAR overlay for the clinician-facing abstract.',
+    'Diagnostic reasoning: enumerate provisional diagnosis (working hypothesis), differential diagnosis (rank-ordered DDx), and competing problem representations; clearly mark all as NON-DIAGNOSTIC hypotheses for MD/DO review.',
+    'Use illness scripts and VINDICATE(Vascular, Infectious/Inflammatory, Neoplastic, Degenerative, Iatrogenic/Intoxication, Congenital, Autoimmune/Allergic, Traumatic, Endocrine/Metabolic) to scaffold DDx; include “can’t-miss” etiologies.',
+    'Risk stratification: explicitly flag red flags, time-sensitive conditions, and threshold criteria for escalation.',
+    'Medication safety: reconcile BPMH (name, dose, route, frequency, indication, prescriber) and note potential interactions to VERIFY with a clinician or pharmacist—do not assert.',
+    'SDM: outline options → expected benefits/harms → patient values/preferences → decision → review plan with explicit uncertainty communication.',
+    'Cognitive appraisal: document health beliefs, worry level, catastrophizing vs realistic threat assessment, coping strategies; recommend evidence-based psychoeducation wording.',
+    'Teach-Back: script patient-friendly re-statements of plans/instructions and prompt for corrections by the clinician.'
+  ],
+
+  template: (f) => {
+    const level = f.help_level || 'overview';
+    const focus = f.output_focus || 'organize for my doctor';
+    const stage = f.care_stage || 'I feel unwell and want help figuring it out';
+
+    const disclaimer = [
+      '**SAFETY NOTE**: This output is educational and organizational only. It is NOT medical advice or a diagnosis. If any danger signs occur, follow local emergency guidance or seek urgent care immediately.'
+    ].join('\n');
+
+    const am3 = [
+      f.am3_problem && `Main problem (in your words): ${f.am3_problem}`,
+      f.am3_do && `What to do (as you understand it): ${f.am3_do}`,
+      f.am3_why && `Why it matters to you: ${f.am3_why}`
+    ].filter(Boolean).join('\n');
+
+    const soap = [
+      f.subjective && `Subjective (your story):\n${f.subjective}`,
+      f.objective && `Objective (numbers/observations):\n${f.objective}`,
+      f.assessment_notes && `Your thoughts (questions/ideas to explore):\n${f.assessment_notes}`,
+      f.plan_wish && `What you’d like to try or ask next:\n${f.plan_wish}`
+    ].filter(Boolean).join('\n');
+
+    const bpmh = [
+      f.meds && `BPMH — Medicines/supplements:\n${f.meds}`,
+      f.allergies && `Allergies/reactions:\n${f.allergies}`,
+      f.history && `Past conditions/surgeries/hospitalizations:\n${f.history}`,
+      f.family && `Family history:\n${f.family}`
+    ].filter(Boolean).join('\n');
+
+    const red = [
+      f.red_flags && `Red-flag signs to act on:\n${f.red_flags}`,
+      f.escalation_plan && `Escalation plan (where to go/call):\n${f.escalation_plan}`
+    ].filter(Boolean).join('\n');
+
+    const sdm = [
+      f.options && `Options under consideration:\n${f.options}`,
+      f.benefits_risks && `Benefits/risks you care about:\n${f.benefits_risks}`,
+      f.what_matters && `What matters most:\n${f.what_matters}`,
+      f.decision_preference && `Decision preference: ${f.decision_preference}`
+    ].filter(Boolean).join('\n');
+
+    const logistics = [
+      f.clinicians && `Clinicians:\n${f.clinicians}`,
+      f.next_appointment && `Next appointment: ${f.next_appointment}`,
+      f.pharmacy && `Pharmacy: ${f.pharmacy}`,
+      f.insurance && `Insurance/payment notes:\n${f.insurance}`
+    ].filter(Boolean).join('\n');
+
+    const teach = [
+      f.teachback && `Teach-Back (what you understood):\n${f.teachback}`,
+      f.questions && `Questions to confirm:\n${f.questions}`
+    ].filter(Boolean).join('\n');
+
+    const clarQ = (() => {
+      const qs_overview = [
+        'When did symptoms start and how have they changed?',
+        'Any known triggers or recent changes (travel, new meds, new foods/exposures)?',
+        'What would “better” look like for you in the next week?'
+      ];
+      const qs_guided = qs_overview.concat([
+        'Which symptoms are worst at rest vs activity vs night?',
+        'Which home measures (temp, BP, HR, glucose, SpO₂, weight) do you have?',
+        'Any recent infections, procedures, injuries, or vaccinations?'
+      ]);
+      const qs_concierge = qs_guided.concat([
+        'List all meds/supplements with dose/route/frequency/indication/prescriber.',
+        'Any family history of early heart disease, cancer syndromes, autoimmune disease, or endocrine disorders?',
+        'What red-flag instructions have you already been given (if any)?'
+      ]);
+      if (level === 'concierge') return qs_concierge;
+      if (level === 'guided') return qs_guided;
+      return qs_overview;
+    })();
+
+    const emphasis = focus || 'organize for my doctor';
+
+    return [
+      'Create a clinician-ready health summary that organizes symptoms and information for safe discussion.',
+      `Stage: ${stage} · Help level: ${level} · Emphasis: ${emphasis}`,
+      disclaimer,
+      '\nOutput format:',
+      '- SBAR Abstract (clinician-facing): Situation, Background (BPMH highlights), Assessment (NON-DIAGNOSTIC working impressions), Recommendation (next steps/clarifications needed).',
+      '- SOAP Detail (patient-friendly wording in S/O; clinician-structured A/P).',
+      '- Provisional/Working/Differential hypotheses (clearly labeled NON-DIAGNOSTIC; list can’t-miss causes first; use VINDICATE categories).',
+      '- Ask-Me-3 summary and Teach-Back prompts.',
+      '- BPMH (Best Possible Medication History) with reconciliation notes to VERIFY.',
+      '- Red-Flag plan with explicit escalation thresholds.',
+      '- SDM worksheet: options → benefits/risks → values/preferences → decision → review cadence.',
+      '- Appointment packet: questions for the clinician, logistics (next appt, pharmacy), and after-visit action list.',
+      '\nClarifying questions (answer only what you can):',
+      `• ${clarQ.join('\n• ')}`,
+      am3 && `\nAsk-Me-3:\n${am3}`,
+      soap && `\nSOAP diary:\n${soap}`,
+      bpmh && `\nMedications & history:\n${bpmh}`,
+      red && `\nSafety & escalation:\n${red}`,
+      sdm && `\nShared decision-making:\n${sdm}`,
+      teach && `\nTeach-Back & questions:\n${teach}`,
+      logistics && `\nLogistics:\n${logistics}`,
+      '\nClinical guidance (generation notes — keep technical):',
+      '- Use problem representation and illness scripts; state pretest probability assumptions.',
+      '- Differential: rank-ordered DDx with can’t-miss first; explicitly mark uncertainty and “next-best test” or observation windows.',
+      '- Avoid prescriptive dosing; any therapeutic suggestions must be framed as general, non-specific examples to DISCUSS with MD/DO.',
+      '- Highlight drug–drug or drug–condition concerns as “to verify with clinician/pharmacist.”',
+      '- Close with a plain-language after-visit plan and safety netting.'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Jobs — Targeting, Value Prop, Stories, Pipeline & Weekly OKRs
+   Note: User-facing fields are plain-language. Output/boosters use recruiter/HR tech terminology.
+--------------------------------------------------------- */
+{
+  id: 'task_jobs_alignment_pipeline',
+  slug: 'jobs-alignment-targeting-pipeline-okrs',
+  label: 'Jobs — Alignment, Targeting, Stories & Pipeline',
+  kind: 'task',
+  categories: ['career','planning','personal-admin'],
+  tags: [
+    'type:task',
+    'topic:jobs',
+    'use:planning',
+    'use:research',
+    'use:communication',
+    'use:prioritization',
+    'stage:intake'
+  ],
+  use_cases: [
+    'figure out what roles/industries fit you best (alignment)',
+    'make a short, focused target list of companies',
+    'clarify your value to employers and your personal brand',
+    'organize a job search pipeline with weekly habits',
+    'collect achievement stories for applications and interviews',
+    'plan a simple upskill plan to close gaps',
+    'build a networking plan that actually happens'
+  ],
+  definition: 'A blended, practical job-search playbook that maps who you are to where you’ll thrive (alignment), crafts a focused target list (Targeting Matrix), makes your value obvious (personal Value Proposition Canvas), collects interview-ready stories (STAR/SOAR), runs a visible pipeline (Kanban with WIP limits), closes gaps (T-Gap Analysis with a 30-day upskill sprint), grows signal via informational conversations (Ladder), and locks weekly execution (OKRs). Plain inputs for you; output uses recruiter-grade, funnel-centric language.',
+  help: 'Pick what kind of help you want. Fill what you know in your own words. The output changes based on your stage and focus: it can give you direction, a target list, a plan for the week, or structured stories.',
+  fields: [
+    /* Scope & mode — plain language; shapes output depth/focus */
+    { key:'job_stage', label:'Where are you in your job search?', type:'select', desc:'This changes what the output focuses on.',
+      options:[
+        'Just exploring what fits me',
+        'I know a few roles—need to focus',
+        'I am actively applying',
+        'I am interviewing now',
+        'I’m stuck or losing motivation',
+        'I want to grow my network'
+      ]
+    },
+    { key:'help_focus', label:'What kind of help do you want?', type:'select', desc:'The summary will center on this.',
+      options:[
+        'Find direction and fit (alignment)',
+        'Make a focused target list (companies/roles)',
+        'Clarify my value and brand',
+        'Organize my pipeline and weekly plan',
+        'Build my achievement stories',
+        'Create a 30-day upskill plan',
+        'Plan informational chats and outreach'
+      ]
+    },
+    { key:'help_level', label:'How much detail do you want?', type:'select', desc:'Controls the number of options and the depth.',
+      options:[
+        { label:'Overview (light, big picture)', value:'overview' },
+        { label:'Guided (medium detail)', value:'guided' },
+        { label:'Concierge (deep detail; step-by-step)', value:'concierge' }
+      ]
+    },
+
+    /* Basics & constraints */
+    { key:'strengths_vibe', label:'What are you good at / what do you enjoy?', type:'textarea', ph:'Your strengths, interests, work style' },
+    { key:'constraints', label:'Constraints (time, pay, schedule, health, travel)', type:'textarea', ph:'Anything that limits or shapes your search' },
+    { key:'comp_range', label:'Pay range you’re aiming for', type:'text', ph:'e.g., total $X–$Y; base + bonus if known' },
+    { key:'work_mode', label:'Work setup', type:'select', options:['Remote','Hybrid','Onsite','Flexible'], desc:'Helps filter targets' },
+    { key:'locations', label:'Locations you can work from', type:'text', ph:'City/region; remote okay?' },
+
+    /* Targeting Matrix inputs */
+    { key:'roles', label:'Roles you’re considering', type:'textarea', ph:'e.g., Product Manager, UX Researcher, Data Analyst' },
+    { key:'industries', label:'Industries you like', type:'textarea', ph:'e.g., Health, EdTech, Climate, Gaming' },
+    { key:'company_sizes', label:'Company sizes that fit you', type:'select',
+      options:['0–50','51–200','201–1k','1k–5k','5k+'] },
+    { key:'shortlist_known', label:'Companies already on your mind (optional)', type:'textarea', ph:'List any you already like' },
+
+    /* Personal Value Proposition inputs (plain language) */
+    { key:'employer_pains', label:'What problems do these employers have?', type:'textarea', ph:'In your words; what they struggle with' },
+    { key:'your_gains', label:'What results can you help create?', type:'textarea', ph:'Outcomes you can drive' },
+    { key:'proof_points', label:'Proof from your past work', type:'textarea', ph:'Wins, metrics, examples' },
+    { key:'differentiators', label:'What makes you different?', type:'textarea', ph:'Edge, strengths, story' },
+
+    /* STAR / SOAR story bank (user text, layman) */
+    { key:'story_inputs', label:'Wins to turn into stories', type:'textarea', ph:'Short notes: what happened, what you did, what changed' },
+
+    /* Pipeline & habits */
+    { key:'pipeline_dump', label:'Paste your current leads/applications (optional)', type:'textarea', ph:'Company · role · stage · date · notes' },
+    { key:'wip_limit', label:'How many active applications at once?', type:'text', ph:'e.g., 5–7' },
+    { key:'followup_cadence', label:'Follow-up rhythm', type:'text', ph:'e.g., 5–7 days after apply; 48h after interview' },
+
+    /* T-Gap Analysis */
+    { key:'role_requirements', label:'What do job posts ask for?', type:'textarea', ph:'Paste bullets from a few postings' },
+    { key:'your_skills', label:'Your current skills/tools', type:'textarea', ph:'Be honest; list strengths and gaps' },
+    { key:'upskill_focus', label:'What you want to learn next 30 days', type:'textarea', ph:'Pick 1–2 high-impact topics' },
+
+    /* Informational-Interview Ladder */
+    { key:'target_people', label:'People you want to learn from', type:'textarea', ph:'Titles or names if you have them' },
+    { key:'outreach_channels', label:'How you’ll reach out', type:'text', ph:'LinkedIn, alumni email, meetups' },
+    { key:'time_budget', label:'Time per week you can spend', type:'text', ph:'e.g., 3–5 hours/week' },
+
+    /* OKRs for job search */
+    { key:'okr_objective', label:'Your big goal for the next 2–4 weeks', type:'text', ph:'Say it simply' },
+    { key:'okr_krs', label:'How you’ll measure progress', type:'textarea', ph:'Numbers you can count each week' },
+
+    /* Preferences for output emphasis */
+    { key:'output_focus', label:'What should we highlight?', type:'select',
+      options:[
+        'direction and fit',
+        'target list and research',
+        'value proposition and brand',
+        'pipeline and weekly plan',
+        'story bank and interview prep',
+        'upskill sprint',
+        'networking plan'
+      ] }
+  ],
+
+  boosters: [
+    'Market mapping & ICP: construct an Ideal Candidate Profile against the target role family; align competencies to JD-derived behavioral indicators and leveling frameworks (IC vs M).',
+    'Targeting Matrix: segment Role × Industry × Geo/Remote × Company Size; produce a ranked top-20 based on signal strength, hiring velocity, and comp bands; include 2–3 long-shot moonshots.',
+    'Employer Value Proposition (EVP): synthesize a personal Value Proposition Canvas (pains/gains, jobs to be done, proof points); tie to revenue/cost/risk levers; surface differentiators.',
+    'ATS/SEO hygiene: map core competencies and domain keywords to JD language; preserve meaning while optimizing keyword density and taxonomy (no keyword stuffing).',
+    'STAR/CCAR/SOAR canon: normalize stories to quantifiable outcomes; include scope, constraints, metrics deltas, and counterfactual (what would have happened otherwise).',
+    'Pipeline Kanban: enforce WIP limits, stage definitions (Leads → Applied → Screen → Interviewing → Offer → Closed), SLAs for follow-ups, and CRM hygiene (dates, owners, next-action).',
+    'Funnel analytics: compute top-of-funnel to offer conversion, response rates, and cycle time; identify bottlenecks; run PDCA experiments on outreach copy, timing, and channel mix.',
+    'T-Gap Analysis: diff role requirements vs skills; derive a minimal 30-day upskill sprint with deliverables and a public artifact (mini-project) to increase signal.',
+    'Informational-Interview Ladder: ABM-style targeting, 2/day → 5/week → 50/quarter; ask for insight and calibration, not jobs; include compliance with local outreach etiquette.',
+    'Search OKRs: set a concrete Objective and 3–5 measurable KRs; include weekly cadences, review ritual, and risk mitigations; treat energy/motivation as a tracked constraint.',
+    'Offer-prep (if in scope): define BATNA, comp bands, TC ranges, equity mechanics (cliff/vesting), and non-cash levers; stay ethical (no misrepresentation).'
+  ],
+
+  template: (f) => {
+    const level = f.help_level || 'overview';
+    const stage = f.job_stage || 'Just exploring what fits me';
+    const focus = f.help_focus || 'Find direction and fit (alignment)';
+    const emphasis = f.output_focus || 'direction and fit';
+
+    /* Clarifying questions scale with help level */
+    const q_overview = [
+      'What roles feel most interesting right now?',
+      'What kind of work setup do you want (remote/hybrid/onsite)?',
+      'What would a “good next step” look like in 2–4 weeks?'
+    ];
+    const q_guided = q_overview.concat([
+      'Share 2–3 job posts you like—what patterns do you notice?',
+      'Pick 3 wins you’re proud of—what changed because of you?',
+      'How many hours/week can you reliably invest?'
+    ]);
+    const q_concierge = q_guided.concat([
+      'Paste your current pipeline (company · role · stage · last touch).',
+      'List your top 5 skills and 3 gaps for the next role.',
+      'Name 10 people (titles or names) who could calibrate your path.'
+    ]);
+    const clarQ = level === 'concierge' ? q_concierge : level === 'guided' ? q_guided : q_overview;
+
+    /* Assemble user basics */
+    const basics = [
+      f.strengths_vibe && `Strengths/energy:\n${f.strengths_vibe}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+      f.comp_range && `Comp target: ${f.comp_range}`,
+      f.work_mode && `Work mode: ${f.work_mode}`,
+      f.locations && `Locations: ${f.locations}`
+    ].filter(Boolean).join('\n');
+
+    /* Targeting inputs */
+    const targeting = [
+      f.roles && `Roles:\n${f.roles}`,
+      f.industries && `Industries:\n${f.industries}`,
+      f.company_sizes && `Company sizes: ${f.company_sizes}`,
+      f.shortlist_known && `Known shortlist:\n${f.shortlist_known}`
+    ].filter(Boolean).join('\n');
+
+    /* Value prop inputs */
+    const vpc = [
+      f.employer_pains && `Employer pains:\n${f.employer_pains}`,
+      f.your_gains && `Your outcomes:\n${f.your_gains}`,
+      f.proof_points && `Proof points:\n${f.proof_points}`,
+      f.differentiators && `Differentiators:\n${f.differentiators}`
+    ].filter(Boolean).join('\n');
+
+    /* Stories */
+    const stories = f.story_inputs ? `Story seeds:\n${f.story_inputs}` : '';
+
+    /* Pipeline */
+    const pipe = [
+      f.pipeline_dump && `Current pipeline:\n${f.pipeline_dump}`,
+      f.wip_limit && `WIP limit: ${f.wip_limit}`,
+      f.followup_cadence && `Follow-up cadence: ${f.followup_cadence}`
+    ].filter(Boolean).join('\n');
+
+    /* T-Gap */
+    const tgap = [
+      f.role_requirements && `Role requirements (from JDs):\n${f.role_requirements}`,
+      f.your_skills && `Your skills:\n${f.your_skills}`,
+      f.upskill_focus && `30-day upskill focus:\n${f.upskill_focus}`
+    ].filter(Boolean).join('\n');
+
+    /* Ladder */
+    const ladder = [
+      f.target_people && `People to learn from:\n${f.target_people}`,
+      f.outreach_channels && `Outreach channels: ${f.outreach_channels}`,
+      f.time_budget && `Weekly time budget: ${f.time_budget}`
+    ].filter(Boolean).join('\n');
+
+    /* OKRs */
+    const okrs = [
+      f.okr_objective && `Objective (next 2–4 weeks): ${f.okr_objective}`,
+      f.okr_krs && `Key Results:\n${f.okr_krs}`
+    ].filter(Boolean).join('\n');
+
+    const disclaimer = [
+      '**NOTE**: This is a planning/organization tool, not legal/financial advice. Do not misrepresent credentials or work.'
+    ].join('\n');
+
+    return [
+      `Construct a recruiter-grade job search plan.`,
+      `Stage: ${stage} · Help level: ${level} · Emphasis: ${emphasis}`,
+      disclaimer,
+
+      '\nOutput format:',
+      '- Stage Diagnostic & Bottlenecks: summarize current search posture; identify constraint (focus, funnel, story, momentum).',
+      '- Targeting Matrix (Role × Industry × Geo/Remote × Company Size): produce a ranked top-20 (include 2–3 stretch).',
+      '- Personal Value Proposition (EVP/VPC): employer pains/gains, candidate outcomes, proof points, differentiators.',
+      '- STAR/CCAR/SOAR Story Bank: 3–6 normalized, metric-anchored stories (problem scope, action, quant result).',
+      '- Pipeline Kanban & Operating Rhythm: WIP limits, stage definitions, follow-up SLAs, CRM columns, next actions.',
+      '- T-Gap Analysis & 30-Day Upskill Sprint: skill deltas → minimal curriculum → weekly deliverables (public artifact).',
+      '- Informational-Interview Ladder: ABM targeting, outreach sequence, tracking, scripts (insight-first).',
+      '- Weekly Search OKRs: Objective + measurable KRs; review cadence; risk mitigations; energy safeguards.',
+      '- Next 7 Days: calendar-ready tasks and holds.',
+
+      '\nClarifying questions (answer what you can):',
+      `• ${clarQ.join('\n• ')}`,
+
+      basics && `\nBasics:\n${basics}`,
+      targeting && `\nTargeting inputs:\n${targeting}`,
+      vpc && `\nValue proposition inputs:\n${vpc}`,
+      stories && `\nStory seeds:\n${stories}`,
+      pipe && `\nPipeline & habits:\n${pipe}`,
+      tgap && `\nT-Gap & upskill:\n${tgap}`,
+      ladder && `\nLadder plan inputs:\n${ladder}`,
+      okrs && `\nOKRs:\n${okrs}`,
+
+      '\nRecruiter/OPS guidance (generation notes — keep technical):',
+      '- Convert qualitative inputs into an ICP (ideal candidate profile) aligned to JD competencies; map to leveling (IC3/4/5 etc.).',
+      '- Rank Targeting Matrix by composite score: role fit, hiring velocity, geo feasibility, comp bands, and network access.',
+      '- Normalize stories to outcomes with hard metrics; add counterfactual and complexity (scale, stakeholders, constraints).',
+      '- Enforce pipeline hygiene: dates, last touch, next action; compute funnel conversion and cycle time; call out bottlenecks.',
+      '- Derive a minimal 30-day upskill sprint with deliverables (mini-project, blog, demo) that increases recruiter signal.',
+      '- Ladder: produce 10–20 named targets when possible; create a 3-touch outreach sequence; keep “ask for insight, not a job.”',
+      '- OKRs: ensure at least one activity KR (inputs) and one result KR (interviews/offers); schedule weekly retros (PDCA).',
+      '- Close with a crisp, role-specific brand narrative (2–3 sentences) and a 7-day calendarized action list.'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Week Planning — Anti-Procrastination, Workload Triage & Motivation
+   User-facing fields = plain language. Output/boosters = technical terminology
+--------------------------------------------------------- */
+{
+  id: 'task_week_planning_anti_procrastination',
+  slug: 'week-planning-triage-motivation',
+  label: 'Week Planning — Focus, Triage & Motivation',
+  kind: 'task',
+  categories: ['planning','productivity','mental-health','personal-admin'],
+  tags: [
+    'type:task','topic:planning','topic:motivation','topic:anxiety',
+    'use:weekly-review','use:time-blocking','use:prioritization',
+    'use:behavioral-activation','use:cbt','use:act','stage:intake'
+  ],
+  use_cases: [
+    'plan a sane week under heavy workload',
+    'stop procrastination loops and make a small, do-able start',
+    'set priorities using 1–3–5 and RICE (adapted)',
+    'time-block your calendar around energy peaks (Energy Mapping)',
+    'create a Pomodoro plan with a Parking Lot for distractions',
+    'reduce guilt/anxiety with self-compassion scripts and safety nets',
+    'align actions with values and pre-commit using a Ulysses Contract'
+  ],
+  definition: 'A mixed-method weekly planning and motivation workflow: GTD-lite Weekly Review to clear the decks, Time-Blocking anchored by “big rocks,” 1–3–5 daily triage, Theme Days for rhythm, Energy Mapping for chronotype fit, Pomodoro + Parking Lot for attentional control, Personal RAG status to right-size scope, and decision heuristics (Jobs-to-Be-Done, 10–10–10, Cost of Delay, RICE). The output layers clinically-informed behavior change patterns (behavioral activation, implementation intentions, cognitive reappraisal, values-committed action) into a practical, plain-English plan.',
+  help: 'Tell me where you’re at and the kind of help you want (quick plan, deep plan, or somewhere in between). Fill in what you know; leave the rest blank. The output will shift to match your needs (simple checklist vs. detailed schedule and motivation plan).',
+
+  fields: [
+    /* Scope & mode — shapes depth and emphasis (plain language) */
+    { key:'life_stage', label:'Where are you in life right now?', type:'select', desc:'Helps set tone and expectations.',
+      options:[
+        'Student / learning season','Job searching / career shift','Working with deadlines',
+        'Parenting / caregiving','Health or recovery focus','Just overwhelmed and want calm'
+      ]
+    },
+    { key:'help_focus', label:'What kind of help do you want most?', type:'select', desc:'This changes what the output centers on.',
+      options:[
+        'A simple weekly plan','A strict schedule I can follow',
+        'Motivation and small first steps','Reduce anxiety and guilt',
+        'Find direction and priorities','Align tasks with my values'
+      ]
+    },
+    { key:'help_level', label:'How much detail?', type:'select', desc:'Controls the number of steps and questions.',
+      options:[
+        { label:'Overview (short & simple)', value:'overview' },
+        { label:'Guided (medium detail)',   value:'guided'   },
+        { label:'Concierge (deep detail)',  value:'concierge'}
+      ]
+    },
+
+    /* Inputs for Weekly Review & priorities */
+    { key:'hard_deadlines', label:'Real deadlines this week', type:'textarea', ph:'Dates/times you must hit' },
+    { key:'big_rocks', label:'Top 3 important outcomes', type:'textarea', ph:'The three things that matter most' },
+    { key:'must_do_log', label:'Must-do tasks (dump)', type:'textarea', ph:'Brain-dump everything on your mind' },
+    { key:'nice_to_have', label:'Nice-to-have tasks', type:'textarea', ph:'If time/energy allows' },
+
+    /* Time & energy */
+    { key:'availability', label:'When are you free?', type:'textarea', ph:'Days/times, meetings, appointments' },
+    { key:'energy_peaks', label:'When do you have the most energy?', type:'text', ph:'e.g., mornings; 10–12am & 3–5pm' },
+    { key:'sleep_notes', label:'Sleep & rest notes', type:'textarea', ph:'Bedtime, wake time, naps, issues' },
+    { key:'food_hydration', label:'Food & water plan (simple)', type:'textarea', ph:'Meals/snacks you can actually do; water reminder' },
+
+    /* Mood & blockers (plain language) */
+    { key:'feelings_now', label:'How do you feel about the week?', type:'textarea', ph:'Stressed, guilty, stuck, hopeful...' },
+    { key:'anxiety_triggers', label:'What worries you most?', type:'textarea', ph:'What thoughts make it feel worse?' },
+    { key:'distractions', label:'Top distractions', type:'textarea', ph:'Apps, tabs, people, chores, noise' },
+
+    /* Decisions & prioritization helpers */
+    { key:'decision_targets', label:'Things you’re unsure about', type:'textarea', ph:'Decisions, purchases, plans' },
+    { key:'values', label:'What matters most to you right now?', type:'textarea', ph:'Family, health, learning, stability, etc.' },
+
+    /* Structure preferences */
+    { key:'theme_days', label:'Theme days (optional)', type:'textarea', ph:'Mon deep work, Tue meetings, Wed learning...' },
+    { key:'daily_capacity', label:'Daily capacity (rough)', type:'text', ph:'e.g., 4 hrs Mon, 2 hrs Tue…' },
+    { key:'pomodoro_style', label:'Focus sprint style', type:'select', options:['25/5','50/10','90/15','I’m not sure'] },
+    { key:'rag_status', label:'How loaded do you feel right now?', type:'select', options:['Green (OK)','Amber (tight)','Red (overloaded)'] },
+
+    /* Commitments & support */
+    { key:'accountability', label:'Buddy or check-in (optional)', type:'text', ph:'Name or place you’ll check in' },
+    { key:'ulysses', label:'Make a promise to your future self (optional)', type:'textarea', ph:'Write a short “I will…” pact' },
+
+    /* Output preference */
+    { key:'output_focus', label:'What should the plan highlight?', type:'select',
+      options:[
+        'stress relief & motivation','calendar schedule',
+        'priority list + small steps','balance & values alignment'
+      ]
+    }
+  ],
+
+  boosters: [
+    /* Technical/clinical generation guidance — heavy terminology on purpose */
+    'Behavioral Activation Protocol: schedule activity-based mood repair using graded task assignment; prefer mastery/pleasure mix; quantify PE (pleasure) and ME (mastery) ratings pre/post.',
+    'CBT Cognitive Model: surface automatic thoughts → cognitive distortions → generate alternative appraisals; attach implementation intentions (IF trigger THEN adaptive response).',
+    'ACT Values-Commitment: derive committed actions from stated values; include acceptance/defusion language for experiential avoidance; add self-as-context reminders.',
+    'Motivational Interviewing micro-skills: elicit change talk (DARN-CAT), affirm strengths, reflect ambivalence; summarize and lock next actions.',
+    'Temporal Discounting & Precommitment: deploy Ulysses Contract, friction-increasing design (website blockers), and default options to counter present bias.',
+    'Chronobiology/Ergonomics: align deep work to circadian/ultradian peaks; protect ATP with movement breaks; avoid high glycemic load immediately before focus blocks; caffeine timing with 90–120 min post-wake.',
+    'Operational Excellence: GTD-lite Weekly Review → inbox zeroing, capture/clarify/organize; Time-Blocking with buffer; WIP limits; context switching minimization.',
+    'Prioritization Heuristics: 1–3–5 daily triage; RICE (adapted for personal chores); Jobs-to-Be-Done framing; Cost of Delay and 10–10–10 temporal appraisal.',
+    'Attentional Control: Pomodoro intervals, single-tasking, Parking Lot for intrusive thoughts; Zeigarnik relief by externalizing partials.',
+    'Personal RAG Governance: Red → shrink scope/renegotiate; Amber → trim; Green → stretch; document renegotiations and explicit “done” definitions.',
+    'Self-Compassion & Safety Netting: normalize lapses; use brief compassionate statements; re-entry protocol (reset cue → smallest next action).',
+    'Spiritual/Mindfulness Options (opt-in): breathwork cadence, prayer/meditation, gratitude journaling; note as non-proselytizing optional modules.',
+    'Safety: non-clinical planning only; if acute distress or risk, escalate to local professional help or emergency services.'
+  ],
+
+  template: (f) => {
+    const level   = f.help_level || 'overview';
+    const focus   = f.help_focus || 'A simple weekly plan';
+    const stage   = f.life_stage || 'Just overwhelmed and want calm';
+    const emph    = f.output_focus || 'priority list + small steps';
+    const pom     = f.pomodoro_style || '25/5';
+    const rag     = f.rag_status || 'Green (OK)';
+
+    /* Clarifying questions scale with detail */
+    const q_overview = [
+      'What are the three most important outcomes this week?',
+      'When are your busiest times?',
+      'What small task could you finish in 10–15 minutes today?'
+    ];
+    const q_guided = q_overview.concat([
+      'Name one task you’ve been avoiding—what’s the tiniest first step?',
+      'When are your best focus hours on a normal day?',
+      'What deadline is most at risk and why?'
+    ]);
+    const q_concierge = q_guided.concat([
+      'Paste your calendar blocks that cannot move.',
+      'List top three distractions and how to block them.',
+      'Write a one-sentence promise to future-you for tomorrow morning.'
+    ]);
+    const clarQ = level === 'concierge' ? q_concierge : level === 'guided' ? q_guided : q_overview;
+
+    /* Gather user inputs */
+    const weekly = [
+      f.hard_deadlines && `Deadlines:\n${f.hard_deadlines}`,
+      f.big_rocks && `Big rocks (top 3 outcomes):\n${f.big_rocks}`,
+      f.must_do_log && `Must-do dump:\n${f.must_do_log}`,
+      f.nice_to_have && `Nice-to-haves:\n${f.nice_to_have}`
+    ].filter(Boolean).join('\n');
+
+    const timeEnergy = [
+      f.availability && `Availability:\n${f.availability}`,
+      f.energy_peaks && `Energy peaks: ${f.energy_peaks}`,
+      f.sleep_notes && `Sleep/rest notes:\n${f.sleep_notes}`,
+      f.food_hydration && `Food/water plan:\n${f.food_hydration}`
+    ].filter(Boolean).join('\n');
+
+    const feelings = [
+      f.feelings_now && `Feelings about the week:\n${f.feelings_now}`,
+      f.anxiety_triggers && `Worries/triggers:\n${f.anxiety_triggers}`,
+      f.distractions && `Distractions to manage:\n${f.distractions}`
+    ].filter(Boolean).join('\n');
+
+    const decisions = [
+      f.decision_targets && `Decisions/purchases to resolve:\n${f.decision_targets}`,
+      f.values && `Values to honor now:\n${f.values}`
+    ].filter(Boolean).join('\n');
+
+    const structure = [
+      f.theme_days && `Theme days:\n${f.theme_days}`,
+      f.daily_capacity && `Daily capacity: ${f.daily_capacity}`,
+      `Pomodoro preference: ${pom}`,
+      `RAG status: ${rag}`
+    ].filter(Boolean).join('\n');
+
+    const supports = [
+      f.accountability && `Accountability: ${f.accountability}`,
+      f.ulysses && `Ulysses pact:\n${f.ulysses}`
+    ].filter(Boolean).join('\n');
+
+    const disclaimer = [
+      '**SAFETY NOTE**: Planning and motivation support only — not medical or mental-health treatment. If you feel unsafe or in acute distress, seek local professional help or emergency services.'
+    ].join('\n');
+
+    return [
+      'Construct a clinically-informed weekly plan that reduces avoidance and increases effective action.',
+      `Life stage: ${stage} · Help level: ${level} · Focus: ${focus} · Emphasis: ${emph}`,
+      disclaimer,
+
+      '\nOutput format:',
+      '- Weekly Review (GTD-lite): capture → clarify → organize; extract top 3 outcomes (“big rocks”).',
+      '- Calendar Time-Blocking: place big rocks first; add buffers; defend blocks; include break cadence.',
+      '- Daily 1–3–5 Plan: 1 big, 3 medium, 5 small; tie smalls to momentum and warm-ups.',
+      '- Theme Days (optional): assign weekly rhythm to reduce switching costs.',
+      '- Energy Mapping: schedule cognitively heavy tasks in peak windows; align with chronotype.',
+      `- Pomodoro Plan (${pom}): intervals, break rules, and a Parking Lot to offload distractions.`,
+      `- Personal RAG Governance (${rag}): scope/shrink/trim rules and renegotiation scripts.`,
+      '- Decision Heuristics: JTBD framing; 10–10–10; Cost of Delay; RICE (adapted for chores/projects).',
+      '- Behavioral Activation & Cognitive Tools: BA schedule, implementation intentions, reappraisal prompts.',
+      '- Motivation & Self-Compassion: short statements, gratitude or prayer/meditation (opt-in), re-entry protocol.',
+      '- Ulysses Contract: precommitment device(s), buddy check-ins, and environmental friction design.',
+      '- Next 7 Days: calendar-ready blocks and a minimal “start here” list for today.',
+
+      '\nClarifying questions (answer what you can):',
+      `• ${clarQ.join('\n• ')}`,
+
+      weekly && `\nWeekly info:\n${weekly}`,
+      timeEnergy && `\nTime & energy:\n${timeEnergy}`,
+      feelings && `\nMood & blockers:\n${feelings}`,
+      decisions && `\nDecisions & values:\n${decisions}`,
+      structure && `\nStructure prefs:\n${structure}`,
+      supports && `\nCommitments & support:\n${supports}`,
+
+      '\nGeneration guidance (keep technical/precise):',
+      '- Convert big rocks into calendarized, buffered blocks; minimize context switches; cap WIP.',
+      '- For each avoided task, produce an IF–THEN implementation intention and a 10–minute “toe-dip” version.',
+      '- Apply RICE (Reach × Impact × Confidence ÷ Effort) to chores/projects; document scores briefly.',
+      '- Use 10–10–10 to stress-test consequential choices; write the 1–2 sentence conclusion.',
+      '- Behavioral Activation: schedule mastery/pleasure tasks; record ME/PE ratings to reinforce.',
+      '- Cognitive Reappraisal: list automatic thought → distortion label → alternative thought; keep language brief.',
+      '- ACT: connect at least one block to a stated value; add a one-line committed action statement.',
+      '- Pomodoro: enforce single-tasking; log Parking Lot items; perform a 2-min shutdown to close loops.',
+      '- RAG: include rules for scope cuts (Red), trims (Amber), and stretch (Green); write a renegotiation script.',
+      '- Nutrition/energy hygiene: hydration reminder, simple meal anchors; avoid advice beyond general planning.',
+      '- Close with a 24-hour “start here” micro-plan and a compassionate self-check statement.'
+    ].filter(Boolean).join('\n');
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Product — Plain Words → Specs → Code (AI/Dev-Ready Instructions)
+   User-facing fields = plain language. Output/boosters = very technical.
+--------------------------------------------------------- */
+{
+  id: 'task_plain_to_specs_to_code',
+  slug: 'product-plain-words-to-specs-to-code',
+  label: 'Product — Plain Words → Specs → Code',
+  kind: 'task',
+  categories: ['product','engineering','planning','specs','coding'],
+  tags: [
+    'type:task','topic:requirements','topic:specification','topic:testing',
+    'use:architecture','use:codegen','use:roadmap','use:contracts','use:workflow','stage:intake'
+  ],
+  use_cases: [
+    'turn plain-English vision into developer-ready instructions',
+    'produce executable specs (tests first) that drive code',
+    'generate a slice roadmap that breaks work into shippable chunks',
+    'define APIs, data models, and contracts from simple inputs',
+    'align non-functional needs (security, performance, reliability) to build plan',
+    'create BDD/TDD scaffolding for immediate implementation'
+  ],
+  definition: 'A practical bridge from everyday words to implementation: you describe your idea and users in simple language; the template converts it to precise technical instructions, executable specs, and a slice roadmap. It blends approachable guidance with rigorous engineering outputs so an expert developer—or an AI set up as an “expert dev”—can generate code or build iteratively.',
+  help: 'Tell us what you want to build, who it’s for, and any preferences you have. Choose how detailed you want the plan, and whether you want tests first, code now, or a slice-by-slice roadmap. Use your own words; we’ll translate it into technical specs.',
+
+  fields: [
+    /* Stage & focus (plain language, but these inject technical posture into the output) */
+    { key:'proj_stage', label:'Where are you in this project?', type:'select', desc:'Helps pick the right depth and starting point.',
+      options:[
+        'Just an idea and some notes',
+        'I have wireframes or a rough doc',
+        'There is a tiny prototype',
+        'We need to scale or refactor'
+      ]
+    },
+    { key:'help_focus', label:'What do you want right now?', type:'select', desc:'This steers the output.',
+      options:[
+        'Make me a detailed build plan (steps & slices)',
+        'Generate starter code from my idea',
+        'Write tests/specs first, then code',
+        'Clarify user stories & acceptance criteria',
+        'Design API/data models & contracts',
+        'Plan integrations and workflows'
+      ]
+    },
+    { key:'help_level', label:'How much detail?', type:'select', desc:'Controls complexity of the output.',
+      options:[
+        {label:'Overview (short and simple)',   value:'overview'},
+        {label:'Guided (medium detail)',        value:'guided'},
+        {label:'Concierge (deep, step-by-step)',value:'concierge'}
+      ]
+    },
+
+    /* Vision & users (plain words) */
+    { key:'vision', label:'What do you want to build?', type:'textarea',
+      ph:'Describe the problem and the outcome you want. Keep it simple.',
+      desc:'Big picture in your words.' },
+    { key:'users', label:'Who will use this?', type:'textarea',
+      ph:'List the types of people and what they’re trying to do.',
+      desc:'Who they are and why they care.' },
+    { key:'user_stories', label:'User stories (optional)', type:'textarea',
+      ph:'As a [type of user], I want [goal], so that [benefit]. One per line.',
+      desc:'Write any that come to mind.' },
+    { key:'acceptance', label:'How do we know it works?', type:'textarea',
+      ph:'Write simple checks you’d use to say “done.”',
+      desc:'Acceptance checks in plain language.' },
+
+    /* Features & scope */
+    { key:'must_haves', label:'Must-haves', type:'textarea', ph:'The features you need for a first version.' },
+    { key:'nice_haves', label:'Nice-to-haves', type:'textarea', ph:'Good later, not necessary now.' },
+    { key:'constraints', label:'Limits and constraints', type:'textarea',
+      ph:'Budget, timeline, devices, offline, privacy, etc.', desc:'Anything that limits choices.' },
+
+    /* Platform & stack preferences (labels are simple, values inject technical details) */
+    { key:'platform', label:'Main kind of build', type:'select', desc:'Choose the best fit for what you want.',
+      options:['Web app','Mobile app','Desktop app','API/service','Data pipeline','Automation/Workflow','Library/Package','CLI tool']
+    },
+    { key:'stack_pref', label:'Preferred tech (optional)', type:'select', desc:'Pick a general direction. We’ll adapt.',
+      options:[
+        { label:'JavaScript/TypeScript web', value:'Node.js + TypeScript · Fastify/Express · Zod/TypeBox for schemas · Prisma + PostgreSQL · Vite/Next.js (if UI) · Playwright/Jest for tests' },
+        { label:'Python web/data',           value:'Python · FastAPI · Pydantic for schemas · SQLModel/PostgreSQL · Celery/Redis for jobs · PyTest/Hypothesis for tests' },
+        { label:'Go services',               value:'Go · Chi/Fiber · OpenAPI + oapi-codegen · sqlc/PostgreSQL · Wire for DI · Testify + Pact for tests/contracts' },
+        { label:'Rust services',             value:'Rust · Actix/Axum · Serde · SQLx/PostgreSQL · Tokio jobs · Protobuf/gRPC · Cargo tests + property-based proptests' }
+      ]
+    },
+
+    /* Architecture & development posture (labels simple; values include heavy technical defaults) */
+    { key:'arch_style', label:'Architecture preference', type:'select', desc:'How the internals are structured.',
+      options:[
+        { label:'Keep it simple (MVC-ish)', value:'Layered MVC-ish with clear controller/service/repo seams; keep DI light; focus on rapid delivery.' },
+        { label:'Clean/Hexagonal + DDD',    value:'Hexagonal Architecture (ports/adapters) · DDD tactical patterns (Entities/Aggregates/Value Objects/Domain Services) · Application Services orchestration · Anti-corruption layer for integrations.' },
+        { label:'Event-driven',             value:'Event-sourced aggregates (optional) · Outbox pattern · Pub/Sub · Idempotent handlers · Exactly-once-through-at-least-once semantics via dedupe keys.' }
+      ]
+    },
+    { key:'testing_mode', label:'How should we test first?', type:'select', desc:'Choose your favorite approach.',
+      options:[
+        { label:'TDD (tests first)', value:'Test-Driven Development: red → green → refactor; unit tests precede implementation; test pyramid enforced.' },
+        { label:'BDD (scenarios first)', value:'Behavior-Driven Development: Gherkin Given–When–Then → step defs → code; living documentation via Cucumber/Behave/SpecFlow.' },
+        { label:'Executable docs', value:'Executable Specifications: Concordion/FitNesse/Jest-doc blocks where prose maps to assertions; documentation as tests.' }
+      ]
+    },
+    { key:'contract_mode', label:'API/contract style', type:'select', desc:'How clients/servers agree.',
+      options:[
+        { label:'OpenAPI/REST',   value:'OpenAPI 3.x schema-first; JSON Schema validation; Pact consumer/provider contract tests; codegen for clients/servers.' },
+        { label:'GraphQL',        value:'GraphQL SDL-first; schema directives; persisted queries; contract checks between client operations and schema.' },
+        { label:'gRPC/Protobuf',  value:'Protobuf IDL; gRPC services; backward-compatible field evolution; Buf lint/build; contract validation via schema registry.' }
+      ]
+    },
+    { key:'workflow_mode', label:'Workflow style (optional)', type:'select', desc:'Useful if there are steps and approvals.',
+      options:[
+        { label:'State machine', value:'Finite State Machine/Statecharts (XState/SCXML); explicit states, events, guards, effects; visualizable; formal reachability.' },
+        { label:'Workflow engine', value:'Temporal/Step Functions/Airflow: DAG/stateful orchestrations; retries/backoffs; saga compensation; observability.' },
+        { label:'None/keep simple', value:'Inline orchestration in app service; avoid over-tooling.' }
+      ]
+    },
+
+    /* Data, integrations, constraints (plain words) */
+    { key:'entities', label:'Important data and fields', type:'textarea',
+      ph:'List the main things you store (e.g., users, orders) and key fields.',
+      desc:'We’ll turn this into models/schemas.' },
+    { key:'integrations', label:'APIs and services to connect', type:'textarea',
+      ph:'Payments, auth, email, maps, LLMs, etc.' },
+    { key:'privacy', label:'Privacy or compliance needs (optional)', type:'textarea',
+      ph:'Any rules (e.g., no PII, HIPAA-like, GDPR, retention limits). Keep it simple.' },
+    { key:'scale', label:'How big should this go (rough)?', type:'text',
+      ph:'e.g., thousands of users, sub-second actions, nightly batch okay',
+      desc:'Speed, size, or timing in simple terms.' },
+
+    /* LLM/Agent use (optional — layman wording) */
+    { key:'ai_use', label:'Do you want AI helpers inside?', type:'select',
+      options:['No AI','Light assistance (summaries)','Assistant tools (multi-step)','Autonomous agent (advanced)'],
+      desc:'We’ll translate to the right pattern safely.' },
+
+    /* Preferences for output emphasis */
+    { key:'deliverable_pref', label:'What should we deliver?', type:'select',
+      options:['Code now','Slice roadmap','Tests/specs first','Both code and roadmap'] },
+    { key:'notes', label:'Other notes or links (optional)', type:'textarea',
+      ph:'Drop any docs, mockups, or examples here.' }
+  ],
+
+  boosters: [
+    'Requirements Engineering: distill problem statements into verifiable acceptance criteria; normalize to INVEST user stories; attach explicit non-functional requirements (availability, latency, throughput, SLOs).',
+    'BDD/TDD Stack: generate Gherkin scenarios (Given/When/Then); map steps to glue code; create failing unit tests first; enforce a test pyramid with contract and e2e layers.',
+    'Executable Specifications: favor spec-as-code; wire Concordion/FitNesse or doc-test blocks to CI for living documentation.',
+    'Contracts & Schemas: schema-first via OpenAPI/GraphQL/gRPC; generate client/server stubs; add Pact contract suites for consumer/provider verification and CI gating.',
+    'Architecture: apply Hexagonal (ports/adapters) or Layered (MVC) with DDD where domain complexity warrants; codify aggregates and invariants; add anti-corruption layers at integration seams.',
+    'Patterns Mapping: translate intents to Command objects; configure Strategy for behavior swaps; apply Chain of Responsibility for NL intent pipelines; use Builder/Factory for complex constructions.',
+    'DSL & Parsing: define a minimal textual DSL/JSON schema for commands; parse with Nearley/PEG.js/ANTLR as needed; compile to an AST → evaluators/generators.',
+    'State & Workflow: model flows as statecharts or orchestrated DAGs; ensure idempotency, timeouts, retries, and compensation (sagas).',
+    'Quality & Safety Nets: property-based tests for critical invariants; Design by Contract pre/postconditions; feature flags and guarded rollouts; observability (structured logging, tracing).',
+    'CI/CD & Scaffolding: project generators (Yeoman/Plop/Hygen); infra as code for environments; GitHub Actions pipelines with test/contract/lint gates; one-step bootstrap commands.',
+    'RAG/Dev-AI: retrieval to ground codegen on repo standards; planner–executor patterns (ReAct/Plan-and-Execute) for tool orchestration; strict JSON tool contracts for function calling.'
+  ],
+
+  template: (f) => {
+    const level = f.help_level || 'overview';
+    const focus = f.help_focus || 'Make me a detailed build plan (steps & slices)';
+    const stage = f.proj_stage || 'Just an idea and some notes';
+    const deliver = f.deliverable_pref || 'Slice roadmap';
+
+    const basics = [
+      f.vision && `Vision (plain):\n${f.vision}`,
+      f.users && `Users & goals (plain):\n${f.users}`,
+      f.user_stories && `User stories (plain):\n${f.user_stories}`,
+      f.acceptance && `Acceptance checks (plain):\n${f.acceptance}`,
+      f.must_haves && `Must-haves:\n${f.must_haves}`,
+      f.nice_haves && `Nice-to-haves:\n${f.nice_haves}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+      f.entities && `Entities (plain):\n${f.entities}`,
+      f.integrations && `Integrations (plain):\n${f.integrations}`,
+      f.privacy && `Privacy/compliance (plain):\n${f.privacy}`,
+      f.scale && `Scale (plain): ${f.scale}`,
+      f.notes && `Notes/links:\n${f.notes}`
+    ].filter(Boolean).join('\n');
+
+    /* Technical knobs injected verbatim to steer the spec */
+    const knobs = [
+      f.platform && `Platform focus: ${f.platform}`,
+      f.stack_pref && `Stack preference: ${f.stack_pref}`,
+      f.arch_style && `Architecture style: ${f.arch_style}`,
+      f.testing_mode && `Test posture: ${f.testing_mode}`,
+      f.contract_mode && `Contract style: ${f.contract_mode}`,
+      f.workflow_mode && `Workflow style: ${f.workflow_mode}`,
+      f.ai_use && `AI assist level: ${f.ai_use}`
+    ].filter(Boolean).join('\n');
+
+    /* Clarifying questions scale with level */
+    const q_overview = [
+      'What’s the smallest slice we could ship that proves value?',
+      'Which single user story, if finished, would make you smile?',
+      'Any must-use vendor/tool we should lock in?'
+    ];
+    const q_guided = q_overview.concat([
+      'List 3–5 acceptance checks for the smallest slice.',
+      'Name one risky integration or performance concern.',
+      'Where should sensitive data (if any) be kept or avoided?'
+    ]);
+    const q_concierge = q_guided.concat([
+      'Paste one example record for each main entity.',
+      'Name 3 API operations you expect (verb + resource).',
+      'Pick one end-to-end flow to model as a statechart.'
+    ]);
+    const clarQ = level === 'concierge' ? q_concierge : level === 'guided' ? q_guided : q_overview;
+
+    const outRules = [
+      'Output format:',
+      '- 0) Posture: Stage, Focus, Detail level, Deliverable.',
+      '- 1) Requirements Distillation → verifiable Acceptance Criteria (INVEST).',
+      '- 2) User Stories & AC: “As a…, I want…, so that…” + acceptance checks.',
+      '- 3) BDD Scenarios (Gherkin): Given–When–Then for key flows.',
+      '- 4) Contracts & Schemas: OpenAPI/GraphQL/gRPC definitions (schema-first).',
+      '- 5) Architecture & Patterns: modules, boundaries, and key design patterns.',
+      '- 6) Data & Integrations: entities, invariants, and external services.',
+      '- 7) Slice Roadmap (INVEST): milestone plan and definition-of-done per slice.',
+      '- 8) Test Plan (TDD/BDD/Executable Specs) and contract tests (Pact if REST).',
+      '- 9) Scaffolding & CI/CD: generators, commands, pipelines, environments.',
+      '- 10) Code Stubs or Commands: starter files, step defs, or CLI to bootstrap.',
+      '- 11) Risks, Assumptions, Next Steps.'
+    ].join('\n');
+
+    return [
+      'Produce developer-grade instructions that translate plain inputs into executable specifications and/or code.',
+      `Posture → Stage: ${stage} · Focus: ${focus} · Detail: ${level} · Deliverable: ${deliver}`,
+      knobs && `\nTechnical posture knobs:\n${knobs}`,
+      basics && `\nPlain inputs to honor:\n${basics}`,
+      '\nClarifying questions (answer what you can):',
+      `• ${clarQ.join('\n• ')}`,
+
+      '\nGuidance (keep highly technical in the output):',
+      '- From plain words → specs → code: preserve user intent; formalize as specs; implement via slices.',
+      '- Use User Stories & Acceptance Criteria for scope; normalize to INVEST.',
+      '- Generate BDD Gherkin scenarios for critical flows; map to step definitions.',
+      '- If TDD selected, create failing unit tests per requirement before implementation.',
+      '- If “Contracts” selected, generate schema-first (OpenAPI/GraphQL/gRPC) and Pact tests for providers/consumers.',
+      '- For patterns, map intents to Command objects; Strategy for variant behaviors; CoR for NL parsing pipeline; Builder/Factory for composition.',
+      '- If DSL desired, sketch a minimal grammar → AST; define interpreter for actions.',
+      '- Model flows as statecharts or orchestrated workflows with retries/backoffs/compensation.',
+      '- Add Design by Contract (pre/post/invariants) and property-based tests for critical logic.',
+      '- Provide scaffolding commands (generators), CI gates (lint/test/contract), and environment setup.',
+      '- Close with either code stubs, step definitions, or a shell of the project that compiles.',
+
+      `\n${outRules}`
+    ].filter(Boolean).join('\n');
+  },
+
+  meta: {
+    search_text: 'specification bdd tdd contract openapi graphql grpc pact hexagonal ddd command strategy chain builder factory ast parser xstate temporal scaffold codegen cicd'
+  }
+},
+
+/* ---------------------------------------------------------
+   TASK: Language Optimizer — ATS / Domain-Language / SEO / AIEO
+   User-facing fields = plain language. Output/boosters = highly technical.
+--------------------------------------------------------- */
+{
+  id: 'task_language_optimizer',
+  slug: 'language-optimizer-ats-domain-seo-aieo',
+  label: 'Language Optimizer — ATS · Domain · SEO · AIEO',
+  kind: 'task',
+  categories: ['writing','career','marketing','product','documentation'],
+  tags: [
+    'type:task','topic:optimization','topic:seo','topic:ats','topic:taxonomy',
+    'use:rewrite','use:metadata','use:keywords','use:classification','stage:intake'
+  ],
+  use_cases: [
+    'optimize résumé or profile for ATS keyword matching',
+    'translate content into industry-native vocabulary (controlled terms)',
+    'improve on-page SEO and structured metadata for sites/portfolios',
+    'make content “answer-ready” for AI Overviews, Copilot, and LLM answer engines',
+    'produce a jargon-accurate rewrite while preserving original meaning'
+  ],
+  definition: 'A practical bridge from plain-language content to machine- and expert-readable outputs. You paste text and choose how to optimize (ATS résumé, industry domain-language, classic SEO+metadata, or AI-SEO/AIEO). The template returns a tightly-specified, technical instruction set and a transformed version of your content aligned to parsing, indexing, and retrieval behaviors — while keeping your intent clear for humans.',
+  help: 'Pick your content type and how you want it optimized. Paste your content, add any files context, choose tone/audience, and set preferences. The output will provide a detailed instruction set and a rewritten version tuned to your selection.',
+
+  fields: [
+    /* What are we optimizing? */
+    { key:'content_type', label:'What are you optimizing?', type:'select',
+      ph:'Choose one', desc:'This guides structure and vocabulary.',
+      options:[
+        'Résumé / CV','LinkedIn profile section','Portfolio page',
+        'Job description','Blog article','Product page',
+        'Documentation / API guide','About page','Press release',
+        'Social post / caption','Other plain text'
+      ]
+    },
+    { key:'opt_mode', label:'How should it be optimized?', type:'select',
+      ph:'Pick the main optimization mode', desc:'Choose the primary optimization target.',
+      options:[
+        'ATS (résumé keyword) optimization',
+        'Domain-language optimization (skills taxonomies)',
+        'Classic SEO + metadata optimization',
+        'AI-SEO / AIEO (AI Overviews, Copilot, LLM answers)',
+        'Multi-mode (combine intelligently)'
+      ]
+    },
+
+    /* Core content */
+    { key:'content_raw', label:'Your content', type:'textarea',
+      ph:'Paste the exact text you want optimized', desc:'Full text with headings if any.' },
+
+    /* Files */
+    { key:'files_included', label:'Will you upload files too?', type:'select',
+      ph:'Yes or No', desc:'If you plan to add files, say so.',
+      options:['No','Yes (additional files)']
+    },
+    { key:'files_context', label:'Notes about uploaded files (optional)', type:'textarea',
+      ph:'Describe files or paste key excerpts', desc:'Give context for parsing or cross-referencing.' },
+
+    /* Audience & tone */
+    { key:'personas', label:'Audience (personas)', type:'repeater_persona_inline',
+      ph:'Add one or more audience types', desc:'Who should this speak to?',
+      item_label:'Persona',
+      fields:[
+        { key:'p_name', label:'Name', type:'text', ph:'e.g., Tech Recruiter', desc:'Short persona label.' },
+        { key:'p_role', label:'Role/level', type:'text', ph:'e.g., Senior TA Partner', desc:'Their job/level.' },
+        { key:'p_goals', label:'Goals', type:'text', ph:'e.g., Fill ML engineer reqs fast', desc:'What they want.' },
+        { key:'p_pain', label:'Pain points', type:'text', ph:'e.g., Keyword mismatch in résumés', desc:'What frustrates them.' },
+        { key:'p_terms', label:'Terms they use', type:'text', ph:'e.g., BM25, vector search, MLOps', desc:'Native vocabulary.' }
+      ]
+    },
+    { key:'tone_select', label:'Tone/style', type:'select',
+      ph:'Pick a tone', desc:'We’ll mirror this tone in human-facing parts.',
+      options:[
+        'Neutral professional','Friendly expert','Academic formal',
+        'Punchy marketing','Journalistic concise','Technical documentation',
+        'Conversational plain'
+      ]
+    },
+    { key:'tone_custom', label:'Custom tone words (optional)', type:'text',
+      ph:'e.g., confident, evidence-led, warm', desc:'Extra tone hints.' },
+    { key:'reading_level', label:'Reading level', type:'select',
+      ph:'Pick a level', desc:'Approximate complexity for humans.',
+      options:['6th grade','8th grade','10th grade','College','Expert']
+    },
+    { key:'locale', label:'Region/locale', type:'text',
+      ph:'e.g., US-English, UK-English, CA-English', desc:'Spellings and examples will match this.' },
+
+    /* Keyword & taxonomy steering */
+    { key:'keywords_include', label:'Keywords to include', type:'textarea',
+      ph:'Comma-separated phrases to include verbatim', desc:'Exact strings you want present.' },
+    { key:'keywords_avoid', label:'Words to avoid', type:'textarea',
+      ph:'Comma-separated words/phrases to avoid', desc:'We’ll minimize or replace these.' },
+    { key:'taxonomy_pref', label:'Domain taxonomy source', type:'select',
+      ph:'Pick a vocabulary', desc:'Use controlled terms when mapping.',
+      options:[
+        'Auto (detect likely taxonomy)','O*NET (US)','ESCO (EU)','Custom internal term bank'
+      ]
+    },
+    { key:'taxonomy_code', label:'Target occupation/code (optional)', type:'text',
+      ph:'e.g., O*NET 15-2051.00 · Data Scientist', desc:'Adds precise term mapping.' },
+
+    /* ATS-specific context */
+    { key:'job_title', label:'Target job title (ATS)', type:'text',
+      ph:'e.g., Machine Learning Engineer', desc:'Exact title from the posting.' },
+    { key:'jd_text', label:'Job description text (ATS)', type:'textarea',
+      ph:'Paste the key JD bullets', desc:'We’ll mirror exact strings and synonyms.' },
+
+    /* SEO / AIEO specifics */
+    { key:'site_url', label:'Site/page URL (SEO)', type:'text',
+      ph:'e.g., https://example.com/work/ml-project', desc:'Used for slugs/internal links.' },
+    { key:'primary_topic', label:'Primary topic/entity', type:'text',
+      ph:'e.g., Retrieval-Augmented Generation (RAG)', desc:'The central concept to model.' },
+    { key:'schema_types', label:'Structured data type', type:'select',
+      ph:'Pick one', desc:'JSON-LD schema to include.',
+      options:[
+        'Auto by content','Article','Person','Organization','Project','HowTo','FAQPage','JobPosting','Product'
+      ]
+    },
+    { key:'images_present', label:'Do you have images?', type:'select',
+      ph:'Yes or No', desc:'Enables alt text and captions.',
+      options:['No','Yes (images available)']
+    },
+    { key:'citations_available', label:'Do you have sources to cite?', type:'select',
+      ph:'Yes or No', desc:'For AI/SEO trust signals.',
+      options:['No','Yes (list below)']
+    },
+    { key:'sources_list', label:'Citations / source URLs (optional)', type:'textarea',
+      ph:'One per line with short title', desc:'Used for reference and linking.' },
+
+    /* Constraints & preferences */
+    { key:'word_count', label:'Target length (optional)', type:'text',
+      ph:'e.g., ~600 words; or “keep same length”', desc:'We’ll aim near this.' },
+    { key:'style_guides', label:'Style guide (optional)', type:'text',
+      ph:'e.g., AP, Chicago, Google, Microsoft', desc:'We’ll lean toward this style.' },
+    { key:'internal_links', label:'Internal links (SEO)', type:'textarea',
+      ph:'List anchor → URL on your site', desc:'We’ll weave these in naturally.' },
+    { key:'help_level', label:'How much detail?', type:'select',
+      ph:'Pick a level', desc:'Controls depth and number of outputs.',
+      options:[
+        { label:'Overview (quick pass)', value:'overview' },
+        { label:'Guided (medium detail)', value:'guided' },
+        { label:'Concierge (deep, exhaustive)', value:'concierge' }
+      ]
+    },
+    { key:'notes', label:'Other notes (optional)', type:'textarea',
+      ph:'Anything special we should honor', desc:'Edge cases, compliance, etc.' }
+  ],
+
+  boosters: [
+    /* Heavy technical guidance for generation */
+    'ATS Parsing Semantics: optimize for text-selectable PDFs/DOCX; avoid tables/columns/headers/footers/icons; use standard section headings; surface exact JD strings in Experience bullets and a Skills section; include synonyms (LLM ↔ large language model); prefer quantified outcomes; validate order by plain copy-paste test.',
+    'Recruiter Retrieval Reality: many ATS do boolean term search; ensure AND-term coverage for must-have skills; place critical tokens in high-signal zones (section headers, bullet starts, job titles).',
+    'Domain-Language Normalization: map content to controlled vocabularies (O*NET/ESCO) using canonical skill/task/tool names; maintain a term bank (canonical ↔ synonyms ↔ evidence lines); preserve semantic fidelity while maximizing token overlap with the target taxonomy.',
+    'On-Page SEO: craft <title> aligned to H1; unique meta description; semantic headings (H2 Q-form where useful); descriptive anchors; image alt attributes; clean URL slug; internal linking to relevant clusters.',
+    'Technical SEO: suggest structured data (JSON-LD) per schema_types; avoid duplication; include canonical link hints; consider hreflang for locale; highlight Core Web Vitals (LCP/INP/CLS) risks and remediations.',
+    'AIEO (AI Overviews/Copilot Readiness): produce “answerable, citable chunks”: definition/steps/facts boxes; short, self-contained paragraphs; explicit entities; cite credible sources when provided; optimize for snippetability and passage ranking.',
+    'Evaluation Heuristics: generate a Keyword Coverage Table (required/synonyms/variants); BM25/BERT-style term salience notes; entity list; schema JSON-LD block; and a Delta Log of changes with rationale.',
+    'Safety & Fidelity: do not fabricate facts; preserve authorial claims; mark uncertainties; ensure any metrics or claims remain traceable to sources_list if supplied.'
+  ],
+
+  template: (f) => {
+    const mode   = f.opt_mode || 'ATS (résumé keyword) optimization';
+    const level  = f.help_level || 'overview';
+    const ctype  = f.content_type || 'Other plain text';
+    const tone   = f.tone_select || 'Neutral professional';
+    const locale = f.locale || 'US-English';
+
+    /* Clarifying questions scale with detail */
+    const q_overview = [
+      'What is the single most important outcome of this optimization?',
+      'Name 3 exact phrases that must appear.',
+      'Are there any terms we must avoid or soft-pedal?'
+    ];
+    const q_guided = q_overview.concat([
+      'List 2 competitor/comparator pages or profiles we should consider.',
+      'If ATS: paste 5–10 JD bullets; if SEO/AIEO: list 3 question-style queries users might ask.',
+      'Should we keep length or change it?'
+    ]);
+    const q_concierge = q_guided.concat([
+      'Provide any analytics or search data you have (queries, CTR, dwell).',
+      'Provide authoritative taxonomy codes (e.g., O*NET/ESCO) if known.',
+      'If images exist, list intended alt-text roles (informational vs decorative).'
+    ]);
+    const clarQ = level === 'concierge' ? q_concierge : level === 'guided' ? q_guided : q_overview;
+
+    const personasBlock = f.personas ? 'Personas provided: yes — align vocabulary and benefits to those roles.\n' : 'Personas provided: no — default to target audience implied by content type.\n';
+    const filesBlock = (f.files_included === 'Yes (additional files)') ? 'Files: additional context expected — integrate excerpts as needed.\n' : 'Files: none indicated.\n';
+
+    const basics = [
+      `Content type: ${ctype}`,
+      `Optimization mode: ${mode}`,
+      `Locale: ${locale}`,
+      `Tone: ${tone}${f.tone_custom ? ' · Extra tone hints: ' + f.tone_custom : ''}`,
+      f.reading_level && `Reading level: ${f.reading_level}`,
+      f.word_count && `Target length: ${f.word_count}`,
+      f.style_guides && `Style guide: ${f.style_guides}`
+    ].filter(Boolean).join('\n');
+
+    const steering = [
+      f.keywords_include && `Keywords to include: ${f.keywords_include}`,
+      f.keywords_avoid && `Words to avoid: ${f.keywords_avoid}`,
+      f.taxonomy_pref && `Taxonomy: ${f.taxonomy_pref}`,
+      f.taxonomy_code && `Target occupation/code: ${f.taxonomy_code}`,
+      f.job_title && `Target job title: ${f.job_title}`,
+      f.site_url && `URL: ${f.site_url}`,
+      f.primary_topic && `Primary topic/entity: ${f.primary_topic}`,
+      f.schema_types && `Structured data type: ${f.schema_types}`,
+      f.images_present && `Images present: ${f.images_present}`,
+      f.citations_available && `Citations available: ${f.citations_available}`
+    ].filter(Boolean).join('\n');
+
+    const context = [
+      f.jd_text && `JD (for ATS):\n${f.jd_text}`,
+      f.internal_links && `Internal links:\n${f.internal_links}`,
+      f.sources_list && `Sources:\n${f.sources_list}`,
+      f.files_context && `Files context:\n${f.files_context}`,
+      f.notes && `Notes:\n${f.notes}`
+    ].filter(Boolean).join('\n');
+
+    /* Output sections vary by mode */
+    const modeSections = (() => {
+      switch (mode) {
+        case 'ATS (résumé keyword) optimization':
+          return [
+            '- Optimized ATS Version (plain text, bullet-first, quantified where possible).',
+            '- Keyword Coverage Table (JD tokens, synonyms, locations in document).',
+            '- Structure & Parsing Checklist (sections, formatting, copy-paste sanity).',
+            '- Risk & Repair Notes (potential ATS failure points and fixes).'
+          ];
+        case 'Domain-language optimization (skills taxonomies)':
+          return [
+            '- Domain-Language Rewrite (canonical terms integrated naturally).',
+            '- Term Bank Mapping (canonical ↔ synonyms ↔ evidence lines).',
+            '- Controlled Vocabulary Alignment (O*NET/ESCO codes if provided).',
+            '- Drift Warnings (where plain phrasing diverged from canonical).'
+          ];
+        case 'Classic SEO + metadata optimization':
+          return [
+            '- On-Page Rewrite (H1/H2s, scannable paragraphs, descriptive anchors).',
+            '- <title> and Meta Description (aligned to H1; unique, benefit-led).',
+            '- Structured Data (JSON-LD per selected schema_types).',
+            '- Internal Link Plan + URL Slug Suggestion + CWV risk notes.'
+          ];
+        case 'AI-SEO / AIEO (AI Overviews, Copilot, LLM answers)':
+          return [
+            '- Answer-Ready Blocks (definitions, steps, facts box at top).',
+            '- Q&A Excerpts (self-contained, citable paragraphs).',
+            '- Entity & Citation Pass (explicit entities; source attribution if supplied).',
+            '- Snippetability & Passage-Ranking Notes (how/why these blocks lift).'
+          ];
+        default: // Multi-mode
+          return [
+            '- Combined Rewrite segmented by mode (ATS / Domain / SEO / AIEO).',
+            '- Unified Term Bank + Keyword Coverage + Entities & Schema JSON-LD.',
+            '- Mode-specific QA: ATS sanity checks; SEO meta; AIEO answer blocks.'
+          ];
+      }
+    })();
+
+    return [
+      'Produce a high-fidelity optimization that preserves meaning while maximizing machine and expert retrievability.',
+      `Basics:\n${basics}`,
+      personasBlock + filesBlock,
+      steering && `Steering:\n${steering}`,
+      context && `Context:\n${context}`,
+
+      '\nClarifying questions (answer what you can):',
+      `• ${clarQ.join('\n• ')}`,
+
+      '\nOutput format:',
+      '- 0) Executive Summary (what changed and why; risks & trade-offs).',
+      `- 1) Primary Deliverables for "${mode}":`,
+      ...modeSections,
+      '- 2) Change Delta Log (before → after; token-level notes for critical terms).',
+      '- 3) Validation Appendix (coverage checks, entity list, schema block, and any test artifacts).',
+
+      '\nOptimization directives (technical — keep precise):',
+      '- Preserve factual claims; do not fabricate; mark uncertainties.',
+      '- For ATS: replicate exact JD strings in high-signal zones; avoid layout artifacts; ensure copy-paste order is intact.',
+      '- For Domain-Language: prefer canonical controlled terms; include synonyms in proximity; maintain semantic parity.',
+      '- For SEO: align <title> with H1; unique meta; semantic headings; descriptive internal links; include JSON-LD block.',
+      '- For AIEO: elevate answerable chunks at top; short, self-contained paragraphs; explicit entities; cite sources_list when available.',
+      '- Generate a Keyword Coverage Table and Entity Inventory; note BM25-style term presence and salient entities.',
+      '- If citations_available = Yes, bind claims to sources; otherwise keep claims general and non-falsifiable.',
+      '- Respect locale and tone settings in human-facing phrasing; keep technical annotations separate.',
+
+      '\nReturn:',
+      '- Provide the optimized content first, then the tables/metadata/JSON-LD, then the delta log and validation appendix.'
+    ].filter(Boolean).join('\n');
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
   ];
 
