@@ -802,10 +802,110 @@ document.head.appendChild(style);
     const q = getCurrentQuery();
     run(q);
   });
-})();
   
+  
+  // === Production shims: guarantee overlay shows on real AI path ===
+(function installAISearchShims(){
+  const log = (...a)=>console.debug('[AI shim]', ...a);
+
+  // Safe wrapper helper (idempotent)
+  function wrap(obj, name, wrapFn){
+    if (!obj || typeof obj[name] !== 'function') return false;
+    const orig = obj[name];
+    if (orig.__aiWrapped) return true;
+    obj[name] = wrapFn(orig);
+    obj[name].__aiWrapped = true;
+    log('wrapped', name);
+    return true;
+  }
+
+  // Resolve overlay right before any modal opens
+  function wrapModalOpeners(){
+    // Our helper (from ensureResultModal)
+    wrap(window, 'openGeminiModal', (orig)=> function(...args){
+      try { AIState && AIState.resolveSuccess({ size: 0 }); } catch {}
+      return orig.apply(this, args);
+    });
+
+    // If the site uses a different opener, add more names here:
+    wrap(window, 'openAIResultsDialog', (orig)=> function(...args){
+      try { AIState && AIState.resolveSuccess({ size: 0 }); } catch {}
+      return orig.apply(this, args);
+    });
+
+    // As a safety net, watch the modal node itself for unhide
+    const modal = document.getElementById('geminiResultModal');
+    if (modal && !modal.__aiObserved) {
+      const mo = new MutationObserver(() => {
+        if (!modal.hidden) { try { AIState && AIState.resolveSuccess({ size: 0 }); } catch {} }
+      });
+      mo.observe(modal, { attributes: true, attributeFilter: ['hidden', 'style', 'class'] });
+      modal.__aiObserved = true;
+      log('observing modal visibility');
+    }
+  }
+
+  // Begin overlay as soon as any Gemini call starts, even if production uses another entrypoint
+  function wrapAiCalls(){
+    // Common names—add or remove as needed for your app
+    const startWrappers = [
+      'runGemini',           // our suggested name
+      'geminiSearch',        // possible site name
+      'aiAssistGemini',      // possible site name
+      'pbGeminiCall',        // possible site name
+    ];
+    startWrappers.forEach(name => {
+      wrap(window, name, (orig)=> async function(...args){
+        const started = AIState && AIState.begin('gemini', { source: `shim:${name}` });
+        try {
+          const res = await orig.apply(this, args);
+          // Do NOT resolve here; we resolve when the modal actually opens (via wrapModalOpeners)
+          // Fallback: auto-resolve in 12s if nobody opened a modal, to avoid a stuck overlay
+          if (started) setTimeout(() => {
+            const s = (AIState && AIState.subscribe ? null : null); // no-op; avoid errors
+            try { AIState && AIState.resolveSuccess({ size: 0 }); } catch {}
+          }, 12000);
+          return res;
+        } catch (err) {
+          try { AIState && AIState.resolveError(err); } catch {}
+          throw err;
+        }
+      });
+    });
+
+    // If production calls Gemini via fetch directly, you can also hook it narrowly:
+    if (window.fetch && !window.fetch.__aiWrapped) {
+      const origFetch = window.fetch;
+      window.fetch = function(input, init){
+        const url = (typeof input === 'string' ? input : (input && input.url) || '');
+        const isGemini = /generativelanguage\.googleapis\.com|publicai|router\.huggingface\.co/i.test(url);
+        if (isGemini && !(AIState && AIState.inFlight)) { try { AIState.begin('gemini', { source:'shim:fetch' }); } catch {} }
+        return origFetch.apply(this, arguments);
+      };
+      window.fetch.__aiWrapped = true;
+      log('wrapped fetch (Gemini endpoints)');
+    }
+  }
+
+  // Try now, on load, and briefly poll—covers late script loads in production
+  function tryInstall(){
+    wrapModalOpeners();
+    wrapAiCalls();
+  }
+  tryInstall();
+  window.addEventListener('load', tryInstall);
+
+  let attempts = 0;
+  const iv = setInterval(() => {
+    tryInstall();
+    attempts++;
+    if (attempts > 40) clearInterval(iv); // ~12s cap
+  }, 300);
 })();
 
   
+})();
+  
+})();
 
 
