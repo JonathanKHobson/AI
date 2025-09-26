@@ -1,5 +1,99 @@
 /* AISettings.js — site-wide AI settings (OpenAI/Gemini/Apertus), lean modal, dynamic UI */
 (function(){
+// === AIState (in-flight store + telemetry) — embedded here and global ===
+  if (!window.AIState) {
+    window.AIState = (() => {
+      let state = {
+        inFlight: false,
+        startedAt: 0,
+        model: null,
+        meta: null,
+        last: 'idle',
+        payload: null,
+        error: null,
+      };
+      const subs = new Set();
+      const emit = () => subs.forEach(fn => { try { fn(state); } catch {} });
+
+      function telemetry(name, payload = {}) {
+        try { window.dataLayer?.push({ event: name, ...payload }); } catch {}
+      }
+
+      const begin = (model, meta = {}) => {
+        if (state.inFlight) return false; // lock: no double-submit
+        state = { ...state, inFlight: true, startedAt: performance.now(), model, meta, last: 'loading', payload: null, error: null };
+        emit();
+        telemetry('ai_search_started', { model, ...meta });
+        requestAnimationFrame(() => telemetry('ai_search_first_paint_loading', { model, ...meta }));
+        return true;
+      };
+
+      const resolveSuccess = (payload) => {
+        const latency = Math.round(performance.now() - state.startedAt);
+        state = { ...state, inFlight: false, last: 'success', payload };
+        emit();
+        telemetry('ai_search_resolved_success', { model: state.model, latency_ms: latency });
+      };
+
+      const resolveError = (err) => {
+        const latency = Math.round(performance.now() - state.startedAt);
+        state = { ...state, inFlight: false, last: 'error', error: (err && err.message) || String(err) };
+        emit();
+        telemetry('ai_search_resolved_error', { model: state.model, latency_ms: latency, message: state.error });
+      };
+
+      const subscribe = (fn) => { subs.add(fn); fn(state); return () => subs.delete(fn); };
+      return { begin, resolveSuccess, resolveError, subscribe };
+    })();
+  }
+
+  // === Result modal helpers — use existing if present, else create minimal ===
+  (function ensureResultModal(){
+    function maybeCreateModal(){
+      let modal = document.getElementById('geminiResultModal');
+      if (modal) return modal;
+
+      modal = document.createElement('div');
+      modal.id = 'geminiResultModal';
+      modal.hidden = true;
+      modal.setAttribute('role','dialog');
+      modal.setAttribute('aria-modal','true');
+      modal.innerHTML = `
+        <div class="modal__panel" role="document" tabindex="-1" style="max-width:720px;background:#111;color:#fff;border-radius:12px;padding:16px 18px;margin:20px auto">
+          <h2 class="modal__title" style="margin:0 0 10px">AI-assisted results</h2>
+          <div id="geminiResultBody" class="modal__body" style="max-height:60vh;overflow:auto">
+            <div class="skeleton-line" style="height:10px;background:#2a2a2a;border-radius:6px;margin:8px 0"></div>
+            <div class="skeleton-line" style="height:10px;background:#2a2a2a;border-radius:6px;margin:8px 0"></div>
+          </div>
+          <div class="modal__actions" style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+            <button id="geminiUseBtn" class="btn btn-primary">Use this</button>
+            <button id="geminiCloseBtn" class="btn btn-secondary">Close</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      return modal;
+    }
+
+    const modal = maybeCreateModal();
+    const panel = modal.querySelector('.modal__panel');
+    const body  = modal.querySelector('#geminiResultBody');
+    const closeBtn = modal.querySelector('#geminiCloseBtn');
+
+    window.setGeminiModalContent = (result) => {
+      body.innerHTML = result?.html
+        ? result.html
+        : `<pre style="white-space:pre-wrap">${(result?.text || '').trim()}</pre>`;
+    };
+
+    window.openGeminiModal = () => {
+      modal.hidden = false;
+      panel.focus();
+    };
+
+    closeBtn?.addEventListener('click', () => { modal.hidden = true; });
+  })();
+
   const KEY = 'pb.ai.settings.v2';
   
   // ---- Public AI base (global) ----
@@ -491,4 +585,227 @@ setTestStatus(`❌ Network/CORS error. ${msg}.${hint}`, 'error');
   function get(){ return load(); }
 
   window.AISettings = { open, get, onSaved };
+  
+    // === AI Loading Overlay (DOM injected; subscribes to AIState) ===
+  (function attachAIOverlay(){
+    function ensureAiOverlay(){
+      let root = document.getElementById('aiOverlay');
+      if (root) return root;
+
+      root = document.createElement('div');
+      root.id = 'aiOverlay';
+      root.setAttribute('role','dialog');
+      root.setAttribute('aria-modal','true');
+      root.setAttribute('aria-busy','true');
+      root.setAttribute('aria-live','polite');
+      root.hidden = true;
+      root.style.cssText = 'position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(10,12,12,.52);backdrop-filter:blur(2px);';
+
+      const panel = document.createElement('div');
+      panel.className = 'aiOverlay__panel';
+      panel.setAttribute('role','document');
+      panel.tabIndex = -1;
+      panel.style.cssText = 'min-width:320px;max-width:480px;border-radius:12px;padding:20px 24px;background:#111;color:#fafafa;box-shadow:0 20px 60px rgba(0,0,0,.35);';
+
+      panel.innerHTML = `
+        <div id="aiOverlaySpinner" style="width:40px;height:40px;margin:4px auto 12px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:currentColor;animation:aiSpin 800ms linear infinite"></div>
+        <h2 style="margin:0 0 6px;font-size:1.1rem;font-weight:600">Preparing results…</h2>
+        <p id="aiOverlayMsg" style="margin:0 0 6px;opacity:.85">Summarizing matches and composing output.</p>
+        <p id="aiOverlaySlow" style="margin:8px 0 0;font-size:.92rem;opacity:.75;display:none">Still working… larger prompts can take a bit.</p>
+        <div id="aiOverlayActions" style="display:flex;justify-content:center;gap:12px;margin-top:12px">
+          <button id="aiOverlayCancel" style="display:none;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;cursor:pointer">Cancel</button>
+        </div>
+      `;
+
+    const style = document.createElement('style');
+style.textContent = `
+  /* Make hidden actually hidden, even against inline display styles */
+  #aiOverlay[hidden]{ display:none !important; }
+
+  @keyframes aiSpin{ to{ transform:rotate(360deg) } }
+`;
+document.head.appendChild(style);
+
+      root.appendChild(panel);
+      document.body.appendChild(root);
+      return root;
+    }
+
+    const root = ensureAiOverlay();
+    const panel = root.querySelector('.aiOverlay__panel');
+    const msg = root.querySelector('#aiOverlayMsg');
+    const slow = root.querySelector('#aiOverlaySlow');
+    const actions = root.querySelector('#aiOverlayActions');
+    const cancelBtn = root.querySelector('#aiOverlayCancel');
+
+    let timer = null;
+    let allowCancel = false;
+
+    // Warn on accidental unload while working
+    window.addEventListener('beforeunload', (e) => {
+      // don’t block normal exits unless truly in-flight
+      if (window.AIState && AIState._debug?.inFlight) return; // internal switch if you add one
+      // use subscription below to control in-flight guard
+    });
+
+    AIState.subscribe((s) => {
+      if (s.inFlight) {
+        root.hidden = false;
+        document.body.style.overflow = 'hidden';
+        panel.focus();
+
+        slow.style.display = 'none';
+        cancelBtn.style.display = 'none';
+        allowCancel = false;
+        msg.textContent = 'Summarizing matches and composing output.';
+
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          slow.style.display = 'block';           // 5s patience message
+          cancelBtn.style.display = 'inline-block';
+          allowCancel = true;
+        }, 5000);
+
+        // block unload only while in-flight
+        window.onbeforeunload = () => 'AI-assisted search is still running.';
+      } else {
+        clearTimeout(timer);
+        root.hidden = true;
+        document.body.style.overflow = '';
+        window.onbeforeunload = null;
+      }
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      if (!allowCancel) return;
+      if (confirm('Cancel AI-assisted search? Progress will be lost.')) {
+        // resolve as error so telemetry captures cancellation
+        AIState.resolveError(new Error('user_cancelled'));
+      }
+    });
+
+    // minimalist focus trap
+    document.addEventListener('keydown', (e) => {
+      if (root.hidden) return;
+      if (e.key === 'Tab') { e.preventDefault(); (allowCancel ? cancelBtn : panel).focus(); }
+      if (e.key === 'Escape') {
+        if (!allowCancel) { e.preventDefault(); return; }
+        if (confirm('Cancel AI-assisted search?')) AIState.resolveError(new Error('user_cancelled'));
+      }
+    }, true);
+  })();
+  
+  // === Inline AI-assisted search handler (delegated) ===
+(function attachAISearchHandler(){
+
+  // --- Debug flags via URL or console (no publish needed) ---
+  // Usage examples:
+  //   ?aiDelay=5000          -> force 5s delay
+  //   ?aiError=1             -> force error after delay
+  //   ?aiDelay=6000&aiError  -> both
+  const __qs = new URLSearchParams(location.search);
+  const __FORCE = {
+    delayMs: Number(__qs.get('aiDelay')) || 0,
+    error: __qs.has('aiError')
+  };
+
+  // Console helpers:
+  window.AI_DEBUG = window.AI_DEBUG || {};
+  Object.assign(window.AI_DEBUG, {
+    setDelay(ms){ __FORCE.delayMs = Number(ms) || 0; console.info('[AI_DEBUG] delayMs =', __FORCE.delayMs); },
+    setError(on){ __FORCE.error = !!on; console.info('[AI_DEBUG] error =', __FORCE.error); },
+    kick(query){ 
+      const q = (query || getCurrentQuery() || 'debug: synthetic query');
+      console.info('[AI_DEBUG] kick with query:', q);
+      run(q);
+    },
+    // overlay-only smoke test (no AI call): begin → resolve in 4s
+    overlay(ms=4000){
+      if (!AIState.begin('debug', { source:'overlay_smoke' })) return;
+      setTimeout(()=>AIState.resolveSuccess({ size: 0 }), Number(ms)||4000);
+    }
+  });
+
+  // Hotkey smoke test: Cmd/Ctrl + Shift + G shows overlay for 4s
+  document.addEventListener('keydown', (e) => {
+    const k = e.key?.toLowerCase();
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && k === 'g') {
+      e.preventDefault();
+      window.AI_DEBUG.overlay(4000);
+    }
+  });
+  
+  function getCurrentQuery(){
+    // Adjust selector to your real search input if needed
+    const el = document.querySelector('#searchInput, input[type="search"], .search input');
+    return (el && el.value || '').trim();
+  }
+
+  async function defaultRunGemini(q){
+    // Fallback stub if window.runGemini isn’t defined elsewhere
+    await new Promise(r => setTimeout(r, 1200));
+    return { text: `Echo: ${q}` };
+  }
+
+  function handoffToResults(result){
+    if (typeof window.setGeminiModalContent === 'function' && typeof window.openGeminiModal === 'function') {
+      window.setGeminiModalContent(result);
+      AIState.resolveSuccess({ size: (result.text || result.html || '').length });
+      window.openGeminiModal();
+      return;
+    }
+    // Fallback: keep user in overlay with a Close button
+    const msg = document.getElementById('aiOverlayMsg');
+    const slow = document.getElementById('aiOverlaySlow');
+    const actions = document.getElementById('aiOverlayActions');
+    msg.textContent = 'Results ready.';
+    slow.style.display = 'none';
+    actions.innerHTML = `<button id="aiOverlayClose" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;cursor:pointer">Close</button>`;
+    document.getElementById('aiOverlayClose').onclick = () => AIState.resolveSuccess({ size: (result.text || '').length });
+  }
+
+  function showError(err, q){
+    AIState.resolveError(err);
+    const msg = document.getElementById('aiOverlayMsg');
+    const slow = document.getElementById('aiOverlaySlow');
+    const actions = document.getElementById('aiOverlayActions');
+    msg.textContent = 'We hit a snag generating results.';
+    slow.textContent = (err && err.message) ? err.message : 'Network or service error.';
+    slow.style.display = 'block';
+    actions.innerHTML = `
+      <button id="aiRetryBtn" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;cursor:pointer">Retry</button>
+      <button id="aiAdvancedBtn" style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;cursor:pointer">Advanced search</button>`;
+    document.getElementById('aiRetryBtn').onclick = () => run(q);
+    document.getElementById('aiAdvancedBtn').onclick = () => (window.openAdvancedSearch ? window.openAdvancedSearch() : (location.href = '#advanced'));
+  }
+
+  async function run(q){
+    const ok = AIState.begin('gemini', { source: 'ai_assisted_button' });
+    if (!ok) return;
+    try{
+      // Force local slowness / failure without publishing
+      if (__FORCE.delayMs) await new Promise(r => setTimeout(r, __FORCE.delayMs));
+      if (__FORCE.error) throw new Error('forced_debug_error');
+
+      const result = await (window.runGemini ? window.runGemini(q) : defaultRunGemini(q));
+      handoffToResults(result);
+    }catch(err){
+      showError(err, q);
+    }
+  }
+
+  // Delegate clicks: either give your button id="btnAI" or data-ai-assist="gemini"
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-ai-assist="gemini"], #btnAI');
+    if (!t) return;
+    e.preventDefault();
+    const q = getCurrentQuery();
+    run(q);
+  });
 })();
+  
+})();
+
+  
+
+
