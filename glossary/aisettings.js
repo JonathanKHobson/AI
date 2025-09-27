@@ -805,7 +805,7 @@ document.head.appendChild(style);
   
   
   // === Production shims: guarantee overlay shows on real AI path ===
-(function installAISearchShims(){
+/* === (function installAISearchShims(){
   const log = (...a)=>console.debug('[AI shim]', ...a);
 
   // Safe wrapper helper (idempotent)
@@ -885,7 +885,7 @@ document.head.appendChild(style);
       window.fetch.__aiWrapped = true;
       log('wrapped fetch (Gemini endpoints)');
     }
-  }
+  }  
 
   // Try now, on load, and briefly poll—covers late script loads in production
   function tryInstall(){
@@ -901,7 +901,64 @@ document.head.appendChild(style);
     attempts++;
     if (attempts > 40) clearInterval(iv); // ~12s cap
   }, 300);
+})(); === */
+
+
+// === Production shim v2 — kick overlay on click; resolve on modal ===
+(function installAIShimV2(){
+  const log = (...a)=>console.debug('[AI shim v2]', ...a);
+
+  function endOverlay(){ try{ AIState && AIState.resolveSuccess({ size: 0 }); } catch {} }
+
+  // 1) Kick off overlay as soon as the AI-assist button is clicked (capture phase).
+  //    Add/selectors here if your button uses different ids/classes.
+  const BUTTON_SELECTOR = [
+    '[data-ai-assist="gemini"]',
+    '#btnAI',
+    '#aiSearchBtn',
+    '.js-ai-assist'
+  ].join(',');
+
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest(BUTTON_SELECTOR);
+    if (!t) return;
+    if (window.AIState && !AIState.inFlight) {
+      AIState.begin('gemini', { source: 'shim:capture-click' });
+
+      // Failsafe: if something prevented first paint, force the overlay visible.
+      setTimeout(() => {
+        const root = document.getElementById('aiOverlay');
+        if (root && root.hidden && AIState.inFlight) {
+          root.hidden = false;
+          document.body.style.overflow = 'hidden';
+        }
+      }, 300);
+    }
+  }, true); // capture phase so we start before your normal handlers run
+
+  // 2) Resolve overlay the instant your modal opens (no matter who opens it).
+  (function wrapOpeners(){
+    function wrap(obj, name){
+      if (!obj || typeof obj[name] !== 'function' || obj[name].__aiWrapped) return;
+      const orig = obj[name];
+      obj[name] = function(){ endOverlay(); return orig.apply(this, arguments); };
+      obj[name].__aiWrapped = true;
+      log('wrapped', name);
+    }
+    wrap(window, 'openGeminiModal');
+    wrap(window, 'openAIResultsDialog');
+
+    // Last-ditch: watch the modal element’s visibility
+    const modal = document.getElementById('geminiResultModal');
+    if (modal && !modal.__aiObserved) {
+      const mo = new MutationObserver(() => { if (!modal.hidden) endOverlay(); });
+      mo.observe(modal, { attributes: true, attributeFilter: ['hidden','style','class'] });
+      modal.__aiObserved = true;
+      log('observing modal visibility');
+    }
+  })();
 })();
+
 
   
 })();
