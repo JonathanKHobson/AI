@@ -944,6 +944,7 @@ dialog[class*="ai-settings"] .btn:not(.primary):hover {
 <button class="btn sm hide" id="btnExitSearch">search</button>
 
 <!-- AI: -->
+<a id="hdrPB" class="btn sm" href="prompt-builder.html">Advanced Prompt Builder</a>
   <button id="aiSettingsBtn" class="btn sm" type="button" title="AI Assist Settings">ai settings</button>
 
   </header>
@@ -1009,16 +1010,26 @@ dialog[class*="ai-settings"] .btn:not(.primary):hover {
   </div>
 
   <!-- Similar matches (Step 0 footer) -->
-  <div id="step0Similar" class="block">
-    <div class="block-title">
-      <h3 class="subhead" style="margin:0">similar matches</h3>
-      <div class="right" style="display:flex; align-items:center; gap:10px">
-        <button id="btnSimNext3" class="btn sm">next 3</button>
-        <span id="simMeta" class="muted">showing 0 of 0</span>
-      </div>
-    </div>
-    <div id="simCards" class="wiz-cards" style="margin-top:8px"></div>
+<div id="step0Similar" class="block">
+  <!-- Row 1: heading only -->
+  <div class="block-title" style="display:flex; align-items:center; justify-content:space-between;">
+    <h3 class="subhead" style="margin:0">similar matches</h3>
   </div>
+
+  <!-- Row 2: controls (Prev on left, meta + Next on right) -->
+  <div class="block-controls" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:6px;">
+    <div class="left">
+      <button id="btnSimPrev3" class="btn sm" title="show previous 3" aria-label="show previous 3">previous 3</button>
+    </div>
+    <div class="right" style="display:flex; align-items:center; gap:10px">
+      <span id="simMeta" class="muted">showing 0 of 0</span>
+      <button id="btnSimNext3" class="btn sm" title="show next 3" aria-label="show next 3">next 3</button>
+    </div>
+  </div>
+
+  <!-- Row 3: cards -->
+  <div id="simCards" class="wiz-cards" style="margin-top:8px"></div>
+</div>
 </section>
 
 
@@ -1623,7 +1634,194 @@ el('btnNext3').addEventListener('click', ()=>{
 let SIM_ROWS = [];
 let simIndex = 0;
 
+/* --- Slice 1: Similar Matches pager (prev/next 3) ----------------------- */
+/* This relies on SIM_ROWS (array of row-like objects) and simIndex (offset). 
+   It is deliberately defensive: if upstream gives template-shaped objects,
+   we normalize them before calling cardHTML(). */
+
+(function wireSimilarPager(){
+  const $simCards = document.getElementById('simCards');
+  const $simMeta  = document.getElementById('simMeta');
+  const $prevBtn  = document.getElementById('btnSimPrev3');
+  const $nextBtn  = document.getElementById('btnSimNext3');
+
+  if (!$simCards || !$simMeta || !$prevBtn || !$nextBtn) return; // not on Step 0 yet
+
+  // Normalize anything in SIM_ROWS to the shape cardHTML() expects.
+  function toRow(x){
+    // If it already looks like our row shape, return as-is.
+    if (x && (x.label || x.useText) && (x.slug || x.id)) return x;
+
+    // If upstream provided { t, sc, why } or a raw template object, adapt it.
+    const t = x?.t || x;
+    const label = t?.label || t?.slug || t?.id || 'template';
+    const useText = Array.isArray(t?.use_cases) && t.use_cases.length ? t.use_cases.join(' • ') : label;
+    const definition = t?.definition || t?.help || '';
+    const kind = t?.kind || 'framework';
+    return {
+      id: t?.id, slug: t?.slug, key: t?.key,
+      label, definition, useText, kind, ref: t
+    };
+  }
+
+  function renderWindow(){
+    const N = Array.isArray(SIM_ROWS) ? SIM_ROWS.length : 0;
+
+    // Edge case: no data
+    if (N === 0){
+      $simCards.innerHTML = `<div class="muted">no similar matches</div>`;
+      $simMeta.textContent = `showing 0 of 0`;
+      $prevBtn.classList.add('hide');
+      $nextBtn.classList.add('hide');
+      return;
+    }
+
+    // Show all if fewer than 4 (hide pagers)
+    if (N < 4){
+      const allRows = SIM_ROWS.map(toRow);
+      $simCards.innerHTML = allRows.map(cardHTML).join('');
+      $simMeta.textContent = `showing ${N} of ${N}`;
+      $prevBtn.classList.add('hide');
+      $nextBtn.classList.add('hide');
+      return;
+    }
+
+    // N >= 4 → paged window of 3, index wraps on NEXT; prev is gated by history
+    const start = simIndex % N;                 // ensure in-range
+    const take  = 3;
+    const slice = [];
+    for (let i = 0; i < take; i++){
+      slice.push(SIM_ROWS[(start + i) % N]);
+    }
+
+    const rows = slice.map(toRow);
+    $simCards.innerHTML = rows.map(cardHTML).join('');
+    $simMeta.textContent = `showing ${Math.min(take, N)} of ${N}`;
+
+    // Pager visibility rules:
+    // - Next is visible for N>=4 (always)
+    // - Prev is visible only after user has advanced at least once (simIndex > 0)
+    $nextBtn.classList.remove('hide');
+    if (simIndex > 0){
+      $prevBtn.classList.remove('hide');
+    }else{
+      $prevBtn.classList.add('hide');
+    }
+  }
+
+  // PUBLIC refresh used by Step 0 open/render code after SIM_ROWS updates
+  window.__renderSimilarWindow = renderWindow;
+
+  // Click handlers
+  $nextBtn.addEventListener('click', ()=>{
+    if (!Array.isArray(SIM_ROWS) || SIM_ROWS.length < 4) return;
+    simIndex = (simIndex + 3) % SIM_ROWS.length;  // wrap on next
+    renderWindow();
+  });
+
+  $prevBtn.addEventListener('click', ()=>{
+    if (!Array.isArray(SIM_ROWS) || SIM_ROWS.length < 4) return;
+    // Only allow prev after at least one next (acceptance criterion)
+    if (simIndex <= 0) return;
+    simIndex = Math.max(0, simIndex - 3);        // clamp at 0 (no wrap on prev)
+    renderWindow();
+  });
+
+})();
+
 /* ---------- Config (tweak without touching logic) ------------------------- */
+/* ===== Slice 2: Advanced Builder CTA (Step 0 only) ======================== */
+/* Injects a low-emphasis "advanced builder" button into the Step 0 actions row,
+   aligned right, navigates to prompt-builder.html?slug=<currentTemplateSlug>.
+   Idempotent and safe to call every time Step 0 opens. */
+
+(function setupAdvBuilderStylesOnce(){
+  // Add a tiny style shim (once) for ghost button + row alignment
+  if (document.getElementById('advBuilderStyles')) return;
+  const css = `
+    .btn.ghost { background: transparent; border: 1px solid #ccc; color: #222; }
+    .btn.ghost:hover { border-color: #999; }
+    .step0-actions { display:flex; align-items:center; gap:8px; }
+    .step0-actions .push-right { margin-left:auto; }
+  `.trim();
+  const tag = document.createElement('style');
+  tag.id = 'advBuilderStyles';
+  tag.textContent = css;
+  document.head.appendChild(tag);
+})();
+
+function slugifyLoose(s){
+  return String(s||'').toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .replace(/-+/g,'-');
+}
+
+/** Resolve the best slug for CURRENT */
+function resolveTemplateSlug(t){
+  if (!t) return '';
+  return (t.slug && String(t.slug)) ||
+         (t.id && String(t.id)) ||
+         slugifyLoose(t.label || '');
+}
+
+/** Find the Step 0 actions row that already contains #wizStep0Start */
+function findStep0ActionsRow(){
+  const startBtn = document.getElementById('wizStep0Start');
+  if (!startBtn) return null;
+
+  // Preferred: a container with class .step0-actions (your stated structure)
+  let row = startBtn.closest('.step0-actions');
+  if (row) return row;
+
+  // Fallbacks: common wrappers you use, else parentNode
+  row = startBtn.closest('.actions')
+     || startBtn.closest('.btn-row')
+     || startBtn.parentElement;
+  if (!row) return null;
+
+  // Tag it so our CSS can apply cleanly
+  row.classList.add('step0-actions');
+  return row;
+}
+
+/** Create or update the Advanced Builder button and place it on the right */
+function ensureAdvBuilderCTA(currentTemplate){
+  const row = findStep0ActionsRow();
+  if (!row) return;
+
+  // Ensure a right-push spacer exists so the CTA sits on the far right
+  let spacer = row.querySelector('.push-right');
+  if (!spacer){
+    spacer = document.createElement('div');
+    spacer.className = 'push-right';
+    row.appendChild(spacer);
+  }
+
+  // Create the button if missing
+  let btn = document.getElementById('wizAdvBuilder');
+  if (!btn){
+    btn = document.createElement('button');
+    btn.id = 'wizAdvBuilder';
+    btn.type = 'button';
+    btn.className = 'btn sm ghost';
+    btn.textContent = 'advanced builder';
+    btn.title = 'Open the advanced editor with this template preloaded';
+    btn.setAttribute('aria-label', 'Open the advanced editor with this template preloaded');
+    row.appendChild(btn);
+  }
+
+  // Update navigation target for the current template and (re)bind click
+  const slug = resolveTemplateSlug(currentTemplate);
+  const url  = slug ? `prompt-builder.html?slug=${encodeURIComponent(slug)}` : 'prompt-builder.html';
+  btn.onclick = () => { window.location.href = url; };
+
+  // Visual safety: keep Start guided setup looking primary via classes it already has
+  // (We do not alter #wizStep0Start; we only add a ghost-styled secondary CTA.)
+}
+
+
 const SIM_CONFIG = {
   MIN_POOL: 3,                 // minimum pool size before falling back
   REQUIRE_TOP_FAMILY: true,    // require same top family unless topic “escape” hits hardThreshold
@@ -2054,49 +2252,7 @@ function buildSimilarRows(base){
   });
 }
 
-/* ---------- Render & pager (unchanged UX, better meta) -------------------- */
-function renderSimilar(rows){
-  const wrap = document.getElementById('step0Similar');
-  const list = document.getElementById('simCards');
-  const meta = document.getElementById('simMeta');
-  if (!wrap || !list || !meta) return;
 
-  if (!rows.length){
-    wrap.classList.add('hide');
-    list.innerHTML = '';
-    meta.textContent = 'showing 0 of 0';
-    return;
-  }
-  wrap.classList.remove('hide');
-
-  const start = simIndex % rows.length;
-  const take = SIM_CONFIG.MAX_CARDS;
-  const slice = [];
-  for (let i=0;i<take;i++){
-    const row = rows[(start+i)%rows.length];
-    if (row) slice.push(row);
-  }
-
-  list.innerHTML = slice.map(cardHTML).join('');
-  meta.textContent = `showing ${Math.min(take, rows.length)} of ${rows.length}`;
-}
-
-function buildAndRenderSimilar(baseTemplate){
-  SIM_ROWS = buildSimilarRows(baseTemplate);
-  simIndex = 0;
-  renderSimilar(SIM_ROWS);
-}
-
-// Pager
-(function wireSimilarPager(){
-  const btn = document.getElementById('btnSimNext3');
-  if (!btn) return;
-  btn.addEventListener('click', ()=>{
-    if (!SIM_ROWS.length) return;
-    simIndex = (simIndex + SIM_CONFIG.MAX_CARDS) % Math.max(1, SIM_ROWS.length);
-    renderSimilar(SIM_ROWS);
-  });
-})();
 
 
 
@@ -2133,10 +2289,48 @@ function openStep0(t){
   if (typeof window.__setURLForTemplate==='function')
     window.__setURLForTemplate(t);
   el('wizTopProgress').classList.add('hide');
+  
+    // NEW — Slice 2: ensure Advanced Builder CTA is present and points to this template
+  ensureAdvBuilderCTA(t);
 
-  // Build/render the Step 0 “similar matches” block
-  buildAndRenderSimilar(t);
+  if (typeof window.__setURLForTemplate==='function')
+    window.__setURLForTemplate(t);
+  el('wizTopProgress').classList.add('hide');
+
+  // Build SIM_ROWS for Step 0 Similar Matches and render via unified pager
+  SIM_ROWS = buildSimilarRows(t);
+  simIndex = 0;
+  if (typeof window.__renderSimilarWindow === 'function') {
+    window.__renderSimilarWindow();
+  }
 }
+
+// Augment openStep0 so Similar Matches always render through the new pager.
+(function patchOpenStep0(){
+  if (typeof window.openStep0 !== 'function') return;
+  const __orig = window.openStep0;
+  window.openStep0 = function patchedOpenStep0(tpl){
+    // Call the original open
+    const r = __orig.apply(this, arguments);
+
+    // If upstream recomputed SIM_ROWS, great; otherwise compute here as a fallback.
+    try{
+      if (!Array.isArray(SIM_ROWS) || SIM_ROWS.length === 0){
+        if (typeof buildSimilarRows === 'function'){
+          SIM_ROWS = buildSimilarRows(tpl) || [];
+        }
+      }
+      // Reset window and render
+      simIndex = 0;
+      if (typeof window.__renderSimilarWindow === 'function'){
+        window.__renderSimilarWindow();
+      }
+    }catch(_err){
+      // fail safe: leave whatever upstream rendered
+    }
+    return r;
+  };
+})();
 
 
 
@@ -3227,8 +3421,8 @@ function openPostLaunchDlg(data){
 
 
   <!-- ===== Only external deps (datasets) ===== -->
-     <script src="./aisettings.js" defer></script>
-  <script src="./templates.data.js"></script>
-  <script src="./templates.tasks.data.js"></script>
+     <script src="./js/aisettings.js" defer></script>
+  <script src="./js/templates.data.js"></script>
+  <script src="./js/templates.tasks.data.js"></script>
 </body>
 </html>
