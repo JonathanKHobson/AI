@@ -1807,16 +1807,16 @@ input:focus, textarea:focus, select:focus,
 
 <div id="toast" class="toast" aria-live="polite" hidden></div>
 
-   <script src="./aisettings.js" defer></script>
-  <script src="./templates.data.js"></script>
-  <script src="./glossary.data.js"></script>
+   <script src="./js/aisettings.js" defer></script>
+  <script src="./js/templates.data.js"></script>
+  <script src="./js/glossary.data.js"></script>
   
     <script>
   // Frameworks DB (window.FRAMEWORKS) — safe to load even if absent
   (function tryLoadFrameworks(){
     const s = document.createElement('script');
-    s.src = './templates.data.js';
-    s.onerror = ()=>console.info('Template data not found at ./template.data.js.');
+    s.src = './js/templates.data.js';
+    s.onerror = ()=>console.info('Template data not found at ./js/template.data.js.');
     document.head.appendChild(s);
   })();
 </script>
@@ -1827,8 +1827,8 @@ input:focus, textarea:focus, select:focus,
     // the glossary may be at /AI/glossary/glossary.data.js. We try to load it dynamically.
     (function tryLoadGlossary(){
       const s = document.createElement('script');
-      s.src = './glossary.data.js';
-      s.onerror = ()=>console.info('Glossary not found at ./glossary/glossary.data.js — continuing without it.');
+      s.src = './js/glossary.data.js';
+      s.onerror = ()=>console.info('Glossary not found at ./js/glossary.data.js — continuing without it.');
       document.head.appendChild(s);
     })();
   </script>
@@ -1837,8 +1837,8 @@ input:focus, textarea:focus, select:focus,
   // Personas DB (window.PERSONAS) — safe to load even if absent
   (function tryLoadPersonas(){
     const s = document.createElement('script');
-    s.src = './persona.data.js';
-    s.onerror = ()=>console.info('Persona data not found at ./persona.data.js — typeahead will still allow free text.');
+    s.src = './js/persona.data.js';
+    s.onerror = ()=>console.info('Persona data not found at ./js/persona.data.js — typeahead will still allow free text.');
     document.head.appendChild(s);
   })();
 </script>
@@ -1864,17 +1864,17 @@ input:focus, textarea:focus, select:focus,
       console.info('Bias data not found at', path);
       // Light fallbacks for common naming/paths
       if (!final) {
-        const next = (path === './bias.data.js')
-          ? './biases.data.js'
-          : (path === './biases.data.js')
-            ? './biased.data.js'
+        const next = (path === './js/bias.data.js')
+          ? './js/biases.data.js'
+          : (path === '../js/biases.data.js')
+            ? './js/biased.data.js'
             : null;
         if (next) { inject(next); return; }
       }
     };
     document.head.appendChild(s);
   }
-  inject('./bias.data.js');
+  inject('./js/bias.data.js');
 })();
 </script>
 
@@ -1885,9 +1885,9 @@ input:focus, textarea:focus, select:focus,
 function ensureTasksLoaded(onready){
   if (Array.isArray(window.TASK_TEMPLATES)) { onready && onready(); return; }
   const s = document.createElement('script');
-  s.src = './templates.tasks.data.js';
+  s.src = './js/templates.tasks.data.js';
   s.onload  = ()=> onready && onready();
-  s.onerror = ()=> { console.info('Tasks dataset not found at ./templates.tasks.data.js'); onready && onready(); };
+  s.onerror = ()=> { console.info('Tasks dataset not found at ./js/templates.tasks.data.js'); onready && onready(); };
   document.head.appendChild(s);
 }
 
