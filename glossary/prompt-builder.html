@@ -674,6 +674,25 @@ padding-bottom: 28px;
 /* Nice vertical rhythm between fields */
 .field + .field{ margin-top:12px; }
 
+/* === Assist (MVP) === */
+.assistRow{
+  display:flex; align-items:center; gap:8px; margin:6px 0 0;
+}
+.assistSel{
+  appearance:none;
+  display:inline-flex; align-items:center;
+  height:28px; padding:2px 10px; font-size:12px; line-height:1;
+  border-radius:999px; border:1px solid var(--border); background:var(--chip);
+  color:var(--text); cursor:pointer; box-shadow:var(--shadow);
+}
+.assistSel:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+.assistPill{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 8px; font-size:12px; border-radius:999px;
+  border:1px solid var(--border); background:var(--chip); color:var(--muted);
+}
+.assistPill[hidden]{ display:none !important; }
+
 /* Stepper progress + field nav */
 .progress{
   height:6px; background:var(--border); border-radius:4px; margin:8px 0;
@@ -1423,6 +1442,137 @@ input:focus, textarea:focus, select:focus,
 /* (Optional) anchor absolute children locally if needed later */
 #biasChipsWrap { position: relative; }
 
+/* ===== Assist placement + subtle styling (overrides) ===== */
+
+/* Flex row that holds: [left = description]  [right = assist] */
+.field .descFlex{
+  display:flex;
+  align-items:flex-start;          /* keep desc baseline natural */
+  justify-content:space-between;   /* push Assist to the right */
+  gap:12px;
+  margin-top:6px;                  /* breath below inputs */
+}
+
+/* Description takes the row; Assist stays compact on the right */
+.field .descFlex .desc,
+.field .descFlex .help { flex:1 1 auto; }
+.field .descFlex .assistRow{
+  flex:0 0 auto;
+  margin:0;                        /* override previous top margin */
+}
+
+/* Chip-style select: smaller, quieter */
+.assistSel{
+  height:24px;                     /* was 28px */
+  font-size:11px;                  /* was 12px */
+  padding:2px 8px;                 /* tighter */
+  opacity:.85;                     /* subtle until hover/focus */
+}
+.assistSel:hover,
+.assistSel:focus-visible{ opacity:1; }
+
+/* Tiny pill matches the subtleness */
+.assistPill{
+  font-size:11px;
+  padding:2px 6px;
+}
+
+/* Small screens: stack with Assist aligned end under the desc */
+@media (max-width: 640px){
+  .field .descFlex{
+    flex-direction:column;
+    align-items:stretch;
+    gap:6px;
+  }
+  .field .descFlex .assistRow{
+    align-self:flex-end;           /* still feels “right aligned” */
+  }
+}
+
+/* ===== Slice 5: assist meta row + disclosure ===== */
+.assistMeta{
+  margin:6px 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.assistMeta[hidden]{ display:none !important; }
+
+.assistActions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.assistDetails{
+  font-size:12px;
+}
+.assistDetails > summary{
+  cursor:pointer;
+  user-select:none;
+  outline:none;
+}
+.assistText{
+  margin:6px 0 0;
+  padding:8px;
+  font-size:12px;
+  line-height:1.4;
+  background:var(--chip);
+  border:1px solid var(--border);
+  border-radius:6px;
+  white-space:pre-wrap;   /* keep readable line wraps */
+  max-height:220px;
+  overflow:auto;
+}
+
+.assistRemove{
+  appearance:none;
+  border:1px solid var(--border);
+  background:transparent;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+  cursor:pointer;
+}
+.assistRemove:hover,
+.assistRemove:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+
+/* ===== Slice 5.5: Apply/Copy buttons ===== */
+.assistBtn{
+  appearance:none;
+  border:1px solid var(--border);
+  background:transparent;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+  cursor:pointer;
+}
+.assistBtn:hover,
+.assistBtn:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+.assistApply{ }
+.assistCopy{ }
+
+/* === Fix: right-align Assist when a field has no .desc/.help === */
+/* When Assist row is inserted directly under the field (no descFlex),
+   make the container push its contents to the right edge. */
+.field > .assistRow{
+  justify-content: flex-end;   /* put the chip/select at the right side */
+}
+
+/* Ensure the Assist <select> never stretches to 100% width due to global rules */
+.field .assistRow .assistSel{
+  width: auto !important;      /* override any .field select{width:100%} styles */
+  inline-size: auto;
+  max-inline-size: 100%;
+  flex: 0 0 auto;              /* never grow */
+}
     
   </style>
 </head>
@@ -2356,11 +2506,13 @@ function showToast(msg){
   showToast._timer = setTimeout(()=>{ t.hidden = true; }, 2400);
 }
 
-const DL_FLAG = 'pb.v1.deeplink_applied';
+const DL_FLAG = 'pb.v1.deeplink_applied'; // legacy; do not gate apply by this
 
 function applyDeeplinkIfAny(){
   const dl = window.__DEEPLINK__;
-  if (!dl || sessionStorage.getItem(DL_FLAG)) return;
+  if (!dl) return;
+  // prevent re-entrancy only within THIS page load (not across refresh)
+  if (window.__DL_APPLIED_ONCE) return;
 
   const hit = resolveTemplate(dl.value);
   if (!hit){
@@ -2406,24 +2558,69 @@ function applyDeeplinkIfAny(){
     tab.extra  = '';         // use boosters unless user types later
   }
 
-  // Minimal UI sync
-  const sel = document.getElementById('frameworkSel');
-  if (sel) {
-    sel.value = (hit.id || hit.slug || '');
-  }
+  // 1) Rebuild the picker list (so our selection target exists)
+  try { if (typeof refreshTemplateList === 'function') refreshTemplateList(); } catch(_){}
+
+  // 2) Sync the picker to the active tab/template (robust across filters)
+  try { if (typeof syncFrameworkPickerToActive === 'function') syncFrameworkPickerToActive(); } catch(_){}
+
+  // 3) Prime the search box with the raw deeplink text (nice-to-have)
   const q = document.getElementById('fwSearch');
   if (q) q.value = dl.raw;
 
-  // Re-render panels
-  try { if (typeof renderFields        === 'function') renderFields(); }        catch(_){}
-  try { if (typeof emit               === 'function') emit(); else if (typeof emitAll === 'function') emitAll(); } catch(_){}
-  try { if (typeof refreshTemplateList === 'function') refreshTemplateList(); } catch(_){}
+  // 4) Render fields for the chosen template + compose preview
+  try { if (typeof renderFields === 'function') renderFields(); } catch(_){}
+  try {
+    if (typeof recomposeActivePreview === 'function') recomposeActivePreview();
+    else if (typeof emit === 'function') emit();
+    else if (typeof emitAll === 'function') emitAll();
+  } catch(_) {}
 
-  // Mark as applied (one-shot per load)
-  sessionStorage.setItem(DL_FLAG, '1');
+  // 5) Hide the picker block and scroll to the fields area
+  try { hidePickerOnDeeplinkAndScroll(); } catch(_){}
+
+  // Mark as applied for THIS page load only (allows refresh to re-apply)
+  window.__DL_APPLIED_ONCE = true;
 
   console.info(`[deeplink] applying "${dl.raw}" → "${hit.id||hit.slug}" (${reused?'reuseTab':'newTab'})`);
 }
+</script>
+
+<script>
+// Hide the picker and scroll to the fields block (used on deeplink success)
+function hidePickerOnDeeplinkAndScroll(){
+  const pickerBody = document.getElementById('pickerBody');
+  const toggle = document.getElementById('pickerToggle');
+  const pickerBlock = document.getElementById('pickerBlock');
+  if (pickerBody) pickerBody.hidden = true;
+  if (toggle){
+    toggle.setAttribute('aria-expanded','false');
+    toggle.textContent = 'Show';
+    toggle.title = 'Show template picker';
+  }
+  // optional: visually collapse the whole block so it doesn't take space
+  if (pickerBlock){ pickerBlock.style.display = 'none'; }
+
+  // Scroll to the fields area after layout has settled
+  const target = document.getElementById('fieldsBlock') || document.getElementById('fields');
+  if (target){
+    setTimeout(()=> target.scrollIntoView({ behavior:'smooth', block:'start' }), 0);
+  }
+}
+</script>
+
+<script>
+// Boot: build list, then apply deeplink (if present), then ensure picker selection is correct
+whenDataReady(()=>{
+  try { refreshTemplateList && refreshTemplateList(); } catch(_){}
+  try { applyDeeplinkIfAny && applyDeeplinkIfAny(); } catch(_){}
+  try { syncFrameworkPickerToActive && syncFrameworkPickerToActive(); } catch(_){}
+    try {
+    if (window.__DEEPLINK__) {
+      hidePickerOnDeeplinkAndScroll();
+    }
+  } catch(_){}
+});
 </script>
 
 
@@ -8035,6 +8232,880 @@ if (footerAsk){
 })();
 </script>
 
+<script>
+// ==========================
+// Slice 1 — Assist (MVP)
+// ==========================
+
+/* --- Contract constants (Slice 0) --- */
+const ASSIST_MIN_CHARS_DRAFT = 24; // used in later slices
+const ASSIST_MODES = ['help','explain','expand','refine','options','shorten','quality','ask'];
+
+/* --- Prompt templates (#1..#8) --- */
+const ASSIST_TEMPLATES = {
+  help: `I need help completing a form field.
+
+[Field Meta]
+Label: <FIELD_LABEL>
+Key: <FIELD_KEY>
+Type: <FIELD_TYPE>
+Placeholder: <FIELD_PH>
+Description: <FIELD_DESC>
+Current value: <FIELD_VALUE>
+
+[What I need]
+1) If the value is empty: briefly explain what belongs here (1–2 sentences), then ask up to 3 targeted questions that would let you complete it well, and propose 3 draft fills.
+2) If the value exists: give a 1-line assessment, then provide 3 improved variants (refine/expand as appropriate).
+
+[Type rules]
+- text → 1 crisp sentence.
+- textarea → 1–3 short paragraphs.
+- select → 5–7 option labels with 1-line rationales, then recommend the best 1.
+- tags → comma-separated list of 5–10 tags.
+- number → a single number with a 1-line justification.
+- url/email → a single valid value plus a 1-line justification.
+
+[Output format]
+Fill 1:
+Fill 2:
+Fill 3:
+Questions: (only if needed)
+Notes: (assumptions or tradeoffs)`,
+
+  explain: `I’m unsure what to put in this field. Please clarify and guide me.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Placeholder: <FIELD_PH>
+Description: <FIELD_DESC>
+
+Do this:
+1) Define in plain language what this field is asking for and what “good” looks like.
+2) Show 3 concrete examples tailored to this form.
+3) Ask up to 3 quick questions to personalize.
+4) Provide 2–3 candidate fills I can drop in now (match the Type rules from above).`,
+
+  expand: `Please expand my draft while preserving meaning and intent.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Draft: <FIELD_VALUE>
+Context: Placeholder = <FIELD_PH>; Description = <FIELD_DESC>
+
+Goals:
+- Keep the same voice and point of view.
+- Add specificity, useful detail, and clarity.
+- Match Type rules (sentence vs. short paragraphs, etc.).
+
+Deliver:
+- Expanded Version A
+- Expanded Version B (slightly different angle)
+- 1-line note on what each version improves.`,
+
+  refine: `Please refine and tighten this field value—clear, concise, and high-signal.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Current value: <FIELD_VALUE>
+Constraints: Placeholder = <FIELD_PH>; Description = <FIELD_DESC>
+
+Deliver 3 variants:
+- V1: Minimal edits (same structure, cleaner phrasing)
+- V2: Concise (fewer words, same meaning)
+- V3: Stronger impact (same facts, more compelling)
+Return only the revised content for each variant, matching the Type rules.`,
+
+  options: `Generate options for this field and recommend the best one.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Placeholder: <FIELD_PH>
+Description: <FIELD_DESC>
+Current value (may be empty): <FIELD_VALUE>
+
+Use only from the available choices below when provided.
+
+[Available choices]
+<FIELD_OPTIONS>
+
+Steps:
+1) Produce 5 diverse, high-quality options that fit the field Type.
+2) Briefly label the intent of each option (e.g., “formal,” “playful,” “technical”).
+3) Recommend 1 best option with a 1-line why.
+Output as:
+- Options:
+  1) …
+  2) …
+  3) …
+  4) …
+  5) …
+- Recommendation: #
+- Why: …`,
+
+  shorten: `Please condense my content to the shortest clear version that still meets the field’s purpose.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Current value: <FIELD_VALUE>
+Aim: Max clarity with minimal words; respect Placeholder/Description intent.
+
+Deliver:
+- 140-char version
+- 70-char version
+- 35-char version
+Return content only.`,
+
+  quality: `Act as a quality checker for this field.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Value: <FIELD_VALUE>
+Guideposts: <FIELD_PH> | <FIELD_DESC>
+
+1) List 3–5 issues or risks (ambiguity, tone, length, relevance).
+2) Provide a corrected version that resolves them.
+3) Provide a second alternative with a different tone/angle.
+Output:
+- Issues:
+- Fixed:
+- Alternative:`,
+
+  ask: `Before writing, ask me the minimum number of questions needed to complete this field well.
+
+Label: <FIELD_LABEL> | Type: <FIELD_TYPE>
+Placeholder: <FIELD_PH>
+Description: <FIELD_DESC>
+Current value: <FIELD_VALUE>
+
+Process:
+1) Ask up to 5 multiple-choice or short-answer questions (no essays).
+2) After I answer, produce 2 final fills that match the Type rules.`
+};
+
+/* --- Helpers --- */
+function slugify(s){
+  return String(s||'').toLowerCase()
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').replace(/--+/g,'-');
+}
+function getActiveTab(){
+  try{ return state?.tabs?.[state.active ?? 0]; }catch(_){ return null; }
+}
+function ensureAssistMap(tab){
+  if (!tab) return null;
+  if (!tab.assist) tab.assist = {};
+  return tab.assist;
+}
+function canonicalTypeFromEl(el){
+  if (!el) return 'text';
+  if (el.tagName === 'TEXTAREA') return 'textarea';
+  if (el.tagName === 'SELECT')   return 'select';
+  if (el.getAttribute && el.getAttribute('data-tags') === 'true') return 'tags';
+  const t = (el.type || '').toLowerCase();
+  if (['number','url','email'].includes(t)) return t;
+  return 'text';
+}
+function readValueFromEl(el){
+  if (!el) return '';
+  if (el.tagName === 'SELECT'){
+    const opt = el.options[el.selectedIndex];
+    return opt ? (opt.text || opt.value || '') : '';
+  }
+  return (el.value ?? '').trim();
+}
+
+// Normalize select <option> → {label, value}
+function extractSelectOptions(selectEl){
+  if (!selectEl || selectEl.tagName !== 'SELECT') return [];
+  const out = [];
+  for (const opt of Array.from(selectEl.options || [])){
+    // Skip disabled placeholder-ish rows
+    const lbl = String(opt.text || '').trim();
+    const val = String(opt.value ?? '').trim();
+    if (!lbl && !val) continue;
+    if (opt.disabled) continue;
+    // Treat "— choose —" style placeholders as non-options
+    if (/choose|select|pick/i.test(lbl) && (!val || val === '__placeholder__')) continue;
+    out.push({ label: lbl || val || '', value: val || lbl || '' });
+  }
+  return out;
+}
+
+// Tags-mode: collect current chips & any suggestion set within this field
+function extractTagData(fieldEl){
+  const current = [];
+  // Common patterns: .chipsInput .chip, or .chips .chip
+  const chipEls = fieldEl.querySelectorAll('.chipsInput .chip, .chips .chip');
+  chipEls.forEach(ch => {
+    // Clone to avoid mutating the UI; strip the 'x' button label
+    const txt = ch.cloneNode(true).textContent.replace(/\s*[×x]\s*$/,'').trim();
+    if (txt) current.push(txt);
+  });
+
+  const suggestions = [];
+  // Suggestions list typically sits in a .ta-menu related to this field
+  const sugWrap = fieldEl.querySelector('.ta-menu:not([hidden])') || fieldEl.querySelector('.ta-menu');
+  if (sugWrap){
+    // Prefer .name cell if present
+    const rows = sugWrap.querySelectorAll('.ta-item .name, .ta-item');
+    rows.forEach(r=>{
+      const txt = (r.textContent || '').trim();
+      if (txt) suggestions.push(txt);
+    });
+  }
+
+  // De-dup while preserving order
+  const dedup = (arr)=> arr.filter((v,i)=> arr.indexOf(v) === i);
+  return { current: dedup(current), suggestions: dedup(suggestions) };
+}
+
+// Create the text block for <FIELD_OPTIONS>
+// - select: each line "- Label | value" (or "- Label" if no distinct value)
+// - tags: two lines "Current tags: ..." and (if any) "Suggested tags: ..."
+function stringifyFieldOptions(fieldEl, inputEl, type){
+  if (type === 'select'){
+    const opts = extractSelectOptions(inputEl);
+    if (!opts.length) return '';
+    return opts.map(o=>{
+      const hasPair = o.value && o.value !== o.label;
+      return `- ${o.label}${hasPair ? ` | ${o.value}` : ''}`;
+    }).join('\n');
+  }
+  if (type === 'tags'){
+    const { current, suggestions } = extractTagData(fieldEl);
+    const parts = [];
+    parts.push(`Current tags: ${current.length ? current.join(', ') : '(none)'}`);
+    if (suggestions.length){
+      parts.push(`Suggested tags: ${suggestions.join(', ')}`);
+    }
+    return parts.join('\n');
+  }
+  return '';
+}
+
+function findDescInField(fieldEl){
+  // prefer .desc, then .help inside the field container
+  const d = fieldEl.querySelector('.desc');
+  if (d && d.textContent.trim()) return d.textContent.trim();
+  const h = fieldEl.querySelector('.help');
+  if (h && h.textContent.trim()) return h.textContent.trim();
+  return '';
+}
+function resolveFieldKey(fieldEl, inputEl){
+  // Candidates: data-key, input name, input id, label slug
+  const tab = getActiveTab();
+  const knownKeys = tab?.fields ? Object.keys(tab.fields) : [];
+  const labelEl = fieldEl.querySelector('label');
+  const labelTxt = labelEl ? labelEl.textContent.trim() : (inputEl?.getAttribute('aria-label') || '');
+  const candidates = [
+    fieldEl.dataset.key,
+    inputEl?.name,
+    inputEl?.id,
+    slugify(labelTxt)
+  ].filter(Boolean);
+
+  // Prefer the first candidate that exists in tab.fields
+  const hit = candidates.find(k => knownKeys.includes(k));
+  return hit || candidates[0] || slugify(labelTxt) || 'field';
+}
+function fillPlaceholders(tpl, meta){
+  const map = {
+    '<FIELD_LABEL>':  meta.label,
+    '<FIELD_KEY>':    meta.key,
+    '<FIELD_TYPE>':   meta.type,
+    '<FIELD_PH>':     meta.ph || '(none)',
+    '<FIELD_DESC>':   meta.desc || '(none)',
+    '<FIELD_VALUE>':  meta.value || '',
+    '<FIELD_OPTIONS>': meta.options || ''   // empty string if N/A
+  };
+  return tpl.replace(/<FIELD_LABEL>|<FIELD_KEY>|<FIELD_TYPE>|<FIELD_PH>|<FIELD_DESC>|<FIELD_VALUE>|<FIELD_OPTIONS>/g, m => map[m] ?? '');
+}
+
+/* Build prompt_text from DOM field metadata */
+function buildAssistPrompt(mode, fieldEl){
+  const input = fieldEl.querySelector('input, textarea, select');
+  const label = (fieldEl.querySelector('label')?.textContent || '').trim() || (input?.getAttribute('aria-label') || '').trim() || 'Field';
+  const type  = canonicalTypeFromEl(input);
+  const ph    = input?.placeholder || '';
+  const desc  = findDescInField(fieldEl);
+  const value = readValueFromEl(input);
+  const key   = resolveFieldKey(fieldEl, input);
+
+  // Build options text for select/tags; empty string otherwise
+  const optionsBlock = stringifyFieldOptions(fieldEl, input, type);
+
+  const tpl = ASSIST_TEMPLATES[mode] || '';
+  let prompt_text = fillPlaceholders(tpl, {
+    label, key, type, ph, desc, value,
+    options: optionsBlock
+  });
+
+  // QA rule: select/tags must ALWAYS include options in the block,
+  // even if the chosen template didn't reference <FIELD_OPTIONS>.
+  if ((type === 'select' || type === 'tags') && optionsBlock && !tpl.includes('<FIELD_OPTIONS>')){
+    prompt_text += `
+
+[Available options]
+${optionsBlock}`;
+  }
+
+  return { key, prompt_text, mode, meta: {label, type} };
+}
+
+// --- Slice 5.5: Template context helpers (for clipboard) ---
+function __findTemplateById(id){
+  if (!id) return null;
+  try{
+    if (window.FRAMEWORKS_BY_ID && window.FRAMEWORKS_BY_ID[id]) return window.FRAMEWORKS_BY_ID[id];
+  }catch(_){}
+  const pools = [
+    window.TEMPLATES, window.FRAMEWORKS, window.FRAMEWORKS?.length ? window.FRAMEWORKS : null,
+    window.templates, window.TASK_TEMPLATES
+  ].filter(Boolean);
+  for (const arr of pools){
+    try{
+      const hit = (arr || []).find(x => (x && (x.id===id || String(x.slug||'')===String(id))));
+      if (hit) return hit;
+    }catch(_){}
+  }
+  try{ if (typeof FIND === 'function') return FIND(id); }catch(_){}
+  return null;
+}
+
+function __canonFieldKeyFromMeta(f){
+  const lbl = String(f?.label || f?.name || f?.id || '').trim();
+  const k   = String(f?.key || f?.id || '').trim() || slugify(lbl);
+  return k || slugify(lbl) || '';
+}
+
+function getActiveTemplateMeta(){
+  try{
+    const t = (typeof activeTab === 'function') ? activeTab() : (state?.tabs?.[state?.active] || null);
+    if (!t) return null;
+    return __findTemplateById(t.id) || null;
+  }catch(_){ return null; }
+}
+
+function listOtherFieldLabels(meta, excludeKey){
+  try{
+    const fields = Array.isArray(meta?.fields) ? meta.fields : [];
+    const out = [];
+    for (const f of fields){
+      const k = __canonFieldKeyFromMeta(f);
+      if (excludeKey && k && excludeKey && String(k) === String(excludeKey)) continue;
+      const label = String(f?.label || f?.name || f?.id || '').trim();
+      if (label) out.push(label);
+    }
+    return out;
+  }catch(_){ return []; }
+}
+
+function buildAssistClipboardText(basePromptText, excludeKey){
+  const meta = getActiveTemplateMeta();
+  if (!meta) return String(basePromptText || '');
+
+  const tmplLabel = String(meta.label || meta.name || meta.id || 'Template').trim();
+  const tmplDesc  = String(meta.desc || meta.description || '').trim() || '(none)';
+  const tmplHelp  = String(meta.help || meta.definition || meta.summary || '').trim() || '(none)';
+  const otherFlds = listOtherFieldLabels(meta, excludeKey);
+  const otherBlock = otherFlds.length ? otherFlds.map(l=>`- ${l}`).join('\n') : '(none)';
+
+  return `${String(basePromptText || '')}
+
+[Template context]
+Template: ${tmplLabel}
+Description: ${tmplDesc}
+Help: ${tmplHelp}
+Other fields:
+${otherBlock}`;
+}
+
+/* --- UI mount: add Assist select + pill under each field --- */
+function mountAssistControls(){
+  const wrap = document.getElementById('fields');
+  if (!wrap) return;
+
+  const tab = getActiveTab();
+  const assistMap = ensureAssistMap(tab);
+
+  // Target only real template fields inside #fields
+  const fields = wrap.querySelectorAll(':scope .field');
+  fields.forEach(fieldEl=>{
+    // Avoid double-mount
+    if (fieldEl.querySelector(':scope .assistRow')) return;
+
+    // Create row
+    const row = document.createElement('div');
+    row.className = 'assistRow';
+
+    // Select (chip-style) — options populated dynamically per type
+    const sel = document.createElement('select');
+    sel.className = 'assistSel';
+    sel.setAttribute('aria-label','Assist options');
+
+    // Pill (hidden until selection)
+    const pill = document.createElement('span');
+    pill.className = 'assistPill';
+    pill.hidden = true;
+
+    pill.addEventListener('click', ()=>{
+      sel.focus();
+      // open native select on click (some browsers ignore programmatic clicks)
+      try{ sel.showPicker && sel.showPicker(); }catch(_){}
+    });
+    
+        // --- Slice 5: meta row (pill + disclosure + remove) ---
+    const meta = document.createElement('div');
+    meta.className = 'assistMeta';
+    meta.hidden = true;
+
+    // Actions row (summary + remove)
+    const actions = document.createElement('div');
+    actions.className = 'assistActions';
+
+    // Disclosure with read-only inserted text
+    const details = document.createElement('details');
+    details.className = 'assistDetails';
+    const sum = document.createElement('summary');
+    sum.textContent = 'View inserted text';
+    const preText = document.createElement('pre');
+    preText.className = 'assistText';
+    details.appendChild(sum);
+    details.appendChild(preText);
+
+// Apply button — inject into final prompt only when clicked
+const btnApply = document.createElement('button');
+btnApply.type = 'button';
+btnApply.className = 'assistBtn assistApply';
+btnApply.textContent = 'Add to final prompt';
+btnApply.addEventListener('click', ()=>{
+  const tabNow = getActiveTab();
+  const aMap = ensureAssistMap(tabNow);
+  const inEl = fieldEl.querySelector('input, textarea, select');
+  const keyNow = resolveFieldKey(fieldEl, inEl);
+  const label = (fieldEl.querySelector('label')?.textContent || 'Field').trim();
+  const mode = sel.value;
+  if (!mode) return; // nothing selected
+
+  // Build fresh prompt then mark as applied
+  const { prompt_text } = buildAssistPrompt(mode, fieldEl);
+  aMap[keyNow] = { mode, prompt_text, status:'applied' };
+  preText.textContent = String(prompt_text || '');
+  pill.textContent = `• Assist: ${modeLabel(mode)}`;
+  pill.hidden = false;
+  meta.hidden = false;
+
+try{ scheduleSave && scheduleSave(); }catch(_){}
+recomposeActivePreview();
+try{ showToast && showToast(`Assist added: ${modeLabel(mode)} for “${label}”.`); }catch(_){}
+});
+
+// Copy button — copy assist text + template context (does NOT apply)
+const btnCopy = document.createElement('button');
+btnCopy.type = 'button';
+btnCopy.className = 'assistBtn assistCopy';
+btnCopy.textContent = 'Copy assist prompt';
+btnCopy.addEventListener('click', async ()=>{
+  const inEl = fieldEl.querySelector('input, textarea, select');
+  const keyNow = resolveFieldKey(fieldEl, inEl);
+  const mode = sel.value;
+  if (!mode) return; // nothing selected
+  // Build latest prompt and add template context
+  const { prompt_text } = buildAssistPrompt(mode, fieldEl);
+  const txt = buildAssistClipboardText(prompt_text, keyNow);
+  try { await navigator.clipboard.writeText(txt); } catch(_){}
+  try{ showToast && showToast('Assist prompt copied.'); }catch(_){}
+});
+
+// Remove button
+const btnRemove = document.createElement('button');
+btnRemove.type = 'button';
+btnRemove.className = 'assistRemove assistBtn';
+btnRemove.textContent = 'Remove assist';
+btnRemove.addEventListener('click', ()=>{
+  const tabNow = getActiveTab();
+  const aMap = ensureAssistMap(tabNow);
+  const keyNow = resolveFieldKey(fieldEl, fieldEl.querySelector('input, textarea, select'));
+  const label = (fieldEl.querySelector('label')?.textContent || 'Field').trim();
+  if (aMap && aMap[keyNow]) delete aMap[keyNow];
+  sel.value = '';
+  pill.hidden = true; pill.textContent = '';
+  meta.hidden = true; details.open = false; preText.textContent = '';
+try{ scheduleSave && scheduleSave(); }catch(_){}
+recomposeActivePreview();
+try{ showToast && showToast(`Assist removed for “${label}”.`); }catch(_){}
+});
+
+// Assemble meta row (details + buttons)
+actions.appendChild(details);
+actions.appendChild(btnApply);
+actions.appendChild(btnCopy);
+actions.appendChild(btnRemove);
+meta.appendChild(pill);
+meta.appendChild(actions);
+
+  // Build menu items for current type, then restore if still allowed
+const input = fieldEl.querySelector('input, textarea, select');
+renderAssistOptions(sel, pill, fieldEl);
+
+const key   = resolveFieldKey(fieldEl, input);
+const saved = assistMap?.[key];
+if (saved?.mode && Array.from(sel.options).some(o => o.value === saved.mode)){
+  sel.value = saved.mode;
+  pill.textContent = `• Assist: ${modeLabel(saved.mode)}`;
+  pill.hidden = false;
+  preText.textContent = String(saved.prompt_text || '');
+  meta.hidden = false; // show controls; applied state is enforced only by composer
+} else if (saved?.mode){
+  delete assistMap[key];
+  pill.hidden = true; pill.textContent = '';
+  preText.textContent = ''; meta.hidden = true; details.open = false;
+}
+
+// Keep the menu in sync if the field's input type flips or tags toggle
+observeFieldTypeChanges(fieldEl, sel, pill);
+
+// NEW: Draft-length gating should react as the user types in text/textarea.
+// If a previously selected mode becomes disabled, we clear it and recompose ONCE.
+if (input && (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA')){
+  input.addEventListener('input', ()=>{
+    // Re-evaluate gating; if it cleared the selection, hide meta and recompose
+    const cleared = renderAssistOptions(sel, pill, fieldEl);
+    if (cleared){
+      preText.textContent = ''; meta.hidden = true; details.open = false;
+try{ scheduleSave && scheduleSave(); }catch(_){}
+recomposeActivePreview();
+      return;
+    }
+
+// If an assist mode is active, rebuild prompt_text and preserve 'applied' status
+const mode = sel.value;
+if (mode){
+  const { prompt_text } = buildAssistPrompt(mode, fieldEl);
+  const tabNow = getActiveTab();
+  const aMap = ensureAssistMap(tabNow);
+  const keyNow = resolveFieldKey(fieldEl, input);
+  if (aMap){
+    const wasApplied = aMap[keyNow]?.status === 'applied';
+    aMap[keyNow] = wasApplied ? { mode, prompt_text, status:'applied' } : { mode, prompt_text };
+    preText.textContent = String(prompt_text || '');
+try{ scheduleSave && scheduleSave(); }catch(_){}
+recomposeActivePreview();
+  }
+}
+  });
+}
+
+
+
+    // Change handler
+sel.addEventListener('change', ()=>{
+  const v = sel.value;
+  const tabNow = getActiveTab();
+  const aMap = ensureAssistMap(tabNow);
+  const inEl  = fieldEl.querySelector('input, textarea, select');
+  const keyNow = resolveFieldKey(fieldEl, inEl);
+
+  if (!v){
+    // Clear any assist config
+    if (aMap[keyNow]) delete aMap[keyNow];
+    pill.hidden = true; pill.textContent = '';
+    preText.textContent = ''; meta.hidden = true; details.open = false;
+  } else {
+    const { prompt_text, mode } = buildAssistPrompt(v, fieldEl);
+    // Preserve applied status if it was already applied; otherwise stay not-applied
+    const prevStatus = aMap[keyNow]?.status === 'applied' ? 'applied' : undefined;
+    aMap[keyNow] = { mode, prompt_text, ...(prevStatus ? {status:'applied'} : {}) };
+    pill.textContent = `• Assist: ${modeLabel(mode)}`;
+    pill.hidden = false;
+    preText.textContent = String(prompt_text || '');
+    meta.hidden = false;
+  }
+
+// Save + (re)compose preview — if not applied, preview remains unchanged (by design)
+try{ scheduleSave && scheduleSave(); }catch(_){}
+recomposeActivePreview();
+});
+
+    row.appendChild(sel);
+
+    // Place Assist beside the field description (right-aligned). Meta row sits beneath it.
+    const descEl = fieldEl.querySelector(':scope .desc, :scope .help');
+    if (descEl) {
+      let flex = descEl.closest('.descFlex');
+      if (!flex) {
+        flex = document.createElement('div');
+        flex.className = 'descFlex';
+        descEl.replaceWith(flex);
+        flex.appendChild(descEl);
+      }
+      flex.appendChild(row);
+      // meta row goes directly under the whole descFlex row
+      flex.insertAdjacentElement('afterend', meta);
+    } else {
+      // No description available — fall back to below the main control
+      const anchor = fieldEl.querySelector('input, textarea, select') || fieldEl;
+      anchor.insertAdjacentElement('afterend', row);
+      row.insertAdjacentElement('afterend', meta);
+    }
+  });
+}
+
+/* Human labels for pills */
+function modeLabel(mode){
+  switch(mode){
+    case 'help': return 'Help me fill this';
+    case 'explain': return 'Explain this field';
+    case 'expand': return 'Expand';
+    case 'refine': return 'Refine';
+    case 'options': return 'Give me options';
+    case 'shorten': return 'Shorten';
+    case 'quality': return 'Quality check';
+    case 'ask': return 'Ask questions first';
+    default: return mode;
+  }
+}
+
+/* Allowed Assist modes by field type (Slice 3) */
+function allowedModesForType(type){
+  switch(type){
+    case 'select':
+    case 'tags':
+      return ['help','explain','options','ask'];
+    case 'number':
+    case 'url':
+    case 'email':
+      return ['help','explain','quality','ask'];
+    // text/textarea/longtext → show all (draft gating arrives in Slice 4)
+    default:
+      return ASSIST_MODES.slice();
+  }
+}
+
+function buildAssistOptionsHTML(allowed, disabledSet){
+  const rows = ['<option value="">✨ Assist — Choose</option>'];
+  allowed.forEach(m=>{
+    const dis = disabledSet && disabledSet.has(m);
+    const attr = dis ? ' disabled title="Type a short draft to use this."' : '';
+    rows.push(`<option value="${m}"${attr}>${modeLabel(m)}</option>`);
+  });
+  return rows.join('');
+}
+
+/**
+ * Populate the Assist <select> based on the current field type.
+ * If a previously selected mode is now disallowed, clear selection and remove its assist config.
+ */
+function renderAssistOptions(sel, pill, fieldEl){
+  const input = fieldEl.querySelector('input, textarea, select');
+  const type  = canonicalTypeFromEl(input);
+  const allowed = allowedModesForType(type);
+
+  // Slice 4: draft-length gating for text/textarea
+  let disabledSet = null;
+  if (type === 'text' || type === 'textarea'){
+    const len = (readValueFromEl(input) || '').trim().length;
+    if (len < ASSIST_MIN_CHARS_DRAFT){
+      disabledSet = new Set(['expand','refine','shorten','quality']);
+    }
+  }
+
+  const prev = sel.value;
+  const html = buildAssistOptionsHTML(allowed, disabledSet);
+
+  // Only rewrite if different to avoid unnecessary DOM churn
+  if (sel.__assistLastHTML !== html){
+    sel.innerHTML = html;
+    sel.__assistLastHTML = html;
+  }
+
+  // Decide whether previous selection can be kept
+  const stillAllowed = prev && allowed.includes(prev);
+  const nowDisabled  = stillAllowed && disabledSet && disabledSet.has(prev);
+
+  if (stillAllowed && !nowDisabled){
+    sel.value = prev;
+    return false; // nothing to clear
+  }
+
+  // Clear selection + assist map if previously selected mode is disallowed OR now disabled by draft gate
+  if (prev && (!stillAllowed || nowDisabled)){
+    sel.value = '';
+    const tab = getActiveTab();
+    const aMap = ensureAssistMap(tab);
+    const key  = resolveFieldKey(fieldEl, input);
+    if (aMap && aMap[key]) delete aMap[key];
+    if (pill){ pill.hidden = true; pill.textContent = ''; }
+    return true; // cleared
+  }
+
+  return false;
+}
+
+/* Watch a field for type changes (select ↔ text, data-tags flip, etc.) and re-render Assist options instantly */
+function observeFieldTypeChanges(fieldEl, sel, pill){
+  // Observe ONLY attributes on the concrete input element (no subtree).
+  let input = fieldEl.querySelector('input, textarea, select');
+
+  const attrMO = new MutationObserver(()=>{
+    renderAssistOptions(sel, pill, fieldEl);
+  });
+
+  function bindAttrObserver(){
+    attrMO.disconnect();
+    if (input){
+      attrMO.observe(input, { attributes: true, attributeFilter: ['type','data-tags'] });
+    }
+  }
+
+  bindAttrObserver();            // initial bind
+  renderAssistOptions(sel, pill, fieldEl); // initial render
+
+  // Watch for input node replacement; when it changes, re-bind (but don't emit).
+  const childMO = new MutationObserver(()=>{
+    const next = fieldEl.querySelector('input, textarea, select');
+    if (next && next !== input){
+      input = next;
+      bindAttrObserver();
+      renderAssistOptions(sel, pill, fieldEl);
+    }
+  });
+  childMO.observe(fieldEl, { childList: true }); // shallow; no subtree
+}
+
+/* --- Compose override: temporarily replace field values with prompt_text --- */
+(function patchComposeForAssist(){
+  const tabOf = ()=> getActiveTab();
+
+  function applyAssists(tab){
+    if (!tab || !tab.fields || !tab.assist) return ()=>{};
+    const backups = [];
+for (const [key, cfg] of Object.entries(tab.assist)){
+  if (cfg && cfg.status === 'applied' && cfg.mode && typeof cfg.prompt_text === 'string'){
+    backups.push([key, tab.fields[key]]);
+    tab.fields[key] = cfg.prompt_text; // temporary override (only when applied)
+  }
+}
+    return ()=>{ backups.forEach(([k,v])=>{ tab.fields[k] = v; }); };
+  }
+
+  // Wrap emit (single preview)
+  if (typeof window.emit === 'function'){
+    const _emit = window.emit;
+    window.emit = function(...args){
+      const tab = tabOf();
+      const restore = applyAssists(tab);
+      try { return _emit.apply(this, args); }
+      finally { restore(); }
+    };
+  }
+
+  // Wrap emitAll (deck)
+  if (typeof window.emitAll === 'function'){
+    const _emitAll = window.emitAll;
+    window.emitAll = function(...args){
+      const tab = tabOf();
+      const restore = applyAssists(tab);
+      try { return _emitAll.apply(this, args); }
+      finally { restore(); }
+    };
+  }
+})();
+
+// --- Slice 5.5 fix: force preview recomposition with assists applied ---
+function buildPromptForTabWithAssists(t){
+  try{
+    if (!t) return '';
+    if (typeof makePromptForTab !== 'function') return '';
+    const clone = { ...t, fields: { ...(t.fields || {}) } };
+    const a = t.assist || {};
+    for (const [k, cfg] of Object.entries(a)){
+      if (cfg && cfg.status === 'applied' && typeof cfg.prompt_text === 'string'){
+        clone.fields[k] = cfg.prompt_text;
+      }
+    }
+    return String(makePromptForTab(clone) || '');
+  } catch(e){
+    console.warn('buildPromptForTabWithAssists failed:', e);
+    return '';
+  }
+}
+
+function recomposeActivePreview(){
+  try{
+    const t = (typeof activeTab === 'function')
+      ? activeTab()
+      : (state?.tabs?.[state?.active] || null);
+    if (!t) return;
+
+    // Let the app perform its normal render first (if present)
+    try {
+      if (typeof emit === 'function') emit();
+      else if (typeof emitAll === 'function') emitAll();
+    } catch(_){}
+
+    // Then deterministically set #out to the assisted text
+    const txt = buildPromptForTabWithAssists(t);
+    const outEl = document.getElementById('out');
+    if (outEl && typeof txt === 'string') outEl.textContent = txt;
+  } catch(e){
+    console.warn('recomposeActivePreview failed:', e);
+  }
+}
+
+/* --- Hook renderFields to mount controls after fields render --- */
+(function hookRenderFields(){
+  function safeMount(){ try{ mountAssistControls(); }catch(e){ console.warn('[assist] mount failed', e); } }
+
+  if (typeof window.renderFields === 'function'){
+    const _renderFields = window.renderFields;
+    window.renderFields = function(...args){
+      const r = _renderFields.apply(this, args);
+      safeMount();
+      return r;
+    };
+  } else {
+    // Persistent observer: mount Assist every time #fields changes
+    const wrap = document.getElementById('fields');
+    if (wrap){
+      let rafId = 0;
+      const mo = new MutationObserver((muts)=>{
+        // Only react to child list changes; debounce via rAF
+        const changed = muts.some(m => m.type === 'childList');
+        if (!changed) return;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(()=>{
+          safeMount();
+          // Keep preview in sync with applied assists
+          try { recomposeActivePreview(); } catch(_) {}
+        });
+      });
+      mo.observe(wrap, { childList:true, subtree:true });
+    }
+  }
+
+  // Also mount once when data is ready (in case fields already exist)
+  try{ whenDataReady(()=> { safeMount(); try{ recomposeActivePreview(); }catch(_){}; }); }catch(_){ safeMount(); try{ recomposeActivePreview(); }catch(_){}; }
+
+  // Re-mount on tab switches (your app already uses 'tab-switched' elsewhere)
+  document.addEventListener('tab-switched', ()=>{
+    try { safeMount(); recomposeActivePreview(); } catch(_){}
+  });
+
+  // Re-mount when the template selector changes (frameworkSel → new fields)
+  const fwSel = document.getElementById('frameworkSel');
+  if (fwSel){
+    fwSel.addEventListener('change', ()=>{
+      // Allow the app to render new fields, then mount
+      setTimeout(()=> { try { safeMount(); recomposeActivePreview(); } catch(_){}; }, 0);
+    });
+  }
+
+  // If renderTabs exists, wrap it to dispatch a 'tab-switched' and re-mount
+  if (typeof window.renderTabs === 'function'){
+    const _renderTabs = window.renderTabs;
+    window.renderTabs = function(...args){
+      const r = _renderTabs.apply(this, args);
+      try { document.dispatchEvent(new CustomEvent('tab-switched')); } catch(_){}
+      try { safeMount(); } catch(_){}
+      return r;
+    };
+  }
+})();
+</script>
 
 
 </body>
