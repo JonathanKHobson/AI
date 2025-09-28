@@ -118,7 +118,16 @@ body::before{
 .pane{
   background:var(--panel); border:1px solid var(--border);
   border-radius:var(--radius); padding:14px; box-shadow:var(--shadow);
+    position: sticky;
+  top: 10px;            /* give breathing room below header/search */
+  z-index: 20;          /* above cards, below any fixed headers */
 }
+
+/* Optional visual hint when stuck (we'll toggle .is-stuck via JS if desired) */
+.pane.is-stuck {
+  box-shadow: var(--shadow), 0 0 0 1px var(--border);
+}
+
     .controls{
       display:grid;
       grid-template-columns: 1.3fr .9fr .9fr .9fr .9fr .9fr .9fr .9fr auto;
@@ -388,13 +397,43 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
 .ta .sub{ font-size:12px; color:var(--muted); display:none }
 
 
+
+/* Section title row with lines on both sides — FULL-WIDTH in the grid */
+.section-row{
+  grid-column: 1 / -1;        /* span all grid columns */
+  width: 100%;                 /* occupy full list width */
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin: 16px 6px 6px;        /* top gap before the header row */
+}
+.section-row::before,
+.section-row::after{
+  content:""; flex:1 1 auto; height:1px;
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--ink-2) 35%, transparent),
+    color-mix(in oklab, var(--ink-2) 15%, transparent)
+  );
+}
+.section-row .title{
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  font-weight:800; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+  color: var(--accent); background: var(--chip); border:1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(0,0,0,.03) inset;
+}
+
+/* Vertical spacer chunk between grouped sections — FULL-WIDTH */
+.section-gap{
+  grid-column: 1 / -1;         /* span all grid columns */
+  width: 100%;
+  height: 12px;                /* a touch more breathing room */
+}
   </style>
 </head>
 <body>
 
   <!-- Data files -->
-  <script src="templates.data.js"></script>
-  <script src="templates.tasks.data.js"></script>
+  <script src="./js/templates.data.js"></script>
+  <script src="./js/templates.tasks.data.js"></script>
 
 
   <div class="wrap">
@@ -403,13 +442,13 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
     <!-- NEW: back-to-search button (upper-left) -->
     <a id="backToSearch" class="btn btn-sm" href="../index.html" aria-label="back to home">← back to home</a>
 
-    <h1>Prompt Template Glossary</h1>
+    <h1>prompt template glossary</h1>
     <div id="hdrCount" class="count">Showing …</div>
   </div>
 
   <div class="hdr-actions">
     <!-- NEW: prompt builder shortcut (upper-right) -->
-    <a id="hdrPB" class="btn btn-sm" href="prompt-builder.html">Advanced Prompt Builder</a>
+    <a id="hdrPB" class="btn btn-sm" href="prompt-builder.html">advanced prompt builder</a>
     <button id="themeBtn" class="btn btn-sm" title="Toggle theme">Light</button>
   </div>
 </header>
@@ -718,15 +757,15 @@ fillSelect($('#tagLevel'), allTagValuesBy('level'), 'All Levels');
 fillSelect($('#tagUse'),   allTagValuesBy('use'),   'All Uses');
 
 
-$('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); });
-$('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); });
-$('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); });
-$('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); });
+$('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); scrollToResultsTop(); });
+$('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); scrollToResultsTop(); });
+$('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); scrollToResultsTop(); });
+$('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); scrollToResultsTop(); });
 
-$('#tagTopic').addEventListener('change', ()=>{ state.topic=$('#tagTopic').value; render(); });
-$('#tagPhase').addEventListener('change', ()=>{ state.phase=$('#tagPhase').value; render(); });
-$('#tagLevel').addEventListener('change', ()=>{ state.level=$('#tagLevel').value; render(); });
-$('#tagUse').addEventListener('change',   ()=>{ state.use=$('#tagUse').value;   render(); });
+$('#tagTopic').addEventListener('change', ()=>{ state.topic=$('#tagTopic').value; render(); scrollToResultsTop(); });
+$('#tagPhase').addEventListener('change', ()=>{ state.phase=$('#tagPhase').value; render(); scrollToResultsTop(); });
+$('#tagLevel').addEventListener('change', ()=>{ state.level=$('#tagLevel').value; render(); scrollToResultsTop(); });
+$('#tagUse').addEventListener('change',   ()=>{ state.use=$('#tagUse').value;   render(); scrollToResultsTop(); });
 
 
 $('#reset').addEventListener('click', ()=>{ clearAll(); });
@@ -1244,75 +1283,135 @@ $('#copyDlg').addEventListener('click', (e)=>{
 /* ========== List rendering (adds Ask ChatGPT button on cards) ========== */
 const listEl = $('#list');
 
+function scrollToResultsTop(){
+  const list = document.getElementById('list');
+  if (!list) return;
+  const opts = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? { behavior:'auto', block:'start' }
+    : { behavior:'smooth', block:'start' };
+  list.scrollIntoView(opts);
+}
+
+// ---- Card factory (reusable) ----
+function buildCard(t){
+  const meta = h('div',{class:'meta'},
+    h('span',{class:'pill'}, t._displayKind || '—'),
+    ...(t._displayCats||[]).map(c=>h('span',{class:'pill'}, c))
+  );
+  const tags = h('div',{class:'meta'}, ...(t._cleanedTags||[]).map(tag=>h('span',{class:'chip'}, tag)));
+  const def  = h('div',{class:'muted'}, t.definition || '');
+
+  // prefer the real slug; fall back to a safe, deterministic slug
+  const pbSlug = (t.slug && String(t.slug).trim()) || slugify(t.label || t.id || 'template');
+  const pbUrl  = `startup-wizard.html?slug=${encodeURIComponent(pbSlug)}`;
+
+  const openPB = h('a',{
+    class:'btn pb-btn btn-xs right',
+    href: pbUrl, target: "_blank", rel: "noopener"
+  }, 'Open in Prompt Builder');
+
+  const askBtn = h('a',{
+    class:'btn ask-btn btn-xs right',
+    href: '#',
+    onclick: async (e)=>{ e.preventDefault();
+      const prompt = buildChatGPTPrompt(t);
+      await copyText(prompt);
+      openChatGPTWithPrompt(prompt);
+      showCopyDialog(prompt);
+    }
+  }, '💬 Ask ChatGPT');
+
+  const cardBody = h('div',{style:'flex:1'},
+    h('h3',{}, t.label),
+    def,
+    meta,
+    tags
+  );
+
+  const card = h('div',{
+    class:'card',
+    role:'button',
+    tabIndex:'0',
+    'aria-label': `Expand details for ${t.label || t.slug || t.id || 'template'}`
+  });
+
+  // keep the two CTAs stacked at bottom-right
+  const ctaWrap = h('div',{class:'card-cta'}, openPB, askBtn);
+  card.append(cardBody, ctaWrap);
+
+  // Click anywhere except PB/Ask opens preview modal
+  card.addEventListener('click', (e)=>{
+    if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+    openModal(t, pbUrl);
+  });
+
+  // Keyboard open (but not when focused on the buttons)
+  card.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){
+      if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
+      e.preventDefault();
+      openModal(t, pbUrl);
+    }
+  });
+
+  return card;
+}
+
+function isPromptFundamental(t){
+  // Prefer namespaced tag: type:prompt-fundamental
+  const byNs = (t._tagsByNs && t._tagsByNs.type) || [];
+  if (byNs.some(v => String(v).toLowerCase() === 'prompt-fundamental')) return true;
+
+  // Fallback: plain cleaned tag "prompt-fundamental"
+  return (t._cleanedTags || []).some(v => String(v).toLowerCase() === 'prompt-fundamental');
+}
+
 function render(){
   const rows = DATA.filter(matches).sort((a,b)=> String(a.label).localeCompare(String(b.label)));
   renderActiveFilters(rows.length);
-  listEl.innerHTML='';
+listEl.innerHTML='';
 
-  for(const t of rows){
-    const meta = h('div',{class:'meta'},
-      h('span',{class:'pill'}, t._displayKind || '—'),
-      ...(t._displayCats||[]).map(c=>h('span',{class:'pill'}, c))
-    );
-    const tags = h('div',{class:'meta'}, ...(t._cleanedTags||[]).map(tag=>h('span',{class:'chip'}, tag)));
-    const def  = h('div',{class:'muted'}, t.definition || '');
+// Split results into fundamentals vs others
+const fundamentals = [];
+const others = [];
+for (const t of rows){
+  (isPromptFundamental(t) ? fundamentals : others).push(t);
+}
 
-    const linkId = safeLinkId(t);
-   // prefer the real slug; fall back to a safe, deterministic slug
-const pbSlug = (t.slug && String(t.slug).trim()) || slugify(t.label || t.id || 'template');
-const pbUrl  = `startup-wizard.html?slug=${encodeURIComponent(pbSlug)}`;
+// Header row builder (title centered with lines)
+function renderHeaderRow(title){
+  listEl.append(
+    h('div', { class:'section-row', role:'heading', 'aria-level':'2' },
+      h('span', { class:'title' }, title)
+    )
+  );
+}
 
-
-    const openPB = h('a',{
-      class:'btn pb-btn btn-xs right',
-      href: pbUrl, target: "_blank", rel: "noopener"
-    }, 'Open in Prompt Builder');
-
-    const askBtn = h('a',{
-      class:'btn ask-btn btn-xs right',
-      href: '#',
-      onclick: async (e)=>{ e.preventDefault();
-        const prompt = buildChatGPTPrompt(t);
-        await copyText(prompt);
-        openChatGPTWithPrompt(prompt);
-        showCopyDialog(prompt);
-      }
-    }, '💬 Ask ChatGPT');
-
-    const cardBody = h('div',{style:'flex:1'},
-      h('h3',{}, t.label),
-      def,
-      meta,
-      tags
-    );
-
-const card = h('div',{
-  class:'card',
-  role:'button',
-  tabIndex:'0',
-  'aria-label': `Expand details for ${t.label || t.slug || t.id || 'template'}`
-});
-const ctaWrap = h('div',{class:'card-cta'}, openPB, askBtn);
-card.append(cardBody, ctaWrap);
-
-    // Click anywhere except PB/Ask opens preview modal
-    card.addEventListener('click', (e)=>{
-      if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
-      openModal(t, pbUrl);
-    });
-    
-    card.addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter' || e.key === ' '){
-    // don’t fire when the user is focusing the buttons
-    if(e.target.closest('.pb-btn') || e.target.closest('.ask-btn')) return;
-    e.preventDefault();
-    openModal(t, pbUrl);
+// Render a section with a header + cards
+function renderSection(title, arr){
+  if (!arr.length) return;
+  renderHeaderRow(title);
+  for (const t of arr){
+    listEl.append(buildCard(t));
   }
-});
+}
+
+// 1) Fundamentals first (only if any match current filters)
+if (fundamentals.length){
+  renderSection('prompting fundamentals', fundamentals);
+}
 
 
-    listEl.append(card);
-  }
+// Spacer between sections (only if both exist)
+if (fundamentals.length && others.length){
+  listEl.append(h('div', { class:'section-gap' }));
+}
+
+// 2) Then the rest, with a proper header
+if (others.length){
+  renderSection('all templates', others);
+}
+
 }
 if (!window.__INIT_DONE__) { initSlugFromURL(); window.__INIT_DONE__ = true; }
 render();
