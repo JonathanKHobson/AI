@@ -929,7 +929,24 @@ dialog[class*="ai-settings"] .btn:not(.primary):hover {
   background: var(--chip, #f3f6fa);
 }
 
-
+/* Steps header (persistent template context above the progress bar) */
+.wiz-steps-header{
+  width:100%;
+  max-width:1120px;
+  padding:0 16px;
+  margin:10px auto 8px;
+}
+.wiz-steps-header .title{
+  font-size: clamp(24px, 2.6vw, 32px);
+  margin: 0 0 6px;
+}
+.wiz-steps-header .def{
+  margin: 0;
+  max-width: 75ch;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
 
 </style>
 </head>
@@ -1035,6 +1052,11 @@ dialog[class*="ai-settings"] .btn:not(.primary):hover {
 
     <!-- Steps view -->
     <section id="wizViewSteps" class="hide">
+      <!-- Steps Header: persistent template context -->
+  <div id="wizStepsHeader" class="wiz-steps-header">
+    <h2 id="wizStepsTitle" class="title">template</h2>
+    <p id="wizStepsDef" class="def"></p>
+  </div>
         <div id="wizTopProgress" class="wiz-topprog hide">
   <div class="wiz-topprog-bar" aria-hidden="true"><i id="tpBar"></i></div>
   <div class="wiz-topprog-meta">
@@ -1277,6 +1299,25 @@ function rankSuggestions(q, limit=8){
   // ===== Renderers =====
   const el = id => document.getElementById(id);
   const qs = sel => document.querySelector(sel);
+  
+  // Persist & render the current template in Steps header
+function setCurrentTemplate(t){
+  window.CURRENT_TEMPLATE = t || null;
+  updateStepsHeaderFrom(window.CURRENT_TEMPLATE);
+}
+
+function updateStepsHeaderFrom(t){
+  const titleEl = el('wizStepsTitle');
+  const defEl   = el('wizStepsDef');
+  if (!titleEl || !defEl) return;
+
+  // Prefer explicit template object; otherwise fall back to Step 0 text if present
+  const label = (t && (t.label || t.slug || t.id)) || (el('wizStep0Title')?.textContent) || 'template';
+  const desc  = (t && (t.definition || t.help)) || (el('wizStep0Def')?.textContent) || '';
+
+  titleEl.textContent = label;
+  defEl.textContent   = desc;
+}
 
   function estimateTimeByFields(n){
     const approx = Math.max(1, Math.min(60, Math.ceil((n||0)*0.75))); // ~minutes   [oai_citation:14‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
@@ -1594,7 +1635,7 @@ el('wizGo').addEventListener('click', ()=>{
     const card = btn.closest('.card'); if (!card) return;
     const slug = card.getAttribute('data-slug')||''; const id = card.getAttribute('data-id')||'';
     const t = allTemplates().find(x => (x.slug||'')===slug || (x.id||'')===id) || null;
-    if (t) openStep0(t);   // delegated button → step0   [oai_citation:19‡prompt_builder_test.html](file-service://file-9EZtQuEpjH3EQyYCFvQSHV)
+   if (t){ setCurrentTemplate(t); openStep0(t); }  // record → step0
   }, true);
 
   // ===== View switching (page version of your controller) =====
@@ -1603,6 +1644,11 @@ function showView(name){
   s0.classList.toggle('hide', name!=='startup');
   s1.classList.toggle('hide', name!=='step0');
   s2.classList.toggle('hide', name!=='steps');
+
+  // keep the steps header up to date when Steps becomes visible
+  if (name === 'steps') {
+    updateStepsHeaderFrom(window.CURRENT_TEMPLATE);
+  }
 
   // header affordances: show "exit to search" when not on main page
   const isStartup = name === 'startup';
@@ -1821,6 +1867,272 @@ function ensureAdvBuilderCTA(currentTemplate){
   // (We do not alter #wizStep0Start; we only add a ghost-styled secondary CTA.)
 }
 
+
+// --- PBAIHandoff reader shim (wizard-side) ---
+// This lets the wizard read the handoff even if the helper was only defined on index.html.
+(function ensurePBAIHandoffShim(){
+  if (window.PBAIHandoff && typeof window.PBAIHandoff.load === 'function') return;
+  const KEY = 'pb_ai_handoff_v1';
+  window.PBAIHandoff = {
+    load: () => {
+      try { return JSON.parse(localStorage.getItem(KEY) || 'null'); }
+      catch { return null; }
+    },
+    clear: () => { try { localStorage.removeItem(KEY); } catch{} },
+    getCandidates: () => {
+      const h = (function(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch{ return null; }})();
+      return (h && Array.isArray(h.items)) ? h.items : [];
+    },
+    getPicked: () => {
+      const h = (function(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch{ return null; }})();
+      return (h && h.pickedSlug) ? h.pickedSlug : null;
+    }
+  };
+})();
+
+
+/* ===== Slice 3: AI Picks strip (conditionally above Similar Matches) ====== */
+/* Reads AI suggestions from:
+   1) window.PBAIHandoff (localStorage-backed), or
+   2) sessionStorage['pb.ai.suggestions'] (legacy),
+   validates freshness, and renders an AI-picked strip above #step0Similar
+   ONLY on Step 0 and ONLY when suggestions are relevant to the current template.
+*/
+
+(function setupAIPicksStylesOnce(){
+  if (document.getElementById('aiPicksStyles')) return;
+  const css = `
+    #step0AIPicks { position:relative; margin-top:20px; }
+    #step0AIPicks .block-title { display:flex; align-items:center; justify-content:space-between; }
+    #step0AIPicks .block-controls { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:6px; }
+    #step0AIPicks .wiz-cards { margin-top:8px; gap:12px; }
+    #btnAIClear { background:transparent; border:1px solid transparent; border-radius:8px; width:28px; height:28px; line-height:1; font-size:18px; cursor:pointer; }
+    #btnAIClear:hover { background:var(--chip, #f3f6fa); border-color:var(--border, #e3e9f2); }
+    .hide { display:none !important; }
+  `.trim();
+  const tag = document.createElement('style');
+  tag.id = 'aiPicksStyles';
+  tag.textContent = css;
+  document.head.appendChild(tag);
+})();
+
+const AIP_CFG = { ttlMin: 30 }; // default freshness window for sessionStorage payloads
+
+function __ai_norm(s){
+  return String(s||'')
+    .trim().toLowerCase()
+    .replace(/[\s_]+/g,'-')
+    .replace(/[^a-z0-9-]/g,'');
+}
+function __ai_nowSlug(){
+  try{ return new URLSearchParams(location.search).get('slug') || ''; }
+  catch(_){ return ''; }
+}
+function __ai_isFresh(ts, maxMin){
+  if (!ts) return true;
+  const age = Date.now() - Number(ts||0);
+  return age < (Number(maxMin||AIP_CFG.ttlMin) * 60 * 1000);
+}
+
+/* Read candidates from PBAIHandoff (preferred) */
+function __ai_fromHandoff(){
+  const api = window.PBAIHandoff || {};
+  const obj = api.load ? api.load() : null;
+  const items = (obj && Array.isArray(obj.items)) ? obj.items : [];
+  const picked = (api.getPicked ? api.getPicked() : (obj && obj.pickedSlug)) || null;
+  const slugNow = __ai_norm(__ai_nowSlug());
+  // relevant if current slug or picked matches any candidate
+  let relevant = false;
+  if (items.length){
+    const set = new Set(items.map(it => __ai_norm(it.slug||'')));
+    if (set.has(slugNow) || (picked && set.has(__ai_norm(picked)))) relevant = true;
+  }
+  // optional staleness (e.g., 120 minutes)
+  const staleIgnore = obj && obj.ts && ((Date.now() - Number(obj.ts)) > (120*60*1000));
+  return {
+    ok: !!(items.length && relevant && !staleIgnore),
+    items,
+    clear: ()=>{ api.clear && api.clear(); },
+    meta: { query: obj&&obj.query, provider: obj&&obj.provider, model: obj&&obj.model, ts: obj&&obj.ts }
+  };
+}
+
+/* Read candidates from sessionStorage fallback */
+function __ai_fromSession(){
+  try{
+    const raw = sessionStorage.getItem('pb.ai.suggestions');
+    if (!raw) return { ok:false, items:[], clear:()=>{} };
+    const obj = JSON.parse(raw);
+    const items = Array.isArray(obj.suggestions) ? obj.suggestions : [];
+    const fresh = __ai_isFresh(obj.ts, obj.ttlMin || AIP_CFG.ttlMin);
+    return {
+      ok: !!(items.length && fresh),
+      items: items.map(it => ({
+        slug: it.slug, label: it.label, use: it.use || it.label, def: it.def || '', confidence: it.score || it.confidence
+      })),
+      clear: ()=>{ try{ sessionStorage.removeItem('pb.ai.suggestions'); }catch(_){ } },
+      meta: { query: obj.query, ts: obj.ts }
+    };
+  }catch(_){
+    return { ok:false, items:[], clear:()=>{} };
+  }
+}
+
+/* Map input items to real templates and to our card row shape */
+function __ai_buildRows(items){
+  const T = allTemplates(); // provided by your code
+  const bySlug = new Map(T.map(t => [__ai_norm(t.slug || t.id || t.label), t]));
+  const rows = [];
+  for (const it of items){
+    const slugKey = __ai_norm(it.slug||'');
+    const t = bySlug.get(slugKey);
+    if (!t) continue; // ignore unknown
+    const useText = it.use || (Array.isArray(t.use_cases)&&t.use_cases[0]) || (t.label||t.slug||t.id||'');
+    rows.push({
+      id: t.id, slug: t.slug, key: t.key,
+      label: it.label || t.label || t.slug || t.id || 'template',
+      definition: it.def || t.definition || t.help || '',
+      useText,
+      kind: (t.kind || 'framework'),
+      ref: t
+    });
+  }
+  return rows;
+}
+
+/* Ensure the block exists (or remove it) and return the DOM refs */
+function __ai_ensureBlock(exists){
+  const host = document.getElementById('step0Similar');
+  let blk = document.getElementById('step0AIPicks');
+
+  if (!exists){
+    if (blk){ blk.remove(); }
+    return null;
+  }
+
+  // Create and insert above #step0Similar on first use
+  if (!blk){
+    blk = document.createElement('div');
+    blk.id = 'step0AIPicks';
+    blk.className = 'block';
+    blk.innerHTML = `
+      <div class="block-title">
+        <h3 class="subhead" style="margin:0">AI-picked for you</h3>
+        <button id="btnAIClear" class="icon-btn" title="Hide AI suggestions" aria-label="Hide AI suggestions">×</button>
+      </div>
+      <div class="block-controls">
+        <div class="left">
+          <button id="btnAIPrev3" class="btn sm" title="show previous 3" aria-label="show previous 3">previous 3</button>
+        </div>
+        <div class="right" style="display:flex; align-items:center; gap:10px">
+          <span id="aiMeta" class="muted">showing 0 of 0</span>
+          <button id="btnAINext3" class="btn sm" title="show next 3" aria-label="show next 3">next 3</button>
+        </div>
+      </div>
+      <div id="aiCards" class="wiz-cards"></div>
+    `;
+    if (host && host.parentElement){
+      host.parentElement.insertBefore(blk, host);
+    }
+  }
+  return {
+    root: blk,
+    cards: blk.querySelector('#aiCards'),
+    meta: blk.querySelector('#aiMeta'),
+    prev: blk.querySelector('#btnAIPrev3'),
+    next: blk.querySelector('#btnAINext3'),
+    clear: blk.querySelector('#btnAIClear')
+  };
+}
+
+let __ai_rows = [];   // mapped card rows
+let __ai_index = 0;   // window start for AI picks
+let __ai_clearFn = null;
+
+/* Render the AI picks window of up to 3, with optional prev/next */
+function __ai_renderWindow(dom){
+  const N = (__ai_rows && __ai_rows.length) ? __ai_rows.length : 0;
+
+  if (!N){
+    if (dom && dom.root) dom.root.remove();
+    return;
+  }
+
+  // Show all if fewer than 6 (hide pagers)
+  if (N < 6){
+    dom.cards.innerHTML = __ai_rows.map(cardHTML).join('');
+    dom.meta.textContent = `showing ${N} of ${N}`;
+    dom.prev.classList.add('hide');
+    dom.next.classList.add('hide');
+    return;
+  }
+
+  // N >= 6 → windowed view of 5
+  const start = __ai_index % N;
+  const take = 5;
+  const slice = [];
+  for (let i=0;i<take;i++) slice.push(__ai_rows[(start+i) % N]);
+
+  dom.cards.innerHTML = slice.map(cardHTML).join('');
+  dom.meta.textContent = `showing ${Math.min(take, N)} of ${N}`;
+
+  // Prev appears only after at least one next (match Similar Matches parity)
+  dom.next.classList.remove('hide');
+  if (__ai_index > 0) dom.prev.classList.remove('hide'); else dom.prev.classList.add('hide');
+}
+
+/* Public entry: called when Step 0 opens (with current template) */
+function renderAIPicksForStep0(currentTemplate){
+  // 1) prefer PBAIHandoff
+  let src = __ai_fromHandoff();
+  // 2) fallback to sessionStorage if handoff not relevant
+  if (!src.ok){
+    const ss = __ai_fromSession();
+    if (ss.ok){ src = ss; }
+  }
+
+  // If neither source is valid, remove any existing block and bail
+  const validItems = (src.ok && Array.isArray(src.items) && src.items.length) ? src.items : null;
+  const domMaybe = __ai_ensureBlock(!!validItems);
+  if (!validItems){ return; }
+
+  // Map to rows that exist in our library
+  __ai_rows = __ai_buildRows(validItems);
+  if (!__ai_rows.length){
+    // no known slugs → remove block and bail
+    if (domMaybe && domMaybe.root) domMaybe.root.remove();
+    return;
+  }
+
+  __ai_index = 0;
+  __ai_clearFn = src.clear || null;
+
+  const dom = __ai_ensureBlock(true);
+  if (!dom) return;
+
+  // Bind controls once (idempotent)
+  if (!dom.root.__wired){
+  dom.next.addEventListener('click', ()=>{
+  if (__ai_rows.length < 6) return;
+  __ai_index = (__ai_index + 5) % __ai_rows.length;
+  __ai_renderWindow(dom);
+});
+dom.prev.addEventListener('click', ()=>{
+  if (__ai_rows.length < 6) return;
+  if (__ai_index <= 0) return; // no wrap on prev
+  __ai_index = Math.max(0, __ai_index - 5);
+  __ai_renderWindow(dom);
+});
+    dom.clear.addEventListener('click', ()=>{
+      try{ __ai_clearFn && __ai_clearFn(); }catch(_){}
+      dom.root.remove();
+    });
+    dom.root.__wired = true;
+  }
+
+  // Paint
+  __ai_renderWindow(dom);
+}
 
 const SIM_CONFIG = {
   MIN_POOL: 3,                 // minimum pool size before falling back
@@ -2286,9 +2598,9 @@ function openStep0(t){
   CURRENT = t;
   renderStep0Meta(t);
   showView('step0');
-  if (typeof window.__setURLForTemplate==='function')
-    window.__setURLForTemplate(t);
-  el('wizTopProgress').classList.add('hide');
+  
+    // NEW — Slice 3: conditionally render AI Picks strip above Similar Matches
+  renderAIPicksForStep0(t);
   
     // NEW — Slice 2: ensure Advanced Builder CTA is present and points to this template
   ensureAdvBuilderCTA(t);
