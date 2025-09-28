@@ -160,8 +160,8 @@
       categories: [
         "creativity",
         "planning",
-        "cultural-frameworks",
-        "product-management"
+        "cultural",
+        "management"
       ],
       tags: [
         "use:pattern",
@@ -256,8 +256,7 @@
       label: "5W1H — Who · What · Where · When · Why · How",
       kind: "heuristic",
       categories: [
-        "analysis-frameworks",
-        "prompt-development-techniques",
+        "analysis",
         "quality",
         "reasoning"
       ],
@@ -381,8 +380,7 @@
         "quality",
         "operations",
         "reasoning",
-        "prompt-development-techniques",
-        "teaching"
+        "education"
       ],
       tags: [
         "type:framework",
@@ -528,10 +526,10 @@
       label: "ABCDE — Activating event · Belief · Consequence · Dispute · Effect",
       kind: "framework",
       categories: [
-        "psychology",
-        "self-reflection",
+        "mental-health",
+        "reflection",
         "critical-thinking",
-        "product-management"
+        "management"
       ],
       tags: [
         "type:framework",
@@ -656,14 +654,14 @@
       id: "active_imagination",
       slug: "active-imagination-dialogue",
       label: "Active Imagination — Dialogue with Inner Voices",
-      kind: "framework",
+      kind: "technique",
       categories: [
-        "psychology",
+        "mental-health",
         "creativity",
-        "self-reflection"
+        "reflection"
       ],
       tags: [
-        "type:technique",
+        "type:framework",
         "use:brainstorming",
         "phase:explore",
         "type:framework",
@@ -789,7 +787,7 @@
       label: "ADDIE — Analyze · Design · Develop · Implement · Evaluate",
       kind: "strategy",
       categories: [
-        "teaching",
+        "education",
         "planning",
         "design"
       ],
@@ -923,8 +921,8 @@
       label: "AIDA — Attention · Interest · Desire · Action",
       kind: "strategy",
       categories: [
-        "storytelling-frameworks",
-        "prompt-development-techniques"
+        "storytelling",
+        "prompt-development"
       ],
       tags: [
         "type:framework",
@@ -1022,8 +1020,8 @@
       kind: "heuristic",
       categories: [
         "reasoning",
-        "psychology",
-        "cultural-frameworks",
+        "mental-health",
+        "cultural",
         "ethics",
         "quality"
       ],
@@ -1161,7 +1159,7 @@
         "reasoning",
         "critical-thinking",
         "design",
-        "psychology",
+        "mental-health",
         "ethics"
       ],
       tags: [
@@ -1335,11 +1333,9 @@
 
   // Discovery taxonomy tuned for grief-aware reflection & journaling
   categories: [
-    "self-reflection",
+    "reflection",
     "wellbeing",
-    "personal-development",
-    "mental-health",
-    "grief"
+    "mental-health"
   ],
   tags: [
     "type:framework",
@@ -1536,7 +1532,7 @@
       label: "Before-After-Bridge (BAB) — Before state · After state · Bridge (solution)",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
+        "storytelling",
         "writing",
         "decision"
       ],
@@ -1987,7 +1983,7 @@
       label: "Bloom’s — Remember · Understand · Apply · Analyze · Evaluate · Create",
       kind: "heuristic",
       categories: [
-        "teaching",
+        "education",
         "critical-thinking",
         "design"
       ],
@@ -2148,7 +2144,7 @@
       categories: [
         "ethics",
         "reasoning",
-        "cultural-frameworks",
+        "cultural",
         "critical-thinking"
       ],
       tags: [
@@ -2308,11 +2304,12 @@
       label: "CLEAR — Challenge · Limitation · Effect · Action · Result",
       kind: "framework",
       categories: [
-        "analysis-frameworks",
-        "prompt-development-techniques"
+        "analysis",
+        "prompt-development"
       ],
       tags: [
         "type:framework",
+        "type:prompt-fundamental",
         "use:pattern",
         "phase:apply",
         "level:beginner",
@@ -2410,10 +2407,11 @@
       label: "CLEAR Path Forward — Concise · Logical · Explicit · Adaptive · Reflective",
       kind: "framework",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
         "type:framework",
+        "type:prompt-fundamental",
         "topic:prompting",
         "phase:apply",
         "level:beginner",
@@ -2511,10 +2509,11 @@
       label: "CLEAR Prompting Method — Clarity · Length · Empathy · Actionability · Relevance",
       kind: "framework",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
         "type:framework",
+        "type:prompt-fundamental",
         "topic:prompting",
         "phase:apply",
         "level:beginner",
@@ -2852,7 +2851,7 @@
       label: "Comparative Analysis — rank • pros/cons • matrix",
       kind: "strategy",
       categories: [
-        "analysis-frameworks",
+        "analysis",
         "decision"
       ],
       tags: [
@@ -3135,7 +3134,7 @@
       categories: [
         "creativity",
         "strategy",
-        "cultural-frameworks"
+        "cultural"
       ],
       tags: [
         "use:pattern",
@@ -3275,8 +3274,8 @@
       label: "COSTAR — Context · Objective · Style · Tone · Audience · Response",
       kind: "framework",
       categories: [
-        "prompt-development-techniques",
-        "storytelling-frameworks"
+        "prompt-development",
+        "storytelling"
       ],
       tags: [
         "use:pattern",
@@ -3386,7 +3385,7 @@
       categories: [
         "strategy",
         "ethics",
-        "cultural-frameworks"
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -3559,8 +3558,8 @@
       kind: "strategy",
       categories: [
         "creativity",
-        "teaching",
-        "storytelling-frameworks"
+        "education",
+        "storytelling"
       ],
       tags: [
         "type:framework",
@@ -4002,7 +4001,7 @@
       categories: [
         "creativity",
         "planning",
-        "psychology",
+        "mental-health",
         "decision"
       ],
       tags: [
@@ -4127,15 +4126,14 @@
       id: "empty_chair",
       slug: "empty-chair-technique",
       label: "Empty Chair Dialogue (Gestalt)",
-      kind: "framework",
+      kind: "technique",
       categories: [
-        "psychology",
-        "self-reflection",
-        "teaching",
+        "mental-health",
+        "reflection",
+        "education",
         "critical-thinking"
       ],
       tags: [
-        "use:pattern",
         "use:content",
         "use:ad-copy",
         "type:framework",
@@ -4395,8 +4393,8 @@
       kind: "strategy",
       categories: [
         "creativity",
-        "self-reflection",
-        "cultural-frameworks",
+        "reflection",
+        "cultural",
         "writing"
       ],
       tags: [
@@ -4543,9 +4541,9 @@
       kind: "framework",
       categories: [
         "creativity",
-        "storytelling-frameworks",
+        "storytelling",
         "brainstorming",
-        "self-reflection"
+        "reflection"
       ],
       tags: [
         "use:pattern",
@@ -4699,9 +4697,10 @@
       label: "Examples / Few-Shot Prompting",
       kind: "technique",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+        "type:prompt-fundamental",
         "use:pattern",
         "phase:explore",
         "topic:future-self",
@@ -4800,10 +4799,10 @@
       label: "FAB — Feature · Advantage · Benefit",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
+        "storytelling",
         "writing",
         "strategy",
-        "teaching"
+        "education"
       ],
       tags: [
         "type:framework",
@@ -4948,7 +4947,7 @@
       kind: "framework",
       categories: [
         "critical-thinking",
-        "teaching",
+        "education",
         "reasoning",
         "decision"
       ],
@@ -5154,11 +5153,12 @@
       label: "Facts & Expertise Primer",
       kind: "technique",
       categories: [
-        "prompt-development-techniques",
+        "prompt-development",
         "quality"
       ],
       tags: [
-        "type:framework",
+        "type:technique",
+        "type:prompt-fundamental",
         "use:teaching",
         "level:beginner",
         "use:case-study"
@@ -5287,12 +5287,12 @@
       id: "feynman",
       slug: "feynman-technique",
       label: "Feynman Technique — Explain Like I’m 5",
-      kind: "framework",
+      kind: "technique",
       categories: [
-        "teaching",
+        "education",
         "reasoning",
         "critical-thinking",
-        "psychology"
+        "mental-health"
       ],
       tags: [
         "use:pattern",
@@ -5438,10 +5438,10 @@
       categories: [
         "reasoning",
         "brainstorming",
-        "analysis-frameworks",
+        "analysis",
         "creativity",
-        "psychology",
-        "product-management"
+        "mental-health",
+        "management"
       ],
       tags: [
         "type:framework",
@@ -5566,8 +5566,8 @@
       categories: [
         "creativity",
         "writing",
-        "self-reflection",
-        "cultural-frameworks",
+        "reflection",
+        "cultural",
         "critical-thinking"
       ],
       tags: [
@@ -5707,10 +5707,10 @@
       kind: "strategy",
       categories: [
         "reasoning",
-        "cultural-frameworks",
+        "cultural",
         "strategy",
-        "psychology",
-        "teaching",
+        "mental-health",
+        "education",
         "ethics"
       ],
       tags: [
@@ -5857,9 +5857,10 @@
       kind: "technique",
       categories: [
         "planning",
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "topic:decomposition",
         "level:beginner",
@@ -5951,9 +5952,10 @@
       kind: "technique",
       categories: [
         "planning",
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "topic:decomposition",
         "use:goals",
@@ -6064,9 +6066,10 @@
       kind: "technique",
       categories: [
         "planning",
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "use:goals",
         "level:beginner",
@@ -6170,11 +6173,11 @@
       label: "Golden Circle — Why · How · What · Mission",
       kind: "strategy",
       categories: [
-        "storytelling-frameworks",
-        "cultural-frameworks",
+        "storytelling",
+        "cultural",
         "strategy",
         "brainstorming",
-        "prompt-development-techniques",
+        "prompt-development",
         "planning"
       ],
       tags: [
@@ -6322,10 +6325,9 @@
       categories: [
         "critical-thinking",
         "planning",
-        "self-reflection",
+        "reflection",
         "brainstorming",
-        "prompt-development-techniques",
-        "storytelling-frameworks"
+        "storytelling"
       ],
       tags: [
         "type:framework",
@@ -6467,8 +6469,8 @@
       kind: "framework",
       categories: [
         "decision",
-        "self-reflection",
-        "psychology",
+        "reflection",
+        "mental-health",
         "brainstorming",
         "critical-thinking",
         "ethics"
@@ -6596,9 +6598,9 @@
       label: "Hero’s Journey — Departure · Initiation · Return",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
+        "storytelling",
         "writing",
-        "cultural-frameworks",
+        "cultural",
         "design"
       ],
       tags: [
@@ -7480,7 +7482,7 @@
       id: "hypnagogic_spark",
       slug: "hypnagogic-spark-creativity",
       label: "Hypnagogic Spark — Semi-sleep insight technique",
-      kind: "framework",
+      kind: "technique",
       categories: [
         "creativity",
         "design",
@@ -7489,7 +7491,7 @@
         "reasoning"
       ],
       tags: [
-        "type:technique",
+        "type:framework",
         "use:presentations",
         "phase:premortem",
         "level:beginner",
@@ -7830,7 +7832,7 @@
       kind: "strategy",
       categories: [
         "planning",
-        "cultural-frameworks",
+        "cultural",
         "operations"
       ],
       tags: [
@@ -8695,7 +8697,7 @@
         "ethics",
         "quality",
         "reasoning",
-        "teaching"
+        "education"
       ],
       tags: [
         "type:framework",
@@ -8942,8 +8944,8 @@
       label: "Inner Child Work — Conscious Self · Inner Child",
       kind: "framework",
       categories: [
-        "psychology",
-        "self-reflection"
+        "mental-health",
+        "reflection"
       ],
       tags: [
         "use:pattern",
@@ -9185,9 +9187,9 @@
       label: "Internal Weather Report — Storm · Calm · Forecast",
       kind: "framework",
       categories: [
-        "self-reflection",
+        "reflection",
         "writing",
-        "teaching"
+        "education"
       ],
       tags: [
         "use:pattern",
@@ -9501,8 +9503,8 @@
       kind: "strategy",
       categories: [
         "ethics",
-        "product-management",
-        "cultural-frameworks"
+        "management",
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -9711,7 +9713,7 @@
       kind: "strategy",
       categories: [
         "planning",
-        "product-management",
+        "management",
         "quality",
         "reasoning"
       ],
@@ -10027,7 +10029,7 @@ Dissatisfaction ↓`;
       categories: [
         "design",
         "reasoning",
-        "analysis-frameworks"
+        "analysis"
       ],
       tags: [
         "type:framework",
@@ -10573,10 +10575,11 @@ Dissatisfaction ↓`;
       label: "Keywords + Why + Tasks — Vector Priming",
       kind: "technique",
       categories: [
-        "prompt-development-techniques",
+        "prompt-development",
         "planning"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "topic:clarification",
         "phase:apply",
@@ -10680,9 +10683,11 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "planning"
+        "planning",
+        "prompt-reasoning"
       ],
       tags: [
+       "type:prompt-fundamental",
         "use:pattern",
         "use:presentations",
         "use:healing",
@@ -10763,9 +10768,8 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "ethics",
-        "product-management",
-        "cultural-frameworks",
-        "prompt-development-techniques"
+        "management",
+        "cultural",
       ],
       tags: [
         "type:framework",
@@ -10998,7 +11002,7 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "creativity",
-        "analysis-frameworks"
+        "analysis"
       ],
       tags: [
         "type:framework",
@@ -11512,7 +11516,7 @@ Dissatisfaction ↓`;
       label: "Monroe’s Motivated Sequence — Attention · Need · Satisfaction · Visualization · Action",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
+        "storytelling",
         "decision",
         "reasoning",
         "ethics"
@@ -11792,7 +11796,7 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "planning",
-        "product-management"
+        "management"
       ],
       tags: [
         "type:framework",
@@ -11869,8 +11873,8 @@ Dissatisfaction ↓`;
       categories: [
         "decision",
         "planning",
-        "cultural-frameworks",
-        "product-management"
+        "cultural",
+        "management"
       ],
       tags: [
         "type:framework",
@@ -12171,8 +12175,8 @@ Dissatisfaction ↓`;
       kind: "framework",
       categories: [
         "reasoning",
-        "psychology",
-        "cultural-frameworks"
+        "mental-health",
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -12479,8 +12483,8 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "psychology",
-        "cultural-frameworks"
+        "mental-health",
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -13725,7 +13729,7 @@ Dissatisfaction ↓`;
   slug: "opportunity-scoring-gap-analysis",
   label: "Opportunity Scoring — Importance vs. Satisfaction",
   kind: "framework",
-  categories: ["reasoning", "planning", "product-management"],
+  categories: ["reasoning", "planning", "management"],
   tags: [
     "type:framework","topic:odi","topic:jtbd","topic:clarification","topic:prioritization",
     "use:pattern","use:segmentation","use:roadmap","level:intermediate"
@@ -13917,7 +13921,7 @@ Dissatisfaction ↓`;
   slug: "par-problem-action-result",
   label: "PAR — Problem · Action · Result",
   kind: "framework",
-  categories: ["storytelling-frameworks", "prompt-development-techniques"],
+  categories: ["storytelling", "writing"],
   tags: [
     "type:framework","use:storytelling","phase:apply","level:beginner",
     "use:recipe","use:case-study","use:planning","use:pattern",
@@ -14141,7 +14145,7 @@ Dissatisfaction ↓`;
   slug: "parts-work-dialogue",
   label: "Parts Work Dialogue (IFS therapy)",
   kind: "framework",
-  categories: ["psychology", "self-reflection", "coaching"],
+  categories: ["mental-health", "reflection", "coaching"],
   tags: [
     "type:framework","topic:parts-work","topic:IFS","level:intermediate",
     "use:conflict-resolution","use:self-compassion","use:values-alignment",
@@ -14616,7 +14620,6 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "critical-thinking",
-        "prompt-development-techniques"
       ],
       tags: [
         "type:framework",
@@ -14745,7 +14748,7 @@ Dissatisfaction ↓`;
       categories: [
         "quality",
         "operations",
-        "teaching"
+        "education"
       ],
       tags: [
         "type:framework",
@@ -14811,7 +14814,7 @@ Dissatisfaction ↓`;
       kind: "framework",
       categories: [
         "design",
-        "analysis-frameworks"
+        "analysis"
       ],
       tags: [
         "type:framework",
@@ -14891,10 +14894,10 @@ Dissatisfaction ↓`;
       label: "Persona — ActAs / Simulate",
       kind: "technique",
       categories: [
-        "prompt-development-techniques",
-        "reasoning"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "use:goals",
         "phase:apply",
@@ -15005,7 +15008,7 @@ Dissatisfaction ↓`;
       label: "PESTLE — Political · Economic · Social · Technological · Legal · Environmental",
       kind: "strategy",
       categories: [
-        "analysis-frameworks",
+        "analysis",
         "strategy"
       ],
       tags: [
@@ -15112,9 +15115,11 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "planning"
+        "planning",
+        "prompt-reasoning"
       ],
       tags: [
+       "type:prompt-fundamental",
         "use:pattern",
         "topic:clarification",
         "use:problem-framing",
@@ -15269,7 +15274,7 @@ Dissatisfaction ↓`;
       kind: "framework",
       categories: [
         "reasoning",
-        "psychology"
+        "mental-health"
       ],
       tags: [
         "type:framework",
@@ -15399,11 +15404,12 @@ Dissatisfaction ↓`;
       id: "prompt_augmentation",
       slug: "prompt-augmentation-demonstration-learning",
       label: "Prompt Augmentation (Demonstration Learning)",
-      kind: "framework",
+      kind: "technique",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "phase:explore",
         "use:presentations",
@@ -15491,8 +15497,8 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "psychology",
-        "cultural-frameworks"
+        "mental-health",
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -15557,12 +15563,13 @@ Dissatisfaction ↓`;
       id: "raccca",
       slug: "raccca-framework",
       label: "RACCCA — Relevance · Accuracy · Completeness · Clarity · Coherence · Appropriateness",
-      kind: "heuristic",
+      kind: "framework",
       categories: [
-        "teaching",
-        "prompt-development-techniques"
+        "education",
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "type:framework",
         "use:evaluation",
         "level:beginner",
@@ -15697,8 +15704,7 @@ Dissatisfaction ↓`;
       label: "RAP — Result · Action · Problem",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
-        "prompt-development-techniques"
+        "storytelling",
       ],
       tags: [
         "type:framework",
@@ -15782,7 +15788,7 @@ Dissatisfaction ↓`;
       categories: [
         "decision",
         "operations",
-        "product-management"
+        "management"
       ],
       tags: [
         "type:framework",
@@ -15912,7 +15918,7 @@ Dissatisfaction ↓`;
       label: "RATIO — Role · Audience · Task · Instructions · Output",
       kind: "framework",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
         "use:pattern",
@@ -16088,7 +16094,7 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "planning",
-        "product-management"
+        "management"
       ],
       tags: [
         "type:framework",
@@ -16176,7 +16182,7 @@ Dissatisfaction ↓`;
       label: "RISEN — Role · Instructions · Steps · End goal · Narrowing",
       kind: "strategy",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
         "use:pattern",
@@ -16253,7 +16259,7 @@ Dissatisfaction ↓`;
       label: "RODES — Role · Objective · Details · Examples · Sense check",
       kind: "framework",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
         "use:pattern",
@@ -16467,9 +16473,10 @@ Dissatisfaction ↓`;
       label: "RTF — Role · Task · Format",
       kind: "framework",
       categories: [
-        "prompt-development-techniques"
+        "prompt-development"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "topic:prompting",
         "phase:apply",
@@ -16531,9 +16538,9 @@ Dissatisfaction ↓`;
       id: "rubber_duck",
       slug: "rubber-duck-debugging",
       label: "Rubber Duck Debugging — Explain to Understand",
-      kind: "framework",
+      kind: "technique",
       categories: [
-        "analysis-frameworks",
+        "analysis",
         "creativity"
       ],
       tags: [
@@ -16671,10 +16678,11 @@ Dissatisfaction ↓`;
       label: "Scenario-based Prompting — Deliberative reasoning",
       kind: "framework",
       categories: [
-        "prompt-development-techniques",
+        "prompt-development",
         "reasoning"
       ],
       tags: [
+      "type:prompt-fundamental",
         "type:framework",
         "topic:prompting",
         "phase:compose",
@@ -16756,7 +16764,7 @@ Dissatisfaction ↓`;
       kind: "heuristic",
       categories: [
         "reasoning",
-        "teaching"
+        "education"
       ],
       tags: [
         "type:framework",
@@ -16828,8 +16836,8 @@ Dissatisfaction ↓`;
       label: "SCQA — Situation · Complication · Question · Answer",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
-        "analysis-frameworks"
+        "storytelling",
+        "analysis"
       ],
       tags: [
         "type:framework",
@@ -16893,7 +16901,7 @@ Dissatisfaction ↓`;
       categories: [
         "reasoning",
         "design",
-        "cultural-frameworks"
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -16953,8 +16961,8 @@ Dissatisfaction ↓`;
       label: "Shadow Work Dialogue — Conscious Self · Shadow Self",
       kind: "framework",
       categories: [
-        "psychology",
-        "self-reflection"
+        "mental-health",
+        "reflection"
       ],
       tags: [
         "use:pattern",
@@ -17621,8 +17629,8 @@ Dissatisfaction ↓`;
       label: "Somatic Focusing — Feel · Ask · Listen",
       kind: "framework",
       categories: [
-        "psychology",
-        "self-reflection"
+        "mental-health",
+        "reflection"
       ],
       tags: [
         "use:pattern",
@@ -17679,8 +17687,7 @@ Dissatisfaction ↓`;
       label: "STAR — Situation · Task · Action · Result",
       kind: "framework",
       categories: [
-        "storytelling-frameworks",
-        "prompt-development-techniques"
+        "storytelling",
       ],
       tags: [
         "type:framework",
@@ -17752,10 +17759,9 @@ Dissatisfaction ↓`;
       id: "swot",
       slug: "swot-analysis",
       label: "SWOT — Strengths · Weaknesses · Opportunities · Threats",
-      kind: "strategy",
+      kind: "framework",
       categories: [
-        "analysis-frameworks",
-        "prompt-development-techniques"
+        "analysis",
       ],
       tags: [
         "type:framework",
@@ -17939,7 +17945,7 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "planning",
-        "cultural-frameworks",
+        "cultural",
         "decision"
       ],
       tags: [
@@ -18000,7 +18006,7 @@ Dissatisfaction ↓`;
   slug: "tarot-spread-reflection",
   label: "Tarot Spread Reflection — Past · Present · Future",
   kind: "framework",
-  categories: ["creativity", "self-reflection", "journaling", "wellbeing"],
+  categories: ["creativity", "reflection", "journaling", "wellbeing"],
   tags: [
     "type:framework",
     "use:content",
@@ -18224,10 +18230,12 @@ Dissatisfaction ↓`;
       label: "Task Prompt Breakdown — Task/Recipe + Do/Don’t (CoT)",
       kind: "technique",
       categories: [
-        "prompt-development-techniques",
-        "planning"
+        "prompt-development",
+        "planning",
+        "prompt-reasoning"
       ],
       tags: [
+      "type:prompt-fundamental",
         "use:pattern",
         "use:teaching",
         "use:healing",
@@ -18312,7 +18320,7 @@ Dissatisfaction ↓`;
 
   // Discovery taxonomy
   categories: [
-    "self-reflection",
+    "reflection",
     "wellbeing",
     "personal-development",
     "communication",
@@ -18453,7 +18461,7 @@ Dissatisfaction ↓`;
       label: "Time Machine Advice — Past Self & Future Self",
       kind: "strategy",
       categories: [
-        "self-reflection",
+        "reflection",
         "planning"
       ],
       tags: [
@@ -18575,7 +18583,7 @@ Dissatisfaction ↓`;
         "reasoning",
         "critical-thinking",
         "design",
-        "psychology",
+        "mental-health",
         "ethics"
       ],
       tags: [
@@ -18670,9 +18678,11 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "planning"
+        "planning",
+        "prompt-reasoning"
       ],
       tags: [
+       "type:prompt-fundamental",
         "use:pattern",
         "use:healing",
         "use:teaching",
@@ -18790,9 +18800,11 @@ Dissatisfaction ↓`;
       kind: "strategy",
       categories: [
         "reasoning",
-        "planning"
+        "planning",
+        "prompt-reasoning"
       ],
       tags: [
+       "type:prompt-fundamental",
         "use:pattern",
         "topic:decomposition",
         "use:teaching",
@@ -19187,7 +19199,7 @@ Dissatisfaction ↓`;
       categories: [
         "planning",
         "operations",
-        "product-management"
+        "management"
       ],
       tags: [
         "type:framework",
@@ -19657,7 +19669,7 @@ Dissatisfaction ↓`;
       categories: [
         "ethics",
         "reasoning",
-        "cultural-frameworks"
+        "cultural"
       ],
       tags: [
         "type:framework",
@@ -19721,7 +19733,7 @@ Dissatisfaction ↓`;
   slug: "focusing-felt-sense",
   label: "Focusing — Felt-Sense Check",
   kind: "framework",
-  categories: ["self-reflection","wellbeing","personal-development","mental-health","mindfulness"],
+  categories: ["reflection","wellbeing","personal-development","mental-health","mindfulness"],
   tags: [
     "type:practice","use:check-in","use:journaling","use:decision-making",
     "topic:embodiment","topic:feelings","topic:creativity","origin:gendlin","level:beginner"
@@ -19781,7 +19793,7 @@ Dissatisfaction ↓`;
   slug: "rain-recognize-allow-investigate-nurture",
   label: "RAIN — Recognize · Allow · Investigate · Nurture",
   kind: "framework",
-  categories: ["wellbeing","mental-health","mindfulness","self-reflection","personal-development"],
+  categories: ["wellbeing","mental-health","mindfulness","reflection","personal-development"],
   tags: [
     "type:practice","use:check-in","use:journaling","use:emotion-regulation",
     "topic:mindfulness","topic:self-compassion","origin:tara-brach","level:beginner"
@@ -19838,7 +19850,7 @@ Dissatisfaction ↓`;
   slug: "parts-check-in-ifs-inspired",
   label: "Parts Check-In — IFS-Inspired",
   kind: "framework",
-  categories: ["wellbeing","mental-health","self-reflection","communication","coaching"],
+  categories: ["wellbeing","mental-health","reflection","communication","coaching"],
   tags: [
     "type:practice","use:check-in","use:journaling","use:coaching",
     "topic:parts-work","topic:self-leadership","origin:ifs-inspired","level:beginner"
@@ -19894,7 +19906,7 @@ Dissatisfaction ↓`;
   slug: "noting-mindfulness",
   label: "Noting — Mindfulness Labels",
   kind: "framework",
-  categories: ["mindfulness","wellbeing","self-reflection","personal-development"],
+  categories: ["mindfulness","wellbeing","reflection","personal-development"],
   tags: [
     "type:practice","use:check-in","use:focus","use:sleep-winddown",
     "topic:awareness","topic:meditation","origin:vipassana-inspired","level:beginner"
@@ -19942,7 +19954,7 @@ Dissatisfaction ↓`;
   slug: "tonglen-lite-secular",
   label: "Tonglen-Lite — Breathe With Suffering",
   kind: "framework",
-  categories: ["wellbeing","compassion","mindfulness","self-reflection"],
+  categories: ["wellbeing","compassion","mindfulness","reflection"],
   tags: [
     "type:practice","use:emotion-regulation","use:compassion","use:check-in",
     "topic:breath","topic:empathy","origin:tibetan-inspired","level:beginner"
@@ -19993,7 +20005,7 @@ Dissatisfaction ↓`;
   slug: "memento-mori-micro-sit",
   label: "Memento Mori — Micro-Sit",
   kind: "framework",
-  categories: ["self-reflection","wellbeing","personal-development","decision"],
+  categories: ["reflection","wellbeing","personal-development","decision"],
   tags: [
     "type:practice","use:prioritization","use:motivation","use:gratitude",
     "topic:mortality","topic:values","origin:stoic-inspired","level:beginner"
@@ -20779,7 +20791,7 @@ Dissatisfaction ↓`;
   slug: "automatic-writing-truth-sprint",
   label: "Automatic Writing — Truth Sprint",
   kind: "framework",
-  categories: ["creativity","wellbeing","self-reflection","writing"],
+  categories: ["creativity","wellbeing","reflection","writing"],
   tags: [
     "type:practice","use:journaling","use:creative-warmup","use:clarity",
     "topic:truth-telling","topic:flow","level:beginner","origin:automatic-writing"
@@ -21601,7 +21613,7 @@ Dissatisfaction ↓`;
   slug: "working-backwards-prfaq-v3",
   label: "Working Backwards PRFAQ — Truths & Tradeoffs",
   kind: "framework",
-  categories: ["product-management","strategy","communication","research"],
+  categories: ["management","strategy","communication","research"],
   tags: [
     "type:framework","use:press-release","use:faq","use:alignment",
     "topic:working-backwards","topic:tradeoffs","origin:amazon-inspired","level:intermediate"
@@ -21693,7 +21705,7 @@ Dissatisfaction ↓`;
   slug: "jtbd-interviews-v3",
   label: "JTBD Interviews — Felt-Sense Friction",
   kind: "framework",
-  categories: ["research","product-management","ux","strategy"],
+  categories: ["research","management","ux","strategy"],
   tags: [
     "type:framework","use:interview","use:discovery","use:insight-capture",
     "topic:jtbd","topic:struggles","topic:progress","origin:jtbd-inspired","level:intermediate"
@@ -21762,7 +21774,7 @@ Dissatisfaction ↓`;
   slug: "lean-startup-loop-stop-harm-v3",
   label: "Lean Startup Loop — Stop & Harm Rules",
   kind: "framework",
-  categories: ["experimentation","product-management","strategy","analytics"],
+  categories: ["experimentation","management","strategy","analytics"],
   tags: [
     "type:framework","use:experiment","use:hypothesis","use:decision",
     "topic:metrics","topic:ethics","origin:lean-startup-inspired","level:beginner"
@@ -21825,7 +21837,7 @@ Dissatisfaction ↓`;
   slug: "pre-mortem-red-team-v3",
   label: "Pre-Mortem + Red Team — Embarrassing Sentence",
   kind: "framework",
-  categories: ["risk","strategy","ethics","teamwork","product-management"],
+  categories: ["risk","strategy","ethics","teamwork","management"],
   tags: [
     "type:framework","use:planning","use:risk-review","use:ethics-review",
     "topic:red-team","topic:failure-modes","level:intermediate"
@@ -21887,7 +21899,7 @@ Dissatisfaction ↓`;
   slug: "decision-record-v3",
   label: "Decision Record — Dissent & Kill Criteria",
   kind: "framework",
-  categories: ["product-management","engineering","strategy","communication"],
+  categories: ["management","engineering","strategy","communication"],
   tags: [
     "type:framework","use:adr","use:prd-note","use:alignment",
     "topic:dissent","topic:kill-criteria","level:beginner"
@@ -21946,7 +21958,7 @@ Dissatisfaction ↓`;
   slug: "okrs-with-kill-criteria-v3",
   label: "OKRs — With Kill Criteria",
   kind: "framework",
-  categories: ["strategy","product-management","teamwork","analytics"],
+  categories: ["strategy","management","teamwork","analytics"],
   tags: [
     "type:framework","use:planning","use:goal-setting","use:review",
     "topic:okrs","topic:kill-criteria","level:beginner"
@@ -22378,7 +22390,7 @@ Dissatisfaction ↓`;
   slug: "observability-slos-slis-error-budgets",
   label: "Observability — SLOs · SLIs · Error Budgets",
   kind: "framework",
-  categories: ["reliability","analytics","operations","product-management"],
+  categories: ["reliability","analytics","operations","management"],
   tags: [
     "type:practice","use:slo","use:monitoring","use:review",
     "topic:error-budget","topic:burn-rate","level:intermediate"
@@ -24357,7 +24369,7 @@ Dissatisfaction ↓`;
   kind: "strategy",
   categories: [
     "planning",
-    "analysis-frameworks",
+    "analysis",
     "community"
   ],
   tags: [
@@ -25880,7 +25892,7 @@ Dissatisfaction ↓`;
   kind: "strategy",
   categories: [
     "planning",
-    "analysis-frameworks",
+    "analysis",
     "systems",
     "community"
   ],
@@ -28090,7 +28102,7 @@ Dissatisfaction ↓`;
   kind: "strategy",
   categories: [
     "planning",
-    "analysis-frameworks",
+    "analysis",
     "governance",
     "community"
   ],
@@ -29063,7 +29075,7 @@ Dissatisfaction ↓`;
   categories: [
     "research",
     "planning",
-    "analysis-frameworks",
+    "analysis",
     "community"
   ],
   tags: [
@@ -31781,7 +31793,7 @@ Dissatisfaction ↓`;
     "evaluation",
     "learning",
     "community",
-    "analysis-frameworks",
+    "analysis",
     "data"
   ],
   tags: [
@@ -34040,61 +34052,61 @@ Dissatisfaction ↓`;
   label: "Brand Archetypes for Communities - Shared identity motifs and tone",
   kind: "framework",
   categories: [
-    "branding",
-    "communications",
-    "community",
-    "design",
-    "strategy"
-  ],
+      "branding",
+      "communication",
+      "community",
+      "design",
+      "strategy"
+    ],
   tags: [
-    "type:framework",
-    "use:identity",
-    "use:voice",
-    "use:messaging",
-    "use:governance",
-    "phase:define",
-    "phase:plan",
-    "topic:community",
-    "level:beginner"
-  ],
+      "type:framework",
+      "use:identity",
+      "use:voice",
+      "use:messaging",
+      "use:governance",
+      "phase:define",
+      "phase:planning",
+      "topic:community",
+      "level:beginner"
+    ],
   use_cases: [
-    "align shared voice and tone across programs and channels",
-    "choose primary, secondary, and shadow archetypes with rationale",
-    "translate archetypes into words, rituals, visuals, and behaviors",
-    "avoid harmful tropes and stereotype drift with clear guardrails",
-    "equip contributors with examples and a quick style matrix",
-        "decide if our community feels more like a 'Caregiver' or a 'Rebel'",
-    "pick an archetype that matches our mission and tone",
-    "make our newsletter sound consistent across writers",
-    "help volunteers know what voice to use on social media",
-    "choose imagery and slogans that fit our archetype",
-    "check if our brand voice is too serious or too playful",
-    "avoid drifting into stereotypes when using archetypes",
-    "use archetypes to guide event themes and rituals",
-    "align how leaders and members describe the community",
-    "map our primary, secondary, and shadow archetypes",
-    "translate an archetype into colors, fonts, and visuals",
-    "create a style guide for new contributors",
-    "figure out if we’re more of a 'Hero' or an 'Explorer' group",
-    "make fundraising campaigns match our chosen archetype",
-    "stress-test if our brand voice resonates with our members",
-    "align external partnerships with our archetype identity",
-    "design onboarding materials that fit our tone",
-    "reframe a confusing mission statement using archetypes",
-    "choose brand metaphors that stick in people’s minds",
-    "test if our community logo reflects our archetype",
-    "decide whether our Discord should sound 'friendly' or 'wise'",
-    "help staff write in one shared voice",
-    "explain to outsiders what makes our culture unique",
-    "simplify our message using archetype language",
-    "pick visuals for a campaign that feel 'on brand'",
-    "run a workshop to identify archetypes with members",
-    "spot when our messaging drifts away from our core",
-    "make our tone consistent across emails, posters, and social posts",
-    "compare our archetype to other orgs to stand out",
-    "adjust our storytelling style to fit our identity",
-    "keep our archetype relevant as the community evolves"
-  ],
+      "align shared voice and tone across programs and channels",
+      "choose primary, secondary, and shadow archetypes with rationale",
+      "translate archetypes into words, rituals, visuals, and behaviors",
+      "avoid harmful tropes and stereotype drift with clear guardrails",
+      "equip contributors with examples and a quick style matrix",
+      "decide if our community feels more like a 'Caregiver' or a 'Rebel'",
+      "pick an archetype that matches our mission and tone",
+      "make our newsletter sound consistent across writers",
+      "help volunteers know what voice to use on social media",
+      "choose imagery and slogans that fit our archetype",
+      "check if our brand voice is too serious or too playful",
+      "avoid drifting into stereotypes when using archetypes",
+      "use archetypes to guide event themes and rituals",
+      "align how leaders and members describe the community",
+      "map our primary, secondary, and shadow archetypes",
+      "translate an archetype into colors, fonts, and visuals",
+      "create a style guide for new contributors",
+      "figure out if we’re more of a 'Hero' or an 'Explorer' group",
+      "make fundraising campaigns match our chosen archetype",
+      "stress-test if our brand voice resonates with our members",
+      "align external partnerships with our archetype identity",
+      "design onboarding materials that fit our tone",
+      "reframe a confusing mission statement using archetypes",
+      "choose brand metaphors that stick in people’s minds",
+      "test if our community logo reflects our archetype",
+      "decide whether our Discord should sound 'friendly' or 'wise'",
+      "help staff write in one shared voice",
+      "explain to outsiders what makes our culture unique",
+      "simplify our message using archetype language",
+      "pick visuals for a campaign that feel 'on brand'",
+      "run a workshop to identify archetypes with members",
+      "spot when our messaging drifts away from our core",
+      "make our tone consistent across emails, posters, and social posts",
+      "compare our archetype to other orgs to stand out",
+      "adjust our storytelling style to fit our identity",
+      "keep our archetype relevant as the community evolves"
+    ],
   boosters: [
     "Communities are multi-vocal. Name primary, secondary, and shadow archetypes. Allow seasonal shifts when context changes.",
     "Write Do and Do-not examples in the community's own words. Small concrete patterns beat abstract adjectives.",
@@ -34327,61 +34339,61 @@ Dissatisfaction ↓`;
   label: "Voice and Tone Frameworks - Codify how the community speaks",
   kind: "framework",
   categories: [
-    "branding",
-    "communications",
-    "community",
-    "design",
-    "governance"
-  ],
+      "branding",
+      "communication",
+      "community",
+      "design",
+      "governance"
+    ],
   tags: [
-    "type:framework",
-    "use:identity",
-    "use:voice",
-    "use:messaging",
-    "use:style",
-    "use:governance",
-    "phase:define",
-    "phase:plan",
-    "topic:community",
-    "level:beginner"
-  ],
+      "type:framework",
+      "use:identity",
+      "use:voice",
+      "use:messaging",
+      "use:style",
+      "use:governance",
+      "phase:define",
+      "phase:planning",
+      "topic:community",
+      "level:beginner"
+    ],
   use_cases: [
-    "align many contributors on shared voice and tone",
-    "set clear do and do not examples that people can copy",
-    "adapt tone by scenario and channel without losing identity",
-    "prevent stereotype drift and inaccessible language",
-    "create a change process so the guide stays alive",
-       "decide if our community voice should be casual or professional",
-    "make emails, posts, and updates sound like they came from one voice",
-    "set do vs don’t examples for writing style",
-    "teach volunteers how to speak in our community’s tone",
-    "adapt tone for social media vs. formal reports",
-    "stop our messaging from sounding robotic",
-    "find words that feel welcoming and inclusive",
-    "avoid words or jokes that could alienate members",
-    "make our voice sound consistent even with many writers",
-    "explain to designers what tone matches the visuals",
-    "show how to shift tone between celebration and crisis",
-    "write website copy that feels friendly but still clear",
-    "train staff to reply to messages in the same style",
-    "decide if we say 'folks' or 'community members'",
-    "give newcomers a style cheat sheet they can copy fast",
-    "keep our tone from drifting over time",
-    "codify phrases we always use and phrases we avoid",
-    "explain why our voice is more warm than authoritative",
-    "set tone rules for press releases vs. internal notes",
-    "create consistency in multilingual or translated content",
-    "map our voice to our brand archetype",
-    "stress-test if our tone fits our values and mission",
-    "align voice for events, newsletters, and Discord chats",
-    "decide if humor is okay in official updates",
-    "make instructions clear without sounding bossy",
-    "rewrite confusing policies in plain language",
-    "plan how our tone changes when addressing conflict",
-    "avoid jargon so the community stays accessible",
-    "document a process for updating tone guidelines",
-    "show examples of the same message in different tones"
-  ],
+      "align many contributors on shared voice and tone",
+      "set clear do and do not examples that people can copy",
+      "adapt tone by scenario and channel without losing identity",
+      "prevent stereotype drift and inaccessible language",
+      "create a change process so the guide stays alive",
+      "decide if our community voice should be casual or professional",
+      "make emails, posts, and updates sound like they came from one voice",
+      "set do vs don’t examples for writing style",
+      "teach volunteers how to speak in our community’s tone",
+      "adapt tone for social media vs. formal reports",
+      "stop our messaging from sounding robotic",
+      "find words that feel welcoming and inclusive",
+      "avoid words or jokes that could alienate members",
+      "make our voice sound consistent even with many writers",
+      "explain to designers what tone matches the visuals",
+      "show how to shift tone between celebration and crisis",
+      "write website copy that feels friendly but still clear",
+      "train staff to reply to messages in the same style",
+      "decide if we say 'folks' or 'community members'",
+      "give newcomers a style cheat sheet they can copy fast",
+      "keep our tone from drifting over time",
+      "codify phrases we always use and phrases we avoid",
+      "explain why our voice is more warm than authoritative",
+      "set tone rules for press releases vs. internal notes",
+      "create consistency in multilingual or translated content",
+      "map our voice to our brand archetype",
+      "stress-test if our tone fits our values and mission",
+      "align voice for events, newsletters, and Discord chats",
+      "decide if humor is okay in official updates",
+      "make instructions clear without sounding bossy",
+      "rewrite confusing policies in plain language",
+      "plan how our tone changes when addressing conflict",
+      "avoid jargon so the community stays accessible",
+      "document a process for updating tone guidelines",
+      "show examples of the same message in different tones"
+    ],
   boosters: [
     "Write examples in the community's own words. Concrete lines beat abstract adjectives.",
     "Map tone by scenario and channel. Invitation, conflict, crisis, and celebration need different moves.",
@@ -34603,72 +34615,72 @@ Dissatisfaction ↓`;
   label: "Public Narrative - Structure shared story and call to action",
   kind: "framework",
   categories: [
-    "communications",
-    "community",
-    "branding",
-    "facilitation",
-    "strategy"
-  ],
+      "communication",
+      "community",
+      "branding",
+      "facilitation",
+      "strategy"
+    ],
   tags: [
-    "type:framework",
-    "use:story",
-    "use:voice",
-    "use:engagement",
-    "use:mobilization",
-    "use:advocacy",
-    "phase:define",
-    "phase:decide",
-    "phase:act",
-    "topic:community",
-    "level:beginner"
-  ],
+      "type:framework",
+      "use:story",
+      "use:voice",
+      "use:engagement",
+      "use:mobilization",
+      "use:advocacy",
+      "phase:define",
+      "phase:decide",
+      "phase:act",
+      "topic:community",
+      "level:beginner"
+    ],
   use_cases: [
-    "craft stories that move people to take a specific action",
-    "align many contributors on a shared narrative and ask",
-    "translate values into behavior through clear choice points",
-    "tailor message, messenger, and channel for each audience",
-    "measure what resonates and iterate responsibly",
+      "craft stories that move people to take a specific action",
+      "align many contributors on a shared narrative and ask",
+      "translate values into behavior through clear choice points",
+      "tailor message, messenger, and channel for each audience",
+      "measure what resonates and iterate responsibly",
       "write a story that makes people want to sign a petition",
-    "make a speech that ends with a strong clear ask",
-    "align many contributors on one campaign story",
-    "share why this issue matters and what people can do now",
-    "help volunteers explain the cause in their own words",
-    "turn community values into real choices and actions",
-    "find the right messenger for the right audience",
-    "adapt the same call to action for email, TikTok, and flyers",
-    "test which story gets more people to click or join",
-    "measure what message actually worked",
-    "make a fundraising ask without sounding pushy",
-    "rally people at an event around one chant or theme",
-    "write a post that ends with 'join us here today'",
-    "tell my personal story so others care about the cause",
-    "teach teens how to talk about climate action at school",
-    "show the 'why act now' moment in a short video",
-    "create a campaign slogan that sticks in memory",
-    "give volunteers a simple story they can repeat",
-    "connect my family story to a bigger community fight",
-    "script an intro for a town hall meeting",
-    "build urgency into a call for donations",
-    "make sure different languages keep the same spirit",
-    "explain why doing nothing has a cost",
-    "practice a 2-minute version of our story for media",
-    "tell the story of 'us' not just 'me'",
-    "use story structure to calm fear and inspire hope",
-    "plan the closing line for a march or rally speech",
-    "get shy leaders to share personal stories",
-    "draft a campaign launch video script",
-    "frame our story to counter misinformation",
-    "tie a local problem to a global movement",
-    "show a before/after contrast to spark action",
-    "make the call to action easy and doable",
-    "rehearse our story until it feels natural",
-    "help staff emails feel more human",
-    "give donors a story they want to retell",
-    "turn research facts into an emotional story",
-    "close a meeting with one inspiring ask",
-    "choose between urgency vs. hope framing",
-    "share a 'we did it' story after action succeeds"
-  ],
+      "make a speech that ends with a strong clear ask",
+      "align many contributors on one campaign story",
+      "share why this issue matters and what people can do now",
+      "help volunteers explain the cause in their own words",
+      "turn community values into real choices and actions",
+      "find the right messenger for the right audience",
+      "adapt the same call to action for email, TikTok, and flyers",
+      "test which story gets more people to click or join",
+      "measure what message actually worked",
+      "make a fundraising ask without sounding pushy",
+      "rally people at an event around one chant or theme",
+      "write a post that ends with 'join us here today'",
+      "tell my personal story so others care about the cause",
+      "teach teens how to talk about climate action at school",
+      "show the 'why act now' moment in a short video",
+      "create a campaign slogan that sticks in memory",
+      "give volunteers a simple story they can repeat",
+      "connect my family story to a bigger community fight",
+      "script an intro for a town hall meeting",
+      "build urgency into a call for donations",
+      "make sure different languages keep the same spirit",
+      "explain why doing nothing has a cost",
+      "practice a 2-minute version of our story for media",
+      "tell the story of 'us' not just 'me'",
+      "use story structure to calm fear and inspire hope",
+      "plan the closing line for a march or rally speech",
+      "get shy leaders to share personal stories",
+      "draft a campaign launch video script",
+      "frame our story to counter misinformation",
+      "tie a local problem to a global movement",
+      "show a before/after contrast to spark action",
+      "make the call to action easy and doable",
+      "rehearse our story until it feels natural",
+      "help staff emails feel more human",
+      "give donors a story they want to retell",
+      "turn research facts into an emotional story",
+      "close a meeting with one inspiring ask",
+      "choose between urgency vs. hope framing",
+      "share a 'we did it' story after action succeeds"
+    ],
   boosters: [
     "Make the ask first class. One crisp behavior, one deadline, one route to yes.",
     "Stories need stakes. Name what is at risk if we do nothing and what is possible if we act.",
@@ -34935,83 +34947,83 @@ Dissatisfaction ↓`;
   label: "Story Circles / Story Harvesting — Peer storytelling to extract themes and values",
   kind: "facilitation",
   categories: [
-    "community",
-    "facilitation",
-    "learning",
-    "research",
-    "communications"
-  ],
+      "community",
+      "facilitation",
+      "teaching",
+      "research",
+      "communication"
+    ],
   tags: [
-    "type:method",
-    "use:story",
-    "use:engagement",
-    "use:sensemaking",
-    "use:synthesis",
-    "use:values",
-    "phase:explore",
-    "phase:define",
-    "phase:reflect",
-    "topic:community",
-    "level:beginner"
-  ],
+      "type:method",
+      "use:story",
+      "use:engagement",
+      "use:sensemaking",
+      "use:synthesis",
+      "use:values",
+      "phase:explore",
+      "phase:define",
+      "phase:reflect",
+      "topic:community",
+      "level:beginner"
+    ],
   use_cases: [
-    "gather lived-experience stories and surface shared values",
-    "create quick, low-tech insight cycles with many voices",
-    "inform strategy, messaging, and program design with patterns",
-    "build trust and belonging through peer listening",
-    "generate quotes and vignettes with consent for reports",
-       "gather lived-experience stories and surface shared values",
-    "create quick, low-tech insight cycles with many voices",
-    "inform strategy, messaging, and program design with patterns",
-    "build trust and belonging through peer listening",
-    "generate quotes and vignettes with consent for reports",
-    "help a team reflect on what worked and what didn’t",
-    "use stories to connect generations in a community",
-    "share memories after a big project or event",
-    "make meetings more human with storytelling rounds",
-    "find common threads in personal journeys",
-    "teach students empathy through sharing circles",
-    "practice deep listening in a safe group setting",
-    "collect material for a grant or funding proposal",
-    "document the impact of a program through voices",
-    "harvest wisdom from elders or knowledge keepers",
-    "give shy people a way to be heard",
-    "replace boring surveys with group story sharing",
-    "celebrate small wins with peer stories",
-    "capture stories for a community newsletter",
-    "help new members feel welcome fast",
-    "train facilitators in listening and synthesis",
-    "explore cultural identity through shared tales",
-    "prepare case studies from community voices",
-    "discover hidden strengths in a group",
-    "gather healing stories after conflict",
-    "use stories to brainstorm solutions to problems",
-    "turn messy experiences into clear lessons",
-    "make evaluation feel meaningful, not extractive",
-    "map values that show up across stories",
-    "co-create a vision statement from real voices",
-    "strengthen bonds after a crisis or challenge",
-    "build confidence in telling personal stories",
-    "practice non-judgmental listening as a group",
-    "identify role models through storytelling",
-    "use stories to design better programs",
-    "find out what really motivates people",
-    "learn what success feels like for different groups",
-    "turn community voices into social media content",
-    "explain complex issues through personal stories",
-    "collect stories to share at an anniversary event",
-    "help kids share their feelings in safe groups",
-    "show funders the human impact of their support",
-    "gather migrant stories for cultural preservation",
-    "find values to guide a new community project",
-    "record stories for history and archives",
-    "capture emotional impact, not just numbers",
-    "surface tensions and opportunities through stories",
-    "use story circles to open a workshop or retreat",
-    "translate abstract values into lived examples",
-    "practice gratitude by sharing impact stories",
-    "make quieter voices visible in decisions"
-  ],
+      "gather lived-experience stories and surface shared values",
+      "create quick, low-tech insight cycles with many voices",
+      "inform strategy, messaging, and program design with patterns",
+      "build trust and belonging through peer listening",
+      "generate quotes and vignettes with consent for reports",
+      "gather lived-experience stories and surface shared values",
+      "create quick, low-tech insight cycles with many voices",
+      "inform strategy, messaging, and program design with patterns",
+      "build trust and belonging through peer listening",
+      "generate quotes and vignettes with consent for reports",
+      "help a team reflect on what worked and what didn’t",
+      "use stories to connect generations in a community",
+      "share memories after a big project or event",
+      "make meetings more human with storytelling rounds",
+      "find common threads in personal journeys",
+      "teach students empathy through sharing circles",
+      "practice deep listening in a safe group setting",
+      "collect material for a grant or funding proposal",
+      "document the impact of a program through voices",
+      "harvest wisdom from elders or knowledge keepers",
+      "give shy people a way to be heard",
+      "replace boring surveys with group story sharing",
+      "celebrate small wins with peer stories",
+      "capture stories for a community newsletter",
+      "help new members feel welcome fast",
+      "train facilitators in listening and synthesis",
+      "explore cultural identity through shared tales",
+      "prepare case studies from community voices",
+      "discover hidden strengths in a group",
+      "gather healing stories after conflict",
+      "use stories to brainstorm solutions to problems",
+      "turn messy experiences into clear lessons",
+      "make evaluation feel meaningful, not extractive",
+      "map values that show up across stories",
+      "co-create a vision statement from real voices",
+      "strengthen bonds after a crisis or challenge",
+      "build confidence in telling personal stories",
+      "practice non-judgmental listening as a group",
+      "identify role models through storytelling",
+      "use stories to design better programs",
+      "find out what really motivates people",
+      "learn what success feels like for different groups",
+      "turn community voices into social media content",
+      "explain complex issues through personal stories",
+      "collect stories to share at an anniversary event",
+      "help kids share their feelings in safe groups",
+      "show funders the human impact of their support",
+      "gather migrant stories for cultural preservation",
+      "find values to guide a new community project",
+      "record stories for history and archives",
+      "capture emotional impact, not just numbers",
+      "surface tensions and opportunities through stories",
+      "use story circles to open a workshop or retreat",
+      "translate abstract values into lived examples",
+      "practice gratitude by sharing impact stories",
+      "make quieter voices visible in decisions"
+    ],
   boosters: [
     "Open with a clear, human prompt and a short demo story. Keep it local in time and place.",
     "Use small circles (4–6) with strict timing to keep airtime fair. Rotate roles each round.",
@@ -35229,80 +35241,80 @@ Dissatisfaction ↓`;
   label: "Cultural Web - Unpack symbols, rituals, stories shaping voice",
   kind: "framework",
   categories: [
-    "branding",
-    "communications",
-    "community",
-    "strategy",
-    "research"
-  ],
+      "branding",
+      "communication",
+      "community",
+      "strategy",
+      "research"
+    ],
   tags: [
-    "type:framework",
-    "use:identity",
-    "use:voice",
-    "use:diagnosis",
-    "use:change",
-    "use:research",
-    "phase:explore",
-    "phase:define",
-    "phase:plan",
-	"topic:community",
-    "level:intermediate"
-  ],
+      "type:framework",
+      "use:identity",
+      "use:voice",
+      "use:diagnosis",
+      "use:change",
+      "use:research",
+      "phase:explore",
+      "phase:define",
+      "phase:planning",
+      "topic:community",
+      "level:intermediate"
+    ],
   use_cases: [
-    "make implicit cultural patterns visible before codifying voice",
-    "map how stories, rituals, symbols, power, controls, and structures shape tone",
-    "spot shadow norms and stereotype risks that derail inclusive messaging",
-    "identify leverage points and quick experiments to shift culture and voice",
-    "link culture findings to brand archetypes and voice guides",
-       "make implicit cultural patterns visible before codifying voice",
-    "map how stories, rituals, symbols, power, controls, and structures shape tone",
-    "spot shadow norms and stereotype risks that derail inclusive messaging",
-    "identify leverage points and quick experiments to shift culture and voice",
-    "link culture findings to brand archetypes and voice guides",
-    "analyze company traditions to see how they influence behavior",
-    "understand why teams resist change by mapping hidden assumptions",
-    "spot rituals that keep people included or excluded",
-    "explain why the 'official' values don’t match daily practice",
-    "diagnose how meeting styles shape decision-making",
-    "prepare culture insights for a rebrand or merger",
-    "find stories staff tell that shape the organization’s reputation",
-    "surface unspoken rules that control behavior more than policies",
-    "use cultural mapping in onboarding to show how things ‘really work’",
-    "discover why slogans fail to connect with employees",
-    "map symbols (logos, dress codes, office layout) that send hidden signals",
-    "study culture before launching diversity or inclusion efforts",
-    "track how culture shifts after a leadership change",
-    "learn what rituals boost morale vs. waste time",
-    "explore how office humor reveals deeper norms",
-    "figure out why people ignore a new strategy or policy",
-    "test how changing one symbol (like office space design) shifts culture",
-    "spot who really has power vs. who just has a title",
-    "see how stories about 'heroes' and 'failures' shape risk-taking",
-    "understand cultural differences between departments",
-    "use with students to analyze school culture and cliques",
-    "map community rituals (festivals, gatherings) to see shared values",
-    "understand resistance to new technology rollouts",
-    "prepare insights for cultural sensitivity training",
-    "examine how communication channels reinforce hierarchy",
-    "document cultural barriers for an international partnership",
-    "track how informal groups shape real decision-making",
-    "identify stories that inspire change vs. keep the status quo",
-    "map unspoken taboos people avoid talking about",
-    "diagnose why new hires struggle to fit in",
-    "compare symbolic differences between two merging orgs",
-    "use cultural mapping in participatory research with communities",
-    "spot disconnects between leadership speeches and team jokes",
-    "help leaders design rituals that reinforce intended culture",
-    "study how recognition systems shape motivation",
-    "analyze cultural roots of conflict in a team",
-    "look at how holidays, awards, or mottos reinforce identity",
-    "map 'shadow values' that no one writes down but everyone feels",
-    "show why branding efforts feel fake if culture doesn’t match",
-    "teach students how culture shapes groups beyond rules",
-    "figure out why communication feels cold or welcoming",
-    "study how gender norms show up in rituals and symbols",
-    "find leverage points to align brand voice with lived culture"
-  ],
+      "make implicit cultural patterns visible before codifying voice",
+      "map how stories, rituals, symbols, power, controls, and structures shape tone",
+      "spot shadow norms and stereotype risks that derail inclusive messaging",
+      "identify leverage points and quick experiments to shift culture and voice",
+      "link culture findings to brand archetypes and voice guides",
+      "make implicit cultural patterns visible before codifying voice",
+      "map how stories, rituals, symbols, power, controls, and structures shape tone",
+      "spot shadow norms and stereotype risks that derail inclusive messaging",
+      "identify leverage points and quick experiments to shift culture and voice",
+      "link culture findings to brand archetypes and voice guides",
+      "analyze company traditions to see how they influence behavior",
+      "understand why teams resist change by mapping hidden assumptions",
+      "spot rituals that keep people included or excluded",
+      "explain why the 'official' values don’t match daily practice",
+      "diagnose how meeting styles shape decision-making",
+      "prepare culture insights for a rebrand or merger",
+      "find stories staff tell that shape the organization’s reputation",
+      "surface unspoken rules that control behavior more than policies",
+      "use cultural mapping in onboarding to show how things ‘really work’",
+      "discover why slogans fail to connect with employees",
+      "map symbols (logos, dress codes, office layout) that send hidden signals",
+      "study culture before launching diversity or inclusion efforts",
+      "track how culture shifts after a leadership change",
+      "learn what rituals boost morale vs. waste time",
+      "explore how office humor reveals deeper norms",
+      "figure out why people ignore a new strategy or policy",
+      "test how changing one symbol (like office space design) shifts culture",
+      "spot who really has power vs. who just has a title",
+      "see how stories about 'heroes' and 'failures' shape risk-taking",
+      "understand cultural differences between departments",
+      "use with students to analyze school culture and cliques",
+      "map community rituals (festivals, gatherings) to see shared values",
+      "understand resistance to new technology rollouts",
+      "prepare insights for cultural sensitivity training",
+      "examine how communication channels reinforce hierarchy",
+      "document cultural barriers for an international partnership",
+      "track how informal groups shape real decision-making",
+      "identify stories that inspire change vs. keep the status quo",
+      "map unspoken taboos people avoid talking about",
+      "diagnose why new hires struggle to fit in",
+      "compare symbolic differences between two merging orgs",
+      "use cultural mapping in participatory research with communities",
+      "spot disconnects between leadership speeches and team jokes",
+      "help leaders design rituals that reinforce intended culture",
+      "study how recognition systems shape motivation",
+      "analyze cultural roots of conflict in a team",
+      "look at how holidays, awards, or mottos reinforce identity",
+      "map 'shadow values' that no one writes down but everyone feels",
+      "show why branding efforts feel fake if culture doesn’t match",
+      "teach students how culture shapes groups beyond rules",
+      "figure out why communication feels cold or welcoming",
+      "study how gender norms show up in rituals and symbols",
+      "find leverage points to align brand voice with lived culture"
+    ],
   boosters: [
     "Work with a cross section of the system and compensate lived expertise.",
     "Collect real artifacts. Screenshots, flyers, posts, signage, swag, forms, meeting scripts.",
@@ -37762,83 +37774,83 @@ Dissatisfaction ↓`;
   label: "Empathy Mapping, Personas, JTBD - Ground voice in needs and contexts",
   kind: "framework",
   categories: [
-    "research",
-    "community",
-    "strategy",
-    "design",
-    "communications"
-  ],
+      "research",
+      "community",
+      "strategy",
+      "design",
+      "communication"
+    ],
   tags: [
-    "type:framework",
-    "use:discovery",
-    "use:voice",
-    "use:ux",
-    "use:service-design",
-    "use:segmentation",
-    "phase:explore",
-    "phase:define",
-    "phase:plan",
-    "topic:community",
-    "level:beginner"
-  ],
+      "type:framework",
+      "use:discovery",
+      "use:voice",
+      "use:ux",
+      "use:service-design",
+      "use:segmentation",
+      "phase:explore",
+      "phase:define",
+      "phase:planning",
+      "topic:community",
+      "level:beginner"
+    ],
   use_cases: [
-    "co-create personas that reflect real contexts and constraints",
-    "map empathy to reveal pains, gains, and language patterns",
-    "run Jobs-to-Be-Done interviews to surface progress sought",
-    "translate insights into voice, tone, and microcopy decisions",
-    "prioritize jobs and test messages with quick experiments",
-     "co-create personas that reflect real contexts and constraints",
-    "map empathy to reveal pains, gains, and language patterns",
-    "run Jobs-to-Be-Done interviews to surface progress sought",
-    "translate insights into voice, tone, and microcopy decisions",
-    "prioritize jobs and test messages with quick experiments",
-    "understand what motivates different user groups",
-    "find pain points in customer journeys",
-    "decide which needs to solve first",
-    "test marketing messages against real contexts",
-    "design services that fit lived realities",
-    "show teams what different users feel and need",
-    "spot gaps between what people say and what they do",
-    "group stories into common patterns",
-    "plan inclusive outreach strategies",
-    "design features that meet actual jobs-to-be-done",
-    "use empathy maps in workshops",
-    "align stakeholders on who the product is for",
-    "visualize user needs in one page",
-    "capture emotional as well as functional needs",
-    "find the language users use themselves",
-    "support fundraising with relatable stories",
-    "choose tone of voice for different audiences",
-    "help kids explain what they want from a toy",
-    "figure out why people quit using an app",
-    "improve sign-up flows with empathy insights",
-    "map what stresses people in daily life",
-    "understand why families choose certain schools",
-    "design posters that actually connect with residents",
-    "decide which community programs to expand",
-    "write grant proposals grounded in lived needs",
-    "guide interview questions with empathy prompts",
-    "segment volunteers by what helps them contribute",
-    "build training that fits different learning goals",
-    "explain to leaders what the community values",
-    "connect user needs with product backlog items",
-    "translate survey data into empathy-based personas",
-    "develop campaign messages that resonate locally",
-    "improve customer service scripts with JTBD",
-    "make sure feedback loops stay human",
-    "choose metaphors that reflect real struggles",
-    "help kids design their dream playground",
-    "ask seniors what matters in daily routines",
-    "create empathy maps for pets and owners",
-    "figure out why students skip homework",
-    "help neighbors explain what makes them feel safe",
-    "design outreach for people without internet access",
-    "plan health services around patient pain points",
-    "decide which community spaces to renovate first",
-    "guide team away from stereotypes with real personas",
-    "help describe what bugs kids about chores",
-    "explain why people choose one snack over another"
-  ],
+      "co-create personas that reflect real contexts and constraints",
+      "map empathy to reveal pains, gains, and language patterns",
+      "run Jobs-to-Be-Done interviews to surface progress sought",
+      "translate insights into voice, tone, and microcopy decisions",
+      "prioritize jobs and test messages with quick experiments",
+      "co-create personas that reflect real contexts and constraints",
+      "map empathy to reveal pains, gains, and language patterns",
+      "run Jobs-to-Be-Done interviews to surface progress sought",
+      "translate insights into voice, tone, and microcopy decisions",
+      "prioritize jobs and test messages with quick experiments",
+      "understand what motivates different user groups",
+      "find pain points in customer journeys",
+      "decide which needs to solve first",
+      "test marketing messages against real contexts",
+      "design services that fit lived realities",
+      "show teams what different users feel and need",
+      "spot gaps between what people say and what they do",
+      "group stories into common patterns",
+      "plan inclusive outreach strategies",
+      "design features that meet actual jobs-to-be-done",
+      "use empathy maps in workshops",
+      "align stakeholders on who the product is for",
+      "visualize user needs in one page",
+      "capture emotional as well as functional needs",
+      "find the language users use themselves",
+      "support fundraising with relatable stories",
+      "choose tone of voice for different audiences",
+      "help kids explain what they want from a toy",
+      "figure out why people quit using an app",
+      "improve sign-up flows with empathy insights",
+      "map what stresses people in daily life",
+      "understand why families choose certain schools",
+      "design posters that actually connect with residents",
+      "decide which community programs to expand",
+      "write grant proposals grounded in lived needs",
+      "guide interview questions with empathy prompts",
+      "segment volunteers by what helps them contribute",
+      "build training that fits different learning goals",
+      "explain to leaders what the community values",
+      "connect user needs with product backlog items",
+      "translate survey data into empathy-based personas",
+      "develop campaign messages that resonate locally",
+      "improve customer service scripts with JTBD",
+      "make sure feedback loops stay human",
+      "choose metaphors that reflect real struggles",
+      "help kids design their dream playground",
+      "ask seniors what matters in daily routines",
+      "create empathy maps for pets and owners",
+      "figure out why students skip homework",
+      "help neighbors explain what makes them feel safe",
+      "design outreach for people without internet access",
+      "plan health services around patient pain points",
+      "decide which community spaces to renovate first",
+      "guide team away from stereotypes with real personas",
+      "help describe what bugs kids about chores",
+      "explain why people choose one snack over another"
+    ],
   boosters: [
     "Co-create with people who live the context. Compensate time and care work.",
     "Write jobs in the classic When I... I want to... so I can... template. Keep it specific and situational.",
@@ -41442,7 +41454,7 @@ Dissatisfaction ↓`;
     "operations",
     "process-improvement",
     "reasoning",
-    "teaching"
+    "education"
   ],
   tags: [
     "type:framework",
@@ -42411,7 +42423,7 @@ Dissatisfaction ↓`;
     "decision-making",
     "critical-thinking",
     "planning",
-    "product-management",
+    "management",
     "operations",
     "self-management"
   ],
@@ -43047,7 +43059,7 @@ Dissatisfaction ↓`;
     "communication",
     "safety",
     "decision-making",
-    "psychology"
+    "mental-health"
   ],
   tags: [
     "type:tool",
@@ -43327,7 +43339,7 @@ Dissatisfaction ↓`;
     "health",
     "communication",
     "safety",
-    "psychology",
+    "mental-health",
     "notes"
   ],
   tags: [
@@ -43635,7 +43647,7 @@ Dissatisfaction ↓`;
     "health",
     "communication",
     "safety",
-    "psychology",
+    "mental-health",
     "notes"
   ],
   tags: [
@@ -43988,7 +44000,7 @@ Dissatisfaction ↓`;
     "health",
     "communication",
     "safety",
-    "psychology",
+    "mental-health",
     "notes"
   ],
   tags: [
@@ -44353,7 +44365,7 @@ Dissatisfaction ↓`;
     "health",
     "communication",
     "safety",
-    "psychology",
+    "mental-health",
     "planning"
   ],
   tags: [
@@ -44707,7 +44719,7 @@ Dissatisfaction ↓`;
     "communication",
     "safety",
     "planning",
-    "psychology",
+    "mental-health",
     "notes"
   ],
   tags: [
@@ -47102,8 +47114,8 @@ Dissatisfaction ↓`;
   id: "critical_bias_methodology_audit",
   slug: "critical-bias-methodology-audit",
   label: "Critical Bias & Methodology Audit",
-  kind: "heuristics",
-  categories: ["analysis-frameworks","ethics","critical-thinking","quality"],
+  kind: "heuristic",
+  categories: ["analysis","ethics","critical-thinking","quality"],
   tags: [
     "type:framework",
     "type:heuristics",
@@ -48704,7 +48716,7 @@ export async function handleUtterance(utterance:string, env:any){
   slug: "rapid-framing-rewriter",
   label: "Rapid Framing Rewriter",
   kind: "framework",
-  categories: ["writing-frameworks","analysis-frameworks","critical-thinking","ethics"],
+  categories: ["writing-frameworks","analysis","critical-thinking","ethics"],
   tags: [
     "type:framework","use:rewriting","use:framing","use:prompt",
     "phase:define","phase:ideate","level:intermediate"
@@ -48825,381 +48837,11 @@ lenses && (
 },
 
 {
-  id: "informational_interview_ladder",
-  slug: "informational-interview-ladder",
-  label: "Informational-Interview Ladder — 2/day → 5/week → 50/quarter (Ask for insights, not jobs)",
-  kind: "strategy",
-  categories: [
-    "careers",
-    "job-search",
-    "networking",
-    "planning"
-  ],
-  tags: [
-    "type:framework",
-    "use:outreach",
-    "use:networking",
-    "use:planning",
-    "use:process-improvement",
-    "phase:plan",
-    "phase:compose",
-    "level:beginner"
-  ],
-  use_cases: [
-    "set a daily/weekly/quarterly outreach rhythm",
-    "start warm, useful conversations that lead to referrals",
-    "standardize messages and follow-ups that respect people’s time",
-    "measure response, booking, and referral rates without begging for jobs"
-  ],
-  boosters: [
-    "Lead with curiosity: ask for a 15–20 minute chat and 2–3 specific questions.",
-    "Personalize one sentence: why them, why now.",
-    "Never attach a resume unless asked; link to a short portfolio if relevant.",
-    "Always close with an easy CTA: 2–3 time windows or a scheduling link.",
-    "Send one gentle follow-up after ~5–7 days; then one last nudge; then archive.",
-    "After each chat, ask for 1–2 referrals to others you should learn from."
-  ],
-  definition: "A lightweight ladder for informational interviews that operationalizes a steady outreach cadence and respectful scripts. Non-technical: contact a few people each day, ask for advice, learn, and keep it human. Technical: implement cadence governance (daily/weekly/quarterly targets), message standardization, follow-up SLAs, and KPI instrumentation (response, booking, show, referral, and opportunity conversion).",
-  help: "Fill targets, people types, sources, and scripts. Keep language simple and kind. The output will produce a rigorous operating plan with metrics and checklists.",
-  fields: [
-    {
-      label: "Title",
-      desc: "Name this plan so you can find it later.",
-      key: "title",
-      ph: "e.g., Q4 Informational-Interview Ladder",
-      type: "text"
-    },
-    {
-      label: "Time horizon",
-      desc: "How long this plan runs (month or quarter).",
-      key: "horizon",
-      ph: "e.g., Oct–Dec 2025",
-      type: "text"
-    },
-    {
-      label: "Owner",
-      desc: "Who is doing the outreach.",
-      key: "owner",
-      ph: "e.g., Jonathan Kyle Hobson",
-      type: "text"
-    },
-    {
-      label: "Daily outreach target",
-      desc: "How many new people you’ll contact per day.",
-      key: "daily_goal",
-      ph: "e.g., 2",
-      type: "text"
-    },
-    {
-      label: "Weekly outreach target",
-      desc: "How many new people you’ll contact per week.",
-      key: "weekly_goal",
-      ph: "e.g., 5",
-      type: "text"
-    },
-    {
-      label: "Quarterly outreach target",
-      desc: "How many total new contacts by end of quarter.",
-      key: "quarterly_goal",
-      ph: "e.g., 50",
-      type: "text"
-    },
-    {
-      label: "Target roles / functions",
-      desc: "Job titles or roles you want to learn from.",
-      key: "target_roles",
-      ph: "e.g., UX Research Lead; Head of Product; Conversational AI PM",
-      type: "textarea"
-    },
-    {
-      label: "Target segments (Segment | examples)",
-      desc: "Kinds of people or orgs and a quick example list.",
-      key: "segments",
-      ph: "Civic Tech | city digital teams; gov vendors\nHealth Tech | hospital IT; patient experience\nEdTech | learning platforms; university labs",
-      type: "textarea"
-    },
-    {
-      label: "Lead sources (Source | description)",
-      desc: "Where you’ll find people.",
-      key: "sources",
-      ph: "LinkedIn | 2nd-degree connections and alumni\nCommunities | NN/g Slack, Design Justice\nEvents | Meetup speakers, conference lists",
-      type: "textarea"
-    },
-    {
-      label: "Personalization ingredients (one per line)",
-      desc: "Short facts you can mention to make it human.",
-      key: "personalization",
-      ph: "Shared alma mater\nRecent talk/article they gave\nMutual connection\nProduct you admire",
-      type: "textarea"
-    },
-    {
-      label: "Primary outreach script",
-      desc: "Plain, kind message you’ll send first.",
-      key: "script_primary",
-      ph: "Hi <Name>, I loved your <talk/article>. I’m exploring <area> and would value your perspective. Could we do 15–20 minutes next week? I’m curious about <Q1> and <Q2>. Happy to share what I’m seeing in <topic>. If helpful, here are a couple windows: <times> or use <link>. Thanks either way.",
-      type: "textarea"
-    },
-    {
-      label: "Follow-up scripts (one per line)",
-      desc: "Short nudges you’ll send if no reply.",
-      key: "script_followups",
-      ph: "Bump: still hoping for 15 minutes on <topic> — could <times> work?\nLast nudge: if now’s not ideal, I’ll circle back next quarter. Thanks for all you share publicly.",
-      type: "textarea"
-    },
-    {
-      label: "Insights question menu (one per line)",
-      desc: "Good questions to ask on the call. No job asks.",
-      key: "question_menu",
-      ph: "What are 2–3 skills you hire for that are hard to fake?\nWhere do new folks stumble in their first 90 days?\nWhat teams are shipping work you respect, and why?",
-      type: "textarea"
-    },
-    {
-      label: "Value you can offer (one per line)",
-      desc: "Ways you can be helpful back.",
-      key: "value_offer",
-      ph: "Share a brief audit or teardown\nIntroduce to a peer in <area>\nSend a summary of what I’m seeing in <trend>",
-      type: "textarea"
-    },
-    {
-      label: "Referral ask (one line)",
-      desc: "Simple way to ask for intros after the chat.",
-      key: "referral_ask",
-      ph: "Is there one person you’d recommend I learn from next?",
-      type: "text"
-    },
-    {
-      label: "Scheduling link",
-      desc: "A link they can use if they prefer.",
-      key: "schedule_link",
-      ph: "e.g., https://cal.com/…",
-      type: "text"
-    },
-    {
-      label: "Time windows you can offer",
-      desc: "Days/times that usually work for you.",
-      key: "time_windows",
-      ph: "e.g., Tue–Thu, 1:00–4:00 PM PT",
-      type: "text"
-    },
-    {
-      label: "Follow-up cadence (Day | action)",
-      desc: "Your no-reply plan and timing.",
-      key: "followup_plan",
-      ph: "Day 5 | gentle bump\nDay 12 | final nudge\nDay 20 | archive + move on",
-      type: "textarea"
-    },
-    {
-      label: "Conversation notes template",
-      desc: "Quick structure to capture takeaways.",
-      key: "notes_template",
-      ph: "3 insights | 1 resource to read | 1 action | 1 referral asked",
-      type: "text"
-    },
-    {
-      label: "Boundaries & ethics (plain rules)",
-      desc: "Your ground rules to stay respectful.",
-      key: "ethics",
-      ph: "Ask for insights, not a job; never spam; keep it to 15–20 minutes; send a thank-you and one useful thing after.",
-      type: "textarea"
-    },
-    {
-      label: "Tracking fields (Contact | role | org | source | date | status)",
-      desc: "Format you’ll use in your tracker or sheet.",
-      key: "tracking_format",
-      ph: "e.g., Ada Lee | UXR Lead | City of Mesa | alumni | 2025-10-28 | booked",
-      type: "text"
-    },
-    {
-      label: "Metric targets (one per line)",
-      desc: "Simple goals to measure progress.",
-      key: "metrics",
-      ph: "Response rate ≥ 25%\nBooked calls/week ≥ 2\nReferral rate ≥ 1.0 per call\nThank-you sent within 24h = 100%",
-      type: "textarea"
-    },
-    {
-      label: "Notes",
-      desc: "Anything else helpful.",
-      key: "notes",
-      ph: "e.g., Focus on civic tech first; avoid cold InMails; use warm intros where possible",
-      type: "textarea"
-    }
-  ],
-  template: ({
-    title,
-    horizon,
-    owner,
-    daily_goal,
-    weekly_goal,
-    quarterly_goal,
-    target_roles,
-    segments,
-    sources,
-    personalization,
-    script_primary,
-    script_followups,
-    question_menu,
-    value_offer,
-    referral_ask,
-    schedule_link,
-    time_windows,
-    followup_plan,
-    notes_template,
-    ethics,
-    tracking_format,
-    metrics,
-    notes,
-    audience,
-    style,
-    tone
-  }) => {
-    // Helpers
-    const lines = s => String(s || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
-    const listify = s => lines(s).map((x,i)=>`${i+1}. ${x}`).join("\n");
-    const num = (v, d) => {
-      const n = Number(String(v||"").replace(/[^0-9.]/g,""));
-      return isFinite(n) && n > 0 ? n : d;
-    };
-
-    // Targets with defaults (2/day → 5/week → 50/quarter)
-    const D = num(daily_goal, 2);
-    const W = num(weekly_goal, 5);
-    const Q = num(quarterly_goal, 50);
-
-    // Output intentionally uses heavy technical/analytical language
-    return [
-      title && `INFORMATIONAL-INTERVIEW LADDER — OPERATING SPEC | ${title}`,
-      horizon && `Operating Window: ${horizon}`,
-      owner && `Process Owner: ${owner}`,
-      audience && `Audience: ${audience}`,
-      style && `Style: ${style}`,
-      tone && `Tone: ${tone}`,
-
-      "",
-      "I) CADENCE GOVERNANCE — CONTROL LIMITS",
-      `Daily New Outreach Target (D): ${D}`,
-      `Weekly New Outreach Target (W): ${W}`,
-      `Quarterly New Outreach Target (Q): ${Q}`,
-      "Policy: prioritize insight-seeking over placement seeking; no resume attachments unless explicitly requested.",
-
-      "",
-      "II) TARGETING TOPOLOGY — WHO & WHERE",
-      "Role/Function Focus:",
-      target_roles ? listify(target_roles) : "(none specified)",
-      "",
-      "Segments (market slices):",
-      segments ? listify(segments) : "(none specified)",
-      "",
-      "Lead Sources:",
-      sources ? listify(sources) : "(none specified)",
-
-      "",
-      "III) MESSAGE STANDARDIZATION — TEMPLATES & COMPONENTS",
-      "Personalization Ingredients:",
-      personalization ? listify(personalization) : "(none specified)",
-      "",
-      "Primary Outreach Script:",
-      script_primary || "(no primary script provided)",
-      "",
-      "Follow-up Scripts:",
-      script_followups ? listify(script_followups) : "(none specified)",
-      "",
-      "Scheduling Surface:",
-      schedule_link || "(no scheduling link)",
-      time_windows ? `Preferred Windows: ${time_windows}` : null,
-
-      "",
-      "IV) CALL CONTENT — INSIGHT HARVEST PLAN",
-      "Question Menu (select 2–3 per conversation):",
-      question_menu ? listify(question_menu) : "(none specified)",
-      "",
-      "Reciprocity Envelope (ways to add value):",
-      value_offer ? listify(value_offer) : "(none specified)",
-      "",
-      "Referral Ask:",
-      referral_ask || "(not specified)",
-
-      "",
-      "V) SLA — FOLLOW-UP & ARCHIVAL POLICY",
-      "Cadence:",
-      followup_plan ? listify(followup_plan) : "1. Day 5 | gentle bump\n2. Day 12 | final nudge\n3. Day 20 | archive (no further outreach this quarter)",
-      "",
-      "Boundaries & Ethics:",
-      ethics ? listify(ethics) : listify([
-        "Ask for insights, not jobs",
-        "Limit to 15–20 minutes unless invited longer",
-        "No spam; personalize; one thread at a time",
-        "Send thank-you + useful resource within 24 hours"
-      ]),
-
-      "",
-      "VI) INSTRUMENTATION — KPI DEFINITIONS",
-      listify([
-        "Response Rate = replies / outbound",
-        "Booking Rate = calls scheduled / replies",
-        "Show Rate = calls completed / scheduled",
-        "Referral Rate = referrals received / calls completed",
-        "Thank-You SLA = thank-yous sent within 24h / calls completed"
-      ]),
-      "",
-      "Metric Targets:",
-      metrics ? listify(metrics) : listify([
-        "Response rate ≥ 25%",
-        "Booked calls/week ≥ 2",
-        "Referral rate ≥ 1.0 per call",
-        "Thank-you within 24h = 100%"
-      ]),
-
-      "",
-      "VII) DATA MODEL — TRACKING FIELDS",
-      `Row Format: ${tracking_format || "Contact | role | org | source | date | status"}`,
-      "Conversation Notes Template:",
-      notes_template || "3 insights | 1 resource | 1 action | 1 referral asked",
-
-      "",
-      "VIII) DAILY STANDARD WORK",
-      listify([
-        `Queue Generation: add ≥ ${D} new prospects to backlog by 10:00`,
-        "Personalize 1 line for each prospect",
-        "Dispatch outreach; log send and next follow-up date",
-        "Process replies: schedule immediately or tag for reschedule",
-        "Send 24h thank-yous + 1 useful resource after each call"
-      ]),
-
-      "",
-      "IX) WEEKLY REVIEW — GOVERNANCE CHECKLIST",
-      listify([
-        "Recompute response/booking/show/referral rates",
-        "Identify channel with highest conversion; double down",
-        "Archive non-responders per SLA; refresh backlog",
-        "Ship one iteration: update script or question menu based on feedback",
-        "Plan next week’s D and W; pre-block calendar windows"
-      ]),
-
-      "",
-      "X) RISK REGISTER & MITIGATIONS",
-      listify([
-        "Low Response: increase personalization depth; switch channels",
-        "Scheduling Friction: add 2–3 time windows plus link",
-        "No Referrals: explicitly ask for 1 name at end of call",
-        "Time Drift: calendar-block a 30-min daily outreach slot"
-      ]),
-
-      "",
-      "XI) NOTES",
-      notes || "(none)"
-    ].filter(Boolean).join("\n");
-  },
-  meta: {
-    search_text: "informational interview ladder outreach cadence insights not jobs scripts follow-up SLA response booking referral metrics template"
-  }
-},
-
-{
   id: "stakeholder_harm_benefit_forecast",
   slug: "stakeholder-harm-benefit-forecast",
   label: "Stakeholder Harm & Benefit Forecast",
   kind: "framework",
-  categories: ["analysis-frameworks","ethics","equity","risk"],
+  categories: ["analysis","ethics","equity","risk"],
   tags: [
     "type:framework","use:evaluation","use:equity","use:risk","phase:analyze","level:intermediate"
   ],
@@ -49757,7 +49399,7 @@ monitor && `Monitoring plan (author-supplied):\n${monitor}`,
   slug: "inclusive-language-metaphor-scrubber",
   label: "Inclusive Language & Metaphor Scrubber",
   kind: "framework",
-  categories: ["writing-frameworks","analysis-frameworks","equity","accessibility"],
+  categories: ["writing-frameworks","analysis","equity","accessibility"],
   tags: [
     "type:framework","use:editing","use:review","use:prompt",
     "phase:revise","level:intermediate"
@@ -50198,7 +49840,7 @@ tone_goals && (
   slug: "evidence-robustness-reproducibility-check",
   label: "Evidence Robustness & Reproducibility Check",
   kind: "framework",
-  categories: ["analysis-frameworks","methods","research-quality","risk"],
+  categories: ["analysis","methods","research-quality","risk"],
   tags: [
     "type:framework","use:evaluation","use:methods","phase:analyze","level:advanced"
   ],
@@ -50389,7 +50031,7 @@ replication && `Replication aim & constraints (optional):\n${replication}`,
   slug: "cross-cultural-localization-readiness",
   label: "Cross-Cultural Localization Readiness",
   kind: "framework",
-  categories: ["localization","analysis-frameworks","equity","accessibility"],
+  categories: ["localization","analysis","equity","accessibility"],
   tags: [
     "type:framework","use:localization","use:translation","use:adaptation",
     "phase:prepare","level:intermediate"
@@ -50579,7 +50221,7 @@ sensitivities && `Sensitive topics & taboos:\n${sensitivities}`,
   slug: "accessibility-reality-check",
   label: "Accessibility Reality Check (WCAG + Plain Language)",
   kind: "framework",
-  categories: ["accessibility","analysis-frameworks","equity","writing-frameworks"],
+  categories: ["accessibility","analysis","equity","writing-frameworks"],
   tags: [
     "type:framework","use:a11y-audit","use:plain-language",
     "phase:revise","phase:verify","level:intermediate"
