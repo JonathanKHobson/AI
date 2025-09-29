@@ -1896,8 +1896,8 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
 
   <!-- datasets -->
   
-     <script src="./glossary/aisettings.js" defer></script>
-    <script src="./glossary/templates.data.js"></script>
+     <script src="./glossary/js/aisettings.js" defer></script>
+    <script src="./glossary/js/templates.data.js"></script>
     
      <script>
     // lazy-load tasks dataset
@@ -5861,6 +5861,160 @@ pb.ai.handlePanelAI = async function(q){
   }
   // Also re-run on resize (mobile/desktop toggles)
   window.addEventListener('resize', place, { passive:true });
+})();
+</script>
+
+<script>
+/* === AI Assist → cross-page handoff (v1) ================================
+   Saves the final suggestions shown to the user into localStorage so that
+   other pages (e.g., startup-wizard.html) can retrieve and render them.
+
+   What it does:
+   - Watches #aiResultsList for changes (when your Gemini results render)
+   - Persists a compact payload with query, provider/model, and items
+   - Records which suggestion the user clicked (pickedSlug)
+   - Exposes a tiny global API: window.PBAIHandoff.{load,clear,getCandidates,getPicked}
+========================================================================= */
+
+(function(){
+  // Namespace & storage key
+  window.pb = window.pb || {};
+  pb.ai = pb.ai || {};
+  const KEY = 'pb_ai_handoff_v1';
+
+  // Small utility to be reused anywhere
+  pb.ai.handoff = {
+    key: KEY,
+    save(payload){
+      try{ localStorage.setItem(KEY, JSON.stringify(payload)); }
+      catch(e){ console.info('[handoff] save failed:', e); }
+    },
+    load(){
+      try{ return JSON.parse(localStorage.getItem(KEY) || 'null'); }
+      catch{ return null; }
+    },
+    clear(){ try{ localStorage.removeItem(KEY); }catch{} },
+    setPicked(slug){
+      const h = this.load(); if (!h) return;
+      h.pickedSlug = slug || null;
+      h.ts = Date.now();
+      this.save(h);
+    }
+  };
+
+  // Elements your UI already has
+  const dlg    = document.getElementById('aiResultsDlg');
+  const listEl = document.getElementById('aiResultsList');
+  const queryEl= document.getElementById('aiResultsQuery');
+
+  // Extract a single suggestion card into a compact record
+  function extractCard(el){
+    const pick = sel => (el.querySelector(sel)?.textContent || '').trim();
+    const slug = el.dataset.slug || el.getAttribute('data-slug') || '';
+    const id   = el.dataset.id   || el.getAttribute('data-id')   || '';
+    const label= pick('.label') || el.getAttribute('data-label') || '';
+    const use  = pick('.use')   || el.getAttribute('data-use')   || '';
+    const defT = (el.querySelector('.def .full:not([hidden])')?.textContent
+                  || el.querySelector('.def')?.textContent || '').trim();
+    const conf = parseFloat(el.dataset.confidence || el.getAttribute('data-confidence') || '') || null;
+    return { slug: slug || id || null, label, use, def: defT, confidence: conf };
+  }
+
+  // Read the current results grid into a list
+  function snapshot(){
+    if (!listEl) return [];
+    return Array.from(listEl.querySelectorAll('.result'))
+      .map(extractCard)
+      .filter(it => it.label || it.slug || it.use);
+  }
+
+  // Persist the current suggestions + context
+  function persistNow(reason){
+    const items = snapshot();
+    const q     = (queryEl?.textContent || '').trim();
+    if (!items.length && !q) return;
+
+    const s = (pb.ai && typeof pb.ai.getSettings === 'function') ? pb.ai.getSettings() : {};
+    pb.ai.handoff.save({
+      v: 1,
+      from: 'index',
+      ts: Date.now(),
+      query: q || (window.pb && window.pb.qCache && window.pb.qCache.raw) || '',
+      provider: s.provider || null,
+      model: s.model || s.geminiModel || null,
+      items
+    });
+
+    try{
+      window.dispatchEvent(new CustomEvent('pb:ai-handoff:saved', {
+        detail: { reason, count: items.length }
+      }));
+    }catch(_){}
+  }
+
+  // 1) Persist whenever the results list is populated/changed
+  if (listEl){
+    new MutationObserver(muts=>{
+      for (const m of muts){
+        if (m.type === 'childList' && (m.addedNodes.length || m.removedNodes.length)){
+          persistNow('mutated');
+          break;
+        }
+      }
+    }).observe(listEl, { childList: true, subtree: false });
+  }
+
+  // 2) Record the user’s pick before navigation
+  document.addEventListener('click', ev=>{
+    const card = ev.target.closest?.('.ai-results .result, #aiResultsList .result');
+    if (!card) return;
+    const rec = extractCard(card);
+    if (rec.slug || rec.label){
+      pb.ai.handoff.setPicked(rec.slug || null);
+      // also ensure the latest list is saved (covers last-second updates)
+      persistNow('picked');
+    }
+  }, true);
+
+  // 3) First-time save when the dialog opens (if your code toggles the "open" attr)
+  if (dlg){
+    new MutationObserver(()=>{
+      if (dlg.open) persistNow('dialog-open');
+    }).observe(dlg, { attributes: true, attributeFilter: ['open'] });
+  }
+
+  // Public helper so ANY page can read the handoff without importing all of pb.*
+  window.PBAIHandoff = {
+    load:         () => pb.ai.handoff.load(),
+    clear:        () => pb.ai.handoff.clear(),
+    getCandidates:() => (pb.ai.handoff.load() || {}).items || [],
+    getPicked:    () => (pb.ai.handoff.load() || {}).pickedSlug || null
+  };
+})();
+</script>
+
+<script>
+/* Read & render AI handoff suggestions on this page */
+(function(){
+  const handoff = (window.PBAIHandoff && window.PBAIHandoff.load && window.PBAIHandoff.load()) || null;
+  if (!handoff || !handoff.items || !handoff.items.length) return;
+
+  // Example: mount quick “switch suggestion” chips if you have a slot
+  const mount = document.getElementById('ai-suggestions'); // create a div with this id where you want chips
+  if (!mount) return;
+
+  const chips = handoff.items.map(it=>{
+    const slug = it.slug ? encodeURIComponent(it.slug) : '';
+    const label = it.label || it.use || '(untitled)';
+    // Point to your page with ?slug=
+    return `<a class="chip" href="./startup-wizard.html?slug=${slug}" title="${(it.use || label).replace(/"/g,'&quot;')}">${label}</a>`;
+  }).join(' ');
+
+  mount.innerHTML = `
+    <div class="pb-aiswitch" style="display:flex;flex-wrap:wrap;gap:8px;">
+      ${chips}
+    </div>
+  `;
 })();
 </script>
 
