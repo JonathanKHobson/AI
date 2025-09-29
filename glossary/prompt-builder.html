@@ -2457,7 +2457,8 @@ sel.innerHTML = sorted.map(t => {
   }
 }
 
-
+// Keep the picker locked to whichever template the active tab actually uses
+try { syncFrameworkPickerToActive(sel); } catch(_){}
 
 document.getElementById('fwHint')?.setAttribute('hidden','');
 
@@ -2472,6 +2473,71 @@ window.FIND = function(id){
     String(t.title||'').toLowerCase()  === k      // (back-compat if any old items use title)
   );
 };
+</script>
+
+<script>
+// --- Picker ⇄ Active tab sync (robust across filters/rebuilds) -------------
+function getActiveTabSafe(){
+  try{
+    return (typeof activeTab === 'function')
+      ? activeTab()
+      : (window.state && Array.isArray(window.state.tabs))
+          ? window.state.tabs[window.state.active || 0]
+          : null;
+  }catch(_){ return null; }
+}
+
+function currentTemplateValueFromTab(tab){
+  if (!tab) return '';
+  const idOrSlug = String(tab.id || tab.slug || '').trim();
+  if (!idOrSlug) return '';
+  try{
+    const meta = (typeof FIND === 'function') ? FIND(idOrSlug) : null;
+    return String((meta && (meta.id || meta.slug)) || idOrSlug);
+  }catch(_){
+    return idOrSlug;
+  }
+}
+
+/**
+ * Ensure #frameworkSel shows the active tab's template.
+ * If the active template isn't in the filtered list, we inject a "ghost" option
+ * so the selection can still reflect the true state.
+ */
+function syncFrameworkPickerToActive(selectEl){
+  const sel = selectEl || document.getElementById('frameworkSel');
+  if (!sel) return;
+
+  const tab = getActiveTabSafe();
+  if (!tab) return;
+
+  const val = currentTemplateValueFromTab(tab);
+  if (!val) return;
+
+  // Remove any stale ghost option from previous cycles
+  sel.querySelectorAll('option[data-ghost="1"]').forEach(o => o.remove());
+
+  const has = [...sel.options].some(o => String(o.value) === String(val));
+  if (has){
+    sel.value = val;
+    return;
+  }
+
+  // Inject a ghost option so selection can remain stable even when filtered out
+  const label = (() => {
+    try{
+      const meta = (typeof FIND === 'function') ? FIND(val) : null;
+      return meta?.label || meta?.name || meta?.slug || meta?.id || val;
+    }catch(_){ return val; }
+  })();
+
+  const ghost = document.createElement('option');
+  ghost.value = val;
+  ghost.textContent = `${label} • current`;
+  ghost.setAttribute('data-ghost', '1');
+  sel.insertBefore(ghost, sel.firstChild);
+  sel.value = val;
+}
 </script>
 
 <script>
@@ -9105,6 +9171,21 @@ function recomposeActivePreview(){
     };
   }
 })();
+</script>
+
+<script>
+// Keep picker → active tab aligned on boot and when switching tabs
+whenDataReady(()=> {
+  try { syncFrameworkPickerToActive(); } catch(_){}
+});
+
+// If your app dispatches 'tab-switched', maintain selection across tabs
+document.addEventListener('tab-switched', ()=>{
+  try { syncFrameworkPickerToActive(); } catch(_){}
+});
+
+// When the template dropdown itself changes (user action), no-op here;
+// the app's own change handler updates state/tab.id. Our sync will keep it stable thereafter.
 </script>
 
 
