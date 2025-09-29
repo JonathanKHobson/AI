@@ -1940,28 +1940,29 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   kind: 'task',
   categories: ['ux','research','planning'],
   tags: [
-    'type:task','topic:survey','topic:survey-design','topic:sampling','topic:ethics',
-    'use:plan','use:design','use:edit','use:qa','stage:plan','stage:design'
+    'type:task','topic:survey','topic:user-experience','topic:survey-design','topic:sampling','topic:ethics',
+    'use:plan','use:design','use:edit','use:qa','use:user-experience','stage:plan','stage:design'
   ],
   use_cases: [
-    'scope a new survey with goals, audience, and logistics',
+    'scope a new UX (user experience) survey with goals, audience, and logistics',
     'align stakeholders on sampling and timing',
     'choose tools and define success criteria',
-    'pressure-test objectives and translate them into questions or tasks',
+    'pressure-test objectives and translate them into questions or tasks to improve UX (user experience)',
     'decide mode (in-product, panel, email) and recruiting strategy for representativeness',
     'estimate sample size, incidence rate, and margin of error/power tradeoffs',
     'design pilots/cognitive interviews and quality gates (speeders, straightliners, fraud)',
     'plan analysis (key cuts, weighting, stats) and reporting artifacts',
     'set up accessibility, localization, consent/PII handling, and incentives',
-    'refine or edit a single question (bias, wording, scale design)',
-    'convert qualitative findings into a quant module (themes → items)',
+    'refine or edit a single question (bias, wording, UX (user experience), scale design)',
+    'convert qualitative findings into a quant module (themes → items) to improve UX (user experience)',
     'run split-sample wording/scale experiments and A/B concept tests',
     'plan a longitudinal tracker (wave management, continuity, change rules)',
     'localize instruments across languages (scale labels, cultural nuance)',
     'price or feature-prioritization studies (Van Westendorp, Gabor–Granger, MaxDiff, Conjoint)',
     'diagnose/repair low IR, low completion, or poor data quality in existing surveys',
-    'align survey outputs with product analytics and business KPIs',
-    'create an item bank and codebook for reuse'
+    'align UX (user experience) survey outputs with product analytics and business KPIs',
+    'create an item bank and codebook for reuse',
+    'design surveys for UX (user experience) studies'
   ],
   definition: 'Plan and (optionally) refine a survey end-to-end: decisions, objectives, hypotheses, audience, sampling, mode, instrument strategy, ethics/privacy, accessibility/localization, field ops, analysis/weighting/reporting, timeline, risks, and success criteria.',
   help: 'Paste prior briefs, drafts, or artifacts. Reference saved personas/segments to prefill audience and quotas. Note any legal/privacy constraints, localization needs, or tooling preferences. This task can scope a full survey, a module, or a single question.',
@@ -3252,11 +3253,11 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   categories: ['ux','research','analysis'],
   tags: [
     'type:task','topic:analysis','topic:transcripts','topic:codebook',
-    'topic:sentiment','topic:journey-mapping','topic:prioritization',
-    'use:synthesize','use:prioritize','use:edit','stage:analyze'
+    'topic:sentiment','topic:journey-mapping','topic:user-experience','topic:prioritization',
+    'use:synthesize','use:prioritize','use:edit','use:user-experience','stage:analyze'
   ],
   use_cases: [
-    'code interview and usability transcripts into themes',
+    'code interview and usability transcripts into UX (user experience) themes',
     'identify patterns, contradictions, and outliers',
     'extract verbatim quotes and evidence',
     'score pain points by severity, frequency, and impact',
@@ -3270,7 +3271,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     'shrink a noisy corpus to a crisp executive summary',
     'triangulate with surveys, tickets, and analytics to strengthen confidence',
     'track saturation and reliability (kappa/alpha) across coders and waves',
-    'create quote banks and rights-safe excerpts for storytelling'
+    'create quote banks and rights-safe excerpts for storytelling to communicate the UX (user experience)'
   ],
   definition: 'Analyze a corpus end to end: set source and purpose, define scope, choose method and codebook policy, tag sentiment and emotion, surface themes and tensions, curate quotes, and deliver evidence-backed insights with priorities, visuals, and exports.',
   help: 'Paste links or text, or indicate you will upload files. Pick the source and purpose, describe speakers and privacy/redaction, add domain terms, choose methods and priority models, then select deliverables and exports. Every field includes short helper text.',
@@ -4201,20 +4202,22 @@ tags: [
 'type:task',
 'topic:insights',
 'topic:prioritization',
+'topic:user-experience',
 'topic:storytelling',
 'use:synthesize',
 'use:present',
 'use:edit',
+'use:user-experience',
 'stage:summarize'
 ],
 use_cases: [
-'turn raw notes into a crisp readout',
+'turn raw notes into a crisp readout of UX (user experience) insights',
 'translate themes into decisions and next steps',
 'tailor messaging to execs or builders',
 'prioritize pains/opportunities by severity, frequency, and impact',
-'create insight cards with evidence, so-what, and recommendations',
+'create UX (user experience) driven insight cards with evidence, so-what, and recommendations',
 'map themes to journey stages and segments for clarity',
-'produce stakeholder-specific artifacts (exec TL;DR, builder tickets)',
+'produce stakeholder-specific UX (user experience) artifacts (exec TL;DR, builder tickets)',
 'triangulate qualitative + quant signals for confidence',
 'assemble quote banks and visuals (heatmaps, co-occurrence graphs)',
 'convert insights into roadmap slices or OKR candidates',
@@ -4522,22 +4525,25 @@ return [
   tags: [
     'type:task',
     'topic:usability-test',
+    'topic:user-experience',
     'topic:benchmarking',
     'topic:accessibility',
+    'use:usability-test',
+    'use:user-experience',
     'use:plan',
     'use:design',
     'use:edit',
     'stage:plan'
   ],
   use_cases: [
-    'define objectives and tasks for moderated/unmoderated testing',
+    'define objectives and tasks for UX (user experience) moderated/unmoderated testing',
     'set success criteria and metrics',
     'align recruiting and logistics',
     'plan formative (diagnostic) studies to fix friction fast',
-    'run summative/benchmark tests (task success/time/errors, SUS/SEQ/UMUX-Lite)',
+    'run summative/benchmark UX (user experience) tests (task success/time/errors, SUS/SEQ/UMUX-Lite)',
     'compare versions (A/B) or competitors under the same tasks',
     'design accessibility sessions with assistive tech and accommodations',
-    'plan navigation tests (first-click, tree testing) and content comprehension',
+    'plan navigation UX (user experience) tests (first-click, tree testing) and content comprehension',
     'specify hint/assistance policy and observer etiquette',
     'counterbalance task order and manage pilot/soft-launch',
     'tie findings to KPIs and acceptance criteria for fixes',
@@ -4815,6 +4821,7 @@ return [
   tags: [
     'type:task',
     'topic:usability-test',
+    'topic:user-experience',
     'topic:task-scenarios',
     'topic:hta',
     'topic:klm',
@@ -4822,10 +4829,11 @@ return [
     'use:write',
     'use:design',
     'use:edit',
+    'use:usability-test',
     'stage:design'
   ],
   use_cases: [
-    'write realistic, bias-free scenarios for usability tasks',
+    'write realistic, bias-free scenarios for UX (user experience) usability tasks',
     'define acceptance criteria per task',
     'ensure coverage of critical paths',
     'author recovery/edge-case scenarios that test resilience',
@@ -4834,10 +4842,11 @@ return [
     'add accessibility paths (keyboard-only, screen reader) and device variants',
     'counterbalance task order and set assistance (hint) policy',
     'embed per-task success/partial/fail gates and SEQ/Confidence prompts',
-    'localize scenario language by market/reading level',
+    'localize UX (user experience) scenario language by market/reading level',
     'design comparable scenarios for A/B or competitive studies',
     'seed realistic data/states so tasks are actually completable',
-    'attach observation targets and evidence logging (events, timestamps)'
+    'attach observation targets and evidence logging (events, timestamps)',
+    'for UX (user experience) usability testing scenarios writing'
   ],
   definition: 'Write and refine usability task scenarios with realistic context, prerequisites, starting states, constraints, success/partial/fail criteria, recovery variants, and observation targets. Includes step/micro-action breakdown (HTA, optional KLM timing) and accessibility/device paths.',
   help: 'Name the product area and user objectives in user language. Select modality, scenario style, complexity mix, ordering, and assistance policy so guidance adapts. Provide any seeded data, states, devices/AT, and constraints. Use personas and the bias library to keep language inclusive and avoid path giveaways.',
@@ -7190,7 +7199,8 @@ return [
     'generate a slice roadmap that breaks work into shippable chunks',
     'define APIs, data models, and contracts from simple inputs',
     'align non-functional needs (security, performance, reliability) to build plan',
-    'create BDD/TDD scaffolding for immediate implementation'
+    'create BDD/TDD scaffolding for immediate implementation',
+    'communicate UX (user experience) or product design ideas to engineers'
   ],
   definition: 'A practical bridge from everyday words to implementation: you describe your idea and users in simple language; the template converts it to precise technical instructions, executable specs, and a slice roadmap. It blends approachable guidance with rigorous engineering outputs so an expert developer—or an AI set up as an “expert dev”—can generate code or build iteratively.',
   help: 'Tell us what you want to build, who it’s for, and any preferences you have. Choose how detailed you want the plan, and whether you want tests first, code now, or a slice-by-slice roadmap. Use your own words; we’ll translate it into technical specs.',
