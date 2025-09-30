@@ -1938,7 +1938,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   slug: 'survey-plan',
   label: 'Survey — Plan — Design',
   kind: 'task',
-  categories: ['ux','research','planning'],
+  categories: ['user experience','research','planning'],
   tags: [
     'type:task','topic:survey','topic:user-experience','topic:survey-design','topic:sampling','topic:ethics',
     'use:plan','use:design','use:edit','use:qa','use:user-experience','stage:plan','stage:design'
@@ -2219,7 +2219,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   slug: 'questionnaire-write',
   label: 'Questionnaire — Write',
   kind: 'task',
-  categories: ['ux','research','writing'],
+  categories: ['user experience','research','writing'],
   tags: [
     'type:task',
     'topic:survey',
@@ -2494,7 +2494,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   slug: 'screener-criteria',
   label: 'Screener — Create Criteria',
   kind: 'task',
-  categories: ['ux','research','recruiting'],
+  categories: ['user experience','research','recruiting'],
   tags: [
     'type:task',
     'topic:screener',
@@ -2858,7 +2858,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   slug: 'interviews-plan',
   label: 'Interviews — Plan & Questions — Write',
   kind: 'task',
-  categories: ['ux','research','planning'],
+  categories: ['user experience','research','planning'],
   tags: [
     'type:task',
     'topic:interviews',
@@ -3254,7 +3254,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   slug: 'transcripts-analyze',
   label: 'Transcripts - Analyze',
   kind: 'task',
-  categories: ['ux','research','analysis'],
+  categories: ['user experience','research','analysis'],
   tags: [
     'type:task','topic:analysis','topic:transcripts','topic:codebook',
     'topic:sentiment','topic:journey-mapping','topic:user-experience','topic:prioritization',
@@ -4201,7 +4201,7 @@ id: 'task_findings_synthesize',
 slug: 'findings-synthesize',
 label: 'Findings — Synthesize',
 kind: 'task',
-categories: ['ux','research','analysis'],
+categories: ['user experience','research','analysis'],
 tags: [
 'type:task',
 'topic:insights',
@@ -4525,7 +4525,7 @@ return [
   slug: 'usability-test-plan',
   label: 'Usability Test — Plan',
   kind: 'task',
-  categories: ['ux','research','planning','evaluation'],
+  categories: ['user experience','research','planning','evaluation'],
   tags: [
     'type:task',
     'topic:usability-test',
@@ -4821,7 +4821,7 @@ return [
   slug: 'task-scenarios-write',
   label: 'Task Scenarios — Write',
   kind: 'task',
-  categories: ['ux','research','writing','evaluation'],
+  categories: ['user experience','research','writing','evaluation'],
   tags: [
     'type:task',
     'topic:usability-test',
@@ -5103,7 +5103,7 @@ return [
   slug: 'user-flow-audit',
   label: 'User Flow — Audit — Design',
   kind: 'task',
-  categories: ['ux','design','evaluation','analysis'],
+  categories: ['user experience','design','evaluation','analysis'],
   tags: [
     'type:task',
     'topic:user-flow',
@@ -5451,7 +5451,7 @@ const effortNote = (() => {
   slug: 'ux-microcopy-write',
   label: 'UX Microcopy — Write',
   kind: 'task',
-  categories: ['ux','content','writing','design'],
+  categories: ['user experience','content','writing','design'],
   tags: [
     'type:task',
     'topic:user-experience',
@@ -5738,7 +5738,7 @@ const effortNote = (() => {
   slug: 'prd-write',
   label: 'PRD — Write',
   kind: 'task',
-  categories: ['ux','business','product','planning','writing'],
+  categories: ['user experience','business','product','planning','writing'],
   tags: [
     'type:task',
     'topic:prd',
@@ -6043,7 +6043,7 @@ const effortNote = (() => {
   slug: 'backlog-prioritize',
   label: 'Backlog — Prioritize',
   kind: 'task',
-  categories: ['business','ux','product','prioritization','planning'],
+  categories: ['business','user experience','product','prioritization','planning'],
   tags: [
     'type:task',
     'topic:prioritization',
@@ -7736,7 +7736,7 @@ return [
   slug: 'research-30-60-90-plan',
   label: '30/60/90 Research Plan',
   kind: 'task',
-  categories: ['research','planning','product','ux'],
+  categories: ['research','planning','product','user experience'],
   tags: [
     'type:task',
     'topic:research',
@@ -8076,7 +8076,7 @@ use_cases: [
   slug: 'branding-strategy-visual-identity-guide',
   label: 'Branding Strategy & Visual Identity',
   kind: 'task',
-  categories: ['brand','design','marketing','strategy','ux'],
+  categories: ['brand','design','marketing','strategy','user experience'],
   tags: [
     'type:task',
     'topic:branding',
@@ -8390,7 +8390,7 @@ use_cases: [
   slug: 'website-metadata-ai-seo-builder',
   label: 'website metadata & ai seo builder',
   kind: 'task',
-  categories: ['seo','marketing','web','strategy','ux','accessibility','performance'],
+  categories: ['seo','marketing','web','strategy','user experience','accessibility','performance'],
   tags: [
     'type:task',
     'topic:seo',
