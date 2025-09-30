@@ -98,8 +98,17 @@
 
     .footerRow{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px }
   </style>
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
+  
 </head>
-<body>
+<body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
   <header>
     <a class="btn sm" href="./prompt-builder.html" rel="noopener">← Back to Prompt Builder</a>
     <strong>Saved Prompts & Sessions</strong>
@@ -137,7 +146,7 @@
   </main>
 
   <!-- Load templates so we can show human-friendly template names -->
-  <script src="/js/templates.data.js"></script>
+  <script src="./js/templates.data.js"></script>
 
   <script>
   // === Theme toggle mirrors Prompt Builder behavior ===
