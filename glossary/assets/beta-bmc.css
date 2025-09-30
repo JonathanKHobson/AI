@@ -1,0 +1,147 @@
+/* ===== Beta + BMC (externalized) ===== */
+:root{
+  --bmc-base:16px; --bmc-gap:12px;
+  --bmc-obvious-h:56px; --bmc-discreet-h:46px;
+
+  --beta-bg:#fff7cc; --beta-fg:#3a2a00; --beta-border:#f3e08a;
+  --beta-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+
+/* Default bottoms */
+.betaPill, .betaDock { bottom: var(--bmc-base) !important; }
+
+/* With BIG yellow BMC button present */
+body:has(#bmcDock.obvious) .betaPill,
+body:has(#bmcDock.obvious) .betaDock{
+  bottom: calc(var(--bmc-base) + var(--bmc-obvious-h) + var(--bmc-gap)) !important;
+}
+
+/* With discreet BMC present */
+body:has(#bmcDock):not(:has(#bmcDock.obvious)) .betaPill,
+body:has(#bmcDock):not(:has(#bmcDock.obvious)) .betaDock{
+  bottom: calc(var(--bmc-base) + var(--bmc-discreet-h) + var(--bmc-gap)) !important;
+}
+
+/* Smooth hop if you also add/remove .has-bmc via JS */
+.has-bmc .betaPill, .has-bmc .betaDock{ transition: bottom .18s ease-out; }
+
+/* --- BETA bar --- */
+.betaBanner{
+  position:fixed; left:50%; transform:translateX(-50%);
+  bottom:0; z-index:2400;
+  background:var(--beta-bg); color:var(--beta-fg);
+  border:1px solid var(--beta-border);
+  border-bottom:none; border-radius:14px 14px 0 0;
+  box-shadow: var(--beta-shadow);
+  max-width:min(980px, 96vw);
+  width:fit-content;
+  padding:10px 12px; display:flex; align-items:center; gap:10px;
+  font:600 14px/1.25 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+.betaBanner .tag{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:40px; padding:4px 8px; border-radius:999px;
+  background:#111; color:#fff; font-size:12px; letter-spacing:.02em;
+}
+.betaBanner .msg{ font-weight:700 }
+.betaBanner .sub{ font-weight:600; opacity:.9 }
+.betaBanner .link-btn{
+  appearance:none; border:none; background:#0000; cursor:pointer;
+  text-decoration:underline; font:inherit; color:inherit; padding:0 2px;
+}
+.betaBanner .x{
+  margin-left:auto; inline-size:30px; block-size:30px; border-radius:8px;
+  border:1px solid color-mix(in lab, var(--beta-border), #000 8%);
+  background:#0000; color:inherit; cursor:pointer;
+}
+.betaBanner .x:hover{ background:rgba(0,0,0,.06) }
+@media (max-width:520px){
+  .betaBanner{ font-size:13px; padding:8px 10px }
+  .betaBanner .sub{ display:none }
+}
+
+/* --- BETA discrete corner dock --- */
+.betaDock{
+  position:fixed; left:16px; bottom:16px; z-index:2400;
+  display:flex; align-items:center;
+}
+.betaDock .betaPanel{
+  position:relative;
+  display:flex; align-items:center; gap:10px;
+  background:var(--beta-bg); color:var(--beta-fg);
+  border:1px solid var(--beta-border);
+  border-radius:12px; box-shadow: var(--beta-shadow);
+  padding:8px 12px;
+  font:600 12.5px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  transform:translateX(0);
+  transition: transform .18s ease, opacity .18s ease, bottom .18s ease;
+}
+.betaDock .label{ font-weight:800 }
+.betaDock .feedback{
+  appearance:none; border:1px solid color-mix(in lab, var(--beta-border), #000 12%);
+  background:#fff; color:#111; border-radius:8px; padding:6px 8px; cursor:pointer;
+  font-weight:700;
+}
+.betaDock .feedback:hover{ background:rgba(0,0,0,.06) }
+.betaDock .collapse{
+  margin-left:6px; inline-size:26px; block-size:26px; border-radius:8px;
+  border:1px solid color-mix(in lab, var(--beta-border), #000 8%);
+  background:#0000; color:inherit; cursor:pointer;
+}
+.betaDock .collapse:hover{ background:rgba(0,0,0,.06) }
+
+/* Edge-hugging, ultra-discreet handle */
+.betaDock .betaHandle{
+  inline-size:22px; block-size:44px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:8px; border:1px solid var(--beta-border);
+  background:#fff; color:#111; cursor:pointer;
+  box-shadow: var(--beta-shadow);
+  visibility:hidden; opacity:0; transition:opacity .18s ease, inline-size .12s ease;
+}
+
+/* Collapsed: slide panel off-canvas; handle hugs the page edge */
+.betaDock.collapsed .betaPanel{
+  position:absolute; left:0; transform:translateX(calc(-100% - 8px)); opacity:.95;
+}
+.betaDock.collapsed .betaHandle{
+  visibility:visible; opacity:1;
+  position:absolute; left:0; bottom:0;
+  inline-size:12px; /* skinny */
+  transform:translateX(-6px); /* tuck 6px off-screen */
+  border-left:none; border-radius:0 8px 8px 0;
+}
+.betaDock.collapsed .betaHandle:hover{ inline-size:20px; transform:translateX(-2px); }
+
+/* --- BMC dock --- */
+#bmcDock{
+  position:fixed; left:16px; bottom:16px; z-index:2300;
+  display:flex; align-items:center; gap:8px;
+}
+#bmcDock.obvious a img{
+  display:block; height:56px; width:auto; border-radius:12px;
+  box-shadow: var(--beta-shadow);
+}
+#bmcDock .bmc-compact{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:999px;
+  background:#FFF; box-shadow: var(--beta-shadow);
+  text-decoration:none; overflow:hidden;
+}
+#bmcDock .bmc-compact .bmc-ico{
+  width:100%; height:100%; object-fit:cover; image-rendering:auto;
+}
+#bmcDock .bmcClose{
+  display:none; inline-size:30px; block-size:30px; border-radius:8px;
+  border:1px solid rgba(0,0,0,.1); background:#fff0; color:#111; cursor:pointer;
+}
+#bmcDock.dismissible .bmcClose{ display:inline-block; }
+#bmcDock .bmcClose:hover{ background:rgba(0,0,0,.06) }
+
+@media (max-width:720px){
+  #bmcDock{ left:12px; bottom:12px }
+  #bmcDock.obvious a img{ height:48px }
+}
+
+/* Dialog layering */
+dialog[open]{ z-index:3000; }
