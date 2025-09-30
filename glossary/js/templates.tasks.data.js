@@ -8884,6 +8884,17 @@ use_cases: [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
   ];
 
   // === Lightweight search hooks (optional, but makes search/snippets fast) ===
