@@ -421,12 +421,21 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
 
 
   </style>
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
+  
 </head>
-<body>
+<body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
 
   <!-- Data files -->
   <script>window.GLOSSARY = Array.isArray(window.GLOSSARY) ? window.GLOSSARY : [];</script>
-  <script src="glossary.data.js"></script>
+  <script src="./js/glossary.data.js"></script>
 
   <div class="wrap">
     <header>
