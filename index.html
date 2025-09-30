@@ -1497,7 +1497,7 @@ html.is-mobile .hero{ padding-top:18px; }
   border: 1px solid transparent !important;
 }
 
-/* Test → discreet/subtle */
+/* Test → discrete/subtle */
 :is(#aiSettingsDialog, dialog.ai-settings, dialog#aiSettingsDialog, dialog#aiSettings) :is(#aiTest,[data-action="test"],.btn-subtle){
   opacity: .78 !important;
   background: #fff !important;
@@ -1687,24 +1687,55 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
 .ai-results .btn.small{ padding:6px 10px; font-size:12px; border-radius:10px; }
 
 
+  /* index.html header: invisible container, right-aligned contents */
+  .site-header {
+    /* No background, no border, no shadow */
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .site-header .header-row {
+    min-height: 48px;                /* adjust if you want more/less vertical room */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;       /* ⇦ puts AI Settings on the right */
+    padding: 8px 16px;               /* horizontal breathing room */
+    gap: 12px;
+  }
+
+
 </style>
 
+  
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./glossary/assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./glossary/assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
   
   
   <!-- HTML STARTS HERE -->
   
   
 </head>
-<body>
+<body data-beta="bar" data-bmc="obvious">
 <a class="skip-link" href="#main">skip to content</a>
 
 
 <header>
+<header id="siteHeader" class="site-header" role="banner">
+  <div class="header-row">
+  
 
 <!-- Keep your existing button -->
 <button id="aiSettingsBtn" class="btn secondary ai-settings-btn" type="button" title="AI Assist settings">
   <span class="label">ai settings</span>
 </button>
+
+  </div>
 
   </header>
   
@@ -5823,47 +5854,6 @@ pb.ai.handlePanelAI = async function(q){
 </script>
 <!-- ▲▲ paste ends here ▲▲ -->
 
-
-<script>
-(function mountAISettingsBtn(){
-  const btn = document.getElementById('aiSettingsBtn');
-  if (!btn) return;
-
-  // open the dialog
-  btn.addEventListener('click', ()=> { try{ AISettings.open(); }catch{} });
-
-  function place(){
-    const headerBar = document.querySelector('#resultHeader:not([hidden]) .bar');
-    if (headerBar){
-      // Put the button at the far right of the header
-      if (btn.parentNode !== headerBar) headerBar.appendChild(btn);
-      btn.classList.add('is-in-header');
-      btn.style.position = '';  // use header layout
-      btn.style.top = btn.style.right = btn.style.left = ''; // clear fixed coords
-    } else {
-      // No visible header: keep it fixed in the top-right of the page
-      btn.classList.remove('is-in-header');
-      btn.style.position = 'fixed';
-      btn.style.top = '16px';
-      // robust logical/physical fallback
-      btn.style.right = '16px';
-      btn.style.left = 'auto';
-    }
-  }
-
-  // Place now
-  place();
-
-  // Re-place whenever the results header shows/hides
-  const rh = document.getElementById('resultHeader');
-  if (rh){
-    new MutationObserver(place).observe(rh, { attributes:true, attributeFilter:['hidden','style','class'] });
-  }
-  // Also re-run on resize (mobile/desktop toggles)
-  window.addEventListener('resize', place, { passive:true });
-})();
-</script>
-
 <script>
 /* === AI Assist → cross-page handoff (v1) ================================
    Saves the final suggestions shown to the user into localStorage so that
@@ -6027,7 +6017,6 @@ pb.ai.handlePanelAI = async function(q){
     }
   });
 </script>
-
 
   
 </body>
