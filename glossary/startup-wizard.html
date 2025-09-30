@@ -99,6 +99,20 @@ a.btn,a.btn:hover,.btn,.btn:hover,.btn:focus,.btn:active{ text-decoration:none!i
   color: var(--muted);
   margin-top: 6px;
 }
+
+/* ==== Slice 2: Assist-lite checkbox (left-aligned, inline with desc) ====== */
+#wizViewSteps .field .desc{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+}
+#wizViewSteps .field .assist-lite{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12.5px; color: var(--muted);
+}
+#wizViewSteps .field .assist-lite input[type="checkbox"]{
+  width:14px; height:14px; accent-color: currentColor;
+  transform: translateY(-1px);
+}
+
 html[data-theme="dark"] #wizViewSteps .field .desc {
   color: color-mix(in srgb, var(--muted), white 10%);
 }
@@ -948,9 +962,51 @@ dialog[class*="ai-settings"] .btn:not(.primary):hover {
   color: var(--muted);
 }
 
+/* === Slice 1: Wizard single type-ahead (local menu) ===================== */
+.wiz-pane .ta-shell { position: relative; }               /* anchor for the menu */
+
+/* === Slice 2: Repeater chips (wizard) =================================== */
+.wiz-pane .chips { display:flex; flex-wrap:wrap; gap:6px; margin: 0 0 6px 0; }
+.wiz-pane .chip {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 8px; border:1px solid var(--border); border-radius:14px;
+  background: var(--chip); line-height:1; font-size:12px;
+}
+.wiz-pane .chip .x { cursor:pointer; border:0; background:none; font-size:14px; line-height:1; }
+.wiz-pane .chip-input { width:100%; }
+
+.wiz-pane .ta-menu[hidden]{ display:none }
+.wiz-pane .ta-menu{
+  position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:20;
+  border:1px solid var(--border); background:var(--card);
+  border-radius:12px; box-shadow:var(--shadow);
+  max-height:260px; overflow:auto;
+}
+.wiz-pane .ta-item{ padding:8px 10px; cursor:pointer; }
+.wiz-pane .ta-item[aria-selected="true"],
+.wiz-pane .ta-item:hover{
+  background:color-mix(in srgb, var(--chip), white 30%);
+}
+.wiz-pane .ta-hint{
+  margin-top:6px; font-size:12px; color:var(--muted);
+}
+
+
 </style>
+
+
+
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
+  
 </head>
-<body>
+<body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
 
 <header class="no-edge">
 
@@ -2661,6 +2717,39 @@ document.addEventListener('click', (ev)=>{
 const TOUCH = new Set();           // field ids user interacted with
 const VALUES = new Map();          // field id -> current value text
 
+/* Slice 1.5: Common Context persistence (across templates & sessions) */
+const CC_LS_KEY = 'pb.wizard.commonCtx.v1';
+const CC_IDS = ['ctx_use','ctx_aud','ctx_style','ctx_tone'];
+
+function ccLoad(){
+  try { return JSON.parse(localStorage.getItem(CC_LS_KEY) || '{}'); }
+  catch(_){ return {}; }
+}
+function ccSave(obj){
+  try { localStorage.setItem(CC_LS_KEY, JSON.stringify(obj || {})); }
+  catch(_){ /* ignore */ }
+}
+/** Seed VALUES from localStorage so hydration fills the inputs before first render */
+function ccSeedVALUESFromStorage(){
+  const data = ccLoad();
+  CC_IDS.forEach(id => {
+    const v = (data[id] ?? '');
+    // Always set; allows “clear” to persist as empty string
+    VALUES.set(id, String(v));
+  });
+}
+/** Persist the 4 Common Context fields from current wizard values */
+function ccPersistFromVALUES(){
+  const obj = {};
+  CC_IDS.forEach(id => {
+    const v = wiz_getVal(id);           // uses VALUES → survives unmounted steps
+    obj[id] = String(v || '');          // store empty string if cleared
+  });
+  ccSave(obj);
+}
+/* Seed immediately so first paint hydrates from storage */
+ccSeedVALUESFromStorage();
+
 function computeFieldId(f){
   const base = (f.id||f.key||f.slug||f.label||('x_'+Math.random().toString(36).slice(2))).toString();
   return 'fld_'+base.toLowerCase().replace(/[^a-z0-9]+/g,'_');
@@ -3037,6 +3126,10 @@ function renderPreviewMaybe(){
   // If the page later ships PB's official makePromptForTab and you want to prefer it,
   // you can gate it here, but for Slice 1 we rely on the shim for determinism.
   out.textContent = txt;
+  
+    // Slice 0 — keep the Preview drawer live
+  const pvOut = document.getElementById('pvOut');
+  if (pvOut) pvOut.textContent = txt;
 }
 
   // ===== Steps (standalone renderer — uses template.fields directly) =====
@@ -3067,7 +3160,7 @@ function fieldInput(f){
     return `
       <div class="field" data-field-id="${fid}">
         <label for="${fid}">${label}</label>
-        <select id="${fid}" name="${fid}" ${multiple?'multiple size="'+Math.min(6, Math.max(3, opts.length))+'"':''}>
+        <select id="${fid}" name="${fid}" data-key="${f.key||''}" ${multiple?'multiple size="'+Math.min(6, Math.max(3, opts.length))+'"':''}>
           ${optHtml}
         </select>
         ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
@@ -3079,7 +3172,7 @@ function fieldInput(f){
     return `
       <div class="field" data-field-id="${fid}">
         <label for="${fid}">${label}</label>
-        <textarea id="${fid}" name="${fid}" placeholder="${ph}"></textarea>
+        <textarea id="${fid}" name="${fid}" data-key="${f.key||''}" placeholder="${ph}"></textarea>
         ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
       </div>`;
   }
@@ -3088,45 +3181,171 @@ function fieldInput(f){
   return `
     <div class="field" data-field-id="${fid}">
       <label for="${fid}">${label}</label>
-      <input type="text" id="${fid}" name="${fid}" placeholder="${ph}">
+      <input type="text" id="${fid}" name="${fid}" data-key="${f.key||''}" placeholder="${ph}">
       ${desc?`<div class="desc muted" style="margin-top:6px">${desc}</div>`:''}
     </div>`;
 }
 
 let SHOW_ALL = false, STEP_INDEX = 0, STEPS = [], REQUIRED_FIDS = [];
 
-// Build steps:
-// 1) Overview (shared): label + full definition + Common Context block (#commonCtxBody)
-// 2..N-2) Template-specific: textarea/repeater = own step; others batched up to 3; title = first field label
-// N-1) Extra (shared): #extra and #extraMore together
-// N) Output (shared): #out preview
 function buildSteps(t){
-  const fields = Array.isArray(t.fields)? t.fields : [];
+  const fields = Array.isArray(t.fields) ? t.fields : [];
 
   // 1) Overview
   const steps = [{ title:'overview', special:'overview', fields:[], fids:[] }];
 
-  // 2) Template-specific grouping
-  let bucket = [];
-  let bucketTitle = null;
-  function flushBucket(){
-    if (!bucket.length) return;
-    const fids = bucket.map(f => computeFieldId(f));
-    steps.push({ title: bucketTitle || (bucket[0]?.label||'fields'), fields:[...bucket], fids });
-    bucket = []; bucketTitle = null;
-  }
-  for (const f of fields){
-    if (isTextAreaOrRepeater(f)){
-      flushBucket();
-      const fid = computeFieldId(f);
-      steps.push({ title: (f.label||'section'), fields:[f], fids:[fid] });
-    }else{
-      if (!bucket.length) bucketTitle = f.label||'fields';
-      bucket.push(f);
-      if (bucket.length>=3) flushBucket();
+  // 2) Template-specific grouping — Step Condensation Engine (≤3 controls/step, no singletons, no select-only)
+  (function condense(){
+    const TOPIC = { WHO:'WHO', WHAT:'WHAT', WHY:'WHY', HOW:'HOW', WHEN:'WHEN', WHERE:'WHERE', PROCESS:'PROCESS', GOV:'GOV', MISC:'MISC' };
+    const ORDER = [TOPIC.WHO,TOPIC.WHAT,TOPIC.WHY,TOPIC.HOW,TOPIC.WHEN,TOPIC.WHERE,TOPIC.PROCESS,TOPIC.GOV,TOPIC.MISC];
+    const TOK = {
+      WHO:     /\b(audience|persona|stakeholder|employer|missing voices|access|inclusion|users?)\b/i,
+      WHAT:    /\b(title|mission|goal|deliverable|content|feature name|story|paste|seed( companies)?)\b/i,
+      WHY:     /\b(purpose|success|metric|result|impact|kpi|evidence|proof|differentiator)\b/i,
+      HOW:     /\b(tone|style|format|constraints?|guidelines?|tools?|methods?|channels?)\b/i,
+      WHEN:    /\b(time|horizon|deadline|dates?|cadence|schedule|review)\b/i,
+      WHERE:   /\b(location|region|platform|base ?url|channel)\b/i,
+      PROCESS: /\b(actions?|steps?|background|scenario|given|when|then|agenda|stages?)\b/i,
+      GOV:     /\b(wip|sle|retries|workers|reporting|policy|limits?|governance)\b/i
+    };
+
+    function getType(f){
+      const t = String(f.type||'').toLowerCase();
+      if (t==='dropdown' || t==='multiselect') return 'select';
+      return t || 'text';
     }
-  }
-  flushBucket();
+    function isSelectish(f){ return getType(f)==='select'; }
+    function isTextareaOnly(f){ return getType(f)==='textarea'; }
+    function isRepeaterType(f){ return getType(f)==='repeater'; }
+
+    function classifyTopic(f){
+      const hay = [f.label||'', f.desc||f.description||'', f.key||''].join(' ').toLowerCase();
+      if (TOK.WHO.test(hay))     return TOPIC.WHO;
+      if (TOK.WHAT.test(hay))    return TOPIC.WHAT;
+      if (TOK.WHY.test(hay))     return TOPIC.WHY;
+      if (TOK.HOW.test(hay))     return TOPIC.HOW;
+      if (TOK.WHEN.test(hay))    return TOPIC.WHEN;
+      if (TOK.WHERE.test(hay))   return TOPIC.WHERE;
+      if (TOK.PROCESS.test(hay)) return TOPIC.PROCESS;
+      if (TOK.GOV.test(hay))     return TOPIC.GOV;
+      return TOPIC.MISC;
+    }
+
+    function lengthClass(f){
+      const ph   = String(f.ph||f.placeholder||'').trim();
+      const desc = String(f.desc||f.description||'').trim();
+      return (ph.length + desc.length) >= 140 ? 'long' : 'short';
+    }
+    function fieldWeight(f){
+      if (isRepeaterType(f)) return 1.5;
+      if (isTextareaOnly(f)) return (lengthClass(f)==='long' ? 2.0 : 1.5);
+      if (isSelectish(f)) {
+        const raw = Array.isArray(f.options) ? f.options
+                 : Array.isArray(f.choices) ? f.choices : [];
+        const n = raw.length;
+        return n > 12 ? 1.5 : 1.0;
+      }
+      return 1.0;
+    }
+    function niceTitle(topic){
+      switch(topic){
+        case TOPIC.WHO:     return 'Audience & Context';
+        case TOPIC.WHAT:    return 'Goals & Content';
+        case TOPIC.WHY:     return 'Evidence & Outcomes';
+        case TOPIC.HOW:     return 'Constraints & Guidance';
+        case TOPIC.WHEN:    return 'Timing';
+        case TOPIC.WHERE:   return 'Where/Channels';
+        case TOPIC.PROCESS: return 'Scenarios & Steps';
+        case TOPIC.GOV:     return 'Setup & Governance';
+        default:            return 'Details';
+      }
+    }
+    function sumW(arr){ return arr.reduce((s,x)=> s + x.__w, 0); }
+
+    // Normalize fields → items with metadata
+    const items = fields.map((f,i)=>({
+      __idx:i,
+      __topic: classifyTopic(f),
+      __w: fieldWeight(f),
+      __isSelect: isSelectish(f),
+      data: f
+    }));
+
+    // Topic queues (stable by original order)
+    const queues = new Map(); ORDER.forEach(k => queues.set(k, []));
+    items.forEach(it => (queues.get(it.__topic) || queues.get(TOPIC.MISC)).push(it));
+
+    // Build groups with budget ≤3 (prefer same-topic packing)
+    const groups = [];
+    const titles = [];
+
+    ORDER.forEach(topic=>{
+      const q = queues.get(topic);
+      while (q.length){
+        let budget = 3;
+        const bag = [];
+        const first = q.shift(); bag.push(first); budget -= first.__w;
+        let j = 0;
+        while (j < q.length){
+          const cand = q[j];
+          if (cand.__w <= budget){ bag.push(cand); budget -= cand.__w; q.splice(j,1); continue; }
+          j++;
+        }
+        groups.push(bag);
+        titles.push(niceTitle(topic));
+      }
+    });
+
+    // Fix singletons by borrowing into them or merging them away
+    for (let g=0; g<groups.length; g++){
+      if (groups[g].length===1){
+        const need = 3 - sumW(groups[g]);
+        if (g+1<groups.length){
+          const r = groups[g+1].find(x => x.__w <= need);
+          if (r){ groups[g].push(r); groups[g+1].splice(groups[g+1].indexOf(r),1); continue; }
+        }
+        if (g-1>=0){
+          const l = groups[g-1].find(x => x.__w <= need);
+          if (l){ groups[g].push(l); groups[g-1].splice(groups[g-1].indexOf(l),1); continue; }
+        }
+        if (g+1<groups.length && (sumW(groups[g+1]) + groups[g][0].__w) <= 3){
+          groups[g+1].push(groups[g][0]); groups.splice(g,1); titles.splice(g,1); g--;
+        } else if (g-1>=0 && (sumW(groups[g-1]) + groups[g][0].__w) <= 3){
+          groups[g-1].push(groups[g][0]); groups.splice(g,1); titles.splice(g,1); g--;
+        }
+      }
+    }
+
+    // Ensure no group is select-only (borrow a non-select if needed)
+    for (let g=0; g<groups.length; g++){
+      if (groups[g].length && groups[g].every(x => x.__isSelect)){
+        const need = 3 - sumW(groups[g]);
+        let donorIdx = -1, donorFrom = -1;
+        if (g+1<groups.length){ donorFrom = g+1; donorIdx = groups[g+1].findIndex(x => !x.__isSelect && x.__w <= need); }
+        if (donorIdx<0 && g-1>=0){ donorFrom = g-1; donorIdx = groups[g-1].findIndex(x => !x.__isSelect && x.__w <= need); }
+        if (donorIdx>=0){
+          const donor = groups[donorFrom][donorIdx];
+          groups[g].push(donor);
+          groups[donorFrom].splice(donorIdx,1);
+        } else {
+          if (g+1<groups.length && (sumW(groups[g+1]) + groups[g][0].__w) <= 3){
+            groups[g+1].push(groups[g][0]); groups.splice(g,1); titles.splice(g,1); g--;
+          } else if (g-1>=0 && (sumW(groups[g-1]) + groups[g][0].__w) <= 3){
+            groups[g-1].push(groups[g][0]); groups.splice(g,1); titles.splice(g,1); g--;
+          }
+        }
+      }
+    }
+
+    // Emit steps from groups
+    for (let i=0;i<groups.length;i++){
+      const group = groups[i]; if (!group || !group.length) continue;
+      const fieldsInGroup = group.map(x => x.data);
+      const fids = fieldsInGroup.map(f => computeFieldId(f));
+      const title = titles[i] || (fieldsInGroup[0].label || 'fields');
+      steps.push({ title, fields: fieldsInGroup, fids });
+    }
+  })();
 
   // 3) Extras (shared)
   steps.push({ title:'extra instructions', special:'extra', fields:[], fids:['extra','extraMore'] });
@@ -3134,17 +3353,17 @@ function buildSteps(t){
   // 4) Output (shared)
   steps.push({ title:'output', special:'output', fields:[], fids:[] });
 
+  // Finalize
   STEPS = steps;
   STEP_INDEX = 0;
   REQUIRED_FIDS = steps.filter(s=>!s.special).flatMap(s=> s.fids||[]);
-  
-    // --- Seed boosters into state so Output shows default instructions by default
+
+  // Seed boosters so Output shows default instructions by default
   if (!VALUES.has('extra') || (VALUES.get('extra')||'').trim()===''){
     const b = wiz_defaultBooster(t);
     if (b){ VALUES.set('extra', b); }
   }
 
-  
   renderSteps(t);
   updateStepStates();
   updateTopProgress();
@@ -3178,13 +3397,16 @@ function renderSteps(t){
     body.innerHTML = `
       <h3 class="subhead" style="margin-bottom:6px">${lab}</h3>
       <div class="muted" style="margin:0 0 10px">${def||'<em>no definition provided</em>'}</div>
-      <div class="subhead" style="margin:8px 0 6px">common context <span class="muted">(optional; same across templates)</span></div>
-      <div id="commonCtxBody">
-        <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
-        <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
-        <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
-        <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
-      </div>
+  <div id="commonCtxHead" class="subhead" style="margin:8px 0 6px; display:flex; align-items:center; justify-content:space-between;">
+  <span>common context <span class="muted">(optional — <span id="commonCtxCount">0</span>/4 filled; same across templates)</span></span>
+  <button id="commonCtxToggle" class="btn sm" type="button" aria-expanded="false" aria-controls="commonCtxBody">show</button>
+</div>
+<div id="commonCtxBody" hidden>
+  <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
+  <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
+  <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
+  <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
+</div>
     `;
       // 🔧 Repaint saved values for use/audience/style/tone
   wiz_hydrateFields(body);
@@ -3253,15 +3475,16 @@ if (SHOW_ALL){
     <h3 class="subhead" style="margin-bottom:6px">${lab}</h3>
     <div class="muted" style="margin:0 0 10px">${def||'<em>no definition provided</em>'}</div>
 
-    <div class="subhead" style="margin:8px 0 6px">
-      common context <span class="muted">(optional; same across templates)</span>
-    </div>
-    <div id="commonCtxBody">
-      <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
-      <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
-      <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
-      <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
-    </div>
+<div id="commonCtxHead" class="subhead" style="margin:8px 0 6px; display:flex; align-items:center; justify-content:space-between;">
+  <span>common context <span class="muted">(optional — <span id="commonCtxCount">0</span>/4 filled; same across templates)</span></span>
+  <button id="commonCtxToggle" class="btn sm" type="button" aria-expanded="false" aria-controls="commonCtxBody">show</button>
+</div>
+<div id="commonCtxBody" hidden>
+  <div class="field"><label for="ctx_use">Use-case</label><input id="ctx_use" type="text" placeholder="what are you trying to do?"></div>
+  <div class="field"><label for="ctx_aud">Audience</label><input id="ctx_aud" type="text" placeholder="who is this for?"></div>
+  <div class="field"><label for="ctx_style">Style</label><input id="ctx_style" type="text" placeholder="e.g., concise, academic, playful"></div>
+  <div class="field"><label for="ctx_tone">Tone</label><input id="ctx_tone" type="text" placeholder="e.g., supportive, neutral, assertive"></div>
+</div>
   `;
 
   // 2) All template-specific fields (each step’s fields, in order)
@@ -3297,17 +3520,42 @@ if (SHOW_ALL){
 
   // 4) Output preview (same preview hook)
   html += `
-    <h3 class="subhead" style="margin-top:12px">output</h3>
+    <div class="out-head-row" style="margin-top:12px">
+      <h3 class="subhead">output</h3>
+      <div id="outActions" class="out-actions">
+        <button id="copyBtn2" class="btn sm">Copy</button>
+        <button id="openBtn2" class="btn sm ask" title="Ask ChatGPT">Ask ChatGPT</button>
+      </div>
+    </div>
     <pre id="out" class="wiz-output" aria-live="polite">(your generated prompt will appear here)</pre>
   `;
 
   body.innerHTML = html;
 
-  // Hydrate saved values + wire extras helpers + render preview
   wiz_hydrateFields(body);
   wiz_bindExtrasUI(t);
+  wireOutputActions();      // ← add this for Show All parity
   renderPreviewMaybe();
 }
+
+// === Slice 1+2: upgrade single + repeater type-ahead fields in this step ===
+{
+  const S = STEPS[STEP_INDEX] || { fields: [] };
+  const allFields = SHOW_ALL ? STEPS.flatMap(s => s.fields || []) : (S.fields || []);
+  window.WIZ.setStepSchemas(allFields);
+  window.WIZ.upgradeSingles(body);
+  window.WIZ.upgradeRepeaters(body);
+}
+
+// Slice 1: common context collapse
+if (typeof ensureCommonCtxCollapse === 'function') ensureCommonCtxCollapse();
+
+  // Slice 0: optionality banner + preview buttons
+  if (typeof insertOptionalityBanner === 'function') insertOptionalityBanner();
+  if (typeof ensurePreviewButtons === 'function') ensurePreviewButtons();
+  
+  // Slice 2/3: Assist-lite (per-field “help fill this field”)
+if (typeof ensureAssistLite === 'function') ensureAssistLite();
 
   // Nav buttons (hide vs. disable)
   const isFirst = STEP_INDEX<=0, isLast = STEP_INDEX>=STEPS.length-1;
@@ -3322,16 +3570,23 @@ if (SHOW_ALL){ el('wizStepBack').style.display='none'; el('wizStepNext').style.d
 
   // Delegate inputs → track TOUCH/VALUES, update states + progress + preview
   const bodyEl = el('wizStepBody');
-  bodyEl.oninput = bodyEl.onchange = (ev)=>{
-    const t = ev.target;
-    if (!t || !t.id) return;
-    VALUES.set(t.id, t.value||'');
-    const wrapper = t.closest('[data-field-id]');
-    if (wrapper){ TOUCH.add(wrapper.getAttribute('data-field-id')); }
-    updateStepStates();
-    updateTopProgress();
-    renderPreviewMaybe();
-  };
+bodyEl.oninput = bodyEl.onchange = (ev)=>{
+  const t = ev.target;
+  if (!t || !t.id) return;
+
+  // Keep VALUES in sync for all fields
+  VALUES.set(t.id, t.value || '');
+
+  // Persist Common Context across templates & sessions
+  if (CC_IDS.includes(t.id)) ccPersistFromVALUES();
+
+  const wrapper = t.closest('[data-field-id]');
+  if (wrapper){ TOUCH.add(wrapper.getAttribute('data-field-id')); }
+
+  updateStepStates();
+  updateTopProgress();
+  renderPreviewMaybe();
+};
   bodyEl.onfocusin = (ev)=>{
     const w = ev.target.closest('[data-field-id]');
     if (w) TOUCH.add(w.getAttribute('data-field-id'));
@@ -3431,8 +3686,37 @@ setTimeout(()=>{ buildIndex(); recompute(el('wizQ').value); }, 300); // pick up 
 
 /* ===================== Slice 1: Copy modal logic ===================== */
 
-/** Seeds and opens the shared Action Modal in "Copy" mode. */
-function openCopyModalFromOut(){
+/** Ensure cancel & close wiring for the action modal (idempotent). */
+function ensureActionModalWired(){
+  const dlg = document.getElementById('actionModal');
+  if (!dlg || dlg._actionsWired) return;
+
+  const actionCancel = document.getElementById('actionCancel');
+  const actionCloseX = document.getElementById('actionClose');
+
+  if (actionCancel) actionCancel.onclick = closeActionModal;
+  if (actionCloseX) actionCloseX.onclick = closeActionModal;
+
+  // Backdrop click (close when clicking outside dialog)
+  if (!dlg._backdropBound){
+    dlg.addEventListener('click', (e) => {
+      const rect = dlg.getBoundingClientRect();
+      const inDialog = (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top  && e.clientY <= rect.bottom
+      );
+      if (!inDialog) closeActionModal();
+    });
+    dlg._backdropBound = true;
+  }
+
+  dlg._actionsWired = true;
+}
+
+/** General opener: seeds and opens the shared Action Modal with provided text. */
+function openCopyModal(textOverride){
+  ensureActionModalWired(); // ← make sure cancel/close are wired
+
   const dlg     = document.getElementById('actionModal');
   const title   = document.getElementById('actionTitle');
   const ta      = document.getElementById('actionPreview');
@@ -3440,25 +3724,32 @@ function openCopyModalFromOut(){
   const status  = document.getElementById('copyStatus');
   const note    = document.getElementById('actionNote');
 
-  const outEl = document.getElementById('out');
-  const text  = outEl ? outEl.textContent : '';
+  const text = (typeof textOverride === 'string' && textOverride.length)
+    ? textOverride
+    : (document.getElementById('out')?.textContent || (typeof window.wiz_composePrompt==='function' ? window.wiz_composePrompt() : ''));
 
   title.textContent = 'Copy prompt';
   ta.value = text;
   status.hidden = true;
 
-  // Primary button acts as "Copy" in this mode
   primary.textContent = 'Copy';
   primary.onclick = copyFromModal;
 
-  // Hide the advisory note in Copy mode
   if (note) note.hidden = true;
 
-  // Open and focus textarea
   if (typeof dlg.showModal === 'function') dlg.showModal();
   else dlg.setAttribute('open','');
 
   setTimeout(() => { ta.focus(); ta.select(); }, 0);
+}
+
+/** Seeds and opens the shared Action Modal in "Copy" mode (out→modal). */
+function openCopyModalFromOut(){
+  const outEl = document.getElementById('out');
+  const text  = outEl && outEl.textContent
+    ? outEl.textContent
+    : (typeof window.wiz_composePrompt==='function' ? window.wiz_composePrompt() : '');
+  openCopyModal(text);
 }
 
 
@@ -3538,6 +3829,8 @@ function buildChatURL(promptText){
 
 /** Seeds and opens the shared Action Modal in "Ask ChatGPT" mode. */
 function openAskModalFromOut(){
+  ensureActionModalWired(); // ← make sure cancel/close are wired
+
   const dlg      = document.getElementById('actionModal');
   const title    = document.getElementById('actionTitle');
   const ta       = document.getElementById('actionPreview');
@@ -3730,11 +4023,954 @@ function openPostLaunchDlg(data){
 </script>
 
 
+<script>
+// === Slice 1+2: Type-ahead (single) + Repeater chips ======================
+// Public surface:
+//   window.WIZ.setStepSchemas(stepSchemasArray)
+//   window.WIZ.upgradeSingles(rootEl)     // single type-ahead
+//   window.WIZ.upgradeRepeaters(rootEl)   // repeater chips
+
+(function(){
+  // ---------- State (persist under pb.wizard.v1) ----------
+  const LS_KEY = 'pb.wizard.v1';
+  function loadState(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)||'{}'); }catch(_){ return {}; } }
+  function saveState(s){ try{ localStorage.setItem(LS_KEY, JSON.stringify(s)); }catch(_){ } }
+  const WIZ = (window.WIZ ||= {});
+  WIZ.state ||= loadState();
+
+  function getAtPath(obj, path){
+    if (!path) return undefined;
+    return String(path).split('.').reduce((o,k)=> (o && k in o ? o[k] : undefined), obj);
+  }
+  function setAtPath(obj, path, val){
+    const parts = String(path).split('.');
+    let cur = obj;
+    for (let i=0;i<parts.length-1;i++){
+      const k = parts[i]; if (!cur[k] || typeof cur[k] !== 'object') cur[k] = {};
+      cur = cur[k];
+    }
+    cur[parts[parts.length-1]] = val;
+  }
+
+  // ---------- Dataset registry (personas default; biases explicit) ----------
+  // Adapters must provide: filter(q, limit, filterUnit?) -> [{id,name,unit?,kind?,summary?}], getById(id)
+  const DS = (WIZ.datasets ||= {});
+
+  // Light stubs (safe to replace by dispatching wizard:dataset:<key>:loaded later)
+  DS.personas ||= (function(){
+    const base = [
+      { id:'persona:exec', name:'Executive' },
+      { id:'persona:designer', name:'Designer' },
+      { id:'persona:pm', name:'Product Manager' },
+      { id:'persona:dev', name:'Software Developer' },
+      { id:'persona:marketer', name:'Marketer' },
+      { id:'persona:student', name:'Student' },
+    ];
+    return {
+      filter(q, limit=30){
+        const s = String(q||'').toLowerCase().trim();
+        const list = s ? base.filter(x => x.name.toLowerCase().includes(s)) : base.slice();
+        return list.slice(0, limit);
+      },
+      getById(id){ return base.find(x => String(x.id)===String(id)) || null; }
+    };
+  })();
+
+  DS.biases ||= (function(){
+    const base = [
+      { id:'bias:anchoring', name:'Anchoring', unit:'bias' },
+      { id:'bias:confirmation', name:'Confirmation Bias', unit:'bias' },
+      { id:'tech:premortem', name:'Pre-mortem', unit:'technique' },
+    ];
+    return {
+      filter(q, limit=30, filterUnit){
+        const s = String(q||'').toLowerCase().trim();
+        let list = s ? base.filter(x => (x.name.toLowerCase().includes(s) || x.id.toLowerCase().includes(s))) : base.slice();
+        if (filterUnit) list = list.filter(x => String(x.unit||'') === String(filterUnit));
+        return list.slice(0, limit);
+      },
+      getById(id){ return base.find(x => String(x.id)===String(id)) || null; }
+    };
+  })();
+
+  document.addEventListener('wizard:dataset:personas:loaded', (ev)=>{
+    if (ev.detail && ev.detail.adapter){ WIZ.datasets.personas = ev.detail.adapter; }
+  });
+  document.addEventListener('wizard:dataset:biases:loaded', (ev)=>{
+    if (ev.detail && ev.detail.adapter){ WIZ.datasets.biases = ev.detail.adapter; }
+  });
+
+  // ---------- Schema normalizer (PromptBuilder-aligned rules) ----------
+  function normalize(schema){
+    const s = Object.assign({}, schema||{});
+    const label = String(s.label||s.key||'').trim();
+    const key   = String(s.key||s.name||'').trim() || slugify(label);
+    const isRepeater = (s.type==='repeater' && s.itemType==='typeahead');
+    const hasBiasTag = /bias/i.test(s.dataset||'') || /^bias->/i.test(s.autofill||'') || /bias/i.test(label);
+    const wantsBias  = hasBiasTag || /mitigation/i.test(label) || String(s.unit||'').toLowerCase()==='technique';
+    let dataset = s.dataset ? String(s.dataset).toLowerCase() : '';
+    if (dataset === 'bias') dataset = 'biases';
+    if (!dataset) dataset = wantsBias ? 'biases' : 'personas'; // Persona default
+    const allowDefault = dataset==='personas' ? true : false;
+    const allowFreeform = (typeof s.allowFreeform==='boolean') ? s.allowFreeform : allowDefault;
+    return {
+      label,
+      key,
+      persistKey: s.persistKey || ('ctx.'+key),
+      type: isRepeater ? 'repeater-typeahead' : 'typeahead',
+      dataset,
+      filterUnit: s.unit || s.itemLabel || null,
+      allowFreeform,
+      placeholder: s.ph || s.placeholder || ''
+    };
+  }
+  function slugify(s){
+    return String(s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').replace(/-+/g,'-');
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  // ---------- Single type-ahead (Slice 1) ----------
+  function upgradeSingle(root, meta){
+    if (!root || !meta) return;
+    const sel = `[name="${meta.key}"], [data-key="${meta.key}"]`;
+    const input = root.querySelector(sel);
+    if (!input) return;
+
+    let shell = input.closest('.ta-shell');
+    if (!shell){
+      shell = document.createElement('div');
+      shell.className = 'ta-shell';
+      input.parentNode.insertBefore(shell, input);
+      shell.appendChild(input);
+    }
+    let menu = shell.querySelector('.ta-menu');
+    if (!menu){
+      menu = document.createElement('div');
+      menu.className = 'ta-menu';
+      menu.setAttribute('role','listbox');
+      menu.hidden = true;
+      shell.appendChild(menu);
+    }
+    let hint = shell.querySelector('.ta-hint');
+    if (!hint){
+      hint = document.createElement('div');
+      hint.className = 'ta-hint';
+      hint.hidden = true;
+      shell.appendChild(hint);
+    }
+
+    input.setAttribute('role','combobox');
+    input.setAttribute('aria-expanded','false');
+    const listboxId = `${meta.key}-menu`;
+    menu.id = listboxId;
+    input.setAttribute('aria-controls', listboxId);
+    if (meta.placeholder) input.setAttribute('placeholder', meta.placeholder);
+
+    const saved = getAtPath(WIZ.state, meta.persistKey);
+    if (saved && typeof saved==='object'){
+      input.value = saved.name || '';
+      input.dataset.selectedId = saved.id || '';
+    }
+
+    let items = [], active = -1, open = false;
+    const adapter = ()=> (WIZ.datasets[meta.dataset] || null);
+    function refreshHint(){
+      const ad = adapter();
+      const missing = !ad || typeof ad.filter!=='function' || typeof ad.getById!=='function';
+      if (meta.dataset==='biases' && missing && !meta.allowFreeform){
+        hint.textContent = 'Bias library not loaded — suggestions unavailable.';
+        hint.hidden = false;
+      } else { hint.hidden = true; }
+    }
+    refreshHint();
+
+    function renderMenu(q){
+      const ad = adapter();
+      const hasAdapter = ad && typeof ad.filter==='function';
+      items = hasAdapter ? (ad.filter(q, 30, meta.filterUnit) || []) : [];
+      if ((!items || !items.length) && meta.allowFreeform && q.trim().length){
+        items = [{ id:'custom:'+q.trim(), name:q.trim() }];
+      }
+      if (!items.length){ close(); return; }
+      menu.innerHTML = items.map((it,i)=>(
+        `<div class="ta-item" role="option" data-idx="${i}" aria-selected="${i===0?'true':'false'}">
+           <div class="name"><strong>${escapeHtml(it.name)}</strong></div>
+           ${it.summary ? `<div class="muted" style="font-size:12px">${escapeHtml(String(it.summary))}</div>` : ''}
+         </div>`
+      )).join('');
+      active = 0; openMenu();
+    }
+    function openMenu(){ menu.hidden = false; open = true; input.setAttribute('aria-expanded','true'); }
+    function close(){ menu.hidden = true; open = false; active = -1; input.setAttribute('aria-expanded','false'); }
+    function highlight(i){ [...menu.children].forEach((n,k)=> n.setAttribute('aria-selected', k===i?'true':'false')); active = i; }
+    function pick(i){
+      const it = items[i]; if (!it) return;
+      input.value = it.name || '';
+      input.dataset.selectedId = String(it.id||'').trim();
+      setAtPath(WIZ.state, meta.persistKey, { id: input.dataset.selectedId, name: input.value });
+      saveState(WIZ.state);
+      close(); input.focus();
+    }
+
+    input.addEventListener('input', ()=>{ const q = input.value||''; if (!q.trim()){ close(); return; } renderMenu(q); });
+    input.addEventListener('keydown', (e)=>{
+      if (!open){
+        if (e.key==='Enter' && meta.allowFreeform){
+          const name = input.value.trim();
+          if (name){
+            const id = input.dataset.selectedId || ('custom:'+name);
+            setAtPath(WIZ.state, meta.persistKey, { id, name }); saveState(WIZ.state);
+          }
+        }
+        return;
+      }
+      const rows = [...menu.children];
+      if (e.key==='ArrowDown'){ e.preventDefault(); highlight(Math.min(active+1, rows.length-1)); }
+      else if (e.key==='ArrowUp'){ e.preventDefault(); highlight(Math.max(active-1, 0)); }
+      else if (e.key==='Enter'){ e.preventDefault(); pick(active>=0?active:0); }
+      else if (e.key==='Escape'){ e.preventDefault(); close(); }
+    });
+    menu.addEventListener('mousedown', (e)=>{ const row=e.target.closest('.ta-item'); if(!row)return; const i=+row.getAttribute('data-idx')||0; pick(i); });
+    input.addEventListener('blur', ()=> setTimeout(close, 120));
+
+    function onLoaded(){
+      refreshHint();
+      const val = getAtPath(WIZ.state, meta.persistKey);
+      if (val && val.id && (!val.name || !input.value)){
+        const ad = adapter(); const obj = ad && ad.getById ? ad.getById(val.id) : null;
+        if (obj){ input.value=obj.name; setAtPath(WIZ.state, meta.persistKey, { id: val.id, name: obj.name }); saveState(WIZ.state); }
+      }
+      if (document.activeElement === input && input.value.trim()){ renderMenu(input.value); }
+    }
+    document.addEventListener(`wizard:dataset:${meta.dataset}:loaded`, onLoaded);
+  }
+
+  // ---------- Repeater type-ahead (Slice 2) ----------
+  function upgradeRepeater(root, meta){
+    if (!root || !meta) return;
+    const sel = `[name="${meta.key}"], [data-key="${meta.key}"]`;
+    const hidden = root.querySelector(sel); // textarea from renderer
+    if (!hidden) return;
+
+    // hide the original textarea but KEEP it for storage + preview pipeline
+    hidden.hidden = true;
+
+    // Create shell
+    let shell = hidden.nextElementSibling && hidden.nextElementSibling.classList?.contains('ta-shell')
+      ? hidden.nextElementSibling
+      : null;
+    if (!shell){
+      shell = document.createElement('div');
+      shell.className = 'ta-shell';
+      hidden.insertAdjacentElement('afterend', shell);
+    }
+
+    // Chips, input, menu, hint
+    let chips = shell.querySelector('.chips'); if (!chips){ chips = document.createElement('div'); chips.className='chips'; shell.appendChild(chips); }
+    let input = shell.querySelector('.chip-input'); if (!input){ input = document.createElement('input'); input.type='text'; input.className='chip-input'; shell.appendChild(input); }
+    let menu  = shell.querySelector('.ta-menu'); if (!menu){ menu = document.createElement('div'); menu.className='ta-menu'; menu.setAttribute('role','listbox'); menu.hidden = true; shell.appendChild(menu); }
+    let hint  = shell.querySelector('.ta-hint'); if (!hint){ hint = document.createElement('div'); hint.className='ta-hint'; hint.hidden = true; shell.appendChild(hint); }
+
+    // A11y
+    input.setAttribute('role','combobox');
+    input.setAttribute('aria-expanded','false');
+    const listboxId = `${meta.key}-menu`;
+    menu.id = listboxId;
+    input.setAttribute('aria-controls', listboxId);
+    if (meta.placeholder) input.setAttribute('placeholder', meta.placeholder);
+
+    // Rehydrate picks from state
+    let picks = [];
+    const saved = getAtPath(WIZ.state, meta.persistKey);
+    if (Array.isArray(saved)){ picks = saved.map(x=> ({ id:String(x.id), name:String(x.name) })); }
+
+    // Helpers
+    const adapter = ()=> (WIZ.datasets[meta.dataset] || null);
+    function refreshHint(){
+      const ad = adapter();
+      const missing = !ad || typeof ad.filter!=='function' || typeof ad.getById!=='function';
+      if (meta.dataset==='biases' && missing && !meta.allowFreeform){
+        hint.textContent = 'Bias library not loaded — suggestions unavailable.';
+        hint.hidden = false;
+      } else { hint.hidden = true; }
+    }
+    refreshHint();
+
+    function hasId(id){ return picks.some(p => String(p.id)===String(id)); }
+    function renderChips(){
+      chips.innerHTML = picks.map(p =>
+        `<span class="chip" data-id="${p.id}">${escapeHtml(p.name)} <button class="x" title="remove" aria-label="remove" data-id="${p.id}">×</button></span>`
+      ).join('');
+    }
+    function persist(){
+      setAtPath(WIZ.state, meta.persistKey, picks.map(p=>({ id:p.id, name:p.name })));
+      saveState(WIZ.state);
+      // keep original textarea in sync for the composer (newline-joined)
+      hidden.value = picks.map(p=>p.name).join('\n');
+      // dispatch an input event so the wizard’s oninput updates VALUES + preview
+      hidden.dispatchEvent(new Event('input', { bubbles:true }));
+    }
+    function addPick(obj){
+      const id = String(obj.id || ('custom:'+obj.name)).trim();
+      const name = String(obj.name || obj.label || obj.id || '').trim();
+      if (!id || !name || hasId(id)) return;
+      picks.push({ id, name }); renderChips(); persist();
+    }
+    function removePick(id){
+      picks = picks.filter(p => String(p.id)!==String(id));
+      renderChips(); persist();
+    }
+
+    // Suggestions
+    let items = [], active = -1, open = false;
+    function openMenu(){ menu.hidden=false; open=true; input.setAttribute('aria-expanded','true'); }
+    function close(){ menu.hidden=true; open=false; active=-1; input.setAttribute('aria-expanded','false'); }
+    function highlight(i){ [...menu.children].forEach((n,k)=> n.setAttribute('aria-selected', k===i?'true':'false')); active=i; }
+
+    function renderMenu(q){
+      const ad = adapter();
+      const hasAdapter = ad && typeof ad.filter==='function';
+      items = hasAdapter ? (ad.filter(q, 30, meta.filterUnit) || []) : [];
+      if ((!items || !items.length) && meta.allowFreeform && q.trim().length){
+        items = [{ id:'custom:'+q.trim(), name:q.trim() }];
+      }
+      if (!items.length){ close(); return; }
+      menu.innerHTML = items.map((it,i)=>(
+        `<div class="ta-item" role="option" data-idx="${i}" aria-selected="${i===0?'true':'false'}">
+           <div class="name"><strong>${escapeHtml(it.name)}</strong></div>
+           ${it.summary ? `<div class="muted" style="font-size:12px">${escapeHtml(String(it.summary))}</div>` : ''}
+         </div>`
+      )).join('');
+      active = 0; openMenu();
+    }
+
+    function pick(i){
+      const it = items[i]; if (!it) return;
+      addPick(it); input.value=''; close(); input.focus();
+    }
+
+    // Wire DOM
+    renderChips(); persist(); // ensure hidden textarea mirrors any existing state
+
+    input.addEventListener('input', ()=>{
+      const q = input.value || '';
+      if (!q.trim()){ close(); return; }
+      renderMenu(q);
+    });
+    input.addEventListener('keydown', (e)=>{
+      if (!open){
+        // Backspace with empty → remove last chip
+        if (e.key==='Backspace' && !input.value.trim() && picks.length){ e.preventDefault(); removePick(picks[picks.length-1].id); }
+        // Enter with freeform allowed → add as custom
+        if (e.key==='Enter' && meta.allowFreeform){
+          const name = input.value.trim();
+          if (name){ addPick({ id:'custom:'+name, name }); input.value=''; }
+        }
+        return;
+      }
+      const rows = [...menu.children];
+      if (e.key==='ArrowDown'){ e.preventDefault(); highlight(Math.min(active+1, rows.length-1)); }
+      else if (e.key==='ArrowUp'){ e.preventDefault(); highlight(Math.max(active-1, 0)); }
+      else if (e.key===',' || e.key==='Enter'){ e.preventDefault(); pick(active>=0?active:0); }
+      else if (e.key==='Escape'){ e.preventDefault(); close(); }
+    });
+    // Paste batch (only if freeform is allowed)
+    input.addEventListener('paste', (e)=>{
+      if (!meta.allowFreeform) return;
+      const txt = (e.clipboardData && e.clipboardData.getData('text')) || '';
+      if (!txt || !/[,\n;]/.test(txt)) return;
+      e.preventDefault();
+      txt.split(/[,\n;]+/).map(s=>s.trim()).filter(Boolean).forEach(name=>{
+        addPick({ id:'custom:'+name, name });
+      });
+      input.value='';
+    });
+
+    menu.addEventListener('mousedown', (e)=>{
+      const row = e.target.closest('.ta-item'); if (!row) return;
+      const i = parseInt(row.getAttribute('data-idx')||'-1',10); if (i>=0) pick(i);
+    });
+    input.addEventListener('blur', ()=> setTimeout(close, 120));
+    chips.addEventListener('click', (e)=>{
+      const x = e.target.closest('.x'); if (!x) return;
+      const id = x.getAttribute('data-id'); removePick(id);
+    });
+
+    function onLoaded(){
+      refreshHint();
+      // Rehydrate names from ids if dataset got richer
+      const ad = adapter();
+      if (ad && ad.getById){
+        let changed = false;
+        picks = picks.map(p=>{
+          const hit = ad.getById(p.id);
+          if (hit && hit.name && hit.name!==p.name){ changed = true; return { id:p.id, name:hit.name }; }
+          return p;
+        });
+        if (changed){ renderChips(); persist(); }
+      }
+      if (document.activeElement === input && input.value.trim()){ renderMenu(input.value); }
+    }
+    document.addEventListener(`wizard:dataset:${meta.dataset}:loaded`, onLoaded);
+  }
+
+  // ---------- Public API ----------
+  let STEP_SCHEMAS = [];
+  WIZ.setStepSchemas = (arr)=>{ STEP_SCHEMAS = Array.isArray(arr)? arr : []; };
+
+  WIZ.upgradeSingles = (rootEl)=>{
+    const root = rootEl || document.getElementById('wizStepBody');
+    const singles = STEP_SCHEMAS.map(normalize).filter(m => m.type==='typeahead');
+    singles.forEach(m => upgradeSingle(root, m));
+  };
+
+  WIZ.upgradeRepeaters = (rootEl)=>{
+    const root = rootEl || document.getElementById('wizStepBody');
+    const reps = STEP_SCHEMAS.map(normalize).filter(m => m.type==='repeater-typeahead');
+    reps.forEach(m => upgradeRepeater(root, m));
+  };
+
+})();
+</script>
+
+<style>
+/* ==== Slice 0: Preview drawer + Optional pill ================================= */
+
+/* Slice 1: Common Context toggle */
+#commonCtxToggle { display:inline-block; width:auto; }
+
+/* Top preview button: force inline size/placement */
+#pvToggleTop{
+  display: inline-block !important;
+  width: auto !important;
+  align-self: flex-start;
+  margin: 6px 0 0 0;
+}
+
+/* Right-side drawer */
+#pvDrawer{
+  position: fixed;
+  top: 0; right: 0;
+  height: 100dvh;
+  width: 38vw;
+  max-width: 560px;
+  min-width: 320px;
+  background: var(--panel, #fff);
+  box-shadow: -2px 0 12px rgba(0,0,0,.12);
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+#pvDrawer.open{ transform: translateX(0); }
+
+#pvHead{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  position: sticky; top: 0; background: inherit;
+}
+#pvBody{ padding: 12px; overflow: auto; }
+#pvOut{
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  line-height: 1.35; font-size: 13px;
+}
+#pvActions{ display: flex; gap: 8px; align-items: center; }
+#pvCopyStatus{ font-size: 12px; opacity: .75; margin-top: 6px; }
+
+@media (max-width: 760px){ #pvDrawer{ width: 88vw; } }
+
+/* Optional pill (scoped to Steps view body) */
+#wizStepBody .field>label{
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+#wizStepBody .field>label::after{
+  content: 'optional';
+  font-size: 11px; line-height: 1;
+  padding: 2px 6px; border-radius: 999px;
+  background: rgba(127,127,127,.12); color: var(--muted-fg, #555);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+/* “Everything here is optional” banner */
+#optMsg{
+  margin: 0 0 8px; padding: 6px 10px; border-radius: 6px;
+  background: rgba(127,127,127,.08); color: var(--muted-fg, #444);
+  font-size: 13px;
+}
+</style>
+
+<!-- ==== Slice 0: Preview Drawer ================================================= -->
+<aside id="pvDrawer" aria-label="Prompt preview">
+  <div id="pvHead">
+    <strong>Output preview</strong>
+    <div id="pvActions">
+      <button id="pvCopy" class="btn sm" type="button">Copy</button>
+      <button id="pvClose" class="btn sm" type="button">Close</button>
+    </div>
+  </div>
+  <div id="pvBody">
+    <pre id="pvOut" aria-live="polite">(your generated prompt will appear here)</pre>
+    <div id="pvCopyStatus" class="muted" hidden></div>
+  </div>
+</aside>
+
+<script>
+/* ==== Slice 0: Preview toggle + drawer wiring ================================= */
+(function(){
+  const LS_KEY_PREVIEW = 'pb.wizard.previewOpen';
+
+  function el(id){ return document.getElementById(id); }
+  function isOpen(){ return localStorage.getItem(LS_KEY_PREVIEW) === '1'; }
+  function setOpen(open){
+    localStorage.setItem(LS_KEY_PREVIEW, open ? '1' : '0');
+    const dr = el('pvDrawer');
+    if (dr){ dr.classList.toggle('open', !!open); }
+    setToggleTexts();
+    updatePreview();
+  }
+  function setToggleTexts(){
+    const txt = isOpen() ? 'hide output' : 'show output';
+    const a = el('pvToggleTop');  if (a) a.textContent = txt;
+    const b = el('pvToggleFoot'); if (b) b.textContent = txt;
+  }
+  function updatePreview(){
+    const pvOut = el('pvOut');
+    if (!pvOut) return;
+    try{
+      const txt = (typeof window.wiz_composePrompt === 'function') ? window.wiz_composePrompt() : '';
+      pvOut.textContent = txt || '(no content yet)';
+    }catch(_){ pvOut.textContent = '(no content yet)'; }
+  }
+
+  // Create/ensure the two toggle buttons (top bar + footer row)
+window.ensurePreviewButtons = function ensurePreviewButtons(){
+  // Top bar: append to #wizTopProgress, small & left-aligned
+  const top = el('wizTopProgress');
+  if (top && !el('pvToggleTop')){
+    const btn = document.createElement('button');
+    btn.id = 'pvToggleTop'; btn.className = 'btn sm'; btn.type = 'button';
+    btn.style.display = 'inline-block';
+    btn.style.width = 'auto';
+    btn.style.marginTop = '6px';
+    btn.addEventListener('click', () => setOpen(!isOpen()));
+    top.appendChild(btn); // small, inline due to CSS override
+  }
+
+  // Footer: insert as the FIRST button (left side), so drawer on right won’t cover it
+  const next = el('wizStepNext');
+  if (next && !el('pvToggleFoot')){
+    const btn = document.createElement('button');
+    btn.id = 'pvToggleFoot'; btn.className = 'btn sm'; btn.type = 'button';
+    btn.style.marginRight = '8px';
+    btn.addEventListener('click', () => setOpen(!isOpen()));
+    const wrap = next.parentElement;
+    if (wrap) {
+      wrap.insertBefore(btn, wrap.firstChild); // left-most
+    }
+  }
+
+  setToggleTexts();
+};
+
+  // Insert the “Everything here is optional” banner at the top of the step body
+  window.insertOptionalityBanner = function insertOptionalityBanner(){
+    const body = el('wizStepBody');
+    if (!body || el('optMsg')) return;
+    const div = document.createElement('div');
+    div.id = 'optMsg';
+    div.textContent = 'Everything here is optional — fill only what helps.';
+    body.insertAdjacentElement('afterbegin', div);
+  };
+
+  function bindDrawer(){
+    const closeBtn = el('pvClose');
+    if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+
+const copyBtn = el('pvCopy');
+if (copyBtn){
+  copyBtn.addEventListener('click', ()=>{
+    const text = (typeof window.wiz_composePrompt === 'function')
+      ? window.wiz_composePrompt()
+      : (el('pvOut')?.textContent || '');
+    if (typeof window.openCopyModal === 'function'){
+      window.openCopyModal(text);
+    } else if (typeof window.openCopyModalFromOut === 'function'){
+      window.openCopyModalFromOut();
+    }
+  });
+}
+
+    // Honor previous state
+    setOpen(isOpen());
+    updatePreview();
+  }
+
+  // Init on DOM ready
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      window.ensurePreviewButtons();
+      bindDrawer();
+    }, { once: true });
+  } else {
+    window.ensurePreviewButtons();
+    bindDrawer();
+  }
+
+  // Keep the drawer live whenever the app recomputes preview
+  const prevRender = window.renderPreviewMaybe;
+  window.renderPreviewMaybe = function(){
+    if (typeof prevRender === 'function') prevRender.apply(this, arguments);
+    updatePreview();
+  };
+})();
+</script>
+
+<script>
+/* ==== Slice 1: Common Context Collapse (persisted, live counter, a11y) ======= */
+(function(){
+  const LS_KEY = 'pb.wizard.cc.open';    // 1=open, 0=closed
+  const IDS    = ['ctx_use','ctx_aud','ctx_style','ctx_tone'];
+
+  function get(id){ return document.getElementById(id); }
+  function readOpen(){ return localStorage.getItem(LS_KEY) === '1'; }
+  function writeOpen(open){ try{ localStorage.setItem(LS_KEY, open?'1':'0'); }catch(_){ } }
+
+  function countFilled(){
+    // use existing fieldFilled(id) so it respects VALUES map across renders
+    let n = 0;
+    for (const id of IDS){ try{ if (typeof fieldFilled==='function' && fieldFilled(id)) n++; }catch(_){ /*noop*/ } }
+    return n;
+  }
+
+  function updateCountText(){
+    const el = get('commonCtxCount');
+    if (el) el.textContent = String(countFilled());
+  }
+
+  function setOpen(open){
+    const body = get('commonCtxBody');
+    const btn  = get('commonCtxToggle');
+    if (!body || !btn) return;
+
+    body.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'hide' : 'show';
+    writeOpen(open);
+  }
+
+  function wireOnce(){
+    const btn  = get('commonCtxToggle');
+    const body = get('commonCtxBody');
+    if (!btn || !body) return;
+    if (btn._wired) { updateCountText(); setOpen(readOpen()); return; }
+
+    // Toggle button
+    btn.addEventListener('click', ()=>{
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      setOpen(!open);
+      if (!open){
+        // moved to open state → focus first field
+        const first = get('ctx_use') || body.querySelector('input,textarea,select,button,[tabindex]');
+        if (first) first.focus();
+      } else {
+        // closed → return focus to toggle
+        btn.focus();
+      }
+    });
+
+    // Live counter (input/change)
+    IDS.forEach(id=>{
+      const el = get(id);
+      if (!el) return;
+      el.addEventListener('input',  updateCountText);
+      el.addEventListener('change', updateCountText);
+    });
+
+    // Initial paint from persisted state + current values
+    updateCountText();
+    setOpen(readOpen());
+
+    // Screen reader friendly: announce count updates politely
+    const head = get('commonCtxHead');
+    if (head) head.setAttribute('aria-live','polite');
+
+    btn._wired = true;
+  }
+
+  // Public hook the renderer will call after each step paint
+  window.ensureCommonCtxCollapse = function ensureCommonCtxCollapse(){
+    // After DOM re-render, re-hydrate fields first (caller does), then wire.
+    wireOnce();
+  };
+})();
+</script>
+
+<script>
+/* ==== Slice 2/3: Assist-lite (“help fill this field”) =======================
+   - Adds a left-aligned checkbox per .field (text, textarea, select).
+   - When checked, appends a deterministic assist block to composed output.
+   - Multiple checked → multiple blocks appended, separated by ---.
+   - Idempotent, persists per-field across navigation (localStorage).
+============================================================================= */
+(function(){
+  const LS_KEY = 'pb.wizard.assistLite.v1';        // { [fieldId]: true }
+  const META   = new Map();                         // fieldId -> meta snapshot
+
+  function $(id){ return document.getElementById(id); }
+  function wizVal(id){
+    try{
+      if (typeof window.wiz_getVal === 'function') return window.wiz_getVal(id);
+    }catch(_){}
+    const el = $(id); return el ? (el.value || '') : '';
+  }
+
+  function loadAssist(){
+    try{
+      const o = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+      return (o && typeof o==='object') ? o : {};
+    }catch(_){ return {}; }
+  }
+  function saveAssist(mapObj){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(mapObj||{})); }catch(_){}
+  }
+
+  /** Collect field meta from a .field wrapper (once per render). */
+  function collectMeta(fieldWrap){
+    if (!fieldWrap) return;
+    // Prefer first control in the field
+    const ctl = fieldWrap.querySelector('textarea, select, input[id]');
+    if (!ctl || !ctl.id) return;
+
+    const id   = ctl.id;
+    const lab  = fieldWrap.querySelector(':scope > label')?.textContent?.trim() || '';
+    const desc = fieldWrap.querySelector('.desc')?.cloneNode(true);
+    let descText = '';
+    if (desc){
+      // get plain text without our assist control
+      const assistNode = desc.querySelector('.assist-lite');
+      if (assistNode) assistNode.remove();
+      descText = desc.textContent.trim();
+    }
+
+    // normalize type
+    let type = 'text';
+    if (ctl.tagName === 'TEXTAREA') type = 'textarea';
+    else if (ctl.tagName === 'SELECT') type = 'select';
+    else if (ctl.tagName === 'INPUT') type = (ctl.getAttribute('type') || 'text').toLowerCase();
+
+    // select options (labels)
+    let options = [];
+    if (type === 'select'){
+      options = [...ctl.querySelectorAll('option')].map(o => (o.textContent||'').trim()).filter(Boolean);
+    }
+
+    META.set(id, {
+      id, label: lab, type,
+      placeholder: (ctl.getAttribute('placeholder') || '(none)'),
+      desc: descText || '',
+      options
+    });
+  }
+
+  /** Build one deterministic assist block from meta + live value. */
+  function buildBlock(meta){
+    const val = wizVal(meta.id);
+    let block = `I need help completing a form field.
+
+[Field Meta]
+Label: ${meta.label || '(unknown)'}
+Key: ${meta.id}
+Type: ${meta.type}
+Placeholder: ${meta.placeholder || '(none)'}
+Description: ${meta.desc || ''}
+Current value: ${val || ''}
+
+[What I need]
+1) If the value is empty: briefly explain what belongs here (1–2 sentences), then ask up to 3 targeted questions that would let you complete it well, and propose 3 draft fills.
+2) If the value exists: give a 1-line assessment, then provide 3 improved variants (refine/expand as appropriate).
+
+[Type rules]
+- text → 1 crisp sentence.
+- textarea → 1–3 short paragraphs.
+- select → 5–7 option labels with 1-line rationales, then recommend the best 1.
+- tags → comma-separated list of 5–10 tags.
+- number → a single number with a 1-line justification.
+- url/email → a single valid value plus a 1-line justification.
+
+[Output format]
+Fill 1:
+Fill 2:
+Fill 3:
+Questions: (only if needed)
+Notes: (assumptions or tradeoffs)
+`;
+    if (meta.type === 'select' && Array.isArray(meta.options) && meta.options.length){
+      block += `\n[Available options]\n` + meta.options.map(op => `- ${op}`).join('\n') + '\n';
+    }
+    return block;
+  }
+
+  /** Compose the concatenated assist blocks for all checked fields. */
+  function composeAssistBlocks(){
+    const state = loadAssist();
+    const ids = Object.keys(state).filter(k => !!state[k]);
+    if (!ids.length) return '';
+    const parts = [];
+    for (const id of ids){
+      // If meta wasn't captured this session (e.g., field currently offscreen), try to collect now
+      if (!META.has(id)){
+        const el = $(id); if (el) collectMeta(el.closest('.field'));
+      }
+      const meta = META.get(id);
+      if (!meta) continue;
+      parts.push(buildBlock(meta));
+    }
+    return parts.join('\n---\n');
+  }
+
+  /** Inject a checkbox into each eligible .field on the current step body. */
+  function decorateFieldsOnceIn(container){
+    if (!container) return;
+    const state = loadAssist();
+
+    const fields = container.querySelectorAll('.field');
+    fields.forEach(wrap=>{
+      const ctl = wrap.querySelector('textarea, select, input[id]');
+      if (!ctl || !ctl.id) return; // nothing to decorate
+
+      // Only decorate text, textarea, select (as requested)
+      const tag = ctl.tagName;
+      const type = (ctl.getAttribute('type')||'text').toLowerCase();
+      if (!(tag==='TEXTAREA' || tag==='SELECT' || (tag==='INPUT' && (type==='text' || type==='search' || type==='url' || type==='email' || type==='number')))) return;
+
+      const desc = wrap.querySelector('.desc');
+      // Create the control if not already present
+      const existing = wrap.querySelector(`.assist-lite[data-for="${ctl.id}"]`);
+      if (!existing){
+        const lab = document.createElement('label');
+        lab.className = 'assist-lite';
+        lab.setAttribute('data-for', ctl.id);
+        lab.innerHTML = `<input type="checkbox" aria-label="help fill this field"> help fill this field`;
+
+        // Place inline with desc if present; otherwise create a desc holder
+        if (desc){
+          desc.appendChild(lab);
+        }else{
+          const d = document.createElement('div');
+          d.className = 'desc';
+          d.appendChild(lab);
+          wrap.appendChild(d);
+        }
+
+        // Bind behavior
+        const box = lab.querySelector('input[type="checkbox"]');
+        box.checked = !!state[ctl.id];
+        box.addEventListener('change', ()=>{
+          const s = loadAssist();
+          if (box.checked) s[ctl.id] = true; else delete s[ctl.id];
+          saveAssist(s);
+          // collect meta on first interaction
+          if (!META.has(ctl.id)) collectMeta(wrap);
+          // live preview update
+          if (typeof window.renderPreviewMaybe === 'function') window.renderPreviewMaybe();
+        });
+
+        // On first paint, collect meta
+        collectMeta(wrap);
+      }else{
+        // ensure checked state matches persisted state
+        const box = existing.querySelector('input[type="checkbox"]');
+        if (box) box.checked = !!state[ctl.id];
+      }
+    });
+  }
+
+  // Public hook called after each step render
+  window.ensureAssistLite = function ensureAssistLite(){
+    const body = document.getElementById('wizStepBody');
+    decorateFieldsOnceIn(body);
+  };
+
+  // Wrap the composer ONCE to append assist blocks after the base prompt
+  (function wrapComposerOnce(){
+    const orig = window.wiz_composePrompt;
+    if (!orig || orig._assistLiteWrapped) return;
+    function wrapped(){
+      const base = String(orig.apply(this, arguments) || '');
+      const extra = composeAssistBlocks();
+      if (!extra) return base;
+      return base ? (base + '\n\n' + extra) : extra;
+    }
+    wrapped._assistLiteWrapped = true;
+    window.wiz_composePrompt = wrapped;
+  })();
+
+})();
+</script>
+
 
 
   <!-- ===== Only external deps (datasets) ===== -->
+  <script src="./js/personas.data.js"></script>
+<script src="./js/biases.data.js"></script>
      <script src="./js/aisettings.js" defer></script>
   <script src="./js/templates.data.js"></script>
   <script src="./js/templates.tasks.data.js"></script>
+  
+  <script>
+// Slice 1: dataset bridges → build adapters from window.PERSONAS / window.BIASES
+(function(){
+  function toAdapter(list){
+    // Normalize items → {id,name,unit,kind,summary}
+    const norm = (x)=>({
+      id:      x.id || x.slug || x.key || x.name,
+      name:    x.name || x.label || x.id || '',
+      unit:    x.unit || x.kind || '',
+      kind:    x.kind || x.unit || '',
+      summary: x.summary || x.description || x.def || ''
+    });
+    const L = Array.isArray(list) ? list.map(norm).filter(i => i.id && i.name) : [];
+    const byId = new Map(L.map(i => [String(i.id).toLowerCase(), i]));
+
+    return {
+      filter(q, limit=30, filterUnit){
+        const s = String(q||'').toLowerCase().trim();
+        let arr = s ? L.filter(i => i.name.toLowerCase().includes(s) || String(i.id).toLowerCase().includes(s)) : L.slice();
+        if (filterUnit){
+          const want = String(filterUnit);
+          arr = arr.filter(i => String(i.unit||i.kind||'') === want);
+        }
+        return arr.slice(0, limit);
+      },
+      getById(id){
+        const key = String(id||'').toLowerCase();
+        return byId.get(key) || L.find(i => String(i.id).toLowerCase() === key) || null;
+      }
+    };
+  }
+
+  // Personas → adapter → notify
+  if (Array.isArray(window.PERSONAS)){
+    const personasAdapter = toAdapter(window.PERSONAS);
+    document.dispatchEvent(new CustomEvent('wizard:dataset:personas:loaded', {
+      detail: { adapter: personasAdapter }
+    }));
+  }
+
+  // Biases → adapter → notify
+  if (Array.isArray(window.BIASES)){
+    const biasesAdapter = toAdapter(window.BIASES);
+    document.dispatchEvent(new CustomEvent('wizard:dataset:biases:loaded', {
+      detail: { adapter: biasesAdapter }
+    }));
+  }
+})();
+</script>
+  
 </body>
 </html>
