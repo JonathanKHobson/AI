@@ -3515,7 +3515,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
       ph:'frustration, anxiety, relief, excitement, delight',
       desc:'Comma or line separated labels to detect.' },
 
-    { key:'sentiment_modifiers', label:'Modifier tags', type:'multiselect',
+    { key:'sentiment_modifiers', label:'Modifier tags', type:'select',
       options:['intensity','sarcasm','toxicity','hedging','politeness','none','other (specify below)'],
       desc:'Extra pragmatic signals to detect and annotate per excerpt.' },
 
@@ -8881,17 +8881,6 @@ use_cases: [
     ].join('\n\n');
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
