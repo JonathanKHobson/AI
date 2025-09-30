@@ -1575,8 +1575,18 @@ input:focus, textarea:focus, select:focus,
 }
     
   </style>
+  
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
+  
 </head>
-<body>
+<body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
   <header>
   <span class="ctaGroup">
     <a class="btn sm" href="../index.html" target="_blank" rel="noopener">← Back to Home</a>
@@ -1588,8 +1598,7 @@ input:focus, textarea:focus, select:focus,
 <span class="ctaGroup">
   <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
   <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
-    <button id="copyBtn" class="btn sm">Copy Prompt</button>
-  <button id="openBtn" class="btn primary sm">💬 Ask ChatGPT</button>
+
 <button id="aiSettingsBtn" class="btn sm" title="AI Assist Settings">AI Settings</button>
 
 </span>
@@ -7131,90 +7140,91 @@ function getAllGeneratedText(){
   } 
   
 // Actions
-$('#copyBtn').addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
-  const deck = document.getElementById('outDeck');
-  let text = '';
+{
+  const btn = document.getElementById('copyBtn');
+  if (btn) btn.addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
+    const deck = document.getElementById('outDeck');
+    let text = '';
 
-  if (deck && !deck.hidden) {
-    // === Copy All Mode ===
-    const nodes = Array.from(deck.querySelectorAll('.outBody'));
-    const pieces = [];
+    if (deck && !deck.hidden) {
+      // === Copy All Mode ===
+      const nodes = Array.from(deck.querySelectorAll('.outBody'));
+      const pieces = [];
 
-    for (let i = 0; i < nodes.length; i++) {
-      let tabText = nodes[i].textContent.trim();
+      for (let i = 0; i < nodes.length; i++) {
+        let tabText = nodes[i].textContent.trim();
 
-      // Match node to tab (assuming window.TABS holds your tab objects in order)
-      const tab = (state && state.tabs) ? state.tabs[i] : null;
-      if (tab && tab.id === 'none') {
-        tabText = tabText + '\n\n' + buildFrameworkDigest();
-      }
-
-      if (tabText) pieces.push(tabText);
-    }
-
-    text = pieces.join('\n\n---\n\n');
-  } else {
-    // === Copy Single Mode ===
-    text = (document.getElementById('out')?.textContent || '');
-    const active = (typeof activeTab === 'function' ? activeTab() : (state && state.tabs ? state.tabs[state.active] : null));
-    if (active && active.id === 'none') {
-      text = text + '\n\n' + buildFrameworkDigest();
-    }
-  }
-
-  try { await navigator.clipboard.writeText(text); }
-  catch(e){ console.warn('Copy failed', e); }
-
-  const dlg = document.getElementById('msg'); 
-  dlg?.showModal();
-});
-
-
-
-   $('#openBtn').addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
-  const txt = getAllGeneratedText();
-  const dlg = $('#msg');
-  // 1) Copy to clipboard (primary guarantee)
-  let copied = false;
-  try { await navigator.clipboard.writeText(txt); copied = true; }
-  catch(e){ console.warn('Clipboard write failed:', e); }
-  try {
-    const url = 'https://chat.openai.com/?q=' + encodeURIComponent(txt);
-    window.open(url, '_blank', 'noopener,noreferrer');
-    markPostLaunch(txt, (localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/'), false);
-  } catch(e){ console.warn('Open failed', e); }
-  // message text is updated just below in your existing code
-
-
-
-
-
-      // 2) Attempt to open ChatGPT with a prefilled query param (best-effort)
-      function buildChatURL(prompt){
-        const base = localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/';
-        try{
-          const u = new URL(base);
-          // Try multiple param names — ChatGPT may ignore them, but harmless.
-          u.searchParams.set('q', prompt);
-          u.searchParams.set('prompt', prompt);
-          u.searchParams.set('input', prompt);
-          return u.toString();
-        }catch(err){
-          console.warn('Bad chat target URL; falling back.', err);
-          return 'https://chatgpt.com/';
+        // Match node to tab (assuming window.TABS holds your tab objects in order)
+        const tab = (state && state.tabs) ? state.tabs[i] : null;
+        if (tab && tab.id === 'none') {
+          tabText = tabText + '\n\n' + buildFrameworkDigest();
         }
-      }
-      const url = buildChatURL(txt);
-      window.open(url, '_blank', 'noopener');
 
-      // 3) User feedback
-      const msg = copied
-        ? 'Prompt copied to clipboard. A ChatGPT tab opened. If the prompt did not auto-appear, paste with Cmd/Ctrl+V.'
-        : 'Opened ChatGPT. Could not auto-copy the prompt (browser denied). Please select the text in the preview and copy it manually.';
-      const msgEl = document.getElementById('msgText');
-      if(msgEl) msgEl.textContent = msg; else console.info(msg);
-      dlg.showModal();
-    });
+        if (tabText) pieces.push(tabText);
+      }
+
+      text = pieces.join('\n\n---\n\n');
+    } else {
+      // === Copy Single Mode ===
+      text = (document.getElementById('out')?.textContent || '');
+      const active = (typeof activeTab === 'function' ? activeTab() : (state && state.tabs ? state.tabs[state.active] : null));
+      if (active && active.id === 'none') {
+        text = text + '\n\n' + buildFrameworkDigest();
+      }
+    }
+
+    try { await navigator.clipboard.writeText(text); }
+    catch(e){ console.warn('Copy failed', e); }
+
+    const dlg = document.getElementById('msg'); 
+    dlg?.showModal();
+  });
+}
+
+
+
+{
+  const btn = document.getElementById('openBtn');
+  if (btn) btn.addEventListener('click', async (e)=>{ if (window.__USE_ACTION_MODAL__) return;
+    const txt = getAllGeneratedText();
+    const dlg = $('#msg');
+    // 1) Copy to clipboard (primary guarantee)
+    let copied = false;
+    try { await navigator.clipboard.writeText(txt); copied = true; }
+    catch(e){ console.warn('Clipboard write failed:', e); }
+    try {
+      const url = 'https://chat.openai.com/?q=' + encodeURIComponent(txt);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      markPostLaunch(txt, (localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/'), false);
+    } catch(e){ console.warn('Open failed', e); }
+
+    // 2) Attempt to open ChatGPT with a prefilled query param (best-effort)
+    function buildChatURL(prompt){
+      const base = localStorage.getItem('chatgpt_target') || 'https://chatgpt.com/';
+      try{
+        const u = new URL(base);
+        // Try multiple param names — ChatGPT may ignore them, but harmless.
+        u.searchParams.set('q', prompt);
+        u.searchParams.set('prompt', prompt);
+        u.searchParams.set('input', prompt);
+        return u.toString();
+      }catch(err){
+        console.warn('Bad chat target URL; falling back.', err);
+        return 'https://chatgpt.com/';
+      }
+    }
+    const url = buildChatURL(txt);
+    window.open(url, '_blank', 'noopener');
+
+    // 3) User feedback
+    const msg = copied
+      ? 'Prompt copied to clipboard. A ChatGPT tab opened. If the prompt did not auto-appear, paste with Cmd/Ctrl+V.'
+      : 'Opened ChatGPT. Could not auto-copy the prompt (browser denied). Please select the text in the preview and copy it manually.';
+    const msgEl = document.getElementById('msgText');
+    if(msgEl) msgEl.textContent = msg; else console.info(msg);
+    dlg.showModal();
+  });
+}
     
     // Add template (single, guarded wiring)
 (function wireAddTemplate(){
@@ -9187,6 +9197,7 @@ document.addEventListener('tab-switched', ()=>{
 // When the template dropdown itself changes (user action), no-op here;
 // the app's own change handler updates state/tab.id. Our sync will keep it stable thereafter.
 </script>
+
 
 
 </body>
