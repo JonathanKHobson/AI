@@ -1940,28 +1940,29 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   kind: 'task',
   categories: ['ux','research','planning'],
   tags: [
-    'type:task','topic:survey','topic:survey-design','topic:sampling','topic:ethics',
-    'use:plan','use:design','use:edit','use:qa','stage:plan','stage:design'
+    'type:task','topic:survey','topic:user-experience','topic:survey-design','topic:sampling','topic:ethics',
+    'use:plan','use:design','use:edit','use:qa','use:user-experience','stage:plan','stage:design'
   ],
   use_cases: [
-    'scope a new survey with goals, audience, and logistics',
+    'scope a new UX (user experience) survey with goals, audience, and logistics',
     'align stakeholders on sampling and timing',
     'choose tools and define success criteria',
-    'pressure-test objectives and translate them into questions or tasks',
+    'pressure-test objectives and translate them into questions or tasks to improve UX (user experience)',
     'decide mode (in-product, panel, email) and recruiting strategy for representativeness',
     'estimate sample size, incidence rate, and margin of error/power tradeoffs',
     'design pilots/cognitive interviews and quality gates (speeders, straightliners, fraud)',
     'plan analysis (key cuts, weighting, stats) and reporting artifacts',
     'set up accessibility, localization, consent/PII handling, and incentives',
-    'refine or edit a single question (bias, wording, scale design)',
-    'convert qualitative findings into a quant module (themes → items)',
+    'refine or edit a single question (bias, wording, UX (user experience), scale design)',
+    'convert qualitative findings into a quant module (themes → items) to improve UX (user experience)',
     'run split-sample wording/scale experiments and A/B concept tests',
     'plan a longitudinal tracker (wave management, continuity, change rules)',
     'localize instruments across languages (scale labels, cultural nuance)',
     'price or feature-prioritization studies (Van Westendorp, Gabor–Granger, MaxDiff, Conjoint)',
     'diagnose/repair low IR, low completion, or poor data quality in existing surveys',
-    'align survey outputs with product analytics and business KPIs',
-    'create an item bank and codebook for reuse'
+    'align UX (user experience) survey outputs with product analytics and business KPIs',
+    'create an item bank and codebook for reuse',
+    'design surveys for UX (user experience) studies'
   ],
   definition: 'Plan and (optionally) refine a survey end-to-end: decisions, objectives, hypotheses, audience, sampling, mode, instrument strategy, ethics/privacy, accessibility/localization, field ops, analysis/weighting/reporting, timeline, risks, and success criteria.',
   help: 'Paste prior briefs, drafts, or artifacts. Reference saved personas/segments to prefill audience and quotas. Note any legal/privacy constraints, localization needs, or tooling preferences. This task can scope a full survey, a module, or a single question.',
@@ -2862,10 +2863,12 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     'type:task',
     'topic:interviews',
     'topic:discussion-guide',
+    'topic:user-experience',
     'topic:moderation',
     'topic:ethics',
     'use:plan',
     'use:design',
+    'use:user-experience',
     'use:write',
     'use:edit',
     'stage:plan'
@@ -2886,7 +2889,9 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     'author a single question or refine a tricky prompt',
     'design group sessions (focus groups) with speaking-order safeguards',
     'plan analysis & coding schema (themes, tags, decision links)',
-    'create multilingual guides with culturally appropriate examples'
+    'create multilingual guides with culturally appropriate examples',
+    'design a UX (user experience) interview study',
+    'for UX (user experience) interview planning and designing'
   ],
   definition: 'Plan user/stakeholder interviews and author/refine the discussion guide: objectives, participant profile, method/framework, sections, prompts, probes, logic, ethics/consent, accessibility, logistics, roles, incentives, and analysis plan. Also supports crafting or rewriting a single high-impact question.',
   help: 'Paste any brief, prior guides, or themes. Pick interview scope, method, and framework so instructions adapt. Use personas and the bias library to shape language. This can plan a full study, produce a complete guide, or help you craft one question.',
@@ -3252,11 +3257,11 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
   categories: ['ux','research','analysis'],
   tags: [
     'type:task','topic:analysis','topic:transcripts','topic:codebook',
-    'topic:sentiment','topic:journey-mapping','topic:prioritization',
-    'use:synthesize','use:prioritize','use:edit','stage:analyze'
+    'topic:sentiment','topic:journey-mapping','topic:user-experience','topic:prioritization',
+    'use:synthesize','use:prioritize','use:edit','use:user-experience','stage:analyze'
   ],
   use_cases: [
-    'code interview and usability transcripts into themes',
+    'code interview and usability transcripts into UX (user experience) themes',
     'identify patterns, contradictions, and outliers',
     'extract verbatim quotes and evidence',
     'score pain points by severity, frequency, and impact',
@@ -3270,7 +3275,7 @@ if (f.cta_style)    add(String(f.cta_style));      // e.g., "CTA: Direct\nInstru
     'shrink a noisy corpus to a crisp executive summary',
     'triangulate with surveys, tickets, and analytics to strengthen confidence',
     'track saturation and reliability (kappa/alpha) across coders and waves',
-    'create quote banks and rights-safe excerpts for storytelling'
+    'create quote banks and rights-safe excerpts for storytelling to communicate the UX (user experience)'
   ],
   definition: 'Analyze a corpus end to end: set source and purpose, define scope, choose method and codebook policy, tag sentiment and emotion, surface themes and tensions, curate quotes, and deliver evidence-backed insights with priorities, visuals, and exports.',
   help: 'Paste links or text, or indicate you will upload files. Pick the source and purpose, describe speakers and privacy/redaction, add domain terms, choose methods and priority models, then select deliverables and exports. Every field includes short helper text.',
@@ -4201,20 +4206,22 @@ tags: [
 'type:task',
 'topic:insights',
 'topic:prioritization',
+'topic:user-experience',
 'topic:storytelling',
 'use:synthesize',
 'use:present',
 'use:edit',
+'use:user-experience',
 'stage:summarize'
 ],
 use_cases: [
-'turn raw notes into a crisp readout',
+'turn raw notes into a crisp readout of UX (user experience) insights',
 'translate themes into decisions and next steps',
 'tailor messaging to execs or builders',
 'prioritize pains/opportunities by severity, frequency, and impact',
-'create insight cards with evidence, so-what, and recommendations',
+'create UX (user experience) driven insight cards with evidence, so-what, and recommendations',
 'map themes to journey stages and segments for clarity',
-'produce stakeholder-specific artifacts (exec TL;DR, builder tickets)',
+'produce stakeholder-specific UX (user experience) artifacts (exec TL;DR, builder tickets)',
 'triangulate qualitative + quant signals for confidence',
 'assemble quote banks and visuals (heatmaps, co-occurrence graphs)',
 'convert insights into roadmap slices or OKR candidates',
@@ -4522,22 +4529,25 @@ return [
   tags: [
     'type:task',
     'topic:usability-test',
+    'topic:user-experience',
     'topic:benchmarking',
     'topic:accessibility',
+    'use:usability-test',
+    'use:user-experience',
     'use:plan',
     'use:design',
     'use:edit',
     'stage:plan'
   ],
   use_cases: [
-    'define objectives and tasks for moderated/unmoderated testing',
+    'define objectives and tasks for UX (user experience) moderated/unmoderated testing',
     'set success criteria and metrics',
     'align recruiting and logistics',
     'plan formative (diagnostic) studies to fix friction fast',
-    'run summative/benchmark tests (task success/time/errors, SUS/SEQ/UMUX-Lite)',
+    'run summative/benchmark UX (user experience) tests (task success/time/errors, SUS/SEQ/UMUX-Lite)',
     'compare versions (A/B) or competitors under the same tasks',
     'design accessibility sessions with assistive tech and accommodations',
-    'plan navigation tests (first-click, tree testing) and content comprehension',
+    'plan navigation UX (user experience) tests (first-click, tree testing) and content comprehension',
     'specify hint/assistance policy and observer etiquette',
     'counterbalance task order and manage pilot/soft-launch',
     'tie findings to KPIs and acceptance criteria for fixes',
@@ -4815,6 +4825,7 @@ return [
   tags: [
     'type:task',
     'topic:usability-test',
+    'topic:user-experience',
     'topic:task-scenarios',
     'topic:hta',
     'topic:klm',
@@ -4822,10 +4833,11 @@ return [
     'use:write',
     'use:design',
     'use:edit',
+    'use:usability-test',
     'stage:design'
   ],
   use_cases: [
-    'write realistic, bias-free scenarios for usability tasks',
+    'write realistic, bias-free scenarios for UX (user experience) usability tasks',
     'define acceptance criteria per task',
     'ensure coverage of critical paths',
     'author recovery/edge-case scenarios that test resilience',
@@ -4834,10 +4846,11 @@ return [
     'add accessibility paths (keyboard-only, screen reader) and device variants',
     'counterbalance task order and set assistance (hint) policy',
     'embed per-task success/partial/fail gates and SEQ/Confidence prompts',
-    'localize scenario language by market/reading level',
+    'localize UX (user experience) scenario language by market/reading level',
     'design comparable scenarios for A/B or competitive studies',
     'seed realistic data/states so tasks are actually completable',
-    'attach observation targets and evidence logging (events, timestamps)'
+    'attach observation targets and evidence logging (events, timestamps)',
+    'for UX (user experience) usability testing scenarios writing'
   ],
   definition: 'Write and refine usability task scenarios with realistic context, prerequisites, starting states, constraints, success/partial/fail criteria, recovery variants, and observation targets. Includes step/micro-action breakdown (HTA, optional KLM timing) and accessibility/device paths.',
   help: 'Name the product area and user objectives in user language. Select modality, scenario style, complexity mix, ordering, and assistance policy so guidance adapts. Provide any seeded data, states, devices/AT, and constraints. Use personas and the bias library to keep language inclusive and avoid path giveaways.',
@@ -4848,6 +4861,7 @@ return [
 
     /* Audience */
     { key:'persona_context', label:'Persona/segment refs (optional)', type:'textarea', ph:'@Persona: Admin Alice; @Segment: SMB Paid', desc:'References to existing personas or segments.' },
+    
     { key:'audience_persona', label:'Personas (optional)', type:'repeater',
       itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
       desc:'Select one or more personas to guide language and data.',
@@ -5093,9 +5107,11 @@ return [
   tags: [
     'type:task',
     'topic:user-flow',
+    'topic:user-experience',
     'topic:journey',
     'topic:task-flow',
     'topic:service-blueprint',
+    'use:user-experience',
     'use:audit',
     'use:design',
     'use:edit',
@@ -5438,10 +5454,12 @@ const effortNote = (() => {
   categories: ['ux','content','writing','design'],
   tags: [
     'type:task',
+    'topic:user-experience',
     'topic:microcopy',
     'topic:content-design',
     'topic:accessibility',
     'topic:localization',
+    'use:user-experience',
     'use:write',
     'use:design',
     'use:edit',
@@ -5449,9 +5467,9 @@ const effortNote = (() => {
     'stage:design'
   ],
   use_cases: [
-    'write buttons, labels, help text, errors, empty states, tooltips, toasts, permissions, notifications, upgrade/paywall copy',
+    'write buttons, labels, help text, errors, empty states, tooltips, toasts, permissions, notifications, upgrade/paywall copy with UX in mind',
     'improve clarity, confidence, and conversion with ethical persuasion',
-    'align microcopy with brand voice, value prop, and the user’s moment',
+    'align microcopy with brand voice, value prop, UX, and the user’s moment',
     'produce alt variants for A/B testing with constraints (tokens, char limits, localization)',
     'tailor copy for personas/segments and accessibility paths (keyboard/screen reader)',
     'rewrite confusing or long strings to reduce error/abandon rates',
@@ -7190,7 +7208,8 @@ return [
     'generate a slice roadmap that breaks work into shippable chunks',
     'define APIs, data models, and contracts from simple inputs',
     'align non-functional needs (security, performance, reliability) to build plan',
-    'create BDD/TDD scaffolding for immediate implementation'
+    'create BDD/TDD scaffolding for immediate implementation',
+    'communicate UX (user experience) or product design ideas to engineers'
   ],
   definition: 'A practical bridge from everyday words to implementation: you describe your idea and users in simple language; the template converts it to precise technical instructions, executable specs, and a slice roadmap. It blends approachable guidance with rigorous engineering outputs so an expert developer—or an AI set up as an “expert dev”—can generate code or build iteratively.',
   help: 'Tell us what you want to build, who it’s for, and any preferences you have. Choose how detailed you want the plan, and whether you want tests first, code now, or a slice-by-slice roadmap. Use your own words; we’ll translate it into technical specs.',
@@ -7710,7 +7729,1161 @@ return [
       '- Provide the optimized content first, then the tables/metadata/JSON-LD, then the delta log and validation appendix.'
     ].filter(Boolean).join('\n');
   }
+},
+
+{
+  id: 'task_research_30_60_90',
+  slug: 'research-30-60-90-plan',
+  label: '30/60/90 Research Plan',
+  kind: 'task',
+  categories: ['research','planning','product','ux'],
+  tags: [
+    'type:task',
+    'topic:research',
+    'topic:user_experience',
+    'use:plan',
+    'use:roadmap',
+    'use:strategy',
+    'use:user_experience',
+    'phase:discover',
+    'phase:define',
+    'phase:validate',
+    'level:intermediate'
+  ],
+use_cases: [
+  'new product or feature discovery',
+    'multi team redesign with staged decisions',
+    'post launch stabilization and optimization',
+    'service design opportunity mapping',
+    'information architecture validation',
+    'content strategy and messaging tests',
+    'accessibility validation in staged phases',
+    'experiment design and measurement planning',
+    'portfolio case study structure for researchers',
+    'cross functional decision making under uncertainty',
+    'customer journey mapping and blueprinting',
+    'post launch KPI stabilization plan',
+    'risk reduction for high stakes changes',
+    'VOC synthesis to roadmap linkage',
+    'leadership ready roadmap with decision gates',
+    'pilot rollout observation and learning plan',
+    'internationalization and localization checks',
+    'design system adoption validation',
+    'analytics instrumentation and benchmark setup',
+  'create a ux (user experience) 30/60/90 research plan for new product or feature discovery that aligns stakeholders and decision gates',
+  'run a ux multi team redesign with staged decisions using a 30/60/90 research plan that sequences information architecture content and interaction validation',
+  'drive post launch ux stabilization and optimization with a research plan that benchmarks usability funnels and retention over 90 days',
+  'map service design opportunities with a ux research plan that combines journey mapping service blueprinting and operations interviews',
+  'validate information architecture through ux methods like card sort and tree test embedded in a 30/60/90 research plan',
+  'execute ux content strategy and messaging tests with interviews and experiments guided by a staged research plan',
+  'plan accessibility validation across phases with wcag focused ux audits assistive tech sessions and inclusive recruiting',
+  'design experiments and measurement for ux changes with a research plan that links hypotheses to kpis and okrs',
+  'structure a portfolio ready ux case study by following a 30/60/90 research plan that documents decisions methods and impact',
+  'enable cross functional decision making under uncertainty with a ux research plan that uses raci decision memos and risk logs',
+  'build customer journey maps and service blueprints in a ux research plan that identifies failure points and opportunities',
+  'stabilize post launch kpis with a ux research plan that ties analytics instrumentation to task success and time to first value',
+  'reduce risk for high stakes ux changes with staged discovery concept tests and pilot rollouts defined in a 30/60/90 plan',
+  'link voice of the customer findings to product roadmaps using a ux research plan that synthesizes surveys grievances and call center data',
+  'produce a leadership ready roadmap with decision gates by packaging ux findings into day 30 day 60 and day 90 decision memos',
+  'observe pilot rollouts with a ux research plan that specifies success metrics qualitative feedback loops and feature flag strategies',
+  'perform internationalization and localization checks with a ux research plan that tests language variants and cultural fit',
+  'validate design system adoption through a ux research plan that evaluates component usability content patterns and consistency',
+  'stand up analytics instrumentation and baseline benchmarks as part of a ux research plan that prepares for experiments',
+  'plan mixed methods ux research that blends interviews usability studies and surveys within a 30/60/90 cadence',
+  'create a ux research plan for onboarding and activation that measures time to first value guidance efficacy and confidence',
+  'optimize ecommerce checkout with a ux research plan focused on error prevention form usability and conversion drop offs',
+  'improve b2b saas workflows through a ux research plan that studies roles permissions and multi step tasks in real contexts',
+  'develop a mobile app ux research plan that accounts for device constraints offline behavior and notification strategy',
+  'plan ai assisted ux features with a research plan that evaluates explainability trust and failure modes',
+  'coordinate navigation and ia redesign using a ux research plan that sequences architecture tests before high fidelity design',
+  'plan content design research for ux microcopy help and empty states using a 30/60/90 structure tied to support contact rate',
+  'create a regulated industry ux research plan that integrates privacy consent and compliance reviews with patient or member usability',
+  'develop a usability testing plan within a 30/60/90 research plan to benchmark sus or umux lite and critical task success',
+  'plan a ux research roadmap for continuous discovery that rotates discovery validation and measurement across quarters',
+  'operationalize a ux research plan for personas and jobs to be done that ties segmentation to opportunity sizing and okr impact',
+  'design a research plan for customer support ux that connects call drivers help content and in product guidance to reduced contacts',
+  'create a ux research plan for growth experiments that prioritizes hypotheses defines guardrails and instruments success metrics',
+  'plan an enterprise ux study of permissions and approvals sequencing contextual inquiry flow mapping and validation testing',
+  'structure a ux research plan for content localization that evaluates readability terminology and imagery across locales',
+  'develop a ux research plan for onboarding tours and tooltips that measures guidance utility without increasing cognitive load'
+]
+,
+  definition: 'Create a timeboxed 30/60/90 day research plan with decision gates, methods, recruiting, metrics, risks, and rollout. Optimized for UX discovery, validation, and stakeholder decision making.',
+  help: 'Complete the fields with your context. The template outputs a leadership ready plan with Day 30, 60, and 90 decision memos, RACI, metrics, recruiting, risks, and a crisp timeline.',
+
+  fields: [
+    { key:'project_title', label:'Project title', type:'text',
+      ph:'Improve template selection flow', desc:'Short, specific title for the initiative.' },
+
+    { key:'owner', label:'Research owner', type:'text',
+      ph:'Name, role', desc:'Who is accountable for the research quality and delivery.' },
+
+    { key:'dates', label:'Dates or timeframe', type:'text',
+      ph:'Oct 1 to Dec 29', desc:'Overall window that covers the 90 days.' },
+
+    { key:'audience', label:'Primary audience', type:'select',
+      options:['team','leadership','cross-functional','customers'],
+      ph:'leadership', desc:'The main audience you are writing for.' },
+
+    { key:'context', label:'Context', type:'textarea',
+      ph:'Problem space, users, constraints, past learnings',
+      desc:'Why this matters now, who is impacted, and key constraints.' },
+
+    { key:'decision_qs', label:'Top decision questions', type:'textarea',
+      ph:'• Which pattern reduces false starts?\n• Which users are most impacted?\n• What guardrails are required?',
+      desc:'Three or fewer decisions that the plan must answer.' },
+
+    { key:'success', label:'Success criteria', type:'textarea',
+      ph:'User outcomes, business outcomes, guardrails',
+      desc:'Measurable user and business outcomes plus any hard constraints.' },
+
+    { key:'ethics', label:'Ethics, access, privacy', type:'textarea',
+      ph:'Consent, retention window, inclusion plan, accessibility scope',
+      desc:'Data handling, participant care, inclusion, and accessibility expectations.' },
+
+    /* Phase 0-30 */
+    { key:'p1_objectives', label:'0-30 objectives', type:'textarea',
+      ph:'Frame problem, baseline metrics, align scope',
+      desc:'What you will accomplish in the first 30 days.' },
+
+    { key:'p1_methods', label:'0-30 methods', type:'textarea',
+      ph:'Stakeholder interviews, heuristic review, analytics audit, VOC sweep',
+      desc:'Evidence gathering activities to establish baselines and focus.' },
+
+    { key:'p1_segments', label:'0-30 segments', type:'textarea',
+      ph:'Primary users plus one edge case segment',
+      desc:'Who you will recruit and why they matter to early framing.' },
+
+    { key:'p1_artifacts', label:'0-30 artifacts', type:'textarea',
+      ph:'Brief, assumptions grid, baseline report, screener',
+      desc:'Documents and outputs produced by Day 30.' },
+
+    /* Phase 31-60 */
+    { key:'p2_objectives', label:'31-60 objectives', type:'textarea',
+      ph:'Primary research, opportunity sizing, journey map',
+      desc:'Goals for the middle phase focused on opportunity evidence.' },
+
+    { key:'p2_methods', label:'31-60 methods', type:'textarea',
+      ph:'Contextual inquiry, concept usability, card sort or tree test, survey',
+      desc:'Methods to test concepts and structure at medium fidelity.' },
+
+    { key:'p2_segments', label:'31-60 segments', type:'textarea',
+      ph:'Segments and quotas for each method',
+      desc:'Sampling plan for each study type in this phase.' },
+
+    { key:'p2_artifacts', label:'31-60 artifacts', type:'textarea',
+      ph:'Interim readout, journey map, opportunity list with impact x effort',
+      desc:'Outputs delivered at the 60 day checkpoint.' },
+
+    /* Phase 61-90 */
+    { key:'p3_objectives', label:'61-90 objectives', type:'textarea',
+      ph:'Validation, decisions, rollout plan',
+      desc:'End phase objectives to confirm what ships and how it will be measured.' },
+
+    { key:'p3_methods', label:'61-90 methods', type:'textarea',
+      ph:'High fidelity usability benchmark, unmoderated scale tests, experiment design',
+      desc:'Validation and measurement preparation activities.' },
+
+    { key:'p3_segments', label:'61-90 segments', type:'textarea',
+      ph:'Benchmark sample and accessibility contexts',
+      desc:'Representative sample for validation, including assistive tech users where relevant.' },
+
+    { key:'p3_artifacts', label:'61-90 artifacts', type:'textarea',
+      ph:'Final report, recommendations, experiment specs, playbook',
+      desc:'Final deliverables and decision memo at Day 90.' },
+
+    /* Recruiting and logistics */
+    { key:'recruiting', label:'Recruiting plan', type:'textarea',
+      ph:'Vendor, screener link, rolling sessions from week 3, standby list',
+      desc:'Suppliers, cadence, and links to screeners and calendars.' },
+
+    { key:'samples', label:'Sample sizes per method', type:'textarea',
+      ph:'Usability 5 to 8 per segment per round; survey 150 to 400 per segment; diary 10 to 20',
+      desc:'Right sized sampling ranges for each method.' },
+
+    { key:'incentives', label:'Incentives', type:'textarea',
+      ph:'Rates by complexity, equitable alternatives for non cash acceptance',
+      desc:'Compensation ranges and any constraints by region or policy.' },
+
+    /* Metrics */
+    { key:'outcome_metrics', label:'Outcome metrics', type:'textarea',
+      ph:'Task success, time on task, conversion, retention, CES',
+      desc:'Primary user and business outcomes to track.' },
+
+    { key:'health_metrics', label:'Research health metrics', type:'textarea',
+      ph:'Decision adoption rate, time from finding to change, segment coverage',
+      desc:'How you will track the effectiveness of research operations.' },
+
+    /* Cadence and governance */
+    { key:'cadence', label:'Cadence', type:'textarea',
+      ph:'Weekly 30 min standup, weekly 30 min share out, Day 30/60/90 readouts',
+      desc:'Meeting rhythm and ceremonies to keep alignment.' },
+
+    { key:'raci', label:'RACI and roles', type:'textarea',
+      ph:'Research lead A; PM A; Design R; Eng C; Analytics C; Legal C; Accessibility C',
+      desc:'Who is Responsible, Accountable, Consulted, Informed.' },
+
+    /* Risks and budget */
+    { key:'risks', label:'Risks and mitigations', type:'textarea',
+      ph:'Recruiting slips, scope creep, synthesis debt, tool access blocks',
+      desc:'Top risks with triggers, owners, and mitigation plans.' },
+
+    { key:'budget', label:'Budget lines', type:'textarea',
+      ph:'Incentives, recruiting, transcription, platforms, travel',
+      desc:'High level budget categories and assumptions.' },
+
+    { key:'tools', label:'Tools stack', type:'textarea',
+      ph:'Moderated, unmoderated, survey, analysis, analytics, experimentation tools',
+      desc:'Named platforms and how they will be used.' },
+
+    /* Communication */
+    { key:'comms', label:'Communication plan', type:'textarea',
+      ph:'One pager, weekly postcards, decision memos, change log',
+      desc:'Artifacts and channels for ongoing visibility.' },
+
+    /* Formatting controls */
+    { key:'length', label:'Length', type:'select',
+      options:[
+        {value:'short',  label:'Short (1 to 2 pages)'},
+        {value:'medium', label:'Medium (3 to 5 pages)'},
+        {value:'long',   label:'Long (6 to 8 pages)'}
+      ],
+      ph:'medium', desc:'Choose output depth. Does not change structure, only detail.' },
+
+    { key:'tone_primary', label:'Tone', type:'select',
+      options:['professional','direct','concise','neutral','empathetic'],
+      ph:'professional', desc:'Primary writing tone for the output.' },
+
+    { key:'tone_secondary', label:'Tone 2nd (optional)', type:'select',
+      options:['-- none --','professional','direct','concise','neutral','empathetic'],
+      ph:'-- none --', desc:'Optional secondary tone to blend with the primary.' },
+
+    { key:'style_persona', label:'Style persona (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph:'Helpful PM; Curious analyst', desc:'Optional voices to lightly influence style.' },
+
+    { key:'constraints', label:'Constraints (optional)', type:'textarea',
+      ph:'Legal notes, regulated markets, language requirements, privacy flags',
+      desc:'Non negotiables and context that affect choices.' },
+
+    { key:'variants', label:'How many variants', type:'select',
+      options:['1','2'],
+      ph:'1', desc:'Number of alternative plan drafts to generate.' }
+  ],
+
+  boosters: [
+    'Limit to three decision questions and tie methods directly to them.',
+    'Start recruiting by day 7 and run rolling sessions from week 3.',
+    'End each phase with a decision memo and explicit tradeoffs.',
+    'Track inclusion and accessibility from the start, not later.',
+    'Instrument metrics with analytics owners before validation.',
+    'Timebox synthesis to avoid backlog. Tag daily and synthesize weekly.'
+  ],
+
+  template: (f) => {
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '-- none --') ? f.tone_secondary : ''
+    );
+    const lenMap = { short:'1-2 pages', medium:'3-5 pages', long:'6-8 pages' };
+    const lenStr = lenMap[f.length] || '3-5 pages';
+    const variants = Math.max(1, parseInt(f.variants || '1', 10));
+
+    const persona = Array.isArray(f.style_persona) && f.style_persona.length
+      ? `Write in the blended voice of: ${f.style_persona.join(' | ')}.`
+      : '';
+
+    const outRules = [
+      'Output format:',
+      '- Title and owner',
+      '- TLDR with 3 bullets',
+      '- Context',
+      '- Decision questions',
+      '- Success criteria and ethics',
+      '- Plan 0-30 days',
+      '- Plan 31-60 days',
+      '- Plan 61-90 days',
+      '- Recruiting and sampling',
+      '- Metrics',
+      '- Cadence and RACI',
+      '- Risks and mitigations',
+      '- Budget and tools',
+      '- Communication plan',
+      '- Timeline with Day 30, Day 60, Day 90 readouts',
+      (variants>1) && `- Provide ${variants} variants separated by: ---`
+    ].filter(Boolean).join('\n');
+
+    return [
+      'Create a complete 30/60/90 UX research plan.',
+      f.project_title && `Title: ${f.project_title}`,
+      f.owner && `Owner: ${f.owner}`,
+      f.dates && `Dates: ${f.dates}`,
+      f.audience && `Audience: ${f.audience}`,
+      (tones || f.tone) && `Tone: ${tones || f.tone}`,
+      `Length: ${lenStr}`,
+      persona,
+      f.context && `Context:\n${f.context}`,
+      f.decision_qs && `Decision questions:\n${f.decision_qs}`,
+      f.success && `Success criteria:\n${f.success}`,
+      f.ethics && `Ethics, access, privacy:\n${f.ethics}`,
+
+      'Plan 0-30 days:',
+      f.p1_objectives && `- Objectives:\n${f.p1_objectives}`,
+      f.p1_methods && `- Methods:\n${f.p1_methods}`,
+      f.p1_segments && `- Segments:\n${f.p1_segments}`,
+      f.p1_artifacts && `- Artifacts:\n${f.p1_artifacts}`,
+      'Decision memo at Day 30 with explicit tradeoffs.',
+
+      'Plan 31-60 days:',
+      f.p2_objectives && `- Objectives:\n${f.p2_objectives}`,
+      f.p2_methods && `- Methods:\n${f.p2_methods}`,
+      f.p2_segments && `- Segments:\n${f.p2_segments}`,
+      f.p2_artifacts && `- Artifacts:\n${f.p2_artifacts}`,
+      'Decision memo at Day 60 with prioritized opportunities.',
+
+      'Plan 61-90 days:',
+      f.p3_objectives && `- Objectives:\n${f.p3_objectives}`,
+      f.p3_methods && `- Methods:\n${f.p3_methods}`,
+      f.p3_segments && `- Segments:\n${f.p3_segments}`,
+      f.p3_artifacts && `- Artifacts:\n${f.p3_artifacts}`,
+      'Decision memo at Day 90 with what ships and how it will be measured.',
+
+      f.recruiting && `Recruiting plan:\n${f.recruiting}`,
+      f.samples && `Sample sizes:\n${f.samples}`,
+      f.incentives && `Incentives:\n${f.incentives}`,
+
+      f.outcome_metrics && `Outcome metrics:\n${f.outcome_metrics}`,
+      f.health_metrics && `Research health metrics:\n${f.health_metrics}`,
+
+      f.cadence && `Cadence:\n${f.cadence}`,
+      f.raci && `RACI and roles:\n${f.raci}`,
+
+      f.risks && `Risks and mitigations:\n${f.risks}`,
+      f.budget && `Budget:\n${f.budget}`,
+      f.tools && `Tools:\n${f.tools}`,
+
+      f.comms && `Communication plan:\n${f.comms}`,
+      f.constraints && `Constraints:\n${f.constraints}`,
+      outRules
+    ].filter(Boolean).join('\n');
+  }
+},
+
+
+{
+  id: 'task_branding_strategy_visual_identity',
+  slug: 'branding-strategy-visual-identity-guide',
+  label: 'Branding Strategy & Visual Identity',
+  kind: 'task',
+  categories: ['brand','design','marketing','strategy','ux'],
+  tags: [
+    'type:task',
+    'topic:branding',
+    'topic:visual_identity',
+    'topic:brand_guidelines',
+    'topic:brand_strategy',
+    'topic:user_experience',
+    'use:brand_guide',
+    'use:branding_strategy',
+    'use:visual_identity',
+    'use:design_tokens',
+    'use:user_experience',
+    'phase:discover',
+    'phase:define',
+    'phase:deliver',
+    'level:intermediate'
+  ],
+  use_cases: [
+    'create a branding strategy and brand guide for a startup or personal brand with positioning statement, voice, logo system, and color palette',
+    'run a rebrand for a nonprofit or enterprise with visual identity, messaging framework, and brand architecture documented in a style guide',
+    'build a visual identity system with logo specs, typography scale, 60 30 10 color plan, and accessibility contrast targets',
+    'produce a brand voice and messaging framework with tone by context matrix, inclusive language rules, and segment specific message houses',
+    'ship a social media brand kit and presentation templates that align with the brand guide and visual identity rules',
+    'create design tokens for color, type, and spacing to connect brand guidelines to a design system and component library',
+    'document co branding and partner usage rules with lockups, safe areas, and approval workflow in the brand guidelines',
+    'plan a logo creation process that moves from moodboards to reduction tests and exports a production ready file kit',
+    'establish brand governance with owners, intake forms, asset library, and change log to keep the brand consistent',
+    'measure brand health with awareness, preference, share of search, and creative effectiveness diagnostics tied to campaigns'
+  ],
+  definition: 'guide a team or individual through building a complete branding strategy, brand voice, and visual identity with a production ready brand guide.',
+  help: 'fill the fields to generate a cohesive brand strategy and visual identity. outputs include positioning, messaging, logo specs, color palette, type rules, accessibility, application playbooks, governance, and measurement.',
+
+  fields: [
+    /* basics */
+    { key:'project_title', label:'project title', type:'text',
+      ph:'acorn analytics rebrand', desc:'short, specific initiative name' },
+    { key:'brand_name', label:'brand name', type:'text',
+      ph:'acorn analytics', desc:'official brand or product name' },
+    { key:'owner', label:'owner', type:'text',
+      ph:'name, role', desc:'who is accountable for quality and delivery' },
+    { key:'dates', label:'dates or timeframe', type:'text',
+      ph:'oct 1 to dec 29', desc:'overall window for the work' },
+    { key:'audience', label:'primary audience', type:'select',
+      options:['team','leadership','marketing','product','agency','partners'],
+      ph:'leadership', desc:'main audience the guide must serve' },
+
+    /* strategy bedrock */
+    { key:'mission', label:'mission', type:'textarea',
+      ph:'what you do and for whom', desc:'clear purpose tied to users' },
+    { key:'vision', label:'vision', type:'textarea',
+      ph:'the world if you succeed', desc:'future state your brand aims to create' },
+    { key:'values', label:'values', type:'textarea',
+      ph:'3 to 5 behaviors that guide decisions', desc:'principles that shape tone and choices' },
+    { key:'audience_segments', label:'audience segments', type:'textarea',
+      ph:'primary, secondary, edge cases', desc:'who you serve and priority order' },
+    { key:'audience_jobs', label:'jobs to be done', type:'textarea',
+      ph:'top jobs, triggers, objections, channels', desc:'what the audience is trying to achieve' },
+    { key:'competitors', label:'competitive set', type:'textarea',
+      ph:'comparators and category codes', desc:'who you sit next to in the mind of users' },
+    { key:'positioning', label:'positioning statement', type:'textarea',
+      ph:'for [segment] who need [outcome], [brand] is the [frame] that [difference] because [proof]',
+      desc:'concise market position and proof' },
+    { key:'proof_points', label:'proof points', type:'textarea',
+      ph:'3 claims with evidence', desc:'reasons to believe tied to outcomes' },
+    { key:'architecture', label:'brand architecture', type:'textarea',
+      ph:'branded house, house of brands, hybrid; sub brand rules', desc:'how brands and products relate' },
+    { key:'naming', label:'naming notes', type:'textarea',
+      ph:'territories, pronunciation, domain checks', desc:'constraints and directions for names' },
+    { key:'legal', label:'legal and trademark', type:'textarea',
+      ph:'tm screening, geography constraints', desc:'risk and compliance items to watch' },
+
+    /* voice and messaging */
+    { key:'voice_traits', label:'voice traits', type:'textarea',
+      ph:'3 to 5 traits with do and avoid examples', desc:'brand personality with practical examples' },
+    { key:'tone_matrix', label:'tone by context', type:'textarea',
+      ph:'landing, ui, support, legal, crisis', desc:'how tone shifts by surface' },
+    { key:'message_house_core', label:'core message house', type:'textarea',
+      ph:'1 story, 3 proof points, examples', desc:'core narrative that everything ladders to' },
+    { key:'message_house_segments', label:'segment message houses', type:'textarea',
+      ph:'segment, story, 3 proofs, examples', desc:'tailored messages per key segment' },
+    { key:'inclusive_language', label:'inclusive language', type:'textarea',
+      ph:'preferred terms and terms to avoid with reasons', desc:'access and cultural fit guidance' },
+    { key:'glossary', label:'brand glossary', type:'textarea',
+      ph:'key terms and preferred spellings', desc:'shared vocabulary for writers and designers' },
+
+    /* visual identity */
+    { key:'logo_strategy', label:'logo strategy', type:'textarea',
+      ph:'primary, horizontal, stacked, mark only', desc:'system thinking for marks and lockups' },
+    { key:'logo_specs', label:'logo specs', type:'textarea',
+      ph:'clear space x, min sizes, backgrounds, misuse rules', desc:'practical rules for safe usage' },
+    { key:'logo_filekit', label:'logo file kit', type:'textarea',
+      ph:'svg, eps, pdf, png 1x 2x 3x, favicon', desc:'deliverables to ship with the guide' },
+
+    { key:'color_palette', label:'color palette', type:'textarea',
+      ph:'brand primary, secondary, accent, neutrals, states', desc:'semantic tokens for ui and brand' },
+    { key:'color_proportion', label:'color proportion plan', type:'textarea',
+      ph:'60 30 10 plan with two common layouts and dark mode pair',
+      desc:'how colors appear in real compositions' },
+    { key:'contrast', label:'contrast targets', type:'textarea',
+      ph:'wcag aa 4.5:1 text, 3:1 large text and icons', desc:'accessibility targets and test notes' },
+
+    { key:'type_display', label:'typography display', type:'textarea',
+      ph:'headline family and weights, intended uses', desc:'display font for headings and hero' },
+    { key:'type_text', label:'typography text', type:'textarea',
+      ph:'body family, sizes 14 16 18, leading rules', desc:'readability and fallback stacks' },
+    { key:'type_mono', label:'typography mono (optional)', type:'textarea',
+      ph:'mono face for code or data, tabular figures', desc:'use in tables, code, and stats' },
+    { key:'type_scale', label:'type scale', type:'textarea',
+      ph:'8 pt or 4 pt step system, max line length', desc:'how text sizes relate across breakpoints' },
+
+    { key:'imagery', label:'imagery direction', type:'textarea',
+      ph:'subjects, distance, lighting, background complexity', desc:'photo and illustration guidance' },
+    { key:'iconography', label:'iconography rules', type:'textarea',
+      ph:'grid, stroke, 16 px min, filled vs outline', desc:'icon set rules for consistency' },
+    { key:'motion', label:'motion principles', type:'textarea',
+      ph:'orientation, feedback, delight; durations and easing', desc:'when and how to animate responsibly' },
+    { key:'layout', label:'layout and spacing', type:'textarea',
+      ph:'grid columns, gutters, spacing scale, component padding', desc:'structure for pages and components' },
+
+    /* accessibility and inclusion */
+    { key:'a11y', label:'accessibility and inclusion', type:'textarea',
+      ph:'focus states, hit areas, captions, alt text patterns', desc:'practices that keep the brand usable' },
+
+    /* application playbooks */
+    { key:'web_ui', label:'web and product ui', type:'textarea',
+      ph:'navigation, forms, empty states, errors', desc:'core product surfaces and patterns' },
+    { key:'social', label:'social kit', type:'textarea',
+      ph:'avatars, banners, post and story templates', desc:'templates sized by network' },
+    { key:'presentations', label:'presentations', type:'textarea',
+      ph:'title, section, data slides, appendix', desc:'slide patterns for internal and external use' },
+    { key:'email_crm', label:'email and crm', type:'textarea',
+      ph:'templates, headers, signatures, legal footers', desc:'repeatable communication assets' },
+    { key:'print_events', label:'print and events', type:'textarea',
+      ph:'signage, swag, booths, lanyards', desc:'offline brand execution' },
+    { key:'ads', label:'ads and motion', type:'textarea',
+      ph:'sizes, safe areas, overlays, storyboard rules', desc:'paid media execution guardrails' },
+    { key:'cobranding', label:'co branding and partners', type:'textarea',
+      ph:'lockups, color harmonization, approval workflow', desc:'how to live with other brands' },
+
+    /* governance and ops */
+    { key:'governance', label:'governance', type:'textarea',
+      ph:'owner, working group, office hours, sla', desc:'who decides and how requests flow' },
+    { key:'asset_library', label:'asset library', type:'textarea',
+      ph:'folder map, versioning, release notes', desc:'where assets live and how they change' },
+    { key:'licensing', label:'licensing', type:'textarea',
+      ph:'fonts, photos, illustrations with rights', desc:'license tracking and renewal reminders' },
+
+    /* measurement */
+    { key:'brand_metrics', label:'brand health metrics', type:'textarea',
+      ph:'awareness, preference, share of search', desc:'how to track the brand over time' },
+    { key:'creative_metrics', label:'creative effectiveness', type:'textarea',
+      ph:'diagnostics, recall, distinctiveness cues', desc:'how assets perform in the wild' },
+
+    /* deliverables */
+    { key:'deliverables', label:'deliverables', type:'textarea',
+      ph:'pdf or site, logo kit, color and type tokens json, templates', desc:'what ships with the guide' },
+
+    /* rollout and comms */
+    { key:'rollout', label:'rollout plan', type:'textarea',
+      ph:'training deck, launch checklist, change log', desc:'how you launch and maintain the brand' },
+    { key:'comms', label:'communication plan', type:'textarea',
+      ph:'channels and cadence for updates', desc:'who hears what and when' },
+
+    /* formatting controls */
+    { key:'length', label:'length', type:'select',
+      options:[
+        {value:'short',  label:'short (1 to 2 pages)'},
+        {value:'medium', label:'medium (3 to 6 pages)'},
+        {value:'long',   label:'long (7 to 12 pages)'}
+      ],
+      ph:'medium', desc:'depth of output, structure stays the same' },
+    { key:'tone_primary', label:'tone', type:'select',
+      options:['professional','direct','concise','neutral','optimistic','human'],
+      ph:'professional', desc:'primary writing tone' },
+    { key:'tone_secondary', label:'tone 2nd (optional)', type:'select',
+      options:['-- none --','professional','direct','concise','neutral','optimistic','human'],
+      ph:'-- none --', desc:'optional secondary tone to blend' },
+    { key:'style_persona', label:'style persona (optional)', type:'repeater',
+      itemType:'typeahead', itemLabel:'persona', autofill:'persona->inline',
+      ph:'helpful strategist; precise designer', desc:'lightly influence style with named personas' },
+    { key:'constraints', label:'constraints (optional)', type:'textarea',
+      ph:'regulated markets, languages, privacy flags', desc:'non negotiables that affect choices' },
+    { key:'variants', label:'how many variants', type:'select',
+      options:['1','2'],
+      ph:'1', desc:'number of alternative drafts to generate' }
+  ],
+
+  boosters: [
+    'anchor everything to positioning and proof points.',
+    'use semantic color tokens and document a 60 30 10 plan.',
+    'write tone by context rules with examples for ui, support, and legal.',
+    'test logo legibility at 16 px and in monochrome before color polish.',
+    'set accessibility targets and test early with real components.',
+    'ship a real file kit and tokens json so teams can build without guessing.'
+  ],
+
+  template: (f) => {
+    const join2 = (a,b)=>[a,b].filter(Boolean).join(' + ');
+    const tones = join2(
+      f.tone_primary,
+      (f.tone_secondary && f.tone_secondary !== '-- none --') ? f.tone_secondary : ''
+    );
+    const lenMap = { short:'1-2 pages', medium:'3-6 pages', long:'7-12 pages' };
+    const lenStr = lenMap[f.length] || '3-6 pages';
+    const variants = Math.max(1, parseInt(f.variants || '1', 10));
+
+    const persona = Array.isArray(f.style_persona) && f.style_persona.length
+      ? `write in the blended voice of: ${f.style_persona.join(' | ')}.`
+      : '';
+
+    const outline = [
+      'output format:',
+      '- title and owner',
+      '- tldr with 3 bullets',
+      '- strategy: mission, vision, values, audience, competitors, positioning, proof points, architecture, naming, legal',
+      '- voice and messaging: traits, tone by context, message house core and by segment, inclusive language, glossary',
+      '- visual identity: logo strategy and specs, color palette and 60 30 10 plan, contrast targets, typography, imagery, iconography, motion, layout',
+      '- accessibility and inclusion',
+      '- application playbooks: web and product ui, social, presentations, email and crm, print and events, ads, co branding',
+      '- governance and ops: owner, workflows, asset library, licensing',
+      '- measurement: brand health and creative effectiveness',
+      '- deliverables and rollout',
+      (variants>1) && `- provide ${variants} variants separated by: ---`
+    ].filter(Boolean).join('\n');
+
+    return [
+      'create a complete branding strategy and visual identity guide.',
+      f.project_title && `project: ${f.project_title}`,
+      f.brand_name && `brand: ${f.brand_name}`,
+      f.owner && `owner: ${f.owner}`,
+      f.dates && `dates: ${f.dates}`,
+      f.audience && `audience: ${f.audience}`,
+      (tones || f.tone) && `tone: ${tones || f.tone}`,
+      `length: ${lenStr}`,
+      persona,
+
+      'strategy',
+      f.mission && `mission\n${f.mission}`,
+      f.vision && `vision\n${f.vision}`,
+      f.values && `values\n${f.values}`,
+      f.audience_segments && `audience segments\n${f.audience_segments}`,
+      f.audience_jobs && `jobs to be done\n${f.audience_jobs}`,
+      f.competitors && `competitive set\n${f.competitors}`,
+      f.positioning && `positioning\n${f.positioning}`,
+      f.proof_points && `proof points\n${f.proof_points}`,
+      f.architecture && `brand architecture\n${f.architecture}`,
+      f.naming && `naming notes\n${f.naming}`,
+      f.legal && `legal and trademark\n${f.legal}`,
+
+      'voice and messaging',
+      f.voice_traits && `voice traits\n${f.voice_traits}`,
+      f.tone_matrix && `tone by context\n${f.tone_matrix}`,
+      f.message_house_core && `core message house\n${f.message_house_core}`,
+      f.message_house_segments && `segment message houses\n${f.message_house_segments}`,
+      f.inclusive_language && `inclusive language\n${f.inclusive_language}`,
+      f.glossary && `glossary\n${f.glossary}`,
+
+      'visual identity',
+      f.logo_strategy && `logo strategy\n${f.logo_strategy}`,
+      f.logo_specs && `logo specs\n${f.logo_specs}`,
+      f.logo_filekit && `logo file kit\n${f.logo_filekit}`,
+
+      f.color_palette && `color palette\n${f.color_palette}`,
+      f.color_proportion && `color proportion plan (60 30 10)\n${f.color_proportion}`,
+      f.contrast && `contrast targets\n${f.contrast}`,
+
+      f.type_display && `typography display\n${f.type_display}`,
+      f.type_text && `typography text\n${f.type_text}`,
+      f.type_mono && `typography mono\n${f.type_mono}`,
+      f.type_scale && `type scale\n${f.type_scale}`,
+
+      f.imagery && `imagery direction\n${f.imagery}`,
+      f.iconography && `iconography rules\n${f.iconography}`,
+      f.motion && `motion principles\n${f.motion}`,
+      f.layout && `layout and spacing\n${f.layout}`,
+
+      'accessibility and inclusion',
+      f.a11y && `${f.a11y}`,
+
+      'application playbooks',
+      f.web_ui && `web and product ui\n${f.web_ui}`,
+      f.social && `social kit\n${f.social}`,
+      f.presentations && `presentations\n${f.presentations}`,
+      f.email_crm && `email and crm\n${f.email_crm}`,
+      f.print_events && `print and events\n${f.print_events}`,
+      f.ads && `ads and motion\n${f.ads}`,
+      f.cobranding && `co branding and partners\n${f.cobranding}`,
+
+      'governance and ops',
+      f.governance && `${f.governance}`,
+      f.asset_library && `asset library\n${f.asset_library}`,
+      f.licensing && `licensing\n${f.licensing}`,
+
+      'measurement',
+      f.brand_metrics && `brand health metrics\n${f.brand_metrics}`,
+      f.creative_metrics && `creative effectiveness\n${f.creative_metrics}`,
+
+      'deliverables and rollout',
+      f.deliverables && `deliverables\n${f.deliverables}`,
+      f.rollout && `rollout plan\n${f.rollout}`,
+      f.comms && `communication plan\n${f.comms}`,
+
+      f.constraints && `constraints\n${f.constraints}`,
+      outline
+    ].filter(Boolean).join('\n');
+  }
+},
+
+{
+  id: 'task_website_metadata_ai_seo_builder',
+  slug: 'website-metadata-ai-seo-builder',
+  label: 'website metadata & ai seo builder',
+  kind: 'task',
+  categories: ['seo','marketing','web','strategy','ux','accessibility','performance'],
+  tags: [
+    'type:task',
+    'topic:seo',
+    'topic:ai_seo',
+    'topic:metadata',
+    'topic:structured_data',
+    'topic:open_graph',
+    'topic:twitter_cards',
+    'topic:accessibility',
+    'use:website',
+    'use:metadata',
+    'use:structured_data',
+    'use:open_graph',
+    'use:twitter_cards',
+    'use:robots',
+    'use:sitemaps',
+    'use:user_experience',
+    'phase:discover',
+    'phase:define',
+    'phase:deliver',
+    'level:intermediate'
+  ],
+  use_cases: [
+    'build a complete html head, social previews, and json ld so search engines and ai crawlers can understand a website and its pages',
+    'generate open graph and twitter card metadata that produces reliable link previews across chat apps and social platforms',
+    'produce organization, website, and webpage schema.org json ld plus optional article, product, faqpage, howto, and videoobject markup',
+    'assemble robots.txt and canonical rules that prevent duplicate urls and soft 404s and keep crawl budget efficient',
+    'create a sitemap.xml bundle with lastmod dates for key urls and optional image and video entries',
+    'set internationalization metadata with html lang and hreflang pairs including x default for selectors',
+    'improve accessibility signals that also help bots by defining landmarks, skip links, alt text policy, and contrast targets',
+    'bake performance hints into the head with theme color, color scheme, priority images, preload fonts, and preconnect hosts',
+    'document governance and monitoring with search console, bing webmaster, and a monthly metadata checklist'
+  ],
+  definition: 'guide a user through fields to compile everything needed for website metadata, social previews, structured data, robots, and sitemaps that work for search engines, ai crawlers, and assistive tech.',
+  help: 'fill each field; the template outputs ready to paste html head, json ld, robots.txt, sitemap.xml, plus a concise checklist.',
+
+  fields: [
+    /* basics */
+    { key:'project_title', label:'project title', type:'text',
+      ph:'acorn analytics site metadata refresh',
+      desc:'short initiative name to appear in the output header' },
+    { key:'site_name', label:'site name', type:'text',
+      ph:'acorn analytics',
+      desc:'official site or brand name used in titles and schema' },
+    { key:'site_url', label:'site url (canonical root)', type:'text',
+      ph:'https://www.acornanalytics.com/',
+      desc:'absolute url with trailing slash used as the root for canonicals' },
+    { key:'default_title_suffix', label:'default title suffix', type:'text',
+      ph:'| acorn analytics',
+      desc:'text appended to the end of page titles where appropriate' },
+    { key:'default_lang', label:'default html lang', type:'select',
+      options:['en','es','fr','de','pt','it','nl','sv','no','da','fi','pl','cs','ro','ru','tr','ar','he','hi','bn','id','ms','th','vi','zh','ja','ko'],
+      ph:'en',
+      desc:'root language for html and fallbacks' },
+    { key:'brand_logo_url', label:'brand logo url (absolute)', type:'text',
+      ph:'https://www.acornanalytics.com/assets/logo.svg',
+      desc:'used in organization and website schema and social previews' },
+    { key:'same_as', label:'sameAs profiles (one per line)', type:'textarea',
+      ph:'https://www.linkedin.com/company/acorn\nhttps://twitter.com/acorn',
+      desc:'public profiles that confirm brand identity' },
+
+    /* page core */
+    { key:'page_url', label:'page url', type:'text',
+      ph:'https://www.acornanalytics.com/platform/',
+      desc:'absolute url of the specific page this metadata is for' },
+    { key:'canonical_url', label:'canonical url (if different)', type:'text',
+      ph:'leave blank to use page url',
+      desc:'override canonical if consolidating parameters or variants' },
+    { key:'title', label:'title tag', type:'text',
+      ph:'predict churn with transparent ai | acorn analytics',
+      desc:'45 to 60 characters; put the problem solved first, brand last' },
+    { key:'meta_description', label:'meta description', type:'textarea',
+      ph:'predict customer churn with transparent ai so your team can act before it happens.',
+      desc:'120 to 155 characters; written for human relevance and clicks' },
+    { key:'h1', label:'h1 heading', type:'text',
+      ph:'predict churn before it happens',
+      desc:'primary on page heading that reflects intent' },
+    { key:'breadcrumbs', label:'breadcrumbs (home > section > page)', type:'text',
+      ph:'home > platform > churn prediction',
+      desc:'used for breadcrumblist schema when present' },
+
+    /* robots and indexation */
+    { key:'meta_robots', label:'meta robots', type:'select',
+      options:['index,follow','noindex,follow','index,nofollow','noindex,nofollow'],
+      ph:'index,follow',
+      desc:'index and follow instructions for the page' },
+    { key:'robots_extras', label:'robots extras (comma separated)', type:'text',
+      ph:'max-image-preview:large,max-snippet:-1,max-video-preview:-1',
+      desc:'additional directives to control previews and snippets' },
+
+    /* social previews */
+    { key:'og_title', label:'open graph title', type:'text',
+      ph:'predict churn with transparent ai',
+      desc:'often mirrors the title but can be shorter' },
+    { key:'og_description', label:'open graph description', type:'textarea',
+      ph:'reduce churn risk with explainable predictions and human friendly alerts.',
+      desc:'human readable summary used by link unfurlers' },
+    { key:'og_type', label:'open graph type', type:'select',
+      options:['website','article','product','video.other','profile'],
+      ph:'website',
+      desc:'content category for open graph consumers' },
+    { key:'og_image_url', label:'open graph image url (1200x630)', type:'text',
+      ph:'https://www.acornanalytics.com/og/platform-1200x630.jpg',
+      desc:'absolute url to a share image; ensure it exists at publish time' },
+    { key:'og_image_alt', label:'open graph image alt', type:'text',
+      ph:'dashboard showing churn risk segments by month',
+      desc:'alt text for the preview image' },
+
+    { key:'twitter_card', label:'twitter card type', type:'select',
+      options:['summary','summary_large_image'],
+      ph:'summary_large_image',
+      desc:'card style for x/twitter link previews' },
+    { key:'twitter_site', label:'twitter site handle', type:'text',
+      ph:'@acornanalytics',
+      desc:'brand or site account handle' },
+
+    /* structured data core */
+    { key:'schema_page_type', label:'webpage type', type:'select',
+      options:['WebPage','Article','BlogPosting','Product','FAQPage','HowTo','Event','VideoObject'],
+      ph:'WebPage',
+      desc:'primary schema.org type for this page' },
+    { key:'author_name', label:'author or brand', type:'text',
+      ph:'acorn analytics',
+      desc:'author for article like content; brand for most webpages' },
+    { key:'date_published', label:'date published (yyyy-mm-dd)', type:'text',
+      ph:'2025-09-01',
+      desc:'first publish date if applicable' },
+    { key:'date_modified', label:'date modified (yyyy-mm-dd)', type:'text',
+      ph:'2025-09-15',
+      desc:'most recent significant update date' },
+    { key:'about_keywords', label:'about / keywords (comma separated)', type:'text',
+      ph:'churn prediction, explainable ai, retention analytics',
+      desc:'topics used in json ld about or mentions' },
+
+    /* optional schema variants */
+    { key:'faq_qas', label:'faq items (q | a per line)', type:'textarea',
+      ph:'what is churn prediction? | forecasting risk of customer loss using past signals.\ncan i export? | yes, csv and api are available.',
+      desc:'only used when webpage type is faqpage' },
+    { key:'howto_steps', label:'howto steps (step: instruction per line)', type:'textarea',
+      ph:'step 1: connect crm\nstep 2: label churn events\nstep 3: review model output',
+      desc:'only used when webpage type is howto' },
+    { key:'product_fields', label:'product basics (name | sku | price | currency)', type:'textarea',
+      ph:'acorn pro | ACRN PRO | 99 | USD',
+      desc:'only used when webpage type is product' },
+    { key:'video_fields', label:'video basics (name | url | thumbnail | iso8601 duration | upload date)', type:'textarea',
+      ph:'platform overview | https://v.example.com/abc | https://img.example.com/abc.jpg | PT2M13S | 2025-09-10',
+      desc:'only used when webpage type is videoobject' },
+
+    /* organization and website schema */
+    { key:'org_name', label:'organization name', type:'text',
+      ph:'acorn analytics',
+      desc:'used in organization json ld; falls back to site name if blank' },
+    { key:'org_logo', label:'organization logo url', type:'text',
+      ph:'https://www.acornanalytics.com/assets/logo.svg',
+      desc:'vector preferred; used in organization json ld' },
+    { key:'org_same_as', label:'organization sameAs (one per line)', type:'textarea',
+      ph:'leave blank to reuse site sameAs',
+      desc:'overrides site level sameAs when provided' },
+    { key:'has_search', label:'website has search', type:'select',
+      options:['yes','no'],
+      ph:'no',
+      desc:'adds websitesearchbox schema when yes' },
+    { key:'search_url_pattern', label:'site search url pattern', type:'text',
+      ph:'https://www.acornanalytics.com/search?q={search_term_string}',
+      desc:'required if website has search is yes' },
+
+    /* internationalization */
+    { key:'html_lang', label:'page html lang (override)', type:'text',
+      ph:'leave blank to use default',
+      desc:'set to a bcp 47 language tag to override default' },
+    { key:'hreflang_map', label:'hreflang map (url | lang per line)', type:'textarea',
+      ph:'https://www.acornanalytics.com/platform/ | en\nhttps://www.acornanalytics.com/es/platforma/ | es',
+      desc:'add reciprocal pairs for translated variants' },
+    { key:'x_default_url', label:'x default url', type:'text',
+      ph:'https://www.acornanalytics.com/platform/',
+      desc:'the catch all variant for language selectors' },
+
+    /* performance hints */
+    { key:'hero_image_url', label:'priority hero image url', type:'text',
+      ph:'https://www.acornanalytics.com/img/hero.webp',
+      desc:'use to suggest fetchpriority=high and proper sizes' },
+    { key:'preload_fonts', label:'preload fonts (one url per line)', type:'textarea',
+      ph:'/fonts/inter-var.woff2',
+      desc:'critical fonts to preload with font display swap' },
+    { key:'preconnect_hosts', label:'preconnect hosts (one per line)', type:'textarea',
+      ph:'https://cdn.example.com\nhttps://analytics.example.com',
+      desc:'third party origins to preconnect for performance' },
+    { key:'color_scheme', label:'color scheme', type:'select',
+      options:['light dark','light','dark'],
+      ph:'light dark',
+      desc:'declares supported color schemes' },
+    { key:'theme_color', label:'theme color (#hex)', type:'text',
+      ph:'#111111',
+      desc:'browser ui color; match brand primary in light mode' },
+
+    /* icons and feeds */
+    { key:'icon_svg', label:'svg icon url', type:'text',
+      ph:'/icon.svg',
+      desc:'vector icon for modern browsers' },
+    { key:'favicon_ico', label:'favicon .ico url', type:'text',
+      ph:'/favicon.ico',
+      desc:'fallback icon for legacy contexts' },
+    { key:'apple_touch_icon', label:'apple touch icon url', type:'text',
+      ph:'/apple-touch-icon.png',
+      desc:'ios home screen icon' },
+    { key:'rss_feed', label:'rss feed url (optional)', type:'text',
+      ph:'https://www.acornanalytics.com/feed.xml',
+      desc:'add for blogs and podcast listings' },
+
+    /* robots.txt and sitemap */
+    { key:'robots_allow', label:'robots allow paths (one per line)', type:'textarea',
+      ph:'/public/\n/assets/',
+      desc:'paths you explicitly allow (optional; allow all by default)' },
+    { key:'robots_disallow', label:'robots disallow paths (one per line)', type:'textarea',
+      ph:'/private/\n/temp/',
+      desc:'paths you want to block from crawling' },
+    { key:'include_in_sitemap', label:'include page in sitemap', type:'select',
+      options:['yes','no'],
+      ph:'yes',
+      desc:'controls whether the page url appears in sitemap.xml' },
+    { key:'lastmod', label:'lastmod date (yyyy-mm-dd)', type:'text',
+      ph:'2025-09-29',
+      desc:'last modified date for sitemap entry' },
+    { key:'changefreq', label:'changefreq (hint only)', type:'select',
+      options:['daily','weekly','monthly','yearly','never'],
+      ph:'monthly',
+      desc:'not a strong signal but harmless' },
+    { key:'extra_sitemap_urls', label:'extra sitemap urls (one per line)', type:'textarea',
+      ph:'https://www.acornanalytics.com/pricing/\nhttps://www.acornanalytics.com/customers/',
+      desc:'add additional important urls to include' },
+
+    /* accessibility anchors */
+    { key:'skip_link_target', label:'skip link target id', type:'text',
+      ph:'#main',
+      desc:'id of the main content region for keyboard users' },
+    { key:'landmark_notes', label:'landmarks and headings notes', type:'textarea',
+      ph:'header, nav, main, aside, footer present; single h1; semantic order verified',
+      desc:'quick audit notes that become part of the checklist' },
+    { key:'alt_text_policy', label:'alt text policy', type:'textarea',
+      ph:'meaningful images have concise alt; decorative images use empty alt; charts link to data table',
+      desc:'sitewide guidance that improves accessibility and snippet quality' },
+
+    /* monitoring and governance */
+    { key:'gsc_property', label:'google search console property', type:'text',
+      ph:'sc-domain:acornanalytics.com',
+      desc:'property id or label for governance notes' },
+    { key:'bingwm_property', label:'bing webmaster property', type:'text',
+      ph:'acornanalytics.com',
+      desc:'bing webmaster verification target' },
+
+    /* output controls */
+    { key:'output_format', label:'output format', type:'select',
+      options:['bundle (head + json ld + robots.txt + sitemap.xml + checklist)','head only','json ld only','robots + sitemap only'],
+      ph:'bundle (head + json ld + robots.txt + sitemap.xml + checklist)',
+      desc:'choose what the template should emit' },
+    { key:'length', label:'notes verbosity', type:'select',
+      options:['short','medium','long'],
+      ph:'medium',
+      desc:'amount of commentary included in the checklist' }
+  ],
+
+  boosters: [
+    'use absolute urls for canonicals and preview images.',
+    'keep one canonical per page and make internal links match it.',
+    'mirror the h1 intent in the title and description.',
+    'ship organization, website, and webpage schema on every key page.',
+    'prefer json ld over microdata and keep it consistent with visible content.',
+    'provide alt text for preview images and transcripts for videos.',
+    'declare color scheme and theme color for better mobile ui integration.',
+    'submit sitemaps in search console and bing webmaster after changes.',
+    'test previews with sharing debuggers and validate schema with rich results tools.'
+  ],
+
+  template: (f) => {
+    const pick = (v, fb='') => v && String(v).trim() ? String(v).trim() : fb;
+    const yes = (v) => String(v||'').toLowerCase() === 'yes';
+
+    const site = pick(f.site_url);
+    const canon = pick(f.canonical_url, pick(f.page_url));
+    const robots = [pick(f.meta_robots,'index,follow'), pick(f.robots_extras,'')].filter(Boolean).join(',');
+    const lang = pick(f.html_lang, pick(f.default_lang,'en'));
+    const title = pick(f.title);
+    const tSuffix = pick(f.default_title_suffix,'');
+    const fullTitle = tSuffix && title && !title.includes(tSuffix) ? `${title} ${tSuffix}` : (title || '');
+    const ogType = pick(f.og_type,'website');
+    const twCard = pick(f.twitter_card,'summary_large_image');
+    const pageType = pick(f.schema_page_type,'WebPage');
+
+    const sameAs = (val) => (val||'').split('\n').map(s=>s.trim()).filter(Boolean);
+    const list = (val) => (val||'').split('\n').map(s=>s.trim()).filter(Boolean);
+
+    const outputChoice = pick(f.output_format,'bundle (head + json ld + robots.txt + sitemap.xml + checklist)');
+
+    const outline = [
+      'output format:',
+      outputChoice.includes('bundle') ? '- html head\n- json ld\n- robots.txt\n- sitemap.xml\n- checklist' :
+      outputChoice.includes('head only') ? '- html head' :
+      outputChoice.includes('json ld only') ? '- json ld' :
+      '- robots.txt\n- sitemap.xml',
+    ].join('\n');
+
+    const headBlock = [
+      '<head>',
+      fullTitle && `  <title>${fullTitle}</title>`,
+      f.meta_description && `  <meta name="description" content="${f.meta_description}">`,
+      canon && `  <link rel="canonical" href="${canon}">`,
+      `  <meta name="robots" content="${robots}">`,
+      '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+      pick(f.theme_color) && `  <meta name="theme-color" content="${f.theme_color}">`,
+      pick(f.color_scheme) && `  <meta name="color-scheme" content="${f.color_scheme}">`,
+      /* icons */
+      pick(f.icon_svg) && `  <link rel="icon" href="${f.icon_svg}" type="image/svg+xml">`,
+      pick(f.favicon_ico) && `  <link rel="icon" href="${f.favicon_ico}" sizes="any">`,
+      pick(f.apple_touch_icon) && `  <link rel="apple-touch-icon" href="${f.apple_touch_icon}">`,
+      /* feeds */
+      pick(f.rss_feed) && `  <link rel="alternate" type="application/rss+xml" title="${pick(f.site_name,'rss')}" href="${f.rss_feed}">`,
+      /* og */
+      f.og_title && `  <meta property="og:title" content="${f.og_title}">`,
+      f.og_description && `  <meta property="og:description" content="${f.og_description}">`,
+      canon && `  <meta property="og:url" content="${canon}">`,
+      `  <meta property="og:type" content="${ogType}">`,
+      f.og_image_url && `  <meta property="og:image" content="${f.og_image_url}">`,
+      f.og_image_alt && `  <meta property="og:image:alt" content="${f.og_image_alt}">`,
+      pick(f.site_name) && `  <meta property="og:site_name" content="${f.site_name}">`,
+      /* twitter */
+      `  <meta name="twitter:card" content="${twCard}">`,
+      f.twitter_site && `  <meta name="twitter:site" content="${f.twitter_site}">`,
+      f.og_title && `  <meta name="twitter:title" content="${f.og_title}">`,
+      f.og_description && `  <meta name="twitter:description" content="${f.og_description}">`,
+      f.og_image_url && `  <meta name="twitter:image" content="${f.og_image_url}">`,
+      /* performance hints */
+      f.hero_image_url && `  <link rel="preload" as="image" href="${f.hero_image_url}" fetchpriority="high">`,
+      ...list(f.preload_fonts).map(u => `  <link rel="preload" as="font" href="${u}" type="font/woff2" crossorigin>`),
+      ...list(f.preconnect_hosts).map(h => `  <link rel="preconnect" href="${h}" crossorigin>`),
+      '</head>'
+    ].filter(Boolean).join('\n');
+
+    const orgName = pick(f.org_name, pick(f.site_name));
+    const orgLogo = pick(f.org_logo, pick(f.brand_logo_url));
+    const graph = [];
+
+    if (orgName || orgLogo || sameAs(pick(f.org_same_as, f.same_as)).length) {
+      graph.push({
+        '@type': 'Organization',
+        'name': orgName || undefined,
+        'url': pick(f.site_url) || undefined,
+        'logo': orgLogo || undefined,
+        'sameAs': sameAs(pick(f.org_same_as, f.same_as))
+      });
+    }
+    if (pick(f.site_url)) {
+      const website = {
+        '@type': 'WebSite',
+        'url': pick(f.site_url),
+        'name': pick(f.site_name) || undefined
+      };
+      if (yes(f.has_search) && pick(f.search_url_pattern)) {
+        website.potentialAction = {
+          '@type': 'SearchAction',
+          'target': pick(f.search_url_pattern),
+          'query-input': 'required name=search_term_string'
+        };
+      }
+      graph.push(website);
+    }
+
+    const pageNode = {
+      '@type': pageType,
+      'url': pick(f.page_url) || undefined,
+      'name': pick(f.h1) || pick(f.title) || undefined,
+      'isPartOf': pick(f.site_url) ? { '@id': pick(f.site_url) } : undefined,
+      'inLanguage': lang || undefined,
+      'about': pick(f.about_keywords) ? pick(f.about_keywords).split(',').map(s=>s.trim()).filter(Boolean) : undefined,
+      'datePublished': pick(f.date_published) || undefined,
+      'dateModified': pick(f.date_modified) || undefined,
+      'breadcrumb': pick(f.breadcrumbs) ? { '@type':'BreadcrumbList', 'itemListElement': pick(f.breadcrumbs).split('>').map((t,i)=>({ '@type':'ListItem','position': i+1,'name': t.trim() })) } : undefined
+    };
+
+    if (pageType === 'FAQPage' && pick(f.faq_qas)) {
+      const qas = list(f.faq_qas).map(line => {
+        const [q,a] = line.split('|').map(s=>s && s.trim());
+        return q && a ? { '@type':'Question','name':q,'acceptedAnswer':{ '@type':'Answer','text':a } } : null;
+      }).filter(Boolean);
+      pageNode.mainEntity = qas;
+    }
+
+    if (pageType === 'HowTo' && pick(f.howto_steps)) {
+      const steps = list(f.howto_steps).map((line, idx) => ({ '@type':'HowToStep','position': idx+1,'name': line.split(':')[0].trim(),'text': line.replace(/^.*?:/,'').trim() }));
+      pageNode.step = steps;
+    }
+
+    if (pageType === 'Product' && pick(f.product_fields)) {
+      const [name, sku, price, currency] = pick(f.product_fields).split('|').map(s=>s && s.trim());
+      pageNode.name = name || pageNode.name;
+      pageNode.sku = sku || undefined;
+      pageNode.offers = (price && currency) ? { '@type':'Offer','price': price,'priceCurrency': currency, 'url': pick(f.page_url) || undefined } : undefined;
+    }
+
+    if (pageType === 'VideoObject' && pick(f.video_fields)) {
+      const [vname, vurl, thumb, duration, upload] = pick(f.video_fields).split('|').map(s=>s && s.trim());
+      pageNode.name = vname || pageNode.name;
+      pageNode.contentUrl = vurl || undefined;
+      pageNode.thumbnailUrl = thumb ? [thumb] : undefined;
+      pageNode.duration = duration || undefined;
+      pageNode.uploadDate = upload || undefined;
+    }
+
+    if (pageType === 'Article' || pageType === 'BlogPosting') {
+      pageNode.author = pick(f.author_name) ? { '@type':'Organization','name': pick(f.author_name) } : undefined;
+    }
+
+    graph.push(pageNode);
+
+    const jsonldBlock = [
+      '<script type="application/ld+json">',
+      JSON.stringify({ '@context':'https://schema.org', '@graph': graph }, null, 2),
+      '</script>'
+    ].join('\n');
+
+    const hreflangs = list(f.hreflang_map).map(line => {
+      const [u, l] = line.split('|').map(s=>s && s.trim());
+      return (u && l) ? { url:u, lang:l } : null;
+    }).filter(Boolean);
+
+    const robotsTxt = [
+      'User-agent: *',
+      ...(list(f.robots_disallow).length ? list(f.robots_disallow).map(p => `Disallow: ${p}`) : ['Disallow:']),
+      ...(list(f.robots_allow).length ? list(f.robots_allow).map(p => `Allow: ${p}`) : []),
+      pick(f.site_url) ? `Sitemap: ${pick(f.site_url)}sitemap.xml` : ''
+    ].filter(Boolean).join('\n');
+
+    const urls = [
+      pick(f.page_url),
+      ...list(f.extra_sitemap_urls)
+    ].filter(Boolean);
+
+    const sitemapXml = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      ...urls.map(u => {
+        return [
+          '  <url>',
+          `    <loc>${u}</loc>`,
+          pick(f.lastmod) ? `    <lastmod>${pick(f.lastmod)}</lastmod>` : '',
+          pick(f.changefreq) ? `    <changefreq>${pick(f.changefreq)}</changefreq>` : '',
+          '  </url>'
+        ].filter(Boolean).join('\n');
+      }),
+      '</urlset>'
+    ].join('\n');
+
+    const checklist = [
+      'checklist',
+      `- language: html lang set to ${lang}`,
+      `- canonical: ${canon || 'missing'}`,
+      `- robots: ${robots}`,
+      `- open graph: ${f.og_title ? 'present' : 'missing'} title, ${f.og_image_url ? 'image ok' : 'image missing'}`,
+      `- twitter card: ${twCard}`,
+      `- schema: ${pageType} + organization + website`,
+      `- hreflang: ${hreflangs.length ? `${hreflangs.length} variants` : 'none'}`,
+      `- performance: hero ${f.hero_image_url ? 'preloaded' : 'not set'}, fonts ${list(f.preload_fonts).length ? 'preloaded' : 'none'}, preconnect ${list(f.preconnect_hosts).length ? 'set' : 'none'}`,
+      `- accessibility: skip link to ${pick(f.skip_link_target,'#main')}, alt policy defined`,
+      `- monitoring: search console ${pick(f.gsc_property,'not set')}, bing webmaster ${pick(f.bingwm_property,'not set')}`
+    ].join('\n');
+
+    const blocks = [];
+    if (outputChoice.includes('bundle') || outputChoice.includes('head only')) blocks.push('html head\n' + headBlock);
+    if (outputChoice.includes('bundle') || outputChoice.includes('json ld only')) blocks.push('json ld\n' + jsonldBlock);
+    if (outputChoice.includes('bundle') || outputChoice.includes('robots + sitemap only')) {
+      blocks.push('robots.txt\n' + robotsTxt);
+      blocks.push('sitemap.xml\n' + sitemapXml);
+    }
+    if (outputChoice.includes('bundle')) blocks.push(checklist);
+
+    const header = [
+      'create a complete website metadata and ai seo bundle.',
+      f.project_title && `project: ${f.project_title}`,
+      f.site_name && `site: ${f.site_name}`,
+      f.site_url && `root: ${f.site_url}`,
+      `lang: ${lang}`,
+      outline
+    ].filter(Boolean).join('\n');
+
+    return [
+      header,
+      '',
+      ...blocks
+    ].join('\n\n');
+  }
 }
+
+
+
 
 
 
