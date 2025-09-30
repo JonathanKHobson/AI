@@ -50643,12 +50643,7 @@ tasks && `Critical user tasks:\n${tasks}`,
   slug: "community-os-building-blocks",
   label: "Community OS — Identity · Bonfires · Streams · Garden",
   kind: "framework",
-  categories: [
-    "community",
-    "platform",
-    "architecture",
-    "comms"
-  ],
+  categories: ["community", "platform", "architecture", "comms"],
   tags: [
     "type:framework",
     "use:architecture",
@@ -50667,64 +50662,132 @@ tasks && `Critical user tasks:\n${tasks}`,
   ],
   boosters: [
     "Prioritize portability: identity and content must export/import cleanly.",
-    "Pair stable standards with one emerging bet per year.",
+    "Pair one stable standard with at most one emerging bet per year.",
     "Prototype interop on a single workflow before scaling.",
     "Publish a plain-language ‘how our stack works’ explainer.",
     "Continuously test account recovery and content export."
   ],
-  definition: "A practical template for assembling a ‘Community OS’ built on four components — Identity (conduit of flows), Bonfires (discursive, omnidirectional flow), Streams (declarative, linear flow), and Garden (contemplative, bottom-up flow) — using stable web standards with optional emerging protocols.",
-  help: "Fill in your context, pick platforms and protocols for each component, specify interop hand-offs, and set a 90-day pilot plus a 1-year migration. The output is a cohesive, copy-ready plan.",
-  fields: [
-    { label: "Context / place", key: "place", ph: "e.g., a university, city, product community", type: "text" },
-    { label: "Timeframe", key: "timeframe", ph: "e.g., Q4 2025 (90-day pilot) + 1-year roadmap", type: "text" },
-    { label: "Goals", key: "goals", ph: "e.g., reduce lock-in; increase reach; improve knowledge retention", type: "textarea" },
+  definition: "A practical template for assembling a ‘Community OS’ with four components — Identity (conduit of flows), Bonfires (discursive, omnidirectional flow), Streams (declarative, linear flow), and Garden (contemplative, bottom-up flow). Each selection prints an explanatory sentence so your AI has usable context.",
+  help: "Fill each field. Every select includes None and Other. If you choose Other, describe it in the paired text field. The output is copy-ready for ChatGPT to draft architecture, migration, and governance plans.",
 
+  fields: [
+    {
+      label: "Context / place",
+      desc: "Where this stack will operate.",
+      key: "place",
+      ph: "e.g., Skagit County (WA) · University program · Product community",
+      type: "text"
+    },
+    {
+      label: "Timeframe",
+      desc: "Planning window for pilot and roadmap.",
+      key: "timeframe",
+      ph: "e.g., Q4 2025 pilot (90 days) + 1-year roadmap",
+      type: "text"
+    },
+    {
+      label: "Goals",
+      desc: "Top objectives that define success.",
+      key: "goals",
+      ph: "e.g., reduce platform lock-in; increase reach; improve knowledge retention; safer moderation",
+      type: "textarea"
+    },
+
+    /* IDENTITY */
     {
       label: "Identity — platforms",
-      desc: "Identity providers or homepages users rely on.",
+      desc: "Identity providers or homepages your users rely on. Each item is turned into a sentence for the AI.",
       autofill: "persona->inline",
       itemLabel: "identity",
       itemType: "typeahead",
       key: "id_platforms",
       max: 8,
       min: 1,
-      ph: "e.g., Email, Apple, Google, Microsoft, Phone #, ‘Weird’",
+      ph: "e.g., Email, Apple, Google, Microsoft, Phone number, ‘Weird’",
       type: "repeater"
     },
-    { label: "Identity — stable standards", key: "id_stable", type: "select",
-      options: [ "OAuth2/OIDC" ]
+    {
+      label: "Identity — stable standard",
+      desc: "Pick one stable standard for auth/SSO. Output includes a one-sentence definition.",
+      key: "id_stable",
+      type: "select",
+      options: ["OAuth2/OIDC", "Other", "None"]
     },
-    { label: "Identity — emerging standards", key: "id_emerging", type: "select",
+    {
+      label: "Identity — if Other, describe",
+      desc: "If you chose Other above, define the protocol and why.",
+      key: "id_stable_other",
+      ph: "Name the standard and its purpose; include export/recovery notes.",
+      type: "text"
+    },
+    {
+      label: "Identity — emerging standard",
+      desc: "Choose one emerging identity approach. Output includes a one-sentence definition.",
+      key: "id_emerging",
+      type: "select",
       options: [
         "OpenID for Verifiable Credential Issuance",
         "Self-Issued OpenID Provider (SIOP)",
         "OpenID Connect Federation",
-        "Decentralized identity (DID-compatible)"
+        "Decentralized identity (DID/VC)",
+        "Other",
+        "None"
       ]
     },
+    {
+      label: "Identity — emerging (Other) description",
+      desc: "If you chose Other for emerging identity, describe it.",
+      key: "id_emerging_other",
+      ph: "Explain what it is and how it improves portability and trust.",
+      type: "text"
+    },
 
+    /* BONFIRES */
     {
       label: "Bonfires — apps",
-      desc: "Group discourse: chat, forums, lists.",
+      desc: "Group discourse tools (chat, forums, lists). Each item outputs a sentence describing its role.",
       autofill: "persona->inline",
       itemLabel: "bonfire",
       itemType: "typeahead",
       key: "bonfire_apps",
       max: 10,
       min: 1,
-      ph: "e.g., Matrix rooms, Discord, Slack, Discourse, mailing lists",
+      ph: "e.g., Matrix, Discord, Slack, Discourse, Mailman",
       type: "repeater"
     },
-    { label: "Bonfires — stable standards", key: "bonfire_stable", type: "select",
-      options: [ "Matrix", "Email" ]
+    {
+      label: "Bonfires — stable standard",
+      desc: "Pick one stable protocol for bonfires. Output includes a one-sentence definition.",
+      key: "bonfire_stable",
+      type: "select",
+      options: ["Matrix", "Email", "Other", "None"]
     },
-    { label: "Bonfires — emerging standards", key: "bonfire_emerging", type: "select",
-      options: [ "MIMI", "MLS" ]
+    {
+      label: "Bonfires — stable (Other) description",
+      desc: "If Other, describe the protocol and interop story.",
+      key: "bonfire_stable_other",
+      ph: "Name the protocol and list server/export options.",
+      type: "text"
+    },
+    {
+      label: "Bonfires — emerging standard",
+      desc: "Pick one emerging protocol. Output includes a one-sentence definition.",
+      key: "bonfire_emerging",
+      type: "select",
+      options: ["MIMI", "MLS", "Other", "None"]
+    },
+    {
+      label: "Bonfires — emerging (Other) description",
+      desc: "If Other, define it and why it matters.",
+      key: "bonfire_emerging_other",
+      ph: "Protocol name + security/federation rationale.",
+      type: "text"
     },
 
+    /* STREAMS */
     {
       label: "Streams — apps",
-      desc: "Broadcast/feeds for reach.",
+      desc: "Broadcast/feeds. Each item outputs a sentence defining how you’ll use it.",
       autofill: "persona->inline",
       itemLabel: "stream",
       itemType: "typeahead",
@@ -50734,108 +50797,234 @@ tasks && `Critical user tasks:\n${tasks}`,
       ph: "e.g., Mastodon, Tumblr, YouTube, TikTok, blog feeds",
       type: "repeater"
     },
-    { label: "Streams — stable standards", key: "stream_stable", type: "select",
-      options: [ "ActivityPub", "RSS" ]
+    {
+      label: "Streams — stable standard",
+      desc: "Pick one stable feed protocol. Output includes a one-sentence definition.",
+      key: "stream_stable",
+      type: "select",
+      options: ["ActivityPub", "RSS", "Other", "None"]
     },
-    { label: "Streams — emerging standards", key: "stream_emerging", type: "select",
-      options: [ "ATproto" ]
+    {
+      label: "Streams — stable (Other) description",
+      desc: "If Other, define the protocol and feed strategy.",
+      key: "stream_stable_other",
+      ph: "Protocol name + syndication/export format.",
+      type: "text"
+    },
+    {
+      label: "Streams — emerging standard",
+      desc: "Pick one emerging feed protocol. Output includes a one-sentence definition.",
+      key: "stream_emerging",
+      type: "select",
+      options: ["ATproto", "Other", "None"]
+    },
+    {
+      label: "Streams — emerging (Other) description",
+      desc: "If Other, define it and what interop it enables.",
+      key: "stream_emerging_other",
+      ph: "Protocol name + federation/portability benefits.",
+      type: "text"
     },
 
+    /* GARDEN */
     {
       label: "Garden — apps",
-      desc: "Knowledge base and networked notes.",
+      desc: "Knowledge base and networked notes. Each item outputs a sentence describing its role.",
       autofill: "persona->inline",
       itemLabel: "garden",
       itemType: "typeahead",
       key: "garden_apps",
       max: 10,
       min: 1,
-      ph: "e.g., MediaWiki, Notion, Obsidian publish, WordPress",
+      ph: "e.g., MediaWiki, Notion, Obsidian Publish, WordPress",
       type: "repeater"
     },
-    { label: "Garden — emerging standards", key: "garden_emerging", type: "select",
-      options: [ "Noosphere" ]
+    {
+      label: "Garden — emerging standard",
+      desc: "Pick one knowledge protocol. Output includes a one-sentence definition.",
+      key: "garden_emerging",
+      type: "select",
+      options: ["Noosphere", "Other", "None"]
+    },
+    {
+      label: "Garden — emerging (Other) description",
+      desc: "If Other, define it and how it handles versioning/links.",
+      key: "garden_emerging_other",
+      ph: "Protocol name + data model and sync approach.",
+      type: "text"
     },
 
-    { label: "Interoperability hand-offs", key: "handoffs", ph: "e.g., forum post → AP announcement → wiki summary", type: "textarea" },
-    { label: "Lock-in risks & mitigations", key: "risks", ph: "e.g., export formats, API terms, federation options", type: "textarea" },
-    { label: "Privacy & safety constraints", key: "constraints", ph: "e.g., moderation model, PII, consent flows, retention", type: "textarea" },
-
-    { label: "90-day pilot (one workflow)", key: "pilot90", ph: "e.g., policy debate → consensus → publish explainer", type: "textarea" },
-    { label: "1-year migration roadmap", key: "roadmap", ph: "e.g., quarter-by-quarter protocol adoption and deprecations", type: "textarea" },
-    { label: "Success indicators", key: "signals", ph: "e.g., % portable accounts; weekly active discourse; wiki reuse rate", type: "textarea" }
+    /* INTEROP + GOVERNANCE + EXECUTION */
+    {
+      label: "Interoperability hand-offs",
+      desc: "How content moves between modes. Output includes these as a checklist.",
+      key: "handoffs",
+      ph: "e.g., forum post → AP announcement → wiki summary → email digest",
+      type: "textarea"
+    },
+    {
+      label: "Lock-in risks & mitigations",
+      desc: "Where you’re dependent on vendors and how you’ll mitigate.",
+      key: "risks",
+      ph: "e.g., export formats, mirrored hosting, migration playbooks",
+      type: "textarea"
+    },
+    {
+      label: "Privacy & safety constraints",
+      desc: "Rules that shape moderation, PII handling, consent, retention.",
+      key: "constraints",
+      ph: "e.g., code of conduct, crisis protocols, DPA/FERPA/ HIPAA constraints",
+      type: "textarea"
+    },
+    {
+      label: "90-day pilot (one workflow)",
+      desc: "Start-to-finish workflow you’ll actually run.",
+      key: "pilot90",
+      ph: "e.g., town hall → consensus notes → AP post → wiki decision record",
+      type: "textarea"
+    },
+    {
+      label: "1-year migration roadmap",
+      desc: "Quarter-by-quarter adoption and deprecations.",
+      key: "roadmap",
+      ph: "Q1: Matrix pilot · Q2: AP syndication · Q3: wiki migration · Q4: DID pilot",
+      type: "textarea"
+    },
+    {
+      label: "Success indicators",
+      desc: "Practical, countable signals to track.",
+      key: "signals",
+      ph: "e.g., % portable accounts; weekly active discourse; wiki reuse rate",
+      type: "textarea"
+    },
+    {
+      label: "Additional notes",
+      desc: "Any extra context the AI should know.",
+      key: "notes",
+      ph: "Assumptions, constraints, stakeholders, funding, etc.",
+      type: "textarea"
+    }
   ],
 
-  template: ({
-    place, timeframe, goals,
-    id_platforms, id_stable, id_emerging,
-    bonfire_apps, bonfire_stable, bonfire_emerging,
-    stream_apps, stream_stable, stream_emerging,
-    garden_apps, garden_emerging,
-    handoffs, risks, constraints,
-    pilot90, roadmap, signals,
-    ctx, audience, style, tone
-  }) => [
-    "Community OS — Assembly Plan",
-    ctx && `Context: ${ctx}`,
-    audience && `Audience: ${audience}`,
-    style && `Style: ${style}`,
-    tone && `Tone: ${tone}`,
-    place && `Place: ${place}`,
-    timeframe && `Timeframe: ${timeframe}`,
-    goals && ("Goals:\n" + goals),
+  template: (args => {
+    const {
+      place, timeframe, goals,
+      id_platforms, id_stable, id_stable_other, id_emerging, id_emerging_other,
+      bonfire_apps, bonfire_stable, bonfire_stable_other, bonfire_emerging, bonfire_emerging_other,
+      stream_apps, stream_stable, stream_stable_other, stream_emerging, stream_emerging_other,
+      garden_apps, garden_emerging, garden_emerging_other,
+      handoffs, risks, constraints, pilot90, roadmap, signals, notes,
+      ctx, audience, style, tone
+    } = args || {};
 
-    "",
-    "COMPONENTS & PROTOCOLS",
-    "",
-    "— Identity (conduit of flows) —",
-    id_platforms && ("Platforms:\n" + String(id_platforms).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
-    id_stable && id_stable.length ? ("Stable standards: " + id_stable.join(", ")) : null,
-    id_emerging && id_emerging.length ? ("Emerging: " + id_emerging.join(", ")) : null,
+    // 1-line explainers for each selectable option
+    const EXPLAIN = {
+      /* Identity */
+      "OAuth2/OIDC": "OAuth2/OIDC will provide single sign-on and delegated API access via widely supported tokens, improving login UX and account security.",
+      "OpenID for Verifiable Credential Issuance": "OpenID4VCI will let us issue and verify portable credentials, enabling privacy-preserving proof of attributes across apps.",
+      "Self-Issued OpenID Provider (SIOP)": "SIOP allows users to act as their own identity provider, reducing reliance on centralized login services.",
+      "OpenID Connect Federation": "OIDC Federation will enable trust frameworks between providers, simplifying multi-tenant interop without hard-coding trust lists.",
+      "Decentralized identity (DID/VC)": "DID/VC will give users portable identifiers and verifiable claims they control, reducing vendor lock-in in auth flows.",
+      /* Bonfires */
+      "Matrix": "Matrix will power federated group chat and rooms with E2EE options and bridges, keeping real-time discourse portable.",
+      "Email": "Email will support lists and announcements with universal reach and offline durability.",
+      "MIMI": "MIMI targets interoperable messaging between providers, aligning chat silos toward a common standard.",
+      "MLS": "Messaging Layer Security (MLS) provides scalable end-to-end encryption for group messaging.",
+      /* Streams */
+      "ActivityPub": "ActivityPub will federate posts and announcements across the fediverse, extending reach beyond a single platform.",
+      "RSS": "RSS will provide open, machine-readable feeds for syndication and reuse in any reader.",
+      "ATproto": "ATproto will enable portable accounts and composable feeds across compatible apps.",
+      /* Garden */
+      "Noosphere": "Noosphere will give us a versioned, local-first knowledge graph with global addressing for durable, interlinked content."
+    };
 
-    "",
-    "— Bonfires (discursive, omnidirectional) —",
-    bonfire_apps && ("Apps:\n" + String(bonfire_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
-    bonfire_stable && bonfire_stable.length ? ("Stable standards: " + bonfire_stable.join(", ")) : null,
-    bonfire_emerging && bonfire_emerging.length ? ("Emerging: " + bonfire_emerging.join(", ")) : null,
+    const describeChoice = (choice, otherText, noneText) => {
+      if (!choice || choice === "None") return noneText || "None selected; defer this layer for now and document current state.";
+      if (choice === "Other") return otherText && otherText.trim()
+        ? otherText.trim()
+        : "Other selected; define the protocol, export formats, and interop plan.";
+      return EXPLAIN[choice] || `${choice}: selected; define how it improves portability and governance.`;
+    };
 
-    "",
-    "— Streams (declarative, linear) —",
-    stream_apps && ("Apps:\n" + String(stream_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
-    stream_stable && stream_stable.length ? ("Stable standards: " + stream_stable.join(", ")) : null,
-    stream_emerging && stream_emerging.length ? ("Emerging: " + stream_emerging.join(", ")) : null,
+    const listify = (items, sentenceBuilder) => {
+      if (!items) return null;
+      const parts = String(items).split(/\n+/).map(s => s.trim()).filter(Boolean);
+      if (!parts.length) return null;
+      return parts.map((x, i) => `${i+1}. ${sentenceBuilder(x)}`).join("\n");
+    };
 
-    "",
-    "— Garden (contemplative, bottom-up) —",
-    garden_apps && ("Apps:\n" + String(garden_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
-    garden_emerging && garden_emerging.length ? ("Emerging: " + garden_emerging.join(", ")) : null,
+    return [
+      "Community OS — Assembly Plan",
+      ctx && `Context: ${ctx}`,
+      audience && `Audience: ${audience}`,
+      style && `Style: ${style}`,
+      tone && `Tone: ${tone}`,
+      place && `Place: ${place}`,
+      timeframe && `Timeframe: ${timeframe}`,
+      goals && ("Goals:\n" + goals),
 
-    "",
-    "INTEROPERABILITY & GOVERNANCE",
-    handoffs && ("Handoffs (how content moves between modes):\n" + handoffs),
-    constraints && ("Privacy & safety constraints:\n" + constraints),
-    risks && ("Lock-in risks & mitigations:\n" + risks),
+      "",
+      "COMPONENTS & PROTOCOLS",
 
-    "",
-    "EXECUTION",
-    pilot90 && ("90-day pilot:\n" + pilot90),
-    roadmap && ("1-year migration roadmap:\n" + roadmap),
+      "",
+      "— Identity (conduit of flows) —",
+      id_platforms && ("Platforms:\n" + listify(id_platforms, x => `${x}: used as an identity provider/home for user accounts with clear recovery and export.`)),
+      "Standard:",
+      describeChoice(id_stable, id_stable_other, "None selected; keep existing login while documenting migration risks."),
+      "Emerging:",
+      describeChoice(id_emerging, id_emerging_other, "None selected; revisit after pilot."),
 
-    "",
-    signals && ("Success indicators:\n" + signals),
+      "",
+      "— Bonfires (discursive, omnidirectional) —",
+      bonfire_apps && ("Apps:\n" + listify(bonfire_apps, x => `${x}: group-scale conversation and Q&A; retain exports and searchable archives.`)),
+      "Stable:",
+      describeChoice(bonfire_stable, bonfire_stable_other, "None selected; document how current chat/forum will export and bridge."),
+      "Emerging:",
+      describeChoice(bonfire_emerging, bonfire_emerging_other, "None selected; encryption/federation upgrades deferred."),
 
-    "",
-    "NOTES",
-    "- Favor open protocols and portable identity.",
-    "- Document exports/imports and test them quarterly.",
-    "- Start small: one end-to-end workflow before scaling."
-  ].filter(Boolean).join("\n"),
+      "",
+      "— Streams (declarative, linear) —",
+      stream_apps && ("Apps:\n" + listify(stream_apps, x => `${x}: broadcast announcements and updates; ensure feed discoverability and archiving.`)),
+      "Stable:",
+      describeChoice(stream_stable, stream_stable_other, "None selected; publish via current channels and capture an RSS-like export."),
+      "Emerging:",
+      describeChoice(stream_emerging, stream_emerging_other, "None selected; evaluate portable accounts later."),
+
+      "",
+      "— Garden (contemplative, bottom-up) —",
+      garden_apps && ("Apps:\n" + listify(garden_apps, x => `${x}: evergreen knowledge base; interlink, version, and cite sources.`)),
+      "Knowledge protocol:",
+      describeChoice(garden_emerging, garden_emerging_other, "None selected; keep wiki/docs as-is and document versioning limits."),
+
+      "",
+      "INTEROPERABILITY & GOVERNANCE",
+      handoffs && ("Handoffs (content moves between modes):\n" + handoffs),
+      constraints && ("Privacy & safety constraints:\n" + constraints),
+      risks && ("Lock-in risks & mitigations:\n" + risks),
+
+      "",
+      "EXECUTION",
+      pilot90 && ("90-day pilot:\n" + pilot90),
+      roadmap && ("1-year migration roadmap:\n" + roadmap),
+
+      "",
+      signals && ("Success indicators:\n" + signals),
+      notes && ("Additional notes:\n" + notes),
+
+      "",
+      "Implementation notes:",
+      "- Every selection above includes a one-sentence definition so the AI understands what it does.",
+      "- ‘Other’ fields are paired with text inputs; fill them so the AI receives a usable description.",
+      "- ‘None’ clearly signals deferral and keeps the AI from assuming hidden defaults."
+    ].filter(Boolean).join("\n");
+  }),
 
   meta: {
     search_text:
-      "Community OS identity bonfires streams garden open social web OAuth2 OIDC Matrix email MIMI MLS ActivityPub RSS ATproto Noosphere protocol architecture migration interop"
+      "Community OS identity bonfires streams garden OAuth2 OIDC Matrix email MIMI MLS ActivityPub RSS ATproto Noosphere protocol architecture migration interop single-select other none"
   }
-}
+},
+
 
 
     
