@@ -21705,7 +21705,7 @@ Dissatisfaction ↓`;
   slug: "jtbd-interviews-v3",
   label: "JTBD Interviews — Felt-Sense Friction",
   kind: "framework",
-  categories: ["research","management","ux","strategy"],
+  categories: ["research","management","user experience","strategy"],
   tags: [
     "type:framework","use:interview","use:discovery","use:insight-capture",
     "topic:jtbd","topic:struggles","topic:progress","origin:jtbd-inspired","level:intermediate"
@@ -45431,7 +45431,7 @@ Dissatisfaction ↓`;
   slug: "user-stories-acceptance-criteria-developer-brief",
   label: "User Stories & Acceptance Criteria → Developer-Ready Brief",
   kind: "tool",
-  categories: ["product", "delivery", "engineering", "qa", "ux"],
+  categories: ["product", "delivery", "engineering", "qa", "user experience"],
   tags: [
     "type:tool",
     "use:story-writing",
