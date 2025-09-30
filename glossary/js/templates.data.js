@@ -166,12 +166,12 @@
       tags: [
         "use:pattern",
         "use:teaching",
-        "use:goals",
+        "use:goal-setting",
         "use:storytelling",
         "use:task-brief",
         "use:planning",
         "level:beginner",
-        "use:ad-copy",
+        "use:copywriting",
         "topic:decomposition"
       ],
       use_cases: [
@@ -537,7 +537,7 @@
         "use:recipe",
         "topic:bias",
         "use:scope-management",
-        "use:presentations",
+        "use:presentation",
         "level:intermediate",
         "topic:future-self"
       ],
@@ -794,10 +794,10 @@
       tags: [
         "type:framework",
         "use:pattern",
-        "use:goals",
+        "use:goal-setting",
         "use:evaluation",
         "level:beginner",
-        "use:ad-copy"
+        "use:copywriting"
       ],
       use_cases: [
         "plan and structure an educational course or program",
@@ -929,7 +929,7 @@
         "use:healing",
         "phase:apply",
         "level:beginner",
-        "use:ad-copy",
+        "use:copywriting",
         "use:task-brief",
         "phase:premortem"
       ],
@@ -1164,7 +1164,7 @@
       ],
       tags: [
         "type:framework",
-        "use:presentations",
+        "use:presentation",
         "use:teaching",
         "topic:future-self",
         "phase:apply",
@@ -1543,7 +1543,7 @@
         "phase:compose",
         "level:beginner",
         "topic:values",
-        "use:ad-copy",
+        "use:copywriting",
         "use:planning",
         "use:coding",
         "topic:bias",
@@ -3138,7 +3138,7 @@
       ],
       tags: [
         "use:pattern",
-        "use:presentations",
+        "use:presentation",
         "use:decision-making",
         "use:brainstorming",
         "use:workshop",
@@ -3398,7 +3398,7 @@
         "use:format-guidance",
         "topic:clarification",
         "use:scope-management",
-        "use:goals"
+        "use:goal-setting"
       ],
       use_cases: [
         "design minimal-intervention strategies",
@@ -3565,7 +3565,7 @@
         "type:framework",
         "use:decision-making",
         "use:iteration",
-        "use:goals",
+        "use:goal-setting",
         "use:brainstorming",
         "use:workshop",
         "level:intermediate"
@@ -4012,7 +4012,7 @@
         "level:beginner",
         "level:intermediate",
         "use:planning",
-        "use:presentations"
+        "use:presentation"
       ],
       use_cases: [
         "categorize tasks by urgency and importance",
@@ -4135,7 +4135,7 @@
       ],
       tags: [
         "use:content",
-        "use:ad-copy",
+        "use:copywriting",
         "type:framework",
         "phase:explore",
         "level:intermediate",
@@ -4402,12 +4402,12 @@
         "use:storytelling",
         "use:scope-management",
         "use:healing",
-        "use:presentations",
+        "use:presentation",
         "level:beginner",
         "use:pattern",
-        "use:ad-copy",
+        "use:copywriting",
         "use:decision-making",
-        "use:goals"
+        "use:goal-setting"
       ],
       use_cases: [
         "Plan your day according to limited energy or focus (“spoons”).",
@@ -4552,11 +4552,11 @@
         "use:storytelling",
         "level:intermediate",
         "use:evaluation",
-        "use:ad-copy",
+        "use:copywriting",
         "topic:prompting",
         "use:healing",
         "use:brainstorming",
-        "use:goals"
+        "use:goal-setting"
       ],
       use_cases: [
         "Transform chores or tasks into engaging quests through narrative play.",
@@ -4816,7 +4816,7 @@
         "level:beginner",
         "level:intermediate",
         "use:pattern",
-        "use:ad-copy",
+        "use:copywriting",
         "use:healing"
       ],
       use_cases: [
@@ -4954,7 +4954,7 @@
       tags: [
         "type:framework",
         "use:copywriting",
-        "use:presentations",
+        "use:presentation",
         "topic:bias",
         "use:decision-making",
         "use:healing",
@@ -5446,7 +5446,7 @@
       tags: [
         "type:framework",
         "use:problem-framing",
-        "use:presentations",
+        "use:presentation",
         "use:copywriting",
         "use:workshop",
         "use:brainstorming",
@@ -5575,9 +5575,9 @@
         "use:copywriting",
         "use:planning",
         "use:brainstorming",
-        "use:presentations",
+        "use:presentation",
         "use:teaching",
-        "use:goals",
+        "use:goal-setting",
         "level:beginner"
       ],
       use_cases: [
@@ -5958,7 +5958,7 @@
       "type:prompt-fundamental",
         "use:pattern",
         "topic:decomposition",
-        "use:goals",
+        "use:goal-setting",
         "level:beginner",
         "use:planning"
       ],
@@ -6071,7 +6071,7 @@
       tags: [
       "type:prompt-fundamental",
         "use:pattern",
-        "use:goals",
+        "use:goal-setting",
         "level:beginner",
         "use:brainstorming",
         "use:planning"
@@ -6182,7 +6182,7 @@
       ],
       tags: [
         "type:framework",
-        "use:goals",
+        "use:goal-setting",
         "use:healing",
         "use:decision-making",
         "topic:values",
@@ -6331,7 +6331,7 @@
       ],
       tags: [
         "type:framework",
-        "use:goals",
+        "use:goal-setting",
         "use:decision-making",
         "use:brainstorming",
         "use:pattern",
@@ -6482,7 +6482,7 @@
         "topic:decomposition",
         "topic:values",
         "level:beginner",
-        "use:goals",
+        "use:goal-setting",
         "use:pattern",
         "topic:future-self",
         "level:intermediate"
@@ -6611,7 +6611,7 @@
         "phase:compose",
         "level:intermediate",
         "topic:prompting",
-        "use:goals",
+        "use:goal-setting",
         "use:pattern",
         "use:copywriting"
       ],
@@ -7492,7 +7492,7 @@
       ],
       tags: [
         "type:framework",
-        "use:presentations",
+        "use:presentation",
         "phase:premortem",
         "level:beginner",
         "use:healing",
@@ -8416,8 +8416,8 @@
         "use:healing",
         "phase:apply",
         "level:beginner",
-        "use:presentations",
-        "use:ad-copy"
+        "use:presentation",
+        "use:copywriting"
       ],
       use_cases: [
         "bind a reliable cue to a tiny starter action to reduce choice friction",
@@ -8702,7 +8702,7 @@
       tags: [
         "type:framework",
         "use:pattern",
-        "use:goals",
+        "use:goal-setting",
         "use:healing",
         "use:discover",
         "use:content",
@@ -9193,9 +9193,9 @@
       ],
       tags: [
         "use:pattern",
-        "use:presentations",
+        "use:presentation",
         "use:workshop",
-        "use:goals",
+        "use:goal-setting",
         "level:beginner",
         "phase:premortem"
       ],
@@ -10038,7 +10038,7 @@ Dissatisfaction ↓`;
         "topic:values",
         "level:intermediate",
         "use:coding",
-        "use:goals",
+        "use:goal-setting",
         "phase:explore"
       ],
       use_cases: [
@@ -10265,7 +10265,7 @@ Dissatisfaction ↓`;
         "use:recipe",
         "level:intermediate",
         "use:brainstorming",
-        "use:presentations",
+        "use:presentation",
         "use:scope-management",
         "use:evaluation"
       ],
@@ -10689,13 +10689,13 @@ Dissatisfaction ↓`;
       tags: [
        "type:prompt-fundamental",
         "use:pattern",
-        "use:presentations",
+        "use:presentation",
         "use:healing",
         "use:problem-framing",
         "level:intermediate",
         "use:storytelling",
         "topic:matrix",
-        "use:goals",
+        "use:goal-setting",
         "use:teaching"
       ],
       use_cases: [
@@ -11532,7 +11532,7 @@ Dissatisfaction ↓`;
         "use:copywriting",
         "use:value-prop",
         "use:product-value",
-        "use:ad-copy",
+        "use:copywriting",
         "use:content",
         "topic:bias",
         "topic:persuasive-language",
@@ -12494,7 +12494,7 @@ Dissatisfaction ↓`;
         "topic:future-self",
         "use:brainstorming",
         "level:intermediate",
-        "use:presentations",
+        "use:presentation",
         "use:teaching",
         "use:pattern"
       ],
@@ -14149,7 +14149,7 @@ Dissatisfaction ↓`;
   tags: [
     "type:framework","topic:parts-work","topic:IFS","level:intermediate",
     "use:conflict-resolution","use:self-compassion","use:values-alignment",
-    "use:creative-blocks","use:habits","use:decision-support"
+    "use:creative-block","use:habit","use:decision-support"
   ],
   use_cases: [
     "resolve internal conflicts by giving each part a voice",
@@ -14626,7 +14626,7 @@ Dissatisfaction ↓`;
         "use:copywriting",
         "phase:apply",
         "level:intermediate",
-        "use:presentations",
+        "use:presentation",
         "use:decision-making",
         "use:pattern"
       ],
@@ -14899,7 +14899,7 @@ Dissatisfaction ↓`;
       tags: [
       "type:prompt-fundamental",
         "use:pattern",
-        "use:goals",
+        "use:goal-setting",
         "phase:apply",
         "level:beginner",
         "topic:clarification",
@@ -15215,7 +15215,7 @@ Dissatisfaction ↓`;
       tags: [
         "use:pattern",
         "phase:premortem",
-        "use:presentations",
+        "use:presentation",
         "level:beginner"
       ],
       use_cases: [
@@ -15281,7 +15281,7 @@ Dissatisfaction ↓`;
         "use:healing",
         "topic:values",
         "level:advanced",
-        "use:presentations"
+        "use:presentation"
       ],
       use_cases: [
         "audit evidence types supporting a claim",
@@ -15412,7 +15412,7 @@ Dissatisfaction ↓`;
       "type:prompt-fundamental",
         "use:pattern",
         "phase:explore",
-        "use:presentations",
+        "use:presentation",
         "phase:apply",
         "level:intermediate",
         "use:format-guidance",
@@ -15795,7 +15795,7 @@ Dissatisfaction ↓`;
         "use:decision-making",
         "use:pattern",
         "level:beginner",
-        "use:presentations"
+        "use:presentation"
       ],
       use_cases: [
         "clarify who does what in a decision",
@@ -16481,7 +16481,7 @@ Dissatisfaction ↓`;
         "topic:prompting",
         "phase:apply",
         "level:beginner",
-        "use:goals",
+        "use:goal-setting",
         "use:format-guidance",
         "use:storytelling"
       ],
@@ -16846,7 +16846,7 @@ Dissatisfaction ↓`;
         "level:beginner",
         "use:task-brief",
         "topic:matrix",
-        "use:presentations"
+        "use:presentation"
       ],
       use_cases: [
         "structure memos or executive summaries",
@@ -16967,7 +16967,7 @@ Dissatisfaction ↓`;
       tags: [
         "use:pattern",
         "use:brainstorming",
-        "use:presentations",
+        "use:presentation",
         "level:advanced",
         "level:beginner",
         "topic:future-self",
@@ -17365,7 +17365,7 @@ Dissatisfaction ↓`;
       ],
       tags: [
         "type:framework",
-        "use:goals",
+        "use:goal-setting",
         "use:pattern",
         "level:beginner"
       ],
@@ -17530,7 +17530,7 @@ Dissatisfaction ↓`;
       tags: [
         "use:pattern",
         "use:communication",
-        "use:presentations",
+        "use:presentation",
         "phase:explore",
         "level:beginner",
         "use:teaching",
@@ -18013,7 +18013,7 @@ Dissatisfaction ↓`;
     "use:storytelling",
     "use:reflection",
     "use:coaching",
-    "use:goals",
+    "use:goal-setting",
     "use:brainstorming",
     "topic:tarot",
     "topic:archetypes",
@@ -18470,7 +18470,7 @@ Dissatisfaction ↓`;
         "use:brainstorming",
         "level:beginner",
         "topic:clarification",
-        "use:goals",
+        "use:goal-setting",
         "use:decision-making"
       ],
       use_cases: [
@@ -18588,7 +18588,7 @@ Dissatisfaction ↓`;
       ],
       tags: [
         "type:framework",
-        "use:presentations",
+        "use:presentation",
         "use:teaching",
         "topic:future-self",
         "level:intermediate",
@@ -18935,7 +18935,7 @@ Dissatisfaction ↓`;
       ],
       tags: [
         "use:pattern",
-        "use:presentations",
+        "use:presentation",
         "topic:values",
         "level:intermediate",
         "phase:apply",
@@ -20115,7 +20115,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["retrospective","teamwork","learning","wellbeing","facilitation"],
   tags: [
-    "type:practice","use:retro","use:learning-loop","use:debrief",
+    "type:practice","use:retrospective","use:learning-loop","use:debrief",
     "topic:embodiment","topic:needs","level:beginner"
   ],
   use_cases: [
@@ -20474,7 +20474,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["learning","education","teamwork","ethics","communication"],
   tags: [
-    "type:practice","use:debrief","use:retro","use:training",
+    "type:practice","use:debrief","use:retrospective","use:training",
     "topic:incident","topic:reflection","topic:ethics","level:intermediate","origin:education"
   ],
   use_cases: [
@@ -22451,7 +22451,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["reliability","learning","operations","teamwork"],
   tags: [
-    "type:practice","use:postmortem","use:retro","use:repair",
+    "type:practice","use:postmortem","use:retrospective","use:repair",
     "topic:incident","topic:learning","level:beginner"
   ],
   use_cases: [
@@ -22905,7 +22905,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["research","statistics","ethics","education"],
   tags: [
-    "type:framework","use:prereg","use:peer-review","use:analysis-plan",
+    "type:framework","use:preregistration","use:peer-review","use:analysis-plan",
     "topic:p-hacking","topic:forging-paths","origin:open-science","level:intermediate"
   ],
   use_cases: [
@@ -23668,7 +23668,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["philosophy-of-science","research","education"],
   tags: [
-    "type:framework","use:state-of-field","use:roadmapping",
+    "type:framework","use:state-of-field","use:roadmap",
     "topic:paradigm","topic:anomalies","origin:kuhn","level:beginner"
   ],
   use_cases: [
@@ -23914,7 +23914,7 @@ Dissatisfaction ↓`;
   kind: "framework",
   categories: ["statistics","research","education"],
   tags: [
-    "type:framework","use:eda","use:cda","topic:prereg","topic:replication",
+    "type:framework","use:eda","use:cda","use:preregistration","topic:replication",
     "level:beginner"
   ],
   use_cases: [
@@ -24375,7 +24375,7 @@ Dissatisfaction ↓`;
   tags: [
     "type:framework",
     "use:planning",
-    "use:goals",
+    "use:goal-setting",
     "use:evaluation",
     "use:process-improvement",
     "use:purpose",
@@ -24608,7 +24608,7 @@ Dissatisfaction ↓`;
   tags: [
     "type:framework",
     "use:planning",
-    "use:goals",
+    "use:goal-setting",
     "use:prioritize",
     "use:vision",
     "use:mission",
@@ -24831,7 +24831,7 @@ Dissatisfaction ↓`;
   tags: [
     "type:framework",
     "use:planning",
-    "use:goals",
+    "use:goal-setting",
     "use:evaluation",
     "use:purpose",
     "use:mission",
@@ -25053,7 +25053,7 @@ Dissatisfaction ↓`;
     "use:evaluation",
     "use:purpose",
     "use:community",
-    "use:goals",
+    "use:goal-setting",
     "use:process-improvement",
     "phase:define",
     "phase:plan",
@@ -25617,7 +25617,7 @@ Dissatisfaction ↓`;
   tags: [
     "type:framework",
     "use:planning",
-    "use:goals",
+    "use:goal-setting",
     "use:evaluation",
     "use:purpose",
     "use:metric",
@@ -31800,7 +31800,7 @@ Dissatisfaction ↓`;
     "type:framework",
     "use:research",
     "use:evaluation",
-    "use:narratives",
+    "use:narrative",
     "use:pattern-detection",
     "use:analysis",
     "use:engagement",
@@ -37784,7 +37784,7 @@ Dissatisfaction ↓`;
       "type:framework",
       "use:discovery",
       "use:voice",
-      "use:ux",
+      "use:user-experience",
       "use:service-design",
       "use:segmentation",
       "phase:explore",
@@ -47133,8 +47133,8 @@ Dissatisfaction ↓`;
     "peer review with assumption/method checks",
     "AI evaluation prompt to stress-test a draft",
     "check content for biases, assumptions",
-     "is this fair",
-        "check if a news article is one-sided",
+    "is this fair",
+    "check if a news article is one-sided",
     "spot hidden assumptions in a research paper",
     "review a product design for fairness issues",
     "see if marketing copy stereotypes people",
@@ -47162,15 +47162,32 @@ Dissatisfaction ↓`;
     "Distinguish safe (risk reduced) from beneficial (positive effect).",
     "Require one concrete mitigation per high-risk finding."
   ],
-  definition: "A concise input form that produces a comprehensive, highly technical set of instructions for a human or AI reviewer to interrogate content for biases, assumptions, missing perspectives, and methodological weaknesses—then propose mitigations and equity-focused revisions.",
-  help: "Fill 7–10 short fields in plain language. The template will output a long, technical instruction block guiding a full bias/methodology audit (Bias Map, Assumption Audit, Methodology Check, Safe vs Beneficial, Alternative Frames, Ethics triad, and more).",
+  definition: "A concise input form that produces a comprehensive, highly technical instruction set to interrogate a work for biases, assumptions, missing perspectives, and methodological weaknesses—then propose mitigations and equity-focused revisions. Provide the full content by pasting it here. If you plan to upload files later (outside this app), note that below.",
+  help: "Paste the full content plus brief context fields. If you intend to upload files later when running the AI, record that plan in the notes field so the reviewer expects additional materials. The output is a technical instruction block for a full bias/methodology audit (Bias Map, Assumption Audit, Methodology Check, Safe vs Beneficial, Alternative Frames, Ethics triad, mitigations, and more).",
   fields: [
     {
-      label: "Your content (paste excerpt or summary)",
-      key: "content",
-      ph: "Paste the passage/policy/snippet you want reviewed.",
+      label: "Will you upload files?",
+      desc: "We can’t accept uploads here. If you’ll share files later when running the AI, indicate that plan.",
+      key: "content_upload_plan",
+      type: "select",
+      options: ["No", "Yes", "Not sure"],
+      ph: "Choose one"
+    },
+    {
+      label: "Paste full content",
+      desc: "Paste the entire text to be audited. If extremely long, paste the most critical sections now and plan to upload the full content later when the AI runs.",
+      key: "content_paste",
+      ph: "Paste the full text here…",
       type: "textarea"
     },
+    {
+      label: "Notes about uploads (optional)",
+      desc: "If you plan to upload files later when running the AI, add any details that help the reviewer (e.g., versions, sections omitted, language, scan/OCR quality).",
+      key: "content_notes",
+      ph: "E.g., “Will upload v3 PDF; Appendix B omitted here; OCR artifacts likely.”",
+      type: "textarea"
+    },
+
     {
       label: "Purpose & success",
       desc: "Why this exists + what ‘good’ looks like.",
@@ -47179,14 +47196,15 @@ Dissatisfaction ↓`;
       type: "textarea"
     },
     {
-      label: "Audience personas",
+      label: "Audience personas / profiles",
       autofill: "persona->inline",
       itemLabel: "persona",
       itemType: "typeahead",
       key: "audience",
       max: 8,
       min: 1,
-      ph: "Start typing to pick personas (e.g., Student, Clinician, City Planner)…",
+      desc: "Who this is for in practical terms (e.g., Students, Clinicians, City planners). Use common labels people recognize.",
+      ph: "Start typing to pick personas/profiles (e.g., Student, Clinician, City Planner)…",
       type: "repeater"
     },
     {
@@ -47207,7 +47225,7 @@ Dissatisfaction ↓`;
       label: "Evidence & sources (brief)",
       desc: "What supports the claim? Note data types or citations.",
       key: "evidence",
-      ph: "Data summary, study types, links, anecdotes vs. datasets",
+      ph: "Data summary, study types, citations, anecdotes vs. datasets",
       type: "textarea"
     },
     {
@@ -47231,14 +47249,14 @@ Dissatisfaction ↓`;
       type: "select"
     },
     {
-      label: "Bias lens (from library)",
+      label: "Bias lens to watch (optional)",
       autofill: "bias->inline",
       dataset: "bias",
-      desc: "Attach named biases/techniques for shared language.",
+      desc: "Add any specific cognitive or sampling biases you want prioritized. A bias is a predictable shortcut or skew in reasoning or selection (e.g., confirmation, survivorship, authority, selection, anchoring). Leave empty for a general audit.",
       itemLabel: "bias",
       itemType: "typeahead",
       key: "bias_lens",
-      ph: "Search: anchoring, availability, authority, selection, survivorship…",
+      ph: "Optional: confirmation, survivorship, authority, selection, anchoring…",
       type: "repeater",
       unit: "bias"
     },
@@ -47251,6 +47269,9 @@ Dissatisfaction ↓`;
     }
   ],
   template: ({
+    // Intake (no links, no uploads-in-app)
+    content_upload_plan, content_paste, content_notes,
+    // Back-compat
     content, purpose, audience, context, claims, evidence, missing, ethics, bias_lens, inclusion,
     ctx, style, tone
   }) => [
@@ -47259,9 +47280,15 @@ ctx && `Context: ${ctx}`,
 style && `Style: ${style}`,
 tone && `Tone: ${tone}`,
 
+// Content intake (paste only; legacy `content` fallback)
+(content_upload_plan || content_paste || content || content_notes) && 'Content intake:',
+content_upload_plan && `- Will upload files later (outside this app): ${content_upload_plan}`,
+(content_paste || content) && `Full pasted content:\n${content_paste || content}`,
+content_notes && `Notes about uploads:\n${content_notes}`,
+
 purpose && `Purpose & success: ${purpose}`,
 audience && (
-  'Audience personas:\n' + String(audience)
+  'Audience personas/profiles:\n' + String(audience)
     .split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
 ),
 context && `Context & stakes:\n${context}`,
@@ -47270,13 +47297,13 @@ evidence && `Evidence & sources (brief):\n${evidence}`,
 missing && `Missing voices & access needs:\n${missing}`,
 inclusion && `Language & accessibility notes:\n${inclusion}`,
 bias_lens && (
-  'Bias lens (from library):\n' +
+  'Bias lens to watch:\n' +
   String(bias_lens).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
 ),
 ethics && `Ethics lens emphasis: ${ethics}`,
 
 '— — —',
-'ROLE: You are a neutral, evidence-aware reviewer. Be compassionate, culturally sensitive, and people-first. Critique ideas, not authors. Do not summarize the content; interrogate it.',
+'ROLE: You are a neutral, evidence-aware reviewer. Be compassionate, culturally sensitive, and people-first. Critique ideas, not authors. Do not summarize; interrogate claims, methods, and framing using the full content provided.',
 'OBJECTIVE: Produce a thorough audit of the provided content for bias, assumptions, missing perspectives, and methodological risk. Then propose concrete mitigations and equity-focused revisions.',
 'NON-NEGOTIABLES:',
 '- Distinguish “safe” (risk reduction) from “beneficial” (positive effect).',
@@ -47284,6 +47311,7 @@ ethics && `Ethics lens emphasis: ${ethics}`,
 '- State uncertainties and what evidence would change conclusions.',
 '- Use person-first, non-stigmatizing language.',
 'REFERENCE LENSES (apply as relevant, briefly citing each use): Six Thinking Hats; Heick’s lenses (Parts/Whole/Interdependence/Function/Abstraction/Self); Rapoport’s Rules; Steelman + Charity; Counterfactuals; Outside View/base rates; Inclusive design & accessibility; Cultural humility (avoid universalizing).',
+'INTEGRATION NOTE: Treat pasted text (and any later uploads you review) as a single corpus; cross-check for inconsistencies and missing sections when available.',
 
 '=== REQUIRED OUTPUT SECTIONS ===',
 '# 1) Bias Map (table)',
@@ -47346,7 +47374,7 @@ ethics && `Ethics lens emphasis: ${ethics}`,
 '- End with “Next actions” (3 bullets) tied to metrics/timeboxes.'
 ].filter(Boolean).join('\n'),
   meta: {
-    search_text: "critical bias & methodology audit — interrogate texts for bias; assumptions; missing perspectives; method checks. fields: content, purpose, audience personas (repeater typeahead), context & stakes, claims, evidence, missing voices, ethics lens (select), bias lens (repeater typeahead), inclusion notes. output: Bias Map; Assumption Audit; Methodology Check; Safe vs Beneficial; Alternative Frames; Ethics triad; Mitigation; Probing Questions; Evidence & Limits; Quality Gate."
+    search_text: "critical bias & methodology audit — interrogate texts for bias; assumptions; missing perspectives; method checks. fields: paste full content; upload plan (outside this app); upload notes; purpose; audience personas/profiles (repeater typeahead); context & stakes; claims; evidence; missing voices; ethics lens (select); bias lens (optional, repeater typeahead); inclusion notes. output: Bias Map; Assumption Audit; Methodology Check; Safe vs Beneficial; Alternative Frames; Ethics triad; Mitigation; Probing Questions; Evidence & Limits; Quality Gate."
   }
 },
 
@@ -49586,7 +49614,7 @@ tone_goals && (
   tags: [
     "type:framework",
     "use:planning",
-    "use:goals",
+    "use:goal-setting",
     "use:measurement",
     "phase:define",
     "phase:plan",
@@ -50408,20 +50436,406 @@ tasks && `Critical user tasks:\n${tasks}`,
   meta: {
     search_text: "Accessibility Reality Check — WCAG + plain language; pass/fail table; prioritized fixes; AT compatibility; low-bandwidth/offline plan; sample rewrites; fields: media types, alt/captions, keyboard/contrast, plain-language targets, AT assumptions, bandwidth, WCAG target, critical tasks."
   }
+},
+
+{
+  id: "seven_elements_civic_life",
+  slug: "seven-elements-civic-life-speirn",
+  label: "Seven Elements of Civic Life (Speirn)",
+  kind: "framework",
+  categories: [
+    "community",
+    "governance",
+    "planning",
+    "civic"
+  ],
+  tags: [
+    "type:framework",
+    "use:portfolio",
+    "use:planning",
+    "use:facilitation",
+    "use:co-governance",
+    "use:journalism",
+    "topic:civic-innovation",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "stand up a place-based civic portfolio",
+    "align funders and advocates around shared civic priorities",
+    "map current projects to the seven elements",
+    "design a 90-day dialogue-to-action cycle",
+    "scope co-governance tables with local government",
+    "pair local journalism with public decision venues",
+    "plan a pilots-to-portfolio roadmap for civic innovation",
+    "report outcomes using element-specific indicators",
+    "choose one structural reform to pilot this year"
+  ],
+  boosters: [
+    "Start with a visible 60–90 day ‘Working & Working Out’ win to build momentum.",
+    "Name which element(s) each project serves; avoid orphan projects without a hand-off.",
+    "Pair TRUTH investments (info ecosystem) with BUILDING venues (decision points).",
+    "Budget for resident stipends, childcare, and translation to grow TRUST.",
+    "Publish progress in plain language; route feedback back into decisions.",
+    "Link REINVENTION pilots to locally owned ASPIRATIONS, not generic best practices."
+  ],
+  definition: "A place-based organizing frame by Sterling Speirn for aggregating and integrating civic work around seven mutually reinforcing elements: TRUST, LEARNING, ASPIRATIONS, TRUTH, BUILDING, WORKING & WORKING OUT, and REINVENTION.",
+  help: "Fill the fields to generate a ready-to-run local plan. Select the element(s) you’ll emphasize this cycle, list partners, and define one quick win (≤90 days) plus one reinvention pilot for the year. The output includes sectioned guidance keyed to each element.",
+  fields: [
+    {
+      label: "Place / locale",
+      desc: "City, county, tribal nation, campus, or region.",
+      key: "place",
+      ph: "e.g., Skagit County, WA",
+      type: "text"
+    },
+    {
+      label: "Timeframe",
+      desc: "Planning window or cycle.",
+      key: "timeframe",
+      ph: "e.g., Q4 2025 (90 days)",
+      type: "text"
+    },
+    {
+      label: "Priority issues / opportunities",
+      desc: "Top problems or aspirations residents named.",
+      key: "issues",
+      ph: "e.g., housing stability, youth mental health, downtown vibrancy",
+      type: "textarea"
+    },
+    {
+      label: "Partners & stakeholders",
+      autofill: "persona->inline",
+      itemLabel: "partner",
+      itemType: "typeahead",
+      key: "partners",
+      max: 12,
+      min: 1,
+      ph: "Local gov, CBOs, libraries, faith groups, schools, newsroom, residents…",
+      type: "repeater"
+    },
+    {
+      label: "Elements to emphasize this cycle",
+      desc: "Pick 1–3; all seven remain in the portfolio.",
+      key: "elements_focus",
+      options: [
+        "TRUST",
+        "LEARNING",
+        "ASPIRATIONS",
+        "TRUTH",
+        "BUILDING",
+        "WORKING & WORKING OUT",
+        "REINVENTION"
+      ],
+      type: "select"
+    },
+    {
+      label: "Quick win (≤90 days) for Working & Working Out",
+      desc: "A dialogue-to-action implementation residents can see.",
+      key: "quick_win",
+      ph: "e.g., design + launch a safe-streets micro-pilot on 2 blocks",
+      type: "textarea"
+    },
+    {
+      label: "Co-governance venues",
+      desc: "Existing or new tables where residents share power.",
+      key: "co_gov",
+      ph: "e.g., Budget Advisory Table; Youth Council; Housing Roundtable (MOU in progress)",
+      type: "textarea"
+    },
+    {
+      label: "Information ecosystem upgrades (TRUTH)",
+      desc: "Local journalism, info hubs, and pro-social civic tech to fund/deploy.",
+      key: "info_upgrades",
+      ph: "e.g., reporter-in-residence + SMS explainer + feedback routing to City Clerk",
+      type: "textarea"
+    },
+    {
+      label: "Reinvention pilot (structural reform)",
+      desc: "One structural innovation to test this year tied to local aspirations.",
+      key: "reinvention",
+      ph: "e.g., participatory budgeting on park funds; citizens’ assembly on zoning",
+      type: "textarea"
+    },
+    {
+      label: "Resources & constraints",
+      desc: "Budget, staff, data, political realities.",
+      key: "resources",
+      ph: "e.g., $150k pooled; 0.5 FTE coordinator; election in November",
+      type: "textarea"
+    },
+    {
+      label: "Success signals / indicators",
+      desc: "Practical measures you’ll track per element.",
+      key: "signals",
+      ph: "e.g., repeat cross-group attendance (TRUST), time-to-info (TRUTH), # of co-decisions (BUILDING)",
+      type: "textarea"
+    }
+  ],
+  template: ({ place, timeframe, issues, partners, elements_focus, quick_win, co_gov, info_upgrades, reinvention, resources, signals, ctx, audience, style, tone }) => [
+    'Seven Elements of Civic Life — Place-Based Plan',
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    place && `Place: ${place}`,
+    timeframe && `Timeframe: ${timeframe}`,
+    issues && ('Priority issues/opportunities:\n' + issues),
+    partners && (
+      'Partners & stakeholders:\n' + String(partners)
+        .split(/\n+/).map(s => s.trim()).filter(Boolean)
+        .map((x,i) => `${i+1}. ${x}`)
+        .join('\n')
+    ),
+    elements_focus && `Emphasis this cycle: ${elements_focus}`,
+    '',
+    'PLAN BY ELEMENT',
+    '— TRUST (social cohesion & belonging) —',
+    '- Convenings: low-barrier, repeated gatherings across difference.',
+    '- Access: stipends/childcare/translation; explicit welcoming norms.',
+    '- Signal: track repeat cross-group attendance and new ties formed.',
+    '',
+    '— LEARNING (civic learning) —',
+    '- Offer short civic-skills inserts inside public gatherings.',
+    '- Teach how local government works; train resident facilitators.',
+    '- Signal: pre/post civic-skills self-assessments.',
+    '',
+    '— ASPIRATIONS (civic opportunities & civic health) —',
+    '- Co-create a locally owned north-star with public prioritization.',
+    '- Publish a simple, living roadmap outlasting election cycles.',
+    '- Signal: endorsed place-specific priorities with broad support.',
+    '',
+    '— TRUTH (information ecosystem) —',
+    (info_upgrades && ('- Upgrades this cycle:\n' + info_upgrades)),
+    '- Pair solution journalism with feedback loops to decision venues.',
+    '- Signal: time-to-trustworthy-info; reach of explainers.',
+    '',
+    '— BUILDING (co-governance with local government) —',
+    (co_gov && ('- Venues & MOUs:\n' + co_gov)),
+    '- Ensure residents shape choices ex-ante (not only comment ex-post).',
+    '- Signal: # of co-decisions made with resident input.',
+    '',
+    '— WORKING & WORKING OUT (dialogue → action) —',
+    (quick_win && ('- Quick win (≤90 days):\n' + quick_win)),
+    '- Run a dialogue-to-action cycle: listen → forge solutions → implement.',
+    '- Signal: % of dialogues producing an implemented action within 90 days.',
+    '',
+    '— REINVENTION (structural reform & civic innovation) —',
+    (reinvention && ('- Pilot this year:\n' + reinvention)),
+    '- Tie reform to locally owned aspirations, not generic trends.',
+    '- Signal: adoption/durability of the reform; equity/experience gains.',
+    '',
+    resources && ('Resources & constraints:\n' + resources),
+    signals && ('Success signals / indicators:\n' + signals),
+    '',
+    'OUTPUT:',
+    '1) Public one-pager for this cycle (plain language).',
+    '2) Portfolio map: each project ↔ element(s) served ↔ hand-offs.',
+    '3) 60–90 day implementation checklist for the quick win.',
+    '4) Annual reinvention pilot brief with evaluation plan.'
+  ].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "seven elements of civic life sterling speirn trust learning aspirations truth building working & working out reinvention place-based funders advocates aggregation integration co-governance information ecosystem local journalism civic tech dialogue to action structural reform civic innovation framework"
+  }
+},
+
+{
+  id: "community-os-building-blocks",
+  slug: "community-os-building-blocks",
+  label: "Community OS — Identity · Bonfires · Streams · Garden",
+  kind: "framework",
+  categories: [
+    "community",
+    "platform",
+    "architecture",
+    "comms"
+  ],
+  tags: [
+    "type:framework",
+    "use:architecture",
+    "use:migration",
+    "use:planning",
+    "topic:open-social-web",
+    "topic:protocols",
+    "level:intermediate"
+  ],
+  use_cases: [
+    "design an open-social web stack for a community or product",
+    "map current tools to Identity/Bonfire/Stream/Garden",
+    "select stable vs emerging protocols with a migration plan",
+    "reduce lock-in with portable identity and content flows",
+    "plan phased interop across chat, forums, feeds, and wikis"
+  ],
+  boosters: [
+    "Prioritize portability: identity and content must export/import cleanly.",
+    "Pair stable standards with one emerging bet per year.",
+    "Prototype interop on a single workflow before scaling.",
+    "Publish a plain-language ‘how our stack works’ explainer.",
+    "Continuously test account recovery and content export."
+  ],
+  definition: "A practical template for assembling a ‘Community OS’ built on four components — Identity (conduit of flows), Bonfires (discursive, omnidirectional flow), Streams (declarative, linear flow), and Garden (contemplative, bottom-up flow) — using stable web standards with optional emerging protocols.",
+  help: "Fill in your context, pick platforms and protocols for each component, specify interop hand-offs, and set a 90-day pilot plus a 1-year migration. The output is a cohesive, copy-ready plan.",
+  fields: [
+    { label: "Context / place", key: "place", ph: "e.g., a university, city, product community", type: "text" },
+    { label: "Timeframe", key: "timeframe", ph: "e.g., Q4 2025 (90-day pilot) + 1-year roadmap", type: "text" },
+    { label: "Goals", key: "goals", ph: "e.g., reduce lock-in; increase reach; improve knowledge retention", type: "textarea" },
+
+    {
+      label: "Identity — platforms",
+      desc: "Identity providers or homepages users rely on.",
+      autofill: "persona->inline",
+      itemLabel: "identity",
+      itemType: "typeahead",
+      key: "id_platforms",
+      max: 8,
+      min: 1,
+      ph: "e.g., Email, Apple, Google, Microsoft, Phone #, ‘Weird’",
+      type: "repeater"
+    },
+    { label: "Identity — stable standards", key: "id_stable", type: "multiselect",
+      options: [ "OAuth2/OIDC" ]
+    },
+    { label: "Identity — emerging standards", key: "id_emerging", type: "multiselect",
+      options: [
+        "OpenID for Verifiable Credential Issuance",
+        "Self-Issued OpenID Provider (SIOP)",
+        "OpenID Connect Federation",
+        "Decentralized identity (DID-compatible)"
+      ]
+    },
+
+    {
+      label: "Bonfires — apps",
+      desc: "Group discourse: chat, forums, lists.",
+      autofill: "persona->inline",
+      itemLabel: "bonfire",
+      itemType: "typeahead",
+      key: "bonfire_apps",
+      max: 10,
+      min: 1,
+      ph: "e.g., Matrix rooms, Discord, Slack, Discourse, mailing lists",
+      type: "repeater"
+    },
+    { label: "Bonfires — stable standards", key: "bonfire_stable", type: "multiselect",
+      options: [ "Matrix", "Email" ]
+    },
+    { label: "Bonfires — emerging standards", key: "bonfire_emerging", type: "multiselect",
+      options: [ "MIMI", "MLS" ]
+    },
+
+    {
+      label: "Streams — apps",
+      desc: "Broadcast/feeds for reach.",
+      autofill: "persona->inline",
+      itemLabel: "stream",
+      itemType: "typeahead",
+      key: "stream_apps",
+      max: 10,
+      min: 1,
+      ph: "e.g., Mastodon, Tumblr, YouTube, TikTok, blog feeds",
+      type: "repeater"
+    },
+    { label: "Streams — stable standards", key: "stream_stable", type: "multiselect",
+      options: [ "ActivityPub", "RSS" ]
+    },
+    { label: "Streams — emerging standards", key: "stream_emerging", type: "multiselect",
+      options: [ "ATproto" ]
+    },
+
+    {
+      label: "Garden — apps",
+      desc: "Knowledge base and networked notes.",
+      autofill: "persona->inline",
+      itemLabel: "garden",
+      itemType: "typeahead",
+      key: "garden_apps",
+      max: 10,
+      min: 1,
+      ph: "e.g., MediaWiki, Notion, Obsidian publish, WordPress",
+      type: "repeater"
+    },
+    { label: "Garden — emerging standards", key: "garden_emerging", type: "multiselect",
+      options: [ "Noosphere" ]
+    },
+
+    { label: "Interoperability hand-offs", key: "handoffs", ph: "e.g., forum post → AP announcement → wiki summary", type: "textarea" },
+    { label: "Lock-in risks & mitigations", key: "risks", ph: "e.g., export formats, API terms, federation options", type: "textarea" },
+    { label: "Privacy & safety constraints", key: "constraints", ph: "e.g., moderation model, PII, consent flows, retention", type: "textarea" },
+
+    { label: "90-day pilot (one workflow)", key: "pilot90", ph: "e.g., policy debate → consensus → publish explainer", type: "textarea" },
+    { label: "1-year migration roadmap", key: "roadmap", ph: "e.g., quarter-by-quarter protocol adoption and deprecations", type: "textarea" },
+    { label: "Success indicators", key: "signals", ph: "e.g., % portable accounts; weekly active discourse; wiki reuse rate", type: "textarea" }
+  ],
+
+  template: ({
+    place, timeframe, goals,
+    id_platforms, id_stable, id_emerging,
+    bonfire_apps, bonfire_stable, bonfire_emerging,
+    stream_apps, stream_stable, stream_emerging,
+    garden_apps, garden_emerging,
+    handoffs, risks, constraints,
+    pilot90, roadmap, signals,
+    ctx, audience, style, tone
+  }) => [
+    "Community OS — Assembly Plan",
+    ctx && `Context: ${ctx}`,
+    audience && `Audience: ${audience}`,
+    style && `Style: ${style}`,
+    tone && `Tone: ${tone}`,
+    place && `Place: ${place}`,
+    timeframe && `Timeframe: ${timeframe}`,
+    goals && ("Goals:\n" + goals),
+
+    "",
+    "COMPONENTS & PROTOCOLS",
+    "",
+    "— Identity (conduit of flows) —",
+    id_platforms && ("Platforms:\n" + String(id_platforms).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
+    id_stable && id_stable.length ? ("Stable standards: " + id_stable.join(", ")) : null,
+    id_emerging && id_emerging.length ? ("Emerging: " + id_emerging.join(", ")) : null,
+
+    "",
+    "— Bonfires (discursive, omnidirectional) —",
+    bonfire_apps && ("Apps:\n" + String(bonfire_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
+    bonfire_stable && bonfire_stable.length ? ("Stable standards: " + bonfire_stable.join(", ")) : null,
+    bonfire_emerging && bonfire_emerging.length ? ("Emerging: " + bonfire_emerging.join(", ")) : null,
+
+    "",
+    "— Streams (declarative, linear) —",
+    stream_apps && ("Apps:\n" + String(stream_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
+    stream_stable && stream_stable.length ? ("Stable standards: " + stream_stable.join(", ")) : null,
+    stream_emerging && stream_emerging.length ? ("Emerging: " + stream_emerging.join(", ")) : null,
+
+    "",
+    "— Garden (contemplative, bottom-up) —",
+    garden_apps && ("Apps:\n" + String(garden_apps).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join("\n")),
+    garden_emerging && garden_emerging.length ? ("Emerging: " + garden_emerging.join(", ")) : null,
+
+    "",
+    "INTEROPERABILITY & GOVERNANCE",
+    handoffs && ("Handoffs (how content moves between modes):\n" + handoffs),
+    constraints && ("Privacy & safety constraints:\n" + constraints),
+    risks && ("Lock-in risks & mitigations:\n" + risks),
+
+    "",
+    "EXECUTION",
+    pilot90 && ("90-day pilot:\n" + pilot90),
+    roadmap && ("1-year migration roadmap:\n" + roadmap),
+
+    "",
+    signals && ("Success indicators:\n" + signals),
+
+    "",
+    "NOTES",
+    "- Favor open protocols and portable identity.",
+    "- Document exports/imports and test them quarterly.",
+    "- Start small: one end-to-end workflow before scaling."
+  ].filter(Boolean).join("\n"),
+
+  meta: {
+    search_text:
+      "Community OS identity bonfires streams garden open social web OAuth2 OIDC Matrix email MIMI MLS ActivityPub RSS ATproto Noosphere protocol architecture migration interop"
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
