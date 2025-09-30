@@ -76,8 +76,17 @@
     .footer-note{color:var(--muted); font-size:12px; margin-top:12px}
     .right{margin-left:auto}
   </style>
+<!-- Beta/BMC UI -->
+<link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
+<script defer
+        src="./assets/beta-bmc.js?v=2025-09-29"
+        data-beta="pill"
+        data-bmc="discrete"
+        data-bmc-dismissible="true"></script>
+  
+  
 </head>
-<body>
+<body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
   <header>
     <h1>Add Glossary Term</h1>
     <span class="pill" data-val="draft" title="New terms submit as draft">New entries submit as <strong>draft</strong></span>
@@ -194,7 +203,7 @@
   </script>
 
   <!-- Load glossary data for suggestions -->
-  <script src="./js/glossary.data.js"></script>
+  <script src="glossary.data.js"></script>
 
   <script>
   (function(){
