@@ -14255,7 +14255,7 @@ Dissatisfaction ↓`;
       desc: "Content to avoid or pace slowly; include ground rules for pausing.",
       ph: "Avoid detailed trauma memories; pause if heart rate spikes; return to breath & 5-senses" },
 
-    { label: "Grounding tools (multi-select)", key: "grounding_presets", type: "multiselect",
+    { label: "Grounding tools (multi-select)", key: "grounding_presets", type: "select",
       options: [
         "5–4–3–2–1 senses — name things you see/hear/feel/smell/taste",
         "Box breathing — inhale/hold/exhale/hold (4–4–4–4)",
@@ -18070,7 +18070,7 @@ Dissatisfaction ↓`;
     {
       label: "Interpretation lens",
       key: "lens",
-      type: "multiselect",
+      type: "select",
       options: ["coaching", "cbt", "jungian", "stoic", "systems", "creative"],
       def: ["coaching"]
     },
@@ -48767,7 +48767,7 @@ export async function handleUtterance(utterance:string, env:any){
     { label: "Current framing (your words)", key: "current", ph: "How does your draft currently define the problem and the solution?", type: "textarea" },
     { label: "Target audiences", autofill: "persona->inline", itemLabel: "persona", itemType: "typeahead", key: "audience", min: 1, max: 8, ph: "Start typing to pick personas (e.g., Student, Clinician, City Planner)…", type: "repeater" },
     { label: "Harms of the status quo", key: "harms", ph: "Who is hurt today and how (esp. minoritized groups)?", type: "textarea" },
-    { label: "Alternate lenses (multi-select)", key: "lenses", type: "multiselect",
+    { label: "Alternate lenses (multi-select)", key: "lenses", type: "select",
       options: [
         "Systems", "Capability (Amartya Sen)", "Equity/Justice", "Prevention vs Cure",
         "Individual vs Structural", "Short-term vs Long-term", "Behavioral", "Economic"
@@ -49487,7 +49487,7 @@ monitor && `Monitoring plan (author-supplied):\n${monitor}`,
     {
       label: "Metaphor types to avoid (multi-select)",
       key: "metaphors",
-      type: "multiselect",
+      type: "select",
       options: [
         "War/Military","Sports/Competition","Violence/Crime","Disease/Contagion",
         "Colonial/Exploration","Animalizing/Dehumanizing","Ableist/Ageist",
@@ -49498,7 +49498,7 @@ monitor && `Monitoring plan (author-supplied):\n${monitor}`,
     {
       label: "Tone/register goals",
       key: "tone_goals",
-      type: "multiselect",
+      type: "select",
       options: ["Plain-language","Neutral/clinical","Supportive/empathetic","Empowering/agency-forward","Policy/legal-specific"],
       ph: "Pick 1–3 tone targets"
     }
@@ -50277,7 +50277,7 @@ sensitivities && `Sensitive topics & taboos:\n${sensitivities}`,
     {
       label: "Media types present (multi-select)",
       key: "media_types",
-      type: "multiselect",
+      type: "select",
       options: [
         "Images/Icons","Infographics/Charts","Tables","Video","Audio",
         "Forms/Inputs","Interactive Widgets/Maps","Downloads/PDFs"
@@ -50691,10 +50691,10 @@ tasks && `Critical user tasks:\n${tasks}`,
       ph: "e.g., Email, Apple, Google, Microsoft, Phone #, ‘Weird’",
       type: "repeater"
     },
-    { label: "Identity — stable standards", key: "id_stable", type: "multiselect",
+    { label: "Identity — stable standards", key: "id_stable", type: "select",
       options: [ "OAuth2/OIDC" ]
     },
-    { label: "Identity — emerging standards", key: "id_emerging", type: "multiselect",
+    { label: "Identity — emerging standards", key: "id_emerging", type: "select",
       options: [
         "OpenID for Verifiable Credential Issuance",
         "Self-Issued OpenID Provider (SIOP)",
@@ -50715,10 +50715,10 @@ tasks && `Critical user tasks:\n${tasks}`,
       ph: "e.g., Matrix rooms, Discord, Slack, Discourse, mailing lists",
       type: "repeater"
     },
-    { label: "Bonfires — stable standards", key: "bonfire_stable", type: "multiselect",
+    { label: "Bonfires — stable standards", key: "bonfire_stable", type: "select",
       options: [ "Matrix", "Email" ]
     },
-    { label: "Bonfires — emerging standards", key: "bonfire_emerging", type: "multiselect",
+    { label: "Bonfires — emerging standards", key: "bonfire_emerging", type: "select",
       options: [ "MIMI", "MLS" ]
     },
 
@@ -50734,10 +50734,10 @@ tasks && `Critical user tasks:\n${tasks}`,
       ph: "e.g., Mastodon, Tumblr, YouTube, TikTok, blog feeds",
       type: "repeater"
     },
-    { label: "Streams — stable standards", key: "stream_stable", type: "multiselect",
+    { label: "Streams — stable standards", key: "stream_stable", type: "select",
       options: [ "ActivityPub", "RSS" ]
     },
-    { label: "Streams — emerging standards", key: "stream_emerging", type: "multiselect",
+    { label: "Streams — emerging standards", key: "stream_emerging", type: "select",
       options: [ "ATproto" ]
     },
 
@@ -50753,7 +50753,7 @@ tasks && `Critical user tasks:\n${tasks}`,
       ph: "e.g., MediaWiki, Notion, Obsidian publish, WordPress",
       type: "repeater"
     },
-    { label: "Garden — emerging standards", key: "garden_emerging", type: "multiselect",
+    { label: "Garden — emerging standards", key: "garden_emerging", type: "select",
       options: [ "Noosphere" ]
     },
 
