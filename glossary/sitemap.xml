@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core pages -->
+  <url><loc>https://jonathankhobson.github.io/AI/index.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://jonathankhobson.github.io/AI/glossary/index.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://jonathankhobson.github.io/AI/glossary/templates-glossary.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://jonathankhobson.github.io/AI/glossary/prompt-builder.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://jonathankhobson.github.io/AI/glossary/startup-wizard.html</loc><changefreq>weekly</changefreq></url>
+
+  <!-- Leave out noindex utility pages for now:
+       add-glossaryterm.html, prompt-worksheet.html, save-to-sessions.html, edit-suggestions.html -->
+</urlset>
