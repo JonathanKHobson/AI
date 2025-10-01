@@ -13213,7 +13213,202 @@ Caveats: Oversimplification can hide nuance—append a short “for experts” n
     status: "draft",
     notes: `Use-cases: maximize economic throughput • PI planning in SAFe
   Boosters: Call out assumptions; avoid gaming Job Size.`
-  }
+  },
+  {
+  slug: "llm-observability-telemetry",
+  term: "LLM Observability / Telemetry",
+  aliases: [
+    "LLMOps monitoring",
+    "tracing",
+    "OpenTelemetry for GenAI",
+    "LLM APM",
+    "LLM logging",
+  ],
+  definition: `Practices and tooling that capture inputs, prompts, retrieved context, tool calls, outputs, and quality signals like latency, cost, errors, and factuality to debug, compare versions, and catch regressions. Often built on distributed tracing with OpenTelemetry or vendor SDKs.`,
+  sources: [
+    { title: "LLM Observability", url: "https://www.datadoghq.com/product/llm-observability/?utm_source=chatgpt.com" },
+    { title: "LLM Observability - Confident AI", url: "https://www.confident-ai.com/products/llm-observability?utm_source=chatgpt.com" },
+    { title: "Semantic Conventions", url: "https://opentelemetry.io/docs/concepts/semantic-conventions/?utm_source=chatgpt.com" },
+    { title: "Semantic conventions for generative AI systems", url: "https://opentelemetry.io/docs/specs/semconv/gen-ai/?utm_source=chatgpt.com" },
+    { title: "Ragas Evaluations - Datadog", url: "https://docs.datadoghq.com/llm_observability/evaluations/ragas_evaluations/?utm_source=chatgpt.com" }
+  ],
+  categories: ["evaluation", "benchmarks & evaluations"],
+  tags: ["kind:term","type:method","topic:evaluation","topic:systems","phase:deployment","use:system-design","level:intermediate"],
+  related: ["prompt-architecture","benchmarks-and-evaluations","agentic-rag"],
+  status: "draft",
+  notes: `Trace each request across retrieval, re-ranking, tool use, and generation to explain failures. Standardize attributes via OpenTelemetry GenAI conventions so data is portable across tools. Run background evaluations like Ragas inside your observability stack to monitor faithfulness and answer relevance in production.`
+},
+{
+  slug: "guardrails-output-validation",
+  term: "Guardrails (Output Validation)",
+  aliases: [
+    "policy enforcement",
+    "structured output validation",
+    "safety filters",
+    "JSON Schema validation",
+    "rails",
+  ],
+  definition: `Constraints and validators applied to inputs and outputs to enforce policy, format, and structure, often during streaming generation. Popular frameworks include Guardrails AI and NVIDIA NeMo Guardrails, which support validators for format and safety and state-machine style dialogue control.`,
+  sources: [
+    { title: "Use Validators for Structured Data (JSON) Validation - Guardrails", url: "https://guardrailsai.com/docs/hub/how_to_guides/structured_data_validation?utm_source=chatgpt.com" },
+    { title: "Guardrails Library - NVIDIA NeMo Guardrails", url: "https://docs.nvidia.com/nemo/guardrails/latest/user-guides/guardrails-library.html?utm_source=chatgpt.com" }
+  ],
+  categories: ["security & safety","prompt development techniques"],
+  tags: ["kind:term","type:component","topic:safety","topic:security","phase:prompting","phase:deployment","use:system-design","level:intermediate"],
+  related: ["benchmarks-and-evaluations","conversational-design","security-and-safety"],
+  status: "draft",
+  notes: `Validate partial JSON fields as tokens stream to prevent malformed payloads arriving downstream. Combine safety validators with conversation rails defined in Colang to block unsafe flows while keeping UX stable.`
+},
+{
+  slug: "prompt-drift",
+  term: "Prompt or Instruction Drift",
+  aliases: [
+    "prompt drift",
+    "instruction drift",
+    "LLM drift",
+  ],
+  definition: `Systematic change in prompts or outputs compared to a baseline that degrades quality or shifts behavior. Production platforms track drift in both input prompts and generated responses to trigger retraining or prompt updates.`,
+  sources: [
+    { title: "How to Monitor LLMOps Performance with Drift Monitoring - Fiddler", url: "https://www.fiddler.ai/blog/how-to-monitor-llmops-performance-with-drift?utm_source=chatgpt.com" },
+    { title: "Drift - Arize AI Glossary", url: "https://arize.com/glossary/drift/?utm_source=chatgpt.com" }
+  ],
+  categories: ["evaluation","benchmarks & evaluations"],
+  tags: ["kind:term","type:principle","topic:evaluation","topic:systems","phase:deployment","use:research","level:intermediate"],
+  related: ["llm-observability-telemetry","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Alert when production prompts diverge from curated templates or when answer distributions shift, then inspect traces to identify retrieval or routing causes.`
+},
+{
+  slug: "grounding-strength",
+  term: "Grounding Strength",
+  aliases: [
+    "attribution strength",
+    "faithfulness to sources",
+    "grounding quality",
+  ],
+  definition: `How well a model’s answer is supported by retrieved context. In RAG, commonly measured with metrics like faithfulness, answer relevance, context precision and recall, and context utilization.`,
+  sources: [
+    { title: "Metrics - Ragas", url: "https://docs.ragas.io/en/v0.1.21/concepts/metrics/?utm_source=chatgpt.com" },
+    { title: "Ragas Evaluations - Datadog", url: "https://docs.datadoghq.com/llm_observability/evaluations/ragas_evaluations/?utm_source=chatgpt.com" }
+  ],
+  categories: ["benchmarks & evaluations"],
+  tags: ["kind:term","type:metric","topic:evaluation","topic:systems","phase:evaluation","use:research","level:intermediate"],
+  related: ["agentic-rag","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Add a grounding score to traces so product teams can watch faithfulness over time and A/B prompt or retriever changes.`
+},
+{
+  slug: "natural-language-inference-nli",
+  term: "Contradiction Checking (NLI)",
+  aliases: [
+    "Natural Language Inference",
+    "Recognizing Textual Entailment",
+    "entailment-neutral-contradiction scoring",
+  ],
+  definition: `Use a Natural Language Inference model to assess whether an answer is entailed by, contradicts, or is neutral with respect to a premise such as retrieved passages. SNLI formalized the benchmark for entailment, contradiction, and neutral labels.`,
+  sources: [
+    { title: "The Stanford Natural Language Inference (SNLI) Corpus", url: "https://nlp.stanford.edu/projects/snli/?utm_source=chatgpt.com" },
+    { title: "Metrics - Ragas", url: "https://docs.ragas.io/en/v0.1.21/concepts/metrics/?utm_source=chatgpt.com" }
+  ],
+  categories: ["benchmarks & evaluations"],
+  tags: ["kind:term","type:method","topic:evaluation","phase:evaluation","use:research","level:intermediate"],
+  related: ["grounding-strength","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Run NLI at claim level to flag contradictions between the answer and citations, or within multi-paragraph answers.`
+},
+{
+  slug: "self-consistency",
+  term: "Self-Consistency, Sampling Consistency",
+  aliases: [
+    "sample-and-vote",
+    "agreement-based checking",
+    "SelfCheckGPT-style checks",
+  ],
+  definition: `Generate multiple samples and measure agreement. Divergence across samples correlates with hallucinations. SelfCheckGPT detects non-factual content for black-box models by sampling and comparing statements.`,
+  sources: [
+    { title: "SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection", url: "https://arxiv.org/abs/2303.08896?utm_source=chatgpt.com" },
+    { title: "Semantic Uncertainty: Linguistic Invariances...", url: "https://arxiv.org/abs/2302.09664?utm_source=chatgpt.com" }
+  ],
+  categories: ["benchmarks & evaluations","reasoning"],
+  tags: ["kind:term","type:technique","topic:evaluation","topic:reasoning","phase:evaluation","use:multi-step","level:intermediate"],
+  related: ["benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Add a low-overhead n-sample agreement check to gate publishing, or to choose the most consistent answer when cost allows.`
+},
+{
+  slug: "semantic-entropy",
+  term: "Semantic Entropy, Uncertainty",
+  aliases: [
+    "semantic uncertainty",
+    "meaning-aware entropy",
+  ],
+  definition: `Uncertainty estimated from the diversity of meanings across generations, not just token probabilities. The semantic entropy method exploits linguistic invariances and predicts accuracy better than standard baselines for QA.`,
+  sources: [
+    { title: "Semantic Uncertainty: Linguistic Invariances...", url: "https://arxiv.org/abs/2302.09664?utm_source=chatgpt.com" }
+  ],
+  categories: ["benchmarks & evaluations"],
+  tags: ["kind:term","type:metric","topic:evaluation","phase:evaluation","use:research","level:intermediate"],
+  related: ["self-consistency","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Trigger fallback retrieval, ask-for-clarification, or human review when semantic entropy crosses a threshold.`
+},
+{
+  slug: "abstention-selective-answering",
+  term: "Abstention, Selective Answering",
+  aliases: [
+    "selective prediction",
+    "selective generation",
+    "defer option",
+    "know-when-you-don’t-know",
+  ],
+  definition: `Policies that allow the system to decline or defer when uncertainty or risk is high. Recent surveys and theory frame abstention across the query, model, and human values dimensions, with online selective generation for LLMs.`,
+  sources: [
+    { title: "A Survey of Abstention in Large Language Models", url: "https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00754/131566/Know-Your-Limits-A-Survey-of-Abstention-in-Large?utm_source=chatgpt.com" }
+  ],
+  categories: ["security & safety","evaluation"],
+  tags: ["kind:strategy","type:method","topic:safety","topic:evaluation","phase:deployment","use:dialog-flow","level:intermediate"],
+  related: ["semantic-entropy","benchmarks-and-evaluations","security-and-safety"],
+  status: "draft",
+  notes: `Wire abstention to UX flows like “I’m not sure, searching sources now” or “I need more context” rather than forcing a brittle answer. Track abstention and escalation rates in your observability dashboard.`
+},
+{
+  slug: "rag-evaluation-stack",
+  term: "RAG Evaluation Stack",
+  aliases: [
+    "RAG metrics suite",
+    "component-level RAG evals",
+    "Ragas stack",
+  ],
+  definition: `Standardized metrics and dashboards for retrieval-augmented systems at both component and end-to-end levels. Libraries like Ragas provide faithfulness, answer relevance, context precision and recall, noise sensitivity, and entity recall, plus tutorials for running these in CI or observability tools.`,
+  sources: [
+    { title: "Metrics - Ragas", url: "https://docs.ragas.io/en/v0.1.21/concepts/metrics/?utm_source=chatgpt.com" },
+    { title: "Ragas Evaluations - Datadog", url: "https://docs.datadoghq.com/llm_observability/evaluations/ragas_evaluations/?utm_source=chatgpt.com" }
+  ],
+  categories: ["benchmarks & evaluations"],
+  tags: ["kind:framework","type:framework","topic:evaluation","topic:systems","phase:evaluation","use:research","level:intermediate"],
+  related: ["agentic-rag","llm-observability-telemetry","grounding-strength","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Surface RAG metrics directly in your tracing backend so regressions in faithfulness or context precision page you like SLOs.`
+},
+{
+  slug: "consistency-regularization",
+  term: "Consistency Regularization (PCR in research)",
+  aliases: [
+    "prompt consistency regularization",
+    "perturbation consistency learning",
+    "consistency training",
+  ],
+  definition: `A family of methods that penalize inconsistent predictions across paraphrases, augmentations, or views. In NLP this shows up as prompt perturbation consistency learning, representation consistency for compositional generalization, and cross-lingual consistency. “PCR” here refers to a pattern across papers rather than a single standard.`,
+  sources: [
+    { title: "Prompt Perturbation Consistency Learning for Robust ...", url: "https://aclanthology.org/2024.findings-eacl.91.pdf?utm_source=chatgpt.com" },
+    { title: "On the Worst Prompt Performance of Large Language ...", url: "https://proceedings.neurips.cc/paper_files/paper/2024/file/7fa5a377b7ffabcce43cd00231bb3f9c-Paper-Conference.pdf?utm_source=chatgpt.com" }
+  ],
+  categories: ["reasoning","benchmarks & evaluations"],
+  tags: ["kind:technique","type:method","topic:reasoning","topic:evaluation","phase:overview","use:research","level:advanced"],
+  related: ["self-consistency","benchmarks-and-evaluations"],
+  status: "draft",
+  notes: `Fine-tune with paraphrase or synonym perturbations and add a consistency loss so predictions stay stable under benign rewrites of the same instruction.`
+}
 
 );
 
