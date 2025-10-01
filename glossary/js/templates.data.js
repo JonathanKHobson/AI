@@ -51025,6 +51025,3395 @@ tasks && `Critical user tasks:\n${tasks}`,
   }
 },
 
+{
+  id: "depth_method_prompt_builder",
+  slug: "depth-method-prompt-builder",
+  label: "DEPTH Method Prompt Builder",
+  kind: "framework",
+  categories: ["prompt-development","analysis","strategy","productivity"],
+  tags: [
+    "type:framework","type:prompt-fundamental","origin:reddit-user(Over_Ask_7684)","use:prompt","use:content-generation",
+    "phase:define","phase:draft","level:intermediate"
+  ],
+  use_cases: [
+    "generate higher-performing drafts with clear metrics and roles",
+    "structure collaboration across multiple expert perspectives",
+    "build self-scoring feedback loops for fast iteration"
+  ],
+  boosters: [
+    "Follow DEPTH: Define Perspectives · Establish Metrics · Provide Context · Task Breakdown · Human Feedback Loop.",
+    "Output both first draft and improved final after self-scoring.",
+    "Keep format constraints (max words, reading level) non-negotiable.",
+    "Name specific, testable success metrics (not vibes)."
+  ],
+  definition: "Concise inputs → a comprehensive instruction set that applies the DEPTH method to produce a measurable, context-aware draft. The output includes a panel-of-experts approach, explicit success metrics, stepwise tasking, and a self-scored improvement loop.",
+  help: "Fill 7–10 fields. The template will instruct an AI or reviewer to act as a small expert panel, aim for explicit metrics, honor context layers, follow a task breakdown, and self-score/revise until thresholds are met.",
+  fields: [
+    {
+      label: "Content goal / brief",
+      key: "goal",
+      ph: "What are we creating? (e.g., LinkedIn post, landing section, email, ad script)",
+      type: "textarea"
+    },
+    {
+      label: "Expert panel (Define Perspectives)",
+      desc: "List 2–5 roles that will collaborate (e.g., Behavioral Psychologist, Direct-Response Copywriter, Data Analyst).",
+      autofill: "persona->inline",
+      itemLabel: "expert",
+      itemType: "typeahead",
+      key: "experts",
+      min: 2,
+      max: 5,
+      ph: "Add expert roles (one per line)",
+      type: "repeater"
+    },
+    {
+      label: "Success metrics (Establish Metrics)",
+      key: "metrics",
+      ph: "Concrete targets (e.g., 40% open rate, 12% CTR, ≥10% engagement, 3 inbound leads).",
+      type: "textarea"
+    },
+    {
+      label: "Context layers",
+      key: "context",
+      ph: "Business/product, price point, audience pain points, channel, constraints, prior results (e.g., 2% engagement).",
+      type: "textarea"
+    },
+    {
+      label: "Audience (who we speak to)",
+      autofill: "persona->inline",
+      itemLabel: "persona",
+      itemType: "typeahead",
+      key: "audience",
+      min: 1,
+      max: 8,
+      ph: "e.g., Overworked founders, CTOs at mid-market, first-time buyers…",
+      type: "repeater"
+    },
+    {
+      label: "Task breakdown (steps)",
+      key: "steps",
+      ph: "Step 1: … Step 2: … Step 3: … Step 4: …",
+      type: "textarea"
+    },
+    {
+      label: "Format constraints",
+      key: "format",
+      ph: "Max words, reading level, structure (e.g., 200 words, Grade 6, Hook→Story→Insight→Question).",
+      type: "textarea"
+    },
+    {
+      label: "Self-score dimensions (Human Feedback Loop)",
+      key: "rubric",
+      type: "multiselect",
+      options: [
+        "Clarity","Persuasion","Actionability","Accuracy","Novelty","Empathy/Inclusion"
+      ],
+      ph: "Pick 3–6 dimensions to score 1–10"
+    },
+    {
+      label: "Score threshold to ship",
+      key: "threshold",
+      type: "select",
+      options: ["7/10","8/10","9/10"],
+      ph: "Minimum per-dimension score required (default 8/10)"
+    },
+    {
+      label: "Prior performance / baselines (optional)",
+      key: "baselines",
+      ph: "Recent KPIs, what worked/failed, competitor benchmarks, compliance notes.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    goal, experts, metrics, context, audience, steps, format, rubric, threshold, baselines,
+    ctx, style, tone
+  }) => [
+`DEPTH Method Prompt Builder — Instruction Set`,
+ctx && `Context: ${ctx}`,
+style && `Style: ${style}`,
+tone && `Tone: ${tone}`,
+
+`INPUT SUMMARY`,
+goal && `Content goal / brief:\n${goal}`,
+experts && (
+  'Expert panel (collaborate as these roles):\n' +
+  String(experts).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+metrics && `Success metrics:\n${metrics}`,
+context && `Context layers:\n${context}`,
+audience && (
+  'Audience:\n' +
+  String(audience).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+steps && `Task breakdown (steps):\n${steps}`,
+format && `Format constraints:\n${format}`,
+rubric && (
+  'Self-score dimensions:\n' +
+  (Array.isArray(rubric) ? rubric : String(rubric).split(/\n+/))
+    .map(s=>String(s).trim()).filter(Boolean).map((x,i)=>`${i+1}. ${x}`).join('\n')
+),
+threshold && `Score threshold to ship: ${threshold}`,
+baselines && `Prior performance / baselines:\n${baselines}`,
+
+`— — —`,
+`ROLE`,
+`Act as a small expert panel working together: reconcile perspectives and produce one coherent draft. Explain key trade-offs briefly.`,
+
+`OBJECTIVE`,
+`Use the DEPTH method to create a high-performing draft that meets specific metrics and format constraints, with a self-scored improvement loop.`,
+
+`METHOD — DEPTH`,
+`D — Define Multiple Perspectives:`,
+`• Adopt each listed expert role. In 3–5 bullets, state how each role informs the draft (attention hooks, persuasive structure, evidence/data, risk/compliance, inclusion).`,
+`• Resolve conflicts by picking the option that best advances the stated metrics.`,
+`E — Establish Success Metrics:`,
+`• Treat the provided metrics as optimization targets. State the leading indicators (e.g., hook strength, clarity of value, CTA friction).`,
+`• Define a brief measurement plan (how to estimate if targets are reachable from copy).`,
+`P — Provide Context Layers:`,
+`• Weave in the context (business, price, audience pain points, channel, prior results).`,
+`• Name key assumptions and how they affect the draft (e.g., skepticism level, familiarity).`,
+`T — Task Breakdown:`,
+`• Follow each step in order. If steps are missing, default to: Hook → Problem/Pain → Value/Proof → Objection preemption → CTA.`,
+`H — Human Feedback Loop:`,
+`• Self-score the draft on each chosen dimension (1–10). Minimum per-dimension score: ${threshold || "8/10"}.`,
+`• For any score below threshold, revise once and re-score; note what changed.`,
+
+`=== OUTPUT A — DRAFT V1 (RESPECT FORMAT) ===`,
+`- Obey format constraints: ${format || "Max words / reading level / structure as specified"}.`,
+`- Keep voice consistent and people-first; avoid exclusionary metaphors or blame.`,
+
+`=== OUTPUT B — SELF-SCORE TABLE ===`,
+`Dimension | Score (1–10) | Rationale | Fixes planned`,
+`${(Array.isArray(rubric) ? rubric : String(rubric||"Clarity\nPersuasion\nActionability")).split(/\n+/).map(s=>s.trim()).filter(Boolean).map(r => `${r} |  |  | `).join('\n')}`,
+
+`=== OUTPUT C — REVISION NOTES ===`,
+`- Summarize changes made to raise below-threshold scores.`,
+`- Call out trade-offs (e.g., brevity vs specificity) and why choices were made.`,
+
+`=== OUTPUT D — DRAFT V2 (FINAL) ===`,
+`- Present the improved draft after revisions.`,
+`- Include a one-line CTA with explicit next action.`,
+
+`=== OUTPUT E — METRIC ALIGNMENT & RISK CHECK ===`,
+`- Explain how the draft supports the stated metrics (open rate/CTR/engagement/etc.).`,
+`- List 2 early-warning signs the draft is underperforming and how you’d iterate.`,
+`- Quick inclusion & clarity pass: avoid violent/ableist/colonial metaphors; use plain language at the target level; ensure terminology is audience-appropriate.`,
+
+`=== OUTPUT F — RESULT LOG (OPTIONAL) ===`,
+`- If real results become available, log: Metric → Result → Learnings → Next tweak.`,
+
+`DELIVERABLE FORMAT`,
+`- Use the section headings exactly as above.`,
+`- Keep the draft within stated constraints and channel norms.`,
+`- End with exactly 3 open questions you recommend testing next.`
+].filter(Boolean).join('\n'),
+  meta: {
+    search_text: "DEPTH Method Prompt Builder — Define Perspectives, Establish Metrics, Provide Context, Task Breakdown, Human Feedback Loop; dual-draft with self-scoring; fields: goal, experts, metrics, context, audience, steps, format, rubric, threshold, baselines."
+  }
+},
+
+{
+  id: "guardrails_config_builder",
+  slug: "guardrails-config-builder",
+  label: "Guardrails Config Builder",
+  kind: "framework",
+  categories: ["prompt-development","governance","safety","quality"],
+  tags: [
+    "type:framework",
+    "use:validation",
+    "use:production",
+    "level:advanced",
+    "topic:guardrails",
+    "topic:json-schema",
+    "origin:guardrailsai.com"
+  ],
+  use_cases: [
+    "Enforce strict output contracts in production (tool calls, JSON APIs, structured QA).",
+    "Compile policy rules + JSON Schema into executable validators with clear ownership.",
+    "Configure retry → fallback → escalation for safe degradation and incident response.",
+    "Gate streaming generations with early-abort hooks to prevent policy or format drift.",
+    "Ship table-driven tests to prevent regressions across model, prompt, or policy updates."
+  ],
+  boosters: [
+    "Emit both a JSON Schema and rule validators.",
+    "Include streaming (token-by-token) checks when enabled.",
+    "Return table-driven test cases (pass/fail) with rationales.",
+    "Document retry → fallback → escalation sequence clearly.",
+    "Surface per-validator metadata (owner, rationale, last_changed) for audits.",
+    "Prefer composable, low-latency checks; cache regexes and whitelist lookups."
+  ],
+  definition:
+    "A production-ready instruction set that compiles format, policy, and citation constraints into executable guardrails (JSON Schema + validators), with optional streaming hooks, bounded retries, deterministic fallbacks, escalation messaging, and table-driven tests to prevent regressions.",
+  help:
+    "Describe your objective, paste a valid JSON Schema, and list what is disallowed and what sources are allowed. Choose limits and behaviors. The generated spec includes a human-readable summary, a pseudo-executable config, streaming hooks, a retry/fallback/escalation flow, and a test table your engineers (or runner) can implement verbatim.",
+  fields: [
+    {
+      label: "Objective",
+      desc: "State the intent and success criteria for validation (what must be true for the output to be accepted).",
+      key: "objective",
+      ph: "Validate a strict JSON tool call answering user questions with citations and no policy violations.",
+      type: "textarea"
+    },
+    {
+      label: "Required output schema (JSON)",
+      desc: "Paste a valid JSON Schema that the model’s output must satisfy. Include required fields and types.",
+      key: "schema",
+      ph: "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", ... }",
+      type: "textarea"
+    },
+    {
+      label: "Disallowed topics/policies",
+      desc: "List policies that must never appear in the output. Keep them plain-language for maintainers.",
+      ph: "PII; medical diagnosis; hate content; investment advice; self-harm instructions; explicit sexual content",
+      autofill: "policy->inline",
+      itemLabel: "policy",
+      itemType: "typeahead",
+      key: "disallowed",
+      min: 0,
+      max: 40,
+      type: "repeater"
+    },
+    {
+      label: "Allowed sources (whitelist)",
+      desc: "Restrict citations/grounding to specific domains or source types.",
+      ph: "*.nih.gov; who.int; publisher:peer-reviewed; internal:policy-handbook; local:file://kb",
+      autofill: "source->inline",
+      itemLabel: "source",
+      itemType: "typeahead",
+      key: "allowed_sources",
+      min: 0,
+      max: 40,
+      type: "repeater"
+    },
+    {
+      label: "Max output length (tokens)",
+      desc: "Hard ceiling on generation length to control cost and prevent overflow.",
+      key: "max_len",
+      type: "select",
+      options: ["256","512","1024","2048","4096"],
+      ph: "Choose a ceiling to prevent rambling or overflow"
+    },
+    {
+      label: "Streaming / real-time validation",
+      desc: "Enable token-by-token checks with early abort for schema/length/policy guards if supported.",
+      key: "streaming",
+      type: "select",
+      options: ["On","Off"],
+      ph: "Enable token-by-token checks (recommended for tools/structured output)"
+    },
+    {
+      label: "Fallback behavior (on violation)",
+      desc: "First response after retries fail. Should be safe, deterministic, and user-appropriate.",
+      key: "fallback",
+      type: "select",
+      options: [
+        "Abstain with safe message",
+        "Redact offending span and continue",
+        "Return template-safe minimal JSON",
+        "Switch to retrieval-only answer",
+        "Defer to human"
+      ],
+      ph: "Choose the first-line fallback"
+    },
+    {
+      label: "Retry policy",
+      desc: "How many automated re-attempts to make and with what constraints before fallback.",
+      key: "retry",
+      type: "select",
+      options: [
+        "No retry",
+        "Retry 1x with lower temperature",
+        "Retry 2x with tighter prompt & shorter max_len",
+        "Retry until pass (cap 3) then fallback"
+      ],
+      ph: "How aggressively to re-attempt validation"
+    },
+    {
+      label: "Escalation message (on final failure)",
+      desc: "Plain-language message for user/logs when guardrails and fallback cannot safely fulfill.",
+      key: "escalation",
+      ph: "We can’t safely fulfill this request right now. A human reviewer has been notified.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    objective, schema, disallowed, allowed_sources, max_len, streaming, fallback, retry, escalation,
+    ctx, style, tone
+  }) => {
+    // helpers to avoid nested template literals inside interpolations
+    const listify = (s) => {
+      const out = String(s || "")
+        .split(/\n+/).filter(Boolean)
+        .map(x => '      - "' + x.replace(/"/g, '\\"') + '"')
+        .join('\n');
+      return out || '      - /* none provided */';
+    };
+    const safeQuote = (s) =>
+      String(s || "We can't safely fulfill this request. A human will review.")
+        .replace(/"/g, '\\"');
+
+    const execConfig = [
+      "validators:",
+      "  - name: schema_check",
+      "    type: json_schema",
+      "    on: " + (streaming === "On" ? "final & streaming" : "final"),
+      '    schema_ref: "$SCHEMA"',
+      "  - name: topic_blocklist",
+      "    type: nlp/pattern",
+      "    on: " + (streaming === "On" ? "streaming" : "final"),
+      "    disallowed:",
+      listify(disallowed),
+      "  - name: source_whitelist",
+      "    type: citation/whitelist",
+      "    on: final",
+      "    allowed:",
+      listify(allowed_sources),
+      "  - name: length_limit",
+      "    type: token_length",
+      "    on: " + (streaming === "On" ? "streaming" : "final"),
+      "    max_tokens: " + (max_len || 1024),
+      "policies:",
+      '  retry: "' + (retry || "Retry 1x with lower temperature") + '"',
+      '  fallback: "' + (fallback || "Abstain with safe message") + '"',
+      '  escalate_message: "' + safeQuote(escalation) + '"'
+    ].join('\n');
+
+    const streamingHooks = (streaming === "On")
+      ? [
+          "// Pseudocode",
+          "function on_token(token, buffer) {",
+          "  if (length_limit.exceeded(buffer, " + (max_len || 1024) + ")) abort(\"length_limit\");",
+          "  if (topic_blocklist.hit(token) && !within_code_block(buffer)) abort(\"policy_violation\");",
+          "}",
+          "function on_abort(reason) {",
+          "  handle_retry_or_fallback(reason);",
+          "}"
+        ].join('\n')
+      : "// Streaming disabled — perform schema/policy/length checks on the final output only.";
+
+    return [
+      "Guardrails Config Builder — Instruction Set",
+      "origin:guardrailsai.com",
+      ctx && "Context: " + ctx,
+      style && "Style: " + style,
+      tone && "Tone: " + tone,
+
+      "INPUT SUMMARY",
+      objective && "Objective:\n" + objective,
+      schema && "Required output schema (JSON):\n" + schema,
+      disallowed && ("Disallowed topics/policies:\n" +
+        String(disallowed).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=> (i+1)+". "+x).join('\n')),
+      allowed_sources && ("Allowed sources (whitelist):\n" +
+        String(allowed_sources).split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=> (i+1)+". "+x).join('\n')),
+      max_len && "Max output length (tokens): " + max_len,
+      streaming && "Streaming / real-time validation: " + streaming,
+      fallback && "Fallback behavior: " + fallback,
+      retry && "Retry policy: " + retry,
+      escalation && "Escalation message:\n" + escalation,
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, compliance-focused prompt engineer. Compile the above inputs into an executable guardrails configuration (JSON Schema + validators + hooks) and a runnable test suite.",
+
+      "OBJECTIVE",
+      "Lock output format and scope: reject malformed or out-of-policy generations, retry per policy, then apply fallback or escalate safely.",
+
+      "=== OUTPUT A — VALIDATION SPEC (HUMAN-READABLE) ===",
+      "Summarize the rules in plain terms:",
+      "• Format: must satisfy the provided JSON Schema.",
+      "• Policies: disallowed topics are blocked; only whitelisted sources may be cited.",
+      "• Limits: output must not exceed " + (max_len || "the configured") + " tokens.",
+      "• Streaming: " + (streaming === "On" ? "validate incrementally and abort early on violation." : "validate on final output only."),
+      "• On violation: apply retry → fallback → escalation as configured.",
+
+      "=== OUTPUT B — EXECUTABLE CONFIG (PSEUDO) ===",
+      "// JSON Schema (verbatim)",
+      schema || "{ /* TODO: insert schema */ }",
+      "\n// Validator Rules (YAML-like pseudoconfig)\n" + execConfig,
+
+      "=== OUTPUT C — STREAMING HOOKS (IF ENABLED) ===",
+      streamingHooks,
+
+      "=== OUTPUT D — RUNTIME LOGIC (RETRY → FALLBACK → ESCALATION) ===",
+      '1) Validate output(s). On failure, apply "' + (retry || "Retry 1x with lower temperature") + '".',
+      '2) If all retries fail, apply fallback: "' + (fallback || "Abstain with safe message") + '".',
+      "3) If fallback not applicable or fails, escalate with message:\n" + (escalation || "We can't safely fulfill this request. A human will review."),
+      "4) Log: violation type, offending span (if any), validator, attempt #, timestamps.",
+
+      "=== OUTPUT E — TEST CASES ===",
+      "Write table-driven tests (at least 6):",
+      "Case | Input Prompt | Expected | Why",
+      "1 | Valid content; obeys schema; cites allowed source | PASS | Happy path",
+      "2 | Violates schema (missing required field) | FAIL → RETRY | Schema guard",
+      "3 | Mentions disallowed topic | FAIL → RETRY → " + (fallback || "Fallback") + " | Policy guard",
+      "4 | Exceeds " + (max_len || 1024) + " tokens | FAIL → RETRY (shorter) | Length guard",
+      "5 | Cites non-whitelisted domain | FAIL → RETRY → " + (fallback || "Fallback") + " | Source guard",
+      "6 | Multiple violations persist | ESCALATE | Final safety",
+      "Include sample inputs/outputs for each, and assert logs for validator + reason.",
+      "Tip: add a tiny fuzz test to ensure small paraphrases still trigger policy guards.",
+
+      "=== OUTPUT F — IMPLEMENTATION NOTES ===",
+      "• Prefer deterministic emitters to avoid accidental schema drift.",
+      "• Keep validators composable and fast; cache regex; avoid over-blocking.",
+      "• Document all rules in-line (reason, owner). Version the config with changesets.",
+      "• Expose simple on/off kill-switch per validator for incident response."
+    ].filter(Boolean).join('\n');
+  },
+  meta: {
+    search_text:
+      "Guardrails Config Builder — compile schema + policy into validators; streaming hooks; retries; fallback; escalation; test cases; categories: orchestrations, validation-and-safety, production-ops, schema-and-typing; fields: objective, schema, disallowed, allowed sources, max length, streaming, fallback, retry, escalation."
+  }
+},
+
+{
+  id: "llm_telemetry_observability_plan",
+  slug: "llm-telemetry-observability-plan",
+  label: "LLM Telemetry & Observability Plan",
+  kind: "framework",
+  // Aligned to categories_registry.yml (kebab-case nouns)
+  categories: [
+     "analytics",
+    "measurement",
+    "reliability",
+    "quality",
+    "safety",
+    "privacy",
+    "policy",
+    "governance",
+    "operations",
+    "testing",
+    "evaluation",
+    "experimentation",
+    "risk",
+    "data",
+    "architecture"
+  ],
+  tags: [
+    "type:framework",
+    "use:observability",
+    "use:monitoring",
+    "use:governance",
+    "use:reliability",
+    "level:advanced",
+    "topic:telemetry",
+    "topic:metrics",
+    "topic:evals",
+    "topic:open-telemetry",
+    "origin:langchain.com",
+    "origin:arize.com",
+    "origin:docs.ragas.io"
+  ],
+  use_cases: [
+    "Define a standardized logging contract for prompts, traces, scores, costs, and user-impact KPIs.",
+    "Instrument uncertainty, contradiction, grounding, and safety gates before content is shown.",
+    "Design alert rules with thresholds, cooldowns, and escalation paths for production routes.",
+    "Establish slice-aware dashboards by route, model, version, and user segment to catch regressions.",
+    "Set sampling and abstention policies with K and temperature for stable selection.",
+    "Enable release health checks for model and prompt changes with pre and post deploy comparisons.",
+    "Create table-driven tests for alerts, slices, and budget controls to prevent regressions.",
+    "Document privacy, retention, and PII handling to pass audits without slowing delivery."
+  ],
+  boosters: [
+    "Emit a concrete logging schema plus alert rules and a dashboard blueprint.",
+    "Cover uncertainty signals, contradiction, grounding, and PII and safety.",
+    "Include sampling settings and selection and abstention policy.",
+    "Provide table-driven tests for alerts and slices across routes and versions.",
+    "Annotate deployments and prompt and model versions for causal diffs.",
+    "Define SLO hints such as latency p95, pass rate, and cost per 1k tokens with on-call runbooks."
+  ],
+  definition:
+    "A production-grade plan for LLM observability that specifies what to instrument (traces, costs, tokens), which quality signals to compute (uncertainty, contradiction, grounding, safety), how to decide (thresholds, abstention, retries), and how to visualize and act (slice-aware dashboards, alerts, and runbooks). It aligns measurement with business and user-impact KPIs to enable safe releases and fast incident response.",
+  help:
+    "Describe the metrics that matter, choose uncertainty and quality and safety checks, set thresholds and sampling, list slices and destinations. The output includes a logging spec, alert rules, and a dashboard blueprint compatible with LangSmith, Phoenix, RAG metrics, and OpenTelemetry.",
+  fields: [
+    {
+      label: "Key metrics",
+      desc: "Name the business, UX, and technical metrics to compute and track across routes and versions.",
+      key: "key_metrics",
+      ph: "Quality: accuracy, relevance, faithfulness. Ops: latency p50 and p95, error rate, cost per 1k tokens. UX: CSAT, deflection.",
+      type: "textarea"
+    },
+
+    {
+      label: "Uncertainty signals - primary",
+      desc: "Pick the primary confidence proxy used for gating or ranking.",
+      key: "uncertainty_primary",
+      type: "select",
+      options: [
+        "None",
+        "Token logprobs (avg/min)",
+        "Semantic entropy (multi-sample)",
+        "Self-consistency disagreement (K samples)",
+        "Self-rated confidence (scaled)",
+        "Variance across reruns",
+        "Other"
+      ],
+      ph: "Choose one uncertainty signal"
+    },
+    {
+      label: "Uncertainty signals - secondary",
+      desc: "Optional secondary signal for tie-breaks or backup checks.",
+      key: "uncertainty_secondary",
+      type: "select",
+      options: [
+        "None",
+        "Token logprobs (avg/min)",
+        "Semantic entropy (multi-sample)",
+        "Self-consistency disagreement (K samples)",
+        "Self-rated confidence (scaled)",
+        "Variance across reruns",
+        "Other"
+      ],
+      ph: "Choose a second uncertainty signal or None"
+    },
+    {
+      label: "Uncertainty notes",
+      desc: "Add caveats for computation windows, calibration, or routing exceptions.",
+      key: "uncertainty_notes",
+      ph: "Example: entropy gate only for RAG answers with long contexts. Calibrate self-rated confidence with historical error rates.",
+      type: "textarea"
+    },
+
+    {
+      label: "Contradiction and grounding checks - primary",
+      desc: "Pick the main evaluator for factual consistency and citation alignment.",
+      key: "checks_primary",
+      type: "select",
+      options: [
+        "None",
+        "NLI contradiction (entail and neutral and contradict)",
+        "RAG faithfulness",
+        "Answer relevancy",
+        "Context precision and recall",
+        "Citation coverage (%)",
+        "Other"
+      ],
+      ph: "Choose one grounding and consistency check"
+    },
+    {
+      label: "Contradiction and grounding checks - secondary",
+      desc: "Optional backup evaluator used in canary or audit mode.",
+      key: "checks_secondary",
+      type: "select",
+      options: [
+        "None",
+        "NLI contradiction (entail and neutral and contradict)",
+        "RAG faithfulness",
+        "Answer relevancy",
+        "Context precision and recall",
+        "Citation coverage (%)",
+        "Other"
+      ],
+      ph: "Choose a second check or None"
+    },
+    {
+      label: "Contradiction and grounding notes",
+      desc: "Record thresholds, windows, and exceptions per route.",
+      key: "checks_notes",
+      ph: "Example: RAG faithfulness < 0.7 for 20 samples alerts the on-call. Enforce citation coverage > 60% for medical routes.",
+      type: "textarea"
+    },
+
+    {
+      label: "PII and safety checks - primary",
+      desc: "Pick the main policy guard for safety and compliance.",
+      key: "safety_primary",
+      type: "select",
+      options: [
+        "None",
+        "PII detection",
+        "Toxicity and hate and jailbreak",
+        "Policy keywords (blocklist)",
+        "Source whitelist (domains)",
+        "Refusal and abstention policy",
+        "Other"
+      ],
+      ph: "Choose one safety control"
+    },
+    {
+      label: "PII and safety checks - secondary",
+      desc: "Optional secondary safety control for high-risk routes.",
+      key: "safety_secondary",
+      type: "select",
+      options: [
+        "None",
+        "PII detection",
+        "Toxicity and hate and jailbreak",
+        "Policy keywords (blocklist)",
+        "Source whitelist (domains)",
+        "Refusal and abstention policy",
+        "Other"
+      ],
+      ph: "Choose a second safety control or None"
+    },
+    {
+      label: "PII and safety notes",
+      desc: "Describe redaction strategy, block behavior, and escalation.",
+      key: "safety_notes",
+      ph: "Example: redact at source with reversible tokenization for DSRs. Block and page on PII detection. Auto rewrite for mild toxicity.",
+      type: "textarea"
+    },
+
+    {
+      label: "Alert thresholds",
+      desc: "Specify numeric or rule thresholds, aggregation windows, and mapped actions.",
+      key: "thresholds",
+      ph: "Latency p95 > 1200 ms for 5m = WARN. Faithfulness < 0.70 across 20 samples = ALERT. Any contradiction > 0 on medical = BLOCK.",
+      type: "textarea"
+    },
+
+    {
+      label: "Sampling strategy - K",
+      desc: "Number of candidates to sample. Higher K increases cost and stability.",
+      key: "K",
+      type: "select",
+      options: ["None", "1", "2", "3", "4", "5", "6", "Other"],
+      ph: "Pick K; choose 1 for single-pass or None to inherit"
+    },
+    {
+      label: "Sampling strategy - temperature",
+      desc: "Exploration versus determinism during sampling.",
+      key: "temperature",
+      type: "select",
+      options: ["None", "0.0", "0.2", "0.4", "0.7", "1.0", "1.2", "Other"],
+      ph: "Pick a temperature or None to inherit"
+    },
+    {
+      label: "Sampling notes",
+      desc: "Add custom ranges, per-route overrides, or Other details.",
+      key: "sampling_notes",
+      ph: "Example: medical routes at temp 0.0 and K=1. Creative routes at temp 0.7 and K=3 with majority vote.",
+      type: "textarea"
+    },
+
+    {
+      label: "Dashboard slices",
+      desc: "Dimensions for breakdowns and anomaly hunting. Keep to an actionable set.",
+      key: "slices",
+      ph: "Route, model version, user segment, geography, time, locale, device, subscription tier.",
+      type: "textarea"
+    },
+
+    {
+      label: "Logging destinations - primary",
+      desc: "Main sink for traces, metrics, and artifacts.",
+      key: "destination_primary",
+      type: "select",
+      options: [
+        "None",
+        "LangSmith (traces and evals)",
+        "Arize Phoenix (observability)",
+        "OpenTelemetry collector",
+        "Custom warehouse (BigQuery or Snowflake)",
+        "Other"
+      ],
+      ph: "Choose one destination"
+    },
+    {
+      label: "Logging destinations - secondary",
+      desc: "Optional secondary sink for redundancy or specialized views.",
+      key: "destination_secondary",
+      type: "select",
+      options: [
+        "None",
+        "LangSmith (traces and evals)",
+        "Arize Phoenix (observability)",
+        "OpenTelemetry collector",
+        "Custom warehouse (BigQuery or Snowflake)",
+        "Other"
+      ],
+      ph: "Choose another destination or None"
+    },
+    {
+      label: "Logging destination notes",
+      desc: "Routing rules, retention, and schema mapping notes.",
+      key: "destinations_notes",
+      ph: "Example: fan-out via OTEL collector. Aggregate metrics to warehouse daily. Retain raw traces 30 days.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    key_metrics,
+    uncertainty_primary, uncertainty_secondary, uncertainty_notes,
+    checks_primary, checks_secondary, checks_notes,
+    safety_primary, safety_secondary, safety_notes,
+    thresholds, K, temperature, sampling_notes,
+    slices,
+    destination_primary, destination_secondary, destinations_notes,
+    ctx, style, tone
+  }) => {
+    const join = (arr) => arr.filter(Boolean).join('\n');
+    const nonNone = (s) => {
+      const v = String(s || "").trim();
+      return v && v.toLowerCase() !== "none" ? v : "";
+    };
+    const inlineFeature = (p, s) => {
+      const a = [nonNone(p), nonNone(s)].filter(Boolean);
+      return a.length ? a.join("; ") : "define";
+    };
+    const blockFeature = (label, p, s, notes) => {
+      const out = [];
+      if (nonNone(p) || nonNone(s) || String(notes || "").trim()) {
+        out.push(label + ":");
+        if (nonNone(p)) out.push("1. Primary: " + p);
+        if (nonNone(s)) out.push("2. Secondary: " + s);
+        if (String(notes || "").trim()) out.push("Notes: " + notes);
+        return out.join('\n');
+      }
+      return null;
+    };
+
+    const loggingSchema = [
+      "event schema (fields to log)",
+      "• trace_id, span_id, parent_span_id",
+      "• timestamp_start, timestamp_end, latency_ms",
+      "• route_id, prompt_id, model_name, model_version",
+      "• input_tokens, output_tokens, total_tokens, cost_usd",
+      "• user_segment, locale, device, geo",
+      "• sampling: K=" + (K || "K") + ", temperature=" + (temperature || "T"),
+      "• quality: " + (key_metrics ? "see Key metrics" : "define"),
+      "• uncertainty: " + inlineFeature(uncertainty_primary, uncertainty_secondary),
+      "• contradiction and grounding: " + inlineFeature(checks_primary, checks_secondary),
+      "• safety: " + inlineFeature(safety_primary, safety_secondary),
+      "• citations: sources[], coverage_pct, used_ctx_tokens",
+      "• decision: selected_candidate, abstained(bool), reason, grader_scores{}",
+      "• error: error_type, message, stack(optional)",
+      "• annotations: deployment_id, prompt_version, policy_version, eval_run_id"
+    ].join('\n');
+
+    const alertExamples = [
+      "Alert rules examples",
+      "• Latency p95 > threshold_ms for 5 min -> WARN",
+      "• Cost per 1k tokens > budget -> WARN",
+      "• Failure rate > x% for schema or policy -> PAGE",
+      "• Faithfulness < 0.70 for 10+ samples -> INVESTIGATE",
+      "• NLI contradiction rate > 0 -> BLOCK or AUTO REWRITE",
+      "• PII detector hit -> REDACT and ESCALATE",
+      "• High entropy -> ABSTAIN or SAMPLE+1",
+      "• Slice regression vs previous version > delta -> ALERT"
+    ].join('\n');
+
+    const dashboard = [
+      "Dashboard blueprint",
+      "• Top KPIs: latency p50 and p95, cost per 1k tokens, pass rate, abstain rate, CSAT if any",
+      "• Quality tiles: faithfulness, answer relevancy, contradiction rate, grounding coverage",
+      "• Uncertainty tiles: semantic entropy, disagreement rate, min logprob",
+      "• Safety tiles: PII hits, jailbreak attempts, policy blocks",
+      "• Operational tiles: traffic by route, model version, region, device",
+      "• Slices: " + (slices || "route, model, user segment, locale, time"),
+      "• Drilldowns: example traces with sources, diffs across versions",
+      "• Annotations: deployments, prompt changes, model upgrades"
+    ].join('\n');
+
+    const tests = [
+      "Table-driven tests minimum 8",
+      "Case | Input | Expected | Why",
+      "1 | Normal route, compliant output | PASS; no alerts | Baseline",
+      "2 | High latency | WARN latency p95 | SLO guard",
+      "3 | Schema violation | FAIL; block; alert error | Guardrail sanity",
+      "4 | Contradiction with source | FAIL; rewrite | NLI check",
+      "5 | Low faithfulness RAG | ALERT; mark for review | Grounding",
+      "6 | High semantic entropy | ABSTAIN; sample+1 | Uncertainty gate",
+      "7 | PII detected | REDACT; page on-call | Safety",
+      "8 | Cost spike | WARN budget | Spend control"
+    ].join('\n');
+
+    return join([
+      "LLM Telemetry and Observability Plan - Instruction Set",
+      "origin:langchain.com",
+      "origin:arize.com",
+      "origin:docs.ragas.io",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      key_metrics && ("Key metrics:\n" + key_metrics),
+      blockFeature("Uncertainty signals selected", uncertainty_primary, uncertainty_secondary, uncertainty_notes),
+      blockFeature("Contradiction and grounding checks selected", checks_primary, checks_secondary, checks_notes),
+      blockFeature("PII and safety checks selected", safety_primary, safety_secondary, safety_notes),
+      thresholds && ("Alert thresholds:\n" + thresholds),
+      (K || temperature || sampling_notes) && ("Sampling strategy:\n• K = " + (K || "—") + "\n• temperature = " + (temperature || "—") + (sampling_notes ? ("\nNotes: " + sampling_notes) : "")),
+      blockFeature("Logging destinations selected", destination_primary, destination_secondary, destinations_notes),
+
+      "- - -",
+      "ROLE",
+      "You are a neutral, reliability focused observability lead. Define what to log, how to compute scores, when to alert or abstain, and how to visualize performance over time and across slices.",
+
+      "OBJECTIVE",
+      "Produce a Logging Spec, Alert Rules, and a Dashboard Blueprint before any output is shown to users. Prioritize people first safety and truthfulness.",
+
+      "=== OUTPUT A - LOGGING SPEC ===",
+      loggingSchema,
+
+      "=== OUTPUT B - METRICS AND SIGNAL DEFINITIONS ===",
+      "For each selected metric or signal, define:",
+      "• Name | Definition | Formula or Computation | Window | Source trace or span or test | Owner | Notes",
+      blockFeature("Uncertainty signals", uncertainty_primary, uncertainty_secondary, uncertainty_notes),
+      blockFeature("Contradiction and grounding checks", checks_primary, checks_secondary, checks_notes),
+      blockFeature("PII and safety checks", safety_primary, safety_secondary, safety_notes),
+
+      "=== OUTPUT C - ALERT RULES AND RESPONSES ===",
+      alertExamples,
+      "• Include thresholds from Alert thresholds and map to actions: WARN log and dashboard, ALERT page, BLOCK auto abstain, RETRY sample more, REWRITE invoke fixer.",
+      "• Define cooldowns, aggregation windows, and escalation policy.",
+
+      "=== OUTPUT D - SAMPLING AND SELECTION POLICY ===",
+      "• K = " + (K || "configure") + ", temperature = " + (temperature || "configure"),
+      "• Selection rule: majority vote or grader score or weighted sum. Include a tie breaker policy.",
+      "• Abstention triggers: high entropy, contradictions, low faithfulness, safety hits.",
+      "• Log all candidates and the winning rationale for audit.",
+
+      "=== OUTPUT E - DASHBOARD BLUEPRINT ===",
+      dashboard,
+
+      "=== OUTPUT F - DATA RETENTION AND PRIVACY NOTES ===",
+      "• PII handling: redact at source, store hashes or tokens only, enforce access controls.",
+      "• Retention windows: raw prompts and outputs versus aggregated stats.",
+      "• Audit trail: who changed prompts and thresholds, version annotations.",
+
+      "=== OUTPUT G - TEST PLAN ===",
+      tests,
+
+      "=== OUTPUT H - NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner or role generic ok, a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "LLM Telemetry and Observability Plan - logging spec, alert rules, dashboard blueprint, uncertainty, grounding, safety, sampling policy, slices, OpenTelemetry. Categories aligned to analytics, measurement, reliability, quality, safety, privacy, policy, governance, operations, testing, evaluation, experimentation, risk, data, architecture."
+  }
+},
+
+{
+  id: "rag_grounding_faithfulness_evaluator",
+  slug: "rag-grounding-faithfulness-evaluator",
+  label: "RAG Grounding & Faithfulness Evaluator",
+  kind: "framework",
+  // categories aligned to our categories_registry (kebab-case nouns)
+  categories: [
+    "evaluation",
+    "testing",
+    "quality",
+    "measurement",
+    "analytics",
+    "data",
+    "reliability",
+    "governance"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:rag",
+    "use:governance",
+    "level:advanced",
+    "topic:faithfulness",
+    "topic:grounding",
+    "topic:evals",
+    "topic:nli",
+    "topic:retrieval",
+    "origin:docs.ragas.io",
+    "origin:arize.com",
+    "origin:langchain.com"
+  ],
+  use_cases: [
+    "Evaluate whether answers are grounded in retrieved sources and free of contradictions.",
+    "Standardize faithfulness, answer relevancy, context precision/recall, and utilization metrics with clear thresholds.",
+    "Generate failure exemplars and a taxonomy for prompt and retrieval fixes (chunking, top-k, reranking, freshness).",
+    "Compare model/prompt/retriever versions with slice-aware reporting for regression detection.",
+    "Specify an evaluation mode (offline batch, shadow, canary, A/B) and an annotation strategy (model-graded, human, hybrid)."
+  ],
+  boosters: [
+    "Emit a full eval runbook, metric table, thresholds, and a labeling guide with examples.",
+    "Include operator steps for reproducibility: seeds, configs, dataset splits, and storage locations.",
+    "Attach ≥3 failure exemplars with suggested retrieval/prompt fixes and expected impact.",
+    "State an annotation strategy with IAA (inter-annotator agreement) targets and adjudication rules.",
+    "Support citation requirements (URLs and/or span offsets) and verify evidence coverage."
+  ],
+  definition:
+    "A production-grade evaluation plan for RAG systems that measures groundedness and faithfulness against retrieved or gold sources. It defines metrics and pass thresholds, selects an evaluation mode and annotation strategy, sets citation requirements, and produces a reproducible runbook with failure exemplars and fix hints so teams can improve retrieval and prompts while monitoring regressions over time.",
+  help:
+    "Describe your retrieval setup and evaluation set. Choose primary/secondary metrics, thresholds, evaluation mode, citation requirements, and annotation strategy (with IAA targets). The template outputs a spec that engineers or common RAG eval libraries can run reproducibly.",
+  fields: [
+    {
+      label: "Retrieval config summary",
+      desc: "Describe retriever type and key knobs: top-k, filters, chunking/overlap, embeddings, reranking, freshness, etc.",
+      key: "retrieval",
+      ph: "BM25→E5 hybrid, top-k=8, chunk=512/overlap=64, date<=180d, reranker=monoT5",
+      type: "textarea"
+    },
+    {
+      label: "Gold sources (optional)",
+      desc: "Paste gold/reference passages or links that answers should rely on. Leave blank if you only have retrieved context.",
+      key: "gold",
+      ph: "1–5 gold passages or links; one per line.",
+      type: "textarea"
+    },
+    {
+      label: "Evaluation set",
+      desc: "Summarize the eval items: count, domains, difficulty, and how they were sampled.",
+      key: "evalset",
+      ph: "200 Q/A across docs A–D; 30% how-to, 40% definitions, 30% policy; stratified by product area.",
+      type: "textarea"
+    },
+
+    {
+      label: "Primary metric",
+      desc: "Pick the main metric to optimize and gate on. A rationale sentence will be generated.",
+      key: "primary_metric",
+      type: "select",
+      options: [
+        "None",
+        "Faithfulness (answer supported by sources)",
+        "Answer relevancy (answer addresses the question)",
+        "Context precision (sources are focused, low noise)",
+        "Context recall (sources include needed facts)",
+        "Context utilization (answer cites/uses context)",
+        "Other"
+      ],
+      ph: "Choose the primary metric"
+    },
+    {
+      label: "Secondary metric",
+      desc: "Pick a secondary metric to watch for tie-breaks and health checks.",
+      key: "secondary_metric",
+      type: "select",
+      options: [
+        "None",
+        "Faithfulness (answer supported by sources)",
+        "Answer relevancy (answer addresses the question)",
+        "Context precision (sources are focused, low noise)",
+        "Context recall (sources include needed facts)",
+        "Context utilization (answer cites/uses context)",
+        "Other"
+      ],
+      ph: "Choose the secondary metric or None"
+    },
+    {
+      label: "Additional metrics / caveats",
+      desc: "Add extra measurements or constraints (e.g., novelty handling, multilingual, calibration tests).",
+      key: "metrics_extra",
+      ph: "e.g., calibration curve; multilingual robustness; novelty penalty; domain-specific rubric notes.",
+      type: "textarea"
+    },
+    {
+      label: "Pass thresholds",
+      desc: "Define numeric or rubric thresholds for pass/fail and alerting, including subgroup cutoffs by domain/locale.",
+      key: "thresholds",
+      ph: "Faithfulness ≥ 0.80; Answer relevancy ≥ 0.75; Context precision ≥ 0.60; fail if contradiction>0.",
+      type: "textarea"
+    },
+    {
+      label: "Error labeling guide",
+      desc: "Explain how to label errors (hallucination, off-topic, missing citation, partial support, contradiction, outdated source).",
+      key: "labels",
+      ph: "Label → Definition → Example → Fix hint. Include edge cases.",
+      type: "textarea"
+    },
+
+    {
+      label: "Evaluation mode",
+      desc: "Where and how to run the evaluation.",
+      key: "eval_mode",
+      type: "select",
+      options: [
+        "None",
+        "Offline batch",
+        "Shadow traffic (read-only)",
+        "Online canary (1–5%)",
+        "Online A/B (split)",
+        "Other"
+      ],
+      ph: "Pick an evaluation mode"
+    },
+    {
+      label: "Evaluation notes",
+      desc: "Add any constraints, traffic selection details, or rollout safeguards for the chosen mode.",
+      key: "eval_notes",
+      ph: "e.g., shadow only for help-center routes; canary 2% during low-traffic hours; rollback on faithfulness drop >5%.",
+      type: "textarea"
+    },
+
+    {
+      label: "Citation requirement",
+      desc: "State if answers must cite sources and at what granularity.",
+      key: "citation_requirement",
+      type: "select",
+      options: [
+        "None",
+        "Required: URL only",
+        "Required: span offsets",
+        "Required: URLs + spans",
+        "Optional",
+        "Other"
+      ],
+      ph: "Pick a citation requirement"
+    },
+    {
+      label: "Citation notes",
+      desc: "Specify citation style, formatting, and coverage rules.",
+      key: "citation_notes",
+      ph: "e.g., numeric refs [1], [2]; per-claim spans; coverage ≥60% of answer tokens.",
+      type: "textarea"
+    },
+
+    {
+      label: "Annotation strategy",
+      desc: "How labels/grades are produced.",
+      key: "annotation_strategy",
+      type: "select",
+      options: [
+        "None",
+        "Model-graded (automatic)",
+        "Human-only",
+        "Hybrid (model pregrade + human adjudication)",
+        "Other"
+      ],
+      ph: "Pick an annotation strategy"
+    },
+    {
+      label: "IAA target (inter-annotator agreement)",
+      desc: "Target agreement level for human raters (Cohen’s κ or Krippendorff’s α).",
+      key: "iaa_target",
+      type: "select",
+      options: [
+        "None",
+        "Light (κ≥0.60)",
+        "Moderate (κ≥0.70)",
+        "High (κ≥0.80)",
+        "Other"
+      ],
+      ph: "Choose an agreement target or None"
+    },
+    {
+      label: "Annotation notes",
+      desc: "Recruitment, training, adjudication, and spot-check procedures.",
+      key: "annotation_notes",
+      ph: "e.g., 2 raters + 1 adjudicator; weekly calibration; blind A/B; spot-check 10% of items.",
+      type: "textarea"
+    },
+
+    {
+      label: "Sampling — number of candidates (K)",
+      desc: "How many candidates to generate per item for evaluation or voting. A rationale sentence will be included.",
+      key: "K",
+      type: "select",
+      options: ["None", "1", "2", "3", "4", "5", "6", "Other"],
+      ph: "Pick K (e.g., 3) or None to inherit"
+    },
+    {
+      label: "Sampling — temperature",
+      desc: "Temperature for candidate diversity. A rationale sentence will be included.",
+      key: "temperature",
+      type: "select",
+      options: ["None", "0.0", "0.2", "0.4", "0.7", "1.0", "Other"],
+      ph: "Pick temperature (e.g., 0.2) or None to inherit"
+    }
+  ],
+  template: ({
+    retrieval, gold, evalset,
+    primary_metric, secondary_metric, metrics_extra, thresholds, labels,
+    eval_mode, eval_notes,
+    citation_requirement, citation_notes,
+    annotation_strategy, iaa_target, annotation_notes,
+    K, temperature,
+    ctx, style, tone
+  }) => {
+    // helpers (no nested backticks)
+    const bullet = (s) => String(s || "").split(/\n+/).map(x=>x.trim()).filter(Boolean).map((x,i)=> (i+1)+". "+x).join('\n');
+    const para = (label, v) => v ? (label + ":\n" + v) : null;
+    const list = (label, v) => v ? (label + ":\n" + bullet(v)) : null;
+    const join = (arr) => arr.filter(Boolean).join('\n');
+    const explainMetric = (m, role="Primary") => {
+      switch (m) {
+        case "Faithfulness (answer supported by sources)":
+          return `${role} metric = Faithfulness: prioritize whether each answer claim is entailed by the provided sources.`;
+        case "Answer relevancy (answer addresses the question)":
+          return `${role} metric = Answer relevancy: ensure the answer directly addresses the user question without digressions.`;
+        case "Context precision (sources are focused, low noise)":
+          return `${role} metric = Context precision: reward retrieval that minimizes noise and keeps passages tightly related.`;
+        case "Context recall (sources include needed facts)":
+          return `${role} metric = Context recall: verify that retrieved context contains the facts needed to answer correctly.`;
+        case "Context utilization (answer cites/uses context)":
+          return `${role} metric = Context utilization: favor answers that correctly cite and use the retrieved context.`;
+        case "Other":
+          return `${role} metric = Other: define in thresholds/notes.`;
+        default:
+          return `${role} metric = None: rely on thresholds across metrics to determine pass/fail.`;
+      }
+    };
+    const explainK = (v) => {
+      switch (v) {
+        case "1": return "K=1: single-shot evaluation; fastest but least robust to variance.";
+        case "2": return "K=2: enables basic disagreement checks.";
+        case "3": return "K=3: supports simple majority voting and exemplar mining.";
+        case "4": return "K=4: more diversity for semantic-entropy style diagnostics.";
+        case "5": return "K=5: stronger self-consistency signals at higher cost.";
+        case "6": return "K=6: maximizes disagreement detection in small evals.";
+        case "Other": return "K=Other: specify in notes or config.";
+        default: return "K not specified: inherit system default.";
+      }
+    };
+    const explainT = (v) => {
+      switch (v) {
+        case "0.0": return "Temperature 0.0: deterministic outputs for reproducible regression testing.";
+        case "0.2": return "Temperature 0.2: low diversity; stable phrasing with minor variation.";
+        case "0.4": return "Temperature 0.4: moderate diversity; balances variety and control.";
+        case "0.7": return "Temperature 0.7: high diversity; useful for mining alternative phrasings and errors.";
+        case "1.0": return "Temperature 1.0: very high diversity; exploratory runs with greater variance.";
+        case "Other": return "Temperature = Other: specify in notes or config.";
+        default: return "Temperature not specified: inherit system default.";
+      }
+    };
+    const explainMode = (m) => {
+      switch (m) {
+        case "Offline batch": return "Evaluation mode = Offline batch: run on static datasets; safest and most reproducible.";
+        case "Shadow traffic (read-only)": return "Evaluation mode = Shadow traffic: score live requests without affecting user responses.";
+        case "Online canary (1–5%)": return "Evaluation mode = Online canary: expose a small percentage of traffic with strict rollback guards.";
+        case "Online A/B (split)": return "Evaluation mode = Online A/B: compare variants with significance tests and user-impact KPIs.";
+        case "Other": return "Evaluation mode = Other: define rollout and safety checks in notes.";
+        default: return "Evaluation mode = None: default to offline batch unless specified.";
+      }
+    };
+    const explainCite = (c) => {
+      switch (c) {
+        case "Required: URL only": return "Citation requirement: include source URLs for claims.";
+        case "Required: span offsets": return "Citation requirement: include span offsets into retrieved passages per claim.";
+        case "Required: URLs + spans": return "Citation requirement: include both URLs and span offsets per claim.";
+        case "Optional": return "Citation requirement: citations encouraged but not required.";
+        case "Other": return "Citation requirement: custom; see notes.";
+        default: return "Citation requirement: None.";
+      }
+    };
+    const explainAnn = (a) => {
+      switch (a) {
+        case "Model-graded (automatic)": return "Annotation strategy: model-graded; use rubric-aligned LLM grading with spot-checks.";
+        case "Human-only": return "Annotation strategy: human-only; rely on trained raters with adjudication.";
+        case "Hybrid (model pregrade + human adjudication)": return "Annotation strategy: hybrid; model pregrades, humans adjudicate disagreements.";
+        case "Other": return "Annotation strategy: custom; define in notes.";
+        default: return "Annotation strategy: None.";
+      }
+    };
+    const explainIAA = (x) => {
+      switch (x) {
+        case "Light (κ≥0.60)": return "IAA target: Light agreement (κ≥0.60).";
+        case "Moderate (κ≥0.70)": return "IAA target: Moderate agreement (κ≥0.70).";
+        case "High (κ≥0.80)": return "IAA target: High agreement (κ≥0.80).";
+        case "Other": return "IAA target: custom; specify metric and threshold.";
+        default: return "IAA target: None specified.";
+      }
+    };
+
+    return join([
+      "RAG Grounding & Faithfulness Evaluator — Instruction Set",
+      "origin:docs.ragas.io",
+      "origin:arize.com",
+      "origin:langchain.com",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      para("Retrieval config summary", retrieval),
+      para("Gold sources (optional)", gold),
+      para("Evaluation set", evalset),
+      "Selections & rationale:",
+      "• " + explainMetric(primary_metric, "Primary"),
+      "• " + explainMetric(secondary_metric, "Secondary"),
+      "• " + explainMode(eval_mode),
+      "• " + explainCite(citation_requirement),
+      "• " + explainAnn(annotation_strategy),
+      "• " + explainIAA(iaa_target),
+      "• " + explainK(K),
+      "• " + explainT(temperature),
+      metrics_extra && ("Additional metrics / caveats:\n" + metrics_extra),
+      eval_notes && ("Evaluation notes:\n" + eval_notes),
+      citation_notes && ("Citation notes:\n" + citation_notes),
+      annotation_notes && ("Annotation notes:\n" + annotation_notes),
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, evidence-aware evaluation lead. Assess groundedness and faithfulness, produce actionable failures, and specify fixes that improve retrieval and prompts while guarding user impact.",
+
+      "OBJECTIVE",
+      "Produce an Eval Runbook + Metric Table + Pass Thresholds + Failure Exemplars so teams can reproduce, monitor, and improve groundedness over time.",
+
+      "=== OUTPUT A — EVAL RUNBOOK ===",
+      "1) Dataset: describe sampling, size, domains; include random seed and dataset hash.",
+      "2) Retrieval settings: restate the provided summary; freeze key knobs for comparability.",
+      "3) Generation settings: model, version, max tokens, K=" + (K || "unspecified") + ", temperature=" + (temperature || "unspecified") + ".",
+      "4) Scoring pipeline: compute metrics in this order — faithfulness → answer relevancy → context precision/recall → context utilization.",
+      "5) Decision policy: gate on primary metric; use secondary metric as tie-breaker; apply thresholds for pass/fail and alerts.",
+      "6) Mode & safety: " + explainMode(eval_mode) + (eval_notes ? " " + eval_notes : ""),
+      "7) Citations: " + explainCite(citation_requirement) + (citation_notes ? " " + citation_notes : ""),
+      "8) Annotation: " + explainAnn(annotation_strategy) + " " + explainIAA(iaa_target) + (annotation_notes ? " " + annotation_notes : ""),
+      "9) Repro: commands/notebooks; where to store traces, labels, and reports; version the config.",
+
+      "=== OUTPUT B — METRIC TABLE (SPEC) ===",
+      "Metric | Definition | Formula/Computation | Pass Threshold | Window | Notes",
+      "Faithfulness | Is each claim supported by sources? | NLI/entailment or ragas-style scoring | " + (thresholds ? "See thresholds section" : "≥0.80") + " | per-item | Penalize unsupported claims.",
+      "Answer relevancy | Does the answer address the question? | similarity/classifier rubric | See thresholds | per-item | Penalize off-topic content.",
+      "Context precision | How focused is the retrieved context? | relevant_context / total_context | See thresholds | per-item | Penalize noisy retrieval.",
+      "Context recall | Do sources include needed facts? | relevant_needed / total_needed | See thresholds | per-item | Penalize missing facts.",
+      "Context utilization | Does the answer use the context? | cited_used / available_context | See thresholds | per-item | Penalize ignoring context.",
+
+      "=== OUTPUT C — PASS THRESHOLDS & ALERTS ===",
+      (thresholds || "Define thresholds for each metric and subgroup (domain/locale). Block on contradiction>0 or faithfulness below floor; warn on degraded precision/recall; route failures to labeling."),
+
+      "=== OUTPUT D — ERROR LABELING GUIDE ===",
+      (labels || "Provide labels with definitions and examples: Hallucination, Off-topic, Missing citation, Partial support, Contradiction, Outdated source. Include fix hints per label."),
+
+      "=== OUTPUT E — FAILURE EXEMPLARS (≥3) ===",
+      "Example | Question | Answer (excerpt) | Source(s) | Metrics | Label | Likely Cause | Suggested Fix",
+      "1 |  |  |  |  |  |  |  ",
+      "2 |  |  |  |  |  |  |  ",
+      "3 |  |  |  |  |  |  |  ",
+
+      "=== OUTPUT F — PROMPT & RETRIEVAL FIXES ===",
+      "• Prompt: require citations per-claim; request source spans; enforce claim-by-claim structure.",
+      "• Retrieval: tune top-k; add reranker; adjust chunking/overlap; add recency filter; expand/curate domains.",
+      "• Monitoring: track metric trends per route/model; annotate deployments; run pre/post diff.",
+
+      "=== OUTPUT G — REPRODUCTION & REPORTING ===",
+      "• Save raw traces with sources and scores; version configs; export CSV/JSON reports.",
+      "• Include a one-page summary: averages, distributions, worst cases, and changes vs last run.",
+
+      "=== OUTPUT H — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "RAG Grounding & Faithfulness Evaluator — runbook, metrics, thresholds, failure exemplars; fields: retrieval config, gold sources, eval set, primary/secondary metrics, thresholds, evaluation mode, citation requirements, annotation strategy, IAA target, K, temperature."
+  }
+},
+
+{
+  id: "self_consistency_semantic_entropy_gate",
+  slug: "self-consistency-semantic-entropy-gate",
+  label: "Self-Consistency & Semantic-Entropy Gate",
+  kind: "framework",
+  // categories aligned to categories_registry.yml (lowercase, kebab-case nouns)
+  categories: [
+    "evaluation",
+    "testing",
+    "quality",
+    "reliability",
+    "measurement",
+    "analytics",
+    "operations",
+    "safety",
+    "risk",
+    "governance"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:pre-display-check",
+    "use:gatekeeping",
+    "level:advanced",
+    "topic:self-consistency",
+    "topic:semantic-entropy",
+    "topic:uncertainty",
+    "topic:abstention",
+    "topic:ensemble",
+    "origin:arxiv.org",
+    "origin:deepmind.com",
+    "origin:github.com"
+  ],
+  use_cases: [
+    "Run a sample-and-check gate to catch hallucinations or drift before display on high-risk routes.",
+    "Decide abstain, retry, or proceed using agreement signals and semantic-entropy thresholds.",
+    "Create a reproducible, route-level pre-display policy with clear tie-break and revision rules.",
+    "Instrument consistent logging for audits and incident reviews across models and versions.",
+    "Tune exploration versus determinism (temperature, top-p) while keeping user-visible risk low."
+  ],
+  boosters: [
+    "Emit explicit sentences explaining each selection (K, temperature, top-p, agreement rule, entropy class, abstain/revision policy, tie-break).",
+    "Return a compact score table plus a final decision (select or abstain) with human-readable reasoning.",
+    "Log a minimal revision trace whenever policy triggers retries or rewrites (who, what, why, outcome).",
+    "Provide table-driven tests to validate edge conditions (low agreement, high entropy, ties, strict vs lenient routes).",
+    "Document safe-user messaging for abstentions, including clarifying-question templates."
+  ],
+  definition:
+    "A production-grade pre-display gate that samples K candidates, measures self-consistency and semantic entropy, and then selects, abstains, or revises according to policy. It balances exploration (temperature, top-p) with reliability, explains decisions in plain language, and logs revisions for audits.",
+  help:
+    "Describe the protected route, then choose K, diversity knobs (temperature, top-p), an agreement rule, an entropy strictness, and abstain/revision/tie-break policies. Every select offers None and Other. Use notes fields to specify numeric thresholds or custom logic. The output block computes scores, explains choices, and produces a final decision.",
+  fields: [
+    {
+      label: "Route / use-case summary",
+      desc: "Describe the prompt route or task this gate protects so scoring can be tuned per risk profile.",
+      key: "route",
+      ph: "e.g., FAQ answerer for billing; medical policy explainer; product search summarizer",
+      type: "textarea"
+    },
+    {
+      label: "K — number of samples",
+      desc: "How many candidates to generate per item. Larger K improves robustness but increases cost.",
+      key: "K",
+      type: "select",
+      options: ["None", "1", "2", "3", "4", "5", "6", "Other"],
+      ph: "Pick K (e.g., 3 for simple majority)"
+    },
+    {
+      label: "Temperature",
+      desc: "Controls diversity of candidates. Lower is more deterministic; higher explores more alternatives.",
+      key: "temperature",
+      type: "select",
+      options: ["None", "0.0", "0.2", "0.4", "0.7", "1.0", "Other"],
+      ph: "Pick temperature (0.0 = deterministic)"
+    },
+    {
+      label: "Top-p (nucleus sampling)",
+      desc: "Caps cumulative probability mass of token choices to control tail exploration.",
+      key: "top_p",
+      type: "select",
+      options: ["None", "0.5", "0.7", "0.9", "0.95", "Other"],
+      ph: "Pick top-p cutoff (e.g., 0.9)"
+    },
+    {
+      label: "Agreement rule",
+      desc: "How to determine agreement across K candidates. Sets the main selection criterion.",
+      key: "agreement",
+      type: "select",
+      options: [
+        "None",
+        "Majority vote (simple)",
+        "Thresholded agreement (≥70%)",
+        "Unanimity (strict)",
+        "Grader score wins (LLM-as-judge)",
+        "Other"
+      ],
+      ph: "Pick the agreement rule"
+    },
+    {
+      label: "Agreement notes",
+      desc: "Numeric thresholds or custom definitions of agreement for this route.",
+      key: "agreement_notes",
+      ph: "e.g., require ≥70% lexical match on normalized spans; grader score ≥0.8 if tie.",
+      type: "textarea"
+    },
+    {
+      label: "Semantic-entropy threshold",
+      desc: "Pick a strictness class for semantic entropy. Use notes for numeric targets.",
+      key: "entropy",
+      type: "select",
+      options: [
+        "None",
+        "Strict (low tolerance for ambiguity)",
+        "Balanced (default gate)",
+        "Lenient (exploratory routes)",
+        "Other"
+      ],
+      ph: "Choose gate strictness"
+    },
+    {
+      label: "Entropy notes",
+      desc: "Numeric entropy targets or computation details (e.g., clustering method, window).",
+      key: "entropy_notes",
+      ph: "e.g., H ≤ 1.0 for medical; H ≤ 1.3 for finance; cluster embeddings via k-means (k=5).",
+      type: "textarea"
+    },
+    {
+      label: "Abstain policy",
+      desc: "What to do when agreement/entropy fails. Defines user-visible behavior.",
+      key: "abstain_policy",
+      type: "select",
+      options: [
+        "None",
+        "Never abstain (log only)",
+        "Abstain and ask a clarifying question",
+        "Abstain and route to human",
+        "Abstain with safe fallback message",
+        "Other"
+      ],
+      ph: "Pick abstain behavior"
+    },
+    {
+      label: "Abstain notes",
+      desc: "Messaging templates, routing rules, or exceptions for abstentions.",
+      key: "abstain_notes",
+      ph: "e.g., show neutral message + one clarifying question; route medical to clinician queue.",
+      type: "textarea"
+    },
+    {
+      label: "Revision policy (on failure)",
+      desc: "Automated step to try before abstaining or after an abstention.",
+      key: "revision_policy",
+      type: "select",
+      options: [
+        "None",
+        "Retry with lower temperature",
+        "Re-prompt with fixlist (short)",
+        "Retrieve more context (if RAG)",
+        "Reduce length / increase focus",
+        "Other"
+      ],
+      ph: "Choose how to revise on failure"
+    },
+    {
+      label: "Revision notes",
+      desc: "Fixlist details or retrieval settings to use during revision.",
+      key: "revision_notes",
+      ph: "e.g., add claim-by-claim rubric; increase top-k from 8→12; reranker monoT5.",
+      type: "textarea"
+    },
+    {
+      label: "Tie-break strategy",
+      desc: "If rules tie, how to choose the final candidate.",
+      key: "tiebreak",
+      type: "select",
+      options: [
+        "None",
+        "Grader score wins",
+        "Lowest entropy wins",
+        "Highest agreement with citations wins",
+        "Prefer abstention on tie",
+        "Other"
+      ],
+      ph: "Pick the tie-break"
+    },
+    {
+      label: "Tie-break notes",
+      desc: "Extra tie-resolution logic and thresholds.",
+      key: "tiebreak_notes",
+      ph: "e.g., if grader Δ<0.05, pick lowest entropy with ≥60% citation coverage.",
+      type: "textarea"
+    },
+    {
+      label: "Additional notes & numeric thresholds",
+      desc: "Global caveats and hard numbers that refine selections.",
+      key: "notes",
+      ph: "Require ≥70% agreement; semantic entropy H≤1.0 for critical routes; unblock only if RAG recall≥0.8.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    route, K, temperature, top_p, agreement, agreement_notes,
+    entropy, entropy_notes, abstain_policy, abstain_notes,
+    revision_policy, revision_notes, tiebreak, tiebreak_notes, notes,
+    ctx, style, tone
+  }) => {
+    // helpers (no nested backticks)
+    const join = (a) => a.filter(Boolean).join('\n');
+    const nonNone = (v) => {
+      const s = String(v || "").trim();
+      return s && s.toLowerCase() !== "none" ? s : "";
+    };
+    const maybe = (label, v) => nonNone(v) ? `${label}: ${v}` : null;
+
+    const explainK = (v) => {
+      switch (v) {
+        case "1": return "Sampling K=1: single-shot check; fastest but least robust to variance.";
+        case "2": return "Sampling K=2: enables basic disagreement detection with modest overhead.";
+        case "3": return "Sampling K=3: supports simple majority voting and reliable drift detection.";
+        case "4": return "Sampling K=4: increases diversity for entropy estimates at higher cost.";
+        case "5": return "Sampling K=5: strengthens self-consistency signals for risky routes.";
+        case "6": return "Sampling K=6: maximizes disagreement detection pre-display at the highest cost.";
+        case "Other": return "Sampling K=Other: see numeric details in notes.";
+        default:   return "Sampling K not specified: inherit system default for candidate generation.";
+      }
+    };
+    const explainT = (v) => {
+      switch (v) {
+        case "0.0": return "Temperature 0.0: deterministic outputs; best for strict gates and regressions.";
+        case "0.2": return "Temperature 0.2: low diversity; controlled variation for stable comparisons.";
+        case "0.4": return "Temperature 0.4: moderate diversity; balances exploration with control.";
+        case "0.7": return "Temperature 0.7: high diversity; useful for surfacing inconsistencies.";
+        case "1.0": return "Temperature 1.0: very high diversity; exploratory, higher entropy risk.";
+        case "Other": return "Temperature = Other: see details in notes.";
+        default:    return "Temperature not specified: inherit system default.";
+      }
+    };
+    const explainP = (v) => {
+      switch (v) {
+        case "0.5": return "Top-p 0.5: restricts token choices to the most likely half; strong control of tails.";
+        case "0.7": return "Top-p 0.7: moderate control; good for consistent phrasing.";
+        case "0.9": return "Top-p 0.9: common nucleus cutoff balancing fluency and variety.";
+        case "0.95":return "Top-p 0.95: broad exploration; higher entropy tolerance.";
+        case "Other":return "Top-p = Other: specify numeric cutoff in notes.";
+        default:    return "Top-p not specified: default nucleus (or top-k) applies.";
+      }
+    };
+    const explainAgreement = (v) => {
+      switch (v) {
+        case "Majority vote (simple)":
+          return "Agreement rule: simple majority—select the answer appearing most across K samples.";
+        case "Thresholded agreement (≥70%)":
+          return "Agreement rule: thresholded—require ≥70% match; otherwise trigger the failure path.";
+        case "Unanimity (strict)":
+          return "Agreement rule: unanimity—only proceed if all candidates agree on core claims.";
+        case "Grader score wins (LLM-as-judge)":
+          return "Agreement rule: grader-first—score candidates on a rubric and pick the highest, logging dissent.";
+        case "Other":
+          return "Agreement rule: custom—see agreement notes.";
+        default:
+          return "Agreement rule not specified: rely on entropy thresholds and tie-break policy.";
+      }
+    };
+    const explainEntropy = (v) => {
+      switch (v) {
+        case "Strict (low tolerance for ambiguity)":
+          return "Entropy gate: strict—block or revise when semantic entropy exceeds a low threshold.";
+        case "Balanced (default gate)":
+          return "Entropy gate: balanced—allow modest variability; block only when uncertainty persists.";
+        case "Lenient (exploratory routes)":
+          return "Entropy gate: lenient—optimize discovery; abstain mainly on extreme spikes.";
+        case "Other":
+          return "Entropy gate: custom—see entropy notes for numeric targets.";
+        default:
+          return "Entropy gate not specified: use route defaults or numeric values in notes.";
+      }
+    };
+    const explainAbstain = (v) => {
+      switch (v) {
+        case "Never abstain (log only)":
+          return "Abstain policy: never abstain—always pick a candidate, but log risks for review.";
+        case "Abstain and ask a clarifying question":
+          return "Abstain policy: ask a clarifying question to reduce uncertainty before retrying.";
+        case "Abstain and route to human":
+          return "Abstain policy: defer to a human reviewer when risk indicators trip.";
+        case "Abstain with safe fallback message":
+          return "Abstain policy: show a safe fallback message rather than a possibly wrong answer.";
+        case "Other":
+          return "Abstain policy: custom—see abstain notes.";
+        default:
+          return "Abstain policy not specified: default to logging only.";
+      }
+    };
+    const explainRevision = (v) => {
+      switch (v) {
+        case "Retry with lower temperature":
+          return "Revision policy: retry at lower temperature to reduce variance and improve agreement.";
+        case "Re-prompt with fixlist (short)":
+          return "Revision policy: re-prompt with a short fixlist targeting detected issues.";
+        case "Retrieve more context (if RAG)":
+          return "Revision policy: fetch more/better context to lower uncertainty before re-answering.";
+        case "Reduce length / increase focus":
+          return "Revision policy: shorten outputs and focus on core claims to limit drift.";
+        case "Other":
+          return "Revision policy: custom—see revision notes.";
+        default:
+          return "Revision policy not specified: no automated revision attempted.";
+      }
+    };
+    const explainTiebreak = (v) => {
+      switch (v) {
+        case "Grader score wins":
+          return "Tie-break: choose the candidate with the highest independent grader score.";
+        case "Lowest entropy wins":
+          return "Tie-break: pick the candidate with the lowest semantic-entropy footprint.";
+        case "Highest agreement with citations wins":
+          return "Tie-break: prefer the answer most consistent with others and best-cited.";
+        case "Prefer abstention on tie":
+          return "Tie-break: abstain when evidence is insufficient to choose confidently.";
+        case "Other":
+          return "Tie-break: custom—see tie-break notes.";
+        default:
+          return "Tie-break not specified: fall back to route default.";
+      }
+    };
+
+    return join([
+      "Self-Consistency & Semantic-Entropy Gate — Instruction Set",
+      "origin:arxiv.org",
+      "origin:deepmind.com",
+      "origin:github.com",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      route && ("Route / use-case:\n" + route),
+      "Selections & rationale:",
+      "• " + explainK(K),
+      "• " + explainT(temperature),
+      "• " + explainP(top_p),
+      "• " + explainAgreement(agreement),
+      maybe("• Agreement notes", agreement_notes),
+      "• " + explainEntropy(entropy),
+      maybe("• Entropy notes", entropy_notes),
+      "• " + explainAbstain(abstain_policy),
+      maybe("• Abstain notes", abstain_notes),
+      "• " + explainRevision(revision_policy),
+      maybe("• Revision notes", revision_notes),
+      "• " + explainTiebreak(tiebreak),
+      maybe("• Tie-break notes", tiebreak_notes),
+      notes && ("Additional notes & numeric thresholds:\n" + notes),
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, reliability-focused gatekeeper. Before any answer is displayed, compute self-consistency and semantic-entropy signals and decide: select, revise, or abstain. Be transparent and people-first in failure messaging.",
+
+      "OBJECTIVE",
+      "Produce Consistency Scores + Semantic Entropy + a Final Selection/Abstain Decision with clear reasoning and a minimal revision trace if triggered.",
+
+      "=== OUTPUT A — CONSISTENCY SCORES ===",
+      "Candidate | Normalized answer key | Pairwise agreement | Majority share | Grader score (if used)",
+      "(Compute pairwise agreement across K; summarize majority share and optional grader score.)",
+
+      "=== OUTPUT B — SEMANTIC ENTROPY ===",
+      "• Define how entropy was computed (e.g., cluster-based semantic diversity across K candidates).",
+      "• Report entropy value(s) and compare to the chosen gate strictness or numeric thresholds in notes.",
+
+      "=== OUTPUT C — DECISION ===",
+      "• If agreement and entropy meet thresholds: SELECT best candidate and state why.",
+      "• If they fail: apply the selected abstain/revision policy and state what triggered it.",
+      "• Always include a one-sentence, user-safe explanation when abstaining.",
+
+      "=== OUTPUT D — REVISION TRACE (IF APPLICABLE) ===",
+      "Step | Action | Reason | Outcome",
+      "1 |  |  |  ",
+
+      "=== OUTPUT E — LOGGING FIELDS ===",
+      "trace_id, route_id, model_version, K, temperature, top_p, agreement_rule, entropy_mode, abstain_policy, revision_policy, tiebreak, scores{}, entropy_value, decision, reason, elapsed_ms",
+
+      "=== OUTPUT F — TEST CASES (MIN 6) ===",
+      "Case | K,temp,top_p | Agreement | Entropy | Expected | Why",
+      "1 | 3,0.2,0.9 | majority | low | SELECT | Healthy baseline",
+      "2 | 3,0.7,0.95 | split | high | ABSTAIN→clarify | High uncertainty",
+      "3 | 2,0.4,0.9 | tie | low | TIE-BREAK rule | Verify resolver",
+      "4 | 5,0.4,0.9 | unanimous | very low | SELECT | Strong agreement",
+      "5 | 4,1.0,0.95 | majority | high | REVISE (policy) | Try fixlist/low-temp",
+      "6 | 3,0.2,0.9 | threshold<70% | med | ABSTAIN/fallback | Strict agreement",
+
+      "=== OUTPUT G — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "Self-Consistency & Semantic-Entropy Gate — pre-display sample-and-check; fields: K, temperature, top-p, agreement rule (+notes), entropy class (+notes), abstain policy (+notes), revision policy (+notes), tie-break (+notes); outputs: scores, entropy, decision, revision trace, tests."
+  }
+},
+
+{
+  id: "nli_contradiction_consistency_checker",
+  slug: "nli-contradiction-consistency-checker",
+  label: "NLI Contradiction & Consistency Checker",
+  kind: "framework",
+  // categories aligned to categories_registry.yml (kebab-case nouns)
+  categories: [
+    "evaluation",
+    "testing",
+    "quality",
+    "reliability",
+    "measurement",
+    "analytics",
+    "safety",
+    "governance",
+    "operations",
+    "risk"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:pre-display-check",
+    "use:gatekeeping",
+    "level:advanced",
+    "topic:nli",
+    "topic:contradiction",
+    "topic:entailment",
+    "topic:citation",
+    "origin:huggingface.co",
+    "origin:allenai.org"
+  ],
+  use_cases: [
+    "Block contradictory or unsupported answers before display on high-risk routes.",
+    "Verify answer↔source entailment and internal self-consistency with auditable tables.",
+    "Auto-generate targeted rewrite prompts tied to contradiction type and evidence spans.",
+    "Run slice-aware evaluations across model/prompt versions with stable thresholds.",
+    "Enforce citation and span-evidence requirements to improve trust and debuggability."
+  ],
+  boosters: [
+    "Emit a per-segment entail/neutral/contradict table, evidence spans, and an overall verdict.",
+    "Explain each select-field choice in full sentences for auditability and change logs.",
+    "Provide auto-rewrite prompts tied to contradiction type (source vs self) and citation policy.",
+    "Log structured fields for dashboards, alerts, and regression detection.",
+    "Include a compact policy summary: thresholds, neutral handling, tie-breaks, and escalation."
+  ],
+  definition:
+    "A production-grade instruction set that scores answer–source pairs with Natural Language Inference (NLI), detects internal contradictions, and applies a decision policy (proceed / rewrite / block) with explicit evidence spans, rewrite guidance, and structured logging for observability.",
+  help:
+    "Paste sources (premises) and the answer (hypothesis). Choose segmentation, model, thresholds, neutral/contradiction policies, citation requirements, and tie-breaks. The template outputs an entailment table, overall verdict, auto-rewrite prompts, and a logging spec suitable for engineering handoff or direct execution with common NLI tools.",
+  fields: [
+    {
+      label: "Route / task summary",
+      desc: "Describe the prompt route or artifact being checked so thresholds and policies match the risk.",
+      key: "route",
+      ph: "e.g., RAG policy answers (healthcare); FAQ route for billing; release-notes summarizer",
+      type: "textarea"
+    },
+    {
+      label: "Premises (sources)",
+      desc: "Paste the authoritative passages the answer should be grounded in. Use separators for multiple sources.",
+      key: "premises",
+      ph: "Source A…\n---\nSource B…",
+      type: "textarea"
+    },
+    {
+      label: "Hypothesis (answer to check)",
+      desc: "Paste the answer whose claims must be entailed by the sources and internally consistent.",
+      key: "hypothesis",
+      ph: "The draft answer or summary to validate",
+      type: "textarea"
+    },
+
+    {
+      label: "Segmentation method",
+      desc: "How to break text for pairwise NLI comparisons.",
+      key: "segmentation",
+      type: "select",
+      options: [
+        "None",
+        "Sentence-level segmentation",
+        "Claim extraction (short clauses)",
+        "Paragraph blocks",
+        "Other"
+      ],
+      ph: "Pick a segmentation approach"
+    },
+    {
+      label: "Segment overlap window",
+      desc: "Optional neighbor context to reduce boundary errors when scoring segments.",
+      key: "segment_overlap",
+      type: "select",
+      options: ["None", "±0 sentences", "±1 sentence", "±2 sentences", "Other"],
+      ph: "Pick overlap (e.g., ±1 sentence)"
+    },
+    {
+      label: "NLI model family",
+      desc: "Model style for orientation; runners may substitute equivalents.",
+      key: "model",
+      type: "select",
+      options: [
+        "None",
+        "RoBERTa-large-MNLI",
+        "DeBERTa-v3-MNLI",
+        "Decomposed-NLI (long-text)",
+        "Other"
+      ],
+      ph: "Choose a model family"
+    },
+    {
+      label: "Latency budget class",
+      desc: "Guides model/routing choices for the checker.",
+      key: "latency_budget",
+      type: "select",
+      options: [
+        "None",
+        "Tight (<300 ms)",
+        "Moderate (300–800 ms)",
+        "Flexible (>800 ms)",
+        "Other"
+      ],
+      ph: "Pick a latency class"
+    },
+
+    {
+      label: "NLI threshold policy",
+      desc: "Strictness for entail vs contradict. Use notes for exact numeric cutoffs.",
+      key: "threshold",
+      type: "select",
+      options: [
+        "None",
+        "Strict (entail ≥ 0.90; contradict > 0.00 blocks)",
+        "Balanced (entail ≥ 0.80; contradict ≥ 0.10 blocks)",
+        "Lenient (entail ≥ 0.70; contradict ≥ 0.20 blocks)",
+        "Other"
+      ],
+      ph: "Pick the strictness policy"
+    },
+    {
+      label: "Threshold notes",
+      desc: "Numeric cutoffs, per-slice overrides, or calibration details.",
+      key: "threshold_notes",
+      ph: "e.g., medical: entail ≥0.92; contradict>0 blocks; finance: entail ≥0.85; neutral≤0.10",
+      type: "textarea"
+    },
+
+    {
+      label: "“Neutral” policy",
+      desc: "Action when evidence is neutral (neither entailed nor contradicted).",
+      key: "neutral_policy",
+      type: "select",
+      options: [
+        "None",
+        "Treat neutral as unsupported → revise",
+        "Allow neutral with caution note",
+        "Flag neutral for human review",
+        "Ignore neutral (proceed)",
+        "Other"
+      ],
+      ph: "Choose how to treat neutral"
+    },
+
+    {
+      label: "Contradiction decision policy",
+      desc: "Action when contradiction is detected.",
+      key: "contradiction_policy",
+      type: "select",
+      options: [
+        "None",
+        "Block immediately (no display)",
+        "Rewrite once, then block if persists",
+        "Route to human reviewer",
+        "Warn only (log + proceed)",
+        "Other"
+      ],
+      ph: "Choose the action on contradiction"
+    },
+
+    {
+      label: "Self-contradiction method",
+      desc: "How to detect internal inconsistencies inside the hypothesis.",
+      key: "self_contradiction",
+      type: "select",
+      options: [
+        "None",
+        "Rule-based (negation/antonym patterns)",
+        "LLM consistency grader",
+        "Constraint graph check",
+        "Other"
+      ],
+      ph: "Pick a self-contradiction method"
+    },
+
+    {
+      label: "Citation requirement",
+      desc: "Whether answers must include citations and at what granularity.",
+      key: "citation_requirement",
+      type: "select",
+      options: [
+        "None",
+        "Required: URL only",
+        "Required: span offsets",
+        "Required: URLs + spans",
+        "Optional",
+        "Other"
+      ],
+      ph: "Pick a citation policy"
+    },
+    {
+      label: "Evidence window policy",
+      desc: "How to anchor evidence spans around matched text.",
+      key: "evidence_window",
+      type: "select",
+      options: ["None", "Exact span only", "±1 sentence", "±2 sentences", "Other"],
+      ph: "Choose evidence window"
+    },
+
+    {
+      label: "Decision tie-break rule",
+      desc: "Resolver when policies produce a tie.",
+      key: "tiebreak",
+      type: "select",
+      options: [
+        "None",
+        "Prefer higher entail score",
+        "Prefer evidence density (more cited tokens)",
+        "Prefer precision (fewer claims)",
+        "Prefer abstention on tie",
+        "Other"
+      ],
+      ph: "Choose a tie-break rule"
+    },
+
+    {
+      label: "Rewrite instruction (if contradiction)",
+      desc: "Plain-language guidance to generate an auto-rewrite when contradictions occur.",
+      key: "rewrite",
+      ph: "Rewrite contradicted segments only; cite exact spans; remove unsupported claims; keep tone consistent.",
+      type: "textarea"
+    },
+    {
+      label: "Rewrite style",
+      desc: "How aggressive the repair should be.",
+      key: "rewrite_style",
+      type: "select",
+      options: [
+        "None",
+        "Minimal edits (surgical)",
+        "Full rewrite (section)",
+        "Cite-and-quote rewrite",
+        "Other"
+      ],
+      ph: "Pick a rewrite style"
+    },
+    {
+      label: "Log fields & IDs",
+      desc: "Anything to include in logs for observability (IDs, route, model version, user segment).",
+      key: "logfields",
+      ph: "trace_id, route_id, model_version, user_segment, doc_ids[], item_id…",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    route, premises, hypothesis,
+    segmentation, segment_overlap, model, latency_budget,
+    threshold, threshold_notes, neutral_policy, contradiction_policy,
+    self_contradiction, citation_requirement, evidence_window, tiebreak,
+    rewrite, rewrite_style, logfields,
+    ctx, style, tone
+  }) => {
+    // helpers
+    const join = (arr) => arr.filter(Boolean).join('\n');
+    const para = (label, v) => v ? (label + ":\n" + v) : null;
+    const nonNone = (s) => {
+      const v = String(s || "").trim();
+      return v && v.toLowerCase() !== "none" ? v : "";
+    };
+    const explainSeg = (v) => {
+      switch (v) {
+        case "Sentence-level segmentation":
+          return "Segmentation: sentence-level — check each sentence against sources to catch fine-grained contradictions.";
+        case "Claim extraction (short clauses)":
+          return "Segmentation: claim extraction — score short clauses aligned to atomic factual statements.";
+        case "Paragraph blocks":
+          return "Segmentation: paragraph blocks — fewer, coarser comparisons for long answers.";
+        case "Other":
+          return "Segmentation: custom — see runner config for details.";
+        default:
+          return "Segmentation: none — treat the hypothesis as a single unit.";
+      }
+    };
+    const explainOverlap = (v) => {
+      switch (v) {
+        case "±0 sentences": return "Segment overlap: none — evaluate segments in isolation.";
+        case "±1 sentence":  return "Segment overlap: include immediate neighbors to reduce boundary errors.";
+        case "±2 sentences": return "Segment overlap: include two-sentence context for robust alignment.";
+        case "Other":        return "Segment overlap: custom — see config.";
+        default:             return "Segment overlap: not specified.";
+      }
+    };
+    const explainModel = (v) => {
+      switch (v) {
+        case "RoBERTa-large-MNLI":
+          return "Model family: RoBERTa-large-MNLI — strong general-purpose baseline.";
+        case "DeBERTa-v3-MNLI":
+          return "Model family: DeBERTa-v3-MNLI — improved contextual understanding for entailment/contradiction.";
+        case "Decomposed-NLI (long-text)":
+          return "Model family: Decomposed-NLI — handles lengthy contexts via sub-problems.";
+        case "Other":
+          return "Model family: custom — see runner details.";
+        default:
+          return "Model family: not specified — use system default.";
+      }
+    };
+    const explainLatency = (v) => {
+      switch (v) {
+        case "Tight (<300 ms)":         return "Latency budget: tight — prefer lightweight or cached NLI checks.";
+        case "Moderate (300–800 ms)":   return "Latency budget: moderate — allow mid-sized models or batched scoring.";
+        case "Flexible (>800 ms)":      return "Latency budget: flexible — long-context or decomposed NLI allowed.";
+        case "Other":                   return "Latency budget: custom — see ops policy.";
+        default:                        return "Latency budget: not specified.";
+      }
+    };
+    const explainThreshold = (v) => {
+      switch (v) {
+        case "Strict (entail ≥ 0.90; contradict > 0.00 blocks)":
+          return "Threshold policy: strict — very high entailment; any contradiction blocks.";
+        case "Balanced (entail ≥ 0.80; contradict ≥ 0.10 blocks)":
+          return "Threshold policy: balanced — production-friendly balance of sensitivity and precision.";
+        case "Lenient (entail ≥ 0.70; contradict ≥ 0.20 blocks)":
+          return "Threshold policy: lenient — exploratory routes tolerate more variance but block clear contradictions.";
+        case "Other":
+          return "Threshold policy: custom — see numeric cutoffs in notes.";
+        default:
+          return "Threshold policy: not specified — use route defaults.";
+      }
+    };
+    const explainNeutral = (v) => {
+      switch (v) {
+        case "Treat neutral as unsupported → revise":
+          return "Neutral policy: treat neutral as unsupported — revise or add citations before display.";
+        case "Allow neutral with caution note":
+          return "Neutral policy: allow with a caution note so readers understand uncertainty.";
+        case "Flag neutral for human review":
+          return "Neutral policy: flag for human review; no automatic changes.";
+        case "Ignore neutral (proceed)":
+          return "Neutral policy: ignore neutral — proceed for low-risk routes.";
+        case "Other":
+          return "Neutral policy: custom — see policy docs.";
+        default:
+          return "Neutral policy: not specified — fall back to route defaults.";
+      }
+    };
+    const explainContradiction = (v) => {
+      switch (v) {
+        case "Block immediately (no display)":
+          return "Contradiction policy: block immediately — contradictory content is not shown.";
+        case "Rewrite once, then block if persists":
+          return "Contradiction policy: attempt one auto-rewrite; block if contradiction remains.";
+        case "Route to human reviewer":
+          return "Contradiction policy: route to human for adjudication and repair.";
+        case "Warn only (log + proceed)":
+          return "Contradiction policy: warn only — log and proceed on low-stakes routes.";
+        case "Other":
+          return "Contradiction policy: custom — see policy notes.";
+        default:
+          return "Contradiction policy: not specified — rely on default safety posture.";
+      }
+    };
+    const explainSelf = (v) => {
+      switch (v) {
+        case "Rule-based (negation/antonym patterns)":
+          return "Self-consistency: rule-based negation/antonym patterns to catch A vs not-A claims.";
+        case "LLM consistency grader":
+          return "Self-consistency: model-based grader to score internal agreement between claims.";
+        case "Constraint graph check":
+          return "Self-consistency: constraint graph over extracted facts to detect conflicts.";
+        case "Other":
+          return "Self-consistency: custom method — see config.";
+        default:
+          return "Self-consistency: not specified — internal check disabled.";
+      }
+    };
+    const explainCite = (v) => {
+      switch (v) {
+        case "Required: URL only":     return "Citation: include source URLs for claims.";
+        case "Required: span offsets": return "Citation: include span offsets into retrieved passages per claim.";
+        case "Required: URLs + spans": return "Citation: include both URLs and span offsets per claim.";
+        case "Optional":               return "Citation: optional — encouraged for transparency.";
+        case "Other":                  return "Citation: custom — see citation policy.";
+        default:                       return "Citation: none required.";
+      }
+    };
+    const explainWindow = (v) => {
+      switch (v) {
+        case "Exact span only": return "Evidence window: exact span only — highest precision.";
+        case "±1 sentence":     return "Evidence window: ±1 sentence — balances precision and context.";
+        case "±2 sentences":    return "Evidence window: ±2 sentences — adds robustness for long passages.";
+        case "Other":           return "Evidence window: custom — see config.";
+        default:                return "Evidence window: not specified.";
+      }
+    };
+    const explainTiebreak = (v) => {
+      switch (v) {
+        case "Prefer higher entail score":            return "Tie-break: pick higher aggregate entail score.";
+        case "Prefer evidence density (more cited tokens)": return "Tie-break: prefer candidate with denser, better-covered evidence.";
+        case "Prefer precision (fewer claims)":       return "Tie-break: choose the more precise answer with fewer unsupported claims.";
+        case "Prefer abstention on tie":              return "Tie-break: abstain when evidence is insufficient to decide.";
+        case "Other":                                 return "Tie-break: custom — see policy notes.";
+        default:                                      return "Tie-break: not specified — route default applies.";
+      }
+    };
+    const explainRewriteStyle = (v) => {
+      switch (v) {
+        case "Minimal edits (surgical)":  return "Rewrite style: minimal — surgical edits to contradicted segments only.";
+        case "Full rewrite (section)":    return "Rewrite style: full section rewrite when contradictions are widespread.";
+        case "Cite-and-quote rewrite":    return "Rewrite style: cite-and-quote — include verbatim spans with citations.";
+        case "Other":                     return "Rewrite style: custom — see rewrite guidance.";
+        default:                          return "Rewrite style: not specified.";
+      }
+    };
+
+    const tableHeader = "Segment | Premise span | Entail | Neutral | Contradict | Evidence/Notes";
+    const tests = [
+      "Table-driven tests (min 6)",
+      "Case | Input | Expected | Why",
+      "1 | Clear entailment | ENTail across segments | Baseline",
+      "2 | Clear contradiction | BLOCK per policy | Safety",
+      "3 | Mixed (some neutral) | Apply neutral-policy | Uncertainty handling",
+      "4 | Self-contradiction inside hypothesis | Rewrite or block | Internal check",
+      "5 | Long paragraphs | Coarse segmentation behaves correctly | Robustness",
+      "6 | No sources provided | Treat as neutral/unsupported | Guardrail"
+    ].join('\n');
+
+    return join([
+      "NLI Contradiction & Consistency Checker — Instruction Set",
+      "origin:huggingface.co",
+      "origin:allenai.org",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      para("Route / task summary", route),
+      para("Premises (sources)", premises),
+      para("Hypothesis (answer to check)", hypothesis),
+      "Selections & rationale:",
+      "• " + explainSeg(segmentation),
+      "• " + explainOverlap(segment_overlap),
+      "• " + explainModel(model),
+      "• " + explainLatency(latency_budget),
+      "• " + explainThreshold(threshold) + (nonNone(threshold_notes) ? " " + threshold_notes : ""),
+      "• " + explainNeutral(neutral_policy),
+      "• " + explainContradiction(contradiction_policy),
+      "• " + explainSelf(self_contradiction),
+      "• " + explainCite(citation_requirement),
+      "• " + explainWindow(evidence_window),
+      "• " + explainTiebreak(tiebreak),
+      nonNone(rewrite_style) && ("• " + explainRewriteStyle(rewrite_style)),
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, evidence-aware validator. Use NLI to detect answer↔source contradictions and internal inconsistencies. Enforce the decision policy and generate repair prompts as needed.",
+
+      "OBJECTIVE",
+      "Produce a per-segment entail/neutral/contradict table with evidence spans, an overall verdict, and auto-rewrite prompts when contradictions are found. Log all fields for observability.",
+
+      "=== OUTPUT A — SEGMENTATION PLAN ===",
+      "Describe how premises and hypothesis were segmented based on the selected method and overlap window. Note any heuristic for claim extraction.",
+
+      "=== OUTPUT B — NLI RESULTS TABLE ===",
+      tableHeader,
+      "(Populate one row per segment; include source span IDs or line ranges for evidence. Respect the evidence window policy.)",
+
+      "=== OUTPUT C — OVERALL VERDICT & DECISION ===",
+      "Summarize counts/ratios of entail/neutral/contradict. Apply the chosen threshold and policies to decide: proceed / rewrite / block / human-review.",
+      rewrite
+        ? ("Auto-rewrite instruction:\n" + rewrite)
+        : "Auto-rewrite instruction: not provided — default to concise contradiction repair prompts.",
+      nonNone(rewrite_style) && ("Rewrite style: " + rewrite_style),
+
+      "=== OUTPUT D — SELF-CONSISTENCY CHECK (INTERNAL) ===",
+      "Scan the hypothesis for internal contradictions (A then not-A). If found, list segments and propose rewrites independent of source entailment.",
+
+      "=== OUTPUT E — POLICY SUMMARY ===",
+      "• Neutral handling: " + (neutral_policy || "unspecified"),
+      "• Contradiction action: " + (contradiction_policy || "unspecified"),
+      "• Tie-break rule: " + (tiebreak || "unspecified"),
+      "• Citation requirement: " + (citation_requirement || "unspecified"),
+
+      "=== OUTPUT F — LOGGING SPEC ===",
+      "Log fields:",
+      (logfields || "trace_id, route_id, model_version, user_segment, doc_ids[], segment_ids[], segmentation, segment_overlap, nli_model, latency_budget, threshold_policy, threshold_notes, neutral_policy, contradiction_policy, self_consistency_method, citation_requirement, evidence_window, tiebreak, counts{entail,neutral,contradict}, verdict, reason, timestamps"),
+
+      "=== OUTPUT G — TEST PLAN ===",
+      tests,
+
+      "=== OUTPUT H — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "NLI Contradiction & Consistency Checker — entail/neutral/contradict table with evidence spans; decision policy; auto-rewrite prompts; fields: segmentation, overlap, model, latency budget, thresholds, neutral & contradiction policy, self-consistency, citation requirement, evidence window, tie-break, rewrite style, logging."
+  }
+},
+
+{
+  id: "abstention_policy_designer",
+  slug: "abstention-policy-designer",
+  label: "Abstention Policy Designer (“Know-When-Not-To”)",
+  kind: "framework",
+  // categories aligned to categories_registry.yml (lowercase, kebab-case nouns)
+  categories: [
+    "policy",
+    "governance",
+    "safety",
+    "reliability",
+    "evaluation",
+    "risk",
+    "operations",
+    "analytics",
+    "measurement",
+    "quality",
+    "privacy",
+    "testing"
+  ],
+  tags: [
+    "type:framework",
+    "use:policy",
+    "use:pre-display-check",
+    "use:governance",
+    "level:advanced",
+    "topic:abstention",
+    "topic:uncertainty",
+    "topic:calibration",
+    "topic:contradiction",
+    "origin:arxiv.org",
+    "origin:openai.com",
+    "origin:langchain.com"
+  ],
+  use_cases: [
+    "Design calibrated rules for deferring, asking clarifying questions, or refusing.",
+    "Standardize uncertainty and contradiction signals with thresholds across routes.",
+    "Specify user messaging, escalation paths, and audit logging for governance.",
+    "Set abstention-rate SLOs and alerting to prevent silent failure.",
+    "Compare policy variants by slice (route, model, locale) with reproducible reports."
+  ],
+  boosters: [
+    "Emit a complete policy table with explicit thresholds and actions.",
+    "Explain every select choice in full sentences for auditability and onboarding.",
+    "Include example end-user messages and an evaluation plan with test cases.",
+    "Map risk classes to abstain/escalate decisions to prevent silent failure.",
+    "Log structured fields for dashboards, drift detection, and incident review."
+  ],
+  definition:
+    "A production-ready abstention policy that uses uncertainty and contradiction signals to decide when to answer, clarify, abstain, or escalate. It defines strictness and utility tradeoffs, thresholds, user messaging, and logging so routes behave consistently and safely.",
+  help:
+    "Fill the fields below. The template outputs a full policy spec: which signals to trust, how strict to be, what to say to users, where to escalate, and how to log and evaluate effectiveness.",
+  fields: [
+    {
+      label: "Route / use-case summary",
+      desc: "Describe the prompt route or task this policy protects so risk, thresholds, and messaging match context.",
+      key: "route",
+      ph: "e.g., Healthcare FAQ; Billing support summarizer; Legal policy explainer",
+      type: "textarea"
+    },
+    {
+      label: "Risk classes",
+      desc: "List risk categories this route may face (harm types, compliance, reputational). One per line.",
+      key: "risks",
+      ph: "Safety harm\nPII leakage\nDefamation\nMedical/Legal advice\nFinancial risk…",
+      type: "textarea"
+    },
+
+    {
+      label: "Primary uncertainty signal",
+      desc: "Main signal used to decide abstention; the output will add a rationale sentence.",
+      key: "primary_signal",
+      type: "select",
+      options: [
+        "None",
+        "Semantic entropy (multi-sample diversity)",
+        "Self-consistency disagreement (K-vote)",
+        "NLI contradiction rate (answer↔sources)",
+        "Token logprob floor (low-confidence tokens)",
+        "Other"
+      ],
+      ph: "Choose the primary signal"
+    },
+    {
+      label: "Secondary uncertainty signal",
+      desc: "Optional backup or tie-break signal; the output will add a rationale sentence.",
+      key: "secondary_signal",
+      type: "select",
+      options: [
+        "None",
+        "Semantic entropy (multi-sample diversity)",
+        "Self-consistency disagreement (K-vote)",
+        "NLI contradiction rate (answer↔sources)",
+        "Token logprob floor (low-confidence tokens)",
+        "Other"
+      ],
+      ph: "Choose the secondary signal or None"
+    },
+    {
+      label: "Signal notes",
+      desc: "Add computation details, weighting, or calibration windows for chosen signals.",
+      key: "signal_notes",
+      ph: "e.g., entropy over K=3 at temp 0.2; disagreement threshold 40%; NLI blocks on any contradiction.",
+      type: "textarea"
+    },
+
+    {
+      label: "Entropy strictness",
+      desc: "Overall strictness for abstention gates; the output will add a rationale sentence.",
+      key: "strictness",
+      type: "select",
+      options: [
+        "None",
+        "Strict (low tolerance for ambiguity)",
+        "Balanced (default gate)",
+        "Lenient (exploratory routes)",
+        "Other"
+      ],
+      ph: "Pick strictness"
+    },
+    {
+      label: "Utility / loss tradeoff",
+      desc: "How to balance false answers vs unnecessary abstentions; a rationale sentence will be added.",
+      key: "utility",
+      type: "select",
+      options: [
+        "None",
+        "Safety-first (prefer abstaining over being wrong)",
+        "Balanced (weigh harms and experience equally)",
+        "Aggressive (prefer answering; tolerate some risk)",
+        "Other"
+      ],
+      ph: "Choose the tradeoff stance"
+    },
+
+    {
+      label: "Abstain action (user-facing)",
+      desc: "Default action when the gate abstains; the output will describe user-visible behavior.",
+      key: "abstain_action",
+      type: "select",
+      options: [
+        "None",
+        "Ask a clarifying question",
+        "Show a safe fallback message",
+        "Route directly to a human reviewer",
+        "Proceed with a caution banner",
+        "Other"
+      ],
+      ph: "Pick the default abstain behavior"
+    },
+    {
+      label: "Primary escalation route",
+      desc: "Where the item goes when abstention triggers escalation; the output will add a rationale sentence.",
+      key: "escalation",
+      type: "select",
+      options: [
+        "None",
+        "Human on-call (queue with context)",
+        "Alternate model route (more capable/specialized)",
+        "Retrieval-only answer (no generation)",
+        "Delay & notify user (promise follow-up)",
+        "Other"
+      ],
+      ph: "Choose the first escalation route"
+    },
+    {
+      label: "Decision tie-break rule",
+      desc: "How to resolve borderline or conflicting signals.",
+      key: "tiebreak",
+      type: "select",
+      options: [
+        "None",
+        "Prefer clarify (ask a question)",
+        "Prefer escalate to human",
+        "Prefer retrieval-only answer",
+        "Prefer cautious proceed with banner",
+        "Other"
+      ],
+      ph: "Choose a tie-break rule"
+    },
+
+    {
+      label: "Thresholds & additional signals",
+      desc: "Numeric thresholds and supplementary caveats. Include per-slice overrides where needed.",
+      key: "thresholds",
+      ph: "entropy>1.0 → abstain; disagreement≥40% → clarify; NLI contradiction>0 → block; logprob_floor<−5 on key tokens → clarify.",
+      type: "textarea"
+    },
+    {
+      label: "User messaging (templates)",
+      desc: "Plain-language templates for clarify/abstain/escalate outcomes. Use placeholders if needed.",
+      key: "messages",
+      ph: "“I’m not fully confident yet. Can you specify X or Y?”\n“I can’t answer safely. A teammate will review and follow up.”",
+      type: "textarea"
+    },
+    {
+      label: "Audit logging fields",
+      desc: "Fields to record for observability and audits (IDs, scores, thresholds, versions).",
+      key: "logging",
+      ph: "trace_id, route_id, model_version, entropy_value, disagreement_rate, nli_contradictions, decision, reason, timestamps…",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    route, risks,
+    primary_signal, secondary_signal, signal_notes,
+    strictness, utility, abstain_action, escalation, tiebreak,
+    thresholds, messages, logging,
+    ctx, style, tone
+  }) => {
+    const join = (a) => a.filter(Boolean).join('\n');
+    const para = (label, v) => v ? (label + ":\n" + v) : null;
+    const bullets = (v) => String(v || "").split(/\n+/).map(s=>s.trim()).filter(Boolean).map((x,i)=> (i+1)+". "+x).join('\n');
+    const nonNone = (s) => {
+      const v = String(s || "").trim();
+      return v && v.toLowerCase() !== "none" ? v : "";
+    };
+
+    const explainSignal = (v, role="Primary") => {
+      switch (v) {
+        case "Semantic entropy (multi-sample diversity)":
+          return `${role} signal: semantic entropy — estimate uncertainty from diversity across multiple candidates; abstain when dispersion suggests unreliability.`;
+        case "Self-consistency disagreement (K-vote)":
+          return `${role} signal: self-consistency disagreement — sample K answers and abstain when the majority cannot converge.`;
+        case "NLI contradiction rate (answer↔sources)":
+          return `${role} signal: NLI contradiction rate — abstain or rewrite when the answer contradicts retrieved sources.`;
+        case "Token logprob floor (low-confidence tokens)":
+          return `${role} signal: token logprob floor — abstain when critical spans are produced with very low likelihood.`;
+        case "Other":
+          return `${role} signal: custom — see Signal notes for computation and thresholds.`;
+        default:
+          return `${role} signal: none — rely on thresholds and route defaults.`;
+      }
+    };
+
+    const explainStrictness = (v) => {
+      switch (v) {
+        case "Strict (low tolerance for ambiguity)":
+          return "Strictness: strict — prefer early abstention to prevent high-cost mistakes.";
+        case "Balanced (default gate)":
+          return "Strictness: balanced — allow modest uncertainty; block clear risk signals.";
+        case "Lenient (exploratory routes)":
+          return "Strictness: lenient — tolerate uncertainty to preserve discovery and iteration speed.";
+        case "Other":
+          return "Strictness: custom — see numeric cutoffs in the thresholds section.";
+        default:
+          return "Strictness: none — use route defaults.";
+      }
+    };
+
+    const explainUtility = (v) => {
+      switch (v) {
+        case "Safety-first (prefer abstaining over being wrong)":
+          return "Utility stance: safety-first — accepts more abstentions to reduce the harm of incorrect answers.";
+        case "Balanced (weigh harms and experience equally)":
+          return "Utility stance: balanced — trades off user experience and safety evenly.";
+        case "Aggressive (prefer answering; tolerate some risk)":
+          return "Utility stance: aggressive — answers more often, tolerating some risk to maximize throughput.";
+        case "Other":
+          return "Utility stance: custom — see bespoke loss/thresholds in policy notes.";
+        default:
+          return "Utility stance: none — inherits route defaults.";
+      }
+    };
+
+    const explainAbstain = (v) => {
+      switch (v) {
+        case "Ask a clarifying question":
+          return "Abstain action: ask a clarifying question — request missing details to reduce uncertainty before retrying.";
+        case "Show a safe fallback message":
+          return "Abstain action: show a safe fallback — communicate limits clearly and avoid speculative answers.";
+        case "Route directly to a human reviewer":
+          return "Abstain action: route to human — queue with context for human decision-making.";
+        case "Proceed with a caution banner":
+          return "Abstain action: proceed with caution — display answer with a visible low-confidence notice.";
+        case "Other":
+          return "Abstain action: custom — see messaging rules in templates.";
+        default:
+          return "Abstain action: none — defer to route defaults.";
+      }
+    };
+
+    const explainEscalation = (v) => {
+      switch (v) {
+        case "Human on-call (queue with context)":
+          return "Escalation: human on-call — queue high-risk items with signals, thresholds, and sources for quick triage.";
+        case "Alternate model route (more capable/specialized)":
+          return "Escalation: alternate model — re-route to a more capable or specialized model.";
+        case "Retrieval-only answer (no generation)":
+          return "Escalation: retrieval-only — return curated sources without generation to avoid hallucinations.";
+        case "Delay & notify user (promise follow-up)":
+          return "Escalation: delay & notify — acknowledge uncertainty and promise a follow-up after review.";
+        case "Other":
+          return "Escalation: custom — see escalation runbook.";
+        default:
+          return "Escalation: none — no escalation path configured.";
+      }
+    };
+
+    const explainTiebreak = (v) => {
+      switch (v) {
+        case "Prefer clarify (ask a question)":
+          return "Tie-break: prefer clarification — when signals conflict, ask a targeted question to disambiguate.";
+        case "Prefer escalate to human":
+          return "Tie-break: prefer human — route borderline cases for adjudication.";
+        case "Prefer retrieval-only answer":
+          return "Tie-break: prefer retrieval-only — provide sources without generation in ambiguous cases.";
+        case "Prefer cautious proceed with banner":
+          return "Tie-break: cautious proceed — show answer with a confidence banner and log for review.";
+        case "Other":
+          return "Tie-break: custom — see policy notes.";
+        default:
+          return "Tie-break: none — fallback to route default.";
+      }
+    };
+
+    return join([
+      "Abstention Policy Designer — Instruction Set",
+      "origin:arxiv.org",
+      "origin:openai.com",
+      "origin:langchain.com",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      para("Route / use-case", route),
+      risks ? ("Risk classes:\n" + bullets(risks)) : null,
+      "Selections & rationale:",
+      "• " + explainSignal(primary_signal, "Primary"),
+      nonNone(secondary_signal) && ("• " + explainSignal(secondary_signal, "Secondary")),
+      nonNone(signal_notes) && ("• Signal notes: " + signal_notes),
+      "• " + explainStrictness(strictness),
+      "• " + explainUtility(utility),
+      "• " + explainAbstain(abstain_action),
+      "• " + explainEscalation(escalation),
+      "• " + explainTiebreak(tiebreak),
+      thresholds ? ("Thresholds & additional signals:\n" + thresholds) : null,
+      messages ? ("User messaging (templates):\n" + messages) : null,
+      logging ? ("Audit logging fields:\n" + logging) : null,
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, reliability-focused policy designer. Use calibrated uncertainty and contradiction signals to decide when to answer, clarify, abstain, or escalate, while keeping messaging humane and logs complete.",
+
+      "OBJECTIVE",
+      "Produce a Policy Table + Thresholds + Example Messages + Evaluation Plan that can be enforced uniformly across routes.",
+
+      "=== OUTPUT A — POLICY TABLE ===",
+      "Condition | Signal/Threshold | Action | User Message | Escalation | Log Fields",
+      "• Uncertainty high (per thresholds) | " + (primary_signal || "primary signal") + (nonNone(secondary_signal) ? " + " + secondary_signal : "") + " | " + (abstain_action || "abstain per route default") + " | template from ‘User messaging’ | " + (escalation || "none") + " | fields from ‘Audit logging’",
+      "• Contradiction detected | NLI contradiction>0 | rewrite/abstain per policy | clarify or fallback | human or alt-route | log contradiction details",
+      "• Low risk + low uncertainty | below cutoffs | proceed | normal message | none | minimal fields",
+
+      "=== OUTPUT B — THRESHOLDS & DECISIONS ===",
+      (thresholds || "Define numeric thresholds (e.g., entropy H≤1.0 to proceed; disagreement<30%; contradiction=0). Include slice overrides (route/model/locale), tie-handling, and backoff rules."),
+
+      "=== OUTPUT C — USER MESSAGING (TEMPLATES) ===",
+      (messages || "Provide clear, respectful messages for clarify/abstain/escalate cases. Avoid blame; explain next steps and timelines if relevant."),
+
+      "=== OUTPUT D — LOGGING & AUDIT SPEC ===",
+      (logging || "List IDs, model/route versions, raw scores, thresholds applied, final decision, reason, and timestamps. Redact PII prior to storage. Include abstain_rate, false_abstain_rate, and contradiction_catch_rate."),
+
+      "=== OUTPUT E — EVALUATION PLAN ===",
+      "1) Synthetic cases spanning low/med/high risk with known outcomes.",
+      "2) Replay real traces to estimate abstain_rate, false_abstain_rate, contradiction_catch_rate.",
+      "3) Alerting: spike in abstain_rate or contradiction hits by slice; investigate drift or threshold miscalibration.",
+      "4) Calibration check: verify higher entropy/disagreement correlates with error; if not, revisit signals/weights.",
+      "5) A/B policy variants: compare user satisfaction and safety incidents over matched cohorts.",
+
+      "=== OUTPUT F — TEST CASES (MIN 6) ===",
+      "Case | Risk | Signal | Threshold | Expected | Why",
+      "1 | High | NLI contradiction | >0 | ABSTAIN/REWRITE | Safety",
+      "2 | Medium | Entropy | >1.2 | CLARIFY | Uncertainty",
+      "3 | Low | Disagreement | >40% | CLARIFY or BANNER | Consistency",
+      "4 | High | Logprob floor | <−5 | ABSTAIN | Low confidence",
+      "5 | Medium | All clear | below cutoffs | PROCEED | Baseline",
+      "6 | Any | Spike in abstain_rate | >x% | ALERT & REVIEW | Drift",
+
+      "=== OUTPUT G — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "Abstention Policy Designer — know-when-not-to; signals, thresholds, user messaging, escalation, logging; fields: route, risks, primary/secondary signals (+notes), strictness, utility, abstain action, escalation, tie-break, thresholds, messages, logging; outputs: policy table, thresholds, evaluation plan."
+  }
+},
+
+{
+  id: "drift_monitoring_regression_suite",
+  slug: "drift-monitoring-regression-suite",
+  label: "Drift Monitoring & Regression Suite",
+  kind: "framework",
+  // categories aligned to categories_registry (lowercase, kebab-case nouns)
+  categories: [
+    "monitoring",
+    "testing",
+    "evaluation",
+    "quality",
+    "reliability",
+    "analytics",
+    "measurement",
+    "operations",
+    "governance",
+    "risk",
+    "safety",
+    "privacy"
+  ],
+  tags: [
+    "type:framework",
+    "use:monitoring",
+    "use:regression-testing",
+    "use:observability",
+    "level:advanced",
+    "topic:drift-detection",
+    "topic:prompt-regression",
+    "topic:telemetry",
+    "topic:evals",
+    "origin:arize.com",
+    "origin:evidentlyai.com",
+    "origin:promptfoo.dev",
+    "origin:langchain.com"
+  ],
+  use_cases: [
+    "Detect prompt/model/retrieval drift across releases and live traffic with auditable deltas.",
+    "Run scheduled regressions with pass/fail acceptance gates and slice-aware reporting.",
+    "Alert on embedding and topic shifts, contradiction spikes, structure/length drift, and grounding decay.",
+    "Annotate changes (deploys, prompt edits, retrieval tweaks) and provide a clear rollback path.",
+    "Guard critical routes using canaries before full rollout; verify rollback effectiveness post-incident."
+  ],
+  boosters: [
+    "Emit a scheduled eval spec (what, when, where) with reproducible seeds, sample sizes, and slices.",
+    "Explain every select-field choice in full sentences for auditability and onboarding.",
+    "Return a drift dashboard blueprint with KPIs, drilldowns, confidence bands, and annotations.",
+    "Include a rollback checklist with owners, triggers, mitigation steps, and user-safe messaging.",
+    "Provide table-driven tests covering ‘no drift’, ‘soft drift’, and ‘hard drift’ scenarios, plus significance checks."
+  ],
+  definition:
+    "A production-grade runbook for monitoring semantic, structural, and policy drift. It generates a scheduled evaluation spec, detector choices, statistical test plan, alerting tied to acceptance metrics, a dashboard blueprint, and a rollback checklist with owners and messaging.",
+  help:
+    "Fill the fields below. Select a primary drift detector, cadence, rollback, and statistical test. Define acceptance gates, alerts, and slices. Paste baselines and canaries. The output reads like an executable playbook for your team or an eval runner.",
+  fields: [
+    {
+      label: "Route / use-case summary",
+      desc: "Describe the prompt route or product area under watch so thresholds and rollback match risk.",
+      key: "route",
+      ph: "e.g., Support FAQ route; Legal-policy summarizer; Search→Answer RAG route",
+      type: "textarea"
+    },
+    {
+      label: "Baseline prompts & versions",
+      desc: "Paste canonical prompts (or IDs) and model versions that define the regression baseline.",
+      key: "baselines",
+      ph: "Prompt v12 (hash…), Model gpt-X.Y, Retrieval cfg R1; include dates and owners.",
+      type: "textarea"
+    },
+    {
+      label: "Canary evaluation set",
+      desc: "Describe the fixed canary set used on deploy and the larger periodic set (size, domains, difficulty).",
+      key: "canary",
+      ph: "120 canary Q/A spanning billing, legal, tech; 1k nightly eval items sampled by route.",
+      type: "textarea"
+    },
+    {
+      label: "Acceptance metrics (gate criteria)",
+      desc: "Define pass/fail metrics (quality and guardrail) that must hold versus baseline deltas.",
+      key: "acceptance",
+      ph: "Faithfulness≥0.80; Contradictions=0; Guardrail pass≥98%; p95 latency≤+10% vs baseline.",
+      type: "textarea"
+    },
+    {
+      label: "Primary drift detector",
+      desc: "Choose the main detector; the output will include a sentence explaining the selection.",
+      key: "detector",
+      type: "select",
+      options: [
+        "None",
+        "Embedding shift (cosine/centroid drift)",
+        "Answer contradiction rate (NLI)",
+        "RAG faithfulness delta",
+        "Output length/structure drift",
+        "Topic distribution drift (LDA/embedding clusters)",
+        "Other"
+      ],
+      ph: "Pick the main drift detector"
+    },
+    {
+      label: "Additional detectors & notes",
+      desc: "List any secondary detectors or caveats (e.g., sentiment tone drift, vocabulary shift, toxicity spikes).",
+      key: "detectors_extra",
+      ph: "Sentiment drift; toxicity regression; named-entity coverage by domain; style-guide compliance.",
+      type: "textarea"
+    },
+    {
+      label: "Alerting rules",
+      desc: "Describe thresholds, windows, and actions for WARN/ALERT/BLOCK. Tie to acceptance metrics.",
+      key: "alerts",
+      ph: "WARN if embedding shift>0.08 for 15m; ALERT if contradictions>0; BLOCK if guardrail pass<97%.",
+      type: "textarea"
+    },
+    {
+      label: "Rollback path",
+      desc: "Pick the default rollback action; the output will include a sentence explaining the choice.",
+      key: "rollback",
+      type: "select",
+      options: [
+        "None",
+        "Roll back model version",
+        "Roll back prompt version",
+        "Switch route to safe model",
+        "Disable feature flag / route traffic to baseline",
+        "Other"
+      ],
+      ph: "Choose the first rollback action"
+    },
+    {
+      label: "Scheduling & cadence",
+      desc: "Choose when evaluations run; the output will include a sentence explaining the cadence.",
+      key: "schedule",
+      type: "select",
+      options: [
+        "None",
+        "On-deploy only",
+        "Nightly batch",
+        "Hourly canary",
+        "Continuous on traffic sample",
+        "Other"
+      ],
+      ph: "Pick the scheduling strategy"
+    },
+    {
+      label: "Statistical test",
+      desc: "Pick a primary test for detecting significant drift; the output will include a rationale.",
+      key: "stat_test",
+      type: "select",
+      options: [
+        "None",
+        "Two-sample t-test (means)",
+        "Mann–Whitney U (nonparametric)",
+        "Kolmogorov–Smirnov (distribution)",
+        "Chi-square (rates/proportions)",
+        "CUSUM/GLR (sequential)",
+        "Bayesian credible intervals",
+        "Other"
+      ],
+      ph: "Choose a significance test"
+    },
+    {
+      label: "Confidence level",
+      desc: "Desired confidence/alpha for tests or intervals.",
+      key: "confidence",
+      type: "select",
+      options: ["None", "90%", "95%", "97.5%", "99%", "Other"],
+      ph: "Pick confidence (e.g., 95%)"
+    },
+    {
+      label: "Drift window length",
+      desc: "Time window or sample window used for comparisons.",
+      key: "drift_window",
+      type: "select",
+      options: [
+        "None",
+        "Last 15 minutes",
+        "Last 1 hour",
+        "Last 24 hours",
+        "Rolling N=1k samples",
+        "Rolling N=10k samples",
+        "Other"
+      ],
+      ph: "Choose a window (time or sample)"
+    },
+    {
+      label: "Smoothing / aggregation",
+      desc: "How to stabilize noisy metrics for alerts.",
+      key: "smoothing",
+      type: "select",
+      options: ["None", "EMA (exponential moving average)", "Rolling median", "Trimmed mean", "Other"],
+      ph: "Pick a smoothing method"
+    },
+    {
+      label: "Minimum sample size",
+      desc: "Minimum data required before making drift decisions.",
+      key: "min_sample",
+      type: "select",
+      options: ["None", "N≥100", "N≥500", "N≥1,000", "N≥5,000", "Other"],
+      ph: "Select a floor for stable decisions"
+    },
+    {
+      label: "Logging & dashboard slices",
+      desc: "Describe IDs to log and how to slice the dashboard (route, version, segment, locale, device).",
+      key: "slices",
+      ph: "trace_id, route_id, model_version, prompt_version; slice by segment/locale/device/time.",
+      type: "textarea"
+    },
+    {
+      label: "Change annotations & sources",
+      desc: "Where change notes come from (PRs, deploy logs, feature flags) to annotate the dashboard.",
+      key: "annotations",
+      ph: "Deploy notes in #releases; PR links; feature flag toggles; retrieval config changelog.",
+      type: "textarea"
+    },
+    {
+      label: "Data retention & privacy notes",
+      desc: "PII handling, retention windows for traces vs aggregates, and access controls.",
+      key: "retention",
+      ph: "Redact PII at source; keep raw traces 30 days; aggregates 12 months; role-based access.",
+      type: "textarea"
+    },
+    {
+      label: "Rollback messaging (templates)",
+      desc: "User-safe messages shown during rollback or partial degradation.",
+      key: "rollback_msg",
+      ph: "“We’re temporarily using our stable setup while we investigate. Your results may look slightly different.”",
+      type: "textarea"
+    },
+    {
+      label: "Owners & on-call",
+      desc: "List owner roles for gates, alerts, and rollback.",
+      key: "owners",
+      ph: "Eval owner; Route owner; On-call SRE; Product lead.",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    route, baselines, canary, acceptance,
+    detector, detectors_extra, alerts, rollback, schedule,
+    stat_test, confidence, drift_window, smoothing, min_sample,
+    slices, annotations, retention, rollback_msg, owners,
+    ctx, style, tone
+  }) => {
+    // helpers (no nested backticks)
+    const join = (a) => a.filter(Boolean).join('\n');
+    const para = (label, v) => v ? (label + ":\n" + v) : null;
+
+    const explainDetector = (v) => {
+      switch (v) {
+        case "Embedding shift (cosine/centroid drift)":
+          return "Primary detector: embedding shift — compare representation centroids over time; large cosine deltas indicate semantic drift.";
+        case "Answer contradiction rate (NLI)":
+          return "Primary detector: NLI contradiction rate — spikes vs sources signal grounded accuracy degradation.";
+        case "RAG faithfulness delta":
+          return "Primary detector: RAG faithfulness delta — track faithfulness decay relative to baseline on matched canaries.";
+        case "Output length/structure drift":
+          return "Primary detector: length/structure drift — token counts and JSON/section structure shifts reveal prompt/model regressions.";
+        case "Topic distribution drift (LDA/embedding clusters)":
+          return "Primary detector: topic distribution drift — cluster shifts imply routing/retrieval or data mix changes.";
+        case "Other":
+          return "Primary detector: custom — defined in runner config.";
+        default:
+          return "Primary detector: none — rely on acceptance metrics and alerts.";
+      }
+    };
+
+    const explainRollback = (v) => {
+      switch (v) {
+        case "Roll back model version":
+          return "Rollback: revert the model while keeping the prompt to isolate model-side regression.";
+        case "Roll back prompt version":
+          return "Rollback: revert the prompt with the current model to isolate prompt-induced drift.";
+        case "Switch route to safe model":
+          return "Rollback: route to a conservative, well-calibrated model to preserve reliability during investigation.";
+        case "Disable feature flag / route traffic to baseline":
+          return "Rollback: disable the new path and send traffic to the known-good baseline route.";
+        case "Other":
+          return "Rollback: custom — see runbook notes.";
+        default:
+          return "Rollback: none — manual incident handling only.";
+      }
+    };
+
+    const explainSchedule = (v) => {
+      switch (v) {
+        case "On-deploy only":
+          return "Schedule: on-deploy — run canaries at release time to block bad rollouts; no continuous monitoring.";
+        case "Nightly batch":
+          return "Schedule: nightly — larger regression set off-peak to catch slow drifts with annotations.";
+        case "Hourly canary":
+          return "Schedule: hourly — small, fast canaries to catch quick regressions with low cost.";
+        case "Continuous on traffic sample":
+          return "Schedule: continuous — score a sampled slice of live traffic for near real-time detection.";
+        case "Other":
+          return "Schedule: custom — defined by ops policy.";
+        default:
+          return "Schedule: none — ad hoc evaluations.";
+      }
+    };
+
+    const explainTest = (v) => {
+      switch (v) {
+        case "Two-sample t-test (means)":
+          return "Stat test: two-sample t-test — sensitive to mean shifts under normal-ish assumptions.";
+        case "Mann–Whitney U (nonparametric)":
+          return "Stat test: Mann–Whitney U — robust to non-normal distributions; compares rank shifts.";
+        case "Kolmogorov–Smirnov (distribution)":
+          return "Stat test: KS — detects full distribution drift, not just means.";
+        case "Chi-square (rates/proportions)":
+          return "Stat test: chi-square — compares rates (e.g., guardrail pass) across cohorts.";
+        case "CUSUM/GLR (sequential)":
+          return "Stat test: CUSUM/GLR — sequential change detection for streaming canaries.";
+        case "Bayesian credible intervals":
+          return "Stat test: Bayesian — compare posteriors with credible intervals for intuitive decisions.";
+        case "Other":
+          return "Stat test: custom — see runner config.";
+        default:
+          return "Stat test: none — rely on absolute thresholds and deltas.";
+      }
+    };
+
+    const dashboard = [
+      "Drift dashboard blueprint",
+      "• KPIs: guardrail pass rate, contradiction rate, faithfulness, embedding shift, topic drift, p95 latency, cost/1k tokens.",
+      "• Slices: route, model version, prompt version, user segment, locale, device, time.",
+      "• Confidence: display chosen test and confidence bands for key series.",
+      "• Drilldowns: example diffs (baseline vs current), per-metric deltas, failing canaries.",
+      "• Annotations: deployments, prompt edits, model swaps, retrieval config changes.",
+      "• Alerts panel: recent WARN/ALERT/BLOCK with reasons and links to traces."
+    ].join('\n');
+
+    const tests = [
+      "Table-driven tests (min 9)",
+      "Case | Change | Expected | Why",
+      "1 | No change | PASS; no alerts | Baseline sanity",
+      "2 | +0.05 embedding shift | WARN if >0.04 | Soft semantic drift",
+      "3 | Contradictions>0 | ALERT/BLOCK per policy | Safety regression",
+      "4 | Faithfulness −0.1 | ALERT; investigate RAG | Grounding decay",
+      "5 | Guardrail pass 96% | BLOCK if <97% | Policy protection",
+      "6 | Output JSON fields missing | BLOCK; rollback prompt | Structure drift",
+      "7 | p95 latency +25% | WARN/ALERT per SLO | Perf regression",
+      "8 | Spike localized to one segment | Slice shows hotspot | Targeted issue",
+      "9 | Rollback executed | Traffic returns to baseline | Recovery path"
+    ].join('\n');
+
+    return join([
+      "Drift Monitoring & Regression Suite — Instruction Set",
+      "origin:arize.com",
+      "origin:evidentlyai.com",
+      "origin:promptfoo.dev",
+      "origin:langchain.com",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      para("Route / use-case", route),
+      para("Baseline prompts & versions", baselines),
+      para("Canary evaluation set", canary),
+      para("Acceptance metrics (gate criteria)", acceptance),
+      "Selections & rationale:",
+      "• " + explainDetector(detector),
+      detectors_extra ? ("• Additional detectors:\n" + detectors_extra) : null,
+      para("Alerting rules", alerts),
+      "• " + explainRollback(rollback),
+      "• " + explainSchedule(schedule),
+      "• " + explainTest(stat_test) + (confidence ? ` (confidence ${confidence})` : ""),
+      drift_window ? ("• Drift window: " + drift_window) : null,
+      smoothing ? ("• Smoothing: " + smoothing) : null,
+      min_sample ? ("• Minimum sample size: " + min_sample) : null,
+      para("Logging & dashboard slices", slices),
+      para("Change annotations & sources", annotations),
+      para("Data retention & privacy notes", retention),
+      rollback_msg ? ("Rollback messaging (templates):\n" + rollback_msg) : null,
+      owners ? ("Owners & on-call:\n" + owners) : null,
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, reliability-focused evaluator. Detect and explain prompt/answer drift across releases and live traffic, enforce gates, and provide a safe rollback path with clear owner actions.",
+
+      "OBJECTIVE",
+      "Produce a Scheduled Eval Spec + Drift Detectors + Statistical Test Plan + Dashboard + Rollback Checklist so teams can detect, diagnose, and recover from regressions quickly.",
+
+      "=== OUTPUT A — SCHEDULED EVAL SPEC ===",
+      "• Datasets: canary set (fast) and batch set (comprehensive); include sampling seeds.",
+      "• Settings: model/version, prompt version, retrieval config, time window.",
+      "• Cadence: " + explainSchedule(schedule),
+      "• Gates: apply ‘Acceptance metrics’ exactly; compare to baseline deltas.",
+      "• Storage: log traces, scores, deltas, versions, and annotations for audits.",
+
+      "=== OUTPUT B — DRIFT DETECTORS ===",
+      "• " + explainDetector(detector),
+      detectors_extra ? ("• Secondary detectors:\n" + detectors_extra) : "• Secondary detectors: none specified.",
+      "• Explain detector math briefly (cosine shift, NLI rate, faithfulness scoring) and expected false-positive modes.",
+
+      "=== OUTPUT C — STATISTICAL TEST PLAN ===",
+      explainTest(stat_test) + (confidence ? ` with confidence ${confidence}.` : ""),
+      (drift_window ? `• Window: ${drift_window}. ` : "• Window: not specified. ") +
+        (smoothing ? `Smoothing: ${smoothing}. ` : "Smoothing: none. ") +
+        (min_sample ? `Min sample: ${min_sample}.` : "Min sample: not specified."),
+      "• Define tails (one/two-sided), multiple-testing control (e.g., BH), and effect-size thresholds.",
+
+      "=== OUTPUT D — ALERT RULES ===",
+      (alerts || "Define WARN/ALERT/BLOCK thresholds with windows (e.g., 15m/1h) and escalation targets (on-call, channel). Tie directly to acceptance metrics."),
+
+      "=== OUTPUT E — DRIFT DASHBOARD ===",
+      dashboard,
+
+      "=== OUTPUT F — ROLLBACK CHECKLIST ===",
+      explainRollback(rollback),
+      "• Steps: announce incident → freeze deploys → apply rollback → verify canaries → monitor dashboard for stabilization.",
+      "• Owners: product, engineering, on-call responder; list backups.",
+      "• User messaging (if needed): " + (rollback_msg || "short, plain-language status noting partial degradation and expected resolution window."),
+
+      "=== OUTPUT G — REPORTING & ANNOTATIONS ===",
+      "• Record prompt/model changes with timestamps and owners; link to PRs/tickets/feature flags.",
+      "• Export weekly diff report with metric deltas and top failing canaries.",
+
+      "=== OUTPUT H — TEST PLAN ===",
+      tests,
+
+      "=== OUTPUT I — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "Drift Monitoring & Regression Suite — scheduled eval spec, detectors, statistical tests, dashboard, rollback; fields: baselines, canary set, acceptance metrics, primary detector, alerts, rollback, schedule, tests, slices, annotations, retention."
+  }
+},
+
+{
+  id: "grader_loop_orchestrator",
+  slug: "grader-loop-orchestrator",
+  label: "Grader-Loop Orchestrator (LLM-as-a-Judge)",
+  kind: "framework",
+  // categories aligned to a broad, registry-style taxonomy (lowercase, kebab-case nouns)
+  categories: [
+    "evaluation",
+    "testing",
+    "quality",
+    "reliability",
+    "governance",
+    "operations",
+    "analytics",
+    "measurement",
+    "safety",
+    "risk",
+    "prompt-development",
+    "analysis-frameworks"
+  ],
+  tags: [
+    "type:framework",
+    "use:evaluation",
+    "use:selection",
+    "use:observability",
+    "level:advanced",
+    "topic:llm-as-judge",
+    "topic:rubrics",
+    "topic:tie-breaking",
+    "topic:revision-loops",
+    "origin:openai.com",
+    "origin:stanford.edu",
+    "origin:github.com"
+  ],
+  use_cases: [
+    "Score multiple candidate answers with a rubric and select the best under explicit gates.",
+    "Enforce minimum scores and trigger revise-with-fixlist loops up to a configured cap.",
+    "Log structured telemetry for dashboards, A/Bs, and regression tests.",
+    "Support safety/grounding gates before user-visible output with auditable rationales.",
+    "Compare prompt/model variants by slice (route, version, locale) using stable judge prompts."
+  ],
+  boosters: [
+    "Emits a ready-to-run grader prompt with a clear, auditable rubric and scoring scale.",
+    "Explains each select-field choice in full sentences for future readers and changelogs.",
+    "Provides explicit selection logic, tie-handling, and abstention rules.",
+    "Includes a concise ‘revise-with-fixlist’ block and repair strategy hierarchy.",
+    "Returns a logging schema so results feed your observability stack and alerts.",
+    "Ships table-driven tests and winner-selection pseudocode for quick sanity checks."
+  ],
+  definition:
+    "A production-ready instruction set for an LLM-as-a-Judge loop: grade K candidates against a rubric, enforce per-dimension minima, iterate revisions up to a cap, select a winner (or abstain), and emit structured telemetry for observability.",
+  help:
+    "Fill the 10 short fields. Pick K, primary/secondary rubric dimensions, weighting, minima, revision cap, selection rule, and telemetry fields. The template outputs a grader prompt, selection logic with tie-breaks, a revise-with-fixlist block, pseudocode, and a test plan.",
+  fields: [
+    {
+      label: "Route / use-case summary",
+      desc: "Describe what you’re evaluating so the rubric fits the stakes and audience.",
+      key: "route",
+      ph: "e.g., Support FAQ route; Policy summarizer (RAG); Marketing email variants",
+      type: "textarea"
+    },
+    {
+      label: "Candidates per prompt (K)",
+      desc: "How many candidate answers will be graded per item. Your choice is explained in the output.",
+      key: "K",
+      type: "select",
+      options: ["1","2","3","4","5","6","None","Other"],
+      ph: "Pick K (3 is common for majority voting)"
+    },
+    {
+      label: "Primary rubric dimension",
+      desc: "Choose the main dimension to optimize. Your choice is explained in the output.",
+      key: "primary_rubric",
+      type: "select",
+      options: [
+        "Accuracy (factually correct)",
+        "Grounding (supported by sources)",
+        "Safety (policy-compliant, non-harmful)",
+        "Format/Structure (schema, headings, JSON)",
+        "Clarity/Readability (plain language, audience fit)",
+        "Equity & Inclusion (people-first, non-stigmatizing)",
+        "None",
+        "Other"
+      ],
+      ph: "Pick the primary dimension (or None/Other)"
+    },
+    {
+      label: "Secondary rubric dimension",
+      desc: "Choose a secondary dimension used as a tie-breaker or health check.",
+      key: "secondary_rubric",
+      type: "select",
+      options: [
+        "None",
+        "Accuracy (factually correct)",
+        "Grounding (supported by sources)",
+        "Safety (policy-compliant, non-harmful)",
+        "Format/Structure (schema, headings, JSON)",
+        "Clarity/Readability (plain language, audience fit)",
+        "Equity & Inclusion (people-first, non-stigmatizing)",
+        "Other"
+      ],
+      ph: "Pick the secondary dimension (or None/Other)"
+    },
+    {
+      label: "Weighting scheme",
+      desc: "How to weight rubric dimensions. Your selection is described in a sentence.",
+      key: "weighting",
+      type: "select",
+      options: [
+        "Equal weights (1.0 each)",
+        "Primary ×2 (others 1.0)",
+        "Safety-first (Safety ×2; others 1.0)",
+        "Grounding-first (Grounding ×2; others 1.0)",
+        "Custom/none",
+        "Other"
+      ],
+      ph: "Choose weighting (or Custom/none/Other)"
+    },
+    {
+      label: "Minimum score threshold (per dimension)",
+      desc: "Lowest acceptable score (1–10). Anything below triggers revision/abstain.",
+      key: "min_score",
+      type: "select",
+      options: ["6/10","7/10","8/10","9/10","Custom/none","Other"],
+      ph: "Pick the minimum score policy"
+    },
+    {
+      label: "Max revision rounds",
+      desc: "How many times to attempt an auto-revision before giving up.",
+      key: "max_rounds",
+      type: "select",
+      options: ["0","1","2","3","5","None","Other"],
+      ph: "Choose the revision cap (e.g., 1 or 2)"
+    },
+    {
+      label: "Selection rule",
+      desc: "How to pick the winner. Your choice is turned into selection logic.",
+      key: "selection_rule",
+      type: "select",
+      options: [
+        "Highest weighted total score",
+        "Pass minima then highest primary-dimension score",
+        "Safety gate → best remaining (weighted)",
+        "Strict minima only; abstain if any fail",
+        "Custom/none",
+        "Other"
+      ],
+      ph: "Choose how a winner is selected"
+    },
+    {
+      label: "Revision policy (on failure)",
+      desc: "What to ask the generator to change after grading fails minima.",
+      key: "revision_policy",
+      type: "select",
+      options: [
+        "Rewrite targeting lowest-scored criteria",
+        "Increase grounding: add citations/source spans",
+        "Reduce length & tighten structure",
+        "Ask a clarifying question then retry",
+        "None",
+        "Other"
+      ],
+      ph: "Pick the revision approach"
+    },
+    {
+      label: "Telemetry fields to store",
+      desc: "IDs, scores, reasons, thresholds, chosen candidate, and any error messages.",
+      key: "telemetry",
+      ph: "trace_id, route_id, model_version, candidate_id, scores{}, reasons[], min_score, winner, decision, timestamps…",
+      type: "textarea"
+    }
+  ],
+  template: ({
+    route, K, primary_rubric, secondary_rubric, weighting, min_score, max_rounds, selection_rule, revision_policy, telemetry,
+    ctx, style, tone
+  }) => {
+    // helpers (no nested template literals)
+    const join = (a) => a.filter(Boolean).join('\n');
+    const para = (label, v) => v ? (label + ":\n" + v) : null;
+
+    const explainK = (v) => {
+      switch (v) {
+        case "1": return "Sampling K=1: single-shot judging; fastest but least robust to variance.";
+        case "2": return "Sampling K=2: basic comparison; can expose disagreements without majority.";
+        case "3": return "Sampling K=3: enables simple majority and more reliable selection.";
+        case "4": return "Sampling K=4: higher diversity for nuanced grading at added cost.";
+        case "5": return "Sampling K=5: strong coverage for risky routes; slower and costlier.";
+        case "6": return "Sampling K=6: maximum diversity for pre-production runs and audits.";
+        default:  return "Sampling K not specified: system default will be used.";
+      }
+    };
+
+    const explainRubric = (v, which) => {
+      const prefix = which + " rubric: ";
+      switch (v) {
+        case "Accuracy (factually correct)":
+          return prefix + "optimize factual correctness; penalize false or unverified claims.";
+        case "Grounding (supported by sources)":
+          return prefix + "prioritize source-backed statements with explicit citations or spans.";
+        case "Safety (policy-compliant, non-harmful)":
+          return prefix + "enforce policy compliance and non-harmful wording as a gate.";
+        case "Format/Structure (schema, headings, JSON)":
+          return prefix + "require strict adherence to the requested structure or schema.";
+        case "Clarity/Readability (plain language, audience fit)":
+          return prefix + "reward plain language, audience fit, and unambiguous phrasing.";
+        case "Equity & Inclusion (people-first, non-stigmatizing)":
+          return prefix + "center people-first, inclusive language; avoid stigma or majority-default framing.";
+        default:
+          return which + " rubric: none specified; apply balanced scoring across dimensions.";
+      }
+    };
+
+    const explainWeighting = (v) => {
+      switch (v) {
+        case "Equal weights (1.0 each)":
+          return "Weighting: equal weights — all rubric dimensions contribute equally to the total score.";
+        case "Primary ×2 (others 1.0)":
+          return "Weighting: primary ×2 — double weight on the primary dimension to reflect its importance.";
+        case "Safety-first (Safety ×2; others 1.0)":
+          return "Weighting: safety-first — safety violations dominate scoring; others matter but cannot outweigh risk.";
+        case "Grounding-first (Grounding ×2; others 1.0)":
+          return "Weighting: grounding-first — source support is emphasized to minimize hallucinations.";
+        default:
+          return "Weighting: custom/none — use route-specific weights defined elsewhere.";
+      }
+    };
+
+    const explainMin = (v) => {
+      switch (v) {
+        case "6/10": return "Minimum score: 6/10 — lenient; allows minor flaws while filtering weak outputs.";
+        case "7/10": return "Minimum score: 7/10 — balanced default; filters middling outputs.";
+        case "8/10": return "Minimum score: 8/10 — strict; admits only strong candidates.";
+        case "9/10": return "Minimum score: 9/10 — very strict; for high-stakes routes.";
+        default:     return "Minimum score: custom/none — thresholds provided elsewhere or disabled.";
+      }
+    };
+
+    const explainRounds = (v) => {
+      switch (v) {
+        case "0": return "Revision cap: 0 — no auto-revision; fail or abstain immediately on low scores.";
+        case "1": return "Revision cap: 1 — single improve pass to fix the weakest criteria.";
+        case "2": return "Revision cap: 2 — two chances to repair quality before giving up.";
+        case "3": return "Revision cap: 3 — up to three revisions for complex routes.";
+        case "5": return "Revision cap: 5 — aggressive repair loop for pre-production testing.";
+        default:   return "Revision cap: none — unbounded or defined elsewhere (use cautiously).";
+      }
+    };
+
+    const explainSelectRule = (v) => {
+      switch (v) {
+        case "Highest weighted total score":
+          return "Selection rule: choose the candidate with the highest weighted total score.";
+        case "Pass minima then highest primary-dimension score":
+          return "Selection rule: discard any below minima, then pick the top score on the primary dimension.";
+        case "Safety gate → best remaining (weighted)":
+          return "Selection rule: enforce a hard safety pass first, then select the highest weighted total among survivors.";
+        case "Strict minima only; abstain if any fail":
+          return "Selection rule: require all minima to pass; if any dimension fails, abstain.";
+        default:
+          return "Selection rule: custom/none — use route-defined logic.";
+      }
+    };
+
+    const explainRevision = (v) => {
+      switch (v) {
+        case "Rewrite targeting lowest-scored criteria":
+          return "Revision policy: rewrite the candidate focusing on the lowest-scored criteria, citing concrete fixes.";
+        case "Increase grounding: add citations/source spans":
+          return "Revision policy: boost grounding by adding precise citations and quoting relevant source spans.";
+        case "Reduce length & tighten structure":
+          return "Revision policy: shorten output, enforce requested structure, and remove filler language.";
+        case "Ask a clarifying question then retry":
+          return "Revision policy: ask one clarifying question to reduce uncertainty, then regenerate.";
+        default:
+          return "Revision policy: none — do not attempt auto-repair after failures.";
+      }
+    };
+
+    const graderPrompt = [
+      "=== OUTPUT A — GRADER PROMPT (LLM-AS-A-JUDGE) ===",
+      "ROLE: You are an impartial grader. Score each candidate 1–10 on the rubric below. Be specific and people-first.",
+      "RUBRIC DIMENSIONS (score each 1–10):",
+      "1) Accuracy — factual correctness; no unsupported claims.",
+      "2) Grounding — clear support from sources; cite spans if applicable.",
+      "3) Safety — policy compliant; non-harmful, non-stigmatizing.",
+      "4) Format/Structure — matches required schema/sections.",
+      "5) Clarity/Readability — plain language; audience fit.",
+      "6) Equity & Inclusion — people-first language; avoids bias.",
+      "OUTPUT FORMAT:",
+      "CandidateID | Accuracy | Grounding | Safety | Format | Clarity | Inclusion | Notes (≤30 words)"
+    ].join('\n');
+
+    const selectionLogic = [
+      "=== OUTPUT B — SELECTION LOGIC ===",
+      explainK(K),
+      explainRubric(primary_rubric || "None", "Primary"),
+      explainRubric(secondary_rubric || "None", "Secondary"),
+      explainWeighting(weighting || "Custom/none"),
+      explainMin(min_score || "Custom/none"),
+      explainRounds(max_rounds || "None"),
+      explainSelectRule(selection_rule || "Custom/none"),
+      "Tie-breakers (default): prefer higher Safety, then higher Grounding, then shorter/clearer output."
+    ].join('\n');
+
+    const pseudocode = [
+      "=== OUTPUT C — WINNER SELECTION PSEUDOCODE ===",
+      "input: candidates[], scores[candidate][dimension], minima_per_dimension, weighting, rule",
+      "for c in candidates:",
+      "  if any(scores[c][d] < minima_per_dimension[d]): mark c = FAIL_MINIMA",
+      "eligible = candidates without FAIL_MINIMA",
+      "if rule == 'Highest weighted total score':",
+      "  score_total(c) = Σ_d weight[d] * scores[c][d]",
+      "  winner = argmax_c score_total(c)",
+      "elif rule == 'Pass minima then highest primary-dimension score':",
+      "  winner = argmax_c scores[c][PRIMARY]",
+      "elif rule == 'Safety gate → best remaining (weighted)':",
+      "  eligible = eligible ∩ {c | scores[c]['Safety'] ≥ minima['Safety']}",
+      "  winner = argmax_c Σ_d weight[d]*scores[c][d]",
+      "elif rule == 'Strict minima only; abstain if any fail':",
+      "  if eligible empty: return ABSTAIN",
+      "  else winner = argmax_c Σ_d weight[d]*scores[c][d]",
+      "apply tie-breakers in order: Safety → Grounding → shorter length → lexicographic id",
+      "if no winner or policy requires abstain: return ABSTAIN else return winner"
+    ].join('\n');
+
+    const reviseBlock = [
+      "=== OUTPUT D — REVISE-WITH-FIXLIST INSTRUCTIONS ===",
+      explainRevision(revision_policy || "None"),
+      "When revising:",
+      "• Quote the lowest-scored rubric criteria and state 1–2 concrete fixes.",
+      "• If grounding is weak, add citations with exact source spans.",
+      "• Keep user-facing tone plain and people-first; avoid new claims.",
+      "• Return only the revised candidate text (no grader commentary)."
+    ].join('\n');
+
+    const telemetrySpec = [
+      "=== OUTPUT E — TELEMETRY & LOGGING SPEC ===",
+      para("Telemetry fields to store", telemetry || "trace_id, route_id, model_version, candidate_ids[], scores{by_candidate, by_dimension}, min_score_policy, selection_rule, winner, decision_reason, revision_rounds, timestamps"),
+      "Privacy: redact PII in prompts/outputs before storage. Version both the task prompt and grader prompt for audit."
+    ].join('\n');
+
+    const tests = [
+      "=== OUTPUT F — TEST PLAN (TABLE-DRIVEN) ===",
+      "Case | K | Min | Rule | Scenario | Expected | Why",
+      "1 | 3 | 7/10 | Highest weighted | One clear winner | Winner selected | Baseline",
+      "2 | 3 | 8/10 | Strict minima only | One dim <8 | Abstain | Gate check",
+      "3 | 3 | 7/10 | Safety gate → best | Safety fail in top scorer | Next safe winner | Safety-first",
+      "4 | 2 | 7/10 | Pass minima→primary | Tied totals, higher primary | Primary wins | Tie logic",
+      "5 | 3 | 7/10 | Highest weighted | All fail minima | Revise loop then abstain | Repair path",
+      "6 | 1 | 7/10 | Any | Single candidate | Pass/Fail only | K=1 behavior"
+    ].join('\n');
+
+    return join([
+      "Grader-Loop Orchestrator — Instruction Set",
+      "origin:openai.com",
+      "origin:stanford.edu",
+      "origin:github.com",
+      ctx && ("Context: " + ctx),
+      style && ("Style: " + style),
+      tone && ("Tone: " + tone),
+
+      "INPUT SUMMARY",
+      para("Route / use-case", route),
+      "Selections & rationale:",
+      "• " + explainK(K),
+      "• " + explainRubric(primary_rubric || "None", "Primary"),
+      "• " + explainRubric(secondary_rubric || "None", "Secondary"),
+      "• " + explainWeighting(weighting || "Custom/none"),
+      "• " + explainMin(min_score || "Custom/none"),
+      "• " + explainRounds(max_rounds || "None"),
+      "• " + explainSelectRule(selection_rule || "Custom/none"),
+      "• " + explainRevision(revision_policy || "None"),
+
+      "— — —",
+      "ROLE",
+      "You are a neutral, evidence-aware grader/orchestrator. Score candidates against the rubric, enforce minima, trigger revisions up to the cap, and either select a winner or abstain.",
+
+      "OBJECTIVE",
+      "Produce a Grader Prompt, explicit Selection Logic, Revise-with-Fixlist instructions, pseudocode, telemetry spec, and a test plan for quick validation.",
+
+      graderPrompt,
+      selectionLogic,
+      pseudocode,
+      reviseBlock,
+      telemetrySpec,
+      tests,
+
+      "=== OUTPUT G — NEXT ACTIONS ===",
+      "Provide exactly 3 next steps with owner/role (generic ok), a small metric, and a timebox."
+    ]);
+  },
+  meta: {
+    search_text:
+      "Grader-Loop Orchestrator — LLM-as-a-Judge: rubric scoring, minima, weighting, selection, revision loop, telemetry; fields: primary/secondary rubric, weighting, min score, max rounds, selection rule, revision policy, K, telemetry; outputs: grader prompt, selection logic, pseudocode, tests."
+  }
+}
+
+
+
+
+
 
 
     
@@ -51278,5 +54667,10 @@ tasks && `Critical user tasks:\n${tasks}`,
   // 4) Node/CommonJS convenience (harmless in browser)
   if (typeof module !== 'undefined') module.exports = TEMPLATES;
 })(typeof window !== 'undefined' ? window : globalThis);
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = typeof TEMPLATES !== 'undefined' ? TEMPLATES
+                  : (typeof window !== 'undefined' ? (window.TEMPLATES || window.FRAMEWORKS || []) : []);
+}
 
 
