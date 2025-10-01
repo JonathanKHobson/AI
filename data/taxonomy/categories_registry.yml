@@ -1,0 +1,1049 @@
+version: 1
+updated: '2025-09-28'
+key: categories
+desc: Primary topical groupings for templates. Short, lowercase, kebab-case nouns.
+style_guide:
+  casing: lowercase
+  separator: hyphen
+  allowed_chars: a–z, 0–9, hyphen
+  length: 1–3 words
+  advice:
+  - Prefer nouns over adjectives ('culture' over 'cultural' when feasible).
+  - Avoid highly overlapping synonyms; use aliases where needed.
+  - Keep orthography consistent with tags where practical.
+values:
+  accessibility:
+    desc: ''
+    count: 3
+    examples:
+    - inclusive_language_metaphor_scrubber
+    - cross_cultural_localization_readiness
+    - accessibility_reality_check
+  advocacy:
+    desc: ''
+    count: 1
+    examples: &id001
+    - power_mapping_inclusive_engagement
+  alignment:
+    desc: ''
+    count: 9
+    examples:
+    - v2mom
+    - community_okrs
+    - collective_impact
+    - north_star_metric
+    - arnsteins_ladder
+    - iap2_spectrum
+  analysis:
+    desc: ''
+    count: 26
+    examples:
+    - kipling_5w1h
+    - clear
+    - comparative_analysis
+    - first_principles
+    - kansei_engineering
+    - mind_map
+  analytics:
+    desc: ''
+    count: 4
+    examples:
+    - lean_loop_stop_harm_v3
+    - okrs_kill_criteria_v3
+    - observability_slos_error_budgets
+    - doe_tolerance_stacks
+  architecture:
+    desc: ''
+    count: 5
+    examples:
+    - design_doc_scariest_change
+    - rfc_process_unsaid_objection
+    - threat_model_stride_linddun
+    - vmodel_mbse_assumption_ledger
+    - intent_to_action_patterns
+  brainstorming:
+    desc: ''
+    count: 21
+    examples:
+    - epic_quest
+    - first_principles
+    - golden
+    - grow
+    - head_heart_gut
+    - hmw_statements
+  branding:
+    desc: ''
+    count: 4
+    examples:
+    - brand_archetypes_community
+    - voice_tone_frameworks
+    - public_narrative_action
+    - cultural_web_johnson_scholes
+  budget:
+    desc: ''
+    count: 1
+    examples: &id002
+    - participatory_budgeting
+  career:
+    desc: ''
+    count: 1
+    examples: &id003
+    - framework_ikigai
+  careers:
+    desc: ''
+    count: 7
+    examples:
+    - targeting_matrix
+    - value_prop_canvas_personal
+    - star_soar_stories
+    - pipeline_kanban_job_search
+    - t_gap_analysis_30day
+    - informational_interview_ladder
+  check-in:
+    desc: ''
+    count: 1
+    examples: &id004
+    - rose_thorn_bud_weather
+  coaching:
+    desc: ''
+    count: 3
+    examples:
+    - parts_work
+    - three_vaults_practice
+    - parts_check_in_ifs
+  commitment:
+    desc: ''
+    count: 1
+    examples: &id005
+    - vow_and_witness
+  communication:
+    desc: ''
+    count: 27
+    examples:
+    - three_vaults_practice
+    - parts_check_in_ifs
+    - last_2_percent_round
+    - working_out_loud_truth
+    - clear_contracts_exit_ramps
+    - positionality_statement
+  communications:
+    desc: ''
+    count: 6
+    examples:
+    - brand_archetypes_community
+    - voice_tone_frameworks
+    - public_narrative_action
+    - story_circles_harvesting
+    - cultural_web_johnson_scholes
+    - empathy_personas_jtbd
+  community:
+    desc: ''
+    count: 58
+    examples:
+    - participatory_action_research
+    - participatory_decolonial
+    - theory_of_change
+    - v2mom
+    - community_okrs
+    - outcome_mapping
+  compassion:
+    desc: ''
+    count: 1
+    examples: &id006
+    - tonglen_lite_secular
+  conflict:
+    desc: ''
+    count: 3
+    examples:
+    - truth_reconciliation_micro
+    - lara_cri_dialogue
+    - accountability_letter
+  creativity:
+    desc: ''
+    count: 32
+    examples:
+    - two_min_rule
+    - active_imagination
+    - constraint_flip
+    - disney_creative
+    - eisenhower_matrix
+    - spoon_planner
+  critical-thinking:
+    desc: ''
+    count: 22
+    examples:
+    - abcde
+    - argument-map
+    - blooms
+    - eightfold_path
+    - cognitive_debiasing
+    - dmaic
+  cultural:
+    desc: ''
+    count: 20
+    examples: &id007
+    - two_min_rule
+    - anekantavada_syadvada
+    - eightfold_path
+    - constraint_flip
+    - dao_wu_wei
+    - spoon_planner
+  customer-support:
+    desc: ''
+    count: 1
+    examples: &id008
+    - canary_blue_green_deploys
+  data:
+    desc: ''
+    count: 3
+    examples:
+    - ocap_care_governance
+    - sensemaker_micro_narratives
+    - ethical_data_stewardship
+  decision:
+    desc: ''
+    count: 27
+    examples: &id009
+    - bab
+    - comparative_analysis
+    - dmaic
+    - eisenhower_matrix
+    - facione-core
+    - head_heart_gut
+  decision-making:
+    desc: ''
+    count: 3
+    examples:
+    - premortem
+    - decision_matrix_weighted
+    - sbar_health_dx
+  delivery:
+    desc: ''
+    count: 7
+    examples:
+    - trunk_feature_flags
+    - canary_blue_green_deploys
+    - raci_drci_consent
+    - user_story_ac_pro
+    - roadmap_brief_pro
+    - bdd_gwt_pro
+  design:
+    desc: ''
+    count: 24
+    examples:
+    - addie
+    - argument-map
+    - bias_impact_assessment
+    - blooms
+    - east_nudge
+    - heros_journey
+  education:
+    desc: ''
+    count: 34
+    examples:
+    - a3_ps
+    - addie
+    - blooms
+    - disney_creative
+    - empty_chair
+    - fab
+  education-training:
+    desc: ''
+    count: 1
+    examples: &id010
+    - checklists_gawande
+  embodiment:
+    desc: ''
+    count: 1
+    examples: &id011
+    - contact_improv_listening_duet
+  engineering:
+    desc: ''
+    count: 11
+    examples:
+    - decision_record_v3
+    - design_doc_scariest_change
+    - rfc_process_unsaid_objection
+    - tdd_property_based_testing
+    - trunk_feature_flags
+    - engineering_method
+  equity:
+    desc: ''
+    count: 7
+    examples:
+    - engagement_to_ownership_spectrum
+    - community_led_development
+    - participatory_budgeting
+    - stakeholder_harm_benefit_forecast
+    - inclusive_language_metaphor_scrubber
+    - cross_cultural_localization_readiness
+  ethics:
+    desc: ''
+    count: 50
+    examples:
+    - anekantavada_syadvada
+    - argument-map
+    - bias_impact_assessment
+    - bias_interrupters
+    - eightfold_path
+    - cognitive_debiasing
+  ethnography:
+    desc: ''
+    count: 1
+    examples: &id012
+    - cultural_probes_diary_studies
+  evaluation:
+    desc: ''
+    count: 5
+    examples:
+    - most_significant_change
+    - outcome_harvesting
+    - ripple_effects_mapping
+    - sensemaker_micro_narratives
+    - cultural_probes_diary_studies
+  execution:
+    desc: ''
+    count: 2
+    examples:
+    - v2mom
+    - pipeline_kanban_job_search
+  experiment:
+    desc: ''
+    count: 1
+    examples: &id013
+    - doe_tolerance_stacks
+  experimentation:
+    desc: ''
+    count: 2
+    examples:
+    - lean_loop_stop_harm_v3
+    - trunk_feature_flags
+  facilitation:
+    desc: ''
+    count: 25
+    examples:
+    - three_vaults_practice
+    - last_2_percent_round
+    - aar_feelings_first
+    - working_out_loud_truth
+    - clear_contracts_exit_ramps
+    - rose_thorn_bud_weather
+  family:
+    desc: ''
+    count: 1
+    examples: &id014
+    - ofrenda_remembrance_board
+  governance:
+    desc: ''
+    count: 24
+    examples:
+    - collective_impact
+    - arnsteins_ladder
+    - iap2_spectrum
+    - engagement_to_ownership_spectrum
+    - design_justice_principles
+    - community_led_development
+  health:
+    desc: ''
+    count: 7
+    examples:
+    - sbar_health_dx
+    - soap_health_dx
+    - askme3_health_dx
+    - teach_back_health_dx
+    - red_flag_plan_health_dx
+    - sdm_health_dx
+  healthcare:
+    desc: ''
+    count: 1
+    examples: &id015
+    - goals_of_care_values_first
+  interviews:
+    desc: ''
+    count: 1
+    examples: &id016
+    - star_soar_stories
+  investment:
+    desc: ''
+    count: 1
+    examples: &id017
+    - community_capitals_framework
+  job-search:
+    desc: ''
+    count: 7
+    examples:
+    - targeting_matrix
+    - value_prop_canvas_personal
+    - star_soar_stories
+    - pipeline_kanban_job_search
+    - t_gap_analysis_30day
+    - informational_interview_ladder
+  journaling:
+    desc: ''
+    count: 1
+    examples: &id018
+    - tarot_spread
+  learning:
+    desc: ''
+    count: 16
+    examples:
+    - aar_feelings_first
+    - working_out_loud_truth
+    - reflexive_memo
+    - critical_incident_analysis
+    - blameless_postmortem_essence
+    - most_significant_change
+  localization:
+    desc: ''
+    count: 1
+    examples: &id019
+    - cross_cultural_localization_readiness
+  management:
+    desc: ''
+    count: 20
+    examples:
+    - two_min_rule
+    - abcde
+    - first_principles
+    - kaitiakitanga
+    - kano_model
+    - maslaha_public_interest
+  manufacturing:
+    desc: ''
+    count: 1
+    examples: &id020
+    - doe_tolerance_stacks
+  marketing:
+    desc: ''
+    count: 1
+    examples: &id021
+    - pas
+  measurement:
+    desc: ''
+    count: 5
+    examples:
+    - okr
+    - community_okrs
+    - outcome_mapping
+    - north_star_metric
+    - okrs_job_search
+  mental-health:
+    desc: ''
+    count: 30
+    examples:
+    - abcde
+    - active_imagination
+    - anekantavada_syadvada
+    - argument-map
+    - avm_framework
+    - eisenhower_matrix
+  methodology:
+    desc: ''
+    count: 3
+    examples:
+    - popperian_falsification
+    - bayesian_science
+    - feyerabend_pluralism
+  methods:
+    desc: ''
+    count: 1
+    examples: &id022
+    - evidence_robustness_reproducibility_check
+  mindfulness:
+    desc: ''
+    count: 4
+    examples:
+    - focusing_felt_sense
+    - rain_self_inquiry
+    - noting_mindfulness
+    - tonglen_lite_secular
+  networking:
+    desc: ''
+    count: 1
+    examples: &id023
+    - informational_interview_ladder
+  notes:
+    desc: ''
+    count: 5
+    examples:
+    - soap_health_dx
+    - askme3_health_dx
+    - teach_back_health_dx
+    - sdm_health_dx
+    - bpmh_health_dx
+  operations:
+    desc: ''
+    count: 33
+    examples:
+    - a3_ps
+    - bias_interrupters
+    - cognitive_debiasing
+    - dmaic
+    - ice_scoring
+    - kepner_tregoe
+  organization:
+    desc: ''
+    count: 2
+    examples:
+    - sociocracy_consent_governance
+    - holacracy_selective_volunteer
+  personal-development:
+    desc: ''
+    count: 5
+    examples:
+    - three_vaults_practice
+    - focusing_felt_sense
+    - rain_self_inquiry
+    - noting_mindfulness
+    - memento_mori_micro
+  philosophy-of-science:
+    desc: ''
+    count: 5
+    examples:
+    - popperian_falsification
+    - lakatos_research_programs
+    - kuhn_paradigms
+    - feyerabend_pluralism
+    - abductive_reasoning
+  planning:
+    desc: ''
+    count: 73
+    examples:
+    - two_min_rule
+    - addie
+    - east_nudge
+    - eisenhower_matrix
+    - goal_breakdown
+    - goal_composition
+  policy:
+    desc: ''
+    count: 5
+    examples:
+    - systematic_review_meta
+    - causal_inference_framework
+    - abm_system_dynamics_truth
+    - causal_inference_playbook
+    - participatory_decolonial
+  portfolio:
+    desc: ''
+    count: 1
+    examples: &id024
+    - roadmap_brief_pro
+  positioning:
+    desc: ''
+    count: 1
+    examples: &id025
+    - value_prop_canvas_personal
+  prioritization:
+    desc: ''
+    count: 1
+    examples: &id026
+    - targeting_matrix
+  privacy:
+    desc: ''
+    count: 1
+    examples: &id027
+    - threat_model_stride_linddun
+  process-improvement:
+    desc: ''
+    count: 1
+    examples: &id028
+    - pdsa
+  product:
+    desc: ''
+    count: 9
+    examples:
+    - engineering_method
+    - design_science_research
+    - hcd_double_diamond
+    - opportunity_solution_tree
+    - wardley_mapping
+    - user_story_ac_pro
+  productivity:
+    desc: ''
+    count: 1
+    examples: &id029
+    - personal_kanban_wip
+  program-management:
+    desc: ''
+    count: 1
+    examples: &id030
+    - trl_with_exit_ramps
+  project-management:
+    desc: ''
+    count: 3
+    examples:
+    - premortem
+    - personal_kanban_wip
+    - checklists_gawande
+  prompt-development:
+    desc: ''
+    count: 21
+    examples:
+    - aida
+    - clear
+    - clear_path
+    - clear_pm
+    - costar
+    - few_shot
+  prompt-reasoning:
+    desc: ''
+    count: 5
+    examples:
+    - least_to_most
+    - plan_solve
+    - task_breakdown
+    - tot_brainstorm
+    - tot_decompose
+  purpose:
+    desc: ''
+    count: 1
+    examples: &id031
+    - framework_ikigai
+  qa:
+    desc: ''
+    count: 3
+    examples:
+    - user_story_ac_pro
+    - bdd_gwt_pro
+    - intent_to_action_patterns
+  qualitative:
+    desc: ''
+    count: 1
+    examples: &id032
+    - ethnographic_interpretivist
+  quality:
+    desc: ''
+    count: 17
+    examples:
+    - kipling_5w1h
+    - a3_ps
+    - anekantavada_syadvada
+    - dmaic
+    - facts_primer
+    - debiasing-checklist
+  reasoning:
+    desc: ''
+    count: 36
+    examples:
+    - kipling_5w1h
+    - a3_ps
+    - anekantavada_syadvada
+    - argument-map
+    - eightfold_path
+    - facione-core
+  reflection:
+    desc: ''
+    count: 28
+    examples:
+    - abcde
+    - active_imagination
+    - avm_framework
+    - empty_chair
+    - spoon_planner
+    - epic_quest
+  reliability:
+    desc: ''
+    count: 10
+    examples:
+    - design_doc_scariest_change
+    - tdd_property_based_testing
+    - fuzz_mutation_outage_shape
+    - trunk_feature_flags
+    - canary_blue_green_deploys
+    - observability_slos_error_budgets
+  research:
+    desc: ''
+    count: 51
+    examples:
+    - positionality_statement
+    - reflexive_memo
+    - working_backwards_prfaq_v3
+    - jtbd_interviews_v3
+    - registered_report_prereg
+    - adversarial_collaboration
+  research-quality:
+    desc: ''
+    count: 1
+    examples: &id033
+    - evidence_robustness_reproducibility_check
+  resilience:
+    desc: ''
+    count: 1
+    examples: &id034
+    - gratitude_under_duress
+  retrospective:
+    desc: ''
+    count: 1
+    examples: &id035
+    - aar_feelings_first
+  risk:
+    desc: ''
+    count: 7
+    examples:
+    - premortem_pregrief
+    - premortem_redteam_v3
+    - fmea_hazop_fta_unified
+    - trl_with_exit_ramps
+    - premortem
+    - stakeholder_harm_benefit_forecast
+  ritual:
+    desc: ''
+    count: 2
+    examples: &id036
+    - ofrenda_remembrance_board
+    - vow_and_witness
+  safety:
+    desc: ''
+    count: 11
+    examples:
+    - vmodel_mbse_assumption_ledger
+    - fmea_hazop_fta_unified
+    - ethical_data_stewardship
+    - checklists_gawande
+    - sbar_health_dx
+    - soap_health_dx
+  security:
+    desc: ''
+    count: 2
+    examples:
+    - fuzz_mutation_outage_shape
+    - threat_model_stride_linddun
+  self-management:
+    desc: ''
+    count: 3
+    examples:
+    - personal_kanban_wip
+    - decision_matrix_weighted
+    - checklists_gawande
+  service:
+    desc: ''
+    count: 1
+    examples: &id037
+    - service_design_blueprint
+  simulation:
+    desc: ''
+    count: 2
+    examples:
+    - abm_system_dynamics_truth
+    - computational_science
+  statistics:
+    desc: ''
+    count: 9
+    examples:
+    - registered_report_prereg
+    - systematic_review_meta
+    - causal_inference_framework
+    - mixed_methods_triangulation
+    - open_science_checklist
+    - bayesian_science
+  storytelling:
+    desc: ''
+    count: 24
+    examples:
+    - aida
+    - bab
+    - costar
+    - disney_creative
+    - epic_quest
+    - fab
+  storytelling frameworks:
+    desc: ''
+    count: 1
+    examples: &id038
+    - pas
+  strategy:
+    desc: ''
+    count: 41
+    examples:
+    - bias_interrupters
+    - constraint_flip
+    - dao_wu_wei
+    - east_nudge
+    - fab
+    - ganma_confluence
+  systems:
+    desc: ''
+    count: 8
+    examples:
+    - systems_mapping_kumu
+    - two_eyed_seeing
+    - ripple_effects_mapping
+    - future_search
+    - soft_systems_methodology_ssm
+    - viable_system_model_vsm
+  systems-engineering:
+    desc: ''
+    count: 5
+    examples:
+    - vmodel_mbse_assumption_ledger
+    - fmea_hazop_fta_unified
+    - reliability_growth_burn_in
+    - doe_tolerance_stacks
+    - trl_with_exit_ramps
+  teamwork:
+    desc: ''
+    count: 20
+    examples:
+    - last_2_percent_round
+    - aar_feelings_first
+    - premortem_pregrief
+    - working_out_loud_truth
+    - clear_contracts_exit_ramps
+    - critical_incident_analysis
+  template-picker:
+    desc: ''
+    count: 2
+    examples:
+    - pattern-picker
+    - pattern-picker
+  testing:
+    desc: ''
+    count: 3
+    examples:
+    - tdd_property_based_testing
+    - fuzz_mutation_outage_shape
+    - reliability_growth_burn_in
+  ttrpg:
+    desc: ''
+    count: 3
+    examples:
+    - stars_wishes_bleed_check
+    - lines_veils_revisit
+    - safety_pause_with_essence
+  ux:
+    desc: ''
+    count: 2
+    examples:
+    - jtbd_interviews_v3
+    - user_story_ac_pro
+  vision:
+    desc: ''
+    count: 1
+    examples: &id039
+    - framework_bhag
+  wellbeing:
+    desc: ''
+    count: 30
+    examples:
+    - avm_framework
+    - tarot_spread
+    - three_vaults_practice
+    - focusing_felt_sense
+    - rain_self_inquiry
+    - parts_check_in_ifs
+  writing:
+    desc: ''
+    count: 13
+    examples:
+    - bab
+    - bias_impact_assessment
+    - spoon_planner
+    - fab
+    - freewrite
+    - heros_journey
+  writing-frameworks:
+    desc: ''
+    count: 3
+    examples:
+    - rapid_framing_rewriter
+    - inclusive_language_metaphor_scrubber
+    - accessibility_reality_check
+aliases: {}
+review_flags:
+- category: advocacy
+  count: 1
+  examples: *id001
+  notes:
+  - rare (appears once)
+- category: budget
+  count: 1
+  examples: *id002
+  notes:
+  - rare (appears once)
+- category: career
+  count: 1
+  examples: *id003
+  notes:
+  - rare (appears once)
+- category: check-in
+  count: 1
+  examples: *id004
+  notes:
+  - rare (appears once)
+- category: commitment
+  count: 1
+  examples: *id005
+  notes:
+  - rare (appears once)
+- category: compassion
+  count: 1
+  examples: *id006
+  notes:
+  - rare (appears once)
+- category: cultural
+  count: 20
+  examples: *id007
+  notes:
+  - check noun vs adjective form (style)
+- category: customer-support
+  count: 1
+  examples: *id008
+  notes:
+  - rare (appears once)
+- category: decision
+  count: 27
+  examples: *id009
+  notes:
+  - consider 'decision-making' for clarity (style)
+- category: education-training
+  count: 1
+  examples: *id010
+  notes:
+  - rare (appears once)
+- category: embodiment
+  count: 1
+  examples: *id011
+  notes:
+  - rare (appears once)
+- category: ethnography
+  count: 1
+  examples: *id012
+  notes:
+  - rare (appears once)
+- category: experiment
+  count: 1
+  examples: *id013
+  notes:
+  - rare (appears once)
+- category: family
+  count: 1
+  examples: *id014
+  notes:
+  - rare (appears once)
+- category: healthcare
+  count: 1
+  examples: *id015
+  notes:
+  - rare (appears once)
+- category: interviews
+  count: 1
+  examples: *id016
+  notes:
+  - rare (appears once)
+- category: investment
+  count: 1
+  examples: *id017
+  notes:
+  - rare (appears once)
+- category: journaling
+  count: 1
+  examples: *id018
+  notes:
+  - rare (appears once)
+- category: localization
+  count: 1
+  examples: *id019
+  notes:
+  - rare (appears once)
+- category: manufacturing
+  count: 1
+  examples: *id020
+  notes:
+  - rare (appears once)
+- category: marketing
+  count: 1
+  examples: *id021
+  notes:
+  - rare (appears once)
+- category: methods
+  count: 1
+  examples: *id022
+  notes:
+  - rare (appears once)
+- category: networking
+  count: 1
+  examples: *id023
+  notes:
+  - rare (appears once)
+- category: portfolio
+  count: 1
+  examples: *id024
+  notes:
+  - rare (appears once)
+- category: positioning
+  count: 1
+  examples: *id025
+  notes:
+  - rare (appears once)
+- category: prioritization
+  count: 1
+  examples: *id026
+  notes:
+  - rare (appears once)
+- category: privacy
+  count: 1
+  examples: *id027
+  notes:
+  - rare (appears once)
+- category: process-improvement
+  count: 1
+  examples: *id028
+  notes:
+  - rare (appears once)
+- category: productivity
+  count: 1
+  examples: *id029
+  notes:
+  - rare (appears once)
+- category: program-management
+  count: 1
+  examples: *id030
+  notes:
+  - rare (appears once)
+- category: purpose
+  count: 1
+  examples: *id031
+  notes:
+  - rare (appears once)
+- category: qualitative
+  count: 1
+  examples: *id032
+  notes:
+  - rare (appears once)
+- category: research-quality
+  count: 1
+  examples: *id033
+  notes:
+  - rare (appears once)
+- category: resilience
+  count: 1
+  examples: *id034
+  notes:
+  - rare (appears once)
+- category: retrospective
+  count: 1
+  examples: *id035
+  notes:
+  - rare (appears once)
+- category: ritual
+  count: 2
+  examples: *id036
+  notes:
+  - check noun vs adjective form (style)
+- category: service
+  count: 1
+  examples: *id037
+  notes:
+  - rare (appears once)
+- category: storytelling frameworks
+  count: 1
+  examples: *id038
+  notes:
+  - 'non-kebab-case (allowed: a–z, 0–9, hyphen)'
+  - rare (appears once)
+- category: vision
+  count: 1
+  examples: *id039
+  notes:
+  - rare (appears once)

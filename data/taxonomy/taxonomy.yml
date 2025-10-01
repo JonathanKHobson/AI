@@ -1,0 +1,1378 @@
+# Auto-generated; edit source tags/categories in templates.data.js
+generated: "2025-09-30T18:28:19.446Z"
+tags:
+  - tag: "type:framework"
+    count: 177
+  - tag: "level:beginner"
+    count: 167
+  - tag: "level:intermediate"
+    count: 128
+  - tag: "use:pattern"
+    count: 102
+  - tag: "use:planning"
+    count: 57
+  - tag: "phase:planning"
+    count: 56
+  - tag: "topic:community"
+    count: 56
+  - tag: "use:decision-making"
+    count: 51
+  - tag: "phase:define"
+    count: 45
+  - tag: "phase:apply"
+    count: 42
+  - tag: "type:practice"
+    count: 42
+  - tag: "use:brainstorming"
+    count: 42
+  - tag: "phase:explore"
+    count: 40
+  - tag: "use:healing"
+    count: 32
+  - tag: "use:goal-setting"
+    count: 29
+  - tag: "use:evaluation"
+    count: 28
+  - tag: "use:copywriting"
+    count: 24
+  - tag: "use:presentation"
+    count: 24
+  - tag: "use:teaching"
+    count: 22
+  - tag: "use:engagement"
+    count: 21
+  - tag: "use:storytelling"
+    count: 21
+  - tag: "level:advanced"
+    count: 20
+  - tag: "use:scope-management"
+    count: 20
+  - tag: "topic:prompting"
+    count: 19
+  - tag: "type:prompt-fundamental"
+    count: 19
+  - tag: "use:governance"
+    count: 19
+  - tag: "use:process-improvement"
+    count: 19
+  - tag: "phase:decide"
+    count: 17
+  - tag: "use:alignment"
+    count: 17
+  - tag: "topic:bias"
+    count: 15
+  - tag: "topic:future-self"
+    count: 15
+  - tag: "use:content"
+    count: 15
+  - tag: "use:problem-framing"
+    count: 15
+  - tag: "use:workshop"
+    count: 15
+  - tag: "use:iteration"
+    count: 14
+  - tag: "phase:compose"
+    count: 13
+  - tag: "topic:clarification"
+    count: 13
+  - tag: "topic:values"
+    count: 13
+  - tag: "type:tool"
+    count: 13
+  - tag: "use:coding"
+    count: 13
+  - tag: "use:communication"
+    count: 13
+  - tag: "use:purpose"
+    count: 12
+  - tag: "phase:premortem"
+    count: 11
+  - tag: "type:technique"
+    count: 11
+  - tag: "use:case-study"
+    count: 11
+  - tag: "topic:decomposition"
+    count: 10
+  - tag: "topic:matrix"
+    count: 10
+  - tag: "use:discover"
+    count: 10
+  - tag: "use:task-brief"
+    count: 10
+  - tag: "type:method"
+    count: 9
+  - tag: "use:analysis"
+    count: 9
+  - tag: "use:equity"
+    count: 9
+  - tag: "use:format-guidance"
+    count: 9
+  - tag: "use:recipe"
+    count: 9
+  - tag: "use:research"
+    count: 9
+  - tag: "use:check-in"
+    count: 8
+  - tag: "use:journaling"
+    count: 8
+  - tag: "use:safety"
+    count: 8
+  - tag: "phase:evaluate"
+    count: 7
+  - tag: "use:appointment-prep"
+    count: 7
+  - tag: "use:retrospective"
+    count: 7
+  - tag: "phase:act"
+    count: 6
+  - tag: "phase:operate"
+    count: 6
+  - tag: "phase:reflect"
+    count: 6
+  - tag: "use:clinical-communication"
+    count: 6
+  - tag: "use:diagnosis"
+    count: 6
+  - tag: "use:mission"
+    count: 6
+  - tag: "use:prioritize"
+    count: 6
+  - tag: "use:sensemaking"
+    count: 6
+  - tag: "use:voice"
+    count: 6
+  - tag: "use:change"
+    count: 5
+  - tag: "use:ethics"
+    count: 5
+  - tag: "use:facilitation"
+    count: 5
+  - tag: "use:repair"
+    count: 5
+  - tag: "use:review"
+    count: 5
+  - tag: "use:risk-review"
+    count: 5
+  - tag: "phase:adapt"
+    count: 4
+  - tag: "topic:indigenous"
+    count: 4
+  - tag: "topic:reflexivity"
+    count: 4
+  - tag: "use:capacity"
+    count: 4
+  - tag: "use:coaching"
+    count: 4
+  - tag: "use:design"
+    count: 4
+  - tag: "use:mapping"
+    count: 4
+  - tag: "use:notes"
+    count: 4
+  - tag: "use:story"
+    count: 4
+  - tag: "use:synthesis"
+    count: 4
+  - tag: "origin:ttrpg-safety"
+    count: 3
+  - tag: "phase:analyze"
+    count: 3
+  - tag: "phase:develop"
+    count: 3
+  - tag: "phase:discover"
+    count: 3
+  - tag: "phase:review"
+    count: 3
+  - tag: "topic:gratitude"
+    count: 3
+  - tag: "topic:mortality"
+    count: 3
+  - tag: "topic:needs"
+    count: 3
+  - tag: "topic:planning"
+    count: 3
+  - tag: "use:acceptance"
+    count: 3
+  - tag: "use:care-navigation"
+    count: 3
+  - tag: "use:conflict-transformation"
+    count: 3
+  - tag: "use:debrief"
+    count: 3
+  - tag: "use:decision"
+    count: 3
+  - tag: "use:design-review"
+    count: 3
+  - tag: "use:discovery"
+    count: 3
+  - tag: "use:gratitude"
+    count: 3
+  - tag: "use:identity"
+    count: 3
+  - tag: "use:legacy"
+    count: 3
+  - tag: "use:pitch"
+    count: 3
+  - tag: "use:portfolio"
+    count: 3
+  - tag: "use:power"
+    count: 3
+  - tag: "use:prompt"
+    count: 3
+  - tag: "use:safety-net"
+    count: 3
+  - tag: "use:structure"
+    count: 3
+  - tag: "use:triage-call"
+    count: 3
+  - tag: "use:values"
+    count: 3
+  - tag: "phase:deliver"
+    count: 2
+  - tag: "phase:repair"
+    count: 2
+  - tag: "phase:revise"
+    count: 2
+  - tag: "topic:affect"
+    count: 2
+  - tag: "topic:amends"
+    count: 2
+  - tag: "topic:careers"
+    count: 2
+  - tag: "topic:dag"
+    count: 2
+  - tag: "topic:dissent"
+    count: 2
+  - tag: "topic:embodiment"
+    count: 2
+  - tag: "topic:ethics"
+    count: 2
+  - tag: "topic:failure-modes"
+    count: 2
+  - tag: "topic:feedback"
+    count: 2
+  - tag: "topic:grief"
+    count: 2
+  - tag: "topic:incident"
+    count: 2
+  - tag: "topic:jtbd"
+    count: 2
+  - tag: "topic:kill-criteria"
+    count: 2
+  - tag: "topic:listening"
+    count: 2
+  - tag: "topic:metrics"
+    count: 2
+  - tag: "topic:mindfulness"
+    count: 2
+  - tag: "topic:parts-work"
+    count: 2
+  - tag: "topic:priors"
+    count: 2
+  - tag: "topic:replication"
+    count: 2
+  - tag: "topic:requirements"
+    count: 2
+  - tag: "topic:risky-predictions"
+    count: 2
+  - tag: "topic:tradeoffs"
+    count: 2
+  - tag: "topic:truth-telling"
+    count: 2
+  - tag: "topic:vulnerability"
+    count: 2
+  - tag: "use:adaptation"
+    count: 2
+  - tag: "use:advocacy"
+    count: 2
+  - tag: "use:analysis-plan"
+    count: 2
+  - tag: "use:apology"
+    count: 2
+  - tag: "use:bdd"
+    count: 2
+  - tag: "use:checklist"
+    count: 2
+  - tag: "use:co-creation"
+    count: 2
+  - tag: "use:co-governance"
+    count: 2
+  - tag: "use:commitment"
+    count: 2
+  - tag: "use:community"
+    count: 2
+  - tag: "use:conflict-prevention"
+    count: 2
+  - tag: "use:conflict-resolution"
+    count: 2
+  - tag: "use:creative-block"
+    count: 2
+  - tag: "use:data-policy"
+    count: 2
+  - tag: "use:delivery"
+    count: 2
+  - tag: "use:emotion-regulation"
+    count: 2
+  - tag: "use:ethics-review"
+    count: 2
+  - tag: "use:execution"
+    count: 2
+  - tag: "use:experiment"
+    count: 2
+  - tag: "use:experiment-design"
+    count: 2
+  - tag: "use:feedback"
+    count: 2
+  - tag: "use:focus"
+    count: 2
+  - tag: "use:hypothesis"
+    count: 2
+  - tag: "use:identification"
+    count: 2
+  - tag: "use:interview"
+    count: 2
+  - tag: "use:messaging"
+    count: 2
+  - tag: "use:mobilization"
+    count: 2
+  - tag: "use:narrative"
+    count: 2
+  - tag: "use:network"
+    count: 2
+  - tag: "use:operating-model"
+    count: 2
+  - tag: "use:positioning"
+    count: 2
+  - tag: "use:postmortem"
+    count: 2
+  - tag: "use:preregistration"
+    count: 2
+  - tag: "use:quality"
+    count: 2
+  - tag: "use:reflection"
+    count: 2
+  - tag: "use:reproducibility"
+    count: 2
+  - tag: "use:resume"
+    count: 2
+  - tag: "use:risk-register"
+    count: 2
+  - tag: "use:segmentation"
+    count: 2
+  - tag: "use:session-setup"
+    count: 2
+  - tag: "use:sharing"
+    count: 2
+  - tag: "use:vision"
+    count: 2
+  - tag: "use:warmup"
+    count: 2
+  - tag: "alt:netnography"
+    count: 1
+  - tag: "mode:deep"
+    count: 1
+  - tag: "mode:quick"
+    count: 1
+  - tag: "origin:amazon-inspired"
+    count: 1
+  - tag: "origin:automatic-writing"
+    count: 1
+  - tag: "origin:classroom-practice"
+    count: 1
+  - tag: "origin:clowning"
+    count: 1
+  - tag: "origin:complex-systems"
+    count: 1
+  - tag: "origin:contact-improv"
+    count: 1
+  - tag: "origin:contemplative"
+    count: 1
+  - tag: "origin:debate-to-data"
+    count: 1
+  - tag: "origin:dialogue-tools-inspired"
+    count: 1
+  - tag: "origin:dignity-inspired"
+    count: 1
+  - tag: "origin:dsr"
+    count: 1
+  - tag: "origin:feyerabend"
+    count: 1
+  - tag: "origin:gendlin"
+    count: 1
+  - tag: "origin:grounded-theory"
+    count: 1
+  - tag: "origin:ifs-inspired"
+    count: 1
+  - tag: "origin:jtbd-inspired"
+    count: 1
+  - tag: "origin:kuhn"
+    count: 1
+  - tag: "origin:lakatos"
+    count: 1
+  - tag: "origin:lean-startup-inspired"
+    count: 1
+  - tag: "origin:mea"
+    count: 1
+  - tag: "origin:mixed-methods"
+    count: 1
+  - tag: "origin:ofrenda-inspired"
+    count: 1
+  - tag: "origin:open-practices"
+    count: 1
+  - tag: "origin:open-science"
+    count: 1
+  - tag: "origin:original"
+    count: 1
+  - tag: "origin:palliative-inspired"
+    count: 1
+  - tag: "origin:par"
+    count: 1
+  - tag: "origin:playback-theatre"
+    count: 1
+  - tag: "origin:popper"
+    count: 1
+  - tag: "origin:potential-outcomes"
+    count: 1
+  - tag: "origin:prisma-inspired"
+    count: 1
+  - tag: "origin:qualitative-methods"
+    count: 1
+  - tag: "origin:reflective-practice"
+    count: 1
+  - tag: "origin:stoic-inspired"
+    count: 1
+  - tag: "origin:story-spine-inspired"
+    count: 1
+  - tag: "origin:tara-brach"
+    count: 1
+  - tag: "origin:teaching"
+    count: 1
+  - tag: "origin:tibetan-inspired"
+    count: 1
+  - tag: "origin:vipassana-inspired"
+    count: 1
+  - tag: "phase:ideate"
+    count: 1
+  - tag: "phase:prepare"
+    count: 1
+  - tag: "phase:test"
+    count: 1
+  - tag: "phase:verify"
+    count: 1
+  - tag: "topic:abm"
+    count: 1
+  - tag: "topic:accessibility"
+    count: 1
+  - tag: "topic:accountability"
+    count: 1
+  - tag: "topic:affirmation"
+    count: 1
+  - tag: "topic:alignment"
+    count: 1
+  - tag: "topic:anomalies"
+    count: 1
+  - tag: "topic:arc"
+    count: 1
+  - tag: "topic:archetypes"
+    count: 1
+  - tag: "topic:assumptions"
+    count: 1
+  - tag: "topic:awareness"
+    count: 1
+  - tag: "topic:bayes-factor"
+    count: 1
+  - tag: "topic:benefit-sharing"
+    count: 1
+  - tag: "topic:bereavement"
+    count: 1
+  - tag: "topic:blast-radius"
+    count: 1
+  - tag: "topic:bleed"
+    count: 1
+  - tag: "topic:boundaries"
+    count: 1
+  - tag: "topic:breath"
+    count: 1
+  - tag: "topic:burn-in"
+    count: 1
+  - tag: "topic:burn-rate"
+    count: 1
+  - tag: "topic:career-design"
+    count: 1
+  - tag: "topic:celebration"
+    count: 1
+  - tag: "topic:civic-innovation"
+    count: 1
+  - tag: "topic:communicating-value"
+    count: 1
+  - tag: "topic:communication"
+    count: 1
+  - tag: "topic:compensation"
+    count: 1
+  - tag: "topic:consent"
+    count: 1
+  - tag: "topic:constant-comparison"
+    count: 1
+  - tag: "topic:constraints"
+    count: 1
+  - tag: "topic:creativity"
+    count: 1
+  - tag: "topic:data"
+    count: 1
+  - tag: "topic:data-sovereignty"
+    count: 1
+  - tag: "topic:decision-rights"
+    count: 1
+  - tag: "topic:dignity"
+    count: 1
+  - tag: "topic:discrepant-cases"
+    count: 1
+  - tag: "topic:doe"
+    count: 1
+  - tag: "topic:edge-cases"
+    count: 1
+  - tag: "topic:empathy"
+    count: 1
+  - tag: "topic:error-budget"
+    count: 1
+  - tag: "topic:exit-ramp"
+    count: 1
+  - tag: "topic:failure"
+    count: 1
+  - tag: "topic:fast-loop"
+    count: 1
+  - tag: "topic:feelings"
+    count: 1
+  - tag: "topic:felt-sense"
+    count: 1
+  - tag: "topic:flow"
+    count: 1
+  - tag: "topic:fmea"
+    count: 1
+  - tag: "topic:forging-paths"
+    count: 1
+  - tag: "topic:fta"
+    count: 1
+  - tag: "topic:generators"
+    count: 1
+  - tag: "topic:goal-setting"
+    count: 1
+  - tag: "topic:goals"
+    count: 1
+  - tag: "topic:growth-model"
+    count: 1
+  - tag: "topic:hard-core"
+    count: 1
+  - tag: "topic:hazop"
+    count: 1
+  - tag: "topic:heterogeneity"
+    count: 1
+  - tag: "topic:hope"
+    count: 1
+  - tag: "topic:human-impact"
+    count: 1
+  - tag: "topic:ibe"
+    count: 1
+  - tag: "topic:ideas"
+    count: 1
+  - tag: "topic:identity"
+    count: 1
+  - tag: "topic:ifs"
+    count: 1
+  - tag: "topic:impact"
+    count: 1
+  - tag: "topic:inclusion-criteria"
+    count: 1
+  - tag: "topic:inputs"
+    count: 1
+  - tag: "topic:integrity"
+    count: 1
+  - tag: "topic:invariants"
+    count: 1
+  - tag: "topic:iv-did-rdd"
+    count: 1
+  - tag: "topic:lateral-thinking"
+    count: 1
+  - tag: "topic:licensing"
+    count: 1
+  - tag: "topic:linddun"
+    count: 1
+  - tag: "topic:lines"
+    count: 1
+  - tag: "topic:localization"
+    count: 1
+  - tag: "topic:maori"
+    count: 1
+  - tag: "topic:mbse"
+    count: 1
+  - tag: "topic:meaning"
+    count: 1
+  - tag: "topic:meditation"
+    count: 1
+  - tag: "topic:meta"
+    count: 1
+  - tag: "topic:method"
+    count: 1
+  - tag: "topic:mtbf"
+    count: 1
+  - tag: "topic:natural-experiments"
+    count: 1
+  - tag: "topic:non-bypass"
+    count: 1
+  - tag: "topic:numerics"
+    count: 1
+  - tag: "topic:odi"
+    count: 1
+  - tag: "topic:okrs"
+    count: 1
+  - tag: "topic:ooda"
+    count: 1
+  - tag: "topic:open-social-web"
+    count: 1
+  - tag: "topic:p-hacking"
+    count: 1
+  - tag: "topic:pain"
+    count: 1
+  - tag: "topic:paradigm"
+    count: 1
+  - tag: "topic:persuasion"
+    count: 1
+  - tag: "topic:persuasive-language"
+    count: 1
+  - tag: "topic:pluralism"
+    count: 1
+  - tag: "topic:prd"
+    count: 1
+  - tag: "topic:precommitment"
+    count: 1
+  - tag: "topic:present-truth"
+    count: 1
+  - tag: "topic:privacy"
+    count: 1
+  - tag: "topic:problem-framing"
+    count: 1
+  - tag: "topic:progress"
+    count: 1
+  - tag: "topic:protective-belt"
+    count: 1
+  - tag: "topic:protocols"
+    count: 1
+  - tag: "topic:psychological-safety"
+    count: 1
+  - tag: "topic:purpose"
+    count: 1
+  - tag: "topic:quality-of-life"
+    count: 1
+  - tag: "topic:red-team"
+    count: 1
+  - tag: "topic:reflection"
+    count: 1
+  - tag: "topic:release-strategy"
+    count: 1
+  - tag: "topic:remembrance"
+    count: 1
+  - tag: "topic:repair"
+    count: 1
+  - tag: "topic:requests"
+    count: 1
+  - tag: "topic:safety"
+    count: 1
+  - tag: "topic:security"
+    count: 1
+  - tag: "topic:segmentation"
+    count: 1
+  - tag: "topic:self-compassion"
+    count: 1
+  - tag: "topic:self-leadership"
+    count: 1
+  - tag: "topic:shame-resilience"
+    count: 1
+  - tag: "topic:standards"
+    count: 1
+  - tag: "topic:standpoint"
+    count: 1
+  - tag: "topic:status"
+    count: 1
+  - tag: "topic:stride"
+    count: 1
+  - tag: "topic:struggles"
+    count: 1
+  - tag: "topic:system-dynamics"
+    count: 1
+  - tag: "topic:tarot"
+    count: 1
+  - tag: "topic:teaching"
+    count: 1
+  - tag: "topic:telemetry"
+    count: 1
+  - tag: "topic:thick-description"
+    count: 1
+  - tag: "topic:tolerance-stack"
+    count: 1
+  - tag: "topic:traceability"
+    count: 1
+  - tag: "topic:transparency"
+    count: 1
+  - tag: "topic:triangulation"
+    count: 1
+  - tag: "topic:trl"
+    count: 1
+  - tag: "topic:trust"
+    count: 1
+  - tag: "topic:truth-line"
+    count: 1
+  - tag: "topic:two-eyed-seeing"
+    count: 1
+  - tag: "topic:uncertainty"
+    count: 1
+  - tag: "topic:utility"
+    count: 1
+  - tag: "topic:v-model"
+    count: 1
+  - tag: "topic:veils"
+    count: 1
+  - tag: "topic:vision"
+    count: 1
+  - tag: "topic:vow"
+    count: 1
+  - tag: "topic:western"
+    count: 1
+  - tag: "topic:witness"
+    count: 1
+  - tag: "topic:witnessing"
+    count: 1
+  - tag: "topic:working-backwards"
+    count: 1
+  - tag: "type:helper"
+    count: 1
+  - tag: "type:heuristics"
+    count: 1
+  - tag: "type:pattern"
+    count: 1
+  - tag: "type:task"
+    count: 1
+  - tag: "use:a11y-audit"
+    count: 1
+  - tag: "use:acceptance-criteria"
+    count: 1
+  - tag: "use:acceptance-testing"
+    count: 1
+  - tag: "use:accessibility"
+    count: 1
+  - tag: "use:accountability"
+    count: 1
+  - tag: "use:ad-copy"
+    count: 1
+  - tag: "use:adjudication"
+    count: 1
+  - tag: "use:adr"
+    count: 1
+  - tag: "use:advance-care-planning"
+    count: 1
+  - tag: "use:agreements"
+    count: 1
+  - tag: "use:align"
+    count: 1
+  - tag: "use:analysis-preface"
+    count: 1
+  - tag: "use:architecture"
+    count: 1
+  - tag: "use:artifact"
+    count: 1
+  - tag: "use:automation"
+    count: 1
+  - tag: "use:blueprint"
+    count: 1
+  - tag: "use:bravery-rep"
+    count: 1
+  - tag: "use:brief"
+    count: 1
+  - tag: "use:budget"
+    count: 1
+  - tag: "use:builder"
+    count: 1
+  - tag: "use:capabilities"
+    count: 1
+  - tag: "use:causal"
+    count: 1
+  - tag: "use:cda"
+    count: 1
+  - tag: "use:ceremony"
+    count: 1
+  - tag: "use:chain-of-responsibility"
+    count: 1
+  - tag: "use:clarity"
+    count: 1
+  - tag: "use:co-design"
+    count: 1
+  - tag: "use:command-pattern"
+    count: 1
+  - tag: "use:comms"
+    count: 1
+  - tag: "use:comparison"
+    count: 1
+  - tag: "use:compassion"
+    count: 1
+  - tag: "use:consent-refresh"
+    count: 1
+  - tag: "use:contingency-planning"
+    count: 1
+  - tag: "use:conversation"
+    count: 1
+  - tag: "use:coordination"
+    count: 1
+  - tag: "use:creative-warmup"
+    count: 1
+  - tag: "use:culture"
+    count: 1
+  - tag: "use:daily-journal"
+    count: 1
+  - tag: "use:data"
+    count: 1
+  - tag: "use:data-stewardship"
+    count: 1
+  - tag: "use:de-escalation"
+    count: 1
+  - tag: "use:decision-clarity"
+    count: 1
+  - tag: "use:decision-record"
+    count: 1
+  - tag: "use:decision-support"
+    count: 1
+  - tag: "use:deploy"
+    count: 1
+  - tag: "use:design-cycle"
+    count: 1
+  - tag: "use:design-decisions"
+    count: 1
+  - tag: "use:design-first"
+    count: 1
+  - tag: "use:design-out"
+    count: 1
+  - tag: "use:design-proposal"
+    count: 1
+  - tag: "use:dialogue"
+    count: 1
+  - tag: "use:disagreement"
+    count: 1
+  - tag: "use:dissemination"
+    count: 1
+  - tag: "use:eda"
+    count: 1
+  - tag: "use:edge-cases"
+    count: 1
+  - tag: "use:editing"
+    count: 1
+  - tag: "use:email"
+    count: 1
+  - tag: "use:ethnography"
+    count: 1
+  - tag: "use:evidence"
+    count: 1
+  - tag: "use:evidence-synthesis"
+    count: 1
+  - tag: "use:experimentation"
+    count: 1
+  - tag: "use:factory"
+    count: 1
+  - tag: "use:family-conversation"
+    count: 1
+  - tag: "use:faq"
+    count: 1
+  - tag: "use:field-notes"
+    count: 1
+  - tag: "use:fieldwork"
+    count: 1
+  - tag: "use:flagging"
+    count: 1
+  - tag: "use:framework-picker"
+    count: 1
+  - tag: "use:framing"
+    count: 1
+  - tag: "use:fuzz"
+    count: 1
+  - tag: "use:gap-analysis"
+    count: 1
+  - tag: "use:gherkin"
+    count: 1
+  - tag: "use:go-no-go"
+    count: 1
+  - tag: "use:goodbye"
+    count: 1
+  - tag: "use:gratitude-journaling"
+    count: 1
+  - tag: "use:group-story"
+    count: 1
+  - tag: "use:habit"
+    count: 1
+  - tag: "use:handoffs"
+    count: 1
+  - tag: "use:hazard-analysis"
+    count: 1
+  - tag: "use:hearing"
+    count: 1
+  - tag: "use:hypothesis-generation"
+    count: 1
+  - tag: "use:incident-response"
+    count: 1
+  - tag: "use:influence"
+    count: 1
+  - tag: "use:innovation"
+    count: 1
+  - tag: "use:insight-capture"
+    count: 1
+  - tag: "use:integration"
+    count: 1
+  - tag: "use:intent-mapping"
+    count: 1
+  - tag: "use:interpreter-pattern"
+    count: 1
+  - tag: "use:investment"
+    count: 1
+  - tag: "use:journalism"
+    count: 1
+  - tag: "use:journey"
+    count: 1
+  - tag: "use:justice"
+    count: 1
+  - tag: "use:landing"
+    count: 1
+  - tag: "use:landscape"
+    count: 1
+  - tag: "use:leadership"
+    count: 1
+  - tag: "use:leading"
+    count: 1
+  - tag: "use:learning-journal"
+    count: 1
+  - tag: "use:learning-loop"
+    count: 1
+  - tag: "use:localization"
+    count: 1
+  - tag: "use:longitudinal"
+    count: 1
+  - tag: "use:maturity-gates"
+    count: 1
+  - tag: "use:medication-reconciliation"
+    count: 1
+  - tag: "use:memorial"
+    count: 1
+  - tag: "use:method-mix"
+    count: 1
+  - tag: "use:methods"
+    count: 1
+  - tag: "use:metric"
+    count: 1
+  - tag: "use:metrics"
+    count: 1
+  - tag: "use:migration"
+    count: 1
+  - tag: "use:model-choice"
+    count: 1
+  - tag: "use:modeling"
+    count: 1
+  - tag: "use:monitoring"
+    count: 1
+  - tag: "use:morals"
+    count: 1
+  - tag: "use:motivation"
+    count: 1
+  - tag: "use:mutation"
+    count: 1
+  - tag: "use:networking"
+    count: 1
+  - tag: "use:objective"
+    count: 1
+  - tag: "use:operations"
+    count: 1
+  - tag: "use:opportunities"
+    count: 1
+  - tag: "use:outcomes"
+    count: 1
+  - tag: "use:outreach"
+    count: 1
+  - tag: "use:overwhelm-reduction"
+    count: 1
+  - tag: "use:pattern-detection"
+    count: 1
+  - tag: "use:peer-review"
+    count: 1
+  - tag: "use:plain-language"
+    count: 1
+  - tag: "use:policy-brief"
+    count: 1
+  - tag: "use:power-shift"
+    count: 1
+  - tag: "use:prd-note"
+    count: 1
+  - tag: "use:premortem"
+    count: 1
+  - tag: "use:press-release"
+    count: 1
+  - tag: "use:privacy"
+    count: 1
+  - tag: "use:process"
+    count: 1
+  - tag: "use:product-discovery"
+    count: 1
+  - tag: "use:product-value"
+    count: 1
+  - tag: "use:program-review"
+    count: 1
+  - tag: "use:properties"
+    count: 1
+  - tag: "use:protocol"
+    count: 1
+  - tag: "use:psychological-safety"
+    count: 1
+  - tag: "use:qualitative"
+    count: 1
+  - tag: "use:red-flags"
+    count: 1
+  - tag: "use:reflect"
+    count: 1
+  - tag: "use:reframing"
+    count: 1
+  - tag: "use:regression"
+    count: 1
+  - tag: "use:requirements"
+    count: 1
+  - tag: "use:research-methods"
+    count: 1
+  - tag: "use:resilience"
+    count: 1
+  - tag: "use:retro-warmup"
+    count: 1
+  - tag: "use:rewriting"
+    count: 1
+  - tag: "use:rfc"
+    count: 1
+  - tag: "use:ritual"
+    count: 1
+  - tag: "use:robustness"
+    count: 1
+  - tag: "use:roles"
+    count: 1
+  - tag: "use:rollback"
+    count: 1
+  - tag: "use:rollout"
+    count: 1
+  - tag: "use:salvage"
+    count: 1
+  - tag: "use:scenario"
+    count: 1
+  - tag: "use:self-care"
+    count: 1
+  - tag: "use:self-compassion"
+    count: 1
+  - tag: "use:sensitivity"
+    count: 1
+  - tag: "use:service-design"
+    count: 1
+  - tag: "use:skill-development"
+    count: 1
+  - tag: "use:sleep-winddown"
+    count: 1
+  - tag: "use:slo"
+    count: 1
+  - tag: "use:somatic-attunement"
+    count: 1
+  - tag: "use:spec"
+    count: 1
+  - tag: "use:standardization"
+    count: 1
+  - tag: "use:standup"
+    count: 1
+  - tag: "use:state-of-field"
+    count: 1
+  - tag: "use:status"
+    count: 1
+  - tag: "use:status-update"
+    count: 1
+  - tag: "use:stop-rule"
+    count: 1
+  - tag: "use:story-draft"
+    count: 1
+  - tag: "use:story-writing"
+    count: 1
+  - tag: "use:strategy"
+    count: 1
+  - tag: "use:strategy-pattern"
+    count: 1
+  - tag: "use:study-design"
+    count: 1
+  - tag: "use:style"
+    count: 1
+  - tag: "use:talk-outline"
+    count: 1
+  - tag: "use:tdd"
+    count: 1
+  - tag: "use:teach-back"
+    count: 1
+  - tag: "use:template-picker"
+    count: 1
+  - tag: "use:test-design"
+    count: 1
+  - tag: "use:test-plan"
+    count: 1
+  - tag: "use:theory-building"
+    count: 1
+  - tag: "use:theory-maintenance"
+    count: 1
+  - tag: "use:threat-model"
+    count: 1
+  - tag: "use:time-blocking"
+    count: 1
+  - tag: "use:time-out"
+    count: 1
+  - tag: "use:traceability"
+    count: 1
+  - tag: "use:tracking"
+    count: 1
+  - tag: "use:tradeoffs"
+    count: 1
+  - tag: "use:training"
+    count: 1
+  - tag: "use:translation"
+    count: 1
+  - tag: "use:trust"
+    count: 1
+  - tag: "use:trust-building"
+    count: 1
+  - tag: "use:understanding"
+    count: 1
+  - tag: "use:user-experience"
+    count: 1
+  - tag: "use:validation"
+    count: 1
+  - tag: "use:value-prop"
+    count: 1
+  - tag: "use:values-alignment"
+    count: 1
+  - tag: "use:values-clarification"
+    count: 1
+  - tag: "use:visualize"
+    count: 1
+  - tag: "use:why"
+    count: 1
+  - tag: "use:workflow"
+    count: 1
+  - tag: "use:write"
+    count: 1
+categories:
+  - tag: "planning"
+    count: 74
+  - tag: "community"
+    count: 60
+  - tag: "research"
+    count: 51
+  - tag: "ethics"
+    count: 50
+  - tag: "teaching"
+    count: 48
+  - tag: "strategy"
+    count: 41
+  - tag: "reasoning"
+    count: 36
+  - tag: "communication"
+    count: 33
+  - tag: "operations"
+    count: 33
+  - tag: "creativity"
+    count: 32
+  - tag: "mental-health"
+    count: 30
+  - tag: "wellbeing"
+    count: 30
+  - tag: "reflection"
+    count: 28
+  - tag: "decision"
+    count: 27
+  - tag: "analysis"
+    count: 26
+  - tag: "facilitation"
+    count: 25
+  - tag: "governance"
+    count: 25
+  - tag: "design"
+    count: 24
+  - tag: "storytelling"
+    count: 24
+  - tag: "critical-thinking"
+    count: 22
+  - tag: "brainstorming"
+    count: 21
+  - tag: "prompt-development"
+    count: 21
+  - tag: "cultural"
+    count: 20
+  - tag: "management"
+    count: 20
+  - tag: "teamwork"
+    count: 20
+  - tag: "quality"
+    count: 17
+  - tag: "safety"
+    count: 17
+  - tag: "writing"
+    count: 13
+  - tag: "engineering"
+    count: 11
+  - tag: "evaluation"
+    count: 10
+  - tag: "reliability"
+    count: 10
+  - tag: "alignment"
+    count: 9
+  - tag: "product"
+    count: 9
+  - tag: "statistics"
+    count: 9
+  - tag: "systems"
+    count: 8
+  - tag: "careers"
+    count: 7
+  - tag: "delivery"
+    count: 7
+  - tag: "equity"
+    count: 7
+  - tag: "health"
+    count: 7
+  - tag: "job-search"
+    count: 7
+  - tag: "architecture"
+    count: 6
+  - tag: "notes"
+    count: 5
+  - tag: "personal-development"
+    count: 5
+  - tag: "philosophy-of-science"
+    count: 5
+  - tag: "policy"
+    count: 5
+  - tag: "prompt-reasoning"
+    count: 5
+  - tag: "systems-engineering"
+    count: 5
+  - tag: "analytics"
+    count: 4
+  - tag: "branding"
+    count: 4
+  - tag: "mindfulness"
+    count: 4
+  - tag: "accessibility"
+    count: 3
+  - tag: "coaching"
+    count: 3
+  - tag: "conflict"
+    count: 3
+  - tag: "data"
+    count: 3
+  - tag: "decision-making"
+    count: 3
+  - tag: "methodology"
+    count: 3
+  - tag: "project-management"
+    count: 3
+  - tag: "qa"
+    count: 3
+  - tag: "self-management"
+    count: 3
+  - tag: "testing"
+    count: 3
+  - tag: "ttrpg"
+    count: 3
+  - tag: "writing-frameworks"
+    count: 3
+  - tag: "execution"
+    count: 2
+  - tag: "experimentation"
+    count: 2
+  - tag: "organization"
+    count: 2
+  - tag: "ritual"
+    count: 2
+  - tag: "security"
+    count: 2
+  - tag: "simulation"
+    count: 2
+  - tag: "user-experience"
+    count: 2
+  - tag: "advocacy"
+    count: 1
+  - tag: "budget"
+    count: 1
+  - tag: "career"
+    count: 1
+  - tag: "check-in"
+    count: 1
+  - tag: "civic"
+    count: 1
+  - tag: "commitment"
+    count: 1
+  - tag: "comms"
+    count: 1
+  - tag: "compassion"
+    count: 1
+  - tag: "customer-support"
+    count: 1
+  - tag: "education-training"
+    count: 1
+  - tag: "embodiment"
+    count: 1
+  - tag: "ethnography"
+    count: 1
+  - tag: "experiment"
+    count: 1
+  - tag: "family"
+    count: 1
+  - tag: "healthcare"
+    count: 1
+  - tag: "interviews"
+    count: 1
+  - tag: "investment"
+    count: 1
+  - tag: "journaling"
+    count: 1
+  - tag: "localization"
+    count: 1
+  - tag: "manufacturing"
+    count: 1
+  - tag: "marketing"
+    count: 1
+  - tag: "methods"
+    count: 1
+  - tag: "networking"
+    count: 1
+  - tag: "platform"
+    count: 1
+  - tag: "portfolio"
+    count: 1
+  - tag: "positioning"
+    count: 1
+  - tag: "privacy"
+    count: 1
+  - tag: "process-improvement"
+    count: 1
+  - tag: "productivity"
+    count: 1
+  - tag: "program-management"
+    count: 1
+  - tag: "purpose"
+    count: 1
+  - tag: "qualitative"
+    count: 1
+  - tag: "research-quality"
+    count: 1
+  - tag: "resilience"
+    count: 1
+  - tag: "retrospective"
+    count: 1
+  - tag: "service"
+    count: 1
+  - tag: "storytelling-frameworks"
+    count: 1
+  - tag: "template-picker"
+    count: 1
+  - tag: "vision"
+    count: 1

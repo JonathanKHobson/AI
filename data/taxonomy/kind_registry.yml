@@ -1,0 +1,106 @@
+version: 1
+updated: '2025-09-28'
+key: kind
+desc: Primary type of a template. Keep the set small and stable. Preserve 'helper'.
+style_guide:
+  casing: lowercase
+  allowed_chars: a–z only (keep it minimal)
+  advice:
+  - Kind should express role/shape (framework, strategy) rather than topic or method
+    name.
+  - Prefer the smallest useful set to reduce cognitive load.
+  - If in doubt, map to the nearest canonical kind and carry nuance in tags.
+canonical:
+  framework:
+    desc: ''
+  strategy:
+    desc: ''
+  technique:
+    desc: ''
+  heuristic:
+    desc: ''
+  practice:
+    desc: ''
+  helper:
+    desc: ''
+observed:
+  framework:
+    count: 155
+    examples:
+    - abcde
+    - avm_framework
+    - bab
+    - clear
+    - clear_path
+    - clear_pm
+    - costar
+    - epic_quest
+  strategy:
+    count: 92
+    examples:
+    - a3_ps
+    - addie
+    - aida
+    - argument-map
+    - bias_impact_assessment
+    - eightfold_path
+    - cognitive_debiasing
+    - comparative_analysis
+  heuristic:
+    count: 15
+    examples:
+    - two_min_rule
+    - kipling_5w1h
+    - anekantavada_syadvada
+    - bias_interrupters
+    - blooms
+    - east_nudge
+    - first_principles
+    - debiasing-checklist
+  technique:
+    count: 14
+    examples:
+    - active_imagination
+    - empty_chair
+    - few_shot
+    - facts_primer
+    - feynman
+    - goal_breakdown
+    - goal_composition
+    - goal_prompting
+  tool:
+    count: 14
+    examples: &id001
+    - personal_kanban_wip
+    - decision_matrix_weighted
+    - checklists_gawande
+    - sbar_health_dx
+    - soap_health_dx
+    - askme3_health_dx
+    - teach_back_health_dx
+    - red_flag_plan_health_dx
+  facilitation:
+    count: 7
+    examples: &id002
+    - world_cafe
+    - open_space_technology
+    - liberating_structures_bundle
+    - restorative_circles_deep_democracy
+    - nvc_needs_based_dialogue
+    - story_circles_harvesting
+    - dot_voting_heatmap
+  helper:
+    count: 2
+    examples:
+    - pattern-picker
+    - pattern-picker
+aliases: {}
+review_flags:
+- kind: tool
+  count: 14
+  examples: *id001
+  note: Not in canonical set; propose mapping or justification.
+- kind: facilitation
+  count: 7
+  examples: *id002
+  note: Not in canonical set; propose mapping or justification.

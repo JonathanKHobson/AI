@@ -1,0 +1,8403 @@
+generated_at: 2025-09-30
+about: Taxonomy for glossary terms (categories, tags, statuses).
+counts:
+  total_terms: 822
+  statuses:
+    verified: 713
+    duplicate_candidate: 4
+    draft: 105
+categories:
+  - 
+    name: accessibility
+    count: 2
+    examples:
+      - inclusivity-in-conversation-design
+      - inclusive-design-framework
+  - 
+    name: additional reasoning models
+    count: 26
+    examples:
+      - analogical-reasoning
+      - counterfactual-reasoning
+      - narrative-reasoning
+      - holistic-reasoning
+      - intuitive-reasoning
+      - deductive-reasoning
+      - inductive-reasoning
+      - abductive-reasoning
+      - syllogistic-reasoning
+      - probabilistic-reasoning
+  - 
+    name: additional thinking systems/structures
+    count: 10
+    examples:
+      - integrated-reasoning
+      - critical-systems-thinking-cst
+      - meta-reasoning
+      - cross-domain-reasoning
+      - complex-adaptive-systems-cas-thinking
+      - design-thinking
+      - strategic-reasoning
+      - heuristic-systematic-model
+      - computational-thinking
+      - reflective-practice
+  - 
+    name: agent design
+    count: 1
+    examples:
+      - peas-framework
+  - 
+    name: agents
+    count: 2
+    examples:
+      - plan-and-execute-agent
+      - voyager-agent
+  - 
+    name: agile
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: ai
+    count: 1
+    examples:
+      - bias-impact-assessment
+  - 
+    name: ai behavior
+    count: 1
+    examples:
+      - ai-behavior
+  - 
+    name: alignment
+    count: 8
+    examples:
+      - deliberative-alignment
+      - instruction-tuning
+      - reinforcement-learning-from-human-feedback-rlhf
+      - steerability
+      - alignment-tax
+      - helpful-honest-harmless-hhh
+      - constitutional-ai
+      - reinforcement-learning-from-ai-feedback-rlaif
+  - 
+    name: analysis
+    count: 3
+    examples:
+      - swot-analysis
+      - facione-core-skills
+      - rubber-duck-debugging
+  - 
+    name: analysis frameworks
+    count: 5
+    examples:
+      - comparative-analysis
+      - pestle-analysis
+      - five-w-one-h-kipling
+      - kansei-engineering
+      - scqa-situation-complication-question-answer
+  - 
+    name: applications
+    count: 1
+    examples:
+      - generative-ai
+  - 
+    name: architecture
+    count: 3
+    examples:
+      - prompt-composition
+      - prompt-decomposition
+      - interaction-model
+  - 
+    name: architectures
+    count: 8
+    examples:
+      - mixture-of-prompt-experts-mope
+      - prompt-layered-architecture-pla
+      - plan-and-execute-agent
+      - function-calling
+      - system-prompt
+      - toolformer
+      - tool-augmentation
+      - voyager-agent
+  - 
+    name: art of prompting
+    count: 8
+    examples:
+      - creativity
+      - intuition
+      - iterative-refinement
+      - personalization-and-adaptation
+      - collaboration-and-interdisciplinary-knowledge
+      - technical-knowledge
+      - experiential-knowledge
+      - strategic-thinking
+  - 
+    name: assistants
+    count: 5
+    examples:
+      - chatgpt
+      - claude-2
+      - bard
+      - ernie-bot
+      - bing-chat
+  - 
+    name: automation
+    count: 4
+    examples:
+      - automated-template-learning
+      - automatic-prompt-engineer-ape
+      - promptperfect
+      - promptomatix
+  - 
+    name: behavior
+    count: 5
+    examples:
+      - human-and-ai-behavior
+      - two-minute-rule
+      - if-then-planning
+      - woop-wish-outcome-obstacle-plan
+      - east-behavioral-nudge
+  - 
+    name: benchmarks & evaluations
+    count: 113
+    examples:
+      - benchmarks-and-evaluations
+      - item-response-theory-irt
+      - difficulty-and-discrimination
+      - ability-irt
+      - generality
+      - accs-iccs
+      - parameter-estimation-irt
+      - binary-and-continuous-models-irt
+      - maximum-likelihood-estimation-mle
+      - regularization-and-variance
+  - 
+    name: benchmarks and evaluations
+    count: 2
+    examples:
+      - self-rewarding-language-models-srlm
+      - orpo-odds-ratio-preference-optimization
+  - 
+    name: bias
+    count: 3
+    examples:
+      - cognitive-debiasing
+      - reflect-bias-scaffold
+      - triangulation-methods
+  - 
+    name: bias-awareness-techniques
+    count: 20
+    examples:
+      - bias-reflection-prompts
+      - cultural-and-contextual-sensitivity-training
+      - bias-awareness-workshops
+      - diverse-perspective-seeking
+      - transparent-sourcing
+      - feedback-mechanisms-bias
+      - bias-documentation
+      - implicit-bias-tests
+      - historical-contextualization
+      - stereotype-challenge-exercises
+  - 
+    name: bias-mitigation-techniques
+    count: 15
+    examples:
+      - counterbalancing
+      - bias-auditing
+      - inclusive-language-guidelines
+      - diverse-dataset-sourcing
+      - anonymization
+      - bias-correction-algorithms
+      - adversarial-data-generation
+      - sensitivity-review
+      - contextual-understanding
+      - feedback-loops-bias
+  - 
+    name: biases
+    count: 144
+    examples:
+      - biases
+      - western-centric-bias-and-stereotypes
+      - potential-llm-bias-and-stereotypes
+      - general-cognitive-biases
+      - bias-mitigation-techniques
+      - bias-awareness-techniques
+      - individualism-over-collectivism
+      - linear-time-perception
+      - universalism-western
+      - material-success-and-capitalism
+  - 
+    name: causal analysis
+    count: 2
+    examples:
+      - counterfactual-reasoning
+      - causal-reasoning
+  - 
+    name: challenges
+    count: 2
+    examples:
+      - prompt-brittleness
+      - eliza-effect
+  - 
+    name: challenges and opportunities
+    count: 3
+    examples:
+      - addressing-biases-and-ethical-concerns
+      - handling-specialized-domains
+      - adapting-to-evolving-ai-capabilities
+  - 
+    name: clarification
+    count: 1
+    examples:
+      - question-summarization
+  - 
+    name: coaching
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: cognition
+    count: 1
+    examples:
+      - heuristic-systematic-model
+  - 
+    name: cognitive models
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: communication
+    count: 5
+    examples:
+      - par-method
+      - star-technique
+      - personalization-and-adaptation
+      - narrative-reasoning
+      - feynman-technique
+  - 
+    name: computing
+    count: 2
+    examples:
+      - computational-reasoning
+      - computational-thinking
+  - 
+    name: content creation
+    count: 1
+    examples:
+      - generative-prompts
+  - 
+    name: content design
+    count: 1
+    examples:
+      - brand-persona
+  - 
+    name: content development
+    count: 1
+    examples:
+      - expansion-prompting
+  - 
+    name: conversation
+    count: 1
+    examples:
+      - multi-step-interactions
+  - 
+    name: conversational design
+    count: 30
+    examples:
+      - conversational-design
+      - socio-linguistics
+      - conversational-repair
+      - conversational-ui
+      - linguistic-diversity
+      - interaction-flows
+      - discourse-markers
+      - brand-persona
+      - action-driven-conversations
+      - linguistic-bias
+  - 
+    name: creative writing
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: creativity
+    count: 18
+    examples:
+      - constraint-flip
+      - scamper-framework
+      - disney-dreamer-realist-critic
+      - epic-quest-tasking
+      - freewriting-zero-draft
+      - imaginary-mentor-council
+      - internal-weather-report
+      - morning-pages-journaling
+      - oblique-strategies-cards
+      - random-association
+  - 
+    name: critical thinking
+    count: 3
+    examples:
+      - cognitive-debiasing
+      - reflect-bias-scaffold
+      - socratic-method
+  - 
+    name: critical thinking frameworks
+    count: 3
+    examples:
+      - facione-core-skills
+      - heuristics-biases
+      - paul-elder
+  - 
+    name: cultural frameworks
+    count: 13
+    examples:
+      - anekantavada-syadvada-jain
+      - buddhist-eightfold-path-adapted
+      - daoist-wu-wei-strategy
+      - ganma-knowledge-confluence
+      - kaitiakitanga-guardianship
+      - maslaha-public-interest-reasoning
+      - musyawarah-mufakat-indonesia
+      - naive-dialecticism-east-asia
+      - nyaya-five-member-syllogism
+      - qiyas-analogical-reasoning
+  - 
+    name: debugging
+    count: 2
+    examples:
+      - prompt-fine-tuning
+      - iterative-refinement
+  - 
+    name: decision
+    count: 9
+    examples:
+      - ooda-loop
+      - pre-mortem-scaffold
+      - weighted-mini-matrix
+      - dmaic-six-sigma
+      - kepner-tregoe-psdm
+      - musyawarah-mufakat-indonesia
+      - rapid-decision-rights
+      - talanoa-dialogue
+      - vroom-yetton-jago-decision
+  - 
+    name: decision support
+    count: 1
+    examples:
+      - comparative-analysis
+  - 
+    name: decision-making
+    count: 2
+    examples:
+      - cognitive-debiasing
+      - head-heart-gut-decision
+  - 
+    name: decoding
+    count: 1
+    examples:
+      - temperature-topk-sampling
+  - 
+    name: design
+    count: 6
+    examples:
+      - architecture
+      - human-and-ai-behavior
+      - inclusive-design-framework
+      - east-behavioral-nudge
+      - kansei-engineering
+      - sentipensar-thinking-feeling
+  - 
+    name: design patterns
+    count: 4
+    examples:
+      - prompt-architecture
+      - composition
+      - sequence
+      - contextual-cues
+  - 
+    name: design thinking
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: development
+    count: 1
+    examples:
+      - prompt-engineering-and-development
+  - 
+    name: devices
+    count: 2
+    examples:
+      - smart-display
+      - voice-forward-device
+  - 
+    name: diagnostics
+    count: 1
+    examples:
+      - abductive-reasoning
+  - 
+    name: divergent & creative thinking/reasoning models
+    count: 23
+    examples:
+      - associative-thinking
+      - pattern-based-reasoning
+      - visual-spatial-thinking
+      - context-dependent-reasoning
+      - divergent-thinking
+      - hyper-focusing-ability
+      - logical-mathematical-exploration
+      - intuitive-problem-solving
+      - lateral-thinking
+      - intertextual-thinking
+  - 
+    name: documentation
+    count: 1
+    examples:
+      - ai-human-technical-communication
+  - 
+    name: domain adaptation
+    count: 1
+    examples:
+      - handling-specialized-domains
+  - 
+    name: editing
+    count: 3
+    examples:
+      - recursive-self-improvement-prompting-rsip
+      - self-refine
+      - self-critique-prompting
+  - 
+    name: education
+    count: 8
+    examples:
+      - clear-path-forward-framework
+      - the-divergent-intern
+      - computational-thinking
+      - addie-instructional-design
+      - facione-core-skills
+      - feynman-technique
+      - pdca-deming-cycle
+      - scientific-method
+  - 
+    name: emerging tech
+    count: 2
+    examples:
+      - subvocalization
+      - silent-speech
+  - 
+    name: emotional thinking frameworks
+    count: 11
+    examples:
+      - golemans-ei-framework
+      - mayer-salovey-four-branch-model
+      - compassion-focused-therapy-cft
+      - nonviolent-communication-nvc
+      - emotional-contagion-theory
+      - affective-reasoning
+      - social-intuition-model
+      - empathic-accuracy-model
+      - emotional-aperture-measure
+      - barrett-constructed-emotion
+  - 
+    name: engineering practices
+    count: 2
+    examples:
+      - prompt-layered-architecture-pla
+      - langgpt-dual-layer-framework
+  - 
+    name: ethics
+    count: 70
+    examples:
+      - critical-systems-thinking-cst
+      - ethical-dilemma-awareness
+      - trolley-problem
+      - autonomy-vs-beneficence-in-medicine
+      - whistleblowing-in-the-workplace
+      - privacy-vs-security
+      - animal-rights-vs-scientific-research
+      - cultural-relativism-vs-universal-morality
+      - end-of-life-decisions
+      - environmental-ethics-vs-economic-development
+  - 
+    name: evaluation
+    count: 13
+    examples:
+      - ai-human-research-and-analysis
+      - alignment
+      - star-technique
+      - rubric-approach
+      - raccca-framework
+      - evaluation-prompting
+      - prompt-ensembling
+      - multi-objective-directional-prompting-modp
+      - greedy-prompt-engineering-strategy-greedy-pes
+      - chain-of-verification-cove
+  - 
+    name: evidence
+    count: 1
+    examples:
+      - par-method
+  - 
+    name: experimentation
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: facilitation
+    count: 2
+    examples:
+      - musyawarah-mufakat-indonesia
+      - talanoa-dialogue
+  - 
+    name: focus
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: formalization
+    count: 1
+    examples:
+      - domain-specific-language-creation
+  - 
+    name: foundations
+    count: 8
+    examples:
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-narrow-intelligence-ani
+      - artificial-superintelligence-asi
+      - generative-ai
+      - waves-of-ai-prompting-evolutions
+      - technical-knowledge
+      - discrete-prompts
+  - 
+    name: frameworks
+    count: 1
+    examples:
+      - conversation-routines-cr
+  - 
+    name: general-cognitive-biases
+    count: 40
+    examples:
+      - bias-blind-spot
+      - gamblers-fallacy
+      - omission-bias
+      - proportionality-bias
+      - moral-credential-effect
+      - self-serving-bias
+      - framing-effect
+      - actor-observer-bias
+      - picture-superiority-effect
+      - outcome-bias-human
+  - 
+    name: governance
+    count: 13
+    examples:
+      - ai-human-technical-communication
+      - master-prompts
+      - conditional-prompting
+      - constraint-prompting
+      - prompt-modification
+      - text-watermarking-synthid-text
+      - llm-guardrails
+      - system-prompt
+      - ai-text-detection
+      - bias-impact-assessment
+  - 
+    name: grounding
+    count: 3
+    examples:
+      - contextual-prompting
+      - contextual-adjustment
+      - rat-retrieval-augmented-thoughts
+  - 
+    name: growth
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: heuristics
+    count: 1
+    examples:
+      - intuitive-reasoning
+  - 
+    name: history
+    count: 1
+    examples:
+      - waves-of-ai-prompting-evolutions
+  - 
+    name: hr
+    count: 1
+    examples:
+      - bias-interrupters
+  - 
+    name: human-centered AI
+    count: 3
+    examples:
+      - ai-human-research-and-analysis
+      - ai-human-technical-communication
+      - human-and-ai-behavior
+  - 
+    name: human–AI interaction
+    count: 1
+    examples:
+      - eliza-effect
+  - 
+    name: ideation
+    count: 11
+    examples:
+      - creativity
+      - how-might-we-statements-hmw
+      - scamper-framework
+      - oblique-strategies-cards
+      - random-association
+      - rapid-ideation
+      - role-storming
+      - synesthetic-brainstorm
+      - trigger-storming
+      - what-if-scenarios
+  - 
+    name: inclusion
+    count: 2
+    examples:
+      - linguistic-diversity
+      - inclusivity-in-conversation-design
+  - 
+    name: inference
+    count: 1
+    examples:
+      - inductive-reasoning
+  - 
+    name: inference behavior
+    count: 1
+    examples:
+      - reasoning-tokens-o1-style
+  - 
+    name: information extraction
+    count: 1
+    examples:
+      - extractive-prompting
+  - 
+    name: innovation
+    count: 4
+    examples:
+      - cross-domain-reasoning
+      - design-thinking
+      - constraint-flip
+      - first-principles-analysis
+  - 
+    name: innovative thinking models/structures
+    count: 10
+    examples:
+      - non-linear-dynamic-reasoning
+      - multidimensional-pattern-recognition
+      - fractal-thought-processes
+      - quantum-cognitive-models
+      - context-fluid-reasoning
+      - emotional-algorithmic-reasoning
+      - hybrid-intuitive-logical-models
+      - adaptive-recursive-thinking
+      - symbiotic-reasoning-systems
+      - parallel-contextual-reasoning
+  - 
+    name: instructional-design
+    count: 1
+    examples:
+      - addie-instructional-design
+  - 
+    name: interaction
+    count: 1
+    examples:
+      - turn-taking
+  - 
+    name: interdisciplinary and complex reasoning
+    count: 8
+    examples:
+      - systems-thinking
+      - transactive-reasoning
+      - multimodal-reasoning
+      - quantum-reasoning
+      - interdisciplinary-reasoning
+      - reflective-reasoning
+      - parallel-reasoning
+      - dialectical-reasoning
+  - 
+    name: interfaces
+    count: 2
+    examples:
+      - chatgpt
+      - bard
+  - 
+    name: knowledge management
+    count: 1
+    examples:
+      - experiential-knowledge
+  - 
+    name: leadership
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: learning
+    count: 1
+    examples:
+      - feynman-technique
+  - 
+    name: learning-from-examples
+    count: 3
+    examples:
+      - multi-shot-strategies
+      - few-shot-code-example-generation
+      - prompt-augmentation
+  - 
+    name: linguistics
+    count: 4
+    examples:
+      - conversational-design
+      - socio-linguistics
+      - discourse-markers
+      - ambiguity-of-language
+  - 
+    name: llm
+    count: 1
+    examples:
+      - few-shot-examples
+  - 
+    name: logic
+    count: 2
+    examples:
+      - deductive-reasoning
+      - syllogistic-reasoning
+  - 
+    name: logical and analytical reasoning
+    count: 11
+    examples:
+      - analogical-reasoning
+      - counterfactual-reasoning
+      - narrative-reasoning
+      - holistic-reasoning
+      - intuitive-reasoning
+      - deductive-reasoning
+      - inductive-reasoning
+      - abductive-reasoning
+      - syllogistic-reasoning
+      - probabilistic-reasoning
+  - 
+    name: marketing
+    count: 3
+    examples:
+      - before-after-bridge-formula
+      - feature-advantage-benefit
+      - pas-copywriting
+  - 
+    name: mental models
+    count: 3
+    examples:
+      - the-divergent-intern
+      - the-collaborative-partner
+      - the-10000-experts
+  - 
+    name: mental-models
+    count: 1
+    examples:
+      - abcde-cbt-framework
+  - 
+    name: messaging
+    count: 2
+    examples:
+      - aida-model
+      - golden-circle-framework
+  - 
+    name: messaging frameworks
+    count: 4
+    examples:
+      - before-after-bridge-formula
+      - feature-advantage-benefit
+      - monroes-motivated-sequence
+      - pas-copywriting
+  - 
+    name: meta-prompt strategies
+    count: 18
+    examples:
+      - self-discover-framework
+      - domain-specific-language-creation
+      - few-shot-code-example-generation
+      - prompt-ensembling
+      - prompt-augmentation
+      - prompt-composition
+      - prompt-decomposition
+      - meta-prompting
+      - contextual-adjustment
+      - bias-mitigation
+  - 
+    name: metacognition
+    count: 1
+    examples:
+      - meta-reasoning
+  - 
+    name: ml fundamentals
+    count: 55
+    examples:
+      - ai-behavior
+      - model-architecture
+      - artificial-intelligence-ai-dup
+      - natural-language-processing-nlp
+      - machine-learning-ml
+      - large-language-model-llm
+      - sota-llms
+      - language-model
+      - model
+      - generative-pre-trained-transformer-gpt
+  - 
+    name: models
+    count: 10
+    examples:
+      - gpt-4
+      - claude-2
+      - llama-2
+      - gpt-3-5-turbo
+      - wizardlm
+      - vicuna
+      - alpaca
+      - stablelm
+      - mistral-7b
+      - falcon-llm
+  - 
+    name: motivation
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: multi-prompt strategies
+    count: 11
+    examples:
+      - sequential-linear-prompting
+      - parallel-prompting
+      - conditional-prompting
+      - contextual-prompting
+      - constraint-prompting
+      - multi-shot-strategies
+      - output-layering
+      - shotgun-generation
+      - infinite-generation
+      - multi-step-interactions
+  - 
+    name: multimodal
+    count: 3
+    examples:
+      - multimodal-conversation-design
+      - multimodal-prompting
+      - multimodal-chain-of-thought-mm-cot
+  - 
+    name: multimodal llms
+    count: 6
+    examples:
+      - mme
+      - seed-bench
+      - mmbench
+      - mm-vet
+      - lamm
+      - vltm-ehub
+  - 
+    name: nlu
+    count: 3
+    examples:
+      - utterance
+      - intent
+      - entity
+  - 
+    name: non-traditional thinking models
+    count: 10
+    examples:
+      - paradoxical-thinking
+      - magical-thinking
+      - circular-reasoning
+      - absurdist-reasoning
+      - dream-logic
+      - anarchic-thinking
+      - surreal-reasoning
+      - recursive-thinking
+      - syncretic-thinking
+      - mimetic-thinking
+  - 
+    name: open-source
+    count: 7
+    examples:
+      - llama-2
+      - wizardlm
+      - vicuna
+      - alpaca
+      - stablelm
+      - mistral-7b
+      - falcon-llm
+  - 
+    name: operations
+    count: 8
+    examples:
+      - adapting-to-evolving-ai-capabilities
+      - bias-interrupters
+      - a3-problem-solving-toyota
+      - dmaic-six-sigma
+      - kepner-tregoe-psdm
+      - pdca-deming-cycle
+      - rapid-decision-rights
+      - vroom-yetton-jago-decision
+  - 
+    name: ops
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: orchestration
+    count: 17
+    examples:
+      - architecture
+      - prompt-engineering-and-development
+      - prompt-architect
+      - prompt-architecture
+      - prompt-template-engineering
+      - manual-template-engineering
+      - automated-template-learning
+      - composition
+      - sequence
+      - contextual-cues
+  - 
+    name: overview
+    count: 1
+    examples:
+      - artificial-intelligence-ai
+  - 
+    name: paralinguistics
+    count: 1
+    examples:
+      - pauses
+  - 
+    name: patterns
+    count: 1
+    examples:
+      - tool-augmentation
+  - 
+    name: people
+    count: 1
+    examples:
+      - bias-interrupters
+  - 
+    name: persona prompting
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: persuasion
+    count: 3
+    examples:
+      - aida-model
+      - before-after-bridge-formula
+      - monroes-motivated-sequence
+  - 
+    name: philosophy
+    count: 5
+    examples:
+      - anekantavada-syadvada-jain
+      - naive-dialecticism-east-asia
+      - nyaya-five-member-syllogism
+      - pramana-means-of-knowledge
+      - qiyas-analogical-reasoning
+  - 
+    name: planning
+    count: 18
+    examples:
+      - clear-framework
+      - peas-framework
+      - strategic-thinking
+      - plan-and-solve-p-s
+      - addie-instructional-design
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - grow-coaching-model
+      - keywords-why-tasks-vector
+  - 
+    name: platform
+    count: 1
+    examples:
+      - conversational-actions
+  - 
+    name: potential-llm-bias-and-stereotypes
+    count: 36
+    examples:
+      - cultural-bias
+      - language-bias
+      - gender-bias
+      - socioeconomic-bias
+      - historical-bias
+      - geographical-bias
+      - ideological-bias
+      - confirmation-bias-llm
+      - selection-bias
+      - reporting-bias
+  - 
+    name: pragmatics
+    count: 2
+    examples:
+      - cooperative-principle
+      - maxim-of-relevance
+  - 
+    name: principles
+    count: 7
+    examples:
+      - clarity-and-precision
+      - contextual-information
+      - desired-format
+      - verbosity-control
+      - easy-for-you-easy-for-it
+      - put-smart-get-smart
+      - helpful-honest-harmless-hhh
+  - 
+    name: prioritization
+    count: 8
+    examples:
+      - eisenhower-priority-matrix
+      - weighted-mini-matrix
+      - ice-scoring
+      - kano-model
+      - moscow-prioritization
+      - rice-scoring
+      - value-effort-matrix
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: problem framing
+    count: 1
+    examples:
+      - clear-framework
+  - 
+    name: problem solving
+    count: 3
+    examples:
+      - reasoning-models-or-structures
+      - analogical-reasoning
+      - integrated-reasoning
+  - 
+    name: problem-solving
+    count: 1
+    examples:
+      - synectics-analogies
+  - 
+    name: product
+    count: 1
+    examples:
+      - design-thinking
+  - 
+    name: product management
+    count: 4
+    examples:
+      - kano-model
+      - moscow-prioritization
+      - rice-scoring
+      - value-effort-matrix
+  - 
+    name: product reality
+    count: 1
+    examples:
+      - artificial-narrow-intelligence-ani
+  - 
+    name: product strategy
+    count: 1
+    examples:
+      - comparative-analysis
+  - 
+    name: productionization
+    count: 1
+    examples:
+      - infinite-generation
+  - 
+    name: productivity
+    count: 8
+    examples:
+      - two-minute-rule
+      - eisenhower-priority-matrix
+      - if-then-planning
+      - pomodoro-scaffold
+      - smart-goals
+      - spoon-theory-energy-planner
+      - epic-quest-tasking
+      - rubber-duck-debugging
+  - 
+    name: professional development
+    count: 1
+    examples:
+      - reflective-practice
+  - 
+    name: prompt architecture
+    count: 4
+    examples:
+      - composition
+      - sequence
+      - contextual-cues
+      - master-prompts
+  - 
+    name: prompt development techniques
+    count: 19
+    examples:
+      - structured-outputs-json-schema
+      - recursive-self-improvement-prompting-rsip
+      - context-aware-decomposition-cad
+      - controlled-hallucination-for-ideation-chi
+      - multi-perspective-simulation-mps
+      - calibrated-confidence-prompting-ccp
+      - few-shot-examples
+      - facts-expertise-primer
+      - goal-breakdown-decomposition
+      - goal-composition
+  - 
+    name: prompt engineering
+    count: 2
+    examples:
+      - chainforge
+      - promptperfect
+  - 
+    name: prompt evolution
+    count: 4
+    examples:
+      - waves-systems-of-ai
+      - first-wave-system
+      - second-wave-system
+      - third-wave-system
+  - 
+    name: prompt literacy
+    count: 1
+    examples:
+      - few-shot-examples
+  - 
+    name: prompt patterns
+    count: 12
+    examples:
+      - clear-path-forward-framework
+      - clear-prompting-method
+      - rtf-framework
+      - risen-framework
+      - ratio-framework
+      - rodes-framework
+      - costar-framework
+      - scaffolding
+      - fallback-pattern
+      - the-10000-experts
+  - 
+    name: prompting pipelines
+    count: 1
+    examples:
+      - decomposed-prompting
+  - 
+    name: prompting strategies
+    count: 23
+    examples:
+      - reasoning-models-or-structures
+      - chain-of-thought-cot
+      - question-decomposition
+      - least-to-most-ltm
+      - method-actors
+      - multi-objective-directional-prompting-modp
+      - mixture-of-formats-mof
+      - greedy-prompt-engineering-strategy-greedy-pes
+      - mixture-of-prompt-experts-mope
+      - context-aware-decomposition-cad
+  - 
+    name: properties
+    count: 1
+    examples:
+      - steerability
+  - 
+    name: provenance
+    count: 3
+    examples:
+      - text-watermarking-synthid-text
+      - ai-text-detection
+      - watermarking
+  - 
+    name: psychology
+    count: 5
+    examples:
+      - abcde-cbt-framework
+      - empty-chair-technique
+      - parts-work-dialogue
+      - shadow-work-dialogue
+      - somatic-focusing-felt-sense
+  - 
+    name: quality
+    count: 16
+    examples:
+      - prompt-engineering-and-development
+      - clear-prompting-method
+      - rubric-approach
+      - prompt-template-engineering
+      - raccca-framework
+      - prompt-fine-tuning
+      - iterative-refinement
+      - evaluation-prompting
+      - constraint-prompting
+      - output-layering
+  - 
+    name: quality checks
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: quality scaffolds
+    count: 1
+    examples:
+      - facts-expertise-primer
+  - 
+    name: reasoning
+    count: 23
+    examples:
+      - scaffolding
+      - self-discover-framework
+      - meta-prompting
+      - rat-retrieval-augmented-thoughts
+      - deliberative-alignment
+      - method-actors
+      - context-aware-decomposition-cad
+      - graph-of-thoughts-got
+      - multimodal-chain-of-thought-mm-cot
+      - first-principles-analysis
+  - 
+    name: reasoning models or structures
+    count: 24
+    examples:
+      - reasoning-models-or-structures
+      - chain-of-thought-cot
+      - tree-of-thought-tot
+      - scratchpad-reasoning
+      - question-summarization
+      - question-decomposition
+      - program-generation
+      - plan-and-solve-p-s
+      - least-to-most-ltm
+      - decomposed-prompting
+  - 
+    name: regional
+    count: 1
+    examples:
+      - ernie-bot
+  - 
+    name: reliability
+    count: 1
+    examples:
+      - facts-expertise-primer
+  - 
+    name: research
+    count: 8
+    examples:
+      - quantum-reasoning
+      - toolformer
+      - voyager-agent
+      - triangulation-methods
+      - ganma-knowledge-confluence
+      - kansei-engineering
+      - pramana-means-of-knowledge
+      - scientific-method
+  - 
+    name: resilience
+    count: 1
+    examples:
+      - fallback-pattern
+  - 
+    name: retrieval
+    count: 1
+    examples:
+      - corrective-rag-crag
+  - 
+    name: risk
+    count: 2
+    examples:
+      - bias-impact-assessment
+      - pre-mortem-scaffold
+  - 
+    name: robustness
+    count: 3
+    examples:
+      - corrective-rag-crag
+      - mixture-of-formats-mof
+      - prompt-brittleness
+  - 
+    name: roles
+    count: 1
+    examples:
+      - prompt-architect
+  - 
+    name: safe
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: safety
+    count: 6
+    examples:
+      - bias-mitigation
+      - addressing-biases-and-ethical-concerns
+      - linguistic-bias
+      - llm-guardrails
+      - ai-text-detection
+      - watermarking
+  - 
+    name: safety & policy
+    count: 3
+    examples:
+      - alignment
+      - artificial-general-intelligence-agi
+      - artificial-superintelligence-asi
+  - 
+    name: safety and security
+    count: 3
+    examples:
+      - many-shot-jailbreaking
+      - deliberative-alignment
+      - text-watermarking-synthid-text
+  - 
+    name: sales
+    count: 1
+    examples:
+      - feature-advantage-benefit
+  - 
+    name: scientific and empirical reasoning
+    count: 5
+    examples:
+      - causal-reasoning
+      - systems-thinking
+      - ecological-reasoning
+      - evolutionary-reasoning
+      - experiential-reasoning
+  - 
+    name: search
+    count: 2
+    examples:
+      - shotgun-generation
+      - bing-chat
+  - 
+    name: search and planning
+    count: 1
+    examples:
+      - tree-of-thought-tot
+  - 
+    name: security & safety
+    count: 35
+    examples:
+      - security-and-safety
+      - availability-attack
+      - ai-system-hardening
+      - data-poisoning
+      - model-poisoning
+      - model-extraction
+      - poisoning-attacks
+      - prompt-injection
+      - indirect-prompt-injection
+      - zero-width-prompt-injection
+  - 
+    name: self-care
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: self-reflection
+    count: 10
+    examples:
+      - abcde-cbt-framework
+      - empty-chair-technique
+      - head-heart-gut-decision
+      - internal-weather-report
+      - morning-pages-journaling
+      - parts-work-dialogue
+      - shadow-work-dialogue
+      - somatic-focusing-felt-sense
+      - tarot-spread-reflection
+      - time-machine-perspectives
+  - 
+    name: skills
+    count: 3
+    examples:
+      - creativity
+      - intuition
+      - experiential-knowledge
+  - 
+    name: social and ethical reasoning
+    count: 2
+    examples:
+      - ecological-reasoning
+      - normative-reasoning
+  - 
+    name: specification
+    count: 1
+    examples:
+      - sample-dialogue
+  - 
+    name: statistics
+    count: 1
+    examples:
+      - probabilistic-reasoning
+  - 
+    name: storytelling frameworks
+    count: 2
+    examples:
+      - heros-journey-narrative
+      - scqa-situation-complication-question-answer
+  - 
+    name: strategy
+    count: 11
+    examples:
+      - swot-analysis
+      - golden-circle-framework
+      - strategic-reasoning
+      - constraint-flip
+      - okr-goal-setting
+      - ooda-loop
+      - pestle-analysis
+      - daoist-wu-wei-strategy
+      - east-behavioral-nudge
+      - ganma-knowledge-confluence
+  - 
+    name: structuring
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: systems
+    count: 18
+    examples:
+      - architecture
+      - holistic-reasoning
+      - critical-systems-thinking-cst
+      - complex-adaptive-systems-cas-thinking
+      - chatgpt
+      - gpt-4
+      - claude-2
+      - llama-2
+      - gpt-3-5-turbo
+      - bard
+  - 
+    name: task design
+    count: 1
+    examples:
+      - action-driven-conversations
+  - 
+    name: team process
+    count: 1
+    examples:
+      - collaboration-and-interdisciplinary-knowledge
+  - 
+    name: techniques
+    count: 1
+    examples:
+      - watermarking
+  - 
+    name: temporal and spatial reasoning
+    count: 2
+    examples:
+      - spatial-reasoning
+      - temporal-reasoning
+  - 
+    name: thinking frameworks
+    count: 13
+    examples:
+      - reflective-judgment-model
+      - soar-analysis
+      - faciones-core-critical-thinking-skills
+      - paul-elder-critical-thinking-framework
+      - argument-mapping
+      - blooms-taxonomy
+      - critical-discourse-analysis
+      - heuristics-and-biases-framework
+      - triz-theory-of-inventive-problem-solving
+      - root-cause-analysis
+  - 
+    name: time-management
+    count: 2
+    examples:
+      - two-minute-rule
+      - eisenhower-priority-matrix
+  - 
+    name: tool use
+    count: 1
+    examples:
+      - program-generation
+  - 
+    name: tool-use
+    count: 2
+    examples:
+      - toolformer
+      - tool-augmentation
+  - 
+    name: tools
+    count: 5
+    examples:
+      - guidance-library
+      - function-calling
+      - chainforge
+      - promptperfect
+      - promptomatix
+  - 
+    name: trade-offs
+    count: 1
+    examples:
+      - alignment-tax
+  - 
+    name: training & tuning
+    count: 2
+    examples:
+      - alignment
+      - continuous-prompts
+  - 
+    name: training techniques
+    count: 4
+    examples:
+      - instruction-tuning
+      - reinforcement-learning-from-human-feedback-rlhf
+      - constitutional-ai
+      - reinforcement-learning-from-ai-feedback-rlaif
+  - 
+    name: types of prompts
+    count: 8
+    examples:
+      - reductive-prompts
+      - transformative-prompts
+      - generative-prompts
+      - extractive-prompting
+      - evaluation-prompting
+      - expansion-prompting
+      - discrete-prompts
+      - continuous-prompts
+  - 
+    name: ui
+    count: 1
+    examples:
+      - conversational-ui
+  - 
+    name: user behavior
+    count: 12
+    examples:
+      - user-behavior
+      - apple-picking-cherry-picking
+      - accordion-editing
+      - layering-editing
+      - minimalist-prompter
+      - pragmatic-prompter
+      - detailed-prompter
+      - iterative-prompter
+      - explorative-prompter
+      - contextual-prompter
+  - 
+    name: ux
+    count: 3
+    examples:
+      - personalization-and-adaptation
+      - conversational-design
+      - kano-model
+  - 
+    name: ux & research
+    count: 1
+    examples:
+      - ai-human-research-and-analysis
+  - 
+    name: voice
+    count: 1
+    examples:
+      - voice-user-interface-vui
+  - 
+    name: waves of ai
+    count: 4
+    examples:
+      - waves-systems-of-ai
+      - first-wave-system
+      - second-wave-system
+      - third-wave-system
+  - 
+    name: western-centric-bias
+    count: 15
+    examples:
+      - individualism-over-collectivism
+      - linear-time-perception
+      - universalism-western
+      - material-success-and-capitalism
+      - secularism-bias
+      - western-democratic-models
+      - english-language-dominance
+      - technological-superiority
+      - western-educational-superiority
+      - western-media-representation
+  - 
+    name: workflow
+    count: 1
+    examples:
+      - the-collaborative-partner
+  - 
+    name: working memory aids
+    count: 1
+    examples:
+      - scratchpad-reasoning
+  - 
+    name: workshops
+    count: 1
+    examples:
+      - value-effort-matrix
+  - 
+    name: writing
+    count: 1
+    examples:
+      - freewriting-zero-draft
+tags:
+  - 
+    name: field:…then i will [specific action]
+    count: 1
+    examples:
+      - if-then-planning
+  - 
+    name: field:acceptance criteria
+    count: 1
+    examples:
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: field:act
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: field:act — what will i actually do now?
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: field:action (call-to-action, optional)
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: field:action to explore
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: field:actions & accountability
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: field:adapt — what can be borrowed?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:adaptation — design change to reduce exclusion
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: field:additional description (optional)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:additional goals (one per line)
+    count: 1
+    examples:
+      - goal-prompting
+  - 
+    name: field:adjustment steps
+    count: 1
+    examples:
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: field:affected people/places (one per line)
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: field:agitate (pain details, optional)
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: field:agree (a)
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:alternatives
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:alternatives (one per line, optional)
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: field:analogy scenario (optional)
+    count: 1
+    examples:
+      - synectics-analogies
+  - 
+    name: field:analysis plan
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:analyze
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: field:answer
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: field:antagonist or main challenge (optional)
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: field:applicable pramāṇas (one per line)
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: field:application (upanaya)
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: field:areas of tension
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: field:assumptions
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:assumptions (one per line, optional)
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: field:assumptions (optional, one per line)
+    count: 1
+    examples:
+      - first-principles-analysis
+  - 
+    name: field:attention (hook, optional)
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: field:attractive (salience/incentive)
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:audience/segment
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:available spoons (energy for the day)
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: field:avoid (comma-separated negatives)
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: field:background (why this matters)
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:backup plans (optional, one per line)
+    count: 1
+    examples:
+      - if-then-planning
+  - 
+    name: field:barrier — what prevents full use?
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: field:benefit to all — how does this help beyond the edge user?
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: field:benefits
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: field:bias risk — which perspective dominates?
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:bodily sensation (location & quality)
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: field:both-and statement
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: field:break reward
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: field:business value
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:central question
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:check
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: field:check — what assumption should i test?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:claim / topic
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: field:claim under review
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: field:co-created solutions
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: field:combine — what can be merged?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:commitments & owners
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: field:complication
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: field:concepts
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:concerns/objections (one per line)
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:conclusion (nigamana)
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: field:confidence (0–1)
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:confidence (1–10)
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: field:conflict or concern between them
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: field:confluence (new practice/insight)
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:consensus statement (draft)
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:constraints
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: field:constraints (optional)
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: field:constraints (time/tools/tone/privacy)
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: field:context factors (one per line)
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: field:context or emotion (optional)
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: field:control
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: field:core tasks (one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:could have (nice-to-have)
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: field:council members
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: field:countermeasures
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:creative situation or block
+    count: 1
+    examples:
+      - oblique-strategies-cards
+  - 
+    name: field:criteria (2–3, one per line)
+    count: 1
+    examples:
+      - weighted-mini-matrix
+  - 
+    name: field:cross-check — where do findings align/diverge?
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:current condition (facts/metrics)
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:current feeling or focus (optional)
+    count: 1
+    examples:
+      - morning-pages-journaling
+  - 
+    name: field:current idea
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:current mood or feeling
+    count: 1
+    examples:
+      - internal-weather-report
+  - 
+    name: field:current situation or problem
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: field:custom triggers (optional, one per line)
+    count: 1
+    examples:
+      - trigger-storming
+  - 
+    name: field:data to collect
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:debiasing tactics
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: field:decide — what’s the next best step?
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: field:decide (d)
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:decision / project at hand
+    count: 1
+    examples:
+      - pre-mortem-scaffold
+  - 
+    name: field:decision analysis (criteria, options)
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: field:decision or question
+    count: 1
+    examples:
+      - head-heart-gut-decision
+  - 
+    name: field:decision/draft to check
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: field:define
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: field:definitions (one per line)
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: field:delighters (unexpected extras)
+    count: 1
+    examples:
+      - kano-model
+  - 
+    name: field:design stimuli/features (one per line)
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: field:do
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: field:do's (must do)
+    count: 6
+    examples:
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - how-might-we-statements-hmw
+      - keywords-why-tasks-vector
+      - socratic-method
+  - 
+    name: field:do’s (must do)
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: field:don'ts / constraints
+    count: 6
+    examples:
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - how-might-we-statements-hmw
+      - keywords-why-tasks-vector
+      - socratic-method
+  - 
+    name: field:don’ts / constraints
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: field:drawn cards (optional, one per line)
+    count: 1
+    examples:
+      - tarot-spread-reflection
+  - 
+    name: field:ease (1–10)
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: field:easy (reduce effort)
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:economic factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:effective cause (ʿillah)
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: field:effort (person-months)
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:eliminate — what can you cut?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:emotion→feature hypotheses
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: field:empathize — how would it feel in that missing perspective?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:end goal / task to complete
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:environmental factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:evaluate — how does it influence my thinking?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:evaluation criteria (optional, one per line)
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: field:evidence (one per line, optional)
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: field:evidence summary
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: field:example (udāharaṇa)
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: field:existing flows (where energy already moves)
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:exit criteria
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: field:expected interpretation / decision rule
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:feature / item name
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:felt sense (stories/experiences)
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: field:findings from a
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:findings from b
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:findings from c (optional)
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:follow-up / learnings
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:follow-up actions & owners
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:frame — restate the problem from a different perspective
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:friction points
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:gaps/uncertainties
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: field:general goal
+    count: 1
+    examples:
+      - smart-goals
+  - 
+    name: field:goal
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: field:goal / complex task
+    count: 1
+    examples:
+      - goal-breakdown-decomposition
+  - 
+    name: field:goal / request
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: field:goal/outcome
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:goals (one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:guardianship principles/policies
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: field:harmful extremes (a and b)
+    count: 1
+    examples:
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: field:harmony-seeking moves
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: field:harms/risks
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: field:hero / protagonist
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: field:hero persona or theme (optional)
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: field:how
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:how to converge responsibly
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: field:hypothesis (falsifiable)
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:idea / experiment
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: field:idea or project description
+    count: 1
+    examples:
+      - disney-dreamer-realist-critic
+  - 
+    name: field:if [trigger/situation]…
+    count: 1
+    examples:
+      - if-then-planning
+  - 
+    name: field:imagine it failed — what went wrong? (one per line)
+    count: 1
+    examples:
+      - pre-mortem-scaffold
+  - 
+    name: field:immediate action
+    count: 1
+    examples:
+      - pre-mortem-scaffold
+  - 
+    name: field:impact (1–10)
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: field:impact (e.g., 0.25/0.5/1/2/3)
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:implementation plan
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:implications
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:importance of decision quality
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: field:improve
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: field:indifferent / reverse
+    count: 1
+    examples:
+      - kano-model
+  - 
+    name: field:inferences
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:information
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:initial test (state/criteria)
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: field:input (i)
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:intended direction (optional)
+    count: 1
+    examples:
+      - goal-composition
+  - 
+    name: field:issue/claim under analysis
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: field:issue/decision
+    count: 2
+    examples:
+      - maslaha-public-interest-reasoning
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:items (one per line)
+    count: 1
+    examples:
+      - value-effort-matrix
+  - 
+    name: field:job / feature
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:job size
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:key evidence by standpoint
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: field:key question
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: field:key results (optional, one per line)
+    count: 1
+    examples:
+      - okr-goal-setting
+  - 
+    name: field:keywords (comma-separated)
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: field:knowledge stream a
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:knowledge stream b
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:known risks
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: field:leader expertise on this problem
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: field:legal factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:leverage points
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:listen — whose voices are missing?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:main brief / goal
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: field:measure
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: field:method / protocol
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:method a
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:method b
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:method c (optional)
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:minimal enabling actions
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:modify — exaggerated/minimized?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:must have (critical)
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: field:must-be (expected basics)
+    count: 1
+    examples:
+      - kano-model
+  - 
+    name: field:need (audience problem)
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: field:need / challenge
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: field:need for team commitment
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: field:new case (far‘)
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: field:next pomodoro step
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: field:non-actions (deliberate restraint)
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: field:not in scope (optional)
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:notes (assumptions, caveats)
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:notes (optional)
+    count: 4
+    examples:
+      - ice-scoring
+      - kano-model
+      - value-effort-matrix
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:number of cards to draw (optional)
+    count: 1
+    examples:
+      - oblique-strategies-cards
+  - 
+    name: field:objective (qualitative goal)
+    count: 1
+    examples:
+      - okr-goal-setting
+  - 
+    name: field:observe — what’s the situation / facts?
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: field:obstacle — what usually gets in the way?
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: field:one 25-min micro-goal
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: field:operate (action)
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: field:opposed poles (a vs. b)
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: field:options (≤3, one per line)
+    count: 1
+    examples:
+      - weighted-mini-matrix
+  - 
+    name: field:options (one per line)
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:options (optional, one per line)
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: field:orient — what matters most right now?
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: field:original case (aṣl)
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: field:original problem
+    count: 1
+    examples:
+      - synectics-analogies
+  - 
+    name: field:other person or part in the chair
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: field:outcome — benefit if i succeed?
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: field:outcome goal
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: field:overlaps (shared truths)
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:pain points (one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:part a (name/role)
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: field:part b (name/role)
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: field:participants (one per line)
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: field:past self (age or year, optional)
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: field:perform (p)
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:performance (more is better)
+    count: 1
+    examples:
+      - kano-model
+  - 
+    name: field:persona (who the ai will be)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:persona at the edge — who might struggle most?
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: field:plan
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: field:plan — if obstacle, then i will…
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: field:point(s) of view
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:political factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:positive outcome
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: field:potential impacts (near/long term)
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: field:potential-problem analysis (risks)
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: field:precedents/principles
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: field:preventive step(s)
+    count: 1
+    examples:
+      - pre-mortem-scaffold
+  - 
+    name: field:primary goal (brief)
+    count: 1
+    examples:
+      - goal-prompting
+  - 
+    name: field:primary task
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: field:principles for the mean
+    count: 1
+    examples:
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: field:problem
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: field:problem analysis (is/is not, specs)
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: field:problem or concept to explore
+    count: 1
+    examples:
+      - synesthetic-brainstorm
+  - 
+    name: field:problem or goal
+    count: 2
+    examples:
+      - role-storming
+      - wishing-technique
+  - 
+    name: field:problem or question
+    count: 2
+    examples:
+      - first-principles-analysis
+      - rapid-ideation
+  - 
+    name: field:problem or question for the council
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: field:problem or question to explain
+    count: 1
+    examples:
+      - rubber-duck-debugging
+  - 
+    name: field:problem or topic
+    count: 3
+    examples:
+      - random-association
+      - trigger-storming
+      - what-if-scenarios
+  - 
+    name: field:problem/decision
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: field:profession
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:proportional ruling/decision
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: field:proposition (pratijñā)
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: field:purpose
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:put to other use — where else could it apply?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:qualified statements (syād-…)
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: field:quest / goal
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: field:question being investigated
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: field:question or situation for guidance
+    count: 1
+    examples:
+      - tarot-spread-reflection
+  - 
+    name: field:quick ratings (1–5) — one line per option
+    count: 1
+    examples:
+      - weighted-mini-matrix
+  - 
+    name: field:random element 1 (optional)
+    count: 1
+    examples:
+      - random-association
+  - 
+    name: field:random element 2 (optional)
+    count: 1
+    examples:
+      - random-association
+  - 
+    name: field:rational analysis (facts/metrics)
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: field:re-test (check)
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: field:reach (users / period)
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: field:reality (current situation)
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: field:reason (hetu)
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: field:recognize — what bias might be at play?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:recommend (r)
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:relevant differences/limits
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: field:research question
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: field:response format (optional)
+    count: 2
+    examples:
+      - scenario-based-deliberative
+      - variables-and-delimiters
+  - 
+    name: field:reverse — what if you flipped it?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:reward for completion (optional)
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: field:right action (conduct)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right concentration (focus)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right effort (discipline)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right intention (aims)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right livelihood (means)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right mindfulness (attention)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right speech (communication)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:right view (assumptions/realities)
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: field:risk reduction / opportunity enablement
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:role (optional)
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: field:roles or personas (one per line)
+    count: 1
+    examples:
+      - role-storming
+  - 
+    name: field:root-cause analysis
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:ruling to extend (ḥukm)
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: field:safeguards / protocols
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:satisfaction (solution)
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: field:scale hint (optional)
+    count: 1
+    examples:
+      - value-effort-matrix
+  - 
+    name: field:scenario (specific, even extreme)
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: field:setting (optional)
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: field:shadow trait or feeling
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: field:shared issues (one per line)
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: field:should have (important but not critical)
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: field:situation
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: field:situation appraisal
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: field:skills (comma or one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:social (norms/reciprocity)
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:social factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:solution
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: field:stakeholders (one per line)
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: field:stakes/impact
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: field:standards to apply
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: field:standpoints (naya), one per line
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: field:stories (what matters, in participants’ words)
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: field:sub-prompts / actions (one per line)
+    count: 1
+    examples:
+      - goal-composition
+  - 
+    name: field:subject of analysis
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:substitute — what element could you replace?
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: field:success criteria (what “good” looks like)
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: field:success metric
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:summary
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:target behavior
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:target condition (measurable)
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: field:target emotion words (one per line)
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: field:task / problem
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: field:task or chore to gamify
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: field:task to tackle
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: field:tasks (one per line, with optional spoon cost)
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: field:tasks (one per line)
+    count: 2
+    examples:
+      - keywords-why-tasks-vector
+      - task-recipe-cot
+  - 
+    name: field:technological factors (optional, one per line)
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: field:tensions (incommensurables)
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: field:time constraints
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: field:time criticality
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: field:time pressure
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: field:time/quantity constraint (optional)
+    count: 1
+    examples:
+      - rapid-ideation
+  - 
+    name: field:timeline & checkpoints
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: field:timely (moment/trigger)
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: field:tools (comma or one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:topic or emotion to explore
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: field:topic or question
+    count: 1
+    examples:
+      - freewriting-zero-draft
+  - 
+    name: field:transform — how will i change my approach?
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: field:triggering scenario (optional)
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: field:validation plan
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: field:variables (one per line)
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: field:vocabulary (comma or one per line)
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: field:way forward (if decided, optional)
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: field:what
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:what are we safeguarding (taonga)?
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: field:what-if scenario (optional)
+    count: 1
+    examples:
+      - what-if-scenarios
+  - 
+    name: field:when
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:where
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:where they diverge
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: field:who
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:who is affected?
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: field:why
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: field:why / context
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: field:wish — what do i want to complete?
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: field:won’t have (this time)
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: field:your identity or role
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: has:boosters
+    count: 87
+    examples:
+      - first-principles-analysis
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - grow-coaching-model
+      - heros-journey-narrative
+      - heuristics-biases
+      - how-might-we-statements-hmw
+      - if-then-planning
+      - inclusive-design-framework
+  - 
+    name: kind:framework
+    count: 99
+    examples:
+      - prompt-architecture
+      - clear-path-forward-framework
+      - clear-prompting-method
+      - clear-framework
+      - swot-analysis
+      - par-method
+      - aida-model
+      - star-technique
+      - peas-framework
+      - golden-circle-framework
+  - 
+    name: kind:heuristic
+    count: 12
+    examples:
+      - clarity-and-precision
+      - contextual-information
+      - desired-format
+      - verbosity-control
+      - easy-for-you-easy-for-it
+      - put-smart-get-smart
+      - the-divergent-intern
+      - the-collaborative-partner
+      - the-10000-experts
+      - creativity
+  - 
+    name: kind:heustric
+    count: 1
+    examples:
+      - maxim-of-relevance
+  - 
+    name: kind:pattern
+    count: 68
+    examples:
+      - rtf-framework
+      - risen-framework
+      - ratio-framework
+      - rodes-framework
+      - costar-framework
+      - fallback-pattern
+      - composition
+      - sequence
+      - contextual-cues
+      - master-prompts
+  - 
+    name: kind:strategy
+    count: 27
+    examples:
+      - personalization-and-adaptation
+      - collaboration-and-interdisciplinary-knowledge
+      - strategic-thinking
+      - sequential-linear-prompting
+      - parallel-prompting
+      - conditional-prompting
+      - multi-shot-strategies
+      - shotgun-generation
+      - infinite-generation
+      - multi-step-interactions
+  - 
+    name: kind:task
+    count: 3
+    examples:
+      - addressing-biases-and-ethical-concerns
+      - handling-specialized-domains
+      - adapting-to-evolving-ai-capabilities
+  - 
+    name: kind:technique
+    count: 63
+    examples:
+      - rubric-approach
+      - prompt-template-engineering
+      - manual-template-engineering
+      - automated-template-learning
+      - prompt-fine-tuning
+      - scaffolding
+      - iterative-refinement
+      - few-shot-code-example-generation
+      - prompt-ensembling
+      - prompt-augmentation
+  - 
+    name: kind:term
+    count: 51
+    examples:
+      - ai-human-research-and-analysis
+      - ai-human-technical-communication
+      - alignment
+      - architecture
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-narrow-intelligence-ani
+      - artificial-superintelligence-asi
+      - generative-ai
+      - human-and-ai-behavior
+  - 
+    name: kind:tool
+    count: 1
+    examples:
+      - guidance-library
+  - 
+    name: kind:training
+    count: 3
+    examples:
+      - instruction-tuning
+      - reinforcement-learning-from-human-feedback-rlhf
+      - reinforcement-learning-from-ai-feedback-rlaif
+  - 
+    name: level:advanced
+    count: 43
+    examples:
+      - alignment
+      - artificial-general-intelligence-agi
+      - artificial-superintelligence-asi
+      - prompt-architect
+      - prompt-architecture
+      - automated-template-learning
+      - continuous-prompts
+      - infinite-generation
+      - self-discover-framework
+      - domain-specific-language-creation
+  - 
+    name: level:beginner
+    count: 133
+    examples:
+      - ai-human-technical-communication
+      - artificial-intelligence-ai
+      - artificial-narrow-intelligence-ani
+      - generative-ai
+      - waves-of-ai-prompting-evolutions
+      - clear-path-forward-framework
+      - clear-prompting-method
+      - clear-framework
+      - swot-analysis
+      - par-method
+  - 
+    name: level:intermediate
+    count: 110
+    examples:
+      - ai-human-research-and-analysis
+      - architecture
+      - human-and-ai-behavior
+      - prompt-engineering-and-development
+      - peas-framework
+      - risen-framework
+      - rodes-framework
+      - rubric-approach
+      - prompt-template-engineering
+      - manual-template-engineering
+  - 
+    name: phase:analysis
+    count: 22
+    examples:
+      - argument-mapping
+      - critical-discourse-analysis
+      - socratic-questioning
+      - critical-realism
+      - emotional-contagion-theory
+      - social-intuition-model
+      - empathic-accuracy-model
+      - barrett-constructed-emotion
+      - multidimensional-pattern-recognition
+      - parallel-contextual-reasoning
+  - 
+    name: phase:analyze
+    count: 5
+    examples:
+      - abcde-cbt-framework
+      - comparative-analysis
+      - facione-core-skills
+      - feynman-technique
+      - paul-elder
+  - 
+    name: phase:apply
+    count: 6
+    examples:
+      - artificial-narrow-intelligence-ani
+      - two-minute-rule
+      - bias-interrupters
+      - feature-advantage-benefit
+      - persona-actas
+      - qiyas-analogical-reasoning
+  - 
+    name: phase:compose
+    count: 8
+    examples:
+      - before-after-bridge-formula
+      - heros-journey-narrative
+      - monroes-motivated-sequence
+      - pas-copywriting
+      - scenario-based-deliberative
+      - variables-and-delimiters
+      - five-w-one-h-kipling
+      - scqa-situation-complication-question-answer
+  - 
+    name: phase:debugging
+    count: 6
+    examples:
+      - prompt-fine-tuning
+      - fallback-pattern
+      - iterative-refinement
+      - conversational-repair
+      - escalated-errors
+      - root-cause-analysis
+  - 
+    name: phase:decide
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: phase:deployment
+    count: 6
+    examples:
+      - content-safeguards
+      - security-and-safety
+      - availability-attack
+      - ai-system-hardening
+      - model-extraction
+      - red-teaming
+  - 
+    name: phase:design
+    count: 19
+    examples:
+      - interaction-flows
+      - brand-persona
+      - action-driven-conversations
+      - turn-taking
+      - multimodal-conversation-design
+      - inclusivity-in-conversation-design
+      - sample-dialogue
+      - pauses
+      - utterance
+      - intent
+  - 
+    name: phase:education
+    count: 4
+    examples:
+      - faciones-core-critical-thinking-skills
+      - paul-elder-critical-thinking-framework
+      - golemans-ei-framework
+      - mayer-salovey-four-branch-model
+  - 
+    name: phase:evaluation
+    count: 154
+    examples:
+      - ai-human-research-and-analysis
+      - alignment
+      - rubric-approach
+      - raccca-framework
+      - evaluation-prompting
+      - bias-mitigation
+      - addressing-biases-and-ethical-concerns
+      - linguistic-bias
+      - normative-reasoning
+      - reflective-reasoning
+  - 
+    name: phase:execute
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: phase:explore
+    count: 8
+    examples:
+      - constraint-flip
+      - how-might-we-statements-hmw
+      - tree-of-thought-brainstorm
+      - anekantavada-syadvada-jain
+      - ganma-knowledge-confluence
+      - naive-dialecticism-east-asia
+      - talanoa-dialogue
+      - socratic-method
+  - 
+    name: phase:ideation
+    count: 77
+    examples:
+      - ai-human-technical-communication
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-superintelligence-asi
+      - human-and-ai-behavior
+      - prompt-architect
+      - waves-of-ai-prompting-evolutions
+      - clear-path-forward-framework
+      - clear-framework
+      - swot-analysis
+  - 
+    name: phase:implementation
+    count: 8
+    examples:
+      - conversational-ui
+      - conversational-actions
+      - voice-user-interface-vui
+      - smart-display
+      - voice-forward-device
+      - vector-store
+      - rules-injector
+      - thread
+  - 
+    name: phase:inference
+    count: 36
+    examples:
+      - selective-parsing
+      - probability-distribution
+      - token-sampling
+      - decoding
+      - output-generation
+      - retrieval-augmented-generation-rag
+      - prompt-injection
+      - indirect-prompt-injection
+      - zero-width-prompt-injection
+      - third-wave-system
+  - 
+    name: phase:iterate
+    count: 2
+    examples:
+      - pdca-deming-cycle
+      - tote-test-operate-test-exit
+  - 
+    name: phase:iteration
+    count: 1
+    examples:
+      - layering-editing
+  - 
+    name: phase:maintenance
+    count: 1
+    examples:
+      - big-bench-dup
+  - 
+    name: phase:orchestration
+    count: 8
+    examples:
+      - prompt-layered-architecture-pla
+      - plan-and-execute-agent
+      - function-calling
+      - system-prompt
+      - toolformer
+      - tool-augmentation
+      - voyager-agent
+      - conversation-routines-cr
+  - 
+    name: phase:overview
+    count: 11
+    examples:
+      - artificial-intelligence-ai-dup
+      - natural-language-processing-nlp
+      - machine-learning-ml
+      - large-language-model-llm
+      - language-model
+      - model
+      - generative-pre-trained-transformer-gpt
+      - computer-vision-cv
+      - generative-ai-ml-dup
+      - waves-systems-of-ai
+  - 
+    name: phase:plan
+    count: 20
+    examples:
+      - architecture
+      - addie-instructional-design
+      - bias-impact-assessment
+      - eisenhower-priority-matrix
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - keywords-why-tasks-vector
+      - smart-goals
+      - task-recipe-cot
+  - 
+    name: phase:post-processing
+    count: 1
+    examples:
+      - ai-text-detection
+  - 
+    name: phase:postprocessing
+    count: 1
+    examples:
+      - de-tokenization
+  - 
+    name: phase:practice
+    count: 2
+    examples:
+      - compassion-focused-therapy-cft
+      - nonviolent-communication-nvc
+  - 
+    name: phase:preprocessing
+    count: 1
+    examples:
+      - tokenization
+  - 
+    name: phase:prompting
+    count: 122
+    examples:
+      - generative-ai
+      - prompt-engineering-and-development
+      - prompt-architecture
+      - clear-prompting-method
+      - par-method
+      - star-technique
+      - rtf-framework
+      - risen-framework
+      - ratio-framework
+      - rodes-framework
+  - 
+    name: phase:research
+    count: 5
+    examples:
+      - subvocalization
+      - silent-speech
+      - quantum-reasoning
+      - quantum-cognitive-models
+      - emotional-algorithmic-reasoning
+  - 
+    name: phase:review
+    count: 2
+    examples:
+      - cognitive-debiasing
+      - heuristics-biases
+  - 
+    name: phase:revision
+    count: 1
+    examples:
+      - accordion-editing
+  - 
+    name: phase:setup
+    count: 2
+    examples:
+      - few-shot-examples
+      - facts-expertise-primer
+  - 
+    name: phase:structure
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: phase:test
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: phase:training
+    count: 41
+    examples:
+      - continuous-prompts
+      - domain-specific-language-creation
+      - few-shot-code-example-generation
+      - prompt-ensembling
+      - prompt-augmentation
+      - model-architecture
+      - embedding
+      - forward-pass
+      - attention-mechanisms
+      - vector-space
+  - 
+    name: phase:usage
+    count: 5
+    examples:
+      - eliza-effect
+      - chatgpt
+      - bard
+      - ernie-bot
+      - bing-chat
+  - 
+    name: phase:validate
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: topic:access
+    count: 1
+    examples:
+      - digital-divide
+  - 
+    name: topic:admin
+    count: 1
+    examples:
+      - big-bench-dup
+  - 
+    name: topic:adversarial
+    count: 2
+    examples:
+      - neighbor-instructions
+      - gptout
+  - 
+    name: topic:affect-cognition
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: topic:agents
+    count: 2
+    examples:
+      - plan-and-execute-agent
+      - voyager-agent
+  - 
+    name: topic:ai
+    count: 2
+    examples:
+      - ai-behavior
+      - artificial-intelligence-ai-dup
+  - 
+    name: topic:algorithm
+    count: 1
+    examples:
+      - algorithm-of-thought-aot
+  - 
+    name: topic:algorithms
+    count: 2
+    examples:
+      - algorithmic-bias
+      - algorithmic-efficiency-bias
+  - 
+    name: topic:alignment
+    count: 15
+    examples:
+      - instruction-following
+      - human-alignment
+      - cvalues
+      - safety-alignment
+      - self-rewarding-language-models-srlm
+      - orpo-odds-ratio-preference-optimization
+      - deliberative-alignment
+      - instruction-tuning
+      - reinforcement-learning-from-human-feedback-rlhf
+      - steerability
+  - 
+    name: topic:ambiguity
+    count: 1
+    examples:
+      - multivalent-thinking
+  - 
+    name: topic:analogies
+    count: 1
+    examples:
+      - synectics-analogies
+  - 
+    name: topic:analogy
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: topic:analysis
+    count: 1
+    examples:
+      - multi-perspective-simulation-mps
+  - 
+    name: topic:architecture
+    count: 4
+    examples:
+      - composition
+      - sequence
+      - contextual-cues
+      - master-prompts
+  - 
+    name: topic:assumptions
+    count: 2
+    examples:
+      - first-principles-analysis
+      - socratic-method
+  - 
+    name: topic:assurance
+    count: 1
+    examples:
+      - red-teaming
+  - 
+    name: topic:attention
+    count: 2
+    examples:
+      - hyper-focusing-ability
+      - next-in-line-effect
+  - 
+    name: topic:attribution
+    count: 2
+    examples:
+      - self-serving-bias
+      - actor-observer-bias
+  - 
+    name: topic:automation
+    count: 1
+    examples:
+      - alpacaeval
+  - 
+    name: topic:availability
+    count: 1
+    examples:
+      - availability-attack
+  - 
+    name: topic:avoidance
+    count: 1
+    examples:
+      - ostrich-effect
+  - 
+    name: topic:benchmarks
+    count: 2
+    examples:
+      - sota-llms
+      - bleu-scores
+  - 
+    name: topic:bias
+    count: 3
+    examples:
+      - stereotypical-imprints
+      - bias-impact-assessment
+      - reflect-bias-scaffold
+  - 
+    name: topic:biology
+    count: 1
+    examples:
+      - evolutionary-reasoning
+  - 
+    name: topic:both-and
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: topic:brainstorm
+    count: 1
+    examples:
+      - rapid-ideation
+  - 
+    name: topic:branching
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: topic:cards
+    count: 1
+    examples:
+      - oblique-strategies-cards
+  - 
+    name: topic:causality
+    count: 2
+    examples:
+      - counterfactual-reasoning
+      - causal-reasoning
+  - 
+    name: topic:cbt
+    count: 1
+    examples:
+      - abcde-cbt-framework
+  - 
+    name: topic:chatbot
+    count: 1
+    examples:
+      - chatgpt
+  - 
+    name: topic:chinese
+    count: 1
+    examples:
+      - cmmlu
+  - 
+    name: topic:choice
+    count: 1
+    examples:
+      - decoy-effect
+  - 
+    name: topic:clarification
+    count: 2
+    examples:
+      - rephrase-and-respond-rar
+      - five-w-one-h-kipling
+  - 
+    name: topic:clarity
+    count: 1
+    examples:
+      - question-summarization
+  - 
+    name: topic:classification
+    count: 2
+    examples:
+      - sentiment-analysis
+      - text-classification
+  - 
+    name: topic:coaching
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: topic:code
+    count: 3
+    examples:
+      - few-shot-code-example-generation
+      - program-generation
+      - apps
+  - 
+    name: topic:coding
+    count: 1
+    examples:
+      - falcon-llm
+  - 
+    name: topic:cognition
+    count: 5
+    examples:
+      - heuristic-systematic-model
+      - hybrid-intuitive-logical-models
+      - general-cognitive-biases
+      - bias-blind-spot
+      - proportionality-bias
+  - 
+    name: topic:collaboration
+    count: 3
+    examples:
+      - transactive-reasoning
+      - six-thinking-hats
+      - dialogic-thinking
+  - 
+    name: topic:commonsense
+    count: 2
+    examples:
+      - winograd-schema-challenge
+      - hellaswag
+  - 
+    name: topic:communication
+    count: 3
+    examples:
+      - ai-human-technical-communication
+      - nonviolent-communication-nvc
+      - framing-effect
+  - 
+    name: topic:comparison
+    count: 1
+    examples:
+      - comparative-analysis
+  - 
+    name: topic:complexity
+    count: 1
+    examples:
+      - chaotic-thinking
+  - 
+    name: topic:composition
+    count: 1
+    examples:
+      - goal-composition
+  - 
+    name: topic:compression
+    count: 1
+    examples:
+      - distilled-model
+  - 
+    name: topic:computation
+    count: 1
+    examples:
+      - parallel-reasoning
+  - 
+    name: topic:computing
+    count: 3
+    examples:
+      - computational-reasoning
+      - computational-thinking
+      - thread
+  - 
+    name: topic:confidence-calibration
+    count: 1
+    examples:
+      - calibrated-confidence-prompting-ccp
+  - 
+    name: topic:consciousness
+    count: 1
+    examples:
+      - transliminal-thinking
+  - 
+    name: topic:consensus
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: topic:constraints
+    count: 2
+    examples:
+      - constraint-prompting
+      - constraint-flip
+  - 
+    name: topic:consumption
+    count: 1
+    examples:
+      - unit-bias
+  - 
+    name: topic:context
+    count: 8
+    examples:
+      - contextual-prompting
+      - contextual-adjustment
+      - context-fluid-reasoning
+      - parallel-contextual-reasoning
+      - context-dependent-reasoning
+      - mega-prompt
+      - role-playing-prompting
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: topic:contradiction
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: topic:control
+    count: 1
+    examples:
+      - conditional-prompting
+  - 
+    name: topic:control-loop
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: topic:conversation
+    count: 9
+    examples:
+      - multi-step-interactions
+      - conversational-design
+      - conversational-repair
+      - interaction-flows
+      - action-driven-conversations
+      - turn-taking
+      - sample-dialogue
+      - pauses
+      - system-prompt
+  - 
+    name: topic:copywriting
+    count: 3
+    examples:
+      - before-after-bridge-formula
+      - feature-advantage-benefit
+      - pas-copywriting
+  - 
+    name: topic:creativity
+    count: 6
+    examples:
+      - associative-thinking
+      - divergent-thinking
+      - lateral-thinking
+      - paradoxical-thinking
+      - explorative-prompter
+      - controlled-hallucination-for-ideation-chi
+  - 
+    name: topic:critical-thinking
+    count: 5
+    examples:
+      - faciones-core-critical-thinking-skills
+      - paul-elder-critical-thinking-framework
+      - socratic-questioning
+      - facione-core-skills
+      - paul-elder
+  - 
+    name: topic:crowdsourcing
+    count: 1
+    examples:
+      - chatbot-arena
+  - 
+    name: topic:culture
+    count: 16
+    examples:
+      - magical-thinking
+      - anarchic-thinking
+      - western-centric-bias-and-stereotypes
+      - individualism-over-collectivism
+      - linear-time-perception
+      - universalism-western
+      - secularism-bias
+      - health-and-beauty-standards-western
+      - food-and-cuisine-preferences-western
+      - popular-culture-bias
+  - 
+    name: topic:curriculum
+    count: 1
+    examples:
+      - addie-instructional-design
+  - 
+    name: topic:data
+    count: 21
+    examples:
+      - curated-data-training
+      - data-ml
+      - data-driven
+      - domain-ml
+      - mappings
+      - memorization
+      - gptinst
+      - second-wave-system
+      - cultural-bias
+      - historical-bias
+  - 
+    name: topic:dataset
+    count: 1
+    examples:
+      - manual
+  - 
+    name: topic:debate
+    count: 1
+    examples:
+      - dialectical-reasoning
+  - 
+    name: topic:debiasing
+    count: 2
+    examples:
+      - cognitive-debiasing
+      - heuristics-biases
+  - 
+    name: topic:debugging
+    count: 1
+    examples:
+      - rubber-duck-debugging
+  - 
+    name: topic:decision
+    count: 1
+    examples:
+      - information-bias
+  - 
+    name: topic:decision-making
+    count: 1
+    examples:
+      - heuristics-and-biases-framework
+  - 
+    name: topic:decision-rights
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: topic:decoding
+    count: 1
+    examples:
+      - token-sampling
+  - 
+    name: topic:decomposition
+    count: 2
+    examples:
+      - context-aware-decomposition-cad
+      - goal-breakdown-decomposition
+  - 
+    name: topic:deliberation
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: topic:demographic
+    count: 2
+    examples:
+      - gender-bias
+      - socioeconomic-bias
+  - 
+    name: topic:design
+    count: 2
+    examples:
+      - conversational-ui
+      - design-thinking
+  - 
+    name: topic:dialectic
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: topic:dialog
+    count: 1
+    examples:
+      - conversation-routines-cr
+  - 
+    name: topic:dialogue
+    count: 3
+    examples:
+      - mt-bench
+      - mint
+      - dialogue-cot
+  - 
+    name: topic:discourse
+    count: 2
+    examples:
+      - ideological-echo-chambers
+      - political-correctness-overreach
+  - 
+    name: topic:distillation
+    count: 1
+    examples:
+      - prompt-distillation
+  - 
+    name: topic:domain
+    count: 1
+    examples:
+      - handling-specialized-domains
+  - 
+    name: topic:dynamic
+    count: 1
+    examples:
+      - real-time-adaptive-prompting
+  - 
+    name: topic:dynamic-eval
+    count: 1
+    examples:
+      - dynabench
+  - 
+    name: topic:econ
+    count: 4
+    examples:
+      - material-success-and-capitalism
+      - consumerist-orientation
+      - economic-priorities-in-ai-development
+      - ai-and-global-economic-disparity
+  - 
+    name: topic:edge-cases
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: topic:editing
+    count: 6
+    examples:
+      - apple-picking-cherry-picking
+      - accordion-editing
+      - layering-editing
+      - recursive-self-improvement-prompting-rsip
+      - self-refine
+      - self-critique-prompting
+  - 
+    name: topic:education
+    count: 4
+    examples:
+      - blooms-taxonomy
+      - constructivist-thinking
+      - gaokao-bench
+      - western-educational-superiority
+  - 
+    name: topic:efficiency
+    count: 1
+    examples:
+      - mistral-7b
+  - 
+    name: topic:embedding
+    count: 3
+    examples:
+      - continuous-prompts
+      - embedding
+      - vector-space
+  - 
+    name: topic:embodied-cognition
+    count: 1
+    examples:
+      - head-heart-gut-decision
+  - 
+    name: topic:emotion
+    count: 10
+    examples:
+      - golemans-ei-framework
+      - mayer-salovey-four-branch-model
+      - emotional-contagion-theory
+      - affective-reasoning
+      - social-intuition-model
+      - emotional-aperture-measure
+      - barrett-constructed-emotion
+      - emotional-algorithmic-reasoning
+      - emotionbench
+      - chain-of-emotion
+  - 
+    name: topic:emotion-design
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: topic:emotions
+    count: 1
+    examples:
+      - internal-weather-report
+  - 
+    name: topic:empathy
+    count: 2
+    examples:
+      - empathic-accuracy-model
+      - chain-of-emotion
+  - 
+    name: topic:empty-chair
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: topic:energy-management
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: topic:ensemble
+    count: 1
+    examples:
+      - prompt-ensembling
+  - 
+    name: topic:ensembling
+    count: 1
+    examples:
+      - mixture-of-agents-moa
+  - 
+    name: topic:environment
+    count: 4
+    examples:
+      - ecological-reasoning
+      - environmental-practices-western
+      - environmental-ethics-vs-economic-development
+      - environmental-impact-of-training
+  - 
+    name: topic:environment-scan
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: topic:ethics
+    count: 7
+    examples:
+      - normative-reasoning
+      - legal-and-ethical-norms-western
+      - omission-bias
+      - moral-credential-effect
+      - ethical-dilemma-awareness
+      - trolley-problem
+      - buddhist-eightfold-path-adapted
+  - 
+    name: topic:evaluation
+    count: 11
+    examples:
+      - rubric-approach
+      - raccca-framework
+      - evaluation-prompting
+      - extrinsic-evaluation
+      - intrinsic-evaluation
+      - benchmarks-and-evaluations
+      - multiple-choice-adaptation
+      - dict-judge
+      - chainforge
+      - comparative-analysis
+  - 
+    name: topic:evidence
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: topic:evolutionary
+    count: 2
+    examples:
+      - autodan
+      - hierarchical-genetic-algorithm
+  - 
+    name: topic:examples
+    count: 1
+    examples:
+      - few-shot-examples
+  - 
+    name: topic:expectations
+    count: 1
+    examples:
+      - pygmalion-effect
+  - 
+    name: topic:experience
+    count: 1
+    examples:
+      - experiential-reasoning
+  - 
+    name: topic:experiment
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: topic:explaining
+    count: 1
+    examples:
+      - rubber-duck-debugging
+  - 
+    name: topic:fact-checking
+    count: 1
+    examples:
+      - facts-expertise-primer
+  - 
+    name: topic:fairness
+    count: 6
+    examples:
+      - biases
+      - fairness-in-resource-allocation
+      - bias-amplification
+      - misrepresentation-of-minorities
+      - overcorrection-to-avoid-bias
+      - bias-interrupters
+  - 
+    name: topic:felt-sense
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: topic:few-shot
+    count: 1
+    examples:
+      - few-shot-examples
+  - 
+    name: topic:format
+    count: 1
+    examples:
+      - structured-outputs-json-schema
+  - 
+    name: topic:friction-reduction
+    count: 1
+    examples:
+      - two-minute-rule
+  - 
+    name: topic:future-self
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: topic:futures
+    count: 1
+    examples:
+      - speculative-thinking
+  - 
+    name: topic:gamification
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: topic:genai
+    count: 1
+    examples:
+      - generative-ai-ml-dup
+  - 
+    name: topic:generalization
+    count: 4
+    examples:
+      - overfitting
+      - generality
+      - robustness
+      - generalization
+  - 
+    name: topic:generation
+    count: 2
+    examples:
+      - zero-shot-learning
+      - summarization
+  - 
+    name: topic:generative
+    count: 2
+    examples:
+      - generative-ai
+      - generative-prompts
+  - 
+    name: topic:geo
+    count: 2
+    examples:
+      - geographical-bias
+      - global-north-dominance
+  - 
+    name: topic:gestalt
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: topic:goal-setting
+    count: 2
+    examples:
+      - grow-coaching-model
+      - smart-goals
+  - 
+    name: topic:goals
+    count: 3
+    examples:
+      - goal-composition
+      - goal-prompting
+      - okr-goal-setting
+  - 
+    name: topic:governance
+    count: 12
+    examples:
+      - rules-injector
+      - ethical-dilemma-awareness
+      - whistleblowing-in-the-workplace
+      - conflicts-of-interest
+      - artificial-intelligence-and-responsibility
+      - responsibility-for-model-actions
+      - representation-in-ai-decision-making
+      - accountability-in-ai-generated-decisions
+      - ethical-whitewashing
+      - text-watermarking-synthid-text
+  - 
+    name: topic:hallucination
+    count: 1
+    examples:
+      - uhgeval
+  - 
+    name: topic:harm-benefit
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: topic:health
+    count: 3
+    examples:
+      - health-and-beauty-standards-western
+      - autonomy-vs-beneficence-in-medicine
+      - end-of-life-decisions
+  - 
+    name: topic:heuristics
+    count: 4
+    examples:
+      - intuitive-reasoning
+      - availability-heuristic
+      - anchoring-bias
+      - confirmation-bias-human
+  - 
+    name: topic:history
+    count: 2
+    examples:
+      - waves-systems-of-ai
+      - historical-revisionism
+  - 
+    name: topic:hobbyist
+    count: 1
+    examples:
+      - enthusiast-prompter
+  - 
+    name: topic:holistic
+    count: 1
+    examples:
+      - helm
+  - 
+    name: topic:human-ai
+    count: 8
+    examples:
+      - ai-human-research-and-analysis
+      - human-and-ai-behavior
+      - personalization-and-adaptation
+      - collaboration-and-interdisciplinary-knowledge
+      - experiential-knowledge
+      - conversational-design
+      - symbiotic-reasoning-systems
+      - eliza-effect
+  - 
+    name: topic:hypothesis
+    count: 1
+    examples:
+      - abductive-reasoning
+  - 
+    name: topic:ideation
+    count: 4
+    examples:
+      - controlled-hallucination-for-ideation-chi
+      - constraint-flip
+      - how-might-we-statements-hmw
+      - wishing-technique
+  - 
+    name: topic:if-then
+    count: 1
+    examples:
+      - if-then-planning
+  - 
+    name: topic:IFS
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: topic:impression
+    count: 1
+    examples:
+      - halo-effect
+  - 
+    name: topic:in-context-learning
+    count: 1
+    examples:
+      - few-shot-learning
+  - 
+    name: topic:inclusion
+    count: 5
+    examples:
+      - linguistic-diversity
+      - inclusivity-in-conversation-design
+      - accessibility-and-inclusivity-ethics
+      - accessibility-and-inclusivity-in-ai
+      - diverse-voices-suppression
+  - 
+    name: topic:inclusive-design
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: topic:inference
+    count: 4
+    examples:
+      - inductive-reasoning
+      - probability-distribution
+      - decoding
+      - output-generation
+  - 
+    name: topic:innovation
+    count: 1
+    examples:
+      - triz-theory-of-inventive-problem-solving
+  - 
+    name: topic:instruction-tuning
+    count: 4
+    examples:
+      - pandalm
+      - wizardlm
+      - vicuna
+      - alpaca
+  - 
+    name: topic:instructional-design
+    count: 1
+    examples:
+      - addie-instructional-design
+  - 
+    name: topic:instructions
+    count: 3
+    examples:
+      - cello
+      - instruction-tuning
+      - steerability
+  - 
+    name: topic:integration
+    count: 5
+    examples:
+      - interdisciplinary-reasoning
+      - cross-domain-reasoning
+      - polymathic-thinking
+      - syncretic-thinking
+      - ganma-knowledge-confluence
+  - 
+    name: topic:intergenerational
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: topic:interpretability
+    count: 1
+    examples:
+      - blackbox
+  - 
+    name: topic:intuition
+    count: 1
+    examples:
+      - intuitive-problem-solving
+  - 
+    name: topic:ip
+    count: 3
+    examples:
+      - intellectual-property-and-plagiarism
+      - intellectual-property-in-training-data
+      - intellectual-property-and-content-generation
+  - 
+    name: topic:iteration
+    count: 3
+    examples:
+      - adaptive-recursive-thinking
+      - recursive-thinking
+      - pdca-deming-cycle
+  - 
+    name: topic:iterative
+    count: 3
+    examples:
+      - recursive-self-improvement-prompting-rsip
+      - self-refine
+      - self-critique-prompting
+  - 
+    name: topic:iterative-refinement
+    count: 2
+    examples:
+      - recursive-self-improvement-prompting-rsip
+      - self-refine-prompting
+  - 
+    name: topic:journal
+    count: 1
+    examples:
+      - morning-pages-journaling
+  - 
+    name: topic:judgment
+    count: 1
+    examples:
+      - outcome-bias-human
+  - 
+    name: topic:keywords
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: topic:knowledge
+    count: 1
+    examples:
+      - kola
+  - 
+    name: topic:knowledge-pluralism
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: topic:labeling
+    count: 1
+    examples:
+      - annotation-bias
+  - 
+    name: topic:language
+    count: 3
+    examples:
+      - english-language-dominance
+      - language-bias
+      - english-language-primacy
+  - 
+    name: topic:law
+    count: 2
+    examples:
+      - legal-and-ethical-norms-western
+      - imposing-western-legal-and-ethical-norms
+  - 
+    name: topic:leaderboard
+    count: 1
+    examples:
+      - openllm
+  - 
+    name: topic:leadership
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: topic:lean
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: topic:learning
+    count: 1
+    examples:
+      - voyager-agent
+  - 
+    name: topic:legal
+    count: 1
+    examples:
+      - cuad
+  - 
+    name: topic:linguistics
+    count: 4
+    examples:
+      - socio-linguistics
+      - discourse-markers
+      - ambiguity-of-language
+      - critical-discourse-analysis
+  - 
+    name: topic:literary
+    count: 1
+    examples:
+      - intertextual-thinking
+  - 
+    name: topic:llm
+    count: 19
+    examples:
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-narrow-intelligence-ani
+      - artificial-superintelligence-asi
+      - waves-of-ai-prompting-evolutions
+      - peas-framework
+      - technical-knowledge
+      - large-language-model-llm
+      - context-window-selection
+      - hallucinations
+  - 
+    name: topic:lm
+    count: 1
+    examples:
+      - upstream-perplexity
+  - 
+    name: topic:logic
+    count: 6
+    examples:
+      - deductive-reasoning
+      - syllogistic-reasoning
+      - argument-mapping
+      - logical-mathematical-exploration
+      - circular-reasoning
+      - nyaya-five-member-syllogism
+  - 
+    name: topic:many-sidedness
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: topic:math
+    count: 1
+    examples:
+      - math
+  - 
+    name: topic:matrix
+    count: 2
+    examples:
+      - weighted-mini-matrix
+      - value-effort-matrix
+  - 
+    name: topic:measurement
+    count: 1
+    examples:
+      - populational-vs-non-populational-metrics
+  - 
+    name: topic:media
+    count: 2
+    examples:
+      - western-media-representation
+      - mainstream-media-bias
+  - 
+    name: topic:medical
+    count: 2
+    examples:
+      - multimedqa
+      - cmb
+  - 
+    name: topic:memory
+    count: 6
+    examples:
+      - picture-superiority-effect
+      - hindsight-bias
+      - serial-position-effect
+      - illusory-truth-effect
+      - choice-supportive-bias
+      - peak-end-rule
+  - 
+    name: topic:meta
+    count: 3
+    examples:
+      - self-discover-framework
+      - domain-specific-language-creation
+      - meta-prompting
+  - 
+    name: topic:metacognition
+    count: 9
+    examples:
+      - reflective-reasoning
+      - meta-reasoning
+      - reflective-practice
+      - reflective-judgment-model
+      - reflexive-thinking
+      - hard-easy-effect
+      - dunning-kruger-effect
+      - overconfidence-effect
+      - cognitive-debiasing
+  - 
+    name: topic:metaphor
+    count: 2
+    examples:
+      - internal-weather-report
+      - synesthetic-brainstorm
+  - 
+    name: topic:methodology
+    count: 7
+    examples:
+      - number-of-evaluators
+      - adequate-representation
+      - evaluation-rubrics
+      - evaluators-expertise
+      - human-in-the-loop
+      - crowd-sourcing-testing
+      - data-driven-rationality-bias
+  - 
+    name: topic:metrics
+    count: 2
+    examples:
+      - llmeval2
+      - okr-goal-setting
+  - 
+    name: topic:mindfulness
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: topic:minimal-intervention
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: topic:misuse
+    count: 1
+    examples:
+      - ai-text-detection
+  - 
+    name: topic:mitigation
+    count: 1
+    examples:
+      - bias-mitigation-techniques
+  - 
+    name: topic:ml
+    count: 4
+    examples:
+      - model-architecture
+      - machine-learning-ml
+      - model
+      - function-ml
+  - 
+    name: topic:model
+    count: 1
+    examples:
+      - potential-llm-bias-and-stereotypes
+  - 
+    name: topic:moderation
+    count: 5
+    examples:
+      - censorship-vs-sensitivity
+      - authenticity-vs-sanitization
+      - content-moderation-bias
+      - chain-of-explanation
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: topic:multi
+    count: 1
+    examples:
+      - m3exam
+  - 
+    name: topic:multi-domain
+    count: 1
+    examples:
+      - xiezhi
+  - 
+    name: topic:multi-task
+    count: 4
+    examples:
+      - big-bench
+      - mmlu
+      - agieval
+      - m3ke
+  - 
+    name: topic:multimodal
+    count: 9
+    examples:
+      - multimodal-conversation-design
+      - smart-display
+      - multimodal-reasoning
+      - mme
+      - seed-bench
+      - mixture-of-prompt-experts-mope
+      - multimodal-prompting
+      - multimodal-chain-of-thought-mm-cot
+      - gpt-4
+  - 
+    name: topic:narrative
+    count: 2
+    examples:
+      - narrative-reasoning
+      - mythopoetic-thinking
+  - 
+    name: topic:nature
+    count: 1
+    examples:
+      - biomimetic-thinking
+  - 
+    name: topic:nli
+    count: 1
+    examples:
+      - natural-language-inference-nli
+  - 
+    name: topic:nlp
+    count: 6
+    examples:
+      - natural-language-processing-nlp
+      - language-model
+      - tokenization
+      - de-tokenization
+      - glue
+      - superglue
+  - 
+    name: topic:nlu
+    count: 4
+    examples:
+      - utterance
+      - intent
+      - entity
+      - interaction-model
+  - 
+    name: topic:nn
+    count: 5
+    examples:
+      - forward-pass
+      - deep-learning
+      - depth
+      - layer
+      - neural-network
+  - 
+    name: topic:nudge
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: topic:obfuscation
+    count: 3
+    examples:
+      - zero-width-prompt-injection
+      - cloaked-prompt
+      - masked-prompt-word-masking
+  - 
+    name: topic:ooda
+    count: 1
+    examples:
+      - ooda-loop
+  - 
+    name: topic:open-llm
+    count: 7
+    examples:
+      - llama-2
+      - wizardlm
+      - vicuna
+      - alpaca
+      - stablelm
+      - mistral-7b
+      - falcon-llm
+  - 
+    name: topic:operations
+    count: 1
+    examples:
+      - bias-awareness-techniques
+  - 
+    name: topic:optimization
+    count: 12
+    examples:
+      - convergence
+      - gradient
+      - loss-function
+      - optimization
+      - gcg
+      - pair
+      - gradient-based-approach
+      - multi-objective-directional-prompting-modp
+      - greedy-prompt-engineering-strategy-greedy-pes
+      - automatic-prompt-engineer-ape
+  - 
+    name: topic:orchestration
+    count: 4
+    examples:
+      - sequential-linear-prompting
+      - prompt-layered-architecture-pla
+      - guidance-library
+      - function-calling
+  - 
+    name: topic:parallelism
+    count: 1
+    examples:
+      - skeleton-of-thought-sot
+  - 
+    name: topic:participation
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: topic:parts-work
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: topic:pattern
+    count: 3
+    examples:
+      - multidimensional-pattern-recognition
+      - fractal-thought-processes
+      - pattern-based-reasoning
+  - 
+    name: topic:perception
+    count: 3
+    examples:
+      - baader-meinhof-phenomenon
+      - apophenia-bias
+      - selective-perception-bias
+  - 
+    name: topic:persona
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: topic:personalization
+    count: 1
+    examples:
+      - personalized-prompt-distillation-peapod
+  - 
+    name: topic:perspective-shift
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: topic:perspective-taking
+    count: 1
+    examples:
+      - disney-dreamer-realist-critic
+  - 
+    name: topic:persuasion
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: topic:philosophy
+    count: 3
+    examples:
+      - critical-realism
+      - rhizomatic-thinking
+      - absurdist-reasoning
+  - 
+    name: topic:planning
+    count: 3
+    examples:
+      - context-aware-decomposition-cad
+      - graph-of-thoughts-got
+      - plan-and-execute-agent
+  - 
+    name: topic:platform
+    count: 1
+    examples:
+      - conversational-actions
+  - 
+    name: topic:platforms
+    count: 3
+    examples:
+      - popularity-bias
+      - echo-chamber-effect
+      - platform-centric-narratives
+  - 
+    name: topic:play
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: topic:point-clouds
+    count: 1
+    examples:
+      - lamm
+  - 
+    name: topic:policy
+    count: 2
+    examples:
+      - ethical-consumerism
+      - western-dominance-in-technological-standards
+  - 
+    name: topic:political
+    count: 3
+    examples:
+      - western-democratic-models
+      - freedom-and-human-rights-western
+      - ideological-bias
+  - 
+    name: topic:pomodoro
+    count: 1
+    examples:
+      - pomodoro-scaffold
+  - 
+    name: topic:positioning
+    count: 2
+    examples:
+      - before-after-bridge-formula
+      - feature-advantage-benefit
+  - 
+    name: topic:pragmatics
+    count: 2
+    examples:
+      - cooperative-principle
+      - maxim-of-relevance
+  - 
+    name: topic:preference
+    count: 2
+    examples:
+      - mere-exposure-effect
+      - self-rewarding-language-models-srlm
+  - 
+    name: topic:preferences
+    count: 2
+    examples:
+      - reinforcement-learning-from-human-feedback-rlhf
+      - reinforcement-learning-from-ai-feedback-rlaif
+  - 
+    name: topic:premortem
+    count: 1
+    examples:
+      - pre-mortem-scaffold
+  - 
+    name: topic:priming
+    count: 1
+    examples:
+      - facts-expertise-primer
+  - 
+    name: topic:principles
+    count: 2
+    examples:
+      - helpful-honest-harmless-hhh
+      - constitutional-ai
+  - 
+    name: topic:prioritization
+    count: 3
+    examples:
+      - eisenhower-priority-matrix
+      - kano-model
+      - moscow-prioritization
+  - 
+    name: topic:privacy
+    count: 6
+    examples:
+      - model-extraction
+      - privacy-vs-security
+      - data-privacy-and-consent
+      - consent-for-data-use
+      - privacy-standards-discrepancy
+      - privacy-and-data-use
+  - 
+    name: topic:probability
+    count: 1
+    examples:
+      - gamblers-fallacy
+  - 
+    name: topic:problem-framing
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: topic:problem-solving
+    count: 3
+    examples:
+      - morphological-analysis
+      - first-principles-analysis
+      - a3-problem-solving-toyota
+  - 
+    name: topic:productivity
+    count: 1
+    examples:
+      - two-minute-rule
+  - 
+    name: topic:prompting
+    count: 80
+    examples:
+      - prompt-engineering-and-development
+      - prompt-architect
+      - prompt-architecture
+      - clear-path-forward-framework
+      - clear-prompting-method
+      - clear-framework
+      - swot-analysis
+      - par-method
+      - aida-model
+      - star-technique
+  - 
+    name: topic:prompts
+    count: 1
+    examples:
+      - trigger-storming
+  - 
+    name: topic:provenance
+    count: 3
+    examples:
+      - text-watermarking-synthid-text
+      - ai-text-detection
+      - watermarking
+  - 
+    name: topic:psdm
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: topic:psychometrics
+    count: 6
+    examples:
+      - item-response-theory-irt
+      - difficulty-and-discrimination
+      - ability-irt
+      - accs-iccs
+      - parameter-estimation-irt
+      - binary-and-continuous-models-irt
+  - 
+    name: topic:public-interest
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: topic:qa
+    count: 2
+    examples:
+      - squad
+      - question-answering
+  - 
+    name: topic:quality
+    count: 7
+    examples:
+      - root-cause-analysis
+      - comprehensiveness
+      - accuracy-eval
+      - relevance-eval
+      - fluency-eval
+      - misinformation-and-trustworthiness
+      - misinformation-and-fake-news
+  - 
+    name: topic:quantum
+    count: 2
+    examples:
+      - quantum-reasoning
+      - quantum-cognitive-models
+  - 
+    name: topic:questions
+    count: 1
+    examples:
+      - goal-breakdown-decomposition
+  - 
+    name: topic:rag
+    count: 4
+    examples:
+      - rat-retrieval-augmented-thoughts
+      - agentic-rag
+      - graph-rag
+      - corrective-rag-crag
+  - 
+    name: topic:random
+    count: 1
+    examples:
+      - random-association
+  - 
+    name: topic:reasoning
+    count: 38
+    examples:
+      - scaffolding
+      - rat-retrieval-augmented-thoughts
+      - reasoning-models-or-structures
+      - chain-of-thought-cot
+      - tree-of-thought-tot
+      - scratchpad-reasoning
+      - question-decomposition
+      - plan-and-solve-p-s
+      - least-to-most-ltm
+      - decomposed-prompting
+  - 
+    name: topic:reduction
+    count: 2
+    examples:
+      - reductive-prompts
+      - extractive-prompting
+  - 
+    name: topic:reflection
+    count: 2
+    examples:
+      - reflect-bias-scaffold
+      - time-machine-perspectives
+  - 
+    name: topic:reframing
+    count: 2
+    examples:
+      - abcde-cbt-framework
+      - what-if-scenarios
+  - 
+    name: topic:regional
+    count: 1
+    examples:
+      - ernie-bot
+  - 
+    name: topic:requirements
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: topic:research
+    count: 2
+    examples:
+      - animal-rights-vs-scientific-research
+      - informed-consent-in-research
+  - 
+    name: topic:responsibility
+    count: 1
+    examples:
+      - continuous-learning-and-ethical-drift
+  - 
+    name: topic:retrieval
+    count: 7
+    examples:
+      - vector-store
+      - retrieval-augmented-generation-rag
+      - information-retrieval
+      - freshqa
+      - graph-rag
+      - tool-augmentation
+      - chain-of-knowledge
+  - 
+    name: topic:rl
+    count: 1
+    examples:
+      - ale-gvgai
+  - 
+    name: topic:robustness
+    count: 9
+    examples:
+      - boss
+      - glue-x
+      - promptbench
+      - many-shot-jailbreaking
+      - reasoning-tokens-o1-style
+      - corrective-rag-crag
+      - mixture-of-formats-mof
+      - chain-of-verification-cove
+      - prompt-brittleness
+  - 
+    name: topic:role-play
+    count: 1
+    examples:
+      - role-storming
+  - 
+    name: topic:roleplay
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: topic:rubrics
+    count: 1
+    examples:
+      - bias-interrupters
+  - 
+    name: topic:rules
+    count: 1
+    examples:
+      - first-wave-system
+  - 
+    name: topic:safety
+    count: 26
+    examples:
+      - alignment
+      - bias-mitigation
+      - addressing-biases-and-ethical-concerns
+      - linguistic-bias
+      - content-safeguards
+      - fairness
+      - performance-disparities
+      - generative-harms
+      - disinformation
+      - safety-eval
+  - 
+    name: topic:sampling
+    count: 1
+    examples:
+      - survivorship-bias
+  - 
+    name: topic:scaling
+    count: 1
+    examples:
+      - model-scale-trends
+  - 
+    name: topic:scamper
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: topic:scoring
+    count: 2
+    examples:
+      - ice-scoring
+      - rice-scoring
+  - 
+    name: topic:scripts
+    count: 1
+    examples:
+      - choice-75
+  - 
+    name: topic:search
+    count: 3
+    examples:
+      - parallel-prompting
+      - bard
+      - bing-chat
+  - 
+    name: topic:security
+    count: 2
+    examples:
+      - security-and-safety
+      - ai-system-hardening
+  - 
+    name: topic:self
+    count: 2
+    examples:
+      - egocentric-bias
+      - spotlight-effect
+  - 
+    name: topic:self-improvement
+    count: 1
+    examples:
+      - recursive-self-improvement-prompting-rsip
+  - 
+    name: topic:semantics
+    count: 1
+    examples:
+      - semantic-understanding
+  - 
+    name: topic:senses
+    count: 1
+    examples:
+      - synesthetic-thinking
+  - 
+    name: topic:sensory
+    count: 1
+    examples:
+      - synesthetic-brainstorm
+  - 
+    name: topic:shadow
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: topic:simplification
+    count: 1
+    examples:
+      - feynman-technique
+  - 
+    name: topic:six-sigma
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: topic:social
+    count: 6
+    examples:
+      - mimetic-thinking
+      - projection-bias
+      - authority-bias
+      - availability-cascade
+      - bandwagon-effect
+      - ingroup-bias
+  - 
+    name: topic:society
+    count: 4
+    examples:
+      - urban-centric-views
+      - human-replacement-and-job-displacement
+      - echo-chambers-and-radicalization
+      - dependence-and-dehumanization
+  - 
+    name: topic:socratic
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: topic:somatic
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: topic:spatial
+    count: 2
+    examples:
+      - spatial-reasoning
+      - visual-spatial-thinking
+  - 
+    name: topic:spoon-theory
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: topic:stability
+    count: 1
+    examples:
+      - self-consistency
+  - 
+    name: topic:statistics
+    count: 4
+    examples:
+      - probabilistic-reasoning
+      - maximum-likelihood-estimation-mle
+      - regularization-and-variance
+      - statistical-significance
+  - 
+    name: topic:stewardship
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: topic:story-sharing
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: topic:storytelling
+    count: 2
+    examples:
+      - heros-journey-narrative
+      - tarot-spread-reflection
+  - 
+    name: topic:strategy
+    count: 2
+    examples:
+      - strategic-reasoning
+      - soar-analysis
+  - 
+    name: topic:structure
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: topic:style
+    count: 6
+    examples:
+      - brand-persona
+      - minimalist-prompter
+      - pragmatic-prompter
+      - detailed-prompter
+      - contextual-prompter
+      - utility-driven-prompter
+  - 
+    name: topic:subconscious
+    count: 1
+    examples:
+      - dream-logic
+  - 
+    name: topic:summarization
+    count: 1
+    examples:
+      - chain-of-density-cod
+  - 
+    name: topic:supervised
+    count: 1
+    examples:
+      - label
+  - 
+    name: topic:surrealism
+    count: 1
+    examples:
+      - surreal-reasoning
+  - 
+    name: topic:symbolic
+    count: 1
+    examples:
+      - chain-of-symbol
+  - 
+    name: topic:systems
+    count: 7
+    examples:
+      - architecture
+      - holistic-reasoning
+      - systems-thinking
+      - critical-systems-thinking-cst
+      - complex-adaptive-systems-cas-thinking
+      - non-linear-dynamic-reasoning
+      - prompt-layered-architecture-pla
+  - 
+    name: topic:tarot
+    count: 1
+    examples:
+      - tarot-spread-reflection
+  - 
+    name: topic:tasking
+    count: 2
+    examples:
+      - keywords-why-tasks-vector
+      - task-recipe-cot
+  - 
+    name: topic:tasks
+    count: 1
+    examples:
+      - downstream-accuracy
+  - 
+    name: topic:teaching
+    count: 1
+    examples:
+      - feynman-technique
+  - 
+    name: topic:tech
+    count: 2
+    examples:
+      - technological-superiority
+      - technocentric-perspectives
+  - 
+    name: topic:templates
+    count: 2
+    examples:
+      - langgpt-dual-layer-framework
+      - guidance-library
+  - 
+    name: topic:temporal
+    count: 2
+    examples:
+      - recency-bias
+      - short-term-focus
+  - 
+    name: topic:therapy
+    count: 1
+    examples:
+      - compassion-focused-therapy-cft
+  - 
+    name: topic:threat-model
+    count: 2
+    examples:
+      - black-box-access
+      - white-box-access
+  - 
+    name: topic:time
+    count: 1
+    examples:
+      - temporal-reasoning
+  - 
+    name: topic:time-management
+    count: 1
+    examples:
+      - eisenhower-priority-matrix
+  - 
+    name: topic:tools
+    count: 6
+    examples:
+      - api-bank
+      - toolbench
+      - structured-outputs-json-schema
+      - function-calling
+      - toolformer
+      - tool-augmentation
+  - 
+    name: topic:tradeoffs
+    count: 1
+    examples:
+      - alignment-tax
+  - 
+    name: topic:training
+    count: 6
+    examples:
+      - temperature-topk-sampling
+      - fine-tune-model
+      - convergence-eval
+      - data-poisoning
+      - model-poisoning
+      - poisoning-attacks
+  - 
+    name: topic:transformation
+    count: 2
+    examples:
+      - transformative-prompts
+      - expansion-prompting
+  - 
+    name: topic:transformer
+    count: 3
+    examples:
+      - generative-pre-trained-transformer-gpt
+      - attention-mechanisms
+      - selective-parsing
+  - 
+    name: topic:translation
+    count: 1
+    examples:
+      - chain-of-dictionary
+  - 
+    name: topic:transparency
+    count: 3
+    examples:
+      - transparency-vs-proprietary-interests
+      - interpretability-and-explainability
+      - bias-impact-assessment
+  - 
+    name: topic:triangulation
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: topic:trust
+    count: 3
+    examples:
+      - transparency-eval
+      - eliza-effect
+      - talanoa-dialogue
+  - 
+    name: topic:uncertainty
+    count: 1
+    examples:
+      - calibration
+  - 
+    name: topic:unconscious
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: topic:user-satisfaction
+    count: 1
+    examples:
+      - kano-model
+  - 
+    name: topic:ux
+    count: 5
+    examples:
+      - escalated-errors
+      - user-behavior
+      - information-overload-bias
+      - user-manipulation-and-persuasion
+      - emotional-manipulation
+  - 
+    name: topic:validation
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: topic:verification
+    count: 3
+    examples:
+      - corrective-rag-crag
+      - chain-of-verification-cove
+      - chain-of-verification
+  - 
+    name: topic:vision
+    count: 1
+    examples:
+      - computer-vision-cv
+  - 
+    name: topic:vision-in-text
+    count: 1
+    examples:
+      - vitc
+  - 
+    name: topic:vlm
+    count: 3
+    examples:
+      - mmbench
+      - mm-vet
+      - vltm-ehub
+  - 
+    name: topic:voice
+    count: 4
+    examples:
+      - voice-user-interface-vui
+      - voice-forward-device
+      - subvocalization
+      - silent-speech
+  - 
+    name: topic:why
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: topic:woop
+    count: 1
+    examples:
+      - woop-wish-outcome-obstacle-plan
+  - 
+    name: topic:workflow
+    count: 1
+    examples:
+      - iterative-prompter
+  - 
+    name: topic:writing
+    count: 1
+    examples:
+      - freewriting-zero-draft
+  - 
+    name: topic:wsjf
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: topic:wu-wei
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: type:ability
+    count: 2
+    examples:
+      - hyper-focusing-ability
+      - synesthetic-thinking
+  - 
+    name: type:algorithm
+    count: 2
+    examples:
+      - bias-correction-algorithms
+      - adaptive-learning-algorithms-bias
+  - 
+    name: type:analysis
+    count: 1
+    examples:
+      - longitudinal-data-analysis
+  - 
+    name: type:approach
+    count: 3
+    examples:
+      - data-driven
+      - deep-learning
+      - generative-ai-ml-dup
+  - 
+    name: type:artifact
+    count: 5
+    examples:
+      - interaction-flows
+      - sample-dialogue
+      - conversational-actions
+      - interaction-model
+      - evaluation-rubrics
+  - 
+    name: type:assessment
+    count: 2
+    examples:
+      - implicit-bias-tests
+      - bias-impact-assessments
+  - 
+    name: type:attack
+    count: 19
+    examples:
+      - availability-attack
+      - data-poisoning
+      - model-poisoning
+      - model-extraction
+      - poisoning-attacks
+      - prompt-injection
+      - indirect-prompt-injection
+      - zero-width-prompt-injection
+      - adversarial-prompts
+      - jailbreaking-jailbreak-attack
+  - 
+    name: type:attribute
+    count: 1
+    examples:
+      - depth
+  - 
+    name: type:automation
+    count: 1
+    examples:
+      - automatic-prompt-engineer-ape
+  - 
+    name: type:benchmark
+    count: 39
+    examples:
+      - glue
+      - superglue
+      - winograd-schema-challenge
+      - hellaswag
+      - big-bench
+      - ale-gvgai
+      - mme
+      - seed-bench
+      - mmbench
+      - mm-vet
+  - 
+    name: type:capability
+    count: 3
+    examples:
+      - instruction-following
+      - semantic-understanding
+      - contextual-understanding
+  - 
+    name: type:category
+    count: 12
+    examples:
+      - reasoning-models-or-structures
+      - benchmarks-and-evaluations
+      - security-and-safety
+      - user-behavior
+      - waves-systems-of-ai
+      - biases
+      - western-centric-bias-and-stereotypes
+      - potential-llm-bias-and-stereotypes
+      - general-cognitive-biases
+      - bias-mitigation-techniques
+  - 
+    name: type:challenge
+    count: 3
+    examples:
+      - addressing-biases-and-ethical-concerns
+      - handling-specialized-domains
+      - adapting-to-evolving-ai-capabilities
+  - 
+    name: type:cleanup
+    count: 1
+    examples:
+      - big-bench-dup
+  - 
+    name: type:cognitive-bias
+    count: 1
+    examples:
+      - eliza-effect
+  - 
+    name: type:component
+    count: 7
+    examples:
+      - composition
+      - sequence
+      - contextual-cues
+      - master-prompts
+      - rules-injector
+      - layer
+      - reasoning-tokens-o1-style
+  - 
+    name: type:concept
+    count: 31
+    examples:
+      - alignment
+      - architecture
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-narrow-intelligence-ani
+      - artificial-superintelligence-asi
+      - generative-ai
+      - waves-of-ai-prompting-evolutions
+      - discrete-prompts
+      - continuous-prompts
+  - 
+    name: type:condition
+    count: 1
+    examples:
+      - conflicts-of-interest
+  - 
+    name: type:constraint
+    count: 1
+    examples:
+      - context-window-selection
+  - 
+    name: type:control
+    count: 1
+    examples:
+      - content-safeguards
+  - 
+    name: type:data
+    count: 4
+    examples:
+      - label
+      - diverse-dataset-sourcing
+      - anonymization
+      - adversarial-data-generation
+  - 
+    name: type:dataset
+    count: 5
+    examples:
+      - squad
+      - cuad
+      - math
+      - apps
+      - cello
+  - 
+    name: type:defense
+    count: 2
+    examples:
+      - ai-system-hardening
+      - safety-alignment
+  - 
+    name: type:design
+    count: 1
+    examples:
+      - user-centric-design-bias
+  - 
+    name: type:device
+    count: 2
+    examples:
+      - smart-display
+      - voice-forward-device
+  - 
+    name: type:dilemma
+    count: 10
+    examples:
+      - trolley-problem
+      - autonomy-vs-beneficence-in-medicine
+      - whistleblowing-in-the-workplace
+      - animal-rights-vs-scientific-research
+      - end-of-life-decisions
+      - fairness-in-resource-allocation
+      - artificial-intelligence-and-responsibility
+      - intellectual-property-in-training-data
+      - responsibility-for-model-actions
+      - intellectual-property-and-content-generation
+  - 
+    name: type:dimension
+    count: 1
+    examples:
+      - prompting-evaluation
+  - 
+    name: type:discipline
+    count: 6
+    examples:
+      - ai-human-research-and-analysis
+      - ai-human-technical-communication
+      - human-and-ai-behavior
+      - prompt-engineering-and-development
+      - conversational-design
+      - multimodal-conversation-design
+  - 
+    name: type:documentation
+    count: 1
+    examples:
+      - bias-documentation
+  - 
+    name: type:domain
+    count: 2
+    examples:
+      - natural-language-processing-nlp
+      - computer-vision-cv
+  - 
+    name: type:exercise
+    count: 1
+    examples:
+      - morning-pages-journaling
+  - 
+    name: type:factor
+    count: 1
+    examples:
+      - evaluators-expertise
+  - 
+    name: type:failure
+    count: 5
+    examples:
+      - hallucinations
+      - overfitting
+      - failure-modes
+      - prompt-cognitive-overload
+      - memorization
+  - 
+    name: type:fallback
+    count: 1
+    examples:
+      - circular-reasoning
+  - 
+    name: type:fine-tuning
+    count: 2
+    examples:
+      - instruction-tuning
+      - reinforcement-learning-from-human-feedback-rlhf
+  - 
+    name: type:foundation
+    count: 1
+    examples:
+      - socio-linguistics
+  - 
+    name: type:framework
+    count: 93
+    examples:
+      - prompt-architecture
+      - clear-path-forward-framework
+      - infinite-generation
+      - systems-thinking
+      - integrated-reasoning
+      - critical-systems-thinking-cst
+      - meta-reasoning
+      - cross-domain-reasoning
+      - complex-adaptive-systems-cas-thinking
+      - design-thinking
+  - 
+    name: type:governance
+    count: 2
+    examples:
+      - transparency-in-algorithm-design
+      - ethical-review-boards
+  - 
+    name: type:impact
+    count: 4
+    examples:
+      - human-replacement-and-job-displacement
+      - language-and-cultural-homogenization
+      - ai-and-global-economic-disparity
+      - dependence-and-dehumanization
+  - 
+    name: type:infrastructure
+    count: 1
+    examples:
+      - vector-store
+  - 
+    name: type:instruction
+    count: 1
+    examples:
+      - system-prompt
+  - 
+    name: type:integration
+    count: 1
+    examples:
+      - function-calling
+  - 
+    name: type:issue
+    count: 1
+    examples:
+      - prompt-brittleness
+  - 
+    name: type:label
+    count: 1
+    examples:
+      - sota-llms
+  - 
+    name: type:library
+    count: 1
+    examples:
+      - guidance-library
+  - 
+    name: type:math
+    count: 4
+    examples:
+      - probability-distribution
+      - function-ml
+      - gradient
+      - loss-function
+  - 
+    name: type:measure
+    count: 1
+    examples:
+      - emotional-aperture-measure
+  - 
+    name: type:mechanism
+    count: 1
+    examples:
+      - attention-mechanisms
+  - 
+    name: type:mental-model
+    count: 1
+    examples:
+      - method-actors
+  - 
+    name: type:metaphor
+    count: 3
+    examples:
+      - the-divergent-intern
+      - the-collaborative-partner
+      - the-10000-experts
+  - 
+    name: type:method
+    count: 41
+    examples:
+      - rubric-approach
+      - prompt-template-engineering
+      - manual-template-engineering
+      - automated-template-learning
+      - prompt-fine-tuning
+      - scaffolding
+      - fallback-pattern
+      - iterative-refinement
+      - sequential-linear-prompting
+      - conditional-prompting
+  - 
+    name: type:metric
+    count: 16
+    examples:
+      - bleu-scores
+      - extrinsic-evaluation
+      - intrinsic-evaluation
+      - difficulty-and-discrimination
+      - generality
+      - populational-vs-non-populational-metrics
+      - calibration
+      - performance-disparities
+      - comprehensiveness
+      - upstream-perplexity
+  - 
+    name: type:model
+    count: 24
+    examples:
+      - heuristic-systematic-model
+      - social-intuition-model
+      - empathic-accuracy-model
+      - quantum-cognitive-models
+      - hybrid-intuitive-logical-models
+      - symbiotic-reasoning-systems
+      - rhizomatic-thinking
+      - constructivist-thinking
+      - large-language-model-llm
+      - language-model
+  - 
+    name: type:obfuscation
+    count: 1
+    examples:
+      - ascii-art
+  - 
+    name: type:observation
+    count: 1
+    examples:
+      - model-scale-trends
+  - 
+    name: type:parameter
+    count: 3
+    examples:
+      - temperature-topk-sampling
+      - ability-irt
+      - structured-outputs-json-schema
+  - 
+    name: type:pattern
+    count: 33
+    examples:
+      - apple-picking-cherry-picking
+      - accordion-editing
+      - layering-editing
+      - goal-breakdown-decomposition
+      - goal-composition
+      - goal-prompting
+      - how-might-we-statements-hmw
+      - if-then-planning
+      - inclusive-design-framework
+      - keywords-why-tasks-vector
+  - 
+    name: type:persona
+    count: 8
+    examples:
+      - minimalist-prompter
+      - pragmatic-prompter
+      - detailed-prompter
+      - iterative-prompter
+      - explorative-prompter
+      - contextual-prompter
+      - enthusiast-prompter
+      - utility-driven-prompter
+  - 
+    name: type:platform
+    count: 4
+    examples:
+      - vltm-ehub
+      - openllm
+      - chatbot-arena
+      - dynabench
+  - 
+    name: type:policy
+    count: 2
+    examples:
+      - inclusive-language-guidelines
+      - ethical-guidelines-compliance
+  - 
+    name: type:practice
+    count: 7
+    examples:
+      - reflective-practice
+      - bias-reflection-prompts
+      - diverse-perspective-seeking
+      - transparent-sourcing
+      - historical-contextualization
+      - ethical-consumerism
+      - representation-in-ai-decision-making
+  - 
+    name: type:principle
+    count: 30
+    examples:
+      - clarity-and-precision
+      - contextual-information
+      - desired-format
+      - verbosity-control
+      - easy-for-you-easy-for-it
+      - put-smart-get-smart
+      - creativity
+      - intuition
+      - collaboration-and-interdisciplinary-knowledge
+      - technical-knowledge
+  - 
+    name: type:process
+    count: 20
+    examples:
+      - tokenization
+      - forward-pass
+      - token-sampling
+      - decoding
+      - de-tokenization
+      - output-generation
+      - fine-tune-model
+      - curated-data-training
+      - distilled-model
+      - optimization
+  - 
+    name: type:product
+    count: 4
+    examples:
+      - chatgpt
+      - bard
+      - ernie-bot
+      - bing-chat
+  - 
+    name: type:prompt
+    count: 6
+    examples:
+      - reductive-prompts
+      - transformative-prompts
+      - generative-prompts
+      - extractive-prompting
+      - evaluation-prompting
+      - expansion-prompting
+  - 
+    name: type:prompting
+    count: 2
+    examples:
+      - few-shot-examples
+      - facts-expertise-primer
+  - 
+    name: type:property
+    count: 4
+    examples:
+      - robustness
+      - fairness
+      - generalization
+      - steerability
+  - 
+    name: type:reasoning
+    count: 54
+    examples:
+      - analogical-reasoning
+      - counterfactual-reasoning
+      - narrative-reasoning
+      - holistic-reasoning
+      - intuitive-reasoning
+      - deductive-reasoning
+      - inductive-reasoning
+      - abductive-reasoning
+      - syllogistic-reasoning
+      - probabilistic-reasoning
+  - 
+    name: type:representation
+    count: 2
+    examples:
+      - embedding
+      - vector-space
+  - 
+    name: type:research
+    count: 3
+    examples:
+      - toolformer
+      - voyager-agent
+      - promptomatix
+  - 
+    name: type:resource
+    count: 1
+    examples:
+      - data-ml
+  - 
+    name: type:risk
+    count: 26
+    examples:
+      - linguistic-bias
+      - stereotypical-imprints
+      - generative-harms
+      - disinformation
+      - unsafe-behaviors
+      - misinformation-and-trustworthiness
+      - user-manipulation-and-persuasion
+      - environmental-impact-of-training
+      - model-misuse-and-dual-use
+      - continuous-learning-and-ethical-drift
+  - 
+    name: type:role
+    count: 1
+    examples:
+      - prompt-architect
+  - 
+    name: type:rubric
+    count: 6
+    examples:
+      - accuracy-eval
+      - relevance-eval
+      - fluency-eval
+      - transparency-eval
+      - safety-eval
+      - human-alignment
+  - 
+    name: type:service
+    count: 1
+    examples:
+      - promptperfect
+  - 
+    name: type:setting
+    count: 7
+    examples:
+      - zero-shot-learning
+      - few-shot-learning
+      - number-of-evaluators
+      - human-in-the-loop
+      - crowd-sourcing-testing
+      - black-box-access
+      - white-box-access
+  - 
+    name: type:signal
+    count: 2
+    examples:
+      - convergence
+      - convergence-eval
+  - 
+    name: type:software
+    count: 1
+    examples:
+      - chainforge
+  - 
+    name: type:stage
+    count: 3
+    examples:
+      - first-wave-system
+      - second-wave-system
+      - third-wave-system
+  - 
+    name: type:stance
+    count: 1
+    examples:
+      - anarchic-thinking
+  - 
+    name: type:strategy
+    count: 1
+    examples:
+      - mixture-of-agents-moa
+  - 
+    name: type:structure
+    count: 4
+    examples:
+      - graph-of-thought-got
+      - algorithm-of-thought-aot
+      - skeleton-of-thought-sot
+      - chain-of-natural-language-inference-nli
+  - 
+    name: type:systems
+    count: 1
+    examples:
+      - thread
+  - 
+    name: type:task
+    count: 6
+    examples:
+      - question-answering
+      - information-retrieval
+      - summarization
+      - sentiment-analysis
+      - text-classification
+      - natural-language-inference-nli
+  - 
+    name: type:technique
+    count: 61
+    examples:
+      - personalization-and-adaptation
+      - contextual-prompting
+      - constraint-prompting
+      - output-layering
+      - prompt-decomposition
+      - conversational-repair
+      - escalated-errors
+      - chain-of-thought-cot
+      - tree-of-thought-tot
+      - scratchpad-reasoning
+  - 
+    name: type:technology
+    count: 2
+    examples:
+      - subvocalization
+      - silent-speech
+  - 
+    name: type:template
+    count: 103
+    examples:
+      - clear-prompting-method
+      - clear-framework
+      - swot-analysis
+      - par-method
+      - aida-model
+      - star-technique
+      - peas-framework
+      - rtf-framework
+      - risen-framework
+      - ratio-framework
+  - 
+    name: type:testing
+    count: 1
+    examples:
+      - scenario-based-testing-bias
+  - 
+    name: type:theory
+    count: 2
+    examples:
+      - emotional-contagion-theory
+      - barrett-constructed-emotion
+  - 
+    name: type:tool
+    count: 3
+    examples:
+      - dict-judge
+      - llm-guardrails
+      - ai-text-detection
+  - 
+    name: type:tradeoff
+    count: 9
+    examples:
+      - privacy-vs-security
+      - cultural-relativism-vs-universal-morality
+      - environmental-ethics-vs-economic-development
+      - transparency-vs-proprietary-interests
+      - privacy-standards-discrepancy
+      - overcorrection-to-avoid-bias
+      - censorship-vs-sensitivity
+      - political-correctness-overreach
+      - authenticity-vs-sanitization
+  - 
+    name: type:training
+    count: 7
+    examples:
+      - cross-cultural-competency-training
+      - cultural-and-contextual-sensitivity-training
+      - bias-awareness-workshops
+      - stereotype-challenge-exercises
+      - continuous-education-and-training-bias
+      - constitutional-ai
+      - reinforcement-learning-from-ai-feedback-rlaif
+  - 
+    name: type:ui
+    count: 2
+    examples:
+      - conversational-ui
+      - voice-user-interface-vui
+  - 
+    name: type:validation
+    count: 1
+    examples:
+      - cross-cultural-validation
+  - 
+    name: type:visualization
+    count: 1
+    examples:
+      - accs-iccs
+  - 
+    name: type:workflow
+    count: 2
+    examples:
+      - parallel-prompting
+      - shotgun-generation
+  - 
+    name: use:ab-testing
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: use:accessibility
+    count: 1
+    examples:
+      - inclusivity-in-conversation-design
+  - 
+    name: use:accuracy
+    count: 1
+    examples:
+      - handling-specialized-domains
+  - 
+    name: use:act-as
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: use:ad-copy
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: use:adaptation
+    count: 1
+    examples:
+      - contextual-adjustment
+  - 
+    name: use:adhd
+    count: 2
+    examples:
+      - spoon-theory-energy-planner
+      - epic-quest-tasking
+  - 
+    name: use:advocacy
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: use:affordance
+    count: 1
+    examples:
+      - conversational-ui
+  - 
+    name: use:agent-spec
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: use:ai-governance
+    count: 1
+    examples:
+      - kaitiakitanga-guardianship
+  - 
+    name: use:algorithm-design
+    count: 1
+    examples:
+      - computational-thinking
+  - 
+    name: use:algorithmize
+    count: 1
+    examples:
+      - computational-reasoning
+  - 
+    name: use:alignment
+    count: 1
+    examples:
+      - prompt-augmentation
+  - 
+    name: use:ambiguity-management
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: use:analog-transfer
+    count: 1
+    examples:
+      - cross-domain-reasoning
+  - 
+    name: use:analysis
+    count: 3
+    examples:
+      - cognitive-debiasing
+      - reflect-bias-scaffold
+      - socratic-method
+  - 
+    name: use:analytics
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: use:anxiety-management
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: use:argument-critique
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: use:argument-structure
+    count: 1
+    examples:
+      - syllogistic-reasoning
+  - 
+    name: use:argumentation
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: use:audience-fit
+    count: 2
+    examples:
+      - personalization-and-adaptation
+      - socio-linguistics
+  - 
+    name: use:authoring
+    count: 1
+    examples:
+      - discrete-prompts
+  - 
+    name: use:auto-learned-tool-calls
+    count: 1
+    examples:
+      - toolformer
+  - 
+    name: use:auto-prompt-rewrite
+    count: 1
+    examples:
+      - promptperfect
+  - 
+    name: use:auto-prompt-search
+    count: 1
+    examples:
+      - promptomatix
+  - 
+    name: use:backlog-grooming
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: use:backlog-prioritization
+    count: 1
+    examples:
+      - rice-scoring
+  - 
+    name: use:backlog-refinement
+    count: 2
+    examples:
+      - kano-model
+      - moscow-prioritization
+  - 
+    name: use:balanced-approach
+    count: 1
+    examples:
+      - integrated-reasoning
+  - 
+    name: use:behavior-change
+    count: 1
+    examples:
+      - east-behavioral-nudge
+  - 
+    name: use:big-picture
+    count: 1
+    examples:
+      - holistic-reasoning
+  - 
+    name: use:boundary-critique
+    count: 1
+    examples:
+      - critical-systems-thinking-cst
+  - 
+    name: use:brainstorm
+    count: 9
+    examples:
+      - goal-prompting
+      - how-might-we-statements-hmw
+      - tree-of-thought-brainstorm
+      - freewriting-zero-draft
+      - random-association
+      - role-storming
+      - trigger-storming
+      - what-if-scenarios
+      - wishing-technique
+  - 
+    name: use:brainstorming
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: use:breakdown
+    count: 2
+    examples:
+      - goal-breakdown-decomposition
+      - task-recipe-cot
+  - 
+    name: use:briefs
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: use:case-based-reasoning
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: use:chaining
+    count: 1
+    examples:
+      - multi-shot-strategies
+  - 
+    name: use:change-management
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: use:change-over-time
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: use:character-development
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: use:choose-between-options
+    count: 1
+    examples:
+      - comparative-analysis
+  - 
+    name: use:chronic-illness
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: use:cited-web-answers
+    count: 1
+    examples:
+      - bing-chat
+  - 
+    name: use:clarification
+    count: 1
+    examples:
+      - rubber-duck-debugging
+  - 
+    name: use:closure
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: use:co-design
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: use:co-reasoning
+    count: 1
+    examples:
+      - transactive-reasoning
+  - 
+    name: use:code-friendly-open-model
+    count: 1
+    examples:
+      - falcon-llm
+  - 
+    name: use:collaboration
+    count: 1
+    examples:
+      - multi-step-interactions
+  - 
+    name: use:combine-methods
+    count: 1
+    examples:
+      - interdisciplinary-reasoning
+  - 
+    name: use:communication
+    count: 2
+    examples:
+      - buddhist-eightfold-path-adapted
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: use:communication-design
+    count: 1
+    examples:
+      - heuristic-systematic-model
+  - 
+    name: use:community
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: use:compare-alternatives
+    count: 1
+    examples:
+      - tree-of-thought-brainstorm
+  - 
+    name: use:compliance
+    count: 1
+    examples:
+      - constraint-prompting
+  - 
+    name: use:concurrent-explore
+    count: 1
+    examples:
+      - parallel-reasoning
+  - 
+    name: use:conflict-resolution
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: use:consistency
+    count: 1
+    examples:
+      - brand-persona
+  - 
+    name: use:content
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: use:context-packing
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: use:continuous-improvement
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: use:conversational-assistant
+    count: 1
+    examples:
+      - chatgpt
+  - 
+    name: use:cost-efficient-assistant
+    count: 1
+    examples:
+      - gpt-3-5-turbo
+  - 
+    name: use:countermeasures
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: use:course-development
+    count: 1
+    examples:
+      - addie-instructional-design
+  - 
+    name: use:creation
+    count: 1
+    examples:
+      - generative-prompts
+  - 
+    name: use:creative-block
+    count: 3
+    examples:
+      - morning-pages-journaling
+      - oblique-strategies-cards
+      - synesthetic-brainstorm
+  - 
+    name: use:creative-inspiration
+    count: 1
+    examples:
+      - tarot-spread-reflection
+  - 
+    name: use:daily-planning
+    count: 1
+    examples:
+      - spoon-theory-energy-planner
+  - 
+    name: use:data-capture
+    count: 1
+    examples:
+      - entity
+  - 
+    name: use:debiasing
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: use:decision
+    count: 2
+    examples:
+      - ooda-loop
+      - tree-of-thought-brainstorm
+  - 
+    name: use:decision-memo
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: use:decision-record
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: use:decision-support
+    count: 5
+    examples:
+      - clear-framework
+      - swot-analysis
+      - strategic-thinking
+      - head-heart-gut-decision
+      - imaginary-mentor-council
+  - 
+    name: use:decisions
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: use:delegation
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: use:deliberation
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: use:delimiters
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: use:design-research
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: use:develop-idea
+    count: 1
+    examples:
+      - disney-dreamer-realist-critic
+  - 
+    name: use:dialog-flow
+    count: 1
+    examples:
+      - conversational-design
+  - 
+    name: use:disambiguation
+    count: 1
+    examples:
+      - question-summarization
+  - 
+    name: use:divergence
+    count: 2
+    examples:
+      - parallel-prompting
+      - shotgun-generation
+  - 
+    name: use:divide-and-conquer
+    count: 1
+    examples:
+      - question-decomposition
+  - 
+    name: use:documentation
+    count: 1
+    examples:
+      - ai-human-technical-communication
+  - 
+    name: use:edge-cases
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: use:education
+    count: 6
+    examples:
+      - artificial-intelligence-ai
+      - artificial-general-intelligence-agi
+      - artificial-narrow-intelligence-ani
+      - artificial-superintelligence-asi
+      - generative-ai
+      - waves-of-ai-prompting-evolutions
+  - 
+    name: use:elaboration
+    count: 1
+    examples:
+      - expansion-prompting
+  - 
+    name: use:email-copy
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: use:emergence-analysis
+    count: 1
+    examples:
+      - complex-adaptive-systems-cas-thinking
+  - 
+    name: use:emotional-awareness
+    count: 1
+    examples:
+      - internal-weather-report
+  - 
+    name: use:emotional-healing
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: use:emotional-processing
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: use:empathy
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: use:epistemic-audit
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: use:error-recovery
+    count: 1
+    examples:
+      - conversational-repair
+  - 
+    name: use:ethical-tradeoffs
+    count: 1
+    examples:
+      - anekantavada-syadvada-jain
+  - 
+    name: use:ethics
+    count: 1
+    examples:
+      - sentipensar-thinking-feeling
+  - 
+    name: use:experience-goals
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: use:experiment-design
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: use:experiments
+    count: 1
+    examples:
+      - ice-scoring
+  - 
+    name: use:explain-adaptation
+    count: 1
+    examples:
+      - evolutionary-reasoning
+  - 
+    name: use:explain-like-i'm-5
+    count: 1
+    examples:
+      - nyaya-five-member-syllogism
+  - 
+    name: use:explain-observation
+    count: 1
+    examples:
+      - abductive-reasoning
+  - 
+    name: use:explain-predict
+    count: 1
+    examples:
+      - causal-reasoning
+  - 
+    name: use:explain-steps
+    count: 1
+    examples:
+      - chain-of-thought-cot
+  - 
+    name: use:explanation
+    count: 1
+    examples:
+      - narrative-reasoning
+  - 
+    name: use:extend-capabilities
+    count: 1
+    examples:
+      - tool-augmentation
+  - 
+    name: use:fairness
+    count: 2
+    examples:
+      - bias-mitigation
+      - linguistic-bias
+  - 
+    name: use:feature-mapping
+    count: 1
+    examples:
+      - kansei-engineering
+  - 
+    name: use:flow-optimization
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: use:focus
+    count: 2
+    examples:
+      - maxim-of-relevance
+      - pomodoro-scaffold
+  - 
+    name: use:forecasts
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: use:fuse-modalities
+    count: 1
+    examples:
+      - multimodal-reasoning
+  - 
+    name: use:general-reasoning
+    count: 1
+    examples:
+      - gpt-4
+  - 
+    name: use:generalize
+    count: 1
+    examples:
+      - inductive-reasoning
+  - 
+    name: use:glossary
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: use:governance
+    count: 4
+    examples:
+      - alignment
+      - addressing-biases-and-ethical-concerns
+      - daoist-wu-wei-strategy
+      - maslaha-public-interest-reasoning
+  - 
+    name: use:ground-truth
+    count: 1
+    examples:
+      - experiential-reasoning
+  - 
+    name: use:grounded-reasoning
+    count: 1
+    examples:
+      - rat-retrieval-augmented-thoughts
+  - 
+    name: use:grounding
+    count: 1
+    examples:
+      - contextual-prompting
+  - 
+    name: use:group-decisions
+    count: 1
+    examples:
+      - musyawarah-mufakat-indonesia
+  - 
+    name: use:habit
+    count: 1
+    examples:
+      - if-then-planning
+  - 
+    name: use:hands-free
+    count: 1
+    examples:
+      - voice-forward-device
+  - 
+    name: use:hiring-evaluation-promotion
+    count: 1
+    examples:
+      - bias-interrupters
+  - 
+    name: use:hypothesis-test
+    count: 1
+    examples:
+      - counterfactual-reasoning
+  - 
+    name: use:idea-generation
+    count: 2
+    examples:
+      - constraint-flip
+      - synesthetic-brainstorm
+  - 
+    name: use:ideas
+    count: 1
+    examples:
+      - scamper-framework
+  - 
+    name: use:ideation
+    count: 1
+    examples:
+      - imaginary-mentor-council
+  - 
+    name: use:impact-assessment
+    count: 2
+    examples:
+      - ecological-reasoning
+      - kaitiakitanga-guardianship
+  - 
+    name: use:information-extraction
+    count: 1
+    examples:
+      - extractive-prompting
+  - 
+    name: use:inner-demons
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: use:inner-wisdom
+    count: 1
+    examples:
+      - somatic-focusing-felt-sense
+  - 
+    name: use:innovate
+    count: 1
+    examples:
+      - synectics-analogies
+  - 
+    name: use:interdisciplinary-synthesis
+    count: 1
+    examples:
+      - ganma-knowledge-confluence
+  - 
+    name: use:internal-conflict
+    count: 2
+    examples:
+      - empty-chair-technique
+      - parts-work-dialogue
+  - 
+    name: use:interviews
+    count: 1
+    examples:
+      - reflect-bias-scaffold
+  - 
+    name: use:inventive-thinking
+    count: 1
+    examples:
+      - first-principles-analysis
+  - 
+    name: use:journal
+    count: 2
+    examples:
+      - internal-weather-report
+      - tarot-spread-reflection
+  - 
+    name: use:knowledge-check
+    count: 1
+    examples:
+      - feynman-technique
+  - 
+    name: use:landing-page
+    count: 1
+    examples:
+      - pas-copywriting
+  - 
+    name: use:layout
+    count: 1
+    examples:
+      - spatial-reasoning
+  - 
+    name: use:learning
+    count: 1
+    examples:
+      - rubber-duck-debugging
+  - 
+    name: use:learning-loop
+    count: 1
+    examples:
+      - reflective-practice
+  - 
+    name: use:lesson-planning
+    count: 1
+    examples:
+      - pdca-deming-cycle
+  - 
+    name: use:life-choices
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: use:lightweight-instruct-model
+    count: 1
+    examples:
+      - alpaca
+  - 
+    name: use:literature-replication
+    count: 1
+    examples:
+      - scientific-method
+  - 
+    name: use:localization
+    count: 1
+    examples:
+      - linguistic-diversity
+  - 
+    name: use:long-context-assistant
+    count: 1
+    examples:
+      - claude-2
+  - 
+    name: use:maintenance
+    count: 1
+    examples:
+      - adapting-to-evolving-ai-capabilities
+  - 
+    name: use:manage-uncertainty
+    count: 1
+    examples:
+      - probabilistic-reasoning
+  - 
+    name: use:map-system
+    count: 1
+    examples:
+      - systems-thinking
+  - 
+    name: use:mark-ai-generated-text
+    count: 1
+    examples:
+      - watermarking
+  - 
+    name: use:market-analysis
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: use:meeting-design
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: use:memos
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: use:mentoring
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: use:messaging
+    count: 4
+    examples:
+      - par-method
+      - aida-model
+      - star-technique
+      - golden-circle-framework
+  - 
+    name: use:micro-tasks
+    count: 1
+    examples:
+      - goal-breakdown-decomposition
+  - 
+    name: use:mixed-methods
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: use:model-uncertainty
+    count: 1
+    examples:
+      - quantum-reasoning
+  - 
+    name: use:modular-task-dialog
+    count: 1
+    examples:
+      - conversation-routines-cr
+  - 
+    name: use:modularity
+    count: 1
+    examples:
+      - decomposed-prompting
+  - 
+    name: use:monitor-process
+    count: 1
+    examples:
+      - meta-reasoning
+  - 
+    name: use:motivation
+    count: 2
+    examples:
+      - woop-wish-outcome-obstacle-plan
+      - epic-quest-tasking
+  - 
+    name: use:multi-step
+    count: 1
+    examples:
+      - sequential-linear-prompting
+  - 
+    name: use:mythic-narrative
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: use:negative-avoidance
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: use:normalization
+    count: 1
+    examples:
+      - prompt-modification
+  - 
+    name: use:on-prem-customization
+    count: 1
+    examples:
+      - llama-2
+  - 
+    name: use:one-page-brief
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: use:open-chat-model
+    count: 1
+    examples:
+      - vicuna
+  - 
+    name: use:open-ended-skill-learning
+    count: 1
+    examples:
+      - voyager-agent
+  - 
+    name: use:open-permissive-base
+    count: 1
+    examples:
+      - stablelm
+  - 
+    name: use:ops-simplification
+    count: 1
+    examples:
+      - daoist-wu-wei-strategy
+  - 
+    name: use:optimization
+    count: 1
+    examples:
+      - continuous-prompts
+  - 
+    name: use:option-selection
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: use:organize-cognition
+    count: 1
+    examples:
+      - reasoning-models-or-structures
+  - 
+    name: use:output-shaping
+    count: 1
+    examples:
+      - few-shot-examples
+  - 
+    name: use:pacing
+    count: 2
+    examples:
+      - turn-taking
+      - pauses
+  - 
+    name: use:paradox-framing
+    count: 1
+    examples:
+      - naive-dialecticism-east-asia
+  - 
+    name: use:performance-goals
+    count: 1
+    examples:
+      - smart-goals
+  - 
+    name: use:performance-management
+    count: 1
+    examples:
+      - okr-goal-setting
+  - 
+    name: use:personal-development
+    count: 1
+    examples:
+      - grow-coaching-model
+  - 
+    name: use:personal-goals
+    count: 1
+    examples:
+      - smart-goals
+  - 
+    name: use:personal-growth
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: use:personal-insight
+    count: 1
+    examples:
+      - tarot-spread-reflection
+  - 
+    name: use:perspective
+    count: 1
+    examples:
+      - time-machine-perspectives
+  - 
+    name: use:perspective-shift
+    count: 1
+    examples:
+      - synesthetic-brainstorm
+  - 
+    name: use:plan-long-term
+    count: 1
+    examples:
+      - strategic-reasoning
+  - 
+    name: use:planning
+    count: 2
+    examples:
+      - plan-and-solve-p-s
+      - pre-mortem-scaffold
+  - 
+    name: use:plot-outline
+    count: 1
+    examples:
+      - heros-journey-narrative
+  - 
+    name: use:policy
+    count: 5
+    examples:
+      - anekantavada-syadvada-jain
+      - east-behavioral-nudge
+      - ganma-knowledge-confluence
+      - maslaha-public-interest-reasoning
+      - musyawarah-mufakat-indonesia
+  - 
+    name: use:policy-analogy
+    count: 1
+    examples:
+      - qiyas-analogical-reasoning
+  - 
+    name: use:policy-analysis
+    count: 1
+    examples:
+      - paul-elder
+  - 
+    name: use:policy-dialogue
+    count: 1
+    examples:
+      - talanoa-dialogue
+  - 
+    name: use:policy-guardrails
+    count: 2
+    examples:
+      - buddhist-eightfold-path-adapted
+      - zhongyong-doctrine-of-the-mean
+  - 
+    name: use:policy-judgment
+    count: 1
+    examples:
+      - normative-reasoning
+  - 
+    name: use:portfolio-triage
+    count: 1
+    examples:
+      - value-effort-matrix
+  - 
+    name: use:pre-launch-review
+    count: 1
+    examples:
+      - bias-impact-assessment
+  - 
+    name: use:presentations
+    count: 1
+    examples:
+      - scqa-situation-complication-question-answer
+  - 
+    name: use:priming
+    count: 1
+    examples:
+      - few-shot-code-example-generation
+  - 
+    name: use:prioritization
+    count: 1
+    examples:
+      - goal-composition
+  - 
+    name: use:prioritize
+    count: 2
+    examples:
+      - goal-prompting
+      - weighted-mini-matrix
+  - 
+    name: use:privacy
+    count: 1
+    examples:
+      - silent-speech
+  - 
+    name: use:private-input
+    count: 1
+    examples:
+      - subvocalization
+  - 
+    name: use:probabilistic-authorship-signal
+    count: 1
+    examples:
+      - ai-text-detection
+  - 
+    name: use:problem-framing
+    count: 1
+    examples:
+      - design-thinking
+  - 
+    name: use:problem-solving
+    count: 3
+    examples:
+      - prompt-decomposition
+      - grow-coaching-model
+      - rubber-duck-debugging
+  - 
+    name: use:problem-statement
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: use:process-improvement
+    count: 1
+    examples:
+      - dmaic-six-sigma
+  - 
+    name: use:product
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: use:program-increment
+    count: 1
+    examples:
+      - wsjf-weighted-shortest-job-first
+  - 
+    name: use:progressive-difficulty
+    count: 1
+    examples:
+      - least-to-most-ltm
+  - 
+    name: use:project-planning
+    count: 2
+    examples:
+      - smart-goals
+      - moscow-prioritization
+  - 
+    name: use:project-steps
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: use:prompt-benchmarking
+    count: 1
+    examples:
+      - chainforge
+  - 
+    name: use:prompt-design
+    count: 27
+    examples:
+      - prompt-engineering-and-development
+      - clear-path-forward-framework
+      - clear-prompting-method
+      - rtf-framework
+      - risen-framework
+      - ratio-framework
+      - rodes-framework
+      - costar-framework
+      - prompt-template-engineering
+      - manual-template-engineering
+  - 
+    name: use:prompt-improvement
+    count: 1
+    examples:
+      - iterative-refinement
+  - 
+    name: use:prompt-reuse
+    count: 1
+    examples:
+      - experiential-knowledge
+  - 
+    name: use:prompt-scoping
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: use:prompt-selection
+    count: 1
+    examples:
+      - intuition
+  - 
+    name: use:prompt-tuning
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: use:prove
+    count: 1
+    examples:
+      - deductive-reasoning
+  - 
+    name: use:public-speaking
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: use:quantity-over-quality
+    count: 1
+    examples:
+      - rapid-ideation
+  - 
+    name: use:quick-win
+    count: 1
+    examples:
+      - two-minute-rule
+  - 
+    name: use:rapid-iteration
+    count: 1
+    examples:
+      - tote-test-operate-test-exit
+  - 
+    name: use:rapid-judgment
+    count: 1
+    examples:
+      - intuitive-reasoning
+  - 
+    name: use:reasoning
+    count: 2
+    examples:
+      - self-discover-framework
+      - meta-prompting
+  - 
+    name: use:reasoning-audit
+    count: 1
+    examples:
+      - facione-core-skills
+  - 
+    name: use:recipe
+    count: 1
+    examples:
+      - task-recipe-cot
+  - 
+    name: use:recovery
+    count: 1
+    examples:
+      - escalated-errors
+  - 
+    name: use:reduce-hallucination
+    count: 1
+    examples:
+      - facts-expertise-primer
+  - 
+    name: use:refinement
+    count: 1
+    examples:
+      - output-layering
+  - 
+    name: use:reliability
+    count: 2
+    examples:
+      - fallback-pattern
+      - technical-knowledge
+  - 
+    name: use:requirements
+    count: 1
+    examples:
+      - five-w-one-h-kipling
+  - 
+    name: use:research
+    count: 2
+    examples:
+      - ai-human-research-and-analysis
+      - first-principles-analysis
+  - 
+    name: use:research-questions
+    count: 1
+    examples:
+      - goal-breakdown-decomposition
+  - 
+    name: use:research-summaries
+    count: 1
+    examples:
+      - heuristics-biases
+  - 
+    name: use:research-synthesis
+    count: 2
+    examples:
+      - sentipensar-thinking-feeling
+      - kano-model
+  - 
+    name: use:resolve-conflict
+    count: 1
+    examples:
+      - dialectical-reasoning
+  - 
+    name: use:resolve-feelings
+    count: 1
+    examples:
+      - empty-chair-technique
+  - 
+    name: use:review
+    count: 3
+    examples:
+      - rubric-approach
+      - raccca-framework
+      - evaluation-prompting
+  - 
+    name: use:rewriting
+    count: 1
+    examples:
+      - transformative-prompts
+  - 
+    name: use:rich-feedback
+    count: 1
+    examples:
+      - multimodal-conversation-design
+  - 
+    name: use:risk-analysis
+    count: 1
+    examples:
+      - pestle-analysis
+  - 
+    name: use:risk-awareness
+    count: 1
+    examples:
+      - ambiguity-of-language
+  - 
+    name: use:risk-balancing
+    count: 1
+    examples:
+      - maslaha-public-interest-reasoning
+  - 
+    name: use:risk-management
+    count: 1
+    examples:
+      - kepner-tregoe-psdm
+  - 
+    name: use:risk-mitigation
+    count: 1
+    examples:
+      - conditional-prompting
+  - 
+    name: use:roadmap
+    count: 3
+    examples:
+      - goal-composition
+      - goal-prompting
+      - rice-scoring
+  - 
+    name: use:robustness
+    count: 1
+    examples:
+      - prompt-ensembling
+  - 
+    name: use:roleplay
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: use:roles-responsibility
+    count: 1
+    examples:
+      - rapid-decision-rights
+  - 
+    name: use:root-cause
+    count: 1
+    examples:
+      - a3-problem-solving-toyota
+  - 
+    name: use:routine
+    count: 1
+    examples:
+      - epic-quest-tasking
+  - 
+    name: use:routing
+    count: 1
+    examples:
+      - intent
+  - 
+    name: use:scaling
+    count: 1
+    examples:
+      - infinite-generation
+  - 
+    name: use:scenario
+    count: 1
+    examples:
+      - scenario-based-deliberative
+  - 
+    name: use:scheduling
+    count: 1
+    examples:
+      - temporal-reasoning
+  - 
+    name: use:scope-management
+    count: 1
+    examples:
+      - moscow-prioritization
+  - 
+    name: use:search-grounded-assistant
+    count: 1
+    examples:
+      - bard
+  - 
+    name: use:search-space
+    count: 1
+    examples:
+      - tree-of-thought-tot
+  - 
+    name: use:self-acceptance
+    count: 1
+    examples:
+      - shadow-work-dialogue
+  - 
+    name: use:self-critique
+    count: 1
+    examples:
+      - reflective-reasoning
+  - 
+    name: use:self-discovery
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: use:self-management
+    count: 1
+    examples:
+      - buddhist-eightfold-path-adapted
+  - 
+    name: use:service-design
+    count: 1
+    examples:
+      - inclusive-design-framework
+  - 
+    name: use:service-integration
+    count: 1
+    examples:
+      - conversational-actions
+  - 
+    name: use:simulation
+    count: 1
+    examples:
+      - persona-actas
+  - 
+    name: use:small-but-strong-base
+    count: 1
+    examples:
+      - mistral-7b
+  - 
+    name: use:source-triangulation
+    count: 1
+    examples:
+      - pramana-means-of-knowledge
+  - 
+    name: use:spec
+    count: 2
+    examples:
+      - sample-dialogue
+      - variables-and-delimiters
+  - 
+    name: use:speechwriting
+    count: 1
+    examples:
+      - monroes-motivated-sequence
+  - 
+    name: use:stakeholder-workshop
+    count: 1
+    examples:
+      - value-effort-matrix
+  - 
+    name: use:state-tracking
+    count: 1
+    examples:
+      - scratchpad-reasoning
+  - 
+    name: use:strategic-planning
+    count: 2
+    examples:
+      - okr-goal-setting
+      - pestle-analysis
+  - 
+    name: use:strategy
+    count: 1
+    examples:
+      - first-principles-analysis
+  - 
+    name: use:stress-relief
+    count: 1
+    examples:
+      - internal-weather-report
+  - 
+    name: use:strong-instruction-following
+    count: 1
+    examples:
+      - wizardlm
+  - 
+    name: use:structure
+    count: 1
+    examples:
+      - domain-specific-language-creation
+  - 
+    name: use:style-guidance
+    count: 1
+    examples:
+      - cooperative-principle
+  - 
+    name: use:summarization
+    count: 1
+    examples:
+      - reductive-prompts
+  - 
+    name: use:synthesis
+    count: 2
+    examples:
+      - goal-composition
+      - reflect-bias-scaffold
+  - 
+    name: use:system-design
+    count: 4
+    examples:
+      - architecture
+      - prompt-architect
+      - prompt-architecture
+      - peas-framework
+  - 
+    name: use:system-spec
+    count: 1
+    examples:
+      - interaction-model
+  - 
+    name: use:task-completion
+    count: 2
+    examples:
+      - interaction-flows
+      - action-driven-conversations
+  - 
+    name: use:task-prioritization
+    count: 1
+    examples:
+      - eisenhower-priority-matrix
+  - 
+    name: use:teaching
+    count: 1
+    examples:
+      - socratic-method
+  - 
+    name: use:team-goals
+    count: 1
+    examples:
+      - okr-goal-setting
+  - 
+    name: use:thought-challenge
+    count: 1
+    examples:
+      - abcde-cbt-framework
+  - 
+    name: use:time-critical-decisions
+    count: 1
+    examples:
+      - vroom-yetton-jago-decision
+  - 
+    name: use:tone
+    count: 1
+    examples:
+      - discourse-markers
+  - 
+    name: use:tool-use
+    count: 1
+    examples:
+      - program-generation
+  - 
+    name: use:training
+    count: 1
+    examples:
+      - utterance
+  - 
+    name: use:transfer-insight
+    count: 1
+    examples:
+      - analogical-reasoning
+  - 
+    name: use:trauma-processing
+    count: 1
+    examples:
+      - parts-work-dialogue
+  - 
+    name: use:ux
+    count: 4
+    examples:
+      - human-and-ai-behavior
+      - the-divergent-intern
+      - the-collaborative-partner
+      - east-behavioral-nudge
+  - 
+    name: use:ux-research
+    count: 1
+    examples:
+      - triangulation-methods
+  - 
+    name: use:value-messaging
+    count: 1
+    examples:
+      - feature-advantage-benefit
+  - 
+    name: use:value-proposition
+    count: 1
+    examples:
+      - before-after-bridge-formula
+  - 
+    name: use:variables
+    count: 1
+    examples:
+      - variables-and-delimiters
+  - 
+    name: use:variance-control
+    count: 1
+    examples:
+      - temperature-topk-sampling
+  - 
+    name: use:vector-priming
+    count: 1
+    examples:
+      - keywords-why-tasks-vector
+  - 
+    name: use:visual-support
+    count: 1
+    examples:
+      - smart-display
+  - 
+    name: use:voice-first
+    count: 1
+    examples:
+      - voice-user-interface-vui
+  - 
+    name: use:workshop
+    count: 1
+    examples:
+      - how-might-we-statements-hmw
+  - 
+    name: use:zh-focused-assistant
+    count: 1
+    examples:
+      - ernie-bot
