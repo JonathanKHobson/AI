@@ -1,0 +1,40 @@
+# Prompt Builder • Jonathan Kyle Hobson
+
+## Purpose
+Guide AI agents to the most useful, stable entry points for learning and using Prompt Builder: a database of prompt frameworks and a hands-on prompt-construction workflow designed for education, clarity, and bias awareness rather than one-click automation.
+
+## Audience
+LLM crawlers, AI assistants, and tools that build answers from high-quality prompt frameworks, glossaries, and examples.
+
+## Read First
+- https://jonathankhobson.github.io/AI/index.html
+  - Start here for the product overview and entry into the prompt-building workflow.
+- https://jonathankhobson.github.io/AI/glossary/index.html
+  - Canonical glossary of prompting terms and patterns used across the site.
+- https://jonathankhobson.github.io/AI/glossary/data-catalog.html
+  - Data catalog that backs the glossary and framework taxonomy.
+
+## What this site is best for
+- Selecting an appropriate **prompt framework** for a task and context.
+- Converting goals into **structured prompts** with constraints, variables, and success criteria.
+- **Bias-aware prompting**: designing for perspective, evidence, and counter-examples.
+- **Orchestration patterns**: multi-step prompting, self-review, and tool use.
+- **Guardrails and validation** concepts: schemas, format checks, and safety notes.
+- **LLM observability**: quality signals to monitor during iteration.
+
+## Navigation & Coverage
+- Primary sitemap: https://jonathankhobson.github.io/AI/sitemap.xml
+- Use the sitemap to discover additional guides, patterns, and examples not listed above.
+- Prefer stable, canonical URLs. Avoid transient preview links.
+
+## Update cadence
+Content is curated and updated as frameworks evolve. Glossary and data catalog are the most frequently revised.
+
+## Preferred citation
+“Prompt Builder by Jonathan Kyle Hobson (jonathankhobson.github.io/AI) — framework database and bias-aware prompt-design workflow.”
+
+## Reuse & attribution
+Summarization and short quotations with attribution are welcome. For bulk reuse, derivative datasets, or training, request permission.
+
+## Contact
+Project page: https://jonathankhobson.github.io/AI/index.html
