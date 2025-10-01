@@ -1,9 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prompt Template Builder (beta)</title>
+<title>Build clear, reusable prompts | Prompt Builder</title>
+<meta name="description" content="Choose a template, fill only what helps, and generate polished prompts with live preview, guided steps, and one-click copy to ChatGPT.">
+<link rel="canonical" href="https://jonathankhobson.github.io/AI/glossary/prompt-builder.html">
+
+<!-- Robots -->
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+<!-- UI integration -->
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Prompt Builder">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://jonathankhobson.github.io/AI/glossary/prompt-builder.html">
+<meta property="og:title" content="Build clear, reusable prompts">
+<meta property="og:description" content="Pick a template, follow guided steps, and preview your prompt before you copy.">
+<meta property="og:image" content="https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png">
+<meta property="og:image:alt" content="Prompt Builder interface with template picker, fields, and live preview">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build clear, reusable prompts">
+<meta name="twitter:description" content="Template → guided steps → clean preview → copy to ChatGPT.">
+<meta name="twitter:image" content="https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png">
+
+<!-- Icons (ok to leave as placeholders for now) -->
+<link rel="icon" href="https://jonathankhobson.github.io/AI/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jonathankhobson.github.io/AI/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://jonathankhobson.github.io/AI/icons/icon-192.png">
+<link rel="apple-touch-icon" href="https://jonathankhobson.github.io/AI/icons/apple-touch-icon.png">
+
+<!-- Font preload (safe even if file not uploaded yet) -->
+<link rel="preload" as="font" href="https://jonathankhobson.github.io/AI/assets/fonts/inter-var.woff2" type="font/woff2" crossorigin>
+
+<!-- (Optional) inline a11y helpers -->
+<style>
+  .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip-link:focus{position:static;width:auto;height:auto;padding:.5rem 1rem;background:#111;color:#fff;z-index:9999}
+  .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+</style>
+
+
   <style>
 :root{
   /* Neutrals */
@@ -1583,10 +1630,74 @@ input:focus, textarea:focus, select:focus,
         data-beta="pill"
         data-bmc="discrete"
         data-bmc-dismissible="true"></script>
+        
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://jonathankhobson.github.io/AI/#org",
+      "name": "Prompt Builder",
+      "url": "https://jonathankhobson.github.io/AI/index.html",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jonathankhobson.github.io/AI/assets/brand/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/jonathankylehobson/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jonathankhobson.github.io/AI/#website",
+      "url": "https://jonathankhobson.github.io/AI/index.html",
+      "name": "Prompt Builder",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://jonathankhobson.github.io/AI/#org" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jonathankhobson.github.io/AI/index.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jonathankhobson.github.io/AI/glossary/prompt-builder.html#webpage",
+      "url": "https://jonathankhobson.github.io/AI/glossary/prompt-builder.html",
+      "name": "Build clear, reusable prompts | Prompt Builder",
+      "isPartOf": { "@id": "https://jonathankhobson.github.io/AI/#website" },
+      "inLanguage": "en-US",
+      "description": "Choose a template, fill only what helps, and generate polished prompts with live preview, guided steps, and one-click copy to ChatGPT.",
+      "datePublished": "2025-09-30",
+      "dateModified": "2025-09-30",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png",
+        "width": 1200,
+        "height": 630
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jonathankhobson.github.io/AI/index.html" },
+          { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://jonathankhobson.github.io/AI/glossary/index.html" },
+          { "@type": "ListItem", "position": 3, "name": "Prompt Builder", "item": "https://jonathankhobson.github.io/AI/glossary/prompt-builder.html" }
+        ]
+      }
+    }
+  ]
+}
+</script>
   
   
 </head>
 <body data-beta="pill" data-bmc="discrete" data-bmc-dismissible="true">
+<a class="skip-link" href="#main">Skip to content</a>
+
+
   <header>
   <span class="ctaGroup">
     <a class="btn sm" href="../index.html" target="_blank" rel="noopener">← Back to Home</a>
@@ -1604,6 +1715,9 @@ input:focus, textarea:focus, select:focus,
 </span>
     <button id="theme" class="toggle" aria-pressed="false" title="Toggle theme"><span class="dot"></span><span>Light</span></button>
   </header>
+  
+  <main id="main">
+  <h1 class="visually-hidden">Prompt Builder</h1>
 
  <div class="wrap preview-hidden" data-start="preview-hidden">
   <div class="panel" id="configPanel">
@@ -1873,14 +1987,14 @@ input:focus, textarea:focus, select:focus,
 
 <div id="outDeck" class="out-deck" hidden></div>
 
-<!-- New: add-template button under the preview/deck -->
-
 
 
     </div>
 
     
   </div>
+  
+  </main>
 
   <dialog id="msg"><form method="dialog" style="margin:0">
     <section id="msgText" style="padding:16px">
@@ -1969,6 +2083,57 @@ input:focus, textarea:focus, select:focus,
    <script src="./js/aisettings.js" defer></script>
   <script src="./js/templates.data.js"></script>
   <script src="./js/glossary.data.js"></script>
+  
+  <script>
+/* === WYSIWYG getters for Copy/Open ======================================= */
+(function(){
+  function textOf(el){
+    return (el?.innerText ?? el?.textContent ?? '').trim();
+  }
+
+  // Current single-preview text (the one under "Preview • Active tab")
+  function getCurrentPreviewText(){
+    const out = document.getElementById('out');
+    return textOf(out);
+  }
+
+  // Deck text (if multiple prompts are shown under #outDeck)
+  function getDeckText(){
+    const deck = document.getElementById('outDeck');
+    if (!deck || deck.hidden) return '';
+    const parts = [...deck.querySelectorAll('.outCard .outBody, .outCard pre, .outCard [data-out]')]
+      .map(textOf)
+      .filter(Boolean);
+    return parts.join('\n\n---\n\n');
+  }
+
+  // Scope switcher used by the modal
+  function getActionText(scope){
+    if (scope === 'all'){
+      const d = getDeckText();
+      if (d) return d;        // Prefer deck when visible/populated
+      // fall back to the single preview
+    }
+    return getCurrentPreviewText();
+  }
+
+  // Fill the textarea preview inside the Copy modal
+  function populateActionPreview(scope){
+    const ta = document.getElementById('actionPreview');
+    if (!ta) return;
+    ta.value = getActionText(scope);
+    // Keep post-launch dialog text in sync (for “Open in ChatGPT” flows)
+    const post = document.getElementById('postLaunchText');
+    if (post) post.value = ta.value;
+  }
+
+  // expose for other blocks / devtools
+  window.getCurrentPreviewText = getCurrentPreviewText;
+  window.getDeckText           = getDeckText;
+  window.getActionText         = getActionText;
+  window.populateActionPreview = populateActionPreview;
+})();
+</script>
   
     <script>
   // Frameworks DB (window.FRAMEWORKS) — safe to load even if absent
@@ -2549,6 +2714,9 @@ function syncFrameworkPickerToActive(selectEl){
 }
 </script>
 
+
+
+
 <script>
 // === Slice 3: Resolver + apply-once guard ===================================
 function resolveTemplate(value){
@@ -2616,7 +2784,7 @@ function applyDeeplinkIfAny(){
       try { tab = window.state.tabs[window.state.active]; } catch(_) { tab = null; }
     } else if (window.state && Array.isArray(window.state.tabs)) {
       // Fallback safety: minimal tab object
-      window.state.tabs.push({ id:'', fields:{}, extra:'', common:{} });
+      window.state.tabs.push({ id:'', fields:{}, extra:'', common:{}, assistText:'' });
       window.state.active = window.state.tabs.length - 1;
       tab = window.state.tabs[window.state.active];
     }
@@ -2696,6 +2864,146 @@ whenDataReady(()=>{
     }
   } catch(_){}
 });
+</script>
+
+<script>
+/* === Copy Modal wiring — capture-phase override =========================== */
+(function(){
+  const byId = (id)=>document.getElementById(id);
+
+  const modal        = byId('actionModal');
+  const form         = byId('actionForm');
+  const ta           = byId('actionPreview');
+  const closeBtn     = byId('actionClose');
+  const cancelBtn    = byId('actionCancel');
+  const rPrompt      = byId('scopePrompt');
+  const rAll         = byId('scopeAll');
+
+  function openCopyModal(scope){
+    if (!modal) return;
+    // Set radio state first
+    if (rPrompt && rAll){
+      rPrompt.checked = (scope !== 'all');
+      rAll.checked    = (scope === 'all');
+    }
+    // Populate textarea from DOM
+    if (typeof populateActionPreview === 'function'){
+      populateActionPreview(scope === 'all' ? 'all' : 'prompt');
+    }
+    // Show modal
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    } else {
+      modal.setAttribute('open','');
+    }
+  }
+
+  function closeModal(){
+    if (!modal) return;
+    if (typeof modal.close === 'function') {
+      modal.close();
+    } else {
+      modal.removeAttribute('open');
+    }
+  }
+
+  // Radios switch textarea content live
+  if (rPrompt) rPrompt.addEventListener('change', ()=>{
+    populateActionPreview && populateActionPreview('prompt');
+  });
+  if (rAll) rAll.addEventListener('change', ()=>{
+    populateActionPreview && populateActionPreview('all');
+  });
+
+  // Intercept both Copy buttons BEFORE any legacy listeners
+  document.addEventListener('click', (e)=>{
+    const btnPrompt = e.target.closest('#copyBtn2');                 // main Copy Prompt
+    const btnAll    = e.target.closest('[data-action="copy-all"]');  // deck/footer Copy
+    if (!btnPrompt && !btnAll) return;
+
+    // We own this event to avoid drift with older code paths
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    openCopyModal(btnAll ? 'all' : 'prompt');
+  }, { capture:true });
+
+  // Confirm → copy from the textarea (what-you-see-is-what-you-get)
+  if (form){
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const txt = ta ? (ta.value || '') : '';
+      if (!txt){
+        try{ showToast && showToast('Nothing to copy — your prompt is empty.'); }catch(_){}
+        closeModal();
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(txt);
+        try{ showToast && showToast('Prompt copied to clipboard.'); }catch(_){}
+      }catch(_){
+        // Fallback: legacy execCommand for older browsers
+        try{
+          ta.focus(); ta.select();
+          document.execCommand && document.execCommand('copy');
+          try{ showToast && showToast('Prompt copied (fallback).'); }catch(_){}
+        }catch(__){
+          try{ showToast && showToast('Copy failed. You can select & copy manually.'); }catch(_){}
+        }
+      }
+      closeModal();
+    });
+  }
+
+  if (closeBtn)  closeBtn.addEventListener('click', closeModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+})();
+</script>
+
+<script>
+/* === Persist Assist on Apply ============================================== */
+(function(){
+  // Delegate clicks to capture any future Assist buttons
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.assistBtn.assistApply');
+    if (!btn) return;
+
+    // Try to read the Assist text that is shown in the UI (preview uses this)
+    let txt = '';
+    const fieldEl = btn.closest('.field');
+    const src = fieldEl ? fieldEl.querySelector('.assistText') : null;
+    if (src){
+      txt = (src.innerText ?? src.textContent ?? '').trim();
+    }
+
+    // Write into the active tab (defensive in case state is missing)
+    try{
+      const tabs = (window.state && Array.isArray(window.state.tabs)) ? window.state.tabs : null;
+      const idx  = (window.state && typeof window.state.active === 'number') ? window.state.active : 0;
+      if (tabs && tabs[idx]){
+        if (!('assistText' in tabs[idx])) tabs[idx].assistText = '';
+        tabs[idx].assistText = txt;
+        // Save (debounced) to localStorage so refresh can restore
+        if (typeof scheduleSave === 'function') scheduleSave();
+      }
+    }catch(_){}
+
+    // Optional: if you have a composer that reads state, refresh preview
+    try{
+      if (typeof recomposeActivePreview === 'function') recomposeActivePreview();
+      else if (typeof emit === 'function') emit();
+      else if (typeof emitAll === 'function') emitAll();
+    }catch(_){}
+  });
+
+  // Backfill schema on boot so older tabs get the new key
+  whenDataReady(()=>{
+    try{
+      const tabs = (window.state && Array.isArray(window.state.tabs)) ? window.state.tabs : [];
+      tabs.forEach(t => { if (t && !('assistText' in t)) t.assistText = ''; });
+    }catch(_){}
+  });
+})();
 </script>
 
 
