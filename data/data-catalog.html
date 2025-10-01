@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Data Catalog | Prompt Builder</title>
+  <meta name="description" content="Datasets that power Prompt Builder: templates, tasks, glossary terms, biases, and personas.">
+  <link rel="canonical" href="https://jonathankhobson.github.io/AI/data/data-catalog.html">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+  <!-- OG/X basics (optional image ok to leave as placeholder) -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Data Catalog">
+  <meta property="og:description" content="Datasets that power Prompt Builder.">
+  <meta property="og:url" content="https://jonathankhobson.github.io/AI/glossary/data-catalog.html">
+
+  <style>
+    body{font:16px/1.6 system-ui,sans-serif; margin:2rem; max-width:60rem}
+    code{background:#f6f8fa; padding:.1rem .3rem; border-radius:.25rem}
+    h1{margin-top:0}
+    dl{margin:0} dt{font-weight:700;margin-top:1rem} dd{margin:0 0 .5rem 0}
+  </style>
+
+  <!-- JSON-LD: DataCatalog + Datasets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "DataCatalog",
+        "@id": "https://jonathankhobson.github.io/AI/glossary/data-catalog.html#catalog",
+        "name": "Prompt Builder Data Catalog",
+        "url": "https://jonathankhobson.github.io/AI/glossary/data-catalog.html",
+        "description": "Datasets used by Prompt Builder and its glossary.",
+        "creator": { "@type": "Organization", "name": "Prompt Builder" },
+        "dataset": [
+          {
+            "@type": "Dataset",
+            "@id": "https://jonathankhobson.github.io/AI/glossary/js/templates.data.js#dataset",
+            "name": "Prompt Templates",
+            "description": "Structured prompt templates and frameworks.",
+            "url": "https://jonathankhobson.github.io/AI/glossary/js/templates.data.js",
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://jonathankhobson.github.io/AI/glossary/js/templates.data.js",
+              "encodingFormat": "application/javascript"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://jonathankhobson.github.io/AI/glossary/js/templates.tasks.data.js#dataset",
+            "name": "Template Tasks",
+            "description": "Task definitions that pair with templates.",
+            "url": "https://jonathankhobson.github.io/AI/glossary/js/templates.tasks.data.js",
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://jonathankhobson.github.io/AI/glossary/js/templates.tasks.data.js",
+              "encodingFormat": "application/javascript"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://jonathankhobson.github.io/AI/glossary/js/glossary.data.js#dataset",
+            "name": "Glossary Terms",
+            "description": "Definitions, tags, relationships for AI terms.",
+            "url": "https://jonathankhobson.github.io/AI/glossary/js/glossary.data.js",
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://jonathankhobson.github.io/AI/glossary/js/glossary.data.js",
+              "encodingFormat": "application/javascript"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://jonathankhobson.github.io/AI/glossary/js/biases.data.js#dataset",
+            "name": "Biases",
+            "description": "Reference list of cognitive biases used in prompts.",
+            "url": "https://jonathankhobson.github.io/AI/glossary/js/biases.data.js",
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://jonathankhobson.github.io/AI/glossary/js/biases.data.js",
+              "encodingFormat": "application/javascript"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://jonathankhobson.github.io/AI/glossary/js/persona.data.js#dataset",
+            "name": "Personas",
+            "description": "Reusable personas for prompt conditioning.",
+            "url": "https://jonathankhobson.github.io/AI/glossary/js/persona.data.js",
+            "distribution": {
+              "@type": "DataDownload",
+              "contentUrl": "https://jonathankhobson.github.io/AI/glossary/js/persona.data.js",
+              "encodingFormat": "application/javascript"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Data Catalog</h1>
+  <p>This page lists the datasets that power the Prompt Builder site. Files are served as JavaScript.</p>
+
+  <dl>
+    <dt>Prompt Templates</dt>
+    <dd><code>https://jonathankhobson.github.io/AI/glossary/js/templates.data.js</code></dd>
+
+    <dt>Template Tasks</dt>
+    <dd><code>https://jonathankhobson.github.io/AI/glossary/js/templates.tasks.data.js</code></dd>
+
+    <dt>Glossary Terms</dt>
+    <dd><code>https://jonathankhobson.github.io/AI/glossary/js/glossary.data.js</code></dd>
+
+    <dt>Biases</dt>
+    <dd><code>https://jonathankhobson.github.io/AI/glossary/js/biases.data.js</code></dd>
+
+    <dt>Personas</dt>
+    <dd><code>https://jonathankhobson.github.io/AI/glossary/js/persona.data.js</code></dd>
+  </dl>
+</body>
+</html>
