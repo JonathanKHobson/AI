@@ -8386,9 +8386,9 @@ use_cases: [
 },
 
 {
-  id: 'task_website_metadata_ai_seo_builder',
-  slug: 'website-metadata-ai-seo-builder',
-  label: 'website metadata & ai seo builder',
+  id: 'task_website_metadata_seo_builder',
+  slug: 'website-metadata-seo-builder',
+  label: 'Website Metadata & SEO Builder',
   kind: 'task',
   categories: ['seo','marketing','web','strategy','user experience','accessibility','performance'],
   tags: [
@@ -8883,18 +8883,6 @@ use_cases: [
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   ];
 
   // === Lightweight search hooks (optional, but makes search/snippets fast) ===
@@ -8920,3 +8908,7 @@ use_cases: [
   if (typeof module !== 'undefined') module.exports = TASK_TEMPLATES;
 })(typeof window !== 'undefined' ? window : globalThis);
 
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = typeof TASK_TEMPLATES !== 'undefined' ? TASK_TEMPLATES
+                  : (typeof window !== 'undefined' ? (window.TASK_TEMPLATES || window.TASKS || []) : []);
+}
