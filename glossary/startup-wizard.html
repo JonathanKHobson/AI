@@ -4218,29 +4218,50 @@ function openPostLaunchDlg(data){
   });
 
   // ---------- Schema normalizer (PromptBuilder-aligned rules) ----------
-  function normalize(schema){
-    const s = Object.assign({}, schema||{});
-    const label = String(s.label||s.key||'').trim();
-    const key   = String(s.key||s.name||'').trim() || slugify(label);
-    const isRepeater = (s.type==='repeater' && s.itemType==='typeahead');
-    const hasBiasTag = /bias/i.test(s.dataset||'') || /^bias->/i.test(s.autofill||'') || /bias/i.test(label);
-    const wantsBias  = hasBiasTag || /mitigation/i.test(label) || String(s.unit||'').toLowerCase()==='technique';
-    let dataset = s.dataset ? String(s.dataset).toLowerCase() : '';
-    if (dataset === 'bias') dataset = 'biases';
-    if (!dataset) dataset = wantsBias ? 'biases' : 'personas'; // Persona default
-    const allowDefault = dataset==='personas' ? true : false;
-    const allowFreeform = (typeof s.allowFreeform==='boolean') ? s.allowFreeform : allowDefault;
+function normalize(schema){
+  const s = Object.assign({}, schema||{});
+  const label = String(s.label||s.key||'').trim();
+  const key   = String(s.key||s.name||'').trim() || slugify(label);
+
+  // Only consider typeahead if schema EXPLICITLY marks it.
+  const isRepeaterTA = (s.type === 'repeater' && s.itemType === 'typeahead');
+  const isSingleTA   = (s.type === 'typeahead') || (!s.type && s.itemType === 'typeahead');
+
+  if (!isRepeaterTA && !isSingleTA){
+    // Everything else is NOT a typeahead. Do not upgrade.
     return {
-      label,
-      key,
+      label, key,
       persistKey: s.persistKey || ('ctx.'+key),
-      type: isRepeater ? 'repeater-typeahead' : 'typeahead',
-      dataset,
-      filterUnit: s.unit || s.itemLabel || null,
-      allowFreeform,
+      type: 'other',
+      dataset: null,
+      filterUnit: null,
+      allowFreeform: false,
       placeholder: s.ph || s.placeholder || ''
     };
   }
+
+  // Dataset inference ONLY for typeahead fields
+  const hasBiasTag = /bias/i.test(s.dataset||'') || /^bias->/i.test(s.autofill||'') || /bias/i.test(label);
+  const wantsBias  = hasBiasTag || /mitigation/i.test(label) || String(s.unit||'').toLowerCase()==='technique';
+
+  let dataset = s.dataset ? String(s.dataset).toLowerCase() : '';
+  if (dataset === 'bias') dataset = 'biases';
+  if (!dataset) dataset = wantsBias ? 'biases' : 'personas'; // persona fallback
+
+  const allowDefault  = (dataset === 'personas');
+  const allowFreeform = (typeof s.allowFreeform === 'boolean') ? s.allowFreeform : allowDefault;
+
+  return {
+    label,
+    key,
+    persistKey: s.persistKey || ('ctx.'+key),
+    type: isRepeaterTA ? 'repeater-typeahead' : 'typeahead',
+    dataset,
+    filterUnit: s.unit || s.itemLabel || null,
+    allowFreeform,
+    placeholder: s.ph || s.placeholder || ''
+  };
+}
   function slugify(s){
     return String(s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').replace(/-+/g,'-');
   }
@@ -4249,8 +4270,9 @@ function openPostLaunchDlg(data){
   }
 
   // ---------- Single type-ahead (Slice 1) ----------
-  function upgradeSingle(root, meta){
-    if (!root || !meta) return;
+ function upgradeSingle(root, meta){
+  if (!root || !meta) return;
+  if (meta.type !== 'typeahead') return; // hard guard: singles only
     const sel = `[name="${meta.key}"], [data-key="${meta.key}"]`;
     const input = root.querySelector(sel);
     if (!input) return;
@@ -4365,8 +4387,9 @@ function openPostLaunchDlg(data){
   }
 
   // ---------- Repeater type-ahead (Slice 2) ----------
-  function upgradeRepeater(root, meta){
-    if (!root || !meta) return;
+function upgradeRepeater(root, meta){
+  if (!root || !meta) return;
+  if (meta.type !== 'repeater-typeahead') return; // hard guard: repeaters only
     const sel = `[name="${meta.key}"], [data-key="${meta.key}"]`;
     const hidden = root.querySelector(sel); // textarea from renderer
     if (!hidden) return;
