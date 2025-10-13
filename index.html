@@ -1,6 +1,37 @@
 <!doctype html>
 <html lang="en-US">
 <head>
+
+<!-- SEO: tell crawlers the canonical location is the new page -->
+<link rel="canonical" href="clare.html">
+<meta name="robots" content="noindex, follow">
+
+<!-- Primary redirect for real users - history safe and same-origin only -->
+<script>
+(function () {
+  try {
+    // Avoid loops if someone lands on CLARE.html already
+    var here = location.pathname.replace(/\/+$/, "");
+    if (here.endsWith("/clare.html")) return;
+
+    // Build a safe same-origin URL for the new page
+    var target = new URL("clare.html", location.href);
+    if (target.origin !== location.origin) return; // security: never hop origins
+
+    // Use replace so Back does not bounce the user back to the old URL
+    location.replace(target.href);
+  } catch (err) {
+    // Fail silently - user stays on the old index.html
+  }
+})();
+</script>
+
+<!-- Fallback for no-JS environments and basic bots -->
+<noscript>
+  <meta http-equiv="refresh" content="0; url=clare.html">
+</noscript>
+
+
   <meta charset="utf-8" />
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
@@ -1836,6 +1867,13 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
 <body data-beta="bar" data-bmc="obvious">
 <a class="skip-link" href="#main">skip to content</a>
 
+<noscript>
+  <p style="padding:12px;border:1px solid #e3e9f2;border-radius:8px;background:#f9fafb;">
+    You are moving to our new home. If nothing happens, 
+    <a href="clare.html">click here to continue</a>.
+  </p>
+</noscript>
+
 
 <header>
 <header id="siteHeader" class="site-header" role="banner">
@@ -1886,7 +1924,7 @@ transition: background-color .15s ease, box-shadow .15s ease, transform .15s eas
       <div class="quickLinks">
   <!-- If your full glossary lives on a different page than this index,
        change the href below to that page. -->
-  <a class="tile" href="./glossary/index.html" aria-label="open full ai glossary">
+  <a class="tile" href="./glossary/ai-glossary.html" aria-label="open full ai glossary">
     <h4>full ai glossary</h4>
     <p>everyday definitions for ai and prompting — search clear, plain-language terms.</p>
     <br>
