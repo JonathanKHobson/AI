@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>CLARE Prompting — Guidance over guesswork</title>
+  <meta name="description" content="Turn fuzzy asks into clear, defensible AI briefs. Build prompts like a pro with guided fields, inclusive checks, and model-agnostic exports." />
+  <link rel="canonical" href="https://jonathankhobson.github.io/AI/index.html" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CLARE Prompting" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://jonathankhobson.github.io/AI/index.html" />
+  <meta property="og:title" content="Guidance, not guesswork" />
+  <meta property="og:description" content="Build prompts like a pro. Turn goals and constraints into a reusable brief you can run anywhere." />
+  <meta property="og:image" content="https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png" />
+  <meta property="og:image:alt" content="CLARE Prompting hero showing guided fields for a prompt brief" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- X (Twitter) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guidance, not guesswork" />
+  <meta name="twitter:description" content="Build prompts like a pro with inclusive checks and model-agnostic exports." />
+  <meta name="twitter:image" content="https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png" />
+
+  <!-- Icons (placeholder paths) -->
+  <link rel="icon" href="https://jonathankhobson.github.io/AI/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jonathankhobson.github.io/AI/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://jonathankhobson.github.io/AI/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="https://jonathankhobson.github.io/AI/icons/apple-touch-icon.png" />
+
+  <!-- JSON-LD base graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://jonathankhobson.github.io/AI/#org",
+        "name": "CLARE Prompting",
+        "url": "https://jonathankhobson.github.io/AI/index.html",
+        "logo": {"@type":"ImageObject","url":"https://jonathankhobson.github.io/AI/assets/brand/logo-512.png","width":512,"height":512},
+        "sameAs": ["https://www.linkedin.com/in/jonathankylehobson/"]
+      },
+      {
+        "@type":"WebSite",
+        "@id":"https://jonathankhobson.github.io/AI/#website",
+        "url":"https://jonathankhobson.github.io/AI/index.html",
+        "name":"CLARE Prompting",
+        "inLanguage":"en-US",
+        "publisher":{"@id":"https://jonathankhobson.github.io/AI/#org"}
+      },
+      {
+        "@type":"WebPage",
+        "@id":"https://jonathankhobson.github.io/AI/index.html#webpage",
+        "url":"https://jonathankhobson.github.io/AI/index.html",
+        "name":"CLARE Prompting — Guidance over guesswork",
+        "isPartOf":{"@id":"https://jonathankhobson.github.io/AI/#website"},
+        "inLanguage":"en-US",
+        "description":"Turn fuzzy asks into clear, defensible AI briefs. Build prompts like a pro with guided fields, inclusive checks, and model-agnostic exports.",
+        "primaryImageOfPage":{"@type":"ImageObject","url":"https://jonathankhobson.github.io/AI/assets/og/prompt-builder-og.png","width":1200,"height":630}
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* =========
+       TOKENS
+       ========= */
+    :root{
+      /* Neutrals */
+      --bg:#F6F7F9; --surface:#FFFFFF; --surface-2:#FAFBFD;
+      --text:#0F1720; --muted:#586575; --border:#E3E9F2;
+
+      /* Brand rainbow */
+      --r1:#FF007A; --r2:#FF8D00; --r3:#FFD600;
+      --r4:#00DC82; --r5:#00D2FF; --r6:#7850FF;
+
+      /* Sheen intensities */
+      --sheen-a: .14;           /* visible globally */
+      --sheen-a-hover: .22;     /* stronger on hover */
+      --sheen-a-hero: .18;      /* hero CTAs default */
+      --sheen-a-hero-hover: .28;/* hero CTAs hover */
+
+      /* Layout */
+      --maxw:1200px;
+      --s1:8px; --s2:12px; --s3:16px; --s4:24px; --s5:32px; --s6:48px; --s7:72px; --s8:96px;
+      --r1:10px; --r2:14px; --r3:16px; --r4:20px;
+
+      /* Motion + focus */
+      --ease: cubic-bezier(.22,.61,.36,1);
+      --fast:120ms; --med:200ms;
+      --focus:#0EA5E9;
+
+      /* Nav */
+      --nav-gap: 36px;          /* spacing between items */
+      --nav-sep-offset: 18px;   /* half-gap where the separator sits */
+      --nav-sep-opacity: .35;   /* subtle pipe divider */
+    }
+
+    /* =========
+       BASE
+       ========= */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+    img{max-width:100%; height:auto; display:block}
+    a{color:inherit; text-decoration:none}
+
+    .container{max-width:var(--maxw); margin-inline:auto; padding-inline:var(--s4)}
+    .stack-lg > * + *{margin-top:var(--s6)}
+    .stack-md > * + *{margin-top:var(--s4)}
+    .stack-sm > * + *{margin-top:var(--s3)}
+    .grid-3{display:grid; gap:var(--s4)}
+    @media (min-width: 900px){ .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--r3); padding:var(--s5)}
+
+    /* Headings */
+    h1,h2,h3,h4{margin:0 0 var(--s2) 0}
+    .h1{font-weight:800; font-size:clamp(30px,4vw,48px); letter-spacing:-.01em}
+    .h2{font-weight:750; font-size:clamp(20px,2.5vw,28px)}
+    .h3{font-weight:750; font-size:18px}
+    .eyebrow{font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+    /* Wordmark lockup + placeholder mark */
+    .brand{display:flex; align-items:center; gap:var(--s3)}
+    .brand-mark{width:64px; height:64px; flex:0 0 64px}
+    .brand-lockup{line-height:1}
+    .brand-clare{display:block; font-weight:900; font-size:24px; letter-spacing:.04em; text-transform:uppercase}
+    .brand-prompting{display:block; font-weight:900; font-size:16px; text-transform:lowercase}
+
+    /* Buttons */
+    .btn{display:inline-flex; align-items:center; justify-content:center; border-radius:var(--r2); padding:12px 16px; font-weight:800; font-size:16px; border:1px solid var(--border); transition:transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease)}
+
+    /* Small reusable badge for WIP links */
+    .soon-badge{display:inline-flex; align-items:center; gap:6px; margin-left:8px; font-weight:800; font-size:11px; line-height:1; padding:3px 6px; border-radius:999px; border:1px solid var(--border); background:var(--surface-2); color:var(--muted)}
+    .soon-dot{width:6px; height:6px; border-radius:50%; background:var(--r2)}
+    /* Disabled-like treatment for soon links */
+    .is-soon{opacity:.72; cursor:not-allowed}
+    .is-soon:hover::after{opacity:0} /* suppress rainbow underline on hover for nav */
+
+    .btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:#0B0B0C; color:#FFF; border-color:#0B0B0C; position:relative; overflow:hidden}
+    .btn-secondary{background:transparent; color:var(--text); position:relative; overflow:hidden}
+    /* Rainbow sheen utility */
+    .sheen::after{
+      content:""; position:absolute; inset:0; pointer-events:none; opacity:var(--sheen-a);
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.65) 0 36%, transparent 52%),
+        conic-gradient(from 210deg at 0% 0%, rgba(255,0,122,var(--sheen-a)), rgba(255,141,0,var(--sheen-a)), rgba(255,214,0,var(--sheen-a)), rgba(0,220,130,var(--sheen-a)), rgba(0,210,255,var(--sheen-a)), rgba(120,80,255,var(--sheen-a)), rgba(255,0,122,var(--sheen-a)));
+      transition:opacity var(--fast) var(--ease);
+    }
+    .sheen:hover::after{opacity:var(--sheen-a-hover)}
+    .sheen-hero::after{opacity:var(--sheen-a-hero)}
+    .sheen-hero:hover::after{opacity:var(--sheen-a-hero-hover)}
+
+    /* Header */
+    .site-header{position:sticky; top:0; z-index:1000}
+    /* Discreet status bar */
+    .status-bar{position:sticky; top:0; background:color-mix(in lab, var(--surface) 80%, transparent); backdrop-filter:saturate(110%) blur(6px); border-bottom:1px solid var(--border); transition:transform var(--med) var(--ease), opacity var(--med) var(--ease)}
+    .status-inner{display:flex; align-items:center; justify-content:space-between; gap:var(--s4); padding:6px 0; font-size:13px; color:var(--muted)}
+    .status-left{display:flex; align-items:center; gap:var(--s3)}
+    .status-right{display:flex; align-items:center; gap:var(--s3)}
+    .status-pill{border:1px solid var(--border); border-radius:999px; padding:3px 10px; background:var(--surface-2); color:var(--muted)}
+    .status-bar.is-hidden{transform:translateY(-100%); opacity:0}
+    @media (max-width: 780px){ .status-inner{font-size:12px} }
+
+    /* Main header */
+    .main-header{position:sticky; top:38px; background:color-mix(in lab, var(--surface) 92%, transparent); border-bottom:1px solid var(--border)}
+    .main-inner{display:flex; align-items:center; justify-content:space-between; padding-block:14px; position:relative}
+
+    /* Centered nav as text links with subtle pipe separators */
+    .nav-center{position:absolute; left:50%; transform:translateX(-50%);}
+    .primary-nav{display:flex; align-items:center}
+    .primary-nav > li{list-style:none; position:relative}
+    .primary-nav > li + li{margin-left:var(--nav-gap)}
+    .primary-nav > li + li::before{
+      content:"|"; position:absolute; left:calc(-1 * var(--nav-sep-offset)); top:50%; transform:translate(-50%,-50%);
+      color:var(--muted); opacity:var(--nav-sep-opacity); pointer-events:none;
+    }
+    .nav-text{display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:16px; padding:6px 2px; cursor:pointer; background:none; border:0; color:var(--text); position:relative}
+    .nav-text:focus-visible{outline:3px solid var(--focus); outline-offset:4px; border-radius:6px}
+    /* subtle rainbow underline on hover/focus */
+    .nav-text::after{
+      content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; border-radius:2px;
+      background:linear-gradient(90deg, var(--r1), var(--r2), var(--r3), var(--r4), var(--r5), var(--r6));
+      opacity:0; transition:opacity var(--fast) var(--ease);
+    }
+    .nav-text:hover::after, .nav-text:focus-visible::after{opacity:.35}
+    .caret{margin-left:8px; font-size:12px; opacity:.7}
+    
+    /* Open state uses flex so children stack in a column */
+.nav-group[aria-expanded="true"] .dropdown { display: flex; }
+
+    /* Header CTA (right) */
+    .header-cta{display:flex; align-items:center; gap:var(--s3)}
+    .burger{display:none}
+    @media (max-width: 900px){
+      .primary-nav{display:none}
+      .burger{display:inline-flex}
+      .nav-center{display:none}
+    }
+
+    /* Hero with smooth handoff */
+    .hero{position:relative; overflow:clip; background:var(--surface)}
+    .hero-gleam{position:absolute; inset:0; pointer-events:none; opacity:.24;
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.85) 0 36%, transparent 52%),
+        conic-gradient(from 210deg at 0% 0%, rgba(255,0,122,.18), rgba(255,141,0,.14), rgba(255,214,0,.14), rgba(0,220,130,.18), rgba(0,210,255,.14), rgba(120,80,255,.18), rgba(255,0,122,.18));
+    }
+    .hero-inner{padding-block:var(--s8)}
+    .lede{max-width:62ch; color:var(--muted)}
+    .hero::after{
+      content:""; position:absolute; left:0; right:0; bottom:-1px; height:84px; pointer-events:none;
+      background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--bg) 85%);
+    }
+
+    /* Sections */
+    .section{padding-block:var(--s7)}
+    .kicker{color:var(--muted); margin-top:var(--s2)}
+
+    /* How it works */
+    .how-steps{display:grid; gap:var(--s4)}
+    @media (min-width: 900px){ .how-steps{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+    /* Footer */
+    footer{padding-block:var(--s7)}
+    .footer-nav{display:flex; gap:var(--s5); flex-wrap:wrap; font-weight:700}
+
+    /* Mobile drawer */
+    .drawer{position:fixed; inset:0; display:none}
+    .drawer[aria-hidden="false"]{display:block}
+    .drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.28)}
+    .drawer-panel{position:absolute; right:0; top:0; height:100%; width:min(88vw, 360px); background:var(--surface); border-left:1px solid var(--border); padding:var(--s4); display:flex; flex-direction:column; gap:var(--s3)}
+    .drawer a, .drawer button{padding:12px 10px; border:1px solid var(--border); border-radius:var(--r2); background:var(--surface-2); font-weight:800}
+    .drawer .btn-primary{border-color:#0B0B0C}
+    
+    
+    /* Dropdown: overlay + vertical stack */
+.dropdown{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100% + 10px);
+  display: none;              /* hidden by default */
+  flex-direction: column;     /* vertical items */
+  z-index: 1100;              /* above header */
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  box-shadow: 0 10px 28px rgba(0,0,0,.06);
+  padding: 6px;
+}
+    /* Make each item a full-width row, no wrapping weirdness */
+.dropdown a{
+  display: block;
+  white-space: nowrap;
+  padding: 10px 12px;
+  border-radius: var(--r1);
+}
+.dropdown a:hover{ background: var(--surface-2); }
+
+    /* Accessibility helpers */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:fixed; left:var(--s4); top:var(--s4); width:auto;height:auto;padding:10px 12px;background:#111;color:#fff;z-index:9999; border-radius:8px}
+    .visually-hidden{position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <!-- Discreet Status Bar -->
+    <section id="statusBar" class="status-bar" aria-label="site updates">
+      <div class="container status-inner">
+        <div class="status-left">
+          <span aria-label="prototype state" class="status-pill">prototype beta</span>
+        </div>
+        <div class="status-right">
+          <a href="/AI/updates/">what’s new</a>
+          <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener">donate</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Header -->
+    <div class="main-header" aria-label="main header">
+      <div class="container main-inner">
+        <!-- Brand lockup (left) -->
+        <a href="/AI/" class="brand" aria-label="home">
+          <!-- Replaceable SVG brand mark (placeholder) -->
+          <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="brand mark placeholder">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FF007A" stop-opacity=".70"/>
+                <stop offset="50%" stop-color="#00D2FF" stop-opacity=".58"/>
+                <stop offset="100%" stop-color="#7850FF" stop-opacity=".70"/>
+              </linearGradient>
+              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.6"/>
+              </filter>
+            </defs>
+            <path d="M48 24c0 12-8 24-16 24S16 36 16 24 24 8 32 8s16 4 16 16Z" fill="url(#g1)" filter="url(#blur)"/>
+          </svg>
+          <span class="brand-lockup" aria-label="CLARE prompting wordmark">
+            <strong class="brand-clare">CLARE</strong>
+            <strong class="brand-prompting">prompting</strong>
+          </span>
+        </a>
+
+        <!-- Centered Primary Navigation: Explore | Learn | Build -->
+        <nav class="nav-center" aria-label="primary">
+          <ul class="primary-nav" role="menubar" aria-label="Explore Learn Build">
+            <li class="nav-group" role="none" aria-expanded="false">
+              <button id="exploreBtn" class="nav-text" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                Explore <span class="caret">▾</span>
+              </button>
+              <div class="dropdown" role="menu" aria-labelledby="exploreBtn">
+                <a role="menuitem" href="./glossary/ai-glossary.html">AI glossary</a>
+                <a role="menuitem" href="./glossary/templates-glossary.html">Template library</a>
+              </div>
+            </li>
+            <li role="none">
+              <a class="nav-text is-soon" role="menuitem" href="#" data-soon="true" aria-disabled="true" rel="nofollow" title="Coming soon">
+                Learn
+                <span class="soon-badge" aria-hidden="true"><span class="soon-dot"></span>soon</span>
+                <span class="visually-hidden">(coming soon)</span>
+              </a>
+            </li>
+            <li role="none"><a class="nav-text" role="menuitem" href="search.html">Build</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right-side header CTA + burger -->
+        <div class="header-cta">
+          <a href="#how-heading" class="btn btn-secondary sheen" data-analytics="header_learn_more">Learn more</a>
+          <button id="burger" class="burger btn btn-secondary sheen" aria-label="open menu">☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero" aria-label="intro">
+      <div class="hero-gleam" aria-hidden="true"></div>
+      <div class="container hero-inner stack-md">
+        <h1 class="h1">build prompts like a pro.</h1>
+        <p class="lede">turn your goal into a <strong>clear ask</strong> the model can follow — reusable, transparent, and model-agnostic.</p>
+        <div style="display:flex; gap:var(--s3); flex-wrap:wrap">
+          <a href="search.html" class="btn btn-primary sheen sheen-hero" data-analytics="start">Start building</a>
+          <a href="./glossary/templates-glossary.html" class="btn btn-secondary sheen">Browse the library</a>
+        </div>
+        <p class="kicker">no ai experience required. we guide you step by step.</p>
+      </div>
+    </section>
+
+    <!-- VALUE PROPS -->
+    <section class="section" aria-labelledby="value-heading">
+      <div class="container stack-md">
+        <h2 id="value-heading" class="h2">Why CLARE</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3 class="h3">Simple</h3>
+            <p style="color:var(--muted)">answer clear questions. the tool turns it into a prompt plan.</p>
+          </article>
+          <article class="card">
+            <h3 class="h3">Trustworthy</h3>
+            <p style="color:var(--muted)">bias, accessibility, and localization checks are built into the steps.</p>
+          </article>
+          <article class="card">
+            <h3 class="h3">Portable</h3>
+            <p style="color:var(--muted)">use your clear ask with any model or tool. no lock-in.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" aria-labelledby="how-heading">
+      <div class="container stack-md">
+        <h2 id="how-heading" class="h2">How it works</h2>
+        <div class="how-steps">
+          <div class="card">
+            <span class="eyebrow">Step 1</span>
+            <h3 class="h3">Pick a path</h3>
+            <p>choose from the library or let ai assist suggest a starting point.</p>
+          </div>
+          <div class="card">
+            <span class="eyebrow">Step 2</span>
+            <h3 class="h3">Fill what matters</h3>
+            <p>goals, audience, constraints, examples. skip anything you don't need.</p>
+          </div>
+          <div class="card">
+            <span class="eyebrow">Step 3</span>
+            <h3 class="h3">Get your clear ask</h3>
+            <p>copy, reuse, and share. show your reasoning when you need to.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="section" aria-labelledby="proof-heading">
+      <div class="container">
+        <div class="card">
+          <h2 id="proof-heading" class="h2">Structure over superstition</h2>
+          <p class="kicker">templates encode research and engineering patterns (bdd, star, bias audits). outputs are reproducible.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOBILE DRAWER -->
+  <aside id="mobileDrawer" class="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="menu">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel" id="drawerPanel">
+      <a href="search.html" class="btn btn-primary sheen sheen-hero" data-analytics="start">Start building</a>
+      <a href="./glossary/ai-glossary.html" class="sheen">Explore — AI glossary</a>
+      <a href="/glossary/templates-glossary.html" class="sheen">Explore — Template library</a>
+      <a href="#" class="sheen is-soon" data-soon="true" aria-disabled="true" rel="nofollow" title="Coming soon">
+        Learn
+        <span class="soon-badge" aria-hidden="true"><span class="soon-dot"></span>soon</span>
+        <span class="visually-hidden">(coming soon)</span>
+      </a>
+      <a href="/updates/" class="sheen">What’s new</a>
+      <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener" class="sheen">Donate</a>
+      <button id="drawerClose" class="btn btn-secondary sheen" style="margin-top:auto">Close</button>
+    </div>
+  </aside>
+
+  <footer>
+    <div class="container stack-sm">
+      <nav class="footer-nav" aria-label="footer">
+        <a href="updates/">what’s new</a>
+        <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener">donate</a>
+        <a href="terms/">terms</a>
+        <a href="privacy/">privacy</a>
+      </nav>
+      <div style="color:var(--muted); font-size:12px;">© <span id="year"></span> CLARE Prompting · prototype beta</div>
+    </div>
+  </footer>
+
+  <script>
+    // Helpers
+    const $ = (s, root=document) => root.querySelector(s);
+    const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Status bar auto-hide on scroll
+    (function(){
+      const bar = $('#statusBar');
+      let lastY = window.scrollY, hidden = false;
+      function onScroll(){
+        const y = window.scrollY;
+        if (y > lastY + 8 && !hidden && y > 64){ bar.classList.add('is-hidden'); hidden = true; }
+        else if (y < lastY - 8 && hidden){ bar.classList.remove('is-hidden'); hidden = false; }
+        lastY = y;
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
+
+    // Explore dropdown (click / Escape / outside close)
+    (function(){
+      const btn = $('#exploreBtn');
+      if(!btn) return;
+      const li = btn.closest('.nav-group');
+      const dropdown = li.querySelector('.dropdown');
+      function setOpen(open){
+        li.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-expanded', String(open));
+        dropdown.style.display = open ? 'block' : 'none';
+      }
+      btn.addEventListener('click', ()=> setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setOpen(false); });
+      document.addEventListener('click', (e)=>{ if(!li.contains(e.target)) setOpen(false); });
+    })();
+
+    // Mobile drawer with focus management
+    (function(){
+      const drawer = $('#mobileDrawer');
+      const panel = $('#drawerPanel');
+      const backdrop = $('#drawerBackdrop');
+      const burger = $('#burger');
+      const closeBtn = $('#drawerClose');
+      if(!burger) return;
+
+      let lastFocus = null;
+      function firstFocusable(root){
+        return root.querySelector('a,button,[tabindex]:not([tabindex="-1"])');
+      }
+      function open(){
+        lastFocus = document.activeElement;
+        drawer.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        const ff = firstFocusable(panel);
+        if(ff) ff.focus();
+      }
+      function close(){
+        drawer.setAttribute('aria-hidden','true');
+        document.body.style.overflow='';
+        if(lastFocus) lastFocus.focus();
+      }
+      burger.addEventListener('click', open);
+      backdrop.addEventListener('click', close);
+      closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && drawer.getAttribute('aria-hidden')==='false') close(); });
+    })();
+
+    // Mark and trap clicks for Coming Soon links
+    (function(){
+      const soonEls = $$('[data-soon]');
+      if(!soonEls.length) return;
+      soonEls.forEach(el=>{
+        el.addEventListener('click', (e)=>{
+          e.preventDefault();
+          // polite announcement for screen readers
+          const msg = 'This area is coming soon.';
+          const live = document.createElement('div');
+          live.setAttribute('role','status');
+          live.setAttribute('aria-live','polite');
+          live.className = 'visually-hidden';
+          live.textContent = msg;
+          document.body.appendChild(live);
+          setTimeout(()=> live.remove(), 700);
+        });
+      });
+    })();
+
+    // Simple analytics hooks
+    $$('[data-analytics]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const item = el.getAttribute('data-analytics');
+        window.dispatchEvent(new CustomEvent('nav_click', {detail:{item}}));
+      });
+    });
+  </script>
+</body>
+</html>
