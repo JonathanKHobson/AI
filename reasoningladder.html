@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Reasoning Ladder — OpenAI or Gemini</title>
+<style>
+  :root{--bg:#f6f7fb;--paper:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--primary:#4f46e5;--primary-ink:#fff;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.06)}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;color:var(--ink);background:var(--bg)}
+  header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+  .topbar{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 20px}
+  .brand{font-weight:700;display:flex;align-items:center;gap:10px}
+  .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 0deg,#6366f1,#22c55e,#06b6d4,#f59e0b,#ec4899,#6366f1)}
+  .grow{flex:1}
+  .btn{appearance:none;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer;background:#eef2ff;color:#3730a3}
+  .btn.primary{background:var(--primary);color:var(--primary-ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.muted{background:#f3f4f6;color:#111827}
+  .btn.danger{background:#fee2e2;color:#991b1b}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
+  main{max-width:1100px;margin:24px auto;padding:0 20px}
+  .view{display:none}.view.active{display:block}
+
+  .hero{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;text-align:center}
+  .hero h1{margin:6px 0 6px;font-size:32px}.hero p{margin:0 0 22px;color:var(--muted)}
+  .field{display:grid;gap:10px;margin:0 auto 16px;max-width:720px;text-align:left}
+  textarea,input[type="text"],input[type="password"],select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit}
+  textarea{min-height:110px;resize:vertical}
+
+  .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+  .feature{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+  .badge{display:inline-block;min-width:28px;height:28px;padding:0 8px;border-radius:999px;line-height:28px;font-weight:700;background:#eef2ff;color:#3730a3}
+
+  .step-layout{display:grid;grid-template-columns:260px 1fr;gap:16px}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .sidebar{padding:12px;position:sticky;top:74px;align-self:start}
+  .step-list{list-style:none;margin:0;padding:0}
+  .step-list li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer}
+  .step-list li.active{background:#eef2ff}.step-list .num{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:#e5e7eb;font-weight:700}
+  .step-list li.done .num{background:#d1fae5}
+
+  .step-card{padding:18px}
+  .step-card h2{margin:4px 0 8px}.prompt{color:var(--muted)}
+  .example{font-size:13px;color:#374151;background:#f9fafb;border:1px dashed #e5e7eb;padding:10px;border-radius:12px;margin:10px 0 14px}
+  .biginput{min-height:170px}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.spacer{flex:1}
+  .progress{margin-top:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  .bar{flex:1;height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#6366f1)}
+  .tiny{font-size:12px;color:var(--muted)}
+
+  .aiBox{margin-top:12px;border:1px dashed #d1d5db;background:#fafafa;border-radius:12px;padding:12px}
+  .aiHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .aiOut{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px;max-height:260px;overflow:auto;white-space:pre-wrap}
+  .spin{width:16px;height:16px;border-radius:50%;border:2px solid #c7d2fe;border-top-color:#3730a3;animation:s .9s linear infinite}@keyframes s{to{transform:rotate(1turn)}}
+
+  .summary{display:grid;gap:14px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .confidence{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-weight:700;background:#eef2ff;color:#3730a3}
+  .muted{color:var(--muted)}
+
+  .list{display:grid;gap:10px}
+  .item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px}
+  .item h4{margin:0}.item .meta{font-size:13px;color:var(--muted)}
+
+  @media (max-width:880px){.features{grid-template-columns:1fr}.step-layout{grid-template-columns:1fr}.sidebar{position:relative;top:0}.grid2{grid-template-columns:1fr}}
+  @media print{header,.view:not(#summaryView),.no-print{display:none!important}#summaryView{display:block}.card{box-shadow:none;border:0;padding:0}.summary .card{page-break-inside:avoid}}
+  
+  /* === FIX: AI Settings modal === */
+body.modal-open { overflow: hidden; }
+
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;            /* hidden by default */
+  place-items: center;      /* centers the sheet */
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+.modal.show{ display: grid; }
+
+.sheet{
+  width: min(720px, 92vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  padding: 18px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand"><span class="logo"></span> Reasoning Ladder</div>
+    <div class="grow"></div>
+    <button class="btn ghost no-print" id="navHome">Home</button>
+    <button class="btn muted no-print" id="navLibrary">Saved Analyses</button>
+    <button class="btn primary no-print" id="aiSettingsBtn">AI Settings</button>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="homeView" class="view active">
+    <div class="hero">
+      <h1>Think Through Decisions Systematically</h1>
+      <p>Guide yourself through critical thinking steps to make reasoned decisions with clear confidence levels.</p>
+      <div class="field">
+        <label for="homeClaim">What decision or claim are you analyzing?</label>
+        <textarea id="homeClaim" placeholder="Example: 'We should launch Feature X in Q4' or 'I should change careers to data science'"></textarea>
+      </div>
+      <button class="btn primary" id="startBtn" disabled>Start Reasoning</button>
+      <button class="btn" id="starterBtn" onclick="window.openStarterModal()">Need ideas?</button>
+      <div class="features">
+        <div class="feature"><div class="badge">8</div><h3>8-Step Process</h3><div class="muted">Structured thinking from claim to decision.</div></div>
+        <div class="feature"><div class="badge">🧾</div><h3>Clean Summary</h3><div class="muted">Export a one-page reasoned brief.</div></div>
+        <div class="feature"><div class="badge">🤖</div><h3>Optional AI Assist</h3><div class="muted">OpenAI or Gemini suggestions per step.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPPER -->
+  <section id="stepView" class="view">
+    <div class="step-layout">
+      <aside class="panel sidebar">
+        <ul id="stepList" class="step-list"></ul>
+      </aside>
+
+      <section class="panel step-card">
+        <h2 id="stepTitle">Step</h2>
+        <p class="prompt" id="stepPrompt"></p>
+        <div class="example" id="stepExample"></div>
+
+        <div id="decisionWrap" style="display:none">
+          <label><strong>Your decision</strong></label>
+          <textarea class="biginput" id="decisionInput" placeholder="Write the decision you'll take and why..."></textarea>
+          <div class="row" style="margin-top:8px">
+            <label for="confRange"><strong>Confidence</strong> <span id="confVal" class="muted">(50%)</span></label>
+            <input id="confRange" type="range" min="0" max="100" step="1" value="50" style="width:260px">
+          </div>
+        </div>
+
+        <textarea class="biginput" id="stepInput"></textarea>
+
+        <!-- AI Assist -->
+        <div class="aiBox">
+          <div class="aiHead">
+            <label><input type="checkbox" id="aiStepToggle"> Ask AI for suggestions for this step</label>
+            <div class="spacer"></div>
+            <!-- Now only manual: clicking Generate triggers, checkbox just arms it -->
+            <button class="btn" id="aiGenBtn" disabled>Generate</button>
+            <div id="aiSpin" class="spin" style="display:none"></div>
+          </div>
+          <div id="aiNote" class="tiny"></div>
+          <div id="aiOutput" class="aiOut"></div>
+        </div>
+
+        <div class="row" style="margin-top:14px">
+          <button class="btn" id="prevBtn">Back</button>
+          <button class="btn primary" id="nextBtn">Next</button>
+          <div class="spacer"></div>
+          <button class="btn muted" id="saveDraftBtn">Save Draft</button>
+          <button class="btn" id="skipBtn">Skip</button>
+          <!-- Hidden until step 8 -->
+          <button class="btn primary" id="summaryBtn" style="display:none">Generate Summary</button>
+        </div>
+
+        <div class="progress">
+          <div class="bar"><span id="progressFill" style="width:0%"></span></div>
+          <div id="progressText" class="tiny">0 / 8 complete</div>
+          <div id="autosaveText" class="tiny"></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summaryView" class="view">
+    <div class="row no-print" style="margin-bottom:10px">
+      <button class="btn" id="editBtn">Edit</button><div class="spacer"></div>
+      <button class="btn muted" id="saveFinalBtn">Save</button>
+      <button class="btn" id="copyBtn">Copy</button>
+      <button class="btn primary" id="printBtn">Export PDF</button>
+    </div>
+    <div class="summary">
+      <div class="card"><h2 id="sumClaim">Claim</h2><div class="muted" id="sumGoal"></div></div>
+      <div class="grid2">
+        <div class="card"><h3>Evidence</h3><div id="sumEvidence" class="muted"></div></div>
+        <div class="card"><h3>Alternatives</h3><div id="sumAlternatives" class="muted"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><h3>Assumptions</h3><div id="sumAssumptions" class="muted"></div></div>
+        <div class="card"><h3>Risks &amp; Costs</h3><div id="sumRisks" class="muted"></div></div>
+      </div>
+      <div class="card"><h3>Counterpoints (Steelman)</h3><div id="sumCounter" class="muted"></div></div>
+      <div class="card"><h3>Decision</h3><div id="sumDecision"></div><div style="margin-top:10px"><span class="confidence" id="sumConfidence">Confidence 50%</span></div></div>
+      <div class="tiny muted" id="sumReminder"></div>
+    </div>
+  </section>
+
+  <!-- LIBRARY -->
+  <section id="libraryView" class="view">
+    <div class="row" style="margin-bottom:10px">
+      <h2 style="margin:0">Saved Analyses</h2><div class="spacer"></div>
+      <button class="btn" id="newAnalysisBtn">New Analysis</button>
+    </div>
+    <div id="libraryList" class="list"></div>
+    <div id="emptyLib" class="muted" style="display:none">No saves yet.</div>
+  </section>
+</main>
+
+<!-- AI SETTINGS -->
+<div id="aiModal" class="modal" aria-hidden="true">
+  <div class="sheet">
+    <div class="row" style="margin-bottom:8px">
+      <h3 style="margin:0">AI Assist Settings</h3><div class="spacer"></div>
+      <button class="btn" id="aiClose">Close</button>
+    </div>
+    <div class="warn" style="margin-bottom:12px">
+      Browser calls send your API key with each request to the selected provider. Use only on trusted devices. You can choose not to save the key; it remains in this browser only.
+    </div>
+    <div class="field">
+      <label>Provider</label>
+      <select id="aiProvider">
+        <option value="openai">OpenAI (ChatGPT)</option>
+        <option value="gemini">Google Gemini</option>
+      </select>
+    </div>
+    <label class="tiny" style="display:block;margin:8px 0">
+  <input type="checkbox" id="aiRedirect">
+  No-API mode: open provider website with the prompt (copies to clipboard)
+</label>
+<div class="tiny muted" id="redirectHint" style="margin:-6px 0 10px">
+  When checked, “Generate” opens ChatGPT/Gemini with your prompt and copies it to the clipboard. Keys are not required.
+</div>
+
+    <div class="field" id="openaiKeyWrap">
+      <label>OpenAI API key</label>
+      <input id="openaiKey" type="password" placeholder="sk-..."/>
+    </div>
+    <div class="field" id="geminiKeyWrap" style="display:none">
+      <label>Gemini API key (Google AI Studio)</label>
+      <input id="geminiKey" type="password" placeholder="AIza..."/>
+    </div>
+    <div class="field">
+      <label>Model</label>
+      <select id="aiModel"></select>
+      <div class="tiny" id="modelHint"></div>
+    </div>
+    <div class="field">
+      <label>Style (tone)</label>
+      <input id="aiStyle" type="text" value="You are a concise, supportive critical-thinking coach. Offer specific, non-generic suggestions."/>
+    </div>
+    <label class="tiny" style="display:block;margin:8px 0"><input type="checkbox" id="aiRemember"> Remember keys/settings in this browser</label>
+    <div class="row">
+      <button class="btn primary" id="aiSave">Save Settings</button>
+      <button class="btn danger" id="aiClear">Forget Keys</button>
+      <div class="spacer"></div>
+      <button class="btn" id="aiTest">Test</button>
+      <div id="aiTestSpin" class="spin" style="display:none"></div>
+    </div>
+    <div id="aiMsg" class="tiny" style="margin-top:8px"></div>
+  </div>
+</div>
+
+<section>
+<div id="starterModal" class="modal" aria-hidden="true">
+  <div class="sheet">
+    <div class="row" style="margin-bottom:8px">
+      <h3 style="margin:0">Starter ideas</h3>
+      <div class="spacer"></div>
+      <button class="btn" id="starterClose">Close</button>
+    </div>
+
+    <div class="tiny muted" style="margin:-6px 0 10px">
+      Pick a category or roll the dice. Click an idea to drop it into the Claim box—you can edit it.
+    </div>
+
+    <div id="starterCats" class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:10px"></div>
+    <div id="starterList" class="list"></div>
+
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="starterSurprise">🎲 Surprise me</button>
+      <div class="spacer"></div>
+      <button class="btn muted" id="starterTemplatesToggle">Show templates</button>
+    </div>
+
+    <div id="starterTemplates" style="display:none;margin-top:10px" class="tiny muted">
+      Click to insert a fill-in-the-blank pattern:
+      <div id="starterTplList" class="list" style="margin-top:6px"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+/* ================== Constants & DOM helpers ================== */
+const STEPS = [
+  {key:'claim',       title:'Claim',        prompt:'State your claim/decision in one sentence.', example:`Example: "We should launch Feature X in Q4."`},
+  {key:'goal',        title:'Goal',         prompt:'What outcome matters? (success criteria)', example:`Example: "Increase activation by 10% with minimal churn."`},
+  {key:'evidence',    title:'Evidence',     prompt:'List your strongest evidence. Bullets are fine.', example:`Example: "User interviews (n=12) cite demand; A/B test +7% CTR."`},
+  {key:'alternatives',title:'Alternatives', prompt:'Name 1–3 plausible alternatives.', example:`Example: "Delay to Q1; pilot to 5% traffic; build smaller slice."`},
+  {key:'assumptions', title:'Assumptions',  prompt:'Write assumptions this relies on.', example:`Example: "Eng estimate holds; demand persists post-holiday."`},
+  {key:'risks',       title:'Risks/Costs',  prompt:'What could go wrong or be costly?', example:`Example: "Scope creep; support load; cannibalize existing feature."`},
+  {key:'counterpoints',title:'Counterpoints',prompt:'Steelman the best opposing view.', example:`Example: "Data is seasonal; sample biased; we lack support bandwidth."`},
+  {key:'decision',    title:'Decision & Confidence', prompt:'What will you do, and how confident are you?', example:`Example: "Ship pilot to 10% traffic; re-evaluate in 14 days."`}
+];
+const STORE_KEY='reasoning_ladder_v1';
+const AI_STORE_KEY='reasoning_ladder_ai_multi_v2';
+
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+/* ================== State ================== */
+let current = fresh();
+let stepIndex = 0;
+let autosaveTimer = null;
+let ai = loadAI();
+
+/* ================== Starter Ideas ================== */
+const STARTER_SETS = {
+  "Career": [
+    "Should I pursue a management track or deepen as an IC this year?",
+    "Which role fits better for me: Product Manager vs. UX Designer?",
+    "Should I switch companies to grow faster or stay to lead a new project?"
+  ],
+  "Learning": [
+    "What is the most valuable skill to learn in the next 90 days?",
+    "Should I get a certificate in data analytics or front-end development?",
+    "How can I build a weekly study plan I will actually follow?"
+  ],
+  "Health": [
+    "What’s a sustainable fitness plan for the next 8 weeks?",
+    "Which routine helps most: morning workouts or evening sessions?",
+    "How can I improve sleep quality without medication?"
+  ],
+  "Money": [
+    "Should I pay down debt faster or invest extra cash?",
+    "Is it worth upgrading my laptop now or waiting one more year?",
+    "How can I cut monthly subscriptions without hurting essentials?"
+  ],
+  "Relationships": [
+    "What’s the best way to address recurring conflict about chores?",
+    "How do I set healthier work-life boundaries with my team?",
+    "Should I relocate closer to family this year?"
+  ],
+  "Productivity": [
+    "Which planning method should I try: weekly sprints or daily time-blocks?",
+    "How do I reduce context switching while keeping stakeholders informed?",
+    "What’s the single change that would make my mornings smoother?"
+  ],
+  "Home & Life": [
+    "Is it better to rent another year or start house-hunting?",
+    "Which car is the better fit: keeping my current one vs. buying used?",
+    "How could I simplify my weekly meal planning?"
+  ]
+};
+
+const STARTER_TEMPLATES = [
+  "Should I [action] in order to [goal] by [timeframe]?",
+  "Which is better for [criteria]: [Option A] or [Option B]?",
+  "How can I increase [metric] without hurting [constraint]?",
+  "What is the smallest experiment to test whether [assumption] is true?",
+  "What’s the highest-leverage decision I could make about [domain] this month?"
+];
+
+/* ================== Init ================== */
+init();
+function init(){
+  renderHome();
+  buildStepSidebar();
+  bindNav();
+  bindAI();
+  bindStarter();
+  route('home');
+  // enable Start button from Home
+  $('#homeClaim').addEventListener('input',e=> $('#startBtn').disabled=!e.target.value.trim());
+}
+
+/* ================== Router & Views ================== */
+function route(name){
+  ['home','step','summary','library'].forEach(n=>$('#'+n+'View').classList.remove('active'));
+  $('#'+name+'View').classList.add('active');
+  if(name==='step'){ renderStep(); startAutosave(); } else { stopAutosave(); }
+  if(name==='summary') renderSummary();
+  if(name==='library') renderLibrary();
+  window.location.hash='#'+name;
+}
+window.addEventListener('hashchange',()=>{ const h=(location.hash||'#home').slice(1); if(['home','step','summary','library'].includes(h)) route(h); });
+
+function renderHome(){
+  const homeClaim=$('#homeClaim'), startBtn=$('#startBtn');
+  homeClaim.addEventListener('input',()=>startBtn.disabled=!homeClaim.value.trim());
+  startBtn.onclick=()=>{
+    current=fresh();
+    current.claim=homeClaim.value.trim();
+    stepIndex=0; // go to Step 1: Claim
+    route('step');
+    homeClaim.value='';
+  };
+}
+
+function buildStepSidebar(){
+  const ul=$('#stepList'); ul.innerHTML='';
+  STEPS.forEach((s,i)=>{
+    const li=document.createElement('li');
+    li.dataset.index=i;
+    li.innerHTML=`<div class="num">${i+1}</div><div>${s.title}</div>`;
+    li.onclick=()=>{ applyStepInput(); stepIndex=i; renderStep(true); };
+    ul.appendChild(li);
+  });
+}
+
+function renderStep(){
+  // Sidebar state
+  $$('#stepList li').forEach((li,i)=>{ li.classList.toggle('active',i===stepIndex); li.classList.toggle('done',!!(getVal(STEPS[i].key)?.trim().length)); });
+
+  const s=STEPS[stepIndex];
+  $('#stepTitle').textContent=`Step ${stepIndex+1}: ${s.title}`;
+  $('#stepPrompt').textContent=s.prompt;
+  $('#stepExample').textContent=s.example;
+
+  const isDecision=(s.key==='decision');
+  $('#decisionWrap').style.display=isDecision?'block':'none';
+  $('#stepInput').style.display=isDecision?'none':'block';
+
+  if(isDecision){
+    $('#decisionInput').value=current.decision||'';
+    $('#confRange').value=current.confidence??50;
+    $('#confVal').textContent=`(${ $('#confRange').value }%)`;
+  }else{
+    $('#stepInput').value=getVal(s.key)||'';
+  }
+
+  $('#prevBtn').disabled=(stepIndex===0);
+  $('#nextBtn').disabled=(stepIndex>=STEPS.length-1);
+
+  // Only show Summary button on Step 8
+  $('#summaryBtn').style.display = (stepIndex===STEPS.length-1) ? '' : 'none';
+
+  const complete=STEPS.reduce((n,st)=>n+(String(getVal(st.key)||'').trim().length?1:0),0);
+  $('#progressFill').style.width=`${(complete/STEPS.length)*100}%`;
+  $('#progressText').textContent=`${complete} / ${STEPS.length} complete`;
+
+  // Input bindings
+  $('#confRange').oninput=e=>{ $('#confVal').textContent=`(${e.target.value}%)`; current.confidence=+e.target.value; };
+  $('#decisionInput').oninput=e=>{ current.decision=e.target.value; };
+
+  $('#nextBtn').onclick=()=>{ applyStepInput(); stepIndex=Math.min(stepIndex+1,STEPS.length-1); renderStep(); };
+  $('#prevBtn').onclick=()=>{ applyStepInput(); stepIndex=Math.max(stepIndex-1,0); renderStep(); };
+  $('#skipBtn').onclick=()=>{ current.skipped[s.key]=true; stepIndex=Math.min(stepIndex+1,STEPS.length-1); renderStep(); };
+  $('#saveDraftBtn').onclick=()=>{ applyStepInput(); upsertSave(structuredClone(current)); toast('Saved'); };
+  $('#summaryBtn').onclick=()=>{ applyStepInput(); route('summary'); };
+
+  // AI assist
+  $('#aiOutput').style.display='none'; $('#aiOutput').textContent='';
+  $('#aiStepToggle').checked = !!(ai.armed?.[s.key]);
+  updateAINote();
+  updateAIGenState();
+  $('#aiStepToggle').onchange=()=>{ ai.armed=ai.armed||{}; ai.armed[s.key]=$('#aiStepToggle').checked; updateAIGenState(); };
+  $('#aiGenBtn').onclick = () => generateAIForCurrentStep();
+  $('#stepInput').oninput = updateAIGenState;
+}
+
+function renderSummary(){
+  $('#sumClaim').textContent=current.claim||'No claim provided';
+  $('#sumGoal').textContent=current.goal||'';
+  setSum('sumEvidence',current.evidence);
+  setSum('sumAlternatives',current.alternatives);
+  setSum('sumAssumptions',current.assumptions);
+  setSum('sumRisks',current.risks);
+  setSum('sumCounter',current.counterpoints);
+  $('#sumDecision').textContent=current.decision||'(No decision entered)';
+  $('#sumConfidence').textContent=`Confidence ${current.confidence??0}%`;
+  const skipped=Object.keys(current.skipped||{}).filter(k=>current.skipped[k]);
+  $('#sumReminder').textContent=skipped.length?`Consider revisiting: ${skipped.map(k=>titleFor(k)).join(', ')}.`:'';
+  $('#editBtn').onclick=()=>route('step');
+  $('#printBtn').onclick=()=>printSummaryWindow();
+  $('#copyBtn').onclick=()=>copySummaryText();
+  $('#saveFinalBtn').onclick=()=>{ upsertSave(structuredClone(current)); toast('Saved'); };
+}
+
+function renderLibrary(){
+  const list=loadAll(), box=$('#libraryList'); box.innerHTML='';
+  $('#emptyLib').style.display=list.length?'none':'block';
+  list.forEach(item=>{
+    const el=document.createElement('div'); el.className='item';
+    const date=new Date(item.updatedAt||item.createdAt||Date.now()).toLocaleString();
+    el.innerHTML=`<div><h4>${truncate(esc(item.claim||'(untitled)'),80)}</h4><div class="meta">${date} • Confidence ${item.confidence??0}%</div></div>
+      <div class="row"><button class="btn" data-act="open">Open</button><button class="btn muted" data-act="dup">Duplicate</button><button class="btn danger" data-act="del">Delete</button></div>`;
+    el.querySelector('[data-act="open"]').onclick=()=>{ current=structuredClone(item); stepIndex=STEPS.length-1; route('summary'); };
+    el.querySelector('[data-act="dup"]').onclick=()=>{ const copy=structuredClone(item); copy.id=null; copy.createdAt=null; copy.updatedAt=null; copy.claim=(copy.claim||'(untitled)')+' (copy)'; upsertSave(copy); renderLibrary(); toast('Duplicated'); };
+    el.querySelector('[data-act="del"]').onclick=()=>{ if(confirm('Delete this analysis?')){ removeSave(item.id); renderLibrary(); } };
+    box.appendChild(el);
+  });
+  $('#newAnalysisBtn').onclick=()=>{ current=fresh(); stepIndex=0; route('home'); };
+}
+
+/* ================== Autosave ================== */
+function startAutosave(){ stopAutosave(); autosaveTimer=setInterval(()=>{ applyStepInput(); upsertSave(structuredClone(current)); $('#autosaveText').textContent='Saved just now'; },15000); }
+function stopAutosave(){ if(autosaveTimer) clearInterval(autosaveTimer); autosaveTimer=null; }
+
+/* ================== AI Settings & Modal ================== */
+function bindAI(){
+  // Open/close
+  $('#aiSettingsBtn').onclick = openAIModal;
+  $('#aiClose').onclick = closeAIModal;
+  $('#aiModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeAIModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#aiModal').classList.contains('show')) closeAIModal(); });
+
+  // Clear
+  $('#aiClear').onclick=()=>{
+    ai.openaiKey=''; ai.geminiKey=''; ai.remember=false; ai.redirect=false; ai.armed={};
+    saveAI(); fillAIModal(); toast('Keys cleared');
+  };
+
+  // Save (close + toast)
+  $('#aiSave').onclick=()=>{
+    ai.provider = $('#aiProvider').value;
+    ai.openaiKey = $('#openaiKey').value.trim();
+    ai.geminiKey = $('#geminiKey').value.trim();
+    ai.model     = $('#aiModel').value;
+    ai.style     = $('#aiStyle').value.trim();
+    ai.remember  = $('#aiRemember').checked;
+    ai.redirect  = $('#aiRedirect').checked;
+    saveAI();
+    closeAIModal();
+    toast('Settings saved');
+    if($('#stepView').classList.contains('active')){ updateAINote(); updateAIGenState(); }
+  };
+
+  // Test respects redirect mode
+  $('#aiTest').onclick=()=>{
+    if($('#aiRedirect').checked){ $('#aiMsg').textContent='Web chat mode: nothing to test here.'; return; }
+    testAI();
+  };
+
+  // Provider/redirect change
+  $('#aiProvider').onchange = refreshModelList;
+  $('#aiRedirect').onchange = refreshModelList;
+}
+function openAIModal(){
+  fillAIModal();
+  $('#aiModal').classList.add('show');
+  $('#aiModal').setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closeAIModal(){
+  $('#aiModal').classList.remove('show');
+  $('#aiModal').setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+function fillAIModal(){
+  $('#aiProvider').value = ai.provider || (ai.geminiKey ? 'gemini' : 'openai');
+  $('#openaiKey').value  = ai.openaiKey || '';
+  $('#geminiKey').value  = ai.geminiKey || '';
+  $('#aiStyle').value    = ai.style || 'You are a concise, supportive critical-thinking coach. Offer specific, non-generic suggestions.';
+  $('#aiRemember').checked = !!ai.remember;
+  $('#aiRedirect').checked = !!ai.redirect;
+  refreshModelList();
+  $('#aiMsg').textContent=''; $('#aiTestSpin').style.display='none';
+}
+function refreshModelList(){
+  const provider = $('#aiProvider').value;
+  const redirect = $('#aiRedirect').checked;
+  // Show/hide key inputs based on redirect
+  $('#openaiKeyWrap').style.display = (provider==='openai' && !redirect) ? 'block' : 'none';
+  $('#geminiKeyWrap').style.display = (provider==='gemini' && !redirect) ? 'block' : 'none';
+
+  // Models
+  const modelSel=$('#aiModel'); modelSel.innerHTML='';
+  if(provider==='openai'){
+    ['gpt-4o-mini','gpt-4o'].forEach(m=>{ const o=document.createElement('option'); o.value=m; o.textContent=m; modelSel.appendChild(o); });
+    $('#modelHint').textContent = redirect ? 'Web chat mode: ChatGPT UI may ignore this.' : 'OpenAI Chat Completions API (messages[]).';
+    modelSel.value = ai.model && ai.model.startsWith('gpt-') ? ai.model : 'gpt-4o-mini';
+  }else{
+    ['gemini-2.5-flash','gemini-2.5-pro','gemini-1.5-flash-latest'].forEach(m=>{ const o=document.createElement('option'); o.value=m; o.textContent=m; modelSel.appendChild(o); });
+    $('#modelHint').textContent = redirect ? 'Web chat mode: Gemini UI ignores URL params; we copy your prompt.' : 'Gemini generateContent endpoint (contents[].parts[].text).';
+    modelSel.value = (ai.model && ai.model.startsWith('gemini-')) ? ai.model : 'gemini-2.5-flash';
+  }
+}
+
+/* ================== AI Generation per step ================== */
+function updateAINote(){
+  if(ai.redirect){
+    $('#aiNote').textContent = `Web chat mode: we’ll open ${ai.provider==='gemini'?'Gemini':'ChatGPT'} and copy the prompt for you.`;
+  } else if(!hasAnyKey()){
+    $('#aiNote').textContent = 'Tip: add a key in AI Settings (OpenAI or Gemini) to enable in-app suggestions.';
+  } else {
+    $('#aiNote').textContent = `Using ${ai.provider==='gemini'?'Gemini':'OpenAI'} via API.`;
+  }
+}
+function anyContentUpTo(index){
+  for(let i=0;i<=index;i++){
+    const k=STEPS[i].key;
+    if(k==='decision'){ if((current.decision||'').trim() || typeof current.confidence==='number') return true; }
+    else if((current[k]||'').trim()) return true;
+  }
+  return false;
+}
+function updateAIGenState(){
+  const armed = $('#aiStepToggle').checked;
+  const okContext = anyContentUpTo(stepIndex);
+  const needsKey = !ai.redirect;
+  const okKey = needsKey ? hasAnyKey() : true;
+
+  $('#aiGenBtn').disabled = !(armed && okContext && okKey);
+
+  const hints=[];
+  if(!armed) hints.push('check the box');
+  if(armed && !okContext) hints.push('type something first');
+  if(armed && needsKey && !okKey) hints.push('add an API key in AI Settings');
+  $('#aiOutput').style.display='none'; $('#aiOutput').textContent='';
+  $('#aiNote').textContent = hints.length? 'To generate: '+hints.join(' • ') : (ai.redirect ? 'Ready — will open web chat.' : 'Ready to generate.');
+}
+
+async function testAI(){
+  $('#aiTestSpin').style.display='inline-block'; $('#aiMsg').textContent='';
+  try{
+    const provider=$('#aiProvider').value;
+    const model=$('#aiModel').value;
+    const style=$('#aiStyle').value.trim();
+    let text='';
+    if(provider==='openai'){
+      const key=$('#openaiKey').value.trim(); if(!key){ $('#aiMsg').textContent='Enter your OpenAI key.'; return; }
+      text = await callOpenAI(key, model, style, [{role:'user',content:'Reply with: OK'}]);
+    } else {
+      const key=$('#geminiKey').value.trim(); if(!key){ $('#aiMsg').textContent='Enter your Gemini key.'; return; }
+      text = await callGemini(key, model, style, 'Reply with: OK');
+    }
+    $('#aiMsg').textContent = (text||'').toUpperCase().includes('OK') ? 'Success.' : 'Response received (check key/model).';
+  }catch(e){ $('#aiMsg').textContent='Error: '+(e.message||e); }
+  finally{ $('#aiTestSpin').style.display='none'; }
+}
+
+async function generateAIForCurrentStep(){
+  if($('#aiGenBtn').disabled){ updateAIGenState(); return; }
+  applyStepInput();
+  const s = STEPS[stepIndex];
+  const currentStepName = s.title;
+
+  // Redirect mode (No-API): copy + open provider web chat
+  if(ai.redirect){
+    const prompt = buildWebChatPrompt(currentStepName);
+    await openProviderChatWithPrompt(prompt);
+    return;
+  }
+
+  // Build prior payload
+  const prior = {
+    claim:        current.claim || '',
+    goal:         current.goal || '',
+    evidence:     splitLines(current.evidence),
+    alternatives: splitLines(current.alternatives),
+    assumptions:  splitLines(current.assumptions),
+    risks_costs:  splitLines(current.risks),
+    counterpoints:splitLines(current.counterpoints),
+    decision_confidence: { decision: current.decision||'', confidence: current.confidence??0 }
+  };
+
+  // System + user prompts
+  const systemBase = `
+You are Reasoning Coach for the "Reasoning Ladder" app.
+
+CORE PURPOSE
+Help users slow down, examine claims/evidence, consider alternatives, and make a reasoned decision with stated confidence.
+
+BEHAVIOR
+- Be supportive, concise, non-judgmental.
+- Use PRIOR inputs to propose targeted suggestions for CURRENT_STEP only.
+- If PRIOR is sparse, ask ≤1 focused clarifying question; otherwise do not ask questions.
+- Deduplicate, avoid clichés; ground suggestions in prior inputs when possible.
+- Apply RACCCA (relevant, accurate, complete, clear, coherent, appropriate).
+- Do NOT reveal chain-of-thought; only short rationales.
+
+OUTPUT FORMAT (strict JSON; no extra text)
+{
+  "current_step": "<Claim|Goal|Evidence|Alternatives|Assumptions|RisksCosts|Counterpoints|DecisionConfidence>",
+  "you_gave": { "salient": ["<≤3 snippets from prior inputs>"] },
+  "suggestions": [
+    { "text": "<8-20 words>", "why_it_matters": "<≤14 words>", "tag":"<short category>" }
+  ],
+  "nudge": "<one-sentence microcopy>",
+  "clarifying_question": "<one tight question or null>"
+}
+
+CONSTRAINTS
+- Provide 4–6 suggestions.
+- Keep rationale concise and concrete.
+- If CURRENT_STEP = DecisionConfidence, include an extra "decision_frame":
+  { "options":[{"option":"...","pros":["..."],"cons":["..."]}], "confidence_prompt":"<how to rate 0–100%>" }
+
+STYLE
+Plain language; scannable bullets.
+`.trim();
+
+  const sysTone = (ai.style || 'You are a concise, supportive critical-thinking coach. Offer specific, non-generic suggestions.').trim();
+
+  const userPayload = `
+[STEP_HELPER REQUEST]
+CURRENT_STEP: "${currentStepName}"
+PRIOR:
+${JSON.stringify(prior, null, 2)}
+PREFERENCES: { "tone":"supportive, concise", "max_suggestions": 6, "include_examples": true }
+`.trim();
+
+  toggleAISpinner(true);
+  try{
+    let raw='';
+    if((ai.provider||'openai')==='openai'){
+      raw = await callOpenAI(ai.openaiKey, ai.model||'gpt-4o-mini', `${sysTone}\n\n${systemBase}`, [{role:'user',content:userPayload}]);
+    }else{
+      const text = `${sysTone}\n\n${systemBase}\n\n${userPayload}`;
+      raw = await callGemini(ai.geminiKey, ai.model||'gemini-2.5-flash', '', text);
+    }
+
+    const parsed = parseJSONish(raw);
+    const bullets = (parsed?.suggestions||[]).map(o=>`- ${o.text}`);
+    const tip = parsed?.nudge ? `\n\nTip: ${parsed.nudge}` : '';
+    const toInsert = `${bullets.join('\n')}${tip}`.trim();
+
+    if(STEPS[stepIndex].key==='decision'){
+      const t=$('#decisionInput'); t.value = (t.value.trim()? t.value.trim()+'\n\n' : '') + toInsert; current.decision=t.value;
+    }else{
+      const t=$('#stepInput'); t.value = (t.value.trim()? t.value.trim()+'\n\n' : '') + toInsert; current[STEPS[stepIndex].key]=t.value;
+    }
+
+    $('#aiOutput').style.display='block';
+    $('#aiOutput').textContent = JSON.stringify(parsed || {note:'No JSON parsed; see raw'}, null, 2);
+  }catch(e){
+    $('#aiOutput').style.display='block';
+    $('#aiOutput').textContent = 'Error: '+(e.message||e);
+  }finally{
+    toggleAISpinner(false);
+    updateAIGenState();
+  }
+}
+
+/* ================== Provider calls ================== */
+async function callOpenAI(key, model, systemPrompt, messages){
+  if(!key) throw new Error('Missing OpenAI key');
+  const body={ model: model||'gpt-4o-mini', messages:[{role:'system',content:systemPrompt||'You are helpful.'}, ...messages], temperature:0.4 };
+  const res = await fetch('https://api.openai.com/v1/chat/completions',{ method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+key}, body: JSON.stringify(body) });
+  if(!res.ok){ throw new Error('OpenAI HTTP '+res.status+': '+await res.text()); }
+  const data=await res.json(); return data.choices?.[0]?.message?.content || '';
+}
+async function callGemini(key, model, _ignored, text){
+  if(!key) throw new Error('Missing Gemini key');
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model||'gemini-2.5-flash')}:generateContent`;
+  const body={ contents:[ { parts:[ { text } ] } ] };
+  const res = await fetch(url,{ method:'POST', headers:{'Content-Type':'application/json','x-goog-api-key': key}, body: JSON.stringify(body) });
+  if(!res.ok){ throw new Error('Gemini HTTP '+res.status+': '+await res.text()); }
+  const data=await res.json(); const parts=data?.candidates?.[0]?.content?.parts||[]; return parts.map(p=>p.text||'').join('').trim();
+}
+
+/* ================== Starter Ideas Modal ================== */
+function bindStarter(){
+  // Button on Home
+  const btn = $('#starterBtn');
+  if(btn) btn.onclick = openStarterModal;
+
+  // Close / backdrop / Esc
+  $('#starterClose').onclick = closeStarterModal;
+  $('#starterModal').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeStarterModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && $('#starterModal').classList.contains('show')) closeStarterModal(); });
+
+  // Surprise & Templates
+  $('#starterSurprise').onclick = ()=> renderStarterListFromPick(randomStarter());
+  $('#starterTemplatesToggle').onclick = ()=>{
+    const x = $('#starterTemplates');
+    x.style.display = (x.style.display==='none'||!x.style.display) ? 'block':'none';
+  };
+}
+function openStarterModal(){
+  renderStarterCats();
+  renderStarterList(Object.keys(STARTER_SETS)[0] || 'Career');
+  renderStarterTemplates();
+  $('#starterModal').classList.add('show');
+  $('#starterModal').setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closeStarterModal(){
+  $('#starterModal').classList.remove('show');
+  $('#starterModal').setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+function renderStarterCats(){
+  const box = $('#starterCats'); box.innerHTML='';
+  Object.keys(STARTER_SETS).forEach(cat=>{
+    const b = document.createElement('button');
+    b.className = 'btn muted'; b.textContent = cat;
+    b.onclick = ()=> renderStarterList(cat);
+    box.appendChild(b);
+  });
+}
+function renderStarterList(cat){
+  const list = $('#starterList'); list.innerHTML='';
+  (STARTER_SETS[cat]||[]).forEach(txt=>{
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.innerHTML = `<div><h4>${esc(txt)}</h4></div>
+      <div class="row"><button class="btn" data-act="use">Use this</button></div>`;
+    el.querySelector('[data-act="use"]').onclick = ()=> applyStarter(txt);
+    el.querySelector('h4').style.cursor='pointer';
+    el.querySelector('h4').onclick = ()=> applyStarter(txt);
+    list.appendChild(el);
+  });
+}
+function renderStarterTemplates(){
+  const wrap = $('#starterTplList'); wrap.innerHTML='';
+  STARTER_TEMPLATES.forEach(t=>{
+    const el = document.createElement('div');
+    el.className='item';
+    el.innerHTML = `<div><h4>${esc(t)}</h4><div class="tiny muted">Template</div></div>
+      <div class="row"><button class="btn" data-act="use">Insert</button></div>`;
+    el.querySelector('[data-act="use"]').onclick = ()=> applyStarter(t);
+    el.querySelector('h4').style.cursor='pointer';
+    el.querySelector('h4').onclick = ()=> applyStarter(t);
+    wrap.appendChild(el);
+  });
+}
+function applyStarter(text){
+  const homeClaim = $('#homeClaim');
+  homeClaim.value = text;
+  $('#startBtn').disabled = !homeClaim.value.trim();
+  closeStarterModal();
+  // Jump straight to Step 1 with claim prefilled
+  current = fresh(); current.claim = homeClaim.value.trim(); stepIndex = 0;
+  homeClaim.value=''; route('step');
+}
+function randomStarter(){
+  const all = Object.values(STARTER_SETS).flat();
+  return all[Math.floor(Math.random()*all.length)];
+}
+function renderStarterListFromPick(pick){
+  const list = $('#starterList'); list.innerHTML='';
+  const all = [pick, ...Object.values(STARTER_SETS).flat().filter(t=>t!==pick)];
+  all.slice(0,12).forEach(txt=>{
+    const el = document.createElement('div');
+    el.className='item';
+    el.innerHTML = `<div><h4>${esc(txt)}</h4></div>
+      <div class="row"><button class="btn" data-act="use">Use this</button></div>`;
+    el.querySelector('[data-act="use"]').onclick = ()=> applyStarter(txt);
+    el.querySelector('h4').style.cursor='pointer';
+    el.querySelector('h4').onclick = ()=> applyStarter(txt);
+    list.appendChild(el);
+  });
+}
+
+/* ================== Storage & Helpers ================== */
+function fresh(){ return {id:null,createdAt:null,updatedAt:null,claim:'',goal:'',evidence:'',alternatives:'',assumptions:'',risks:'',counterpoints:'',decision:'',confidence:50,skipped:{}}; }
+function getVal(key){ return current[key]; }
+function applyStepInput(){
+  const s=STEPS[stepIndex];
+  if(s.key==='decision'){ current.decision=$('#decisionInput').value.trim(); current.confidence=+$('#confRange').value; }
+  else { current[s.key]=$('#stepInput').value.trim(); }
+}
+function loadAll(){ try{return JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch{return[]} }
+function saveAll(list){ localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
+function upsertSave(a){
+  let list=loadAll();
+  if(!a.id){a.id='a'+Date.now(); a.createdAt=new Date().toISOString();}
+  a.updatedAt=new Date().toISOString();
+  const i=list.findIndex(x=>x.id===a.id);
+  if(i>=0) list[i]=a; else list.unshift(a);
+  saveAll(list);
+}
+function removeSave(id){ saveAll(loadAll().filter(x=>x.id!==id)); }
+
+function loadAI(){ try{return JSON.parse(localStorage.getItem(AI_STORE_KEY)||'{}')}catch{return{}} }
+function saveAI(){ if(ai.remember) localStorage.setItem(AI_STORE_KEY, JSON.stringify(ai)); else localStorage.removeItem(AI_STORE_KEY); }
+function hasAnyKey(){ return !!(ai.openaiKey || ai.geminiKey); }
+
+function toast(msg){
+  const el=document.createElement('div'); el.textContent=msg;
+  Object.assign(el.style,{position:'fixed',bottom:'18px',left:'50%',transform:'translateX(-50%)',background:'#111827',color:'#fff',padding:'10px 14px',borderRadius:'999px',zIndex:9999});
+  document.body.appendChild(el); setTimeout(()=>el.remove(),1200);
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function br(s){return String(s).replace(/\n/g,'<br>')}
+function truncate(t,n){ return t.length>n? t.slice(0,n)+'…' : t; }
+function setSum(id,val){ const el=$('#'+id); const t=(val||'').trim(); el.textContent=t||'(none)'; if(t.length>900) el.textContent=t.slice(0,900)+'…'; }
+function titleFor(key){ return (STEPS.find(s=>s.key===key)||{}).title||key; }
+function copySummaryText(){
+  const text=[
+    `Reasoned Brief`,
+    `Claim: ${current.claim||''}`, `Goal: ${current.goal||''}`, `Evidence: ${current.evidence||''}`,
+    `Alternatives: ${current.alternatives||''}`, `Assumptions: ${current.assumptions||''}`, `Risks/Costs: ${current.risks||''}`,
+    `Counterpoints: ${current.counterpoints||''}`, `Decision: ${current.decision||''}`, `Confidence: ${current.confidence||0}%`
+  ].join('\n\n');
+  navigator.clipboard.writeText(text).then(()=>toast('Copied'));
+}
+function printSummaryWindow(){
+  const html=`<!doctype html><html><head><meta charset="utf-8"><title>Reasoned Brief</title>
+    <style>body{font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;color:#111827;margin:32px}
+    h1{margin:0 0 8px}.muted{color:#6b7280}.section{margin:14px 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}</style>
+    </head><body><h1>Reasoned Brief</h1><div class="muted">${new Date().toLocaleString()}</div>
+    <div class="section"><strong>Claim</strong><br>${esc(current.claim||'')}</div>
+    <div class="section"><strong>Goal</strong><br>${esc(current.goal||'(none)')}</div>
+    <div class="grid"><div class="section"><strong>Evidence</strong><br>${br(esc(current.evidence||'(none)'))}</div>
+    <div class="section"><strong>Alternatives</strong><br>${br(esc(current.alternatives||'(none)'))}</div></div>
+    <div class="grid"><div class="section"><strong>Assumptions</strong><br>${br(esc(current.assumptions||'(none)'))}</div>
+    <div class="section"><strong>Risks & Costs</strong><br>${br(esc(current.risks||'(none)'))}</div></div>
+    <div class="section"><strong>Counterpoints (Steelman)</strong><br>${br(esc(current.counterpoints||'(none)'))}</div>
+    <div class="section"><strong>Decision</strong><br>${br(esc(current.decision||'(none)'))}</div>
+    <div class="section"><strong>Confidence</strong><br>${(current.confidence??0)}%</div>
+    <script>window.addEventListener('load',()=>setTimeout(()=>print(),50));<\/script></body></html>`;
+  const w=window.open('about:blank','_blank'); w.document.open(); w.document.write(html); w.document.close();
+}
+function splitLines(s){ s=(s||'').trim(); if(!s) return []; return s.split(/\r?\n/).map(x=>x.replace(/^\s*[-•]\s*/,'').trim()).filter(Boolean); }
+function parseJSONish(txt){
+  try{ return JSON.parse(txt); }catch(_){}
+  const m = txt.match(/\{[\s\S]*\}/);
+  if(m){ try{ return JSON.parse(m[0]); }catch(_){ } }
+  return null;
+}
+function toggleAISpinner(on){ $('#aiSpin').style.display= on ? 'inline-block':'none'; $('#aiGenBtn').disabled=on; }
+
+/* ================== Web chat prompt + open ================== */
+function buildWebChatPrompt(currentStepName){
+  const prior = {
+    claim:        current.claim || '',
+    goal:         current.goal || '',
+    evidence:     splitLines(current.evidence).filter(Boolean),
+    alternatives: splitLines(current.alternatives).filter(Boolean),
+    assumptions:  splitLines(current.assumptions).filter(Boolean),
+    risks_costs:  splitLines(current.risks).filter(Boolean),
+    counterpoints:splitLines(current.counterpoints).filter(Boolean),
+    decision_confidence: { decision: current.decision||'', confidence: current.confidence??0 }
+  };
+  const sysTone = (ai.style || 'You are a concise, supportive critical-thinking coach. Offer specific, non-generic suggestions.').trim();
+  return [
+    `SYSTEM / TONE: ${sysTone}`,
+    `APP: Reasoning Ladder`,
+    `CURRENT_STEP: ${currentStepName}`,
+    `TASK: Provide 4–6 concise, non-generic suggestions (bullets) tailored to CURRENT_STEP using PRIOR. Add one 1-sentence nudge. Be brief.`,
+    `PRIOR (JSON):`,
+    JSON.stringify(prior, null, 2)
+  ].join('\n\n');
+}
+async function openProviderChatWithPrompt(prompt){
+  try{
+    await navigator.clipboard.writeText(prompt);
+    toast('Prompt copied — paste if needed (Ctrl/Cmd + V).');
+  }catch{}
+  if((ai.provider||'openai')==='openai'){
+    const modelParam = ai.model ? `&model=${encodeURIComponent(ai.model)}` : '';
+    const url = `https://chatgpt.com/?q=${encodeURIComponent(prompt)}${modelParam}`;
+    window.open(url, '_blank');
+  } else {
+    window.open('https://gemini.google.com/app', '_blank');
+  }
+}
+
+/* ================== Navigation ================== */
+function bindNav(){
+  $('#navHome').onclick=()=>route('home');
+  $('#navLibrary').onclick=()=>route('library');
+}
+</script>
+
+</body>
+</html>
