@@ -621,12 +621,12 @@ html[data-theme="dark"] .pill{ background:#1a2030; border-color:#2c3a58; color:#
           <input id="q" placeholder="Search label, definition, fields, tags…"/>
         </div>
         <div>
-          <label class="sub">Kind</label>
-          <select id="kind"></select>
+          <label class="sub">Top Category</label>
+          <select id="cat"></select>
         </div>
         <div>
-          <label class="sub">Category</label>
-          <select id="cat"></select>
+          <label class="sub">Subcategory</label>
+          <select id="subcat"></select>
         </div>
         <div>
           <label class="sub">Tags</label>
@@ -811,14 +811,20 @@ for (const raw of (t.tags||[])) {
   }
 }
 
-
+const fxf = t.facets || {};
+const top = Array.isArray(fxf.top_categories) ? fxf.top_categories : [];
+const aliases = Array.isArray(fxf.aliases_categories) ? fxf.aliases_categories : [];
+const sub = Array.isArray(fxf.subcategories) ? fxf.subcategories : [];
+const norm = a => unique(a.map(x => String(x||'').toLowerCase().trim()).filter(Boolean));
+const facets = { top: norm(top), aliases: norm(aliases), sub: norm(sub) };
 
       out.push({
         ...t,
-  _cleanedTags: cleanedTags,
-  _displayKind: displayKind,
-  _displayCats: displayCats,
-  _tagsByNs: tagsByNs
+        _cleanedTags: cleanedTags,
+        _displayKind: displayKind,
+        _displayCats: displayCats,
+        _tagsByNs: tagsByNs,
+        _facets: facets
       });
     }
   }
@@ -835,39 +841,41 @@ for(const t of DATA){
     ...(t._cleanedTags||[]),
     ...(t.use_cases||[]),
     ...(t.boosters||[]),
+    ...(t._facets?.top||[]),
+    ...(t._facets?.aliases||[]),
+    ...(t._facets?.sub||[]),
     ...(Array.isArray(t.fields) ? t.fields.map(f=>f?.label||f?.key||'') : [])
   ].filter(Boolean).join(' ').toLowerCase();
   t._search = bits;
 }
 
 /* ========== Filters (kept) ========== */
-const state = { q:'', kind:'', cat:'', tag:'', topic:'', phase:'', level:'', use:'', slug: [] };
+const state = { q:'', cat:'', subcat:'', tag:'', topic:'', phase:'', level:'', use:'', slug: [] };
 
-const allKinds = unique(DATA.map(d=>d._displayKind || 'unknown'))
-  .filter(k => k.toLowerCase() !== 'none').sort();
-const allCats  = unique(DATA.flatMap(d=>d._displayCats||[])).sort();
+const allTopCats = unique(DATA.flatMap(d=>d._facets?.top||[])).sort();
+const allSubcats = unique(DATA.flatMap(d=>d._facets?.sub||[])).sort();
 
 function fillSelect(sel, list, labelAll='All'){
   sel.innerHTML = '';
   sel.append(h('option', {value:''}, labelAll));
   for(const v of list){ sel.append(h('option', {value:v}, v)); }
 }
-fillSelect($('#kind'), allKinds);
-fillSelect($('#cat'), allCats);
+fillSelect($('#cat'), allTopCats, 'All Top Categories');
+fillSelect($('#subcat'), allSubcats, 'All Subcategories');
 
 // Namespaced tag helpers
 const TAG_NAMESPACES = ['topic','phase','level','use'];
 
 // Map state fields -> control IDs (so we can clear UI + state in sync)
 const ID_FOR_FIELD = {
-  q:'q', kind:'kind', cat:'cat', tag:'tag',
+  q:'q', cat:'cat', subcat:'subcat', tag:'tag',
   topic:'tagTopic', phase:'tagPhase', level:'tagLevel', use:'tagUse'
 };
 
 // One canonical "clear everything" helper
 function clearAll(){
   // reset state (including slug)
-  state.q = state.kind = state.cat = state.tag =
+  state.q = state.cat = state.subcat = state.tag =
   state.topic = state.phase = state.level = state.use = '';
   state.slug = [];
 
@@ -912,8 +920,8 @@ fillSelect($('#tagUse'),   allTagValuesBy('use'),   'All Uses');
 
 
 $('#q').addEventListener('input', ()=>{ state.q=$('#q').value; render(); scrollToResultsTop(); });
-$('#kind').addEventListener('change', ()=>{ state.kind=$('#kind').value; render(); scrollToResultsTop(); });
 $('#cat').addEventListener('change',  ()=>{ state.cat=$('#cat').value; render(); scrollToResultsTop(); });
+$('#subcat').addEventListener('change',  ()=>{ state.subcat=$('#subcat').value; render(); scrollToResultsTop(); });
 $('#tag').addEventListener('input',  ()=>{ state.tag=$('#tag').value; render(); scrollToResultsTop(); });
 
 $('#tagTopic').addEventListener('change', ()=>{ state.topic=$('#tagTopic').value; render(); scrollToResultsTop(); });
@@ -958,15 +966,20 @@ function matches(d){
     if (!hit) return false;
   }
 
-  if (state.kind && (d._displayKind||'') !== state.kind) return false;
-  if (state.cat && !(d._displayCats||[]).includes(state.cat)) return false;
-  
+  if (state.cat && !(d._facets?.top||[]).some(x => x.toLowerCase() === state.cat.toLowerCase())) return false;
+  if (state.subcat && !(d._facets?.sub||[]).some(x => x.toLowerCase() === state.subcat.toLowerCase())) return false;
+
   const tg = state.tag.trim().toLowerCase();
   if (tg){
-    const cleaned=(d._cleanedTags||[]).map(x=>x.toLowerCase());
-    if (!cleaned.some(x => x.includes(tg))) return false;
+    const rawTags = (d.tags||[]).map(x=>String(x).toLowerCase());
+    const cleaned = (d._cleanedTags||[]).map(x=>String(x).toLowerCase());
+    const nsKeys  = Object.keys(d._tagsByNs||{}).map(x=>String(x).toLowerCase());
+    const nsVals  = Object.values(d._tagsByNs||{}).flat().map(x=>String(x).toLowerCase());
+    const pools = [rawTags, cleaned, nsKeys, nsVals];
+    const hit = pools.some(arr => arr.some(x => x.includes(tg)));
+    if (!hit) return false;
   }
-  
+
   // Namespaced tag filters (exact match against values, case-insensitive)
 const want = (ns) => (state[ns]||'').trim().toLowerCase();
 if (want('topic') && !(d._tagsByNs?.topic||[]).some(x => x.toLowerCase() === want('topic'))) return false;
@@ -974,7 +987,6 @@ if (want('phase') && !(d._tagsByNs?.phase||[]).some(x => x.toLowerCase() === wan
 if (want('level') && !(d._tagsByNs?.level||[]).some(x => x.toLowerCase() === want('level'))) return false;
 if (want('use')   && !(d._tagsByNs?.use||[]).some(x => x.toLowerCase() === want('use')))   return false;
 
-  
   return true;
 }
 
@@ -983,14 +995,14 @@ function renderActiveFilters(rowsTotal){
   const active = $('#active'); active.innerHTML = '';
 
   const chips=[];
-  if(state.q)    chips.push(['Search', `"${state.q}"`, 'q']);
-  if(state.kind) chips.push(['Kind', state.kind, 'kind']);
-  if(state.cat)  chips.push(['Category', state.cat, 'cat']);
-  if(state.tag)  chips.push(['Tags', `"${state.tag}"`, 'tag']);
-  if(state.topic) chips.push(['Topic', state.topic, 'topic']);
-  if(state.phase) chips.push(['Phase', state.phase, 'phase']);
-  if(state.level) chips.push(['Level', state.level, 'level']);
-  if(state.use)   chips.push(['Use',   state.use,   'use']);
+  if(state.q)      chips.push(['Search', `"${state.q}"`, 'q']);
+  if(state.cat)    chips.push(['Top Category', state.cat, 'cat']);
+  if(state.subcat) chips.push(['Subcategory', state.subcat, 'subcat']);
+  if(state.tag)    chips.push(['Tags', `"${state.tag}"`, 'tag']);
+  if(state.topic)  chips.push(['Topic', state.topic, 'topic']);
+  if(state.phase)  chips.push(['Phase', state.phase, 'phase']);
+  if(state.level)  chips.push(['Level', state.level, 'level']);
+  if(state.use)    chips.push(['Use',   state.use,   'use']);
 
   $('#hdrCount').textContent = `Showing ${rowsTotal} of ${all}`;
 
