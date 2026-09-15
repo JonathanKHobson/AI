@@ -71,7 +71,12 @@ function parseRoute() {
 function applyConfig() {
   const returnResult = configuredReturnUrl();
   state.returnUrl = returnResult.url;
-  document.querySelectorAll("[data-studio-link], [data-return-link]").forEach((link) => { link.href = state.returnUrl; });
+  document.querySelectorAll("[data-studio-link], [data-return-link]").forEach((link) => {
+    link.href = returnResult.source === "fallback" ? "https://ai-workshop-studio.jkylehobson.chatgpt.site/" : state.returnUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", `${link.textContent.trim()} (opens in a new tab)`);
+  });
   document.querySelectorAll("[data-portfolio-link]").forEach((link) => {
     link.href = safeExternalUrl(config.portfolioUrl) || "https://jonathankhobson.github.io/portfolio/ai/";
   });
@@ -115,7 +120,7 @@ function tag(value, className = "") {
 
 function renderHome() {
   const { glossary, frameworks, biases, source } = state.catalog;
-  document.title = "CLAIRE Prompting and AI Glossary | Kyle Hobson";
+  document.title = "CLARE Prompting and AI Glossary | Kyle Hobson";
   app.innerHTML = `
     <section class="hero" data-anchor="A2">
       <div class="shell hero-grid">
@@ -144,7 +149,7 @@ function renderHome() {
     </section>
     <section class="section" data-anchor="A5">
       <div class="shell">
-        <div class="section-head"><div><p class="eyebrow">Why CLAIRE</p><h2>Guidance over guesswork.</h2></div><p>CLAIRE carries forward the original front door's emphasis on clear questions, transparent structure, bias and accessibility checks, and portable prompts.</p></div>
+        <div class="section-head"><div><p class="eyebrow">Why CLARE</p><h2>Guidance over guesswork.</h2></div><p>CLARE carries forward the original front door's emphasis on clear questions, transparent structure, bias and accessibility checks, and portable prompts.</p></div>
         <div class="source-grid">
           <div><p class="mono-label">01 Simple</p><h3>Start in everyday language.</h3><p>Add only the context and constraints the task needs.</p></div>
           <div><p class="mono-label">02 Trustworthy</p><h3>Keep evidence visible.</h3><p>Status, sources, uncertainty, and human review remain part of the record.</p></div>
@@ -207,7 +212,7 @@ function renderCatalog(type) {
   const cfg = catalogConfig(type);
   const saved = state[type];
   const categories = allCategories(cfg.records, type);
-  document.title = `${cfg.title} | CLAIRE Prompting`;
+  document.title = `${cfg.title} | CLARE Prompting`;
   app.innerHTML = `
     <section class="shell page-intro" data-anchor="B1"><p class="eyebrow">${escapeHtml(cfg.eyebrow)}</p><h1>${escapeHtml(cfg.title)}</h1><p>${escapeHtml(cfg.lede)}</p></section>
     <div class="shell library-layout">
@@ -291,19 +296,19 @@ function renderDetail(type, slug) {
   const record = type === "glossary" ? getGlossary(slug) : type === "principles" ? getPrinciple(slug) : getFramework(slug);
   const cfg = catalogConfig(type);
   if (!record) {
-    document.title = "Record not found | CLAIRE Prompting";
+    document.title = "Record not found | CLARE Prompting";
     app.innerHTML = `<section class="shell error-state"><h1>That resource is not in this snapshot.</h1><p><a href="#/${type}">Return to ${escapeHtml(cfg.title.toLowerCase())}</a></p></section>`;
     return;
   }
   const title = recordTitle(record, type);
-  document.title = `${title} | CLAIRE Prompting`;
+  document.title = `${title} | CLARE Prompting`;
   app.innerHTML = `<article class="shell detail" data-anchor="C1">
     <a class="detail-back" href="#/${type}">← Back to ${escapeHtml(cfg.title.toLowerCase())}</a>
     <p class="mono-label">${escapeHtml((type === "glossary" ? `Source status: ${record.status}` : record.kind).replaceAll("_", " "))}</p>
     <h1>${escapeHtml(title)}</h1>
     <p class="detail-lede">${escapeHtml(plainText(recordDefinition(record, type)))}</p>
     <div class="detail-meta">${categoriesFor(record, type).slice(0, 5).map((category) => tag(category)).join("")}</div>
-    <div class="button-row"><button id="copy-link" class="button primary" type="button">Copy deep link</button>${type === "frameworks" ? `<a class="button" href="#worksheet">Open prompt worksheet</a>` : ""}<a class="button" data-studio-link href="${escapeHtml(state.returnUrl)}">Return to Studio</a></div>
+    <div class="button-row"><button id="copy-link" class="button primary" type="button">Copy deep link</button>${type === "frameworks" ? `<button id="open-worksheet" class="button" type="button" aria-controls="worksheet">Open prompt worksheet</button>` : ""}<a class="button" data-studio-link href="${escapeHtml(state.returnUrl)}">Return to Studio</a></div>
     <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
     ${type === "glossary" ? renderGlossaryDetail(record) : type === "principles" ? renderPrincipleDetail(record) : renderFrameworkDetail(record)}
   </article>`;
@@ -391,6 +396,12 @@ function bindDetail(type, record) {
     document.querySelector("#copy-status").textContent = success ? "Deep link copied." : "Copy was unavailable. Select the address from your browser.";
   });
   if (type !== "frameworks") return;
+  document.querySelector("#open-worksheet").addEventListener("click", () => {
+    const worksheet = document.querySelector("#worksheet");
+    worksheet.open = true;
+    worksheet.querySelector("summary").focus({ preventScroll: true });
+    worksheet.scrollIntoView({ block: "start", behavior: "instant" });
+  });
   const form = document.querySelector("#worksheet-form");
   if (!form) return;
   form.addEventListener("submit", (event) => {
@@ -415,8 +426,8 @@ function renderPrompts() {
   const variants = ["clear-framework", "clear-path-forward-framework", "clear-prompting-method"].map(getFramework).filter(Boolean);
   const classicPickerUrl = safeExternalUrl(config.classicPickerUrl) || "https://jonathankhobson.github.io/AI/glossary/startup-wizard.html";
   const classicBuilderUrl = safeExternalUrl(config.classicBuilderUrl) || "https://jonathankhobson.github.io/AI/glossary/prompt-builder.html";
-  document.title = "Prompt resources | CLAIRE Prompting";
-  app.innerHTML = `<section class="shell page-intro" data-anchor="D1"><p class="eyebrow">Prompt resources</p><h1>Choose a structure, then make it yours.</h1><p>The source library contains several similarly named CLEAR methods. They solve different problems and remain separate from the CLAIRE resource identity.</p></section><section class="shell prompt-grid" data-anchor="D2">${variants.map((record, index) => `<article class="prompt-card${index === 1 ? " featured" : ""}"><p class="mono-label">Source framework ${String(index + 1).padStart(2, "0")}</p><h2>${escapeHtml(record.label)}</h2><p>${escapeHtml(record.definition)}</p><div class="button-row"><a class="button${index === 1 ? " primary" : ""}" href="#/frameworks/${encodeURIComponent(record.slug)}">Open worksheet</a></div></article>`).join("")}<article class="prompt-card"><p class="mono-label">Browse by task</p><h2>Search all ${state.catalog.frameworks.length.toLocaleString()} prompt resources.</h2><p>Try a task such as lesson planning, research synthesis, feedback, or decision support.</p><div class="button-row"><a class="button" href="#/frameworks">Search library</a></div></article></section><section class="section dark" data-anchor="D3"><div class="shell"><div class="section-head"><div><p class="eyebrow">Preserved tools</p><h2>Need more guided support?</h2></div><p>The classic guided picker and advanced builder remain available from the canonical public resource site. Their interfaces remain separate from this compact Workshop Studio package.</p></div><div class="button-row"><a class="button primary" href="${escapeHtml(classicPickerUrl)}" target="_blank" rel="noopener noreferrer">Classic guided picker</a><a class="button" href="${escapeHtml(classicBuilderUrl)}" target="_blank" rel="noopener noreferrer">Classic advanced builder</a></div></div></section>`;
+  document.title = "Prompt resources | CLARE Prompting";
+  app.innerHTML = `<section class="shell page-intro" data-anchor="D1"><p class="eyebrow">Prompt resources</p><h1>Choose a structure, then make it yours.</h1><p>The source library contains several similarly named CLEAR methods. They solve different problems and remain separate from the CLARE resource identity.</p></section><section class="shell prompt-grid" data-anchor="D2">${variants.map((record, index) => `<article class="prompt-card${index === 1 ? " featured" : ""}"><p class="mono-label">Source framework ${String(index + 1).padStart(2, "0")}</p><h2>${escapeHtml(record.label)}</h2><p>${escapeHtml(record.definition)}</p><div class="button-row"><a class="button${index === 1 ? " primary" : ""}" href="#/frameworks/${encodeURIComponent(record.slug)}">Open framework</a></div></article>`).join("")}<article class="prompt-card"><p class="mono-label">Browse by task</p><h2>Search all ${state.catalog.frameworks.length.toLocaleString()} prompt resources.</h2><p>Try a task such as lesson planning, research synthesis, feedback, or decision support.</p><div class="button-row"><a class="button" href="#/frameworks">Search library</a></div></article></section><section class="section dark" data-anchor="D3"><div class="shell"><div class="section-head"><div><p class="eyebrow">Preserved tools</p><h2>Need more guided support?</h2></div><p>The classic guided picker and advanced builder remain available from the canonical public resource site. Their interfaces remain separate from this compact Workshop Studio package.</p></div><div class="button-row"><a class="button primary" href="${escapeHtml(classicPickerUrl)}" target="_blank" rel="noopener noreferrer">Classic guided picker</a><a class="button" href="${escapeHtml(classicBuilderUrl)}" target="_blank" rel="noopener noreferrer">Classic advanced builder</a></div></div></section>`;
 }
 
 function render() {

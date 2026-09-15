@@ -175,7 +175,8 @@ h3 { font-size: 1.2rem; }
 .worksheet-output label { display: grid; gap: 8px; color: #3f4958; font-weight: 680; }
 .worksheet-output textarea { min-height: 250px; margin: 8px 0 14px; font: .88rem/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; resize: vertical; }
 
-.prompt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 35px 0 48px; }
+.prompt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-block: 35px 48px; }
+.worksheet { scroll-margin-top: 96px; }
 .prompt-card { min-height: 245px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
 .prompt-card.featured { color: #fff; border-color: var(--navy); background: var(--navy); }
 .prompt-card.featured p { color: #bec9d8; }
