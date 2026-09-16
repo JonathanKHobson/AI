@@ -72,7 +72,7 @@ function applyConfig() {
   const returnResult = configuredReturnUrl();
   state.returnUrl = returnResult.url;
   document.querySelectorAll("[data-studio-link], [data-return-link]").forEach((link) => {
-    link.href = returnResult.source === "fallback" ? "https://ai-workshop-studio.jkylehobson.chatgpt.site/" : state.returnUrl;
+    link.href = returnResult.source === "fallback" && !location.pathname.startsWith("/resources/library") ? "https://jonathankhobson.github.io/portfolio/workshop-studio/" : state.returnUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     link.setAttribute("aria-label", `${link.textContent.trim()} (opens in a new tab)`);
