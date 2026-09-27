@@ -285,6 +285,9 @@ header{
   border-bottom: 1px solid var(--border);
 }
 
+/* Small screens: let the toolbar wrap so the theme toggle stays inside the viewport. */
+@media (max-width: 640px){ header{ flex-wrap: wrap; } }
+
 /* darker translucent header in dark mode */
 html[data-theme="dark"] header{
   background: rgba(12,18,32,.65);
@@ -492,6 +495,11 @@ padding-bottom: 28px;
 }
 .wrap.config-hidden #resizer{ display:none; }
 .wrap.config-hidden #configPanel{ display:none; }
+/* Grid items may shrink below their content width, so long preview tokens wrap inside the panel
+   instead of widening the page on narrow screens. Display only; the generated text is unchanged.
+   The hover lift scales from the top edge so a very tall panel never slides under the sticky header. */
+.wrap > .panel{ min-width:0; transform-origin: 50% 0; }
+#out{ overflow-wrap:anywhere; }
 
 
 /* Add breathing room to the right of the resizer only */
@@ -1626,8 +1634,9 @@ input:focus, textarea:focus, select:focus,
 <!-- Beta/BMC UI -->
 <link rel="stylesheet" href="./assets/beta-bmc.css?v=2025-09-29">
 <script defer
-        src="./assets/beta-bmc.js?v=2025-09-29"
+        src="./assets/beta-bmc.js?v=c9981a1e8b"
         data-beta="pill"
+        data-beta-label="Classic tool"
         data-bmc="discrete"
         data-bmc-dismissible="true"></script>
         
@@ -1708,7 +1717,7 @@ input:focus, textarea:focus, select:focus,
     <span class="spacer"></span>
 <span class="ctaGroup">
   <a class="btn sm" href="./saved-sessions.html" title="Browse your saved snapshots">View Saved Sessions</a>
-  <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Startup Wizard (alpha)</a>
+  <a href="./startup-wizard.html" class="btn sm" title="Guided, one-field-at-a-time mode" target="_blank" rel="noopener">Classic Startup Wizard</a>
 
 <button id="aiSettingsBtn" class="btn sm" title="AI Assist Settings">AI Settings</button>
 
@@ -2188,8 +2197,8 @@ input:focus, textarea:focus, select:focus,
       console.info('Bias data not found at', path);
       // Light fallbacks for common naming/paths
       if (!final) {
-        const next = (path === './js/bias.data.js')
-          ? './js/biases.data.js'
+        const next = (path === './js/biases.data.js')
+          ? './js/bias.data.js'
           : (path === '../js/biases.data.js')
             ? './js/biased.data.js'
             : null;
@@ -2198,7 +2207,7 @@ input:focus, textarea:focus, select:focus,
     };
     document.head.appendChild(s);
   }
-  inject('./js/bias.data.js');
+  inject('./js/biases.data.js');
 })();
 </script>
 
@@ -2853,6 +2862,12 @@ function hidePickerOnDeeplinkAndScroll(){
 </script>
 
 <script>
+// whenDataReady is declared in a later script. Queue early calls until that barrier exists.
+var __whenDataReadyEarly = [];
+function whenDataReady(fn){ __whenDataReadyEarly.push(fn); }
+</script>
+
+<script>
 // Boot: build list, then apply deeplink (if present), then ensure picker selection is correct
 whenDataReady(()=>{
   try { refreshTemplateList && refreshTemplateList(); } catch(_){}
@@ -3054,6 +3069,8 @@ function whenDataReady(fn){
     }
   });
 }
+// Run callbacks that were queued before this barrier was declared.
+if (typeof __whenDataReadyEarly !== 'undefined') __whenDataReadyEarly.splice(0).forEach(whenDataReady);
 </script>
 
 

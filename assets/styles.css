@@ -1,7 +1,7 @@
 :root {
   --ink: #202124;
   --muted: #5d6572;
-  --quiet: #7b8390;
+  --quiet: #667080;
   --paper: #fff;
   --soft: #f4f7fb;
   --line: #dfe4eb;
@@ -97,7 +97,7 @@ h3 { font-size: 1.2rem; }
 .path-list { border-top: 1px solid var(--line); }
 .path { display: grid; grid-template-columns: 88px minmax(0,.8fr) minmax(260px,1.2fr) 122px; gap: 27px; align-items: center; padding: 30px 8px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
 .path:hover { color: var(--ink); background: #fff; text-decoration: none; }
-.path-number { color: var(--line-strong); font: italic 2.2rem/1 Georgia, serif; }
+.path-number { color: var(--quiet); font: italic 2.2rem/1 Georgia, serif; }
 .path-title { font-size: 1.42rem; font-weight: 740; letter-spacing: -.025em; }
 .path-copy { color: var(--muted); }
 .path-action { color: var(--blue); font-weight: 700; text-align: right; }

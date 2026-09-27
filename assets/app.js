@@ -128,7 +128,8 @@ function renderHome() {
           <p class="eyebrow">A practical AI field guide</p>
           <h1>Make the ask clear. <span>Keep the thinking visible.</span></h1>
           <p class="hero-copy">Explore Kyle Hobson's full AI glossary, compare prompting frameworks, and turn a useful pattern into a working prompt worksheet.</p>
-          <div class="button-row"><a class="button primary" href="#/glossary">Search the glossary</a><a class="button" href="#/frameworks">Find a framework</a></div>
+          <div class="button-row"><a class="button primary" href="#/glossary">Search the glossary</a><a class="button" href="#/frameworks">Find a framework</a><a class="button" href="#/frameworks/costar-framework">Try the COSTAR worksheet</a></div>
+          <p class="source-note">CLARE is the name of this workspace. It is separate from the CLEAR frameworks in the library.</p>
         </div>
         <aside class="hero-index" aria-label="Resource index" data-anchor="A3">
           <div class="index-line"><span class="mono-label">Glossary</span><strong>${glossary.length.toLocaleString()} terms</strong><span>Definitions, aliases, status, and related ideas</span></div>

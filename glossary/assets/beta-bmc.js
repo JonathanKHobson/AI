@@ -18,7 +18,8 @@
     const cfg = {
       beta: (root?.dataset.beta || cfgEl?.dataset.beta || "bar").toLowerCase(),     // 'bar' | 'pill' | 'off'
       bmc:  (root?.dataset.bmc  || cfgEl?.dataset.bmc  || "obvious").toLowerCase(), // 'obvious' | 'discrete' | 'off'
-      bmcDismissible: String(root?.dataset.bmcDismissible || cfgEl?.dataset.bmcDismissible || "").toLowerCase() === "true"
+      bmcDismissible: String(root?.dataset.bmcDismissible || cfgEl?.dataset.bmcDismissible || "").toLowerCase() === "true",
+      betaLabel: root?.dataset.betaLabel || cfgEl?.dataset.betaLabel || ""   // optional notice text, e.g. "Classic tool"
     };
     if (cfg.beta === "discrete") cfg.beta = "pill"; // tolerate misspelling
 
@@ -138,8 +139,8 @@
       dock.className = "betaDock";
       dock.setAttribute("aria-expanded", "true");
       dock.innerHTML = `
-        <div class="betaPanel" role="note" aria-label="Prototype notice">
-          <span class="label">beta prototype</span>
+        <div class="betaPanel" role="note" aria-label="${cfg.betaLabel ? cfg.betaLabel + " notice" : "Prototype notice"}">
+          <span class="label">${cfg.betaLabel || "beta prototype"}</span>
           <button class="feedback" type="button" aria-label="Send feedback">Feedback</button>
           <button class="collapse" type="button" aria-label="Hide (collapse to edge)">×</button>
         </div>
