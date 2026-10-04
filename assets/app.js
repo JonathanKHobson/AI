@@ -145,6 +145,7 @@ function renderHome() {
           <a class="path" href="#/glossary"><span class="path-number">01</span><span class="path-title">What does this term mean?</span><span class="path-copy">Search definitions, aliases, categories, related concepts, and recorded sources.</span><span class="path-action">Open glossary</span></a>
           <a class="path" href="#/frameworks"><span class="path-number">02</span><span class="path-title">How should I structure the task?</span><span class="path-copy">Browse frameworks, methods, heuristics, strategies, and practical prompt patterns.</span><span class="path-action">Find a fit</span></a>
           <a class="path" href="#/principles"><span class="path-number">03</span><span class="path-title">What should I check?</span><span class="path-copy">Review bias, ethics, accessibility, and critical thinking references from the source library.</span><span class="path-action">Review checks</span></a>
+          <a class="path" href="https://activity-atlas.jkylehobson.chatgpt.site/"><span class="path-number">04</span><span class="path-title">What could we try together?</span><span class="path-copy">Explore Activity Atlas for learning, creating, reflecting, and working together.</span><span class="path-action">Open Activity Atlas ↗</span></a>
         </div>
       </div>
     </section>
