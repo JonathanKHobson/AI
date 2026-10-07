@@ -1,0 +1,26 @@
+{
+  "name": "brew-bliss-film",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Brew Bliss — 'Morning Smile' 15 s portrait brand film. Every frame rendered in a real browser (Three.js/WebGL + Canvas 2D) at t = frame/60; score and sound effects synthesized in JavaScript at 48 kHz stereo.",
+  "type": "module",
+  "license": "SEE LICENSE IN README.md",
+  "scripts": {
+    "audio": "node scripts/render-audio.mjs",
+    "preview": "node scripts/render-video.mjs --preview",
+    "frames": "node scripts/render-video.mjs --stills",
+    "video": "node scripts/render-video.mjs",
+    "mux": "node scripts/mux.mjs",
+    "qa": "node scripts/qa.mjs",
+    "package": "node scripts/package.mjs",
+    "build": "npm run audio && npm run video && npm run mux && npm run qa && npm run package"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.1.0",
+    "@fontsource/fraunces": "^5.1.0",
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
