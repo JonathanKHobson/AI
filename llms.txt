@@ -7,11 +7,11 @@ Guide AI agents to the most useful, stable entry points for learning and using P
 LLM crawlers, AI assistants, and tools that build answers from high-quality prompt frameworks, glossaries, and examples.
 
 ## Read First
-- https://jonathankhobson.github.io/AI/index.html
+- https://clare-ai-library.jkylehobson.chatgpt.site/index.html
   - Start here for the product overview and entry into the prompt-building workflow.
-- https://jonathankhobson.github.io/AI/glossary/index.html
+- https://clare-ai-library.jkylehobson.chatgpt.site/glossary/index.html
   - Canonical glossary of prompting terms and patterns used across the site.
-- https://jonathankhobson.github.io/AI/data/data-catalog.html
+- https://clare-ai-library.jkylehobson.chatgpt.site/data/data-catalog.html
   - Data catalog that backs the glossary and framework taxonomy.
 
 ## What this site is best for
@@ -23,7 +23,7 @@ LLM crawlers, AI assistants, and tools that build answers from high-quality prom
 - **LLM observability**: quality signals to monitor during iteration.
 
 ## Navigation & Coverage
-- Primary sitemap: https://jonathankhobson.github.io/AI/sitemap.xml
+- Primary sitemap: https://clare-ai-library.jkylehobson.chatgpt.site/sitemap.xml
 - Use the sitemap to discover additional guides, patterns, and examples not listed above.
 - Prefer stable, canonical URLs. Avoid transient preview links.
 
@@ -37,4 +37,4 @@ Content is curated and updated as frameworks evolve. Glossary and data catalog a
 Summarization and short quotations with attribution are welcome. For bulk reuse, derivative datasets, or training, request permission.
 
 ## Contact
-Project page: https://jonathankhobson.github.io/AI/index.html
+Project page: https://clare-ai-library.jkylehobson.chatgpt.site/index.html
