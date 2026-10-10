@@ -1,0 +1,22 @@
+{
+  "name": "kyle-hobson-ai-glossary-library",
+  "version": "1.0.0",
+  "private": true,
+  "license": "(AGPL-3.0-only AND CC-BY-SA-4.0)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build:records": "node data/library/build-library-records.mjs",
+    "build:metadata": "node data/library/build-library-metadata.mjs",
+    "verify": "node data/library/verify-projections.mjs --public-catalog ../assets/catalog.json",
+    "verify:standalone": "node data/library/verify-projections.mjs",
+    "build:sqlite": "python3 build_ai_glossary_mcp_index.py --root .",
+    "validate:templates": "node data/scripts/validate.mjs",
+    "check:library": "node data/library/check-library.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1"
+  }
+}

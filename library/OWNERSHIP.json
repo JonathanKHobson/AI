@@ -1,0 +1,52 @@
+{
+  "owner": "Jonathan Kyle Hobson",
+  "public_name": "Kyle Hobson",
+  "confirmation_date": "2026-10-10",
+  "basis": "Direct owner confirmation during the authorized Phase 3 publication work",
+  "canonical_public_source": "https://github.com/JonathanKHobson/AI/tree/main/library",
+  "release_version": "1.0.0",
+  "publication_authorized": true,
+  "normalized_record_count": 1740,
+  "normalized_sha256": "72dd4adaab1313a16b4709a181beddb14f229db23ced59d0bcee211a72f09eef",
+  "covered_sources": [
+    {
+      "path": "data/database/templates.json",
+      "sha256": "8a1d449a68951de1ce3075e2bee2f18c87b55c8d6143ef4e545cc4a85a6fb7d4",
+      "source_sha256": "8a1d449a68951de1ce3075e2bee2f18c87b55c8d6143ef4e545cc4a85a6fb7d4"
+    },
+    {
+      "path": "glossary/js/glossary.data.js",
+      "sha256": "329e90ae14ee2454d38480ef1fcf32d0033dd2bce0d95abd00d202b3cbf75493",
+      "source_sha256": "329e90ae14ee2454d38480ef1fcf32d0033dd2bce0d95abd00d202b3cbf75493"
+    },
+    {
+      "path": "glossary/js/biases.data.js",
+      "sha256": "13c83972960f42740286b71ff3e9dd43461c271286d255eb3733037bb6c3e2d7",
+      "source_sha256": "4b9decafe11b4e0de6a5d37e7d5ec82d571badf8dcc4baa9eb5f17f22f676c9f",
+      "transformation": "Replace personal Downloads draft-file locator with authoring-drafts/new_bias_gap_fill_entries.md; preserve all IDs/content/citations."
+    },
+    {
+      "path": "glossary/js/templates.data.js",
+      "sha256": "2c1b4f82f9aed48d8fe9c586653e5192ed0c7348b4603528a558a96030264d51",
+      "source_sha256": "2c1b4f82f9aed48d8fe9c586653e5192ed0c7348b4603528a558a96030264d51"
+    },
+    {
+      "path": "glossary/js/templates.tasks.data.js",
+      "sha256": "45c5cd87e94157982f48d40b8bd071b5d60b82dd88b04c63a60b9b0b3eb7cf00",
+      "source_sha256": "45c5cd87e94157982f48d40b8bd071b5d60b82dd88b04c63a60b9b0b3eb7cf00"
+    },
+    {
+      "path": "data/library/library.records.json",
+      "sha256": "72dd4adaab1313a16b4709a181beddb14f229db23ced59d0bcee211a72f09eef",
+      "source_sha256": "f1582bde9d5e32b1bcf2f7a754e6e47bd8a618c77740846b26016bc4bbc0e69b",
+      "transformation": "Replace personal Downloads draft-file locator with authoring-drafts/new_bias_gap_fill_entries.md; preserve all IDs/content/citations."
+    }
+  ],
+  "licensing_instruction": "Use the same licensing structure and documentation as Compass Suite, as explicitly directed by Kyle on October 10, 2026.",
+  "licenses": {
+    "original_software": "AGPL-3.0-only",
+    "original_content_and_dataset_compilation": "CC-BY-SA-4.0",
+    "third_party": "Existing file-local and upstream licenses retained",
+    "official_brand": "Reserved; truthful attribution/reference use permitted"
+  }
+}

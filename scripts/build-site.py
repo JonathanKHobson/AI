@@ -8,7 +8,7 @@ if out.exists(): shutil.rmtree(out)
 out.mkdir()
 for name in subprocess.check_output(["git", "ls-files"], cwd=root, text=True).splitlines():
     p = root / name
-    if name.startswith((".git", ".openai/", "scripts/", "docs/")) or p.suffix == ".md": continue
+    if name.startswith((".git", ".openai/", "scripts/", "docs/", "library/")) or p.suffix == ".md": continue
     if not p.is_file(): continue
     dest = out / name
     dest.parent.mkdir(parents=True, exist_ok=True)

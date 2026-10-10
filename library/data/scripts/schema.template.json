@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Template",
+  "type": "object",
+  "required": ["label", "fields", "template_src"],
+  "properties": {
+    "id":   {"type":"string"},
+    "slug": {"type":"string"},
+    "label":{"type":"string","minLength":1},
+    
+    "definition":{"type":"string"},
+    "help":{"type":"string"},
+    "categories":{"type":"array","items":{"type":"string"}},
+    "tags":{"type":"array","items":{"type":"string"}},
+    
+    "fields":{
+      "type":"array","minItems":1,
+      "items":{
+        "type":"object",
+        "required":["label","key","type"],
+        "properties":{
+          "label":{"type":"string"},
+          "desc":{"type":"string"},
+          "key":{"type":"string"},
+          "ph":{"type":"string"},
+          "type": {
+          "type": "string",
+ 		  "enum": ["text","textarea","select","repeater","typeahead","checkbox","multiselect"] },
+          "options": { "type": "array", "items": { "type": "string" } },
+          "min":{"type":"number"},
+          "max":{"type":"number"},
+          "itemType":{"type":"string"},
+          "itemLabel":{"type":"string"},
+          "autofill":{"type":"string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "template_src":{"type":"string"},
+    "facets": {
+      "type": "object",
+      "description": "Derived classification facets. Prefer these over legacy root fields when present.",
+      "properties": {
+        "top_categories": { "type": "array", "items": { "type": "string" } },
+        "aliases_categories": { "type": "array", "items": { "type": "string" } },
+        "subcategories": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "additionalProperties": true
+}

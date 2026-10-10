@@ -1,0 +1,247 @@
+{
+  "source_owner": "Kyle Hobson AI Glossary local authoring library",
+  "publication_owner": "Jonathan Kyle Hobson",
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": ".gitignore",
+      "source_sha256": null,
+      "output_sha256": "0cf06116ab3ffccba065a4bc7e312ad271cb7ba6a2d8dbc8244f48686023d744",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "LICENSE",
+      "source_sha256": null,
+      "output_sha256": "64bd2e1b549737346c4faecb4607b90f1eab59cad59ca3be7c72e772a489f567",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "NOTICE.md",
+      "source_sha256": null,
+      "output_sha256": "ab955aeba31de55e3d74224279d062f63ceaabcd51e096fde736f54fbb8f38e6",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "OWNERSHIP.json",
+      "source_sha256": null,
+      "output_sha256": "6e72234399cb1b2e2a39435132e37c486d0c747f37a5e7e48993f37a007f75bf",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "README.md",
+      "source_sha256": "a992066fadcd5e6994db4ad6e1c8b6d9a28e566623a255fe02d256c6b18ebcab",
+      "output_sha256": "4f470b47195a665ef6abde00445489f8e2d4409ebc69e0652f5840f660e89989",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "source_sha256": null,
+      "output_sha256": "85e22357792f58f61a67189710b7ee1896f32aaaa9c2845e2132e05aa0bc4cf0",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "ai_glossary_mcp_common.py",
+      "source_sha256": "88c374c042e017cd61b89f971ee8c5b7d269c704591796f7cbe799b76bdc7b46",
+      "output_sha256": "88c374c042e017cd61b89f971ee8c5b7d269c704591796f7cbe799b76bdc7b46",
+      "transformation": "none"
+    },
+    {
+      "path": "ai_glossary_mcp_server.py",
+      "source_sha256": "7c5738781765825e1c8f334ef0eb441a442dae4295f3e8dc389c1b49eca9ff88",
+      "output_sha256": "7c5738781765825e1c8f334ef0eb441a442dae4295f3e8dc389c1b49eca9ff88",
+      "transformation": "none"
+    },
+    {
+      "path": "build_ai_glossary_mcp_index.py",
+      "source_sha256": "72182263618df83784c0bc287dcfe82e60af910c81857229473d76be66fc86f1",
+      "output_sha256": "72182263618df83784c0bc287dcfe82e60af910c81857229473d76be66fc86f1",
+      "transformation": "none"
+    },
+    {
+      "path": "data/database/templates.json",
+      "source_sha256": "8a1d449a68951de1ce3075e2bee2f18c87b55c8d6143ef4e545cc4a85a6fb7d4",
+      "output_sha256": "8a1d449a68951de1ce3075e2bee2f18c87b55c8d6143ef4e545cc4a85a6fb7d4",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/browser-projection.mjs",
+      "source_sha256": "7867c124ecd8490046f6879a17373720d9a0c2ec0f8b6eb6c9b29fa2870606af",
+      "output_sha256": "7867c124ecd8490046f6879a17373720d9a0c2ec0f8b6eb6c9b29fa2870606af",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/build-library-metadata.mjs",
+      "source_sha256": "c79b5d378333a0e0caeac681e63ca965c980d3c59604f189499bdc72816a94d1",
+      "output_sha256": "c79b5d378333a0e0caeac681e63ca965c980d3c59604f189499bdc72816a94d1",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/build-library-records.mjs",
+      "source_sha256": "7ac508f85ba07e52ef807cfd744c5d9e562e95bd0aab4c40841c3f8442977a08",
+      "output_sha256": "7ac508f85ba07e52ef807cfd744c5d9e562e95bd0aab4c40841c3f8442977a08",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/check-library.mjs",
+      "source_sha256": "6a8bae57805b0620404736ae007a1a98561688726f219a16f7e53ace935433ac",
+      "output_sha256": "79f690f01140da59d66081e29c30652d7636a5c7782c5736322bfc790daf6875",
+      "transformation": "Retain complete schema and relationship checks; add metadata parity and explicit recipient-local runtime/config selection."
+    },
+    {
+      "path": "data/library/library-build-common.mjs",
+      "source_sha256": "e372e96bcd660153e084bb5bdfd85f9897ce928ad1c6c6569b045dbcb2b7d01a",
+      "output_sha256": "e372e96bcd660153e084bb5bdfd85f9897ce928ad1c6c6569b045dbcb2b7d01a",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/library.metadata.json",
+      "source_sha256": "3bffd8a244e0003ba1abc0bcd668189364bf270d879359a5d60fa91925309765",
+      "output_sha256": "c2612bee6ee7075433e368e104f2d1c5a4cb08b205e8c364ebb14663489b7bd2",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "data/library/library.records.json",
+      "source_sha256": "f1582bde9d5e32b1bcf2f7a754e6e47bd8a618c77740846b26016bc4bbc0e69b",
+      "output_sha256": "72dd4adaab1313a16b4709a181beddb14f229db23ced59d0bcee211a72f09eef",
+      "transformation": "Rebuild from public inputs; only the 106 personal draft-file locators differ from the original normalized records."
+    },
+    {
+      "path": "data/library/library.records.schema.json",
+      "source_sha256": "784d0de7a507a376b9294e8b5f738f578df255a5509a9262efc9b2aa5db1ff01",
+      "output_sha256": "784d0de7a507a376b9294e8b5f738f578df255a5509a9262efc9b2aa5db1ff01",
+      "transformation": "none"
+    },
+    {
+      "path": "data/library/verify-projections.mjs",
+      "source_sha256": "5a1bc25eb0512e609919007935516c2fb617df6ed045e829eca4286422bb0666",
+      "output_sha256": "bccc097b239e8610c38e07bf347303b9c3261ef8a2f369847903d40f6c6122e0",
+      "transformation": "Report owner-authorized licensing separately from technical checks; verify exact public hashes and documented original browser-source lineage."
+    },
+    {
+      "path": "data/library/verify_sqlite_projection.py",
+      "source_sha256": "d97a56fcc965e543d410d952f4f7fa5bc62f9e099b7f148f4d406f02ff82caa2",
+      "output_sha256": "d97a56fcc965e543d410d952f4f7fa5bc62f9e099b7f148f4d406f02ff82caa2",
+      "transformation": "none"
+    },
+    {
+      "path": "data/scripts/build-wrapper.mjs",
+      "source_sha256": "8882f13cd8feda7011d268635bdfd94b11d44d9bafa0f3d352f81cf9535de0aa",
+      "output_sha256": "8882f13cd8feda7011d268635bdfd94b11d44d9bafa0f3d352f81cf9535de0aa",
+      "transformation": "none"
+    },
+    {
+      "path": "data/scripts/schema.template.json",
+      "source_sha256": "0c9a699324fdd2fd49be4a09e3ace15539b8da2989e504dde154f5503573544f",
+      "output_sha256": "0c9a699324fdd2fd49be4a09e3ace15539b8da2989e504dde154f5503573544f",
+      "transformation": "none"
+    },
+    {
+      "path": "data/scripts/validate.mjs",
+      "source_sha256": "acc7219daf458b680ffef780ed911a930eec00a5e2650a94ab0ae20a6492c44f",
+      "output_sha256": "acc7219daf458b680ffef780ed911a930eec00a5e2650a94ab0ae20a6492c44f",
+      "transformation": "none"
+    },
+    {
+      "path": "docs/library-records-schema.md",
+      "source_sha256": "996d246110b392ccbe641e320f0b6dda828c80cc9b308b0cd08658faf7e5cf50",
+      "output_sha256": "996d246110b392ccbe641e320f0b6dda828c80cc9b308b0cd08658faf7e5cf50",
+      "transformation": "none"
+    },
+    {
+      "path": "docs/local-library-access.md",
+      "source_sha256": "8b2da9c57217d958e2e9924167e86fe9670b2e66392f24c340eec1967c3f9a5c",
+      "output_sha256": "9bfa18f5f01f216b0676da4aa20113fc7134abe5157a7cb4523102af33e8e82d",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "docs/project-map.md",
+      "source_sha256": null,
+      "output_sha256": "3c4deee7d7677e148654ebcdefa2f2fbf8e4985fd730412c27900ae076023f61",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "glossary/js/biases.data.js",
+      "source_sha256": "4b9decafe11b4e0de6a5d37e7d5ec82d571badf8dcc4baa9eb5f17f22f676c9f",
+      "output_sha256": "13c83972960f42740286b71ff3e9dd43461c271286d255eb3733037bb6c3e2d7",
+      "transformation": "Replace a personal draft-file locator with authoring-drafts/new_bias_gap_fill_entries.md; preserve content and identifiers."
+    },
+    {
+      "path": "glossary/js/glossary.data.js",
+      "source_sha256": "329e90ae14ee2454d38480ef1fcf32d0033dd2bce0d95abd00d202b3cbf75493",
+      "output_sha256": "329e90ae14ee2454d38480ef1fcf32d0033dd2bce0d95abd00d202b3cbf75493",
+      "transformation": "none"
+    },
+    {
+      "path": "glossary/js/templates.data.js",
+      "source_sha256": "2c1b4f82f9aed48d8fe9c586653e5192ed0c7348b4603528a558a96030264d51",
+      "output_sha256": "2c1b4f82f9aed48d8fe9c586653e5192ed0c7348b4603528a558a96030264d51",
+      "transformation": "none"
+    },
+    {
+      "path": "glossary/js/templates.tasks.data.js",
+      "source_sha256": "45c5cd87e94157982f48d40b8bd071b5d60b82dd88b04c63a60b9b0b3eb7cf00",
+      "output_sha256": "45c5cd87e94157982f48d40b8bd071b5d60b82dd88b04c63a60b9b0b3eb7cf00",
+      "transformation": "none"
+    },
+    {
+      "path": "legal/BRAND-AND-ATTRIBUTION.md",
+      "source_sha256": null,
+      "output_sha256": "a223c4e0f1968dad22338b025d9be557496e900313acdc6473564e14a5d9fc35",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "legal/LICENSE-CODE-AGPL-3.0.txt",
+      "source_sha256": null,
+      "output_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "legal/LICENSE-DOCS-CC-BY-SA-4.0.md",
+      "source_sha256": null,
+      "output_sha256": "4b002b54205744868b9f356ba546d0f0be1c5ea6058ee519dababa0bceb364cb",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "package-lock.json",
+      "source_sha256": "e51cf87d1885489e94a8bbc0869f54aa63798dbf864d3730df4788ee023fd732",
+      "output_sha256": "e8e920ca4ca17a5be3c283fa5316d8b4ffd3749a0ec80dab112a41956f45dd8e",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "package.json",
+      "source_sha256": "79b4c9da7558230d769a0f5a5e243b20349681b361dcfccd94a29557ae14f2c9",
+      "output_sha256": "59c8b599f998181b3a735b9518d82f66b209a722d4f3372e0179b5217a700973",
+      "transformation": "Release-specific documentation, license scope, owner confirmation or package metadata for the authorized Compass license transition."
+    },
+    {
+      "path": "requirements-mcp.txt",
+      "source_sha256": "2be59ec00f23de78b8bb79ca54619150d7669a6e6f14558ecf9b006129a8d0d9",
+      "output_sha256": "2be59ec00f23de78b8bb79ca54619150d7669a6e6f14558ecf9b006129a8d0d9",
+      "transformation": "none"
+    },
+    {
+      "path": "scripts/check_aiglossary_mcp.py",
+      "source_sha256": "c7b502069e505e431822ce4f47ac5b2400f0e4ea1b96ad751824207b4220e7a9",
+      "output_sha256": "3551c0eed608ef7a2db101eb0157546b3014efde513dc129489efd94cd5cd068",
+      "transformation": "Self-contained recipient-local read-only SQLite and all-tool stdio checks; inspect client config only when explicitly selected."
+    },
+    {
+      "path": "scripts/run_aiglossary_mcp.sh",
+      "source_sha256": "bb666c2d8cb532d3cedd5ae741e556af798c19b9dce7d0c6d739756c0c5a39e1",
+      "output_sha256": "e7b846f8d6d486167675ac9b29116e1cb0c12df8920404e79f0a551f9a2cd499",
+      "transformation": "Recipient-local source/runtime paths; no personal fallback or global configuration changes."
+    },
+    {
+      "path": "scripts/setup_aiglossary_mcp_runtime.sh",
+      "source_sha256": "e2964aa6bcff7fe2dfb108de81de8b580678d1e56201ed68cd3d088e89e57d65",
+      "output_sha256": "377952019c63394881bdd8795a3effbc84f38f012ee93a8dde0137a951f1858d",
+      "transformation": "Recipient-local Python runtime setup; no personal fallback, runtime deletion or global configuration changes."
+    }
+  ],
+  "excluded": [
+    "Personal client configuration and credentials",
+    "Installed runtimes, node_modules and generated SQLite databases",
+    "Historical HTML, backups and unrelated authoring documents"
+  ],
+  "manifest_note": "This manifest omits itself to avoid a circular digest; the Git commit and release per-file inventory bind its bytes."
+}

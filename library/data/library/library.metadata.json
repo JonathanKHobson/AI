@@ -1,0 +1,2284 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-10-10T18:33:41.891Z",
+  "counts": {
+    "total_records": 1740,
+    "collections": {
+      "bias": 532,
+      "framework": 366,
+      "glossary": 842
+    },
+    "kinds": {
+      "dilemma": 244,
+      "bias": 209,
+      "technique": 115,
+      "llm-bias": 36,
+      "unknown": 493,
+      "framework": 320,
+      "strategy": 123,
+      "heuristic": 31,
+      "tool": 15,
+      "facilitation": 7,
+      "helper": 1,
+      "task": 3,
+      "term": 58,
+      "pattern": 68,
+      "anti-pattern": 4,
+      "theory": 1,
+      "policy": 1,
+      "quality-attribute": 2,
+      "training": 3,
+      "observability": 1,
+      "concept": 1,
+      "capability": 2,
+      "tradeoff": 1,
+      "governance": 1
+    },
+    "statuses": {
+      "source": 532,
+      "published": 366,
+      "draft": 123,
+      "verified": 715,
+      "duplicate_candidate": 4
+    },
+    "by_collection_kind_status": {
+      "bias": {
+        "dilemma": {
+          "source": 244
+        },
+        "bias": {
+          "source": 209
+        },
+        "technique": {
+          "source": 35
+        },
+        "llm-bias": {
+          "source": 36
+        },
+        "unknown": {
+          "source": 8
+        }
+      },
+      "framework": {
+        "framework": {
+          "published": 218
+        },
+        "strategy": {
+          "published": 93
+        },
+        "technique": {
+          "published": 16
+        },
+        "heuristic": {
+          "published": 17
+        },
+        "tool": {
+          "published": 14
+        },
+        "facilitation": {
+          "published": 7
+        },
+        "helper": {
+          "published": 1
+        }
+      },
+      "glossary": {
+        "framework": {
+          "draft": 49,
+          "verified": 53
+        },
+        "technique": {
+          "verified": 57,
+          "draft": 7
+        },
+        "unknown": {
+          "verified": 465,
+          "draft": 16,
+          "duplicate_candidate": 4
+        },
+        "strategy": {
+          "draft": 1,
+          "verified": 29
+        },
+        "task": {
+          "verified": 3
+        },
+        "term": {
+          "verified": 53,
+          "draft": 5
+        },
+        "pattern": {
+          "verified": 35,
+          "draft": 33
+        },
+        "anti-pattern": {
+          "draft": 4
+        },
+        "heuristic": {
+          "verified": 14
+        },
+        "theory": {
+          "verified": 1
+        },
+        "policy": {
+          "draft": 1
+        },
+        "quality-attribute": {
+          "draft": 2
+        },
+        "tool": {
+          "verified": 1
+        },
+        "training": {
+          "verified": 3
+        },
+        "observability": {
+          "draft": 1
+        },
+        "concept": {
+          "verified": 1
+        },
+        "capability": {
+          "draft": 2
+        },
+        "tradeoff": {
+          "draft": 1
+        },
+        "governance": {
+          "draft": 1
+        }
+      }
+    }
+  },
+  "tag_namespace_counts": {
+    "persona": 7613,
+    "topic": 2232,
+    "use": 1914,
+    "type": 1184,
+    "phase": 994,
+    "level": 694,
+    "source": 638,
+    "scope": 530,
+    "class": 526,
+    "lens": 495,
+    "field": 359,
+    "kind": 352,
+    "theme": 195,
+    "domain": 173,
+    "risk": 124,
+    "batch": 106,
+    "lane": 106,
+    "origin": 102,
+    "has": 87,
+    "mode": 67,
+    "identity": 9,
+    "persona_kind": 8,
+    "role": 8,
+    "condition": 4,
+    "region": 3,
+    "alt": 1,
+    "sector": 1
+  },
+  "category_counts": {
+    "ethics": 164,
+    "cognitive": 148,
+    "business": 145,
+    "biases": 144,
+    "benchmarks & evaluations": 119,
+    "education": 107,
+    "community": 106,
+    "ai": 101,
+    "design": 98,
+    "writing": 94,
+    "planning-okrs": 93,
+    "planning": 92,
+    "operations": 91,
+    "research": 91,
+    "task-strategy": 87,
+    "strategy": 84,
+    "mental-health": 81,
+    "creativity": 74,
+    "marketing": 61,
+    "reasoning": 61,
+    "analysis": 59,
+    "decisions": 58,
+    "ideation": 56,
+    "ml fundamentals": 55,
+    "governance": 54,
+    "incidents-decisions": 52,
+    "teaching": 48,
+    "communication": 47,
+    "facilitation": 45,
+    "ai-ethics": 44,
+    "cbt-rebt": 43,
+    "decision": 43,
+    "purpose": 43,
+    "product": 42,
+    "quality": 42,
+    "general-cognitive-biases": 40,
+    "cultural": 39,
+    "parts-somatic": 39,
+    "assessment": 38,
+    "security & safety": 37,
+    "potential-llm-bias-and-stereotypes": 36,
+    "prompt-fundamentals": 36,
+    "evaluation": 34,
+    "safety": 31,
+    "conversational design": 30,
+    "story-structure": 30,
+    "systems": 30,
+    "wellbeing": 30,
+    "reflection": 28,
+    "social": 28,
+    "prompt-development": 27,
+    "storytelling": 27,
+    "additional reasoning models": 26,
+    "inclusive-ethics": 26,
+    "instructional-design": 26,
+    "persona-role": 26,
+    "civic-governance": 25,
+    "stakeholders": 25,
+    "classroom-dialogue": 24,
+    "communications": 24,
+    "copy-frameworks": 24,
+    "copywriting": 24,
+    "critical-thinking": 24,
+    "quality-lean": 24,
+    "reasoning models or structures": 24,
+    "story-culture": 24,
+    "divergent & creative thinking/reasoning models": 23,
+    "prompting strategies": 23,
+    "mapping": 22,
+    "participatory-research": 22,
+    "brainstorming": 21,
+    "awareness": 20,
+    "bias-awareness-techniques": 20,
+    "engineering-practice": 20,
+    "management": 20,
+    "prioritization": 20,
+    "prompt development techniques": 20,
+    "teamwork": 20,
+    "delivery": 19,
+    "interpersonal": 19,
+    "life-design": 19,
+    "values-purpose": 19,
+    "logic": 18,
+    "meta-prompt strategies": 18,
+    "policy": 18,
+    "reliability": 18,
+    "risk-safety": 18,
+    "statistics": 18,
+    "alignment": 17,
+    "analysis-synthesis": 17,
+    "campaigns-content": 17,
+    "orchestration": 17,
+    "workshop-labs": 17,
+    "discovery": 16,
+    "research-literacy": 16,
+    "safety-meds": 16,
+    "bias-mitigation-techniques": 15,
+    "mitigation": 15,
+    "western-centric-bias": 15,
+    "rhetoric": 14,
+    "cultural frameworks": 13,
+    "data-stewardship": 13,
+    "economics": 13,
+    "expressive-dialogue": 13,
+    "strategy-mapping": 13,
+    "thinking frameworks": 13,
+    "editing-refine": 12,
+    "eval-graders": 12,
+    "narrative": 12,
+    "prompt patterns": 12,
+    "safety-restoration": 12,
+    "user behavior": 12,
+    "analytics": 11,
+    "emotional thinking frameworks": 11,
+    "engineering": 11,
+    "innovation": 11,
+    "logical and analytical reasoning": 11,
+    "mindfulness": 11,
+    "multi-prompt strategies": 11,
+    "probability": 11,
+    "rewrite-tools": 11,
+    "testing": 11,
+    "additional thinking systems/structures": 10,
+    "architecture": 10,
+    "drafting": 10,
+    "innovative thinking models/structures": 10,
+    "models": 10,
+    "non-traditional thinking models": 10,
+    "positioning": 10,
+    "productivity": 10,
+    "safety-governance": 10,
+    "self-reflection": 10,
+    "ai-ops-eval": 9,
+    "careers": 9,
+    "identity-story": 9,
+    "physics": 9,
+    "quantum": 9,
+    "social-choice": 9,
+    "architectures": 8,
+    "art of prompting": 8,
+    "context-setup": 8,
+    "epistemology": 8,
+    "foundations": 8,
+    "health": 8,
+    "health-care": 8,
+    "infinity": 8,
+    "interdisciplinary and complex reasoning": 8,
+    "job-search": 8,
+    "psychology": 8,
+    "reliability-sre": 8,
+    "types of prompts": 8,
+    "causal": 7,
+    "clarity": 7,
+    "clinical-comms": 7,
+    "cosmology": 7,
+    "design-thinking": 7,
+    "direction": 7,
+    "equity": 7,
+    "field-participatory": 7,
+    "measurement": 7,
+    "open-source": 7,
+    "persuasion": 7,
+    "principles": 7,
+    "game-theory": 6,
+    "indigenous": 6,
+    "language": 6,
+    "learning-techniques": 6,
+    "multimodal llms": 6,
+    "onboarding": 6,
+    "open-science": 6,
+    "rhetorical-devices": 6,
+    "workshops": 6,
+    "ab-testing": 5,
+    "accessibility": 5,
+    "analysis frameworks": 5,
+    "assistants": 5,
+    "behavior": 5,
+    "briefs-and-memos": 5,
+    "data": 5,
+    "decision-logs": 5,
+    "design-methods": 5,
+    "experimentation": 5,
+    "legacy": 5,
+    "notes": 5,
+    "personal-development": 5,
+    "philosophy": 5,
+    "philosophy-of-science": 5,
+    "privacy": 5,
+    "prompt-reasoning": 5,
+    "prototyping": 5,
+    "scientific and empirical reasoning": 5,
+    "systems-engineering": 5,
+    "tools": 5,
+    "automation": 4,
+    "branding": 4,
+    "coaching": 4,
+    "design patterns": 4,
+    "headlines-and-subheads": 4,
+    "helper": 4,
+    "linguistics": 4,
+    "math": 4,
+    "messaging": 4,
+    "messaging frameworks": 4,
+    "pricing": 4,
+    "principles-and-pillars": 4,
+    "product management": 4,
+    "prompt architecture": 4,
+    "prompt evolution": 4,
+    "public-health": 4,
+    "public-policy": 4,
+    "relativity": 4,
+    "research-segmentation": 4,
+    "risk": 4,
+    "set-theory": 4,
+    "teaching-materials": 4,
+    "time": 4,
+    "training techniques": 4,
+    "ux": 4,
+    "waves of ai": 4,
+    "argument-schemes": 3,
+    "bias": 3,
+    "campaigns": 3,
+    "case-studies": 3,
+    "challenges and opportunities": 3,
+    "conflict": 3,
+    "context architecture": 3,
+    "copy-guidelines": 3,
+    "critical thinking": 3,
+    "critical thinking frameworks": 3,
+    "editing": 3,
+    "enablement": 3,
+    "evidence": 3,
+    "fluid-dynamics": 3,
+    "genetics": 3,
+    "grounding": 3,
+    "human-centered AI": 3,
+    "learning-from-examples": 3,
+    "lists-and-bullets": 3,
+    "mental models": 3,
+    "methodology": 3,
+    "multimodal": 3,
+    "nlu": 3,
+    "notifications": 3,
+    "problem solving": 3,
+    "project-management": 3,
+    "provenance": 3,
+    "qa": 3,
+    "robustness": 3,
+    "safety & policy": 3,
+    "safety and security": 3,
+    "self-management": 3,
+    "skills": 3,
+    "ttrpg": 3,
+    "user-experience": 3,
+    "ux-writing": 3,
+    "writing-frameworks": 3,
+    "abstracts-and-summaries": 2,
+    "agents": 2,
+    "astrophysics": 2,
+    "benchmarks and evaluations": 2,
+    "causal analysis": 2,
+    "challenges": 2,
+    "computing": 2,
+    "critical-questions": 2,
+    "data-sovereignty": 2,
+    "debugging": 2,
+    "decision-making": 2,
+    "defaults": 2,
+    "devices": 2,
+    "diagnostics": 2,
+    "emerging tech": 2,
+    "engineering practices": 2,
+    "epidemiology": 2,
+    "evidence-weighting": 2,
+    "execution": 2,
+    "headings-and-ctas": 2,
+    "inclusion": 2,
+    "interfaces": 2,
+    "landing-pages": 2,
+    "letters": 2,
+    "localization": 2,
+    "market-mapping": 2,
+    "media": 2,
+    "metaphysics": 2,
+    "one-pagers": 2,
+    "organization": 2,
+    "platform": 2,
+    "policy-briefs": 2,
+    "portfolio": 2,
+    "pragmatics": 2,
+    "product strategy": 2,
+    "prompt engineering": 2,
+    "psa": 2,
+    "resilience": 2,
+    "ritual": 2,
+    "search": 2,
+    "security": 2,
+    "service-design": 2,
+    "simulation": 2,
+    "slidecraft": 2,
+    "social and ethical reasoning": 2,
+    "storyboards": 2,
+    "storytelling frameworks": 2,
+    "swot": 2,
+    "temporal and spatial reasoning": 2,
+    "time-management": 2,
+    "tool-use": 2,
+    "tows": 2,
+    "training & tuning": 2,
+    "transport": 2,
+    "vrio": 2,
+    "abstracts": 1,
+    "activation": 1,
+    "ads": 1,
+    "advocacy": 1,
+    "agent design": 1,
+    "agile": 1,
+    "ai behavior": 1,
+    "applications": 1,
+    "argument-mapping": 1,
+    "argumentation": 1,
+    "articles": 1,
+    "audience-analysis": 1,
+    "bct-taxonomy": 1,
+    "bcw": 1,
+    "behavioral-economics": 1,
+    "biology": 1,
+    "biophysics": 1,
+    "blue-ocean": 1,
+    "budget": 1,
+    "career": 1,
+    "change-memos": 1,
+    "channel": 1,
+    "channels": 1,
+    "check-in": 1,
+    "choice-architecture": 1,
+    "civic": 1,
+    "clarification": 1,
+    "co-governance": 1,
+    "codebook": 1,
+    "cognition": 1,
+    "cognitive models": 1,
+    "commitment": 1,
+    "comms": 1,
+    "community-engagement": 1,
+    "community-partnerships": 1,
+    "compassion": 1,
+    "competitive-analysis": 1,
+    "compliance": 1,
+    "conflict-resolution": 1,
+    "conjoint": 1,
+    "consensus-and-evidence": 1,
+    "content creation": 1,
+    "content design": 1,
+    "content development": 1,
+    "conversation": 1,
+    "conversion": 1,
+    "coverage": 1,
+    "creative writing": 1,
+    "crisis-communications": 1,
+    "cross-cultural": 1,
+    "customer-support": 1,
+    "data management": 1,
+    "de-duplication": 1,
+    "debate-prep": 1,
+    "debiasing": 1,
+    "decision support": 1,
+    "decision-notes": 1,
+    "decision-records": 1,
+    "decision-support": 1,
+    "decks": 1,
+    "decoding": 1,
+    "demo-scripts": 1,
+    "design thinking": 1,
+    "design-notes": 1,
+    "development": 1,
+    "documentation": 1,
+    "domain adaptation": 1,
+    "ecology": 1,
+    "editorial-standards": 1,
+    "education-training": 1,
+    "elm": 1,
+    "email": 1,
+    "email-outreach": 1,
+    "emails": 1,
+    "embodiment": 1,
+    "enumeration": 1,
+    "environmental-and-public-health": 1,
+    "estimation": 1,
+    "ethics-and-consent": 1,
+    "ethics-and-safety": 1,
+    "ethnography": 1,
+    "evaluation-rubrics": 1,
+    "evidence-planning": 1,
+    "experiment": 1,
+    "experiments-and-pilots": 1,
+    "family": 1,
+    "field-sales": 1,
+    "film-media": 1,
+    "five-forces": 1,
+    "focus": 1,
+    "formalization": 1,
+    "forms": 1,
+    "frameworks": 1,
+    "framing": 1,
+    "gabor-granger": 1,
+    "genre-and-form": 1,
+    "geometry": 1,
+    "governance & security": 1,
+    "grants": 1,
+    "growth": 1,
+    "habits": 1,
+    "healthcare": 1,
+    "heuristics": 1,
+    "history": 1,
+    "hr": 1,
+    "hsm": 1,
+    "human–AI interaction": 1,
+    "in-product-prompts": 1,
+    "incident-reviews": 1,
+    "inference": 1,
+    "inference behavior": 1,
+    "information extraction": 1,
+    "interaction": 1,
+    "interpersonal communication": 1,
+    "interpreting": 1,
+    "interventions": 1,
+    "interviews": 1,
+    "invention": 1,
+    "investment": 1,
+    "journaling": 1,
+    "journeys": 1,
+    "kairos-and-timing": 1,
+    "knowledge management": 1,
+    "law": 1,
+    "leadership": 1,
+    "learning": 1,
+    "legal-reasoning": 1,
+    "llm": 1,
+    "manufacturing": 1,
+    "market-simulation": 1,
+    "marketing-strategy": 1,
+    "marketplaces": 1,
+    "matrix-visualization": 1,
+    "meetings": 1,
+    "memos": 1,
+    "memos-and-briefs": 1,
+    "memos-and-decks": 1,
+    "mental-models": 1,
+    "menus": 1,
+    "metacognition": 1,
+    "methods": 1,
+    "misinformation": 1,
+    "moats": 1,
+    "monitoring": 1,
+    "motivation": 1,
+    "negotiation": 1,
+    "networking": 1,
+    "nudges": 1,
+    "observability & metrics": 1,
+    "observability & reliability": 1,
+    "openers-and-loglines": 1,
+    "ops": 1,
+    "optimization & routing": 1,
+    "orchestration & planning": 1,
+    "overview": 1,
+    "paralinguistics": 1,
+    "partners": 1,
+    "patterns": 1,
+    "people": 1,
+    "persona prompting": 1,
+    "pestle": 1,
+    "philosophy-of-religion": 1,
+    "physiology": 1,
+    "picker": 1,
+    "pilot-design": 1,
+    "pitching": 1,
+    "plg": 1,
+    "policy-and-risk": 1,
+    "policy-co-design": 1,
+    "policy-design": 1,
+    "policy-memos": 1,
+    "political-economy": 1,
+    "political-philosophy": 1,
+    "prd": 1,
+    "prebunking": 1,
+    "presentations": 1,
+    "pricing-cac": 1,
+    "principles-and-values": 1,
+    "problem framing": 1,
+    "problem-solving": 1,
+    "process-improvement": 1,
+    "product reality": 1,
+    "productionization": 1,
+    "professional development": 1,
+    "program-management": 1,
+    "prompt literacy": 1,
+    "prompting pipelines": 1,
+    "prompts": 1,
+    "proof-of-work": 1,
+    "properties": 1,
+    "protocols-and-consent": 1,
+    "qualitative": 1,
+    "qualitative-research": 1,
+    "quality checks": 1,
+    "quality scaffolds": 1,
+    "regional": 1,
+    "research-design": 1,
+    "research-methods": 1,
+    "research-quality": 1,
+    "responsible-ai-and-product-ethics": 1,
+    "retention": 1,
+    "retrieval": 1,
+    "retrospective": 1,
+    "risk-registers": 1,
+    "roles": 1,
+    "safe": 1,
+    "sales": 1,
+    "salience": 1,
+    "search and planning": 1,
+    "segmentation": 1,
+    "self-care": 1,
+    "seo-sem": 1,
+    "service": 1,
+    "simplicity": 1,
+    "slides": 1,
+    "social-norms": 1,
+    "source-evaluation": 1,
+    "specification": 1,
+    "story-led-dialogue": 1,
+    "storytelling-frameworks": 1,
+    "structuring": 1,
+    "systems-explanations": 1,
+    "taglines-and-ctas": 1,
+    "talks": 1,
+    "task design": 1,
+    "taxonomy": 1,
+    "team process": 1,
+    "techniques": 1,
+    "template-picker": 1,
+    "thermodynamics": 1,
+    "timing": 1,
+    "tone": 1,
+    "tool use": 1,
+    "trade-offs": 1,
+    "translation": 1,
+    "trust & explainability": 1,
+    "tutorials-and-how-tos": 1,
+    "type-theory": 1,
+    "ui": 1,
+    "ux & editing": 1,
+    "ux & onboarding": 1,
+    "ux & research": 1,
+    "value-proposition": 1,
+    "van-westendorp": 1,
+    "videos": 1,
+    "vision": 1,
+    "visualization": 1,
+    "voice": 1,
+    "wardley": 1,
+    "workflow": 1,
+    "working memory aids": 1
+  },
+  "duplicate_slug_map": {
+    "a3-problem-solving-toyota": [
+      "framework:a3-problem-solving-toyota",
+      "glossary:a3-problem-solving-toyota"
+    ],
+    "abcde-cbt-framework": [
+      "framework:abcde-cbt-framework",
+      "glossary:abcde-cbt-framework"
+    ],
+    "abductive-reasoning": [
+      "framework:abductive-reasoning",
+      "glossary:abductive-reasoning"
+    ],
+    "actor-observer-bias": [
+      "bias:actor-observer-bias",
+      "glossary:actor-observer-bias"
+    ],
+    "addie-instructional-design": [
+      "framework:addie-instructional-design",
+      "glossary:addie-instructional-design"
+    ],
+    "adversarial-data-generation": [
+      "bias:adversarial-data-generation",
+      "glossary:adversarial-data-generation"
+    ],
+    "ai-and-global-economic-disparity": [
+      "bias:ai-and-global-economic-disparity",
+      "glossary:ai-and-global-economic-disparity"
+    ],
+    "aida-model": [
+      "framework:aida-model",
+      "glossary:aida-model"
+    ],
+    "algorithmic-bias": [
+      "bias:algorithmic-bias",
+      "glossary:algorithmic-bias"
+    ],
+    "anchoring-bias": [
+      "bias:anchoring-bias",
+      "glossary:anchoring-bias"
+    ],
+    "anekantavada-syadvada-jain": [
+      "framework:anekantavada-syadvada-jain",
+      "glossary:anekantavada-syadvada-jain"
+    ],
+    "anonymization": [
+      "bias:anonymization",
+      "glossary:anonymization"
+    ],
+    "apophenia-bias": [
+      "bias:apophenia-bias",
+      "glossary:apophenia-bias"
+    ],
+    "argument-mapping": [
+      "framework:argument-mapping",
+      "glossary:argument-mapping"
+    ],
+    "authenticity-vs-sanitization": [
+      "bias:authenticity-vs-sanitization",
+      "glossary:authenticity-vs-sanitization"
+    ],
+    "authority-bias": [
+      "bias:authority-bias",
+      "glossary:authority-bias"
+    ],
+    "availability-cascade": [
+      "bias:availability-cascade",
+      "glossary:availability-cascade"
+    ],
+    "availability-heuristic": [
+      "bias:availability-heuristic",
+      "glossary:availability-heuristic"
+    ],
+    "baader-meinhof-phenomenon": [
+      "bias:baader-meinhof-phenomenon",
+      "glossary:baader-meinhof-phenomenon"
+    ],
+    "bandwagon-effect": [
+      "bias:bandwagon-effect",
+      "glossary:bandwagon-effect"
+    ],
+    "before-after-bridge-formula": [
+      "framework:before-after-bridge-formula",
+      "glossary:before-after-bridge-formula"
+    ],
+    "bias-amplification": [
+      "bias:bias-amplification",
+      "glossary:bias-amplification"
+    ],
+    "bias-auditing": [
+      "bias:bias-auditing",
+      "glossary:bias-auditing"
+    ],
+    "bias-awareness-workshops": [
+      "bias:bias-awareness-workshops",
+      "glossary:bias-awareness-workshops"
+    ],
+    "bias-blind-spot": [
+      "bias:bias-blind-spot",
+      "glossary:bias-blind-spot"
+    ],
+    "bias-correction-algorithms": [
+      "bias:bias-correction-algorithms",
+      "glossary:bias-correction-algorithms"
+    ],
+    "bias-documentation": [
+      "bias:bias-documentation",
+      "glossary:bias-documentation"
+    ],
+    "bias-impact-assessment": [
+      "framework:bias-impact-assessment",
+      "glossary:bias-impact-assessment"
+    ],
+    "bias-impact-assessments": [
+      "bias:bias-impact-assessments",
+      "glossary:bias-impact-assessments"
+    ],
+    "bias-interrupters": [
+      "framework:bias-interrupters",
+      "glossary:bias-interrupters"
+    ],
+    "bias-reflection-prompts": [
+      "bias:bias-reflection-prompts",
+      "glossary:bias-reflection-prompts"
+    ],
+    "blooms-taxonomy": [
+      "framework:blooms-taxonomy",
+      "glossary:blooms-taxonomy"
+    ],
+    "buddhist-eightfold-path-adapted": [
+      "framework:buddhist-eightfold-path-adapted",
+      "glossary:buddhist-eightfold-path-adapted"
+    ],
+    "censorship-vs-sensitivity": [
+      "bias:censorship-vs-sensitivity",
+      "glossary:censorship-vs-sensitivity"
+    ],
+    "choice-supportive-bias": [
+      "bias:choice-supportive-bias",
+      "glossary:choice-supportive-bias"
+    ],
+    "clear-framework": [
+      "framework:clear-framework",
+      "glossary:clear-framework"
+    ],
+    "clear-path-forward-framework": [
+      "framework:clear-path-forward-framework",
+      "glossary:clear-path-forward-framework"
+    ],
+    "clear-prompting-method": [
+      "framework:clear-prompting-method",
+      "glossary:clear-prompting-method"
+    ],
+    "cognitive-debiasing": [
+      "framework:cognitive-debiasing",
+      "glossary:cognitive-debiasing"
+    ],
+    "comparative-analysis": [
+      "framework:comparative-analysis",
+      "glossary:comparative-analysis"
+    ],
+    "confirmation-bias-llm": [
+      "bias:confirmation-bias-llm",
+      "glossary:confirmation-bias-llm"
+    ],
+    "conflicts-of-interest": [
+      "bias:conflicts-of-interest",
+      "glossary:conflicts-of-interest"
+    ],
+    "consent-for-data-use": [
+      "bias:consent-for-data-use",
+      "glossary:consent-for-data-use"
+    ],
+    "constraint-flip": [
+      "framework:constraint-flip",
+      "glossary:constraint-flip"
+    ],
+    "content-moderation-bias": [
+      "bias:content-moderation-bias",
+      "glossary:content-moderation-bias"
+    ],
+    "contextual-understanding": [
+      "bias:contextual-understanding",
+      "glossary:contextual-understanding"
+    ],
+    "costar-framework": [
+      "framework:costar-framework",
+      "glossary:costar-framework"
+    ],
+    "counterbalancing": [
+      "bias:counterbalancing",
+      "glossary:counterbalancing"
+    ],
+    "cross-cultural-competency-training": [
+      "bias:cross-cultural-competency-training",
+      "glossary:cross-cultural-competency-training"
+    ],
+    "cross-cultural-validation": [
+      "bias:cross-cultural-validation",
+      "glossary:cross-cultural-validation"
+    ],
+    "cultural-overgeneralization": [
+      "bias:cultural-overgeneralization",
+      "glossary:cultural-overgeneralization"
+    ],
+    "cultural-relativism-vs-universal-morality": [
+      "bias:cultural-relativism-vs-universal-morality",
+      "glossary:cultural-relativism-vs-universal-morality"
+    ],
+    "daoist-wu-wei-strategy": [
+      "framework:daoist-wu-wei-strategy",
+      "glossary:daoist-wu-wei-strategy"
+    ],
+    "data-privacy-and-consent": [
+      "bias:data-privacy-and-consent",
+      "glossary:data-privacy-and-consent"
+    ],
+    "decoy-effect": [
+      "bias:decoy-effect",
+      "glossary:decoy-effect"
+    ],
+    "dependence-and-dehumanization": [
+      "bias:dependence-and-dehumanization",
+      "glossary:dependence-and-dehumanization"
+    ],
+    "disney-dreamer-realist-critic": [
+      "framework:disney-dreamer-realist-critic",
+      "glossary:disney-dreamer-realist-critic"
+    ],
+    "diverse-dataset-sourcing": [
+      "bias:diverse-dataset-sourcing",
+      "glossary:diverse-dataset-sourcing"
+    ],
+    "diverse-perspective-seeking": [
+      "bias:diverse-perspective-seeking",
+      "glossary:diverse-perspective-seeking"
+    ],
+    "diverse-voices-suppression": [
+      "bias:diverse-voices-suppression",
+      "glossary:diverse-voices-suppression"
+    ],
+    "dmaic-six-sigma": [
+      "framework:dmaic-six-sigma",
+      "glossary:dmaic-six-sigma"
+    ],
+    "dunning-kruger-effect": [
+      "bias:dunning-kruger-effect",
+      "glossary:dunning-kruger-effect"
+    ],
+    "east-behavioral-nudge": [
+      "framework:east-behavioral-nudge",
+      "glossary:east-behavioral-nudge"
+    ],
+    "echo-chambers-and-radicalization": [
+      "bias:echo-chambers-and-radicalization",
+      "glossary:echo-chambers-and-radicalization"
+    ],
+    "egocentric-bias": [
+      "bias:egocentric-bias",
+      "glossary:egocentric-bias"
+    ],
+    "eisenhower-priority-matrix": [
+      "framework:eisenhower-priority-matrix",
+      "glossary:eisenhower-priority-matrix"
+    ],
+    "emotional-manipulation": [
+      "bias:emotional-manipulation",
+      "glossary:emotional-manipulation"
+    ],
+    "empty-chair-technique": [
+      "framework:empty-chair-technique",
+      "glossary:empty-chair-technique"
+    ],
+    "end-of-life-decisions": [
+      "bias:end-of-life-decisions",
+      "glossary:end-of-life-decisions"
+    ],
+    "english-language-dominance": [
+      "bias:english-language-dominance",
+      "glossary:english-language-dominance"
+    ],
+    "environmental-impact-of-training": [
+      "bias:environmental-impact-of-training",
+      "glossary:environmental-impact-of-training"
+    ],
+    "epic-quest-tasking": [
+      "framework:epic-quest-tasking",
+      "glossary:epic-quest-tasking"
+    ],
+    "ethical-consumerism": [
+      "bias:ethical-consumerism",
+      "glossary:ethical-consumerism"
+    ],
+    "ethical-guidelines-compliance": [
+      "bias:ethical-guidelines-compliance",
+      "glossary:ethical-guidelines-compliance"
+    ],
+    "ethical-review-boards": [
+      "bias:ethical-review-boards",
+      "glossary:ethical-review-boards"
+    ],
+    "ethical-whitewashing": [
+      "bias:ethical-whitewashing",
+      "glossary:ethical-whitewashing"
+    ],
+    "facione-core-skills": [
+      "framework:facione-core-skills",
+      "glossary:facione-core-skills"
+    ],
+    "facts-expertise-primer": [
+      "framework:facts-expertise-primer",
+      "glossary:facts-expertise-primer"
+    ],
+    "fairness-in-resource-allocation": [
+      "bias:fairness-in-resource-allocation",
+      "glossary:fairness-in-resource-allocation"
+    ],
+    "fairness-metrics-evaluation": [
+      "bias:fairness-metrics-evaluation",
+      "glossary:fairness-metrics-evaluation"
+    ],
+    "feature-advantage-benefit": [
+      "framework:feature-advantage-benefit",
+      "glossary:feature-advantage-benefit"
+    ],
+    "few-shot-examples": [
+      "framework:few-shot-examples",
+      "glossary:few-shot-examples"
+    ],
+    "feynman-technique": [
+      "framework:feynman-technique",
+      "glossary:feynman-technique"
+    ],
+    "first-principles-analysis": [
+      "framework:first-principles-analysis",
+      "glossary:first-principles-analysis"
+    ],
+    "five-w-one-h-kipling": [
+      "framework:five-w-one-h-kipling",
+      "glossary:five-w-one-h-kipling"
+    ],
+    "framing-effect": [
+      "bias:framing-effect",
+      "glossary:framing-effect"
+    ],
+    "freewriting-zero-draft": [
+      "framework:freewriting-zero-draft",
+      "glossary:freewriting-zero-draft"
+    ],
+    "gamblers-fallacy": [
+      "bias:gamblers-fallacy",
+      "glossary:gamblers-fallacy"
+    ],
+    "ganma-knowledge-confluence": [
+      "framework:ganma-knowledge-confluence",
+      "glossary:ganma-knowledge-confluence"
+    ],
+    "goal-breakdown-decomposition": [
+      "framework:goal-breakdown-decomposition",
+      "glossary:goal-breakdown-decomposition"
+    ],
+    "goal-composition": [
+      "framework:goal-composition",
+      "glossary:goal-composition"
+    ],
+    "goal-prompting": [
+      "framework:goal-prompting",
+      "glossary:goal-prompting"
+    ],
+    "golden-circle-framework": [
+      "framework:golden-circle-framework",
+      "glossary:golden-circle-framework"
+    ],
+    "grow-coaching-model": [
+      "framework:grow-coaching-model",
+      "glossary:grow-coaching-model"
+    ],
+    "halo-effect": [
+      "bias:halo-effect",
+      "glossary:halo-effect"
+    ],
+    "hard-easy-effect": [
+      "bias:hard-easy-effect",
+      "glossary:hard-easy-effect"
+    ],
+    "head-heart-gut-decision": [
+      "framework:head-heart-gut-decision",
+      "glossary:head-heart-gut-decision"
+    ],
+    "heros-journey-narrative": [
+      "framework:heros-journey-narrative",
+      "glossary:heros-journey-narrative"
+    ],
+    "hindsight-bias": [
+      "bias:hindsight-bias",
+      "glossary:hindsight-bias"
+    ],
+    "historical-contextualization": [
+      "bias:historical-contextualization",
+      "glossary:historical-contextualization"
+    ],
+    "historical-revisionism": [
+      "bias:historical-revisionism",
+      "glossary:historical-revisionism"
+    ],
+    "how-might-we-statements-hmw": [
+      "framework:how-might-we-statements-hmw",
+      "glossary:how-might-we-statements-hmw"
+    ],
+    "ice-scoring": [
+      "framework:ice-scoring",
+      "glossary:ice-scoring"
+    ],
+    "ideological-echo-chambers": [
+      "bias:ideological-echo-chambers",
+      "glossary:ideological-echo-chambers"
+    ],
+    "if-then-planning": [
+      "framework:if-then-planning",
+      "glossary:if-then-planning"
+    ],
+    "illusory-truth-effect": [
+      "bias:illusory-truth-effect",
+      "glossary:illusory-truth-effect"
+    ],
+    "imaginary-mentor-council": [
+      "framework:imaginary-mentor-council",
+      "glossary:imaginary-mentor-council"
+    ],
+    "implicit-bias-llm": [
+      "bias:implicit-bias-llm",
+      "glossary:implicit-bias-llm"
+    ],
+    "implicit-bias-tests": [
+      "bias:implicit-bias-tests",
+      "glossary:implicit-bias-tests"
+    ],
+    "inclusive-design-framework": [
+      "framework:inclusive-design-framework",
+      "glossary:inclusive-design-framework"
+    ],
+    "inclusive-language-guidelines": [
+      "bias:inclusive-language-guidelines",
+      "glossary:inclusive-language-guidelines"
+    ],
+    "individualism-over-collectivism": [
+      "bias:individualism-over-collectivism",
+      "glossary:individualism-over-collectivism"
+    ],
+    "information-bias": [
+      "bias:information-bias",
+      "glossary:information-bias"
+    ],
+    "ingroup-bias": [
+      "bias:ingroup-bias",
+      "glossary:ingroup-bias"
+    ],
+    "internal-weather-report": [
+      "framework:internal-weather-report",
+      "glossary:internal-weather-report"
+    ],
+    "kaitiakitanga-guardianship": [
+      "framework:kaitiakitanga-guardianship",
+      "glossary:kaitiakitanga-guardianship"
+    ],
+    "kano-model": [
+      "framework:kano-model",
+      "glossary:kano-model"
+    ],
+    "kansei-engineering": [
+      "framework:kansei-engineering",
+      "glossary:kansei-engineering"
+    ],
+    "kepner-tregoe-psdm": [
+      "framework:kepner-tregoe-psdm",
+      "glossary:kepner-tregoe-psdm"
+    ],
+    "keywords-why-tasks-vector": [
+      "framework:keywords-why-tasks-vector",
+      "glossary:keywords-why-tasks-vector"
+    ],
+    "least-to-most-ltm": [
+      "framework:least-to-most-ltm",
+      "glossary:least-to-most-ltm"
+    ],
+    "linear-time-perception": [
+      "bias:linear-time-perception",
+      "glossary:linear-time-perception"
+    ],
+    "longitudinal-data-analysis": [
+      "bias:longitudinal-data-analysis",
+      "glossary:longitudinal-data-analysis"
+    ],
+    "maslaha-public-interest-reasoning": [
+      "framework:maslaha-public-interest-reasoning",
+      "glossary:maslaha-public-interest-reasoning"
+    ],
+    "mere-exposure-effect": [
+      "bias:mere-exposure-effect",
+      "glossary:mere-exposure-effect"
+    ],
+    "misinformation-and-fake-news": [
+      "bias:misinformation-and-fake-news",
+      "glossary:misinformation-and-fake-news"
+    ],
+    "misrepresentation-of-minorities": [
+      "bias:misrepresentation-of-minorities",
+      "glossary:misrepresentation-of-minorities"
+    ],
+    "model-misuse-and-dual-use": [
+      "bias:model-misuse-and-dual-use",
+      "glossary:model-misuse-and-dual-use"
+    ],
+    "monroes-motivated-sequence": [
+      "framework:monroes-motivated-sequence",
+      "glossary:monroes-motivated-sequence"
+    ],
+    "moral-credential-effect": [
+      "bias:moral-credential-effect",
+      "glossary:moral-credential-effect"
+    ],
+    "moscow-prioritization": [
+      "framework:moscow-prioritization",
+      "glossary:moscow-prioritization"
+    ],
+    "multidisciplinary-collaboration": [
+      "bias:multidisciplinary-collaboration",
+      "glossary:multidisciplinary-collaboration"
+    ],
+    "musyawarah-mufakat-indonesia": [
+      "framework:musyawarah-mufakat-indonesia",
+      "glossary:musyawarah-mufakat-indonesia"
+    ],
+    "naive-dialecticism-east-asia": [
+      "framework:naive-dialecticism-east-asia",
+      "glossary:naive-dialecticism-east-asia"
+    ],
+    "next-in-line-effect": [
+      "bias:next-in-line-effect",
+      "glossary:next-in-line-effect"
+    ],
+    "nyaya-five-member-syllogism": [
+      "framework:nyaya-five-member-syllogism",
+      "glossary:nyaya-five-member-syllogism"
+    ],
+    "oblique-strategies-cards": [
+      "framework:oblique-strategies-cards",
+      "glossary:oblique-strategies-cards"
+    ],
+    "okr-goal-setting": [
+      "framework:okr-goal-setting",
+      "glossary:okr-goal-setting"
+    ],
+    "omission-bias": [
+      "bias:omission-bias",
+      "glossary:omission-bias"
+    ],
+    "ooda-loop": [
+      "framework:ooda-loop",
+      "glossary:ooda-loop"
+    ],
+    "ostrich-effect": [
+      "bias:ostrich-effect",
+      "glossary:ostrich-effect"
+    ],
+    "outcome-bias-llm": [
+      "bias:outcome-bias-llm",
+      "glossary:outcome-bias-llm"
+    ],
+    "overconfidence-effect": [
+      "bias:overconfidence-effect",
+      "glossary:overconfidence-effect"
+    ],
+    "overcorrection-to-avoid-bias": [
+      "bias:overcorrection-to-avoid-bias",
+      "glossary:overcorrection-to-avoid-bias"
+    ],
+    "parts-work-dialogue": [
+      "framework:parts-work-dialogue",
+      "glossary:parts-work-dialogue"
+    ],
+    "pas-copywriting": [
+      "framework:pas-copywriting",
+      "glossary:pas-copywriting"
+    ],
+    "paul-elder": [
+      "framework:paul-elder",
+      "glossary:paul-elder"
+    ],
+    "pdca-deming-cycle": [
+      "framework:pdca-deming-cycle",
+      "glossary:pdca-deming-cycle"
+    ],
+    "peak-end-rule": [
+      "bias:peak-end-rule",
+      "glossary:peak-end-rule"
+    ],
+    "peas-framework": [
+      "framework:peas-framework",
+      "glossary:peas-framework"
+    ],
+    "peer-review-systems": [
+      "bias:peer-review-systems",
+      "glossary:peer-review-systems"
+    ],
+    "persona-actas": [
+      "framework:persona-actas",
+      "glossary:persona-actas"
+    ],
+    "pestle-analysis": [
+      "framework:pestle-analysis",
+      "glossary:pestle-analysis"
+    ],
+    "picture-superiority-effect": [
+      "bias:picture-superiority-effect",
+      "glossary:picture-superiority-effect"
+    ],
+    "political-correctness-overreach": [
+      "bias:political-correctness-overreach",
+      "glossary:political-correctness-overreach"
+    ],
+    "pomodoro-scaffold": [
+      "framework:pomodoro-scaffold",
+      "glossary:pomodoro-scaffold"
+    ],
+    "pramana-means-of-knowledge": [
+      "framework:pramana-means-of-knowledge",
+      "glossary:pramana-means-of-knowledge"
+    ],
+    "pre-mortem-scaffold": [
+      "framework:pre-mortem-scaffold",
+      "glossary:pre-mortem-scaffold"
+    ],
+    "privacy-standards-discrepancy": [
+      "bias:privacy-standards-discrepancy",
+      "glossary:privacy-standards-discrepancy"
+    ],
+    "privacy-vs-security": [
+      "bias:privacy-vs-security",
+      "glossary:privacy-vs-security"
+    ],
+    "projection-bias": [
+      "bias:projection-bias",
+      "glossary:projection-bias"
+    ],
+    "proportionality-bias": [
+      "bias:proportionality-bias",
+      "glossary:proportionality-bias"
+    ],
+    "pygmalion-effect": [
+      "bias:pygmalion-effect",
+      "glossary:pygmalion-effect"
+    ],
+    "qiyas-analogical-reasoning": [
+      "framework:qiyas-analogical-reasoning",
+      "glossary:qiyas-analogical-reasoning"
+    ],
+    "raccca-framework": [
+      "framework:raccca-framework",
+      "glossary:raccca-framework"
+    ],
+    "random-association": [
+      "framework:random-association",
+      "glossary:random-association"
+    ],
+    "rapid-decision-rights": [
+      "framework:rapid-decision-rights",
+      "glossary:rapid-decision-rights"
+    ],
+    "rapid-ideation": [
+      "framework:rapid-ideation",
+      "glossary:rapid-ideation"
+    ],
+    "ratio-framework": [
+      "framework:ratio-framework",
+      "glossary:ratio-framework"
+    ],
+    "recency-bias": [
+      "bias:recency-bias",
+      "glossary:recency-bias"
+    ],
+    "reflect-bias-scaffold": [
+      "framework:reflect-bias-scaffold",
+      "glossary:reflect-bias-scaffold"
+    ],
+    "representation-in-ai-decision-making": [
+      "bias:representation-in-ai-decision-making",
+      "glossary:representation-in-ai-decision-making"
+    ],
+    "responsibility-for-model-actions": [
+      "bias:responsibility-for-model-actions",
+      "glossary:responsibility-for-model-actions"
+    ],
+    "rice-scoring": [
+      "framework:rice-scoring",
+      "glossary:rice-scoring"
+    ],
+    "risen-framework": [
+      "framework:risen-framework",
+      "glossary:risen-framework"
+    ],
+    "rodes-framework": [
+      "framework:rodes-framework",
+      "glossary:rodes-framework"
+    ],
+    "role-storming": [
+      "framework:role-storming",
+      "glossary:role-storming"
+    ],
+    "root-cause-analysis": [
+      "framework:root-cause-analysis",
+      "glossary:root-cause-analysis"
+    ],
+    "rtf-framework": [
+      "framework:rtf-framework",
+      "glossary:rtf-framework"
+    ],
+    "rubber-duck-debugging": [
+      "framework:rubber-duck-debugging",
+      "glossary:rubber-duck-debugging"
+    ],
+    "scamper-framework": [
+      "framework:scamper-framework",
+      "glossary:scamper-framework"
+    ],
+    "scenario-based-deliberative": [
+      "framework:scenario-based-deliberative",
+      "glossary:scenario-based-deliberative"
+    ],
+    "scientific-method": [
+      "framework:scientific-method",
+      "glossary:scientific-method"
+    ],
+    "scqa-situation-complication-question-answer": [
+      "framework:scqa-situation-complication-question-answer",
+      "glossary:scqa-situation-complication-question-answer"
+    ],
+    "selection-bias": [
+      "bias:selection-bias",
+      "glossary:selection-bias"
+    ],
+    "selective-perception-bias": [
+      "bias:selective-perception-bias",
+      "glossary:selective-perception-bias"
+    ],
+    "self-serving-bias": [
+      "bias:self-serving-bias",
+      "glossary:self-serving-bias"
+    ],
+    "sensitivity-review": [
+      "bias:sensitivity-review",
+      "glossary:sensitivity-review"
+    ],
+    "sentipensar-thinking-feeling": [
+      "framework:sentipensar-thinking-feeling",
+      "glossary:sentipensar-thinking-feeling"
+    ],
+    "serial-position-effect": [
+      "bias:serial-position-effect",
+      "glossary:serial-position-effect"
+    ],
+    "shadow-work-dialogue": [
+      "framework:shadow-work-dialogue",
+      "glossary:shadow-work-dialogue"
+    ],
+    "six-thinking-hats": [
+      "framework:six-thinking-hats",
+      "glossary:six-thinking-hats"
+    ],
+    "smart-goals": [
+      "framework:smart-goals",
+      "glossary:smart-goals"
+    ],
+    "soar-analysis": [
+      "framework:soar-analysis",
+      "glossary:soar-analysis"
+    ],
+    "socratic-method": [
+      "framework:socratic-method",
+      "glossary:socratic-method"
+    ],
+    "somatic-focusing-felt-sense": [
+      "framework:somatic-focusing-felt-sense",
+      "glossary:somatic-focusing-felt-sense"
+    ],
+    "spoon-theory-energy-planner": [
+      "framework:spoon-theory-energy-planner",
+      "glossary:spoon-theory-energy-planner"
+    ],
+    "spotlight-effect": [
+      "bias:spotlight-effect",
+      "glossary:spotlight-effect"
+    ],
+    "star-technique": [
+      "framework:star-technique",
+      "glossary:star-technique"
+    ],
+    "stereotype-challenge-exercises": [
+      "bias:stereotype-challenge-exercises",
+      "glossary:stereotype-challenge-exercises"
+    ],
+    "survivorship-bias": [
+      "bias:survivorship-bias",
+      "glossary:survivorship-bias"
+    ],
+    "swot-analysis": [
+      "framework:swot-analysis",
+      "glossary:swot-analysis"
+    ],
+    "synectics-analogies": [
+      "framework:synectics-analogies",
+      "glossary:synectics-analogies"
+    ],
+    "synesthetic-brainstorm": [
+      "framework:synesthetic-brainstorm",
+      "glossary:synesthetic-brainstorm"
+    ],
+    "talanoa-dialogue": [
+      "framework:talanoa-dialogue",
+      "glossary:talanoa-dialogue"
+    ],
+    "tarot-spread-reflection": [
+      "framework:tarot-spread-reflection",
+      "glossary:tarot-spread-reflection"
+    ],
+    "task-recipe-cot": [
+      "framework:task-recipe-cot",
+      "glossary:task-recipe-cot"
+    ],
+    "technological-superiority": [
+      "bias:technological-superiority",
+      "glossary:technological-superiority"
+    ],
+    "time-machine-perspectives": [
+      "framework:time-machine-perspectives",
+      "glossary:time-machine-perspectives"
+    ],
+    "tote-test-operate-test-exit": [
+      "framework:tote-test-operate-test-exit",
+      "glossary:tote-test-operate-test-exit"
+    ],
+    "transparency-in-algorithm-design": [
+      "bias:transparency-in-algorithm-design",
+      "glossary:transparency-in-algorithm-design"
+    ],
+    "transparent-sourcing": [
+      "bias:transparent-sourcing",
+      "glossary:transparent-sourcing"
+    ],
+    "tree-of-thought-brainstorm": [
+      "framework:tree-of-thought-brainstorm",
+      "glossary:tree-of-thought-brainstorm"
+    ],
+    "triangulation-methods": [
+      "framework:triangulation-methods",
+      "glossary:triangulation-methods"
+    ],
+    "trigger-storming": [
+      "framework:trigger-storming",
+      "glossary:trigger-storming"
+    ],
+    "trolley-problem": [
+      "bias:trolley-problem",
+      "glossary:trolley-problem"
+    ],
+    "two-minute-rule": [
+      "framework:two-minute-rule",
+      "glossary:two-minute-rule"
+    ],
+    "unit-bias": [
+      "bias:unit-bias",
+      "glossary:unit-bias"
+    ],
+    "user-manipulation-and-persuasion": [
+      "bias:user-manipulation-and-persuasion",
+      "glossary:user-manipulation-and-persuasion"
+    ],
+    "value-effort-matrix": [
+      "framework:value-effort-matrix",
+      "glossary:value-effort-matrix"
+    ],
+    "vroom-yetton-jago-decision": [
+      "framework:vroom-yetton-jago-decision",
+      "glossary:vroom-yetton-jago-decision"
+    ],
+    "weighted-mini-matrix": [
+      "framework:weighted-mini-matrix",
+      "glossary:weighted-mini-matrix"
+    ],
+    "western-democratic-models": [
+      "bias:western-democratic-models",
+      "glossary:western-democratic-models"
+    ],
+    "western-educational-superiority": [
+      "bias:western-educational-superiority",
+      "glossary:western-educational-superiority"
+    ],
+    "western-media-representation": [
+      "bias:western-media-representation",
+      "glossary:western-media-representation"
+    ],
+    "what-if-scenarios": [
+      "framework:what-if-scenarios",
+      "glossary:what-if-scenarios"
+    ],
+    "wishing-technique": [
+      "framework:wishing-technique",
+      "glossary:wishing-technique"
+    ],
+    "woop-wish-outcome-obstacle-plan": [
+      "framework:woop-wish-outcome-obstacle-plan",
+      "glossary:woop-wish-outcome-obstacle-plan"
+    ],
+    "wsjf-weighted-shortest-job-first": [
+      "framework:wsjf-weighted-shortest-job-first",
+      "glossary:wsjf-weighted-shortest-job-first"
+    ],
+    "zhongyong-doctrine-of-the-mean": [
+      "framework:zhongyong-doctrine-of-the-mean",
+      "glossary:zhongyong-doctrine-of-the-mean"
+    ]
+  },
+  "unresolved_link_report": [
+    {
+      "entry_id": "bias:anonymization",
+      "collection": "bias",
+      "title": "Anonymization",
+      "unresolved_related_slugs": [
+        "privacy"
+      ]
+    },
+    {
+      "entry_id": "bias:diverse-perspective-seeking",
+      "collection": "bias",
+      "title": "Diverse perspective seeking",
+      "unresolved_related_slugs": [
+        "viewpoint-diversity"
+      ]
+    },
+    {
+      "entry_id": "bias:ethical-guidelines-compliance",
+      "collection": "bias",
+      "title": "Ethical guidelines compliance",
+      "unresolved_related_slugs": [
+        "privacy"
+      ]
+    },
+    {
+      "entry_id": "framework:cialdini-influence-principles-ethical-caveats",
+      "collection": "framework",
+      "title": "Cialdini Influence Principles With Ethical Caveats",
+      "unresolved_related_slugs": [
+        "ethical-data-stewardship"
+      ]
+    },
+    {
+      "entry_id": "framework:hiring-manager-risk-model",
+      "collection": "framework",
+      "title": "Hiring Manager Risk Model",
+      "unresolved_related_slugs": [
+        "resume-tailor-rewrite-feedback"
+      ]
+    },
+    {
+      "entry_id": "framework:small-artifact-advantage",
+      "collection": "framework",
+      "title": "Small Artifact Advantage",
+      "unresolved_related_slugs": [
+        "jobs-alignment-targeting-pipeline-okrs"
+      ]
+    },
+    {
+      "entry_id": "glossary:accessibility-and-inclusivity-ethics",
+      "collection": "glossary",
+      "title": "Accessibility and Inclusivity",
+      "unresolved_related_slugs": [
+        "accessibility-and-inclusivity"
+      ]
+    },
+    {
+      "entry_id": "glossary:addressing-biases-and-ethical-concerns",
+      "collection": "glossary",
+      "title": "Addressing Biases and Ethical Concerns",
+      "unresolved_related_slugs": [
+        "content-moderation"
+      ]
+    },
+    {
+      "entry_id": "glossary:agentic-rag",
+      "collection": "glossary",
+      "title": "Agentic RAG",
+      "unresolved_related_slugs": [
+        "reflection-or-reasoning-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:ai-text-detection",
+      "collection": "glossary",
+      "title": "AI Text Detection",
+      "unresolved_related_slugs": [
+        "content-authentication"
+      ]
+    },
+    {
+      "entry_id": "glossary:alpaca",
+      "collection": "glossary",
+      "title": "Alpaca",
+      "unresolved_related_slugs": [
+        "self-instruct"
+      ]
+    },
+    {
+      "entry_id": "glossary:ambiguity-of-language",
+      "collection": "glossary",
+      "title": "Ambiguity of Language",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:bias-amplification",
+      "collection": "glossary",
+      "title": "Bias Amplification",
+      "unresolved_related_slugs": [
+        "targeted-biases"
+      ]
+    },
+    {
+      "entry_id": "glossary:bing-chat",
+      "collection": "glossary",
+      "title": "Bing Chat",
+      "unresolved_related_slugs": [
+        "prompt-leakage",
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:blank-slate-paralysis",
+      "collection": "glossary",
+      "title": "Blank-Slate Paralysis",
+      "unresolved_related_slugs": [
+        "starter-templates"
+      ]
+    },
+    {
+      "entry_id": "glossary:claude-2",
+      "collection": "glossary",
+      "title": "Claude 2",
+      "unresolved_related_slugs": [
+        "rlaif"
+      ]
+    },
+    {
+      "entry_id": "glossary:conflicts-of-interest",
+      "collection": "glossary",
+      "title": "Conflicts of Interest",
+      "unresolved_related_slugs": [
+        "transparency"
+      ]
+    },
+    {
+      "entry_id": "glossary:constraint-prompting",
+      "collection": "glossary",
+      "title": "Constraint Prompting",
+      "unresolved_related_slugs": [
+        "constraint-based-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:context-dependent-reasoning",
+      "collection": "glossary",
+      "title": "Context-Dependent Reasoning",
+      "unresolved_related_slugs": [
+        "domain-priming"
+      ]
+    },
+    {
+      "entry_id": "glossary:context-window-selection",
+      "collection": "glossary",
+      "title": "Context Window Selection",
+      "unresolved_related_slugs": [
+        "delimiter-prompting",
+        "structured-data-input"
+      ]
+    },
+    {
+      "entry_id": "glossary:contextual-prompter",
+      "collection": "glossary",
+      "title": "Contextual Prompter",
+      "unresolved_related_slugs": [
+        "domain-priming"
+      ]
+    },
+    {
+      "entry_id": "glossary:contextual-prompting",
+      "collection": "glossary",
+      "title": "Contextual Prompting",
+      "unresolved_related_slugs": [
+        "domain-priming",
+        "priming-prompt"
+      ]
+    },
+    {
+      "entry_id": "glossary:controlled-hallucination-for-ideation-chi",
+      "collection": "glossary",
+      "title": "Controlled Hallucination for Ideation (CHI)",
+      "unresolved_related_slugs": [
+        "brainstorming",
+        "controlled-hallucination"
+      ]
+    },
+    {
+      "entry_id": "glossary:conversation-routines-cr",
+      "collection": "glossary",
+      "title": "Conversation Routines (CR)",
+      "unresolved_related_slugs": [
+        "prompt-templates"
+      ]
+    },
+    {
+      "entry_id": "glossary:conversational-repair",
+      "collection": "glossary",
+      "title": "Conversational Repair",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:cooperative-principle",
+      "collection": "glossary",
+      "title": "Cooperative Principle",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:corrective-rag-crag",
+      "collection": "glossary",
+      "title": "Corrective RAG (CRAG)",
+      "unresolved_related_slugs": [
+        "fact-check-prompting",
+        "system-query"
+      ]
+    },
+    {
+      "entry_id": "glossary:diverse-voices-suppression",
+      "collection": "glossary",
+      "title": "Diverse Voices Suppression",
+      "unresolved_related_slugs": [
+        "targeted-biases"
+      ]
+    },
+    {
+      "entry_id": "glossary:domain-ml",
+      "collection": "glossary",
+      "title": "Domain",
+      "unresolved_related_slugs": [
+        "domain-priming",
+        "fact-check-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:eliza-effect",
+      "collection": "glossary",
+      "title": "ELIZA Effect",
+      "unresolved_related_slugs": [
+        "anthropomorphism"
+      ]
+    },
+    {
+      "entry_id": "glossary:enthusiast-prompter",
+      "collection": "glossary",
+      "title": "Enthusiast Prompter",
+      "unresolved_related_slugs": [
+        "prompt-architecture-virtual-brain"
+      ]
+    },
+    {
+      "entry_id": "glossary:escalated-errors",
+      "collection": "glossary",
+      "title": "Escalated Errors",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:ethical-dilemma-awareness",
+      "collection": "glossary",
+      "title": "Ethical Dilemma Awareness",
+      "unresolved_related_slugs": [
+        "transparency"
+      ]
+    },
+    {
+      "entry_id": "glossary:ethical-whitewashing",
+      "collection": "glossary",
+      "title": "Ethical Whitewashing",
+      "unresolved_related_slugs": [
+        "transparency"
+      ]
+    },
+    {
+      "entry_id": "glossary:generative-harms",
+      "collection": "glossary",
+      "title": "Generative Harms",
+      "unresolved_related_slugs": [
+        "toxicity-detection"
+      ]
+    },
+    {
+      "entry_id": "glossary:graph-rag",
+      "collection": "glossary",
+      "title": "GraphRAG",
+      "unresolved_related_slugs": [
+        "domain-priming"
+      ]
+    },
+    {
+      "entry_id": "glossary:guidance-library",
+      "collection": "glossary",
+      "title": "Guidance (Prompting Library)",
+      "unresolved_related_slugs": [
+        "langchain"
+      ]
+    },
+    {
+      "entry_id": "glossary:hallucinations",
+      "collection": "glossary",
+      "title": "Hallucinations",
+      "unresolved_related_slugs": [
+        "fact-check-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:handling-specialized-domains",
+      "collection": "glossary",
+      "title": "Handling Specialized Domains",
+      "unresolved_related_slugs": [
+        "domain-priming",
+        "fact-check-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:heuristics-and-biases-framework",
+      "collection": "glossary",
+      "title": "Heuristics and Biases Framework",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:historical-revisionism",
+      "collection": "glossary",
+      "title": "Historical Revisionism",
+      "unresolved_related_slugs": [
+        "knowledge"
+      ]
+    },
+    {
+      "entry_id": "glossary:instruction-following",
+      "collection": "glossary",
+      "title": "Instruction Following",
+      "unresolved_related_slugs": [
+        "neighbor"
+      ]
+    },
+    {
+      "entry_id": "glossary:langgpt-dual-layer-framework",
+      "collection": "glossary",
+      "title": "LangGPT Dual-Layer Framework",
+      "unresolved_related_slugs": [
+        "prompt-templates"
+      ]
+    },
+    {
+      "entry_id": "glossary:layering-editing",
+      "collection": "glossary",
+      "title": "Layering Editing",
+      "unresolved_related_slugs": [
+        "repetitive-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:llm-guardrails",
+      "collection": "glossary",
+      "title": "LLM Guardrails",
+      "unresolved_related_slugs": [
+        "content-moderation"
+      ]
+    },
+    {
+      "entry_id": "glossary:many-shot-jailbreaking",
+      "collection": "glossary",
+      "title": "Many-Shot Jailbreaking",
+      "unresolved_related_slugs": [
+        "jailbreak-attacks",
+        "prompt-leakage",
+        "refusal-bypass"
+      ]
+    },
+    {
+      "entry_id": "glossary:mega-prompt",
+      "collection": "glossary",
+      "title": "Mega-Prompt",
+      "unresolved_related_slugs": [
+        "multi-turn-conversation"
+      ]
+    },
+    {
+      "entry_id": "glossary:misrepresentation-of-minorities",
+      "collection": "glossary",
+      "title": "Misrepresentation of Minorities",
+      "unresolved_related_slugs": [
+        "targeted-biases",
+        "targeted-toxicity-generation"
+      ]
+    },
+    {
+      "entry_id": "glossary:mixture-of-prompt-experts-mope",
+      "collection": "glossary",
+      "title": "Mixture of Prompt Experts (MoPE)",
+      "unresolved_related_slugs": [
+        "visual-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:multimodal-prompting",
+      "collection": "glossary",
+      "title": "Multimodal Prompting",
+      "unresolved_related_slugs": [
+        "visual-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:orpo-odds-ratio-preference-optimization",
+      "collection": "glossary",
+      "title": "ORPO (Odds-Ratio Preference Optimization)",
+      "unresolved_related_slugs": [
+        "dpo",
+        "sft",
+        "simpo"
+      ]
+    },
+    {
+      "entry_id": "glossary:overcorrection-to-avoid-bias",
+      "collection": "glossary",
+      "title": "Overcorrection to Avoid Bias",
+      "unresolved_related_slugs": [
+        "targeted-biases"
+      ]
+    },
+    {
+      "entry_id": "glossary:parallel-contextual-reasoning",
+      "collection": "glossary",
+      "title": "Parallel Contextual Reasoning",
+      "unresolved_related_slugs": [
+        "domain-priming"
+      ]
+    },
+    {
+      "entry_id": "glossary:plan-and-execute-agent",
+      "collection": "glossary",
+      "title": "Plan-and-Execute Agent",
+      "unresolved_related_slugs": [
+        "auto-gpt",
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:plan-and-solve-p-s",
+      "collection": "glossary",
+      "title": "Plan and Solve (P&S)",
+      "unresolved_related_slugs": [
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:prompt-cognitive-overload",
+      "collection": "glossary",
+      "title": "Prompt (Cognitive) Overload",
+      "unresolved_related_slugs": [
+        "delimiter-prompting",
+        "repetitive-prompting",
+        "structured-data-input"
+      ]
+    },
+    {
+      "entry_id": "glossary:prompt-layered-architecture-pla",
+      "collection": "glossary",
+      "title": "Prompt-Layered Architecture (PLA)",
+      "unresolved_related_slugs": [
+        "langchain",
+        "llama-index"
+      ]
+    },
+    {
+      "entry_id": "glossary:question-summarization",
+      "collection": "glossary",
+      "title": "Question Summarization (Cognitive Verifier)",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:rat-retrieval-augmented-thoughts",
+      "collection": "glossary",
+      "title": "RAT (Retrieval Augmented Thoughts)",
+      "unresolved_related_slugs": [
+        "reflection-or-reasoning-prompting",
+        "system-query"
+      ]
+    },
+    {
+      "entry_id": "glossary:real-time-adaptive-prompting",
+      "collection": "glossary",
+      "title": "Real-Time Adaptive Prompting",
+      "unresolved_related_slugs": [
+        "adaptive-prompting",
+        "multi-turn-conversation"
+      ]
+    },
+    {
+      "entry_id": "glossary:rules-injector",
+      "collection": "glossary",
+      "title": "Rules Injector",
+      "unresolved_related_slugs": [
+        "constraint-application"
+      ]
+    },
+    {
+      "entry_id": "glossary:self-rewarding-language-models-srlm",
+      "collection": "glossary",
+      "title": "Self-Rewarding Language Models (SRLM)",
+      "unresolved_related_slugs": [
+        "dpo",
+        "orpo",
+        "rlaif"
+      ]
+    },
+    {
+      "entry_id": "glossary:socratic-questioning",
+      "collection": "glossary",
+      "title": "Socratic Questioning",
+      "unresolved_related_slugs": [
+        "ambiguity-reduction"
+      ]
+    },
+    {
+      "entry_id": "glossary:speculative-thinking",
+      "collection": "glossary",
+      "title": "Speculative Thinking",
+      "unresolved_related_slugs": [
+        "scenario-planning"
+      ]
+    },
+    {
+      "entry_id": "glossary:structured-outputs-json-schema",
+      "collection": "glossary",
+      "title": "Structured Outputs (JSON Schema)",
+      "unresolved_related_slugs": [
+        "json-mode"
+      ]
+    },
+    {
+      "entry_id": "glossary:text-watermarking-synthid-text",
+      "collection": "glossary",
+      "title": "Text Watermarking (SynthID-Text)",
+      "unresolved_related_slugs": [
+        "content-authentication",
+        "prompt-leakage"
+      ]
+    },
+    {
+      "entry_id": "glossary:third-wave-system",
+      "collection": "glossary",
+      "title": "Third Wave (System)",
+      "unresolved_related_slugs": [
+        "prompt-architecture-virtual-brain",
+        "reflection-or-reasoning-prompting-maieutic-self-refine-prompting"
+      ]
+    },
+    {
+      "entry_id": "glossary:tool-augmentation",
+      "collection": "glossary",
+      "title": "Tool Augmentation",
+      "unresolved_related_slugs": [
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:toolformer",
+      "collection": "glossary",
+      "title": "Toolformer",
+      "unresolved_related_slugs": [
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:voyager-agent",
+      "collection": "glossary",
+      "title": "Voyager (Autonomous Agent)",
+      "unresolved_related_slugs": [
+        "auto-gpt",
+        "react"
+      ]
+    },
+    {
+      "entry_id": "glossary:watermarking",
+      "collection": "glossary",
+      "title": "Watermarking",
+      "unresolved_related_slugs": [
+        "content-authentication"
+      ]
+    },
+    {
+      "entry_id": "glossary:waves-systems-of-ai",
+      "collection": "glossary",
+      "title": "Waves (Systems) of AI",
+      "unresolved_related_slugs": [
+        "prompt-architecture-virtual-brain"
+      ]
+    },
+    {
+      "entry_id": "glossary:whistleblowing-in-the-workplace",
+      "collection": "glossary",
+      "title": "Whistleblowing in the Workplace",
+      "unresolved_related_slugs": [
+        "transparency"
+      ]
+    }
+  ],
+  "quality_flag_counts": {
+    "missing_kind": 493,
+    "unresolved_related_slug": 96,
+    "merged_duplicate_source_records": 9,
+    "derived_kind_from_framework_overlap": 5,
+    "missing_definition": 4
+  }
+}
