@@ -473,7 +473,7 @@ async function start() {
     render();
   } catch (error) {
     console.error(error);
-    app.innerHTML = `<section class="shell error-state"><h1>The resource shelf could not open.</h1><p>Run <code>npm run build:data</code>, serve the project over HTTP, and try again.</p></section>`;
+    app.innerHTML = `<section class="shell error-state"><h1>The resource shelf could not open.</h1><p>Check that <code>assets/catalog.json</code> is available, then reload the page over HTTP.</p></section>`;
   }
 }
 

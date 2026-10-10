@@ -11,7 +11,7 @@ LLM crawlers, AI assistants, and tools that build answers from high-quality prom
   - Start here for the product overview and entry into the prompt-building workflow.
 - https://jonathankhobson.github.io/AI/glossary/index.html
   - Canonical glossary of prompting terms and patterns used across the site.
-- https://jonathankhobson.github.io/AI/glossary/data-catalog.html
+- https://jonathankhobson.github.io/AI/data/data-catalog.html
   - Data catalog that backs the glossary and framework taxonomy.
 
 ## What this site is best for
