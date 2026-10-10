@@ -3,7 +3,9 @@
   if (location.hostname !== 'jonathankhobson.github.io' || !location.pathname.startsWith('/AI/')) return;
   const query = new URLSearchParams(location.search);
   if (query.get('_legacy') === '1' || location.pathname.startsWith('/AI/migration/')) return;
-  const suffix = location.pathname.slice('/AI/'.length);
+  let suffix = location.pathname.slice('/AI/'.length);
+  // Repair the older glossary alias without sending users to a missing route.
+  if (suffix === 'glossary/data-catalog.html') suffix = 'data/data-catalog.html';
   const destination = new URL(suffix + location.search + location.hash, 'https://activity-atlas.jkylehobson.chatgpt.site/ai/');
   let hasSavedWork = false;
   try {
